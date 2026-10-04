@@ -298,6 +298,12 @@ h1, h2, h3 {
   margin: 3rem 0;
 }
 .fuss-spalten p { margin: 0 0 .5em; }
+.fuss-unten {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 2rem;
+  border-top: 1px solid rgba(255, 255, 255, .15);
+  padding-top: 1.5rem;
+}
+.fuss-unten p { margin: 0; }
 .fuss-unten a { font-weight: 600; }
 
 /* ---------- 7. Bausteine der Seiten ---------- */
@@ -420,6 +426,7 @@ h1, h2, h3 {
 .paket-kasten .alt-h6 { margin: 1.5rem 0 .5rem; }
 .aufzaehlung { padding-left: 1.2em; margin: .5rem 0 1.5rem; }
 .aufzaehlung li { margin: .25em 0; }
+.sektion-schmal > .aufzaehlung { margin-left: auto; margin-right: auto; padding-left: 1.2em; }
 .paket-stufe {
   border-top: var(--rahmen) solid var(--farbe-rahmen);
   padding-top: .75rem;
@@ -580,4 +587,304 @@ h1, h2, h3 {
 
 @media (min-width: 768px) and (max-width: 1024px) {
   .blog-liste { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ---------- 10. Mega-Menü „Service“ (Desktop) ---------- */
+.kopf { position: relative; z-index: 30; background: var(--farbe-weiss); }
+.mm-pfeil { display: inline-block; transition: transform .3s; }
+.mm-toggle[aria-expanded="true"] .mm-pfeil { transform: rotate(180deg); }
+.mm { position: absolute; left: 0; right: 0; top: 100%; z-index: 20; background: var(--farbe-weiss);
+  border-top: var(--rahmen) solid var(--farbe-rahmen); border-bottom: var(--rahmen) solid var(--farbe-rahmen);
+  clip-path: inset(0 0 100% 0); transition: clip-path .45s cubic-bezier(.2, .7, .2, 1); }
+.mm.offen { clip-path: inset(0 0 0 0); }
+.mm-innen { display: grid; grid-template-columns: 2fr 1fr; gap: 48px; padding: 48px var(--rand-seite) 32px; max-width: 1440px; margin: 0 auto; }
+.mm-label { margin: 0 0 16px; }
+.mm-liste { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; }
+.mm-liste a { display: block; padding: 18px 0; border-top: var(--rahmen) solid var(--farbe-rahmen); text-decoration: none; color: inherit; }
+.mm-name { display: block; font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-size: 1.9rem; line-height: 1.1; transition: transform .25s; }
+.mm-liste a:hover .mm-name, .mm-liste a:focus-visible .mm-name { transform: translateX(6px); }
+.mm-text { display: block; color: var(--farbe-gedaempft); font-size: .95rem; margin-top: 4px; font-weight: 400; }
+.mm-karte { display: flex; flex-direction: column; gap: 12px; background: var(--farbe-hellgrau); border-radius: 24px; padding: 32px; text-decoration: none; color: inherit; transition: transform .3s; }
+.mm-karte:hover { transform: translateY(-4px); }
+.mm-karte .meta { margin: 0; }
+.mm-karte-titel { font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-size: 2.6rem; line-height: 1; margin: 0; }
+.mm-karte .button { align-self: flex-start; margin-top: auto; }
+.mm-fuss { padding: 0 var(--rand-seite) 32px; max-width: 1440px; margin: 0 auto; }
+.mm > * { opacity: 0; transform: translateY(-8px); transition: opacity .3s .15s, transform .3s .15s; }
+.mm.offen > * { opacity: 1; transform: none; }
+.mm-schleier { position: fixed; inset: 0; z-index: 10; background: rgba(14, 16, 17, .35); opacity: 0; transition: opacity .4s; }
+.mm-schleier.offen { opacity: 1; }
+.kopf-nav .mm-liste { display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; }
+.kopf-nav .mm-liste a, .kopf-nav .mm-karte { line-height: 1.4; }
+.kopf-nav .mm-liste a:hover, .kopf-nav .mm-karte:hover { opacity: 1; }
+/* Mobilmenü: Leistungen aufklappbar */
+.kopf-mobil .mobil-unter summary { list-style: none; cursor: pointer; display: block; padding: .6rem 0; font-weight: 600; font-size: 1.25rem; }
+.kopf-mobil .mobil-unter summary::-webkit-details-marker { display: none; }
+.kopf-mobil .mobil-unter summary::after { content: " ↓"; }
+.kopf-mobil .mobil-unter[open] summary::after { content: " ↑"; }
+.kopf-mobil .mobil-unterliste { position: static; padding: 0 0 .5rem 1rem; border: 0; background: none; }
+.kopf-mobil .mobil-unterliste a { font-size: 1.05rem; padding: .4rem 0; }
+@media (max-width: 1024px) { .mm, .mm-schleier { display: none !important; } }
+
+/* ---------- 11. Leistungsseiten: Pakete und FAQ ---------- */
+.leistungsseite-pakete { max-width: var(--inhalt-breite); margin: 0 auto; padding: 96px var(--rand-seite); }
+.faq { padding: 96px var(--rand-seite); background: var(--farbe-hellgrau); }
+.faq h2 { text-align: center; margin: 0 0 48px; }
+.faq-liste { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 24px; max-width: 1200px; margin: 0 auto; align-items: start; }
+.faq-eintrag { background: var(--farbe-weiss); border: 1px solid var(--farbe-rahmen); border-radius: 20px; }
+.faq-eintrag summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 24px 28px; font-weight: 600; font-size: 1.1rem; }
+.faq-eintrag summary::-webkit-details-marker { display: none; }
+.faq-eintrag summary::after { content: ""; flex: none; width: 10px; height: 10px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg) translateY(-3px); transition: transform .3s; }
+.faq-eintrag[open] summary::after { transform: rotate(225deg) translateY(-3px); }
+.faq-eintrag summary:focus-visible { outline: 2px solid var(--farbe-dunkel); outline-offset: 2px; border-radius: 20px; }
+.faq-antwort { padding: 0 28px 24px; color: var(--farbe-gedaempft); }
+.faq-antwort p { margin: 0 0 .75em; }
+.faq-schluss { text-align: center; margin: 48px 0 0; }
+@media (max-width: 767px) {
+  .faq, .leistungsseite-pakete { padding: 64px var(--rand-seite); }
+  .faq-liste { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mm, .mm > *, .mm-schleier, .mm-pfeil, .mm-name, .mm-karte, .faq-eintrag summary::after { transition: none; }
+}
+
+/* Zweiter Knopf (Umriss), z. B. „Adresse kopieren“ */
+.button-zweit { background: transparent; color: var(--farbe-dunkel); border: var(--rahmen) solid var(--farbe-dunkel); font: inherit; font-weight: 600; cursor: pointer; padding: calc(1rem - var(--rahmen)) 1.5rem; }
+.button-zweit[hidden] { display: none; }
+.kopiert { font-size: .9em; }
+
+/* ---------- 12. Preisseite: Bedingungen, Übersicht, Stufen, Vergleich ---------- */
+.bedingungen { list-style: none; padding: 0; margin: 2rem 0 1rem; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 32px; max-width: 900px; }
+.bedingungen li { padding-left: 1.6em; position: relative; }
+.bedingungen li::before { content: "✓"; position: absolute; left: 0; font-weight: 700; }
+.preis-uebersicht { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; padding: 0 var(--rand-seite); }
+.preis-karte { position: relative; display: flex; flex-direction: column; gap: 6px; padding: 24px; border: var(--rahmen) solid var(--farbe-rahmen); border-radius: 20px; text-decoration: none; color: inherit; transition: transform .25s, border-color .25s; }
+.preis-karte:hover { transform: translateY(-3px); border-color: var(--farbe-dunkel); }
+.preis-karte.gefragt { border-color: var(--farbe-dunkel); }
+.preis-karte-name { font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-size: 1.6rem; line-height: 1.1; }
+.preis-karte-preis { font-weight: 700; font-size: 1.2rem; margin-top: auto; padding-top: 8px; }
+.preis-karte .gedaempft { font-size: .95rem; }
+.abzeichen { align-self: flex-start; background: var(--farbe-dunkel); color: var(--farbe-weiss); border-radius: 500px; padding: .2rem .7rem; font-size: .8rem; font-weight: 600; }
+.preis-weitere { padding: 16px var(--rand-seite) 0; }
+.preis-bereich { padding: 96px var(--rand-seite) 48px; scroll-margin-top: 16px; }
+.preis-bereich > .alt-klein { max-width: 900px; }
+.paket[id] { scroll-margin-top: 16px; }
+.stufen { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin: 32px 0 48px; align-items: stretch; }
+.stufe { position: relative; display: flex; flex-direction: column; gap: 12px; padding: 32px; border: var(--rahmen) solid var(--farbe-rahmen); border-radius: 24px; }
+.stufe.gefragt { border-color: var(--farbe-dunkel); background: var(--farbe-hellgrau); }
+.stufe .abzeichen { position: absolute; top: -14px; left: 32px; }
+.stufe-name { font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-size: 2rem; line-height: 1; margin: 0; }
+.stufe-preis { font-size: 1.8rem; font-weight: 700; margin: 0; }
+.stufe .button { align-self: flex-start; }
+.stufe-plus { font-weight: 600; margin: 8px 0 0; }
+.haken { list-style: none; padding: 0; margin: 0; }
+.haken li { padding-left: 1.6em; position: relative; margin: .35em 0; }
+.haken li::before { content: "✓"; position: absolute; left: 0; font-weight: 700; }
+.vergleich-titel { margin: 0 0 16px; }
+.tabelle-scroll { overflow-x: auto; margin: 0 0 24px; border: 1px solid var(--farbe-rahmen); border-radius: 16px; }
+.tabelle-scroll:focus-visible { outline: 2px solid var(--farbe-dunkel); outline-offset: 2px; }
+.vergleich { width: 100%; border-collapse: collapse; min-width: 560px; }
+.vergleich th, .vergleich td { padding: 14px 18px; text-align: center; border-bottom: 1px solid var(--farbe-rahmen); }
+.vergleich tbody tr:last-child th, .vergleich tbody tr:last-child td { border-bottom: 0; font-weight: 700; }
+.vergleich th[scope="row"] { text-align: left; font-weight: 400; position: sticky; left: 0; background: var(--farbe-weiss); }
+.vergleich thead th { font-weight: 700; }
+.vergleich .spalte-gefragt { background: var(--farbe-hellgrau); }
+@media (max-width: 1024px) {
+  .preis-uebersicht { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stufen { grid-template-columns: 1fr; max-width: 560px; }
+}
+@media (max-width: 767px) {
+  .bedingungen { grid-template-columns: 1fr; }
+  .preis-uebersicht { grid-template-columns: 1fr; }
+  .preis-bereich { padding: 64px var(--rand-seite) 32px; }
+  .stufe { padding: 28px 24px; }
+}
+@media (prefers-reduced-motion: reduce) { .preis-karte { transition: none; } }
+.wisch-hinweis { display: none; margin: -8px 0 8px; }
+@media (max-width: 767px) {
+  .wisch-hinweis { display: block; }
+  .vergleich th[scope="row"] { min-width: 140px; max-width: 160px; }
+}
+/* Übersichtskarten: Titel und Unterzeile auf einer Höhe */
+.preis-uebersicht { padding-top: 14px; }
+.preis-karte .abzeichen { position: absolute; top: -13px; left: 24px; }
+.preis-karte-name { min-height: 2.2em; }
+@media (max-width: 767px) { .preis-karte-name { min-height: 0; } }
+
+/* ---------- 13. Startseite: Referenz-Akkordeon (ohne Nummern) ---------- */
+.referenzen { padding: 0 var(--rand-seite) 64px; }
+.referenz { border-top: 1px solid var(--farbe-rahmen); }
+.referenz:last-child { border-bottom: 1px solid var(--farbe-rahmen); }
+.referenz summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 28px 0; }
+.referenz summary::-webkit-details-marker { display: none; }
+.referenz summary:focus-visible { outline: 2px solid var(--farbe-dunkel); outline-offset: 4px; }
+.referenz-name { font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-size: clamp(1.6rem, 3.2vw, 3rem); line-height: 1.05; transition: transform .25s; }
+.referenz summary:hover .referenz-name { transform: translateX(6px); }
+.referenz-zeichen { position: relative; flex: none; width: 28px; height: 28px; }
+.referenz-zeichen::before, .referenz-zeichen::after { content: ""; position: absolute; left: 0; top: 50%; width: 28px; height: 2px; background: currentColor; transition: transform .3s; }
+.referenz-zeichen::after { transform: rotate(90deg); }
+.referenz[open] .referenz-zeichen::after { transform: rotate(0deg); }
+.referenz-fakten { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px 32px; margin: 0; padding: 0 0 32px; }
+.referenz-fakten dt { font-family: var(--schrift-meta); font-style: italic; color: var(--farbe-gedaempft); margin-bottom: 4px; }
+.referenz-fakten dd { margin: 0; }
+@media (max-width: 767px) { .referenz-fakten { grid-template-columns: 1fr; } .referenz summary { padding: 20px 0; } }
+@media (prefers-reduced-motion: reduce) { .referenz-name, .referenz-zeichen::before, .referenz-zeichen::after { transition: none; } }
+
+/* ---------- 14. Startseite: Hero mit schwebenden Projekt-Mockups ---------- */
+.hero-buehne { position: relative; overflow: hidden; min-height: min(92vh, 900px); display: grid; place-items: center; padding: 96px var(--rand-seite); }
+.hero-text { position: relative; z-index: 2; max-width: 1100px; }
+.hero-mockups { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.mockup { position: absolute; margin: 0; --versatz: 0px; transform: translateY(var(--versatz)); }
+.mockup > *:not(figcaption) { animation: schweben 7s ease-in-out infinite; }
+.mockup figcaption { font-family: var(--schrift-meta); font-style: italic; font-size: .85rem; color: var(--farbe-gedaempft); margin-top: 10px; text-align: center; }
+@keyframes schweben { 0%, 100% { translate: 0 0; } 50% { translate: 0 -10px; } }
+/* Laptop: Website scrollt im Bildschirm */
+.mockup-laptop { left: 2%; bottom: 6%; width: clamp(220px, 22vw, 340px); }
+.laptop-bildschirm { aspect-ratio: 16 / 10; overflow: hidden; border: 10px solid var(--farbe-dunkel); border-bottom-width: 14px; border-radius: 14px 14px 0 0; background: var(--farbe-weiss); container-type: size; }
+.laptop-bildschirm img { display: block; width: 100%; height: auto; animation: website-scroll 26s ease-in-out infinite alternate; }
+@keyframes website-scroll { 0%, 8% { transform: translateY(0); } 92%, 100% { transform: translateY(calc(-100% + 100cqh)); } }
+.laptop-unterteil { height: 10px; margin: 0 -8%; background: #2b2e30; border-radius: 0 0 12px 12px; }
+/* Browserfenster */
+.mockup-browser { right: 3%; top: 10%; width: clamp(180px, 17vw, 270px); animation-delay: -2s; }
+.mockup-browser > div, .mockup-browser > img { box-shadow: 0 18px 40px rgba(14, 16, 17, .18); }
+.browser-leiste { display: flex; gap: 5px; padding: 8px 10px; background: var(--farbe-hellgrau-2); border-radius: 10px 10px 0 0; }
+.browser-leiste span { width: 8px; height: 8px; border-radius: 50%; background: #c9cdcf; }
+.mockup-browser img { display: block; width: 100%; height: auto; border-radius: 0 0 10px 10px; }
+/* Visitenkarten aufgefächert */
+.mockup-karten { right: 6%; bottom: 8%; width: clamp(160px, 15vw, 230px); aspect-ratio: 85 / 55; }
+.mockup-karten img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 4px; box-shadow: 0 12px 28px rgba(14, 16, 17, .2); }
+.mockup-karten img:nth-child(1) { rotate: -14deg; translate: -14% 6%; }
+.mockup-karten img:nth-child(2) { rotate: -4deg; translate: -4% 0; }
+.mockup-karten img:nth-child(3) { rotate: 7deg; translate: 8% -6%; }
+.mockup-karten img { animation: none; }
+.mockup-karten figcaption { position: absolute; top: 112%; left: 0; right: 0; }
+.mockup-laptop > * { animation-delay: -1s; }
+.mockup-browser > *:not(figcaption) { animation-delay: -3.5s; }
+/* Tablet/Handy: Bilder unter dem Text, ohne Parallaxe */
+@media (max-width: 1024px) {
+  .hero-buehne { display: block; min-height: 0; padding: 48px var(--rand-seite) 32px; }
+  .hero-mockups { position: relative; inset: auto; display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-end; gap: 32px 40px; margin-top: 48px; }
+  .mockup { position: relative; left: auto; right: auto; top: auto; bottom: auto; transform: none; }
+  .mockup-browser { display: none; }
+  .mockup-laptop { width: min(300px, 70vw); }
+  .mockup-karten { width: min(200px, 50vw); margin-bottom: 40px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mockup > *, .laptop-bildschirm img { animation: none !important; }
+  .mockup { transform: none; }
+}
+/* Hero: Text schmaler, damit die Mockups seitlich Platz haben (nur Desktop) */
+@media (min-width: 1025px) {
+  .hero-text { max-width: min(820px, 58vw); }
+  .hero-buehne .gr-xl { font-size: clamp(64px, 8.2vw, 140px); }
+  .mockup-laptop { left: 2.5%; top: 46%; bottom: auto; width: clamp(200px, 17vw, 290px); }
+  .mockup-browser { right: 3%; top: 8%; width: clamp(170px, 15vw, 250px); }
+  .mockup-karten { right: 5%; top: auto; bottom: 12%; width: clamp(150px, 13vw, 210px); }
+}
+
+/* ---------- 15. Fuß: Karte „Eine Website im Monat“ ---------- */
+.fuss-karte { display: grid; gap: 8px; max-width: 760px; margin: 0 0 3rem; padding: 32px; border: 1px solid rgba(255, 255, 255, .25); border-radius: 24px; color: var(--farbe-weiss); text-decoration: none; font-weight: 400 !important; transition: border-color .25s, transform .25s; }
+.fuss-karte:hover { opacity: 1 !important; border-color: var(--farbe-weiss); transform: translateY(-3px); }
+.fuss-karte-titel { font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-size: clamp(1.8rem, 3vw, 2.6rem); line-height: 1.05; }
+.fuss-karte-text { color: var(--farbe-gedaempft-invers); }
+.fuss-karte-link { font-weight: 600; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; margin-top: 8px; }
+@media (max-width: 767px) { .fuss-karte { padding: 24px; } }
+@media (prefers-reduced-motion: reduce) { .fuss-karte { transition: none; } }
+
+/* ---------- 16. Preisseite: Karten-Raster für alle Bereiche, Knöpfe auf einer Höhe ---------- */
+.stufen { row-gap: 0; column-gap: 24px; }
+.stufen[data-anzahl="2"] { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 820px; }
+.stufen[data-anzahl="3"] { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.stufen[data-anzahl="4"] { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.stufe { display: grid; grid-row: span 6; grid-template-rows: subgrid; row-gap: 12px; align-content: start; margin-bottom: 24px; }
+.stufe > p { margin: 0; }
+.stufe-knopf { align-self: start; padding-top: 4px; }
+.stufe-plus { align-self: end; margin-top: 8px !important; }
+.stufe .button { white-space: nowrap; }
+.stufen[data-anzahl="4"] .stufe { padding: 28px 24px; }
+.stufen[data-anzahl="4"] .stufe-name { font-size: 1.6rem; }
+.stufen[data-anzahl="4"] .stufe-preis { font-size: 1.5rem; }
+.vergleich-titel { margin-top: 56px !important; }
+.preis-fuss { max-width: 900px; }
+@media (max-width: 1200px) { .stufen[data-anzahl="4"] { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 820px; } }
+@media (max-width: 1024px) { .stufen[data-anzahl="3"] { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 820px; } }
+@media (max-width: 767px) {
+  .stufen[data-anzahl] { grid-template-columns: 1fr; }
+  .stufe { grid-row: auto; grid-template-rows: none; display: flex; flex-direction: column; }
+}
+/* Preisseite: großzügige Abstände zwischen den Bereichen */
+.preis-bereich { padding-top: 176px; padding-bottom: 120px; }
+.preis-bereich + .preis-bereich { border-top: 1px solid var(--farbe-rahmen); }
+.preis-bereich > .alt-klein { margin-bottom: 56px; }
+.preis-bereich .stufen { margin-top: 0; margin-bottom: 24px; }
+.preis-fuss { margin-top: 32px; }
+.preis-weitere { padding-bottom: 48px; }
+@media (max-width: 767px) {
+  .preis-bereich { padding-top: 112px; padding-bottom: 80px; }
+  .preis-bereich > .alt-klein { margin-bottom: 40px; }
+}
+
+/* ---------- 17. Profil: größeres Bild, bleibt beim Scrollen stehen ---------- */
+@media (min-width: 768px) {
+  .profil-golden { grid-template-columns: 5fr 7fr; gap: 64px; align-items: start; }
+  .profil-golden > div:first-child { position: sticky; top: 32px; align-self: start; }
+  .profil-golden .profilbild { max-height: calc(100vh - 64px); }
+}
+
+/* ---------- 18. Kontakt: Kopier-Symbol an der Adresse, kleine Hinweise ---------- */
+.mail-zeile { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 0 0 .5rem; }
+.kopier-knopf { display: inline-grid; place-items: center; width: 36px; height: 36px; padding: 0; border: 1px solid var(--farbe-rahmen); border-radius: 50%; background: var(--farbe-weiss); color: var(--farbe-dunkel); cursor: pointer; transition: border-color .2s, background .2s; }
+.kopier-knopf[hidden] { display: none; }
+.kopier-knopf:hover { border-color: var(--farbe-dunkel); }
+.kopier-knopf:focus-visible { outline: 2px solid var(--farbe-dunkel); outline-offset: 2px; }
+.kopier-knopf .symbol-ok { display: none; }
+.kopier-knopf.ok { background: var(--farbe-dunkel); color: var(--farbe-weiss); border-color: var(--farbe-dunkel); }
+.kopier-knopf.ok .symbol-ok { display: block; }
+.kopier-knopf.ok .symbol-kopieren { display: none; }
+.kopiert { font-size: .85rem; color: var(--farbe-gedaempft); }
+.hinweis-klein { font-size: .85rem; color: var(--farbe-gedaempft); margin: 0; }
+
+/* Preisseite: großer Aufruf „Eine Website im Monat“ */
+.preis-cta-kostenlos { margin: 0 var(--rand-seite) 120px; padding: 96px clamp(24px, 6vw, 96px); background: var(--farbe-hellgrau); border-radius: 32px; }
+.preis-cta-kostenlos .gr-h2 { font-size: clamp(2.6rem, 6vw, 5.5rem); line-height: 1; margin: 12px 0 24px; max-width: 14ch; }
+.preis-cta-kostenlos .alt-klein { max-width: 760px; }
+@media (max-width: 767px) { .preis-cta-kostenlos { margin-bottom: 80px; padding: 56px 24px; border-radius: 24px; } }
+/* Tabellen dürfen die Seite auf dem Handy nicht verbreitern */
+.preis-bereich { min-width: 0; max-width: 100%; }
+.tabelle-scroll { max-width: 100%; contain: inline-size; }
+/* Unsichtbare Bildschirmleser-Texte in Tabellenzellen bleiben innerhalb der Zelle */
+.vergleich td, .vergleich thead th { position: relative; }
+
+/* ---------- 19. Startseite: „Roter Faden“ und Ziel „Projekt anfragen“ ---------- */
+main.mit-faden { position: relative; }
+.roter-faden { position: absolute; left: 0; top: 0; z-index: 3; pointer-events: none; overflow: visible; }
+.faden-linie { fill: none; stroke: var(--farbe-dunkel); stroke-width: 2.5; stroke-linecap: round; }
+.faden-punkt { fill: var(--farbe-dunkel); transition: r .3s; }
+.weg-ziel { text-align: center; padding: 160px var(--rand-seite) 176px; }
+.weg-ziel .gr-h2 { font-size: clamp(2.6rem, 6vw, 5.5rem); line-height: 1; max-width: 14ch; margin: 12px auto 24px; }
+.weg-ziel-knopf { font-size: 1.15rem; padding: 1.1rem 2rem; transition: transform .3s, box-shadow .3s; }
+.roter-faden.angekommen ~ .weg-ziel .weg-ziel-knopf { transform: scale(1.06); box-shadow: 0 0 0 8px rgba(14, 16, 17, .08); }
+@media (prefers-reduced-motion: reduce) { .weg-ziel-knopf, .faden-punkt { transition: none; } }
+
+/* ---------- 20. Fuß: Kontakt als erste, abgesetzte Spalte mit Symbolen ---------- */
+.fuss-spalten { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, 1fr); gap: 32px 48px; }
+.fuss-kontakt { padding-right: 48px; border-right: 1px solid rgba(255, 255, 255, .18); }
+.mit-symbol { display: inline-flex; align-items: center; gap: 10px; }
+.mit-symbol svg { flex: none; color: var(--farbe-weiss); }
+.fuss-folge { margin-top: 2rem !important; }
+.symbol-link { display: inline-block; color: var(--farbe-weiss); line-height: 0; }
+.symbol-link:hover { opacity: .7; }
+@media (max-width: 767px) {
+  .fuss-spalten { grid-template-columns: 1fr; }
+  .fuss-kontakt { padding: 0 0 32px; border-right: 0; border-bottom: 1px solid rgba(255, 255, 255, .18); }
+}
+
+/* Kundenstimmen: auf Tablet untereinander statt zu breit (Fehler war schon live) */
+.stimmen { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 1024px) { .stimmen { grid-template-columns: minmax(0, 1fr); } }
+/* Fuß auf Tablet: Kontakt über die ganze Breite, darunter zwei Spalten; E-Mail bricht nicht um */
+.mit-symbol { white-space: nowrap; }
+@media (min-width: 768px) and (max-width: 1024px) {
+  .fuss-spalten { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .fuss-kontakt { grid-column: 1 / -1; padding: 0 0 32px; border-right: 0; border-bottom: 1px solid rgba(255, 255, 255, .18); }
 }

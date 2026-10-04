@@ -2,10 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://studio-aah.de/</loc></url>
   <url><loc>https://studio-aah.de/service/</loc></url>
-  <url><loc>https://studio-aah.de/angebot/</loc></url>
+  <url><loc>https://studio-aah.de/service/brand/</loc></url>
+  <url><loc>https://studio-aah.de/service/website/</loc></url>
+  <url><loc>https://studio-aah.de/service/ui-ux/</loc></url>
+  <url><loc>https://studio-aah.de/service/ki-digitalisierung/</loc></url>
+  <url><loc>https://studio-aah.de/service/marketing-vertrieb/</loc></url>
+  <url><loc>https://studio-aah.de/preise/</loc></url>
   <url><loc>https://studio-aah.de/profil/</loc></url>
-  <url><loc>https://studio-aah.de/referenzen/</loc></url>
   <url><loc>https://studio-aah.de/kontakt/</loc></url>
+  <url><loc>https://studio-aah.de/eine-website-im-monat/</loc></url>
   <url><loc>https://studio-aah.de/blog/</loc></url>
   <url><loc>https://studio-aah.de/blog/bildformate-im-web-welche-wirklich-zaehlen/</loc></url>
   <url><loc>https://studio-aah.de/blog/so-gestalten-sie-eine-benutzerfreundliche-website/</loc></url>

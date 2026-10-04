@@ -12,8 +12,8 @@ einheitlich() { sed -E 's#="(\.\./)+#="#g; s#(href|src)="/#\1="#g; s#href="\.\./
 kopf() { awk '/<a class="sprunglink"/,/<!-- \/KOPF -->/' "$1" | einheitlich; }
 fuss() { awk '/<!-- FUSS:/,/<!-- \/FUSS -->/' "$1" | einheitlich; }
 
-seiten=$(find . -name "*.html" -not -path "./work/*" | sort)
-# work/: reine Weiterleitungsseiten von alten Webflow-Adressen, ohne Kopf und Fuß
+seiten=$(find . -name "*.html" | sort | while read -r s; do grep -q 'http-equiv="refresh"' "$s" || echo "$s"; done)
+# Weiterleitungsseiten (work/, angebot/ …) haben keinen Kopf und Fuß und werden übersprungen
 
 echo "== Kopf und Fuß"
 for s in $seiten; do

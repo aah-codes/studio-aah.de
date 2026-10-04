@@ -25,25 +25,61 @@
   <a class="kopf-logo" href="../../"><img src="../../bilder/logo-studio-aah-schwarz.png" alt="studio aah!" width="180" height="36"></a>
   <nav class="kopf-nav" aria-label="Hauptmenü">
     <ul>
-      <li><a href="../../service/">Service</a></li>
+      <li><a href="../../service/" class="mm-toggle" aria-expanded="false" aria-controls="mm">Leistungen <span class="mm-pfeil" aria-hidden="true">↓</span></a></li>
       <li><a href="../../profil/">Profil</a></li>
       <li><a href="../../blog/">Blog</a></li>
     </ul>
     <a class="kopf-button" href="../../kontakt/">Projekt anfragen</a>
+    <div class="mm" id="mm" hidden>
+      <div class="mm-innen">
+        <div>
+          <p class="meta mm-label">(Leistungen)</p>
+          <ul class="mm-liste">
+          <li><a href="../../service/brand/"><span class="mm-name">Brand</span><span class="mm-text">Markenfindung, Logo, Erscheinungsbild, Markenrichtlinien</span></a></li>
+          <li><a href="../../service/website/"><span class="mm-name">Website</span><span class="mm-text">Webdesign, Umsetzung, Redesign, Pflege &amp; Support</span></a></li>
+          <li><a href="../../service/ui-ux/"><span class="mm-name">UI/UX</span><span class="mm-text">User Research, Prototyping, UX-Audits, Designsysteme</span></a></li>
+          <li><a href="../../service/ki-digitalisierung/"><span class="mm-name">KI &amp; Digitalisierung</span><span class="mm-text">KI-Einführung, digitale Prozesse, Schulung</span></a></li>
+          <li><a href="../../service/marketing-vertrieb/"><span class="mm-name">Marketing &amp; Vertrieb</span><span class="mm-text">LinkedIn, Beitragsvorlagen, Fachartikel, Webinare</span></a></li>
+            <li><a href="../../service/"><span class="mm-name">Alle Leistungen</span><span class="mm-text">Überblick und Ablauf der Zusammenarbeit</span></a></li>
+          </ul>
+        </div>
+        <a class="mm-karte" href="../../preise/">
+          <span class="meta">(Preise)</span>
+          <span class="mm-karte-titel">8 Pakete.<br>Festpreis.</span>
+          <span class="gedaempft">Von Brand bis Wartung – ab 300&nbsp;€. Den genauen Festpreis bekommen Sie nach einem kostenlosen Erstgespräch.</span>
+          <span class="button">Zu den Preisen →</span>
+        </a>
+      </div>
+      <p class="mm-fuss"><span class="meta">Für NGOs, Vereine &amp; Studierende:</span> <a class="textlink" href="../../eine-website-im-monat/">Eine Website im Monat – kostenlos →</a></p>
+    </div>
   </nav>
   <details class="kopf-mobil">
     <summary><span class="kopf-mobil-icon" aria-hidden="true"></span><span class="unsichtbar">Menü</span></summary>
     <nav aria-label="Mobilmenü">
       <ul>
-        <li><a href="../../service/">Service</a></li>
+        <li>
+          <details class="mobil-unter">
+            <summary>Leistungen</summary>
+            <ul class="mobil-unterliste">
+              <li><a href="../../service/brand/">Brand</a></li>
+              <li><a href="../../service/website/">Website</a></li>
+              <li><a href="../../service/ui-ux/">UI/UX</a></li>
+              <li><a href="../../service/ki-digitalisierung/">KI &amp; Digitalisierung</a></li>
+              <li><a href="../../service/marketing-vertrieb/">Marketing &amp; Vertrieb</a></li>
+            <li><a href="../../service/">Alle Leistungen</a></li>
+            <li><a href="../../preise/">Preise</a></li>
+            </ul>
+          </details>
+        </li>
         <li><a href="../../profil/">Profil</a></li>
-        <li><a href="../../referenzen/">Referenzen</a></li>
         <li><a href="../../blog/">Blog</a></li>
         <li><a href="../../kontakt/">Kontakt</a></li>
       </ul>
     </nav>
   </details>
 </header>
+<div class="mm-schleier" hidden></div>
+<script src="../../js/menue.js" defer></script>
 <!-- /KOPF -->
 
 <main id="inhalt">
@@ -67,31 +103,48 @@
 
 </main>
 
-<!-- FUSS: auf allen Seiten gleich -->
-<footer class="fuss">
-  <p class="meta">#uxstrategy #behaviouraldesign #servicedesign</p>
-  <p class="fuss-gross">STUDIO AAH!</p>
-  <p><a href="tel:+4917683089879">0176 830 898 79</a></p>
-  <p><a href="mailto:info@studio-aah.de">info@studio-aah.de</a></p>
-  <div class="fuss-spalten">
-    <div>
-      <p class="meta">(Seiten)</p>
-      <p><a href="../../service/">Service</a></p>
-      <p><a href="../../profil/">Profil</a></p>
-      <p><a href="../../kontakt/">Kontakt</a></p>
+  <!-- FUSS: auf allen Seiten gleich -->
+  <footer class="fuss">
+    <p class="meta">#uxstrategy #behaviouraldesign #servicedesign #kidesign</p>
+    <p class="fuss-gross">STUDIO AAH!</p>
+  <a class="fuss-karte" href="../../eine-website-im-monat/">
+    <span class="meta">(Für NGOs, Vereine &amp; Studierende)</span>
+    <span class="fuss-karte-titel">Eine Website im Monat – kostenlos.</span>
+    <span class="fuss-karte-text">NGOs, Vereine und Studierende können sich für eine kostenlose Website bewerben.</span>
+    <span class="fuss-karte-link">Mehr erfahren &amp; bewerben →</span>
+  </a>
+    <nav class="fuss-spalten" aria-label="Fußmenü">
+<div class="fuss-kontakt">
+  <p class="meta">(Kontakt)</p>
+  <p><a href="../../kontakt/">Projekt anfragen</a></p>
+  <p><a class="mit-symbol" href="mailto:info@studio-aah.de"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>info@studio-aah.de</a></p>
+  <p><a class="mit-symbol" href="tel:+4917683089879"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6.6 3.5h3l1.5 4-2 1.3a11 11 0 0 0 6.1 6.1l1.3-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>0176 830 898 79</a></p>
+  <p class="meta fuss-folge">(Folge mir)</p>
+  <p><a class="symbol-link" href="https://www.linkedin.com/in/anna-h%C3%A4rtelt-8513b8213/" target="_blank" rel="noopener" aria-label="Anna Härtelt auf LinkedIn"><svg viewBox="0 0 24 24" width="32" height="32" aria-hidden="true"><rect x="1.5" y="1.5" width="21" height="21" rx="4" fill="currentColor"/><rect x="5.5" y="9.5" width="2.8" height="8.5" fill="#0e1011"/><circle cx="6.9" cy="6.6" r="1.7" fill="#0e1011"/><path d="M10.6 9.5h2.7v1.2c.5-.8 1.5-1.5 3-1.5 2.4 0 3.2 1.5 3.2 4V18h-2.8v-4.3c0-1.2-.3-2-1.4-2s-1.9.8-1.9 2.1V18h-2.8z" fill="#0e1011"/></svg></a></p>
+</div>
+      <div>
+        <p class="meta">(Leistungen)</p>
+        <p><a href="../../service/brand/">Brand</a></p>
+        <p><a href="../../service/website/">Website</a></p>
+        <p><a href="../../service/ui-ux/">UI/UX</a></p>
+        <p><a href="../../service/ki-digitalisierung/">KI &amp; Digitalisierung</a></p>
+        <p><a href="../../service/marketing-vertrieb/">Marketing &amp; Vertrieb</a></p>
+        <p><a href="../../preise/">Preise</a></p>
+      </div>
+      <div>
+        <p class="meta">(Studio)</p>
+        <p><a href="../../profil/">Profil</a></p>
+        <p><a href="../../#referenzen">Referenzen</a></p>
+        <p><a href="../../blog/">Blog</a></p>
+        <p><a href="../../eine-website-im-monat/">Kostenlose Website für NGOs &amp; Vereine</a></p>
+      </div>
+    </nav>
+    <div class="fuss-unten">
+      <p class="meta">© 2026 studio aah!</p>
+      <p class="meta"><a href="../../impressum/">Impressum</a> · <a href="../../datenschutz/">Datenschutz</a></p>
     </div>
-    <div>
-      <p class="meta">(Blog)</p>
-      <p><a href="../../blog/">Blog</a></p>
-    </div>
-    <div>
-      <p class="meta">(Socials)</p>
-      <p><a href="https://www.linkedin.com/in/anna-h%C3%A4rtelt-8513b8213/" target="_blank" rel="noopener">LinkedIn</a></p>
-    </div>
-  </div>
-  <p class="meta fuss-unten">© 2026 studio aah! · <a href="../../impressum/">Impressum</a> · <a href="../../datenschutz/">Datenschutz</a></p>
-</footer>
-<!-- /FUSS -->
+  </footer>
+  <!-- /FUSS -->
 
 </body>
 </html>
