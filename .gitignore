@@ -1,0 +1,23 @@
+# Betriebssystem
+.DS_Store
+
+# Zugangsdaten – nie ins Repository
+.env
+.env.*
+*.key
+*.pem
+zugangsdaten*
+passw*
+
+# Dokumente und Kundendaten – bleiben in iCloud
+*.pdf
+*.docx
+*.xlsx
+*.odt
+
+# Sicherungen
+*.sql
+*.zip
+
+# Interne Doku – bleibt lokal (Original in iCloud), Repository ist öffentlich
+doku/
