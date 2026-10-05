@@ -30,7 +30,7 @@ echo "== Interne Links und Bilder"
 meldungen=$(for s in $seiten; do
   ordner=$(dirname "$s")
   grep -oE '(href|src)="[^"#]+"' "$s" | sed -E 's/^(href|src)="//; s/"$//' |
-  grep -vE '^(https?:|mailto:|tel:)' | sort -u |
+  grep -vE '^(https?:|mailto:|tel:)' | sed -E 's/\?.*$//' | sort -u |
   while read -r ziel; do
     pfad="$ordner/$ziel"
     case "$ziel" in (*/|.|..) pfad="${pfad%/}/index.html" ;; esac
