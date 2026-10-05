@@ -150,6 +150,8 @@ h1, h2, h3 {
 /* ---------- 4. Schriftgrößen (wie in der Vorlage, vw-Einheiten) ---------- */
 .gr-xxl   { font-size: clamp(64px, 19vw, 19vw); line-height: 1; }
 .gr-xl    { font-size: clamp(56px, 12vw, 12vw); line-height: 1; }
+/* Überschriften mit einem sehr langen Wort (z. B. „Digitalisierung“) – passen ohne seitliches Scrollen */
+.gr-xxl.lang-wort { font-size: clamp(40px, 12vw, 12vw); }
 .gr-h2    { font-size: clamp(40px, 6vw, 6vw);   line-height: 1; }
 .gr-klein { font-size: clamp(48px, 8vw, 8vw);   line-height: 1; }
 
@@ -564,7 +566,8 @@ h1, h2, h3 {
   .kopf-logo img { width: 140px; }
 
   .golden { grid-template-columns: 1fr; padding-bottom: 64px; }
-  .leistung { grid-template-columns: 1fr; }
+  .leistung { grid-template-columns: minmax(0, 1fr); }
+  .leistung-text .gr-klein { hyphens: auto; overflow-wrap: break-word; } /* lange Wörter wie „Digitalisierung“ auf sehr kleinen Handys */
   .leistung-text { padding: 48px var(--rand-seite); }
   .liste { grid-template-columns: 1fr; }
   .sektionskopf { padding-top: 64px; }
@@ -691,7 +694,7 @@ h1, h2, h3 {
 .vergleich .spalte-gefragt { background: var(--farbe-hellgrau); }
 @media (max-width: 1024px) {
   .preis-uebersicht { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .stufen { grid-template-columns: 1fr; max-width: 560px; }
+  .stufen { grid-template-columns: minmax(0, 1fr); max-width: 560px; }
 }
 @media (max-width: 767px) {
   .bedingungen { grid-template-columns: 1fr; }
@@ -735,52 +738,66 @@ h1, h2, h3 {
 .hero-text { position: relative; z-index: 2; max-width: 1100px; }
 .hero-mockups { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
 .mockup { position: absolute; margin: 0; --versatz: 0px; transform: translateY(var(--versatz)); }
-.mockup > *:not(figcaption) { animation: schweben 7s ease-in-out infinite; }
-.mockup figcaption { font-family: var(--schrift-meta); font-style: italic; font-size: .85rem; color: var(--farbe-gedaempft); margin-top: 10px; text-align: center; }
+.mockup > * { animation: schweben 7s ease-in-out infinite; }
 @keyframes schweben { 0%, 100% { translate: 0 0; } 50% { translate: 0 -10px; } }
 /* Laptop: Website scrollt im Bildschirm */
 .mockup-laptop { left: 2%; bottom: 6%; width: clamp(220px, 22vw, 340px); }
 .laptop-bildschirm { aspect-ratio: 16 / 10; overflow: hidden; border: 10px solid var(--farbe-dunkel); border-bottom-width: 14px; border-radius: 14px 14px 0 0; background: var(--farbe-weiss); container-type: size; }
-.laptop-bildschirm img { display: block; width: 100%; height: auto; animation: website-scroll 26s ease-in-out infinite alternate; }
+.laptop-seite { position: relative; animation: website-scroll 26s ease-in-out infinite alternate; }
+.laptop-seite > img { display: block; width: 100%; height: auto; }
+/* Slider im Hero der Bauer-Seite: Bilder blenden über dem Foto im Bildschirmfoto über (Lage in % des Bildschirmfotos) */
+.laptop-slider { position: absolute; left: 50.97%; top: 1.59%; width: 35.94%; aspect-ratio: 1; overflow: hidden; }
+.laptop-slider img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: laptop-slide 20s infinite; }
+.laptop-slider img:nth-child(2) { animation-delay: 4s; }
+.laptop-slider img:nth-child(3) { animation-delay: 8s; }
+.laptop-slider img:nth-child(4) { animation-delay: 12s; }
+@keyframes laptop-slide { 0% { opacity: 0; } 4%, 20% { opacity: 1; } 24%, 100% { opacity: 0; } }
 @keyframes website-scroll { 0%, 8% { transform: translateY(0); } 92%, 100% { transform: translateY(calc(-100% + 100cqh)); } }
 .laptop-unterteil { height: 10px; margin: 0 -8%; background: #2b2e30; border-radius: 0 0 12px 12px; }
-/* Browserfenster */
-.mockup-browser { right: 3%; top: 10%; width: clamp(180px, 17vw, 270px); animation-delay: -2s; }
-.mockup-browser > div, .mockup-browser > img { box-shadow: 0 18px 40px rgba(14, 16, 17, .18); }
-.browser-leiste { display: flex; gap: 5px; padding: 8px 10px; background: var(--farbe-hellgrau-2); border-radius: 10px 10px 0 0; }
-.browser-leiste span { width: 8px; height: 8px; border-radius: 50%; background: #c9cdcf; }
-.mockup-browser img { display: block; width: 100%; height: auto; border-radius: 0 0 10px 10px; }
+/* Handy: Website scrollt im Bildschirm (wie beim Laptop) */
+.mockup-handy { right: 3%; top: 10%; width: clamp(120px, 10vw, 160px); }
+.handy-bildschirm { aspect-ratio: 9 / 19; overflow: hidden; border: 7px solid var(--farbe-dunkel); border-radius: 26px; background: var(--farbe-weiss); container-type: size; position: relative; }
+.handy-bildschirm::before { content: ""; position: absolute; top: 6px; left: 50%; translate: -50% 0; width: 30%; height: 10px; border-radius: 6px; background: var(--farbe-dunkel); z-index: 1; }
+.handy-bildschirm img { display: block; width: 100%; height: auto; animation: website-scroll 60s linear infinite alternate; }
 /* Visitenkarten aufgefächert */
 .mockup-karten { right: 6%; bottom: 8%; width: clamp(160px, 15vw, 230px); aspect-ratio: 85 / 55; }
-.mockup-karten img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 4px; box-shadow: 0 12px 28px rgba(14, 16, 17, .2); }
+.mockup-karten img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 4px; box-shadow: 0 4px 12px rgba(14, 16, 17, .07); }
 .mockup-karten img:nth-child(1) { rotate: -14deg; translate: -14% 6%; }
 .mockup-karten img:nth-child(2) { rotate: -4deg; translate: -4% 0; }
 .mockup-karten img:nth-child(3) { rotate: 7deg; translate: 8% -6%; }
 .mockup-karten img { animation: none; }
-.mockup-karten figcaption { position: absolute; top: 112%; left: 0; right: 0; }
 .mockup-laptop > * { animation-delay: -1s; }
-.mockup-browser > *:not(figcaption) { animation-delay: -3.5s; }
+.mockup-handy > * { animation-delay: -3.5s; }
 /* Tablet/Handy: Bilder unter dem Text, ohne Parallaxe */
 @media (max-width: 1024px) {
   .hero-buehne { display: block; min-height: 0; padding: 48px var(--rand-seite) 32px; }
   .hero-mockups { position: relative; inset: auto; display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-end; gap: 32px 40px; margin-top: 48px; }
   .mockup { position: relative; left: auto; right: auto; top: auto; bottom: auto; transform: none; }
-  .mockup-browser { display: none; }
+  .mockup-handy { width: min(120px, 30vw); }
   .mockup-laptop { width: min(300px, 70vw); }
   .mockup-karten { width: min(200px, 50vw); margin-bottom: 40px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .mockup > *, .laptop-bildschirm img { animation: none !important; }
+  .mockup > *, .laptop-seite, .laptop-slider img, .handy-bildschirm img { animation: none !important; }
   .mockup { transform: none; }
 }
 /* Hero: Text schmaler, damit die Mockups seitlich Platz haben (nur Desktop) */
 @media (min-width: 1025px) {
   .hero-text { max-width: min(820px, 58vw); }
   .hero-buehne .gr-xl { font-size: clamp(64px, 8.2vw, 140px); }
-  .mockup-laptop { left: 2.5%; top: 46%; bottom: auto; width: clamp(200px, 17vw, 290px); }
-  .mockup-browser { right: 3%; top: 8%; width: clamp(170px, 15vw, 250px); }
+  .mockup-laptop { left: 5%; top: 17%; bottom: auto; width: clamp(200px, 17vw, 290px); rotate: -6deg; }
+  .mockup-handy { right: 6%; top: 8%; width: clamp(120px, 9vw, 150px); }
   .mockup-karten { right: 5%; top: auto; bottom: 12%; width: clamp(150px, 13vw, 210px); }
 }
+
+/* 3D-Icons in Überschriften (3dicons.co, Clay, CC0): ploppen auf, schweben leicht, kippen beim Darüberfahren */
+.icon-3d { display: inline-block; height: .95em; width: auto; vertical-align: -.1em; margin-left: .04em; animation: icon-plopp .45s cubic-bezier(.3, 1.6, .6, 1) .5s both, icon-schweben 4s ease-in-out 1s infinite; transition: rotate .3s; }
+.icon-3d:hover { rotate: -10deg; }
+.wort-mit-icon { white-space: nowrap; }
+@keyframes icon-plopp { from { scale: 0; } to { scale: 1; } }
+@keyframes icon-schweben { 0%, 100% { translate: 0 0; } 50% { translate: 0 -.06em; } }
+@media (prefers-reduced-motion: reduce) { .icon-3d { animation: none; } }
+@media (max-width: 360px) { .wort-mit-icon { white-space: normal; } } /* sehr kleine Handys: Icon darf in die nächste Zeile */
 
 /* ---------- 15. Fuß: Karte „Eine Website im Monat“ ---------- */
 .fuss-karte { display: grid; gap: 8px; max-width: 760px; margin: 0 0 3rem; padding: 32px; border: 1px solid rgba(255, 255, 255, .25); border-radius: 24px; color: var(--farbe-weiss); text-decoration: none; font-weight: 400 !important; transition: border-color .25s, transform .25s; }
@@ -887,4 +904,11 @@ main.mit-faden { position: relative; }
 @media (min-width: 768px) and (max-width: 1024px) {
   .fuss-spalten { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
   .fuss-kontakt { grid-column: 1 / -1; padding: 0 0 32px; border-right: 0; border-bottom: 1px solid rgba(255, 255, 255, .18); }
+}
+
+/* Sehr kleine Handys (bis 360 px): Preiskarten ohne seitliches Überstehen */
+@media (max-width: 360px) {
+  .stufen { grid-template-columns: minmax(0, 1fr); }
+  .stufe { padding: 24px 18px; }
+  .stufe .button { white-space: normal; text-align: center; }
 }
