@@ -989,3 +989,41 @@ main.mit-faden { position: relative; }
 .stufe-preis { font-size: 2.6rem; font-weight: 600; letter-spacing: -.01em; line-height: 1.05; }
 .stufe .haken li { color: var(--farbe-gedaempft); }
 @media (max-width: 767px) { .stufen { padding: 14px; border-radius: 22px; } .stufe-preis { font-size: 2.2rem; } }
+
+/* ---------- 18. Programmseite als Landingpage ---------- */
+.programm { --lp-breite: 1200px; }
+.lp-held, .lp-sektion { max-width: var(--lp-breite); margin: 0 auto; padding: 64px var(--rand-seite); }
+.lp-held { padding-top: 72px; }
+.lp-titel { margin: 8px 0 24px; font-size: clamp(52px, 8.4vw, 132px); line-height: .95; }
+.lp-einleitung { max-width: 46ch; font-size: clamp(18px, 1.7vw, 24px); line-height: 1.45; }
+.lp-aktion { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; margin: 28px 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 24px 0 0; }
+.chips li { border: 1px solid var(--farbe-dunkel); border-radius: 999px; padding: 6px 14px; font-size: .95rem; }
+.lp-paar { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.lp-karte { border-radius: 24px; padding: 40px; }
+.lp-creme { background: var(--farbe-creme); }
+.lp-rand { border: var(--rahmen) solid var(--farbe-dunkel); }
+.lp-liste { margin: 16px 0 0; padding-left: 1.2em; }
+.lp-liste li { margin: 0 0 8px; }
+.lp-zitat { font-family: var(--schrift-text); font-weight: 600; font-size: clamp(22px, 2.6vw, 34px); line-height: 1.35; margin: 12px 0 16px; max-width: 32ch; }
+.lp-tabelle { margin: 32px 0 0; border-top: 1px solid var(--farbe-dunkel); }
+.lp-tabelle > div { display: grid; grid-template-columns: minmax(180px, 1fr) 2fr; gap: 24px; padding: 18px 0; border-bottom: 1px solid var(--farbe-rahmen); }
+.lp-tabelle dt { font-weight: 600; }
+.lp-tabelle dd { margin: 0; color: var(--farbe-gedaempft); }
+.lp-tabelle dd strong { color: var(--farbe-dunkel); }
+.lp-schritte { list-style: none; padding: 0; margin: 32px 0 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--farbe-dunkel); }
+.lp-schritte li { padding: 20px 24px 0 0; }
+.lp-schritte li + li { border-left: 1px solid var(--farbe-rahmen); padding-left: 24px; }
+.lp-schritte h3 { font-size: 1.3rem; margin: 8px 0; }
+.lp-schritte p { margin: 0; }
+.lp-cta { padding: 56px; }
+.lp-klein { padding-top: 24px; font-size: .95rem; }
+@media (max-width: 900px) {
+  .lp-paar { grid-template-columns: 1fr; }
+  .lp-schritte { grid-template-columns: 1fr 1fr; row-gap: 24px; }
+  .lp-schritte li:nth-child(3) { border-left: 0; padding-left: 0; }
+  .lp-tabelle > div { grid-template-columns: 1fr; gap: 4px; }
+  .lp-karte, .lp-cta { padding: 28px 24px; }
+  .lp-held, .lp-sektion { padding: 40px var(--rand-seite); }
+}
+@media (max-width: 520px) { .lp-schritte { grid-template-columns: 1fr; } .lp-schritte li + li { border-left: 0; padding-left: 0; } }
