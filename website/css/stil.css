@@ -334,12 +334,16 @@ h1, h2, h3 {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 32px;
+  gap: 24px 26px;
   margin: 1rem 0 3rem;
   padding: 0;
   list-style: none;
 }
 .tools img { height: 48px; width: auto; object-fit: contain; }
+.tools .tool-klein { height: 30px; }
+.tools .tool-gross { height: 64px; }
+.tools .tool-mittel { height: 36px; }
+/* Logos GitHub und Claude: simple-icons (CC0), Kadence: kadencewp.com – Marken der jeweiligen Inhaber */
 
 /* Sektionskopf: (Label) … (Nummer), große Überschrift */
 .sektionskopf { padding: 96px var(--rand-seite) 48px; }
@@ -786,6 +790,16 @@ h1, h2, h3 {
 .band-teil.vk img:nth-child(3) { rotate: 7deg; translate: 8% -6%; }
 .band-teil.vk.nah img:nth-child(1) { rotate: -24deg; translate: -34% 10%; }
 .band-teil.vk.nah img:nth-child(3) { rotate: 16deg; translate: 30% -10%; }
+/* Präsentation: Foliensatz als gestaffelter Stapel, fächert bei Annäherung der Maus auf */
+.band-teil.praes { position: relative; aspect-ratio: 16 / 10.5; margin: 0 24px; }
+.band-teil.praes img { position: absolute; left: 0; top: 0; width: 86%; height: auto; border-radius: 8px; box-shadow: 0 14px 34px rgba(14, 16, 17, .16); transition: translate .6s cubic-bezier(.2, .8, .2, 1), rotate .6s cubic-bezier(.2, .8, .2, 1); }
+.band-teil.praes img:nth-child(1) { translate: 14% 2%; rotate: 6deg; }
+.band-teil.praes img:nth-child(2) { translate: 7% 8%; rotate: 2deg; }
+.band-teil.praes img:nth-child(3) { translate: 0 14%; rotate: -3deg; }
+.band-teil.praes.nah img:nth-child(1) { translate: 22% -6%; rotate: 10deg; }
+.band-teil.praes.nah img:nth-child(2) { translate: 9% 6%; rotate: 3deg; }
+.band-teil.praes.nah img:nth-child(3) { translate: -6% 18%; rotate: -6deg; }
+.praes-chip { position: absolute; left: 4%; bottom: -14%; white-space: nowrap; font: 600 calc(var(--h) * .05) var(--schrift-text); color: #003366; background: #fbd52a; border-radius: 99px; padding: .35em .9em; }
 /* Brand Sheets (Raster aus Zeichen, Farben, Logo und Schrift) */
 .band-teil.sheet { aspect-ratio: 1.35; }
 .bs { position: relative; height: 100%; display: grid; grid-template-columns: 1.15fr 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 6px; padding: 6px; background: var(--papier, #fff); border-radius: 12px; box-shadow: 0 18px 40px rgba(14, 16, 17, .14); }
