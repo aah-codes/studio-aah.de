@@ -85,5 +85,15 @@ function punkte() {
   let warte;
   window.addEventListener('resize', () => { clearTimeout(warte); warte = setTimeout(aufbauen, 200); });
   window.addEventListener('load', aufbauen);
+  // Später nachladende Schriften und Bilder verschieben die Seite: dann neu berechnen
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(aufbauen);
+  if ('ResizeObserver' in window) {
+    let letzte = 0;
+    new ResizeObserver(() => {
+      const h = main.scrollHeight;
+      if (Math.abs(h - letzte) < 2) return;
+      letzte = h; clearTimeout(warte); warte = setTimeout(aufbauen, 150);
+    }).observe(main);
+  }
   aufbauen();
 })();
