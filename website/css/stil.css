@@ -846,12 +846,15 @@ html { scroll-padding-top: calc(var(--kopf-hoehe) + 16px); }
 @media (max-width: 360px) { .wort-mit-icon { white-space: normal; } } /* sehr kleine Handys: Icon darf in die nächste Zeile */
 
 /* ---------- 15. Fuß: Karte „Eine Website im Monat“ ---------- */
-.fuss-karte { display: grid; gap: 8px; max-width: 760px; margin: 0 0 3rem; padding: 32px; border: 1px solid rgba(255, 255, 255, .25); border-radius: 24px; color: var(--farbe-weiss); text-decoration: none; font-weight: 400 !important; transition: border-color .25s, transform .25s; }
-.fuss-karte:hover { opacity: 1 !important; border-color: var(--farbe-weiss); transform: translateY(-3px); }
-.fuss-karte-titel { font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-size: clamp(1.8rem, 3vw, 2.6rem); line-height: 1.05; }
-.fuss-karte-text { color: var(--farbe-gedaempft-invers); }
-.fuss-karte-link { font-weight: 600; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; margin-top: 8px; }
-@media (max-width: 767px) { .fuss-karte { padding: 24px; } }
+.fuss-karte { position: relative; display: grid; gap: 10px; max-width: none; margin: 0 0 3rem; padding: 48px 56px; padding-right: min(360px, 34%); background: var(--farbe-creme); border-radius: 32px; color: var(--farbe-dunkel); text-decoration: none; font-weight: 400 !important; overflow: hidden; transition: transform .25s; }
+.fuss-karte:hover { opacity: 1 !important; transform: translateY(-3px); }
+.fuss-karte .meta { color: var(--farbe-gedaempft); display: inline-flex; align-items: center; gap: 8px; }
+.fuss-karte-icon { position: absolute; right: 24px; top: 50%; translate: 0 -50%; width: min(280px, 30%); height: auto; pointer-events: none; transition: rotate .4s; }
+.fuss-karte:hover .fuss-karte-icon { rotate: -8deg; }
+.fuss-karte-titel { font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-size: clamp(2.4rem, 5vw, 4.6rem); line-height: 1; }
+.fuss-karte-text { color: var(--farbe-gedaempft); font-size: 1.15rem; }
+.fuss-karte-link { justify-self: start; margin-top: 12px; padding: 12px 22px; border-radius: 999px; background: var(--farbe-dunkel); color: var(--farbe-weiss); font-weight: 600; }
+@media (max-width: 767px) { .fuss-karte { padding: 28px 24px 150px; } .fuss-karte-icon { top: auto; bottom: -10px; translate: 0 0; width: 150px; } }
 @media (prefers-reduced-motion: reduce) { .fuss-karte { transition: none; } }
 
 /* ---------- 16. Preisseite: Karten-Raster für alle Bereiche, Knöpfe auf einer Höhe ---------- */
@@ -1024,3 +1027,118 @@ main.mit-faden { position: relative; }
   .lp-held, .lp-sektion { padding: 40px var(--rand-seite); }
 }
 @media (max-width: 520px) { .lp-schritte { grid-template-columns: 1fr; } .lp-schritte li + li { border-left: 0; padding-left: 0; } }
+
+/* ---------- 19. Preisseite: Leiste, Überblick, Kostenrechner, Zusatzleistungen ---------- */
+.preisseite .preis-bereich .gr-h2, .preisseite .preis-h2 { font-size: clamp(32px, 3.6vw, 52px); line-height: 1; }
+.preisseite .preis-bereich > .alt-klein, .rechner-kopf .alt-klein { font-size: 18px; line-height: 1.5; max-width: 60ch; }
+.preis-bereich { padding-top: 72px; }
+/* Mitlaufende Bereichsleiste unter dem Kopf */
+.preis-leiste { position: sticky; top: var(--kopf-hoehe); z-index: 25; display: flex; gap: 6px; overflow-x: auto; padding: 10px var(--rand-seite); background: rgba(255, 255, 255, .94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--farbe-rahmen); scrollbar-width: none; }
+.preis-leiste::-webkit-scrollbar { display: none; }
+.preis-leiste a { flex: none; padding: 6px 14px; border-radius: 999px; border: 1px solid var(--farbe-rahmen); font-size: 14px; font-weight: 600; text-decoration: none; color: inherit; white-space: nowrap; transition: background .2s, color .2s, border-color .2s; }
+.preis-leiste a:hover { border-color: var(--farbe-dunkel); }
+.preis-leiste a.aktiv { background: var(--farbe-dunkel); border-color: var(--farbe-dunkel); color: var(--farbe-weiss); }
+html { scroll-padding-top: calc(var(--kopf-hoehe) + 72px); }
+/* Überblick */
+.ueberblick { padding: 56px var(--rand-seite) 24px; }
+.ueb-liste { margin-top: 24px; border-top: 1px solid var(--farbe-dunkel); }
+.ueb-zeile { display: grid; grid-template-columns: 220px 1fr; gap: 24px; padding: 16px 0; border-bottom: 1px solid var(--farbe-rahmen); align-items: baseline; }
+.ueb-name { font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-size: 1.3rem; text-decoration: none; color: inherit; }
+.ueb-name:hover { text-decoration: underline; }
+.ueb-stufen { display: flex; flex-wrap: wrap; gap: 8px 28px; list-style: none; margin: 0; padding: 0; }
+.ueb-stufen li { display: flex; gap: 8px; align-items: baseline; }
+.ueb-stufen span { color: var(--farbe-gedaempft); }
+.ueb-stufen small { font-size: .75em; font-weight: 500; color: var(--farbe-gedaempft); }
+.preis-netto { margin-top: 12px; font-size: .95rem; }
+/* Kostenrechner – hell und freundlich */
+.rechner { margin: 32px var(--rand-seite); padding: 48px; background: var(--farbe-creme); border-radius: 32px; }
+.rechner-kopf .gr-h2 { font-size: clamp(36px, 4.4vw, 64px); line-height: 1; margin: 8px 0 12px; }
+.rechner-raster { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(300px, 1fr); gap: 32px; margin-top: 32px; align-items: start; }
+.wahl-gruppe { border: 0; margin: 0 0 18px; padding: 20px; background: var(--farbe-weiss); border-radius: 20px; }
+.wahl-gruppe legend { float: left; width: 100%; font-family: var(--schrift-meta); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--farbe-gedaempft); margin-bottom: 12px; }
+.wahl-optionen { clear: both; display: flex; flex-wrap: wrap; gap: 8px; }
+.wahl-option { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border: 1px solid var(--farbe-rahmen); border-radius: 999px; cursor: pointer; transition: border-color .2s, background .2s; user-select: none; }
+.wahl-option:hover { border-color: var(--farbe-dunkel); }
+.wahl-option:has(input:checked) { background: var(--farbe-dunkel); border-color: var(--farbe-dunkel); color: var(--farbe-weiss); }
+.wahl-option:has(input:checked) .wahl-preis { color: rgba(255, 255, 255, .75); }
+.wahl-option input[type="radio"], .wahl-option input[type="checkbox"] { position: absolute; opacity: 0; pointer-events: none; }
+.wahl-option:focus-within { outline: 2px solid var(--farbe-dunkel); outline-offset: 2px; }
+.wahl-name { font-weight: 600; font-size: 15px; }
+.wahl-preis { font-size: 13px; color: var(--farbe-gedaempft); }
+.wahl-anzahl { width: 3.2em; padding: 2px 4px; border: 1px solid var(--farbe-rahmen); border-radius: 8px; font: inherit; font-size: 14px; }
+.wahl-auswahl { font: inherit; font-size: 13px; border: 1px solid var(--farbe-rahmen); border-radius: 8px; padding: 2px 4px; }
+.wahl-option:not(:has(input:checked)) .wahl-anzahl, .wahl-option:not(:has(input:checked)) .wahl-auswahl { display: none; }
+.wahl-option.gesperrt { opacity: .45; cursor: not-allowed; }
+.wahl-hinweis { font-size: 12px; color: var(--farbe-gedaempft); }
+.wahl-hinweis:empty { display: none; }
+.wahl-pflicht { width: 100%; margin: 0 0 4px; font-size: 14px; font-weight: 600; }
+.rechner-summe { position: sticky; top: calc(var(--kopf-hoehe) + 72px); background: var(--farbe-weiss); border-radius: 24px; padding: 28px; box-shadow: 0 18px 40px rgba(14, 16, 17, .08); }
+.summe-zahl { font-size: clamp(44px, 4.6vw, 64px); font-weight: 700; line-height: 1; margin: 4px 0 6px; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.summe-zahl small { font-size: .35em; font-weight: 500; color: var(--farbe-gedaempft); }
+.summe-zusatz { margin: 0 0 8px; font-size: 14px; }
+.summe-monat { margin: 0 0 8px; font-weight: 600; }
+.summe-liste { list-style: none; padding: 12px 0 0; margin: 12px 0 16px; border-top: 1px solid var(--farbe-rahmen); font-size: 14px; max-height: 260px; overflow: auto; }
+.summe-liste li { display: flex; justify-content: space-between; gap: 12px; padding: 4px 0; }
+.summe-knoepfe { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 18px; }
+.summe-knoepfe .button { cursor: pointer; font: inherit; font-weight: 600; }
+.summe-schritte { margin: 0; padding-left: 1.2em; font-size: 13px; color: var(--farbe-gedaempft); }
+.summe-schritte li { margin-bottom: 4px; }
+.summe-schritte b { color: var(--farbe-dunkel); }
+.druck-bereich { display: none; }
+/* Zusatzleistungen */
+.zusatz-raster { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px; margin-top: 28px; padding: 20px; background: var(--farbe-creme); border-radius: 28px; }
+.zusatz-karte { background: var(--farbe-weiss); border-radius: 18px; padding: 22px; }
+.zusatz-karte h3 { font-size: 1.05rem; margin: 0 0 6px; font-family: var(--schrift-text); text-transform: none; font-weight: 700; }
+.zusatz-preis { font-size: 1.6rem; font-weight: 700; margin: 0 0 6px; }
+.zusatz-karte .gedaempft { margin: 0; font-size: .92rem; }
+/* Vergleich aufklappbar, Kombi-Hinweis, Schluss */
+.vergleich-auf { margin: 8px 0 24px; }
+.vergleich-auf summary { cursor: pointer; font-weight: 600; padding: 10px 0; list-style: none; }
+.vergleich-auf summary::before { content: "+ "; }
+.vergleich-auf[open] summary::before { content: "– "; }
+.vergleich-auf summary::-webkit-details-marker { display: none; }
+.preis-hinweis { margin: 8px 0 0; padding: 14px 18px; border: 1px dashed var(--farbe-rahmen); border-radius: 14px; font-size: .95rem; }
+.preis-schluss { padding: 48px var(--rand-seite) 96px; }
+.schluss-karte { background: var(--farbe-dunkel); color: var(--farbe-weiss); border-radius: 32px; padding: 56px; }
+.schluss-karte .meta { color: var(--farbe-gedaempft-invers); }
+.schluss-karte .button { background: var(--farbe-weiss); color: var(--farbe-dunkel); }
+.schluss-karte .textlink { color: var(--farbe-weiss); margin-left: 20px; }
+@media (max-width: 900px) {
+  .rechner { margin: 24px 12px; padding: 24px 16px; border-radius: 24px; }
+  .rechner-raster { grid-template-columns: 1fr; }
+  .rechner-summe { position: sticky; bottom: 0; top: auto; border-radius: 20px 20px 0 0; padding: 16px 18px; box-shadow: 0 -10px 30px rgba(14, 16, 17, .12); }
+  .rechner-summe .summe-liste, .rechner-summe .summe-schritte { display: none; }
+  .summe-zahl { font-size: 36px; }
+  .ueb-zeile { grid-template-columns: 1fr; gap: 6px; }
+  .schluss-karte { padding: 32px 24px; }
+}
+/* PDF: nur den Kostenvoranschlag drucken */
+@media print {
+  body.druck-rechner > *:not(main) { display: none !important; }
+  body.druck-rechner main > *:not(.rechner) { display: none !important; }
+  body.druck-rechner .rechner > *:not(.druck-bereich) { display: none !important; }
+  body.druck-rechner .rechner { background: none; padding: 0; margin: 0; }
+  body.druck-rechner .druck-bereich { display: block !important; font-family: var(--schrift-text); color: #000; }
+  .druck-marke { font-family: var(--schrift-ueberschrift); font-size: 28px; margin: 0 0 12px; }
+  .druck-bereich h1 { font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-size: 32px; margin: 0 0 6px; }
+  .druck-bereich table { width: 100%; border-collapse: collapse; margin: 18px 0; }
+  .druck-bereich td { padding: 6px 0; border-bottom: 1px solid #ccc; }
+  .druck-bereich td:last-child { text-align: right; white-space: nowrap; }
+  .druck-summe td { font-weight: 700; border-top: 2px solid #000; }
+}
+/* Kopf: Kostenrechner als dunkle Pille */
+.kopf-nav .kopf-rechner { padding: 8px 16px; border-radius: 999px; background: var(--farbe-dunkel); color: var(--farbe-weiss); }
+.kopf-nav .kopf-rechner:hover { opacity: .85; }
+.preisseite .seitenkopf .alt-klein { font-size: clamp(20px, 2vw, 28px); line-height: 1.3; max-width: 40ch; }
+@media (max-width: 900px) {
+  .rechner-summe { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 4px 12px; margin: 0 -16px -24px; }
+  .rechner-summe > .meta, .rechner-summe .summe-monat, .rechner-summe #rechner-pdf { display: none; }
+  .rechner-summe .summe-zahl { margin: 0; font-size: 30px; grid-column: 1; }
+  .rechner-summe .summe-zusatz { grid-column: 1; margin: 0; font-size: 12px; }
+  .rechner-summe .summe-knoepfe { grid-column: 2; grid-row: 1 / 3; margin: 0; }
+  .rechner-summe .summe-knoepfe .button { padding: 10px 14px; font-size: 14px; }
+}
+.fuss .fuss-karte, .fuss .fuss-karte .fuss-karte-titel { color: var(--farbe-dunkel); }
+.fuss .fuss-karte .fuss-karte-link { color: var(--farbe-weiss); }
+.fuss .fuss-karte .meta { color: var(--farbe-gedaempft); }
+.fuss-karte-icon { mix-blend-mode: multiply; }

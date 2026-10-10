@@ -15,7 +15,7 @@
   <meta property="og:description" content="Pakete und Einstiegspreise für Branding, Design, Websites, UI/UX, KI und Marketing. Den genauen Festpreis gibt es nach einem kostenlosen Erstgespräch.">
   <meta property="og:url" content="https://studio-aah.de/preise/">
   <meta property="og:image" content="https://studio-aah.de/bilder/vorschaubild.jpg">
-  <link rel="stylesheet" href="../css/stil.css?v=20261010j">
+  <link rel="stylesheet" href="../css/stil.css?v=20261010m">
 </head>
 <body>
 <a class="sprunglink" href="#inhalt">Zum Inhalt springen</a>
@@ -36,6 +36,7 @@
       <li><a href="../profil/">Profil</a></li>
       <li><a href="../blog/">Blog</a></li>
     </ul>
+    <a class="kopf-rechner" href="../preise/#rechner">Kosten berechnen</a>
     <a class="kopf-button" href="../kontakt/">Projekt anfragen</a>
     <div class="mm" id="mm" hidden>
       <div class="mm-innen">
@@ -81,15 +82,16 @@
         <li><a href="../profil/">Profil</a></li>
         <li><a href="../blog/">Blog</a></li>
         <li><a href="../kontakt/">Kontakt</a></li>
+        <li><a href="../preise/#rechner">Kosten berechnen</a></li>
       </ul>
     </nav>
   </details>
 </header>
 <div class="mm-schleier" hidden></div>
-<script src="../js/menue.js?v=20261010j" defer></script>
+<script src="../js/menue.js?v=20261010m" defer></script>
 <!-- /KOPF -->
 
-<main id="inhalt">
+<main id="inhalt" class="preisseite">
 
 <section class="seitenkopf">
   <h1 class="gr-xxl"><span class="wort-mit-icon">Preise<img class="icon-3d" src="../bilder/icons/money-bag.webp" alt="" width="400" height="400"></span></h1>
@@ -103,14 +105,53 @@
   <p class="meta">Alle Preise netto zzgl. 19&nbsp;% USt.</p>
 </section>
 
-<nav class="preis-uebersicht" aria-label="Bereiche">
-  <a class="preis-karte gefragt" href="#brand"><span class="abzeichen">Gefragt</span><span class="preis-karte-name">Brand</span><span class="gedaempft">Marke, Logo, Erscheinungsbild</span><span class="preis-karte-preis"><small>ab</small> 850&nbsp;€</span><span class="textlink">Pakete ansehen ↓</span></a>
-  <a class="preis-karte gefragt" href="#website"><span class="abzeichen">Gefragt</span><span class="preis-karte-name">Website</span><span class="gedaempft">Neue Website oder Redesign</span><span class="preis-karte-preis"><small>ab</small> 1.150&nbsp;€</span><span class="textlink">Pakete ansehen ↓</span></a>
-  <a class="preis-karte" href="#ui-ux"><span class="preis-karte-name">UI/UX</span><span class="gedaempft">Webanwendungen, SaaS, Apps</span><span class="preis-karte-preis"><small>ab</small> 1.200&nbsp;€</span><span class="textlink">Pakete ansehen ↓</span></a>
-  <a class="preis-karte" href="#ki"><span class="preis-karte-name">KI &amp; Digitalisierung</span><span class="gedaempft">KI-Check und Einführung</span><span class="preis-karte-preis"><small>ab</small> 900&nbsp;€</span><span class="textlink">Pakete ansehen ↓</span></a>
-  <a class="preis-karte" href="#marketing"><span class="preis-karte-name">Marketing &amp; Vertrieb</span><span class="gedaempft">LinkedIn, Vorlagen, Artikel</span><span class="preis-karte-preis"><small>ab</small> 300&nbsp;€</span><span class="textlink">Pakete ansehen ↓</span></a>
+<nav class="preis-leiste" aria-label="Bereiche der Preisseite">
+  <a href="#ueberblick">Überblick</a><a href="#rechner">Kostenrechner</a><a href="#brand">Brand</a><a href="#ui-ux">UI/UX</a><a href="#website">Website</a><a href="#ki">KI</a><a href="#marketing">Marketing</a><a href="#zusatz">Zusatzleistungen</a><a href="#kostenlos-titel">Programm</a>
 </nav>
-<p class="preis-weitere gedaempft">Außerdem: <a href="#design">Design-Paket</a> · <a href="#kombi">Brand &amp; Web Kombi</a> · <a href="#wartung">Wartung &amp; Support</a> · <a href="#kostenlos-titel">Kostenfrei für Vereine, NGOs, Kunst und Kultur</a></p>
+
+<section class="ueberblick" id="ueberblick" aria-labelledby="ueberblick-titel">
+  <p class="meta">Überblick</p>
+  <h2 class="preis-h2" id="ueberblick-titel">Alle Leistungen auf einen Blick</h2>
+  <div class="ueb-liste">
+      <div class="ueb-zeile"><a class="ueb-name" href="#brand">Brand</a><ul class="ueb-stufen"><li><span>Basic</span><b><small>ab</small> 850&nbsp;€</b></li><li><span>Medium</span><b><small>ab</small> 2.500&nbsp;€</b></li><li><span>Premium</span><b><small>ab</small> 4.500&nbsp;€</b></li></ul></div>
+      <div class="ueb-zeile"><a class="ueb-name" href="#ui-ux">UI/UX</a><ul class="ueb-stufen"><li><span>Mini UX-Audit</span><b><small>ab</small> 1.200&nbsp;€</b></li><li><span>UI/UX Audit Pro</span><b><small>ab</small> 1.500&nbsp;€</b></li><li><span>Redesign Webanwendung</span><b><small>ab</small> 2.600&nbsp;€</b></li><li><span>Plattform / SaaS</span><b><small>ab</small> 5.850&nbsp;€</b></li></ul></div>
+      <div class="ueb-zeile"><a class="ueb-name" href="#website">Website</a><ul class="ueb-stufen"><li><span>Onepager</span><b><small>ab</small> 1.150&nbsp;€</b></li><li><span>5–6 Seiten</span><b><small>ab</small> 2.450&nbsp;€</b></li><li><span>Redesign</span><b><small>ab</small> 2.850&nbsp;€</b></li><li><span>Komplexes Projekt</span><b><small>ab</small> 6.000&nbsp;€</b></li></ul></div>
+      <div class="ueb-zeile"><a class="ueb-name" href="#ki">KI &amp; Digitalisierung</a><ul class="ueb-stufen"><li><span>KI-Check</span><b><small>ab</small> 900&nbsp;€</b></li><li><span>KI-Einführung</span><b><small>ab</small> 2.000&nbsp;€</b></li><li><span>Begleitung</span><b>65 €/h</b></li></ul></div>
+      <div class="ueb-zeile"><a class="ueb-name" href="#marketing">Marketing &amp; Vertrieb</a><ul class="ueb-stufen"><li><span>LinkedIn aufsetzen</span><b><small>ab</small> 500&nbsp;€</b></li><li><span>Post-Vorlagen</span><b><small>ab</small> 400&nbsp;€</b></li><li><span>Fachartikel</span><b><small>ab</small> 300&nbsp;€</b></li><li><span>Webinar</span><b><small>ab</small> 850&nbsp;€</b></li></ul></div>
+      <div class="ueb-zeile"><a class="ueb-name" href="#zusatz">Zusatzleistungen</a><ul class="ueb-stufen"><li><span>Launch</span><b><small>ab</small> 150&nbsp;€</b></li><li><span>Schulung</span><b><small>ab</small> 70&nbsp;€</b></li><li><span>Weitere Seite</span><b><small>ab</small> 150&nbsp;€</b></li><li><span>Wartung</span><b>45 €/Monat</b></li><li><span>Design-Paket</span><b><small>ab</small> 450&nbsp;€</b></li></ul></div>
+  </div>
+  <p class="gedaempft preis-netto">Alle Preise netto zzgl. 19&nbsp;% USt. – Festpreis nach dem kostenlosen Erstgespräch.</p>
+</section>
+
+<section class="rechner" id="rechner" aria-labelledby="rechner-titel">
+  <div class="rechner-kopf">
+    <p class="meta">Kostenrechner</p>
+    <h2 class="gr-h2" id="rechner-titel">Stellen Sie sich Ihr Projekt zusammen.</h2>
+    <p class="alt-klein">Wählen Sie, was Sie brauchen – die Summe rechnet sofort mit. So bekommen Sie in einer Minute einen ersten Kostenvoranschlag.</p>
+  </div>
+  <div class="rechner-raster">
+    <form class="rechner-wahl" id="rechner-wahl" aria-label="Leistungen auswählen" onsubmit="return false"></form>
+    <aside class="rechner-summe" aria-live="polite">
+      <p class="meta">Ihr Kostenvoranschlag</p>
+      <p class="summe-zahl"><small>ab</small> <span id="summe-einmalig">0</span>&nbsp;€</p>
+      <p class="summe-zusatz gedaempft">netto, einmalig · <span id="summe-brutto">0</span>&nbsp;€ inkl. 19&nbsp;% USt.</p>
+      <p class="summe-monat" id="summe-monat-zeile" hidden><small>zzgl.</small> <span id="summe-monat">0</span>&nbsp;€ / Monat</p>
+      <ul class="summe-liste" id="summe-liste"><li class="gedaempft">Noch nichts ausgewählt.</li></ul>
+      <div class="summe-knoepfe">
+        <a class="button" id="rechner-mail" href="mailto:info@studio-aah.de">Per E-Mail anfragen <span aria-hidden="true">→</span></a>
+        <button type="button" class="button button-zweit" id="rechner-pdf">Als PDF speichern</button>
+      </div>
+      <ol class="summe-schritte">
+        <li><b>Kostenvoranschlag</b> – unverbindlich, aus diesem Rechner</li>
+        <li><b>Erstgespräch</b> – kostenlos: Wo stehen Sie, was wollen Sie, was brauchen Sie, wen wollen Sie erreichen?</li>
+        <li><b>Angebot</b> – auf dieser Grundlage</li>
+        <li><b>Vertrag</b> – und los geht’s</li>
+      </ol>
+    </aside>
+  </div>
+  <noscript><p class="gedaempft">Der Rechner braucht JavaScript. Alle Preise finden Sie unten bei den Paketen.</p></noscript>
+  <div class="druck-bereich" id="druck-bereich" aria-hidden="true"></div>
+</section>
 
   <section class="preis-bereich" id="brand" aria-labelledby="brand-titel">
     <h2 class="gr-h2" id="brand-titel">Brand Strategie</h2>
@@ -157,7 +198,7 @@
           </ul>
         </div>
     </div>
-      <h3 class="alt-h3 vergleich-titel">Brand-Pakete im Vergleich</h3>
+      <details class="vergleich-auf"><summary>Brand-Pakete im Vergleich ansehen</summary>
       <p class="wisch-hinweis meta">Tabelle seitlich wischen →</p>
       <div class="tabelle-scroll" role="region" aria-label="Brand-Pakete im Vergleich" tabindex="0">
         <table class="vergleich">
@@ -177,89 +218,9 @@
           </tbody>
         </table>
       </div>
+      </details>
     <p class="gedaempft preis-fuss">Nicht enthalten: Fotoshooting, Druckkosten, Markenanmeldung. <a class="textlink" href="../service/brand/">Mehr zu Brand →</a></p>
-  </section>
-
-  <section class="preis-bereich" id="website" aria-labelledby="website-titel">
-    <h2 class="gr-h2" id="website-titel">Website</h2>
-    <p class="alt-klein">Klares Design mit technischer Präzision – individuell, responsiv und auf Ihre Ziele ausgerichtet. Ihre Texte überarbeite ich in jedem Paket mit.</p>
-    <div class="stufen" data-anzahl="4">
-        <div class="stufe">
-          <h3 class="stufe-name">Onepager</h3>
-          <p class="stufe-preis"><small>ab</small> 1.150&nbsp;€</p>
-          <p class="gedaempft stufe-wer">Für Selbstständige und kleine Angebote, die alles auf einer Seite zeigen.</p>
-          <p class="stufe-knopf"><a class="button button-zweit" href="../kontakt/">Erstgespräch vereinbaren</a></p>
-          <p class="stufe-plus">Enthalten:</p>
-          <ul class="haken">
-            <li>Konzeption &amp; Seitenstruktur</li>
-            <li>Design für Desktop &amp; Handy</li>
-            <li>Umsetzung in WordPress (Kadence)</li>
-            <li>Überarbeitung Ihrer Texte</li>
-            <li>SEO-Basics &amp; Kontaktformular</li>
-            <li>Schulung &amp; Übergabe</li>
-          </ul>
-        </div>
-        <div class="stufe">
-          <h3 class="stufe-name">Website 5–6 Seiten</h3>
-          <p class="stufe-preis"><small>ab</small> 2.450&nbsp;€</p>
-          <p class="gedaempft stufe-wer">Für Unternehmen, die ihr Angebot ausführlich vorstellen wollen.</p>
-          <p class="stufe-knopf"><a class="button button-zweit" href="../kontakt/">Erstgespräch vereinbaren</a></p>
-          <p class="stufe-plus">Alles aus Onepager, plus:</p>
-          <ul class="haken">
-            <li>5–6 Seiten</li>
-            <li>Blog optional</li>
-          </ul>
-        </div>
-        <div class="stufe gefragt">
-          <span class="abzeichen">Gefragt</span>
-          <h3 class="stufe-name">Redesign</h3>
-          <p class="stufe-preis"><small>ab</small> 2.850&nbsp;€</p>
-          <p class="gedaempft stufe-wer">Für Unternehmen mit bestehender Website, die moderner, klarer und besser auffindbar werden soll.</p>
-          <p class="stufe-knopf"><a class="button" href="../kontakt/">Erstgespräch vereinbaren</a></p>
-          <p class="stufe-plus">Alles aus 5–6 Seiten, plus:</p>
-          <ul class="haken">
-            <li>Analyse der bestehenden Website</li>
-            <li>Übernahme vorhandener Inhalte</li>
-            <li>Weiterleitungen alter Adressen</li>
-          </ul>
-        </div>
-        <div class="stufe">
-          <h3 class="stufe-name">Komplexes Projekt</h3>
-          <p class="stufe-preis"><small>ab</small> 6.000&nbsp;€</p>
-          <p class="gedaempft stufe-wer">Für Projekte mit Mitgliederbereich, Zahlungen, mehreren Sprachen oder Verzeichnissen.</p>
-          <p class="stufe-knopf"><a class="button button-zweit" href="../kontakt/">Erstgespräch vereinbaren</a></p>
-          <p class="stufe-plus">Alles aus 5–6 Seiten, plus:</p>
-          <ul class="haken">
-            <li>Mitgliederbereich, Zahlungen, Mehrsprachigkeit, Verzeichnisse</li>
-            <li>Blog</li>
-            <li>Analyse, Inhaltsübernahme und Weiterleitungen bei Bedarf</li>
-          </ul>
-        </div>
-    </div>
-      <h3 class="alt-h3 vergleich-titel">Website-Pakete im Vergleich</h3>
-      <p class="wisch-hinweis meta">Tabelle seitlich wischen →</p>
-      <div class="tabelle-scroll" role="region" aria-label="Website-Pakete im Vergleich" tabindex="0">
-        <table class="vergleich">
-          <thead><tr><th scope="col"><span class="unsichtbar">Leistung</span></th><th scope="col">Onepager</th><th scope="col">5–6 Seiten</th><th scope="col" class="spalte-gefragt">Redesign</th><th scope="col">Komplex</th></tr></thead>
-          <tbody>
-          <tr><th scope="row">Konzeption &amp; Seitenstruktur</th><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td class="spalte-gefragt"><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td></tr>
-          <tr><th scope="row">Design für Desktop &amp; Handy</th><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td class="spalte-gefragt"><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td></tr>
-          <tr><th scope="row">Umsetzung in WordPress (Kadence), Webflow bei Bedarf</th><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td class="spalte-gefragt"><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td></tr>
-          <tr><th scope="row">Überarbeitung Ihrer Texte</th><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td class="spalte-gefragt"><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td></tr>
-          <tr><th scope="row">SEO-Basics &amp; Kontaktformular</th><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td class="spalte-gefragt"><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td></tr>
-          <tr><th scope="row">Seiten für Impressum und Datenschutz anlegen</th><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td class="spalte-gefragt"><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td></tr>
-          <tr><th scope="row">Schulung &amp; Übergabe</th><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td class="spalte-gefragt"><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td></tr>
-          <tr><th scope="row">Umfang</th><td>1 Seite</td><td>5–6 Seiten</td><td class="spalte-gefragt">5–6 Seiten</td><td>größer</td></tr>
-          <tr><th scope="row">Blog</th><td><span aria-hidden="true">–</span><span class="unsichtbar">nicht enthalten</span></td><td>optional</td><td class="spalte-gefragt">optional</td><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td></tr>
-          <tr><th scope="row">Analyse der bestehenden Website</th><td><span aria-hidden="true">–</span><span class="unsichtbar">nicht enthalten</span></td><td><span aria-hidden="true">–</span><span class="unsichtbar">nicht enthalten</span></td><td class="spalte-gefragt"><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td>bei Bedarf</td></tr>
-          <tr><th scope="row">Übernahme vorhandener Inhalte</th><td><span aria-hidden="true">–</span><span class="unsichtbar">nicht enthalten</span></td><td><span aria-hidden="true">–</span><span class="unsichtbar">nicht enthalten</span></td><td class="spalte-gefragt"><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td>bei Bedarf</td></tr>
-          <tr><th scope="row">Weiterleitungen alter Adressen</th><td><span aria-hidden="true">–</span><span class="unsichtbar">nicht enthalten</span></td><td><span aria-hidden="true">–</span><span class="unsichtbar">nicht enthalten</span></td><td class="spalte-gefragt"><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td>bei Bedarf</td></tr>
-          <tr><th scope="row">Mitgliederbereich, Zahlungen, Mehrsprachigkeit, Verzeichnisse</th><td><span aria-hidden="true">–</span><span class="unsichtbar">nicht enthalten</span></td><td><span aria-hidden="true">–</span><span class="unsichtbar">nicht enthalten</span></td><td class="spalte-gefragt"><span aria-hidden="true">–</span><span class="unsichtbar">nicht enthalten</span></td><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td></tr>
-          <tr><th scope="row">Preis (netto)</th><td>ab 1.150&nbsp;€</td><td>ab 2.450&nbsp;€</td><td class="spalte-gefragt">ab 2.850&nbsp;€</td><td>ab 6.000&nbsp;€</td></tr>
-          </tbody>
-        </table>
-      </div>
-    <p class="gedaempft preis-fuss">Nicht enthalten: Hosting &amp; Domain, Fotos/Fotoshooting, Inhalt der Rechtstexte, laufende Pflege (siehe Wartung &amp; Support). Erst wissen, wo Ihre Website steht? Quick-Check kostenlos, Audit Pro ab 850&nbsp;€. <a class="textlink" href="../service/website/">Mehr zu Website →</a></p>
+    <p class="preis-hinweis">Marke und Website zusammen? Die <strong>Brand &amp; Web Kombi</strong> gibt es ab 3.600&nbsp;€ – wir besprechen sie im Erstgespräch.</p>
   </section>
 
   <section class="preis-bereich" id="ui-ux" aria-labelledby="ui-ux-titel">
@@ -314,7 +275,7 @@
           </ul>
         </div>
     </div>
-      <h3 class="alt-h3 vergleich-titel">UI/UX-Projekte im Vergleich</h3>
+      <details class="vergleich-auf"><summary>UI/UX-Projekte im Vergleich ansehen</summary>
       <p class="wisch-hinweis meta">Tabelle seitlich wischen →</p>
       <div class="tabelle-scroll" role="region" aria-label="UI/UX-Projekte im Vergleich" tabindex="0">
         <table class="vergleich">
@@ -332,7 +293,92 @@
           </tbody>
         </table>
       </div>
+      </details>
     <p class="gedaempft preis-fuss">Nicht enthalten: Usability-Tests mit Nutzer:innen, Programmierung. <a class="textlink" href="../service/ui-ux/">Mehr zu UI/UX →</a></p>
+  </section>
+
+  <section class="preis-bereich" id="website" aria-labelledby="website-titel">
+    <h2 class="gr-h2" id="website-titel">Website</h2>
+    <p class="alt-klein">Klares Design mit technischer Präzision – individuell, responsiv und auf Ihre Ziele ausgerichtet. Ihre Texte überarbeite ich in jedem Paket mit.</p>
+    <div class="stufen" data-anzahl="4">
+        <div class="stufe">
+          <h3 class="stufe-name">Onepager</h3>
+          <p class="stufe-preis"><small>ab</small> 1.150&nbsp;€</p>
+          <p class="gedaempft stufe-wer">Für Selbstständige und kleine Angebote, die alles auf einer Seite zeigen.</p>
+          <p class="stufe-knopf"><a class="button button-zweit" href="../kontakt/">Erstgespräch vereinbaren</a></p>
+          <p class="stufe-plus">Enthalten:</p>
+          <ul class="haken">
+            <li>Konzeption &amp; Seitenstruktur</li>
+            <li>Design für Desktop &amp; Handy</li>
+            <li>Umsetzung in WordPress (Kadence)</li>
+            <li>Überarbeitung Ihrer Texte</li>
+            <li>SEO-Basics &amp; Kontaktformular</li>
+            <li>Übergabe</li>
+          </ul>
+        </div>
+        <div class="stufe">
+          <h3 class="stufe-name">Website 5–6 Seiten</h3>
+          <p class="stufe-preis"><small>ab</small> 2.450&nbsp;€</p>
+          <p class="gedaempft stufe-wer">Für Unternehmen, die ihr Angebot ausführlich vorstellen wollen.</p>
+          <p class="stufe-knopf"><a class="button button-zweit" href="../kontakt/">Erstgespräch vereinbaren</a></p>
+          <p class="stufe-plus">Alles aus Onepager, plus:</p>
+          <ul class="haken">
+            <li>5–6 Seiten</li>
+            <li>Blog optional</li>
+          </ul>
+        </div>
+        <div class="stufe gefragt">
+          <span class="abzeichen">Gefragt</span>
+          <h3 class="stufe-name">Redesign</h3>
+          <p class="stufe-preis"><small>ab</small> 2.850&nbsp;€</p>
+          <p class="gedaempft stufe-wer">Für Unternehmen mit bestehender Website, die moderner, klarer und besser auffindbar werden soll.</p>
+          <p class="stufe-knopf"><a class="button" href="../kontakt/">Erstgespräch vereinbaren</a></p>
+          <p class="stufe-plus">Alles aus 5–6 Seiten, plus:</p>
+          <ul class="haken">
+            <li>Analyse der bestehenden Website</li>
+            <li>Übernahme vorhandener Inhalte</li>
+            <li>Weiterleitungen alter Adressen</li>
+          </ul>
+        </div>
+        <div class="stufe">
+          <h3 class="stufe-name">Komplexes Projekt</h3>
+          <p class="stufe-preis"><small>ab</small> 6.000&nbsp;€</p>
+          <p class="gedaempft stufe-wer">Für Projekte mit Mitgliederbereich, Zahlungen, mehreren Sprachen oder Verzeichnissen.</p>
+          <p class="stufe-knopf"><a class="button button-zweit" href="../kontakt/">Erstgespräch vereinbaren</a></p>
+          <p class="stufe-plus">Alles aus 5–6 Seiten, plus:</p>
+          <ul class="haken">
+            <li>Mitgliederbereich, Zahlungen, Mehrsprachigkeit, Verzeichnisse</li>
+            <li>Blog</li>
+            <li>Analyse, Inhaltsübernahme und Weiterleitungen bei Bedarf</li>
+          </ul>
+        </div>
+    </div>
+      <details class="vergleich-auf"><summary>Website-Pakete im Vergleich ansehen</summary>
+      <p class="wisch-hinweis meta">Tabelle seitlich wischen →</p>
+      <div class="tabelle-scroll" role="region" aria-label="Website-Pakete im Vergleich" tabindex="0">
+        <table class="vergleich">
+          <thead><tr><th scope="col"><span class="unsichtbar">Leistung</span></th><th scope="col">Onepager</th><th scope="col">5–6 Seiten</th><th scope="col" class="spalte-gefragt">Redesign</th><th scope="col">Komplex</th></tr></thead>
+          <tbody>
+          <tr><th scope="row">Konzeption &amp; Seitenstruktur</th><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td class="spalte-gefragt"><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td></tr>
+          <tr><th scope="row">Design für Desktop &amp; Handy</th><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td class="spalte-gefragt"><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td></tr>
+          <tr><th scope="row">Umsetzung in WordPress (Kadence), Webflow bei Bedarf</th><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td class="spalte-gefragt"><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td></tr>
+          <tr><th scope="row">Überarbeitung Ihrer Texte</th><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td class="spalte-gefragt"><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td></tr>
+          <tr><th scope="row">SEO-Basics &amp; Kontaktformular</th><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td class="spalte-gefragt"><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td></tr>
+          <tr><th scope="row">Seiten für Impressum und Datenschutz anlegen</th><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td class="spalte-gefragt"><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td></tr>
+          <tr><th scope="row">Übergabe</th><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td class="spalte-gefragt"><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td></tr>
+          <tr><th scope="row">Umfang</th><td>1 Seite</td><td>5–6 Seiten</td><td class="spalte-gefragt">5–6 Seiten</td><td>größer</td></tr>
+          <tr><th scope="row">Blog</th><td><span aria-hidden="true">–</span><span class="unsichtbar">nicht enthalten</span></td><td>optional</td><td class="spalte-gefragt">optional</td><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td></tr>
+          <tr><th scope="row">Analyse der bestehenden Website</th><td><span aria-hidden="true">–</span><span class="unsichtbar">nicht enthalten</span></td><td><span aria-hidden="true">–</span><span class="unsichtbar">nicht enthalten</span></td><td class="spalte-gefragt"><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td>bei Bedarf</td></tr>
+          <tr><th scope="row">Übernahme vorhandener Inhalte</th><td><span aria-hidden="true">–</span><span class="unsichtbar">nicht enthalten</span></td><td><span aria-hidden="true">–</span><span class="unsichtbar">nicht enthalten</span></td><td class="spalte-gefragt"><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td>bei Bedarf</td></tr>
+          <tr><th scope="row">Weiterleitungen alter Adressen</th><td><span aria-hidden="true">–</span><span class="unsichtbar">nicht enthalten</span></td><td><span aria-hidden="true">–</span><span class="unsichtbar">nicht enthalten</span></td><td class="spalte-gefragt"><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td><td>bei Bedarf</td></tr>
+          <tr><th scope="row">Mitgliederbereich, Zahlungen, Mehrsprachigkeit, Verzeichnisse</th><td><span aria-hidden="true">–</span><span class="unsichtbar">nicht enthalten</span></td><td><span aria-hidden="true">–</span><span class="unsichtbar">nicht enthalten</span></td><td class="spalte-gefragt"><span aria-hidden="true">–</span><span class="unsichtbar">nicht enthalten</span></td><td><span aria-hidden="true">✓</span><span class="unsichtbar">enthalten</span></td></tr>
+          <tr><th scope="row">Preis (netto)</th><td>ab 1.150&nbsp;€</td><td>ab 2.450&nbsp;€</td><td class="spalte-gefragt">ab 2.850&nbsp;€</td><td>ab 6.000&nbsp;€</td></tr>
+          </tbody>
+        </table>
+      </div>
+      </details>
+    <p class="gedaempft preis-fuss">Nicht enthalten: Hosting &amp; Domain, Fotos/Fotoshooting, Inhalt der Rechtstexte, laufende Pflege (siehe Wartung &amp; Support). Erst wissen, wo Ihre Website steht? Quick-Check kostenlos, Audit Pro ab 850&nbsp;€. <a class="textlink" href="../service/website/">Mehr zu Website →</a></p>
+    <p class="preis-hinweis">Marke und Website zusammen? Die <strong>Brand &amp; Web Kombi</strong> gibt es ab 3.600&nbsp;€ – wir besprechen sie im Erstgespräch.</p>
   </section>
 
   <section class="preis-bereich" id="ki" aria-labelledby="ki-titel">
@@ -376,7 +422,7 @@
           </ul>
         </div>
     </div>
-      <h3 class="alt-h3 vergleich-titel">KI-Pakete im Vergleich</h3>
+      <details class="vergleich-auf"><summary>KI-Pakete im Vergleich ansehen</summary>
       <p class="wisch-hinweis meta">Tabelle seitlich wischen →</p>
       <div class="tabelle-scroll" role="region" aria-label="KI-Pakete im Vergleich" tabindex="0">
         <table class="vergleich">
@@ -392,6 +438,7 @@
           </tbody>
         </table>
       </div>
+      </details>
     <p class="gedaempft preis-fuss">Nicht enthalten: Lizenzkosten der KI-Werkzeuge (zahlen Sie direkt), Rechtsberatung, Programmierung. <a class="textlink" href="../service/ki-digitalisierung/">Mehr zu KI &amp; Digitalisierung →</a></p>
   </section>
 
@@ -450,6 +497,28 @@
     <p class="gedaempft preis-fuss"><a class="textlink" href="../service/marketing-vertrieb/">Mehr zu Marketing &amp; Vertrieb →</a></p>
   </section>
 
+  <section class="preis-bereich" id="zusatz" aria-labelledby="zusatz-titel">
+    <p class="meta">Zusatzleistungen</p>
+    <h2 class="gr-h2" id="zusatz-titel">Zusatzleistungen</h2>
+    <p class="alt-klein">Kleine Pakete zu festen Preisen – einzeln oder zu Ihrem Projekt dazu.</p>
+    <div class="zusatz-raster">
+      <div class="zusatz-karte"><h3>Launch</h3><p class="zusatz-preis">150&nbsp;€</p><p class="gedaempft">Domain verbinden, DNS-Einträge, Umzug, Livegang – bei jeder Website dabei.</p></div>
+      <div class="zusatz-karte"><h3>Schulung</h3><p class="zusatz-preis">70&nbsp;€</p><p class="gedaempft">Damit Sie Ihre Website selbst pflegen – Sie wählen: PDF-Anleitung oder Online-Termin.</p></div>
+      <div class="zusatz-karte"><h3>Weitere Seite</h3><p class="zusatz-preis">150&nbsp;€</p><p class="gedaempft">je zusätzlicher Unterseite</p></div>
+      <div class="zusatz-karte"><h3>Blog</h3><p class="zusatz-preis">490&nbsp;€</p><p class="gedaempft">Blog einrichten, Übersicht und Beitragsvorlage</p></div>
+      <div class="zusatz-karte"><h3>Weitere Sprache</h3><p class="zusatz-preis">+&nbsp;30&nbsp;%</p><p class="gedaempft">auf den Website-Preis, je Sprache – die Übersetzung liefern Sie</p></div>
+      <div class="zusatz-karte"><h3>Newsletter-Anbindung</h3><p class="zusatz-preis">260&nbsp;€</p><p class="gedaempft">Anmeldung auf der Website, verbunden mit Ihrem Newsletter-Dienst</p></div>
+      <div class="zusatz-karte"><h3>Texte schreiben</h3><p class="zusatz-preis">130&nbsp;€</p><p class="gedaempft">je Seite</p></div>
+      <div class="zusatz-karte"><h3>Logo einzeln</h3><p class="zusatz-preis">990&nbsp;€</p><p class="gedaempft">ohne Markenstrategie</p></div>
+      <div class="zusatz-karte"><h3>Visitenkarte</h3><p class="zusatz-preis">195&nbsp;€</p><p class="gedaempft">Gestaltung, druckfertig</p></div>
+      <div class="zusatz-karte"><h3>Social-Media-Set</h3><p class="zusatz-preis">390&nbsp;€</p><p class="gedaempft">Vorlagen für Ihre Beiträge</p></div>
+      <div class="zusatz-karte"><h3>Kontaktformular</h3><p class="zusatz-preis">130&nbsp;€</p><p class="gedaempft">wenn Sie kein Website-Paket buchen – sonst enthalten</p></div>
+      <div class="zusatz-karte"><h3>SEO-Grundeinrichtung</h3><p class="zusatz-preis">260&nbsp;€</p><p class="gedaempft">wenn Sie kein Website-Paket buchen – sonst enthalten</p></div>
+      <div class="zusatz-karte"><h3>Illustration &amp; Infografik</h3><p class="zusatz-preis">auf Anfrage</p><p class="gedaempft">sehr individuell – wir klären es im Erstgespräch</p></div>
+      <div class="zusatz-karte"><h3>Motion Design</h3><p class="zusatz-preis">auf Anfrage</p><p class="gedaempft">sehr individuell – wir klären es im Erstgespräch</p></div>
+    </div>
+  </section>
+
   <section class="preis-bereich" id="design" aria-labelledby="design-titel">
     <h2 class="gr-h2" id="design-titel">Design-Paket</h2>
     <p class="alt-klein">Kein ganzes Rebranding, sondern professionelles Design für einzelne Formate – für Print, Social Media oder digitale Anwendungen.</p>
@@ -479,37 +548,6 @@
     </div>
 
     <p class="gedaempft preis-fuss">Typisch: Broschüren, Flyer, Onepager · Vorlagen für Instagram, Newsletter oder Canva · Infografiken, Pitchdecks, Präsentationen · Key Visuals &amp; Bildkonzepte · Weiterentwicklung bestehender Designs · Dateien für Web &amp; Print.</p>
-  </section>
-
-  <section class="preis-bereich" id="kombi" aria-labelledby="kombi-titel">
-    <h2 class="gr-h2" id="kombi-titel">Brand &amp; Web Kombi</h2>
-    <p class="alt-klein">Strategie, Design und Website aus einer Hand – ideal für Gründer:innen, Solo-Selbstständige und Unternehmen, die mit Marke und Website durchstarten wollen.</p>
-    <div class="stufen" data-anzahl="2">
-        <div class="stufe">
-          <h3 class="stufe-name">Basic</h3>
-          <p class="stufe-preis"><small>ab</small> 3.600&nbsp;€</p>
-          <p class="gedaempft stufe-wer">Marke und Website gemeinsam entwickeln.</p>
-          <p class="stufe-knopf"><a class="button button-zweit" href="../kontakt/">Erstgespräch vereinbaren</a></p>
-          <p class="stufe-plus">Enthalten:</p>
-          <ul class="haken">
-            <li>Marke</li>
-            <li>Website bis 3 Seiten</li>
-          </ul>
-        </div>
-        <div class="stufe">
-          <h3 class="stufe-name">Komplexes Projekt</h3>
-          <p class="stufe-preis"><small>ab</small> 7.500&nbsp;€</p>
-          <p class="gedaempft stufe-wer">Für umfangreiche Markenentwicklung und größere Websites.</p>
-          <p class="stufe-knopf"><a class="button button-zweit" href="../kontakt/">Erstgespräch vereinbaren</a></p>
-          <p class="stufe-plus">Enthalten:</p>
-          <ul class="haken">
-            <li>Umfangreiche Markenentwicklung</li>
-            <li>Größere Website, z. B. mit Blog, CMS, Sonderfunktionen</li>
-          </ul>
-        </div>
-    </div>
-
-    <p class="gedaempft preis-fuss">Typisch: Markenstrategie (Markenkern, Zielgruppe, Positionierung) · visuelle Leitplanken · Logo &amp; Basiselemente · Tonalität · Website-Konzeption · Design &amp; Umsetzung in WordPress (Kadence) · Schulung &amp; Übergabe.</p>
   </section>
 
   <section class="preis-bereich" id="wartung" aria-labelledby="wartung-titel">
@@ -555,6 +593,15 @@
   </div>
 </section>
 
+<section class="preis-schluss">
+  <div class="schluss-karte">
+    <p class="meta">Nächster Schritt</p>
+    <h2 class="gr-h2">Nicht sicher, was passt?</h2>
+    <p class="alt-klein">Im kostenlosen Erstgespräch finden wir es gemeinsam heraus.</p>
+    <p><a class="button" href="../kontakt/">Erstgespräch vereinbaren <span aria-hidden="true">→</span></a> <a class="textlink" href="#rechner">Zum Kostenrechner</a></p>
+  </div>
+</section>
+
 </main>
 
   <!-- FUSS: auf allen Seiten gleich -->
@@ -562,10 +609,11 @@
     <p class="meta">#uxstrategy #behaviouraldesign #servicedesign #kidesign</p>
     <p class="fuss-gross">STUDIO AAH!</p>
   <a class="fuss-karte" href="../demokratie-braucht-sichtbarkeit/">
-    <span class="meta">Programm</span>
+    <span class="meta"><span class="ank-punkt" aria-hidden="true"></span> Programm</span>
     <span class="fuss-karte-titel">Demokratie braucht Sichtbarkeit.</span>
     <span class="fuss-karte-text">Kostenfreie Websites für Vereine, NGOs, Kunst und Kultur.</span>
     <span class="fuss-karte-link">Mehr erfahren →</span>
+    <img class="fuss-karte-icon" src="../bilder/icons/megaphone.webp" alt="" width="400" height="400" loading="lazy">
   </a>
     <nav class="fuss-spalten" aria-label="Fußmenü">
 <div class="fuss-kontakt">
@@ -600,5 +648,6 @@
   </footer>
   <!-- /FUSS -->
 
+<script src="../js/rechner.js?v=20261010m" defer></script>
 </body>
 </html>
