@@ -733,18 +733,38 @@ h1, h2, h3 {
 @media (max-width: 767px) { .referenz-fakten { grid-template-columns: 1fr; } .referenz summary { padding: 20px 0; } }
 @media (prefers-reduced-motion: reduce) { .referenz-name, .referenz-zeichen::before, .referenz-zeichen::after { transition: none; } }
 
-/* ---------- 14. Startseite: Hero mit schwebenden Projekt-Mockups ---------- */
-.hero-buehne { position: relative; overflow: hidden; min-height: min(92vh, 900px); display: grid; place-items: center; padding: 96px var(--rand-seite); }
-.hero-text { position: relative; z-index: 2; max-width: 1100px; }
-.hero-mockups { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
-.mockup { position: absolute; margin: 0; --versatz: 0px; transform: translateY(var(--versatz)); }
-.mockup > * { animation: schweben 7s ease-in-out infinite; }
-@keyframes schweben { 0%, 100% { translate: 0 0; } 50% { translate: 0 -10px; } }
+/* ---------- 14. Startseite: Hero mit Bildband, das auf die Maus reagiert ---------- */
+/* Raleway (SIL Open Font License 1.1, The Raleway Project Authors) – nur für das Brand Sheet von Down to Earth */
+@font-face { font-family: "Raleway"; font-style: normal; font-weight: 500; font-display: swap; src: url(../schriften/raleway-latin-500.woff2) format("woff2"); }
+@font-face { font-family: "Raleway"; font-style: normal; font-weight: 800; font-display: swap; src: url(../schriften/raleway-latin-800.woff2) format("woff2"); }
+.hero-buehne { position: relative; overflow: hidden; padding: 48px 0 72px; text-align: center; }
+.hero-buehne .hero-text { position: relative; z-index: 2; padding: 0 var(--rand-seite); }
+.hero-buehne .alt-h2 { max-width: 30ch; margin-left: auto; margin-right: auto; }
+/* Punkteraster: dezent hellgrau, nur im Umkreis der Maus sichtbar */
+.hero-raster { position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image: radial-gradient(circle, #dcdfdf 1.3px, transparent 1.5px); background-size: 14px 14px;
+  -webkit-mask-image: radial-gradient(circle at var(--mx, 50%) var(--my, 55%), #000 0, transparent 30%);
+          mask-image: radial-gradient(circle at var(--mx, 50%) var(--my, 55%), #000 0, transparent 30%); }
+.hero-titel { font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-weight: 400; font-size: clamp(52px, 9vw, 9vw); line-height: .92; margin: 8px 0 0; }
+.hero-titel > span { display: block; overflow: hidden; }
+.hero-titel > span > span { display: inline-block; animation: aus-maske .9s cubic-bezier(.2, .8, .2, 1) both; }
+.hero-titel > span:nth-child(2) > span { animation-delay: .12s; }
+@keyframes aus-maske { from { translate: 0 105%; } }
+/* Bildband */
+.hero-band { position: relative; z-index: 1; overflow: hidden; padding: 36px 0 40px; margin: 0 0 8px; cursor: grab; touch-action: pan-y; perspective: 1200px; animation: band-rein 1.2s cubic-bezier(.2, .8, .2, 1) .2s both; }
+.hero-band.zieht { cursor: grabbing; }
+@keyframes band-rein { from { translate: 30vw 0; opacity: 0; } }
+.hero-spur { display: flex; align-items: center; gap: 56px; width: max-content; will-change: transform; }
+.band-teil { flex: none; height: var(--h); will-change: transform; transition: filter .3s; }
+.band-teil.h-s { --h: 190px; } .band-teil.h-m { --h: 245px; } .band-teil.h-l { --h: 300px; }
+.band-teil > img { height: 100%; width: auto; display: block; border-radius: 10px; box-shadow: 0 18px 40px rgba(14, 16, 17, .14); user-select: none; -webkit-user-drag: none; }
+.hero-band.aktiv .band-teil:not(.nah) { filter: saturate(.75) opacity(.75); }
 /* Laptop: Website scrollt im Bildschirm */
-.mockup-laptop { left: 2%; bottom: 6%; width: clamp(220px, 22vw, 340px); }
-.laptop-bildschirm { aspect-ratio: 16 / 10; overflow: hidden; border: 10px solid var(--farbe-dunkel); border-bottom-width: 14px; border-radius: 14px 14px 0 0; background: var(--farbe-weiss); container-type: size; }
+.band-teil.laptop { width: calc(var(--h) * 1.45); display: flex; flex-direction: column; justify-content: center; }
+.laptop-bildschirm { aspect-ratio: 16 / 10; overflow: hidden; border: 10px solid var(--farbe-dunkel); border-bottom-width: 14px; border-radius: 14px 14px 0 0; background: var(--farbe-weiss); container-type: size; box-shadow: 0 18px 40px rgba(14, 16, 17, .14); }
 .laptop-seite { position: relative; animation: website-scroll 26s ease-in-out infinite alternate; }
 .laptop-seite > img { display: block; width: 100%; height: auto; }
+.laptop-lang .laptop-seite { animation-duration: 40s; animation-delay: -6s; }
 /* Slider im Hero der Bauer-Seite: Bilder blenden über dem Foto im Bildschirmfoto über (Lage in % des Bildschirmfotos) */
 .laptop-slider { position: absolute; left: 50.97%; top: 1.59%; width: 35.94%; aspect-ratio: 1; overflow: hidden; }
 .laptop-slider img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: laptop-slide 20s infinite; }
@@ -754,40 +774,49 @@ h1, h2, h3 {
 @keyframes laptop-slide { 0% { opacity: 0; } 4%, 20% { opacity: 1; } 24%, 100% { opacity: 0; } }
 @keyframes website-scroll { 0%, 8% { transform: translateY(0); } 92%, 100% { transform: translateY(calc(-100% + 100cqh)); } }
 .laptop-unterteil { height: 10px; margin: 0 -8%; background: #2b2e30; border-radius: 0 0 12px 12px; }
-/* Handy: Website scrollt im Bildschirm (wie beim Laptop) */
-.mockup-handy { right: 3%; top: 10%; width: clamp(120px, 10vw, 160px); }
-.handy-bildschirm { aspect-ratio: 9 / 19; overflow: hidden; border: 7px solid var(--farbe-dunkel); border-radius: 26px; background: var(--farbe-weiss); container-type: size; position: relative; }
+/* Handy: Website scrollt im Bildschirm */
+.handy-bildschirm { height: 100%; aspect-ratio: 9 / 19; overflow: hidden; border: 7px solid var(--farbe-dunkel); border-radius: 26px; background: var(--farbe-weiss); container-type: size; position: relative; box-shadow: 0 18px 40px rgba(14, 16, 17, .16); }
 .handy-bildschirm::before { content: ""; position: absolute; top: 6px; left: 50%; translate: -50% 0; width: 30%; height: 10px; border-radius: 6px; background: var(--farbe-dunkel); z-index: 1; }
 .handy-bildschirm img { display: block; width: 100%; height: auto; animation: website-scroll 60s linear infinite alternate; }
-/* Visitenkarten aufgefächert */
-.mockup-karten { right: 6%; bottom: 8%; width: clamp(160px, 15vw, 230px); aspect-ratio: 85 / 55; }
-.mockup-karten img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 4px; box-shadow: 0 4px 12px rgba(14, 16, 17, .07); }
-.mockup-karten img:nth-child(1) { rotate: -14deg; translate: -14% 6%; }
-.mockup-karten img:nth-child(2) { rotate: -4deg; translate: -4% 0; }
-.mockup-karten img:nth-child(3) { rotate: 7deg; translate: 8% -6%; }
-.mockup-karten img { animation: none; }
-.mockup-laptop > * { animation-delay: -1s; }
-.mockup-handy > * { animation-delay: -3.5s; }
-/* Tablet/Handy: Bilder unter dem Text, ohne Parallaxe */
-@media (max-width: 1024px) {
-  .hero-buehne { display: block; min-height: 0; padding: 48px var(--rand-seite) 32px; }
-  .hero-mockups { position: relative; inset: auto; display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-end; gap: 32px 40px; margin-top: 48px; }
-  .mockup { position: relative; left: auto; right: auto; top: auto; bottom: auto; transform: none; }
-  .mockup-handy { width: min(120px, 30vw); }
-  .mockup-laptop { width: min(300px, 70vw); }
-  .mockup-karten { width: min(200px, 50vw); margin-bottom: 40px; }
+/* Visitenkarten aufgefächert, gehen bei Annäherung der Maus weiter auf */
+.band-teil.vk { position: relative; aspect-ratio: 85 / 55; height: 170px; margin: 0 30px; }
+.band-teil.vk img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 4px; box-shadow: 0 8px 20px rgba(14, 16, 17, .15); transition: rotate .5s cubic-bezier(.2, .8, .2, 1), translate .5s cubic-bezier(.2, .8, .2, 1); }
+.band-teil.vk img:nth-child(1) { rotate: -14deg; translate: -14% 6%; }
+.band-teil.vk img:nth-child(2) { rotate: -4deg; translate: -4% 0; }
+.band-teil.vk img:nth-child(3) { rotate: 7deg; translate: 8% -6%; }
+.band-teil.vk.nah img:nth-child(1) { rotate: -24deg; translate: -34% 10%; }
+.band-teil.vk.nah img:nth-child(3) { rotate: 16deg; translate: 30% -10%; }
+/* Brand Sheets (Raster aus Zeichen, Farben, Logo und Schrift) */
+.band-teil.sheet { aspect-ratio: 1.35; }
+.bs { position: relative; height: 100%; display: grid; grid-template-columns: 1.15fr 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 6px; padding: 6px; background: var(--papier, #fff); border-radius: 12px; box-shadow: 0 18px 40px rgba(14, 16, 17, .14); }
+.bs > div { border-radius: 8px; overflow: hidden; position: relative; }
+.bs-a { grid-row: 1 / 3; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8%; padding: 10%; }
+.bs-a img { width: 70%; }
+.bs-a img.rund { border-radius: 50%; }
+.bs-a span { font-weight: 800; font-size: calc(var(--h) * .075); letter-spacing: .02em; }
+.bs-a .bs-claim { font: 700 calc(var(--h) * .042)/1.2 var(--schrift-text); letter-spacing: 0; }
+.bs-farben { grid-column: 2 / 4; display: flex; gap: 4px; background: #fff; padding: 4px; }
+.bs-farben i { flex: 1; background: var(--f); border-radius: 5px; display: flex; align-items: flex-end; padding: 4px; }
+.bs-farben b { font: 600 calc(var(--h) * .024) var(--schrift-text); color: var(--t, #fff); writing-mode: vertical-rl; rotate: 180deg; }
+.bs-logo { background: #fff; display: grid; place-items: center; padding: 12%; }
+.bs-logo img { width: 100%; height: auto; }
+.bs-schrift { background: #fff; display: flex; flex-direction: column; justify-content: center; padding: 0 12%; text-align: left; }
+.bs-aa { font-weight: 800; font-size: calc(var(--h) * .17); line-height: 1; }
+.bs-name { font-weight: 500; font-size: calc(var(--h) * .04); line-height: 1.25; }
+.bs-name small { font-family: var(--schrift-text); font-size: .7em; opacity: .7; }
+.bs-titel { position: absolute; left: 4px; bottom: -28px; margin: 0; white-space: nowrap; font: italic calc(var(--h) * .045) var(--schrift-meta); color: var(--farbe-gedaempft); }
+.raleway { font-family: "Raleway", var(--schrift-text); }
+.hero-unten { position: relative; z-index: 1; }
+@media (max-width: 900px) {
+  .hero-titel { font-size: calc((100vw - 2 * var(--rand-seite)) / 5.8); }
+  .band-teil.h-s { --h: 150px; } .band-teil.h-m { --h: 200px; } .band-teil.h-l { --h: 240px; }
+  .band-teil.vk { height: 130px; margin: 0 20px; }
+  .hero-spur { gap: 30px; }
+  .hero-band { padding: 32px 0 40px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .mockup > *, .laptop-seite, .laptop-slider img, .handy-bildschirm img { animation: none !important; }
-  .mockup { transform: none; }
-}
-/* Hero: Text schmaler, damit die Mockups seitlich Platz haben (nur Desktop) */
-@media (min-width: 1025px) {
-  .hero-text { max-width: min(820px, 58vw); }
-  .hero-buehne .gr-xl { font-size: clamp(64px, 8.2vw, 140px); }
-  .mockup-laptop { left: 5%; top: 17%; bottom: auto; width: clamp(200px, 17vw, 290px); rotate: -6deg; }
-  .mockup-handy { right: 6%; top: 8%; width: clamp(120px, 9vw, 150px); }
-  .mockup-karten { right: 5%; top: auto; bottom: 12%; width: clamp(150px, 13vw, 210px); }
+  .hero-titel > span > span, .hero-band, .laptop-seite, .laptop-slider img, .handy-bildschirm img { animation: none !important; }
+  .laptop-slider img:first-child { opacity: 1; }
 }
 
 /* 3D-Icons in Überschriften (3dicons.co, Clay, CC0): ploppen auf, schweben leicht, kippen beim Darüberfahren */
