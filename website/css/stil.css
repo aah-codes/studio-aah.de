@@ -554,8 +554,8 @@ h1, h2, h3 {
 .artikel-nav span { display: block; }
 
 @media (min-width: 768px) {
-  .sticky { position: sticky; top: 0; height: 100vh; align-self: start; }
-  .sticky img { height: 100vh; min-height: 0; }
+  .sticky { position: sticky; top: var(--kopf-hoehe); height: calc(100vh - var(--kopf-hoehe)); align-self: start; }
+  .sticky img { height: calc(100vh - var(--kopf-hoehe)); min-height: 0; }
 }
 
 /* ---------- 9. Tablet und Handy ---------- */
@@ -600,7 +600,8 @@ h1, h2, h3 {
 }
 
 /* ---------- 10. Mega-Menü „Service“ (Desktop) ---------- */
-.kopf { position: relative; z-index: 30; background: var(--farbe-weiss); }
+.kopf { position: sticky; top: 0; z-index: 30; background: var(--farbe-weiss); }
+html { scroll-padding-top: calc(var(--kopf-hoehe) + 16px); }
 .mm-pfeil { display: inline-block; transition: transform .3s; }
 .mm-toggle[aria-expanded="true"] .mm-pfeil { transform: rotate(180deg); }
 .mm { position: absolute; left: 0; right: 0; top: 100%; z-index: 20; background: var(--farbe-weiss);
@@ -889,7 +890,7 @@ h1, h2, h3 {
 /* ---------- 17. Profil: größeres Bild, bleibt beim Scrollen stehen ---------- */
 @media (min-width: 768px) {
   .profil-golden { grid-template-columns: 5fr 7fr; gap: 64px; align-items: start; }
-  .profil-golden > div:first-child { position: sticky; top: 32px; align-self: start; }
+  .profil-golden > div:first-child { position: sticky; top: calc(var(--kopf-hoehe) + 32px); align-self: start; }
   .profil-golden .profilbild { max-height: calc(100vh - 64px); }
 }
 
@@ -959,24 +960,20 @@ main.mit-faden { position: relative; }
 }
 
 /* ---------- 16. Dachzeile: Programm „Demokratie braucht Sichtbarkeit.“ ---------- */
-/* Schmale Leiste über dem Kopf (Idee: Ankündigungsleiste, proxy.gonka.gg). Drei Punkte bringen etwas Farbe aus den Kundenprojekten (Vorschlag). */
+/* Schmale Leiste über dem Kopf (Idee: Ankündigungsleiste, proxy.gonka.gg). Ein blauer Punkt pulsiert (Anna, 10.10.2026). */
 .ankuendigung { display: flex; align-items: center; justify-content: center; gap: 14px; padding: 9px var(--rand-seite); background: var(--farbe-dunkel); color: var(--farbe-weiss); font-size: 15px; }
 .ank-text { margin: 0; }
 .ank-text strong { font-weight: 700; }
-.ank-punkte { display: inline-flex; gap: 4px; }
-.ank-punkte i { width: 8px; height: 8px; border-radius: 50%; background: var(--p); animation: ank-puls 2.4s ease-in-out infinite; }
-.ank-punkte i:nth-child(1) { --p: #3f9961; }
-.ank-punkte i:nth-child(2) { --p: #fbd52a; animation-delay: .3s; }
-.ank-punkte i:nth-child(3) { --p: #ff6b4a; animation-delay: .6s; }
+.ank-punkt { width: 8px; height: 8px; border-radius: 50%; background: #2f6bff; flex: none; animation: ank-puls 2.4s ease-in-out infinite; }
 @keyframes ank-puls { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
 .ank-zusatz { color: var(--farbe-gedaempft-invers); }
 .ank-link { color: var(--farbe-weiss); font-weight: 600; text-decoration: none; white-space: nowrap; border-bottom: 1px solid transparent; transition: border-color .2s; }
 .ank-link:hover, .ank-link:focus-visible { border-bottom-color: currentColor; }
 @media (max-width: 640px) {
   .ankuendigung { gap: 10px; font-size: 13px; padding: 8px var(--rand-seite); justify-content: space-between; }
-  .ank-punkte, .ank-zusatz { display: none; }
+  .ank-zusatz { display: none; }
 }
-@media (prefers-reduced-motion: reduce) { .ank-punkte i, .ank-link { animation: none; transition: none; } }
+@media (prefers-reduced-motion: reduce) { .ank-punkt, .ank-link { animation: none; transition: none; } }
 
 /* ---------- 17. Preisseite im Karten-Stil (Idee: proxy.gonka.gg – weiße Karten auf warmem Grau) ---------- */
 :root { --farbe-creme: #eeece7; }
