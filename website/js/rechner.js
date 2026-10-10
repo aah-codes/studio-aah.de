@@ -1,148 +1,132 @@
 // Kostenrechner auf der Preisseite: rechnet nur im Browser, speichert und sendet nichts.
+// Daten kommen aus js/pakete-daten.js (erzeugt aus werkzeuge/preise-daten.json – dieselbe Quelle wie die Preisliste).
 // Ergebnis ist ein unverbindlicher Kostenvoranschlag (netto); weiter per E-Mail oder als PDF (Druckdialog des Browsers).
 (() => {
   const form = document.getElementById('rechner-wahl');
-  if (!form) return;
-
-  // Pakete je Bereich (eins wählbar, Marketing mehrere) – Preise wie auf der Seite
-  const bereiche = [
-    { id: 'brand', name: 'Brand', pakete: [['Basic', 850], ['Medium', 2500], ['Premium', 4500]] },
-    { id: 'uiux', name: 'UI/UX', pakete: [['Mini UX-Audit', 1200], ['UI/UX Audit Pro', 1500], ['Redesign kleine Webanwendung', 2600], ['Plattform / SaaS', 5850]] },
-    { id: 'website', name: 'Website', pakete: [['Onepager', 1150], ['Website 5–6 Seiten', 2450], ['Redesign', 2850], ['Komplexes Projekt', 6000]] },
-    { id: 'ki', name: 'KI & Digitalisierung', pakete: [['KI-Check', 900], ['KI-Einführung', 2000]] },
-    { id: 'marketing', name: 'Marketing & Vertrieb', mehrfach: true, pakete: [['LinkedIn aufsetzen', 500], ['Post-Vorlagen', 400], ['Fachartikel', 300], ['Webinar aufsetzen', 850]] },
-    { id: 'design', name: 'Design-Paket', pakete: [['Basic', 450], ['Umfassend', 2600]] },
-  ];
-  // Zusatzleistungen: art „anzahl“ = Zähler, „website“ = nur mit Website-Paket, „ohneWebsite“ = nur ohne
-  const zusatz = [
-    { id: 'seite', name: 'Weitere Seite', preis: 150, art: 'anzahl', bedingung: 'website' },
-    { id: 'blog', name: 'Blog', preis: 490, bedingung: 'website' },
-    { id: 'sprache', name: 'Weitere Sprache (+30 % auf das Website-Paket)', anteil: 0.3, art: 'anzahl', bedingung: 'website' },
-    { id: 'newsletter', name: 'Newsletter-Anbindung', preis: 260, bedingung: 'website' },
-    { id: 'texte', name: 'Texte schreiben (je Seite)', preis: 130, art: 'anzahl' },
-    { id: 'schulung', name: 'Schulung (PDF oder Online-Termin)', preis: 70, wahl: ['PDF-Anleitung', 'Online-Termin'] },
-    { id: 'kontakt', name: 'Kontaktformular', preis: 130, bedingung: 'ohneWebsite' },
-    { id: 'seo', name: 'SEO-Grundeinrichtung', preis: 260, bedingung: 'ohneWebsite' },
-    { id: 'logo', name: 'Logo einzeln', preis: 990 },
-    { id: 'visitenkarte', name: 'Visitenkarte', preis: 195 },
-    { id: 'social', name: 'Social-Media-Set', preis: 390 },
-    { id: 'wartung', name: 'Wartung', monat: 45 },
-    { id: 'illu', name: 'Illustration & Infografik', anfrage: true },
-    { id: 'motion', name: 'Motion Design', anfrage: true },
-  ];
-  const LAUNCH = 150;
+  const D = window.PREISE;
+  if (!form || !D) return;
   const euro = (n) => Math.round(n).toLocaleString('de-DE');
+  const el = (id) => document.getElementById(id);
+  const preisAnzeige = (e) => e.anfrage ? 'auf Anfrage' : e.monat ? `ab ${e.monat} € / Monat` : e.anteil ? `+${Math.round(e.anteil * 100)} %` : `${e.ab ? 'ab ' : ''}${euro(e.preis)} €`;
+  const info = (e) => {
+    const liste = (e.items || []).map((x) => `<li>${x}</li>`).join('');
+    return liste ? `<div class="wahl-auf" hidden>${e.plus ? `<p class="wahl-plus">${e.plus}</p>` : ''}<ul>${liste}</ul></div>` : '';
+  };
+  const zeile = (g, e, typ) => {
+    const hatInfo = (e.items || []).length > 0;
+    let h = `<div class="wahl-zeile" data-id="${e.id}"><div class="wahl-oben"><label class="wahl-check"><input type="checkbox" name="${typ === 'extra' ? 'x' : g.id}" value="${e.id}"><span class="wahl-name">${e.name}</span></label>`;
+    if (hatInfo) h += `<button type="button" class="wahl-pfeil" aria-expanded="false" aria-label="Inhalt von ${e.name} anzeigen">↓</button>`;
+    h += `<span class="wahl-preis">${preisAnzeige(e)}</span></div>`;
+    if (e.wer) h += `<p class="wahl-wer">${e.wer}</p>`;
+    if (e.inkl) h += `<label class="wahl-mehr">Geschätzte Unterseiten <input class="wahl-anzahl" type="number" name="seiten-${e.id}" min="1" max="60" value="${e.inkl}"></label>`;
+    if (e.art === 'anzahl') h += `<label class="wahl-mehr">Anzahl <input class="wahl-anzahl" type="number" name="n-${e.id}" min="1" max="30" value="1"></label>`;
+    if (e.wahl) h += `<label class="wahl-mehr">Form <select class="wahl-auswahl" name="w-${e.id}">${e.wahl.map((w) => `<option>${w}</option>`).join('')}</select></label>`;
+    h += `<span class="wahl-hinweis"></span>${info(e)}</div>`;
+    return h;
+  };
 
-  // Formular aufbauen: je Paket eine Checkbox, Inhalt als Akkordeon (Daten aus pakete-daten.js)
-  const info = window.PAKETE || {};
-  const quelle = { brand: 'brand', uiux: 'ui-ux', website: 'website', ki: 'ki', marketing: 'marketing', design: 'design' };
   let html = '';
-  bereiche.forEach((b) => {
-    const details = info[quelle[b.id]] || [];
-    html += `<fieldset class="wahl-gruppe"><legend>${b.name}${b.mehrfach ? ' <span>mehrere möglich</span>' : ''}</legend><div class="wahl-zeilen">`;
-    b.pakete.forEach(([n, p], i) => {
-      const d = details.find((x) => x.name === n) || {};
-      const liste = (d.items || []).map((x) => `<li>${x}</li>`).join('');
-      html += `<div class="wahl-zeile"><label class="wahl-check"><input type="checkbox" name="${b.id}" value="${i}"><span class="wahl-name">${n}</span><span class="wahl-preis">ab ${euro(p)} €</span></label>`;
-      if (liste || d.wer) html += `<details class="wahl-info"><summary>Was ist drin?</summary>${d.wer ? `<p>${d.wer}</p>` : ''}${d.plus ? `<p class="wahl-plus">${d.plus}</p>` : ''}<ul>${liste}</ul></details>`;
-      html += '</div>';
-    });
+  D.gruppen.forEach((g) => {
+    html += `<fieldset class="wahl-gruppe" data-gruppe="${g.id}"><legend>${g.name}${g.wahl === 'mehrere' ? ' <span>mehrere möglich</span>' : ''}</legend>`;
+    if (g.hinweis) html += `<p class="wahl-gruppen-hinweis">${g.hinweis}</p>`;
+    html += '<div class="wahl-zeilen">' + g.pakete.map((e) => zeile(g, e, 'paket')).join('');
+    const extras = (g.extras || []).filter((x) => !x.auto);
+    if (extras.length) {
+      html += `<p class="wahl-zwischen">Zusätzlich zur ${g.name} – auch für bestehende Websites</p>`;
+      html += `<p class="wahl-pflicht" id="wahl-launch" hidden>✓ Launch ${euro(D.launch)} € – bei jeder neuen Website dabei (Domain, DNS, Umzug, Livegang)</p>`;
+      html += extras.map((e) => zeile(g, e, 'extra')).join('');
+    }
     html += '</div></fieldset>';
   });
-  html += '<fieldset class="wahl-gruppe"><legend>Zusatzleistungen</legend><div class="wahl-zeilen">';
-  html += `<p class="wahl-pflicht" id="wahl-launch" hidden>✓ Launch ${euro(LAUNCH)} € – bei jeder Website dabei (Domain, DNS, Umzug, Livegang)</p>`;
-  zusatz.forEach((z) => {
-    const preis = z.anfrage ? 'auf Anfrage' : z.monat ? `ab ${z.monat} € / Monat` : z.anteil ? '+30 %' : `${euro(z.preis)} €`;
-    html += `<div class="wahl-zeile" data-zusatz="${z.id}"><label class="wahl-check"><input type="checkbox" name="z-${z.id}"><span class="wahl-name">${z.name}</span><span class="wahl-preis">${preis}</span></label>`;
-    if (z.art === 'anzahl') html += `<label class="wahl-mehr">Anzahl <input class="wahl-anzahl" type="number" name="n-${z.id}" min="1" max="30" value="1"></label>`;
-    if (z.wahl) html += `<label class="wahl-mehr">Form <select class="wahl-auswahl" name="w-${z.id}">${z.wahl.map((w) => `<option>${w}</option>`).join('')}</select></label>`;
-    html += '<span class="wahl-hinweis"></span></div>';
-  });
-  html += '</div></fieldset>';
   form.innerHTML = html;
-  // In einem Bereich nur ein Paket (außer Marketing): neues Häkchen nimmt das alte weg
-  form.addEventListener('change', (e) => {
-    const b = bereiche.find((x) => x.name !== undefined && x.id === e.target.name);
-    if (!b || b.mehrfach || !e.target.checked) return;
-    form.querySelectorAll(`input[name="${b.id}"]`).forEach((i) => { if (i !== e.target) i.checked = false; });
+
+  // Akkordeon: Pfeil neben dem Namen klappt den Inhalt auf
+  form.addEventListener('click', (ev) => {
+    const b = ev.target.closest('.wahl-pfeil');
+    if (!b) return;
+    const auf = b.closest('.wahl-zeile').querySelector('.wahl-auf');
+    const offen = b.getAttribute('aria-expanded') === 'true';
+    b.setAttribute('aria-expanded', String(!offen));
+    b.textContent = offen ? '↓' : '↑';
+    if (auf) auf.hidden = offen;
+  });
+  // In Gruppen mit „eins“ nimmt ein neues Häkchen das alte weg
+  form.addEventListener('change', (ev) => {
+    const g = D.gruppen.find((x) => x.id === ev.target.name);
+    if (!g || g.wahl !== 'eins' || !ev.target.checked) return;
+    form.querySelectorAll(`input[name="${g.id}"]`).forEach((i) => { if (i !== ev.target) i.checked = false; });
   });
 
-  const el = (id) => document.getElementById(id);
   let angezeigt = 0;
-
   function auswahl() {
     const posten = [];
-    let einmalig = 0, monatlich = 0, websitePreis = 0;
-    bereiche.forEach((b) => {
-      form.querySelectorAll(`input[name="${b.id}"]:checked`).forEach((inp) => {
-        if (inp.value === '') return;
-        const [n, p] = b.pakete[+inp.value];
-        posten.push([`${b.name}: ${n}`, p]);
-        einmalig += p;
-        if (b.id === 'website') websitePreis = p;
+    let einmalig = 0, monatlich = 0, webPreis = 0, mitPaket = false;
+    D.gruppen.forEach((g) => {
+      g.pakete.forEach((e) => {
+        const cb = form.querySelector(`input[name="${g.id}"][value="${e.id}"]`);
+        if (!cb || !cb.checked) return;
+        if (e.anfrage) { posten.push([e.name, null]); return; }
+        let p = e.preis, name = `${g.name}: ${e.name}`;
+        if (e.inkl) {
+          const s = Math.max(1, +form.elements[`seiten-${e.id}`].value || e.inkl);
+          if (s > e.inkl) p += (s - e.inkl) * e.seite;
+          name += ` (${s} Seiten)`;
+        }
+        posten.push([name, p]); einmalig += p;
+        if (e.launch) { mitPaket = true; webPreis = p; }
       });
     });
-    const mitWebsite = websitePreis > 0;
-    el('wahl-launch').hidden = !mitWebsite;
-    if (mitWebsite) { posten.push(['Launch (Pflicht bei Website)', LAUNCH]); einmalig += LAUNCH; }
-    zusatz.forEach((z) => {
-      const label = form.querySelector(`[data-zusatz="${z.id}"]`);
-      const cb = label.querySelector('input[type="checkbox"]');
-      const gesperrt = (z.bedingung === 'website' && !mitWebsite) || (z.bedingung === 'ohneWebsite' && mitWebsite);
-      cb.disabled = gesperrt;
-      if (gesperrt) cb.checked = false;
-      label.classList.toggle('gesperrt', gesperrt);
-      label.querySelector('.wahl-hinweis').textContent = gesperrt ? (z.bedingung === 'website' ? 'nur mit Website-Paket' : 'im Website-Paket enthalten') : '';
+    el('wahl-launch').hidden = !mitPaket;
+    if (mitPaket) { posten.push(['Launch (bei jeder neuen Website)', D.launch]); einmalig += D.launch; }
+    D.gruppen.forEach((g) => (g.extras || []).forEach((e) => {
+      if (e.auto) return;
+      const z = form.querySelector(`[data-id="${e.id}"]`);
+      const cb = z.querySelector('input[type="checkbox"]');
+      const gesperrt = Boolean(e.ohnePaket && mitPaket);
+      cb.disabled = gesperrt; if (gesperrt) cb.checked = false;
+      z.classList.toggle('gesperrt', gesperrt);
+      z.querySelector('.wahl-hinweis').textContent = gesperrt ? 'im Website-Paket enthalten' : '';
       if (!cb.checked) return;
-      const anzahl = z.art === 'anzahl' ? Math.max(1, +form.elements[`n-${z.id}`].value || 1) : 1;
-      if (z.anfrage) { posten.push([`${z.name}`, null]); return; }
-      if (z.monat) { monatlich += z.monat; posten.push([`${z.name}`, z.monat, 'monat']); return; }
-      const preis = z.anteil ? websitePreis * z.anteil * anzahl : z.preis * anzahl;
-      const extra = z.wahl ? ` – ${form.elements[`w-${z.id}`].value}` : '';
-      posten.push([`${z.name}${anzahl > 1 ? ` × ${anzahl}` : ''}${extra}`, preis]);
-      einmalig += preis;
-    });
+      const n = e.art === 'anzahl' ? Math.max(1, +form.elements[`n-${e.id}`].value || 1) : 1;
+      const extra = e.wahl ? ` – ${form.elements[`w-${e.id}`].value}` : '';
+      const name = `${e.name}${n > 1 ? ` × ${n}` : ''}${extra}`;
+      if (e.monat) { monatlich += e.monat; posten.push([name, e.monat, 'monat']); return; }
+      if (e.anteil) { if (!webPreis) { posten.push([name, null]); return; } const p = webPreis * e.anteil * n; posten.push([name, p]); einmalig += p; return; }
+      const p = e.preis * n; posten.push([name, p]); einmalig += p;
+    }));
     return { posten, einmalig, monatlich };
   }
 
   function zaehlen(ziel) {
     const start = angezeigt, t0 = performance.now(), dauer = 500;
     const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const setzen = (w) => { el('summe-einmalig').textContent = euro(w); el('summe-brutto').textContent = euro(w * 1.19); };
     function schritt(t) {
       const f = still ? 1 : Math.min(1, (t - t0) / dauer);
-      const wert = start + (ziel - start) * (1 - Math.pow(1 - f, 3));
-      el('summe-einmalig').textContent = euro(wert);
-      el('summe-brutto').textContent = euro(wert * 1.19);
+      setzen(start + (ziel - start) * (1 - Math.pow(1 - f, 3)));
       if (f < 1) requestAnimationFrame(schritt); else angezeigt = ziel;
     }
     requestAnimationFrame(schritt);
-    // Sicherheitsnetz: falls der Browser keine Animationsbilder liefert (z. B. Hintergrund-Tab), Endwert setzen
-    clearTimeout(zaehlen.t); zaehlen.t = setTimeout(() => { if (angezeigt !== ziel) { angezeigt = ziel; el('summe-einmalig').textContent = euro(ziel); el('summe-brutto').textContent = euro(ziel * 1.19); } }, dauer + 100);
+    clearTimeout(zaehlen.t); zaehlen.t = setTimeout(() => { if (angezeigt !== ziel) { angezeigt = ziel; setzen(ziel); } }, dauer + 100);
   }
 
-  function zeilenText(a) {
-    return a.posten.map(([n, p, art]) => `– ${n}: ${p === null ? 'auf Anfrage' : art === 'monat' ? `ab ${euro(p)} € / Monat` : `ab ${euro(p)} €`}`).join('\n');
-  }
-
+  const betrag = ([, p, art]) => p === null ? 'auf Anfrage' : art === 'monat' ? `ab ${euro(p)} € / Monat` : `ab ${euro(p)} €`;
   function aktualisieren() {
     const a = auswahl();
     zaehlen(a.einmalig);
     el('summe-monat-zeile').hidden = !a.monatlich;
     el('summe-monat').textContent = euro(a.monatlich);
-    el('summe-liste').innerHTML = a.posten.length
-      ? a.posten.map(([n, p, art]) => `<li><span>${n}</span><b>${p === null ? 'auf Anfrage' : art === 'monat' ? `${euro(p)} €/Monat` : `${euro(p)} €`}</b></li>`).join('')
-      : '<li class="gedaempft">Noch nichts ausgewählt.</li>';
-    const text = `Hallo Anna,\n\nich habe mir mit dem Kostenrechner auf studio-aah.de folgendes zusammengestellt:\n\n${zeilenText(a) || '– (noch nichts ausgewählt)'}\n\nRichtwert: ab ${euro(a.einmalig)} € netto einmalig${a.monatlich ? ` zzgl. ab ${euro(a.monatlich)} € / Monat` : ''}\n\nIch würde gern ein kostenloses Erstgespräch vereinbaren.\n\nÜber mich / mein Vorhaben:\n`;
+    el('summe-liste').innerHTML = a.posten.length ? a.posten.map((x) => `<li><span>${x[0]}</span><b>${betrag(x).replace('ab ', '')}</b></li>`).join('') : '<li class="gedaempft">Noch nichts ausgewählt.</li>';
+    const zeilen = a.posten.map((x) => `– ${x[0]}: ${betrag(x)}`).join('\n');
+    const text = `Hallo Anna,\n\nich habe mir mit dem Kostenrechner auf studio-aah.de folgendes zusammengestellt:\n\n${zeilen || '– (noch nichts ausgewählt)'}\n\nRichtwert: ab ${euro(a.einmalig)} € netto einmalig${a.monatlich ? ` zzgl. ab ${euro(a.monatlich)} € / Monat` : ''}\n\nIch würde gern ein kostenloses Erstgespräch vereinbaren.\n\nÜber mich / mein Vorhaben:\n`;
     el('rechner-mail').href = `mailto:info@studio-aah.de?subject=${encodeURIComponent('Kostenvoranschlag über den Rechner')}&body=${encodeURIComponent(text)}`;
-    // Druckfassung für das PDF
     const datum = new Date().toLocaleDateString('de-DE');
     el('druck-bereich').innerHTML = `<p class="druck-marke">STUDIO AAH!</p><h1>Kostenvoranschlag (unverbindlich)</h1><p>Erstellt am ${datum} mit dem Kostenrechner auf studio-aah.de</p>
-      <table>${a.posten.map(([n, p, art]) => `<tr><td>${n}</td><td>${p === null ? 'auf Anfrage' : art === 'monat' ? `ab ${euro(p)} € / Monat` : `ab ${euro(p)} €`}</td></tr>`).join('')}
+      <table>${a.posten.map((x) => `<tr><td>${x[0]}</td><td>${betrag(x)}</td></tr>`).join('')}
       <tr class="druck-summe"><td>Richtwert einmalig (netto)</td><td>ab ${euro(a.einmalig)} €</td></tr><tr><td>inkl. 19 % USt.</td><td>ab ${euro(a.einmalig * 1.19)} €</td></tr>${a.monatlich ? `<tr><td>monatlich (netto)</td><td>ab ${euro(a.monatlich)} €</td></tr>` : ''}</table>
       <p><b>So geht es weiter:</b> 1. Kostenvoranschlag · 2. kostenloses Erstgespräch (Ist-Stand, Ziele, Bedarf, Zielgruppe) · 3. Angebot · 4. Vertrag</p>
       <p>Der Festpreis entsteht erst nach dem Erstgespräch. Kontakt: info@studio-aah.de · studio-aah.de</p>`;
   }
-
   form.addEventListener('input', aktualisieren);
   form.addEventListener('change', aktualisieren);
   el('rechner-pdf').addEventListener('click', () => { aktualisieren(); document.body.classList.add('druck-rechner'); window.print(); });

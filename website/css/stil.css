@@ -1188,3 +1188,19 @@ html { scroll-padding-top: calc(var(--kopf-hoehe) + 72px); }
 .preis-schluss .schluss-karte { margin-top: 24px; }
 /* Brotkrumen: liegen über der großen Überschrift, damit der Link klickbar bleibt */
 .seitenkopf .meta { position: relative; z-index: 2; }
+/* Rechner v3: Pfeil neben dem Namen, Unterzeile sichtbar, Zusatz direkt in der Gruppe */
+.wahl-zeile { display: block; }
+.wahl-oben { display: flex; align-items: center; gap: 10px; }
+.wahl-oben .wahl-check { flex: 0 1 auto; }
+.wahl-pfeil { border: 1px solid var(--farbe-rahmen); background: var(--farbe-weiss); border-radius: 50%; width: 26px; height: 26px; font-size: 13px; line-height: 1; cursor: pointer; flex: none; }
+.wahl-pfeil:hover { border-color: var(--farbe-dunkel); }
+.wahl-oben .wahl-preis { margin-left: auto; font-family: var(--schrift-meta); font-size: 14px; white-space: nowrap; }
+.wahl-wer { margin: 2px 0 0 32px; font-size: 13px; color: var(--farbe-gedaempft); }
+.wahl-zeile .wahl-mehr { margin: 6px 0 0 32px; }
+.wahl-zeile .wahl-hinweis { display: block; margin-left: 32px; }
+.wahl-auf { margin: 8px 0 4px 32px; font-size: 14px; color: var(--farbe-gedaempft); }
+.wahl-auf ul { margin: 4px 0 0; padding-left: 1.1em; }
+.wahl-auf .wahl-plus { margin: 0; }
+.wahl-gruppen-hinweis { clear: both; margin: 0 0 8px; padding: 12px 14px; background: var(--farbe-hellgrau); border-radius: 12px; font-size: 14px; color: var(--farbe-gedaempft); }
+.wahl-zwischen { margin: 14px 0 2px; padding-top: 12px; border-top: 1px solid var(--farbe-dunkel); font-family: var(--schrift-meta); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--farbe-gedaempft); }
+.wahl-zeile:not(:has(input[type="checkbox"]:checked)) .wahl-mehr { display: none; }
