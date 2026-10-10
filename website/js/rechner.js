@@ -8,33 +8,30 @@
   const euro = (n) => Math.round(n).toLocaleString('de-DE');
   const el = (id) => document.getElementById(id);
   const preisAnzeige = (e) => e.anfrage ? 'auf Anfrage' : e.monat ? `ab ${e.monat} € / Monat` : e.anteil ? `+${Math.round(e.anteil * 100)} %` : `${e.ab ? 'ab ' : ''}${euro(e.preis)} €`;
-  const info = (e) => {
+  // Eine Zeile je Paket; name = Gruppen-ID (Pakete) bzw. „x“ (Zusatz)
+  const zeile = (name, e) => {
     const liste = (e.items || []).map((x) => `<li>${x}</li>`).join('');
-    return liste ? `<div class="wahl-auf" hidden>${e.plus ? `<p class="wahl-plus">${e.plus}</p>` : ''}<ul>${liste}</ul></div>` : '';
-  };
-  const zeile = (g, e, typ) => {
-    const hatInfo = (e.items || []).length > 0;
-    let h = `<div class="wahl-zeile" data-id="${e.id}"><div class="wahl-oben"><label class="wahl-check"><input type="checkbox" name="${typ === 'extra' ? 'x' : g.id}" value="${e.id}"><span class="wahl-name">${e.name}</span></label>`;
-    if (hatInfo) h += `<button type="button" class="wahl-pfeil" aria-expanded="false" aria-label="Inhalt von ${e.name} anzeigen">↓</button>`;
+    let h = `<div class="wahl-zeile" data-id="${e.id}"><div class="wahl-oben"><label class="wahl-check"><input type="checkbox" name="${name}" value="${e.id}"><span class="wahl-name">${e.name}</span></label>`;
+    if (liste) h += `<button type="button" class="wahl-pfeil" aria-expanded="false" aria-label="Inhalt von ${e.name} anzeigen">↓</button>`;
     h += `<span class="wahl-preis">${preisAnzeige(e)}</span></div>`;
     if (e.wer) h += `<p class="wahl-wer">${e.wer}</p>`;
     if (e.inkl) h += `<label class="wahl-mehr">Geschätzte Unterseiten <input class="wahl-anzahl" type="number" name="seiten-${e.id}" min="1" max="60" value="${e.inkl}"></label>`;
     if (e.art === 'anzahl') h += `<label class="wahl-mehr">Anzahl <input class="wahl-anzahl" type="number" name="n-${e.id}" min="1" max="30" value="1"></label>`;
     if (e.wahl) h += `<label class="wahl-mehr">Form <select class="wahl-auswahl" name="w-${e.id}">${e.wahl.map((w) => `<option>${w}</option>`).join('')}</select></label>`;
-    h += `<span class="wahl-hinweis"></span>${info(e)}</div>`;
-    return h;
+    h += '<span class="wahl-hinweis"></span>';
+    if (liste) h += `<div class="wahl-auf" hidden>${e.plus ? `<p class="wahl-plus">${e.plus}</p>` : ''}<ul>${liste}</ul></div>`;
+    return h + '</div>';
   };
 
   let html = '';
   D.gruppen.forEach((g) => {
     html += `<fieldset class="wahl-gruppe" data-gruppe="${g.id}"><legend>${g.name}${g.wahl === 'mehrere' ? ' <span>mehrere möglich</span>' : ''}</legend>`;
     if (g.hinweis) html += `<p class="wahl-gruppen-hinweis">${g.hinweis}</p>`;
-    html += '<div class="wahl-zeilen">' + g.pakete.map((e) => zeile(g, e, 'paket')).join('');
-    const extras = (g.extras || []).filter((x) => !x.auto);
-    if (extras.length) {
+    html += '<div class="wahl-zeilen">' + g.pakete.map((e) => zeile(g.id, e)).join('');
+    if (g.extras) {
       html += `<p class="wahl-zwischen">Zusätzlich zur ${g.name} – auch für bestehende Websites</p>`;
       html += `<p class="wahl-pflicht" id="wahl-launch" hidden>✓ Launch ${euro(D.launch)} € – bei jeder neuen Website dabei (Domain, DNS, Umzug, Livegang)</p>`;
-      html += extras.map((e) => zeile(g, e, 'extra')).join('');
+      html += g.extras.map((e) => zeile('x', e)).join('');
     }
     html += '</div></fieldset>';
   });
@@ -44,11 +41,10 @@
   form.addEventListener('click', (ev) => {
     const b = ev.target.closest('.wahl-pfeil');
     if (!b) return;
-    const auf = b.closest('.wahl-zeile').querySelector('.wahl-auf');
     const offen = b.getAttribute('aria-expanded') === 'true';
     b.setAttribute('aria-expanded', String(!offen));
     b.textContent = offen ? '↓' : '↑';
-    if (auf) auf.hidden = offen;
+    b.closest('.wahl-zeile').querySelector('.wahl-auf').hidden = offen;
   });
   // In Gruppen mit „eins“ nimmt ein neues Häkchen das alte weg
   form.addEventListener('change', (ev) => {
@@ -63,8 +59,7 @@
     let einmalig = 0, monatlich = 0, webPreis = 0, mitPaket = false;
     D.gruppen.forEach((g) => {
       g.pakete.forEach((e) => {
-        const cb = form.querySelector(`input[name="${g.id}"][value="${e.id}"]`);
-        if (!cb || !cb.checked) return;
+        if (!form.querySelector(`[data-id="${e.id}"] input`).checked) return;
         if (e.anfrage) { posten.push([e.name, null]); return; }
         let p = e.preis, name = `${g.name}: ${e.name}`;
         if (e.inkl) {
@@ -79,7 +74,6 @@
     el('wahl-launch').hidden = !mitPaket;
     if (mitPaket) { posten.push(['Launch (bei jeder neuen Website)', D.launch]); einmalig += D.launch; }
     D.gruppen.forEach((g) => (g.extras || []).forEach((e) => {
-      if (e.auto) return;
       const z = form.querySelector(`[data-id="${e.id}"]`);
       const cb = z.querySelector('input[type="checkbox"]');
       const gesperrt = Boolean(e.ohnePaket && mitPaket);

@@ -1,5 +1,4 @@
 {
- "launch": 150,
  "gruppen": [
   {
    "id": "brand",
@@ -379,7 +378,6 @@
       "Vorder- und Rückseite",
       "Druckdaten"
      ],
-     "vorschlag": true,
      "ab": true
     },
     {
@@ -404,7 +402,6 @@
       "bis zu 20 Folien",
       "PDF und Druckdaten"
      ],
-     "vorschlag": true,
      "ab": true
     },
     {

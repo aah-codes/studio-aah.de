@@ -45,7 +45,17 @@ leiste = ''.join(f'<a href="#pl-{g["id"]}">{esc(g["kurz"])}</a>' for g in daten[
 t = re.sub(r'(<nav class="preis-leiste"[^>]*>\n  <a href="#rechner">Kostenrechner</a>).*?(<a href="#kostenlos-titel">Programm</a>)',
            lambda m: m.group(1) + leiste + m.group(2), t, count=1, flags=re.S)
 seite.write_text(t, encoding='utf-8')
+
+# Rechner bekommt nur, was er braucht: keine Felder der Preisliste; der automatische Launch-Posten wird zur Zahl „launch“
+nur_liste = ('kurz', 'link', 'gefragt', 'nur_liste')
+schlank = lambda e: {k: v for k, v in e.items() if k not in nur_liste}
+rechner = {'launch': next(x['preis'] for g in daten['gruppen'] for x in g.get('extras', []) if x.get('auto')), 'gruppen': []}
+for g in daten['gruppen']:
+    r = schlank(g)
+    r['pakete'] = [schlank(e) for e in g['pakete']]
+    if 'extras' in g: r['extras'] = [schlank(e) for e in g['extras'] if not e.get('auto')]
+    rechner['gruppen'].append(r)
 (basis / 'website' / 'js' / 'pakete-daten.js').write_text(
     '// Erzeugt von werkzeuge/preise-erzeugen.py aus werkzeuge/preise-daten.json – nicht von Hand ändern\nwindow.PREISE = '
-    + json.dumps(daten, ensure_ascii=False, indent=1) + ';\n', encoding='utf-8')
+    + json.dumps(rechner, ensure_ascii=False, indent=1) + ';\n', encoding='utf-8')
 print(f'{anzahl} Zeilen in der Preisliste, Rechner-Daten geschrieben')

@@ -4,9 +4,7 @@ window.PREISE = {
  "gruppen": [
   {
    "id": "brand",
-   "kurz": "Brand",
    "name": "Brand",
-   "link": "../service/brand/",
    "wahl": "eins",
    "pakete": [
     {
@@ -21,7 +19,6 @@ window.PREISE = {
       "Moodboard",
       "Grundpositionierung"
      ],
-     "gefragt": false,
      "ab": true
     },
     {
@@ -36,7 +33,6 @@ window.PREISE = {
       "Farben, Schriften, Bildwelt, Gestaltungselemente",
       "Basishandbuch (kompakt)"
      ],
-     "gefragt": true,
      "ab": true
     },
     {
@@ -51,7 +47,6 @@ window.PREISE = {
       "Brand Manual (ausführlich)",
       "Erste Vorlagen: Visitenkarte, Briefpapier, Präsentation, Social Media"
      ],
-     "gefragt": false,
      "ab": true
     },
     {
@@ -70,9 +65,7 @@ window.PREISE = {
   },
   {
    "id": "ui-ux",
-   "kurz": "UI/UX",
    "name": "UI/UX",
-   "link": "../service/ui-ux/",
    "wahl": "eins",
    "pakete": [
     {
@@ -85,7 +78,6 @@ window.PREISE = {
       "Analyse der wichtigsten Abläufe",
       "Kurze Handlungsempfehlungen"
      ],
-     "gefragt": false,
      "ab": true
     },
     {
@@ -98,7 +90,6 @@ window.PREISE = {
       "Analyse der ganzen Anwendung",
       "Ausführlicher PDF-Report mit Prioritäten"
      ],
-     "gefragt": false,
      "ab": true
     },
     {
@@ -114,7 +105,6 @@ window.PREISE = {
       "UI-Kit & mobile Optimierung",
       "Übergabe mit Spezifikationen"
      ],
-     "gefragt": false,
      "ab": true
     },
     {
@@ -127,16 +117,13 @@ window.PREISE = {
       "Umfassendes UX-Research & Zielgruppenanalyse",
       "Vollständiges Designsystem"
      ],
-     "gefragt": false,
      "ab": true
     }
    ]
   },
   {
    "id": "website",
-   "kurz": "Website",
    "name": "Website",
-   "link": "../service/website/",
    "wahl": "eins",
    "hinweis": "Neue Website oder Redesign – schätzen Sie, wie viele Unterseiten Sie brauchen. Typisch: Selbstständige 1–6 Seiten · kleine und mittlere Unternehmen mit Leistungs- und Branchenseiten 10–25 Seiten. Mehr als 25 Seiten, Shop oder Mitgliederbereich? Dann ist es ein komplexes Projekt ab 6.000 € – melden Sie sich am besten direkt.",
    "pakete": [
@@ -170,27 +157,16 @@ window.PREISE = {
       "jede weitere Seite 150 €",
       "bei Redesign: Analyse, Inhaltsübernahme, Weiterleitungen"
      ],
-     "gefragt": true,
      "launch": true,
      "ab": true
     }
    ],
    "extras": [
     {
-     "id": "launch",
-     "name": "Launch",
-     "preis": 150,
-     "ab": false,
-     "auto": true,
-     "kurz": "Domain verbinden, DNS-Einträge, Umzug, Livegang",
-     "wer": "bei jeder neuen Website dabei"
-    },
-    {
      "id": "sprache",
      "name": "Weitere Sprache",
      "anteil": 0.3,
      "art": "anzahl",
-     "kurz": "+30 % auf den Website-Preis, je Sprache · Übersetzung liefern Sie",
      "wer": "ohne Website-Paket: auf Anfrage"
     },
     {
@@ -198,7 +174,6 @@ window.PREISE = {
      "name": "Blog",
      "preis": 490,
      "ab": false,
-     "kurz": "Blog einrichten, Übersicht, Beitragsvorlage",
      "wer": "auch für bestehende Websites"
     },
     {
@@ -206,7 +181,6 @@ window.PREISE = {
      "name": "Newsletter-Anbindung",
      "preis": 260,
      "ab": false,
-     "kurz": "Anmeldung auf der Website, verbunden mit Ihrem Dienst",
      "wer": "auch für bestehende Websites"
     },
     {
@@ -215,7 +189,6 @@ window.PREISE = {
      "preis": 130,
      "ab": false,
      "art": "anzahl",
-     "kurz": "je Seite",
      "wer": ""
     },
     {
@@ -227,7 +200,6 @@ window.PREISE = {
       "PDF-Anleitung",
       "Online-Termin"
      ],
-     "kurz": "PDF-Anleitung oder Online-Termin – Sie wählen",
      "wer": "für alle, die selbst pflegen"
     },
     {
@@ -236,7 +208,6 @@ window.PREISE = {
      "preis": 130,
      "ab": false,
      "ohnePaket": true,
-     "kurz": "im Website-Paket enthalten",
      "wer": "für bestehende Websites"
     },
     {
@@ -245,14 +216,12 @@ window.PREISE = {
      "preis": 260,
      "ab": false,
      "ohnePaket": true,
-     "kurz": "im Website-Paket enthalten",
      "wer": "für bestehende Websites"
     },
     {
      "id": "wartung",
      "name": "Wartung",
      "monat": 45,
-     "kurz": "",
      "wer": "Regelmäßige technische Pflege Ihrer WordPress-Website.",
      "items": [
       "Updates von WordPress, Plugins & Themes",
@@ -261,38 +230,11 @@ window.PREISE = {
       "Austausch von PDFs, Downloads oder Newslettern"
      ]
     }
-   ],
-   "nur_liste": [
-    {
-     "id": "komplex",
-     "name": "Komplexes Projekt",
-     "preis": 6000,
-     "wer": "Für Projekte mit Mitgliederbereich, Zahlungen, mehreren Sprachen oder Verzeichnissen.",
-     "plus": "",
-     "items": [
-      "Mitgliederbereich, Zahlungen, Mehrsprachigkeit, Verzeichnisse",
-      "Blog",
-      "Analyse, Inhaltsübernahme und Weiterleitungen bei Bedarf"
-     ]
-    },
-    {
-     "id": "bedarf",
-     "name": "Hilfe nach Bedarf",
-     "stunde": 65,
-     "wer": "Ohne Vertrag – wenn Sie gelegentlich Unterstützung brauchen.",
-     "items": [
-      "Technische Hilfe",
-      "Änderungen an Inhalten",
-      "Sparring zu Ihrer Website"
-     ]
-    }
    ]
   },
   {
    "id": "marketing",
-   "kurz": "Marketing",
    "name": "Marketing & Vertrieb",
-   "link": "../service/marketing-vertrieb/",
    "wahl": "mehrere",
    "pakete": [
     {
@@ -306,7 +248,6 @@ window.PREISE = {
       "Unternehmensseite",
       "Positionierung"
      ],
-     "gefragt": false,
      "ab": true
     },
     {
@@ -331,7 +272,6 @@ window.PREISE = {
       "1.000–1.500 Wörter",
       "recherchiert und verständlich"
      ],
-     "gefragt": false,
      "ab": true
     },
     {
@@ -345,16 +285,13 @@ window.PREISE = {
       "Anmeldeseite",
       "Technik – ohne Durchführung"
      ],
-     "gefragt": false,
      "ab": true
     }
    ]
   },
   {
    "id": "print",
-   "kurz": "Print",
    "name": "Print",
-   "link": null,
    "wahl": "mehrere",
    "pakete": [
     {
@@ -380,7 +317,6 @@ window.PREISE = {
       "Vorder- und Rückseite",
       "Druckdaten"
      ],
-     "vorschlag": true,
      "ab": true
     },
     {
@@ -405,7 +341,6 @@ window.PREISE = {
       "bis zu 20 Folien",
       "PDF und Druckdaten"
      ],
-     "vorschlag": true,
      "ab": true
     },
     {
@@ -424,9 +359,7 @@ window.PREISE = {
   },
   {
    "id": "ki",
-   "kurz": "KI",
    "name": "KI & Digitalisierung",
-   "link": "../service/ki-digitalisierung/",
    "wahl": "eins",
    "pakete": [
     {
@@ -440,7 +373,6 @@ window.PREISE = {
       "Analyse Ihrer Abläufe",
       "Empfehlungsbericht"
      ],
-     "gefragt": false,
      "ab": true
     },
     {
@@ -454,29 +386,13 @@ window.PREISE = {
       "1–2 digitale Arbeitsabläufe",
       "Team-Schulung"
      ],
-     "gefragt": false,
      "ab": true
-    }
-   ],
-   "nur_liste": [
-    {
-     "id": "ki-begleitung",
-     "name": "Begleitung",
-     "stunde": 65,
-     "wer": "Laufend nach Bedarf, wenn die Einführung steht.",
-     "items": [
-      "Weitere Werkzeuge einrichten",
-      "Weitere Arbeitsabläufe",
-      "Schulungen"
-     ]
     }
    ]
   },
   {
    "id": "zusatz",
-   "kurz": "Zusatzleistungen",
    "name": "Zusatzleistungen",
-   "link": null,
    "wahl": "mehrere",
    "pakete": [
     {
