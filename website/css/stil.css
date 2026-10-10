@@ -793,6 +793,7 @@ h1, h2, h3 {
 .bs-a { grid-row: 1 / 3; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8%; padding: 10%; }
 .bs-a img { width: 86%; }
 .bs-a img.rund { border-radius: 50%; }
+.bs-a-links { align-items: flex-start; text-align: left; }
 .bs-a span { font-weight: 800; font-size: calc(var(--h) * .075); letter-spacing: .02em; }
 .bs-a .bs-claim { font: 700 calc(var(--h) * .042)/1.2 var(--schrift-text); letter-spacing: 0; }
 .bs-farben { grid-column: 2 / 4; display: flex; gap: 4px; background: #fff; padding: 4px; }
