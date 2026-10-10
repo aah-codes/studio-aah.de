@@ -1142,3 +1142,49 @@ html { scroll-padding-top: calc(var(--kopf-hoehe) + 72px); }
 .fuss .fuss-karte .fuss-karte-link { color: var(--farbe-weiss); }
 .fuss .fuss-karte .meta { color: var(--farbe-gedaempft); }
 .fuss-karte-icon { mix-blend-mode: multiply; }
+
+/* ---------- 20. Preisseite v2: Rechner mit Checkboxen und Akkordeon, Preisliste als Tabelle (Idee: Modellliste proxy.gonka.gg) ---------- */
+.rechner { background: var(--farbe-hellgrau); }
+.wahl-gruppe legend span { text-transform: none; letter-spacing: 0; font-family: var(--schrift-text); font-size: 12px; margin-left: 6px; }
+.wahl-zeilen { clear: both; display: grid; gap: 0; }
+.wahl-zeile { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 16px; padding: 10px 0; border-top: 1px solid var(--farbe-rahmen); }
+.wahl-zeile:first-child { border-top: 0; }
+.wahl-check { display: flex; align-items: center; gap: 12px; flex: 1 1 260px; cursor: pointer; }
+.wahl-check input { width: 20px; height: 20px; accent-color: var(--farbe-dunkel); flex: none; margin: 0; }
+.wahl-check .wahl-name { font-weight: 600; }
+.wahl-check .wahl-preis { margin-left: auto; font-family: var(--schrift-meta); font-size: 14px; color: var(--farbe-dunkel); white-space: nowrap; }
+.wahl-info { flex: 1 0 100%; padding-left: 32px; }
+.wahl-info summary { cursor: pointer; font-size: 14px; color: var(--farbe-gedaempft); list-style: none; display: inline-block; }
+.wahl-info summary::after { content: " ↓"; }
+.wahl-info[open] summary::after { content: " ↑"; }
+.wahl-info summary::-webkit-details-marker { display: none; }
+.wahl-info p, .wahl-info ul { font-size: 14px; color: var(--farbe-gedaempft); margin: 6px 0; }
+.wahl-info ul { padding-left: 1.1em; }
+.wahl-plus { font-weight: 600; color: var(--farbe-dunkel) !important; }
+.wahl-mehr { font-size: 13px; color: var(--farbe-gedaempft); display: inline-flex; align-items: center; gap: 6px; }
+.wahl-zeile:not(:has(input[type="checkbox"]:checked)) .wahl-mehr { display: none; }
+.wahl-zeile.gesperrt { opacity: .45; }
+.wahl-zeile.gesperrt .wahl-check { cursor: not-allowed; }
+/* Preisliste */
+.preisliste { padding: 72px var(--rand-seite) 24px; }
+.pl-kopf { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; border-bottom: 1px solid var(--farbe-dunkel); padding-bottom: 12px; }
+.pl-kopf .meta { margin: 0; }
+.pl-scroll { border: 0; border-radius: 0; }
+.pl-tabelle { width: 100%; border-collapse: collapse; min-width: 820px; }
+.pl-tabelle thead th { font-family: var(--schrift-meta); font-weight: 500; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--farbe-gedaempft); text-align: left; padding: 14px 16px 14px 0; border-bottom: 1px solid var(--farbe-rahmen); }
+.pl-tabelle td, .pl-tabelle tbody th { padding: 16px 16px 16px 0; border-bottom: 1px solid var(--farbe-rahmen); vertical-align: top; text-align: left; font-weight: 400; }
+.pl-tabelle tbody th { width: 22%; }
+.pl-name { font-weight: 600; font-size: 1.05rem; }
+.pl-wer { width: 26%; font-size: .92rem; }
+.pl-preis { width: 12%; font-family: var(--schrift-meta); font-size: 15px; white-space: nowrap; }
+.pl-preis small { font-size: .8em; color: var(--farbe-gedaempft); }
+.pl-gruppe th { padding: 36px 0 10px !important; border-bottom: 1px solid var(--farbe-dunkel) !important; scroll-margin-top: calc(var(--kopf-hoehe) + 72px); }
+.pl-gruppe span { font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-size: 1.6rem; }
+.pl-mehr { margin-left: 16px; font-size: 14px; font-weight: 600; color: inherit; }
+.pl-chips { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 0; padding: 0; }
+.pl-chips li { border: 1px solid var(--farbe-rahmen); border-radius: 999px; padding: 3px 10px; font-size: 13px; }
+.pl-chips .chip-plus { border-color: var(--farbe-dunkel); font-weight: 600; }
+.abzeichen-rand { display: inline-block; margin-left: 8px; border: 1px solid var(--farbe-dunkel); border-radius: 999px; padding: 1px 8px; font-size: 12px; font-weight: 600; vertical-align: 2px; }
+.preis-schluss .schluss-karte { margin-top: 24px; }
+/* Brotkrumen: liegen über der großen Überschrift, damit der Link klickbar bleibt */
+.seitenkopf .meta { position: relative; z-index: 2; }

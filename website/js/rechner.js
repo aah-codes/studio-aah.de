@@ -33,27 +33,39 @@
   const LAUNCH = 150;
   const euro = (n) => Math.round(n).toLocaleString('de-DE');
 
-  // Formular aufbauen
+  // Formular aufbauen: je Paket eine Checkbox, Inhalt als Akkordeon (Daten aus pakete-daten.js)
+  const info = window.PAKETE || {};
+  const quelle = { brand: 'brand', uiux: 'ui-ux', website: 'website', ki: 'ki', marketing: 'marketing', design: 'design' };
   let html = '';
   bereiche.forEach((b) => {
-    html += `<fieldset class="wahl-gruppe"><legend>${b.name}</legend><div class="wahl-optionen">`;
-    if (!b.mehrfach) html += `<label class="wahl-option"><input type="radio" name="${b.id}" value="" checked><span class="wahl-name">Nicht nötig</span></label>`;
+    const details = info[quelle[b.id]] || [];
+    html += `<fieldset class="wahl-gruppe"><legend>${b.name}${b.mehrfach ? ' <span>mehrere möglich</span>' : ''}</legend><div class="wahl-zeilen">`;
     b.pakete.forEach(([n, p], i) => {
-      html += `<label class="wahl-option"><input type="${b.mehrfach ? 'checkbox' : 'radio'}" name="${b.id}" value="${i}"><span class="wahl-name">${n}</span><span class="wahl-preis">ab ${euro(p)} €</span></label>`;
+      const d = details.find((x) => x.name === n) || {};
+      const liste = (d.items || []).map((x) => `<li>${x}</li>`).join('');
+      html += `<div class="wahl-zeile"><label class="wahl-check"><input type="checkbox" name="${b.id}" value="${i}"><span class="wahl-name">${n}</span><span class="wahl-preis">ab ${euro(p)} €</span></label>`;
+      if (liste || d.wer) html += `<details class="wahl-info"><summary>Was ist drin?</summary>${d.wer ? `<p>${d.wer}</p>` : ''}${d.plus ? `<p class="wahl-plus">${d.plus}</p>` : ''}<ul>${liste}</ul></details>`;
+      html += '</div>';
     });
     html += '</div></fieldset>';
   });
-  html += '<fieldset class="wahl-gruppe"><legend>Zusatzleistungen</legend><div class="wahl-optionen">';
+  html += '<fieldset class="wahl-gruppe"><legend>Zusatzleistungen</legend><div class="wahl-zeilen">';
   html += `<p class="wahl-pflicht" id="wahl-launch" hidden>✓ Launch ${euro(LAUNCH)} € – bei jeder Website dabei (Domain, DNS, Umzug, Livegang)</p>`;
   zusatz.forEach((z) => {
     const preis = z.anfrage ? 'auf Anfrage' : z.monat ? `ab ${z.monat} € / Monat` : z.anteil ? '+30 %' : `${euro(z.preis)} €`;
-    html += `<label class="wahl-option" data-zusatz="${z.id}"><input type="checkbox" name="z-${z.id}"><span class="wahl-name">${z.name}</span><span class="wahl-preis">${preis}</span>`;
-    if (z.art === 'anzahl') html += `<input class="wahl-anzahl" type="number" name="n-${z.id}" min="1" max="30" value="1" aria-label="Anzahl ${z.name}">`;
-    if (z.wahl) html += `<select class="wahl-auswahl" name="w-${z.id}" aria-label="Form der Schulung">${z.wahl.map((w) => `<option>${w}</option>`).join('')}</select>`;
-    html += '<span class="wahl-hinweis"></span></label>';
+    html += `<div class="wahl-zeile" data-zusatz="${z.id}"><label class="wahl-check"><input type="checkbox" name="z-${z.id}"><span class="wahl-name">${z.name}</span><span class="wahl-preis">${preis}</span></label>`;
+    if (z.art === 'anzahl') html += `<label class="wahl-mehr">Anzahl <input class="wahl-anzahl" type="number" name="n-${z.id}" min="1" max="30" value="1"></label>`;
+    if (z.wahl) html += `<label class="wahl-mehr">Form <select class="wahl-auswahl" name="w-${z.id}">${z.wahl.map((w) => `<option>${w}</option>`).join('')}</select></label>`;
+    html += '<span class="wahl-hinweis"></span></div>';
   });
   html += '</div></fieldset>';
   form.innerHTML = html;
+  // In einem Bereich nur ein Paket (außer Marketing): neues Häkchen nimmt das alte weg
+  form.addEventListener('change', (e) => {
+    const b = bereiche.find((x) => x.name !== undefined && x.id === e.target.name);
+    if (!b || b.mehrfach || !e.target.checked) return;
+    form.querySelectorAll(`input[name="${b.id}"]`).forEach((i) => { if (i !== e.target) i.checked = false; });
+  });
 
   const el = (id) => document.getElementById(id);
   let angezeigt = 0;
