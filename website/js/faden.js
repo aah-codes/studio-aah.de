@@ -11,7 +11,7 @@
   let laenge = 0, tabelle = [], gezeichnet = false;
 
 // Punkte: die Linie bleibt immer am rechten Rand (in der Hälfte des Seitenabstands, damit sie keine Inhalte kreuzt)
-// und biegt erst am Ende waagerecht in den Knopf „Projekt anfragen“.
+// und biegt erst am Ende waagerecht in den Knopf „Projekt anfragen“ – sie endet knapp innerhalb des Knopfes.
 function punkte() {
   const m = main.getBoundingClientRect();
   const y = (el, wo = 'top') => el.getBoundingClientRect()[wo] - m.top;
@@ -27,7 +27,7 @@ function punkte() {
     [rechts, y(hero, 'bottom') - 8],
     [rechts, ky - 80],
     [rechts - 80, ky],
-    [k.right - m.left + 14, ky],
+    [k.right - m.left - 6, ky],
   ];
 }
 
