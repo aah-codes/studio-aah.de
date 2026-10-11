@@ -1823,3 +1823,6 @@ img.profil-bildtext-bild, .profil-bildtext-bild img { width: 100%; height: auto;
 .profil-kunst-belege summary { cursor: pointer; font-size: .9rem; color: var(--farbe-gedaempft); width: max-content; }
 .profil-kunst-belege summary:hover { color: var(--farbe-dunkel); }
 .profil-kunst-belege[open] summary { margin-bottom: 10px; }
+/* Profil: Fortsetzung „Mein Ansatz“ nach der Ökosystem-Grafik mit Abstand */
+.profil-ansatz-weiter { padding-top: 72px; }
+@media (max-width: 900px) { .profil-ansatz-weiter { padding-top: 48px; } }
