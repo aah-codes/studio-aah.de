@@ -41,11 +41,12 @@ def karten(g):
     return '\n'.join(out)
 
 
-def paket_reihen(g, c):
+def paket_reihen(g, c, pre=''):
     if len(g['pakete']) == 1:
         h = c.get('hintergrund')
         rechts = (f'<div class="lsx-hintergrund"><p class="meta">Mein Hintergrund</p><h3 class="lsx-hintergrund-titel">{esc(h["titel"])}</h3>'
-                  + ''.join(f'<p>{esc(x)}</p>' for x in h['text']) + '</div>') if h else nicht_enthalten(c)
+                  + ''.join(f'<p>{esc(x)}</p>' for x in h['text'])
+                  + (f'<p><a class="textlink" href="{pre}profil/#ansatz-titel">Mehr über meinen Hintergrund</a></p>' if h.get('link') else '') + '</div>') if h else nicht_enthalten(c)
         return '    <div class="lsx-einzeln">\n' + karten(g) + '\n      ' + rechts + '\n    </div>'
     if not c.get('paket_reihen'):
         return '    <div class="lsx-karten">\n' + karten(g) + '\n    </div>'
@@ -207,7 +208,7 @@ def seite(key, c):
     <p class="meta">Pakete</p>
     <h2 class="gr-h3" id="pakete-titel">Pakete im Überblick</h2>
     {f'<p class="lsx-hinweis">{esc(g["hinweis"])}</p>' if g.get('hinweis') else ''}
-{paket_reihen(g, c)}
+{paket_reihen(g, c, pre)}
     {NETTO_HINWEIS}
     {'' if len(g['pakete']) == 1 and not c.get('hintergrund') else nicht_enthalten(c)}
   </section>
@@ -268,7 +269,7 @@ def seite(key, c):
     ld = json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, indent=2)
     t = re.sub(r'<script type="application/ld\+json">.*?</script>', lambda m: f'<script type="application/ld+json">\n{ld}\n  </script>', t, count=1, flags=re.S)
     if 'zaehlen.js' not in t:
-        t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v=20261013h" defer></script>\n</body>', 1)
+        t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v=20261013i" defer></script>\n</body>', 1)
     pfad.write_text(t, encoding='utf-8')
     print('geschrieben:', c['pfad'])
 

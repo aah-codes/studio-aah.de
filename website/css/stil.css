@@ -1649,3 +1649,7 @@ main section[id] { scroll-margin-top: calc(var(--kopf-hoehe) + 72px); }
 .lsx-duo { padding-bottom: 96px; }
 @media (max-width: 900px) { .lsx-duo { padding-bottom: 64px; } }
 .lsx-duo-icon { position: static; width: 96px; height: 96px; margin: 0 0 8px; }
+.profil-kunst { margin-top: 32px; padding: 28px; border-radius: 24px; background: var(--farbe-creme); }
+.profil-kunst .meta { margin: 0 0 8px; }
+.profil-kunst p { margin: 0 0 10px; }
+.profil-kunst-quellen { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 4px 0 0 !important; }
