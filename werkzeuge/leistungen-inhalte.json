@@ -5,7 +5,7 @@
   "gruppe": "website",
   "titel": "Website",
   "seitentitel": "Website erstellen lassen in Leipzig – Webdesign & WordPress | STUDIO AAH!",
-  "beschreibung": "Website erstellen lassen bei STUDIO AAH! in Leipzig: Onepager ab 1.150 €, Website ab 2.450 €, responsiv, in WordPress (Kadence), mit SEO-Basics und Launch. Festpreis nach kostenlosem Erstgespräch.",
+  "beschreibung": "Website erstellen lassen bei STUDIO AAH! in Leipzig: Onepager ab 1.150 €, Website ab 2.450 €, responsiv, in WordPress (Kadence), mit SEO & LLM-Zitierfähigkeit und Launch. Festpreis nach kostenlosem Erstgespräch.",
   "bild": "bilder/leistung-website.webp",
   "bildalt": "Bildschirm mit einer Website im Entwurf",
   "zusammenfassung": [
@@ -43,7 +43,7 @@
    ],
    [
     "Ist SEO und LLM-Zitierfähigkeit im Preis enthalten?",
-    "Ja. SEO bedeutet Suchmaschinen-Optimierung, damit Ihre Website bei Google gefunden wird. LLM-Zitierfähigkeit (Fachbegriff: GEO, Generative Engine Optimization) bedeutet, dass KI-Assistenten wie ChatGPT, Claude oder Perplexity Ihre Inhalte verstehen und als Quelle nennen können, zum Beispiel durch eine klare Struktur, Fragen und Antworten und strukturierte Daten. Beides ist in jedem Website-Paket enthalten, beim Paket „Website – neu oder Redesign“ für alle Unterseiten. Für bestehende Websites gibt es SEO & LLM-Zitierfähigkeit ab 260 €."
+    "Ja, SEO und LLM-Zitierfähigkeit sind immer zusammen enthalten. SEO bedeutet Suchmaschinen-Optimierung, damit Ihre Website bei Google gefunden wird. LLM-Zitierfähigkeit (Fachbegriff: GEO, Generative Engine Optimization) bedeutet, dass KI-Assistenten wie ChatGPT, Claude oder Perplexity Ihre Inhalte verstehen und als Quelle nennen können, zum Beispiel durch eine klare Struktur, Fragen und Antworten und strukturierte Daten. Beides steckt in jedem Website-Paket, beim Paket „Website – neu oder Redesign“ für alle Unterseiten. Für bestehende Websites gibt es SEO & LLM-Zitierfähigkeit ab 260 €."
    ],
    [
     "Was passiert beim Launch?",
@@ -51,7 +51,7 @@
    ],
    [
     "Mit welchem System baut STUDIO AAH! Websites?",
-    "STUDIO AAH! setzt Websites in WordPress mit dem Theme Kadence um. Die Website lässt sich danach leicht aktualisieren."
+    "Ich baue Websites mit WordPress (Theme Kadence) und mit Claude Code."
    ],
    [
     "Kann ich meine Website danach selbst pflegen?",
