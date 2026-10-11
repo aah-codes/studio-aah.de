@@ -17,14 +17,17 @@ def mit_tag(liste, tags):
     return [x for x in liste if set(x.get('tags', [])) & set(tags)]
 
 
-def projekte(liste):
+def projekte(liste, pre=''):
     out = []
     for p in liste:
         links = '<br>'.join(f'<a class="textlink" href="{l["url"]}" target="_blank" rel="noopener">{esc(l["text"])} ↗</a>' for l in p.get('links', []))
         web = f'\n    <div><dt>Website</dt><dd>{links}</dd></div>' if links else ''
+        f = p.get('film')
+        film = (f'\n    <div class="referenz-film"><dt class="unsichtbar">Film</dt><dd><button type="button" class="film-knopf" data-film="{pre}{f["datei"]}" data-titel="{html.escape(f["titel"])}" aria-label="{html.escape(f["titel"])} ansehen">'
+                f'<img src="{pre}{f["vorschau"]}" alt="" width="960" height="540" loading="lazy"><span class="film-play" aria-hidden="true"></span></button></dd></div>') if f else ''
         out.append(f'''<details class="referenz">
   <summary><span class="referenz-name">{esc(p["name"])}</span><span class="referenz-zeichen" aria-hidden="true"></span></summary>
-  <dl class="referenz-fakten">
+  <dl class="referenz-fakten{' mit-film' if p.get('film') else ''}">{film}
     <div><dt>Branche</dt><dd>{esc(p["branche"])}</dd></div>
     <div><dt>Zeitraum</dt><dd>{esc(p["zeitraum"])}</dd></div>
     <div><dt>Leistungen</dt><dd>{esc(p["leistungen"])}</dd></div>{web}

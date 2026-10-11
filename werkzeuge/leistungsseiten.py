@@ -98,10 +98,10 @@ def nicht_enthalten(c):
     return f'<div class="lsx-nicht"><p class="meta">Nicht enthalten</p><ul>{li}</ul></div>'
 
 
-def referenzen(tag):
+def referenzen(tag, pre):
     liste = I.mit_tag(I.PROJEKTE, [tag])
     if not liste: return ''
-    return '  <section class="lsx-referenzen" id="referenzen" aria-labelledby="referenzen-titel">\n    <p class="meta">Referenzen</p>\n    <h2 class="gr-h3" id="referenzen-titel">Projekte aus diesem Bereich</h2>\n    <div class="referenzen">\n' + I.projekte(liste) + '\n    </div>\n  </section>'
+    return '  <section class="lsx-referenzen" id="referenzen" aria-labelledby="referenzen-titel">\n    <p class="meta">Referenzen</p>\n    <h2 class="gr-h3" id="referenzen-titel">Projekte aus diesem Bereich</h2>\n    <div class="referenzen">\n' + I.projekte(liste, pre) + '\n    </div>\n  </section>'
 
 
 def artikel(pre, tag):
@@ -177,7 +177,7 @@ def seite(key, c):
 
 {stimmen(pre, c['tag'])}
 
-{referenzen(c['tag'])}
+{referenzen(c['tag'], pre)}
 
 {direkt(pre)}
 
@@ -218,7 +218,7 @@ def seite(key, c):
     ld = json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, indent=2)
     t = re.sub(r'<script type="application/ld\+json">.*?</script>', lambda m: f'<script type="application/ld+json">\n{ld}\n  </script>', t, count=1, flags=re.S)
     if 'zaehlen.js' not in t:
-        t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v=20261012l" defer></script>\n</body>', 1)
+        t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v=20261012m" defer></script>\n</body>', 1)
     pfad.write_text(t, encoding='utf-8')
     print('geschrieben:', c['pfad'])
 

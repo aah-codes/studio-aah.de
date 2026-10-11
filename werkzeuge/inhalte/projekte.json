@@ -13,7 +13,12 @@
     "url": "https://bauer-ingbau.de",
     "text": "bauer-ingbau.de"
    }
-  ]
+  ],
+  "film": {
+   "datei": "videos/launchvideo-bauer.mp4",
+   "vorschau": "bilder/film-bauer-vorschau.jpg",
+   "titel": "Launch-Film: die neue Website von Wolfgang Bauer Ingenieurbau"
+  }
  },
  {
   "name": "Dr. Simone Goldhammer",

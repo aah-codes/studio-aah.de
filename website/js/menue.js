@@ -67,3 +67,27 @@
   }, { rootMargin: '-35% 0px -60% 0px' });
   ziele.forEach((z) => beob.observe(z));
 })();
+
+// Film zu einer Referenz: Klick auf das Vorschaubild öffnet den Film groß in einem Fenster (Esc, Klick daneben oder × schließt)
+(() => {
+  const knoepfe = document.querySelectorAll('.film-knopf');
+  if (!knoepfe.length) return;
+  let dlg;
+  const zu = () => { const v = dlg.querySelector('video'); v.pause(); v.removeAttribute('src'); v.load(); dlg.close(); };
+  knoepfe.forEach((k) => k.addEventListener('click', () => {
+    if (!dlg) {
+      dlg = document.createElement('dialog');
+      dlg.className = 'film-dialog';
+      dlg.innerHTML = '<button type="button" class="film-zu" aria-label="Film schließen">×</button><video controls playsinline></video>';
+      document.body.appendChild(dlg);
+      dlg.querySelector('.film-zu').addEventListener('click', zu);
+      dlg.addEventListener('click', (e) => { if (e.target === dlg) zu(); });
+      dlg.addEventListener('cancel', (e) => { e.preventDefault(); zu(); });
+    }
+    const v = dlg.querySelector('video');
+    v.src = k.dataset.film;
+    v.setAttribute('aria-label', k.dataset.titel || 'Film');
+    dlg.showModal();
+    v.play().catch(() => {});
+  }));
+})();
