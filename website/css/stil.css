@@ -1092,10 +1092,10 @@ html { scroll-padding-top: calc(var(--kopf-hoehe) + 72px); }
 .intro-text { max-width: 640px; }
 .intro-text .gr-h2 { margin: 12px 0 32px; }
 .intro-brief p { font-size: clamp(18px, 1.35vw, 21px); line-height: 1.6; margin: 0 0 1.1em; }
-.intro-gruss { display: flex; align-items: flex-end; gap: 24px; margin: 40px 0; }
+.intro-gruss { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin: 40px 0; }
 .intro-gruss p { margin: 0; }
 /* Platzhalter, bis Annas eingescannte Unterschrift da ist */
-.intro-unterschrift { font-family: "Snell Roundhand", "Brush Script MT", cursive; font-size: 44px; line-height: 1; transform: rotate(-4deg); }
+.intro-unterschrift { font-family: "Bradley Hand", "Segoe Print", cursive; font-size: 40px; line-height: 1.2; transform: rotate(-3deg); margin: 4px 0 8px !important; }
 .intro-tools { border-top: 1px solid var(--farbe-rahmen); padding-top: 24px; margin-bottom: 24px; }
 .intro-tools .tools { margin: 16px 0 0; flex-wrap: nowrap; gap: 18px; }
 .intro-tools .tools img { max-width: 100%; }
@@ -1114,3 +1114,13 @@ html { scroll-padding-top: calc(var(--kopf-hoehe) + 72px); }
   .leistungs-chips { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
   .leistungs-chips::-webkit-scrollbar { display: none; }
 }
+
+/* ---------- 26. Zeilenabstand der Überschriften (Anna, 11.10.2026) ---------- */
+/* Kompakt, aber Umlaut-Punkte und Akzente dürfen die Zeile darüber nicht berühren (Anton: bei 1,0 stößt „Ä“ an „M“) */
+h1, h2, h3, .gr-xxl, .gr-xl, .gr-h2, .gr-klein, .gr-h3, .artikel h1, .mm-karte-titel, .fuss-karte-titel, .ls-karte-titel,
+.weg-ziel .gr-h2, .rechner-kopf .gr-h2, .preisseite .preis-h2, .preis-cta-kostenlos .gr-h2, .lp-titel { line-height: 1.12; }
+.hero-titel { line-height: 1.04; }
+/* Blog-Vorschaukarten: Titel ohne Unterstrich, etwas mehr Zeilenabstand */
+.blog-karte h3 { line-height: 1.15; margin: 0 0 .5rem; }
+.blog-karte h2 a, .blog-karte h3 a { text-decoration: none; color: inherit; }
+.blog-karte h3 a:hover { opacity: .6; }

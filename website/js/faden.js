@@ -8,7 +8,7 @@
   const linie = svg.querySelector('.faden-linie');
   const punkt = svg.querySelector('.faden-punkt');
   const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let laenge = 0, tabelle = [], gezeichnet = false;
+  let laenge = 0, tabelle = [], gezeichnet = false, zielY = 0;
 
 // Punkte: die Linie bleibt immer am rechten Rand (in der Hälfte des Seitenabstands, damit sie keine Inhalte kreuzt)
 // und biegt erst am Ende waagerecht in den Knopf „Projekt anfragen“ – sie endet knapp innerhalb des Knopfes.
@@ -52,6 +52,7 @@ function punkte() {
     if (!p) return;
     svg.setAttribute('width', main.clientWidth);
     svg.setAttribute('height', main.scrollHeight);
+    zielY = p[p.length - 1][1];
     linie.setAttribute('d', kurve(p));
     laenge = linie.getTotalLength();
     linie.style.strokeDasharray = `${laenge}`;
@@ -67,6 +68,12 @@ function punkte() {
   function zeichnen() {
     gezeichnet = false;
     if (!laenge) return;
+    // Hat sich der Knopf seit dem Aufbau verschoben (Zoom, Fenstergröße, Nachladen ohne Höhenänderung)? Dann neu aufbauen.
+    const knopf = main.querySelector('.weg-ziel-knopf');
+    if (knopf) {
+      const k = knopf.getBoundingClientRect();
+      if (k.top < innerHeight && Math.abs(k.top + k.height / 2 - main.getBoundingClientRect().top - zielY) > 2) { aufbauen(); return; }
+    }
     let l = laenge;
     if (!still) {
       const spitze = window.scrollY + window.innerHeight * 0.62 - (main.getBoundingClientRect().top + window.scrollY);
