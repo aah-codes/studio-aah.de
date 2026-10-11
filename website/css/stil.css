@@ -1740,3 +1740,6 @@ img.profil-bildtext-bild, .profil-bildtext-bild img { width: 100%; height: auto;
 .herz-svg text.herz-kern-t { font-family: var(--schrift-ueberschrift); font-size: 34px; letter-spacing: .9px; fill: var(--farbe-weiss); }
 .herz-svg text.herz-name { font-size: 17px; font-weight: 600; fill: var(--farbe-dunkel); }
 @media (max-width: 900px) { .herz-abschnitt { grid-template-columns: 1fr; gap: 24px; padding: 64px var(--rand-seite-mobil) 0; } .herz-svg text.herz-name { font-size: 20px; } }
+/* Erklärfilm, Fassung 6: Unterzeilen = Größe der Dachzeile (Anna 11.10.2026) */
+.ci-anim .ci-s { font-size: 12px; }
+.ci-hoch .ci-s { font-size: 19px; }
