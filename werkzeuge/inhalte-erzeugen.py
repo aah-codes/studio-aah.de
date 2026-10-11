@@ -201,6 +201,11 @@ def kennzahlen(klasse='fakten hero-fakten', einrueck='    '):
     return f'{einrueck}<dl class="{klasse}">\n' + '\n'.join(z) + f'\n{einrueck}</dl>'
 
 
+def oeko(pre):
+    # Grafik Website-Ökosystem (Quelle: werkzeuge/grafiken/website-oekosystem.html, dort für Leistungsseiten mit ../../ geschrieben)
+    return (basis / 'werkzeuge' / 'grafiken' / 'website-oekosystem.html').read_text(encoding='utf-8').replace('../../', pre).rstrip()
+
+
 def einsetzen(text, name, inhalt):
     neu, n = re.subn(rf'<!-- {name}:START -->.*?<!-- {name}:ENDE -->', lambda m: f'<!-- {name}:START -->\n{inhalt}\n<!-- {name}:ENDE -->', text, count=1, flags=re.S)
     if not n: raise SystemExit(f'Marker {name} fehlt')
@@ -212,7 +217,7 @@ if __name__ == '__main__':
         'index.html': [('PROJEKTE', lambda: referenz_karten(PROJEKTE, '', 'start')), ('FUERWEN', lambda: fuer_wen('')), ('STIMMEN', lambda: stimmen(STIMMEN, '')),
                        ('BLOG', lambda: blog(BLOG[:3], '', 'blog/')), ('KENNZAHLEN', lambda: kennzahlen())],
         'profil/index.html': [('STIMMEN', lambda: stimmen(STIMMEN, '../')), ('BLOG', lambda: blog(BLOG[:3], '../', '../blog/')),
-                              ('KENNZAHLEN', lambda: kennzahlen('fakten', '      '))],
+                              ('KENNZAHLEN', lambda: kennzahlen('fakten', '      ')), ('OEKO', lambda: oeko('../'))],
         'blog/index.html': [('BLOG', lambda: blog(BLOG, '../', '', 'h2'))],
     }
     for datei, teile in seiten.items():
