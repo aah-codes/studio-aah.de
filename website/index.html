@@ -15,7 +15,7 @@
   <meta property="og:description" content="Design Studio aus Leipzig: Anna Härtelt begleitet Unternehmen und Selbstständige bei Branding, Webdesign, UX/UI-Design und der Einführung von KI.">
   <meta property="og:url" content="https://studio-aah.de/">
   <meta property="og:image" content="https://studio-aah.de/bilder/vorschaubild.jpg">
-  <link rel="stylesheet" href="css/stil.css?v=20261011l">
+  <link rel="stylesheet" href="css/stil.css?v=20261011m">
 </head>
 <body>
 <a class="sprunglink" href="#inhalt">Zum Inhalt springen</a>
@@ -87,7 +87,7 @@
   </details>
 </header>
 <div class="mm-schleier" hidden></div>
-<script src="js/menue.js?v=20261011l" defer></script>
+<script src="js/menue.js?v=20261011m" defer></script>
 <!-- /KOPF -->
 
 <main id="inhalt" class="mit-faden">
@@ -118,22 +118,31 @@
   </div>
   <div class="hero-text hero-unten">
     <p class="alt-h2">Branding, Websites, UX &amp; KI-Lösungen für Unternehmen &amp; Selbstständige</p>
-    <p><a class="textlink" href="service/">Zum Service</a></p>
+    <p><a class="textlink" href="#leistungen">Zu den Leistungen</a></p>
   </div>
-  <script src="js/hero.js?v=20261011l" defer></script>
-    <script src="js/faden.js?v=20261011l" defer></script>
+  <script src="js/hero.js?v=20261011m" defer></script>
+    <script src="js/faden.js?v=20261011m" defer></script>
 </section>
 
-  <section class="golden">
-    <div>
-      <img class="portraet" src="bilder/studio-aah-gruenderin-anna-haertelt.webp" alt="Anna Härtelt, Gründerin von STUDIO AAH!" width="250" height="250">
-    </div>
-    <div>
+  <section class="intro" aria-labelledby="intro-titel">
+    <figure class="intro-bild">
+      <img src="bilder/studio-aah-gruenderin-anna-haertelt.webp" alt="Anna Härtelt, Gründerin von STUDIO AAH!" width="768" height="1024">
+    </figure>
+    <div class="intro-text">
       <p class="meta">Anna Härtelt &amp; STUDIO AAH!</p>
-      <h2 class="gr-h2">Empathisch und rational – Design mit Weitblick</h2>
-      <p class="gedaempft">Ich bin Anna Härtelt — UX/UI-Designerin, Strategin und Gründerin von STUDIO AAH!. Ich begleite Unternehmen von der Strategie bis zur Umsetzung: Branding, Webdesign und -entwicklung, UX-Beratung sowie die Einführung von KI und digitalen Prozessen – alles aus einer Hand.</p>
-      <p class="meta">Tools</p>
-      <ul class="tools">
+      <h2 class="gr-h2" id="intro-titel">Empathisch und rational – Design mit Weitblick</h2>
+      <div class="intro-brief">
+        <p>Ich bin Anna Härtelt, UX/UI-Designerin, Strategin und Gründerin von STUDIO AAH!. Ich begleite Unternehmen und Selbstständige von der Strategie bis zur Umsetzung – alles aus einer Hand.</p>
+        <p>Bevor ich gestalte, höre ich genau zu: Wer sind Sie, was wollen Sie, wen wollen Sie erreichen? Erst dann entsteht etwas, das trägt – klar, verständlich und so, wie Sie wirklich sind.</p>
+        <p>Mir ist wichtig, dass Ihre Projekte glänzen – nicht mein Stil. Und weil <a class="textlink" href="demokratie-braucht-sichtbarkeit/">Demokratie Sichtbarkeit braucht</a>, gestalte ich auch kostenfrei für Vereine, Kunst und Kultur.</p>
+      </div>
+      <div class="intro-gruss">
+        <p class="intro-unterschrift" aria-hidden="true">Anna Härtelt</p>
+        <p><strong>Anna Härtelt</strong><br><span class="gedaempft">Gründerin STUDIO AAH!</span></p>
+      </div>
+      <div class="intro-tools">
+        <p class="meta">Damit arbeite ich</p>
+        <ul class="tools">
         <li><img src="bilder/figma-logo.png" alt="Figma" width="48" height="48"></li>
         <li><img class="tool-klein" src="bilder/webflow-logo.png" alt="Webflow" width="192" height="48"></li>
         <li><img class="tool-gross" src="bilder/wordpress-logo.png" alt="WordPress" width="165" height="48"></li>
@@ -141,8 +150,30 @@
         <li><img src="bilder/github-logo.svg" alt="GitHub" width="48" height="48"></li>
         <li><img src="bilder/claude-logo.svg" alt="Claude" width="48" height="48"></li>
       </ul>
-      <p><a class="textlink" href="profil/">Mehr Details</a></p>
+      </div>
+      <p><a class="textlink" href="profil/">Mehr über mich</a></p>
     </div>
+  </section>
+
+
+<!-- LEISTUNGEN:START -->
+  <section class="start-leistungen" aria-labelledby="leistungen">
+    <div class="sektionskopf"><p class="meta">Was ich mache</p><h2 class="gr-xxl" id="leistungen">Leistungen</h2></div>
+    <nav class="leistungs-chips" aria-label="Leistungen"><a href="#k-brand">Brand</a><a href="#k-ui-ux">UI/UX</a><a href="#k-website">Website</a><a href="#k-marketing">Marketing &amp; Vertrieb</a><a href="#k-print">Print</a><a href="#k-illustration">Illustration &amp; Infografik</a><a href="#k-motion">Motion Design</a><a href="#k-retainer">Retainer</a><a href="#k-ki">KI &amp; Digitalisierung</a><a href="preise/#rechner">Kostenrechner →</a></nav>
+    <div class="ls-raster"><a class="ls-karte" href="service/brand/" id="k-brand"><img src="bilder/leistung-brand.webp" alt="" loading="lazy"><span class="ls-karte-titel">Brand</span><span class="ls-karte-text">Eine unverwechselbare Markenidentität, die bei Ihrer Zielgruppe wirklich ankommt – klar, glaubwürdig und zukunftsorientiert.</span></a><a class="ls-karte" href="service/ui-ux/" id="k-ui-ux"><img src="bilder/leistung-uiux.webp" alt="" loading="lazy"><span class="ls-karte-titel">UI/UX</span><span class="ls-karte-text">Digitale Erlebnisse, die Nutzer:innen verstehen – vom Expert Review bis zum Designsystem für Webanwendungen, SaaS und Apps.</span></a><a class="ls-karte" href="service/website/" id="k-website"><img src="bilder/leistung-website.webp" alt="" loading="lazy"><span class="ls-karte-titel">Website</span><span class="ls-karte-text">Klares Design mit technischer Präzision – individuell, responsiv und auf Ihre Ziele ausgerichtet.</span></a><a class="ls-karte" href="service/marketing-vertrieb/" id="k-marketing"><img src="bilder/leistung-marketing.jpg" alt="" loading="lazy"><span class="ls-karte-titel">Marketing &amp; Vertrieb</span><span class="ls-karte-text">Sichtbar werden, wo Ihre Kund:innen sind – mit klarer Positionierung und Inhalten, die zu Ihnen passen.</span></a><a class="ls-karte" href="preise/#r-print" id="k-print"><img src="bilder/leistung-print.jpg" alt="" loading="lazy"><span class="ls-karte-titel">Print</span><span class="ls-karte-text">Professionelles Design für Gedrucktes – von der Visitenkarte bis zur Unternehmenspräsentation.</span></a><a class="ls-karte" href="preise/#r-zusatz" id="k-illustration"><img src="bilder/leistung-illustration.jpg" alt="" loading="lazy"><span class="ls-karte-titel">Illustration &amp; Infografik</span><span class="ls-karte-text">Illustrationen, Icons und Infografiken, die komplexe Inhalte auf einen Blick verständlich machen.</span></a><a class="ls-karte" href="preise/#r-zusatz" id="k-motion"><img src="bilder/leistung-motion.jpg" alt="" loading="lazy"><span class="ls-karte-titel">Motion Design</span><span class="ls-karte-text">Bewegte Grafiken und Animationen für Website, Social Media und Präsentationen.</span></a><a class="ls-karte" href="kontakt/" id="k-retainer"><img src="bilder/leistung-retainer.jpg" alt="" loading="lazy"><span class="ls-karte-titel">Retainer</span><span class="ls-karte-text">Laufende Betreuung zum festen Monatsbetrag: Ich pflege Website, Inhalte und Design – Sie haben eine feste Ansprechpartnerin.</span></a><a class="ls-karte" href="service/ki-digitalisierung/" id="k-ki"><img src="bilder/leistung-ki.jpg" alt="" loading="lazy"><span class="ls-karte-titel">KI &amp; Digitalisierung</span><span class="ls-karte-text">KI-Check und Beratung: welche KI Ihrem Unternehmen im Alltag wirklich hilft.</span></a></div>
+  </section>
+<!-- LEISTUNGEN:ENDE -->
+
+  <section class="prozess-kompakt" aria-labelledby="prozess">
+    <p class="meta">Wie ich arbeite</p>
+    <h2 class="preis-h2" id="prozess">Prozess</h2>
+    <ol class="pz-schritte">
+      <li><span class="pz-nr">01</span><span class="meta">Strategie</span><h3>Verstehen, was Sie wirklich brauchen.</h3><p class="gedaempft">Ziele, Vision, Zielgruppe – ich höre genau zu.</p></li>
+      <li><span class="pz-nr">02</span><span class="meta">Design</span><h3>Ideen schmieden, die wirken.</h3><p class="gedaempft">Wireframe, Prototyp oder Mockup – Sie geben Feedback, wir feilen weiter.</p></li>
+      <li><span class="pz-nr">03</span><span class="meta">Entwicklung</span><h3>Aus Ideen wird Wirklichkeit.</h3><p class="gedaempft">Umsetzung mit modernen Technologien, präzise und performant.</p></li>
+      <li><span class="pz-nr">04</span><span class="meta">Launch &amp; Support</span><h3>Reibungsloser Launch.</h3><p class="gedaempft">Ihre Website geht live – und ich bleibe an Ihrer Seite.</p></li>
+    </ol>
+    <p><a class="button" href="kontakt/">Projekt anfragen <span aria-hidden="true">→</span></a></p>
   </section>
 
   <section aria-labelledby="referenzen-titel" id="referenzen">
@@ -199,80 +230,6 @@
     <div><dt>Website</dt><dd><a class="textlink" href="https://janavoigtmann.de" target="_blank" rel="noopener">janavoigtmann.de ↗</a></dd></div>
   </dl>
 </details>
-    </div>
-  </section>
-
-  <section aria-labelledby="leistungen">
-    <div class="sektionskopf">
-      <div class="sektionskopf-zeile">
-        <p class="meta">Was ich mache</p>
-      </div>
-      <h2 class="gr-xxl" id="leistungen">Leistungen</h2>
-      <p class="alt-klein">für Menschen, für Marken, für morgen.</p>
-    </div>
-
-    <div class="leistung">
-      <div class="leistung-bild"><img src="bilder/leistung-brand.webp" alt="" width="768" height="960" loading="lazy"></div>
-      <div class="leistung-text hg-hellgrau">
-        <h3 class="gr-klein">Brand<br>Strategie</h3>
-        <p class="alt-h3">Wirkungsvolle Marken, die Wachstum und Erfolg vorantreiben.</p>
-        <p><a class="textlink" href="service/">Zum Service →</a></p>
-        <p class="meta">Branding Leistungen</p>
-        <ul class="liste">
-          <li class="alt-h5">Markenanalyse</li>
-          <li class="alt-h5">Markenpositionierung</li>
-          <li class="alt-h5">Visual Identity Design</li>
-          <li class="alt-h5">Brand Guidelines</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="leistung">
-      <div class="leistung-text">
-        <h3 class="gr-klein">Website<br>Design</h3>
-        <p class="alt-h3">Individuelle &amp; responsive Websites, die Nutzer begeistern und Conversions steigern.</p>
-        <p><a class="textlink" href="service/">Zum Service →</a></p>
-        <p class="meta">Website Services</p>
-        <ul class="liste">
-          <li class="alt-h5">Website Design</li>
-          <li class="alt-h5">Website Support</li>
-          <li class="alt-h5">Webflow</li>
-          <li class="alt-h5">WordPress</li>
-        </ul>
-      </div>
-      <div class="leistung-bild"><img src="bilder/leistung-website.webp" alt="" width="768" height="960" loading="lazy"></div>
-    </div>
-
-    <div class="leistung">
-      <div class="leistung-bild"><img src="bilder/leistung-uiux.webp" alt="" width="768" height="1152" loading="lazy"></div>
-      <div class="leistung-text hg-hellgrau">
-        <h3 class="gr-klein">UI/UX<br>Design</h3>
-        <p class="alt-h3">Nutzerfreundliche Interfaces für Websites und Software – intuitiv, ästhetisch und auf die Bedürfnisse der Anwender:innen zugeschnitten.</p>
-        <p><a class="textlink" href="service/">Zum Service →</a></p>
-        <p class="meta">UI/UX Services</p>
-        <ul class="liste">
-          <li class="alt-h5">User Research</li>
-          <li class="alt-h5">Wireframing</li>
-          <li class="alt-h5">Prototyping</li>
-          <li class="alt-h5">UX Audits</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="leistung">
-      <div class="leistung-text">
-        <h3 class="gr-klein">KI &amp;<br>Digitalisierung</h3>
-        <p class="alt-h3">Künstliche Intelligenz und digitale Prozesse, die im Alltag wirklich entlasten – verständlich eingeführt und passend zu Ihrem Unternehmen.</p>
-        <p><a class="textlink" href="service/">Zum Service →</a></p>
-        <p class="meta">KI-Leistungen</p>
-        <ul class="liste">
-          <li class="alt-h5">KI-Implementierung</li>
-          <li class="alt-h5">Digitale Prozesse</li>
-          <li class="alt-h5">Tool-Auswahl</li>
-          <li class="alt-h5">Schulung &amp; Begleitung</li>
-        </ul>
-      </div>
-      <div class="leistung-bild"><img src="bilder/prozess-aha.jpg" alt="" width="768" height="1116" loading="lazy"></div>
     </div>
   </section>
 

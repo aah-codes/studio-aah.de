@@ -1083,3 +1083,34 @@ html { scroll-padding-top: calc(var(--kopf-hoehe) + 72px); }
   .pz-nr { position: absolute; left: 0; top: 0; }
   .glossar { padding-bottom: 80px; }
 }
+
+/* ---------- 25. Startseite neu: Vorstellung im Magazin-Stil, Leistungen mit Chips ---------- */
+/* Vorstellung: Foto links (bleibt beim Scrollen stehen), rechts Brief mit Unterschrift, darunter Werkzeuge */
+.intro { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 64px; align-items: start; padding: 120px var(--rand-seite) 96px; }
+.intro-bild { margin: 0; position: sticky; top: calc(var(--kopf-hoehe) + 32px); }
+.intro-bild img { width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 20px; display: block; }
+.intro-text { max-width: 640px; }
+.intro-text .gr-h2 { margin: 12px 0 32px; }
+.intro-brief p { font-size: clamp(18px, 1.35vw, 21px); line-height: 1.6; margin: 0 0 1.1em; }
+.intro-gruss { display: flex; align-items: flex-end; gap: 24px; margin: 40px 0; }
+.intro-gruss p { margin: 0; }
+/* Platzhalter, bis Annas eingescannte Unterschrift da ist */
+.intro-unterschrift { font-family: "Snell Roundhand", "Brush Script MT", cursive; font-size: 44px; line-height: 1; transform: rotate(-4deg); }
+.intro-tools { border-top: 1px solid var(--farbe-rahmen); padding-top: 24px; margin-bottom: 24px; }
+.intro-tools .tools { margin: 16px 0 0; flex-wrap: nowrap; gap: 18px; }
+.intro-tools .tools img { max-width: 100%; }
+
+/* Leistungen: Chips springen zur Karte */
+.start-leistungen .sektionskopf { padding-bottom: 24px; }
+.leistungs-chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 var(--rand-seite) 24px; }
+.leistungs-chips a { padding: 6px 14px; border-radius: 999px; border: 1px solid var(--farbe-rahmen); font-size: 14px; font-weight: 600; text-decoration: none; color: inherit; white-space: nowrap; transition: border-color .2s, background .2s, color .2s; }
+.leistungs-chips a:hover { border-color: var(--farbe-dunkel); }
+.leistungs-chips a:last-child { background: var(--farbe-dunkel); border-color: var(--farbe-dunkel); color: var(--farbe-weiss); }
+.ls-karte { scroll-margin-top: calc(var(--kopf-hoehe) + 24px); }
+@media (max-width: 900px) {
+  .intro { grid-template-columns: minmax(0, 1fr); gap: 32px; padding: 72px var(--rand-seite) 64px; }
+  .intro-bild { position: static; max-width: 360px; }
+  .intro-tools .tools { flex-wrap: wrap; }
+  .leistungs-chips { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+  .leistungs-chips::-webkit-scrollbar { display: none; }
+}

@@ -413,6 +413,14 @@ window.PREISE = {
      "wer": "sehr individuell – wir klären es im Erstgespräch",
      "items": [],
      "ab": true
+    },
+    {
+     "id": "retainer",
+     "name": "Retainer – laufende Betreuung",
+     "anfrage": true,
+     "wer": "Fester Monatsbetrag: Ich pflege Website, Inhalte und Design laufend.",
+     "items": [],
+     "ab": true
     }
    ]
   }

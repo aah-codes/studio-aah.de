@@ -458,6 +458,14 @@
      "wer": "sehr individuell – wir klären es im Erstgespräch",
      "items": [],
      "ab": true
+    },
+    {
+     "id": "retainer",
+     "name": "Retainer – laufende Betreuung",
+     "anfrage": true,
+     "wer": "Fester Monatsbetrag: Ich pflege Website, Inhalte und Design laufend.",
+     "items": [],
+     "ab": true
     }
    ],
    "intro": "Illustrationen, Infografiken und Bewegtbild – sehr individuell, deshalb klären wir sie im Erstgespräch.",
@@ -505,5 +513,70 @@
    "Wireframe, Prototyp",
    "Wireframe = einfacher Bauplan einer Seite. Prototyp = klickbarer Entwurf, bevor programmiert wird."
   ]
+ ],
+ "startseite": [
+  {
+   "id": "brand",
+   "titel": "Brand",
+   "bild": "bilder/leistung-brand.webp",
+   "link": "service/brand/",
+   "text": "Eine unverwechselbare Markenidentität, die bei Ihrer Zielgruppe wirklich ankommt – klar, glaubwürdig und zukunftsorientiert."
+  },
+  {
+   "id": "ui-ux",
+   "titel": "UI/UX",
+   "bild": "bilder/leistung-uiux.webp",
+   "link": "service/ui-ux/",
+   "text": "Digitale Erlebnisse, die Nutzer:innen verstehen – vom Expert Review bis zum Designsystem für Webanwendungen, SaaS und Apps."
+  },
+  {
+   "id": "website",
+   "titel": "Website",
+   "bild": "bilder/leistung-website.webp",
+   "link": "service/website/",
+   "text": "Klares Design mit technischer Präzision – individuell, responsiv und auf Ihre Ziele ausgerichtet."
+  },
+  {
+   "id": "marketing",
+   "titel": "Marketing & Vertrieb",
+   "bild": "bilder/leistung-marketing.jpg",
+   "link": "service/marketing-vertrieb/",
+   "text": "Sichtbar werden, wo Ihre Kund:innen sind – mit klarer Positionierung und Inhalten, die zu Ihnen passen."
+  },
+  {
+   "id": "print",
+   "titel": "Print",
+   "bild": "bilder/leistung-print.jpg",
+   "link": "preise/#r-print",
+   "text": "Professionelles Design für Gedrucktes – von der Visitenkarte bis zur Unternehmenspräsentation."
+  },
+  {
+   "id": "illustration",
+   "titel": "Illustration & Infografik",
+   "bild": "bilder/leistung-illustration.jpg",
+   "link": "preise/#r-zusatz",
+   "text": "Illustrationen, Icons und Infografiken, die komplexe Inhalte auf einen Blick verständlich machen."
+  },
+  {
+   "id": "motion",
+   "titel": "Motion Design",
+   "bild": "bilder/leistung-motion.jpg",
+   "link": "preise/#r-zusatz",
+   "text": "Bewegte Grafiken und Animationen für Website, Social Media und Präsentationen."
+  },
+  {
+   "id": "retainer",
+   "titel": "Retainer",
+   "bild": "bilder/leistung-retainer.jpg",
+   "link": "kontakt/",
+   "text": "Laufende Betreuung zum festen Monatsbetrag: Ich pflege Website, Inhalte und Design – Sie haben eine feste Ansprechpartnerin."
+  },
+  {
+   "id": "ki",
+   "titel": "KI & Digitalisierung",
+   "bild": "bilder/leistung-ki.jpg",
+   "link": "service/ki-digitalisierung/",
+   "text": "KI-Check und Beratung: welche KI Ihrem Unternehmen im Alltag wirklich hilft."
+  }
  ]
 }
