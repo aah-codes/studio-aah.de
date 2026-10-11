@@ -1675,3 +1675,4 @@ ul.profil-kunst-quellen { list-style: none; padding: 0; }
 .ci-film.ruhe .ci-schweben { animation-play-state: paused; }
 .ks.pause .rk-browser img, .ks.pause .rk-handy img, .ks.pause .rk-objekt img { animation-play-state: paused; }
 .rk-einzeln .rk-browser img, .rk-einzeln .rk-handy img, .rk-einzeln .rk-objekt img { animation-iteration-count: 2; }
+.lsx-duo-icon { filter: grayscale(1); }
