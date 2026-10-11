@@ -25,6 +25,7 @@ def karten(g):
         {'<p class="lsx-badge">Gefragt</p>' if e.get('gefragt') else ''}<h3 class="lsx-karte-name">{esc(e['name'])}</h3>
         <p class="lsx-karte-preis">{preis(e)}</p>
         {f'<p class="lsx-karte-wer">{esc(e["wer"])}</p>' if e.get('wer') else ''}
+        {f'<p class="lsx-karte-dauer"><span class="meta">Dauer</span> {esc(e["dauer"])}</p>' if e.get('dauer') else ''}
         {f'<p class="lsx-karte-plus">{esc(e["plus"])}</p>' if e.get('plus') else ''}<ul class="lsx-karte-liste">{liste}</ul>
       </article>''')
     return '\n'.join(out)
@@ -50,8 +51,10 @@ def vergleich(g):
     JA = '<span class="lsx-ja" aria-label="enthalten">✓</span>'
     NEIN = '<span class="lsx-nein" aria-label="nicht enthalten">–</span>'
     rumpf = ''.join('<tr><th scope="row">' + esc(x) + '</th>' + ''.join('<td>' + (JA if zelle(i, x) else NEIN) + '</td>' for i in range(len(pakete))) + '</tr>' for x in zeilen)
-    return f'''  <section class="lsx-vergleich" aria-labelledby="vergleich">
-    <h2 class="gr-h3" id="vergleich">Vergleich</h2>
+    if any(e.get('dauer') for e in pakete):
+        rumpf = '<tr><th scope="row">Dauer</th>' + ''.join('<td>' + esc(e.get('dauer', '–')) + '</td>' for e in pakete) + '</tr>' + rumpf
+    return f'''  <section class="lsx-vergleich" id="vergleich" aria-labelledby="vergleich-titel">
+    <h2 class="gr-h3" id="vergleich-titel">Vergleich</h2>
     <div class="lsx-tabelle-rahmen"><table class="lsx-tabelle"><thead><tr><th scope="col">Leistung</th>{kopf}</tr></thead><tbody>{rumpf}</tbody></table></div>
   </section>'''
 
@@ -60,8 +63,8 @@ def extras(g):
     ex = [e for e in g.get('extras', [])]
     if not ex: return ''
     li = ''.join(f'<li><span class="lsx-extra-name">{esc(e["name"])}</span><span class="lsx-extra-text">{esc(e.get("kurz") or e.get("wer") or "")}</span><span class="lsx-extra-preis">{preis(e)}</span></li>' for e in ex)
-    return f'''  <section class="lsx-extras" aria-labelledby="extras">
-    <h2 class="gr-h3" id="extras">Zusatzleistungen</h2>
+    return f'''  <section class="lsx-extras" id="extras" aria-labelledby="extras-titel">
+    <h2 class="gr-h3" id="extras-titel">Zusatzleistungen</h2>
     <ul class="lsx-extra-liste">{li}</ul>
   </section>'''
 
@@ -103,8 +106,9 @@ def seite(key, c):
     <p class="meta"><a href="{pre}#leistungen">Leistungen</a> / {esc(c['titel'])}</p>
     <h1 class="gr-xxl"><span class="wort-mit-icon">{esc(c['titel'])}<img class="icon-3d" src="{pre}{c['icon']}" alt="" width="400" height="400"></span></h1>
     <p class="alt-klein">{esc(g['intro'])}</p>
-    <nav class="leistungs-chips lsx-chips" aria-label="Auf dieser Seite"><a href="#loesung">Problem &amp; Lösung</a><a href="#pakete">Pakete</a>{'<a href="#vergleich">Vergleich</a>' if len(g['pakete']) > 1 else ''}{'<a href="#extras">Zusatzleistungen</a>' if g.get('extras') else ''}<a href="#ablauf">Ablauf</a><a href="#faq">Fragen</a><a href="{pre}preise/#r-{g['id']}">Kostenrechner →</a></nav>
   </section>
+
+  <nav class="leistungs-chips lsx-chips" aria-label="Auf dieser Seite"><a href="#loesung">Problem &amp; Lösung</a><a href="#pakete">Pakete</a>{'<a href="#vergleich">Vergleich</a>' if len(g['pakete']) > 1 else ''}{'<a href="#extras">Zusatzleistungen</a>' if g.get('extras') else ''}<a href="#ablauf">Ablauf</a><a href="#faq">Fragen</a><a href="{pre}preise/#r-{g['id']}">Kostenrechner →</a></nav>
 
   <section class="lsx-loesung" id="loesung" aria-labelledby="loesung-titel">
     <div class="lsx-loesung-text">
@@ -119,9 +123,9 @@ def seite(key, c):
     </div>
   </section>
 
-  <section class="lsx-pakete" aria-labelledby="pakete">
+  <section class="lsx-pakete" id="pakete" aria-labelledby="pakete-titel">
     <p class="meta">Pakete</p>
-    <h2 class="gr-h3" id="pakete">Pakete im Überblick</h2>
+    <h2 class="gr-h3" id="pakete-titel">Pakete im Überblick</h2>
     {f'<p class="lsx-hinweis">{esc(g["hinweis"])}</p>' if g.get('hinweis') else ''}
     <div class="lsx-karten">
 {karten(g)}
@@ -145,8 +149,8 @@ def seite(key, c):
     <a class="button" href="{pre}preise/#r-{g['id']}">Zum Kostenrechner <span aria-hidden="true">→</span></a>
   </section>
 
-  <section class="faq" aria-labelledby="faq">
-    <h2 class="gr-h2" id="faq">Häufige Fragen</h2>
+  <section class="faq" id="faq" aria-labelledby="faq-titel">
+    <h2 class="gr-h2" id="faq-titel">Häufige Fragen</h2>
     <div class="faq-liste">
 {faq}    </div>
     <p class="faq-mehr">Noch Fragen? Ich freue mich auf Ihre Nachricht. <a class="textlink" href="{pre}kontakt/">Kontakt</a></p>

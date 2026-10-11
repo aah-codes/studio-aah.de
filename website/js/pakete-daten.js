@@ -155,7 +155,8 @@ window.PREISE = {
       "Schulung zur Selbstpflege: als Zusatz buchbar"
      ],
      "launch": true,
-     "ab": true
+     "ab": true,
+     "dauer": "4–6 Wochen"
     },
     {
      "id": "website",
@@ -172,7 +173,8 @@ window.PREISE = {
      ],
      "gefragt": true,
      "launch": true,
-     "ab": true
+     "ab": true,
+     "dauer": "3–4 Monate, je nach Umfang bis 6 Monate"
     }
    ],
    "extras": [

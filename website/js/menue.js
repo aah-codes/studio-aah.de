@@ -50,3 +50,20 @@
       .finally(() => { meldung.hidden = false; knopf.disabled = false; });
   });
 })();
+
+// Sprungmarken auf Leistungsseiten: markiert den Abschnitt, in dem man gerade ist (schiebt nur die Leiste, nie die Seite)
+(() => {
+  const leiste = document.querySelector('.lsx-chips');
+  if (!leiste || !('IntersectionObserver' in window)) return;
+  const links = [...leiste.querySelectorAll('a[href^="#"]')];
+  const ziele = links.map((a) => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  const beob = new IntersectionObserver((eintraege) => {
+    eintraege.forEach((e) => {
+      if (!e.isIntersecting) return;
+      links.forEach((a) => a.classList.toggle('aktiv', a.getAttribute('href') === `#${e.target.id}`));
+      const aktiv = links.find((a) => a.classList.contains('aktiv'));
+      if (aktiv && leiste.scrollWidth > leiste.clientWidth) leiste.scrollTo({ left: aktiv.offsetLeft - 16, behavior: 'smooth' });
+    });
+  }, { rootMargin: '-35% 0px -60% 0px' });
+  ziele.forEach((z) => beob.observe(z));
+})();
