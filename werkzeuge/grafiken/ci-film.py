@@ -28,9 +28,9 @@ def zeichnung(key, t0):
                 f'<g {z(t0 + .8, "hoch")}><rect x="-1.5" y="-28" width="3" height="20" class="ci-f"/><path d="M1.5 -28h15l-15 11z" class="ci-blau"/></g>')
     if key == 'communication':   # Sprechblasen im Wechsel
         return (f'<g {z(t0, "pop")}><rect x="-32" y="-22" width="30" height="18" class="ci-grau"/><path d="M-27 -4v7l7-7z" class="ci-grau"/></g>'
-                f'<g {z(t0 + .3)}><rect x="-27" y="-17" width="18" height="3" class="ci-weiss"/><rect x="-27" y="-11" width="10" height="3" class="ci-weiss"/></g>'
+                f'<g {z(t0 + .3)}><rect x="-27" y="-17" width="18" height="3" class="ci-weiss"/><rect x="-27" y="-11" width="10" height="3" class="ci-blau"/></g>'
                 f'<g {z(t0 + .6, "pop")}><rect x="2" y="0" width="30" height="18" class="ci-f"/><path d="M27 18v7l-7-7z" class="ci-f"/></g>'
-                f'<g {z(t0 + .9)}><rect x="7" y="5" width="18" height="3" class="ci-weiss"/><rect x="7" y="11" width="11" height="3" class="ci-blau"/></g>')
+                f'<g {z(t0 + .9)}><rect x="7" y="5" width="18" height="3" class="ci-weiss"/><rect x="7" y="11" width="11" height="3" class="ci-weiss"/></g>')
     if key == 'behaviour':   # zwei Menschen kommen zusammen, Verbindung entsteht
         figur = lambda x, k: f'<circle cx="{x}" cy="-8" r="6.5" class="{k}"/><path d="M{x - 10} 18a10 10 0 0 1 20 0z" class="{k}"/>'
         return (f'<g {z(t0, "links")}>{figur(-20, "ci-grau")}</g><g {z(t0, "rechts")}>{figur(20, "ci-f")}</g>'
@@ -43,8 +43,8 @@ def zeichnung(key, t0):
                 f'<g {z(t0 + .7)}><rect x="-32" y="20" width="64" height="3" class="ci-f"/></g>')
     if key == 'image':   # das Auge öffnet sich
         return (f'<g {z(t0, "blick")}><path d="M-22 0s9-13 22-13S22 0 22 0 13 13 0 13-22 0-22 0z" class="ci-grau"/></g>'
-                f'<g {z(t0 + .25, "pop")}><circle r="8.5" class="ci-f"/></g>'
-                f'<g {z(t0 + .45, "pop")}><circle r="3.5" class="ci-blau"/></g>')
+                f'<g {z(t0 + .25, "pop")}><circle r="8.5" class="ci-blau"/></g>'
+                f'<g {z(t0 + .45, "pop")}><circle r="3.5" class="ci-f"/></g>')
     return ''
 
 
