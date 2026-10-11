@@ -1949,3 +1949,6 @@ img.profil-bildtext-bild, .profil-bildtext-bild img { width: 100%; height: auto;
 .intro-links { position: sticky; top: calc(var(--kopf-hoehe) + 32px); }
 .intro-rechts { padding-top: 8px; }
 @media (max-width: 900px) { .intro { grid-template-columns: 1fr; gap: 8px; } .intro-links { position: static; } }
+/* Referenzen: Website-Screenshots scrollen schneller (Anna 11.10.2026), passend zu 7 s je Karte */
+.rk-browser img { animation-duration: 9s; }
+.rk-handy img { animation-duration: 10s; }
