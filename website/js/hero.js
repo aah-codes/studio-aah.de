@@ -1,6 +1,6 @@
 // Hero: Bildband mit Projekten, das auf die Maus reagiert.
 // Maus links/rechts im Hero = Band läuft in diese Richtung (je weiter außen, desto schneller); über den Bildern langsamer.
-// Bilder nahe am Mauszeiger werden größer, heben sich und kippen leicht; die anderen treten zurück.
+// Bilder nahe am Mauszeiger werden größer, heben sich und kippen leicht (alle bleiben voll farbig, Anna 11.10.2026).
 // Ziehen mit Maus oder Finger verschiebt das Band. Ohne Maus läuft es langsam von selbst.
 // Bei „Bewegung reduzieren“ steht das Band und lässt sich nur ziehen; ohne JavaScript steht es still.
 (() => {
