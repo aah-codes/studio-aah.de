@@ -2010,3 +2010,10 @@ section[hidden] { display: none !important; }
 .bauhaus-raster .bk { left: calc(var(--u) * (var(--c) + .45)); top: calc(var(--u) * (var(--r) + .45)); }
 .bauhaus-raster .bk-h { --f: var(--farbe-weiss); }
 .bauhaus-raster .bk-kq { background: radial-gradient(circle closest-side, var(--farbe-creme) 99%, var(--f) 100%); }
+/* Startseite Intro: beide Spalten oben und unten bündig – links bleibt stehen und endet mit der rechten Spalte (Anna 11.10.2026) */
+.intro { align-items: start; }
+.intro-rechts { padding-top: 0; }
+.intro-rechts > :first-child { margin-top: 0; }
+.intro-rechts > :last-child, .intro-rechts > :last-child a { margin-bottom: 0; }
+.intro-links > :last-child, .intro-links .intro-brief > p:last-child { margin-bottom: 0; }
+.intro-links .meta { margin-top: 0; }
