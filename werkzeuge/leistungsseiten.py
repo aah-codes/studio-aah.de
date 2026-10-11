@@ -1,12 +1,15 @@
 # Erzeugt die Leistungsunterseiten (service/…/index.html) aus werkzeuge/leistungen-inhalte.json (Texte, FAQ)
 # und werkzeuge/preise-daten.json (Pakete, Preise, Zusatzleistungen). Kopf und Fuß bleiben aus der bestehenden Seite erhalten.
 # Aufruf im Repository-Ordner:  python3 werkzeuge/leistungsseiten.py [id …]   (ohne id: alle)
-import html, json, pathlib, re, sys
+import html, importlib.util, json, pathlib, re, sys
 
 basis = pathlib.Path(__file__).resolve().parent.parent
 preise = json.loads((basis / 'werkzeuge' / 'preise-daten.json').read_text(encoding='utf-8'))
 inhalte = json.loads((basis / 'werkzeuge' / 'leistungen-inhalte.json').read_text(encoding='utf-8'))
 esc = lambda s: html.escape(s, quote=False)
+_spec = importlib.util.spec_from_file_location('inhalte', basis / 'werkzeuge' / 'inhalte-erzeugen.py')
+I = importlib.util.module_from_spec(_spec); _spec.loader.exec_module(I)
+GEMEINSAM = json.loads((basis / 'werkzeuge' / 'inhalte' / 'faq-gemeinsam.json').read_text(encoding='utf-8'))['faq']
 euro = lambda n: f"{n:,}".replace(',', '.') + '&nbsp;€'
 
 
@@ -79,18 +82,14 @@ def ablauf(pre):
     return '  ' + s.replace('<section class="prozess-kompakt"', '<section class="prozess-kompakt" id="ablauf"', 1)
 
 
-def stimmen(pre, namen):
-    if not namen: return ''
-    teile = re.findall(r'      <article class="stimme.*?</article>', START, re.S)
-    gew = [x for x in teile if any(n in x for n in namen)]
-    if not gew: return ''
-    gew = [x.replace('src="bilder/', f'src="{pre}bilder/') for x in gew]
-    return '  <section class="lsx-stimmen" aria-labelledby="stimmen-titel">\n    <p class="meta">Stimmen</p>\n    <h2 class="gr-h3" id="stimmen-titel">Das sagen Kundinnen und Kolleginnen</h2>\n    <div class="stimmen">\n' + '\n'.join(gew) + '\n    </div>\n  </section>'
+def stimmen(pre, tag):
+    liste = I.mit_tag(I.STIMMEN, [tag])[:3]
+    if not liste: return ''
+    return '  <section class="lsx-stimmen" aria-labelledby="stimmen-titel">\n    <p class="meta">Stimmen</p>\n    <h2 class="gr-h3" id="stimmen-titel">Das sagen Kundinnen und Kolleginnen</h2>\n    <div class="stimmen">\n' + I.stimmen(liste, pre) + '\n    </div>\n  </section>'
 
 
 def fakten(pre):
-    m = re.search(r'<dl class="fakten hero-fakten">.*?</dl>', START, re.S)
-    return m.group(0).replace('fakten hero-fakten', 'fakten lsx-fakten') if m else ''
+    return I.kennzahlen('fakten lsx-fakten', '    ')
 
 
 def nicht_enthalten(c):
@@ -99,12 +98,16 @@ def nicht_enthalten(c):
     return f'<div class="lsx-nicht"><p class="meta">Nicht enthalten</p><ul>{li}</ul></div>'
 
 
-def referenzen(namen):
-    if not namen: return ''
-    teile = re.findall(r'<details class="referenz">.*?</details>', START, re.S)
-    gew = [x for x in teile if any(n in x for n in namen)]
-    if not gew: return ''
-    return '  <section class="lsx-referenzen" id="referenzen" aria-labelledby="referenzen-titel">\n    <p class="meta">Referenzen</p>\n    <h2 class="gr-h3" id="referenzen-titel">Projekte aus diesem Bereich</h2>\n    <div class="referenzen">\n' + '\n'.join(gew) + '\n    </div>\n  </section>'
+def referenzen(tag):
+    liste = I.mit_tag(I.PROJEKTE, [tag])
+    if not liste: return ''
+    return '  <section class="lsx-referenzen" id="referenzen" aria-labelledby="referenzen-titel">\n    <p class="meta">Referenzen</p>\n    <h2 class="gr-h3" id="referenzen-titel">Projekte aus diesem Bereich</h2>\n    <div class="referenzen">\n' + I.projekte(liste) + '\n    </div>\n  </section>'
+
+
+def artikel(pre, tag):
+    liste = I.mit_tag(I.BLOG, [tag])[:3]
+    if not liste: return ''
+    return '  <section class="lsx-artikel blog-neu" id="artikel" aria-labelledby="artikel-titel">\n    <div class="lsx-artikel-kopf"><p class="meta">Blog</p><h2 class="gr-h3" id="artikel-titel">Passende Artikel</h2></div>\n    <ul class="blog-liste">\n' + I.blog(liste, pre, pre + 'blog/') + '\n    </ul>\n  </section>'
 
 
 def direkt(pre):
@@ -131,7 +134,7 @@ def seite(key, c):
         <summary>{esc(q)}</summary>
         <div class="faq-antwort"><p>{esc(a)}</p></div>
       </details>
-''' for q, a in c['faq'])
+''' for q, a in c['faq'] + GEMEINSAM)
     main = f'''<main id="inhalt">
 
   <section class="seitenkopf lsx-kopf">
@@ -141,7 +144,7 @@ def seite(key, c):
     {fakten(pre)}
   </section>
 
-  <nav class="preis-leiste lsx-chips" aria-label="Auf dieser Seite"><a href="#loesung">Problem &amp; Lösung</a><a href="#pakete">Pakete</a>{'<a href="#vergleich">Vergleich</a>' if len(g['pakete']) > 1 else ''}{'<a href="#extras">Zusatzleistungen</a>' if g.get('extras') else ''}<a href="#ablauf">Ablauf</a>{'<a href="#referenzen">Referenzen</a>' if c.get('referenzen') else ''}<a href="#faq">Fragen</a><a href="{pre}preise/#r-{g['id']}">Kostenrechner →</a></nav>
+  <nav class="preis-leiste lsx-chips" aria-label="Auf dieser Seite"><a href="#loesung">Problem &amp; Lösung</a><a href="#pakete">Pakete</a>{'<a href="#vergleich">Vergleich</a>' if len(g['pakete']) > 1 else ''}{'<a href="#extras">Zusatzleistungen</a>' if g.get('extras') else ''}<a href="#ablauf">Ablauf</a>{'<a href="#referenzen">Referenzen</a>' if I.mit_tag(I.PROJEKTE, [c['tag']]) else ''}{'<a href="#artikel">Artikel</a>' if I.mit_tag(I.BLOG, [c['tag']]) else ''}<a href="#faq">Fragen</a><a href="{pre}preise/#r-{g['id']}">Kostenrechner →</a></nav>
 
   <section class="lsx-loesung" id="loesung" aria-labelledby="loesung-titel">
     <div class="lsx-loesung-text">
@@ -172,9 +175,9 @@ def seite(key, c):
 
 {ablauf(pre)}
 
-{stimmen(pre, c.get('stimmen', []))}
+{stimmen(pre, c['tag'])}
 
-{referenzen(c.get('referenzen', []))}
+{referenzen(c['tag'])}
 
 {direkt(pre)}
 
@@ -186,6 +189,8 @@ def seite(key, c):
     </div>
     <a class="button" href="{pre}preise/#r-{g['id']}">Zum Kostenrechner <span aria-hidden="true">→</span></a>
   </section>
+
+{artikel(pre, c['tag'])}
 
   <section class="faq" id="faq" aria-labelledby="faq-titel">
     <h2 class="gr-h2" id="faq-titel">Häufige Fragen</h2>
@@ -209,11 +214,11 @@ def seite(key, c):
              {"@type": "Service", "@id": url + '#leistung', "name": c['titel'], "description": g['intro'], "url": url,
               "provider": {"@id": "https://studio-aah.de/#studio"}, "areaServed": "Leipzig", "offers": angebote},
              {"@type": "FAQPage", "@id": url + '#faq', "url": url, "inLanguage": "de",
-              "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in c['faq']]}]
+              "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in c['faq'] + GEMEINSAM]}]
     ld = json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, indent=2)
     t = re.sub(r'<script type="application/ld\+json">.*?</script>', lambda m: f'<script type="application/ld+json">\n{ld}\n  </script>', t, count=1, flags=re.S)
     if 'zaehlen.js' not in t:
-        t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v=20261012j" defer></script>\n</body>', 1)
+        t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v=20261012k" defer></script>\n</body>', 1)
     pfad.write_text(t, encoding='utf-8')
     print('geschrieben:', c['pfad'])
 

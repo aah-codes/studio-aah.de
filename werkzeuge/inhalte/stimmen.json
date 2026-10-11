@@ -1,0 +1,79 @@
+[
+ {
+  "name": "Franziska Weihmann",
+  "rolle_html": "Gründerin von Deinetwegen HR",
+  "titel": "Website mit Herz und Verstand",
+  "absaetze_html": [
+   "Ich durfte mit Anna meine neue Website realisieren – und was soll ich sagen: absolute Herzensempfehlung! 💛 Neben ihrer strukturierten und zuverlässigen Arbeitsweise hat mich vor allem ihr Gespür für UX &amp; Design begeistert. Sie denkt nicht nur technisch, sondern fühlt sich in Zielgruppen, Markenwelten und Nutzerbedürfnisse ein.",
+   "Das Ergebnis: Eine Website, die nicht nur funktioniert, sondern sich auch richtig gut anfühlt – klar, stimmig und mit Liebe zum Detail.",
+   "Wer eine Partnerin sucht, die Webentwicklung und UI/UX Design wirklich ganzheitlich denkt, ist bei Anna in den besten Händen!"
+  ],
+  "bild": "franziska-weihmann.jpeg",
+  "hintergrund": "hg-hellgrau",
+  "tags": [
+   "website",
+   "brand",
+   "ui-ux"
+  ]
+ },
+ {
+  "name": "Ines Gottschalk",
+  "rolle_html": "Gründerin von Webwerkstatt Digitale Lösungen",
+  "titel": "Kreative Visionärin mit Liebe zum Detail",
+  "absaetze_html": [
+   "Anna beeindruckt mit ihren kreativen Visionen und ihrem Blick für Details. Sie hat die Fähigkeit, komplexe Benutzeranforderungen in intuitive und ansprechende Designs zu übersetzen. Klare Empfehlung und eine Bereicherung für jedes Team."
+  ],
+  "bild": "ines-gottschalk.jpg",
+  "hintergrund": "hg-hellgrau-2",
+  "tags": [
+   "ui-ux",
+   "website"
+  ]
+ },
+ {
+  "name": "Carolin Schaefer",
+  "rolle_html": "CoS // Chief of Staff - Führungskraft",
+  "titel": "Sorgfältige UX-Designerin mit klarem Blick für Lösungen",
+  "absaetze_html": [
+   "\"Anna ist eine außergewöhnlich sorgfältige UX-Designerin, die sich durch ihre schnelle Auffassungsgabe und Problemlösungsfähigkeit auszeichnet. Sie hakt immer nach, um sicherzustellen, dass keine Details übersehen werden, und geht systematisch an Herausforderungen heran. Ihre Designs sind nicht nur visuell ansprechend, sondern auch äußerst funktional und nutzerzentriert. Es ist beeindruckend, wie schnell sie komplexe Zusammenhänge erfasst und innovative Lösungen entwickelt. Anna ist eine wertvolle Bereicherung für jedes Team.\"",
+   "Ich habe mit ihr 8 Monate zusammen arbeiten dürfen. Es war mir immer eine Freude. LG, Carolin Schaefer"
+  ],
+  "bild": "carolin-schaefer.jpg",
+  "hintergrund": "hg-hellgrau",
+  "tags": [
+   "ui-ux"
+  ]
+ },
+ {
+  "name": "Anne Schreier",
+  "rolle_html": "Freelancerin UX/UI- &amp; Communications Design",
+  "titel": "Kompetent und inspirierend",
+  "absaetze_html": [
+   "Anna Härtelt ist eine kompetente und inspirierende UX/UI-Designerin und Projektmanagerin. Während meiner Tätigkeit bei der Digitalbegleiter GmbH hatte ich das Glück, von ihrer umfassenden Erfahrung zu profitieren.",
+   "Sie hat mir nicht nur klare Aufgaben zugewiesen, sondern auch stets mit Rat und Tat zur Seite gestanden, wenn ich Unterstützung brauchte. Sie war immer bereit, meine Fragen zu beantworten, insbesondere zum Tool Figma, und hat meine Weiterbildung aktiv gefördert.",
+   "Ich empfehle Anna ausdrücklich als UX/UI-Designerin. Wer sie nicht bucht oder einstellt, wird definitiv etwas verpassen!"
+  ],
+  "bild": "anne-schreier.jpg",
+  "hintergrund": "hg-hellgrau-2",
+  "tags": [
+   "ui-ux",
+   "team"
+  ]
+ },
+ {
+  "name": "Neve Boldt",
+  "rolle_html": "Information Architecture &amp; Systems Design",
+  "titel": "Reibungsloser Wechsel zu Figma",
+  "absaetze_html": [
+   "Während meiner Zeit als Werkstudentin bei der Digitalbegleiter GmbH hatte ich das Vergnügen, mit Anna im Design-Team zusammenzuarbeiten. Anna überzeugte mich von Anfang an durch ihre fachliche Kompetenz und ihren unermüdlichen Einsatz, unsere Projekte voranzubringen.",
+   "Besonders hervorzuheben ist Annas Engagement bei der Umstellung des Teams von Adobe XD auf Figma. Dank ihrer Initiative und ihrer sorgfältigen Einführung in das neue Tool verlief der Wechsel reibungslos und trug maßgeblich zur Effizienz und Kreativität im Team bei.",
+   "Ich würde jederzeit wieder mit Anna zusammenarbeiten und kann sie uneingeschränkt weiterempfehlen."
+  ],
+  "bild": "neve-boldt.jpg",
+  "hintergrund": "hg-hellgrau",
+  "tags": [
+   "ui-ux",
+   "team"
+  ]
+ }
+]

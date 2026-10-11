@@ -1327,3 +1327,7 @@ main section[id] { scroll-margin-top: calc(var(--kopf-hoehe) + 72px); }
 .faq-eintrag[open] summary { padding-bottom: 16px; }
 .faq-antwort { padding-top: 4px; }
 .faq-antwort p { margin-top: 0; }
+/* Leistungsseiten: passende Blogartikel */
+.lsx-artikel { padding: 96px 0 0; }
+.lsx-artikel-kopf { padding: 0 var(--rand-seite); }
+.lsx-artikel-kopf .gr-h3 { margin: 12px 0 24px; }

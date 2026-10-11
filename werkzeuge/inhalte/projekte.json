@@ -1,0 +1,88 @@
+[
+ {
+  "name": "Wolfgang Bauer Ingenieurbau GmbH",
+  "branche": "Bauunternehmen – Ingenieurbau & Bauen im Bestand",
+  "zeitraum": "seit 2026",
+  "leistungen": "Strategie, UX/UI Design, Website-Konzeption & Webentwicklung",
+  "tags": [
+   "website",
+   "ui-ux"
+  ],
+  "links": [
+   {
+    "url": "https://bauer-ingbau.de",
+    "text": "bauer-ingbau.de"
+   }
+  ]
+ },
+ {
+  "name": "Dr. Simone Goldhammer",
+  "branche": "Gesundheit / Ärztin",
+  "zeitraum": "seit 2022",
+  "leistungen": "Branding, Visual Design, UI/UX Design, Webentwicklung mit Webflow",
+  "tags": [
+   "brand",
+   "ui-ux",
+   "website",
+   "print"
+  ],
+  "links": [
+   {
+    "url": "https://www.naturmedizin-goldhammer.de",
+    "text": "naturmedizin-goldhammer.de"
+   }
+  ]
+ },
+ {
+  "name": "Deinetwegen – Franziska Weihmann",
+  "branche": "Startup HR-Beratung",
+  "zeitraum": "seit 2024",
+  "leistungen": "Branding, UI/UX Design, Webentwicklung mit Webflow",
+  "tags": [
+   "brand",
+   "ui-ux",
+   "website"
+  ],
+  "links": [
+   {
+    "url": "https://www.deinetwegen-hr.de",
+    "text": "deinetwegen-hr.de"
+   }
+  ]
+ },
+ {
+  "name": "Down to Earth – Kerstin Hack",
+  "branche": "Coaching, Seminare, Verlag",
+  "zeitraum": "seit 2023",
+  "leistungen": "Branding, Visual Design, UI/UX Design",
+  "tags": [
+   "brand",
+   "website"
+  ],
+  "links": [
+   {
+    "url": "https://www.down-to-earth.de",
+    "text": "down-to-earth.de"
+   },
+   {
+    "url": "https://kerstinhack.de",
+    "text": "kerstinhack.de"
+   }
+  ]
+ },
+ {
+  "name": "Jana Voigtmann",
+  "branche": "Kunst – Künstlerin aus Leipzig",
+  "zeitraum": "2022",
+  "leistungen": "Webdesign",
+  "tags": [
+   "website"
+  ],
+  "links": [
+   {
+    "url": "https://janavoigtmann.de",
+    "text": "janavoigtmann.de"
+   }
+  ]
+ }
+]
