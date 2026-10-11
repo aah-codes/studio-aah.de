@@ -1671,3 +1671,7 @@ ul.profil-kunst-quellen { list-style: none; padding: 0; }
 .ci-schweben { transform-box: fill-box; transform-origin: center; animation: ci-schweben 4.2s ease-in-out var(--s, 0s) infinite alternate; }
 @keyframes ci-schweben { from { transform: translateY(-2.5px) rotate(-3deg); } to { transform: translateY(2.5px) rotate(3deg); } }
 @media (prefers-reduced-motion: reduce) { .ci-schweben { animation: none; } }
+/* Bewegung anhalten (WCAG 2.2.2): Erklärfilm nach dem Aufbau, Mockups mit dem Pause-Knopf des Karussells, einzelne Karten nach zwei Durchläufen */
+.ci-film.ruhe .ci-schweben { animation-play-state: paused; }
+.ks.pause .rk-browser img, .ks.pause .rk-handy img, .ks.pause .rk-objekt img { animation-play-state: paused; }
+.rk-einzeln .rk-browser img, .rk-einzeln .rk-handy img, .rk-einzeln .rk-objekt img { animation-iteration-count: 2; }

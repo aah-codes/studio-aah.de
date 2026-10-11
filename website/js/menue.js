@@ -103,11 +103,15 @@
     }
     film.classList.add('wartet');
     svgs.forEach((s) => s.pauseAnimations && s.pauseAnimations());
+    // WCAG 2.2.2: Bewegung, die von selbst läuft, hält nach dem Aufbau an (rund 10 s Austausch, dann Ruhe)
+    let ruhe = null;
     const start = () => {
+      clearTimeout(ruhe);
       film.classList.add('neu');
       void film.offsetWidth; // Animationen zurücksetzen
-      film.classList.remove('neu', 'wartet');
+      film.classList.remove('neu', 'wartet', 'ruhe');
       svgs.forEach((s) => { if (s.setCurrentTime) { s.setCurrentTime(0); s.unpauseAnimations(); } });
+      ruhe = setTimeout(() => { svgs.forEach((s) => s.pauseAnimations && s.pauseAnimations()); film.classList.add('ruhe'); }, 22000);
     };
     const knopf = film.querySelector('.ci-nochmal-knopf');
     if (knopf) knopf.addEventListener('click', start);
@@ -181,6 +185,7 @@
     seiten.forEach((s, i) => { s.style.zIndex = String(seiten.length - i); });
     let k = 0;
     setInterval(() => {
+      if (heft.closest('.ks.pause')) return; // Pause-Knopf des Karussells hält auch das Blättern an
       if (k < seiten.length - 1) { seiten[k].classList.add('umgeblaettert'); k += 1; return; }
       heft.classList.add('ohne-uebergang'); seiten.forEach((s) => s.classList.remove('umgeblaettert'));
       void heft.offsetWidth; heft.classList.remove('ohne-uebergang'); k = 0;
