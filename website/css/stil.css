@@ -1383,3 +1383,17 @@ main section[id] { scroll-margin-top: calc(var(--kopf-hoehe) + 72px); }
   .ci-grafik { padding: 0 16px; margin-bottom: 64px; }
   .ci-image { width: 46%; }
 }
+/* Grafik Corporate Identity, Fassung 2 (Anna, 11.10.2026): Culture und Design schwarz, Behaviour und Communication dunkelgrau, Kern weiß */
+.ci-schwarz { fill: var(--farbe-dunkel); }
+.ci-grau { fill: #4a4d50; }
+.ci-t { font-size: 26px; fill: var(--farbe-weiss); }
+.ci-s { font-size: 17px; fill: rgba(255, 255, 255, .78); }
+.ci-kern { fill: var(--farbe-weiss); }
+.ci-kern-t { fill: var(--farbe-dunkel); }
+.ci-titel { grid-column: 1 / -1; order: -1; max-width: 46ch; justify-self: center; text-align: center; margin-bottom: 16px; }
+.ci-titel .gr-h3 { display: block; }
+.ci-unter { display: block; margin-top: 12px; color: var(--farbe-gedaempft); font-size: 1rem; }
+.ci-grafik figcaption.ci-titel { font-size: inherit; color: var(--farbe-dunkel); max-width: 40ch; }
+.ci-titel-gross { display: block; font-family: var(--schrift-ueberschrift); font-size: clamp(26px, 2.6vw, 38px); line-height: 1.12; letter-spacing: .9px; text-transform: uppercase; }
+.ci-grafik { margin-top: 96px; }
+@media (max-width: 760px) { .ci-grafik { margin-top: 64px; } }

@@ -148,7 +148,7 @@ def seite(key, c):
     mit_ablauf = bool(c.get('ablauf_schritte')) or c.get('ablauf', c['gruppe'] == 'website')
     # Abstimmungstermine (Anna, 11.10.2026): im Projekt wöchentlich, bei laufender Betreuung seltener
     termine = c.get('termine', TERMINE)
-    faq_termine = [['Wie oft stimmen wir uns bei STUDIO AAH! ab?', 'Bei STUDIO AAH! gibt es ' + termine[0].lower() + termine[1:] + ' Weitere Termine vereinbaren wir nach Absprache.']]
+    faq_termine = [['Wie oft gibt es bei STUDIO AAH! Abstimmungstermine?', 'Bei STUDIO AAH! gibt es ' + termine[0].lower() + termine[1:] + ' Weitere Termine vereinbaren wir nach Absprache.']]
     pfad = basis / 'website' / c['pfad'] / 'index.html'
     if not pfad.exists():  # neue Seite: Kopf und Fuß von der Website-Seite übernehmen (gleiche Ordnertiefe)
         pfad.parent.mkdir(parents=True, exist_ok=True)
@@ -169,7 +169,7 @@ def seite(key, c):
     <p class="meta"><a href="{pre}#leistungen">Leistungen</a> / {esc(c['titel'])}</p>
     <h1 class="gr-xxl"><span class="wort-mit-icon">{esc(c['titel'])}<img class="icon-3d" src="{pre}{c['icon']}" alt="" width="400" height="400"></span></h1>
     <p class="alt-klein">{esc(intro)}</p>
-    <p class="lsx-termine"><span class="meta">So arbeiten wir</span> {esc(termine)}</p>
+    <p class="lsx-termine"><span class="meta">So arbeite ich</span> {esc(termine)}</p>
     {fakten(pre)}
   </section>
 
@@ -255,7 +255,7 @@ def seite(key, c):
     ld = json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, indent=2)
     t = re.sub(r'<script type="application/ld\+json">.*?</script>', lambda m: f'<script type="application/ld+json">\n{ld}\n  </script>', t, count=1, flags=re.S)
     if 'zaehlen.js' not in t:
-        t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v=20261012q" defer></script>\n</body>', 1)
+        t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v=20261012r" defer></script>\n</body>', 1)
     pfad.write_text(t, encoding='utf-8')
     print('geschrieben:', c['pfad'])
 
