@@ -1943,3 +1943,9 @@ img.profil-bildtext-bild, .profil-bildtext-bild img { width: 100%; height: auto;
 /* Referenzen: Website-Screenshots scrollen sofort los */
 @keyframes rk-scrollen { 0% { transform: translateY(0); } 94%, 100% { transform: translateY(calc(-100% + 460px)); } }
 @keyframes rk-scrollen-h { 0% { transform: translateY(0); } 94%, 100% { transform: translateY(calc(-100% + 460px)); } }
+/* Startseite Intro: ohne Bild, zwei Spalten (Anna 11.10.2026) */
+.intro { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 80px; }
+.intro .intro-text { max-width: none; }
+.intro-links { position: sticky; top: calc(var(--kopf-hoehe) + 32px); }
+.intro-rechts { padding-top: 8px; }
+@media (max-width: 900px) { .intro { grid-template-columns: 1fr; gap: 8px; } .intro-links { position: static; } }

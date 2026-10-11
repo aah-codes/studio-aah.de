@@ -12,7 +12,7 @@
   // Inhalt doppeln, damit das Band endlos laufen kann
   [...spur.children].forEach((t) => spur.appendChild(t.cloneNode(true)));
   const teile = [...spur.children];
-  const grund = still ? 0 : -0.45;
+  const grund = still ? 0 : -0.9; // doppelt so schnell (Anna 11.10.2026)
   let x = 0, tempo = 0, zielTempo = grund, maus = null, ziehen = null, breite = 0;
   const messen = () => { breite = spur.scrollWidth / 2; };
   messen();
