@@ -150,9 +150,9 @@ window.PREISE = {
       "SEO & LLM-Zitierfähigkeit",
       "Texte (einmal für die ganze Website) und Bilder kann ich liefern",
       "Design für Desktop & Handy (responsiv)",
-      "Umsetzung in WordPress (Kadence)",
+      "Umsetzung in WordPress (Kadence) / Claude Code",
       "Kontaktformular",
-      "Launch (150 €, wird automatisch berechnet) & Übergabe",
+      "Launch & Übergabe",
       "Schulung zur Selbstpflege: als Zusatz buchbar"
      ],
      "launch": true,
@@ -169,8 +169,7 @@ window.PREISE = {
      "plus": "Alles aus Onepager, plus:",
      "items": [
       "Bei Redesign: Analyse der bestehenden Website, Übernahme vorhandener Inhalte, Weiterleitungen alter Adressen",
-      "Mehrere Unterseiten nach Ihrer Sitemap",
-      "SEO & LLM-Zitierfähigkeit für alle Unterseiten"
+      "Mehrere Unterseiten nach Ihrer Sitemap"
      ],
      "gefragt": true,
      "launch": true,

@@ -10,7 +10,7 @@
   "bildalt": "Bildschirm mit einer Website im Entwurf",
   "zusammenfassung": [
    "Ihre Website ist Vertriebsinstrument. Ich plane Struktur und Inhalte so, dass Besucher und Besucherinnen schnell finden, was sie suchen, und den nächsten Schritt gehen.",
-   "Von der Seitenstruktur über Design und Umsetzung in WordPress bis zum Launch: alles aus einer Hand, responsiv für Handy und Desktop."
+   "Von der Seitenstruktur über Design und Umsetzung in WordPress oder Claude Code bis zum Launch: alles aus einer Hand, responsiv für Handy und Desktop."
   ],
   "faq": [
    [
@@ -43,7 +43,7 @@
    ],
    [
     "Ist SEO und LLM-Zitierfähigkeit im Preis enthalten?",
-    "Ja, SEO und LLM-Zitierfähigkeit sind immer zusammen enthalten. SEO bedeutet Suchmaschinen-Optimierung, damit Ihre Website bei Google gefunden wird. LLM-Zitierfähigkeit (Fachbegriff: GEO, Generative Engine Optimization) bedeutet, dass KI-Assistenten wie ChatGPT, Claude oder Perplexity Ihre Inhalte verstehen und als Quelle nennen können, zum Beispiel durch eine klare Struktur, Fragen und Antworten und strukturierte Daten. Beides steckt in jedem Website-Paket, beim Paket „Website – neu oder Redesign“ für alle Unterseiten. Für bestehende Websites gibt es SEO & LLM-Zitierfähigkeit ab 260 €."
+    "Ja, SEO und LLM-Zitierfähigkeit sind immer zusammen enthalten. SEO bedeutet Suchmaschinen-Optimierung, damit Ihre Website bei Google gefunden wird. LLM-Zitierfähigkeit (Fachbegriff: GEO, Generative Engine Optimization) bedeutet, dass KI-Assistenten wie ChatGPT, Claude oder Perplexity Ihre Inhalte verstehen und als Quelle nennen können, zum Beispiel durch eine klare Struktur, Fragen und Antworten und strukturierte Daten. Beides steckt in jedem Website-Paket. Für bestehende Websites gibt es SEO & LLM-Zitierfähigkeit ab 260 €."
    ],
    [
     "Was passiert beim Launch?",
@@ -88,7 +88,7 @@
    "Klare Botschaft gleich zu Beginn und eindeutige nächste Schritte für mehr Conversion",
    "Responsiv gestaltet, für Handy und Desktop",
    "Form follows Content: Jedes Element hat einen Zweck",
-   "WordPress (Kadence), Schulung zur Selbstpflege und auf Wunsch Wartung"
+   "WordPress (Kadence) oder Claude Code, Schulung zur Selbstpflege und auf Wunsch Wartung"
   ],
   "nicht_enthalten": [
    "Hosting, Domain und Lizenzen: zahlen Sie direkt an den jeweiligen Anbieter",
