@@ -918,7 +918,7 @@ main.mit-faden { position: relative; }
 .bedingungen li::before { content: "✓"; position: absolute; left: 0; font-weight: 700; }
 /* Mitlaufende Bereichsleiste unter dem Kopf */
 html { scroll-padding-top: calc(var(--kopf-hoehe) + 72px); }
-.preis-leiste { position: sticky; top: var(--kopf-hoehe); z-index: 25; display: flex; gap: 6px; overflow-x: auto; padding: 10px var(--rand-seite); background: rgba(255, 255, 255, .94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--farbe-rahmen); scrollbar-width: none; }
+.preis-leiste { position: sticky; top: var(--kopf-hoehe); z-index: 25; display: flex; gap: 6px; overflow-x: auto; padding: 10px var(--rand-seite); background: var(--farbe-weiss); border-bottom: 1px solid var(--farbe-rahmen); scrollbar-width: none; }
 .preis-leiste::-webkit-scrollbar { display: none; }
 .preis-leiste a { flex: none; padding: 6px 14px; border-radius: 999px; border: 1px solid var(--farbe-rahmen); font-size: 14px; font-weight: 600; text-decoration: none; color: inherit; white-space: nowrap; transition: background .2s, color .2s, border-color .2s; }
 .preis-leiste a:hover { border-color: var(--farbe-dunkel); }

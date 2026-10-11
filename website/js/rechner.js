@@ -117,7 +117,8 @@
 
 // Bereichsleiste: markiert beim Scrollen den Abschnitt, in dem man gerade ist
 (() => {
-  const links = [...document.querySelectorAll('.preis-leiste a')];
+  const leiste = document.querySelector('.preis-leiste');
+  const links = leiste ? [...leiste.querySelectorAll('a')] : [];
   if (!links.length || !('IntersectionObserver' in window)) return;
   const ziele = links.map((a) => document.querySelector(a.getAttribute('href'))).filter(Boolean);
   const beob = new IntersectionObserver((eintraege) => {
@@ -125,7 +126,8 @@
       if (!e.isIntersecting) return;
       links.forEach((a) => a.classList.toggle('aktiv', a.getAttribute('href') === `#${e.target.id}`));
       const aktiv = links.find((a) => a.classList.contains('aktiv'));
-      if (aktiv) aktiv.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+      // nur die Leiste waagerecht nachführen – nie die Seite selbst scrollen
+      if (aktiv) leiste.scrollTo({ left: aktiv.offsetLeft - 16, behavior: 'smooth' });
     });
   }, { rootMargin: '-35% 0px -60% 0px' });
   ziele.forEach((z) => beob.observe(z));
