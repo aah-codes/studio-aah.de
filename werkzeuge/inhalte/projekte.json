@@ -2,11 +2,10 @@
  {
   "name": "Wolfgang Bauer Ingenieurbau GmbH",
   "branche": "Bauunternehmen – Ingenieurbau & Bauen im Bestand",
-  "zeitraum": "seit 2026",
-  "leistungen": "Strategie, Rebranding, UX/UI Design, Website-Konzeption & Webentwicklung, Unternehmenspräsentation",
+  "zeitraum": "2026 · 4 Monate",
+  "leistungen": "Strategie, Rebranding, Website-Redesign, Webentwicklung in Kadence, Unternehmenspräsentation",
   "tags": [
    "website",
-   "ui-ux",
    "brand",
    "print"
   ],
@@ -24,7 +23,7 @@
   "farbe": "#d9e2ec",
   "kurzname": "Wolfgang Bauer Ingenieurbau",
   "mockup": {
-   "browser": "bilder/hero/bauer-startseite-2026-10.jpg",
+   "browser": "bilder/referenzen/bauer-website.jpg",
    "folien": [
     "bilder/hero/bauer-praes-01.jpg",
     "bilder/hero/bauer-praes-04.jpg",
@@ -38,16 +37,16 @@
    "freigegeben": false,
    "fakten": [
     [
+     "Dauer",
+     "4 Monate"
+    ],
+    [
      "Branche",
      "Ingenieurbau, Bauen im Bestand"
     ],
     [
      "Leistungen",
-     "Strategie, Rebranding, UX/UI, Website, Präsentation"
-    ],
-    [
-     "System",
-     "WordPress (Kadence)"
+     "Strategie, Rebranding, Website-Redesign, Präsentation"
     ]
    ]
   }
@@ -55,13 +54,13 @@
  {
   "name": "Dr. Simone Goldhammer",
   "branche": "Gesundheit / Ärztin",
-  "zeitraum": "seit 2022",
-  "leistungen": "Branding, Visual Design, UI/UX Design, Webentwicklung mit Webflow",
+  "zeitraum": "seit 2022 · Retainer",
+  "leistungen": "Branding, Visual Design, neue Website, Webentwicklung in Kadence, Print: Flyer und Visitenkarten",
   "tags": [
    "brand",
-   "ui-ux",
    "website",
-   "print"
+   "print",
+   "retainer"
   ],
   "links": [
    {
@@ -72,18 +71,19 @@
   "farbe": "#f6eab0",
   "kurzname": "Dr. Simone Goldhammer",
   "mockup": {
-   "karte": "bilder/hero/goldhammer-visitenkarte.jpg"
+   "browser": "bilder/referenzen/goldhammer-website.jpg",
+   "visitenkarte": "bilder/hero/goldhammer-visitenkarte.jpg"
   }
  },
  {
   "name": "Deinetwegen – Franziska Weihmann",
   "branche": "Startup HR-Beratung",
-  "zeitraum": "seit 2024",
-  "leistungen": "Branding, UI/UX Design, Webentwicklung mit Webflow",
+  "zeitraum": "seit 2024 · Retainer",
+  "leistungen": "Branding, neue Website als Onepager, zweiter Onepager, Webentwicklung in Webflow",
   "tags": [
    "brand",
-   "ui-ux",
-   "website"
+   "website",
+   "retainer"
   ],
   "links": [
    {
@@ -94,20 +94,26 @@
   "farbe": "#efdcd8",
   "kurzname": "Deinetwegen",
   "mockup": {
-   "handy": "bilder/hero/deinetwegen-handy-ganz.jpg"
+   "handy": "bilder/referenzen/deinetwegen-handy.jpg"
   },
   "stimme": "Franziska Weihmann"
  },
  {
   "name": "Down to Earth – Kerstin Hack",
   "branche": "Coaching, Seminare, Verlag",
-  "zeitraum": "seit 2023",
-  "leistungen": "Branding, Visual Design, UI/UX Design",
+  "zeitraum": "seit 2023 · Retainer",
+  "leistungen": "Branding, Visual Design, UI/UX Design, neue Icons, Umsetzung in Kadence, jeden Monat neue Aufgaben",
   "tags": [
    "brand",
-   "website"
+   "website",
+   "ui-ux",
+   "retainer"
   ],
   "links": [
+   {
+    "url": "https://down-to-earth.de/leben/",
+    "text": "down-to-earth.de/leben"
+   },
    {
     "url": "https://www.down-to-earth.de",
     "text": "down-to-earth.de"
@@ -120,16 +126,18 @@
   "farbe": "#efe3c4",
   "kurzname": "Down to Earth",
   "mockup": {
-   "karte": "bilder/hero/kh-templates.jpg"
+   "browser": "bilder/referenzen/leben-website.jpg"
   }
  },
  {
   "name": "Jana Voigtmann",
   "branche": "Kunst – Künstlerin aus Leipzig",
   "zeitraum": "2022",
-  "leistungen": "Webdesign",
+  "leistungen": "Branding, neue Website, UI/UX Design, Webentwicklung",
   "tags": [
-   "website"
+   "brand",
+   "website",
+   "ui-ux"
   ],
   "links": [
    {
@@ -140,7 +148,7 @@
   "farbe": "#e2e1f6",
   "kurzname": "Jana Voigtmann",
   "mockup": {
-   "browser": "bilder/hero/jana-mixed-media.jpg"
+   "browser": "bilder/referenzen/jana-website.jpg"
   }
  }
 ]

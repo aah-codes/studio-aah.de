@@ -52,6 +52,8 @@ def _mockup(p, pre):
         h.append(f'<div class="rk-handy"><img src="{pre}{m["handy"]}" alt="Website von {esc(p["kurzname"])} auf dem Handy" loading="lazy"></div>')
     if m.get('karte'):
         h.append(f'<div class="rk-objekt"><img src="{pre}{m["karte"]}" alt="Gestaltung für {esc(p["kurzname"])}" loading="lazy"></div>')
+    if m.get('visitenkarte'):
+        h.append(f'<div class="rk-visitenkarte"><img src="{pre}{m["visitenkarte"]}" alt="Visitenkarte für {esc(p["kurzname"])}" loading="lazy"><span>Print</span></div>')
     if m.get('folien'):
         h.append('<div class="rk-folien">' + ''.join(f'<img src="{pre}{f}" alt="" loading="lazy">' for f in m['folien']) + '<span>Unternehmenspräsentation</span></div>')
     f = p.get('film')

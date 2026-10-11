@@ -1566,3 +1566,7 @@ main section[id] { scroll-margin-top: calc(var(--kopf-hoehe) + 72px); }
   .rk-browser img, .rk-handy img, .rk-objekt img, .ks-punkte i.aktiv::after { animation: none; }
 }
 .eg-film span { box-shadow: 0 8px 24px rgba(14, 16, 17, .22); }
+.rk-visitenkarte { position: absolute; right: 32px; bottom: 36px; width: 220px; z-index: 2; }
+.rk-visitenkarte img { width: 100%; display: block; border-radius: 8px; box-shadow: 0 16px 34px rgba(14, 16, 17, .28); transform: rotate(-6deg); }
+.rk-visitenkarte span { position: absolute; left: 4px; bottom: -14px; background: var(--farbe-dunkel); color: #fff; font-family: var(--schrift-meta); font-size: .68rem; letter-spacing: 1px; padding: 5px 10px; border-radius: 999px; text-transform: uppercase; }
+@media (max-width: 900px) { .rk-visitenkarte { width: 150px; right: 14px; bottom: 24px; } }
