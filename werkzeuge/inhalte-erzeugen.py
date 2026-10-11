@@ -119,12 +119,12 @@ def fuer_wen(pre=''):
          ('Website', paket['onepager']['name'], 'Für Selbstständige und kleine Angebote: eine Website, die alles auf den Punkt bringt, und eine Marke, die zu Ihnen passt.',
           ['Alles auf einer Seite, responsiv', 'Mit SEO & LLM-Zitierfähigkeit', f'Dazu buchbar: Brand Basic mit Fragebogen, Brand Experience und Mitbewerberrecherche, {preis("brand-0")}'],
           preis('onepager'), f'{pre}service/website/#pakete'),
-         ('Deinetwegen', 'Branding, UI/UX Design und Website für eine HR-Beratung.', 'deinetwegen-handy.jpg', f'{pre}#referenzen')),
+         ('Deinetwegen', 'Branding, UI/UX Design und Website für eine HR-Beratung.', 'deinetwegen-website.jpg', f'{pre}#referenzen')),
         ('vereine', 'Vereine &amp; Kultur', 'Demokratie braucht Sichtbarkeit.',
          ('Aktion', 'Kostenfreie Website', 'Kostenfreie Websites für Vereine, NGOs, Kunst und Kultur. Du zahlst, was es dir wert ist.',
           ['Für Organisationen, die sich für Demokratie, Frauen- und Kinderrechte, Natur- und Tierschutz oder Kunst und Kultur einsetzen', 'Bis zu eine Website im Monat'],
           'kostenfrei', f'{pre}demokratie-braucht-sichtbarkeit/'),
-         ('Jana Voigtmann', 'Webdesign für eine Künstlerin aus Leipzig.', 'jana-website.jpg', f'{pre}#referenzen')),
+         ('Jana Voigtmann', 'Webdesign für eine Künstlerin aus Leipzig.', 'jana-mixed-media.jpg', f'{pre}#referenzen')),
     ]
     TAB_AUS = ' tabindex="-1"'
     knoepfe = ''.join(f'<button type="button" role="tab" id="fw-r-{k}" aria-controls="fw-{k}" aria-selected="{"true" if i == 0 else "false"}"{"" if i == 0 else TAB_AUS}>{n}</button>' for i, (k, n, *_ ) in enumerate(felder))
