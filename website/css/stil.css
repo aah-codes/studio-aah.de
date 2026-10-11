@@ -1653,3 +1653,5 @@ main section[id] { scroll-margin-top: calc(var(--kopf-hoehe) + 72px); }
 .profil-kunst .meta { margin: 0 0 8px; }
 .profil-kunst p { margin: 0 0 10px; }
 .profil-kunst-quellen { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 4px 0 0 !important; }
+/* Megamenü: links Brand, UI/UX, Website, Marketing, Illustration – rechts Motion, Print, Retainer, KI (Anna 11.10.2026) */
+.mm-liste, .kopf-nav .mm-liste { grid-auto-flow: column; grid-template-rows: repeat(5, auto); }
