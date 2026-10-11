@@ -1067,7 +1067,6 @@ html { scroll-padding-top: calc(var(--kopf-hoehe) + 72px); }
 .ls-karte:hover img { transform: scale(1.02); }
 .ls-karte-titel { font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-size: clamp(28px, 2.6vw, 40px); line-height: 1; margin-top: 8px; }
 .ls-karte-text { color: var(--farbe-gedaempft); max-width: 48ch; }
-.ls-karte-link { font-weight: 600; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; }
 .prozess-kompakt { padding: 72px var(--rand-seite); }
 .pz-schritte { list-style: none; margin: 32px 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; position: relative; }
 .pz-schritte::before { content: ""; position: absolute; left: 24px; right: 24px; top: 24px; height: 2px; background: var(--farbe-dunkel); }

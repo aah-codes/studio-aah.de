@@ -60,8 +60,7 @@ def paket_li(e):
 def karte(g):
     ziel = g['unterseite'] or f'../preise/#r-{g["id"]}'
     return (f'<a class="ls-karte" href="{ziel}" id="s-{g["id"]}"><img src="{g["karte"]}" alt="" loading="lazy">'
-            f'<span class="ls-karte-titel">{esc(g["name"])}</span><span class="ls-karte-text">{esc(g["intro"])}</span>'
-            f'<span class="ls-karte-link">{"Mehr erfahren" if g["unterseite"] else "Kosten berechnen"} →</span></a>')
+            f'<span class="ls-karte-titel">{esc(g["name"])}</span><span class="ls-karte-text">{esc(g["intro"])}</span></a>')
 
 
 mit_karte = [g for g in daten['gruppen'] if g.get('karte')]
