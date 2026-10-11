@@ -1094,10 +1094,6 @@ html { scroll-padding-top: calc(var(--kopf-hoehe) + 72px); }
 .intro-brief p { font-size: clamp(18px, 1.35vw, 21px); line-height: 1.6; margin: 0 0 1.1em; }
 .intro-gruss { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin: 40px 0; }
 .intro-gruss p { margin: 0; }
-/* Platzhalter, bis Annas eingescannte Unterschrift da ist */
-/* Handschrift nur für das Wort „Härtelt“ (Sedgwick Ave, Google Fonts, OFL; Teilmenge 1,7 KB) – ähnlich Annas Filzstift, nicht ihre echte Unterschrift */
-@font-face { font-family: "Sedgwick Ave"; src: url("../schriften/sedgwick-ave-haertelt.woff2") format("woff2"); font-display: swap; }
-.intro-unterschrift { font-family: "Sedgwick Ave", "Bradley Hand", cursive; font-size: 48px; line-height: 1.2; transform: rotate(-4deg); margin: 4px 0 8px !important; }
 .intro-tools { border-top: 1px solid var(--farbe-rahmen); padding-top: 24px; margin-bottom: 24px; }
 .intro-tools .tools { margin: 16px 0 0; flex-wrap: nowrap; gap: 18px; }
 .intro-tools .tools img { max-width: 100%; }
