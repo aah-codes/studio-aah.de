@@ -87,6 +87,37 @@ def stimmen(pre, namen):
     return '  <section class="lsx-stimmen" aria-labelledby="stimmen-titel">\n    <p class="meta">Stimmen</p>\n    <h2 class="gr-h3" id="stimmen-titel">Das sagen Kundinnen und Kolleginnen</h2>\n    <div class="stimmen">\n' + '\n'.join(gew) + '\n    </div>\n  </section>'
 
 
+def fakten(pre):
+    m = re.search(r'<dl class="fakten hero-fakten">.*?</dl>', START, re.S)
+    return m.group(0).replace('fakten hero-fakten', 'fakten lsx-fakten') if m else ''
+
+
+def nicht_enthalten(c):
+    if not c.get('nicht_enthalten'): return ''
+    li = ''.join(f'<li>{esc(x)}</li>' for x in c['nicht_enthalten'])
+    return f'<div class="lsx-nicht"><p class="meta">Nicht enthalten</p><ul>{li}</ul></div>'
+
+
+def referenzen(namen):
+    if not namen: return ''
+    teile = re.findall(r'<details class="referenz">.*?</details>', START, re.S)
+    gew = [x for x in teile if any(n in x for n in namen)]
+    if not gew: return ''
+    return '  <section class="lsx-referenzen" id="referenzen" aria-labelledby="referenzen-titel">\n    <p class="meta">Referenzen</p>\n    <h2 class="gr-h3" id="referenzen-titel">Projekte aus diesem Bereich</h2>\n    <div class="referenzen">\n' + '\n'.join(gew) + '\n    </div>\n  </section>'
+
+
+def direkt(pre):
+    return f'''  <section class="lsx-direkt" aria-labelledby="direkt-titel">
+    <img src="{pre}bilder/studio-aah-gruenderin-anna-haertelt.webp" alt="Anna Härtelt, Gründerin von STUDIO AAH!" width="768" height="1024" loading="lazy">
+    <div>
+      <p class="meta">Ihre Ansprechpartnerin</p>
+      <h2 class="gr-h3" id="direkt-titel">Sie arbeiten direkt mit mir.</h2>
+      <p>Bei STUDIO AAH! arbeiten Sie direkt mit mir, von der ersten Idee bis zum Launch. Ich bin Anna Härtelt, UX/UI-Designerin, Strategin und Webentwicklerin.</p>
+      <p><a class="textlink" href="{pre}profil/">Mehr über mich</a></p>
+    </div>
+  </section>'''
+
+
 def seite(key, c):
     g = next(x for x in preise['gruppen'] if x['id'] == c['gruppe'])
     pfad = basis / 'website' / c['pfad'] / 'index.html'
@@ -106,9 +137,10 @@ def seite(key, c):
     <p class="meta"><a href="{pre}#leistungen">Leistungen</a> / {esc(c['titel'])}</p>
     <h1 class="gr-xxl"><span class="wort-mit-icon">{esc(c['titel'])}<img class="icon-3d" src="{pre}{c['icon']}" alt="" width="400" height="400"></span></h1>
     <p class="alt-klein">{esc(g['intro'])}</p>
+    {fakten(pre)}
   </section>
 
-  <nav class="preis-leiste lsx-chips" aria-label="Auf dieser Seite"><a href="#loesung">Problem &amp; Lösung</a><a href="#pakete">Pakete</a>{'<a href="#vergleich">Vergleich</a>' if len(g['pakete']) > 1 else ''}{'<a href="#extras">Zusatzleistungen</a>' if g.get('extras') else ''}<a href="#ablauf">Ablauf</a><a href="#faq">Fragen</a><a href="{pre}preise/#r-{g['id']}">Kostenrechner →</a></nav>
+  <nav class="preis-leiste lsx-chips" aria-label="Auf dieser Seite"><a href="#loesung">Problem &amp; Lösung</a><a href="#pakete">Pakete</a>{'<a href="#vergleich">Vergleich</a>' if len(g['pakete']) > 1 else ''}{'<a href="#extras">Zusatzleistungen</a>' if g.get('extras') else ''}<a href="#ablauf">Ablauf</a>{'<a href="#referenzen">Referenzen</a>' if c.get('referenzen') else ''}<a href="#faq">Fragen</a><a href="{pre}preise/#r-{g['id']}">Kostenrechner →</a></nav>
 
   <section class="lsx-loesung" id="loesung" aria-labelledby="loesung-titel">
     <div class="lsx-loesung-text">
@@ -130,6 +162,7 @@ def seite(key, c):
     <div class="lsx-karten">
 {karten(g)}
     </div>
+    {nicht_enthalten(c)}
   </section>
 
 {vergleich(g)}
@@ -139,6 +172,10 @@ def seite(key, c):
 {ablauf(pre)}
 
 {stimmen(pre, c.get('stimmen', []))}
+
+{referenzen(c.get('referenzen', []))}
+
+{direkt(pre)}
 
   <section class="lsx-rechner" aria-labelledby="rechner-hinweis">
     <div>
@@ -174,6 +211,8 @@ def seite(key, c):
               "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in c['faq']]}]
     ld = json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, indent=2)
     t = re.sub(r'<script type="application/ld\+json">.*?</script>', lambda m: f'<script type="application/ld+json">\n{ld}\n  </script>', t, count=1, flags=re.S)
+    if 'zaehlen.js' not in t:
+        t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v=20261012g" defer></script>\n</body>', 1)
     pfad.write_text(t, encoding='utf-8')
     print('geschrieben:', c['pfad'])
 

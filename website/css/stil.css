@@ -1310,3 +1310,14 @@ h1, h2, h3, .mm-name, .mm-karte-titel, .referenz-name, .hero-titel, .fuss-karte-
 .lsx-chips { margin-top: 32px; }
 main section[id] { scroll-margin-top: calc(var(--kopf-hoehe) + 72px); }
 .lsx-karte-dauer { margin: 0 0 8px; } .lsx-karte-dauer .meta { margin-right: 6px; }
+/* Leistungsseiten: Kennzahlen, „Nicht enthalten“, Referenzen, „Sie arbeiten direkt mit mir“ */
+.lsx-fakten { max-width: 880px; margin: 40px 0 0; }
+.lsx-nicht { margin-top: 24px; padding: 24px 28px; border-radius: 20px; background: var(--farbe-hellgrau); }
+.lsx-nicht ul { margin: 12px 0 0; padding-left: 1.1em; display: grid; gap: 6px; }
+.lsx-referenzen { padding: 96px var(--rand-seite) 0; }
+.lsx-referenzen .gr-h3 { margin: 12px 0 24px; }
+.lsx-referenzen .referenzen { padding: 0; }
+.lsx-direkt { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 40px; align-items: center; padding: 96px var(--rand-seite) 0; max-width: 1000px; }
+.lsx-direkt img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 20px; }
+.lsx-direkt .gr-h3 { margin: 12px 0 16px; }
+@media (max-width: 640px) { .lsx-direkt { grid-template-columns: 120px minmax(0, 1fr); gap: 20px; padding-top: 64px; } }
