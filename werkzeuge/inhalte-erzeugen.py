@@ -52,6 +52,11 @@ def _mockup(p, pre, m=None):
         h.append(f'<div class="rk-handy"><img src="{pre}{m["handy"]}" alt="Website von {esc(p["kurzname"])} auf dem Handy" loading="lazy"></div>')
     if m.get('karte'):
         h.append(f'<div class="rk-objekt"><img src="{pre}{m["karte"]}" alt="Gestaltung für {esc(p["kurzname"])}" loading="lazy"></div>')
+    if m.get('icons'):
+        # Icon-Set als schwebende Karte (Vorbild Behance: Icon-Raster neben dem Einsatz)
+        h.append('<div class="rk-icons"><div class="rk-icons-raster">' + ''.join(f'<img src="{pre}{s}" alt="" loading="lazy">' for s in m['icons']) + '</div>'
+                 + (f'<img class="rk-icons-bunt" src="{pre}{m["icons_bunt"]}" alt="" loading="lazy">' if m.get('icons_bunt') else '')
+                 + f'<span>{esc(m.get("icons_titel", "Icons"))}</span></div>')
     if m.get('visitenkarte'):
         h.append(f'<div class="rk-visitenkarte"><img src="{pre}{m["visitenkarte"]}" alt="Visitenkarte für {esc(p["kurzname"])}" loading="lazy"><span>Print</span></div>')
     if m.get('magazin'):

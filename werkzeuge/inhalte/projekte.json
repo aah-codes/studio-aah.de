@@ -140,7 +140,19 @@
   "farbe": "#efe3c4",
   "kurzname": "Down to Earth",
   "mockup": {
-   "browser": "bilder/referenzen/leben-website.jpg"
+   "browser": "bilder/referenzen/leben-website.jpg",
+   "icons": [
+    "bilder/referenzen/kh/pfau-1.svg",
+    "bilder/referenzen/kh/pfau-2.svg",
+    "bilder/referenzen/kh/pfau-3.svg",
+    "bilder/referenzen/kh/pfau-4.svg",
+    "bilder/referenzen/kh/pfau-5.svg",
+    "bilder/referenzen/kh/pfau-6.svg",
+    "bilder/referenzen/kh/pfau-7.svg",
+    "bilder/referenzen/kh/pfau-8.svg"
+   ],
+   "icons_bunt": "bilder/referenzen/kh/lebenselemente.jpg",
+   "icons_titel": "Swing-Pfau und Lebenselemente"
   }
  },
  {
