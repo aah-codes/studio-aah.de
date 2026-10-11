@@ -198,6 +198,14 @@ window.PREISE = {
      "wer": "auch für bestehende Websites"
     },
     {
+     "id": "seo",
+     "name": "SEO-Grundeinrichtung",
+     "preis": 260,
+     "ab": false,
+     "ohnePaket": true,
+     "wer": "für bestehende Websites"
+    },
+    {
      "id": "schulung",
      "name": "Schulung",
      "preis": 70,
@@ -207,22 +215,6 @@ window.PREISE = {
       "Online-Termin"
      ],
      "wer": "für alle, die selbst pflegen"
-    },
-    {
-     "id": "kontakt",
-     "name": "Kontaktformular",
-     "preis": 130,
-     "ab": false,
-     "ohnePaket": true,
-     "wer": "für bestehende Websites"
-    },
-    {
-     "id": "seo",
-     "name": "SEO-Grundeinrichtung",
-     "preis": 260,
-     "ab": false,
-     "ohnePaket": true,
-     "wer": "für bestehende Websites"
     },
     {
      "id": "wartung",

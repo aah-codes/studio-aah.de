@@ -61,7 +61,10 @@
      "items": [],
      "ab": true
     }
-   ]
+   ],
+   "bild": "../bilder/service-brand.jpg",
+   "intro": "Eine unverwechselbare Markenidentität, die bei Ihrer Zielgruppe wirklich ankommt – klar, glaubwürdig und zukunftsorientiert.",
+   "unterseite": "brand/"
   },
   {
    "id": "ui-ux",
@@ -131,7 +134,10 @@
      "gefragt": false,
      "ab": true
     }
-   ]
+   ],
+   "bild": "../bilder/service-uiux.jpg",
+   "intro": "Digitale Erlebnisse, die Nutzer:innen verstehen – vom Expert Review bis zum Designsystem für Webanwendungen, SaaS und Apps.",
+   "unterseite": "ui-ux/"
   },
   {
    "id": "website",
@@ -214,6 +220,15 @@
      "wer": "auch für bestehende Websites"
     },
     {
+     "id": "seo",
+     "name": "SEO-Grundeinrichtung",
+     "preis": 260,
+     "ab": false,
+     "ohnePaket": true,
+     "kurz": "im Website-Paket enthalten",
+     "wer": "für bestehende Websites"
+    },
+    {
      "id": "schulung",
      "name": "Schulung",
      "preis": 70,
@@ -224,24 +239,6 @@
      ],
      "kurz": "PDF-Anleitung oder Online-Termin – Sie wählen",
      "wer": "für alle, die selbst pflegen"
-    },
-    {
-     "id": "kontakt",
-     "name": "Kontaktformular",
-     "preis": 130,
-     "ab": false,
-     "ohnePaket": true,
-     "kurz": "im Website-Paket enthalten",
-     "wer": "für bestehende Websites"
-    },
-    {
-     "id": "seo",
-     "name": "SEO-Grundeinrichtung",
-     "preis": 260,
-     "ab": false,
-     "ohnePaket": true,
-     "kurz": "im Website-Paket enthalten",
-     "wer": "für bestehende Websites"
     },
     {
      "id": "wartung",
@@ -256,7 +253,10 @@
       "Austausch von PDFs"
      ]
     }
-   ]
+   ],
+   "bild": "../bilder/service-website.jpg",
+   "intro": "Klares Design mit technischer Präzision – individuell, responsiv und auf Ihre Ziele ausgerichtet.",
+   "unterseite": "website/"
   },
   {
    "id": "marketing",
@@ -318,7 +318,10 @@
      "gefragt": false,
      "ab": true
     }
-   ]
+   ],
+   "bild": "../bilder/prozess-ideation.jpg",
+   "intro": "Sichtbar werden, wo Ihre Kund:innen sind – mit klarer Positionierung und Inhalten, die zu Ihnen passen. Einzeln buchbar.",
+   "unterseite": "marketing-vertrieb/"
   },
   {
    "id": "print",
@@ -388,7 +391,10 @@
      ],
      "ab": true
     }
-   ]
+   ],
+   "bild": null,
+   "intro": "Professionelles Design für Gedrucktes – von der Visitenkarte bis zur Unternehmenspräsentation.",
+   "unterseite": null
   },
   {
    "id": "ki",
@@ -425,7 +431,10 @@
      "gefragt": false,
      "ab": true
     }
-   ]
+   ],
+   "bild": "../bilder/prozess-aha.jpg",
+   "intro": "KI und digitale Abläufe, die im Alltag wirklich entlasten – für KMU und Solo-Selbstständige.",
+   "unterseite": "ki-digitalisierung/"
   },
   {
    "id": "zusatz",
@@ -450,7 +459,52 @@
      "items": [],
      "ab": true
     }
-   ]
+   ],
+   "bild": null,
+   "intro": "Illustrationen, Infografiken und Bewegtbild – sehr individuell, deshalb klären wir sie im Erstgespräch.",
+   "unterseite": null
   }
+ ],
+ "glossar": [
+  [
+   "Unterseite",
+   "Jede eigene Seite Ihrer Website, z. B. „Leistungen“, „Über uns“, „Kontakt“ oder eine Seite je Branche."
+  ],
+  [
+   "Seitenstruktur (Sitemap)",
+   "Der Plan, welche Unterseiten es gibt und wie sie zusammenhängen."
+  ],
+  [
+   "Onepager",
+   "Eine Website, die alles auf einer einzigen, langen Seite zeigt."
+  ],
+  [
+   "Redesign",
+   "Eine bestehende Website wird neu gestaltet und umgebaut – vorhandene Inhalte werden übernommen."
+  ],
+  [
+   "Responsiv",
+   "Die Website passt sich jedem Bildschirm an – vom Handy bis zum großen Monitor."
+  ],
+  [
+   "Expert Review",
+   "Ich versetze mich in Ihre Zielgruppe, nutze Ihre Website oder Anwendung und zeige, was sich verbessern lässt."
+  ],
+  [
+   "Launch",
+   "Ihre Website geht online: Domain verbinden, technische Einträge (DNS) setzen, Umzug, Livegang."
+  ],
+  [
+   "Weiterleitungen",
+   "Alte Adressen führen automatisch auf die neuen Seiten – damit Besucher:innen und Google nichts verlieren."
+  ],
+  [
+   "SEO",
+   "Suchmaschinen-Optimierung: damit Ihre Website bei Google gefunden wird."
+  ],
+  [
+   "Wireframe, Prototyp",
+   "Wireframe = einfacher Bauplan einer Seite. Prototyp = klickbarer Entwurf, bevor programmiert wird."
+  ]
  ]
 }

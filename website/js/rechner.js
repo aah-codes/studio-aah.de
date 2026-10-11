@@ -15,7 +15,7 @@
     if (liste) h += `<button type="button" class="wahl-pfeil" aria-expanded="false" aria-label="Inhalt von ${e.name} anzeigen"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>`;
     h += `<span class="wahl-preis">${preisAnzeige(e)}</span></div>`;
     if (e.wer) h += `<p class="wahl-wer">${e.wer}</p>`;
-    if (e.inkl) h += `<label class="wahl-mehr">Wie viele Unterseiten wird Ihre Website ungefähr haben? <input class="wahl-anzahl" type="number" name="seiten-${e.id}" min="1" max="60" value="${e.inkl}"></label>`;
+    if (e.inkl) h += `<p class="wahl-seiten">Wie viele Unterseiten wird Ihre Website ungefähr haben? von <input class="wahl-anzahl" type="number" name="von-${e.id}" min="1" max="80" value="${e.inkl}" aria-label="Unterseiten von"> bis <input class="wahl-anzahl" type="number" name="bis-${e.id}" min="1" max="80" value="${e.inkl}" aria-label="Unterseiten bis"> Unterseiten</p>`;
     if (e.art === 'anzahl') h += `<label class="wahl-mehr">Anzahl <input class="wahl-anzahl" type="number" name="n-${e.id}" min="1" max="30" value="1"></label>`;
     if (e.wahl) h += `<label class="wahl-mehr">Form <select class="wahl-auswahl" name="w-${e.id}">${e.wahl.map((w) => `<option>${w}</option>`).join('')}</select></label>`;
     h += '<span class="wahl-hinweis"></span>';
@@ -45,6 +45,12 @@
     b.setAttribute('aria-expanded', String(!offen));
     b.closest('.wahl-zeile').querySelector('.wahl-auf').hidden = offen;
   });
+  // Wer Unterseiten einträgt, wählt damit das Website-Paket
+  form.addEventListener('input', (ev) => {
+    if (!ev.target.closest('.wahl-seiten')) return;
+    const cb = ev.target.closest('.wahl-zeile').querySelector('input[type="checkbox"]');
+    if (!cb.checked) { cb.checked = true; cb.dispatchEvent(new Event('change', { bubbles: true })); }
+  });
   // In Gruppen mit „eins“ nimmt ein neues Häkchen das alte weg
   form.addEventListener('change', (ev) => {
     const g = D.gruppen.find((x) => x.id === ev.target.name);
@@ -61,9 +67,11 @@
         if (e.anfrage) { posten.push([e.name, null]); return; }
         let p = e.preis, name = `${g.name}: ${e.name}`;
         if (e.inkl) {
-          const s = Math.max(1, +form.elements[`seiten-${e.id}`].value || e.inkl);
-          if (s > e.inkl) p += (s - e.inkl) * e.seite;
-          name += ` (${s} Seiten)`;
+          // Spanne „von – bis“: der Richtwert rechnet mit dem unteren Wert
+          const von = Math.max(1, +form.elements[`von-${e.id}`].value || e.inkl);
+          const bis = Math.max(von, +form.elements[`bis-${e.id}`].value || von);
+          if (von > e.inkl) p += (von - e.inkl) * e.seite;
+          name += ` (${von === bis ? von : `${von}–${bis}`} Unterseiten)`;
         }
         posten.push([name, p]); einmalig += p;
         if (e.launch) { mitPaket = true; webPreis = p; }
@@ -118,7 +126,7 @@
 // Bereichsleiste: markiert beim Scrollen den Abschnitt, in dem man gerade ist
 (() => {
   const leiste = document.querySelector('.preis-leiste');
-  const links = leiste ? [...leiste.querySelectorAll('a')] : [];
+  const links = leiste ? [...leiste.querySelectorAll('a[href^="#"]')] : [];
   if (!links.length || !('IntersectionObserver' in window)) return;
   const ziele = links.map((a) => document.querySelector(a.getAttribute('href'))).filter(Boolean);
   const beob = new IntersectionObserver((eintraege) => {

@@ -1041,3 +1041,22 @@ html { scroll-padding-top: calc(var(--kopf-hoehe) + 72px); }
 .fuss-karte-icon { mix-blend-mode: multiply; }
 /* Brotkrumen: liegen über der großen Überschrift, damit der Link klickbar bleibt */
 .seitenkopf .meta { position: relative; z-index: 2; }
+
+/* ---------- 23. Leistungsseite (service/): synchron mit Kostenrechner, Daten aus werkzeuge/preise-daten.json ---------- */
+.leistung.ohne-bild { grid-template-columns: minmax(0, 1fr); }
+.leistung.ohne-bild .leistung-text { max-width: 960px; }
+.leistung { scroll-margin-top: calc(var(--kopf-hoehe) + 64px); }
+.leistung-text .alt-klein { font-size: clamp(18px, 1.6vw, 22px); line-height: 1.45; max-width: 46ch; }
+.ls-pakete { list-style: none; margin: 28px 0 0; padding: 0; border-top: 1px solid var(--farbe-dunkel); }
+.ls-pakete li { display: grid; grid-template-columns: 1fr auto; gap: 2px 16px; padding: 14px 0; border-bottom: 1px solid var(--farbe-rahmen); }
+.ls-pakete h3 { font-family: var(--schrift-text); text-transform: none; font-size: 1.1rem; font-weight: 600; margin: 0; }
+.ls-pakete p { grid-column: 1 / -1; margin: 0; font-size: .95rem; }
+.ls-preis { font-family: var(--schrift-meta); font-size: 14px; white-space: nowrap; }
+.ls-zwischen { margin: 24px 0 4px; font-family: var(--schrift-meta); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--farbe-gedaempft); }
+.ls-zusatz { list-style: none; margin: 0; padding: 0; }
+.ls-zusatz li { display: flex; justify-content: space-between; gap: 16px; padding: 8px 0; border-bottom: 1px solid var(--farbe-rahmen); font-size: .95rem; }
+.ls-links { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin-top: 28px; }
+#prozess { scroll-margin-top: calc(var(--kopf-hoehe) + 64px); }
+.gr-lang { font-size: clamp(56px, 13vw, 13vw); } /* lange Seitentitel wie „Leistungen“ mit Icon passen in die Breite */
+.wahl-seiten { margin: 8px 0 0 32px; font-size: 14px; color: var(--farbe-dunkel); display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.seitenkopf .alt-klein .textlink { font-size: inherit; }
