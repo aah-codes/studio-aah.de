@@ -91,3 +91,9 @@
     v.play().catch(() => {});
   }));
 })();
+
+// Animierte Grafiken (SVG): bei „Bewegung reduzieren“ angehalten
+(() => {
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('svg.ci-anim').forEach((s) => { if (s.pauseAnimations) { s.pauseAnimations(); s.setCurrentTime(1.2); } });
+})();

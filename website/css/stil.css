@@ -1399,3 +1399,20 @@ main section[id] { scroll-margin-top: calc(var(--kopf-hoehe) + 72px); }
 @media (max-width: 760px) { .ci-grafik { margin-top: 64px; } }
 .lsx-grundsatz { margin-top: 8px; }
 .ls-grundsatz { margin: 32px 0 0; text-align: center; }
+/* Grafik Corporate Identity, Fassung 3: Animation in Schwarz-Weiß (werkzeuge/grafiken/ci-animation.py) */
+.ci-grafik { display: block; max-width: 1000px; margin-left: auto; margin-right: auto; }
+.ci-anim { display: block; width: 100%; height: auto; font-family: var(--schrift-text); }
+.ci-hoch { display: none; max-width: 520px; margin: 0 auto; }
+.ci-klein { font-family: var(--schrift-meta); letter-spacing: 1.5px; }
+.ci-anim .ci-t { font-weight: 700; }
+.ci-anim .ci-t, .ci-anim .ci-s, .ci-anim .ci-klein { fill: inherit; }
+.ci-anim text.ci-weiss { fill: #fff; }
+.ci-anim text.ci-schwarz-t { fill: var(--farbe-dunkel); }
+.ci-anim .ci-s { opacity: .8; }
+.ci-anim .ci-kern-t { font-family: var(--schrift-ueberschrift); font-size: 36px; letter-spacing: .9px; }
+.ci-pfeil-t { font-family: var(--schrift-meta); letter-spacing: 1px; fill: var(--farbe-gedaempft); }
+.ci-titel { display: block; margin: 0 auto 24px; }
+@media (max-width: 760px) {
+  .ci-quer { display: none; }
+  .ci-hoch { display: block; }
+}
