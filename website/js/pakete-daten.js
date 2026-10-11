@@ -19,6 +19,7 @@ window.PREISE = {
       "Moodboard",
       "Grundpositionierung"
      ],
+     "gefragt": false,
      "ab": true
     },
     {
@@ -33,6 +34,7 @@ window.PREISE = {
       "Farben, Schriften, Bildwelt, Gestaltungselemente",
       "Basishandbuch (kompakt)"
      ],
+     "gefragt": true,
      "ab": true
     },
     {
@@ -47,18 +49,16 @@ window.PREISE = {
       "Brand Manual (ausführlich)",
       "Erste Vorlagen: Visitenkarte, Briefpapier, Präsentation, Social Media"
      ],
+     "gefragt": false,
      "ab": true
     },
     {
      "id": "logo",
      "name": "Logo einzeln",
      "preis": 990,
-     "wer": "Wenn Sie nur ein Logo brauchen – ohne Markenstrategie.",
-     "plus": "Enthalten:",
-     "items": [
-      "Logo-Entwicklung",
-      "ohne Markenstrategie"
-     ],
+     "wer": "",
+     "plus": "",
+     "items": [],
      "ab": true
     }
    ]
@@ -70,42 +70,51 @@ window.PREISE = {
    "pakete": [
     {
      "id": "ui-ux-0",
-     "name": "Mini UX-Audit",
+     "name": "Expert Review",
      "preis": 1200,
-     "wer": "Expertenblick auf die wichtigsten Abläufe Ihrer Anwendung.",
+     "wer": "Expertenblick auf Ihre gesamte Website oder Anwendung.",
      "plus": "Enthalten:",
      "items": [
-      "Analyse der wichtigsten Abläufe",
-      "Kurze Handlungsempfehlungen"
+      "Ich versetze mich in Ihre Zielgruppe und nutze Ihre Website oder Anwendung",
+      "Analyse: was sich verbessern lässt",
+      "Handlungsempfehlungen"
      ],
+     "gefragt": false,
      "ab": true
     },
     {
      "id": "ui-ux-1",
      "name": "UI/UX Audit Pro",
-     "preis": 1500,
+     "preis": 2900,
      "wer": "Die ganze Anwendung unter der Lupe.",
      "plus": "Enthalten:",
      "items": [
-      "Analyse der ganzen Anwendung",
+      "Expert Review",
+      "Brand Experience",
+      "Personas",
+      "Mitbewerberrecherche",
+      "Trendanalyse",
       "Ausführlicher PDF-Report mit Prioritäten"
      ],
-     "ab": true
+     "gefragt": false,
+     "ab": true,
+     "vorschlag": true
     },
     {
      "id": "ui-ux-2",
      "name": "Redesign kleine Webanwendung",
-     "preis": 2600,
+     "preis": 4500,
      "wer": "Für Teams mit bestehender Webanwendung, die einfacher zu bedienen sein soll.",
-     "plus": "Enthalten:",
+     "plus": "Alles aus UI/UX Audit Pro, plus:",
      "items": [
-      "Analyse von Bestand und Nutzer:innen",
       "Neue Nutzerführung",
       "Wireframes & klickbarer Prototyp (Figma)",
-      "UI-Kit & mobile Optimierung",
+      "UI-Kit",
       "Übergabe mit Spezifikationen"
      ],
-     "ab": true
+     "gefragt": false,
+     "ab": true,
+     "vorschlag": true
     },
     {
      "id": "ui-ux-3",
@@ -117,6 +126,7 @@ window.PREISE = {
       "Umfassendes UX-Research & Zielgruppenanalyse",
       "Vollständiges Designsystem"
      ],
+     "gefragt": false,
      "ab": true
     }
    ]
@@ -125,7 +135,7 @@ window.PREISE = {
    "id": "website",
    "name": "Website",
    "wahl": "eins",
-   "hinweis": "Neue Website oder Redesign – schätzen Sie, wie viele Unterseiten Sie brauchen. Typisch: Selbstständige 1–6 Seiten · kleine und mittlere Unternehmen mit Leistungs- und Branchenseiten 10–25 Seiten. Mehr als 25 Seiten, Shop oder Mitgliederbereich? Dann ist es ein komplexes Projekt ab 6.000 € – melden Sie sich am besten direkt.",
+   "hinweis": "Typisch: Selbstständige 1–6 Unterseiten · kleine und mittlere Unternehmen mit Leistungs- und Branchenseiten 10–25 Unterseiten. Mehr als 25 Unterseiten, Shop oder Mitgliederbereich? Dann ist es ein komplexes Projekt ab 6.000 € – melden Sie sich am besten direkt.",
    "pakete": [
     {
      "id": "onepager",
@@ -134,12 +144,15 @@ window.PREISE = {
      "wer": "Für Selbstständige und kleine Angebote, die alles auf einer Seite zeigen.",
      "plus": "Enthalten:",
      "items": [
-      "Konzeption & Seitenstruktur",
-      "Design für Desktop & Handy",
+      "Expert Review (wenn es schon eine Website gibt)",
+      "Marktanalyse",
+      "Seitenstruktur (Sitemap)",
+      "Design für Desktop & Handy (responsiv)",
       "Umsetzung in WordPress (Kadence)",
-      "Überarbeitung Ihrer Texte",
+      "Texte und Bilder kann ich liefern",
       "SEO-Basics & Kontaktformular",
-      "Übergabe"
+      "Launch (150 €, wird automatisch berechnet) & Übergabe",
+      "Schulung zur Selbstpflege: als Zusatz buchbar"
      ],
      "launch": true,
      "ab": true
@@ -150,13 +163,14 @@ window.PREISE = {
      "preis": 2450,
      "inkl": 6,
      "seite": 150,
-     "wer": "Für Unternehmen, die ihr Angebot ausführlich vorstellen – neu oder als Redesign. Enthalten sind bis zu 6 Seiten, jede weitere 150 €.",
+     "wer": "Für Unternehmen, die ihr Angebot ausführlich vorstellen.",
      "plus": "Alles aus Onepager, plus:",
      "items": [
-      "bis zu 6 Seiten inklusive",
-      "jede weitere Seite 150 €",
-      "bei Redesign: Analyse, Inhaltsübernahme, Weiterleitungen"
+      "Mehrere Unterseiten nach Ihrer Sitemap",
+      "SEO-Einrichtung für alle Unterseiten",
+      "Bei Redesign: Analyse der bestehenden Website, Übernahme vorhandener Inhalte, Weiterleitungen alter Adressen"
      ],
+     "gefragt": true,
      "launch": true,
      "ab": true
     }
@@ -182,14 +196,6 @@ window.PREISE = {
      "preis": 260,
      "ab": false,
      "wer": "auch für bestehende Websites"
-    },
-    {
-     "id": "texte",
-     "name": "Texte schreiben",
-     "preis": 130,
-     "ab": false,
-     "art": "anzahl",
-     "wer": ""
     },
     {
      "id": "schulung",
@@ -226,8 +232,8 @@ window.PREISE = {
      "items": [
       "Updates von WordPress, Plugins & Themes",
       "Technische Überwachung & Sicherheitschecks",
-      "Kleine Text- oder Bildänderungen",
-      "Austausch von PDFs, Downloads oder Newslettern"
+      "Kleine Bildänderungen",
+      "Austausch von PDFs"
      ]
     }
    ]
@@ -248,6 +254,7 @@ window.PREISE = {
       "Unternehmensseite",
       "Positionierung"
      ],
+     "gefragt": false,
      "ab": true
     },
     {
@@ -272,6 +279,7 @@ window.PREISE = {
       "1.000–1.500 Wörter",
       "recherchiert und verständlich"
      ],
+     "gefragt": false,
      "ab": true
     },
     {
@@ -283,8 +291,9 @@ window.PREISE = {
      "items": [
       "Konzept",
       "Anmeldeseite",
-      "Technik – ohne Durchführung"
+      "Folien als PowerPoint oder PDF"
      ],
+     "gefragt": false,
      "ab": true
     }
    ]
@@ -373,6 +382,7 @@ window.PREISE = {
       "Analyse Ihrer Abläufe",
       "Empfehlungsbericht"
      ],
+     "gefragt": false,
      "ab": true
     },
     {
@@ -386,6 +396,7 @@ window.PREISE = {
       "1–2 digitale Arbeitsabläufe",
       "Team-Schulung"
      ],
+     "gefragt": false,
      "ab": true
     }
    ]

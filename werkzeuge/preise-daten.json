@@ -56,12 +56,9 @@
      "id": "logo",
      "name": "Logo einzeln",
      "preis": 990,
-     "wer": "Wenn Sie nur ein Logo brauchen – ohne Markenstrategie.",
-     "plus": "Enthalten:",
-     "items": [
-      "Logo-Entwicklung",
-      "ohne Markenstrategie"
-     ],
+     "wer": "",
+     "plus": "",
+     "items": [],
      "ab": true
     }
    ]
@@ -75,13 +72,14 @@
    "pakete": [
     {
      "id": "ui-ux-0",
-     "name": "Mini UX-Audit",
+     "name": "Expert Review",
      "preis": 1200,
-     "wer": "Expertenblick auf die wichtigsten Abläufe Ihrer Anwendung.",
+     "wer": "Expertenblick auf Ihre gesamte Website oder Anwendung.",
      "plus": "Enthalten:",
      "items": [
-      "Analyse der wichtigsten Abläufe",
-      "Kurze Handlungsempfehlungen"
+      "Ich versetze mich in Ihre Zielgruppe und nutze Ihre Website oder Anwendung",
+      "Analyse: was sich verbessern lässt",
+      "Handlungsempfehlungen"
      ],
      "gefragt": false,
      "ab": true
@@ -89,31 +87,36 @@
     {
      "id": "ui-ux-1",
      "name": "UI/UX Audit Pro",
-     "preis": 1500,
+     "preis": 2900,
      "wer": "Die ganze Anwendung unter der Lupe.",
      "plus": "Enthalten:",
      "items": [
-      "Analyse der ganzen Anwendung",
+      "Expert Review",
+      "Brand Experience",
+      "Personas",
+      "Mitbewerberrecherche",
+      "Trendanalyse",
       "Ausführlicher PDF-Report mit Prioritäten"
      ],
      "gefragt": false,
-     "ab": true
+     "ab": true,
+     "vorschlag": true
     },
     {
      "id": "ui-ux-2",
      "name": "Redesign kleine Webanwendung",
-     "preis": 2600,
+     "preis": 4500,
      "wer": "Für Teams mit bestehender Webanwendung, die einfacher zu bedienen sein soll.",
-     "plus": "Enthalten:",
+     "plus": "Alles aus UI/UX Audit Pro, plus:",
      "items": [
-      "Analyse von Bestand und Nutzer:innen",
       "Neue Nutzerführung",
       "Wireframes & klickbarer Prototyp (Figma)",
-      "UI-Kit & mobile Optimierung",
+      "UI-Kit",
       "Übergabe mit Spezifikationen"
      ],
      "gefragt": false,
-     "ab": true
+     "ab": true,
+     "vorschlag": true
     },
     {
      "id": "ui-ux-3",
@@ -136,7 +139,7 @@
    "name": "Website",
    "link": "../service/website/",
    "wahl": "eins",
-   "hinweis": "Neue Website oder Redesign – schätzen Sie, wie viele Unterseiten Sie brauchen. Typisch: Selbstständige 1–6 Seiten · kleine und mittlere Unternehmen mit Leistungs- und Branchenseiten 10–25 Seiten. Mehr als 25 Seiten, Shop oder Mitgliederbereich? Dann ist es ein komplexes Projekt ab 6.000 € – melden Sie sich am besten direkt.",
+   "hinweis": "Typisch: Selbstständige 1–6 Unterseiten · kleine und mittlere Unternehmen mit Leistungs- und Branchenseiten 10–25 Unterseiten. Mehr als 25 Unterseiten, Shop oder Mitgliederbereich? Dann ist es ein komplexes Projekt ab 6.000 € – melden Sie sich am besten direkt.",
    "pakete": [
     {
      "id": "onepager",
@@ -145,12 +148,15 @@
      "wer": "Für Selbstständige und kleine Angebote, die alles auf einer Seite zeigen.",
      "plus": "Enthalten:",
      "items": [
-      "Konzeption & Seitenstruktur",
-      "Design für Desktop & Handy",
+      "Expert Review (wenn es schon eine Website gibt)",
+      "Marktanalyse",
+      "Seitenstruktur (Sitemap)",
+      "Design für Desktop & Handy (responsiv)",
       "Umsetzung in WordPress (Kadence)",
-      "Überarbeitung Ihrer Texte",
+      "Texte und Bilder kann ich liefern",
       "SEO-Basics & Kontaktformular",
-      "Übergabe"
+      "Launch (150 €, wird automatisch berechnet) & Übergabe",
+      "Schulung zur Selbstpflege: als Zusatz buchbar"
      ],
      "launch": true,
      "ab": true
@@ -161,12 +167,12 @@
      "preis": 2450,
      "inkl": 6,
      "seite": 150,
-     "wer": "Für Unternehmen, die ihr Angebot ausführlich vorstellen – neu oder als Redesign. Enthalten sind bis zu 6 Seiten, jede weitere 150 €.",
+     "wer": "Für Unternehmen, die ihr Angebot ausführlich vorstellen.",
      "plus": "Alles aus Onepager, plus:",
      "items": [
-      "bis zu 6 Seiten inklusive",
-      "jede weitere Seite 150 €",
-      "bei Redesign: Analyse, Inhaltsübernahme, Weiterleitungen"
+      "Mehrere Unterseiten nach Ihrer Sitemap",
+      "SEO-Einrichtung für alle Unterseiten",
+      "Bei Redesign: Analyse der bestehenden Website, Übernahme vorhandener Inhalte, Weiterleitungen alter Adressen"
      ],
      "gefragt": true,
      "launch": true,
@@ -208,15 +214,6 @@
      "wer": "auch für bestehende Websites"
     },
     {
-     "id": "texte",
-     "name": "Texte schreiben",
-     "preis": 130,
-     "ab": false,
-     "art": "anzahl",
-     "kurz": "je Seite",
-     "wer": ""
-    },
-    {
      "id": "schulung",
      "name": "Schulung",
      "preis": 70,
@@ -255,33 +252,8 @@
      "items": [
       "Updates von WordPress, Plugins & Themes",
       "Technische Überwachung & Sicherheitschecks",
-      "Kleine Text- oder Bildänderungen",
-      "Austausch von PDFs, Downloads oder Newslettern"
-     ]
-    }
-   ],
-   "nur_liste": [
-    {
-     "id": "komplex",
-     "name": "Komplexes Projekt",
-     "preis": 6000,
-     "wer": "Für Projekte mit Mitgliederbereich, Zahlungen, mehreren Sprachen oder Verzeichnissen.",
-     "plus": "",
-     "items": [
-      "Mitgliederbereich, Zahlungen, Mehrsprachigkeit, Verzeichnisse",
-      "Blog",
-      "Analyse, Inhaltsübernahme und Weiterleitungen bei Bedarf"
-     ]
-    },
-    {
-     "id": "bedarf",
-     "name": "Hilfe nach Bedarf",
-     "stunde": 65,
-     "wer": "Ohne Vertrag – wenn Sie gelegentlich Unterstützung brauchen.",
-     "items": [
-      "Technische Hilfe",
-      "Änderungen an Inhalten",
-      "Sparring zu Ihrer Website"
+      "Kleine Bildänderungen",
+      "Austausch von PDFs"
      ]
     }
    ]
@@ -341,7 +313,7 @@
      "items": [
       "Konzept",
       "Anmeldeseite",
-      "Technik – ohne Durchführung"
+      "Folien als PowerPoint oder PDF"
      ],
      "gefragt": false,
      "ab": true
@@ -452,19 +424,6 @@
      ],
      "gefragt": false,
      "ab": true
-    }
-   ],
-   "nur_liste": [
-    {
-     "id": "ki-begleitung",
-     "name": "Begleitung",
-     "stunde": 65,
-     "wer": "Laufend nach Bedarf, wenn die Einführung steht.",
-     "items": [
-      "Weitere Werkzeuge einrichten",
-      "Weitere Arbeitsabläufe",
-      "Schulungen"
-     ]
     }
    ]
   },

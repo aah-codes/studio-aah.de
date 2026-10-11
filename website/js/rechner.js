@@ -1,5 +1,5 @@
 // Kostenrechner auf der Preisseite: rechnet nur im Browser, speichert und sendet nichts.
-// Daten kommen aus js/pakete-daten.js (erzeugt aus werkzeuge/preise-daten.json – dieselbe Quelle wie die Preisliste).
+// Daten kommen aus js/pakete-daten.js (erzeugt aus werkzeuge/preise-daten.json).
 // Ergebnis ist ein unverbindlicher Kostenvoranschlag (netto); weiter per E-Mail oder als PDF (Druckdialog des Browsers).
 (() => {
   const form = document.getElementById('rechner-wahl');
@@ -11,11 +11,11 @@
   // Eine Zeile je Paket; name = Gruppen-ID (Pakete) bzw. „x“ (Zusatz)
   const zeile = (name, e) => {
     const liste = (e.items || []).map((x) => `<li>${x}</li>`).join('');
-    let h = `<div class="wahl-zeile" data-id="${e.id}"><div class="wahl-oben"><label class="wahl-check"><input type="checkbox" name="${name}" value="${e.id}"><span class="wahl-name">${e.name}</span></label>`;
-    if (liste) h += `<button type="button" class="wahl-pfeil" aria-expanded="false" aria-label="Inhalt von ${e.name} anzeigen">↓</button>`;
+    let h = `<div class="wahl-zeile" data-id="${e.id}"><div class="wahl-oben"><label class="wahl-check"><input type="checkbox" name="${name}" value="${e.id}"><span class="wahl-name">${e.name}</span>${e.gefragt ? '<span class="wahl-gefragt">gefragt</span>' : ''}</label>`;
+    if (liste) h += `<button type="button" class="wahl-pfeil" aria-expanded="false" aria-label="Inhalt von ${e.name} anzeigen"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>`;
     h += `<span class="wahl-preis">${preisAnzeige(e)}</span></div>`;
     if (e.wer) h += `<p class="wahl-wer">${e.wer}</p>`;
-    if (e.inkl) h += `<label class="wahl-mehr">Geschätzte Unterseiten <input class="wahl-anzahl" type="number" name="seiten-${e.id}" min="1" max="60" value="${e.inkl}"></label>`;
+    if (e.inkl) h += `<label class="wahl-mehr">Wie viele Unterseiten wird Ihre Website ungefähr haben? <input class="wahl-anzahl" type="number" name="seiten-${e.id}" min="1" max="60" value="${e.inkl}"></label>`;
     if (e.art === 'anzahl') h += `<label class="wahl-mehr">Anzahl <input class="wahl-anzahl" type="number" name="n-${e.id}" min="1" max="30" value="1"></label>`;
     if (e.wahl) h += `<label class="wahl-mehr">Form <select class="wahl-auswahl" name="w-${e.id}">${e.wahl.map((w) => `<option>${w}</option>`).join('')}</select></label>`;
     h += '<span class="wahl-hinweis"></span>';
@@ -25,7 +25,7 @@
 
   let html = '';
   D.gruppen.forEach((g) => {
-    html += `<fieldset class="wahl-gruppe" data-gruppe="${g.id}"><legend>${g.name}${g.wahl === 'mehrere' ? ' <span>mehrere möglich</span>' : ''}</legend>`;
+    html += `<fieldset class="wahl-gruppe" id="r-${g.id}"><legend>${g.name}${g.wahl === 'mehrere' ? ' <span>mehrere möglich</span>' : ''}</legend>`;
     if (g.hinweis) html += `<p class="wahl-gruppen-hinweis">${g.hinweis}</p>`;
     html += '<div class="wahl-zeilen">' + g.pakete.map((e) => zeile(g.id, e)).join('');
     if (g.extras) {
@@ -43,7 +43,6 @@
     if (!b) return;
     const offen = b.getAttribute('aria-expanded') === 'true';
     b.setAttribute('aria-expanded', String(!offen));
-    b.textContent = offen ? '↓' : '↑';
     b.closest('.wahl-zeile').querySelector('.wahl-auf').hidden = offen;
   });
   // In Gruppen mit „eins“ nimmt ein neues Häkchen das alte weg
@@ -53,7 +52,6 @@
     form.querySelectorAll(`input[name="${g.id}"]`).forEach((i) => { if (i !== ev.target) i.checked = false; });
   });
 
-  let angezeigt = 0;
   function auswahl() {
     const posten = [];
     let einmalig = 0, monatlich = 0, webPreis = 0, mitPaket = false;
@@ -91,23 +89,12 @@
     return { posten, einmalig, monatlich };
   }
 
-  function zaehlen(ziel) {
-    const start = angezeigt, t0 = performance.now(), dauer = 500;
-    const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const setzen = (w) => { el('summe-einmalig').textContent = euro(w); el('summe-brutto').textContent = euro(w * 1.19); };
-    function schritt(t) {
-      const f = still ? 1 : Math.min(1, (t - t0) / dauer);
-      setzen(start + (ziel - start) * (1 - Math.pow(1 - f, 3)));
-      if (f < 1) requestAnimationFrame(schritt); else angezeigt = ziel;
-    }
-    requestAnimationFrame(schritt);
-    clearTimeout(zaehlen.t); zaehlen.t = setTimeout(() => { if (angezeigt !== ziel) { angezeigt = ziel; setzen(ziel); } }, dauer + 100);
-  }
+  const setzen = (w) => { el('summe-einmalig').textContent = euro(w); el('summe-brutto').textContent = euro(w * 1.19); };
 
   const betrag = ([, p, art]) => p === null ? 'auf Anfrage' : art === 'monat' ? `ab ${euro(p)} € / Monat` : `ab ${euro(p)} €`;
   function aktualisieren() {
     const a = auswahl();
-    zaehlen(a.einmalig);
+    setzen(a.einmalig);
     el('summe-monat-zeile').hidden = !a.monatlich;
     el('summe-monat').textContent = euro(a.monatlich);
     el('summe-liste').innerHTML = a.posten.length ? a.posten.map((x) => `<li><span>${x[0]}</span><b>${betrag(x).replace('ab ', '')}</b></li>`).join('') : '<li class="gedaempft">Noch nichts ausgewählt.</li>';
