@@ -1177,3 +1177,37 @@ h1, h2, h3, .gr-xxl, .gr-xl, .gr-h2, .gr-klein, .gr-h3, .artikel h1, .mm-karte-t
 .fakt-ort { width: 1em; height: 1em; vertical-align: -.12em; }
 /* Anton klein: Buchstaben laufen sonst ineinander */
 .herz-grafik .herz-mitte { letter-spacing: .08em; padding-left: .08em; }
+
+/* ---------- 30. Profil: Blick ins Studio – Überschrift oben, Querformat-Foto mit Hinweisen (Linie + Etikett in der Meta-Schrift) ---------- */
+.studio-blick { padding: 120px var(--rand-seite) 0; }
+.studio-text { max-width: 720px; margin-bottom: 40px; }
+.studio-text .gr-h3 { margin: 12px 0 24px; }
+.studio-bild { position: relative; margin: 0; border-radius: 20px; overflow: hidden; }
+.studio-bild img { display: block; width: 100%; height: auto; }
+.studio-punkt { --l: 44px; position: absolute; left: var(--x); top: var(--y); width: 16px; height: 16px; margin: -8px 0 0 -8px; border-radius: 50%; background: var(--farbe-weiss); box-shadow: 0 0 0 3px var(--farbe-dunkel); }
+.studio-punkt::before { content: ""; position: absolute; inset: -3px; border-radius: 50%; border: 2px solid var(--farbe-weiss); animation: studio-puls 2.4s ease-out infinite; }
+.studio-punkt::after { content: ""; position: absolute; left: 100%; top: 50%; width: var(--l); height: 2px; background: var(--farbe-weiss); transform-origin: left; }
+.studio-label { position: absolute; left: calc(100% + var(--l)); top: 50%; transform: translateY(-50%); white-space: nowrap; padding: 6px 12px; border-radius: 999px; background: var(--farbe-dunkel); color: var(--farbe-weiss); font-family: var(--schrift-meta); font-size: 13px; letter-spacing: .02em; }
+/* „oben“: Linie senkrecht nach oben, Etikett darüber */
+.studio-punkt.oben::after { left: 50%; top: auto; bottom: 100%; width: 2px; height: var(--l); transform-origin: bottom; }
+.studio-punkt.oben .studio-label { left: -8px; top: auto; bottom: calc(100% + var(--l)); transform: none; }
+@keyframes studio-puls { from { transform: scale(1); opacity: .9; } to { transform: scale(2.4); opacity: 0; } }
+/* Auftritt nacheinander: Punkt, Linie, Etikett */
+.studio-bild.wartet img { transform: scale(1.06); transition: transform 1.6s cubic-bezier(.2, .7, .2, 1); }
+.studio-bild.wartet .studio-punkt { transform: scale(0); transition: transform .4s cubic-bezier(.3, 1.6, .5, 1) calc(.4s + var(--i) * .6s); }
+.studio-bild.wartet .studio-punkt::after { transform: scaleX(0); transition: transform .4s ease calc(.75s + var(--i) * .6s); }
+.studio-bild.wartet .studio-punkt.oben::after { transform: scaleY(0); }
+.studio-bild.wartet .studio-label { opacity: 0; transition: opacity .4s ease calc(1.05s + var(--i) * .6s); }
+.studio-bild.los img { transform: none; }
+.studio-bild.los .studio-punkt, .studio-bild.los .studio-punkt::after { transform: none; }
+.studio-bild.los .studio-label { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .studio-punkt::before { animation: none; } }
+@media (max-width: 900px) {
+  .studio-blick { padding-top: 72px; }
+  .studio-text { margin-bottom: 24px; }
+  .studio-punkt { --l: 18px !important; width: 12px; height: 12px; margin: -6px 0 0 -6px; }
+  .studio-label { font-size: 10px; padding: 3px 8px; white-space: normal; width: max-content; max-width: 130px; line-height: 1.3; }
+}
+/* Kennzeichnung: Foto mit KI bearbeitet (Bildschirminhalt ersetzt, Kabel entfernt) */
+.studio-ki { position: absolute; right: 12px; bottom: 12px; display: inline-flex; align-items: center; gap: 5px; padding: 4px 9px; border-radius: 999px; background: rgba(14, 16, 17, .72); color: var(--farbe-weiss); font-family: var(--schrift-meta); font-size: 10px; letter-spacing: .04em; text-transform: uppercase; }
+.studio-ki svg { width: 10px; height: 10px; fill: currentColor; }
