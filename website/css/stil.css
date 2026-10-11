@@ -1881,19 +1881,18 @@ img.profil-bildtext-bild, .profil-bildtext-bild img { width: 100%; height: auto;
 .bauhaus-tetris { --u: min(28cqw, 20cqh); position: relative; width: calc(var(--u) * 3); height: calc(var(--u) * 4); }
 .tt { position: absolute; left: calc(var(--u) * var(--x)); bottom: calc(var(--u) * var(--y)); width: var(--u); height: var(--u); }
 .tz { position: absolute; left: calc(var(--u) * var(--c) + 3px); bottom: calc(var(--u) * var(--r) + 3px); width: calc(var(--u) - 6px); height: calc(var(--u) - 6px); background: var(--f); }
-.tt-d { --f: var(--farbe-dunkel); } .tt-m { --f: #9a9d9e; } .tt-h { --f: #d6d8d9; } .tt-b { --f: #2f6bff; }
+.tt-w { --f: var(--farbe-weiss); } .tt-d { --f: var(--farbe-dunkel); } .tt-m { --f: #9a9d9e; } .tt-h { --f: #d6d8d9; } .tt-b { --f: #2f6bff; }
 .tz-to { clip-path: polygon(50% 4%, 100% 100%, 0 100%); }
 .tz-tu { clip-path: polygon(0 0, 100% 0, 50% 96%); }
 .tz-k { border-radius: 50%; }
 .tz-ki { border-radius: 50%; }
-.ci-film .tt { animation-name: tt-fallen; animation-duration: 1.25s; animation-timing-function: linear; }
+.ci-film .tt { animation-name: tt-fallen; animation-duration: 1.25s; animation-timing-function: cubic-bezier(.4, 0, .2, 1.06); will-change: transform; }
+/* Ein durchgehender Bewegungsverlauf ohne Zwischenstopps (ruckelt nicht); Start außerhalb des Felds, daher ohne Einblenden */
 @keyframes tt-fallen {
-  from { transform: translate(calc(var(--u) * var(--dx)), calc(var(--u) * -5)) rotate(var(--rot)); opacity: 0; animation-timing-function: cubic-bezier(.45, 0, .55, 1); }
-  12% { opacity: 1; }
-  72% { transform: translate(0, calc(var(--u) * -.15)) rotate(0deg); animation-timing-function: ease-in; }
-  86% { transform: translate(0, calc(var(--u) * .03)); animation-timing-function: ease-out; }
-  to { transform: none; opacity: 1; }
+  from { transform: translate(calc(var(--u) * var(--dx)), calc(var(--u) * -5)) rotate(var(--rot)); }
+  to { transform: none; }
 }
+
 
 @media (max-width: 900px) { .intro-formen { position: relative; height: 420px; min-height: 0; max-width: none; } }
 
@@ -1937,3 +1936,8 @@ img.profil-bildtext-bild, .profil-bildtext-bild img { width: 100%; height: auto;
 .profil-wer .profil-zweispaltig { padding-bottom: 16px; }
 .profil-wer-zeitleiste { padding: 0 var(--rand-seite) 120px; }
 @media (max-width: 900px) { .profil-wer-zeitleiste { padding: 0 var(--rand-seite-mobil) 64px; } }
+/* Dachzeilen (Meta-Zeile direkt vor einer Überschrift): blauer Punkt davor (Anna 11.10.2026) */
+.meta:has(+ :is(h1, h2))::before, div:has(+ :is(h1, h2)) > .meta:last-child::before { content: ""; display: inline-block; width: .62em; height: .62em; margin: 0 .55em .08em 0; border-radius: 50%; background: #2f6bff; vertical-align: middle; }
+/* Referenzen: Website-Screenshots scrollen sofort los */
+@keyframes rk-scrollen { 0% { transform: translateY(0); } 94%, 100% { transform: translateY(calc(-100% + 460px)); } }
+@keyframes rk-scrollen-h { 0% { transform: translateY(0); } 94%, 100% { transform: translateY(calc(-100% + 460px)); } }
