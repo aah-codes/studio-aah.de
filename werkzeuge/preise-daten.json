@@ -14,10 +14,9 @@
      "wer": "Für Gründer:innen und Selbstständige, die erst Klarheit über Positionierung und Stil brauchen.",
      "plus": "Enthalten:",
      "items": [
-      "Fragebogen und gemeinsamer Termin",
-      "Markencheck",
-      "Moodboard",
-      "Grundpositionierung"
+      "Fragebogen",
+      "Brand Experience",
+      "Mitbewerberrecherche"
      ],
      "gefragt": false,
      "ab": true
@@ -30,6 +29,7 @@
      "plus": "Alles aus Basic, plus:",
      "items": [
       "Positionierung & Zielgruppe",
+      "Personas",
       "Logo-Entwicklung",
       "Farben, Schriften, Bildwelt, Gestaltungselemente",
       "Basishandbuch (kompakt)"
@@ -44,10 +44,9 @@
      "wer": "Für Unternehmen, die ihre Marke umfassend aufstellen und im Alltag einheitlich einsetzen wollen.",
      "plus": "Alles aus Medium, plus:",
      "items": [
-      "Markenkern",
       "Messaging & Tonalität",
       "Brand Manual (ausführlich)",
-      "Erste Vorlagen: Visitenkarte, Briefpapier, Präsentation, Social Media"
+      "Erste Vorlagen: Visitenkarte, Präsentation, Social Media"
      ],
      "gefragt": false,
      "ab": true
@@ -461,7 +460,7 @@
      "wer": "Für alle, die wissen wollen, wo KI im Alltag wirklich Zeit spart.",
      "plus": "Enthalten:",
      "items": [
-      "Fragebogen und gemeinsamer Termin",
+      "Fragebogen",
       "Analyse Ihrer Abläufe",
       "Empfehlungsbericht"
      ],

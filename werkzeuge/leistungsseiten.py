@@ -13,6 +13,7 @@ GEMEINSAM = json.loads((basis / 'werkzeuge' / 'inhalte' / 'faq-gemeinsam.json').
 euro = lambda n: f"{n:,}".replace(',', '.') + '&nbsp;€'
 
 
+TERMINE = 'Einmal pro Woche einen Termin, 45 Minuten, online über Google Meet oder Teams, je nachdem, was Sie brauchen.'
 NETTO = '<small class="lsx-netto">netto</small>'
 # Hinweis im Kleingedruckten unter Karten, Tabelle und Zusatzleistungen (B2B: Nettopreise, Umsatzsteuer kommt dazu)
 NETTO_HINWEIS = '<p class="lsx-klein">Alle Preise sind Nettopreise zzgl. 19&nbsp;% Umsatzsteuer (USt.).</p>'
@@ -84,6 +85,12 @@ def extras(g):
 START = (basis / 'website' / 'index.html').read_text(encoding='utf-8')
 
 
+def ablauf_eigen(pre, schritte):
+    li = ''.join(f'<li><span class="pz-nr">{i:02d}</span><span class="meta">{esc(m)}</span><h3>{esc(h)}</h3><p class="gedaempft">{esc(x)}</p></li>' for i, (m, h, x) in enumerate(schritte, 1))
+    return (f'  <section class="prozess-kompakt" id="ablauf" aria-labelledby="prozess">\n    <p class="meta">Wie ich arbeite</p>\n    <h2 class="preis-h2" id="prozess">Prozess</h2>\n'
+            f'    <ol class="pz-schritte">{li}</ol>\n    <p><a class="button" href="{pre}kontakt/">Projekt anfragen <span aria-hidden="true">→</span></a></p>\n  </section>')
+
+
 def ablauf(pre):
     m = re.search(r'<section class="prozess-kompakt".*?</section>', START, re.S)
     s = m.group(0).replace('href="kontakt/"', f'href="{pre}kontakt/"')
@@ -138,7 +145,10 @@ def seite(key, c):
         g = {**g, 'pakete': [{**e, **c.get('paket_extra', {})} for e in g['pakete'] if e['id'] in c['pakete']], 'extras': []}
     intro = c.get('intro') or g['intro']
     # Der Prozess der Startseite beschreibt Website-Projekte; andere Leistungen brauchen eigene Schritte (noch offen)
-    mit_ablauf = c.get('ablauf', c['gruppe'] == 'website')
+    mit_ablauf = bool(c.get('ablauf_schritte')) or c.get('ablauf', c['gruppe'] == 'website')
+    # Abstimmungstermine (Anna, 11.10.2026): im Projekt wöchentlich, bei laufender Betreuung seltener
+    termine = c.get('termine', TERMINE)
+    faq_termine = [['Wie oft stimmen wir uns bei STUDIO AAH! ab?', 'Bei STUDIO AAH! gibt es ' + termine[0].lower() + termine[1:] + ' Weitere Termine vereinbaren wir nach Absprache.']]
     pfad = basis / 'website' / c['pfad'] / 'index.html'
     if not pfad.exists():  # neue Seite: Kopf und Fuß von der Website-Seite übernehmen (gleiche Ordnertiefe)
         pfad.parent.mkdir(parents=True, exist_ok=True)
@@ -152,13 +162,14 @@ def seite(key, c):
         <summary>{esc(q)}</summary>
         <div class="faq-antwort"><p>{esc(a)}</p></div>
       </details>
-''' for q, a in c['faq'] + GEMEINSAM)
+''' for q, a in c['faq'] + faq_termine + GEMEINSAM)
     main = f'''<main id="inhalt">
 
   <section class="seitenkopf lsx-kopf">
     <p class="meta"><a href="{pre}#leistungen">Leistungen</a> / {esc(c['titel'])}</p>
     <h1 class="gr-xxl"><span class="wort-mit-icon">{esc(c['titel'])}<img class="icon-3d" src="{pre}{c['icon']}" alt="" width="400" height="400"></span></h1>
     <p class="alt-klein">{esc(intro)}</p>
+    <p class="lsx-termine"><span class="meta">So arbeiten wir</span> {esc(termine)}</p>
     {fakten(pre)}
   </section>
 
@@ -177,6 +188,8 @@ def seite(key, c):
     </div>
   </section>
 
+{(basis / 'werkzeuge' / 'grafiken' / (c['grafik'] + '.html')).read_text(encoding='utf-8') if c.get('grafik') else ''}
+
   <section class="lsx-pakete" id="pakete" aria-labelledby="pakete-titel">
     <p class="meta">Pakete</p>
     <h2 class="gr-h3" id="pakete-titel">Pakete im Überblick</h2>
@@ -192,7 +205,7 @@ def seite(key, c):
 
 {extras(g)}
 
-{ablauf(pre) if mit_ablauf else ''}
+{(ablauf_eigen(pre, c['ablauf_schritte']) if c.get('ablauf_schritte') else ablauf(pre)) if mit_ablauf else ''}
 
 {stimmen(pre, c['tag'])}
 
@@ -238,11 +251,11 @@ def seite(key, c):
              {"@type": "Service", "@id": url + '#leistung', "name": c['titel'], "description": intro, "url": url,
               "provider": {"@id": "https://studio-aah.de/#studio"}, "areaServed": "Leipzig", "offers": angebote},
              {"@type": "FAQPage", "@id": url + '#faq', "url": url, "inLanguage": "de",
-              "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in c['faq'] + GEMEINSAM]}]
+              "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in c['faq'] + faq_termine + GEMEINSAM]}]
     ld = json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, indent=2)
     t = re.sub(r'<script type="application/ld\+json">.*?</script>', lambda m: f'<script type="application/ld+json">\n{ld}\n  </script>', t, count=1, flags=re.S)
     if 'zaehlen.js' not in t:
-        t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v=20261012o" defer></script>\n</body>', 1)
+        t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v=20261012q" defer></script>\n</body>', 1)
     pfad.write_text(t, encoding='utf-8')
     print('geschrieben:', c['pfad'])
 

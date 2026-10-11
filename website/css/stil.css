@@ -1352,3 +1352,34 @@ main section[id] { scroll-margin-top: calc(var(--kopf-hoehe) + 72px); }
 .lsx-netto { font-family: var(--schrift-text); font-size: .4em; letter-spacing: 0; font-weight: 400; text-transform: none; vertical-align: .35em; margin-left: .15em; }
 .lsx-extra-preis .lsx-netto, .lsx-tabelle .lsx-netto { font-size: .8em; vertical-align: baseline; }
 .lsx-klein { font-size: .85rem; color: var(--farbe-gedaempft); margin: 16px 0 0; }
+
+/* 38. Grafik Corporate Identity (Brand-Seite) und Kleingedrucktes „Nicht enthalten“ */
+.lsx-nicht { padding: 18px 22px; }
+.lsx-nicht ul { font-size: .85rem; color: var(--farbe-gedaempft); gap: 2px; }
+.ci-grafik { margin: 0 0 96px; display: grid; grid-template-columns: minmax(0, 560px) auto minmax(0, 240px); align-items: center; justify-content: center; gap: 24px 32px; }
+.ci-kreis { width: 100%; height: auto; display: block; font-family: var(--schrift-text); }
+.ci-hell { fill: var(--farbe-hellgrau-2); }
+.ci-mittel { fill: #dcdfe0; }
+.ci-kreis path { stroke: var(--farbe-weiss); stroke-width: 4; }
+.ci-t { font-size: 27px; font-weight: 700; fill: var(--farbe-dunkel); }
+.ci-s { font-size: 21px; fill: rgba(14, 16, 17, .72); }
+.ci-kern { fill: var(--farbe-dunkel); }
+.ci-kern-t { font-family: var(--schrift-ueberschrift); font-size: 38px; letter-spacing: .9px; text-transform: uppercase; fill: var(--farbe-weiss); }
+.ci-pfeil { font-size: 2.4rem; color: #2f6bff; line-height: 1; }
+.ci-image { aspect-ratio: 1; border-radius: 50%; background: #2f6bff; color: var(--farbe-weiss); display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: var(--schrift-ueberschrift); font-size: clamp(1.4rem, 2.4vw, 2rem); letter-spacing: .9px; text-transform: uppercase; line-height: 1.12; }
+.ci-grafik figcaption { grid-column: 1 / -1; max-width: 70ch; justify-self: center; text-align: center; font-size: .9rem; color: var(--farbe-gedaempft); }
+@media (max-width: 760px) {
+  .ci-grafik { grid-template-columns: 1fr; justify-items: center; }
+  .ci-pfeil { transform: rotate(90deg); }
+  .ci-image { width: 58%; }
+}
+.lsx-termine { max-width: 70ch; margin: 16px 0 0; font-size: 1rem; }
+.lsx-termine .meta { display: inline-block; margin-right: 8px; }
+@media (max-width: 760px) {
+  .ci-kreis { justify-self: stretch; max-width: 560px; margin: 0 auto; }
+  .ci-grafik figcaption { padding: 0 4px; }
+}
+@media (max-width: 760px) {
+  .ci-grafik { padding: 0 16px; margin-bottom: 64px; }
+  .ci-image { width: 46%; }
+}
