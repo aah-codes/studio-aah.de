@@ -1174,3 +1174,6 @@ h1, h2, h3, .gr-xxl, .gr-xl, .gr-h2, .gr-klein, .gr-h3, .artikel h1, .mm-karte-t
 /* Hero Startseite: Knöpfe (Anfrage zuerst) und Kennzahlen darunter (Idee: proxy.gonka.gg) */
 .hero-knoepfe { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 16px 32px; margin: 24px 0 0; }
 .hero-fakten { max-width: 880px; margin: 48px auto 0; }
+.fakt-ort { width: 1em; height: 1em; vertical-align: -.12em; }
+/* Anton klein: Buchstaben laufen sonst ineinander */
+.herz-grafik .herz-mitte { letter-spacing: .08em; padding-left: .08em; }
