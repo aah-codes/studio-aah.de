@@ -1677,3 +1677,4 @@ ul.profil-kunst-quellen { list-style: none; padding: 0; }
 .rk-einzeln .rk-browser img, .rk-einzeln .rk-handy img, .rk-einzeln .rk-objekt img { animation-iteration-count: 2; }
 .lsx-duo-icon { filter: grayscale(1); }
 .lsx-duo-icon { filter: none; }
+.lsx-duo-icon { filter: grayscale(1); }
