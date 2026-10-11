@@ -215,8 +215,8 @@ def einsetzen(text, name, inhalt):
 if __name__ == '__main__':
     seiten = {
         'index.html': [('PROJEKTE', lambda: referenz_karten(PROJEKTE, '', 'start')), ('FUERWEN', lambda: fuer_wen('')), ('STIMMEN', lambda: stimmen(STIMMEN, '')),
-                       ('BLOG', lambda: blog(BLOG[:3], '', 'blog/')), ('KENNZAHLEN', lambda: kennzahlen())],
-        'profil/index.html': [('STIMMEN', lambda: stimmen(STIMMEN, '../')), ('BLOG', lambda: blog(BLOG[:3], '../', '../blog/')),
+                       ('BLOG', lambda: blog(BLOG[:4], '', 'blog/')), ('KENNZAHLEN', lambda: kennzahlen())],
+        'profil/index.html': [('STIMMEN', lambda: stimmen(STIMMEN, '../')), ('BLOG', lambda: blog(BLOG[:4], '../', '../blog/')),
                               ('KENNZAHLEN', lambda: kennzahlen('fakten', '      '))],
         'blog/index.html': [('BLOG', lambda: blog(BLOG, '../', '', 'h2'))],
     }
