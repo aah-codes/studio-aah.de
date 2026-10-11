@@ -112,21 +112,26 @@ def fuer_wen(pre=''):
         ('mittelstand', 'Mittelstand', 'Ihre ganze Website, neu gedacht.', paket['unternehmen']['wer'], [
             ('Website', paket['unternehmen']['name'], 'Design-System, neue Startseite, Leistungs-, Branchen- und Referenzseiten.', preis('unternehmen'), f'{pre}service/website/#pakete'),
             ('Karriere', 'Karrierebereich', 'Stellenangebote und Bewerbungsformular, damit Fachkräfte Sie finden.', 'im Paket', f'{pre}service/website/#pakete'),
-            ('Referenz', 'Wolfgang Bauer Ingenieurbau', 'Strategie, Rebranding, UX/UI Design, Website und Unternehmenspräsentation.', 'Ansehen →', f'{pre}#referenzen')]),
+            ('Referenz', 'Wolfgang Bauer Ingenieurbau', 'Strategie, Rebranding, UX/UI Design, Website und Unternehmenspräsentation.', 'Projekt ansehen →', f'{pre}#referenzen', 'bauer-website.jpg')]),
         ('selbststaendige', 'Selbstständige', 'Klar auftreten, ohne Umwege.', 'Für Selbstständige und kleine Angebote: eine Website, die alles auf den Punkt bringt, und eine Marke, die zu Ihnen passt.', [
             ('Website', paket['onepager']['name'], 'Alles auf einer Seite, responsiv, mit SEO & LLM-Zitierfähigkeit.', preis('onepager'), f'{pre}service/website/#pakete'),
             ('Brand', 'Basic', 'Fragebogen, Brand Experience und Mitbewerberrecherche.', preis('brand-0'), f'{pre}service/brand/#pakete'),
-            ('Referenz', 'Deinetwegen', 'Branding, UI/UX Design und Website für eine HR-Beratung.', 'Ansehen →', f'{pre}#referenzen')]),
+            ('Referenz', 'Deinetwegen', 'Branding, UI/UX Design und Website für eine HR-Beratung.', 'Projekt ansehen →', f'{pre}#referenzen', 'deinetwegen-handy.jpg')]),
         ('vereine', 'Vereine &amp; Kultur', 'Demokratie braucht Sichtbarkeit.', 'Kostenfreie Websites für Vereine, NGOs, Kunst und Kultur. Du zahlst, was es dir wert ist.', [
             ('Aktion', 'Kostenfreie Website', 'Für Organisationen, die sich für Demokratie, Frauen- und Kinderrechte, Natur- und Tierschutz oder Kunst und Kultur einsetzen.', 'kostenfrei', f'{pre}demokratie-braucht-sichtbarkeit/'),
-            ('Aktion', 'Eine Website im Monat', 'Ich gestalte bis zu eine Website im Monat kostenfrei.', 'Mehr erfahren →', f'{pre}demokratie-braucht-sichtbarkeit/'),
-            ('Referenz', 'Jana Voigtmann', 'Webdesign für eine Künstlerin aus Leipzig.', 'Ansehen →', f'{pre}#referenzen')]),
+            ('Aktion', 'Eine Website im Monat', 'Ich gestalte bis zu eine Website im Monat kostenfrei.', 'Zur Aktion →', f'{pre}demokratie-braucht-sichtbarkeit/'),
+            ('Referenz', 'Jana Voigtmann', 'Webdesign für eine Künstlerin aus Leipzig.', 'Projekt ansehen →', f'{pre}#referenzen', 'jana-website.jpg')]),
     ]
     TAB_AUS = ' tabindex="-1"'
     knoepfe = ''.join(f'<button type="button" role="tab" id="fw-r-{k}" aria-controls="fw-{k}" aria-selected="{"true" if i == 0 else "false"}"{"" if i == 0 else TAB_AUS}>{n}</button>' for i, (k, n, *_ ) in enumerate(felder))
     teile = []
     for i, (k, n, titel, unter, karten) in enumerate(felder):
-        kh = ''.join(f'<a class="dk-karte" href="{l}"><span class="meta">{m}</span><span class="dk-karte-titel">{esc(h)}</span><span class="dk-karte-text">{esc(x)}</span><span class="dk-preis">{pr}</span></a>' for m, h, x, pr, l in karten)
+        # Karte: Dachzeile, Titel, Text, unten Preis bzw. Link (Zeilen über alle Karten bündig); Referenzkarten zeigen über dem Link den Website-Screenshot (Anna 11.10.2026)
+        def karte(m, h, x, pr, l, bild=None):
+            b = f'<span class="dk-bild"><img src="{pre}bilder/referenzen/{bild}" alt="" loading="lazy"></span>' if bild else ''
+            return (f'<a class="dk-karte{" dk-karte-ref" if bild else ""}" href="{l}"><span class="meta">{m}</span><span class="dk-karte-titel">{esc(h)}</span>'
+                    f'<span class="dk-karte-text">{esc(x)}</span><span class="dk-fuss">{b}<span class="dk-preis">{pr}</span></span></a>')
+        kh = ''.join(karte(*k) for k in karten)
         teile.append(f'      <div class="dk-feld" id="fw-{k}" role="tabpanel" aria-labelledby="fw-r-{k}"{"" if i == 0 else " hidden"}>\n        <h3 class="dk-titel">{esc(titel)}</h3>\n'
                      f'        <p class="dk-unter">{esc(unter)}</p>\n        <div class="dk-karten">{kh}</div>\n      </div>')
     return (f'  <section class="dk" aria-labelledby="fuer-wen-titel">\n    <p class="meta">Für wen</p>\n    <h2 class="unsichtbar" id="fuer-wen-titel">Für wen ich arbeite</h2>\n'
