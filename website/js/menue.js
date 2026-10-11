@@ -193,7 +193,7 @@
   });
 })();
 
-// Website-Ökosystem: gestrichelte Kurven von jeder Karte zur Website, je Richtung ein wandernder Punkt (SMIL, Zeit läuft mit dem Film)
+// Website-Ökosystem: gestrichelte Kurven von jeder Karte zur Website, je Richtung ein wandernder Punkt, jeder zweite blau (SMIL, Zeit läuft mit dem Film)
 (() => {
   const NS = 'http://www.w3.org/2000/svg';
   document.querySelectorAll('.oeko').forEach((oeko) => {
@@ -202,16 +202,19 @@
       svg.innerHTML = '';
       if (getComputedStyle(svg).display === 'none') return;
       const o = oeko.getBoundingClientRect(), w = web.getBoundingClientRect();
+      let punkt = 0;
       oeko.querySelectorAll('.oeko-karte').forEach((k, i) => {
         const r = k.getBoundingClientRect(), links = r.left < w.left;
+        // Andockpunkte gleichmäßig über die Website-Seite verteilen, je nach Zahl der Karten auf dieser Seite
+        const geschw = [...k.parentElement.children], n = geschw.length, nr = geschw.indexOf(k);
         const x1 = (links ? r.right : r.left) - o.left, y1 = r.top + r.height / 2 - o.top;
-        const x2 = (links ? w.left : w.right) - o.left, y2 = w.top + w.height * (0.28 + (i % 3) * 0.22) - o.top;
+        const x2 = (links ? w.left : w.right) - o.left, y2 = w.top + w.height * (n > 1 ? 0.2 + nr * 0.6 / (n - 1) : 0.5) - o.top;
         const mx = (x1 + x2) / 2, d = `M${x1} ${y1}C${mx} ${y1} ${mx} ${y2} ${x2} ${y2}`;
         const pfad = document.createElementNS(NS, 'path'); pfad.setAttribute('d', d); pfad.setAttribute('class', 'oeko-linie'); svg.appendChild(pfad);
         const richtung = k.dataset.richtung, rueck = `M${x2} ${y2}C${mx} ${y2} ${mx} ${y1} ${x1} ${y1}`;
         const wege = richtung === 'rein' ? [d] : richtung === 'raus' ? [rueck] : [d, rueck];
         wege.forEach((weg, j) => {
-          const c = document.createElementNS(NS, 'circle'); c.setAttribute('r', '4'); c.setAttribute('class', 'ci-f'); c.setAttribute('opacity', '0');
+          const c = document.createElementNS(NS, 'circle'); c.setAttribute('r', '4'); c.setAttribute('class', punkt++ % 2 ? 'ci-f oeko-punkt-blau' : 'ci-f'); c.setAttribute('opacity', '0');
           const start = 5.4 + i * 0.35 + j * 1.6;
           c.innerHTML = `<animateMotion dur="3.2s" begin="${start}s" repeatCount="indefinite" path="${weg}"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.9;1" dur="3.2s" begin="${start}s" repeatCount="indefinite"/>`;
           svg.appendChild(c);

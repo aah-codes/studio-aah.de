@@ -1786,3 +1786,40 @@ img.profil-bildtext-bild, .profil-bildtext-bild img { width: 100%; height: auto;
 /* Außenkarten untereinander vernetzt (gestrichelte Verbindung zwischen den Karten einer Seite) */
 .oeko-seite .oeko-karte { position: relative; }
 .oeko-seite .oeko-karte + .oeko-karte::before { content: ""; position: absolute; left: 50%; top: -23px; height: 22px; border-left: 1.8px dashed #8f9293; }
+/* Ökosystem, Runde 2 (Anna 11.10.2026): Clay-Icon und Logos in den Karten, Website in der Mitte als Wireframe, jeder zweite Punkt blau */
+.oeko-kopf { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 10px; }
+.oeko-kopf .oeko-titel { margin: 0; }
+.oeko-icon { width: 46px; height: 46px; flex: none; margin: -6px 0 -6px -4px; animation: ci-schweben 5s ease-in-out infinite; }
+.oeko-karte:nth-child(2n) .oeko-icon { animation-delay: -2.5s; }
+.oeko-chips li { display: inline-flex; align-items: center; gap: 6px; }
+.oeko-logo { width: 15px; height: 15px; flex: none; display: block; }
+.oeko-linien .oeko-punkt-blau { fill: #2f6bff; }
+.oeko-website { text-align: left; padding: 18px 20px 22px; }
+.oeko-browser { align-items: center; }
+.oeko-adresse { margin-left: 10px; flex: 1; font-size: .72rem; color: var(--farbe-gedaempft); background: var(--farbe-hellgrau); border-radius: 999px; padding: 3px 12px; }
+.oeko-website-titel { text-align: center; margin: 4px 0 14px; }
+.oeko-wf { display: grid; gap: 10px; position: relative; }
+.wf-nav { display: flex; align-items: center; gap: 8px; padding: 0 2px 4px; }
+.wf-nav b { width: 34px; height: 12px; border-radius: 4px; background: var(--farbe-dunkel); margin-right: auto; }
+.wf-nav span { width: 28px; height: 6px; border-radius: 3px; background: #d6d8d9; }
+.wf-nav em { width: 40px; height: 14px; border-radius: 999px; background: var(--farbe-dunkel); }
+.wf-block { border: 1.5px dashed #b9bcbd; border-radius: 14px; background: var(--farbe-hellgrau); padding: 10px 12px; display: flex; flex-direction: column; gap: 6px; min-height: 64px; }
+.wf-reihe { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.wf-name { font-size: .82rem; font-weight: 700; line-height: 1.25; }
+.wf-hero { min-height: 84px; justify-content: center; }
+.wf-hero .wf-name { font-family: var(--schrift-ueberschrift); font-weight: 400; font-size: 1.25rem; letter-spacing: .6px; text-transform: uppercase; }
+.wf-linie { display: block; height: 6px; width: 80%; border-radius: 3px; background: #d6d8d9; }
+.wf-linie.wf-kurz { width: 55%; }
+.wf-kacheln { display: flex; gap: 5px; margin-top: auto; }
+.wf-kacheln i { flex: 1; height: 22px; border-radius: 5px; background: #e1e3e4; }
+.wf-feld { display: block; height: 9px; border-radius: 3px; background: #fff; border: 1px solid #d6d8d9; }
+.wf-knopf { display: block; width: 46px; height: 11px; border-radius: 999px; background: var(--farbe-dunkel); margin-top: auto; }
+.wf-chat { justify-self: end; margin: -2px -4px -8px 0; padding: 7px 14px; border-radius: 16px 16px 4px 16px; background: #2f6bff; color: var(--farbe-weiss); }
+.wf-chat .wf-name { font-size: .78rem; }
+.ci-film.ruhe .oeko-icon { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .oeko-icon { animation: none; } }
+/* Profil, Kunst: Belege eingeklappt (Anna 11.10.2026: kurz halten, Links nur als Nachweis) */
+.profil-kunst-belege { margin-top: 18px; }
+.profil-kunst-belege summary { cursor: pointer; font-size: .9rem; color: var(--farbe-gedaempft); width: max-content; }
+.profil-kunst-belege summary:hover { color: var(--farbe-dunkel); }
+.profil-kunst-belege[open] summary { margin-bottom: 10px; }
