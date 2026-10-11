@@ -1128,3 +1128,25 @@ h1, h2, h3, .gr-xxl, .gr-xl, .gr-h2, .gr-klein, .gr-h3, .artikel h1, .mm-karte-t
 .intro-nutzen li::before { content: ""; position: absolute; left: 4px; top: .35em; width: 16px; height: 9px; border-left: 3px solid currentColor; border-bottom: 3px solid currentColor; transform: rotate(-45deg); }
 .intro-nutzen strong { display: block; font-weight: 700; }
 .intro-wer { font-size: clamp(17px, 1.2vw, 19px); line-height: 1.6; }
+
+/* ---------- 27. Kundenstimmen als versetztes Raster (wie Pinterest), alle sichtbar – Startseite und Profil ---------- */
+.stimmen { display: block; columns: 3 320px; column-gap: 20px; padding: 0 var(--rand-seite) 96px; }
+.stimme { break-inside: avoid; margin: 0 0 20px; padding: 32px 28px; border-radius: 20px; }
+.stimme h3 { min-height: 0; }
+.stimme .gedaempft { font-size: .95rem; line-height: 1.55; }
+.stimme .person { padding-top: 1.25rem; }
+@media (max-width: 1024px) { .stimmen { columns: 2 280px; } }
+@media (max-width: 640px) { .stimmen { columns: 1; } }
+
+/* ---------- 28. Profilseite: Ansatz und Engagement, Aktivitäten, Werdegang, Empfehlungen ---------- */
+.profil-zweispaltig { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; padding: 0 var(--rand-seite) 96px; }
+.zwecke { list-style: none; padding: 0; margin: 16px 0 32px; display: flex; flex-wrap: wrap; gap: 8px; }
+.zwecke li { padding: 6px 14px; border-radius: 999px; border: 1px solid var(--farbe-rahmen); font-size: 14px; font-weight: 600; }
+.profil-programm { display: flex; flex-direction: column; gap: 12px; padding: 32px; border-radius: 20px; background: var(--farbe-hellgrau); text-decoration: none; color: inherit; max-width: 520px; }
+.profil-programm .button { align-self: flex-start; }
+.pz-schritte.pz-drei { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.profil-erfahrung .pz-schritte .meta { margin: 0; }
+@media (max-width: 900px) {
+  .profil-zweispaltig { grid-template-columns: minmax(0, 1fr); gap: 40px; padding-bottom: 64px; }
+  .pz-schritte.pz-drei { grid-template-columns: minmax(0, 1fr); }
+}
