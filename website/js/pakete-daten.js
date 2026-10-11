@@ -148,7 +148,7 @@ window.PREISE = {
       "Marktanalyse",
       "Seitenstruktur (Sitemap)",
       "SEO & LLM-Zitierfähigkeit",
-      "Texte und Bilder kann ich liefern",
+      "Texte (einmal für die ganze Website) und Bilder kann ich liefern",
       "Design für Desktop & Handy (responsiv)",
       "Umsetzung in WordPress (Kadence)",
       "Kontaktformular",

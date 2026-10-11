@@ -1331,3 +1331,6 @@ main section[id] { scroll-margin-top: calc(var(--kopf-hoehe) + 72px); }
 .lsx-artikel { padding: 96px 0 0; }
 .lsx-artikel-kopf { padding: 0 var(--rand-seite); }
 .lsx-artikel-kopf .gr-h3 { margin: 12px 0 24px; }
+/* Referenzen: kein Fokusrahmen beim Aufklappen mit der Maus, mehr Luft zu den Fakten */
+.referenz summary:focus-visible { outline: none; text-decoration: underline; text-underline-offset: 6px; }
+.referenz[open] .referenz-fakten { margin-top: 16px; }
