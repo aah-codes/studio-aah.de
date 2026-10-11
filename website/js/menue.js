@@ -116,7 +116,9 @@
     const knopf = film.querySelector('.ci-nochmal-knopf');
     if (knopf) knopf.addEventListener('click', start);
     if (!('IntersectionObserver' in window)) { start(); return; }
-    const beob = new IntersectionObserver((e) => { if (e[0].isIntersecting) { start(); beob.disconnect(); } }, { threshold: 0.12 });
+    // data-wiederholen: kurzer Film (unter 5 s) startet bei jedem Hineinscrollen neu (Bauhaus-Formen, Anna 11.10.2026)
+    const wieder = film.hasAttribute('data-wiederholen');
+    const beob = new IntersectionObserver((e) => { if (e[0].isIntersecting) { start(); if (!wieder) beob.disconnect(); } }, { threshold: wieder ? 0.6 : 0.12 });
     beob.observe(film);
   });
 })();

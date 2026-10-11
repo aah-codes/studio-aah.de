@@ -1880,3 +1880,12 @@ img.profil-bildtext-bild, .profil-bildtext-bild img { width: 100%; height: auto;
 .intro-formen { display: flex; align-items: center; justify-content: center; aspect-ratio: 4 / 5; background: var(--farbe-hellgrau); border-radius: 20px; }
 .intro-formen .bauhaus-formen { --s: clamp(64px, 8vw, 130px); position: relative; right: auto; bottom: auto; margin: 0; }
 @media (max-width: 900px) { .intro-formen { aspect-ratio: auto; padding: 40px 0; max-width: none; } .intro-formen .bauhaus-formen { --s: 64px; } }
+/* Profil „Mein Ansatz“: Text links, Formen groß rechts (Anna 11.10.2026: „langweilig“) */
+.ansatz-zeile { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: 56px; align-items: end; padding: 0 var(--rand-seite); }
+.ansatz-zeile .profil-ansatz-text { padding: 0; }
+.ansatz-zeile .ansatz-herkunft { font-size: 1.2rem; line-height: 1.6; color: var(--farbe-dunkel); }
+.ansatz-zeile .bauhaus-formen { --s: clamp(70px, 8.5vw, 140px); position: relative; right: auto; bottom: auto; justify-self: center; margin-top: calc(var(--s) * -1.6); }
+@media (max-width: 900px) { .ansatz-zeile { grid-template-columns: 1fr; gap: 32px; padding: 0 var(--rand-seite-mobil); } .ansatz-zeile .bauhaus-formen { --s: 64px; margin: 0; } }
+/* Profil „Über mich“: große Zeile links bleibt stehen, rechter Text scrollt (Anna 11.10.2026) */
+.profil-wer .profil-zweispaltig > div:first-child { position: sticky; top: calc(var(--kopf-hoehe) + 32px); align-self: start; }
+@media (max-width: 900px) { .profil-wer .profil-zweispaltig > div:first-child { position: static; } }
