@@ -1416,3 +1416,23 @@ main section[id] { scroll-margin-top: calc(var(--kopf-hoehe) + 72px); }
   .ci-quer { display: none; }
   .ci-hoch { display: block; }
 }
+/* Nutzen der Corporate Identity (Brand-Seite): eigene Linien-Icons, grau mit schwarzem Akzent */
+.ci-nutzen { margin: 0 auto 96px; }
+.ci-nutzen-liste { list-style: none; margin: 32px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 40px 32px; }
+.ci-nutzen-liste svg { width: 120px; height: 80px; display: block; margin-bottom: 16px; }
+.ci-nutzen-liste h3 { font-size: 1.4rem; margin: 0 0 8px; }
+.ci-nutzen-liste p { margin: 0; color: var(--farbe-gedaempft); }
+.ci-l { fill: none; stroke: #c9cccd; stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; }
+.ci-a { fill: none; stroke: var(--farbe-dunkel); stroke-width: 3; stroke-linejoin: round; }
+.ci-f { fill: var(--farbe-dunkel); }
+.ci-p { fill: none; stroke: #c9cccd; stroke-width: 2; stroke-dasharray: 2 4; stroke-linecap: round; }
+/* Corporate Identity, Fassung 4: Linienstil (grau, gepunktet, schwarzer Akzent) */
+.ci-icon * { vector-effect: non-scaling-stroke; }
+.ci-icon .ci-l { stroke-width: 2; }
+.ci-icon .ci-a { stroke-width: 2.6; }
+.ci-anim .ci-l { stroke-width: 2; }
+.ci-pfad { fill: none; stroke: var(--farbe-dunkel); stroke-width: 1.6; }
+.ci-anim > .ci-p, .ci-anim path.ci-p { stroke-width: 1.8; }
+.ci-anim .ci-s { opacity: .62; }
+.ci-nutzen { padding: 0 var(--rand-seite); max-width: calc(var(--inhalt-breite) + 2 * var(--rand-seite)); }
+@media (max-width: 760px) { .ci-nutzen { padding: 0 var(--rand-seite-mobil); } }

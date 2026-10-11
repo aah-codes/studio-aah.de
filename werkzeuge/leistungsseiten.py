@@ -191,6 +191,7 @@ def seite(key, c):
   </section>
 
 {(basis / 'werkzeuge' / 'grafiken' / (c['grafik'] + '.html')).read_text(encoding='utf-8') if c.get('grafik') else ''}
+{(basis / 'werkzeuge' / 'grafiken' / (c['nutzen'] + '.html')).read_text(encoding='utf-8') if c.get('nutzen') else ''}
 
   <section class="lsx-pakete" id="pakete" aria-labelledby="pakete-titel">
     <p class="meta">Pakete</p>
@@ -257,7 +258,7 @@ def seite(key, c):
     ld = json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, indent=2)
     t = re.sub(r'<script type="application/ld\+json">.*?</script>', lambda m: f'<script type="application/ld+json">\n{ld}\n  </script>', t, count=1, flags=re.S)
     if 'zaehlen.js' not in t:
-        t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v=20261012u" defer></script>\n</body>', 1)
+        t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v=20261012w" defer></script>\n</body>', 1)
     pfad.write_text(t, encoding='utf-8')
     print('geschrieben:', c['pfad'])
 
