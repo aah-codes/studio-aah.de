@@ -102,7 +102,13 @@
    "Mehr als zwei Korrekturrunden: nach Aufwand, 65 € pro Stunde"
   ],
   "tag": "website",
-  "erfolg": "Wolfgang Bauer Ingenieurbau GmbH"
+  "erfolg": "Wolfgang Bauer Ingenieurbau GmbH",
+  "loesung_text": "Ihre Website ist Vertriebsinstrument. Ich plane Struktur und Inhalte so, dass Besucher und Besucherinnen schnell finden, was sie suchen, und den nächsten Schritt gehen. Alles aus einer Hand, von der Seitenstruktur bis zum Launch.",
+  "loesung_punkte": [
+   "Zuerst die Seitenstruktur (Sitemap): Wer sucht was, und wo findet er es?",
+   "Klare Botschaft gleich zu Beginn und eindeutige nächste Schritte für mehr Conversion",
+   "WordPress (Kadence) oder Claude Code, Schulung zur Selbstpflege und auf Wunsch Wartung"
+  ]
  },
  "brand": {
   "pfad": "service/brand/",
@@ -229,7 +235,13 @@
     "Zum Abschluss erhalten Sie Ihr Brand Manual als Guideline. Eine Website können Sie zusätzlich buchen."
    ]
   ],
-  "nutzen": "ci-nutzen"
+  "nutzen": "ci-nutzen",
+  "loesung_text": "Ich behalte die Corporate Identity im Ganzen im Blick: Das Corporate Design baut auf Culture, Communication und Behaviour auf. Form follows Content.",
+  "loesung_punkte": [
+   "Brand Experience: Analyse aller digitalen und analogen Touchpoints",
+   "Buyer-Personas und User-Personas für Ihre Zielgruppe",
+   "Markt-, Zielgruppen- und Trendanalyse"
+  ]
  },
  "ui-ux": {
   "pfad": "service/ui-ux/",
@@ -318,6 +330,12 @@
     "Wie läuft ein UI/UX-Projekt bei STUDIO AAH! ab?",
     "Bei STUDIO AAH! stellen Sie sich mit dem Kostenrechner einen unverbindlichen Kostenvoranschlag zusammen. Im kostenlosen Erstgespräch klären wir, wo Sie stehen, was Sie wollen, was Sie brauchen und wen Sie erreichen wollen. Danach erhalten Sie ein Angebot mit Festpreis und schließlich den Vertrag. Größere Projekte zahlen Sie in 3 Raten: bei Start, nach Freigabe des Konzepts und beim Go-live."
    ]
+  ],
+  "loesung_text": "Bevor gestaltet wird, höre ich zu, werte Daten aus und lerne, wer Ihre Nutzer:innen sind und was sie wirklich brauchen. Mit Wireframes und Prototypen in Figma werden Ideen sichtbar, lange bevor programmiert wird.",
+  "loesung_punkte": [
+   "Expert Review: Ich versetze mich in Ihre Zielgruppe, nutze Ihre Website oder Anwendung und zeige, was sich verbessern lässt",
+   "Personas: greifbare Abbilder Ihrer Zielgruppe für Entscheidungen, die nicht aus dem Bauch kommen",
+   "Neue Nutzerführung und UI-Kit, für Plattformen ein vollständiges Designsystem"
   ]
  },
  "marketing": {
@@ -399,6 +417,12 @@
     "Wie läuft ein Marketing-Auftrag bei STUDIO AAH! ab?",
     "Bei STUDIO AAH! stellen Sie sich mit dem Kostenrechner einen unverbindlichen Kostenvoranschlag zusammen. Im kostenlosen Erstgespräch klären wir, wo Sie stehen, was Sie wollen, was Sie brauchen und wen Sie erreichen wollen. Danach erhalten Sie ein Angebot mit Festpreis und schließlich den Vertrag."
    ]
+  ],
+  "loesung_text": "Sichtbar werden, wo Ihre Kund:innen sind: mit klarer Positionierung und Inhalten, die zu Ihnen passen. Alle Leistungen sind einzeln buchbar.",
+  "loesung_punkte": [
+   "LinkedIn aufsetzen: Profil, Unternehmensseite und klare Positionierung",
+   "Fachartikel mit 1.000 bis 1.500 Wörtern, recherchiert und verständlich",
+   "Webinar aufsetzen: Konzept, Anmeldeseite und Folien als PowerPoint oder PDF"
   ]
  },
  "ki": {
@@ -480,6 +504,12 @@
     "Programmiert STUDIO AAH! eigene KI-Lösungen?",
     "Nein. Programmierung gehört bei STUDIO AAH! nicht zur KI-Beratung. Ich wähle passende, vorhandene KI-Werkzeuge mit Ihnen aus und richte sie ein."
    ]
+  ],
+  "loesung_text": "Im KI-Check schaue ich mir an, wo in Ihrem Alltag Zeit verloren geht und wo KI-Werkzeuge wirklich entlasten. In der KI-Einführung setzen wir die Empfehlungen um.",
+  "loesung_punkte": [
+   "KI-Check: Analyse Ihrer Abläufe und ein Empfehlungsbericht",
+   "Auswahl und Einrichtung passender KI-Werkzeuge, mit Blick auf den Datenschutz",
+   "Team-Schulung: praxisnah, verständlich und auf Ihre Aufgaben zugeschnitten"
   ]
  },
  "print": {
@@ -549,7 +579,25 @@
     "Sie stellen sich mit dem Kostenrechner einen unverbindlichen Kostenvoranschlag zusammen. Im kostenlosen Erstgespräch klären wir Ist-Stand, Ziele, Bedarf und Zielgruppe. Danach erhalten Sie von STUDIO AAH! ein Angebot mit Festpreis und schließlich den Vertrag."
    ]
   ],
-  "termine": "Termine nach Absprache, online über Google Meet oder Teams."
+  "termine": "Termine nach Absprache, online über Google Meet oder Teams.",
+  "loesung_text": "Professionelles Design für Gedrucktes, von der Visitenkarte bis zum Magazin. Sie erhalten druckfertige Druckdaten; bei mehrseitigen Publikationen begleite ich auch den Druck.",
+  "loesung_punkte": [
+   "Unternehmenspräsentation mit bis zu 20 Folien, als PDF und für den Druck",
+   "Magazin, Katalog oder Jahresbericht als mehrseitige Publikation mit Druckbegleitung",
+   "Visitenkarte, Flyer, Postkarte und Broschüre, druckfertig gestaltet"
+  ],
+  "paket_reihen": [
+   [
+    "praesentation",
+    "publikation"
+   ],
+   [
+    "visitenkarte",
+    "flyer",
+    "broschuere"
+   ]
+  ],
+  "artikel": false
  },
  "illustration": {
   "pfad": "service/illustration-infografik/",
@@ -610,7 +658,19 @@
     "Wie läuft ein Auftrag für Illustration oder Infografik bei STUDIO AAH! ab?",
     "Sie stellen sich mit dem Kostenrechner einen unverbindlichen Kostenvoranschlag zusammen; Illustration & Infografik steht dort als „auf Anfrage“. Im kostenlosen Erstgespräch klären wir Ist-Stand, Ziele, Bedarf und Zielgruppe. Danach erhalten Sie von STUDIO AAH! ein Angebot mit Festpreis und schließlich den Vertrag."
    ]
-  ]
+  ],
+  "loesung_text": "Illustrationen, Icons, Piktogramme und Infografiken, die komplexe Inhalte auf einen Blick verständlich machen. Umfang und Preis klären wir im kostenlosen Erstgespräch.",
+  "loesung_punkte": [
+   "Infografiken, die komplexe Inhalte auf einen Blick verständlich machen",
+   "Eigene Illustrationen, Icons und Piktogramme",
+   "Für Ihre Website auch als Zusatz zum Website-Paket"
+  ],
+  "hintergrund": {
+   "titel": "Gestaltung mit künstlerischem Hintergrund.",
+   "text": [
+    "Gestartet bin ich an der Bauhaus-Universität Weimar, wo Design nicht nur schön, sondern auch gesellschaftlich relevant gedacht wird. Ich habe viel illustriert und bringe diesen künstlerischen Hintergrund in jede Illustration und Infografik mit."
+   ]
+  }
  },
  "motion": {
   "pfad": "service/motion-design/",
@@ -673,7 +733,20 @@
     "Wie läuft ein Motion-Design-Auftrag bei STUDIO AAH! ab?",
     "Sie stellen sich mit dem Kostenrechner einen unverbindlichen Kostenvoranschlag zusammen; Motion Design steht dort als „auf Anfrage“. Im kostenlosen Erstgespräch klären wir Ist-Stand, Ziele, Bedarf und Zielgruppe. Danach erhalten Sie von STUDIO AAH! ein Angebot mit Festpreis und schließlich den Vertrag."
    ]
-  ]
+  ],
+  "loesung_text": "Bewegte Grafiken und Animationen für Ihre Website, für Social Media und für Präsentationen. Umfang und Preis klären wir im kostenlosen Erstgespräch.",
+  "loesung_punkte": [
+   "Bewegte Grafiken und Animationen für Ihre Website",
+   "Animationen für Social Media und Präsentationen",
+   "Für Ihre Website auch als Zusatz zum Website-Paket"
+  ],
+  "hintergrund": {
+   "titel": "Gestaltung mit künstlerischem Hintergrund.",
+   "text": [
+    "Gestartet bin ich an der Bauhaus-Universität Weimar, wo Design nicht nur schön, sondern auch gesellschaftlich relevant gedacht wird. Diesen künstlerischen Hintergrund bringe ich in jedes Motion Design mit.",
+    "Beispiele zeige ich hier bald."
+   ]
+  }
  },
  "retainer": {
   "pfad": "service/retainer/",
@@ -741,6 +814,12 @@
    "anfrage": false,
    "stunde": 65
   },
-  "termine": "Alle zwei Wochen bis einmal im Monat einen Abstimmungstermin, online über Google Meet oder Teams, je nachdem, was Sie brauchen."
+  "termine": "Alle zwei Wochen bis einmal im Monat einen Abstimmungstermin, online über Google Meet oder Teams, je nachdem, was Sie brauchen.",
+  "loesung_text": "Mit dem Retainer entwickle ich Ihre Website nach dem Start weiter. Abgerechnet wird nach Aufwand, ab 65 € netto pro Stunde. Der Retainer ist keine Wartung: Die Wartung ist die rein technische Pflege.",
+  "loesung_punkte": [
+   "Texte und Bilder austauschen",
+   "Neue Unterseiten erstellen",
+   "Abschnitte bearbeiten"
+  ]
  }
 }

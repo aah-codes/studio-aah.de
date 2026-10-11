@@ -1570,3 +1570,79 @@ main section[id] { scroll-margin-top: calc(var(--kopf-hoehe) + 72px); }
 .rk-visitenkarte img { width: 100%; display: block; border-radius: 8px; box-shadow: 0 16px 34px rgba(14, 16, 17, .28); transform: rotate(-6deg); }
 .rk-visitenkarte span { position: absolute; left: 4px; bottom: -14px; background: var(--farbe-dunkel); color: #fff; font-family: var(--schrift-meta); font-size: .68rem; letter-spacing: 1px; padding: 5px 10px; border-radius: 999px; text-transform: uppercase; }
 @media (max-width: 900px) { .rk-visitenkarte { width: 150px; right: 14px; bottom: 24px; } }
+
+/* 41. Problem & Lösung (Anna 11.10.2026): Problem schwarz, Lösung hell daneben in gleicher Höhe, Knöpfe unter dem Problem */
+.lsx-pl .gr-h3 { margin: 12px 0 32px; max-width: 22ch; }
+.lsx-pl-raster { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 24px; align-items: stretch; }
+.lsx-pl-problem, .lsx-pl-loesung { border-radius: 28px; padding: 36px 36px 32px; }
+.lsx-pl-problem { background: var(--farbe-dunkel); color: #fff; }
+.lsx-pl-problem .meta { color: rgba(255, 255, 255, .6); }
+.lsx-pl-loesung { background: var(--farbe-hellgrau); }
+.lsx-pl-problem ul, .lsx-pl-loesung ul { list-style: none; margin: 16px 0 0; padding: 0; display: grid; gap: 12px; }
+.lsx-pl-problem li, .lsx-pl-loesung li { position: relative; padding-left: 28px; line-height: 1.45; }
+.lsx-pl-problem li::before { content: "×"; position: absolute; left: 2px; top: -1px; color: rgba(255, 255, 255, .55); }
+.lsx-pl-loesung li::before { content: "✓"; position: absolute; left: 0; top: 0; font-weight: 700; }
+.lsx-pl-text { margin: 16px 0 0; font-size: 1.1rem; line-height: 1.5; max-width: 52ch; }
+.lsx-pl-loesung .lsx-grundsatz { margin: 24px 0 0; }
+.lsx-pl .lsx-knoepfe { grid-column: 1; margin: 4px 0 0; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; }
+@media (max-width: 900px) {
+  .lsx-pl-raster { grid-template-columns: 1fr; }
+  .lsx-pl .lsx-knoepfe { grid-row: 3; }
+  .lsx-pl-problem, .lsx-pl-loesung { padding: 28px 24px; border-radius: 24px; }
+}
+
+/* Pakete in Reihen (Print: 2 große, darunter 3) */
+.lsx-karten + .lsx-karten { margin-top: 20px; }
+.lsx-karten-2 { grid-template-columns: repeat(2, 1fr); }
+.lsx-karten-3 { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 900px) { .lsx-karten-2, .lsx-karten-3 { grid-template-columns: 1fr; } }
+
+/* Ansprechpartnerin und Kostenrechner als zwei Karten nebeneinander */
+.lsx-duo { display: grid; grid-template-columns: 1.3fr 1fr; gap: 24px; padding: 96px var(--rand-seite) 0; align-items: stretch; }
+.lsx-duo-karte { border-radius: 32px; padding: 40px; position: relative; overflow: hidden; }
+.lsx-duo .lsx-direkt { background: var(--farbe-hellgrau); display: grid; grid-template-columns: 160px 1fr; gap: 28px; align-items: start; margin: 0; padding: 40px; }
+.lsx-duo .lsx-direkt img { width: 160px; height: auto; border-radius: 20px; }
+.lsx-duo-rechner { background: var(--farbe-dunkel); color: #fff; display: flex; flex-direction: column; gap: 12px; }
+.lsx-duo-rechner .meta { color: rgba(255, 255, 255, .6); margin: 0; }
+.lsx-duo-rechner .gr-h3 { color: #fff; margin: 0; max-width: 12ch; }
+.lsx-duo-rechner p { margin: 0; color: rgba(255, 255, 255, .78); max-width: 40ch; }
+.lsx-duo-rechner .button-hell, .lsx-duo-rechner .button { background: #fff; color: var(--farbe-dunkel); margin-top: 8px; }
+.lsx-duo-icon { position: absolute; right: 24px; top: 20px; width: 120px; height: 120px; }
+@media (max-width: 900px) {
+  .lsx-duo { grid-template-columns: 1fr; padding: 64px var(--rand-seite-mobil) 0; }
+  .lsx-duo .lsx-direkt { grid-template-columns: 1fr; padding: 28px; }
+  .lsx-duo-karte { padding: 28px; border-radius: 24px; }
+  .lsx-duo-icon { width: 84px; height: 84px; }
+}
+
+/* Magazin im Querformat (Print-Referenz Bauer): Seiten blättern nacheinander um */
+.rk-magazin { position: absolute; inset: 56px 40px 56px 32px; display: grid; place-items: center; }
+.rk-heft { position: relative; width: 100%; aspect-ratio: 16 / 9; perspective: 2000px; filter: drop-shadow(0 30px 40px rgba(14, 16, 17, .28)); }
+.rk-heft img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 6px; transform-origin: left center; backface-visibility: hidden; transition: transform .9s cubic-bezier(.4, 0, .2, 1), opacity .9s; }
+.rk-heft img.umgeblaettert { transform: rotateY(-110deg); opacity: 0; }
+.rk-heft.ohne-uebergang img { transition: none; }
+.rk-magazin > span { position: absolute; left: 0; bottom: -6px; background: var(--farbe-dunkel); color: #fff; font-family: var(--schrift-meta); font-size: .68rem; letter-spacing: 1px; padding: 5px 10px; border-radius: 999px; text-transform: uppercase; }
+@media (max-width: 900px) { .rk-magazin { inset: 24px 18px 40px; } }
+.lsx-loesung.lsx-pl { display: block; }
+.lsx-pl .lsx-knoepfe { flex-direction: row; }
+.lsx-duo-icon { border-radius: 22px; background: #fff; padding: 6px; }
+
+/* 42. Preiskarten: Zeilen in einer Reihe auf gleicher Höhe (Unterzeile, Dauer, „Enthalten“, Liste) – Regel Anna 11.10.2026 */
+.lsx-karten { align-items: stretch; }
+.lsx-karte { display: grid; grid-template-rows: subgrid; grid-row: span 6; row-gap: 8px; align-content: start; }
+.lsx-karte > p:empty { margin: 0; }
+.lsx-karte-plus:empty, .lsx-karte-dauer:empty { min-height: 0; }
+/* Nur ein Paket: Karte und Hintergrund nebeneinander */
+.lsx-einzeln { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 24px; align-items: stretch; }
+.lsx-einzeln .lsx-karte { grid-row: auto; display: flex; flex-direction: column; }
+.lsx-einzeln .lsx-nicht { margin-top: 0; }
+.lsx-hintergrund { background: var(--farbe-creme); border-radius: 24px; padding: 32px; }
+.lsx-hintergrund .meta { margin: 0 0 8px; }
+.lsx-hintergrund-titel { font-size: 1.6rem; margin: 0 0 12px; }
+.lsx-hintergrund p:not(.meta) { margin: 0 0 10px; max-width: 60ch; }
+@media (max-width: 900px) { .lsx-einzeln { grid-template-columns: 1fr; } }
+/* Überschrift der Leistungsseiten passt sich der Breite an (--n = Buchstaben im längsten Wort) */
+.lsx-titel { font-size: min(clamp(64px, 19vw, 19vw), calc((100vw - 2 * var(--rand-seite)) / (var(--n) * .56 + 1.4))); }
+@media (max-width: 760px) { .lsx-titel { font-size: min(19vw, calc((100vw - 2 * var(--rand-seite-mobil)) / (var(--n) * .56 + 1.4))); } }
+.lsx-titel .icon-3d { height: .9em; width: auto; }
+.lsx-kopf .alt-klein { hyphens: auto; overflow-wrap: break-word; }

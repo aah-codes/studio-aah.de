@@ -50,7 +50,7 @@ start_html = ('  <section class="start-leistungen" aria-labelledby="leistungen">
               '<h2 class="gr-xxl" id="leistungen">Leistungen</h2></div>\n'
               f'    <nav class="leistungs-chips" aria-label="Leistungen">{chips}<a href="preise/#rechner">Kostenrechner →</a></nav>\n'
               f'    <div class="ls-raster">{karten_s}</div>\n'
-              '    <p class="ls-grundsatz"><a class="textlink" href="service/brand/#corporate-identity">Grundlage für alles, was ich gestalte: das Rad der Corporate Identity <span aria-hidden="true">→</span></a></p>\n  </section>')
+              '    <p class="ls-grundsatz"><a class="textlink" href="service/brand/#corporate-identity">Grundlage für alles, was ich gestalte: die Corporate Identity <span aria-hidden="true">→</span></a></p>\n  </section>')
 start = basis / 'website' / 'index.html'
 start.write_text(einsetzen(start.read_text(encoding='utf-8'), 'LEISTUNGEN', start_html), encoding='utf-8')
 print('Rechner-Daten, Leiste, Glossar und Startseite geschrieben')

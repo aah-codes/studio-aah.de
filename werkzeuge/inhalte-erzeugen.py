@@ -44,8 +44,8 @@ def _chips(p):
     return ''.join(f'<li>{esc(x)}</li>' for x in teile if x)
 
 
-def _mockup(p, pre):
-    m, h = p.get('mockup', {}), []
+def _mockup(p, pre, m=None):
+    m, h = m or p.get('mockup', {}), []
     if m.get('browser'):
         h.append(f'<div class="rk-browser"><img src="{pre}{m["browser"]}" alt="Website von {esc(p["kurzname"])}" loading="lazy"></div>')
     if m.get('handy'):
@@ -54,13 +54,17 @@ def _mockup(p, pre):
         h.append(f'<div class="rk-objekt"><img src="{pre}{m["karte"]}" alt="Gestaltung für {esc(p["kurzname"])}" loading="lazy"></div>')
     if m.get('visitenkarte'):
         h.append(f'<div class="rk-visitenkarte"><img src="{pre}{m["visitenkarte"]}" alt="Visitenkarte für {esc(p["kurzname"])}" loading="lazy"><span>Print</span></div>')
+    if m.get('magazin'):
+        # Magazin im Querformat: Seiten blättern nacheinander um (js/menue.js)
+        h.append('<div class="rk-magazin"><div class="rk-heft">' + ''.join(f'<img src="{pre}{s}" alt="" loading="lazy">' for s in m['magazin'])
+                 + '</div><span>Unternehmenspräsentation · Magazin A4 quer</span></div>')
     if m.get('folien'):
         h.append('<div class="rk-folien">' + ''.join(f'<img src="{pre}{f}" alt="" loading="lazy">' for f in m['folien']) + '<span>Unternehmenspräsentation</span></div>')
-    f = p.get('film')
+    f = None if m.get('ohne_film') else p.get('film')
     if f:
         h.append(f'<button type="button" class="rk-schwebe rk-film film-knopf" data-film="{pre}{f["datei"]}" data-titel="{html.escape(f["titel"])}" aria-label="{html.escape(f["titel"])} ansehen">'
                  f'<span class="rk-film-bild"><img src="{pre}{f["vorschau"]}" alt="" loading="lazy"></span><b>Launch-Film ansehen</b><span>die neue Website im Film</span></button>')
-    elif p.get('stimme'):
+    elif p.get('stimme') and not m.get('ohne_film'):
         s = next((x for x in STIMMEN if x['name'] == p['stimme']), None)
         if s:
             satz = re.sub(r'<[^>]+>', '', s['absaetze_html'][0])
@@ -70,7 +74,8 @@ def _mockup(p, pre):
     return ''.join(h)
 
 
-def referenz_karten(liste, pre, kennung='ref'):
+def referenz_karten(liste, pre, kennung='ref', ansicht=None):
+    # ansicht (z. B. 'print'): eigenes Mockup je Leistungsseite, falls im Projekt hinterlegt (mockup_print)
     karten = []
     for p in liste:
         link = p['links'][0] if p.get('links') else None
@@ -81,7 +86,7 @@ def referenz_karten(liste, pre, kennung='ref'):
           <ul class="rk-chips">{_chips(p)}</ul>
           {f'<p class="rk-link"><a class="textlink" href="{link["url"]}" target="_blank" rel="noopener">{esc(link["text"])} ↗</a></p>' if link else ''}
         </div>
-        <div class="rk-buehne">{_mockup(p, pre)}</div>
+        <div class="rk-buehne">{_mockup(p, pre, p.get(f'mockup_{ansicht}') if ansicht else None)}</div>
       </article>''')
     if len(karten) == 1:
         return '    <div class="rk-einzeln">\n' + karten[0] + '\n    </div>'

@@ -34,11 +34,23 @@ def karten(g):
         out.append(f'''      <article class="lsx-karte{' lsx-gefragt' if e.get('gefragt') else ''}">
         {'<p class="lsx-badge">Gefragt</p>' if e.get('gefragt') else ''}<h3 class="lsx-karte-name">{esc(e['name'])}</h3>
         <p class="lsx-karte-preis">{preis(e)}</p>
-        {f'<p class="lsx-karte-wer">{esc(e["wer"])}</p>' if e.get('wer') else ''}
-        {f'<p class="lsx-karte-dauer"><span class="meta">Dauer</span> {esc(e["dauer"])}</p>' if e.get('dauer') else ''}
-        {f'<p class="lsx-karte-plus">{esc(e["plus"])}</p>' if e.get('plus') else ''}<ul class="lsx-karte-liste">{liste}</ul>
+        <p class="lsx-karte-wer">{esc(e.get("wer") or "")}</p>
+        <p class="lsx-karte-dauer">{f'<span class="meta">Dauer</span> {esc(e["dauer"])}' if e.get('dauer') else ''}</p>
+        <p class="lsx-karte-plus">{esc(e.get("plus") or "")}</p><ul class="lsx-karte-liste">{liste}</ul>
       </article>''')
     return '\n'.join(out)
+
+
+def paket_reihen(g, c):
+    if len(g['pakete']) == 1:
+        h = c.get('hintergrund')
+        rechts = (f'<div class="lsx-hintergrund"><p class="meta">Mein Hintergrund</p><h3 class="lsx-hintergrund-titel">{esc(h["titel"])}</h3>'
+                  + ''.join(f'<p>{esc(x)}</p>' for x in h['text']) + '</div>') if h else nicht_enthalten(c)
+        return '    <div class="lsx-einzeln">\n' + karten(g) + '\n      ' + rechts + '\n    </div>'
+    if not c.get('paket_reihen'):
+        return '    <div class="lsx-karten">\n' + karten(g) + '\n    </div>'
+    nach_id = {e['id']: e for e in g['pakete']}
+    return '\n'.join(f'    <div class="lsx-karten lsx-karten-{len(r)}">\n' + karten({**g, 'pakete': [nach_id[i] for i in r]}) + '\n    </div>' for r in c['paket_reihen'])
 
 
 def vergleich(g):
@@ -116,7 +128,7 @@ def nicht_enthalten(c):
 def referenzen(tag, pre):
     liste = I.mit_tag(I.PROJEKTE, [tag])
     if not liste: return ''
-    return '  <section class="lsx-referenzen" id="referenzen" aria-labelledby="referenzen-titel">\n    <p class="meta">Referenzen</p>\n    <h2 class="gr-h3" id="referenzen-titel">Projekte aus diesem Bereich</h2>\n    <div class="referenz-rahmen">\n' + I.referenz_karten(liste, pre, 'lsx') + '\n    </div>\n  </section>'
+    return '  <section class="lsx-referenzen" id="referenzen" aria-labelledby="referenzen-titel">\n    <p class="meta">Referenzen</p>\n    <h2 class="gr-h3" id="referenzen-titel">Projekte aus diesem Bereich</h2>\n    <div class="referenz-rahmen">\n' + I.referenz_karten(liste, pre, 'lsx', tag) + '\n    </div>\n  </section>'
 
 
 def artikel(pre, tag):
@@ -126,7 +138,7 @@ def artikel(pre, tag):
 
 
 def direkt(pre):
-    return f'''  <section class="lsx-direkt" aria-labelledby="direkt-titel">
+    return f'''    <div class="lsx-duo-karte lsx-direkt">
     <img src="{pre}bilder/studio-aah-gruenderin-anna-haertelt.webp" alt="Anna Härtelt, Gründerin von STUDIO AAH!" width="768" height="1024" loading="lazy">
     <div>
       <p class="meta">Ihre Ansprechpartnerin</p>
@@ -134,7 +146,7 @@ def direkt(pre):
       <p>Bei STUDIO AAH! arbeiten Sie direkt mit mir, von der ersten Idee bis zum Launch. Ich bin Anna Härtelt, UX/UI-Designerin, Strategin und Webentwicklerin.</p>
       <p><a class="textlink" href="{pre}profil/">Mehr über mich</a></p>
     </div>
-  </section>'''
+    </div>'''
 
 
 def seite(key, c):
@@ -144,6 +156,7 @@ def seite(key, c):
     if c.get('pakete'):
         g = {**g, 'pakete': [{**e, **c.get('paket_extra', {})} for e in g['pakete'] if e['id'] in c['pakete']], 'extras': []}
     intro = c.get('intro') or g['intro']
+    titel_vorne = esc(' '.join(c['titel'].split()[:-1])) + ' ' if len(c['titel'].split()) > 1 else ''
     # Der Prozess der Startseite beschreibt Website-Projekte; andere Leistungen brauchen eigene Schritte (noch offen)
     mit_ablauf = bool(c.get('ablauf_schritte')) or c.get('ablauf', c['gruppe'] == 'website')
     # Abstimmungstermine (Anna, 11.10.2026): im Projekt wöchentlich, bei laufender Betreuung seltener
@@ -168,25 +181,22 @@ def seite(key, c):
 
   <section class="seitenkopf lsx-kopf">
     <p class="meta"><a href="{pre}#leistungen">Leistungen</a> / {esc(c['titel'])}</p>
-    <h1 class="gr-xxl"><span class="wort-mit-icon">{esc(c['titel'])}<img class="icon-3d" src="{pre}{c['icon']}" alt="" width="400" height="400"></span></h1>
+    <h1 class="gr-xxl lsx-titel" style="--n:{max(len(w) for w in c['titel'].split())}">{titel_vorne}<span class="wort-mit-icon">{esc(c['titel'].split()[-1])}<img class="icon-3d" src="{pre}{c['icon']}" alt="" width="400" height="400"></span></h1>
     <p class="alt-klein">{esc(intro)}</p>
     <p class="lsx-termine"><span class="meta">So arbeite ich</span> {esc(termine)}</p>
     {fakten(pre)}
   </section>
 
-  <nav class="preis-leiste lsx-chips" aria-label="Auf dieser Seite"><a href="#loesung">Problem &amp; Lösung</a><a href="#pakete">Pakete</a>{'<a href="#vergleich">Vergleich</a>' if vergleich(g) else ''}{'<a href="#extras">Zusatzleistungen</a>' if g.get('extras') else ''}{'<a href="#ablauf">Ablauf</a>' if mit_ablauf else ''}{'<a href="#referenzen">Referenzen</a>' if I.mit_tag(I.PROJEKTE, [c['tag']]) else ''}{'<a href="#artikel">Artikel</a>' if I.mit_tag(I.BLOG, [c['tag']]) else ''}<a href="#faq">Fragen</a><a href="{pre}preise/#r-{g['id']}">Kostenrechner →</a></nav>
+  <nav class="preis-leiste lsx-chips" aria-label="Auf dieser Seite"><a href="#loesung">Problem &amp; Lösung</a><a href="#pakete">Pakete</a>{'<a href="#vergleich">Vergleich</a>' if vergleich(g) else ''}{'<a href="#extras">Zusatzleistungen</a>' if g.get('extras') else ''}{'<a href="#ablauf">Ablauf</a>' if mit_ablauf else ''}{'<a href="#referenzen">Referenzen</a>' if I.mit_tag(I.PROJEKTE, [c['tag']]) else ''}{'<a href="#artikel">Artikel</a>' if c.get('artikel', True) and I.mit_tag(I.BLOG, [c['tag']]) else ''}<a href="#faq">Fragen</a><a href="{pre}preise/#r-{g['id']}">Kostenrechner →</a></nav>
 
-  <section class="lsx-loesung" id="loesung" aria-labelledby="loesung-titel">
-    <div class="lsx-loesung-text">
-      <p class="meta">Problem &amp; Lösung</p>
-      <h2 class="gr-h3" id="loesung-titel">{esc(c['problem_titel'])}</h2>
-      {absatz}
-      {'' if c.get('grafik') == 'corporate-identity' else f'<p class="lsx-grundsatz"><a class="textlink" href="{pre}service/brand/#corporate-identity">Grundlage für alles, was ich gestalte: das Rad der Corporate Identity <span aria-hidden="true">→</span></a></p>'}
+  <section class="lsx-loesung lsx-pl" id="loesung" aria-labelledby="loesung-titel">
+    <p class="meta">Problem &amp; Lösung</p>
+    <h2 class="gr-h3" id="loesung-titel">{esc(c['problem_titel'])}</h2>
+    <div class="lsx-pl-raster">
+      <div class="lsx-pl-problem"><p class="meta">Woran es oft hakt</p><ul>{''.join(f'<li>{esc(x)}</li>' for x in c['probleme'])}</ul></div>
+      <div class="lsx-pl-loesung"><p class="meta">So mache ich es</p><p class="lsx-pl-text">{esc(c['loesung_text'])}</p><ul>{''.join(f'<li>{esc(x)}</li>' for x in c['loesung_punkte'][:3])}</ul>
+        {'' if c.get('grafik') == 'corporate-identity' else f'<p class="lsx-grundsatz"><a class="textlink" href="{pre}service/brand/#corporate-identity">Grundlage für alles, was ich gestalte: die Corporate Identity <span aria-hidden="true">→</span></a></p>'}</div>
       <p class="lsx-knoepfe"><a class="button" href="{pre}kontakt/">Projekt anfragen</a> <a class="textlink" href="{pre}preise/#r-{g['id']}">Kosten berechnen <span aria-hidden="true">→</span></a></p>
-    </div>
-    <div class="lsx-gegenueber">
-      <div class="lsx-spalte lsx-schlecht"><p class="meta">Woran es oft hakt</p><ul>{''.join(f'<li>{esc(x)}</li>' for x in c['probleme'])}</ul></div>
-      <div class="lsx-spalte lsx-gut"><p class="meta">So mache ich es</p><ul>{''.join(f'<li>{esc(x)}</li>' for x in c['loesungen'])}</ul></div>
     </div>
   </section>
 
@@ -197,11 +207,9 @@ def seite(key, c):
     <p class="meta">Pakete</p>
     <h2 class="gr-h3" id="pakete-titel">Pakete im Überblick</h2>
     {f'<p class="lsx-hinweis">{esc(g["hinweis"])}</p>' if g.get('hinweis') else ''}
-    <div class="lsx-karten">
-{karten(g)}
-    </div>
+{paket_reihen(g, c)}
     {NETTO_HINWEIS}
-    {nicht_enthalten(c)}
+    {'' if len(g['pakete']) == 1 and not c.get('hintergrund') else nicht_enthalten(c)}
   </section>
 
 {vergleich(g)}
@@ -216,18 +224,18 @@ def seite(key, c):
 
 {I.erfolg(next(x for x in I.PROJEKTE if x['name'] == c['erfolg']), pre) if c.get('erfolg') else ''}
 
+  <section class="lsx-duo" aria-label="Kontakt und Kostenrechner">
 {direkt(pre)}
-
-  <section class="lsx-rechner" aria-labelledby="rechner-hinweis">
-    <div>
+    <div class="lsx-duo-karte lsx-duo-rechner">
+      <img class="lsx-duo-icon" src="{pre}bilder/icons/money-bag.webp" alt="" width="400" height="400" loading="lazy">
       <p class="meta">Kostenrechner</p>
       <h2 class="gr-h3" id="rechner-hinweis">Was kostet Ihr Projekt?</h2>
       <p>Stellen Sie sich Ihre Pakete und Zusatzleistungen selbst zusammen und erhalten Sie sofort einen unverbindlichen Kostenvoranschlag, als PDF oder per E-Mail.</p>
+      <p><a class="button button-hell" href="{pre}preise/#r-{g['id']}">Zum Kostenrechner <span aria-hidden="true">→</span></a></p>
     </div>
-    <a class="button" href="{pre}preise/#r-{g['id']}">Zum Kostenrechner <span aria-hidden="true">→</span></a>
   </section>
 
-{artikel(pre, c['tag'])}
+{artikel(pre, c['tag']) if c.get('artikel', True) else ''}
 
   <section class="faq" id="faq" aria-labelledby="faq-titel">
     <h2 class="gr-h2" id="faq-titel">Häufige Fragen</h2>
@@ -260,7 +268,7 @@ def seite(key, c):
     ld = json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, indent=2)
     t = re.sub(r'<script type="application/ld\+json">.*?</script>', lambda m: f'<script type="application/ld+json">\n{ld}\n  </script>', t, count=1, flags=re.S)
     if 'zaehlen.js' not in t:
-        t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v=20261013b" defer></script>\n</body>', 1)
+        t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v=20261013f" defer></script>\n</body>', 1)
     pfad.write_text(t, encoding='utf-8')
     print('geschrieben:', c['pfad'])
 

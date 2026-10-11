@@ -172,3 +172,18 @@
     });
   });
 })();
+
+// Magazin in den Referenzkarten: alle 2,6 Sekunden eine Seite umblättern, danach von vorn
+(() => {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('.rk-heft').forEach((heft) => {
+    const seiten = [...heft.querySelectorAll('img')];
+    seiten.forEach((s, i) => { s.style.zIndex = String(seiten.length - i); });
+    let k = 0;
+    setInterval(() => {
+      if (k < seiten.length - 1) { seiten[k].classList.add('umgeblaettert'); k += 1; return; }
+      heft.classList.add('ohne-uebergang'); seiten.forEach((s) => s.classList.remove('umgeblaettert'));
+      void heft.offsetWidth; heft.classList.remove('ohne-uebergang'); k = 0;
+    }, 2600);
+  });
+})();

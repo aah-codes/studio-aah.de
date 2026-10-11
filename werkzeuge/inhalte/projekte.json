@@ -49,6 +49,18 @@
      "Strategie, Rebranding, Website-Redesign, Präsentation"
     ]
    ]
+  },
+  "mockup_print": {
+   "magazin": [
+    "bilder/referenzen/bauer-magazin-1.jpg",
+    "bilder/referenzen/bauer-magazin-2.jpg",
+    "bilder/referenzen/bauer-magazin-3.jpg",
+    "bilder/referenzen/bauer-magazin-4.jpg",
+    "bilder/referenzen/bauer-magazin-5.jpg",
+    "bilder/referenzen/bauer-magazin-6.jpg",
+    "bilder/referenzen/bauer-magazin-7.jpg"
+   ],
+   "ohne_film": true
   }
  },
  {
@@ -73,6 +85,11 @@
   "mockup": {
    "browser": "bilder/referenzen/goldhammer-website.jpg",
    "visitenkarte": "bilder/hero/goldhammer-visitenkarte.jpg"
+  },
+  "mockup_print": {
+   "karte": "bilder/referenzen/goldhammer-flyer.jpg",
+   "visitenkarte": "bilder/hero/goldhammer-visitenkarte.jpg",
+   "ohne_film": true
   }
  },
  {

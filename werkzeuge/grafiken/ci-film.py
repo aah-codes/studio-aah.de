@@ -117,7 +117,7 @@ def bild(art):
         else: tx, ty, anker = x + kr + 16, y - (n * 20 * g) / 2 + 12 * g, 'start'
         zeilen = [f'<tspan x="{tx:.0f}" y="{ty:.0f}" class="ci-klein" font-size="{12 * g:.0f}">CORPORATE</tspan>',
                   f'<tspan x="{tx:.0f}" y="{ty + 25 * g:.0f}" class="ci-t" font-size="{23 * g:.0f}">{name}</tspan>']
-        zeilen += [f'<tspan x="{tx:.0f}" y="{ty + (46 + i * 19) * g:.0f}" class="ci-s" font-size="{14 * g:.0f}">{s}</tspan>' for i, s in enumerate(unter)]
+        zeilen += [f'<tspan x="{tx:.0f}" y="{ty + (44 + i * 16) * g:.0f}" class="ci-s" font-size="{12 * g:.0f}">{s}</tspan>' for i, s in enumerate(unter)]
         teile.append(f'<text text-anchor="{anker}" class="ci-schwarz-t z z-ein" style="--d:{t0 + 1}s">{"".join(zeilen)}</text>')
     # Kern: entsteht, wenn alle vier da sind
     x, y = pos['kern']
