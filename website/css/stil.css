@@ -1655,3 +1655,10 @@ main section[id] { scroll-margin-top: calc(var(--kopf-hoehe) + 72px); }
 .profil-kunst-quellen { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 4px 0 0 !important; }
 /* Megamenü: links Brand, UI/UX, Website, Marketing, Illustration – rechts Motion, Print, Retainer, KI (Anna 11.10.2026) */
 .mm-liste, .kopf-nav .mm-liste { grid-auto-flow: column; grid-template-rows: repeat(5, auto); }
+/* Menüleiste (Anna 11.10.2026): Leistungen · Preise · Über mich · Blog · [Projekt anfragen] – ein einziger Button */
+.kopf-nav .kopf-button { text-decoration: none !important; padding: 8px 18px; border-radius: 999px; background: var(--farbe-dunkel); color: var(--farbe-weiss); }
+.kopf-nav .kopf-button:hover { opacity: .85; }
+.mm-toggle { display: inline-flex; align-items: center; gap: 6px; }
+.mm-pfeil { width: 11px; height: 11px; }
+.dk { margin-bottom: 64px; }
+@media (max-width: 900px) { .dk { margin-bottom: 40px; } }
