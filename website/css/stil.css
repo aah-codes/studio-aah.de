@@ -1257,11 +1257,11 @@ h1, h2, h3, .gr-xxl, .gr-xl, .gr-h2, .gr-klein, .gr-h3, .artikel h1, .mm-karte-t
 .lsx-schlecht li::before { content: "×"; position: absolute; left: 0; top: -2px; font-weight: 700; font-size: 1.2em; color: var(--farbe-gedaempft); }
 .lsx-gut li::before { content: ""; position: absolute; left: 2px; top: .35em; width: 12px; height: 7px; border-left: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(-45deg); }
 .lsx-hinweis { max-width: 70ch; color: var(--farbe-gedaempft); margin: 0 0 32px; }
-.lsx-karten { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+.lsx-karten { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr)); gap: 20px; }
 .lsx-karte { position: relative; border: 1px solid var(--farbe-rahmen); border-radius: 24px; padding: 32px 28px; display: flex; flex-direction: column; gap: 8px; }
 .lsx-gefragt { border: 2px solid var(--farbe-dunkel); }
 .lsx-badge { position: absolute; top: -13px; left: 24px; margin: 0; padding: 3px 12px; border-radius: 999px; background: var(--farbe-dunkel); color: var(--farbe-weiss); font-family: var(--schrift-meta); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; }
-.lsx-karte-name { font-size: 1.8rem; margin: 0; }
+.lsx-karte-name { font-size: 1.8rem; margin: 0; hyphens: auto; overflow-wrap: break-word; }
 .lsx-karte-preis { font-family: var(--schrift-ueberschrift); font-size: 2.4rem; line-height: 1.12; margin: 0; }
 .lsx-karte-wer { color: var(--farbe-gedaempft); margin: 0 0 8px; }
 .lsx-karte-plus { font-weight: 700; margin: 8px 0 0; }

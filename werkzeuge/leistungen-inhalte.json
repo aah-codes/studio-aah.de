@@ -98,5 +98,594 @@
    "Mehr als zwei Korrekturrunden: nach Aufwand, 65 € pro Stunde"
   ],
   "tag": "website"
+ },
+ "brand": {
+  "pfad": "service/brand/",
+  "gruppe": "brand",
+  "tag": "brand",
+  "titel": "Brand",
+  "seitentitel": "Marke entwickeln in Leipzig: Brand Design & Logo | STUDIO AAH!",
+  "beschreibung": "Marke entwickeln bei STUDIO AAH! in Leipzig: Basic ab 850 €, Medium mit Logo ab 2.500 €, Premium ab 4.500 € netto. Festpreis nach kostenlosem Erstgespräch.",
+  "bild": "bilder/leistung-brand.webp",
+  "bildalt": "Bildschirm mit Farben, Schriften und Gestaltungselementen eines Designsystems",
+  "icon": "bilder/icons/color-palette.webp",
+  "problem_titel": "Eine Marke wirkt nur, wenn sie zusammenhält.",
+  "probleme": [
+   "Farben, Schriften und Logo entstehen, bevor klar ist, wer Sie sind und wen Sie erreichen wollen",
+   "Das Logo ist ein hübsches Bildchen, aber kein Zeichen für das, was Sie versprechen",
+   "Ohne klare Botschaft hören Menschen nicht zu, sondern scrollen weiter",
+   "Der Ton wirkt gekünstelt oder aufgesetzt",
+   "Jede Person setzt die Marke anders ein, sie wirkt nicht verlässlich"
+  ],
+  "loesungen": [
+   "Zuerst genau hinschauen: Ihr Unternehmen, Ihre Zielgruppe, der Markt, die Konkurrenz",
+   "Positionierung und Zielgruppe klären, bevor gestaltet wird",
+   "Logo und ein Erscheinungsbild, das zusammenhält: Farben, Schriften, Bildwelt, Gestaltungselemente",
+   "Markenkern, Messaging und Tonalität, damit Ihre Worte bei den Richtigen ankommen",
+   "Alles an einem Ort, für alle verständlich: Basishandbuch oder ausführliches Brand Manual"
+  ],
+  "zusammenfassung": [
+   "Eine Marke entsteht bei STUDIO AAH! nicht aus dem Bauchgefühl, sondern mit klarem Blick und klugen Fragen. Bevor ich Farben, Schriften oder ein Logo gestalte, schaue ich mir Ihr Unternehmen, Ihre Zielgruppe, den Markt und die Konkurrenz genau an.",
+   "Von der Grundpositionierung über Logo und Erscheinungsbild bis zu Markenkern, Messaging und Brand Manual: Sie wählen das Paket, das zu Ihrem Stand passt. So entsteht eine Marke, die wiedererkennbar und verlässlich bleibt, egal, wer gerade damit arbeitet."
+  ],
+  "nicht_enthalten": [
+   "Fotoshooting",
+   "Druckkosten",
+   "Markenanmeldung",
+   "Lizenzen, zum Beispiel für Schriften: zahlen Sie direkt an den Anbieter",
+   "Mehr als zwei Korrekturrunden je Bereich: nach Aufwand, 65 € pro Stunde netto"
+  ],
+  "faq": [
+   [
+    "Was kostet es, eine Marke bei STUDIO AAH! in Leipzig entwickeln zu lassen?",
+    "Bei STUDIO AAH! in Leipzig beginnt das Brand-Paket Basic bei 850 €, Medium mit Logo-Entwicklung bei 2.500 € und Premium bei 4.500 €. Ein Logo einzeln kostet ab 990 €. Alle Preise sind Einstiegspreise, netto ohne Umsatzsteuer; den Festpreis erhalten Sie nach einem kostenlosen Erstgespräch."
+   ],
+   [
+    "Welches Brand-Paket passt zu mir?",
+    "Bei STUDIO AAH! passt Basic zu Gründer:innen und Selbstständigen, die erst Klarheit über Positionierung und Stil brauchen. Medium ist für Unternehmen, die eine neue Marke mit Logo und Erscheinungsbild brauchen. Premium ist für Unternehmen, die ihre Marke umfassend aufstellen und im Alltag einheitlich einsetzen wollen. Welches Paket zu Ihnen passt, klären wir im kostenlosen Erstgespräch."
+   ],
+   [
+    "Was ist im Brand-Paket Basic enthalten?",
+    "Das Paket Basic von STUDIO AAH! enthält einen Fragebogen und einen gemeinsamen Termin, einen Markencheck, ein Moodboard und eine Grundpositionierung. Es beginnt bei 850 € netto."
+   ],
+   [
+    "Was kommt in den Paketen Medium und Premium dazu?",
+    "Das Paket Medium von STUDIO AAH! enthält alles aus Basic, dazu Positionierung und Zielgruppe, die Logo-Entwicklung, Farben, Schriften, Bildwelt und Gestaltungselemente sowie ein kompaktes Basishandbuch. Premium enthält alles aus Medium, dazu Markenkern, Messaging und Tonalität, ein ausführliches Brand Manual und erste Vorlagen für Visitenkarte, Briefpapier, Präsentation und Social Media."
+   ],
+   [
+    "Kann ich bei STUDIO AAH! nur ein Logo entwickeln lassen?",
+    "Ja. Bei STUDIO AAH! in Leipzig gibt es das Logo auch einzeln, ab 990 € netto. Logo-Entwicklung mit Positionierung und Erscheinungsbild steckt im Paket Medium ab 2.500 € netto."
+   ],
+   [
+    "Warum steht die Positionierung vor dem Logo?",
+    "Bei STUDIO AAH! steht am Anfang ein genauer Blick auf Ihr Unternehmen, Ihre Zielgruppe, den Markt und die Konkurrenz: Wer sind Sie, was wollen Sie, wer soll Sie sehen und warum? Erst wenn das klar ist, entsteht ein Logo und Erscheinungsbild, das zu Ihnen passt. Deshalb enthält schon das Paket Basic eine Grundpositionierung."
+   ],
+   [
+    "Was sind Markenrichtlinien (Brand Manual)?",
+    "Markenrichtlinien (englisch: Brand Manual) halten fest, wie Ihre Marke aussieht, klingt und sich anfühlt: Logo, Farben, Schriften, Bilder und Tonfall, alles an einem Ort und für alle verständlich. Bei STUDIO AAH! gibt es sie als kompaktes Basishandbuch im Paket Medium und als ausführliches Brand Manual im Paket Premium."
+   ],
+   [
+    "Welche Vorlagen sind im Brand-Paket Premium enthalten?",
+    "Im Paket Premium von STUDIO AAH! sind erste Vorlagen für Visitenkarte, Briefpapier, Präsentation und Social Media enthalten. Premium beginnt bei 4.500 € netto."
+   ],
+   [
+    "Wie läuft eine Markenentwicklung bei STUDIO AAH! ab?",
+    "Bei STUDIO AAH! stellen Sie sich mit dem Kostenrechner einen unverbindlichen Kostenvoranschlag zusammen. Im kostenlosen Erstgespräch klären wir, wo Sie stehen, was Sie wollen, was Sie brauchen und wen Sie erreichen wollen. Danach erhalten Sie ein Angebot mit Festpreis und schließlich den Vertrag. Jedes Brand-Paket beginnt mit einem Fragebogen und einem gemeinsamen Termin."
+   ],
+   [
+    "Wie viele Korrekturrunden sind bei STUDIO AAH! im Festpreis enthalten?",
+    "Bei STUDIO AAH! sind in jedem Bereich, zum Beispiel beim Logo, zwei Korrekturrunden im Festpreis enthalten. Jede weitere Runde rechne ich nach Aufwand ab, mit 65 € pro Stunde netto."
+   ],
+   [
+    "Wie wird eine Markenentwicklung bei STUDIO AAH! bezahlt?",
+    "Größere Projekte zahlen Sie bei STUDIO AAH! in 3 Raten: bei Start, nach Freigabe des Konzepts und beim Go-live. Lizenzen zahlen Sie direkt an den jeweiligen Anbieter."
+   ],
+   [
+    "Was ist bei der Markenentwicklung nicht enthalten?",
+    "In den Brand-Paketen von STUDIO AAH! sind Fotoshooting, Druckkosten und die Markenanmeldung nicht enthalten."
+   ]
+  ]
+ },
+ "ui-ux": {
+  "pfad": "service/ui-ux/",
+  "gruppe": "ui-ux",
+  "tag": "ui-ux",
+  "titel": "UI/UX",
+  "seitentitel": "UI/UX Design in Leipzig: Expert Review & Prototyp | STUDIO AAH!",
+  "beschreibung": "UI/UX Design bei STUDIO AAH! in Leipzig: Expert Review ab 1.200 €, Audit Pro ab 2.900 €, Redesign ab 4.500 € netto. Festpreis nach kostenlosem Erstgespräch.",
+  "bild": "bilder/leistung-uiux.webp",
+  "bildalt": "Frau am Tisch mit Smartphone in der Hand, daneben ein Laptop",
+  "icon": "bilder/icons/mobile.webp",
+  "problem_titel": "Wo Nutzer:innen hängen bleiben, fehlen Klarheit und Struktur.",
+  "probleme": [
+   "Nutzer:innen bleiben hängen und finden nicht weiter",
+   "Es fehlen Klarheit und Struktur",
+   "Entscheidungen fallen aus dem Bauch, nicht aus dem Wissen über Ihre Nutzer:innen",
+   "Es wird programmiert, bevor die Idee sichtbar und durchdacht ist",
+   "Die Anwendung ist schwer zu bedienen"
+  ],
+  "loesungen": [
+   "Expert Review: Ich versetze mich in Ihre Zielgruppe, nutze Ihre Website oder Anwendung und zeige, was sich verbessern lässt",
+   "Personas: greifbare Abbilder Ihrer Zielgruppe für Entscheidungen, die nicht aus dem Bauch kommen",
+   "Erst recherchieren und denken, dann designen: Wireframes und klickbarer Prototyp in Figma, bevor programmiert wird",
+   "Neue Nutzerführung und UI-Kit, für Plattformen ein vollständiges Designsystem",
+   "Übergabe an Ihr Entwicklerteam mit Spezifikationen"
+  ],
+  "zusammenfassung": [
+   "Bei STUDIO AAH! gestalte ich digitale Erlebnisse, die Nutzer:innen verstehen: für Webanwendungen, SaaS und Apps. Bevor gestaltet wird, höre ich zu, werte Daten aus und lerne, wer Ihre Nutzer:innen sind und was sie wirklich brauchen.",
+   "Vom Expert Review über das UI/UX Audit Pro bis zum Redesign Ihrer Webanwendung oder einer Plattform mit vollständigem Designsystem: Mit Wireframes und Prototypen in Figma werden Ideen sichtbar, lange bevor programmiert wird. Das spart Zeit und Geld."
+  ],
+  "nicht_enthalten": [
+   "Usability-Tests mit Nutzer:innen",
+   "Programmierung: Ihr Entwicklerteam erhält Designs und Spezifikationen",
+   "Mehr als zwei Korrekturrunden je Bereich: nach Aufwand, 65 € pro Stunde netto"
+  ],
+  "faq": [
+   [
+    "Was kostet UI/UX Design bei STUDIO AAH! in Leipzig?",
+    "Bei STUDIO AAH! in Leipzig beginnt ein Expert Review bei 1.200 €, das UI/UX Audit Pro bei 2.900 €, das Redesign einer kleinen Webanwendung bei 4.500 € und eine Plattform oder SaaS bei 5.850 €. Alle Preise sind Einstiegspreise, netto ohne Umsatzsteuer; den Festpreis erhalten Sie nach einem kostenlosen Erstgespräch."
+   ],
+   [
+    "Für welche digitalen Produkte gestaltet STUDIO AAH! UI/UX?",
+    "STUDIO AAH! gestaltet UI/UX für Webanwendungen, SaaS und Apps. Ein Expert Review gibt es für Websites und für Anwendungen."
+   ],
+   [
+    "Was ist ein Expert Review?",
+    "Bei einem Expert Review von STUDIO AAH! versetze ich mich in Ihre Zielgruppe, nutze Ihre Website oder Anwendung und zeige, was sich verbessern lässt. Sie erhalten eine Analyse und Handlungsempfehlungen. Das Expert Review beginnt bei 1.200 € netto."
+   ],
+   [
+    "Was ist der Unterschied zwischen Expert Review und UI/UX Audit Pro?",
+    "Das Expert Review von STUDIO AAH! ist der Expertenblick auf Ihre gesamte Website oder Anwendung, mit Analyse und Handlungsempfehlungen. Das UI/UX Audit Pro nimmt die ganze Anwendung unter die Lupe: Es enthält das Expert Review, dazu Brand Experience, Personas, Mitbewerberrecherche, Trendanalyse und einen ausführlichen PDF-Report mit Prioritäten. Das Expert Review beginnt bei 1.200 €, das Audit Pro bei 2.900 €, jeweils netto."
+   ],
+   [
+    "Was sind Personas?",
+    "Personas sind greifbare Abbilder Ihrer Zielgruppe, die aus der Auswertung von Daten entstehen. Sie helfen, Entscheidungen zu treffen, die nicht aus dem Bauch kommen. Bei STUDIO AAH! gehören Personas zum UI/UX Audit Pro und zu allen größeren UI/UX-Paketen."
+   ],
+   [
+    "Was ist ein Wireframe und was ist ein Prototyp?",
+    "Ein Wireframe ist ein einfacher Bauplan einer Seite. Ein Prototyp ist ein klickbarer Entwurf, bevor programmiert wird. Bei STUDIO AAH! entstehen Wireframes und klickbare Prototypen in Figma, ab dem Paket Redesign kleine Webanwendung."
+   ],
+   [
+    "Was ist ein UI-Kit und was ein Designsystem?",
+    "Ein UI-Kit enthält die Bausteine der Benutzeroberfläche (User Interface), zum Beispiel Buttons, Typografie und Farben. Bei STUDIO AAH! gehört ein UI-Kit zum Redesign einer kleinen Webanwendung; für eine Plattform oder SaaS entsteht zusätzlich ein vollständiges Designsystem."
+   ],
+   [
+    "Mit welchen Werkzeugen arbeitet STUDIO AAH! im UI/UX Design?",
+    "STUDIO AAH! gestaltet Wireframes, klickbare Prototypen und UI-Kits in Figma."
+   ],
+   [
+    "Was bekommt das Entwicklerteam bei der Übergabe?",
+    "Bei der Übergabe von STUDIO AAH! bekommt Ihr Entwicklerteam die Designs, das UI-Kit bzw. Designsystem und Spezifikationen für die Umsetzung. Die Programmierung selbst gehört nicht zum Angebot."
+   ],
+   [
+    "Bietet STUDIO AAH! Usability-Tests an?",
+    "Nein, Usability-Tests mit Nutzer:innen gehören bei STUDIO AAH! nicht zum Angebot. Jedes Projekt beginnt stattdessen mit einer Analyse: Im Redesign einer kleinen Webanwendung sind das Expert Review, Personas, Mitbewerberrecherche und Trendanalyse; für eine Plattform oder SaaS kommt umfassendes UX-Research mit Zielgruppenanalyse dazu."
+   ],
+   [
+    "Wie viele Korrekturrunden sind bei STUDIO AAH! im Festpreis enthalten?",
+    "Bei STUDIO AAH! sind in jedem Bereich zwei Korrekturrunden im Festpreis enthalten. Jede weitere Runde rechne ich nach Aufwand ab, mit 65 € pro Stunde netto."
+   ],
+   [
+    "Wie läuft ein UI/UX-Projekt bei STUDIO AAH! ab?",
+    "Bei STUDIO AAH! stellen Sie sich mit dem Kostenrechner einen unverbindlichen Kostenvoranschlag zusammen. Im kostenlosen Erstgespräch klären wir, wo Sie stehen, was Sie wollen, was Sie brauchen und wen Sie erreichen wollen. Danach erhalten Sie ein Angebot mit Festpreis und schließlich den Vertrag. Größere Projekte zahlen Sie in 3 Raten: bei Start, nach Freigabe des Konzepts und beim Go-live."
+   ]
+  ]
+ },
+ "marketing": {
+  "pfad": "service/marketing-vertrieb/",
+  "gruppe": "marketing",
+  "tag": "marketing",
+  "titel": "Marketing & Vertrieb",
+  "seitentitel": "Marketing & Vertrieb in Leipzig: LinkedIn & Inhalte | STUDIO AAH!",
+  "beschreibung": "Marketing & Vertrieb bei STUDIO AAH! in Leipzig: LinkedIn ab 500 €, Post-Vorlagen ab 400 €, Fachartikel ab 300 €, Webinar ab 850 € netto. Einzeln buchbar.",
+  "bild": "bilder/leistung-marketing.jpg",
+  "bildalt": "Smartphone mit geöffneter Social-Media-App neben einem Laptop",
+  "icon": "bilder/icons/megaphone.webp",
+  "problem_titel": "Sichtbar werden, wo Ihre Kund:innen sind.",
+  "probleme": [
+   "Die richtigen Menschen finden Sie nicht oder verstehen nicht sofort, was Sie anbieten",
+   "Jeder Beitrag fängt wieder bei null an, regelmäßiges Posten bleibt liegen",
+   "Ihre Expertise steht in Blog, LinkedIn oder Fachmedien nicht im Mittelpunkt",
+   "Beim Webinar bleibt neben Konzept, Anmeldeseite und Folien wenig Kopf für den Auftritt"
+  ],
+  "loesungen": [
+   "LinkedIn aufsetzen: Profil, Unternehmensseite und klare Positionierung",
+   "5 Post-Vorlagen in Canva, im eigenen Design",
+   "Fachartikel mit 1.000 bis 1.500 Wörtern, recherchiert und verständlich",
+   "Webinar aufsetzen: Konzept, Anmeldeseite und Folien als PowerPoint oder PDF",
+   "Alle Leistungen einzeln buchbar"
+  ],
+  "zusammenfassung": [
+   "Sichtbar werden, wo Ihre Kund:innen sind: mit klarer Positionierung und Inhalten, die zu Ihnen passen. STUDIO AAH! setzt Ihr LinkedIn-Profil und Ihre Unternehmensseite auf, gestaltet Post-Vorlagen in Ihrem Design und schreibt Fachartikel mit Ihrer Expertise im Mittelpunkt.",
+   "Für Webinare entstehen Konzept, Anmeldeseite und Folien, damit Sie sich ganz auf Ihren Auftritt konzentrieren können. Alle Leistungen sind einzeln buchbar."
+  ],
+  "nicht_enthalten": [
+   "Durchführung des Webinars: Den Auftritt übernehmen Sie",
+   "Spätere Textänderungen: Texte liefere ich einmal; übernehme ich Änderungen danach, rechne ich nach Aufwand ab, 65 € pro Stunde netto",
+   "Lizenzen: zahlen Sie direkt an den jeweiligen Anbieter",
+   "Mehr als zwei Korrekturrunden je Bereich: nach Aufwand, 65 € pro Stunde netto"
+  ],
+  "faq": [
+   [
+    "Was kosten LinkedIn, Post-Vorlagen, Fachartikel und Webinare bei STUDIO AAH! in Leipzig?",
+    "Bei STUDIO AAH! in Leipzig kostet LinkedIn aufsetzen ab 500 €, Social-Media- und Post-Vorlagen ab 400 €, ein Fachartikel ab 300 € pro Artikel und Webinar aufsetzen ab 850 €. Alle Preise sind Einstiegspreise, netto ohne Umsatzsteuer; den Festpreis erhalten Sie nach einem kostenlosen Erstgespräch."
+   ],
+   [
+    "Was gehört bei STUDIO AAH! zu „LinkedIn aufsetzen“?",
+    "Zu „LinkedIn aufsetzen“ gehören bei STUDIO AAH! Ihr Profil, Ihre Unternehmensseite und eine klare Positionierung, damit die richtigen Menschen Sie finden und sofort verstehen, was Sie anbieten. Die Leistung beginnt bei 500 € netto."
+   ],
+   [
+    "In welchem Programm entstehen die Post-Vorlagen?",
+    "Die Post-Vorlagen von STUDIO AAH! entstehen in Canva, im eigenen Design: 5 Vorlagen, damit Sie regelmäßig posten können, ohne jedes Mal bei null anzufangen. Sie beginnen bei 400 € netto."
+   ],
+   [
+    "Wie lang ist ein Fachartikel von STUDIO AAH!?",
+    "Ein Fachartikel von STUDIO AAH! hat 1.000 bis 1.500 Wörter, recherchiert und verständlich. Er eignet sich für Blog, LinkedIn oder Fachmedien und stellt Ihre Expertise in den Mittelpunkt. Ein Fachartikel kostet ab 300 € netto."
+   ],
+   [
+    "Was gehört bei STUDIO AAH! zu „Webinar aufsetzen“?",
+    "Zu „Webinar aufsetzen“ gehören bei STUDIO AAH! das Konzept, die Anmeldeseite und die Folien als PowerPoint oder PDF, damit Sie sich ganz auf Ihren Auftritt konzentrieren können. Die Leistung beginnt bei 850 € netto."
+   ],
+   [
+    "Führt STUDIO AAH! das Webinar auch durch?",
+    "Nein. STUDIO AAH! setzt das Webinar auf, die Durchführung übernehmen Sie selbst."
+   ],
+   [
+    "Kann ich die Marketing-Leistungen einzeln buchen?",
+    "Ja. Bei STUDIO AAH! sind LinkedIn aufsetzen, Post-Vorlagen, Fachartikel und Webinar aufsetzen einzeln buchbar. Im Kostenrechner können Sie auch mehrere davon zusammenstellen."
+   ],
+   [
+    "Kann ich gelieferte Texte später ändern lassen?",
+    "Bei STUDIO AAH! liefere ich Texte einmal. Spätere Änderungen sind in keinem Paket enthalten; übernehme ich sie, rechne ich nach Aufwand ab, mit 65 € pro Stunde netto."
+   ],
+   [
+    "Wie viele Korrekturrunden sind bei STUDIO AAH! im Festpreis enthalten?",
+    "Bei STUDIO AAH! sind in jedem Bereich zwei Korrekturrunden im Festpreis enthalten. Jede weitere Runde rechne ich nach Aufwand ab, mit 65 € pro Stunde netto."
+   ],
+   [
+    "Wie läuft ein Marketing-Auftrag bei STUDIO AAH! ab?",
+    "Bei STUDIO AAH! stellen Sie sich mit dem Kostenrechner einen unverbindlichen Kostenvoranschlag zusammen. Im kostenlosen Erstgespräch klären wir, wo Sie stehen, was Sie wollen, was Sie brauchen und wen Sie erreichen wollen. Danach erhalten Sie ein Angebot mit Festpreis und schließlich den Vertrag."
+   ]
+  ]
+ },
+ "ki": {
+  "pfad": "service/ki-digitalisierung/",
+  "gruppe": "ki",
+  "tag": "ki",
+  "titel": "KI & Digitalisierung",
+  "seitentitel": "KI-Beratung in Leipzig: KI-Check & KI-Einführung | STUDIO AAH!",
+  "beschreibung": "KI-Beratung bei STUDIO AAH! in Leipzig für KMU und Solo-Selbstständige: KI-Check ab 900 €, KI-Einführung ab 2.000 € netto. Festpreis nach Erstgespräch.",
+  "bild": "bilder/leistung-ki.jpg",
+  "bildalt": "Hände tippen auf einer Laptop-Tastatur, im Hintergrund ein Monitor",
+  "icon": "bilder/icons/magic-trick.webp",
+  "problem_titel": "KI ist kein Selbstzweck.",
+  "probleme": [
+   "Im Alltag geht Zeit verloren: bei Texten, Recherche, Angeboten oder internen Abläufen",
+   "Unklar, wo KI-Werkzeuge wirklich entlasten",
+   "Wiederkehrende Aufgaben laufen noch über den Zettelstapel",
+   "Keine eigene IT-Abteilung für die Digitalisierung",
+   "Das Team weiß nicht, wie es KI sicher und sinnvoll einsetzt"
+  ],
+  "loesungen": [
+   "KI-Check: Analyse Ihrer Abläufe und ein Empfehlungsbericht",
+   "Auswahl und Einrichtung passender KI-Werkzeuge, mit Blick auf den Datenschutz",
+   "1 bis 2 digitale Arbeitsabläufe einrichten, Schritt für Schritt, auch ohne eigene IT-Abteilung",
+   "Team-Schulung: praxisnah, verständlich und auf Ihre Aufgaben zugeschnitten"
+  ],
+  "zusammenfassung": [
+   "KI und digitale Abläufe, die im Alltag wirklich entlasten: für kleine und mittlere Unternehmen (KMU) und Solo-Selbstständige. Im KI-Check schaue ich mir an, wo in Ihrem Alltag Zeit verloren geht und wo KI-Werkzeuge wirklich entlasten.",
+   "In der KI-Einführung setzen wir die Empfehlungen um: Wir wählen passende Werkzeuge aus, richten 1 bis 2 digitale Arbeitsabläufe ein, und ich schule Ihr Team, damit es KI sicher und sinnvoll einsetzt."
+  ],
+  "nicht_enthalten": [
+   "Lizenzkosten der KI-Werkzeuge: zahlen Sie direkt an den Anbieter",
+   "Rechtsberatung",
+   "Programmierung",
+   "Mehr als zwei Korrekturrunden je Bereich: nach Aufwand, 65 € pro Stunde netto"
+  ],
+  "faq": [
+   [
+    "Was kostet eine KI-Beratung bei STUDIO AAH! in Leipzig?",
+    "Bei STUDIO AAH! in Leipzig beginnt der KI-Check bei 900 € und die KI-Einführung bei 2.000 €. Die KI-Einführung baut auf dem KI-Check auf; zusammen beginnen beide Schritte bei 2.900 €. Alle Preise sind Einstiegspreise, netto ohne Umsatzsteuer; den Festpreis erhalten Sie nach einem kostenlosen Erstgespräch."
+   ],
+   [
+    "Für wen ist die KI-Beratung von STUDIO AAH! gedacht?",
+    "Die KI-Beratung von STUDIO AAH! ist für kleine und mittlere Unternehmen (KMU) und Solo-Selbstständige gedacht, die wissen wollen, wo KI im Alltag wirklich Zeit spart. Die KI-Einführung richtet sich an Teams, die die Empfehlungen aus dem Check umsetzen wollen."
+   ],
+   [
+    "Wobei kann KI im Arbeitsalltag entlasten?",
+    "STUDIO AAH! schaut sich an, wo in Ihrem Alltag Zeit verloren geht und wo KI-Werkzeuge wirklich entlasten, zum Beispiel bei Texten, Recherche, Angeboten oder internen Abläufen."
+   ],
+   [
+    "Was passiert beim KI-Check?",
+    "Beim KI-Check von STUDIO AAH! beginnen wir mit einem Fragebogen und einem gemeinsamen Termin. Danach analysiere ich Ihre Abläufe, und Sie erhalten einen Empfehlungsbericht, wo KI-Werkzeuge wirklich entlasten. Der KI-Check beginnt bei 900 € netto."
+   ],
+   [
+    "Was gehört zur KI-Einführung?",
+    "Zur KI-Einführung von STUDIO AAH! gehören die Auswahl und Einrichtung passender KI-Werkzeuge, 1 bis 2 digitale Arbeitsabläufe und eine Team-Schulung. Die KI-Einführung beginnt bei 2.000 € netto."
+   ],
+   [
+    "Kann ich die KI-Einführung ohne KI-Check buchen?",
+    "Nein. Bei STUDIO AAH! setzt die KI-Einführung den KI-Check voraus, denn sie setzt dessen Empfehlungen um."
+   ],
+   [
+    "Gehört eine Schulung zur KI-Einführung?",
+    "Ja. Zur KI-Einführung von STUDIO AAH! gehört eine Team-Schulung: praxisnah, verständlich und auf Ihre Aufgaben zugeschnitten. Sie zeigt Ihnen und Ihrem Team, wie Sie KI sicher und sinnvoll einsetzen."
+   ],
+   [
+    "Braucht man für die Digitalisierung eine eigene IT-Abteilung?",
+    "Nein. STUDIO AAH! hilft Ihnen, wiederkehrende Aufgaben Schritt für Schritt zu digitalisieren und sinnvoll zu verknüpfen, auch ohne eigene IT-Abteilung."
+   ],
+   [
+    "Wie achtet STUDIO AAH! beim KI-Einsatz auf den Datenschutz?",
+    "STUDIO AAH! wählt KI-Werkzeuge gemeinsam mit Ihnen aus und führt sie mit Blick auf den Datenschutz ein. Eine Rechtsberatung ist nicht enthalten."
+   ],
+   [
+    "Wer zahlt die Lizenzen der KI-Werkzeuge?",
+    "Die Lizenzkosten der KI-Werkzeuge zahlen Sie direkt an den jeweiligen Anbieter. Sie sind nicht im Preis von STUDIO AAH! enthalten."
+   ],
+   [
+    "Programmiert STUDIO AAH! eigene KI-Lösungen?",
+    "Nein. Programmierung gehört bei STUDIO AAH! nicht zur KI-Beratung. Ich wähle passende, vorhandene KI-Werkzeuge mit Ihnen aus und richte sie ein."
+   ]
+  ]
+ },
+ "print": {
+  "pfad": "service/print/",
+  "gruppe": "print",
+  "tag": "print",
+  "titel": "Print",
+  "seitentitel": "Printdesign in Leipzig: Visitenkarte, Flyer & mehr | STUDIO AAH!",
+  "beschreibung": "Printdesign bei STUDIO AAH! in Leipzig: Visitenkarte ab 195 €, Flyer oder Postkarte ab 290 €, Präsentation ab 1.200 €, druckfertig. Festpreis nach Erstgespräch.",
+  "bild": "bilder/leistung-print.jpg",
+  "bildalt": "Gefalteter Flyer in Gelb und Weiß für eine Arztpraxis, innen und außen gezeigt",
+  "icon": "bilder/icons/notebook.webp",
+  "problem_titel": "Gedrucktes braucht professionelles Design.",
+  "probleme": [
+   "Die Daten für die Druckerei sind nicht druckfertig",
+   "Für Aktionen, Veranstaltungen oder Angebote fehlt ein Flyer",
+   "Kompakte Informationen gibt es nur digital, nicht auf Papier",
+   "Für Gespräche, Angebote und Messen fehlt eine Unternehmenspräsentation"
+  ],
+  "loesungen": [
+   "Visitenkarte mit Vorder- und Rückseite, druckfertig gestaltet",
+   "Flyer oder Postkarte in A6 oder A5, Vorder- und Rückseite",
+   "Zweiseitige Broschüre für kompakte Informationen auf Papier",
+   "Unternehmenspräsentation mit bis zu 20 Folien, als PDF und für den Druck",
+   "Magazin, Katalog oder Jahresbericht als mehrseitige Publikation mit Druckbegleitung"
+  ],
+  "zusammenfassung": [
+   "Professionelles Design für Gedrucktes: von der Visitenkarte über Flyer, Postkarte und Broschüre bis zur Unternehmenspräsentation und zur mehrseitigen Publikation wie Magazin, Katalog oder Jahresbericht.",
+   "Sie erhalten druckfertige Druckdaten, die Unternehmenspräsentation zusätzlich als PDF für Gespräche, Angebote und Messen. Bei mehrseitigen Publikationen begleite ich auch den Druck."
+  ],
+  "nicht_enthalten": [
+   "Druckkosten",
+   "Druckbegleitung: nur bei der mehrseitigen Publikation enthalten",
+   "Mehr als zwei Korrekturrunden: nach Aufwand, 65 € pro Stunde"
+  ],
+  "faq": [
+   [
+    "Was kostet Printdesign in Leipzig bei STUDIO AAH!?",
+    "Bei STUDIO AAH! in Leipzig beginnt eine Visitenkarte bei 195 €, ein Flyer oder eine Postkarte bei 290 € und eine zweiseitige Broschüre bei 450 €. Eine Unternehmenspräsentation beginnt bei 1.200 €, eine mehrseitige Publikation wie Magazin, Katalog oder Jahresbericht bei 2.600 €. Alle Preise sind Einstiegspreise netto, ohne Umsatzsteuer; den Festpreis erhalten Sie nach einem kostenlosen Erstgespräch."
+   ],
+   [
+    "Was ist bei einer Visitenkarte von STUDIO AAH! enthalten?",
+    "Eine Visitenkarte von STUDIO AAH! umfasst die Gestaltung von Vorder- und Rückseite und die druckfertigen Druckdaten. Sie beginnt bei 195 € netto."
+   ],
+   [
+    "In welchen Formaten gestaltet STUDIO AAH! Flyer und Postkarten?",
+    "STUDIO AAH! gestaltet Flyer und Postkarten in A6 oder A5, mit Vorder- und Rückseite und mit Druckdaten. Sie eignen sich für Aktionen, Veranstaltungen und Angebote und beginnen bei 290 € netto."
+   ],
+   [
+    "Was bekomme ich bei einer Unternehmenspräsentation von STUDIO AAH!?",
+    "Eine Unternehmenspräsentation von STUDIO AAH! hat bis zu 20 Folien und wird als PDF und als Druckdaten geliefert. Sie ist für Gespräche, Angebote und Messen gedacht und beginnt bei 1.200 € netto."
+   ],
+   [
+    "Gestaltet STUDIO AAH! auch Magazine, Kataloge oder Jahresberichte?",
+    "Ja, STUDIO AAH! in Leipzig gestaltet mehrseitige Publikationen wie Magazine, Kataloge und Jahresberichte, einschließlich Druckbegleitung. Eine mehrseitige Publikation beginnt bei 2.600 € netto."
+   ],
+   [
+    "Kann ich mehrere Print-Leistungen zusammen buchen?",
+    "Ja. Im Kostenrechner von STUDIO AAH! können Sie mehrere Print-Leistungen gleichzeitig auswählen, zum Beispiel Visitenkarte und Flyer, und erhalten so einen unverbindlichen Kostenvoranschlag."
+   ],
+   [
+    "Wie viele Korrekturrunden sind bei Print-Projekten enthalten?",
+    "Bei STUDIO AAH! sind im Festpreis zwei Korrekturrunden (Feedbackrunden) enthalten. Weitere Runden rechnet STUDIO AAH! nach Aufwand ab, mit 65 € pro Stunde netto."
+   ],
+   [
+    "Wie läuft ein Print-Projekt bei STUDIO AAH! ab?",
+    "Sie stellen sich mit dem Kostenrechner einen unverbindlichen Kostenvoranschlag zusammen. Im kostenlosen Erstgespräch klären wir Ist-Stand, Ziele, Bedarf und Zielgruppe. Danach erhalten Sie von STUDIO AAH! ein Angebot mit Festpreis und schließlich den Vertrag."
+   ]
+  ]
+ },
+ "illustration": {
+  "pfad": "service/illustration-infografik/",
+  "gruppe": "zusatz",
+  "pakete": [
+   "illu"
+  ],
+  "tag": "illustration",
+  "titel": "Illustration & Infografik",
+  "seitentitel": "Illustration & Infografik in Leipzig | STUDIO AAH!",
+  "beschreibung": "Illustrationen, Icons und Infografiken von STUDIO AAH! in Leipzig, die komplexe Inhalte auf einen Blick verständlich machen. Preis auf Anfrage.",
+  "intro": "Illustrationen, Icons und Infografiken, die komplexe Inhalte auf einen Blick verständlich machen.",
+  "bild": "bilder/leistung-illustration.jpg",
+  "bildalt": "Ausschnitt einer Infografik: Gebäude als Linienzeichnung mit nummerierten gelben Markierungen",
+  "icon": "bilder/icons/bulb.webp",
+  "problem_titel": "Komplexe Inhalte sind auf den ersten Blick schwer zu verstehen.",
+  "probleme": [
+   "Komplexe Inhalte lassen sich nicht auf einen Blick erfassen",
+   "Auf der Website fehlen eigene Illustrationen, Icons und Infografiken",
+   "Jedes Vorhaben ist anders, ein Standardpreis passt nicht"
+  ],
+  "loesungen": [
+   "Infografiken, die komplexe Inhalte auf einen Blick verständlich machen",
+   "Eigene Illustrationen, Icons und Piktogramme",
+   "Für Ihre Website auch als Zusatz zum Website-Paket",
+   "Umfang und Preis klären wir im kostenlosen Erstgespräch, danach erhalten Sie einen Festpreis"
+  ],
+  "zusammenfassung": [
+   "Illustrationen, Icons, Piktogramme und Infografiken, die komplexe Inhalte auf einen Blick verständlich machen.",
+   "Illustration und Infografik sind sehr individuell. Deshalb klären wir Umfang und Preis im kostenlosen Erstgespräch; danach erhalten Sie ein Angebot mit Festpreis. Für Ihre Website gibt es eigene Illustrationen, Icons und Infografiken auch als Zusatz zum Website-Paket."
+  ],
+  "nicht_enthalten": [
+   "Offene Original- und Arbeitsdateien: geliefert werden fertige Dateien, außer im Angebot ist etwas anderes vereinbart",
+   "Mehr als zwei Korrekturrunden: nach Aufwand, 65 € pro Stunde"
+  ],
+  "faq": [
+   [
+    "Was kostet eine Illustration oder Infografik bei STUDIO AAH!?",
+    "Illustrationen und Infografiken gibt es bei STUDIO AAH! auf Anfrage, weil jedes Vorhaben sehr individuell ist. Umfang und Preis klären wir im kostenlosen Erstgespräch. Danach erhalten Sie ein Angebot mit Festpreis, netto ohne Umsatzsteuer."
+   ],
+   [
+    "Was ist eine Infografik?",
+    "Eine Infografik macht komplexe Inhalte auf einen Blick verständlich. STUDIO AAH! in Leipzig gestaltet Infografiken als Teil der Leistung Illustration & Infografik."
+   ],
+   [
+    "Gestaltet STUDIO AAH! auch Icons und Piktogramme?",
+    "Ja. Die Leistung Illustration & Infografik von STUDIO AAH! umfasst auch Icons und Piktogramme. Der Preis ist auf Anfrage und wird im kostenlosen Erstgespräch geklärt."
+   ],
+   [
+    "Kann ich Illustrationen und Infografiken für meine Website bestellen?",
+    "Ja. Eigene Illustrationen, Icons und Infografiken für Ihre Website können Sie bei STUDIO AAH! als Zusatz zum Website-Paket wählen. Der Preis ist auf Anfrage."
+   ],
+   [
+    "Wie viele Korrekturrunden sind bei Illustrationen und Infografiken enthalten?",
+    "Bei STUDIO AAH! sind im Festpreis zwei Korrekturrunden (Feedbackrunden) enthalten. Weitere Runden rechnet STUDIO AAH! nach Aufwand ab, mit 65 € pro Stunde netto."
+   ],
+   [
+    "Wie läuft ein Auftrag für Illustration oder Infografik bei STUDIO AAH! ab?",
+    "Sie stellen sich mit dem Kostenrechner einen unverbindlichen Kostenvoranschlag zusammen; Illustration & Infografik steht dort als \"auf Anfrage\". Im kostenlosen Erstgespräch klären wir Ist-Stand, Ziele, Bedarf und Zielgruppe. Danach erhalten Sie von STUDIO AAH! ein Angebot mit Festpreis und schließlich den Vertrag."
+   ]
+  ]
+ },
+ "motion": {
+  "pfad": "service/motion-design/",
+  "gruppe": "zusatz",
+  "pakete": [
+   "motion"
+  ],
+  "tag": "motion",
+  "titel": "Motion Design",
+  "seitentitel": "Motion Design in Leipzig: Animationen | STUDIO AAH!",
+  "beschreibung": "Motion Design von STUDIO AAH! in Leipzig: bewegte Grafiken und Animationen für Website, Social Media und Präsentationen. Preis auf Anfrage.",
+  "intro": "Bewegte Grafiken und Animationen für Website, Social Media und Präsentationen.",
+  "bild": "bilder/leistung-motion.jpg",
+  "bildalt": "Bildschirm mit der Zeitleiste einer Animations-Software",
+  "icon": "bilder/icons/gift.webp",
+  "problem_titel": "Ihre Inhalte sollen sich bewegen?",
+  "probleme": [
+   "Auf der Website fehlen bewegte Grafiken und Animationen",
+   "Für Social Media fehlen Animationen",
+   "In Präsentationen fehlt Bewegung",
+   "Jedes Vorhaben ist anders, ein Standardpreis passt nicht"
+  ],
+  "loesungen": [
+   "Bewegte Grafiken und Animationen für Ihre Website",
+   "Animationen für Social Media",
+   "Animationen für Präsentationen",
+   "Für Ihre Website auch als Zusatz zum Website-Paket",
+   "Umfang und Preis klären wir im kostenlosen Erstgespräch, danach erhalten Sie einen Festpreis"
+  ],
+  "zusammenfassung": [
+   "Bewegte Grafiken und Animationen für Ihre Website, für Social Media und für Präsentationen.",
+   "Motion Design ist sehr individuell. Deshalb klären wir Umfang und Preis im kostenlosen Erstgespräch; danach erhalten Sie ein Angebot mit Festpreis. Für Ihre Website gibt es Motion Design auch als Zusatz zum Website-Paket."
+  ],
+  "nicht_enthalten": [
+   "Offene Original- und Arbeitsdateien: geliefert werden fertige Dateien, außer im Angebot ist etwas anderes vereinbart",
+   "Mehr als zwei Korrekturrunden: nach Aufwand, 65 € pro Stunde"
+  ],
+  "faq": [
+   [
+    "Was kostet Motion Design bei STUDIO AAH!?",
+    "Motion Design gibt es bei STUDIO AAH! auf Anfrage, weil jedes Vorhaben sehr individuell ist. Umfang und Preis klären wir im kostenlosen Erstgespräch. Danach erhalten Sie ein Angebot mit Festpreis, netto ohne Umsatzsteuer."
+   ],
+   [
+    "Was ist Motion Design?",
+    "Motion Design sind bewegte Grafiken und Animationen. STUDIO AAH! in Leipzig gestaltet sie für Websites, Social Media und Präsentationen."
+   ],
+   [
+    "Wofür kann ich Motion Design von STUDIO AAH! einsetzen?",
+    "Motion Design von STUDIO AAH! ist für drei Einsatzorte gedacht: Ihre Website, Social Media und Präsentationen."
+   ],
+   [
+    "Kann ich Animationen für meine Website bestellen?",
+    "Ja. Bewegte Grafiken und Animationen für Ihre Website können Sie bei STUDIO AAH! als Zusatz zum Website-Paket wählen. Der Preis ist auf Anfrage."
+   ],
+   [
+    "Wie viele Korrekturrunden sind beim Motion Design enthalten?",
+    "Bei STUDIO AAH! sind im Festpreis zwei Korrekturrunden (Feedbackrunden) enthalten. Weitere Runden rechnet STUDIO AAH! nach Aufwand ab, mit 65 € pro Stunde netto."
+   ],
+   [
+    "Wie läuft ein Motion-Design-Auftrag bei STUDIO AAH! ab?",
+    "Sie stellen sich mit dem Kostenrechner einen unverbindlichen Kostenvoranschlag zusammen; Motion Design steht dort als \"auf Anfrage\". Im kostenlosen Erstgespräch klären wir Ist-Stand, Ziele, Bedarf und Zielgruppe. Danach erhalten Sie von STUDIO AAH! ein Angebot mit Festpreis und schließlich den Vertrag."
+   ]
+  ]
+ },
+ "retainer": {
+  "pfad": "service/retainer/",
+  "gruppe": "zusatz",
+  "pakete": [
+   "retainer"
+  ],
+  "tag": "retainer",
+  "titel": "Retainer",
+  "seitentitel": "Retainer in Leipzig: Website weiterentwickeln | STUDIO AAH!",
+  "beschreibung": "Retainer bei STUDIO AAH! in Leipzig: betreute Weiterentwicklung Ihrer Website mit neuen Texten, Bildern, Unterseiten und Abschnitten. Ab 65 € pro Stunde netto.",
+  "intro": "Betreute Weiterentwicklung Ihrer Website: neue Texte und Bilder, Unterseiten und Abschnitte, ab 65 € pro Stunde.",
+  "bild": "bilder/leistung-retainer.jpg",
+  "bildalt": "Arbeitsplatz mit zwei Bildschirmen, auf denen Seitenentwürfe zu sehen sind",
+  "icon": "bilder/icons/target.webp",
+  "problem_titel": "Nach dem Start soll Ihre Website weiterwachsen.",
+  "probleme": [
+   "Spätere Text- und Inhaltsänderungen sind in keinem Website-Paket enthalten",
+   "Die Wartung hält die Technik aktuell, ändert aber keine Inhalte",
+   "Neue Unterseiten oder Abschnitte sollen dazukommen"
+  ],
+  "loesungen": [
+   "Texte und Bilder austauschen",
+   "Neue Unterseiten erstellen",
+   "Abschnitte bearbeiten",
+   "Abrechnung nach Aufwand, ab 65 € pro Stunde netto, kein fester Monatsbetrag",
+   "Lieber selbst pflegen? Schulung für 70 €, als PDF-Anleitung oder Online-Termin"
+  ],
+  "zusammenfassung": [
+   "Mit dem Retainer entwickle ich Ihre Website nach dem Start weiter: Ich tausche Texte und Bilder aus, erstelle neue Unterseiten und bearbeite Abschnitte. Abgerechnet wird nach Aufwand, ab 65 € pro Stunde netto.",
+   "Der Retainer ist keine Wartung. Die Wartung ab 45 € im Monat netto ist die rein technische Pflege Ihrer WordPress-Website: Updates von WordPress, Plugins und Themes, technische Überwachung und Sicherheitschecks."
+  ],
+  "nicht_enthalten": [
+   "Technische Pflege (Updates, Überwachung, Sicherheitschecks): gehört zur Wartung ab 45 € im Monat",
+   "Hosting, Domain und Lizenzen: zahlen Sie direkt an den jeweiligen Anbieter",
+   "Fester Monatsbetrag: abgerechnet wird nach Aufwand"
+  ],
+  "faq": [
+   [
+    "Was kostet ein Retainer bei STUDIO AAH!?",
+    "Der Retainer bei STUDIO AAH! in Leipzig kostet ab 65 € pro Stunde netto, ohne Umsatzsteuer. Abgerechnet wird nach Aufwand, nicht als fester Monatsbetrag."
+   ],
+   [
+    "Was ist ein Retainer?",
+    "Ein Retainer ist bei STUDIO AAH! die betreute Weiterentwicklung Ihrer Website: Texte und Bilder austauschen, neue Unterseiten erstellen und Abschnitte bearbeiten, damit Ihre Website mit Ihrem Unternehmen wächst."
+   ],
+   [
+    "Was ist der Unterschied zwischen Wartung und Retainer?",
+    "Die Wartung bei STUDIO AAH! ist die rein technische Pflege Ihrer WordPress-Website ab 45 € im Monat netto: Updates von WordPress, Plugins und Themes, technische Überwachung und Sicherheitschecks. Der Retainer ist die betreute Weiterentwicklung Ihrer Website ab 65 € pro Stunde netto: Texte und Bilder austauschen, neue Unterseiten erstellen, Abschnitte bearbeiten."
+   ],
+   [
+    "Sind spätere Textänderungen in meinem Website-Paket enthalten?",
+    "Nein. Bei STUDIO AAH! werden Texte einmal für die ganze Website geliefert. Spätere Text- und Inhaltsänderungen setzen Sie selbst in WordPress (Kadence) um, oder STUDIO AAH! übernimmt sie nach Aufwand mit 65 € pro Stunde netto."
+   ],
+   [
+    "Kann ich meine Website auch selbst pflegen?",
+    "Ja. Für die Selbstpflege bietet STUDIO AAH! eine Schulung für 70 € netto an, wahlweise als PDF-Anleitung oder als Online-Termin."
+   ],
+   [
+    "Wie starte ich einen Retainer mit STUDIO AAH!?",
+    "Sie melden sich über die Kontaktseite von STUDIO AAH! oder per E-Mail. Im kostenlosen Erstgespräch klären wir Ist-Stand, Ziele und Bedarf Ihrer Website."
+   ]
+  ],
+  "paket_extra": {
+   "anfrage": false,
+   "stunde": 65
+  }
  }
 }

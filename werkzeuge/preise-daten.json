@@ -357,7 +357,7 @@
    "id": "print",
    "kurz": "Print",
    "name": "Print",
-   "link": null,
+   "link": "../service/print/",
    "wahl": "mehrere",
    "pakete": [
     {
@@ -577,28 +577,28 @@
    "id": "print",
    "titel": "Print",
    "bild": "bilder/leistung-print.jpg",
-   "link": "preise/#r-print",
+   "link": "service/print/",
    "text": "Professionelles Design für Gedrucktes – von der Visitenkarte bis zur Unternehmenspräsentation."
   },
   {
    "id": "illustration",
    "titel": "Illustration & Infografik",
    "bild": "bilder/leistung-illustration.jpg",
-   "link": "preise/#r-zusatz",
+   "link": "service/illustration-infografik/",
    "text": "Illustrationen, Icons und Infografiken, die komplexe Inhalte auf einen Blick verständlich machen."
   },
   {
    "id": "motion",
    "titel": "Motion Design",
    "bild": "bilder/leistung-motion.jpg",
-   "link": "preise/#r-zusatz",
+   "link": "service/motion-design/",
    "text": "Bewegte Grafiken und Animationen für Website, Social Media und Präsentationen."
   },
   {
    "id": "retainer",
    "titel": "Retainer",
    "bild": "bilder/leistung-retainer.jpg",
-   "link": "kontakt/",
+   "link": "service/retainer/",
    "text": "Betreute Weiterentwicklung Ihrer Website: neue Texte und Bilder, Unterseiten und Abschnitte, ab 65 € pro Stunde."
   },
   {

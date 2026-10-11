@@ -42,7 +42,8 @@ def karten(g):
 
 def vergleich(g):
     pakete = g['pakete']
-    if len(pakete) < 2: return ''
+    # Tabelle nur, wenn Pakete aufeinander aufbauen („Alles aus …“); einzeln buchbare Leistungen vergleicht man nicht
+    if len(pakete) < 2 or not any((e.get('plus') or '').startswith('Alles aus') for e in pakete): return ''
     # Zeilen: alle Leistungen in Reihenfolge; ein Paket „enthält“ alle Zeilen der vorherigen Pakete, wenn es mit „Alles aus …“ beginnt
     zeilen, hat = [], []
     for i, e in enumerate(pakete):
@@ -131,7 +132,15 @@ def direkt(pre):
 
 def seite(key, c):
     g = next(x for x in preise['gruppen'] if x['id'] == c['gruppe'])
+    # Mehrere Seiten teilen sich eine Gruppe (zusatz): nur die genannten Pakete, eigener Einleitungssatz;
+    # „paket_extra“ ergänzt die Paketdaten nur für diese Seite (z. B. Stundensatz statt „auf Anfrage“)
+    if c.get('pakete'):
+        g = {**g, 'pakete': [{**e, **c.get('paket_extra', {})} for e in g['pakete'] if e['id'] in c['pakete']], 'extras': []}
+    intro = c.get('intro') or g['intro']
     pfad = basis / 'website' / c['pfad'] / 'index.html'
+    if not pfad.exists():  # neue Seite: Kopf und Fuß von der Website-Seite übernehmen (gleiche Ordnertiefe)
+        pfad.parent.mkdir(parents=True, exist_ok=True)
+        pfad.write_text((basis / 'website' / 'service' / 'website' / 'index.html').read_text(encoding='utf-8'), encoding='utf-8')
     t = pfad.read_text(encoding='utf-8')
     tiefe = c['pfad'].strip('/').count('/') + 1
     pre = '../' * tiefe
@@ -147,11 +156,11 @@ def seite(key, c):
   <section class="seitenkopf lsx-kopf">
     <p class="meta"><a href="{pre}#leistungen">Leistungen</a> / {esc(c['titel'])}</p>
     <h1 class="gr-xxl"><span class="wort-mit-icon">{esc(c['titel'])}<img class="icon-3d" src="{pre}{c['icon']}" alt="" width="400" height="400"></span></h1>
-    <p class="alt-klein">{esc(g['intro'])}</p>
+    <p class="alt-klein">{esc(intro)}</p>
     {fakten(pre)}
   </section>
 
-  <nav class="preis-leiste lsx-chips" aria-label="Auf dieser Seite"><a href="#loesung">Problem &amp; Lösung</a><a href="#pakete">Pakete</a>{'<a href="#vergleich">Vergleich</a>' if len(g['pakete']) > 1 else ''}{'<a href="#extras">Zusatzleistungen</a>' if g.get('extras') else ''}<a href="#ablauf">Ablauf</a>{'<a href="#referenzen">Referenzen</a>' if I.mit_tag(I.PROJEKTE, [c['tag']]) else ''}{'<a href="#artikel">Artikel</a>' if I.mit_tag(I.BLOG, [c['tag']]) else ''}<a href="#faq">Fragen</a><a href="{pre}preise/#r-{g['id']}">Kostenrechner →</a></nav>
+  <nav class="preis-leiste lsx-chips" aria-label="Auf dieser Seite"><a href="#loesung">Problem &amp; Lösung</a><a href="#pakete">Pakete</a>{'<a href="#vergleich">Vergleich</a>' if vergleich(g) else ''}{'<a href="#extras">Zusatzleistungen</a>' if g.get('extras') else ''}<a href="#ablauf">Ablauf</a>{'<a href="#referenzen">Referenzen</a>' if I.mit_tag(I.PROJEKTE, [c['tag']]) else ''}{'<a href="#artikel">Artikel</a>' if I.mit_tag(I.BLOG, [c['tag']]) else ''}<a href="#faq">Fragen</a><a href="{pre}preise/#r-{g['id']}">Kostenrechner →</a></nav>
 
   <section class="lsx-loesung" id="loesung" aria-labelledby="loesung-titel">
     <div class="lsx-loesung-text">
@@ -212,6 +221,8 @@ def seite(key, c):
     t = re.sub(r'<title>.*?</title>', f'<title>{esc(c["seitentitel"])}</title>', t, count=1)
     for name in ('name="description"', 'property="og:description"'):
         t = re.sub(rf'<meta {name} content="[^"]*">', f'<meta {name} content="{html.escape(c["beschreibung"])}">', t, count=1)
+    t = re.sub(r'<link rel="canonical" href="[^"]*">', f'<link rel="canonical" href="{url}">', t, count=1)
+    t = re.sub(r'<meta property="og:url" content="[^"]*">', f'<meta property="og:url" content="{url}">', t, count=1)
     t = re.sub(r'<meta property="og:title" content="[^"]*">', f'<meta property="og:title" content="{html.escape(c["seitentitel"])}">', t, count=1)
     # Strukturierte Daten: Leistung mit Angeboten und FAQ (für Suchmaschinen und KI-Antworten)
     studio = re.search(r'\{\s*"@type": "ProfessionalService".*?"areaServed": \[[^\]]*\]\s*\}', t, re.S)
@@ -219,14 +230,14 @@ def seite(key, c):
                  "priceSpecification": {"@type": "PriceSpecification", "minPrice": e['preis'], "priceCurrency": "EUR", "valueAddedTaxIncluded": False}}
                 for e in g['pakete'] if e.get('preis')]
     graph = [json.loads(studio.group(0)) if studio else {"@id": "https://studio-aah.de/#studio"},
-             {"@type": "Service", "@id": url + '#leistung', "name": c['titel'], "description": g['intro'], "url": url,
+             {"@type": "Service", "@id": url + '#leistung', "name": c['titel'], "description": intro, "url": url,
               "provider": {"@id": "https://studio-aah.de/#studio"}, "areaServed": "Leipzig", "offers": angebote},
              {"@type": "FAQPage", "@id": url + '#faq', "url": url, "inLanguage": "de",
               "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in c['faq'] + GEMEINSAM]}]
     ld = json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, indent=2)
     t = re.sub(r'<script type="application/ld\+json">.*?</script>', lambda m: f'<script type="application/ld+json">\n{ld}\n  </script>', t, count=1, flags=re.S)
     if 'zaehlen.js' not in t:
-        t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v=20261012n" defer></script>\n</body>', 1)
+        t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v=20261012o" defer></script>\n</body>', 1)
     pfad.write_text(t, encoding='utf-8')
     print('geschrieben:', c['pfad'])
 
