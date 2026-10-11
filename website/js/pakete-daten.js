@@ -350,7 +350,8 @@ window.PREISE = {
       "bis zu 20 Folien",
       "PDF und Druckdaten"
      ],
-     "ab": true
+     "ab": true,
+     "gefragt": true
     },
     {
      "id": "publikation",
