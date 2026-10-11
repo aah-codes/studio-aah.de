@@ -228,7 +228,7 @@ def seite(key, c):
   <section class="lsx-duo" aria-label="Kontakt und Kostenrechner">
 {direkt(pre)}
     <div class="lsx-duo-karte lsx-duo-rechner">
-      <img class="lsx-duo-icon" src="{pre}bilder/icons/money-bag.webp" alt="" width="400" height="400" loading="lazy">
+      <img class="lsx-duo-icon" src="{pre}bilder/icons/calculator.webp" alt="" width="400" height="400" loading="lazy">
       <p class="meta">Kostenrechner</p>
       <h2 class="gr-h3" id="rechner-hinweis">Was kostet Ihr Projekt?</h2>
       <p>Stellen Sie sich Ihre Pakete und Zusatzleistungen selbst zusammen und erhalten Sie sofort einen unverbindlichen Kostenvoranschlag, als PDF oder per E-Mail.</p>
