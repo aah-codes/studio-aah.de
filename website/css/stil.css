@@ -1462,3 +1462,4 @@ main section[id] { scroll-margin-top: calc(var(--kopf-hoehe) + 72px); }
   .ci-film .z, .ci-film .z-zeichnen path { animation: none !important; }
   .ci-nochmal { display: none; }
 }
+.ci-anim .ci-kern-t.ci-image-t { font-size: 27px; }

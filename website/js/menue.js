@@ -112,7 +112,7 @@
     const knopf = film.querySelector('.ci-nochmal-knopf');
     if (knopf) knopf.addEventListener('click', start);
     if (!('IntersectionObserver' in window)) { start(); return; }
-    const beob = new IntersectionObserver((e) => { if (e[0].isIntersecting) { start(); beob.disconnect(); } }, { threshold: 0.35 });
+    const beob = new IntersectionObserver((e) => { if (e[0].isIntersecting) { start(); beob.disconnect(); } }, { threshold: 0.12 });
     beob.observe(film);
   });
 })();

@@ -129,7 +129,7 @@ def bild(art):
     x, y = pos['image']; gr = RADIUS['image']
     teile.append(f'<g {z(BILD, "pop")}><circle cx="{x}" cy="{y}" r="{gr}" fill="#fff" class="ci-l"/><circle cx="{x}" cy="{y}" r="{gr - 12}" class="ci-p"/></g>')
     teile.append(f'<g transform="translate({x} {y - 36})">{zeichnung("image", BILD + .4)}</g>')
-    teile.append(f'<text text-anchor="middle" class="ci-kern-t ci-schwarz-t z z-ein" style="--d:{BILD + .7}s" font-size="30"><tspan x="{x}" y="{y + 14}">CORPORATE</tspan><tspan x="{x}" y="{y + 46}">IMAGE</tspan></text>')
+    teile.append(f'<text text-anchor="middle" class="ci-kern-t ci-image-t ci-schwarz-t z z-ein" style="--d:{BILD + .7}s"><tspan x="{x}" y="{y + 14}">CORPORATE</tspan><tspan x="{x}" y="{y + 46}">IMAGE</tspan></text>')
     # Linien und Punkte liegen unter den Knoten
     return (f'<svg class="ci-anim ci-{art}" viewBox="{L["vb"]}" aria-hidden="true">'
             + ''.join(t for t in teile if 'class="ci-p"/></g>' in t) + ''.join(punkte)
