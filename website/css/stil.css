@@ -1214,3 +1214,16 @@ h1, h2, h3, .gr-xxl, .gr-xl, .gr-h2, .gr-klein, .gr-h3, .artikel h1, .mm-karte-t
 /* Kennzeichnung: Foto mit KI bearbeitet (Bildschirminhalt ersetzt, Kabel entfernt) */
 .studio-ki { position: absolute; right: 12px; bottom: 12px; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: rgba(14, 16, 17, .72); color: var(--farbe-weiss); cursor: help; }
 .studio-ki svg { width: 12px; height: 12px; fill: currentColor; }
+
+/* ---------- 31. Fuß: Newsletter-Anmeldung (Brevo, Double Opt-in) ---------- */
+.fuss-newsletter { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px 64px; padding: 40px 0; margin: 40px 0 0; border-top: 1px solid rgba(255, 255, 255, .15); }
+.fuss-nl-text { max-width: 52ch; color: var(--farbe-gedaempft-invers); }
+.fuss-nl-feld { display: flex; gap: 8px; flex-wrap: wrap; }
+.fuss-nl-feld input[type="email"] { flex: 1 1 220px; min-width: 0; padding: 12px 18px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, .35); background: transparent; color: var(--farbe-weiss); font: inherit; }
+.fuss-nl-feld input[type="email"]::placeholder { color: var(--farbe-gedaempft-invers); }
+.fuss-nl-feld .button { background: var(--farbe-weiss); color: var(--farbe-dunkel); border: 0; cursor: pointer; }
+.fuss-nl-falle { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.fuss-nl-hinweis { font-size: 13px; color: var(--farbe-gedaempft-invers); margin-top: 12px !important; }
+.fuss .fuss-nl-hinweis a { text-decoration: underline; font-weight: 400; }
+.fuss-nl-meldung { margin-top: 12px !important; font-weight: 600; }
+@media (max-width: 900px) { .fuss-newsletter { grid-template-columns: minmax(0, 1fr); } }
