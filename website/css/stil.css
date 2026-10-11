@@ -1242,7 +1242,6 @@ h1, h2, h3, .gr-xxl, .gr-xl, .gr-h2, .gr-klein, .gr-h3, .artikel h1, .mm-karte-t
 .mm-karte-titel { font-size: 2rem; }
 
 /* ---------- 34. Leistungsunterseiten (erzeugt mit werkzeuge/leistungsseiten.py) ---------- */
-.lsx-chips { padding: 24px 0 0; }
 .lsx-loesung, .lsx-pakete, .lsx-vergleich, .lsx-extras, .lsx-stimmen { padding: 96px var(--rand-seite) 0; }
 .lsx-loesung { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 64px; align-items: start; }
 .lsx-loesung-text .gr-h3, .lsx-pakete .gr-h3, .lsx-vergleich .gr-h3, .lsx-extras .gr-h3, .lsx-stimmen .gr-h3, .lsx-rechner .gr-h3 { margin: 12px 0 24px; }
@@ -1307,10 +1306,7 @@ h1, h2, h3, .mm-name, .mm-karte-titel, .referenz-name, .hero-titel, .fuss-karte-
 .lsx-extra-preis { text-align: right !important; }
 .lsx-stimmen .stimmen { columns: 2 320px; }
 
-/* Sprungmarken der Leistungsseiten: rasten 16 px unter dem Kopf ein und bleiben als Inhaltsverzeichnis sichtbar */
-.lsx-chips { position: sticky; top: calc(var(--kopf-hoehe) + 16px); z-index: 20; margin: 0 var(--rand-seite); padding: 10px 12px; width: fit-content; max-width: calc(100% - 2 * var(--rand-seite)); background: rgba(255, 255, 255, .92); backdrop-filter: blur(8px); border: 1px solid var(--farbe-rahmen); border-radius: 999px; box-shadow: 0 8px 24px rgba(14, 16, 17, .06); }
-.lsx-chips a.aktiv { background: var(--farbe-dunkel); border-color: var(--farbe-dunkel); color: var(--farbe-weiss); }
-.lsx-chips a:last-child { background: transparent; color: inherit; border-color: var(--farbe-dunkel); }
-main section[id] { scroll-margin-top: calc(var(--kopf-hoehe) + 96px); }
-@media (max-width: 900px) { .lsx-chips { border-radius: 16px; flex-wrap: nowrap; overflow-x: auto; } }
+/* Ankernavigation der Leistungsseiten: gleiche Leiste wie auf der Preisseite (.preis-leiste) – direkt unter dem Kopf, weiß, feine graue Linie */
+.lsx-chips { margin-top: 32px; }
+main section[id] { scroll-margin-top: calc(var(--kopf-hoehe) + 72px); }
 .lsx-karte-dauer { margin: 0 0 8px; } .lsx-karte-dauer .meta { margin-right: 6px; }
