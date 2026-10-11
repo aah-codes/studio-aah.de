@@ -1983,3 +1983,4 @@ img.profil-bildtext-bild, .profil-bildtext-bild img { width: 100%; height: auto;
 .dk-karte-ref .dk-bild { position: relative; height: 100%; min-height: 320px; }
 .dk-karte-ref .dk-bild img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top left; }
 .dk-titel { margin-bottom: 40px; }
+section[hidden] { display: none !important; }
