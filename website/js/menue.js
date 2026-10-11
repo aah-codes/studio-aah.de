@@ -116,3 +116,54 @@
     beob.observe(film);
   });
 })();
+
+// Referenz-Karussell: blättert alle 7 Sekunden weiter (nur sichtbar und ohne „Bewegung reduzieren“),
+// Pfeile blättern, Pause-Knopf hält an; Wischen auf dem Handy funktioniert über das Scrollen der Spur.
+(() => {
+  const ruhig = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('[data-karussell]').forEach((ks) => {
+    const spur = ks.querySelector('.ks-spur'), karten = [...spur.children], punkte = ks.querySelector('.ks-punkte');
+    const pk = ks.querySelector('[data-pause]');
+    karten.forEach(() => punkte.appendChild(document.createElement('i')));
+    let nr = 0, uhr = null, sichtbar = false;
+    const markiere = () => [...punkte.children].forEach((p, i) => { p.classList.remove('aktiv'); void p.offsetWidth; p.classList.toggle('aktiv', i === nr); });
+    const zeige = (n) => { nr = (n + karten.length) % karten.length; spur.scrollTo({ left: karten[nr].offsetLeft - spur.offsetLeft }); markiere(); };
+    const lauf = () => { clearInterval(uhr); if (sichtbar && !ks.classList.contains('pause')) uhr = setInterval(() => zeige(nr + 1), 7000); };
+    ks.querySelector('[data-weiter]').addEventListener('click', () => { zeige(nr + 1); lauf(); });
+    ks.querySelector('[data-zurueck]').addEventListener('click', () => { zeige(nr - 1); lauf(); });
+    pk.addEventListener('click', () => {
+      const p = ks.classList.toggle('pause');
+      pk.textContent = p ? '▶' : '❚❚';
+      pk.setAttribute('aria-label', p ? 'Automatisches Weiterblättern starten' : 'Automatisches Weiterblättern anhalten');
+      if (!p) markiere();
+      lauf();
+    });
+    // Nach Wischen die aktuelle Karte übernehmen
+    let t; spur.addEventListener('scroll', () => { clearTimeout(t); t = setTimeout(() => {
+      const i = karten.reduce((b, k, j) => Math.abs(k.offsetLeft - spur.offsetLeft - spur.scrollLeft) < Math.abs(karten[b].offsetLeft - spur.offsetLeft - spur.scrollLeft) ? j : b, 0);
+      if (i !== nr) { nr = i; markiere(); lauf(); }
+    }, 120); });
+    if (ruhig) { ks.classList.add('pause'); pk.textContent = '▶'; pk.setAttribute('aria-label', 'Automatisches Weiterblättern starten'); }
+    markiere();
+    if ('IntersectionObserver' in window) new IntersectionObserver((e) => { sichtbar = e[0].isIntersecting; lauf(); }, { threshold: 0.3 }).observe(ks);
+  });
+})();
+
+// Umschalter „Für wen“ (Tabs): Klick und Pfeiltasten
+(() => {
+  document.querySelectorAll('.dk-umschalter[role="tablist"]').forEach((liste) => {
+    const tabs = [...liste.querySelectorAll('[role="tab"]')];
+    const waehle = (b) => tabs.forEach((x) => {
+      const an = x === b;
+      x.setAttribute('aria-selected', String(an)); x.tabIndex = an ? 0 : -1;
+      document.getElementById(x.getAttribute('aria-controls')).hidden = !an;
+    });
+    liste.addEventListener('click', (e) => { const b = e.target.closest('[role="tab"]'); if (b) waehle(b); });
+    liste.addEventListener('keydown', (e) => {
+      const i = tabs.indexOf(document.activeElement); if (i < 0) return;
+      const n = e.key === 'ArrowRight' ? i + 1 : e.key === 'ArrowLeft' ? i - 1 : null;
+      if (n === null) return;
+      e.preventDefault(); const b = tabs[(n + tabs.length) % tabs.length]; waehle(b); b.focus();
+    });
+  });
+})();

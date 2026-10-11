@@ -3,10 +3,12 @@
   "name": "Wolfgang Bauer Ingenieurbau GmbH",
   "branche": "Bauunternehmen – Ingenieurbau & Bauen im Bestand",
   "zeitraum": "seit 2026",
-  "leistungen": "Strategie, UX/UI Design, Website-Konzeption & Webentwicklung",
+  "leistungen": "Strategie, Rebranding, UX/UI Design, Website-Konzeption & Webentwicklung, Unternehmenspräsentation",
   "tags": [
    "website",
-   "ui-ux"
+   "ui-ux",
+   "brand",
+   "print"
   ],
   "links": [
    {
@@ -18,6 +20,36 @@
    "datei": "videos/launchvideo-bauer.mp4",
    "vorschau": "bilder/film-bauer-vorschau.jpg",
    "titel": "Launch-Film: die neue Website von Wolfgang Bauer Ingenieurbau"
+  },
+  "farbe": "#d9e2ec",
+  "kurzname": "Wolfgang Bauer Ingenieurbau",
+  "mockup": {
+   "browser": "bilder/hero/bauer-startseite-2026-10.jpg",
+   "folien": [
+    "bilder/hero/bauer-praes-01.jpg",
+    "bilder/hero/bauer-praes-04.jpg",
+    "bilder/hero/bauer-praes-12.jpg"
+   ]
+  },
+  "erfolg": {
+   "zitat": "Ich habe vollstes Vertrauen in Sie.",
+   "person": "Herr Nickstat",
+   "rolle": "[Funktion prüfen]",
+   "freigegeben": false,
+   "fakten": [
+    [
+     "Branche",
+     "Ingenieurbau, Bauen im Bestand"
+    ],
+    [
+     "Leistungen",
+     "Strategie, Rebranding, UX/UI, Website, Präsentation"
+    ],
+    [
+     "System",
+     "WordPress (Kadence)"
+    ]
+   ]
   }
  },
  {
@@ -36,7 +68,12 @@
     "url": "https://www.naturmedizin-goldhammer.de",
     "text": "naturmedizin-goldhammer.de"
    }
-  ]
+  ],
+  "farbe": "#f6eab0",
+  "kurzname": "Dr. Simone Goldhammer",
+  "mockup": {
+   "karte": "bilder/hero/goldhammer-visitenkarte.jpg"
+  }
  },
  {
   "name": "Deinetwegen – Franziska Weihmann",
@@ -53,7 +90,13 @@
     "url": "https://www.deinetwegen-hr.de",
     "text": "deinetwegen-hr.de"
    }
-  ]
+  ],
+  "farbe": "#efdcd8",
+  "kurzname": "Deinetwegen",
+  "mockup": {
+   "handy": "bilder/hero/deinetwegen-handy-ganz.jpg"
+  },
+  "stimme": "Franziska Weihmann"
  },
  {
   "name": "Down to Earth – Kerstin Hack",
@@ -73,7 +116,12 @@
     "url": "https://kerstinhack.de",
     "text": "kerstinhack.de"
    }
-  ]
+  ],
+  "farbe": "#efe3c4",
+  "kurzname": "Down to Earth",
+  "mockup": {
+   "karte": "bilder/hero/kh-templates.jpg"
+  }
  },
  {
   "name": "Jana Voigtmann",
@@ -88,6 +136,11 @@
     "url": "https://janavoigtmann.de",
     "text": "janavoigtmann.de"
    }
-  ]
+  ],
+  "farbe": "#e2e1f6",
+  "kurzname": "Jana Voigtmann",
+  "mockup": {
+   "browser": "bilder/hero/jana-mixed-media.jpg"
+  }
  }
 ]
