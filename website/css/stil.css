@@ -1933,3 +1933,7 @@ img.profil-bildtext-bild, .profil-bildtext-bild img { width: 100%; height: auto;
 .studio-bildschirm { position: absolute; left: 6.9%; top: 17.8%; width: 18.4%; height: 15.6%; background: var(--farbe-weiss); container-type: size; overflow: hidden; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 2%; }
 .studio-bildschirm .bauhaus-tetris { --u: min(25cqw, 23.5cqh); }
 .studio-bildschirm .tz { left: calc(var(--u) * var(--c) + 1px); bottom: calc(var(--u) * var(--r) + 1px); width: calc(var(--u) - 2px); height: calc(var(--u) - 2px); }
+/* Profil: Werdegang-Zeitleiste direkt unter „Über mich“, ohne eigene Überschrift (Anna 11.10.2026) */
+.profil-wer .profil-zweispaltig { padding-bottom: 16px; }
+.profil-wer-zeitleiste { padding: 0 var(--rand-seite) 120px; }
+@media (max-width: 900px) { .profil-wer-zeitleiste { padding: 0 var(--rand-seite-mobil) 64px; } }
