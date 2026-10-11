@@ -2005,3 +2005,8 @@ section[hidden] { display: none !important; }
 .fakt-plus { color: #2f6bff; }
 .fakt-ort-punkt { fill: #2f6bff; stroke: none; }
 .ci-weiss { fill: var(--farbe-weiss); stroke: none; }
+/* Bauhaus-Raster auf Creme wie ein Plakat (Anna 11.10.2026: „wir haben ja auch noch die Cremefarbe“); helle Kacheln weiß statt grau */
+.bauhaus-raster { box-sizing: content-box; padding: calc(var(--u) * .45); background: var(--farbe-creme); border-radius: 28px; }
+.bauhaus-raster .bk { left: calc(var(--u) * (var(--c) + .45)); top: calc(var(--u) * (var(--r) + .45)); }
+.bauhaus-raster .bk-h { --f: var(--farbe-weiss); }
+.bauhaus-raster .bk-kq { background: radial-gradient(circle closest-side, var(--farbe-creme) 99%, var(--f) 100%); }
