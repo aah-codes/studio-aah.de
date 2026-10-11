@@ -1150,3 +1150,27 @@ h1, h2, h3, .gr-xxl, .gr-xl, .gr-h2, .gr-klein, .gr-h3, .artikel h1, .mm-karte-t
   .profil-zweispaltig { grid-template-columns: minmax(0, 1fr); gap: 40px; padding-bottom: 64px; }
   .pz-schritte.pz-drei { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* ---------- 29. Profil-Einstieg: Kennzahlen (Idee: proxy.gonka.gg), Grafik „Herzstück“, Fuß „Made with Love“ ---------- */
+.fakten { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 40px 0; border-top: 1px solid var(--farbe-rahmen); border-bottom: 1px solid var(--farbe-rahmen); }
+.fakten > div { padding: 20px 16px; text-align: center; }
+.fakten > div + div { border-left: 1px solid var(--farbe-rahmen); }
+.fakten dt { font-family: var(--schrift-ueberschrift); font-size: clamp(36px, 4vw, 56px); line-height: 1.12; font-variant-numeric: tabular-nums; }
+.fakten dd { margin: 4px 0 0; color: var(--farbe-gedaempft); font-size: 14px; line-height: 1.4; }
+.profil-herzstueck, .profil-wer { padding-top: 96px; }
+.profil-herzstueck .gr-h3, .profil-wer .gr-h3 { margin: 12px 0 24px; }
+/* Website in der Mitte, sechs Kanäle im Kreis darum */
+.herz-grafik { position: relative; aspect-ratio: 1; max-width: 460px; width: 100%; justify-self: center; }
+.herz-grafik::before { content: ""; position: absolute; inset: 15%; border: 1.5px dashed var(--farbe-rahmen); border-radius: 50%; }
+.herz-grafik span { --winkel: calc(var(--w) * 60deg - 90deg); position: absolute; left: calc(50% + cos(var(--winkel)) * 35%); top: calc(50% + sin(var(--winkel)) * 35%); transform: translate(-50%, -50%); padding: 8px 16px; border-radius: 999px; border: 1px solid var(--farbe-dunkel); background: var(--farbe-weiss); font-weight: 600; font-size: 15px; white-space: nowrap; }
+.herz-grafik .herz-mitte { left: 50%; top: 50%; transform: translate(-50%, -50%); width: 34%; aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; background: var(--farbe-dunkel); color: var(--farbe-weiss); font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-size: clamp(20px, 2vw, 28px); padding: 0; border: 0; }
+.mit-liebe svg { width: 12px; height: 12px; vertical-align: -1px; fill: currentColor; }
+@media (max-width: 640px) {
+  .fakten { grid-template-columns: minmax(0, 1fr); }
+  .fakten > div + div { border-left: 0; border-top: 1px solid var(--farbe-rahmen); }
+  .herz-grafik span { font-size: 13px; padding: 6px 12px; }
+}
+
+/* Hero Startseite: Knöpfe (Anfrage zuerst) und Kennzahlen darunter (Idee: proxy.gonka.gg) */
+.hero-knoepfe { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 16px 32px; margin: 24px 0 0; }
+.hero-fakten { max-width: 880px; margin: 48px auto 0; }
