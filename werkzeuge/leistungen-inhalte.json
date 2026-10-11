@@ -1,0 +1,90 @@
+{
+ "_hinweis": "Inhalte der Leistungsunterseiten (Hero, Zusammenfassung, FAQ). Preise und Pakete kommen aus preise-daten.json. Erzeugen: python3 werkzeuge/leistungsseiten.py",
+ "website": {
+  "pfad": "service/website/",
+  "gruppe": "website",
+  "titel": "Website",
+  "seitentitel": "Website erstellen lassen in Leipzig – Webdesign & WordPress | STUDIO AAH!",
+  "beschreibung": "Website erstellen lassen bei STUDIO AAH! in Leipzig: Onepager ab 1.150 €, Website ab 2.450 €, responsiv, in WordPress (Kadence), mit SEO-Basics und Launch. Festpreis nach kostenlosem Erstgespräch.",
+  "bild": "bilder/leistung-website.webp",
+  "bildalt": "Bildschirm mit einer Website im Entwurf",
+  "zusammenfassung": [
+   "Ihre Website ist Vertriebsinstrument. Ich plane Struktur und Inhalte so, dass Besucher und Besucherinnen schnell finden, was sie suchen, und den nächsten Schritt gehen.",
+   "Von der Seitenstruktur über Design und Umsetzung in WordPress bis zum Launch: alles aus einer Hand, responsiv für Handy und Desktop."
+  ],
+  "faq": [
+   [
+    "Was kostet eine Website in Leipzig bei STUDIO AAH!?",
+    "Bei STUDIO AAH! in Leipzig beginnt ein Onepager bei 1.150 € und eine Website mit bis zu 6 Unterseiten bei 2.450 €. Jede weitere Unterseite kostet 150 €. Für jede neue Website kommt einmalig der Launch für 150 € dazu. Projekte mit mehr als 25 Unterseiten, Shop oder Mitgliederbereich beginnen bei 6.000 €. Alle Preise sind Einstiegspreise ohne Umsatzsteuer; den Festpreis erhalten Sie nach einem kostenlosen Erstgespräch."
+   ],
+   [
+    "Was ist ein Onepager und für wen lohnt er sich?",
+    "Ein Onepager ist eine Website, die alles auf einer einzigen, langen Seite zeigt. Er passt zu Selbstständigen und kleinen Angeboten, die ihr Angebot kompakt vorstellen wollen. Bei STUDIO AAH! beginnt ein Onepager bei 1.150 €."
+   ],
+   [
+    "Was ist der Unterschied zwischen einer neuen Website und einem Redesign?",
+    "Bei einer neuen Website entsteht alles von Grund auf. Bei einem Redesign wird eine bestehende Website neu gestaltet und umgebaut: Ich analysiere die bestehende Seite, übernehme vorhandene Inhalte und richte Weiterleitungen alter Adressen ein, damit Besucher und Google nichts verlieren."
+   ],
+   [
+    "Was ist eine Seitenstruktur (Sitemap) und warum brauche ich sie?",
+    "Die Seitenstruktur, auch Sitemap genannt, ist der Plan, welche Unterseiten es gibt und wie sie zusammenhängen. Sie entscheidet, ob Besucher schnell zum richtigen Angebot finden. Deshalb steht sie bei STUDIO AAH! am Anfang jedes Website-Projekts."
+   ],
+   [
+    "Was bedeutet Conversion und wie steigere ich die Conversion meiner Website?",
+    "Conversion bedeutet, dass Besucher eine gewünschte Handlung ausführen, zum Beispiel eine Anfrage senden, anrufen oder etwas kaufen. Die Conversion-Rate ist der Anteil der Besucher, die das tun. Mehr Conversion entsteht vor allem durch eine klare Seitenstruktur, eine verständliche Botschaft gleich zu Beginn, eine eindeutige Handlungsaufforderung, Vertrauen durch Referenzen und eine gute Darstellung auf dem Handy. Genau darauf plane ich jede Website."
+   ],
+   [
+    "Was bedeutet responsiv?",
+    "Responsiv heißt, dass sich die Website jedem Bildschirm anpasst, vom Handy bis zum großen Monitor. Bei STUDIO AAH! wird jede Website für Desktop und Handy gestaltet."
+   ],
+   [
+    "Ist SEO im Preis enthalten?",
+    "Ja. SEO bedeutet Suchmaschinen-Optimierung, damit Ihre Website bei Google gefunden wird. Die SEO-Basics sind in jedem Website-Paket enthalten, beim Paket „Website – neu oder Redesign“ für alle Unterseiten. Für bestehende Websites gibt es die SEO-Grundeinrichtung ab 260 €."
+   ],
+   [
+    "Was passiert beim Launch?",
+    "Beim Launch geht Ihre Website online: Ich verbinde die Domain, setze die technischen Einträge (DNS), ziehe die Website um und begleite den Livegang. Der Launch kostet einmalig 150 € und gehört zu jeder neuen Website."
+   ],
+   [
+    "Mit welchem System baut STUDIO AAH! Websites?",
+    "STUDIO AAH! setzt Websites in WordPress mit dem Theme Kadence um. Die Website lässt sich danach leicht aktualisieren."
+   ],
+   [
+    "Kann ich meine Website danach selbst pflegen?",
+    "Ja. Für die Selbstpflege gibt es eine Schulung für 70 €, wahlweise als PDF-Anleitung oder Online-Termin."
+   ],
+   [
+    "Wer kümmert sich nach dem Start um die Technik?",
+    "Auf Wunsch übernehme ich die Wartung ab 45 € im Monat: Updates von WordPress, Plugins und Themes, technische Überwachung und Sicherheitschecks, kleine Bildänderungen und der Austausch von PDFs."
+   ],
+   [
+    "Wer zahlt Hosting und Lizenzen?",
+    "Laufende Kosten wie Hosting, Domain oder Lizenzen zahlen Sie direkt an den jeweiligen Anbieter."
+   ],
+   [
+    "Wie läuft ein Website-Projekt bei STUDIO AAH! ab?",
+    "Sie stellen sich mit dem Kostenrechner einen unverbindlichen Kostenvoranschlag zusammen. Im kostenlosen Erstgespräch klären wir Ist-Stand, Ziele, Bedarf und Zielgruppe. Danach erhalten Sie ein Angebot mit Festpreis und schließlich den Vertrag. Im Festpreis sind zwei Korrekturrunden enthalten."
+   ]
+  ],
+  "icon": "bilder/icons/computer.webp",
+  "problem_titel": "Eine schöne Website allein bringt noch keine Anfragen.",
+  "probleme": [
+   "Besucher finden nicht schnell, was Sie anbieten",
+   "Es fehlt eine klare Handlungsaufforderung: Was soll ich jetzt tun?",
+   "Auf dem Handy schwer zu lesen und zu bedienen",
+   "Viel Gestaltung, aber wenig Nutzen",
+   "Technik veraltet, niemand kümmert sich"
+  ],
+  "loesungen": [
+   "Zuerst die Seitenstruktur (Sitemap): Wer sucht was, und wo findet er es?",
+   "Klare Botschaft gleich zu Beginn und eindeutige nächste Schritte für mehr Conversion",
+   "Responsiv gestaltet, für Handy und Desktop",
+   "Form follows Content: Jedes Element hat einen Zweck",
+   "WordPress (Kadence), Schulung zur Selbstpflege und auf Wunsch Wartung"
+  ],
+  "stimmen": [
+   "Franziska Weihmann",
+   "Ines Gottschalk"
+  ]
+ }
+}

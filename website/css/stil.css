@@ -1240,3 +1240,69 @@ h1, h2, h3, .gr-xxl, .gr-xl, .gr-h2, .gr-klein, .gr-h3, .artikel h1, .mm-karte-t
 .mm-karte-bild { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 16px; display: block; }
 .mm-karte { padding: 20px 20px 28px; }
 .mm-karte-titel { font-size: 2rem; }
+
+/* ---------- 34. Leistungsunterseiten (erzeugt mit werkzeuge/leistungsseiten.py) ---------- */
+.lsx-chips { padding: 24px 0 0; }
+.lsx-loesung, .lsx-pakete, .lsx-vergleich, .lsx-extras, .lsx-stimmen { padding: 96px var(--rand-seite) 0; }
+.lsx-loesung { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 64px; align-items: start; }
+.lsx-loesung-text .gr-h3, .lsx-pakete .gr-h3, .lsx-vergleich .gr-h3, .lsx-extras .gr-h3, .lsx-stimmen .gr-h3, .lsx-rechner .gr-h3 { margin: 12px 0 24px; }
+.lsx-loesung-text p { font-size: 1.05rem; }
+.lsx-knoepfe { display: flex; flex-wrap: wrap; gap: 16px 28px; align-items: center; margin-top: 28px; }
+.lsx-gegenueber { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
+.lsx-spalte { border-radius: 20px; padding: 28px; }
+.lsx-schlecht { background: var(--farbe-hellgrau); }
+.lsx-gut { background: var(--farbe-dunkel); color: var(--farbe-weiss); }
+.lsx-gut .meta { color: var(--farbe-gedaempft-invers); }
+.lsx-spalte ul { list-style: none; margin: 16px 0 0; padding: 0; display: grid; gap: 14px; }
+.lsx-spalte li { position: relative; padding-left: 28px; line-height: 1.45; }
+.lsx-schlecht li::before { content: "×"; position: absolute; left: 0; top: -2px; font-weight: 700; font-size: 1.2em; color: var(--farbe-gedaempft); }
+.lsx-gut li::before { content: ""; position: absolute; left: 2px; top: .35em; width: 12px; height: 7px; border-left: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(-45deg); }
+.lsx-hinweis { max-width: 70ch; color: var(--farbe-gedaempft); margin: 0 0 32px; }
+.lsx-karten { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+.lsx-karte { position: relative; border: 1px solid var(--farbe-rahmen); border-radius: 24px; padding: 32px 28px; display: flex; flex-direction: column; gap: 8px; }
+.lsx-gefragt { border: 2px solid var(--farbe-dunkel); }
+.lsx-badge { position: absolute; top: -13px; left: 24px; margin: 0; padding: 3px 12px; border-radius: 999px; background: var(--farbe-dunkel); color: var(--farbe-weiss); font-family: var(--schrift-meta); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; }
+.lsx-karte-name { font-size: 1.8rem; margin: 0; }
+.lsx-karte-preis { font-family: var(--schrift-ueberschrift); font-size: 2.4rem; line-height: 1.12; margin: 0; }
+.lsx-karte-wer { color: var(--farbe-gedaempft); margin: 0 0 8px; }
+.lsx-karte-plus { font-weight: 700; margin: 8px 0 0; }
+.lsx-karte-liste { margin: 4px 0 0; padding-left: 1.1em; display: grid; gap: 6px; }
+.lsx-tabelle-rahmen { overflow-x: auto; border: 1px solid var(--farbe-rahmen); border-radius: 20px; }
+.lsx-tabelle { width: 100%; border-collapse: collapse; min-width: 560px; }
+.lsx-tabelle th, .lsx-tabelle td { padding: 14px 18px; border-bottom: 1px solid var(--farbe-rahmen); text-align: left; vertical-align: top; }
+.lsx-tabelle tbody tr:last-child th, .lsx-tabelle tbody tr:last-child td { border-bottom: 0; }
+.lsx-tabelle thead th { background: var(--farbe-hellgrau); font-weight: 700; }
+.lsx-tabelle thead th span { display: block; font-weight: 400; color: var(--farbe-gedaempft); font-size: .9rem; }
+.lsx-tabelle tbody th { font-weight: 400; }
+.lsx-tabelle td { text-align: center; width: 18%; }
+.lsx-ja { font-weight: 700; }
+.lsx-nein { color: var(--farbe-gedaempft); }
+.lsx-extra-liste { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--farbe-rahmen); }
+.lsx-extra-liste li { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 4fr) auto; gap: 24px; padding: 16px 0; border-bottom: 1px solid var(--farbe-rahmen); align-items: baseline; }
+.lsx-extra-name { font-weight: 700; }
+.lsx-extra-text { color: var(--farbe-gedaempft); }
+.lsx-extra-preis { white-space: nowrap; font-weight: 600; }
+.lsx-stimmen .stimmen { padding: 0; }
+.lsx-rechner { margin: 96px var(--rand-seite); padding: 48px; border-radius: 24px; background: var(--farbe-dunkel); color: var(--farbe-weiss); display: flex; flex-wrap: wrap; gap: 24px 48px; align-items: center; justify-content: space-between; }
+.lsx-rechner .meta { color: var(--farbe-gedaempft-invers); }
+.lsx-rechner p:not(.meta) { max-width: 60ch; margin: 0; }
+.lsx-rechner .button { background: var(--farbe-weiss); color: var(--farbe-dunkel); }
+.faq-mehr { text-align: center; margin: 40px 0 0; }
+@media (max-width: 900px) {
+  .lsx-loesung { grid-template-columns: minmax(0, 1fr); gap: 32px; padding-top: 64px; }
+  .lsx-gegenueber { grid-template-columns: minmax(0, 1fr); }
+  .lsx-pakete, .lsx-vergleich, .lsx-extras, .lsx-stimmen { padding-top: 64px; }
+  .lsx-extra-liste li { grid-template-columns: minmax(0, 1fr) auto; }
+  .lsx-extra-text { grid-column: 1 / -1; grid-row: 2; }
+  .lsx-rechner { padding: 32px 24px; margin: 64px var(--rand-seite); }
+  .faq-liste { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ---------- 35. Anton: fester Zusatz-Zeichenabstand (Anna, 12.10.2026) ---------- */
+/* Fester Wert in px: bei kleinen Größen deutlich (Buchstaben laufen sonst ineinander), bei großen kaum sichtbar */
+h1, h2, h3, .mm-name, .mm-karte-titel, .referenz-name, .hero-titel, .fuss-karte-titel, .fuss-gross, .ls-karte-titel, .fakten dt, .lsx-karte-preis, .gr-xxl, .gr-xl, .gr-h2, .gr-h3, .gr-klein { letter-spacing: .9px; }
+.herz-grafik .herz-mitte { letter-spacing: .08em; }
+.blog-karte h2, .artikel-inhalt h2, .artikel-inhalt h3 { letter-spacing: normal; }
+.lsx-extra-liste li > span { text-align: left; }
+.lsx-extra-preis { text-align: right !important; }
+.lsx-stimmen .stimmen { columns: 2 320px; }
