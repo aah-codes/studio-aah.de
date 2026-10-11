@@ -22,7 +22,8 @@ rechner = {'launch': next(x['preis'] for g in daten['gruppen'] for x in g.get('e
 for g in daten['gruppen']:
     r = schlank(g)
     r['pakete'] = [schlank(e) for e in g['pakete']]
-    if 'extras' in g: r['extras'] = [schlank(e) for e in g['extras'] if not e.get('auto')]
+    # nurSeite: steht nur auf der Leistungsseite; im Rechner gibt es die Leistung schon in einer eigenen Gruppe
+    if 'extras' in g: r['extras'] = [schlank(e) for e in g['extras'] if not e.get('auto') and not e.get('nurSeite')]
     rechner['gruppen'].append(r)
 (basis / 'website' / 'js' / 'pakete-daten.js').write_text(
     '// Erzeugt von werkzeuge/preise-erzeugen.py aus werkzeuge/preise-daten.json – nicht von Hand ändern\nwindow.PREISE = '

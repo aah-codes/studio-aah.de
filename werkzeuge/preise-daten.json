@@ -230,6 +230,13 @@
      "wer": "Umfang und Preis nach Absprache"
     },
     {
+     "id": "illu-web",
+     "name": "Illustrationen & Infografiken",
+     "anfrage": true,
+     "kurz": "Eigene Illustrationen, Icons und Infografiken für Ihre Website",
+     "nurSeite": true
+    },
+    {
      "id": "seo",
      "name": "SEO & LLM-Zitierfähigkeit",
      "preis": 260,
