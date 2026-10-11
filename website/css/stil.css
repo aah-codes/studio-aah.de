@@ -1826,3 +1826,6 @@ img.profil-bildtext-bild, .profil-bildtext-bild img { width: 100%; height: auto;
 /* Profil: Fortsetzung „Mein Ansatz“ nach der Ökosystem-Grafik mit Abstand */
 .profil-ansatz-weiter { padding-top: 72px; }
 @media (max-width: 900px) { .profil-ansatz-weiter { padding-top: 48px; } }
+/* Aktion: zentrales Zitat unter großem Bild (Anna 11.10.2026: Bild schön groß) */
+.lp-warum-bild .lp-warum-foto { width: 100%; height: clamp(320px, 44vw, 640px); object-fit: cover; object-position: center 48%; border-radius: 28px; display: block; margin-bottom: 40px; }
+.lp-warum-bild .lp-zitat { max-width: 40ch; }
