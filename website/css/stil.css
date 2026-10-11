@@ -1876,24 +1876,25 @@ img.profil-bildtext-bild, .profil-bildtext-bild img { width: 100%; height: auto;
 .oeko-kopf-zeile > div:last-child p:last-child { margin-bottom: 0; }
 @media (max-width: 900px) { .oeko-abschnitt .herz-text.oeko-kopf-zeile { grid-template-columns: 1fr; gap: 16px; } }
 /* Startseite Intro: Bauhaus-Tetris auf hellem Grund, sticky, bis neue Studiofotos da sind (Anna 11.10.2026).
-   Raster 5 × 5 Felder (--u). Jedes Teil: Ursprung --x/--y, Zellen --c/--r; fällt mit Versatz --dx und Drehung --rot. */
+   Raster 3 × 4 Felder (--u), große Teile, ruhiger Fall (Anna 11.10.2026: doppelt so groß, langsamer). Jedes Teil: Ursprung --x/--y, Zellen --c/--r; fällt mit Versatz --dx und Drehung --rot. */
 .intro-formen { display: flex; align-items: flex-end; justify-content: center; height: min(calc(100vh - var(--kopf-hoehe) - 64px), 820px); min-height: 520px; background: var(--farbe-hellgrau); border-radius: 20px; padding-bottom: 10%; container-type: size; overflow: hidden; }
-.bauhaus-tetris { --u: min(15cqw, 12cqh); position: relative; width: calc(var(--u) * 5); height: calc(var(--u) * 5); }
+.bauhaus-tetris { --u: min(28cqw, 20cqh); position: relative; width: calc(var(--u) * 3); height: calc(var(--u) * 4); }
 .tt { position: absolute; left: calc(var(--u) * var(--x)); bottom: calc(var(--u) * var(--y)); width: var(--u); height: var(--u); }
 .tz { position: absolute; left: calc(var(--u) * var(--c) + 3px); bottom: calc(var(--u) * var(--r) + 3px); width: calc(var(--u) - 6px); height: calc(var(--u) - 6px); background: var(--f); }
 .tt-d { --f: var(--farbe-dunkel); } .tt-m { --f: #9a9d9e; } .tt-h { --f: #d6d8d9; } .tt-b { --f: #2f6bff; }
 .tz-to { clip-path: polygon(50% 4%, 100% 100%, 0 100%); }
 .tz-tu { clip-path: polygon(0 0, 100% 0, 50% 96%); }
 .tz-k { border-radius: 50%; }
-.tz-ki { border-radius: 50%; width: calc(var(--u) * .5); height: calc(var(--u) * .5); left: calc(var(--u) * .25); bottom: calc(var(--u) * .25); }
-.ci-film .tt { animation-name: tt-fallen; animation-duration: .75s; animation-timing-function: linear; }
+.tz-ki { border-radius: 50%; }
+.ci-film .tt { animation-name: tt-fallen; animation-duration: 1.25s; animation-timing-function: linear; }
 @keyframes tt-fallen {
-  from { transform: translate(calc(var(--u) * var(--dx)), calc(var(--u) * -6)) rotate(var(--rot)); opacity: 0; }
-  15% { opacity: 1; }
-  55% { transform: translate(calc(var(--u) * var(--dx)), calc(var(--u) * -2)) rotate(var(--rot)); }
-  85% { transform: translate(0, calc(var(--u) * -.3)) rotate(0deg); animation-timing-function: ease-in; }
+  from { transform: translate(calc(var(--u) * var(--dx)), calc(var(--u) * -5)) rotate(var(--rot)); opacity: 0; animation-timing-function: cubic-bezier(.45, 0, .55, 1); }
+  12% { opacity: 1; }
+  72% { transform: translate(0, calc(var(--u) * -.15)) rotate(0deg); animation-timing-function: ease-in; }
+  86% { transform: translate(0, calc(var(--u) * .03)); animation-timing-function: ease-out; }
   to { transform: none; opacity: 1; }
 }
+
 @media (max-width: 900px) { .intro-formen { position: relative; height: 420px; min-height: 0; max-width: none; } }
 
 /* Profil „Mein Ansatz“: Text links, Formen groß rechts (Anna 11.10.2026: „langweilig“) */
