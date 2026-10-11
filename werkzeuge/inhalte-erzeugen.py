@@ -150,7 +150,7 @@ def erfolg(p, pre):
       <p class="meta">Erfolgsgeschichte</p>
       {kopf}
       <dl class="eg-fakten">{fakten}</dl>
-      {f'<p><a class="button" href="{link["url"]}" target="_blank" rel="noopener">Website ansehen ↗</a></p>' if link else ''}
+      {f'<p><a class="button button-zweit" href="{link["url"]}" target="_blank" rel="noopener">Website ansehen ↗</a></p>' if link else ''}
     </div>
   </section>''')
 

@@ -46,7 +46,7 @@ def paket_reihen(g, c, pre=''):
         h = c.get('hintergrund')
         rechts = (f'<div class="lsx-hintergrund"><p class="meta">Mein Hintergrund</p><h3 class="lsx-hintergrund-titel">{esc(h["titel"])}</h3>'
                   + ''.join(f'<p>{esc(x)}</p>' for x in h['text'])
-                  + (f'<p><a class="textlink" href="{pre}profil/#ansatz-titel">Mehr über meinen Hintergrund</a></p>' if h.get('link') else '') + '</div>') if h else nicht_enthalten(c)
+                  + (f'<p><a class="textlink" href="{pre}profil/#ansatz-titel">Mehr über meinen Hintergrund <span aria-hidden="true">→</span></a></p>' if h.get('link') else '') + '</div>') if h else nicht_enthalten(c)
         return '    <div class="lsx-einzeln">\n' + karten(g) + '\n      ' + rechts + '\n    </div>'
     if not c.get('paket_reihen'):
         return '    <div class="lsx-karten">\n' + karten(g) + '\n    </div>'
@@ -145,7 +145,7 @@ def direkt(pre):
       <p class="meta">Ihre Ansprechpartnerin</p>
       <h2 class="gr-h3" id="direkt-titel">Sie arbeiten direkt mit mir.</h2>
       <p>Bei STUDIO AAH! arbeiten Sie direkt mit mir, von der ersten Idee bis zum Launch. Ich bin Anna Härtelt, UX/UI-Designerin, Strategin und Webentwicklerin.</p>
-      <p><a class="textlink" href="{pre}profil/">Mehr über mich</a></p>
+      <p><a class="textlink" href="{pre}profil/">Mehr über mich <span aria-hidden="true">→</span></a></p>
     </div>
     </div>'''
 
@@ -197,7 +197,7 @@ def seite(key, c):
       <div class="lsx-pl-problem"><p class="meta">Woran es oft hakt</p><ul>{''.join(f'<li>{esc(x)}</li>' for x in c['probleme'])}</ul></div>
       <div class="lsx-pl-loesung"><p class="meta">So mache ich es</p><p class="lsx-pl-text">{esc(c['loesung_text'])}</p><ul>{''.join(f'<li>{esc(x)}</li>' for x in c['loesung_punkte'][:3])}</ul>
         {'' if c.get('grafik') == 'corporate-identity' else f'<p class="lsx-grundsatz"><a class="textlink" href="{pre}service/brand/#corporate-identity">Form follows function, die Form folgt der Funktion. Grundlage für alles, was ich gestalte, ist die Corporate Identity <span aria-hidden="true">→</span></a></p>'}</div>
-      <p class="lsx-knoepfe"><a class="button" href="{pre}kontakt/">Projekt anfragen</a> <a class="textlink" href="{pre}preise/#r-{g['id']}">Kosten berechnen <span aria-hidden="true">→</span></a></p>
+      <p class="lsx-knoepfe"><a class="button" href="{pre}kontakt/">Projekt anfragen <span aria-hidden="true">→</span></a> <a class="textlink" href="{pre}preise/#r-{g['id']}">Kosten berechnen <span aria-hidden="true">→</span></a></p>
     </div>
   </section>
 
@@ -233,7 +233,7 @@ def seite(key, c):
       <p class="meta">Kostenrechner</p>
       <h2 class="gr-h3" id="rechner-hinweis">Was kostet Ihr Projekt?</h2>
       <p>Stellen Sie sich Ihre Pakete und Zusatzleistungen selbst zusammen und erhalten Sie sofort einen unverbindlichen Kostenvoranschlag, als PDF oder per E-Mail.</p>
-      <p><a class="button button-hell" href="{pre}preise/#r-{g['id']}">Zum Kostenrechner <span aria-hidden="true">→</span></a></p>
+      <p><a class="button button-zweit button-hell" href="{pre}preise/#r-{g['id']}">Zum Kostenrechner <span aria-hidden="true">→</span></a></p>
     </div>
   </section>
 
@@ -270,7 +270,7 @@ def seite(key, c):
     ld = json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, indent=2)
     t = re.sub(r'<script type="application/ld\+json">.*?</script>', lambda m: f'<script type="application/ld+json">\n{ld}\n  </script>', t, count=1, flags=re.S)
     if 'zaehlen.js' not in t:
-        t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v=20261014f" defer></script>\n</body>', 1)
+        t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v=20261014g" defer></script>\n</body>', 1)
     pfad.write_text(t, encoding='utf-8')
     print('geschrieben:', c['pfad'])
 

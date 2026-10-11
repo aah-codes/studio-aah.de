@@ -1915,3 +1915,17 @@ img.profil-bildtext-bild, .profil-bildtext-bild img { width: 100%; height: auto;
 .zeitleiste li:first-child .zl-marke, .zeitleiste li:last-child .zl-marke { background: #2f6bff; }
 .profil-erfahrung .zeitleiste li .zl-marke { background: var(--farbe-dunkel); }
 .profil-erfahrung .zeitleiste li.zl-aktuell .zl-marke { background: #2f6bff; }
+/* Button-Hierarchie (Anna 11.10.2026, Best Practice): Primär = blau gefüllt (Hauptaktion, v. a. „Projekt anfragen“),
+   Sekundär = schwarze Outline, Tertiär = unterstrichener Textlink. Alle mit Pfeil. Blau #2a5fe6: Kontrast zu Weiß ca. 5,4 : 1 (WCAG AA). */
+:root { --farbe-primaer: #2a5fe6; --farbe-primaer-dunkel: #1f4cc4; }
+.button { background: var(--farbe-primaer); color: var(--farbe-weiss); border: var(--rahmen) solid var(--farbe-primaer); padding: calc(1rem - var(--rahmen)) 1.5rem; transition: background .2s, color .2s, border-color .2s; }
+.button:hover { opacity: 1; background: var(--farbe-primaer-dunkel); border-color: var(--farbe-primaer-dunkel); }
+.button.button-zweit { background: transparent; color: var(--farbe-dunkel); border-color: var(--farbe-dunkel); }
+.button.button-zweit:hover { background: var(--farbe-dunkel); color: var(--farbe-weiss); }
+.kopf-nav .kopf-button { background: var(--farbe-primaer); }
+.kopf-nav .kopf-button:hover { opacity: 1; background: var(--farbe-primaer-dunkel); }
+/* Sekundär auf dunklem Grund */
+.lsx-duo-rechner .button.button-zweit, .lsx-duo-rechner .button-hell.button-zweit { background: transparent; color: var(--farbe-weiss); border-color: var(--farbe-weiss); }
+.lsx-duo-rechner .button.button-zweit:hover { background: var(--farbe-weiss); color: var(--farbe-dunkel); }
+.fuss-nl-feld .button { background: var(--farbe-primaer); color: var(--farbe-weiss); }
+.fuss-nl-feld .button:hover { background: var(--farbe-primaer-dunkel); }
