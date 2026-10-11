@@ -31,8 +31,8 @@ def zeichnung(key, t0):
                 f'<g {z(t0 + .6, "pop")}><path d="M2 0h30v18h-4v6l-6-6H2z" class="ci-a"/></g>'
                 f'<g {z(t0 + .9, "zeichnen")}><path d="M8 6h18M8 12h12" class="ci-l" pathLength="1"/></g>')
     if key == 'behaviour':   # zwei Menschen kommen zusammen, Beziehung entsteht
-        figur = lambda x: f'<circle cx="{x}" cy="-6" r="6" class="ci-l"/><path d="M{x - 9} 18c0-9 4-14 9-14s9 5 9 14" class="ci-l"/>'
-        return (f'<g {z(t0, "links")}>{figur(-20)}</g><g {z(t0, "rechts")}>{figur(20)}</g>'
+        figur = lambda x, k='ci-l': f'<circle cx="{x}" cy="-6" r="6" class="{k}"/><path d="M{x - 9} 18c0-9 4-14 9-14s9 5 9 14" class="{k}"/>'
+        return (f'<g {z(t0, "links")}>{figur(-20)}</g><g {z(t0, "rechts")}>{figur(20, "ci-a")}</g>'
                 f'<g {z(t0 + .7)}><path d="M-10 6h20" class="ci-p"/></g>'
                 f'<g {z(t0 + 1, "pop")}><path d="M0 -14c-3-5-10-4-10 1 0 4 6 8 10 11 4-3 10-7 10-11 0-5-7-6-10-1z" class="ci-f"/></g>')
     if key == 'design':   # Formen fallen an ihren Platz, darunter entsteht eine Linie
@@ -102,14 +102,14 @@ def bild(art):
             s, e = rand(pa, pb, rad_von(a), rad_von(b))
             hin, zur = f'M{s[0]:.0f} {s[1]:.0f}L{e[0]:.0f} {e[1]:.0f}', f'M{e[0]:.0f} {e[1]:.0f}L{s[0]:.0f} {s[1]:.0f}'
         d = (BILD + .6) if 'image' in (a, b) else (NETZ + i * .12)
-        teile.append(f'<g {z(d)}><path d="{hin}" class="ci-p"/></g>')
+        teile.append(f'<g {z(d)} data-kante><path d="{hin}" class="ci-p"/></g>')
         lang = 2.6 if 'image' not in (a, b) else 3.2
         punkte.append(fluss(hin, lang, 2, FLUSS + i * .21) + fluss(zur, lang, 2, FLUSS + .9 + i * .17, gr=3))
     # Knoten der vier Bereiche
     for key, (name, unter, t0) in KNOTEN.items():
         x, y = pos[key]
-        teile.append(f'<g {z(t0, "pop")}><circle cx="{x}" cy="{y}" r="{kr}" fill="#fff" class="ci-l"/></g>')
-        teile.append(f'<g transform="translate({x} {y}) scale({.82 * kr / 46:.2f})">{zeichnung(key, t0 + .2)}</g>')
+        teile.append(f'<circle cx="{x}" cy="{y}" r="{kr}" fill="#fff"/>')
+        teile.append(f'<g transform="translate({x} {y}) scale({1.2 * kr / 46:.2f})"><g class="ci-schweben" style="--s:{t0 * .7:.1f}s">{zeichnung(key, t0 + .2)}</g></g>')
         lage = L['text'][key]
         n = 2 + len(unter)
         if lage == 'unten': tx, ty, anker = x, y + kr + 22 * g, 'middle'
@@ -117,7 +117,8 @@ def bild(art):
         else: tx, ty, anker = x + kr + 16, y - (n * 20 * g) / 2 + 12 * g, 'start'
         zeilen = [f'<tspan x="{tx:.0f}" y="{ty:.0f}" class="ci-klein" font-size="{12 * g:.0f}">CORPORATE</tspan>',
                   f'<tspan x="{tx:.0f}" y="{ty + 25 * g:.0f}" class="ci-t" font-size="{23 * g:.0f}">{name}</tspan>']
-        zeilen += [f'<tspan x="{tx:.0f}" y="{ty + (44 + i * 16) * g:.0f}" class="ci-s" font-size="{12 * g:.0f}">{s}</tspan>' for i, s in enumerate(unter)]
+        schritt = 18 if g == 1 else 25  # Unterzeilen: 14 px am Desktop, auf dem Handy entsprechend größer (CSS)
+        zeilen += [f'<tspan x="{tx:.0f}" y="{ty + 46 * g + i * schritt:.0f}" class="ci-s">{s}</tspan>' for i, s in enumerate(unter)]
         teile.append(f'<text text-anchor="{anker}" class="ci-schwarz-t z z-ein" style="--d:{t0 + 1}s">{"".join(zeilen)}</text>')
     # Kern: entsteht, wenn alle vier da sind
     x, y = pos['kern']
@@ -132,8 +133,8 @@ def bild(art):
     teile.append(f'<text text-anchor="middle" class="ci-kern-t ci-image-t ci-schwarz-t z z-ein" style="--d:{BILD + .7}s"><tspan x="{x}" y="{y + 14}">CORPORATE</tspan><tspan x="{x}" y="{y + 46}">IMAGE</tspan></text>')
     # Linien und Punkte liegen unter den Knoten
     return (f'<svg class="ci-anim ci-{art}" viewBox="{L["vb"]}" aria-hidden="true">'
-            + ''.join(t for t in teile if 'class="ci-p"/></g>' in t) + ''.join(punkte)
-            + ''.join(t for t in teile if 'class="ci-p"/></g>' not in t) + '</svg>')
+            + ''.join(t for t in teile if 'data-kante' in t) + ''.join(punkte)
+            + ''.join(t for t in teile if 'data-kante' not in t) + '</svg>')
 
 
 html = f'''  <figure class="ci-grafik ci-film" id="corporate-identity" role="img" aria-label="Erklärfilm Corporate Identity: Nacheinander erscheinen Corporate Culture (Leitbild, Werte, Philosophie), Corporate Communication (Kanäle, Stimme, Tonalität intern und extern), Corporate Behaviour (Service, Verhalten, Beziehungen) und Corporate Design (Gestaltung, Logo, Farben, Bildwelt, Typografie). Zusammen bilden sie die Corporate Identity. Zum Schluss steht das ganze System: Alle Bereiche tauschen Informationen untereinander und mit dem Corporate Image aus.">

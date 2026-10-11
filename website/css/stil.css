@@ -1664,3 +1664,10 @@ main section[id] { scroll-margin-top: calc(var(--kopf-hoehe) + 72px); }
 @media (max-width: 900px) { .dk { margin-bottom: 40px; } }
 .profil-kunst-titel { font-size: 1.5rem; margin: 0 0 12px; max-width: 26ch; }
 ul.profil-kunst-quellen { list-style: none; padding: 0; }
+/* Erklärfilm, Fassung 5 (Anna 11.10.2026): Unterzeilen 14 px, Icons ohne Kreis, größer und leicht schwebend, „Noch einmal ansehen“ klein */
+.ci-anim .ci-s { font-size: 14px; }
+.ci-hoch .ci-s { font-size: 22px; }
+.ci-nochmal-knopf { font-size: .85rem; }
+.ci-schweben { transform-box: fill-box; transform-origin: center; animation: ci-schweben 4.2s ease-in-out var(--s, 0s) infinite alternate; }
+@keyframes ci-schweben { from { transform: translateY(-2.5px) rotate(-3deg); } to { transform: translateY(2.5px) rotate(3deg); } }
+@media (prefers-reduced-motion: reduce) { .ci-schweben { animation: none; } }
