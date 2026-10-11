@@ -15,7 +15,7 @@
   <meta property="og:description" content="Anna Härtelt, Gründerin von STUDIO AAH! in Leipzig: UX/UI-Designerin, Strategin und Webentwicklerin, Studium Freie Kunst an der Bauhaus-Universität Weimar.">
   <meta property="og:url" content="https://studio-aah.de/profil/">
   <meta property="og:image" content="https://studio-aah.de/bilder/vorschaubild.jpg">
-  <link rel="stylesheet" href="../css/stil.css?v=20261013z">
+  <link rel="stylesheet" href="../css/stil.css?v=20261014a">
 </head>
 <body>
 <a class="sprunglink" href="#inhalt">Zum Inhalt springen</a>
@@ -92,7 +92,7 @@
   </details>
 </header>
 <div class="mm-schleier" hidden></div>
-<script src="../js/menue.js?v=20261013z" defer></script>
+<script src="../js/menue.js?v=20261014a" defer></script>
 <!-- /KOPF -->
 
 <main id="inhalt">
@@ -119,10 +119,10 @@
   </section>
 
   <section class="profil-wer" aria-labelledby="wer-titel">
+    <div class="profil-wer-kopf"><p class="meta">Über mich</p>
+      <h2 class="gr-h3" id="wer-titel">Ich bin Anna Härtelt.</h2></div>
     <div class="profil-zweispaltig">
       <div>
-        <p class="meta">Über mich</p>
-        <h2 class="gr-h3" id="wer-titel">Ich bin Anna Härtelt.</h2>
         <p class="alt-h3">UX/UI- &amp; Product-Designerin für B2B-Software, SaaS und Mittelstand – mit einem Faible für klare Konzepte, digitale Gestaltung und Kommunikation, die auf den Punkt kommt.</p>
       </div>
       <div>
@@ -150,26 +150,30 @@
 
   <section class="profil-ansatz" aria-labelledby="ansatz-titel">
     <div class="sektionskopf ansatz-kopf">
-      <div><p class="meta">Mein Ansatz</p><h2 class="gr-xl" id="ansatz-titel">Form follows Content.</h2></div>
-      <!-- Bauhaus-Grundformen (Anna 11.10.2026): bauen sich einmal auf, schweben kurz, halten nach 22 s an (Steuerung wie .ci-film in js/menue.js) -->
+      <div><p class="meta">Mein Ansatz</p><h2 class="gr-xl" id="ansatz-titel">Form follows function.</h2></div>
+      <!-- Bauhaus-Grundformen (Anna 11.10.2026, Skizze): Quadrat unten, Dreieck obendrauf, der Kreis fällt aufs Dreieck,
+           rollt herunter und bleibt neben dem Quadrat liegen. Läuft einmal (Start wie .ci-film in js/menue.js). -->
       <div class="ci-film bauhaus-formen" aria-hidden="true">
-        <span class="bf bf-quadrat z z-fallen" style="--d:.1s"><i class="ci-schweben" style="--s:0s"></i></span>
-        <span class="bf bf-dreieck z z-links" style="--d:.45s"><i class="ci-schweben" style="--s:-1.4s"></i></span>
-        <span class="bf bf-kreis z z-rechts" style="--d:.8s"><i class="ci-schweben" style="--s:-2.8s"></i></span>
+        <span class="bf bf-quadrat z" style="--d:.1s"></span>
+        <span class="bf bf-dreieck z" style="--d:.55s"></span>
+        <span class="bf bf-kreis z" style="--d:1.1s"></span>
       </div>
     </div>
     <div class="profil-ansatz-text">
-        <p class="ansatz-herkunft">Das Bauhaus hat „Form follows function“ berühmt gemacht. Ich übertrage den Satz auf Kommunikation: Erst Inhalt, Identität und Strategie, dann die Form. Gelernt an der Bauhaus-Universität Weimar, gelebt in jedem Projekt. Wer mit mir arbeitet, bekommt ein Stück Bauhaus.</p>
+        <p class="ansatz-herkunft">Das Bauhaus hat „Form follows function“ berühmt gemacht. Ich übertrage den Satz auf Kommunikation, Form follows Content: Erst kommt die <a class="textlink" href="../service/brand/#corporate-identity">Identität</a>, dann Inhalt und Strategie, dann die Form. Gelernt an der Bauhaus-Universität Weimar, gelebt in jedem Projekt. Wer mit mir arbeitet, bekommt ein Stück Bauhaus.</p>
+        <p class="ansatz-herkunft">Ich arbeite gern in interdisziplinären Teams, und Sie gehören immer dazu: Je mehr Fachwissen zusammenkommt, desto besser wird das Ergebnis.</p>
       </div>
   </section>
 
   <!-- OEKO:START -->
   <section class="herz-abschnitt oeko-abschnitt" aria-labelledby="herzstueck-titel">
-    <div class="herz-text">
-      <p class="meta">Warum Website</p>
-      <h2 class="gr-h3" id="herzstueck-titel">Eine gute Website ist kein digitales Schaufenster. Sie ist das Herzstück Ihres Marketings.</h2>
+    <div class="herz-text oeko-kopf-zeile">
+      <div><p class="meta">Warum Website</p>
+      <h2 class="gr-h3" id="herzstueck-titel">Eine gute Website ist kein digitales Schaufenster. Sie ist das Herzstück Ihres Marketings.</h2></div>
+      <div>
       <p>Von hier aus erklären Sie Ihr Angebot, schärfen Ihr Profil, bauen Vertrauen auf und werden gefunden. Sie ist das Fundament für alles, was danach kommt.</p>
       <p>Für mich ist eine Website ein zentrales Werkzeug für Wachstum. Jedes Gestaltungselement hat einen Nutzen. Was keinen Zweck erfüllt, lasse ich weg.</p>
+      </div>
     </div>
     <!-- Ökosystem (Anna 11.10.2026, Konzept: Betrieb/…/2026-10-11_konzept_website-oekosystem-grafik.md): innen die Website als Wireframe mit ihren Funktionen,
          außen die Dienste mit Clay-Icons (3dicons, CC0) und Logos der Werkzeuge; Linien und Punkte zeichnet js/menue.js (oeko) passend zur Lage der Karten -->
@@ -254,12 +258,6 @@
   </section>
 <!-- OEKO:ENDE -->
 
-  <section class="profil-ansatz profil-ansatz-weiter" aria-label="Mein Ansatz, Fortsetzung">
-    <div class="profil-ansatz-text">
-        <p>Ich arbeite gern in interdisziplinären Teams, und Sie als Kunde gehören immer dazu. Wenn alle ihre Expertise und ihr Fachwissen einbringen, wird das Endprodukt besser.</p>
-        <p>Grundlage für alles, was ich gestalte, ist die Corporate Identity: Culture, Communication, Behaviour und Design. <a class="textlink" href="../service/brand/#corporate-identity">Zur Grafik</a></p>
-      </div>
-  </section>
 
   <section class="profil-stimmen" aria-labelledby="empfehlungen">
     <div class="sektionskopf"><p class="meta">Empfehlungen</p><h2 class="gr-xl" id="empfehlungen">Stimmen, die zählen.</h2></div>
@@ -348,23 +346,11 @@
   </section>
 
   <section class="profil-bildtext profil-bildtext-rechts" aria-labelledby="kunst-titel">
-    <figure class="profil-bildtext-bild"><img src="../bilder/kunst-laenderfaschistenausgleich.jpg" alt="Tuschezeichnung aus der Serie »Länderfaschistenausgleich« von Anna Härtelt: ausgebranntes Haus mit Transparenten für Respekt und Toleranz unter dunklem Himmel" width="1596" height="790" loading="lazy"><figcaption>Aus der Serie »Länderfaschistenausgleich«, 2016/2017, Tusche auf Papier, 20 × 40 cm</figcaption></figure>
+    <figure class="profil-bildtext-bild"><img src="../bilder/kunst-laenderfaschistenausgleich.jpg" alt="Tuschezeichnung aus der Serie »Länderfaschistenausgleich« von Anna Härtelt: ausgebranntes Haus mit Transparenten für Respekt und Toleranz unter dunklem Himmel" width="1596" height="790" loading="lazy"><figcaption>Aus der Serie »Länderfaschistenausgleich«, Blatt 1 von 30, 2016/2017, Tusche auf Papier, 20 × 40 cm</figcaption></figure>
     <div>
       <p class="meta">Künstlerischer Hintergrund</p>
       <h2 class="gr-h3" id="kunst-titel">Kunst wirft Fragen auf. Design löst Probleme.</h2>
-      <p>Kunst muss kein Ziel erfüllen. Design schon. Aus meinem Studium der Freien Kunst an der Bauhaus-Universität Weimar kenne ich die Grundregeln der Gestaltung, von Farbe bis Gleichgewicht. Heute setze ich sie gezielt ein, um Probleme zu lösen. Daher kommt auch mein Ansatz: <a class="textlink" href="#ansatz-titel">Form follows Content</a>.</p>
-      <p>Für meine künstlerische Arbeit wurde ich mit Stipendien und Preisen ausgezeichnet und habe international ausgestellt.</p>
-      <details class="profil-kunst-belege">
-        <summary>Preise und Ausstellungen</summary>
-      <ul class="profil-kunst-quellen">
-            <li><a class="textlink" href="https://www.uni-weimar.de/de/kunst-und-gestaltung/aktuell/auszeichnungen-und-preise/titel/freie-kuenstlerin-anna-haertelt-von-stiftung-ulla-und-eberhard-jung-praemiert/" target="_blank" rel="noopener">Bauhaus-Universität: Preis 2015 ↗</a></li>
-            <li><a class="textlink" href="https://blog-archiv.klassik-stiftung.de/anna-haertelt/" target="_blank" rel="noopener">Klassik Stiftung Weimar ↗</a></li>
-            <li><a class="textlink" href="https://www.klassik-stiftung.de/service/presse/pressemitteilung/ausstellung-im-bauhaus-museum-praesentiert-preistraegerinnen-und-preistraeger-der-stiftung-ulla-und-eberhard-jung-2011-2015/" target="_blank" rel="noopener">Ausstellung Bauhaus-Museum ↗</a></li>
-            <li><a class="textlink" href="https://www.uni-weimar.de/born-to-be-bauhaus/artist/anna-h%C3%A4rtelt/" target="_blank" rel="noopener">Born to be Bauhaus ↗</a></li>
-            <li><a class="textlink" href="https://gopea.de/galerie/2015/anna-haertelt/" target="_blank" rel="noopener">gopea Jahrgang 2015 ↗</a></li>
-            <li><a class="textlink" href="https://www.thueringer-allgemeine.de/kultur/article221473163/Neues-Leben-fuer-die-Landschaftsmalerei.html" target="_blank" rel="noopener">Thüringer Allgemeine, 2016 ↗</a></li>
-          </ul>
-      </details>
+      <p>Kunst muss kein Ziel erfüllen. Design schon. Aus meinem Studium an der Bauhaus-Universität Weimar (Diplom in Fine Art) kenne ich die Grundregeln der Gestaltung, von Farbe bis Gleichgewicht. Heute setze ich sie gezielt ein, um Probleme zu lösen.</p>
     </div>
   </section>
 
@@ -373,7 +359,7 @@
     <div>
       <p class="meta">Soziales Engagement</p>
       <h2 class="gr-h3" id="engagement-titel">Demokratie braucht Sichtbarkeit.</h2>
-      <p>Ich engagiere mich für Demokratie, Frauen- und Kinderrechte, Natur- und Tierschutz sowie Kunst und Kultur. Meine Aktion „Demokratie braucht Sichtbarkeit.“ verbindet das mit meinem Alltag: kostenfreie Websites für Organisationen, die sich dafür einsetzen.</p>
+      <p>Gerade heute finde ich gesellschaftliches Engagement wichtig. Meine Aktion „Demokratie braucht Sichtbarkeit.“ passt gut in meinen Alltag: kostenfreie Websites für Organisationen, die sich einsetzen.</p>
       <ul class="zwecke" aria-label="Gute Zwecke"><li>Kunst und Kultur</li><li>Kinder</li><li>Bürgerrechte und soziales Handeln</li><li>Bildung</li><li>Umweltschutz</li><li>Gesundheit</li><li>Menschenrechte</li><li>Politik</li><li>Armutsbekämpfung</li><li>Wissenschaft und Technologie</li></ul>
       <p><a class="button" href="../demokratie-braucht-sichtbarkeit/">Mehr erfahren →</a></p>
     </div>
@@ -493,6 +479,6 @@
   </footer>
   <!-- /FUSS -->
 
-  <script src="../js/zaehlen.js?v=20261013z" defer></script>
+  <script src="../js/zaehlen.js?v=20261014a" defer></script>
 </body>
 </html>

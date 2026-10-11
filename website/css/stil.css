@@ -1829,16 +1829,50 @@ img.profil-bildtext-bild, .profil-bildtext-bild img { width: 100%; height: auto;
 /* Aktion: zentrales Zitat unter großem Bild (Anna 11.10.2026: Bild schön groß) */
 .lp-warum-bild .lp-warum-foto { width: 100%; height: clamp(320px, 44vw, 640px); object-fit: cover; object-position: center 48%; border-radius: 28px; display: block; margin-bottom: 40px; }
 .lp-warum-bild .lp-zitat { max-width: 40ch; }
-/* Profil „Mein Ansatz“: Bauhaus-Grundformen neben „Form follows Content.“ (Anna 11.10.2026) */
+/* Profil „Mein Ansatz“: Bauhaus-Grundformen nach Annas Skizze (11.10.2026). Alle Formen gleich groß (--s).
+   Quadrat unten, Dreieck darauf; der Kreis fällt aufs Dreieck, rollt die linke Schräge herunter und bleibt neben dem Quadrat liegen. */
 .ansatz-kopf { position: relative; }
-.bauhaus-formen { position: absolute; right: var(--rand-seite); bottom: 64px; display: flex; align-items: flex-end; gap: clamp(10px, 1.6vw, 22px); }
-.bf { display: block; width: clamp(56px, 7vw, 112px); aspect-ratio: 1; }
-.bf i { display: block; width: 100%; height: 100%; }
-.bf-quadrat i { background: var(--farbe-dunkel); }
-.bf-dreieck i { background: var(--farbe-dunkel); clip-path: polygon(50% 0, 100% 100%, 0 100%); opacity: .18; }
-.bf-kreis i { background: #2f6bff; border-radius: 50%; }
-.bauhaus-formen .ci-schweben { animation-duration: 3.6s; }
+.bauhaus-formen { --s: clamp(52px, 6.4vw, 104px); position: absolute; right: var(--rand-seite); bottom: 56px; width: calc(var(--s) * 2.3); height: calc(var(--s) * 2.9); }
+.bf { position: absolute; display: block; width: var(--s); height: var(--s); }
+.bf-quadrat { left: calc(var(--s) * 1.25); bottom: 0; background: var(--farbe-dunkel); }
+.bf-dreieck { left: calc(var(--s) * 1.25); bottom: var(--s); height: calc(var(--s) * .87); background: #d6d8d9; clip-path: polygon(50% 0, 100% 100%, 0 100%); }
+.bf-kreis { left: calc(var(--s) * .1); bottom: 0; border-radius: 50%; background: #2f6bff; }
+.ci-film .bf-quadrat { animation-name: bf-fallen; animation-duration: .6s; }
+.ci-film .bf-dreieck { animation-name: bf-fallen; animation-duration: .6s; }
+.ci-film .bf-kreis { animation-name: bf-purzeln; animation-duration: 2.4s; animation-timing-function: linear; }
+@keyframes bf-fallen { from { transform: translateY(calc(var(--s) * -2)); opacity: 0; } 60% { opacity: 1; } 80% { transform: translateY(calc(var(--s) * .06)); } to { transform: none; } }
+/* Versatz des Kreises gegenüber seinem Ruheplatz neben dem Quadrat */
+@keyframes bf-purzeln {
+  0% { transform: translate(calc(var(--s) * 1.05), calc(var(--s) * -3.1)); opacity: 0; animation-timing-function: cubic-bezier(.5, 0, 1, .6); }
+  8% { opacity: 1; }
+  24% { transform: translate(calc(var(--s) * 1.15), calc(var(--s) * -1.87)) rotate(0); animation-timing-function: ease-out; }
+  32% { transform: translate(calc(var(--s) * 1.12), calc(var(--s) * -2.15)) rotate(-30deg); animation-timing-function: ease-in; }
+  40% { transform: translate(calc(var(--s) * 1.1), calc(var(--s) * -1.87)) rotate(-60deg); animation-timing-function: ease-in; }
+  68% { transform: translate(calc(var(--s) * .45), calc(var(--s) * -.8)) rotate(-220deg); animation-timing-function: ease-in; }
+  82% { transform: translate(calc(var(--s) * .15), 0) rotate(-310deg); animation-timing-function: ease-out; }
+  90% { transform: translate(calc(var(--s) * .06), calc(var(--s) * -.12)) rotate(-340deg); animation-timing-function: ease-in; }
+  100% { transform: translate(0, 0) rotate(-360deg); opacity: 1; }
+}
+@media (max-width: 900px) { .bauhaus-formen { --s: 44px; position: relative; right: auto; bottom: auto; margin-top: 24px; } }
 .ansatz-herkunft { max-width: 62ch; color: var(--farbe-gedaempft); }
-@media (max-width: 900px) { .bauhaus-formen { position: static; margin-top: 24px; } .bf { width: 48px; } }
 /* Fußzeile: Leitsatz der Personal Brand (Anna 11.10.2026: Bauhaus-Faden auf der ganzen Website) */
 .fuss-claim { margin: 10px 0 0; font-size: 1rem; color: var(--farbe-gedaempft-invers); }
+/* Startseite Intro (Anna 11.10.2026): Bild kleiner, Studio statt Porträt; Porträt rund neben Name */
+.intro { grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); }
+.intro-bild img { aspect-ratio: 4 / 5; object-position: 30% center; }
+.intro-gruss { flex-direction: row; align-items: center; gap: 16px; }
+.intro-avatar { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; object-position: center 25%; flex: none; }
+/* Prozess: erster und letzter Punkt blau (nicht beim Werdegang, der markiert Aktuelles) */
+.zeitleiste li:first-child::before, .zeitleiste li:last-child::before { background: #2f6bff; }
+.profil-erfahrung .zeitleiste li:not(.zl-aktuell)::before { background: var(--farbe-dunkel); }
+/* Profil „Über mich“: Kopf über beiden Spalten, Textblöcke beginnen auf einer Höhe (Anna 11.10.2026) */
+.profil-wer-kopf { padding: 0 var(--rand-seite) 32px; }
+.profil-wer-kopf .gr-h3 { margin: 8px 0 0; }
+.profil-wer .profil-zweispaltig .alt-h3 { margin-top: 0; }
+.profil-wer .profil-zweispaltig > div > p:first-child { margin-top: 0; }
+@media (max-width: 900px) { .profil-wer-kopf { padding: 0 var(--rand-seite-mobil) 24px; } }
+/* „Warum Website“: Text neben der Überschrift, unten bündig (Anna 11.10.2026) */
+.oeko-abschnitt .herz-text.oeko-kopf-zeile { max-width: none; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; align-items: end; }
+.oeko-kopf-zeile .gr-h3 { margin-bottom: 0; }
+.oeko-kopf-zeile > div:last-child p:last-child { margin-bottom: 0; }
+@media (max-width: 900px) { .oeko-abschnitt .herz-text.oeko-kopf-zeile { grid-template-columns: 1fr; gap: 16px; } }

@@ -130,7 +130,9 @@
     const pk = ks.querySelector('[data-pause]');
     karten.forEach(() => punkte.appendChild(document.createElement('i')));
     let nr = 0, uhr = null, sichtbar = false;
-    const markiere = () => [...punkte.children].forEach((p, i) => { p.classList.remove('aktiv'); void p.offsetWidth; p.classList.toggle('aktiv', i === nr); });
+    // Scrollende Screenshots der gezeigten Karte von oben starten, damit zuerst der Hero zu sehen ist (Anna 11.10.2026: Jana zeigte sonst den Footer)
+    const vonOben = (k) => k.querySelectorAll('.rk-browser img, .rk-handy img').forEach((b) => { b.style.animation = 'none'; void b.offsetWidth; b.style.animation = ''; });
+    const markiere = () => { [...punkte.children].forEach((p, i) => { p.classList.remove('aktiv'); void p.offsetWidth; p.classList.toggle('aktiv', i === nr); }); vonOben(karten[nr]); };
     const zeige = (n) => { nr = (n + karten.length) % karten.length; spur.scrollTo({ left: karten[nr].offsetLeft - spur.offsetLeft }); markiere(); };
     const lauf = () => { clearInterval(uhr); if (sichtbar && !ks.classList.contains('pause')) uhr = setInterval(() => zeige(nr + 1), 7000); };
     ks.querySelector('[data-weiter]').addEventListener('click', () => { zeige(nr + 1); lauf(); });
