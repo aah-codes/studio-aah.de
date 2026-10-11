@@ -1984,3 +1984,23 @@ img.profil-bildtext-bild, .profil-bildtext-bild img { width: 100%; height: auto;
 .dk-karte-ref .dk-bild img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top left; }
 .dk-titel { margin-bottom: 40px; }
 section[hidden] { display: none !important; }
+/* Profil „Mein Ansatz“: Bauhaus-Raster 4 × 4 (Anna 11.10.2026). Kacheln stoßen ohne Fuge aneinander, Formen über Rundungen und Clip-Pfade. */
+.bauhaus-raster { --u: clamp(56px, 6.6vw, 104px); position: relative; width: calc(var(--u) * 4); height: calc(var(--u) * 4); justify-self: center; }
+.bk { position: absolute; left: calc(var(--u) * var(--c)); top: calc(var(--u) * var(--r)); width: var(--u); height: var(--u); background: var(--f); transform: rotate(var(--dreh)); }
+.bk-d { --f: var(--farbe-dunkel); } .bk-b { --f: #2f6bff; } .bk-h { --f: #d6d8d9; } .bk-m { --f: #9a9d9e; }
+.bk-k { border-radius: 50%; }
+.bk-hk { border-radius: 50% 50% 0 0 / 100% 100% 0 0; }
+.bk-vk { border-radius: 100% 0 0 0; }
+.bk-dr { clip-path: polygon(0 100%, 100% 100%, 100% 0); }
+.bk-s { background: repeating-linear-gradient(90deg, var(--f) 0 14%, transparent 14% 28%); }
+.bk-kq { background: radial-gradient(circle closest-side, var(--farbe-weiss) 99%, var(--f) 100%); }
+.ci-film .bk { animation-name: bk-drehen; animation-duration: .8s; animation-timing-function: cubic-bezier(.3, 1.3, .5, 1); }
+@keyframes bk-drehen { from { transform: rotate(calc(var(--dreh) - 90deg)) scale(0); } to { transform: rotate(var(--dreh)) scale(1); } }
+.ansatz-zeile .bauhaus-raster { margin: 0; }
+@media (max-width: 900px) { .bauhaus-raster { --u: 64px; justify-self: start; } }
+/* CI-Grafik und Nutzen-Icons: Bauhaus-Akzente in Blau und Grau, gefüllte Grundformen (Anna 11.10.2026) */
+.ci-blau { fill: #2f6bff; stroke: none; }
+.ci-grau { fill: #d6d8d9; stroke: none; }
+/* Kennzahlen: „+“ und Punkt im Ort-Symbol in Blau (Anna 11.10.2026) */
+.fakt-plus { color: #2f6bff; }
+.fakt-ort-punkt { fill: #2f6bff; stroke: none; }

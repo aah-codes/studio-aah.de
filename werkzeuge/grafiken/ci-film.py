@@ -24,7 +24,7 @@ def zeichnung(key, t0):
         return (f'<g {z(t0)}><circle cy="6" r="7" class="ci-a"/></g>'
                 f'<g {z(t0 + .25)}><circle cy="6" r="14" class="ci-l"/></g>'
                 f'<g {z(t0 + .5)}><circle cy="6" r="21" class="ci-l"/></g>'
-                f'<g {z(t0 + .8, "hoch")}><path d="M0 6V-26" class="ci-a"/><path d="M0 -26l14 5-14 5z" class="ci-f"/></g>')
+                f'<g {z(t0 + .8, "hoch")}><path d="M0 6V-26" class="ci-a"/><path d="M0 -26l14 5-14 5z" class="ci-blau"/></g>')
     if key == 'communication':   # Sprechblasen im Wechsel
         return (f'<g {z(t0, "pop")}><path d="M-32 -22h30v18h-20l-6 6v-6h-4z" class="ci-l"/></g>'
                 f'<g {z(t0 + .3, "zeichnen")} ><path d="M-26 -16h18M-26 -10h10" class="ci-a" pathLength="1"/></g>'
@@ -34,15 +34,15 @@ def zeichnung(key, t0):
         figur = lambda x, k='ci-l': f'<circle cx="{x}" cy="-6" r="6" class="{k}"/><path d="M{x - 9} 18c0-9 4-14 9-14s9 5 9 14" class="{k}"/>'
         return (f'<g {z(t0, "links")}>{figur(-20)}</g><g {z(t0, "rechts")}>{figur(20, "ci-a")}</g>'
                 f'<g {z(t0 + .7)}><path d="M-10 6h20" class="ci-p"/></g>'
-                f'<g {z(t0 + 1, "pop")}><path d="M0 -14c-3-5-10-4-10 1 0 4 6 8 10 11 4-3 10-7 10-11 0-5-7-6-10-1z" class="ci-f"/></g>')
+                f'<g {z(t0 + 1, "pop")}><path d="M0 -14c-3-5-10-4-10 1 0 4 6 8 10 11 4-3 10-7 10-11 0-5-7-6-10-1z" class="ci-blau"/></g>')
     if key == 'design':   # Formen fallen an ihren Platz, darunter entsteht eine Linie
-        return (f'<g {z(t0, "fallen")}><path d="M-30 14l10-18 10 18z" class="ci-a"/></g>'
-                f'<g {z(t0 + .2, "fallen")}><rect x="-7" y="-4" width="14" height="18" rx="1.5" class="ci-l"/></g>'
-                f'<g {z(t0 + .4, "fallen")}><circle cx="22" cy="5" r="9" class="ci-l"/></g>'
+        return (f'<g {z(t0, "fallen")}><path d="M-30 14l10-18 10 18z" class="ci-f"/></g>'
+                f'<g {z(t0 + .2, "fallen")}><rect x="-7" y="-4" width="14" height="18" class="ci-grau"/></g>'
+                f'<g {z(t0 + .4, "fallen")}><circle cx="22" cy="5" r="9" class="ci-blau"/></g>'
                 f'<g {z(t0 + .7, "zeichnen")}><path d="M-32 22h64" class="ci-a" pathLength="1"/></g>')
     if key == 'image':   # das Auge öffnet sich
         return (f'<g {z(t0, "blick")}><path d="M-22 0s9-13 22-13S22 0 22 0 13 13 0 13-22 0-22 0z" class="ci-l"/></g>'
-                f'<g {z(t0 + .4, "pop")}><circle r="5" class="ci-f"/></g>')
+                f'<g {z(t0 + .4, "pop")}><circle r="5" class="ci-blau"/></g>')
     return ''
 
 

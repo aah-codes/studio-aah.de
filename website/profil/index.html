@@ -15,7 +15,7 @@
   <meta property="og:description" content="Anna Härtelt, Gründerin von STUDIO AAH! in Leipzig: UX/UI-Designerin, Strategin und Webentwicklerin, Studium Freie Kunst an der Bauhaus-Universität Weimar.">
   <meta property="og:url" content="https://studio-aah.de/profil/">
   <meta property="og:image" content="https://studio-aah.de/bilder/vorschaubild.jpg">
-  <link rel="stylesheet" href="../css/stil.css?v=20261014s">
+  <link rel="stylesheet" href="../css/stil.css?v=20261014u">
 </head>
 <body>
 <a class="sprunglink" href="#inhalt">Zum Inhalt springen</a>
@@ -92,7 +92,7 @@
   </details>
 </header>
 <div class="mm-schleier" hidden></div>
-<script src="../js/menue.js?v=20261014s" defer></script>
+<script src="../js/menue.js?v=20261014u" defer></script>
 <!-- /KOPF -->
 
 <main id="inhalt">
@@ -108,9 +108,9 @@
       <p>Sie bekommen von mir keine Baukasten-Websites, sondern <strong>individuelle Lösungen</strong>, die Ihre Marke sichtbar machen, Menschen emotional erreichen – und Ihre Sales unterstützen.</p>
 <!-- KENNZAHLEN:START -->
       <dl class="fakten">
-        <div><dt><span data-zaehlen="40">40</span>+</dt><dd>Projekte</dd></div>
+        <div><dt><span data-zaehlen="40">40</span><span class="fakt-plus">+</span></dt><dd>Projekte</dd></div>
         <div><dt><span data-zaehlen="6">6</span></dt><dd>Jahre selbstständig, seit 2020</dd></div>
-        <div><dt><svg class="fakt-ort" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.6 7-12.5A7 7 0 0 0 5 9.5C5 15.4 12 22 12 22z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.6" fill="none" stroke="currentColor" stroke-width="2.2"/></svg></dt><dd><span class="mit-liebe">Made with Love in Leipzig</span></dd></div>
+        <div><dt><svg class="fakt-ort" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.6 7-12.5A7 7 0 0 0 5 9.5C5 15.4 12 22 12 22z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="3" class="fakt-ort-punkt"/></svg></dt><dd><span class="mit-liebe">Made with Love in Leipzig</span></dd></div>
       </dl>
 <!-- KENNZAHLEN:ENDE -->
       <p><a class="button" href="../kontakt/">Jetzt Projekt anfragen →</a></p>
@@ -179,12 +179,24 @@
     <div class="profil-ansatz-text">
         <p class="ansatz-herkunft">Zwei Prinzipien des Bauhauses prägen meine Arbeit: Form folgt Funktion und echter Erfolg entsteht durch interdisziplinäres Teamwork. Deshalb arbeiten wir eng zusammen – denn Sie und Ihre Expertise sind von Tag eins an fester Bestandteil des Prozesses. Wer mit mir arbeitet, bekommt durchdachte Lösungen mit der DNA des Bauhauses.</p>
       </div>
-      <!-- Bauhaus-Grundformen (Anna 11.10.2026, Skizze): Quadrat unten, Dreieck obendrauf, der Kreis fällt aufs Dreieck,
-           rollt herunter und bleibt neben dem Quadrat liegen. Startet bei jedem Hineinscrollen neu (data-wiederholen, js/menue.js). -->
-      <div class="ci-film bauhaus-formen" data-wiederholen aria-hidden="true">
-        <span class="bf bf-quadrat z" style="--d:.1s"></span>
-        <span class="bf bf-dreieck z" style="--d:.55s"></span>
-        <span class="bf bf-kreis z" style="--d:1.1s"></span>
+      <!-- Bauhaus-Raster (Anna 11.10.2026, Inspiration Bauhaus-Plakate): Schwarz, Blau und Grautöne; Kacheln drehen sich nacheinander
+           von unten links ins Raster. Aufbau unter 5 s, startet bei jedem Hineinscrollen neu (data-wiederholen, js/menue.js). -->
+      <div class="ci-film bauhaus-raster" data-wiederholen aria-hidden="true">
+        <i class="bk bk-q bk-h z" style="--c:0;--r:3;--dreh:0deg;--d:0.1s"></i>
+        <i class="bk bk-vk bk-b z" style="--c:0;--r:2;--dreh:90deg;--d:0.32s"></i>
+        <i class="bk bk-hk bk-d z" style="--c:1;--r:3;--dreh:180deg;--d:0.54s"></i>
+        <i class="bk bk-q bk-d z" style="--c:0;--r:1;--dreh:0deg;--d:0.76s"></i>
+        <i class="bk bk-kq bk-d z" style="--c:1;--r:2;--dreh:0deg;--d:0.98s"></i>
+        <i class="bk bk-dr bk-b z" style="--c:2;--r:3;--dreh:0deg;--d:1.2s"></i>
+        <i class="bk bk-hk bk-b z" style="--c:0;--r:0;--dreh:0deg;--d:1.42s"></i>
+        <i class="bk bk-s bk-d z" style="--c:1;--r:1;--dreh:0deg;--d:1.64s"></i>
+        <i class="bk bk-q bk-b z" style="--c:2;--r:2;--dreh:0deg;--d:1.86s"></i>
+        <i class="bk bk-hk bk-m z" style="--c:3;--r:3;--dreh:90deg;--d:2.08s"></i>
+        <i class="bk bk-vk bk-d z" style="--c:1;--r:0;--dreh:0deg;--d:2.3s"></i>
+        <i class="bk bk-hk bk-b z" style="--c:2;--r:1;--dreh:270deg;--d:2.52s"></i>
+        <i class="bk bk-q bk-d z" style="--c:3;--r:2;--dreh:0deg;--d:2.74s"></i>
+        <i class="bk bk-vk bk-h z" style="--c:3;--r:1;--dreh:180deg;--d:2.96s"></i>
+        <i class="bk bk-k bk-b z" style="--c:3;--r:0;--dreh:0deg;--d:3.18s"></i>
       </div>
     </div>
   </section>
@@ -413,6 +425,6 @@
   </footer>
   <!-- /FUSS -->
 
-  <script src="../js/zaehlen.js?v=20261014s" defer></script>
+  <script src="../js/zaehlen.js?v=20261014u" defer></script>
 </body>
 </html>

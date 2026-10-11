@@ -9,7 +9,7 @@ lade = lambda n: json.loads((basis / 'werkzeuge' / 'inhalte' / f'{n}.json').read
 esc = lambda s: html.escape(s, quote=False)
 PROJEKTE, STIMMEN, BLOG, ZAHLEN = lade('projekte'), lade('stimmen'), lade('blog'), lade('kennzahlen')
 BLOG = sorted(BLOG, key=lambda b: b['datum'], reverse=True)
-ORT = '<svg class="fakt-ort" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.6 7-12.5A7 7 0 0 0 5 9.5C5 15.4 12 22 12 22z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.6" fill="none" stroke="currentColor" stroke-width="2.2"/></svg>'
+ORT = '<svg class="fakt-ort" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.6 7-12.5A7 7 0 0 0 5 9.5C5 15.4 12 22 12 22z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="3" class="fakt-ort-punkt"/></svg>'
 
 
 def mit_tag(liste, tags):
@@ -206,7 +206,8 @@ def kennzahlen(klasse='fakten hero-fakten', einrueck='    '):
         if k.get('symbol') == 'ort':
             z.append(f'{einrueck}  <div><dt>{ORT}</dt><dd><span class="mit-liebe">{esc(k["text"])}</span></dd></div>')
         else:
-            z.append(f'{einrueck}  <div><dt><span data-zaehlen="{k["zahl"]}">{k["zahl"]}</span>{k["zusatz"]}</dt><dd>{esc(k["text"])}</dd></div>')
+            plus = f'<span class="fakt-plus">{k["zusatz"]}</span>' if k["zusatz"] else ''
+            z.append(f'{einrueck}  <div><dt><span data-zaehlen="{k["zahl"]}">{k["zahl"]}</span>{plus}</dt><dd>{esc(k["text"])}</dd></div>')
     return f'{einrueck}<dl class="{klasse}">\n' + '\n'.join(z) + f'\n{einrueck}</dl>'
 
 
