@@ -6,13 +6,14 @@
   const schleier = document.querySelector('.mm-schleier');
   if (!schalter || !menue || !schleier) return;
 
-  function oeffnen() {
+  // Fokus nur bei Bedienung mit der Tastatur in das Menü setzen – sonst erscheint beim Klick ein Fokusrahmen
+  function oeffnen(perTastatur) {
     menue.hidden = false;
     schleier.hidden = false;
     requestAnimationFrame(() => { menue.classList.add('offen'); schleier.classList.add('offen'); });
     schalter.setAttribute('aria-expanded', 'true');
     const erster = menue.querySelector('a');
-    if (erster) erster.focus({ preventScroll: true });
+    if (erster && perTastatur) erster.focus({ preventScroll: true });
   }
   function schliessen(zurueck) {
     if (schalter.getAttribute('aria-expanded') !== 'true') return;
@@ -24,7 +25,7 @@
   }
   schalter.addEventListener('click', (e) => {
     e.preventDefault();
-    schalter.getAttribute('aria-expanded') === 'true' ? schliessen(false) : oeffnen();
+    schalter.getAttribute('aria-expanded') === 'true' ? schliessen(false) : oeffnen(e.detail === 0);
   });
   schleier.addEventListener('click', () => schliessen(false));
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') schliessen(true); });

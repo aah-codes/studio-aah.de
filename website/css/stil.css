@@ -1232,3 +1232,11 @@ h1, h2, h3, .gr-xxl, .gr-xl, .gr-h2, .gr-klein, .gr-h3, .artikel h1, .mm-karte-t
 .nl-danke { padding: 140px var(--rand-seite) 120px; max-width: 900px; }
 .nl-danke .gr-xl { margin: 12px 0 24px; }
 .nl-danke-knoepfe { display: flex; flex-wrap: wrap; gap: 16px 32px; align-items: center; margin-top: 32px; }
+
+/* ---------- 33. Megamenü mit 9 Leistungen und Bild in der Aktions-Karte ---------- */
+.mm-liste a { padding: 14px 0; }
+.mm-name { font-size: 1.45rem; }
+.mm-text { font-size: .88rem; }
+.mm-karte-bild { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 16px; display: block; }
+.mm-karte { padding: 20px 20px 28px; }
+.mm-karte-titel { font-size: 2rem; }
