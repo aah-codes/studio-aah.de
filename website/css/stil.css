@@ -1124,3 +1124,9 @@ h1, h2, h3, .gr-xxl, .gr-xl, .gr-h2, .gr-klein, .gr-h3, .artikel h1, .mm-karte-t
 .blog-karte h3 { line-height: 1.15; margin: 0 0 .5rem; }
 .blog-karte h2 a, .blog-karte h3 a { text-decoration: none; color: inherit; }
 .blog-karte h3 a:hover { opacity: .6; }
+/* Vorstellung: Nutzen als Häkchen-Liste (Idee: lueth-duemchen.de), danach wer ich bin */
+.intro-nutzen { list-style: none; margin: 8px 0 28px; padding: 0; display: grid; gap: 18px; }
+.intro-nutzen li { position: relative; padding-left: 40px; font-size: clamp(17px, 1.2vw, 19px); line-height: 1.5; }
+.intro-nutzen li::before { content: ""; position: absolute; left: 4px; top: .35em; width: 16px; height: 9px; border-left: 3px solid currentColor; border-bottom: 3px solid currentColor; transform: rotate(-45deg); }
+.intro-nutzen strong { display: block; font-weight: 700; }
+.intro-wer { font-size: clamp(17px, 1.2vw, 19px); line-height: 1.6; }
