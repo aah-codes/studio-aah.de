@@ -192,3 +192,38 @@
     }, 2600);
   });
 })();
+
+// Website-Ökosystem: gestrichelte Kurven von jeder Karte zur Website, je Richtung ein wandernder Punkt (SMIL, Zeit läuft mit dem Film)
+(() => {
+  const NS = 'http://www.w3.org/2000/svg';
+  document.querySelectorAll('.oeko').forEach((oeko) => {
+    const svg = oeko.querySelector('.oeko-linien'), web = oeko.querySelector('.oeko-website');
+    const zeichnen = () => {
+      svg.innerHTML = '';
+      if (getComputedStyle(svg).display === 'none') return;
+      const o = oeko.getBoundingClientRect(), w = web.getBoundingClientRect();
+      oeko.querySelectorAll('.oeko-karte').forEach((k, i) => {
+        const r = k.getBoundingClientRect(), links = r.left < w.left;
+        const x1 = (links ? r.right : r.left) - o.left, y1 = r.top + r.height / 2 - o.top;
+        const x2 = (links ? w.left : w.right) - o.left, y2 = w.top + w.height * (0.28 + (i % 3) * 0.22) - o.top;
+        const mx = (x1 + x2) / 2, d = `M${x1} ${y1}C${mx} ${y1} ${mx} ${y2} ${x2} ${y2}`;
+        const pfad = document.createElementNS(NS, 'path'); pfad.setAttribute('d', d); pfad.setAttribute('class', 'oeko-linie'); svg.appendChild(pfad);
+        const richtung = k.dataset.richtung, rueck = `M${x2} ${y2}C${mx} ${y2} ${mx} ${y1} ${x1} ${y1}`;
+        const wege = richtung === 'rein' ? [d] : richtung === 'raus' ? [rueck] : [d, rueck];
+        wege.forEach((weg, j) => {
+          const c = document.createElementNS(NS, 'circle'); c.setAttribute('r', '4'); c.setAttribute('class', 'ci-f'); c.setAttribute('opacity', '0');
+          const start = 5.4 + i * 0.35 + j * 1.6;
+          c.innerHTML = `<animateMotion dur="3.2s" begin="${start}s" repeatCount="indefinite" path="${weg}"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.9;1" dur="3.2s" begin="${start}s" repeatCount="indefinite"/>`;
+          svg.appendChild(c);
+        });
+      });
+    };
+    zeichnen();
+    let t; window.addEventListener('resize', () => { clearTimeout(t); t = setTimeout(zeichnen, 200); });
+    // Linien einblenden, wenn die Außenkarten stehen (rund 4,5 s nach Filmstart)
+    const an = () => { oeko.classList.remove('linien-an'); setTimeout(() => { zeichnen(); oeko.classList.add('linien-an'); }, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 4500); };
+    if ('IntersectionObserver' in window) new IntersectionObserver((e, b) => { if (e[0].isIntersecting) { an(); b.disconnect(); } }, { threshold: 0.12 }).observe(oeko);
+    else an();
+    const knopf = oeko.querySelector('.ci-nochmal-knopf'); if (knopf) knopf.addEventListener('click', an);
+  });
+})();
