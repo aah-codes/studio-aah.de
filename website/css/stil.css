@@ -1646,3 +1646,5 @@ main section[id] { scroll-margin-top: calc(var(--kopf-hoehe) + 72px); }
 @media (max-width: 760px) { .lsx-titel { font-size: min(19vw, calc((100vw - 2 * var(--rand-seite-mobil)) / (var(--n) * .56 + 1.4))); } }
 .lsx-titel .icon-3d { height: .9em; width: auto; }
 .lsx-kopf .alt-klein { hyphens: auto; overflow-wrap: break-word; }
+.lsx-duo { padding-bottom: 96px; }
+@media (max-width: 900px) { .lsx-duo { padding-bottom: 64px; } }
