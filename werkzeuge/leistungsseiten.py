@@ -13,12 +13,17 @@ GEMEINSAM = json.loads((basis / 'werkzeuge' / 'inhalte' / 'faq-gemeinsam.json').
 euro = lambda n: f"{n:,}".replace(',', '.') + '&nbsp;€'
 
 
+NETTO = '<small class="lsx-netto">netto</small>'
+# Hinweis im Kleingedruckten unter Karten, Tabelle und Zusatzleistungen (B2B: Nettopreise, Umsatzsteuer kommt dazu)
+NETTO_HINWEIS = '<p class="lsx-klein">Alle Preise sind Nettopreise zzgl. 19&nbsp;% Umsatzsteuer (USt.).</p>'
+
+
 def preis(e):
     if e.get('anfrage'): return 'auf Anfrage'
-    if e.get('anteil'): return f"+{int(e['anteil'] * 100)}&nbsp;%"
-    if e.get('monat'): return f"ab {euro(e['monat'])} / Monat"
-    if e.get('stunde'): return f"ab {euro(e['stunde'])} / Stunde"
-    return ('ab ' if e.get('ab', True) else '') + euro(e['preis'])
+    if e.get('anteil'): return f"+{int(e['anteil'] * 100)}&nbsp;% {NETTO}"
+    if e.get('monat'): return f"ab {euro(e['monat'])} {NETTO} / Monat"
+    if e.get('stunde'): return f"ab {euro(e['stunde'])} {NETTO} / Stunde"
+    return ('ab ' if e.get('ab', True) else '') + euro(e['preis']) + ' ' + NETTO
 
 
 def karten(g):
@@ -60,6 +65,7 @@ def vergleich(g):
     return f'''  <section class="lsx-vergleich" id="vergleich" aria-labelledby="vergleich-titel">
     <h2 class="gr-h3" id="vergleich-titel">Vergleich</h2>
     <div class="lsx-tabelle-rahmen"><table class="lsx-tabelle"><thead><tr><th scope="col">Leistung</th>{kopf}</tr></thead><tbody>{rumpf}</tbody></table></div>
+    {NETTO_HINWEIS}
   </section>'''
 
 
@@ -70,6 +76,7 @@ def extras(g):
     return f'''  <section class="lsx-extras" id="extras" aria-labelledby="extras-titel">
     <h2 class="gr-h3" id="extras-titel">Zusatzleistungen</h2>
     <ul class="lsx-extra-liste">{li}</ul>
+    {NETTO_HINWEIS}
   </section>'''
 
 
@@ -166,6 +173,7 @@ def seite(key, c):
     <div class="lsx-karten">
 {karten(g)}
     </div>
+    {NETTO_HINWEIS}
     {nicht_enthalten(c)}
   </section>
 
@@ -218,7 +226,7 @@ def seite(key, c):
     ld = json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, indent=2)
     t = re.sub(r'<script type="application/ld\+json">.*?</script>', lambda m: f'<script type="application/ld+json">\n{ld}\n  </script>', t, count=1, flags=re.S)
     if 'zaehlen.js' not in t:
-        t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v=20261012m" defer></script>\n</body>', 1)
+        t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v=20261012n" defer></script>\n</body>', 1)
     pfad.write_text(t, encoding='utf-8')
     print('geschrieben:', c['pfad'])
 
