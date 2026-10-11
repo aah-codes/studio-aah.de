@@ -321,7 +321,7 @@
    ],
    "intro": "Sichtbar werden, wo Ihre Kund:innen sind – mit klarer Positionierung und Inhalten, die zu Ihnen passen. Einzeln buchbar.",
    "unterseite": "marketing-vertrieb/",
-   "karte": "../bilder/prozess-ideation.jpg"
+   "karte": "../bilder/leistung-marketing.jpg"
   },
   {
    "id": "print",
@@ -394,7 +394,7 @@
    ],
    "intro": "Professionelles Design für Gedrucktes – von der Visitenkarte bis zur Unternehmenspräsentation.",
    "unterseite": null,
-   "karte": "../bilder/hero/goldhammer-visitenkarte.jpg"
+   "karte": "../bilder/leistung-print.jpg"
   },
   {
    "id": "ki",
@@ -434,7 +434,7 @@
    ],
    "intro": "KI und digitale Abläufe, die im Alltag wirklich entlasten – für KMU und Solo-Selbstständige.",
    "unterseite": "ki-digitalisierung/",
-   "karte": "../bilder/prozess-aha.jpg"
+   "karte": "../bilder/leistung-ki.jpg"
   },
   {
    "id": "zusatz",

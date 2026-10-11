@@ -64,14 +64,9 @@ def karte(g):
             f'<span class="ls-karte-link">{"Mehr erfahren" if g["unterseite"] else "Kosten berechnen"} →</span></a>')
 
 
-mit_karte = [g for g in daten['gruppen'] if g.get('karte') and g['id'] != 'print']
-reihe1, reihe2 = mit_karte[:2], mit_karte[2:]
-druck = [g for g in daten['gruppen'] if g['id'] == 'print']
+mit_karte = [g for g in daten['gruppen'] if g.get('karte')]
 zusatz_g = [g for g in daten['gruppen'] if g['id'] == 'zusatz']
-bloecke = [
-    '  <section class="ls-raster" aria-label="Leistungen">\n    <div class="ls-reihe ls-zwei">' + ''.join(karte(g) for g in reihe1) + '</div>\n'
-    '    <div class="ls-reihe ls-drei">' + ''.join(karte(g) for g in reihe2) + '</div>\n'
-    '    <div class="ls-reihe ls-eins">' + ''.join(karte(g) for g in druck) + '</div>\n  </section>']
+bloecke = ['  <section class="ls-raster" aria-label="Leistungen">\n    ' + ''.join(karte(g) for g in mit_karte) + '\n  </section>']
 for g in zusatz_g:
     pakete = ''.join(paket_li(e) for e in g['pakete'])
     bloecke.append(f'  <section class="leistung ohne-bild" id="s-{g["id"]}" aria-labelledby="s-{g["id"]}-titel">\n    <div class="leistung-text gross"><h2 class="gr-klein" id="s-{g["id"]}-titel">{esc(g["name"])}</h2>'
