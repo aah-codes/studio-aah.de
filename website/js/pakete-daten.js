@@ -150,7 +150,7 @@ window.PREISE = {
       "Design für Desktop & Handy (responsiv)",
       "Umsetzung in WordPress (Kadence)",
       "Texte und Bilder kann ich liefern",
-      "SEO-Basics & Kontaktformular",
+      "SEO & LLM-Optimierung, Kontaktformular",
       "Launch (150 €, wird automatisch berechnet) & Übergabe",
       "Schulung zur Selbstpflege: als Zusatz buchbar"
      ],
@@ -168,7 +168,7 @@ window.PREISE = {
      "plus": "Alles aus Onepager, plus:",
      "items": [
       "Mehrere Unterseiten nach Ihrer Sitemap",
-      "SEO-Einrichtung für alle Unterseiten",
+      "SEO- & LLM-Einrichtung für alle Unterseiten",
       "Bei Redesign: Analyse der bestehenden Website, Übernahme vorhandener Inhalte, Weiterleitungen alter Adressen"
      ],
      "gefragt": true,
@@ -200,8 +200,14 @@ window.PREISE = {
      "wer": "auch für bestehende Websites"
     },
     {
+     "id": "shop",
+     "name": "Shop (WooCommerce)",
+     "anfrage": true,
+     "wer": "Umfang und Preis nach Absprache"
+    },
+    {
      "id": "seo",
-     "name": "SEO-Grundeinrichtung",
+     "name": "SEO- & LLM-Grundeinrichtung",
      "preis": 260,
      "ab": false,
      "ohnePaket": true,

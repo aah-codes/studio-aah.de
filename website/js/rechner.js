@@ -90,6 +90,7 @@
       const n = e.art === 'anzahl' ? Math.max(1, +form.elements[`n-${e.id}`].value || 1) : 1;
       const extra = e.wahl ? ` – ${form.elements[`w-${e.id}`].value}` : '';
       const name = `${e.name}${n > 1 ? ` × ${n}` : ''}${extra}`;
+      if (e.anfrage) { posten.push([name, null]); return; }
       if (e.monat) { monatlich += e.monat; posten.push([name, e.monat, 'monat']); return; }
       if (e.anteil) { if (!webPreis) { posten.push([name, null]); return; } const p = webPreis * e.anteil * n; posten.push([name, p]); einmalig += p; return; }
       const p = e.preis * n; posten.push([name, p]); einmalig += p;

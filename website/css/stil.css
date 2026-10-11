@@ -1321,3 +1321,5 @@ main section[id] { scroll-margin-top: calc(var(--kopf-hoehe) + 72px); }
 .lsx-direkt img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 20px; }
 .lsx-direkt .gr-h3 { margin: 12px 0 16px; }
 @media (max-width: 640px) { .lsx-direkt { grid-template-columns: 120px minmax(0, 1fr); gap: 20px; padding-top: 64px; } }
+/* FAQ: kein schwarzer Rahmen beim Aufklappen mit der Maus; Tastatur sieht eine Unterstreichung */
+.faq-eintrag summary:focus-visible { outline: none; text-decoration: underline; text-underline-offset: 4px; }

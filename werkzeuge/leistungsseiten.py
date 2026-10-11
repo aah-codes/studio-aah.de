@@ -60,7 +60,7 @@ def vergleich(g):
 
 
 def extras(g):
-    ex = [e for e in g.get('extras', [])]
+    ex = [e for e in g.get('extras', []) if not e.get('auto')]  # Launch ist bei jeder Website dabei, keine Zusatzleistung
     if not ex: return ''
     li = ''.join(f'<li><span class="lsx-extra-name">{esc(e["name"])}</span><span class="lsx-extra-text">{esc(e.get("kurz") or e.get("wer") or "")}</span><span class="lsx-extra-preis">{preis(e)}</span></li>' for e in ex)
     return f'''  <section class="lsx-extras" id="extras" aria-labelledby="extras-titel">
@@ -212,7 +212,7 @@ def seite(key, c):
     ld = json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, indent=2)
     t = re.sub(r'<script type="application/ld\+json">.*?</script>', lambda m: f'<script type="application/ld+json">\n{ld}\n  </script>', t, count=1, flags=re.S)
     if 'zaehlen.js' not in t:
-        t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v=20261012g" defer></script>\n</body>', 1)
+        t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v=20261012h" defer></script>\n</body>', 1)
     pfad.write_text(t, encoding='utf-8')
     print('geschrieben:', c['pfad'])
 
