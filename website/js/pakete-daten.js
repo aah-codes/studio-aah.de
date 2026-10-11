@@ -171,6 +171,26 @@ window.PREISE = {
       "Bei Redesign: Analyse der bestehenden Website, Übernahme vorhandener Inhalte, Weiterleitungen alter Adressen",
       "Mehrere Unterseiten nach Ihrer Sitemap"
      ],
+     "launch": true,
+     "ab": true,
+     "dauer": "3–4 Monate, je nach Umfang bis 6 Monate"
+    },
+    {
+     "id": "unternehmen",
+     "name": "Redesign für Unternehmen",
+     "preis": 5000,
+     "wer": "Für mittelständische Unternehmen, die ihre ganze Website umbauen: mit Leistungs-, Branchen-, Referenz- und Karriereseiten.",
+     "plus": "Alles aus Website, plus:",
+     "items": [
+      "Design-System: Typografie, Farben, Abstände und Komponenten (Figma + Kadence)",
+      "Neu strukturierte Startseite mit klaren nächsten Schritten für Anfragen und Bewerbungen",
+      "Leistungsseiten mit Verlinkung zu passenden Referenzen",
+      "Branchenseiten für Ihre Zielgruppen",
+      "Referenzen als eigene Projektseiten mit Filter",
+      "Karrierebereich mit Stellenangeboten und Bewerbungsformular",
+      "Blog / News",
+      "Einweisung in die Pflege von Referenzen, Karriere und Blog"
+     ],
      "gefragt": true,
      "launch": true,
      "ab": true,
