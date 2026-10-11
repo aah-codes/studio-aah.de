@@ -62,9 +62,9 @@
      "ab": true
     }
    ],
-   "bild": "../bilder/service-brand.jpg",
    "intro": "Eine unverwechselbare Markenidentität, die bei Ihrer Zielgruppe wirklich ankommt – klar, glaubwürdig und zukunftsorientiert.",
-   "unterseite": "brand/"
+   "unterseite": "brand/",
+   "karte": "../bilder/leistung-brand.webp"
   },
   {
    "id": "ui-ux",
@@ -135,9 +135,9 @@
      "ab": true
     }
    ],
-   "bild": "../bilder/service-uiux.jpg",
    "intro": "Digitale Erlebnisse, die Nutzer:innen verstehen – vom Expert Review bis zum Designsystem für Webanwendungen, SaaS und Apps.",
-   "unterseite": "ui-ux/"
+   "unterseite": "ui-ux/",
+   "karte": "../bilder/leistung-uiux.webp"
   },
   {
    "id": "website",
@@ -254,9 +254,9 @@
      ]
     }
    ],
-   "bild": "../bilder/service-website.jpg",
    "intro": "Klares Design mit technischer Präzision – individuell, responsiv und auf Ihre Ziele ausgerichtet.",
-   "unterseite": "website/"
+   "unterseite": "website/",
+   "karte": "../bilder/leistung-website.webp"
   },
   {
    "id": "marketing",
@@ -319,9 +319,9 @@
      "ab": true
     }
    ],
-   "bild": "../bilder/prozess-ideation.jpg",
    "intro": "Sichtbar werden, wo Ihre Kund:innen sind – mit klarer Positionierung und Inhalten, die zu Ihnen passen. Einzeln buchbar.",
-   "unterseite": "marketing-vertrieb/"
+   "unterseite": "marketing-vertrieb/",
+   "karte": "../bilder/prozess-ideation.jpg"
   },
   {
    "id": "print",
@@ -392,9 +392,9 @@
      "ab": true
     }
    ],
-   "bild": null,
    "intro": "Professionelles Design für Gedrucktes – von der Visitenkarte bis zur Unternehmenspräsentation.",
-   "unterseite": null
+   "unterseite": null,
+   "karte": "../bilder/hero/goldhammer-visitenkarte.jpg"
   },
   {
    "id": "ki",
@@ -432,9 +432,9 @@
      "ab": true
     }
    ],
-   "bild": "../bilder/prozess-aha.jpg",
    "intro": "KI und digitale Abläufe, die im Alltag wirklich entlasten – für KMU und Solo-Selbstständige.",
-   "unterseite": "ki-digitalisierung/"
+   "unterseite": "ki-digitalisierung/",
+   "karte": "../bilder/prozess-aha.jpg"
   },
   {
    "id": "zusatz",
@@ -460,7 +460,6 @@
      "ab": true
     }
    ],
-   "bild": null,
    "intro": "Illustrationen, Infografiken und Bewegtbild – sehr individuell, deshalb klären wir sie im Erstgespräch.",
    "unterseite": null
   }

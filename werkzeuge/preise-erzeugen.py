@@ -16,7 +16,7 @@ t = re.sub(r'(<nav class="preis-leiste"[^>]*>\n  <a href="#rechner">Kostenrechne
 seite.write_text(t, encoding='utf-8')
 
 # Rechner bekommt nur, was er braucht; der automatische Launch-Posten wird zur Zahl „launch“
-weg = ('kurz', 'link', 'bild', 'intro', 'unterseite')
+weg = ('kurz', 'link', 'karte', 'intro', 'unterseite')
 schlank = lambda e: {k: v for k, v in e.items() if k not in weg}
 rechner = {'launch': next(x['preis'] for g in daten['gruppen'] for x in g.get('extras', []) if x.get('auto')), 'gruppen': []}
 for g in daten['gruppen']:
@@ -57,26 +57,28 @@ def paket_li(e):
     return f'<li><h3>{esc(e["name"])}{GEFRAGT if e.get("gefragt") else ""}</h3><span class="ls-preis">{preis_kurz(e)}</span>{wer}</li>'
 
 
-abschnitte = []
-for i, g in enumerate(daten['gruppen']):
+def karte(g):
+    ziel = g['unterseite'] or f'../preise/#r-{g["id"]}'
+    return (f'<a class="ls-karte" href="{ziel}" id="s-{g["id"]}"><img src="{g["karte"]}" alt="" loading="lazy">'
+            f'<span class="ls-karte-titel">{esc(g["name"])}</span><span class="ls-karte-text">{esc(g["intro"])}</span>'
+            f'<span class="ls-karte-link">{"Mehr erfahren" if g["unterseite"] else "Kosten berechnen"} →</span></a>')
+
+
+mit_karte = [g for g in daten['gruppen'] if g.get('karte') and g['id'] != 'print']
+reihe1, reihe2 = mit_karte[:2], mit_karte[2:]
+druck = [g for g in daten['gruppen'] if g['id'] == 'print']
+zusatz_g = [g for g in daten['gruppen'] if g['id'] == 'zusatz']
+bloecke = [
+    '  <section class="ls-raster" aria-label="Leistungen">\n    <div class="ls-reihe ls-zwei">' + ''.join(karte(g) for g in reihe1) + '</div>\n'
+    '    <div class="ls-reihe ls-drei">' + ''.join(karte(g) for g in reihe2) + '</div>\n'
+    '    <div class="ls-reihe ls-eins">' + ''.join(karte(g) for g in druck) + '</div>\n  </section>']
+for g in zusatz_g:
     pakete = ''.join(paket_li(e) for e in g['pakete'])
-    extras = g.get('extras', [])
-    zusatz = ('<p class="ls-zwischen">Zusätzlich buchbar</p><ul class="ls-zusatz">' + ''.join(
-        f'<li><span>{esc(e["name"])}</span><span class="ls-preis">{preis_kurz(e)}</span></li>' for e in extras) + '</ul>') if extras else ''
-    links = f'<a class="button" href="../preise/#r-{g["id"]}">Kosten berechnen <span aria-hidden="true">→</span></a>'
-    if g.get('unterseite'): links += f' <a class="textlink" href="{g["unterseite"]}">Mehr zu {esc(g["name"])} →</a>'
-    text = (f'<div class="leistung-text gross"><p class="meta">{esc(g["kurz"])}</p><h2 class="gr-klein" id="s-{g["id"]}-titel">{esc(g["name"])}</h2>'
-            f'<p class="alt-klein">{esc(g["intro"])}</p><ul class="ls-pakete">{pakete}</ul>{zusatz}<p class="ls-links">{links}</p></div>')
-    bild = f'<div class="leistung-bild sticky"><img src="{g["bild"]}" alt="" width="1024" height="1024" loading="lazy"></div>' if g.get('bild') else ''
-    teile = (bild + text) if i % 2 == 0 else (text + bild)
-    klasse = 'leistung' + ('' if bild else ' ohne-bild')
-    abschnitte.append(f'  <section class="{klasse}" id="s-{g["id"]}" aria-labelledby="s-{g["id"]}-titel">\n    {teile}\n  </section>')
-leiste_s = ('<nav class="preis-leiste" aria-label="Bereiche der Leistungsseite">\n  '
-            + ''.join(f'<a href="#s-{g["id"]}">{esc(g["kurz"])}</a>' for g in daten['gruppen'])
-            + '<a href="#prozess">Prozess</a><a href="#glossar">Glossar</a><a href="../preise/#rechner">Kostenrechner →</a>\n</nav>')
+    bloecke.append(f'  <section class="leistung ohne-bild" id="s-{g["id"]}" aria-labelledby="s-{g["id"]}-titel">\n    <div class="leistung-text gross"><h2 class="gr-klein" id="s-{g["id"]}-titel">{esc(g["name"])}</h2>'
+                   f'<p class="alt-klein">{esc(g["intro"])}</p><ul class="ls-pakete">{pakete}</ul><p class="ls-links"><a class="button" href="../preise/#r-{g["id"]}">Kosten berechnen <span aria-hidden="true">→</span></a></p></div>\n  </section>')
 service = basis / 'website' / 'service' / 'index.html'
 s = service.read_text(encoding='utf-8')
-s = einsetzen(s, 'LEISTUNGEN', leiste_s + '\n\n' + '\n\n'.join(abschnitte))
+s = einsetzen(s, 'LEISTUNGEN', '\n\n'.join(bloecke))
 s = einsetzen(s, 'GLOSSAR', glossar_html())
 service.write_text(s, encoding='utf-8')
 print('Rechner-Daten, Leisten, Glossar und Leistungsseite geschrieben')

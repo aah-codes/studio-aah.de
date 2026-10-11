@@ -1059,3 +1059,37 @@ html { scroll-padding-top: calc(var(--kopf-hoehe) + 72px); }
 .gr-lang { font-size: clamp(56px, 13vw, 13vw); } /* lange Seitentitel wie „Leistungen“ mit Icon passen in die Breite */
 .wahl-seiten { margin: 8px 0 0 32px; font-size: 14px; color: var(--farbe-dunkel); display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
 .seitenkopf .alt-klein .textlink { font-size: inherit; }
+
+/* ---------- 24. Leistungsseite v2: Karten, kompakter Prozess ---------- */
+.ls-raster { padding: 24px var(--rand-seite) 48px; display: grid; gap: 24px; }
+.ls-reihe { display: grid; gap: 24px; }
+.ls-zwei { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.ls-drei { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.ls-eins { grid-template-columns: minmax(0, 1fr); }
+.ls-karte { display: flex; flex-direction: column; gap: 8px; text-decoration: none; color: inherit; }
+.ls-karte img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 20px; transition: transform .4s; }
+.ls-eins .ls-karte { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px 32px; align-items: center; }
+.ls-eins .ls-karte img { grid-row: 1 / 4; aspect-ratio: 16 / 9; }
+.ls-zwei .ls-karte img { aspect-ratio: 16 / 10; }
+.ls-karte:hover img { transform: scale(1.02); }
+.ls-karte-titel { font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-size: clamp(28px, 2.6vw, 40px); line-height: 1; margin-top: 8px; }
+.ls-karte-text { color: var(--farbe-gedaempft); max-width: 48ch; }
+.ls-karte-link { font-weight: 600; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; }
+.prozess-kompakt { padding: 72px var(--rand-seite); }
+.pz-schritte { list-style: none; margin: 32px 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; position: relative; }
+.pz-schritte::before { content: ""; position: absolute; left: 24px; right: 24px; top: 24px; height: 2px; background: var(--farbe-dunkel); }
+.pz-schritte li { position: relative; }
+.pz-nr { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; background: var(--farbe-dunkel); color: var(--farbe-weiss); font-family: var(--schrift-meta); font-weight: 600; margin-bottom: 16px; position: relative; }
+.pz-schritte h3 { font-size: 1.2rem; margin: 6px 0; }
+.pz-schritte p { margin: 0; font-size: .95rem; }
+.glossar { padding-bottom: 120px; }
+@media (max-width: 900px) {
+  .ls-zwei, .ls-drei { grid-template-columns: minmax(0, 1fr); }
+  .ls-eins .ls-karte { grid-template-columns: minmax(0, 1fr); }
+  .ls-eins .ls-karte img { grid-row: auto; }
+  .pz-schritte { grid-template-columns: minmax(0, 1fr); }
+  .pz-schritte::before { left: 23px; right: auto; top: 24px; bottom: 24px; width: 2px; height: auto; }
+  .pz-schritte li { padding-left: 68px; }
+  .pz-nr { position: absolute; left: 0; top: 0; }
+  .glossar { padding-bottom: 80px; }
+}
