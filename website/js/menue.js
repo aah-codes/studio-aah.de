@@ -145,7 +145,12 @@
     }, 120); });
     if (ruhig) { ks.classList.add('pause'); pk.textContent = '▶'; pk.setAttribute('aria-label', 'Automatisches Weiterblättern starten'); }
     markiere();
-    if ('IntersectionObserver' in window) new IntersectionObserver((e) => { sichtbar = e[0].isIntersecting; lauf(); }, { threshold: 0.3 }).observe(ks);
+    // Bilder aller Karten vorladen, sobald das Karussell in die Nähe kommt (sonst bleibt die nächste Karte beim Blättern kurz weiß)
+    const vorladen = () => spur.querySelectorAll('img[loading="lazy"]').forEach((i) => { i.loading = 'eager'; });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver((e, b) => { if (e[0].isIntersecting) { vorladen(); b.disconnect(); } }, { rootMargin: '600px 0px' }).observe(ks);
+      new IntersectionObserver((e) => { sichtbar = e[0].isIntersecting; lauf(); }, { threshold: 0.3 }).observe(ks);
+    } else vorladen();
   });
 })();
 
