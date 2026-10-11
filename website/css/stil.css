@@ -1662,3 +1662,5 @@ main section[id] { scroll-margin-top: calc(var(--kopf-hoehe) + 72px); }
 .mm-pfeil { width: 11px; height: 11px; }
 .dk { margin-bottom: 64px; }
 @media (max-width: 900px) { .dk { margin-bottom: 40px; } }
+.profil-kunst-titel { font-size: 1.5rem; margin: 0 0 12px; max-width: 26ch; }
+ul.profil-kunst-quellen { list-style: none; padding: 0; }
