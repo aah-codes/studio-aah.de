@@ -2004,3 +2004,4 @@ section[hidden] { display: none !important; }
 /* Kennzahlen: „+“ und Punkt im Ort-Symbol in Blau (Anna 11.10.2026) */
 .fakt-plus { color: #2f6bff; }
 .fakt-ort-punkt { fill: #2f6bff; stroke: none; }
+.ci-weiss { fill: var(--farbe-weiss); stroke: none; }

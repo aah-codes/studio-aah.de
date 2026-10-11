@@ -20,29 +20,31 @@ def z(d, art='ein'):
 
 # Kleine Zeichnungen je Bereich (Mitte 0,0; etwa 64 × 56), mit Startzeit t0
 def zeichnung(key, t0):
+    # Bauhaus-Grundformen, gefüllt (Anna 11.10.2026): Kreis, Halbkreis, Quadrat, Dreieck in Schwarz, Grau, Blau – kein Herz
     if key == 'culture':   # Werte wachsen von innen, oben die Fahne als Leitbild
-        return (f'<g {z(t0)}><circle cy="6" r="7" class="ci-a"/></g>'
-                f'<g {z(t0 + .25)}><circle cy="6" r="14" class="ci-l"/></g>'
-                f'<g {z(t0 + .5)}><circle cy="6" r="21" class="ci-l"/></g>'
-                f'<g {z(t0 + .8, "hoch")}><path d="M0 6V-26" class="ci-a"/><path d="M0 -26l14 5-14 5z" class="ci-blau"/></g>')
+        return (f'<g {z(t0)}><circle cy="6" r="21" class="ci-grau"/></g>'
+                f'<g {z(t0 + .25)}><circle cy="6" r="12" class="ci-f"/></g>'
+                f'<g {z(t0 + .5)}><circle cy="6" r="4" class="ci-weiss"/></g>'
+                f'<g {z(t0 + .8, "hoch")}><rect x="-1.5" y="-28" width="3" height="20" class="ci-f"/><path d="M1.5 -28h15l-15 11z" class="ci-blau"/></g>')
     if key == 'communication':   # Sprechblasen im Wechsel
-        return (f'<g {z(t0, "pop")}><path d="M-32 -22h30v18h-20l-6 6v-6h-4z" class="ci-l"/></g>'
-                f'<g {z(t0 + .3, "zeichnen")} ><path d="M-26 -16h18M-26 -10h10" class="ci-a" pathLength="1"/></g>'
-                f'<g {z(t0 + .6, "pop")}><path d="M2 0h30v18h-4v6l-6-6H2z" class="ci-a"/></g>'
-                f'<g {z(t0 + .9, "zeichnen")}><path d="M8 6h18M8 12h12" class="ci-l" pathLength="1"/></g>')
-    if key == 'behaviour':   # zwei Menschen kommen zusammen, Beziehung entsteht
-        figur = lambda x, k='ci-l': f'<circle cx="{x}" cy="-6" r="6" class="{k}"/><path d="M{x - 9} 18c0-9 4-14 9-14s9 5 9 14" class="{k}"/>'
-        return (f'<g {z(t0, "links")}>{figur(-20)}</g><g {z(t0, "rechts")}>{figur(20, "ci-a")}</g>'
-                f'<g {z(t0 + .7)}><path d="M-10 6h20" class="ci-p"/></g>'
-                f'<g {z(t0 + 1, "pop")}><path d="M0 -14c-3-5-10-4-10 1 0 4 6 8 10 11 4-3 10-7 10-11 0-5-7-6-10-1z" class="ci-blau"/></g>')
+        return (f'<g {z(t0, "pop")}><rect x="-32" y="-22" width="30" height="18" class="ci-grau"/><path d="M-27 -4v7l7-7z" class="ci-grau"/></g>'
+                f'<g {z(t0 + .3)}><rect x="-27" y="-17" width="18" height="3" class="ci-weiss"/><rect x="-27" y="-11" width="10" height="3" class="ci-weiss"/></g>'
+                f'<g {z(t0 + .6, "pop")}><rect x="2" y="0" width="30" height="18" class="ci-f"/><path d="M27 18v7l-7-7z" class="ci-f"/></g>'
+                f'<g {z(t0 + .9)}><rect x="7" y="5" width="18" height="3" class="ci-weiss"/><rect x="7" y="11" width="11" height="3" class="ci-blau"/></g>')
+    if key == 'behaviour':   # zwei Menschen kommen zusammen, Verbindung entsteht
+        figur = lambda x, k: f'<circle cx="{x}" cy="-8" r="6.5" class="{k}"/><path d="M{x - 10} 18a10 10 0 0 1 20 0z" class="{k}"/>'
+        return (f'<g {z(t0, "links")}>{figur(-20, "ci-grau")}</g><g {z(t0, "rechts")}>{figur(20, "ci-f")}</g>'
+                f'<g {z(t0 + .7)}><path d="M-10 10h20" class="ci-p"/></g>'
+                f'<g {z(t0 + 1, "pop")}><circle cy="10" r="4.5" class="ci-blau"/></g>')
     if key == 'design':   # Formen fallen an ihren Platz, darunter entsteht eine Linie
         return (f'<g {z(t0, "fallen")}><path d="M-30 14l10-18 10 18z" class="ci-f"/></g>'
                 f'<g {z(t0 + .2, "fallen")}><rect x="-7" y="-4" width="14" height="18" class="ci-grau"/></g>'
                 f'<g {z(t0 + .4, "fallen")}><circle cx="22" cy="5" r="9" class="ci-blau"/></g>'
-                f'<g {z(t0 + .7, "zeichnen")}><path d="M-32 22h64" class="ci-a" pathLength="1"/></g>')
+                f'<g {z(t0 + .7)}><rect x="-32" y="20" width="64" height="3" class="ci-f"/></g>')
     if key == 'image':   # das Auge öffnet sich
-        return (f'<g {z(t0, "blick")}><path d="M-22 0s9-13 22-13S22 0 22 0 13 13 0 13-22 0-22 0z" class="ci-l"/></g>'
-                f'<g {z(t0 + .4, "pop")}><circle r="5" class="ci-blau"/></g>')
+        return (f'<g {z(t0, "blick")}><path d="M-22 0s9-13 22-13S22 0 22 0 13 13 0 13-22 0-22 0z" class="ci-grau"/></g>'
+                f'<g {z(t0 + .25, "pop")}><circle r="8.5" class="ci-f"/></g>'
+                f'<g {z(t0 + .45, "pop")}><circle r="3.5" class="ci-blau"/></g>')
     return ''
 
 
@@ -72,9 +74,9 @@ LAGEN = {
 RADIUS = {'kern': 96, 'image': 82}
 
 
-def fluss(pfad, dauer, anzahl, start, gr=4):
+def fluss(pfad, dauer, anzahl, start, gr=4, klasse='ci-f'):
     # Punkte wandern entlang eines Pfads (SMIL, Zeit ab Filmstart – js/menue.js setzt die Uhr beim Start auf 0)
-    return ''.join(f'<circle r="{gr}" class="ci-f" opacity="0"><animateMotion dur="{dauer}s" begin="{start + i * dauer / anzahl:.2f}s" repeatCount="indefinite" path="{pfad}"/>'
+    return ''.join(f'<circle r="{gr}" class="{klasse}" opacity="0"><animateMotion dur="{dauer}s" begin="{start + i * dauer / anzahl:.2f}s" repeatCount="indefinite" path="{pfad}"/>'
                    f'<animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.12;.88;1" dur="{dauer}s" begin="{start + i * dauer / anzahl:.2f}s" repeatCount="indefinite"/></circle>'
                    for i in range(anzahl))
 
@@ -104,7 +106,8 @@ def bild(art):
         d = (BILD + .6) if 'image' in (a, b) else (NETZ + i * .12)
         teile.append(f'<g {z(d)} data-kante><path d="{hin}" class="ci-p"/></g>')
         lang = 2.6 if 'image' not in (a, b) else 3.2
-        punkte.append(fluss(hin, lang, 2, FLUSS + i * .21) + fluss(zur, lang, 2, FLUSS + .9 + i * .17, gr=3))
+        # je Linie nur ein Punkt pro Richtung, der Rückweg in Blau (Anna 11.10.2026: zu viele Punkte)
+        punkte.append(fluss(hin, lang, 1, FLUSS + i * .21) + fluss(zur, lang, 1, FLUSS + 1.6 + i * .17, gr=3, klasse='ci-blau'))
     # Knoten der vier Bereiche
     for key, (name, unter, t0) in KNOTEN.items():
         x, y = pos[key]

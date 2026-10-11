@@ -9,7 +9,7 @@ lade = lambda n: json.loads((basis / 'werkzeuge' / 'inhalte' / f'{n}.json').read
 esc = lambda s: html.escape(s, quote=False)
 PROJEKTE, STIMMEN, BLOG, ZAHLEN = lade('projekte'), lade('stimmen'), lade('blog'), lade('kennzahlen')
 BLOG = sorted(BLOG, key=lambda b: b['datum'], reverse=True)
-ORT = '<svg class="fakt-ort" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.6 7-12.5A7 7 0 0 0 5 9.5C5 15.4 12 22 12 22z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="3" class="fakt-ort-punkt"/></svg>'
+ORT = '<svg class="fakt-ort" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.4 12.5h13.2L12 23z" fill="currentColor"/><circle cx="12" cy="9" r="7" fill="currentColor"/><circle cx="12" cy="9" r="3" class="fakt-ort-punkt"/></svg>'
 
 
 def mit_tag(liste, tags):
