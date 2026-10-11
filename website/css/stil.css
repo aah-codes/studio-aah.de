@@ -1436,3 +1436,29 @@ main section[id] { scroll-margin-top: calc(var(--kopf-hoehe) + 72px); }
 .ci-anim .ci-s { opacity: .62; }
 .ci-nutzen { padding: 0 var(--rand-seite); max-width: calc(var(--inhalt-breite) + 2 * var(--rand-seite)); }
 @media (max-width: 760px) { .ci-nutzen { padding: 0 var(--rand-seite-mobil); } }
+/* Corporate Identity als Erklärfilm (werkzeuge/grafiken/ci-film.py): Elemente erscheinen nacheinander (--d = Startzeit) */
+.ci-film .z { animation-duration: .7s; animation-delay: var(--d); animation-fill-mode: both; animation-timing-function: cubic-bezier(.2, .8, .2, 1); transform-box: fill-box; transform-origin: center; }
+.ci-film .z-ein { animation-name: ci-ein; }
+.ci-film .z-pop { animation-name: ci-pop; }
+.ci-film .z-hoch { animation-name: ci-hoch; transform-origin: center bottom; }
+.ci-film .z-links { animation-name: ci-links; animation-duration: 1s; }
+.ci-film .z-rechts { animation-name: ci-rechts; animation-duration: 1s; }
+.ci-film .z-fallen { animation-name: ci-fallen; animation-duration: .8s; }
+.ci-film .z-blick { animation-name: ci-blick; animation-duration: .6s; }
+.ci-film .z-zeichnen path { stroke-dasharray: 1; animation: ci-strich .9s ease var(--d) both; }
+.ci-film.wartet .z, .ci-film.wartet .z-zeichnen path { animation-play-state: paused; }
+.ci-film.neu .z, .ci-film.neu .z-zeichnen path { animation: none; }
+@keyframes ci-ein { from { opacity: 0; transform: translateY(8px); } }
+@keyframes ci-pop { from { opacity: 0; transform: scale(.4); } 60% { opacity: 1; transform: scale(1.06); } to { transform: none; } }
+@keyframes ci-hoch { from { opacity: 0; transform: scaleY(0); } }
+@keyframes ci-links { from { opacity: 0; transform: translateX(-16px); } }
+@keyframes ci-rechts { from { opacity: 0; transform: translateX(16px); } }
+@keyframes ci-fallen { from { opacity: 0; transform: translateY(-28px); } 70% { opacity: 1; transform: translateY(3px); } to { transform: none; } }
+@keyframes ci-blick { from { transform: scaleY(.05); } }
+@keyframes ci-strich { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+.ci-nochmal { text-align: center; margin: 8px 0 0; }
+.ci-nochmal-knopf { background: none; border: 0; padding: 0; font: inherit; cursor: pointer; }
+@media (prefers-reduced-motion: reduce) {
+  .ci-film .z, .ci-film .z-zeichnen path { animation: none !important; }
+  .ci-nochmal { display: none; }
+}

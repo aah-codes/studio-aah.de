@@ -92,8 +92,27 @@
   }));
 })();
 
-// Animierte Grafiken (SVG): bei „Bewegung reduzieren“ angehalten
+// Erklärfilm Corporate Identity (Brand-Seite): startet, wenn er ins Bild kommt; „Noch einmal ansehen“ startet neu.
+// Bei „Bewegung reduzieren“ steht sofort das fertige Bild.
 (() => {
-  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  document.querySelectorAll('svg.ci-anim').forEach((s) => { if (s.pauseAnimations) { s.pauseAnimations(); s.setCurrentTime(1.2); } });
+  document.querySelectorAll('.ci-film').forEach((film) => {
+    const svgs = [...film.querySelectorAll('svg')];
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      svgs.forEach((s) => { if (s.pauseAnimations) { s.pauseAnimations(); s.setCurrentTime(14); } });
+      return;
+    }
+    film.classList.add('wartet');
+    svgs.forEach((s) => s.pauseAnimations && s.pauseAnimations());
+    const start = () => {
+      film.classList.add('neu');
+      void film.offsetWidth; // Animationen zurücksetzen
+      film.classList.remove('neu', 'wartet');
+      svgs.forEach((s) => { if (s.setCurrentTime) { s.setCurrentTime(0); s.unpauseAnimations(); } });
+    };
+    const knopf = film.querySelector('.ci-nochmal-knopf');
+    if (knopf) knopf.addEventListener('click', start);
+    if (!('IntersectionObserver' in window)) { start(); return; }
+    const beob = new IntersectionObserver((e) => { if (e[0].isIntersecting) { start(); beob.disconnect(); } }, { threshold: 0.35 });
+    beob.observe(film);
+  });
 })();
