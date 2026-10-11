@@ -41,7 +41,7 @@ def karten(g):
 
 
 def vergleich(g):
-    pakete = g['pakete']
+    pakete = [e for e in g['pakete'] if e.get('items')]  # Einzelleistungen ohne Inhaltsliste (z. B. Logo einzeln) nicht in die Tabelle
     # Tabelle nur, wenn Pakete aufeinander aufbauen („Alles aus …“); einzeln buchbare Leistungen vergleicht man nicht
     if len(pakete) < 2 or not any((e.get('plus') or '').startswith('Alles aus') for e in pakete): return ''
     # Zeilen: alle Leistungen in Reihenfolge; ein Paket „enthält“ alle Zeilen der vorherigen Pakete, wenn es mit „Alles aus …“ beginnt
@@ -137,6 +137,8 @@ def seite(key, c):
     if c.get('pakete'):
         g = {**g, 'pakete': [{**e, **c.get('paket_extra', {})} for e in g['pakete'] if e['id'] in c['pakete']], 'extras': []}
     intro = c.get('intro') or g['intro']
+    # Der Prozess der Startseite beschreibt Website-Projekte; andere Leistungen brauchen eigene Schritte (noch offen)
+    mit_ablauf = c.get('ablauf', c['gruppe'] == 'website')
     pfad = basis / 'website' / c['pfad'] / 'index.html'
     if not pfad.exists():  # neue Seite: Kopf und Fuß von der Website-Seite übernehmen (gleiche Ordnertiefe)
         pfad.parent.mkdir(parents=True, exist_ok=True)
@@ -160,7 +162,7 @@ def seite(key, c):
     {fakten(pre)}
   </section>
 
-  <nav class="preis-leiste lsx-chips" aria-label="Auf dieser Seite"><a href="#loesung">Problem &amp; Lösung</a><a href="#pakete">Pakete</a>{'<a href="#vergleich">Vergleich</a>' if vergleich(g) else ''}{'<a href="#extras">Zusatzleistungen</a>' if g.get('extras') else ''}<a href="#ablauf">Ablauf</a>{'<a href="#referenzen">Referenzen</a>' if I.mit_tag(I.PROJEKTE, [c['tag']]) else ''}{'<a href="#artikel">Artikel</a>' if I.mit_tag(I.BLOG, [c['tag']]) else ''}<a href="#faq">Fragen</a><a href="{pre}preise/#r-{g['id']}">Kostenrechner →</a></nav>
+  <nav class="preis-leiste lsx-chips" aria-label="Auf dieser Seite"><a href="#loesung">Problem &amp; Lösung</a><a href="#pakete">Pakete</a>{'<a href="#vergleich">Vergleich</a>' if vergleich(g) else ''}{'<a href="#extras">Zusatzleistungen</a>' if g.get('extras') else ''}{'<a href="#ablauf">Ablauf</a>' if mit_ablauf else ''}{'<a href="#referenzen">Referenzen</a>' if I.mit_tag(I.PROJEKTE, [c['tag']]) else ''}{'<a href="#artikel">Artikel</a>' if I.mit_tag(I.BLOG, [c['tag']]) else ''}<a href="#faq">Fragen</a><a href="{pre}preise/#r-{g['id']}">Kostenrechner →</a></nav>
 
   <section class="lsx-loesung" id="loesung" aria-labelledby="loesung-titel">
     <div class="lsx-loesung-text">
@@ -190,7 +192,7 @@ def seite(key, c):
 
 {extras(g)}
 
-{ablauf(pre)}
+{ablauf(pre) if mit_ablauf else ''}
 
 {stimmen(pre, c['tag'])}
 
@@ -229,6 +231,9 @@ def seite(key, c):
     angebote = [{"@type": "Offer", "name": e['name'], "priceCurrency": "EUR", "price": str(e['preis']),
                  "priceSpecification": {"@type": "PriceSpecification", "minPrice": e['preis'], "priceCurrency": "EUR", "valueAddedTaxIncluded": False}}
                 for e in g['pakete'] if e.get('preis')]
+    angebote += [{"@type": "Offer", "name": e['name'], "priceCurrency": "EUR",
+                  "priceSpecification": {"@type": "UnitPriceSpecification", "minPrice": e['stunde'], "priceCurrency": "EUR", "unitText": "Stunde", "valueAddedTaxIncluded": False}}
+                 for e in g['pakete'] if e.get('stunde') and not e.get('preis')]
     graph = [json.loads(studio.group(0)) if studio else {"@id": "https://studio-aah.de/#studio"},
              {"@type": "Service", "@id": url + '#leistung', "name": c['titel'], "description": intro, "url": url,
               "provider": {"@id": "https://studio-aah.de/#studio"}, "areaServed": "Leipzig", "offers": angebote},

@@ -105,7 +105,7 @@
   "tag": "brand",
   "titel": "Brand",
   "seitentitel": "Marke entwickeln in Leipzig: Brand Design & Logo | STUDIO AAH!",
-  "beschreibung": "Marke entwickeln bei STUDIO AAH! in Leipzig: Basic ab 850 €, Medium mit Logo ab 2.500 €, Premium ab 4.500 € netto. Festpreis nach kostenlosem Erstgespräch.",
+  "beschreibung": "Marke entwickeln bei STUDIO AAH! in Leipzig: Basic ab 850 €, Medium mit Logo ab 2.500 €, Premium ab 4.500 € (netto). Festpreis nach kostenlosem Erstgespräch.",
   "bild": "bilder/leistung-brand.webp",
   "bildalt": "Bildschirm mit Farben, Schriften und Gestaltungselementen eines Designsystems",
   "icon": "bilder/icons/color-palette.webp",
@@ -133,7 +133,7 @@
    "Druckkosten",
    "Markenanmeldung",
    "Lizenzen, zum Beispiel für Schriften: zahlen Sie direkt an den Anbieter",
-   "Mehr als zwei Korrekturrunden je Bereich: nach Aufwand, 65 € pro Stunde netto"
+   "Mehr als zwei Korrekturrunden je Bereich: nach Aufwand, 65 € netto pro Stunde"
   ],
   "faq": [
    [
@@ -174,7 +174,7 @@
    ],
    [
     "Wie viele Korrekturrunden sind bei STUDIO AAH! im Festpreis enthalten?",
-    "Bei STUDIO AAH! sind in jedem Bereich, zum Beispiel beim Logo, zwei Korrekturrunden im Festpreis enthalten. Jede weitere Runde rechne ich nach Aufwand ab, mit 65 € pro Stunde netto."
+    "Bei STUDIO AAH! sind pro Projektbereich zwei Korrekturrunden im Festpreis enthalten. Jede weitere Runde rechne ich nach Aufwand ab, mit 65 € pro Stunde netto."
    ],
    [
     "Wie wird eine Markenentwicklung bei STUDIO AAH! bezahlt?",
@@ -192,7 +192,7 @@
   "tag": "ui-ux",
   "titel": "UI/UX",
   "seitentitel": "UI/UX Design in Leipzig: Expert Review & Prototyp | STUDIO AAH!",
-  "beschreibung": "UI/UX Design bei STUDIO AAH! in Leipzig: Expert Review ab 1.200 €, Audit Pro ab 2.900 €, Redesign ab 4.500 € netto. Festpreis nach kostenlosem Erstgespräch.",
+  "beschreibung": "UI/UX Design bei STUDIO AAH! in Leipzig: Expert Review ab 1.200 €, Audit Pro ab 2.900 €, Redesign ab 4.500 € (netto). Festpreis nach kostenlosem Erstgespräch.",
   "bild": "bilder/leistung-uiux.webp",
   "bildalt": "Frau am Tisch mit Smartphone in der Hand, daneben ein Laptop",
   "icon": "bilder/icons/mobile.webp",
@@ -218,7 +218,7 @@
   "nicht_enthalten": [
    "Usability-Tests mit Nutzer:innen",
    "Programmierung: Ihr Entwicklerteam erhält Designs und Spezifikationen",
-   "Mehr als zwei Korrekturrunden je Bereich: nach Aufwand, 65 € pro Stunde netto"
+   "Mehr als zwei Korrekturrunden je Bereich: nach Aufwand, 65 € netto pro Stunde"
   ],
   "faq": [
    [
@@ -246,7 +246,7 @@
     "Ein Wireframe ist ein einfacher Bauplan einer Seite. Ein Prototyp ist ein klickbarer Entwurf, bevor programmiert wird. Bei STUDIO AAH! entstehen Wireframes und klickbare Prototypen in Figma, ab dem Paket Redesign kleine Webanwendung."
    ],
    [
-    "Was ist ein UI-Kit und was ein Designsystem?",
+    "Was ist ein UI-Kit?",
     "Ein UI-Kit enthält die Bausteine der Benutzeroberfläche (User Interface), zum Beispiel Buttons, Typografie und Farben. Bei STUDIO AAH! gehört ein UI-Kit zum Redesign einer kleinen Webanwendung; für eine Plattform oder SaaS entsteht zusätzlich ein vollständiges Designsystem."
    ],
    [
@@ -277,7 +277,7 @@
   "tag": "marketing",
   "titel": "Marketing & Vertrieb",
   "seitentitel": "Marketing & Vertrieb in Leipzig: LinkedIn & Inhalte | STUDIO AAH!",
-  "beschreibung": "Marketing & Vertrieb bei STUDIO AAH! in Leipzig: LinkedIn ab 500 €, Post-Vorlagen ab 400 €, Fachartikel ab 300 €, Webinar ab 850 € netto. Einzeln buchbar.",
+  "beschreibung": "Marketing & Vertrieb bei STUDIO AAH! in Leipzig: LinkedIn ab 500 €, Post-Vorlagen ab 400 €, Fachartikel ab 300 €, Webinar ab 850 € (netto). Einzeln buchbar.",
   "bild": "bilder/leistung-marketing.jpg",
   "bildalt": "Smartphone mit geöffneter Social-Media-App neben einem Laptop",
   "icon": "bilder/icons/megaphone.webp",
@@ -301,9 +301,9 @@
   ],
   "nicht_enthalten": [
    "Durchführung des Webinars: Den Auftritt übernehmen Sie",
-   "Spätere Textänderungen: Texte liefere ich einmal; übernehme ich Änderungen danach, rechne ich nach Aufwand ab, 65 € pro Stunde netto",
+   "Spätere Textänderungen: Texte liefere ich einmal; übernehme ich Änderungen danach, rechne ich nach Aufwand ab, 65 € netto pro Stunde",
    "Lizenzen: zahlen Sie direkt an den jeweiligen Anbieter",
-   "Mehr als zwei Korrekturrunden je Bereich: nach Aufwand, 65 € pro Stunde netto"
+   "Mehr als zwei Korrekturrunden je Bereich: nach Aufwand, 65 € netto pro Stunde"
   ],
   "faq": [
    [
@@ -354,7 +354,7 @@
   "tag": "ki",
   "titel": "KI & Digitalisierung",
   "seitentitel": "KI-Beratung in Leipzig: KI-Check & KI-Einführung | STUDIO AAH!",
-  "beschreibung": "KI-Beratung bei STUDIO AAH! in Leipzig für KMU und Solo-Selbstständige: KI-Check ab 900 €, KI-Einführung ab 2.000 € netto. Festpreis nach Erstgespräch.",
+  "beschreibung": "KI-Beratung bei STUDIO AAH! in Leipzig für KMU und Solo-Selbstständige: KI-Check ab 900 € netto, KI-Einführung ab 2.000 € netto. Festpreis nach Erstgespräch.",
   "bild": "bilder/leistung-ki.jpg",
   "bildalt": "Hände tippen auf einer Laptop-Tastatur, im Hintergrund ein Monitor",
   "icon": "bilder/icons/magic-trick.webp",
@@ -380,7 +380,7 @@
    "Lizenzkosten der KI-Werkzeuge: zahlen Sie direkt an den Anbieter",
    "Rechtsberatung",
    "Programmierung",
-   "Mehr als zwei Korrekturrunden je Bereich: nach Aufwand, 65 € pro Stunde netto"
+   "Mehr als zwei Korrekturrunden je Bereich: nach Aufwand, 65 € netto pro Stunde"
   ],
   "faq": [
    [
@@ -435,7 +435,7 @@
   "tag": "print",
   "titel": "Print",
   "seitentitel": "Printdesign in Leipzig: Visitenkarte, Flyer & mehr | STUDIO AAH!",
-  "beschreibung": "Printdesign bei STUDIO AAH! in Leipzig: Visitenkarte ab 195 €, Flyer oder Postkarte ab 290 €, Präsentation ab 1.200 €, druckfertig. Festpreis nach Erstgespräch.",
+  "beschreibung": "Printdesign bei STUDIO AAH! in Leipzig: Visitenkarte ab 195 €, Flyer oder Postkarte ab 290 €, Präsentation ab 1.200 € (netto). Festpreis nach Erstgespräch.",
   "bild": "bilder/leistung-print.jpg",
   "bildalt": "Gefalteter Flyer in Gelb und Weiß für eine Arztpraxis, innen und außen gezeigt",
   "icon": "bilder/icons/notebook.webp",
@@ -460,7 +460,7 @@
   "nicht_enthalten": [
    "Druckkosten",
    "Druckbegleitung: nur bei der mehrseitigen Publikation enthalten",
-   "Mehr als zwei Korrekturrunden: nach Aufwand, 65 € pro Stunde"
+   "Mehr als zwei Korrekturrunden: nach Aufwand, 65 € netto pro Stunde"
   ],
   "faq": [
    [
@@ -529,7 +529,7 @@
   ],
   "nicht_enthalten": [
    "Offene Original- und Arbeitsdateien: geliefert werden fertige Dateien, außer im Angebot ist etwas anderes vereinbart",
-   "Mehr als zwei Korrekturrunden: nach Aufwand, 65 € pro Stunde"
+   "Mehr als zwei Korrekturrunden: nach Aufwand, 65 € netto pro Stunde"
   ],
   "faq": [
    [
@@ -554,7 +554,7 @@
    ],
    [
     "Wie läuft ein Auftrag für Illustration oder Infografik bei STUDIO AAH! ab?",
-    "Sie stellen sich mit dem Kostenrechner einen unverbindlichen Kostenvoranschlag zusammen; Illustration & Infografik steht dort als \"auf Anfrage\". Im kostenlosen Erstgespräch klären wir Ist-Stand, Ziele, Bedarf und Zielgruppe. Danach erhalten Sie von STUDIO AAH! ein Angebot mit Festpreis und schließlich den Vertrag."
+    "Sie stellen sich mit dem Kostenrechner einen unverbindlichen Kostenvoranschlag zusammen; Illustration & Infografik steht dort als „auf Anfrage“. Im kostenlosen Erstgespräch klären wir Ist-Stand, Ziele, Bedarf und Zielgruppe. Danach erhalten Sie von STUDIO AAH! ein Angebot mit Festpreis und schließlich den Vertrag."
    ]
   ]
  },
@@ -592,7 +592,7 @@
   ],
   "nicht_enthalten": [
    "Offene Original- und Arbeitsdateien: geliefert werden fertige Dateien, außer im Angebot ist etwas anderes vereinbart",
-   "Mehr als zwei Korrekturrunden: nach Aufwand, 65 € pro Stunde"
+   "Mehr als zwei Korrekturrunden: nach Aufwand, 65 € netto pro Stunde"
   ],
   "faq": [
    [
@@ -617,7 +617,7 @@
    ],
    [
     "Wie läuft ein Motion-Design-Auftrag bei STUDIO AAH! ab?",
-    "Sie stellen sich mit dem Kostenrechner einen unverbindlichen Kostenvoranschlag zusammen; Motion Design steht dort als \"auf Anfrage\". Im kostenlosen Erstgespräch klären wir Ist-Stand, Ziele, Bedarf und Zielgruppe. Danach erhalten Sie von STUDIO AAH! ein Angebot mit Festpreis und schließlich den Vertrag."
+    "Sie stellen sich mit dem Kostenrechner einen unverbindlichen Kostenvoranschlag zusammen; Motion Design steht dort als „auf Anfrage“. Im kostenlosen Erstgespräch klären wir Ist-Stand, Ziele, Bedarf und Zielgruppe. Danach erhalten Sie von STUDIO AAH! ein Angebot mit Festpreis und schließlich den Vertrag."
    ]
   ]
  },
@@ -630,8 +630,8 @@
   "tag": "retainer",
   "titel": "Retainer",
   "seitentitel": "Retainer in Leipzig: Website weiterentwickeln | STUDIO AAH!",
-  "beschreibung": "Retainer bei STUDIO AAH! in Leipzig: betreute Weiterentwicklung Ihrer Website mit neuen Texten, Bildern, Unterseiten und Abschnitten. Ab 65 € pro Stunde netto.",
-  "intro": "Betreute Weiterentwicklung Ihrer Website: neue Texte und Bilder, Unterseiten und Abschnitte, ab 65 € pro Stunde.",
+  "beschreibung": "Retainer bei STUDIO AAH! in Leipzig: betreute Weiterentwicklung Ihrer Website mit neuen Texten, Bildern, Unterseiten und Abschnitten. Ab 65 € netto pro Stunde.",
+  "intro": "Betreute Weiterentwicklung Ihrer Website: neue Texte und Bilder, Unterseiten und Abschnitte, ab 65 € netto pro Stunde.",
   "bild": "bilder/leistung-retainer.jpg",
   "bildalt": "Arbeitsplatz mit zwei Bildschirmen, auf denen Seitenentwürfe zu sehen sind",
   "icon": "bilder/icons/target.webp",
@@ -645,15 +645,15 @@
    "Texte und Bilder austauschen",
    "Neue Unterseiten erstellen",
    "Abschnitte bearbeiten",
-   "Abrechnung nach Aufwand, ab 65 € pro Stunde netto, kein fester Monatsbetrag",
-   "Lieber selbst pflegen? Schulung für 70 €, als PDF-Anleitung oder Online-Termin"
+   "Abrechnung nach Aufwand, ab 65 € netto pro Stunde, kein fester Monatsbetrag",
+   "Lieber selbst pflegen? Schulung für 70 € netto, als PDF-Anleitung oder Online-Termin"
   ],
   "zusammenfassung": [
-   "Mit dem Retainer entwickle ich Ihre Website nach dem Start weiter: Ich tausche Texte und Bilder aus, erstelle neue Unterseiten und bearbeite Abschnitte. Abgerechnet wird nach Aufwand, ab 65 € pro Stunde netto.",
-   "Der Retainer ist keine Wartung. Die Wartung ab 45 € im Monat netto ist die rein technische Pflege Ihrer WordPress-Website: Updates von WordPress, Plugins und Themes, technische Überwachung und Sicherheitschecks."
+   "Mit dem Retainer entwickle ich Ihre Website nach dem Start weiter: Ich tausche Texte und Bilder aus, erstelle neue Unterseiten und bearbeite Abschnitte. Abgerechnet wird nach Aufwand, ab 65 € netto pro Stunde.",
+   "Der Retainer ist keine Wartung. Die Wartung ab 45 € netto im Monat ist die rein technische Pflege Ihrer WordPress-Website: Updates von WordPress, Plugins und Themes, technische Überwachung und Sicherheitschecks."
   ],
   "nicht_enthalten": [
-   "Technische Pflege (Updates, Überwachung, Sicherheitschecks): gehört zur Wartung ab 45 € im Monat",
+   "Technische Pflege (Updates, Überwachung, Sicherheitschecks): gehört zur Wartung ab 45 € netto im Monat",
    "Hosting, Domain und Lizenzen: zahlen Sie direkt an den jeweiligen Anbieter",
    "Fester Monatsbetrag: abgerechnet wird nach Aufwand"
   ],
