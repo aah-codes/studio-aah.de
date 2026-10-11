@@ -201,6 +201,7 @@ def seite(key, c):
     </div>
   </section>
 
+{(basis / 'werkzeuge' / 'grafiken' / 'website-herz.html').read_text(encoding='utf-8') if c.get('herz') else ''}
 {(basis / 'werkzeuge' / 'grafiken' / (c['grafik'] + '.html')).read_text(encoding='utf-8') if c.get('grafik') else ''}
 {(basis / 'werkzeuge' / 'grafiken' / (c['nutzen'] + '.html')).read_text(encoding='utf-8') if c.get('nutzen') else ''}
 
@@ -269,7 +270,7 @@ def seite(key, c):
     ld = json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, indent=2)
     t = re.sub(r'<script type="application/ld\+json">.*?</script>', lambda m: f'<script type="application/ld+json">\n{ld}\n  </script>', t, count=1, flags=re.S)
     if 'zaehlen.js' not in t:
-        t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v=20261013u" defer></script>\n</body>', 1)
+        t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v=20261013v" defer></script>\n</body>', 1)
     pfad.write_text(t, encoding='utf-8')
     print('geschrieben:', c['pfad'])
 

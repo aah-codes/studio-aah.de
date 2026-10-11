@@ -108,7 +108,8 @@
    "Zuerst die Seitenstruktur (Sitemap): Wer sucht was, und wo findet er es?",
    "Klare Botschaft gleich zu Beginn und eindeutige nächste Schritte für mehr Conversion",
    "WordPress (Kadence) oder Claude Code, Schulung zur Selbstpflege und auf Wunsch Wartung"
-  ]
+  ],
+  "herz": true
  },
  "brand": {
   "pfad": "service/brand/",
@@ -423,7 +424,8 @@
    "LinkedIn aufsetzen: Profil, Unternehmensseite und klare Positionierung",
    "Fachartikel mit 1.000 bis 1.500 Wörtern, recherchiert und verständlich",
    "Webinar aufsetzen: Konzept, Anmeldeseite und Folien als PowerPoint oder PDF"
-  ]
+  ],
+  "herz": true
  },
  "ki": {
   "pfad": "service/ki-digitalisierung/",
@@ -822,6 +824,7 @@
    "Texte und Bilder austauschen",
    "Neue Unterseiten erstellen",
    "Abschnitte bearbeiten"
-  ]
+  ],
+  "herz": true
  }
 }
