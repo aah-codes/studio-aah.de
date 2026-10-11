@@ -1743,3 +1743,4 @@ img.profil-bildtext-bild, .profil-bildtext-bild img { width: 100%; height: auto;
 /* Erklärfilm, Fassung 6: Unterzeilen = Größe der Dachzeile (Anna 11.10.2026) */
 .ci-anim .ci-s { font-size: 12px; }
 .ci-hoch .ci-s { font-size: 19px; }
+.zeitleiste li:nth-child(even) .zl-marke { margin-right: 0; }
