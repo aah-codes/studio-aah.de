@@ -1648,3 +1648,4 @@ main section[id] { scroll-margin-top: calc(var(--kopf-hoehe) + 72px); }
 .lsx-kopf .alt-klein { hyphens: auto; overflow-wrap: break-word; }
 .lsx-duo { padding-bottom: 96px; }
 @media (max-width: 900px) { .lsx-duo { padding-bottom: 64px; } }
+.lsx-duo-icon { position: static; width: 96px; height: 96px; margin: 0 0 8px; }
