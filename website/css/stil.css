@@ -2032,3 +2032,7 @@ section[hidden] { display: none !important; }
   .zl-spalten li:nth-child(3)::before { right: auto; left: -63px; }
   .zl-spalten li:nth-child(4) { grid-column: 2; grid-row: 2; }
 }
+/* Kostenrechner: Frage zu den Unterseiten oben, Eingabefelder darunter linksbündig (Anna 12.10.2026) */
+.wahl-seiten { display: block; }
+.wahl-seiten > p { margin: 0; }
+.wahl-seiten-felder { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 8px !important; }

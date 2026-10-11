@@ -15,7 +15,8 @@
     if (liste) h += `<button type="button" class="wahl-pfeil" aria-expanded="false" aria-label="Inhalt von ${e.name} anzeigen"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>`;
     h += `<span class="wahl-preis">${preisAnzeige(e)}</span></div>`;
     if (e.wer) h += `<p class="wahl-wer">${e.wer}</p>`;
-    if (e.inkl) h += `<p class="wahl-seiten">Wie viele Unterseiten wird Ihre Website ungefähr haben? von <input class="wahl-anzahl" type="number" name="von-${e.id}" min="1" max="80" value="${e.inkl}" aria-label="Unterseiten von"> bis <input class="wahl-anzahl" type="number" name="bis-${e.id}" min="1" max="80" value="${e.inkl}" aria-label="Unterseiten bis"> Unterseiten</p>`;
+    // Frage oben, Eingabe darunter; Vorgabe von 3 bis zur enthaltenen Anzahl (Anna 12.10.2026)
+    if (e.inkl) h += `<div class="wahl-seiten"><p>Wie viele Unterseiten wird Ihre Website ungefähr haben?</p><p class="wahl-seiten-felder">von <input class="wahl-anzahl" type="number" name="von-${e.id}" min="1" max="80" value="${Math.min(3, e.inkl)}" aria-label="Unterseiten von"> bis <input class="wahl-anzahl" type="number" name="bis-${e.id}" min="1" max="80" value="${e.inkl}" aria-label="Unterseiten bis"> Unterseiten</p></div>`;
     if (e.art === 'anzahl') h += `<label class="wahl-mehr">Anzahl <input class="wahl-anzahl" type="number" name="n-${e.id}" min="1" max="30" value="1"></label>`;
     if (e.wahl) h += `<label class="wahl-mehr">Form <select class="wahl-auswahl" name="w-${e.id}">${e.wahl.map((w) => `<option>${w}</option>`).join('')}</select></label>`;
     h += '<span class="wahl-hinweis"></span>';
