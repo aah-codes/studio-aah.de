@@ -181,6 +181,7 @@ def seite(key, c):
       <p class="meta">Problem &amp; Lösung</p>
       <h2 class="gr-h3" id="loesung-titel">{esc(c['problem_titel'])}</h2>
       {absatz}
+      {'' if c.get('grafik') == 'corporate-identity' else f'<p class="lsx-grundsatz"><a class="textlink" href="{pre}service/brand/#corporate-identity">Grundlage für alles, was ich gestalte: das Rad der Corporate Identity <span aria-hidden="true">→</span></a></p>'}
       <p class="lsx-knoepfe"><a class="button" href="{pre}kontakt/">Projekt anfragen</a> <a class="textlink" href="{pre}preise/#r-{g['id']}">Kosten berechnen <span aria-hidden="true">→</span></a></p>
     </div>
     <div class="lsx-gegenueber">
@@ -256,7 +257,7 @@ def seite(key, c):
     ld = json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, indent=2)
     t = re.sub(r'<script type="application/ld\+json">.*?</script>', lambda m: f'<script type="application/ld+json">\n{ld}\n  </script>', t, count=1, flags=re.S)
     if 'zaehlen.js' not in t:
-        t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v=20261012r" defer></script>\n</body>', 1)
+        t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v=20261012s" defer></script>\n</body>', 1)
     pfad.write_text(t, encoding='utf-8')
     print('geschrieben:', c['pfad'])
 

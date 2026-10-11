@@ -1397,3 +1397,5 @@ main section[id] { scroll-margin-top: calc(var(--kopf-hoehe) + 72px); }
 .ci-titel-gross { display: block; font-family: var(--schrift-ueberschrift); font-size: clamp(26px, 2.6vw, 38px); line-height: 1.12; letter-spacing: .9px; text-transform: uppercase; }
 .ci-grafik { margin-top: 96px; }
 @media (max-width: 760px) { .ci-grafik { margin-top: 64px; } }
+.lsx-grundsatz { margin-top: 8px; }
+.ls-grundsatz { margin: 32px 0 0; text-align: center; }
