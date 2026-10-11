@@ -147,10 +147,11 @@ window.PREISE = {
       "Expert Review (wenn es schon eine Website gibt)",
       "Marktanalyse",
       "Seitenstruktur (Sitemap)",
+      "SEO & LLM-Zitierfähigkeit",
+      "Texte und Bilder kann ich liefern",
       "Design für Desktop & Handy (responsiv)",
       "Umsetzung in WordPress (Kadence)",
-      "Texte und Bilder kann ich liefern",
-      "SEO & LLM-Optimierung, Kontaktformular",
+      "Kontaktformular",
       "Launch (150 €, wird automatisch berechnet) & Übergabe",
       "Schulung zur Selbstpflege: als Zusatz buchbar"
      ],
@@ -167,9 +168,9 @@ window.PREISE = {
      "wer": "Für Unternehmen, die ihr Angebot ausführlich vorstellen.",
      "plus": "Alles aus Onepager, plus:",
      "items": [
+      "Bei Redesign: Analyse der bestehenden Website, Übernahme vorhandener Inhalte, Weiterleitungen alter Adressen",
       "Mehrere Unterseiten nach Ihrer Sitemap",
-      "SEO- & LLM-Einrichtung für alle Unterseiten",
-      "Bei Redesign: Analyse der bestehenden Website, Übernahme vorhandener Inhalte, Weiterleitungen alter Adressen"
+      "SEO & LLM-Zitierfähigkeit für alle Unterseiten"
      ],
      "gefragt": true,
      "launch": true,
@@ -201,13 +202,13 @@ window.PREISE = {
     },
     {
      "id": "shop",
-     "name": "Shop (WooCommerce)",
+     "name": "WooCommerce-Shop",
      "anfrage": true,
      "wer": "Umfang und Preis nach Absprache"
     },
     {
      "id": "seo",
-     "name": "SEO- & LLM-Grundeinrichtung",
+     "name": "SEO & LLM-Zitierfähigkeit",
      "preis": 260,
      "ab": false,
      "ohnePaket": true,
