@@ -1886,12 +1886,14 @@ img.profil-bildtext-bild, .profil-bildtext-bild img { width: 100%; height: auto;
 .tz-tu { clip-path: polygon(0 0, 100% 0, 50% 96%); }
 .tz-k { border-radius: 50%; }
 .tz-ki { border-radius: 50%; }
-.ci-film .tt { animation-name: tt-fallen; animation-duration: 1.25s; animation-timing-function: cubic-bezier(.4, 0, .2, 1.06); will-change: transform; }
-/* Ein durchgehender Bewegungsverlauf ohne Zwischenstopps (ruckelt nicht); Start außerhalb des Felds, daher ohne Einblenden */
+.ci-film .tt { animation-name: tt-fallen; animation-duration: 1s; animation-timing-function: cubic-bezier(.3, 0, .8, 1); will-change: transform; }
+/* Wie beim Tetris: jedes Teil läuft von der Oberkante des Felds herein (Start eine ganze Feldhöhe höher, 100cqh – passt bei jeder Feldgröße),
+   fällt gleichmäßig, dreht und verschiebt sich unterwegs und rastet ein – kein Sammelpunkt oben (Anna 11.10.2026) */
 @keyframes tt-fallen {
-  from { transform: translate(calc(var(--u) * var(--dx)), calc(var(--u) * -5)) rotate(var(--rot)); }
+  from { transform: translate(calc(var(--u) * var(--dx)), -100cqh) rotate(var(--rot)); }
   to { transform: none; }
 }
+
 
 
 @media (max-width: 900px) { .intro-formen { position: relative; height: 420px; min-height: 0; max-width: none; } }
