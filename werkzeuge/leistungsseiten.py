@@ -14,6 +14,7 @@ def preis(e):
     if e.get('anfrage'): return 'auf Anfrage'
     if e.get('anteil'): return f"+{int(e['anteil'] * 100)}&nbsp;%"
     if e.get('monat'): return f"ab {euro(e['monat'])} / Monat"
+    if e.get('stunde'): return f"ab {euro(e['stunde'])} / Stunde"
     return ('ab ' if e.get('ab', True) else '') + euro(e['preis'])
 
 

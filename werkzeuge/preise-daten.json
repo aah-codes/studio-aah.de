@@ -237,6 +237,13 @@
      "nurSeite": true
     },
     {
+     "id": "motion-web",
+     "name": "Motion Design",
+     "anfrage": true,
+     "kurz": "Bewegte Grafiken und Animationen für Ihre Website",
+     "nurSeite": true
+    },
+    {
      "id": "seo",
      "name": "SEO & LLM-Zitierfähigkeit",
      "preis": 260,
@@ -269,6 +276,13 @@
       "Kleine Bildänderungen",
       "Austausch von PDFs"
      ]
+    },
+    {
+     "id": "retainer-web",
+     "name": "Retainer",
+     "stunde": 65,
+     "kurz": "Betreute Weiterentwicklung Ihrer Website: Texte und Bilder austauschen, neue Unterseiten erstellen, Abschnitte bearbeiten",
+     "nurSeite": true
     }
    ],
    "intro": "Klares Design mit technischer Präzision – individuell, responsiv und auf Ihre Ziele ausgerichtet.",
@@ -480,7 +494,7 @@
      "id": "retainer",
      "name": "Retainer – laufende Betreuung",
      "anfrage": true,
-     "wer": "Fester Monatsbetrag: Ich pflege Website, Inhalte und Design laufend.",
+     "wer": "Betreute Weiterentwicklung Ihrer Website, ab 65 € pro Stunde: Texte und Bilder austauschen, neue Unterseiten, Abschnitte bearbeiten.",
      "items": [],
      "ab": true
     }
@@ -586,7 +600,7 @@
    "titel": "Retainer",
    "bild": "bilder/leistung-retainer.jpg",
    "link": "kontakt/",
-   "text": "Laufende Betreuung zum festen Monatsbetrag: Ich pflege Website, Inhalte und Design – Sie haben eine feste Ansprechpartnerin."
+   "text": "Betreute Weiterentwicklung Ihrer Website: neue Texte und Bilder, Unterseiten und Abschnitte, ab 65 € pro Stunde."
   },
   {
    "id": "ki",

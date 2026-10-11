@@ -427,7 +427,7 @@ window.PREISE = {
      "id": "retainer",
      "name": "Retainer – laufende Betreuung",
      "anfrage": true,
-     "wer": "Fester Monatsbetrag: Ich pflege Website, Inhalte und Design laufend.",
+     "wer": "Betreute Weiterentwicklung Ihrer Website, ab 65 € pro Stunde: Texte und Bilder austauschen, neue Unterseiten, Abschnitte bearbeiten.",
      "items": [],
      "ab": true
     }
