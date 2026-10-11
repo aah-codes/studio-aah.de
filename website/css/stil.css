@@ -1829,3 +1829,16 @@ img.profil-bildtext-bild, .profil-bildtext-bild img { width: 100%; height: auto;
 /* Aktion: zentrales Zitat unter großem Bild (Anna 11.10.2026: Bild schön groß) */
 .lp-warum-bild .lp-warum-foto { width: 100%; height: clamp(320px, 44vw, 640px); object-fit: cover; object-position: center 48%; border-radius: 28px; display: block; margin-bottom: 40px; }
 .lp-warum-bild .lp-zitat { max-width: 40ch; }
+/* Profil „Mein Ansatz“: Bauhaus-Grundformen neben „Form follows Content.“ (Anna 11.10.2026) */
+.ansatz-kopf { position: relative; }
+.bauhaus-formen { position: absolute; right: var(--rand-seite); bottom: 64px; display: flex; align-items: flex-end; gap: clamp(10px, 1.6vw, 22px); }
+.bf { display: block; width: clamp(56px, 7vw, 112px); aspect-ratio: 1; }
+.bf i { display: block; width: 100%; height: 100%; }
+.bf-quadrat i { background: var(--farbe-dunkel); }
+.bf-dreieck i { background: var(--farbe-dunkel); clip-path: polygon(50% 0, 100% 100%, 0 100%); opacity: .18; }
+.bf-kreis i { background: #2f6bff; border-radius: 50%; }
+.bauhaus-formen .ci-schweben { animation-duration: 3.6s; }
+.ansatz-herkunft { max-width: 62ch; color: var(--farbe-gedaempft); }
+@media (max-width: 900px) { .bauhaus-formen { position: static; margin-top: 24px; } .bf { width: 48px; } }
+/* Fußzeile: Leitsatz der Personal Brand (Anna 11.10.2026: Bauhaus-Faden auf der ganzen Website) */
+.fuss-claim { margin: 10px 0 0; font-size: 1rem; color: var(--farbe-gedaempft-invers); }
