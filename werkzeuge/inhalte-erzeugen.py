@@ -79,12 +79,18 @@ def _mockup(p, pre, m=None):
     return ''.join(h)
 
 
+def kennung_von(name):
+    # z. B. 'Wolfgang Bauer Ingenieurbau' -> 'wolfgang-bauer-ingenieurbau' (Sprungziel für Links aus „Für wen“)
+    s = name.lower().translate(str.maketrans({'ä': 'ae', 'ö': 'oe', 'ü': 'ue', 'ß': 'ss'}))
+    return re.sub(r'[^a-z0-9]+', '-', s).strip('-')
+
+
 def referenz_karten(liste, pre, kennung='ref', ansicht=None):
     # ansicht (z. B. 'print'): eigenes Mockup je Leistungsseite, falls im Projekt hinterlegt (mockup_print)
     karten = []
     for p in liste:
         link = p['links'][0] if p.get('links') else None
-        karten.append(f'''      <article class="rk" style="--rk-farbe: {p.get("farbe", "#eeece7")}">
+        karten.append(f'''      <article class="rk" id="{kennung}-{kennung_von(p["kurzname"])}" style="--rk-farbe: {p.get("farbe", "#eeece7")}">
         <div class="rk-text">
           <p class="meta">{esc(p["branche"])} · {esc(p["zeitraum"])}</p>
           <h3 class="rk-name">{esc(p["kurzname"])}</h3>
@@ -114,17 +120,17 @@ def fuer_wen(pre=''):
          ('Website', paket['unternehmen']['name'], paket['unternehmen']['wer'],
           ['Design-System und neue Startseite', 'Leistungs-, Branchen- und Referenzseiten', 'Karrierebereich mit Stellenangeboten und Bewerbungsformular'],
           preis('unternehmen'), f'{pre}service/website/#pakete'),
-         ('Wolfgang Bauer Ingenieurbau', 'Strategie, Rebranding, UX/UI Design, Website und Unternehmenspräsentation.', 'bauer-website.jpg', f'{pre}#referenzen')),
+         ('Wolfgang Bauer Ingenieurbau', 'Strategie, Rebranding, UX/UI Design, Website und Unternehmenspräsentation.', 'bauer-website-ausschnitt.jpg', f'{pre}#start-wolfgang-bauer-ingenieurbau')),
         ('selbststaendige', 'Selbstständige', 'Klar auftreten, ohne Umwege.',
          ('Website', paket['onepager']['name'], 'Für Selbstständige und kleine Angebote: eine Website, die alles auf den Punkt bringt, und eine Marke, die zu Ihnen passt.',
           ['Alles auf einer Seite, responsiv', 'Mit SEO & LLM-Zitierfähigkeit', f'Dazu buchbar: Brand Basic mit Fragebogen, Brand Experience und Mitbewerberrecherche, {preis("brand-0")}'],
           preis('onepager'), f'{pre}service/website/#pakete'),
-         ('Deinetwegen', 'Branding, UI/UX Design und Website für eine HR-Beratung.', 'deinetwegen-website.jpg', f'{pre}#referenzen')),
+         ('Deinetwegen', 'Branding, UI/UX Design und Website für eine HR-Beratung.', 'deinetwegen-website-ausschnitt.jpg', f'{pre}#start-deinetwegen')),
         ('vereine', 'Vereine &amp; Kultur', 'Demokratie braucht Sichtbarkeit.',
          ('Aktion', 'Kostenfreie Website', 'Kostenfreie Websites für Vereine, NGOs, Kunst und Kultur. Du zahlst, was es dir wert ist.',
           ['Für Organisationen, die sich für Demokratie, Frauen- und Kinderrechte, Natur- und Tierschutz oder Kunst und Kultur einsetzen', 'Bis zu eine Website im Monat'],
           'kostenfrei', f'{pre}demokratie-braucht-sichtbarkeit/'),
-         ('Jana Voigtmann', 'Webdesign für eine Künstlerin aus Leipzig.', 'jana-mixed-media.jpg?v=2', f'{pre}#referenzen')),
+         ('Jana Voigtmann', 'Webdesign für eine Künstlerin aus Leipzig.', 'jana-mixed-media-ausschnitt.jpg', f'{pre}#start-jana-voigtmann')),
     ]
     TAB_AUS = ' tabindex="-1"'
     knoepfe = ''.join(f'<button type="button" role="tab" id="fw-r-{k}" aria-controls="fw-{k}" aria-selected="{"true" if i == 0 else "false"}"{"" if i == 0 else TAB_AUS}>{n}</button>' for i, (k, n, *_ ) in enumerate(felder))

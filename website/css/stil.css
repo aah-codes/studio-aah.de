@@ -2036,3 +2036,8 @@ section[hidden] { display: none !important; }
 .wahl-seiten { display: block; }
 .wahl-seiten > p { margin: 0; }
 .wahl-seiten-felder { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 8px !important; }
+/* Hero-Band: Website im Laptop scrollt schneller, ähnlich wie bei den Referenzen (Anna 12.10.2026) */
+.laptop-seite { animation-duration: 10s; }
+.laptop-lang .laptop-seite { animation-duration: 12s; animation-delay: -3s; }
+/* Sprung aus „Für wen“ zur passenden Referenzkarte: Karussell unter dem Kopf zeigen */
+.ks { scroll-margin-top: calc(var(--kopf-hoehe) + 24px); }

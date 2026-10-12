@@ -153,6 +153,16 @@
     }, 120); });
     if (ruhig) { ks.classList.add('pause'); pk.textContent = '▶'; pk.setAttribute('aria-label', 'Automatisches Weiterblättern starten'); }
     markiere();
+    // Link auf eine Karte (z. B. aus „Für wen“: #start-deinetwegen): zum Karussell springen und genau diese Karte zeigen
+    const oeffne = (hash) => {
+      const i = karten.findIndex((k) => k.id && '#' + k.id === hash); if (i < 0) return false;
+      ks.scrollIntoView(); zeige(i); lauf(); return true;
+    };
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('a[href*="#"]');
+      if (a && a.pathname === location.pathname && oeffne(a.hash)) { e.preventDefault(); history.replaceState(null, '', a.hash); }
+    });
+    if (location.hash) requestAnimationFrame(() => oeffne(location.hash));
     // Bilder aller Karten vorladen, sobald das Karussell in die Nähe kommt (sonst bleibt die nächste Karte beim Blättern kurz weiß)
     const vorladen = () => spur.querySelectorAll('img[loading="lazy"]').forEach((i) => { i.loading = 'eager'; });
     if ('IntersectionObserver' in window) {
