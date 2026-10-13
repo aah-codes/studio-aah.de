@@ -2457,13 +2457,9 @@ section[hidden] { display: none !important; }
 /* Animation in der Leiste: Erklärfilm füllt den Laptop-Bildschirm */
 .kb-szene-schirm picture, .kb-anim { display: block; width: 100%; height: 100%; }
 .kb-anim { object-fit: contain; background: #fff; }
-/* Leistungskarten (Anna 13.10.2026): eigene Bildwelt statt Kundenfotos – Clay-Icon auf ruhiger Fläche, eine Bauhaus-Grundform als Akzent in der Ecke.
+/* Leistungskarten (Anna 13.10.2026): eigene Bildwelt statt Kundenfotos – nur das Clay-Icon auf ruhiger Fläche (Formen raus, Anna 13.10.2026).
    Die Icons haben weißen Grund: multiply lässt ihn in der Fläche verschwinden. */
 .ls-bild { position: relative; display: grid; place-items: center; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 20px; background: var(--farbe-hellgrau); isolation: isolate; }
-.ls-bild::before { content: ""; position: absolute; z-index: -1; }
-.ls-form-kreis::before { right: 7%; top: 9%; width: 22%; aspect-ratio: 1; border-radius: 50%; background: var(--farbe-primaer); }
-.ls-form-quadrat::before { left: 8%; bottom: 11%; width: 16%; aspect-ratio: 1; background: var(--farbe-dunkel); rotate: 12deg; }
-.ls-form-halb::before { right: 8%; bottom: 0; width: 30%; aspect-ratio: 2 / 1; border-radius: 999px 999px 0 0; background: #d6d8d9; }
 .ls-karte .ls-bild img { width: 50%; height: auto; aspect-ratio: 1; border-radius: 0; object-fit: contain; mix-blend-mode: multiply; transition: translate .4s cubic-bezier(.2, .8, .2, 1); }
 .ls-karte:hover .ls-bild img { transform: none; translate: 0 -8px; }
 @media (prefers-reduced-motion: reduce) { .ls-karte .ls-bild img { transition: none; } .ls-karte:hover .ls-bild img { translate: none; } }

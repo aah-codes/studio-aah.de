@@ -44,13 +44,10 @@ seite.write_text(einsetzen(seite.read_text(encoding='utf-8'), 'GLOSSAR', glossar
 
 # --- Startseite: Leistungen als Karten (9 Stück) mit Chips darüber ---
 chips = ''.join(f'<a href="#k-{k["id"]}">{esc(k["titel"])}</a>' for k in daten['startseite'])
-# Leistungskarten ohne Kundenbilder (Anna 13.10.2026: Kunden stehen in den Success Stories): Clay-Icon vor einer Bauhaus-Grundform
+# Leistungskarten ohne Kundenbilder (Anna 13.10.2026: Kunden stehen in den Success Stories): nur das Clay-Icon, ohne Formen
 ICONS = {k: v['icon'] for k, v in json.loads((basis / 'werkzeuge' / 'leistungen-inhalte.json').read_text(encoding='utf-8')).items() if isinstance(v, dict) and 'icon' in v}
-FORMEN = ['kreis', 'quadrat', 'halb']
-
-
 def ls_bild(i, k):
-    return f'<span class="ls-bild ls-form-{FORMEN[i % 3]}"><img src="{ICONS[k["id"]]}" alt="" width="400" height="400" loading="lazy"></span>'
+    return f'<span class="ls-bild"><img src="{ICONS[k["id"]]}" alt="" width="400" height="400" loading="lazy"></span>'
 
 
 karten_s = ''.join(f'<a class="ls-karte" href="{k["link"]}" id="k-{k["id"]}">{ls_bild(i, k)}'

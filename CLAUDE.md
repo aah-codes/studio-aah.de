@@ -50,7 +50,7 @@
 - Leistungsnamen: Markenbildung, UI/UX, Webdesign, Marketing & Vertrieb, Druck, Illustration & Infografik, Animation, Retainer, KI & Digitalisierung. Adressen: `service/markenbildung/`, `webdesign/`, `druck/`, `animation/` (alte Adressen `brand/`, `website/`, `print/`, `motion-design/` leiten weiter).
 - H1 der Startseite: „Hier werden Sie gesehen.“ (Desktop einzeilig).
 - Hero-Leiste: Kategorien wie bei Dribbble, verlinkt, mit Pause-Taste (Daten in `werkzeuge/preise-erzeugen.py`, `KATEGORIEN` und `BEISPIELE`). Regel „ein Kunde, ein Platz“: jeder Kunde höchstens einmal, Lücken mit STUDIO AAH! selbst. Foto-Mockups liegen in `website/bilder/mockups/` (Inhalt per `matrix3d` im Bildschirm). Alle Bilder müssen scharf sein: Quellbilder mindestens doppelt so breit wie angezeigt.
-- Leistungskarten der Startseite: keine Kundenbilder, sondern Clay-Icon (multiply) mit Bauhaus-Form als Akzent. Kunden stehen in den Success Stories.
+- Leistungskarten der Startseite: keine Kundenbilder, sondern nur das Clay-Icon (multiply), ohne Formen. Kunden stehen in den Success Stories.
 - Leistungsseiten: weiter unten „Aus der Praxis“ mit passendem Kundenbeispiel (`MOCKUPS` in `werkzeuge/leistungsseiten.py`).
 - Mockup-Nachweise (Mockuptree, Bendito Mockup) stehen im Impressum unter „Bildnachweise“.
 
