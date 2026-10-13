@@ -22,6 +22,7 @@
 
 ## Gestaltungsregeln (Kurzfassung der Branding-Richtlinien)
 - Farben: Schwarz `#0e1011`, Weiß, Creme `#eeece7` (Flächen, Plakatgrund), Blau `#2f6bff` als einziger Akzent, Grau `#d6d8d9` / `#9a9d9e`. Kein Rot, Gelb, Grün.
+- Ausnahme Farbband (Anna, 13.10.2026): 12 px hohes Regenbogen-Band mit rotem Block am unteren Rand des Fußes (`.fuss::after`, Variable `--farbband` in `stil.css`). Nur dort; sonst gilt die Farbregel.
 - Kein Blau auf Schwarz (Kontrast). Kein blaues Herz; Herzen nur als Grundform-Herz (siehe Erweiterte Formen).
 - Buttons: Primär blau gefüllt (`--farbe-primaer` `#2a5fe6`), Sekundär schwarze Outline (`button button-zweit`), Tertiär unterstrichener Textlink. Jeder Button und jeder eigenständige Link hat einen Pfeil (→, extern ↗, Download ↓).
 - Dachzeilen über Überschriften beginnen mit blauem Punkt (per CSS automatisch).

@@ -298,6 +298,10 @@ h1, h2, h3 {
 }
 /* Logo (Variante 1, gedehntes A, Anna 13.10.2026): nur in Kopf und Fuß, sonst Social Media und Print */
 .fuss-gross img { display: block; width: 61vw; max-width: 100%; height: auto; }
+/* Farbband am unteren Rand des Fußes (Anna, 13.10.2026) – bewusste Ausnahme von „Blau als einziger Akzent“ */
+:root { --farbband: linear-gradient(90deg, #d8c4fd 0%, #ee8fea 3%, #fe5fbe 6%, #ff3e3d 9%, #fe5100 12%, #fd9400 15%, #ffd700 18%, #c0ee28 22%, #6cee5e 26%, #18ef94 30%, #04ecb9 35%, #0fe6ef 45%, #19a3f9 55%, #255dfc 65%, #263fe4 70%, #212e85 75%, #1e254c 78%, #1d1d1d 81.5%, #ff2f00 81.5%, #ff2f00 100%); }
+.fuss { position: relative; }
+.fuss::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 12px; background: var(--farbband); }
 .fuss-spalten {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
