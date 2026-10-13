@@ -1827,7 +1827,7 @@ img.profil-bildtext-bild, .profil-bildtext-bild img { width: 100%; height: auto;
 .intro { grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); }
 .intro-bild img { aspect-ratio: 4 / 5; object-position: 30% center; }
 .intro-gruss { flex-direction: row; align-items: center; gap: 16px; }
-.intro-avatar { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; flex: none; }
+.intro-avatar { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; flex: none; }
 /* Prozess: erster und letzter Punkt blau (nicht beim Werdegang, der markiert Aktuelles) */
 .zeitleiste li:first-child::before, .zeitleiste li:last-child::before { background: #2f6bff; }
 .profil-erfahrung .zeitleiste li:not(.zl-aktuell)::before { background: var(--farbe-dunkel); }
