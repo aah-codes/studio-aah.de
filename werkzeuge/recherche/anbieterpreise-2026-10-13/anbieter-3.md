@@ -124,3 +124,9 @@ Hinweis auf der Seite: „All prices in USD, per site, plus applicable taxes add
 | J3 | wie J2 | „Bei der Verlängerung wird der gewählte Plan zum vollen Preis bzw. ohne den Rabatt, verlängert.“ |
 | J4 | https://www.jimdo.com/de/preise/website/ | „Du kannst entweder monatlich zahlen oder direkt für eine Laufzeit von 12 oder 24 Monaten bezahlen“ |
 | J5 | https://legal.jimdo.com/hc/de/articles/4414660225172-Jimdo-Informationen-zu-Unterauftragnehmern | „Amazon Web Services EMEA SARL Dienst: Webhosting und Infrastruktur … Ort der Datenverarbeitung: EU“; „Wie in unserem Auftragsverarbeitungsvertrag beschrieben …“ |
+
+## Nachtrag 13.10.2026: Kadence (nach Netzwerkfreigabe für liquidweb.com)
+- Quelle: https://www.liquidweb.com/software/kadence/ (kadencewp.com leitet dorthin weiter)
+- Zitat: „Theme + Blocks Essentials $99 /year … Most popular Pro $299 /year … For agencies Elite $499 /year“
+- Anzahl der Websites je Lizenz und Verlängerungspreis: auf der Seite nicht gefunden.
+- Wix-Preisseite (de.wix.com/pricing) zeigt auch mit deutscher Browsersprache US-Dollar (Abfrage aus den USA): Light 17 $, Core 14,50 $ (statt 29 $), Business 19,50 $ (statt 39 $), Business Elite 79,50 $ (statt 159 $) pro Monat bei jährlicher Laufzeit, „exklusive anwendbarer Steuern“. Euro-Preise weiterhin nicht abrufbar.
