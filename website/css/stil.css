@@ -2036,7 +2036,7 @@ section[hidden] { display: none !important; }
 .wahl-seiten { display: block; }
 .wahl-seiten > p { margin: 0; }
 .wahl-seiten-felder { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 8px !important; }
-/* ---------- 27. Blog-Ratgeber: Vorlage für ausführliche Beiträge (13.10.2026) ----------
+/* ---------- 37. Blog-Ratgeber: Vorlage für ausführliche Beiträge (13.10.2026) ----------
    Bausteine: Reihe, Vorspann, „Kurz gesagt“, Inhaltsverzeichnis, Tabellen, Grafiken, Kennzahlen,
    „Aus der Praxis“, Vergleich, Checkliste, FAQ, Methodik, Autorin, Abschluss mit Buttons, Quellen. */
 .artikel-ratgeber { max-width: 900px; }
@@ -2072,7 +2072,7 @@ section[hidden] { display: none !important; }
 .grafik svg { display: block; width: 100%; height: auto; background: var(--farbe-creme); border-radius: 28px; }
 .grafik figcaption { margin-top: 12px; font-size: 14px; line-height: 1.5; color: var(--farbe-gedaempft); }
 .grafik figcaption strong { color: var(--farbe-dunkel); }
-.kennzahlen-reihe { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 2rem 0; }
+.kennzahlen-reihe { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin: 2rem 0; }
 .kennzahlen-reihe div { background: var(--farbe-creme); border-radius: 24px; padding: 24px; }
 .kennzahlen-reihe dt { font-family: var(--schrift-ueberschrift); font-size: clamp(40px, 5vw, 56px); line-height: 1; letter-spacing: .02em; }
 .kennzahlen-reihe dt small { font-size: .45em; margin-left: 4px; }
@@ -2125,7 +2125,7 @@ section[hidden] { display: none !important; }
 .balken { flex: none; height: 28px; width: calc(var(--w) * .74); min-width: 14px; background: var(--farbe-dunkel); border-radius: 0 999px 999px 0; }
 .balken-blau { background: #2f6bff; }
 .balken-wert { font-family: var(--schrift-meta); font-size: 14px; white-space: nowrap; }
-.stapel { display: flex; height: 48px; margin: 4px 0 18px; }
+.stapel { display: flex; gap: 3px; height: 48px; margin: 4px 0 18px; } /* Fuge: Blau grenzt nie direkt an Schwarz */
 .stapel span { flex: var(--w) 1 0; min-width: 10px; }
 .stapel span:last-child { border-radius: 0 999px 999px 0; }
 .st-schwarz { background: var(--farbe-dunkel); } .st-grau { background: #9a9d9e; } .st-blau { background: #2f6bff; }
@@ -2139,9 +2139,12 @@ section[hidden] { display: none !important; }
 .dauer-zeilen li { display: grid; grid-template-columns: minmax(0, 220px) minmax(0, 1fr); gap: 4px 16px; align-items: center; margin: 0 !important; }
 .dauer-spur { position: relative; height: 28px; background: repeating-linear-gradient(90deg, rgba(14, 16, 17, .14) 0 1px, transparent 1px calc(100% / 6)); }
 .dauer-spur span { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 0 999px 999px 0; }
-.dauer-max { width: var(--max); background: #9a9d9e; }
 .dauer-kern { width: var(--kern); background: var(--farbe-dunkel); }
-.dauer-zeilen li.dauer-blau .dauer-kern { background: #2f6bff; }
+.dauer-kern:not(:last-child) { border-radius: 0 !important; }
+.dauer-spanne, .dauer-gross { left: calc(var(--von) + 3px) !important; width: calc(var(--bis) - var(--von) - 3px); }
+.dauer-spanne { background: #2f6bff; }
+.dauer-spanne:not(:last-child) { border-radius: 0 !important; }
+.dauer-gross { background: repeating-linear-gradient(135deg, var(--farbe-dunkel) 0 4px, transparent 4px 10px); }
 .dauer-achse { display: flex; justify-content: space-between; margin: 8px 0 0 calc(220px + 16px); font-family: var(--schrift-meta); font-size: 12px; color: var(--farbe-gedaempft); }
 .ablauf { list-style: none; padding: 0 !important; margin: 0 !important; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
 .ablauf li { background: var(--farbe-weiss); border-radius: 20px; padding: 18px; margin: 0 !important; display: flex; flex-direction: column; gap: 8px; font-size: 15px; line-height: 1.45; }
@@ -2155,7 +2158,8 @@ section[hidden] { display: none !important; }
 @media (max-width: 767px) {
   .artikel-ratgeber .artikel-text { font-size: 17px; }
   .kurz { padding: 24px 20px; border-radius: 20px; }
-  .kennzahlen-reihe, .vergleich { grid-template-columns: minmax(0, 1fr); }
+  .kennzahlen-reihe { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .vergleich { grid-template-columns: minmax(0, 1fr); }
   .autorin { grid-template-columns: 72px minmax(0, 1fr); gap: 16px; }
   .autorin img { width: 72px; height: 72px; }
   .artikel-schluss { padding: 28px 20px; border-radius: 20px; }
