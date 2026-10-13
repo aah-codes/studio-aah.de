@@ -2368,3 +2368,11 @@ section[hidden] { display: none !important; }
   .profil-tools .tools img { height: 34px; } .profil-tools .tools .tool-klein { height: 22px; }
   .profil-tools .tools .tool-gross { height: 40px; } .profil-tools .tools .tool-mittel { height: 23px; }
 }
+/* Aktivstatus im Menü (Anna 13.10.2026, gesetzt von js/menue.js): feine Linie unter dem Punkt, in den Leistungen blauer Name */
+.kopf-nav > ul > li > a[aria-current], .kopf-nav .mm-toggle.aktiv, .kopf-mobil nav > ul > li > a[aria-current], .kopf-mobil .mobil-unter > summary.aktiv,
+.kopf-mobil .mobil-unterliste a[aria-current] { text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 7px; }
+.kopf-nav .mm-liste a[aria-current] .mm-name { color: var(--farbe-primaer); }
+/* Brotkrumen (Anna 13.10.2026): die aktuelle Seite ist unterstrichen, der Weg zurück erst beim Darüberfahren */
+.brotkrumen a, nav[aria-label="Brotkrumen"] a { text-decoration: none; }
+.brotkrumen a:hover, .brotkrumen a:focus-visible, nav[aria-label="Brotkrumen"] a:hover, nav[aria-label="Brotkrumen"] a:focus-visible { text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 4px; }
+.brotkrumen [aria-current] { text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 4px; color: var(--farbe-dunkel); }

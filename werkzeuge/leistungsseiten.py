@@ -195,7 +195,7 @@ def seite(key, c):
     main = f'''<main id="inhalt">
 
   <section class="seitenkopf lsx-kopf">
-    <p class="meta"><a href="{pre}#leistungen">Leistungen</a> / {esc(c['titel'])}</p>
+    <p class="meta brotkrumen"><a href="{pre}#leistungen">Leistungen</a> / <span aria-current="page">{esc(c['titel'])}</span></p>
     <h1 class="gr-xxl lsx-titel" style="--n:{max(len(w) for w in c['titel'].split())}">{titel_vorne}<span class="wort-mit-icon">{esc(c['titel'].split()[-1])}<img class="icon-3d" src="{pre}{c['icon']}" alt="" width="400" height="400"></span></h1>
     <p class="alt-klein">{trennen(esc(intro))}</p>
     <p class="lsx-termine"><span class="meta">So arbeite ich</span> {esc(termine)}</p>
@@ -284,7 +284,7 @@ def seite(key, c):
     ld = json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, indent=2)
     t = re.sub(r'<script type="application/ld\+json">.*?</script>', lambda m: f'<script type="application/ld+json">\n{ld}\n  </script>', t, count=1, flags=re.S)
     if 'zaehlen.js' not in t:
-        t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v=20261016v" defer></script>\n</body>', 1)
+        t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v=20261016w" defer></script>\n</body>', 1)
     pfad.write_text(t, encoding='utf-8')
     print('geschrieben:', c['pfad'])
 

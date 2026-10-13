@@ -234,3 +234,20 @@
     const knopf = oeko.querySelector('.ci-nochmal-knopf'); if (knopf) knopf.addEventListener('click', an);
   });
 })();
+
+// Aktivstatus im Menü (Anna 13.10.2026): Der Kopf ist auf allen Seiten gleich, deshalb markiert dieses Skript die aktuelle Seite
+// (aria-current="page") und den Bereich, in dem sie liegt (aria-current="true", z. B. Blog bei einem Artikel, Leistungen auf /service/).
+(() => {
+  const ohneIndex = (p) => p.replace(/index\.html$/, '');
+  const hier = ohneIndex(location.pathname);
+  const start = ohneIndex(new URL(document.querySelector('.kopf-logo')?.getAttribute('href') || './', location.href).pathname);
+  document.querySelectorAll('.kopf-nav > ul > li > a:not(.mm-toggle), .kopf-nav .mm-liste a, .kopf-mobil nav a').forEach((a) => {
+    const ziel = ohneIndex(new URL(a.getAttribute('href'), location.href).pathname);
+    if (ziel === hier) a.setAttribute('aria-current', 'page');
+    else if (ziel !== start && hier.startsWith(ziel)) a.setAttribute('aria-current', 'true');
+  });
+  if (hier.startsWith(`${start}service/`)) {
+    document.querySelector('.mm-toggle')?.classList.add('aktiv');
+    document.querySelector('.kopf-mobil .mobil-unter > summary')?.classList.add('aktiv');
+  }
+})();
