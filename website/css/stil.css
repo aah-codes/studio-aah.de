@@ -1099,9 +1099,9 @@ html { scroll-padding-top: calc(var(--kopf-hoehe) + 72px); }
 .intro-brief p { font-size: clamp(18px, 1.35vw, 21px); line-height: 1.6; margin: 0 0 1.1em; }
 .intro-gruss { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin: 40px 0; }
 .intro-gruss p { margin: 0; }
-.intro-tools { border-top: 1px solid var(--farbe-rahmen); padding-top: 24px; margin-bottom: 24px; }
-.intro-tools .tools { margin: 16px 0 0; flex-wrap: nowrap; gap: 18px; }
-.intro-tools .tools img { max-width: 100%; }
+.profil-tools { border-top: 1px solid var(--farbe-rahmen); padding-top: 24px; margin-bottom: 24px; }
+.profil-tools .tools { margin: 16px 0 0; flex-wrap: nowrap; gap: 18px; }
+.profil-tools .tools img { max-width: 100%; }
 
 /* Leistungen: Chips springen zur Karte */
 .start-leistungen .sektionskopf { padding-bottom: 24px; }
@@ -1113,7 +1113,7 @@ html { scroll-padding-top: calc(var(--kopf-hoehe) + 72px); }
 @media (max-width: 900px) {
   .intro { grid-template-columns: minmax(0, 1fr); gap: 32px; padding: 72px var(--rand-seite) 64px; }
   .intro-bild { position: static; max-width: 360px; }
-  .intro-tools .tools { flex-wrap: wrap; }
+  .profil-tools .tools { flex-wrap: wrap; }
   .leistungs-chips { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
   .leistungs-chips::-webkit-scrollbar { display: none; }
 }
@@ -1128,11 +1128,6 @@ h1, h2, h3, .gr-xxl, .gr-xl, .gr-h2, .gr-klein, .gr-h3, .artikel h1, .mm-karte-t
 .blog-karte h2 a, .blog-karte h3 a { text-decoration: none; color: inherit; }
 .blog-karte h3 a:hover { opacity: .6; }
 /* Vorstellung: Nutzen als Häkchen-Liste (Idee: lueth-duemchen.de), danach wer ich bin */
-.intro-nutzen { list-style: none; margin: 8px 0 28px; padding: 0; display: grid; gap: 18px; }
-.intro-nutzen li { position: relative; padding-left: 40px; font-size: clamp(17px, 1.2vw, 19px); line-height: 1.5; }
-.intro-nutzen li::before { content: ""; position: absolute; left: 4px; top: .35em; width: 16px; height: 9px; border-left: 3px solid currentColor; border-bottom: 3px solid currentColor; transform: rotate(-45deg); }
-.intro-nutzen strong { display: block; font-weight: 700; }
-.intro-wer { font-size: clamp(17px, 1.2vw, 19px); line-height: 1.6; }
 
 /* ---------- 27. Kundenstimmen als versetztes Raster (wie Pinterest), alle sichtbar – Startseite und Profil ---------- */
 .stimmen { display: block; columns: 3 320px; column-gap: 20px; padding: 0 var(--rand-seite) 96px; }
@@ -1955,7 +1950,6 @@ img.profil-bildtext-bild, .profil-bildtext-bild img { width: 100%; height: auto;
 .intro { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 80px; }
 .intro .intro-text { max-width: none; }
 .intro-links { position: sticky; top: calc(var(--kopf-hoehe) + 32px); }
-.intro-rechts { padding-top: 8px; }
 @media (max-width: 900px) { .intro { grid-template-columns: 1fr; gap: 8px; } .intro-links { position: static; } }
 /* Referenzen: Website-Screenshots scrollen schneller (Anna 11.10.2026), passend zu 7 s je Karte */
 .rk-browser img { animation-duration: 9s; }
@@ -2020,9 +2014,6 @@ section[hidden] { display: none !important; }
 .bauhaus-raster .bk-kq { background: radial-gradient(circle closest-side, var(--farbe-creme) 99%, var(--f) 100%); }
 /* Startseite Intro: beide Spalten oben und unten bündig – links bleibt stehen und endet mit der rechten Spalte (Anna 11.10.2026) */
 .intro { align-items: start; }
-.intro-rechts { padding-top: 0; }
-.intro-rechts > :first-child { margin-top: 0; }
-.intro-rechts > :last-child, .intro-rechts > :last-child a { margin-bottom: 0; }
 .intro-links > :last-child, .intro-links .intro-brief > p:last-child { margin-bottom: 0; }
 .intro-links .meta { margin-top: 0; }
 /* Startseite Prozess: Schritte spaltenweise lesen – links 01 und 02, rechts versetzt 03 und 04 (Anna 11.10.2026, Skizze) */
@@ -2323,4 +2314,57 @@ section[hidden] { display: none !important; }
   .wahl-check { flex: 1 1 0; display: grid; grid-template-columns: 20px minmax(0, 1fr); column-gap: 12px; row-gap: 2px; }
   .wahl-gefragt { grid-column: 2; margin-left: 0; }
   .wahl-preis { order: 3; flex-basis: 100%; margin-left: 32px; }
+}
+/* Startseite nach dem Hero (Anna 13.10.2026): links Text, rechts kleine Ökosystem-Grafik (Link zur ganzen Grafik), darunter drei Karten */
+.intro-neu { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 40px 80px; align-items: center; }
+.intro-neu .intro-links { position: static; }
+.intro-neu .intro-text .gr-h2 { margin: 12px 0 28px; }
+.intro-neu .intro-gruss { margin: 32px 0 20px; }
+.intro-neu .intro-mehr { margin: 0; }
+.intro-oeko { position: relative; margin: 0; }
+.om-flaeche { position: relative; aspect-ratio: 1 / .86; background: var(--farbe-hellgrau); border-radius: 20px;
+  background-image: radial-gradient(circle, #dcdfdf 1.2px, transparent 1.4px); background-size: 14px 14px; }
+.om-linien { position: absolute; inset: 0; width: 100%; height: 100%; }
+.om-linien line { stroke: #8f9293; stroke-width: 1.5; stroke-dasharray: 4 5; vector-effect: non-scaling-stroke; }
+.om-seite { position: absolute; left: 50%; top: 50%; width: 42%; translate: -50% -50%; display: flex; flex-direction: column; gap: 8px; padding: 12px 14px 14px; background: var(--farbe-weiss); border: 1.5px solid var(--farbe-dunkel); border-radius: 14px; box-shadow: 0 18px 40px rgba(14, 16, 17, .1); }
+.om-browser { display: flex; align-items: center; gap: 4px; margin-bottom: 4px; }
+.om-browser i { width: 7px; height: 7px; border-radius: 50%; background: #d6d8d9; }
+.om-browser b { margin-left: 6px; flex: 1; font: 400 11px var(--schrift-text); color: var(--farbe-gedaempft); background: var(--farbe-hellgrau); border-radius: 99px; padding: 2px 8px; white-space: nowrap; overflow: hidden; }
+.om-titel { font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-size: clamp(20px, 2.3vw, 34px); line-height: 1; text-align: center; margin: 6px 0; }
+.om-balken { height: 7px; border-radius: 4px; background: #e3e5e5; }
+.om-kurz { width: 62%; }
+.om-knopf { align-self: flex-end; margin-top: 4px; font: 600 12px var(--schrift-text); color: var(--farbe-weiss); background: var(--farbe-primaer); border-radius: 99px; padding: 5px 12px; }
+.om-chip { position: absolute; left: var(--x); top: var(--y); translate: -50% -50%; display: flex; align-items: center; gap: 6px; padding: 4px 12px 4px 6px; background: var(--farbe-weiss); border: 1px solid var(--farbe-rahmen); border-radius: 99px; box-shadow: 0 8px 20px rgba(14, 16, 17, .06); font-size: 14px; font-weight: 500; white-space: nowrap; }
+.om-chip img { width: 30px; height: 30px; }
+.intro-oeko figcaption { margin-top: 18px; }
+/* ganze Grafik klickbar, Fokusrahmen am Link */
+.om-link::after { content: ""; position: absolute; inset: 0; border-radius: 20px; }
+.intro-oeko .om-seite, .intro-oeko .om-chip { transition: transform .4s cubic-bezier(.2, .8, .2, 1); }
+.intro-oeko:hover .om-seite { transform: scale(1.03); }
+.intro-oeko:hover .om-linien line { stroke: var(--farbe-primaer); }
+.intro-karten { grid-column: 1 / -1; list-style: none; margin: 32px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.intro-karte { display: flex; flex-direction: column; align-items: flex-start; padding: 28px; border: 1.5px solid var(--farbe-dunkel); border-radius: 20px; background: var(--farbe-weiss); }
+.ik-icon { width: 44px; height: 44px; margin-bottom: 20px; }
+.intro-karte h3 { font-size: clamp(19px, 1.4vw, 22px); line-height: 1.3; margin: 0 0 10px; }
+.intro-karte p { margin: 0 0 20px; line-height: 1.55; }
+.intro-karte .textlink { margin-top: auto; }
+@media (max-width: 1024px) { .intro-karten { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 900px) {
+  .intro-neu { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .intro-karten { margin-top: 8px; gap: 16px; }
+}
+@media (max-width: 560px) {
+  .om-flaeche { aspect-ratio: 1 / 1.1; }
+  .om-seite { width: 50%; padding: 8px 10px 10px; gap: 6px; }
+  .om-browser b { display: none; }
+  .om-knopf { font-size: 10px; padding: 4px 9px; }
+  .om-chip { flex-direction: column; gap: 0; padding: 2px 5px 3px; background: var(--farbe-hellgrau); border: 0; border-radius: 8px; box-shadow: none; font-size: 12px; }
+  .om-chip img { width: 34px; height: 34px; }
+  .intro-karte { padding: 22px; }
+}
+@media (prefers-reduced-motion: reduce) { .intro-oeko .om-seite { transition: none; } .intro-oeko:hover .om-seite { transform: none; } }
+@media (max-width: 560px) {
+  .profil-tools .tools { gap: 14px 20px; }
+  .profil-tools .tools img { height: 34px; } .profil-tools .tools .tool-klein { height: 22px; }
+  .profil-tools .tools .tool-gross { height: 40px; } .profil-tools .tools .tool-mittel { height: 23px; }
 }
