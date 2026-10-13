@@ -21,3 +21,6 @@ passw*
 
 # Interne Doku – bleibt lokal (Original in iCloud), Repository ist öffentlich
 doku/
+
+# Python-Zwischenspeicher
+__pycache__/

@@ -30,6 +30,8 @@ def maske(sitzung, bild):
 
 
 def main():
+    if len(sys.argv) < 2:
+        sys.exit("Aufruf: python3 werkzeuge/grafiken/freistellen.py PFAD/isnet-general-use.onnx")
     sitzung = ort.InferenceSession(sys.argv[1], providers=["CPUExecutionProvider"])
     ZIEL.mkdir(parents=True, exist_ok=True)
     for datei in BILDER:
@@ -38,7 +40,8 @@ def main():
         grau = ImageOps.autocontrast(bild.convert("L"), cutoff=1)
         stamm = Path(datei).stem
         for name, person in [("frei-blau", einfaerben(grau, FARBVERLAEUFE["triton"])), ("frei-sw", grau.convert("RGB"))]:
-            ausgabe = person.convert("RGBA"); ausgabe.putalpha(alpha)
+            ausgabe = person.convert("RGBA")
+            ausgabe.putalpha(alpha)
             ziel = ZIEL / f"{stamm}-{name}.webp"
             ausgabe.save(ziel, "WEBP", quality=82, method=6)
             print(ziel, ziel.stat().st_size // 1024, "KB")

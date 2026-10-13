@@ -12,10 +12,10 @@ from PIL import Image, ImageOps
 
 QUELLE = Path("website/bilder")
 ZIEL = Path("website/bilder/blau")
-BILDER = [  # (Datei, größte Breite in px)
-    ("studio-anna-haertelt.jpg", 1600),
-    ("studio-aah-gruenderin-anna-haertelt.webp", 768),
-    ("anna-haertelt-portraet.jpg", 794),
+BILDER = [  # (Datei, größte Breite in px, Fassungen)
+    ("studio-anna-haertelt.jpg", 1600, ["triton"]),
+    ("studio-aah-gruenderin-anna-haertelt.webp", 768, ["duoton", "triton"]),
+    ("anna-haertelt-portraet.jpg", 794, ["duoton", "triton"]),
 ]
 FARBVERLAEUFE = {
     "duoton": [(0.0, "#0e1011"), (1.0, "#2f6bff")],
@@ -49,14 +49,15 @@ def einfaerben(grau, stopps):
 
 def main():
     ZIEL.mkdir(parents=True, exist_ok=True)
-    for datei, breite in BILDER:
+    for datei, breite, fassungen in BILDER:
         bild = Image.open(QUELLE / datei)
         bild = ImageOps.exif_transpose(bild).convert("L")
         if bild.width > breite:
             bild = bild.resize((breite, round(bild.height * breite / bild.width)), Image.LANCZOS)
         bild = ImageOps.autocontrast(bild, cutoff=1)
         stamm = Path(datei).stem
-        for name, stopps in FARBVERLAEUFE.items():
+        for name in fassungen:
+            stopps = FARBVERLAEUFE[name]
             ziel = ZIEL / f"{stamm}-{name}.webp"
             einfaerben(bild, stopps).save(ziel, "WEBP", quality=80, method=6)
             print(ziel, ziel.stat().st_size // 1024, "KB")
