@@ -707,12 +707,12 @@ html { scroll-padding-top: calc(var(--kopf-hoehe) + 16px); }
 .hero-titel > span:nth-child(2) > span { animation-delay: .12s; }
 @keyframes aus-maske { from { translate: 0 105%; } }
 /* Bildband */
-.hero-band { position: relative; z-index: 1; overflow: hidden; padding: 28px 0 36px; margin: 0 0 8px; cursor: grab; touch-action: pan-y; perspective: 1200px; animation: band-rein 1.2s cubic-bezier(.2, .8, .2, 1) .2s both; }
+.hero-band { position: relative; z-index: 1; overflow: hidden; padding: 24px 0 34px; margin: 0 0 8px; cursor: grab; touch-action: pan-y; perspective: 1200px; animation: band-rein 1.2s cubic-bezier(.2, .8, .2, 1) .2s both; }
 .hero-band.zieht { cursor: grabbing; }
 @keyframes band-rein { from { translate: 30vw 0; opacity: 0; } }
-.hero-spur { display: flex; align-items: center; gap: 48px; width: max-content; will-change: transform; }
+.hero-spur { display: flex; align-items: center; gap: 36px; width: max-content; will-change: transform; }
 .band-teil { flex: none; height: var(--h); will-change: transform; transition: filter .3s; }
-.band-teil.h-s { --h: 136px; } .band-teil.h-m { --h: 176px; } .band-teil.h-l { --h: 216px; }
+.band-teil.h-s { --h: 100px; } .band-teil.h-m { --h: 130px; } .band-teil.h-l { --h: 160px; }
 .band-teil > img { height: 100%; width: auto; display: block; border-radius: 10px; box-shadow: 0 18px 40px rgba(14, 16, 17, .14); user-select: none; -webkit-user-drag: none; }
 /* Laptop: Website scrollt im Bildschirm */
 .band-teil.laptop { width: calc(var(--h) * 1.45); display: flex; flex-direction: column; justify-content: center; }
@@ -734,7 +734,7 @@ html { scroll-padding-top: calc(var(--kopf-hoehe) + 16px); }
 .handy-bildschirm::before { content: ""; position: absolute; top: 6px; left: 50%; translate: -50% 0; width: 30%; height: 10px; border-radius: 6px; background: var(--farbe-dunkel); z-index: 1; }
 .handy-bildschirm img { display: block; width: 100%; height: auto; animation: website-scroll 60s linear infinite alternate; }
 /* Visitenkarten aufgefächert, gehen bei Annäherung der Maus weiter auf */
-.band-teil.vk { position: relative; aspect-ratio: 85 / 55; height: 136px; margin: 0 26px; }
+.band-teil.vk { position: relative; aspect-ratio: 85 / 55; height: 100px; margin: 0 20px; }
 .band-teil.vk img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 4px; box-shadow: 0 8px 20px rgba(14, 16, 17, .15); transition: rotate .5s cubic-bezier(.2, .8, .2, 1), translate .5s cubic-bezier(.2, .8, .2, 1); }
 .band-teil.vk img:nth-child(1) { rotate: -14deg; translate: -14% 6%; }
 .band-teil.vk img:nth-child(2) { rotate: -4deg; translate: -4% 0; }
@@ -773,10 +773,10 @@ html { scroll-padding-top: calc(var(--kopf-hoehe) + 16px); }
 .hero-unten { position: relative; z-index: 1; }
 @media (max-width: 900px) {
   .hero-titel { font-size: calc((100vw - 2 * var(--rand-seite)) / 5.8); }
-  .band-teil.h-s { --h: 112px; } .band-teil.h-m { --h: 148px; } .band-teil.h-l { --h: 176px; }
-  .band-teil.vk { height: 104px; margin: 0 18px; }
-  .hero-spur { gap: 30px; }
-  .hero-band { padding: 26px 0 34px; }
+  .band-teil.h-s { --h: 90px; } .band-teil.h-m { --h: 118px; } .band-teil.h-l { --h: 140px; }
+  .band-teil.vk { height: 84px; margin: 0 16px; }
+  .hero-spur { gap: 26px; }
+  .hero-band { padding: 22px 0 32px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-titel > span > span, .hero-band, .laptop-seite, .laptop-slider img, .handy-bildschirm img { animation: none !important; }
