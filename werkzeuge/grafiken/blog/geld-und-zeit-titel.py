@@ -8,9 +8,12 @@ SCH, BL, WS, GR, MG = '#0e1011', '#2f6bff', '#fff', '#d6d8d9', '#9a9d9e'
 FUGE = 14  # sichtbar 7 px: bleibt auch in kleinen Vorschauen als Fuge erkennbar
 # Arme sitzen immer direkt am Rumpf, ohne Abstand (Anna, 13.10.2026): Drehpunkt innen im Rumpf, Arm entsprechend länger
 SCHULTER_X, SCHULTER_Y, ARM = 30, -290, 132
+# Herabhängender Arm abgespreizt, Hand sichtbar neben dem Rock – nie dahinter versteckt; Beine mit Eckenradius 4 (Anna, 13.10.2026)
+ARM_UNTEN, BEIN_RADIUS = -34, 4
 
-def balken(sx, sy, w, laenge=120, breite=16, hand=True):
-    t = f'<g transform="translate({sx} {sy}) rotate({w})"><rect x="{-breite/2}" y="0" width="{breite}" height="{laenge}" fill="{SCH}"/>'
+def balken(sx, sy, w, laenge=120, breite=16, hand=True, radius=0):
+    r = f' rx="{radius}"' if radius else ''
+    t = f'<g transform="translate({sx} {sy}) rotate({w})"><rect x="{-breite/2}" y="0" width="{breite}" height="{laenge}"{r} fill="{SCH}"/>'
     if hand: t += f'<circle cx="0" cy="{laenge+4}" r="11" fill="{SCH}"/>'
     return t + '</g>'
 
@@ -18,7 +21,7 @@ def ende(sx, sy, w, laenge=120):
     a = math.radians(w); return sx - (laenge + 4) * math.sin(a), sy + (laenge + 4) * math.cos(a)
 
 def figur(arm_l, arm_r, bein_l, bein_r, blick=1):
-    t = balken(-22, -150, bein_l, 150, 18, False) + balken(22, -150, bein_r, 150, 18, False)
+    t = balken(-22, -150, bein_l, 150, 18, False, BEIN_RADIUS) + balken(22, -150, bein_r, 150, 18, False, BEIN_RADIUS)
     t += '<rect x="-42" y="-302" width="84" height="96" fill="%s"/>' % SCH
     t += balken(-SCHULTER_X, SCHULTER_Y, arm_l, ARM) + balken(SCHULTER_X, SCHULTER_Y, arm_r, ARM)
     t += f'<path d="M-80 -150 A80 80 0 0 1 80 -150 Z" fill="{BL}" stroke="{WS}" stroke-width="{FUGE}" paint-order="stroke"/>'
@@ -56,7 +59,7 @@ s.append(f'<g transform="translate(600 610) rotate(-6)"><path d="M0 0 H170 L212 
 # Boden und Figur, die das blaue Modul in die gestrichelte Lücke setzt
 s.append(f'<line x1="840" y1="700" x2="1150" y2="700" stroke="{SCH}" stroke-width="2"/>')
 fx, fy, k = 985, 700, 1.0
-s.append(f'<g transform="translate({fx} {fy}) scale({k})">' + figur(124, -16, 16, -12, blick=-1) + '</g>')
+s.append(f'<g transform="translate({fx} {fy}) scale({k})">' + figur(124, ARM_UNTEN, 16, -12, blick=-1) + '</g>')
 hx, hy = ende(-SCHULTER_X, SCHULTER_Y, 124, ARM); hx, hy = fx + hx * k, fy + hy * k
 s.append(f'<rect x="{hx-120}" y="{hy-76}" width="120" height="86" fill="{BL}" stroke="{WS}" stroke-width="{FUGE}" paint-order="stroke" transform="rotate(6 {hx-60} {hy-33})"/>')
 s.append(f'<path d="M{hx-134} {hy+2} Q{hx-205} {hy+75} 430 520" fill="none" stroke="{SCH}" stroke-width="2" stroke-dasharray="3 7" stroke-linecap="round"/>')
