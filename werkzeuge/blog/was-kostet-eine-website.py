@@ -45,7 +45,7 @@ ld={"@context":"https://schema.org","@graph":[
  {"@type":"BlogPosting","@id":url+"#beitrag","headline":h1,"name":titel,"description":beschr,
   "image":["https://studio-aah.de/bilder/blog-geld-und-zeit-og.jpg","https://studio-aah.de/bilder/blog-geld-und-zeit.webp"],
   "datePublished":"2026-10-13","dateModified":"2026-10-13","inLanguage":"de-DE","url":url,"mainEntityOfPage":url,
-  "wordCount":woerter,"articleSection":"Ratgeber",
+  "wordCount":woerter,"articleSection":"Website",
   "keywords":["Website Kosten","Was kostet eine Website","Website erstellen lassen Dauer","laufende Kosten Website","Relaunch","Webdesign Leipzig"],
   "author":{"@type":"Person","name":"Anna Härtelt","url":"https://studio-aah.de/profil/","jobTitle":"UX/UI-Designerin, Strategin und Webentwicklerin","worksFor":{"@id":"https://studio-aah.de/#studio"}},
   "publisher":{"@id":"https://studio-aah.de/#studio"},

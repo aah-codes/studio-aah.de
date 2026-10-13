@@ -216,26 +216,33 @@ def anker(name):
     return 'thema-' + re.sub(r'[^a-z0-9]+', '-', name.lower().replace('&', ' ')).strip('-')
 
 
+# Blog-Kategorien = Leistungen (Anna 13.10.2026), in dieser Reihenfolge; Kategorien ohne Beitrag werden ausgeblendet, bis einer da ist
+BLOG_KATEGORIEN = ['Brand', 'UI/UX', 'Website', 'Marketing & Vertrieb']
+
+
 def blog_themen():
-    # Blog-Übersicht (Anna 13.10.2026): Chip-Leiste mit Themen und Anzahl, je Thema eine Überschrift mit Linie und eigene Kartenreihe.
-    # Reihenfolge der Themen nach dem neuesten Beitrag; der neueste Beitrag steht groß als erste Karte seines Themas (kein Doppel)
-    themen = []
-    for b in BLOG:
-        if b['kategorie'] not in themen: themen.append(b['kategorie'])
-    gruppen = {k: [b for b in BLOG if b['kategorie'] == k] for k in themen}
-    chips = ''.join(f'<a href="#{anker(k)}">{esc(k)} <span class="chip-zahl">{len(gruppen[k])}</span></a>' for k in themen)
-    out = [f'  <nav class="preis-leiste lsx-chips blog-leiste" aria-label="Themen im Blog">\n    {chips}\n  </nav>']
-    for i, k in enumerate(themen):
+    # Blog-Übersicht (Anna 13.10.2026): oben „Aktuelles“ mit den 3 neuesten Beiträgen (der neueste groß),
+    # darunter die Kategorien mit Überschrift und Linie; Chip-Leiste mit Anzahl je Kategorie
+    fremd = sorted({b['kategorie'] for b in BLOG} - set(BLOG_KATEGORIEN))
+    if fremd: raise SystemExit(f'Unbekannte Blog-Kategorie in blog.json: {fremd}')
+    gruppen = {k: [b for b in BLOG if b['kategorie'] == k] for k in BLOG_KATEGORIEN}
+    themen = [k for k in BLOG_KATEGORIEN if gruppen[k]]
+    chips = '<a href="#aktuelles">Aktuelles</a>' + ''.join(f'<a href="#{anker(k)}">{esc(k)} <span class="chip-zahl">{len(gruppen[k])}</span></a>' for k in themen)
+    gross = blog(BLOG[:1], '../', '', 'h3', '      ', klasse='blog-karte blog-karte-gross', lazy=False).replace('<li>', '<li class="blog-li-gross">', 1)
+    out = [f'  <nav class="preis-leiste lsx-chips blog-leiste" aria-label="Kategorien im Blog">\n    {chips}\n  </nav>',
+           f'''  <section class="blog-thema blog-aktuell" id="aktuelles" aria-labelledby="aktuelles-titel">
+    <div class="blog-thema-kopf"><h2 id="aktuelles-titel">Aktuelles</h2><p class="meta">Die neuesten Beiträge</p></div>
+    <ul class="blog-liste">
+{gross}
+{blog(BLOG[1:3], '../', '', 'h3', '      ')}
+    </ul>
+  </section>''']
+    for k in themen:
         zahl = f'{len(gruppen[k])} Beitrag' if len(gruppen[k]) == 1 else f'{len(gruppen[k])} Beiträge'
-        karten = blog(gruppen[k][1:] if i == 0 else gruppen[k], '../', '', 'h3', '      ', kategorie=False)
-        if i == 0:
-            gross = blog(gruppen[k][:1], '../', '', 'h3', '      ', kategorie=False, klasse='blog-karte blog-karte-gross', lazy=False)
-            gross = gross.replace('<li>', '<li class="blog-li-gross">', 1).replace('<div class="blog-karte-text">\n', '<div class="blog-karte-text">\n          <p class="kategorie">Neuester Beitrag</p>\n', 1)
-            karten = gross + ('\n' + karten if karten else '')
         out.append(f'''  <section class="blog-thema" id="{anker(k)}" aria-labelledby="{anker(k)}-titel">
     <div class="blog-thema-kopf"><h2 id="{anker(k)}-titel">{esc(k)}</h2><p class="meta">{zahl}</p></div>
     <ul class="blog-liste">
-{karten}
+{blog(gruppen[k], '../', '', 'h3', '      ', kategorie=False)}
     </ul>
   </section>''')
     return '\n'.join(out)

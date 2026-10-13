@@ -2277,6 +2277,10 @@ section[hidden] { display: none !important; }
 .blog-karte .weiterlesen { margin: auto 0 0; }
 /* Neuester Beitrag: große erste Karte seines Themas über die ganze Breite, Bild links, Text rechts */
 .blog-thema .blog-li-gross { grid-column: 1 / -1; }
+/* Aktuelles: großer neuester Beitrag, darunter die zwei nächsten nebeneinander */
+.blog-thema.blog-aktuell .blog-liste { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.blog-aktuell .blog-karte:not(.blog-karte-gross) { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); }
+.blog-aktuell .blog-karte:not(.blog-karte-gross) .blog-karte-bild { aspect-ratio: auto; min-height: 100%; border-bottom: 0; border-right: 1px solid var(--farbe-rahmen); }
 .blog-karte-gross .kategorie { color: var(--farbe-primaer); }
 .blog-karte-gross { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
 .blog-karte-gross .blog-karte-bild { aspect-ratio: auto; min-height: 100%; border-bottom: 0; border-right: 1px solid var(--farbe-rahmen); }
@@ -2291,7 +2295,7 @@ section[hidden] { display: none !important; }
 /* Themenbereiche: Überschrift mit Linie */
 .blog-thema { padding: clamp(48px, 6vw, 80px) var(--rand-seite) 0; }
 .blog-thema:last-of-type { padding-bottom: 120px; }
-.blog-thema-kopf { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; border-top: 1.5px solid var(--farbe-dunkel); padding-top: 18px; margin-bottom: 28px; }
+.blog-thema-kopf { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 16px; border-top: 1.5px solid var(--farbe-dunkel); padding-top: 18px; margin-bottom: 28px; }
 .blog-thema-kopf h2 { font-size: clamp(2rem, 3.6vw, 3.25rem); margin: 0; }
 .blog-thema-kopf .meta { margin: 0; white-space: nowrap; }
 .blog-thema .blog-liste { max-width: none; margin: 0; padding: 0; gap: 24px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -2301,7 +2305,11 @@ section[hidden] { display: none !important; }
   .blog-karte-gross .blog-karte-bild { aspect-ratio: 3 / 2; border-right: 0; border-bottom: 1px solid var(--farbe-rahmen); }
   .blog-thema:last-of-type { padding-bottom: 64px; }
 }
-@media (max-width: 767px) { .blog-thema .blog-liste { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 767px) {
+  .blog-thema .blog-liste, .blog-thema.blog-aktuell .blog-liste { grid-template-columns: minmax(0, 1fr); }
+  .blog-aktuell .blog-karte:not(.blog-karte-gross) { display: flex; }
+  .blog-aktuell .blog-karte:not(.blog-karte-gross) .blog-karte-bild { aspect-ratio: 3 / 2; border-right: 0; border-bottom: 1px solid var(--farbe-rahmen); }
+}
 /* Prüfung 13.10.2026: Punkte der Zeitleiste im selben Blau wie die Marken; schmale Handys: Überschriften der Zeitleiste kleiner,
    Kostenrechner-Zeile bricht um (Name und „gefragt“ oben, Preis darunter), Bauhaus-Raster erst unter 370 px kleiner */
 .zeitleiste li.zl-aktuell::before, .zeitleiste li:first-child::before, .zeitleiste li:last-child::before { background: var(--farbe-primaer); }
