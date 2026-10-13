@@ -181,22 +181,63 @@ def stimmen(liste, pre):
     return '\n'.join(out)
 
 
-def blog(liste, pre, linkpre, h='h3', einrueck='    '):
+def lesezeit(slug):
+    # Lesezeit wie im Artikel angegeben („Lesezeit 18 Minuten“), sonst aus dem Text des Artikels, 200 Wörter pro Minute
+    t = (basis / 'website' / 'blog' / slug / 'index.html').read_text(encoding='utf-8')
+    m = re.search(r'Lesezeit (\d+) Minuten', t)
+    if m: return int(m.group(1))
+    a = re.search(r'<article.*?</article>', t, re.S)
+    text = re.sub(r'<(script|style)[^>]*>.*?</\1>|<[^>]+>', ' ', a.group(0) if a else t, flags=re.S)
+    return max(1, round(len(re.findall(r'\w+', text)) / 200))
+
+
+def blog(liste, pre, linkpre, h='h3', einrueck='    ', kategorie=True, klasse='blog-karte', lazy=True):
+    # Ganze Karte anklickbar: der Link liegt auf dem Titel und spannt sich per CSS über die Karte (ein Link je Karte, gut für Tastatur und Screenreader)
     out = []
     for b in liste:
         u = f'{linkpre}{b["slug"]}/'
+        kat = f'{einrueck}      <p class="kategorie">{esc(b["kategorie"])}</p>\n' if kategorie else ''
+        laden = ' loading="lazy"' if lazy else ''
         out.append(f'''{einrueck}<li>
-{einrueck}  <article class="blog-karte">
-{einrueck}    <a href="{u}" aria-hidden="true" tabindex="-1"><img src="{pre}bilder/{b["bild"]}" alt="" width="{b["bild_b"]}" height="{b["bild_h"]}" loading="lazy"></a>
+{einrueck}  <article class="{klasse}">
+{einrueck}    <div class="blog-karte-bild"><img src="{pre}bilder/{b["bild"]}" alt="" width="{b["bild_b"]}" height="{b["bild_h"]}"{laden}></div>
 {einrueck}    <div class="blog-karte-text">
-{einrueck}      <p class="kategorie">{esc(b["kategorie"])}</p>
-{einrueck}      <{h}><a href="{u}">{b["titel_html"]}</a></{h}>
-{einrueck}      <p class="artikel-meta">Von Anna · <time datetime="{b["datum"]}">{b["datum_text"]}</time></p>
-{einrueck}      <p>{b["teaser_html"]}</p>
-{einrueck}      <a class="weiterlesen" href="{u}">Weiterlesen →<span class="unsichtbar">: {b["titel_html"]}</span></a>
+{kat}{einrueck}      <{h}><a href="{u}">{b["titel_html"]}</a></{h}>
+{einrueck}      <p class="artikel-meta"><time datetime="{b["datum"]}">{b["datum_text"]}</time> · {lesezeit(b["slug"])} Min. Lesezeit</p>
+{einrueck}      <p class="blog-karte-teaser">{b["teaser_html"]}</p>
+{einrueck}      <p class="weiterlesen" aria-hidden="true">Weiterlesen →</p>
 {einrueck}    </div>
 {einrueck}  </article>
 {einrueck}</li>''')
+    return '\n'.join(out)
+
+
+def anker(name):
+    return 'thema-' + re.sub(r'[^a-z0-9]+', '-', name.lower().replace('&', ' ')).strip('-')
+
+
+def blog_themen():
+    # Blog-Übersicht (Anna 13.10.2026): Chip-Leiste mit Themen und Anzahl, je Thema eine Überschrift mit Linie und eigene Kartenreihe.
+    # Reihenfolge der Themen nach dem neuesten Beitrag; der neueste Beitrag steht groß als erste Karte seines Themas (kein Doppel)
+    themen = []
+    for b in BLOG:
+        if b['kategorie'] not in themen: themen.append(b['kategorie'])
+    gruppen = {k: [b for b in BLOG if b['kategorie'] == k] for k in themen}
+    chips = ''.join(f'<a href="#{anker(k)}">{esc(k)} <span class="chip-zahl">{len(gruppen[k])}</span></a>' for k in themen)
+    out = [f'  <nav class="preis-leiste lsx-chips blog-leiste" aria-label="Themen im Blog">\n    {chips}\n  </nav>']
+    for i, k in enumerate(themen):
+        zahl = f'{len(gruppen[k])} Beitrag' if len(gruppen[k]) == 1 else f'{len(gruppen[k])} Beiträge'
+        karten = blog(gruppen[k][1:] if i == 0 else gruppen[k], '../', '', 'h3', '      ', kategorie=False)
+        if i == 0:
+            gross = blog(gruppen[k][:1], '../', '', 'h3', '      ', kategorie=False, klasse='blog-karte blog-karte-gross', lazy=False)
+            gross = gross.replace('<li>', '<li class="blog-li-gross">', 1).replace('<div class="blog-karte-text">\n', '<div class="blog-karte-text">\n          <p class="kategorie">Neuester Beitrag</p>\n', 1)
+            karten = gross + ('\n' + karten if karten else '')
+        out.append(f'''  <section class="blog-thema" id="{anker(k)}" aria-labelledby="{anker(k)}-titel">
+    <div class="blog-thema-kopf"><h2 id="{anker(k)}-titel">{esc(k)}</h2><p class="meta">{zahl}</p></div>
+    <ul class="blog-liste">
+{karten}
+    </ul>
+  </section>''')
     return '\n'.join(out)
 
 
@@ -228,7 +269,7 @@ if __name__ == '__main__':
                        ('BLOG', lambda: blog(BLOG[:4], '', 'blog/')), ('KENNZAHLEN', lambda: kennzahlen())],
         'profil/index.html': [('STIMMEN', lambda: stimmen(STIMMEN, '../')), ('BLOG', lambda: blog(BLOG[:4], '../', '../blog/')),
                               ('KENNZAHLEN', lambda: kennzahlen('fakten', '      '))],
-        'blog/index.html': [('BLOG', lambda: blog(BLOG, '../', '', 'h2'))],
+        'blog/index.html': [('BLOG', lambda: blog_themen())],
     }
     for datei, teile in seiten.items():
         p = basis / 'website' / datei

@@ -11,7 +11,7 @@
   // Eine Zeile je Paket; name = Gruppen-ID (Pakete) bzw. „x“ (Zusatz)
   const zeile = (name, e) => {
     const liste = (e.items || []).map((x) => `<li>${x}</li>`).join('');
-    let h = `<div class="wahl-zeile" data-id="${e.id}"><div class="wahl-oben"><label class="wahl-check"><input type="checkbox" name="${name}" value="${e.id}"><span class="wahl-name">${e.name}</span>${e.gefragt ? '<span class="wahl-gefragt">gefragt</span>' : ''}</label>`;
+    let h = `<div class="wahl-zeile" data-id="${e.id}"><div class="wahl-oben"><label class="wahl-check"><input type="checkbox" name="${name}" value="${e.id}"><span class="wahl-name">${e.name.replace(/(Unternehmens|Mitbewerber)(?=\S)/g, '$1&shy;')}</span>${e.gefragt ? '<span class="wahl-gefragt">gefragt</span>' : ''}</label>`;
     if (liste) h += `<button type="button" class="wahl-pfeil" aria-expanded="false" aria-label="Inhalt von ${e.name} anzeigen"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>`;
     h += `<span class="wahl-preis">${preisAnzeige(e)}</span></div>`;
     if (e.wer) h += `<p class="wahl-wer">${e.wer}</p>`;

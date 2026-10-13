@@ -32,7 +32,7 @@ def karten(g):
     for e in g['pakete']:
         liste = ''.join(f'<li>{esc(x)}</li>' for x in e.get('items', []))
         out.append(f'''      <article class="lsx-karte{' lsx-gefragt' if e.get('gefragt') else ''}">
-        {'<p class="lsx-badge">Gefragt</p>' if e.get('gefragt') else ''}<h3 class="lsx-karte-name">{esc(e['name']).replace('Unternehmenspräsentation', 'Unternehmens&shy;präsentation')}</h3>
+        {'<p class="lsx-badge">Gefragt</p>' if e.get('gefragt') else ''}<h3 class="lsx-karte-name">{trennen(esc(e['name']))}</h3>
         <p class="lsx-karte-preis">{preis(e)}</p>
         <p class="lsx-karte-wer">{esc(e.get("wer") or "")}</p>
         <p class="lsx-karte-dauer">{f'<span class="meta">Dauer</span> {esc(e["dauer"])}' if e.get('dauer') else ''}</p>
@@ -98,13 +98,22 @@ def extras(g):
 START = (basis / 'website' / 'index.html').read_text(encoding='utf-8')
 
 
+# Weiche Trennstriche für lange Wörter, damit sie auf schmalen Handys sauber umbrechen (Anna 13.10.2026); nach esc() anwenden
+TRENNEN = {'Unternehmenspräsentation': 'Unternehmens&shy;präsentation', 'Mitbewerberrecherche': 'Mitbewerber&shy;recherche', 'Unternehmensidentität': 'Unternehmens&shy;identität'}
+
+
+def trennen(t):
+    for w, n in TRENNEN.items(): t = t.replace(w, n)
+    return t
+
+
 def dachzeile(m, h):
     # Dachzeile weglassen, wenn sie die Überschrift nur wiederholt (z. B. „Launch“ über „Launch.“, Anna 12.10.2026)
     return '' if m.rstrip('.').lower() == h.rstrip('.').lower() else f'<p class="meta">{esc(m)}</p>'
 
 
 def ablauf_eigen(pre, schritte):
-    li = ''.join(f'<li><span class="zl-marke"><small>Schritt</small><b>{i:02d}</b></span><div class="zl-text">{dachzeile(m, h)}<h3>{esc(h)}</h3><p class="gedaempft">{esc(x)}</p></div></li>' for i, (m, h, x) in enumerate(schritte, 1))
+    li = ''.join(f'<li><span class="zl-marke"><small>Schritt</small><b>{i:02d}</b></span><div class="zl-text">{dachzeile(m, h)}<h3>{trennen(esc(h))}</h3><p class="gedaempft">{trennen(esc(x))}</p></div></li>' for i, (m, h, x) in enumerate(schritte, 1))
     return (f'  <section class="prozess-kompakt" id="ablauf" aria-labelledby="prozess">\n    <p class="meta">Wie ich arbeite</p>\n    <h2 class="preis-h2" id="prozess">Prozess</h2>\n'
             f'    <ol class="zeitleiste">{li}</ol>\n    <p><a class="button" href="{pre}kontakt/">Projekt anfragen <span aria-hidden="true">→</span></a></p>\n  </section>')
 
@@ -188,7 +197,7 @@ def seite(key, c):
   <section class="seitenkopf lsx-kopf">
     <p class="meta"><a href="{pre}#leistungen">Leistungen</a> / {esc(c['titel'])}</p>
     <h1 class="gr-xxl lsx-titel" style="--n:{max(len(w) for w in c['titel'].split())}">{titel_vorne}<span class="wort-mit-icon">{esc(c['titel'].split()[-1])}<img class="icon-3d" src="{pre}{c['icon']}" alt="" width="400" height="400"></span></h1>
-    <p class="alt-klein">{esc(intro)}</p>
+    <p class="alt-klein">{trennen(esc(intro))}</p>
     <p class="lsx-termine"><span class="meta">So arbeite ich</span> {esc(termine)}</p>
     {fakten(pre)}
   </section>
@@ -275,7 +284,7 @@ def seite(key, c):
     ld = json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, indent=2)
     t = re.sub(r'<script type="application/ld\+json">.*?</script>', lambda m: f'<script type="application/ld+json">\n{ld}\n  </script>', t, count=1, flags=re.S)
     if 'zaehlen.js' not in t:
-        t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v=20261016l" defer></script>\n</body>', 1)
+        t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v=20261016o" defer></script>\n</body>', 1)
     pfad.write_text(t, encoding='utf-8')
     print('geschrieben:', c['pfad'])
 
