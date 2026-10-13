@@ -2036,3 +2036,132 @@ section[hidden] { display: none !important; }
 .wahl-seiten { display: block; }
 .wahl-seiten > p { margin: 0; }
 .wahl-seiten-felder { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 8px !important; }
+/* ---------- 27. Blog-Ratgeber: Vorlage für ausführliche Beiträge (13.10.2026) ----------
+   Bausteine: Reihe, Vorspann, „Kurz gesagt“, Inhaltsverzeichnis, Tabellen, Grafiken, Kennzahlen,
+   „Aus der Praxis“, Vergleich, Checkliste, FAQ, Methodik, Autorin, Abschluss mit Buttons, Quellen. */
+.artikel-ratgeber { max-width: 900px; }
+.artikel-ratgeber .artikel-bild { border-radius: 28px; max-height: none; aspect-ratio: 3 / 2; }
+.artikel-lead { font-size: clamp(18px, 1.5vw, 21px); line-height: 1.55; margin: 0 0 1.25rem; }
+.artikel-ratgeber .artikel-meta { display: flex; flex-wrap: wrap; gap: 4px 14px; }
+.artikel-ratgeber .artikel-text { font-size: 18px; line-height: 1.7; }
+.artikel-ratgeber .artikel-text h2 { font-size: clamp(24px, 2.4vw, 30px); margin: 3.5rem 0 1rem; scroll-margin-top: 24px; }
+.artikel-ratgeber .artikel-text h3 { margin: 2rem 0 .5rem; }
+.artikel-ratgeber .artikel-text ol { padding-left: 1.4em; margin: 0 0 1.5rem; }
+.kurz { background: var(--farbe-creme); border-radius: 28px; padding: 32px 36px; margin: 0 0 2.5rem; }
+.kurz .meta { margin: 0 0 12px; }
+.kurz ul { list-style: none; padding: 0 !important; margin: 0 !important; display: grid; gap: 12px; }
+.kurz li { position: relative; padding-left: 28px; margin: 0 !important; }
+.kurz li::before { content: ""; position: absolute; left: 0; top: .55em; width: 12px; height: 12px; background: var(--farbe-dunkel); }
+.kurz li:first-child::before { background: #2f6bff; border-radius: 50%; }
+.inhalt-verzeichnis { border-top: var(--rahmen) solid var(--farbe-dunkel); border-bottom: 1px solid var(--farbe-rahmen); padding: 20px 0 8px; margin: 0 0 2rem; }
+.inhalt-verzeichnis .meta { margin: 0 0 10px; }
+.inhalt-verzeichnis ol { counter-reset: iv; list-style: none; padding: 0 !important; columns: 2 280px; column-gap: 32px; }
+.inhalt-verzeichnis li { counter-increment: iv; break-inside: avoid; margin: 0 0 10px !important; padding-left: 36px; position: relative; line-height: 1.4; }
+.inhalt-verzeichnis li::before { content: counter(iv, decimal-leading-zero); position: absolute; left: 0; top: .1em; font-family: var(--schrift-meta); font-size: 13px; color: var(--farbe-gedaempft); }
+.inhalt-verzeichnis a { text-decoration: none !important; font-weight: 600; }
+.inhalt-verzeichnis a:hover { text-decoration: underline !important; }
+.artikel-text .tabelle-scroll { margin: 1.5rem 0 2rem; }
+.artikel-tabelle { width: 100%; min-width: 560px; border-collapse: collapse; font-size: 16px; line-height: 1.45; }
+.artikel-tabelle caption { text-align: left; font-family: var(--schrift-meta); font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--farbe-gedaempft); padding: 0 0 10px; }
+.artikel-tabelle th, .artikel-tabelle td { text-align: left; vertical-align: top; padding: 12px 14px; border-bottom: 1px solid var(--farbe-rahmen); }
+.artikel-tabelle thead th { background: var(--farbe-dunkel); color: var(--farbe-weiss); font-weight: 600; }
+.artikel-tabelle tbody th { font-weight: 600; }
+.artikel-tabelle .zahl { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.artikel-tabelle tfoot td { font-size: 14px; color: var(--farbe-gedaempft); border-bottom: 0; }
+.grafik { margin: 2rem 0 2.5rem; }
+.grafik svg { display: block; width: 100%; height: auto; background: var(--farbe-creme); border-radius: 28px; }
+.grafik figcaption { margin-top: 12px; font-size: 14px; line-height: 1.5; color: var(--farbe-gedaempft); }
+.grafik figcaption strong { color: var(--farbe-dunkel); }
+.kennzahlen-reihe { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 2rem 0; }
+.kennzahlen-reihe div { background: var(--farbe-creme); border-radius: 24px; padding: 24px; }
+.kennzahlen-reihe dt { font-family: var(--schrift-ueberschrift); font-size: clamp(40px, 5vw, 56px); line-height: 1; letter-spacing: .02em; }
+.kennzahlen-reihe dt small { font-size: .45em; margin-left: 4px; }
+.kennzahlen-reihe dd { margin: 10px 0 0; font-size: 15px; line-height: 1.45; }
+.kennzahlen-reihe div:first-child { background: var(--farbe-primaer); color: var(--farbe-weiss); } /* #2a5fe6: Kontrast zu Weiß ca. 5,4 : 1 */
+.praxis { border-left: 6px solid #2f6bff; padding: 4px 0 4px 24px; margin: 2rem 0; }
+.praxis .meta { margin: 0 0 6px; }
+.praxis p:last-child { margin-bottom: 0; }
+.vergleich { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 1.5rem 0 2rem; }
+.vergleich > div { border: var(--rahmen) solid var(--farbe-dunkel); border-radius: 24px; padding: 24px 24px 12px; }
+.vergleich > div:last-child { background: var(--farbe-dunkel); color: var(--farbe-weiss); }
+.vergleich h3 { margin: 0 0 12px !important; display: flex; align-items: center; gap: 12px; }
+.vergleich h3 svg { flex: none; }
+.vergleich ul { padding-left: 1.1em; }
+.vergleich > div:last-child a { color: var(--farbe-weiss); }
+.checkliste { counter-reset: ck; list-style: none; padding: 0 !important; margin: 1.5rem 0 2rem !important; display: grid; gap: 14px; }
+.checkliste li { counter-increment: ck; position: relative; padding: 2px 0 0 56px; margin: 0 !important; min-height: 40px; }
+.checkliste li::before { content: counter(ck); position: absolute; left: 0; top: 0; width: 40px; height: 40px; border-radius: 50%; background: var(--farbe-dunkel); color: var(--farbe-weiss); font-family: var(--schrift-ueberschrift); font-size: 20px; display: grid; place-items: center; }
+.checkliste li:first-child::before { background: #2f6bff; }
+.artikel-faq { margin: 1rem 0 2rem; display: grid; gap: 12px; }
+.artikel-faq .faq-eintrag summary { font-size: 1.05rem; padding: 20px 24px; }
+.artikel-faq .faq-antwort { padding: 0 24px 20px; font-size: 17px; }
+.methodik { background: var(--farbe-hellgrau); border-radius: 20px; padding: 20px 24px; margin: 2rem 0; font-size: 15px; line-height: 1.55; }
+.methodik .meta { margin: 0 0 6px; }
+.methodik p:last-child { margin-bottom: 0; }
+.reihe { border: 1px solid var(--farbe-rahmen); border-radius: 24px; padding: 24px; margin: 3rem 0 0; }
+.reihe .meta { margin: 0 0 10px; }
+.reihe ol { margin: 0 !important; }
+.reihe li[aria-current] { font-weight: 700; }
+.autorin { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 24px; align-items: start; border-top: var(--rahmen) solid var(--farbe-dunkel); padding-top: 28px; margin: 3.5rem 0 0; }
+.autorin img { width: 112px; height: 112px; border-radius: 50%; object-fit: cover; }
+.autorin .meta { margin: 0 0 4px; }
+.autorin-name { font-weight: 700; font-size: 1.15rem; margin: 0 0 6px; }
+.autorin p { margin: 0 0 10px; font-size: 16px; line-height: 1.55; }
+.artikel-schluss { background: var(--farbe-creme); border-radius: 28px; padding: 36px; margin: 3rem 0 0; }
+.artikel-schluss h2 { margin: 0 0 12px !important; }
+.artikel-schluss p { margin: 0 0 20px; }
+.artikel-schluss .knoepfe { display: flex; flex-wrap: wrap; gap: 12px; margin: 0; }
+.artikel-schluss .button { text-decoration: none !important; }
+.quellen { font-size: 15px; line-height: 1.5; }
+.quellen li { margin: 0 0 8px !important; }
+/* Diagramme als HTML (passen sich dem Handy an, Text bleibt lesbar). Bauhaus: Balken mit Halbkreis-Ende. */
+.diagramm { background: var(--farbe-creme); border-radius: 28px; padding: 28px; }
+.diagramm > .meta { margin: 0 0 18px; }
+.balken-liste { list-style: none; padding: 0 !important; margin: 0 !important; display: grid; gap: 14px; }
+.balken-liste li { display: grid; grid-template-columns: minmax(0, 220px) minmax(0, 1fr); gap: 4px 16px; align-items: center; margin: 0 !important; }
+.balken-name { font-size: 15px; line-height: 1.3; font-weight: 600; }
+.balken-name small { display: block; font-size: 13px; font-weight: 400; color: var(--farbe-gedaempft); }
+.balken-spur { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.balken { flex: none; height: 28px; width: calc(var(--w) * .74); min-width: 14px; background: var(--farbe-dunkel); border-radius: 0 999px 999px 0; }
+.balken-blau { background: #2f6bff; }
+.balken-wert { font-family: var(--schrift-meta); font-size: 14px; white-space: nowrap; }
+.stapel { display: flex; height: 48px; margin: 4px 0 18px; }
+.stapel span { flex: var(--w) 1 0; min-width: 10px; }
+.stapel span:last-child { border-radius: 0 999px 999px 0; }
+.st-schwarz { background: var(--farbe-dunkel); } .st-grau { background: #9a9d9e; } .st-blau { background: #2f6bff; }
+.st-streifen { background: repeating-linear-gradient(135deg, var(--farbe-dunkel) 0 4px, transparent 4px 10px); }
+.legende { list-style: none; padding: 0 !important; margin: 0 !important; display: grid; gap: 8px; font-size: 15px; line-height: 1.4; }
+.legende li { display: flex; gap: 10px; align-items: baseline; margin: 0 !important; }
+.legende i { flex: none; width: 14px; height: 14px; transform: translateY(2px); }
+.legende b { font-family: var(--schrift-meta); font-weight: 500; font-size: 14px; margin-left: auto; padding-left: 12px; white-space: nowrap; }
+.legende .legende-summe { border-top: 1px solid rgba(14, 16, 17, .2); padding-top: 8px; font-weight: 700; }
+.dauer-zeilen { list-style: none; padding: 0 !important; margin: 0 !important; display: grid; gap: 16px; }
+.dauer-zeilen li { display: grid; grid-template-columns: minmax(0, 220px) minmax(0, 1fr); gap: 4px 16px; align-items: center; margin: 0 !important; }
+.dauer-spur { position: relative; height: 28px; background: repeating-linear-gradient(90deg, rgba(14, 16, 17, .14) 0 1px, transparent 1px calc(100% / 6)); }
+.dauer-spur span { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 0 999px 999px 0; }
+.dauer-max { width: var(--max); background: #9a9d9e; }
+.dauer-kern { width: var(--kern); background: var(--farbe-dunkel); }
+.dauer-zeilen li.dauer-blau .dauer-kern { background: #2f6bff; }
+.dauer-achse { display: flex; justify-content: space-between; margin: 8px 0 0 calc(220px + 16px); font-family: var(--schrift-meta); font-size: 12px; color: var(--farbe-gedaempft); }
+.ablauf { list-style: none; padding: 0 !important; margin: 0 !important; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.ablauf li { background: var(--farbe-weiss); border-radius: 20px; padding: 18px; margin: 0 !important; display: flex; flex-direction: column; gap: 8px; font-size: 15px; line-height: 1.45; }
+.ablauf-nr { width: 44px; height: 44px; background: var(--farbe-dunkel); color: var(--farbe-weiss); display: grid; place-items: center; font-family: var(--schrift-ueberschrift); font-size: 22px; }
+.ablauf li:last-child .ablauf-nr { border-radius: 50%; }
+.ablauf b { font-size: 16px; }
+.freigabe { display: inline-flex; align-items: center; gap: 8px; font-family: var(--schrift-meta); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; }
+.freigabe::before { content: ""; width: 12px; height: 12px; border-radius: 50%; background: #2f6bff; flex: none; }
+.ablauf .freigabe { margin-top: auto; }
+.grafik-bild img { width: 100%; height: auto; border-radius: 20px; border: 1px solid var(--farbe-rahmen); }
+@media (max-width: 767px) {
+  .artikel-ratgeber .artikel-text { font-size: 17px; }
+  .kurz { padding: 24px 20px; border-radius: 20px; }
+  .kennzahlen-reihe, .vergleich { grid-template-columns: minmax(0, 1fr); }
+  .autorin { grid-template-columns: 72px minmax(0, 1fr); gap: 16px; }
+  .autorin img { width: 72px; height: 72px; }
+  .artikel-schluss { padding: 28px 20px; border-radius: 20px; }
+  .grafik svg { border-radius: 16px; }
+  .diagramm { padding: 20px 16px; border-radius: 20px; }
+  .balken-liste li, .dauer-zeilen li { grid-template-columns: minmax(0, 1fr); }
+  .dauer-achse { margin-left: 0; }
+  .ablauf { grid-template-columns: minmax(0, 1fr); }
+}
