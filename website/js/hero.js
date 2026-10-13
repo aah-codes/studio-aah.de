@@ -85,13 +85,20 @@
   requestAnimationFrame(schritt);
 })();
 
-// Animation-Karte: Film im Laptop läuft nur beim Darüberfahren (stumm, lädt erst dann); bei „Bewegung reduzieren“ bleibt das Standbild
+// Animation-Karte: der Erklärfilm (animiertes WebP, läuft einmal) startet beim Darüberfahren neu;
+// bei „Bewegung reduzieren“ zeigt das <picture> nur das Standbild
 (() => {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let nr = 0;
   document.querySelectorAll('.hero-spur .kat').forEach((karte) => {
-    const film = karte.querySelector('.kb-film');
-    if (!film) return;
-    karte.addEventListener('mouseenter', () => { film.play().catch(() => {}); });
-    karte.addEventListener('mouseleave', () => { film.pause(); });
+    const bild = karte.querySelector('.kb-anim');
+    if (!bild) return;
+    const quelle = bild.getAttribute('src');
+    let start = Date.now();
+    karte.addEventListener('mouseenter', () => {
+      if (Date.now() - start < 5000) return; // läuft noch: nicht neu laden
+      start = Date.now();
+      bild.src = `${quelle}?neu=${++nr}`;
+    });
   });
 })();

@@ -2447,3 +2447,23 @@ section[hidden] { display: none !important; }
 .lsx-beispiel-figur img { width: 100%; height: auto; display: block; border-radius: 8px; border: 1px solid var(--farbe-rahmen); }
 .lsx-beispiel-figur figcaption p:last-child { margin: 0; font-size: clamp(17px, 1.2vw, 19px); line-height: 1.5; }
 @media (max-width: 760px) { .lsx-beispiel { padding: 0 var(--rand-seite-mobil) 64px; } .lsx-beispiel-figur { grid-template-columns: minmax(0, 1fr); gap: 16px; } }
+/* Markenbildung in der Leiste: STUDIO AAH! selbst (Logo, Markenfarben, Kreis auf Blau, „AAH!“ auf Schwarz) */
+.kb-eigen .kb-e-logo { grid-column: 1 / 3; display: grid; place-items: center; background: var(--farbe-creme); border-radius: 3px; }
+.kb-eigen .kb-e-logo img { width: 70%; height: auto; }
+.kb-e-blau { display: grid; place-items: center; background: #2f6bff; border-radius: 3px; }
+.kb-e-blau i { width: 46%; aspect-ratio: 1; border-radius: 50%; background: var(--farbe-weiss); }
+.kb-e-schwarz { display: grid; place-items: center; background: var(--farbe-dunkel); color: var(--farbe-weiss); border-radius: 3px; font: 400 26px/1 var(--schrift-ueberschrift); letter-spacing: .02em; }
+@media (max-width: 900px) { .kb-e-schwarz { font-size: 20px; } }
+/* Animation in der Leiste: Erklärfilm füllt den Laptop-Bildschirm */
+.kb-szene-schirm picture, .kb-anim { display: block; width: 100%; height: 100%; }
+.kb-anim { object-fit: contain; background: #fff; }
+/* Leistungskarten (Anna 13.10.2026): eigene Bildwelt statt Kundenfotos – Clay-Icon auf ruhiger Fläche, eine Bauhaus-Grundform als Akzent in der Ecke.
+   Die Icons haben weißen Grund: multiply lässt ihn in der Fläche verschwinden. */
+.ls-bild { position: relative; display: grid; place-items: center; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 20px; background: var(--farbe-hellgrau); isolation: isolate; }
+.ls-bild::before { content: ""; position: absolute; z-index: -1; }
+.ls-form-kreis::before { right: 7%; top: 9%; width: 22%; aspect-ratio: 1; border-radius: 50%; background: var(--farbe-primaer); }
+.ls-form-quadrat::before { left: 8%; bottom: 11%; width: 16%; aspect-ratio: 1; background: var(--farbe-dunkel); rotate: 12deg; }
+.ls-form-halb::before { right: 8%; bottom: 0; width: 30%; aspect-ratio: 2 / 1; border-radius: 999px 999px 0 0; background: #d6d8d9; }
+.ls-karte .ls-bild img { width: 50%; height: auto; aspect-ratio: 1; border-radius: 0; object-fit: contain; mix-blend-mode: multiply; transition: translate .4s cubic-bezier(.2, .8, .2, 1); }
+.ls-karte:hover .ls-bild img { transform: none; translate: 0 -8px; }
+@media (prefers-reduced-motion: reduce) { .ls-karte .ls-bild img { transition: none; } .ls-karte:hover .ls-bild img { translate: none; } }

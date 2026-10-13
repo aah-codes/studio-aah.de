@@ -44,8 +44,17 @@ seite.write_text(einsetzen(seite.read_text(encoding='utf-8'), 'GLOSSAR', glossar
 
 # --- Startseite: Leistungen als Karten (9 Stück) mit Chips darüber ---
 chips = ''.join(f'<a href="#k-{k["id"]}">{esc(k["titel"])}</a>' for k in daten['startseite'])
-karten_s = ''.join(f'<a class="ls-karte" href="{k["link"]}" id="k-{k["id"]}"><img src="{k["bild"]}" alt="" loading="lazy">'
-                   f'<span class="ls-karte-titel">{esc(k["titel"])}</span><span class="ls-karte-text">{esc(k["text"])}</span></a>' for k in daten['startseite'])
+# Leistungskarten ohne Kundenbilder (Anna 13.10.2026: Kunden stehen in den Success Stories): Clay-Icon vor einer Bauhaus-Grundform
+ICONS = {k: v['icon'] for k, v in json.loads((basis / 'werkzeuge' / 'leistungen-inhalte.json').read_text(encoding='utf-8')).items() if isinstance(v, dict) and 'icon' in v}
+FORMEN = ['kreis', 'quadrat', 'halb']
+
+
+def ls_bild(i, k):
+    return f'<span class="ls-bild ls-form-{FORMEN[i % 3]}"><img src="{ICONS[k["id"]]}" alt="" width="400" height="400" loading="lazy"></span>'
+
+
+karten_s = ''.join(f'<a class="ls-karte" href="{k["link"]}" id="k-{k["id"]}">{ls_bild(i, k)}'
+                   f'<span class="ls-karte-titel">{esc(k["titel"])}</span><span class="ls-karte-text">{esc(k["text"])}</span></a>' for i, k in enumerate(daten['startseite']))
 start_html = ('  <section class="start-leistungen" aria-labelledby="leistungen">\n    <div class="sektionskopf"><p class="meta">Was ich mache</p>'
               '<h2 class="gr-xxl" id="leistungen">Leistungen</h2></div>\n'
               f'    <nav class="leistungs-chips" aria-label="Leistungen">{chips}<a href="preise/#rechner">Kostenrechner →</a></nav>\n'
@@ -68,15 +77,17 @@ BEISPIELE = {
                 '<span class="laptop-seite"><img src="bilder/referenzen/bauer-website.jpg" alt="" width="1440" height="6000" loading="lazy"></span></span></span>'),
     # Druck: Visitenkarten von Dr. Simone Goldhammer auf dem Schreibtisch (werkzeuge/grafiken/druck-mockup.py)
     'print': '<img src="bilder/mockups/druck-schreibtisch.webp" alt="" width="1200" height="900" loading="lazy">',
-    # Markenbildung wie bei Dribbble als Raster: Rebranding Wolfgang Bauer Ingenieurbau (Folien und Markenfarben, aus den Folien gemessen)
-    'brand': ('<span class="kb-raster"><img class="kb-r-gross" src="bilder/hero/bauer-praes-01.jpg" alt="" loading="lazy">'
-              '<span class="kb-r-farben"><i style="--f:#123261"></i><i style="--f:#f3d557"></i><i style="--f:#fff"></i></span>'
-              '<img src="bilder/hero/bauer-praes-04.jpg" alt="" loading="lazy"><img src="bilder/hero/bauer-praes-12.jpg" alt="" loading="lazy"></span>'),
-    # Animation: Foto-Mockup Laptop in Händen vor Wolken (Vorlage von Anna, Bendito Mockup, 13.10.2026, Ausschnitt 4:3 ab x = 120);
-    # im Bildschirm der Bauer-Launch-Film: Standbild, beim Darüberfahren läuft der Film stumm (js/hero.js, lädt erst dann)
+    # Markenbildung: STUDIO AAH! als eigenes Beispiel (Anna 13.10.2026: ein Kunde, ein Platz; Bauer steht bei Webdesign):
+    # Logo auf Creme, Markenfarben, Kreis auf Blau, „AAH!“ auf Schwarz
+    'brand': ('<span class="kb-raster kb-eigen"><span class="kb-e-logo"><img src="bilder/logo-studio-aah.svg" alt="" width="180" height="33"></span>'
+              '<span class="kb-r-farben"><i style="--f:#0e1011"></i><i style="--f:#2f6bff"></i><i style="--f:#eeece7"></i><i style="--f:#d6d8d9"></i></span>'
+              '<span class="kb-e-blau"><i></i></span><span class="kb-e-schwarz">AAH!</span></span>'),
+    # Animation: Foto-Mockup Laptop in Händen vor Wolken (Bendito Mockup); im Bildschirm der eigene Erklärfilm Corporate Identity
+    # als kurze Animation (einmal 4,7 s, dann Standbild; beim Darüberfahren neu, js/hero.js); bei „Bewegung reduzieren“ nur das Standbild
     'motion': ('<span class="kb-szene" style="--sb:1777;--sh:1333"><img class="kb-szene-bild" src="bilder/mockups/laptop-wolken.webp" alt="" width="1000" height="750" loading="lazy">'
                '<span class="kb-szene-schirm" style="transform:matrix3d(0.4712927933,-0.01449482037,0,-2.30025695e-05,0.01573352095,0.5063413888,0,1.697912788e-05,0,0,1,0,528,455,0,1)">'
-               '<video class="kb-film" src="videos/launchvideo-bauer.mp4" poster="bilder/film-bauer-vorschau.jpg" muted loop playsinline preload="none"></video></span></span><span class="kb-play"></span>'),
+               '<picture><source media="(prefers-reduced-motion: reduce)" srcset="bilder/mockups/ci-animation-still.webp">'
+               '<img class="kb-anim" src="bilder/mockups/ci-animation.webp" alt="" width="720" height="450"></picture></span></span>'),
     # Produktdesign wie bei Dribbble: Website von Down to Earth (Kerstin Hack) und daneben ihre Markenfarben ohne Beschriftung
     'ui-ux': ('<span class="kb-produkt"><span class="kb-p-buehne"><span class="kb-p-seite"><img src="bilder/referenzen/leben-website.jpg?v=2" alt="" loading="lazy"></span></span>'
               '<span class="kb-p-farben">' + ''.join(f'<i style="--f:{f};--t:{t}">{f.upper()}</i>' for f, t in
