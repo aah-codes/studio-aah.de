@@ -4,7 +4,7 @@ window.PREISE = {
  "gruppen": [
   {
    "id": "brand",
-   "name": "Brand",
+   "name": "Markenbildung",
    "wahl": "eins",
    "pakete": [
     {
@@ -132,7 +132,7 @@ window.PREISE = {
   },
   {
    "id": "website",
-   "name": "Website",
+   "name": "Webdesign",
    "wahl": "eins",
    "hinweis": "Typisch: Selbstständige 1–6 Unterseiten · kleine und mittlere Unternehmen mit Leistungs- und Branchenseiten 10–25 Unterseiten. Mehr als 25 Unterseiten, Shop oder Mitgliederbereich? Dann ist es ein komplexes Projekt ab 6.000 € – melden Sie sich am besten direkt.",
    "pakete": [
@@ -319,7 +319,7 @@ window.PREISE = {
   },
   {
    "id": "print",
-   "name": "Print",
+   "name": "Druck",
    "wahl": "mehrere",
    "pakete": [
     {
@@ -436,7 +436,7 @@ window.PREISE = {
     },
     {
      "id": "motion",
-     "name": "Motion Design",
+     "name": "Animation",
      "anfrage": true,
      "wer": "sehr individuell – wir klären es im Erstgespräch",
      "items": [],

@@ -58,7 +58,7 @@ def _mockup(p, pre, m=None):
                  + (f'<img class="rk-icons-bunt" src="{pre}{m["icons_bunt"]}" alt="" loading="lazy">' if m.get('icons_bunt') else '')
                  + f'<span>{esc(m.get("icons_titel", "Icons"))}</span></div>')
     if m.get('visitenkarte'):
-        h.append(f'<div class="rk-visitenkarte"><img src="{pre}{m["visitenkarte"]}" alt="Visitenkarte für {esc(p["kurzname"])}" loading="lazy"><span>Print</span></div>')
+        h.append(f'<div class="rk-visitenkarte"><img src="{pre}{m["visitenkarte"]}" alt="Visitenkarte für {esc(p["kurzname"])}" loading="lazy"><span>Druck</span></div>')
     if m.get('magazin'):
         # Magazin im Querformat: Seiten blättern nacheinander um (js/menue.js)
         h.append('<div class="rk-magazin"><div class="rk-heft">' + ''.join(f'<img src="{pre}{s}" alt="" loading="lazy">' for s in m['magazin'])
@@ -111,12 +111,12 @@ def fuer_wen(pre=''):
     # Je Zielgruppe zwei Karten (Anna 11.10.2026, Skizze): links das Angebot mit Unterzeile und Punkten, rechts breit die Referenz mit großem Screenshot
     felder = [
         ('mittelstand', 'Mittelstand', 'Ihre ganze Website, neu gedacht.',
-         ('Website', paket['unternehmen']['name'], paket['unternehmen']['wer'],
+         ('Webdesign', paket['unternehmen']['name'], paket['unternehmen']['wer'],
           ['Design-System und neue Startseite', 'Leistungs-, Branchen- und Referenzseiten', 'Karrierebereich mit Stellenangeboten und Bewerbungsformular'],
           preis('unternehmen'), f'{pre}service/website/#pakete'),
          ('Wolfgang Bauer Ingenieurbau', 'Strategie, Rebranding, UX/UI Design, Website und Unternehmenspräsentation.', 'bauer-website.jpg', f'{pre}#referenzen')),
         ('selbststaendige', 'Selbstständige', 'Klar auftreten, ohne Umwege.',
-         ('Website', paket['onepager']['name'], 'Für Selbstständige und kleine Angebote: eine Website, die alles auf den Punkt bringt, und eine Marke, die zu Ihnen passt.',
+         ('Webdesign', paket['onepager']['name'], 'Für Selbstständige und kleine Angebote: eine Website, die alles auf den Punkt bringt, und eine Marke, die zu Ihnen passt.',
           ['Alles auf einer Seite, responsiv', 'Mit SEO & LLM-Zitierfähigkeit', f'Dazu buchbar: Brand Basic mit Fragebogen, Brand Experience und Mitbewerberrecherche, {preis("brand-0")}'],
           preis('onepager'), f'{pre}service/website/#pakete'),
          ('Deinetwegen', 'Branding, UI/UX Design und Website für eine HR-Beratung.', 'deinetwegen-website.jpg', f'{pre}#referenzen')),
@@ -217,7 +217,7 @@ def anker(name):
 
 
 # Blog-Kategorien = Leistungen (Anna 13.10.2026), in dieser Reihenfolge; Kategorien ohne Beitrag werden ausgeblendet, bis einer da ist
-BLOG_KATEGORIEN = ['Brand', 'UI/UX', 'Website', 'Marketing & Vertrieb']
+BLOG_KATEGORIEN = ['Markenbildung', 'UI/UX', 'Webdesign', 'Marketing & Vertrieb']
 
 
 def blog_themen():

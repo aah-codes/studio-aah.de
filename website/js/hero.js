@@ -1,6 +1,6 @@
 // Hero: Leiste mit den Leistungen (Karten wie bei Dribbble, Anna 13.10.2026), die auf die Maus reagiert.
 // Maus links/rechts im Hero = Leiste läuft in diese Richtung (je weiter außen, desto schneller); über einer Karte hält sie an.
-// Karten nahe am Mauszeiger werden größer, heben sich und kippen leicht.
+// Kein Kippen oder Zoomen der Karten (Anna 13.10.2026: alle Bilder müssen scharf sein); beim Darüberfahren heben sie sich per CSS.
 // Ziehen mit Maus oder Finger verschiebt die Leiste; ein Klick ohne Ziehen öffnet die Leistung.
 // Pause-Taste hält die Leiste an (Bewegung, die von selbst läuft, muss sich anhalten lassen).
 // Tastatur: Fokus auf einer Karte hält die Leiste an und schiebt die Karte ins Bild.
@@ -20,8 +20,7 @@
     kopie.setAttribute('tabindex', '-1');
     spur.appendChild(kopie);
   });
-  const teile = [...spur.children];
-  const grund = still ? 0 : -0.9;
+    const grund = still ? 0 : -0.9;
   let x = 0, tempo = 0, zielTempo = grund, maus = null, ziehen = null, gezogen = false, breite = 0, angehalten = false, ueberKarte = false, fokus = false;
   const messen = () => { breite = spur.scrollWidth / 2; };
   messen();
@@ -74,26 +73,12 @@
   function schritt() {
     if (breite) {
       const bandR = band.getBoundingClientRect();
-      const sichtbar = bandR.bottom > 0 && bandR.top < innerHeight;
-      const imBand = !!maus && maus.y > bandR.top - 40 && maus.y < bandR.bottom + 40;
+            const imBand = !!maus && maus.y > bandR.top - 40 && maus.y < bandR.bottom + 40;
       const halt = angehalten || ueberKarte || fokus;
       if (!ziehen || !gezogen) { tempo += ((halt ? 0 : imBand ? zielTempo * .35 : zielTempo) - tempo) * .06; x += tempo; }
       x = ((x % breite) - breite) % breite;
-      spur.style.transform = `translate3d(${x.toFixed(1)}px,0,0)`;
+      spur.style.transform = `translate3d(${Math.round(x)}px,0,0)`; // ganze Pixel: Bilder und Schrift bleiben scharf
       band.classList.toggle('aktiv', imBand && !still);
-      if (sichtbar && !still) {
-        teile.forEach((t) => {
-          const r = t.getBoundingClientRect();
-          if (r.right < -200 || r.left > innerWidth + 200) return;
-          const mitte = r.left + r.width / 2;
-          const nah = imBand ? Math.max(0, 1 - Math.abs(maus.x - mitte) / 320) : 0;
-          const kipp = imBand ? Math.max(-1, Math.min(1, (maus.x - mitte) / 400)) : 0;
-          const hoch = imBand ? (maus.y - (bandR.top + bandR.height / 2)) / bandR.height : 0;
-          t.style.transform = `translateY(${(-nah * 12).toFixed(1)}px) scale(${(1 + nah * .08).toFixed(3)}) rotateY(${(kipp * 8).toFixed(1)}deg) rotateX(${(-hoch * nah * 8).toFixed(1)}deg)`;
-          t.style.zIndex = nah > .4 ? 2 : 1;
-          t.classList.toggle('nah', nah > .55);
-        });
-      }
     }
     requestAnimationFrame(schritt);
   }

@@ -64,9 +64,14 @@ BEISPIELE = {
     'print': '<img src="bilder/referenzen/goldhammer-flyer.jpg" alt="" loading="lazy">',
     # Markenbildung wie bei Dribbble als Raster: Rebranding Wolfgang Bauer Ingenieurbau (Folien und Markenfarben, aus den Folien gemessen)
     'brand': ('<span class="kb-raster"><img class="kb-r-gross" src="bilder/hero/bauer-praes-01.jpg" alt="" loading="lazy">'
-              '<span class="kb-r-farben"><i style="--f:#123261"><b>#123261</b></i><i style="--f:#f3d557;--t:#123261"><b>#F3D557</b></i><i style="--f:#fff;--t:#123261"><b>#FFFFFF</b></i></span>'
+              '<span class="kb-r-farben"><i style="--f:#123261"></i><i style="--f:#f3d557"></i><i style="--f:#fff"></i></span>'
               '<img src="bilder/hero/bauer-praes-04.jpg" alt="" loading="lazy"><img src="bilder/hero/bauer-praes-12.jpg" alt="" loading="lazy"></span>'),
     'motion': '<img src="bilder/film-bauer-vorschau.jpg" alt="" loading="lazy"><span class="kb-play"></span>',
+    # Produktdesign wie bei Dribbble: Website von Down to Earth (Kerstin Hack) und daneben ihre Markenfarben ohne Beschriftung
+    'ui-ux': ('<span class="kb-produkt"><span class="kb-p-seite"><img src="bilder/referenzen/leben-website.jpg?v=2" alt="" loading="lazy"></span>'
+              '<span class="kb-p-farben"><i style="--f:#3f9961"></i><i style="--f:#a88b45"></i><i style="--f:#2d3b42"></i><i style="--f:#f0eadb"></i></span></span>'),
+    # Illustration von STUDIO AAH! selbst (Bauhaus-Figur aus dem Blog)
+    'illustration': '<img src="bilder/blog-geld-und-zeit.webp" alt="" loading="lazy">',
     # Typografie: Schriftmuster aus den Hausschriften von STUDIO AAH! (Anton, Manrope, JetBrains Mono)
     'typo': '<span class="kb-typo"><span class="kb-typo-aa">Aa</span><span class="kb-typo-text">Manrope</span><span class="kb-typo-meta">Anton · JetBrains Mono</span></span>',
 }
@@ -76,9 +81,9 @@ KATEGORIEN = [
     {'id': 'print', 'titel': 'Druck', 'link': 'service/print/'},
     {'id': 'mobil', 'titel': 'Mobil', 'link': 'service/ui-ux/'},
     {'id': 'motion', 'titel': 'Animation', 'link': 'service/motion-design/'},
-    {'id': 'illustration', 'titel': 'Illustration', 'link': 'service/illustration-infografik/', 'bild': 'bilder/leistung-illustration.jpg'},
+    {'id': 'illustration', 'titel': 'Illustration', 'link': 'service/illustration-infografik/'},
     {'id': 'website', 'titel': 'Webdesign', 'link': 'service/website/'},
-    {'id': 'ui-ux', 'titel': 'Produktdesign', 'link': 'service/ui-ux/', 'bild': 'bilder/leistung-uiux.webp'},
+    {'id': 'ui-ux', 'titel': 'Produktdesign', 'link': 'service/ui-ux/'},
     {'id': 'typo', 'titel': 'Typografie', 'link': 'service/brand/'},
 ]
 def kat_bild(k):
