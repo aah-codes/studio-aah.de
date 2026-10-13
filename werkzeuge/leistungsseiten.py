@@ -154,7 +154,7 @@ def artikel(pre, tag):
 
 def direkt(pre):
     return f'''    <div class="lsx-duo-karte lsx-direkt">
-    <img src="{pre}bilder/studio-aah-gruenderin-anna-haertelt.webp" alt="Anna Härtelt, Gründerin von STUDIO AAH!" width="768" height="1024" loading="lazy">
+    <img src="{pre}bilder/anna-haertelt-studio-blau.webp" alt="Anna Härtelt, Gründerin von STUDIO AAH!" width="1200" height="1600" loading="lazy">
     <div>
       <p class="meta">Ihre Ansprechpartnerin</p>
       <h2 class="gr-h3" id="direkt-titel">Sie arbeiten direkt mit mir.</h2>
