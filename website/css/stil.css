@@ -1702,7 +1702,7 @@ ul.profil-kunst-quellen { list-style: none; padding: 0; }
 .zeitleiste li:nth-child(even) { grid-column: 2; flex-direction: row-reverse; text-align: right; border-radius: 999px 0 0 999px; padding: 0 0 0 56px; transform: translateY(55%); }
 .zl-marke { flex: none; align-self: stretch; display: flex; flex-direction: column; justify-content: center; width: 132px; margin: 28px 28px 28px -12px; padding: 16px 18px; background: var(--farbe-dunkel); color: var(--farbe-weiss); border-radius: 0 56px 56px 0; }
 .zeitleiste li:nth-child(even) .zl-marke { margin: 28px -12px 28px 28px; border-radius: 56px 0 0 56px; text-align: right; }
-.zl-marke small { font-size: .8rem; opacity: .8; }
+.zl-marke small { font-size: .8rem; }
 .zl-marke b { font-family: var(--schrift-ueberschrift); font-size: 2.4rem; line-height: 1; letter-spacing: .9px; font-weight: 400; }
 .zl-text { padding: 24px 0; }
 .zl-text .meta { margin: 0 0 4px; }
@@ -1920,9 +1920,9 @@ img.profil-bildtext-bild, .profil-bildtext-bild img { width: 100%; height: auto;
 @media (max-width: 767px) { .blog-liste.blog-vier { grid-template-columns: 1fr; padding: 0 var(--rand-seite-mobil) 64px; } }
 /* Zeitleisten: wo der Punkt blau ist, ist auch die Marke blau; alle Karten gleich hoch, Inhalt mittig (Anna 11.10.2026) */
 .zeitleiste { grid-auto-rows: 1fr; }
-.zeitleiste li:first-child .zl-marke, .zeitleiste li:last-child .zl-marke { background: #2f6bff; }
+.zeitleiste li:first-child .zl-marke, .zeitleiste li:last-child .zl-marke { background: var(--farbe-primaer); }
 .profil-erfahrung .zeitleiste li .zl-marke { background: var(--farbe-dunkel); }
-.profil-erfahrung .zeitleiste li.zl-aktuell .zl-marke { background: #2f6bff; }
+.profil-erfahrung .zeitleiste li.zl-aktuell .zl-marke { background: var(--farbe-primaer); }
 /* Button-Hierarchie (Anna 11.10.2026, Best Practice): Primär = blau gefüllt (Hauptaktion, v. a. „Projekt anfragen“),
    Sekundär = schwarze Outline, Tertiär = unterstrichener Textlink. Alle mit Pfeil. Blau #2a5fe6: Kontrast zu Weiß ca. 5,4 : 1 (WCAG AA). */
 :root { --farbe-primaer: #2a5fe6; --farbe-primaer-dunkel: #1f4cc4; }
@@ -2237,3 +2237,5 @@ section[hidden] { display: none !important; }
 /* stärker als .artikel-ratgeber .artikel-text ol, damit Linie und Punkte genau übereinander sitzen */
 .artikel-ratgeber .artikel-text .grafik-prozess .zeitleiste { padding-left: 28px; margin: 20px 0 0; }
 @media (max-width: 600px) { .artikel-ratgeber .artikel-text .grafik-prozess .zeitleiste { padding-left: 22px; } }
+/* Kontrast (Anna 13.10.2026): „Schritt“/„seit“ voll deckend, blaue Marken im Button-Blau – Weiß darauf 5,4 : 1 statt 4,5 : 1 */
+.zl-marke small { opacity: 1; }
