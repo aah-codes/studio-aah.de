@@ -31,7 +31,7 @@
 - Kartenreihen: Unterzeilen, Listen und Buttons auf einer Linie; H1 nie breiter als die Seite.
 - Website-Screenshots kommen aus der Bildbibliothek `website/bilder/referenzen/` (1440 px breit).
 - Wiedererkennung (Anna, 13.10.2026), immer gleich einsetzen:
-  1. Eigene Figur aus Bauhaus-Grundformen nach Oskar Schlemmers Triadischem Ballett: Kopf Kreis mit weißem Auge, Rumpf Quadrat, blauer Halbkreis-Rock, Glieder als Balken; weiße Fugen statt Blau an Schwarz. Konstruktion in `werkzeuge/grafiken/blog/geld-und-zeit-titel.py`.
+  1. Eigene Figur aus Bauhaus-Grundformen nach Oskar Schlemmers Triadischem Ballett: Kopf Kreis mit weißem Auge, Rumpf Quadrat, blauer Halbkreis-Rock, Glieder als Balken; Arme sitzen immer direkt am Rumpf, ohne Abstand (Anna, 13.10.2026); weiße Fugen statt Blau an Schwarz. Konstruktion in `werkzeuge/grafiken/blog/geld-und-zeit-titel.py`.
   2. Ausrufe als Pointe („AAH!“, „OHO!“, „WOW!“), knallhart Schwarz-Weiß in Anton.
   3. Redaktioneller Rahmen: Linien mit Beschriftung, gedrehte Wörter am Rand, wiederholte Schriftbänder.
   4. Echte Fotos von Anna statt KI-Bilder: Schwarz-Weiß ausgeschnitten, kombiniert mit blauen Flächen.
