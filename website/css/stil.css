@@ -2408,3 +2408,14 @@ section[hidden] { display: none !important; }
   .hero-titel { font-size: clamp(52px, 6.6vw, 112px); white-space: nowrap; }
   .hero-titel > span { display: inline-block; }
 }
+/* „Für wen“ auf Creme statt Blau (Anna 13.10.2026) */
+.dk { background: var(--farbe-creme); color: var(--farbe-dunkel); }
+.dk > .meta { color: var(--farbe-gedaempft); }
+.dk > .meta::before { background: var(--farbe-primaer) !important; }
+.dk-umschalter { background: rgba(14, 16, 17, .06); }
+.dk-umschalter button { color: var(--farbe-dunkel); }
+.dk-umschalter button[aria-selected="true"] { background: var(--farbe-weiss); color: var(--farbe-dunkel); box-shadow: 0 2px 8px rgba(14, 16, 17, .08); }
+.dk-umschalter button:focus-visible { outline-color: var(--farbe-dunkel); }
+.dk-titel { color: var(--farbe-dunkel); }
+.dk-unter { color: var(--farbe-gedaempft); }
+.dk-karte { box-shadow: 0 12px 30px rgba(14, 16, 17, .07); }
