@@ -63,7 +63,7 @@ BEISPIELE = {
                         for n, h in [('deinetwegen-handy.jpg', 9000), ('studio-aah-handy.jpg', 9923)]) + '</span>'),
     # Webdesign: Foto-Mockup Laptop auf Podest (Vorlage von Anna, Mockuptree, 13.10.2026); die Website sitzt per matrix3d
     # genau im Bildschirm (Ecken im 2000 × 1500 px großen Foto: 530|440, 1248|401, 1334|926, 615|1012) und scrollt wie bisher
-    'website': ('<span class="kb-szene"><img class="kb-szene-bild" src="bilder/mockups/laptop-podest.webp" alt="" width="1000" height="750" loading="lazy">'
+    'website': ('<span class="kb-szene" style="--sb:2000;--sh:1500"><img class="kb-szene-bild" src="bilder/mockups/laptop-podest.webp" alt="" width="1000" height="750" loading="lazy">'
                 '<span class="kb-szene-schirm" style="transform:matrix3d(0.5768583309,-0.002993487456,0,6.037555358e-05,0.08645866767,0.6267902485,0,-1.30273683e-05,0,0,1,0,528,438,0,1)">'
                 '<span class="laptop-seite"><img src="bilder/referenzen/bauer-website.jpg" alt="" width="1440" height="6000" loading="lazy"></span></span></span>'),
     # Druck: Visitenkarten von Dr. Simone Goldhammer auf dem Schreibtisch (werkzeuge/grafiken/druck-mockup.py)
@@ -72,7 +72,11 @@ BEISPIELE = {
     'brand': ('<span class="kb-raster"><img class="kb-r-gross" src="bilder/hero/bauer-praes-01.jpg" alt="" loading="lazy">'
               '<span class="kb-r-farben"><i style="--f:#123261"></i><i style="--f:#f3d557"></i><i style="--f:#fff"></i></span>'
               '<img src="bilder/hero/bauer-praes-04.jpg" alt="" loading="lazy"><img src="bilder/hero/bauer-praes-12.jpg" alt="" loading="lazy"></span>'),
-    'motion': '<img src="bilder/film-bauer-vorschau.jpg" alt="" loading="lazy"><span class="kb-play"></span>',
+    # Animation: Foto-Mockup Laptop in Händen vor Wolken (Vorlage von Anna, Bendito Mockup, 13.10.2026, Ausschnitt 4:3 ab x = 120);
+    # im Bildschirm der Bauer-Launch-Film: Standbild, beim Darüberfahren läuft der Film stumm (js/hero.js, lädt erst dann)
+    'motion': ('<span class="kb-szene" style="--sb:1777;--sh:1333"><img class="kb-szene-bild" src="bilder/mockups/laptop-wolken.webp" alt="" width="1000" height="750" loading="lazy">'
+               '<span class="kb-szene-schirm" style="transform:matrix3d(0.4712927933,-0.01449482037,0,-2.30025695e-05,0.01573352095,0.5063413888,0,1.697912788e-05,0,0,1,0,528,455,0,1)">'
+               '<video class="kb-film" src="videos/launchvideo-bauer.mp4" poster="bilder/film-bauer-vorschau.jpg" muted loop playsinline preload="none"></video></span></span><span class="kb-play"></span>'),
     # Produktdesign wie bei Dribbble: Website von Down to Earth (Kerstin Hack) und daneben ihre Markenfarben ohne Beschriftung
     'ui-ux': ('<span class="kb-produkt"><span class="kb-p-buehne"><span class="kb-p-seite"><img src="bilder/referenzen/leben-website.jpg?v=2" alt="" loading="lazy"></span></span>'
               '<span class="kb-p-farben">' + ''.join(f'<i style="--f:{f};--t:{t}">{f.upper()}</i>' for f, t in

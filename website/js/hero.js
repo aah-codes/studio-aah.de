@@ -84,3 +84,14 @@
   }
   requestAnimationFrame(schritt);
 })();
+
+// Animation-Karte: Film im Laptop läuft nur beim Darüberfahren (stumm, lädt erst dann); bei „Bewegung reduzieren“ bleibt das Standbild
+(() => {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('.hero-spur .kat').forEach((karte) => {
+    const film = karte.querySelector('.kb-film');
+    if (!film) return;
+    karte.addEventListener('mouseenter', () => { film.play().catch(() => {}); });
+    karte.addEventListener('mouseleave', () => { film.pause(); });
+  });
+})();
