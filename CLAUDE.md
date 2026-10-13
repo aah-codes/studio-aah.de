@@ -17,7 +17,7 @@
 - `python3 werkzeuge/grafiken/ci-film.py` – CI-Grafik (`werkzeuge/grafiken/corporate-identity.html`)
 - Erzeugte Bereiche nie direkt in `website/` ändern, sondern in der Quelle, dann neu erzeugen.
 - Nach CSS- oder JS-Änderungen die Cache-Version `?v=…` überall erhöhen (z. B. `sed` über `grep -rl` in `website` und `werkzeuge`), dann alle Generatoren laufen lassen.
-- Prüfen mit `bash werkzeuge/pruefen.sh` (Meldungen zu `website/entwurf-hero` ignorieren).
+- Prüfen mit `bash werkzeuge/pruefen.sh` (Meldungen zu Entwurfsseiten `website/entwurf-…` ignorieren; sie haben bewusst keinen Kopf und Fuß).
 - Python 3.9: keine verschachtelten f-Strings mit gleichen Anführungszeichen.
 
 ## Gestaltungsregeln (Kurzfassung der Branding-Richtlinien)
@@ -36,6 +36,13 @@
   3. Redaktioneller Rahmen: Linien mit Beschriftung, gedrehte Wörter am Rand, wiederholte Schriftbänder.
   4. Echte Fotos von Anna statt KI-Bilder: Schwarz-Weiß ausgeschnitten, kombiniert mit blauen Flächen.
 - Social Media darf lauter sein (ganze Flächen Schwarz oder Blau, sehr große Schrift); die Website bleibt ruhig: viel Weiß, feine Linien (1,5 px), wenig Creme.
+
+## Inspiration (von Anna gesammelt, „passt zu meinem Stil“) – keine Regel, nicht kopieren
+- 13.10.2026, Dribbble „Mall Website Retail Shopping Center“ (https://dribbble.com/shots/27796777): Foto im ganzen Bild, einfarbig eingefärbt (Duoton, duotone) in Orangerot, große weiße Serifen-Überschrift im Bild, kleine Zeichen (Kreuz, Stern, Plus) als Schmuck. Anna will ihre Bilder so – in Blau, leicht bewegt. Die Animation selbst war in der Cloud nicht sichtbar.
+- 13.10.2026, Farbtafel: `#8B1D00` (Rostrot), `#1B100F` (warmes Fast-Schwarz), `#F8F8F8`, `#EFE7EF` (blasses Flieder) – als Raster aus Quadraten und Kreisen im Wechsel.
+- 13.10.2026, Abspann „Thanks for watching“: fette geometrische Groteske in Versalien, langer dünner Pfeil →, Auge als Zeichen (weiße Ellipse, rote Iris, schwarze Pupille), Fließtext mit kursiven Einzelwörtern, Zeichenreihe am Ende (Herz, Zackenkreis/Siegel, Kreis in Klammern), heller Fliederhintergrund.
+- 13.10.2026, Wortmarke „INFLURY“: breite Groteske in Weiß über Foto, ein einzelner Buchstabe (das F) fließend und handschriftlich geformt. Anna: so etwas für ein A in „STUDIO AAH!“ – etwas langgezogen, „fluffiger, handschriftlicher“.
+- Widerspruch zu den Regeln oben (Kein Rot, Herzen vermeiden): Inspiration ändert die Regeln nicht; erst nach Annas Entscheidung anpassen.
 
 ## Arbeitsweise
 - Antworten auf Deutsch, in Stichpunkten, Schritt für Schritt; Fachbegriffe mit dem englischen Begriff in Klammern.

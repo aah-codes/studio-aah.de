@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Entwurf: Startseite – H1 und Bildwelt in Blau | STUDIO AAH!</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="../bilder/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="stylesheet" href="../css/stil.css?v=20261016a">
+  <style>
+    /* Entwurf 13.10.2026 – nur auf dieser Seite, nicht in stil.css, bis Anna entscheidet */
+    .ew-hinweis { background: var(--farbe-dunkel); color: var(--farbe-weiss); font-family: var(--schrift-meta); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; padding: 12px var(--rand-seite); }
+    .ew-hinweis a { color: inherit; }
+    .ew-abschnitt { padding: 72px var(--rand-seite); border-bottom: 1.5px solid #d6d8d9; }
+    .ew-etikett { font-family: var(--schrift-meta); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; margin: 0 0 24px; display: flex; gap: 12px; align-items: center; }
+    .ew-etikett::after { content: ""; flex: 1; height: 1.5px; background: var(--farbe-dunkel); }
+    .ew-notiz { max-width: 62ch; margin: 28px 0 0; color: var(--farbe-gedaempft); font-size: 15px; }
+    .ew-nochmal { margin-top: 20px; font: inherit; font-size: 15px; background: none; border: 0; padding: 0; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; color: var(--farbe-dunkel); }
+
+    /* Variante A: Farbverlauf in der Schrift, läuft einmal (4 s) und bleibt dann stehen */
+    .ew-verlauf { background-image: linear-gradient(90deg, var(--v1) 0%, var(--v2) 25%, var(--v1) 50%, var(--v2) 75%, var(--v1) 100%); background-size: 200% 100%; background-position: 0 0; -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .ew-a1 { --v1: #2a5fe6; --v2: #ff4fa3; }
+    .ew-a2 { --v1: #2a5fe6; --v2: #0e1011; }
+    .hero-titel > span > span.ew-verlauf { animation: aus-maske .9s cubic-bezier(.2, .8, .2, 1) .12s both, ew-verlauf 4s ease-in-out .5s both; }
+    @keyframes ew-verlauf { from { background-position: 100% 0; } to { background-position: 0 0; } }
+
+    /* Variante B: Grundformen rollen, fallen, klappen und springen einmal an ihren Platz (fertig nach 4 s) */
+    .ew-b > span:first-child > span { display: inline-flex; flex-wrap: wrap; align-items: center; column-gap: .22em; }
+    .ew-formen { display: inline-flex; align-items: center; gap: .1em; font-size: .62em; }
+    .ew-formen i { display: block; width: 1em; height: 1em; }
+    .ew-formen .k { background: #2f6bff; border-radius: 50%; animation: ew-rollen 1.3s cubic-bezier(.3, .7, .2, 1) .9s both; }
+    .ew-formen .q { background: var(--farbe-dunkel); animation: ew-fallen .8s cubic-bezier(.3, 1.4, .5, 1) 1.8s both; }
+    .ew-formen .h { background: #2f6bff; border-radius: 1em 1em 0 0; height: .5em; margin-top: .5em; transform-origin: 50% 100%; animation: ew-klappen .8s cubic-bezier(.3, 1.4, .5, 1) 2.4s both; }
+    .ew-formen .d { background: var(--farbe-dunkel); clip-path: polygon(50% 0, 100% 100%, 0 100%); animation: ew-springen .7s cubic-bezier(.3, 1.6, .5, 1) 3s both; }
+    @keyframes ew-rollen { from { transform: translateX(-4em) rotate(-360deg); opacity: 0; } 20% { opacity: 1; } }
+    @keyframes ew-fallen { from { transform: translateY(-2.2em); opacity: 0; } 30% { opacity: 1; } }
+    @keyframes ew-klappen { from { transform: rotate(180deg); opacity: 0; } 30% { opacity: 1; } }
+    @keyframes ew-springen { from { transform: scale(0); } }
+
+    /* Bildwelt in Blau: Foto einfarbig (Duoton), Text im Bild, leicht bewegt */
+    .ew-buehne { position: relative; overflow: hidden; background: var(--farbe-dunkel); aspect-ratio: 16 / 9; max-height: 86vh; width: 100%; }
+    .ew-buehne img { position: absolute; inset: -6% 0; width: 100%; height: 112%; object-fit: cover; animation: ew-aufdecken 1.1s cubic-bezier(.2, .8, .2, 1) both, ew-setzen 5s cubic-bezier(.2, .7, .2, 1) both; }
+    .ew-buehne::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(14, 16, 17, .62) 0%, rgba(14, 16, 17, 0) 34%), linear-gradient(to top, rgba(14, 16, 17, .72) 0%, rgba(14, 16, 17, 0) 55%); pointer-events: none; }
+    @keyframes ew-aufdecken { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0 0 0 0); } }
+    @keyframes ew-setzen { from { scale: 1.12; } to { scale: 1; } }
+    .ew-buehne-text { position: absolute; z-index: 1; left: var(--rand-seite); right: var(--rand-seite); bottom: clamp(24px, 5vw, 64px); color: var(--farbe-weiss); }
+    .ew-buehne-titel { font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-size: clamp(40px, 7.4vw, 118px); line-height: 1.02; letter-spacing: .9px; margin: 0; max-width: 11em; }
+    .ew-buehne-ecke { position: absolute; z-index: 1; top: clamp(20px, 4vw, 48px); right: var(--rand-seite); color: var(--farbe-weiss); background: var(--farbe-dunkel); padding: .5em .6em .55em; text-align: right; font-size: clamp(14px, 1.6vw, 22px); }
+    .ew-buehne-ecke b { display: block; font-family: var(--schrift-ueberschrift); font-weight: 400; font-size: clamp(32px, 4.6vw, 72px); line-height: 1; letter-spacing: .9px; }
+    .ew-zeichen { display: inline-flex; gap: .14em; font-size: clamp(14px, 1.8vw, 28px); margin-top: .35em; }
+    .ew-zeichen i { display: block; width: 1em; height: 1em; background: var(--farbe-weiss); }
+    .ew-zeichen .k { border-radius: 50%; }
+    .ew-zeichen .h { height: .5em; margin-top: .5em; border-radius: 1em 1em 0 0; }
+    .ew-zeichen .d { clip-path: polygon(50% 0, 100% 100%, 0 100%); }
+
+    .ew-paare { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .ew-paare figure { margin: 0; }
+    .ew-rahmen { overflow: hidden; aspect-ratio: 3 / 4; background: var(--farbe-dunkel); }
+    .ew-rahmen img { width: 100%; height: 100%; object-fit: cover; display: block; scale: 1.1; transition: scale 1.2s cubic-bezier(.2, .7, .2, 1); }
+    .ew-paare figure:hover img { scale: 1.16; }
+    .ew-paare figcaption { font-family: var(--schrift-meta); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; margin-top: 10px; }
+
+    /* Freigestellt vor einfarbigem Blau (Vorbild: Foto auf monochromer Fläche) */
+    .ew-frei { position: relative; overflow: hidden; background: var(--farbe-primaer); color: var(--farbe-weiss); display: grid; grid-template-columns: 1fr minmax(0, 46%); min-height: min(86vh, 860px); }
+    .ew-frei-text { align-self: end; padding: 0 0 clamp(28px, 5vw, 64px) var(--rand-seite); position: relative; z-index: 1; }
+    .ew-frei-bild { position: relative; align-self: end; height: 100%; display: flex; align-items: flex-end; justify-content: center; }
+    .ew-frei-bild img { display: block; width: auto; max-width: 100%; height: auto; max-height: 100%; object-fit: contain; object-position: bottom; transform-origin: 50% 100%; animation: ew-auftritt 1.2s cubic-bezier(.2, .8, .2, 1) both, ew-setzen-frei 5s cubic-bezier(.2, .7, .2, 1) both; }
+    @keyframes ew-auftritt { from { translate: 0 8%; opacity: 0; } }
+    @keyframes ew-setzen-frei { from { scale: 1.06; } to { scale: 1; } }
+    .ew-frei .ew-buehne-ecke { background: none; padding: 0; }
+    .ew-frei-raster { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .ew-frei-raster figure { margin: 0; }
+    .ew-frei-raster .ew-rahmen { background: var(--farbe-primaer); display: flex; align-items: flex-end; justify-content: center; }
+    .ew-frei-raster .ew-rahmen img { scale: 1; width: 100%; height: auto; object-fit: contain; transform-origin: 50% 100%; }
+    .ew-frei-raster figure:hover img { scale: 1.04; }
+    .ew-frei-raster figcaption { font-family: var(--schrift-meta); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; margin-top: 10px; }
+
+    /* Beim Scrollen wandert das Bild ein wenig mit (nur wo der Browser das kann; vom Nutzer ausgelöst) */
+    @supports (animation-timeline: view()) {
+      .ew-mitlauf { animation: ew-mitlauf linear both; animation-timeline: view(); }
+      .ew-buehne img.ew-mitlauf { animation: ew-aufdecken 1.1s cubic-bezier(.2, .8, .2, 1) both, ew-setzen 5s cubic-bezier(.2, .7, .2, 1) both, ew-mitlauf linear both; animation-timeline: auto, auto, view(); }
+      @keyframes ew-mitlauf { from { translate: 0 -4%; } to { translate: 0 4%; } }
+    }
+
+    @media (max-width: 700px) {
+      .ew-buehne { aspect-ratio: 4 / 5; }
+      .ew-paare, .ew-frei-raster { grid-template-columns: repeat(2, 1fr); }
+      .ew-frei { grid-template-columns: 1fr; min-height: 0; }
+      .ew-frei-bild { order: -1; height: auto; padding-top: 72px; }
+      .ew-frei-bild img { max-height: 62vh; }
+      .ew-frei-text { padding: 24px var(--rand-seite) 36px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-titel > span > span.ew-verlauf, .ew-formen i, .ew-buehne img, .ew-frei-bild img, .ew-mitlauf { animation: none !important; }
+      .ew-paare img, .ew-frei-raster img { transition: none; }
+    }
+  </style>
+</head>
+<body>
+<p class="ew-hinweis">Entwurf, nicht verlinkt · 13.10.2026 · <a href="../">Zur Startseite →</a></p>
+
+<main id="inhalt">
+  <section class="ew-abschnitt">
+    <h1 class="ew-etikett">Entwurf Startseite: H1 und Bildwelt</h1>
+    <p class="ew-notiz">Alle Bewegungen laufen einmal beim Laden und stehen nach höchstens 5 Sekunden still. Wer im Betriebssystem „Bewegung reduzieren“ eingestellt hat, sieht alles sofort ruhig.</p>
+    <button class="ew-nochmal" type="button" onclick="location.reload()">Bewegung noch einmal ansehen ↻</button>
+  </section>
+
+  <section class="ew-abschnitt" aria-labelledby="a1">
+    <p class="ew-etikett">Variante A1 · Farbverlauf Blau und Rosa</p>
+    <h2 class="hero-titel" id="a1"><span><span>Ihr Weg zu</span></span> <span><span class="ew-verlauf ew-a1">digitaler Sichtbarkeit</span></span></h2>
+    <p class="ew-notiz">Rosa (#ff4fa3) stammt aus dem Farbtafel-Vorschlag und ist noch nicht freigegeben. Kontrast Rosa auf Weiß: 3,0 : 1 – reicht nur für sehr große Schrift.</p>
+  </section>
+
+  <section class="ew-abschnitt" aria-labelledby="a2">
+    <p class="ew-etikett">Variante A2 · Farbverlauf Blau und Schwarz (innerhalb der heutigen Regeln)</p>
+    <h2 class="hero-titel" id="a2"><span><span>Ihr Weg zu</span></span> <span><span class="ew-verlauf ew-a2">digitaler Sichtbarkeit</span></span></h2>
+  </section>
+
+  <section class="ew-abschnitt" aria-labelledby="b">
+    <p class="ew-etikett">Variante B · Grundformen, einmalig bewegt</p>
+    <h2 class="hero-titel ew-b" id="b"><span><span>Ihr Weg zu <span class="ew-formen" aria-hidden="true"><i class="k"></i><i class="q"></i><i class="h"></i><i class="d"></i></span></span></span> <span><span>digitaler Sichtbarkeit</span></span></h2>
+    <p class="ew-notiz">Kreis rollt herein, Quadrat fällt, Halbkreis klappt hoch, Dreieck springt auf – danach Ruhe. Zwischen Blau und Schwarz bleibt immer eine weiße Fuge.</p>
+  </section>
+
+  <section aria-labelledby="bild">
+    <p class="ew-etikett" style="padding: 72px var(--rand-seite) 0">Bildwelt in Blau · Foto im ganzen Bild, leicht bewegt</p>
+    <div class="ew-buehne">
+      <img class="ew-mitlauf" src="../bilder/blau/studio-anna-haertelt-triton.webp" alt="Das Studio von STUDIO AAH!: Schreibtisch mit Bildschirmen und Bürostuhl, ein Ledersofa vor hohen Fenstern und Backsteinwand" width="1600" height="1067">
+      <div class="ew-buehne-ecke" aria-hidden="true"><b>AAH!</b><span class="ew-zeichen"><i class="k"></i><i class="h"></i><i class="q"></i><i class="d"></i></span></div>
+      <div class="ew-buehne-text"><h2 class="ew-buehne-titel" id="bild">Ihr Weg zu digitaler Sichtbarkeit</h2></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="frei">
+    <p class="ew-etikett" style="padding: 72px var(--rand-seite) 0">Freigestellt · Hintergrund einfarbig Blau, Person blau getönt</p>
+    <div class="ew-frei">
+      <div class="ew-buehne-ecke" aria-hidden="true"><b>AAH!</b><span class="ew-zeichen"><i class="k"></i><i class="h"></i><i class="q"></i><i class="d"></i></span></div>
+      <div class="ew-frei-text"><h2 class="ew-buehne-titel" id="frei">Ihr Weg zu digitaler Sichtbarkeit</h2></div>
+      <div class="ew-frei-bild"><img src="../bilder/blau/anna-haertelt-portraet-frei-blau.webp" alt="Anna Härtelt, Gründerin von STUDIO AAH!, freigestellt vor blauem Hintergrund" width="794" height="1191"></div>
+    </div>
+  </section>
+
+  <section class="ew-abschnitt" aria-labelledby="frei-vergleich">
+    <h2 class="ew-etikett" id="frei-vergleich">Freigestellt: blau getönt oder Schwarz-Weiß</h2>
+    <div class="ew-frei-raster">
+      <figure><div class="ew-rahmen"><img src="../bilder/blau/anna-haertelt-portraet-frei-blau.webp" alt="Anna Härtelt, blau getönt, vor blauem Hintergrund" width="794" height="1191" loading="lazy"></div><figcaption>Blau getönt auf Blau</figcaption></figure>
+      <figure><div class="ew-rahmen"><img src="../bilder/blau/anna-haertelt-portraet-frei-sw.webp" alt="Anna Härtelt in Schwarz-Weiß vor blauem Hintergrund" width="794" height="1191" loading="lazy"></div><figcaption>Schwarz-Weiß auf Blau</figcaption></figure>
+      <figure><div class="ew-rahmen"><img src="../bilder/blau/studio-aah-gruenderin-anna-haertelt-frei-blau.webp" alt="Anna Härtelt mit Brille, blau getönt, vor blauem Hintergrund" width="768" height="1024" loading="lazy"></div><figcaption>Blau getönt auf Blau</figcaption></figure>
+      <figure><div class="ew-rahmen"><img src="../bilder/blau/studio-aah-gruenderin-anna-haertelt-frei-sw.webp" alt="Anna Härtelt mit Brille in Schwarz-Weiß vor blauem Hintergrund" width="768" height="1024" loading="lazy"></div><figcaption>Schwarz-Weiß auf Blau</figcaption></figure>
+    </div>
+    <p class="ew-notiz">Freigestellt mit einem frei verfügbaren KI-Modell (IS-Net). Die blaue Fläche kommt aus dem CSS – die Farbe lässt sich also jederzeit tauschen.</p>
+  </section>
+
+  <section class="ew-abschnitt" aria-labelledby="paare">
+    <h2 class="ew-etikett" id="paare">Ganzes Foto eingefärbt: zwei Färbungen zum Vergleich</h2>
+    <div class="ew-paare">
+      <figure><div class="ew-rahmen"><img class="ew-mitlauf" src="../bilder/blau/anna-haertelt-portraet-duoton.webp" alt="Anna Härtelt, Gründerin von STUDIO AAH!, eingefärbt in Schwarz und Blau" width="794" height="1191" loading="lazy"></div><figcaption>Duoton: Schwarz → Blau</figcaption></figure>
+      <figure><div class="ew-rahmen"><img class="ew-mitlauf" src="../bilder/blau/anna-haertelt-portraet-triton.webp" alt="Anna Härtelt, Gründerin von STUDIO AAH!, eingefärbt in Schwarz, Blau und Weiß" width="794" height="1191" loading="lazy"></div><figcaption>Triton: Schwarz → Blau → Weiß</figcaption></figure>
+      <figure><div class="ew-rahmen"><img class="ew-mitlauf" src="../bilder/blau/studio-aah-gruenderin-anna-haertelt-duoton.webp" alt="Anna Härtelt mit Brille und weißem Pullover, eingefärbt in Schwarz und Blau" width="768" height="1024" loading="lazy"></div><figcaption>Duoton: Schwarz → Blau</figcaption></figure>
+      <figure><div class="ew-rahmen"><img class="ew-mitlauf" src="../bilder/blau/studio-aah-gruenderin-anna-haertelt-triton.webp" alt="Anna Härtelt mit Brille und weißem Pullover, eingefärbt in Schwarz, Blau und Weiß" width="768" height="1024" loading="lazy"></div><figcaption>Triton: Schwarz → Blau → Weiß</figcaption></figure>
+    </div>
+    <p class="ew-notiz">Die Bilder bewegen sich beim Scrollen ein wenig mit (in Browsern, die das noch nicht können, bleiben sie ruhig). Erzeugt mit <code>werkzeuge/grafiken/duoton.py</code> aus den vorhandenen Schwarz-Weiß-Fotos.</p>
+  </section>
+</main>
+</body>
+</html>
