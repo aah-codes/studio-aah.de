@@ -57,8 +57,8 @@ start.write_text(einsetzen(start.read_text(encoding='utf-8'), 'LEISTUNGEN', star
 # Jede Karte führt zur Leistungsseite. Wo es ein echtes Beispiel gibt, steht es als Mockup in der Karte, sonst das Kartenbild der Leistung.
 BEISPIELE = {
     # Mobil (Anna 13.10.2026, Vorbild Dribbble „Mobile“): zwei Handys nebeneinander, führt zu UI/UX
-    # Mobil wie bei Dribbble: zwei Handys mit dünnem schwarzem Rahmen, heller Grund mit Lichtkante und schwebenden Grundformen
-    'mobil': ('<span class="kb-mobil"><i class="kb-form kb-form-kreis"></i><i class="kb-form kb-form-halb"></i><i class="kb-form kb-form-quadrat"></i>'
+    # Mobil wie bei Dribbble: zwei Handys mit dünnem schwarzem Rahmen, heller Grund mit Lichtkante, eine große Form dahinter (Anna 13.10.2026)
+    'mobil': ('<span class="kb-mobil"><i class="kb-form-gross"></i>'
               + ''.join(f'<span class="kb-phone"><span class="kb-phone-screen"><img src="bilder/referenzen/{n}" alt="" width="860" height="{h}" decoding="async"></span></span>'
                         for n, h in [('deinetwegen-handy.jpg', 9000), ('studio-aah-handy.jpg', 9923)]) + '</span>'),
     'website': '<span class="band-teil laptop kb-laptop"><span class="laptop-bildschirm"><span class="laptop-seite"><img src="bilder/referenzen/bauer-website.jpg" alt="" width="1440" height="6000"></span></span><span class="laptop-unterteil"></span></span>',

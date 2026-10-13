@@ -2405,15 +2405,14 @@ section[hidden] { display: none !important; }
 /* Mobil wie bei Dribbble: dünner schwarzer Rahmen, heller Grund mit weicher Lichtkante, schwebende Bauhaus-Formen */
 .kb-mobil { position: relative; display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; height: 100%;
   background: linear-gradient(118deg, #e9eaea 0%, #f2f3f3 38%, #fbfbfb 46%, #eeefef 47%, #e6e7e7 100%); }
-.kb-phone { position: relative; z-index: 1; height: 84%; aspect-ratio: 9 / 19.2; padding: 2.5px; border-radius: 15px; background: #111314; box-shadow: 0 0 0 .5px #3a3d3f, 0 12px 22px rgba(14, 16, 17, .18); }
+.kb-phone { position: relative; z-index: 1; height: 80%; aspect-ratio: 9 / 19.2; padding: 2.5px; border-radius: 15px; background: #111314; box-shadow: 0 0 0 .5px #3a3d3f, 0 12px 22px rgba(14, 16, 17, .18); }
 .kb-phone::before { content: ""; position: absolute; z-index: 2; top: 6px; left: 50%; translate: -50% 0; width: 28%; height: 6px; border-radius: 4px; background: #111314; }
 .kb-phone-screen { display: block; width: 100%; height: 100%; overflow: hidden; border-radius: 12.5px; background: #fff; container-type: size; }
 .kb-phone-screen img { display: block; width: 100%; height: auto; animation: website-scroll 60s linear infinite alternate; }
 .kb-phone:last-child .kb-phone-screen img { animation-delay: -20s; }
-.kb-form { position: absolute; z-index: 0; display: block; }
-.kb-form-kreis { left: 9%; top: 12%; width: 18px; height: 18px; border-radius: 50%; background: var(--farbe-primaer); }
-.kb-form-halb { right: 10%; bottom: 14%; width: 22px; height: 11px; border-radius: 22px 22px 0 0; background: var(--farbe-dunkel); }
-.kb-form-quadrat { right: 14%; top: 16%; width: 10px; height: 10px; background: #9a9d9e; rotate: 18deg; }
+/* eine große Form hinter den Handys (kleine Formen sind im kleinen Format kaum zu sehen); weiße Fuge statt Blau an Schwarz */
+.kb-form-gross { position: absolute; z-index: 0; left: 50%; bottom: 0; width: 96%; aspect-ratio: 2 / 1; translate: -50% 0; border-radius: 999px 999px 0 0; background: var(--farbe-primaer); }
+.kb-mobil .kb-phone { box-shadow: 0 0 0 2px var(--farbe-weiss), 0 12px 22px rgba(14, 16, 17, .2); }
 @media (prefers-reduced-motion: reduce) { .kb-phone-screen img { animation: none; } }
 /* Mehr Weißraum um die Leiste (Anna 13.10.2026) */
 .hero-band { padding: 56px 0 64px; }
