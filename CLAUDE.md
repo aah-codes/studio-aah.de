@@ -6,7 +6,7 @@
 - Veröffentlicht wird nur der Ordner `website/` (GitHub Pages, Workflow `.github/workflows/github-pages.yml`). Alles andere (Werkzeuge) bleibt draußen.
 - Das Repository ist öffentlich: nur Dateien hinein, die jeder sehen darf. Nur Schriften mit freier Lizenz (SIL OFL), keine internen Notizen, Preise oder Kundendaten.
 
-## Stand (12.10.2026)
+## Stand (13.10.2026)
 - Die Website ist umgesetzt und live. Die WordPress-Vorlage im Nachbarordner ist nur noch Archiv. Texte ändert Anna laufend; neue Texte nur nach ihrer Vorgabe, nichts dazuerfinden.
 - In Cloud-Sitzungen gibt es keinen Zugriff auf den iCloud-Ordner `Betrieb` (Projektstatus, Branding-Richtlinien). Die wichtigsten Regeln stehen deshalb unten. Was in `Betrieb` eingetragen werden müsste, am Ende als Liste für Anna ausgeben.
 
@@ -16,6 +16,8 @@
 - `python3 werkzeuge/inhalte-erzeugen.py` – Referenzen, „Für wen“, Stimmen, Blog-Vorschau, Kennzahlen (Marker `<!-- NAME:START -->` … `<!-- NAME:ENDE -->`)
 - `python3 werkzeuge/blog/was-kostet-eine-website.py` – Blogbeitrag „Was kostet eine Website“ aus `werkzeuge/blog/was-kostet-eine-website-inhalt.html` (Inhalt) und Kopf/Fuß des KI-Artikels; Texte nur in der Inhaltsdatei ändern
 - `python3 werkzeuge/grafiken/ci-film.py` – CI-Grafik (`werkzeuge/grafiken/corporate-identity.html`)
+- `python3 werkzeuge/grafiken/druck-mockup.py PFAD/schreibtisch.jpg` – Druck-Mockup (Goldhammer-Visitenkarten auf Schreibtisch); Foto liegt nicht im Repository
+- `python3 werkzeuge/grafiken/fotostudio.py` – Porträts mit blauer Studiowand (Entwurf, Schwarz-Weiß-Vorlagen)
 - Erzeugte Bereiche nie direkt in `website/` ändern, sondern in der Quelle, dann neu erzeugen.
 - Nach CSS- oder JS-Änderungen die Cache-Version `?v=…` überall erhöhen (z. B. `sed` über `grep -rl` in `website` und `werkzeuge`), dann alle Generatoren laufen lassen.
 - Prüfen mit `bash werkzeuge/pruefen.sh` (Meldungen zu Entwurfsseiten `website/entwurf-…` ignorieren, falls es welche gibt; sie haben bewusst keinen Kopf und Fuß).
@@ -40,9 +42,17 @@
   1. Eigene Figur aus Bauhaus-Grundformen nach Oskar Schlemmers Triadischem Ballett: Kopf Kreis mit weißem Auge, Rumpf Quadrat, blauer Halbkreis-Rock, Glieder als Balken; Arme sitzen immer direkt am Rumpf, ohne Abstand; ein herabhängender Arm ist abgespreizt, die Hand sichtbar neben dem Rock, nie dahinter; Beine mit Eckenradius 4 (Anna, 13.10.2026); weiße Fugen statt Blau an Schwarz. Konstruktion in `werkzeuge/grafiken/blog/geld-und-zeit-titel.py`.
   2. Ausrufe als Pointe („AAH!“, „OHO!“, „WOW!“), knallhart Schwarz-Weiß in Anton.
   3. Redaktioneller Rahmen: Linien mit Beschriftung, gedrehte Wörter am Rand, wiederholte Schriftbänder.
-  4. Echte Fotos von Anna statt KI-Bilder: Schwarz-Weiß ausgeschnitten, kombiniert mit blauen Flächen (bestätigt 13.10.2026: Person Schwarz-Weiß auf Blau, nicht blau getönt). Freistellen mit `werkzeuge/grafiken/freistellen.py`; fertige Fotos (Schwarz-Weiß und blau, freigestellt) liegen unveröffentlicht in `werkzeuge/grafiken/bilder-blau/`.
+  4. Echte Fotos von Anna statt KI-Bilder, Stil seit 13.10.2026 (Anna): Farbfoto, Wand in Markenblau wie im Fotostudio ausgeleuchtet (Mitte heller, außen dunkler, Licht und Schatten passend zum Gesicht), Kleidung in Blautönen, Gesicht in echter Farbe. Website-Porträt: `website/bilder/anna-haertelt-studio-blau.webp` (rund: `…-rund.jpg`). Freistellen mit `werkzeuge/grafiken/freistellen.py`; Farb-Originale nie ins Repository.
 - Logo (Anna, 13.10.2026): Wortmarke „STUDIO AAH!“ mit gedehntem erstem A – `website/bilder/logo-studio-aah.svg` (Schwarz) und `logo-studio-aah-weiss.svg`. Nur in Kopf und Fuß der Website sowie für Social Media und Print.
 - Social Media darf lauter sein (ganze Flächen Schwarz oder Blau, sehr große Schrift); die Website bleibt ruhig: viel Weiß, feine Linien (1,5 px), wenig Creme.
+
+## Startseite und Leistungen (Anna 13.10.2026)
+- Leistungsnamen: Markenbildung, UI/UX, Webdesign, Marketing & Vertrieb, Druck, Illustration & Infografik, Animation, Retainer, KI & Digitalisierung. Adressen: `service/markenbildung/`, `webdesign/`, `druck/`, `animation/` (alte Adressen `brand/`, `website/`, `print/`, `motion-design/` leiten weiter).
+- H1 der Startseite: „Hier werden Sie gesehen.“ (Desktop einzeilig).
+- Hero-Leiste: Kategorien wie bei Dribbble, verlinkt, mit Pause-Taste (Daten in `werkzeuge/preise-erzeugen.py`, `KATEGORIEN` und `BEISPIELE`). Regel „ein Kunde, ein Platz“: jeder Kunde höchstens einmal, Lücken mit STUDIO AAH! selbst. Foto-Mockups liegen in `website/bilder/mockups/` (Inhalt per `matrix3d` im Bildschirm). Alle Bilder müssen scharf sein: Quellbilder mindestens doppelt so breit wie angezeigt.
+- Leistungskarten der Startseite: keine Kundenbilder, sondern Clay-Icon (multiply) mit Bauhaus-Form als Akzent. Kunden stehen in den Success Stories.
+- Leistungsseiten: weiter unten „Aus der Praxis“ mit passendem Kundenbeispiel (`MOCKUPS` in `werkzeuge/leistungsseiten.py`).
+- Mockup-Nachweise (Mockuptree, Bendito Mockup) stehen im Impressum unter „Bildnachweise“.
 
 ## Inspiration (von Anna gesammelt, „passt zu meinem Stil“) – keine Regel, nicht kopieren
 - 13.10.2026, Dribbble „Mall Website Retail Shopping Center“ (https://dribbble.com/shots/27796777): Foto im ganzen Bild, einfarbig eingefärbt (Duoton, duotone) in Orangerot, große weiße Serifen-Überschrift im Bild, kleine Zeichen (Kreuz, Stern, Plus) als Schmuck. Anna will ihre Bilder so – in Blau, leicht bewegt. Die Animation selbst war in der Cloud nicht sichtbar.
