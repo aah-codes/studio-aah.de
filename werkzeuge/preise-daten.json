@@ -568,21 +568,21 @@
   {
    "id": "brand",
    "titel": "Markenbildung",
-   "bild": "bilder/leistung-brand.webp",
+   "bild": "bilder/leistung-brand-projekt.webp",
    "link": "service/markenbildung/",
    "text": "Eine unverwechselbare Markenidentität, die bei Ihrer Zielgruppe wirklich ankommt – klar, glaubwürdig und zukunftsorientiert."
   },
   {
    "id": "ui-ux",
    "titel": "UI/UX",
-   "bild": "bilder/leistung-uiux.webp",
+   "bild": "bilder/leistung-uiux-projekt.webp",
    "link": "service/ui-ux/",
    "text": "Digitale Erlebnisse, die Nutzer:innen verstehen – vom Expert Review bis zum Designsystem für Webanwendungen, SaaS und Apps."
   },
   {
    "id": "website",
    "titel": "Webdesign",
-   "bild": "bilder/leistung-website.webp",
+   "bild": "bilder/leistung-website-projekt.webp",
    "link": "service/webdesign/",
    "text": "Klares Design mit technischer Präzision – individuell, responsiv und auf Ihre Ziele ausgerichtet."
   },
@@ -596,7 +596,7 @@
   {
    "id": "print",
    "titel": "Druck",
-   "bild": "bilder/leistung-print.jpg",
+   "bild": "bilder/leistung-print-projekt.webp",
    "link": "service/druck/",
    "text": "Professionelles Design für Gedrucktes – von der Visitenkarte bis zur Unternehmenspräsentation."
   },

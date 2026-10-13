@@ -164,6 +164,25 @@ def direkt(pre):
     </div>'''
 
 
+# Beispiel aus der Praxis (Anna 13.10.2026): dasselbe Mockup wie in der Leiste der Startseite, weiter unten auf der Seite
+MOCKUPS = {
+    'brand': ('seite-markenbildung.webp', 'Rebranding für Wolfgang Bauer Ingenieurbau: Unternehmenspräsentation in den neuen Markenfarben.'),
+    'website': ('seite-webdesign.webp', 'Website für Wolfgang Bauer Ingenieurbau.'),
+    'print': ('seite-druck.webp', 'Visitenkarten für Dr. Simone Goldhammer.'),
+    'motion': ('seite-animation.webp', 'Launch-Film zur neuen Website von Wolfgang Bauer Ingenieurbau.'),
+    'illustration': ('seite-illustration.webp', 'Eigene Illustration: Figur aus Bauhaus-Grundformen.'),
+    'ui-ux': ('seite-ui-ux.webp', 'Mobile Ansicht: die Websites von Deinetwegen und STUDIO AAH!'),
+}
+
+
+def mockup(key, pre):
+    if key not in MOCKUPS: return ''
+    datei, text = MOCKUPS[key]
+    return ('  <section class="lsx-beispiel" aria-label="Beispiel aus der Praxis">\n    <figure class="lsx-beispiel-figur">'
+            '<img src="' + pre + 'bilder/mockups/' + datei + '" alt="' + esc(text) + '" width="896" height="672" loading="lazy">'
+            '<figcaption><p class="meta">Aus der Praxis</p><p>' + esc(text) + '</p></figcaption></figure>\n  </section>')
+
+
 def seite(key, c):
     g = next(x for x in preise['gruppen'] if x['id'] == c['gruppe'])
     # Mehrere Seiten teilen sich eine Gruppe (zusatz): nur die genannten Pakete, eigener Einleitungssatz;
@@ -236,6 +255,8 @@ def seite(key, c):
 
 {stimmen(pre, c['tag'])}
 
+{mockup(key, pre)}
+
 {referenzen(c['tag'], pre)}
 
 {I.erfolg(next(x for x in I.PROJEKTE if x['name'] == c['erfolg']), pre) if c.get('erfolg') else ''}
@@ -284,7 +305,7 @@ def seite(key, c):
     ld = json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, indent=2)
     t = re.sub(r'<script type="application/ld\+json">.*?</script>', lambda m: f'<script type="application/ld+json">\n{ld}\n  </script>', t, count=1, flags=re.S)
     if 'zaehlen.js' not in t:
-        t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v=20261017m" defer></script>\n</body>', 1)
+        t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v=20261017n" defer></script>\n</body>', 1)
     pfad.write_text(t, encoding='utf-8')
     print('geschrieben:', c['pfad'])
 
