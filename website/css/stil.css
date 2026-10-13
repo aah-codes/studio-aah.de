@@ -2434,3 +2434,9 @@ section[hidden] { display: none !important; }
 .dk-titel { color: var(--farbe-dunkel); }
 .dk-unter { color: var(--farbe-gedaempft); }
 .dk-karte { box-shadow: 0 12px 30px rgba(14, 16, 17, .07); }
+/* Foto-Mockups in den Kategorie-Karten: Bühne in Fotogröße (2000 × 1500), auf Kartengröße skaliert; Inhalt per matrix3d im Bildschirm */
+.kb-szene { position: absolute; left: 0; top: 0; width: 2000px; height: 1500px; transform-origin: 0 0; scale: .112; }
+.kb-szene-bild { display: block; width: 100%; height: 100%; }
+.kb-szene-schirm { position: absolute; left: 0; top: 0; width: 1440px; height: 900px; transform-origin: 0 0; overflow: hidden; background: #fff; container-type: size; }
+.kb-szene-schirm img { display: block; width: 100%; height: auto; }
+@media (max-width: 900px) { .kb-szene { scale: .084; } }
