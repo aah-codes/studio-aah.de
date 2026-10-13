@@ -1313,7 +1313,7 @@ h1, h2, h3, .mm-name, .mm-karte-titel, .referenz-name, .hero-titel, .fuss-karte-
 
 /* Ankernavigation der Leistungsseiten: gleiche Leiste wie auf der Preisseite (.preis-leiste) – direkt unter dem Kopf, weiß, feine graue Linie */
 .lsx-chips { margin-top: 32px; }
-main section[id] { scroll-margin-top: calc(var(--kopf-hoehe) + 72px); }
+main section[id] { scroll-margin-top: 0; } /* Abstand kommt schon aus html { scroll-padding-top } – sonst doppelt (Prüfung 13.10.2026) */
 .lsx-karte-dauer { margin: 0 0 8px; } .lsx-karte-dauer .meta { margin-right: 6px; }
 /* Leistungsseiten: Kennzahlen, „Nicht enthalten“, Referenzen, „Sie arbeiten direkt mit mir“ */
 .lsx-fakten { max-width: 880px; margin: 40px 0 0; }
@@ -1336,6 +1336,7 @@ main section[id] { scroll-margin-top: calc(var(--kopf-hoehe) + 72px); }
 .lsx-artikel { padding: 96px 0 0; }
 .lsx-artikel-kopf { padding: 0 var(--rand-seite); }
 .lsx-artikel-kopf .gr-h3 { margin: 12px 0 24px; }
+.lsx-artikel .blog-liste { max-width: none; padding: 0 var(--rand-seite) 96px; }
 /* Referenzen: kein Fokusrahmen beim Aufklappen mit der Maus, mehr Luft zu den Fakten */
 .referenz summary:focus-visible { outline: none; text-decoration: underline; text-underline-offset: 6px; }
 .referenz[open] .referenz-fakten { margin-top: 16px; }
@@ -2262,7 +2263,7 @@ section[hidden] { display: none !important; }
 .blog-karte { position: relative; border: 1px solid var(--farbe-rahmen); border-radius: 24px; overflow: hidden; box-shadow: none; transition: border-color .2s, box-shadow .2s, transform .2s; }
 .blog-karte:hover { border-color: var(--farbe-dunkel); box-shadow: 0 18px 40px rgba(14, 16, 17, .08); }
 .blog-karte:has(h2 a:focus-visible, h3 a:focus-visible) { outline: 3px solid var(--farbe-primaer); outline-offset: 3px; }
-.blog-karte h2 a:focus-visible, .blog-karte h3 a:focus-visible { outline: none; }
+@supports selector(:has(a)) { .blog-karte h2 a:focus-visible, .blog-karte h3 a:focus-visible { outline: none; } }
 .blog-karte h2 a::after, .blog-karte h3 a::after { content: ""; position: absolute; inset: 0; z-index: 1; }
 .blog-karte h2 a:hover, .blog-karte h3 a:hover { opacity: 1; }
 .blog-karte:hover h2 a, .blog-karte:hover h3 a { text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 4px; }
@@ -2279,8 +2280,10 @@ section[hidden] { display: none !important; }
 .blog-thema .blog-li-gross { grid-column: 1 / -1; }
 /* Aktuelles: großer neuester Beitrag, darunter die zwei nächsten nebeneinander */
 .blog-thema.blog-aktuell .blog-liste { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.blog-aktuell .blog-karte:not(.blog-karte-gross) { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); }
-.blog-aktuell .blog-karte:not(.blog-karte-gross) .blog-karte-bild { aspect-ratio: auto; min-height: 100%; border-bottom: 0; border-right: 1px solid var(--farbe-rahmen); }
+@media (min-width: 1000px) {
+  .blog-aktuell .blog-karte:not(.blog-karte-gross) { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); }
+  .blog-aktuell .blog-karte:not(.blog-karte-gross) .blog-karte-bild { aspect-ratio: auto; min-height: 100%; border-bottom: 0; border-right: 1px solid var(--farbe-rahmen); }
+}
 .blog-karte-gross .kategorie { color: var(--farbe-primaer); }
 .blog-karte-gross { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
 .blog-karte-gross .blog-karte-bild { aspect-ratio: auto; min-height: 100%; border-bottom: 0; border-right: 1px solid var(--farbe-rahmen); }
@@ -2294,7 +2297,7 @@ section[hidden] { display: none !important; }
 .preis-leiste a.aktiv .chip-zahl { background: var(--farbe-weiss); color: var(--farbe-dunkel); }
 /* Themenbereiche: Überschrift mit Linie */
 .blog-thema { padding: clamp(48px, 6vw, 80px) var(--rand-seite) 0; }
-.blog-thema:last-of-type { padding-bottom: 120px; }
+.blog-thema:last-child { padding-bottom: 120px; }
 .blog-thema-kopf { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 16px; border-top: 1.5px solid var(--farbe-dunkel); padding-top: 18px; margin-bottom: 28px; }
 .blog-thema-kopf h2 { font-size: clamp(2rem, 3.6vw, 3.25rem); margin: 0; }
 .blog-thema-kopf .meta { margin: 0; white-space: nowrap; }
@@ -2303,12 +2306,10 @@ section[hidden] { display: none !important; }
 @media (max-width: 900px) {
   .blog-karte-gross { grid-template-columns: minmax(0, 1fr); }
   .blog-karte-gross .blog-karte-bild { aspect-ratio: 3 / 2; border-right: 0; border-bottom: 1px solid var(--farbe-rahmen); }
-  .blog-thema:last-of-type { padding-bottom: 64px; }
+  .blog-thema:last-child { padding-bottom: 64px; }
 }
 @media (max-width: 767px) {
   .blog-thema .blog-liste, .blog-thema.blog-aktuell .blog-liste { grid-template-columns: minmax(0, 1fr); }
-  .blog-aktuell .blog-karte:not(.blog-karte-gross) { display: flex; }
-  .blog-aktuell .blog-karte:not(.blog-karte-gross) .blog-karte-bild { aspect-ratio: 3 / 2; border-right: 0; border-bottom: 1px solid var(--farbe-rahmen); }
 }
 /* Prüfung 13.10.2026: Punkte der Zeitleiste im selben Blau wie die Marken; schmale Handys: Überschriften der Zeitleiste kleiner,
    Kostenrechner-Zeile bricht um (Name und „gefragt“ oben, Preis darunter), Bauhaus-Raster erst unter 370 px kleiner */
