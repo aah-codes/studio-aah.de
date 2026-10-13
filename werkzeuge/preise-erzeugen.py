@@ -57,8 +57,10 @@ start.write_text(einsetzen(start.read_text(encoding='utf-8'), 'LEISTUNGEN', star
 # Jede Karte führt zur Leistungsseite. Wo es ein echtes Beispiel gibt, steht es als Mockup in der Karte, sonst das Kartenbild der Leistung.
 BEISPIELE = {
     # Mobil (Anna 13.10.2026, Vorbild Dribbble „Mobile“): zwei Handys nebeneinander, führt zu UI/UX
-    'mobil': '<span class="kb-duo">' + ''.join(f'<span class="band-teil kb-handy"><span class="handy-bildschirm"><img src="bilder/referenzen/{n}" alt="" width="860" height="{h}" decoding="async"></span></span>'
-                                              for n, h in [('deinetwegen-handy.jpg', 9000), ('studio-aah-handy.jpg', 9923)]) + '</span>',
+    # Mobil wie bei Dribbble: zwei Handys mit dünnem schwarzem Rahmen, heller Grund mit Lichtkante und schwebenden Grundformen
+    'mobil': ('<span class="kb-mobil"><i class="kb-form kb-form-kreis"></i><i class="kb-form kb-form-halb"></i><i class="kb-form kb-form-quadrat"></i>'
+              + ''.join(f'<span class="kb-phone"><span class="kb-phone-screen"><img src="bilder/referenzen/{n}" alt="" width="860" height="{h}" decoding="async"></span></span>'
+                        for n, h in [('deinetwegen-handy.jpg', 9000), ('studio-aah-handy.jpg', 9923)]) + '</span>'),
     'website': '<span class="band-teil laptop kb-laptop"><span class="laptop-bildschirm"><span class="laptop-seite"><img src="bilder/referenzen/bauer-website.jpg" alt="" width="1440" height="6000"></span></span><span class="laptop-unterteil"></span></span>',
     # Druck: Flyer-Mockup Dr. Simone Goldhammer (Format 4:3 wie die Karte)
     'print': '<img src="bilder/referenzen/goldhammer-flyer.jpg" alt="" loading="lazy">',
@@ -68,8 +70,9 @@ BEISPIELE = {
               '<img src="bilder/hero/bauer-praes-04.jpg" alt="" loading="lazy"><img src="bilder/hero/bauer-praes-12.jpg" alt="" loading="lazy"></span>'),
     'motion': '<img src="bilder/film-bauer-vorschau.jpg" alt="" loading="lazy"><span class="kb-play"></span>',
     # Produktdesign wie bei Dribbble: Website von Down to Earth (Kerstin Hack) und daneben ihre Markenfarben ohne Beschriftung
-    'ui-ux': ('<span class="kb-produkt"><span class="kb-p-seite"><img src="bilder/referenzen/leben-website.jpg?v=2" alt="" loading="lazy"></span>'
-              '<span class="kb-p-farben"><i style="--f:#3f9961"></i><i style="--f:#a88b45"></i><i style="--f:#2d3b42"></i><i style="--f:#f0eadb"></i></span></span>'),
+    'ui-ux': ('<span class="kb-produkt"><span class="kb-p-buehne"><span class="kb-p-seite"><img src="bilder/referenzen/leben-website.jpg?v=2" alt="" loading="lazy"></span></span>'
+              '<span class="kb-p-farben">' + ''.join(f'<i style="--f:{f};--t:{t}">{f.upper()}</i>' for f, t in
+                  [('#2d3b42', '#fff'), ('#3f9961', '#fff'), ('#a88b45', '#fff'), ('#f0eadb', '#2d3b42'), ('#ffffff', '#2d3b42')]) + '</span></span>'),
     # Illustration von STUDIO AAH! selbst (Bauhaus-Figur aus dem Blog)
     'illustration': '<img src="bilder/blog-geld-und-zeit.webp" alt="" loading="lazy">',
     # Typografie: Schriftmuster aus den Hausschriften von STUDIO AAH! (Anton, Manrope, JetBrains Mono)

@@ -2393,12 +2393,28 @@ section[hidden] { display: none !important; }
 .kb-r-farben { grid-column: 3; grid-row: 1 / 3; display: flex; flex-direction: column; gap: 4px; }
 .kb-r-farben i { flex: 1; display: flex; align-items: flex-end; padding: 4px 5px; border-radius: 3px; background: var(--f); border: 1px solid var(--farbe-rahmen); }
 .kb-r-farben b { font: 500 7px var(--schrift-meta); color: var(--t, #fff); letter-spacing: .04em; }
-/* Produktdesign wie bei Dribbble: Website links, Markenfarben rechts (ohne Beschriftung) */
-.kb-produkt { display: grid; grid-template-columns: 1.55fr 1fr; gap: 8px; width: 100%; height: 100%; padding: 10px; background: var(--farbe-weiss); }
-.kb-p-seite { overflow: hidden; border-radius: 3px; border: 1px solid var(--farbe-rahmen); }
-.kb-p-seite img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
-.kb-p-farben { display: flex; flex-direction: column; gap: 3px; }
-.kb-p-farben i { flex: 1; border-radius: 3px; background: var(--f); }
+/* Produktdesign wie bei Dribbble (Anna 13.10.2026): links die Website auf einer Fläche in Markenfarbe, rechts die Farben als gestapelte Chips mit Farbwert */
+.kb-produkt { display: grid; grid-template-columns: 1fr 1fr; width: 100%; height: 100%; background: var(--farbe-weiss); }
+.kb-p-buehne { position: relative; overflow: hidden; background: radial-gradient(120% 90% at 20% 15%, #4a6a5c 0%, #2d3b42 55%, #1f2a2f 100%); }
+.kb-p-seite { position: absolute; left: 14%; top: 20%; width: 120%; height: 64%; overflow: hidden; border-radius: 4px; background: #fff; box-shadow: 0 8px 22px rgba(0, 0, 0, .3); }
+.kb-p-seite img { width: 100%; height: auto; display: block; }
+.kb-p-farben { display: flex; flex-direction: column; justify-content: center; padding: 10px 12px; }
+.kb-p-farben i { display: flex; align-items: flex-start; height: 30px; margin-top: -6px; padding: 4px 6px; border-radius: 5px; background: var(--f); color: var(--t); font: 500 6px/1 var(--schrift-meta); font-style: normal; letter-spacing: .04em; box-shadow: 0 -1px 0 rgba(255, 255, 255, .5), 0 -2px 6px rgba(14, 16, 17, .08); }
+.kb-p-farben i:first-child { margin-top: 0; }
+.kb-p-farben i:last-child { border: 1px solid var(--farbe-rahmen); }
+/* Mobil wie bei Dribbble: dünner schwarzer Rahmen, heller Grund mit weicher Lichtkante, schwebende Bauhaus-Formen */
+.kb-mobil { position: relative; display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; height: 100%;
+  background: linear-gradient(118deg, #e9eaea 0%, #f2f3f3 38%, #fbfbfb 46%, #eeefef 47%, #e6e7e7 100%); }
+.kb-phone { position: relative; z-index: 1; height: 84%; aspect-ratio: 9 / 19.2; padding: 2.5px; border-radius: 15px; background: #111314; box-shadow: 0 0 0 .5px #3a3d3f, 0 12px 22px rgba(14, 16, 17, .18); }
+.kb-phone::before { content: ""; position: absolute; z-index: 2; top: 6px; left: 50%; translate: -50% 0; width: 28%; height: 6px; border-radius: 4px; background: #111314; }
+.kb-phone-screen { display: block; width: 100%; height: 100%; overflow: hidden; border-radius: 12.5px; background: #fff; container-type: size; }
+.kb-phone-screen img { display: block; width: 100%; height: auto; animation: website-scroll 60s linear infinite alternate; }
+.kb-phone:last-child .kb-phone-screen img { animation-delay: -20s; }
+.kb-form { position: absolute; z-index: 0; display: block; }
+.kb-form-kreis { left: 9%; top: 12%; width: 18px; height: 18px; border-radius: 50%; background: var(--farbe-primaer); }
+.kb-form-halb { right: 10%; bottom: 14%; width: 22px; height: 11px; border-radius: 22px 22px 0 0; background: var(--farbe-dunkel); }
+.kb-form-quadrat { right: 14%; top: 16%; width: 10px; height: 10px; background: #9a9d9e; rotate: 18deg; }
+@media (prefers-reduced-motion: reduce) { .kb-phone-screen img { animation: none; } }
 /* Mehr Weißraum um die Leiste (Anna 13.10.2026) */
 .hero-band { padding: 56px 0 64px; }
 @media (max-width: 900px) { .hero-band { padding: 40px 0 52px; } }
