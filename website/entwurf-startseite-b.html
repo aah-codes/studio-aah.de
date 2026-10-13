@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Branding, Websites, UX &amp; KI aus Leipzig | STUDIO AAH!</title>
+  <meta name="description" content="Design Studio aus Leipzig: Anna Härtelt begleitet Unternehmen und Selbstständige bei Branding, Webdesign, UX/UI-Design und der Einführung von KI.">
+  <link rel="canonical" href="https://studio-aah.de/">
+  <link rel="icon" href="bilder/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="bilder/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="STUDIO AAH!">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:title" content="Branding, Websites, UX &amp; KI aus Leipzig | STUDIO AAH!">
+  <meta property="og:description" content="Design Studio aus Leipzig: Anna Härtelt begleitet Unternehmen und Selbstständige bei Branding, Webdesign, UX/UI-Design und der Einführung von KI.">
+  <meta property="og:url" content="https://studio-aah.de/">
+  <meta property="og:image" content="https://studio-aah.de/bilder/vorschaubild.jpg">
+  <link rel="stylesheet" href="css/stil.css?v=20261016b">
+  <meta name="robots" content="noindex, nofollow">
+  <style>
+    /* ENTWURF Variante B – nur auf dieser Testseite (13.10.2026) */
+    .hero-titel.ew-b > span:first-child > span { display: inline-flex; flex-wrap: wrap; align-items: center; justify-content: center; column-gap: .22em; }
+    .ew-formen { display: inline-flex; align-items: center; gap: .1em; font-size: .62em; }
+    .ew-formen > * { display: block; width: 1em; height: 1em; flex: none; }
+    @keyframes ew-rollen { from { transform: translateX(4em) rotate(360deg); opacity: 0; } 20% { opacity: 1; } }
+    @keyframes ew-fallen { from { transform: translateY(-2.2em); opacity: 0; } 30% { opacity: 1; } }
+    @keyframes ew-klappen { from { transform: rotate(180deg); opacity: 0; } 30% { opacity: 1; } }
+    @keyframes ew-springen { from { transform: scale(0); } }
+    @keyframes ew-drehen { from { transform: rotate(-180deg) scale(.2); opacity: 0; } 40% { opacity: 1; } }
+    @keyframes ew-links { from { transform: translateX(-30px); opacity: 0; } }
+    @keyframes ew-rechts { from { transform: translateX(30px); opacity: 0; } }
+    .ew-formen .k { background: #2f6bff; border-radius: 50%; animation: ew-rollen 1.3s cubic-bezier(.3, .7, .2, 1) .9s both; }
+    .ew-formen .q { background: #0e1011; animation: ew-fallen .8s cubic-bezier(.3, 1.4, .5, 1) 1.8s both; }
+    .ew-formen .h { background: #2f6bff; border-radius: 1em 1em 0 0; height: .5em; margin-top: .5em; transform-origin: 50% 100%; animation: ew-klappen .8s cubic-bezier(.3, 1.4, .5, 1) 2.4s both; }
+    .ew-formen .d { background: #0e1011; clip-path: polygon(50% 0, 100% 100%, 0 100%); animation: ew-springen .7s cubic-bezier(.3, 1.6, .5, 1) 3s both; }
+    @media (prefers-reduced-motion: reduce) { .ew-formen *, .ew-formen > * { animation: none !important; } }
+  </style>
+</head>
+<body>
+<a class="sprunglink" href="#inhalt">Zum Inhalt springen</a>
+
+<!-- DACHZEILE: Programm, auf allen Seiten gleich -->
+<div class="ankuendigung">
+  <span class="ank-punkt" aria-hidden="true"></span>
+  <p class="ank-text"><strong>Demokratie braucht Sichtbarkeit.</strong> <span class="ank-zusatz">– kostenfreie Websites für Vereine, NGOs, Kunst und Kultur.</span></p>
+  <a class="ank-link" href="demokratie-braucht-sichtbarkeit/">Mehr erfahren <span aria-hidden="true">→</span></a>
+</div>
+
+<!-- KOPF: auf allen Seiten gleich -->
+<header class="kopf">
+  <a class="kopf-logo" href="./"><img src="bilder/logo-studio-aah.svg" alt="STUDIO AAH!" width="180" height="33"></a>
+  <nav class="kopf-nav" aria-label="Hauptmenü">
+    <ul>
+      <li><a href="#leistungen" class="mm-toggle" aria-expanded="false" aria-controls="mm">Leistungen <svg class="mm-pfeil" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+      <li><a href="preise/">Preise</a></li>
+      <li><a href="profil/">Über mich</a></li>
+      <li><a href="blog/">Blog</a></li>
+    </ul>
+    <a class="kopf-button" href="kontakt/">Projekt anfragen</a>
+    <div class="mm" id="mm" hidden>
+      <div class="mm-innen">
+        <div>
+          <p class="meta mm-label">Leistungen</p>
+          <ul class="mm-liste">
+          <li><a href="service/brand/"><span class="mm-name">Brand</span><span class="mm-text">Markenfindung, Logo, Erscheinungsbild, Markenrichtlinien</span></a></li>
+          <li><a href="service/ui-ux/"><span class="mm-name">UI/UX</span><span class="mm-text">Expert Review, Prototyping, UX-Audits, Designsysteme</span></a></li>
+          <li><a href="service/website/"><span class="mm-name">Website</span><span class="mm-text">Webdesign, Umsetzung, Redesign, Pflege &amp; Support</span></a></li>
+          <li><a href="service/marketing-vertrieb/"><span class="mm-name">Marketing &amp; Vertrieb</span><span class="mm-text">LinkedIn, Vorlagen, Fachartikel, Webinare</span></a></li>
+          <li><a href="service/illustration-infografik/"><span class="mm-name">Illustration &amp; Infografik</span><span class="mm-text">Illustrationen, Icons, Infografiken</span></a></li>
+          <li><a href="service/motion-design/"><span class="mm-name">Motion Design</span><span class="mm-text">Animationen für Website, Social Media, Präsentationen</span></a></li>
+          <li><a href="service/print/"><span class="mm-name">Print</span><span class="mm-text">Visitenkarte, Flyer, Broschüre, Präsentation</span></a></li>
+          <li><a href="service/retainer/"><span class="mm-name">Retainer</span><span class="mm-text">Betreute Weiterentwicklung Ihrer Website</span></a></li>
+          <li><a href="service/ki-digitalisierung/"><span class="mm-name">KI &amp; Digitalisierung</span><span class="mm-text">KI-Check und Beratung</span></a></li>
+          </ul>
+        </div>
+        <a class="mm-karte" href="demokratie-braucht-sichtbarkeit/">
+          <img class="mm-karte-bild" src="bilder/programm-haende.jpg" alt="" width="1000" height="1500" loading="lazy">
+          <span class="mm-karte-titel">Demokratie braucht Sichtbarkeit.</span>
+          <span class="gedaempft">Kostenfreie Websites für Vereine, NGOs, Kunst und Kultur.</span>
+          <span class="button button-zweit">Mehr erfahren →</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+  <details class="kopf-mobil">
+    <summary><span class="kopf-mobil-icon" aria-hidden="true"></span><span class="unsichtbar">Menü</span></summary>
+    <nav aria-label="Mobilmenü">
+      <ul>
+        <li>
+          <details class="mobil-unter">
+            <summary>Leistungen</summary>
+            <ul class="mobil-unterliste">
+              <li><a href="service/brand/">Brand</a></li>
+              <li><a href="service/ui-ux/">UI/UX</a></li>
+              <li><a href="service/website/">Website</a></li>
+              <li><a href="service/marketing-vertrieb/">Marketing &amp; Vertrieb</a></li>
+              <li><a href="service/print/">Print</a></li>
+              <li><a href="service/illustration-infografik/">Illustration &amp; Infografik</a></li>
+              <li><a href="service/motion-design/">Motion Design</a></li>
+              <li><a href="service/retainer/">Retainer</a></li>
+              <li><a href="service/ki-digitalisierung/">KI &amp; Digitalisierung</a></li>
+            </ul>
+          </details>
+        </li>
+        <li><a href="preise/">Preise</a></li>
+        <li><a href="profil/">Über mich</a></li>
+        <li><a href="blog/">Blog</a></li>
+        <li><a href="kontakt/">Projekt anfragen</a></li>
+      </ul>
+    </nav>
+  </details>
+</header>
+<div class="mm-schleier" hidden></div>
+<script src="js/menue.js?v=20261016b" defer></script>
+<!-- /KOPF -->
+
+<main id="inhalt" class="mit-faden">
+  <svg class="roter-faden" aria-hidden="true" focusable="false" width="0" height="0" style="position:absolute;left:0;top:0;overflow:visible"><path class="faden-linie" d=""/><circle class="faden-punkt" r="7" cx="-20" cy="-20"/></svg>
+
+<section class="hero hero-buehne">
+  <div class="hero-raster" aria-hidden="true"></div>
+  <div class="hero-text">
+    <p class="meta">Design Studio aus Leipzig</p>
+    <h1 class="hero-titel ew-b"><span><span>Ihr Weg zu <span class="ew-formen" aria-hidden="true"><i class="k"></i><i class="q"></i><i class="h"></i><i class="d"></i></span></span></span> <span><span>digitaler Sichtbarkeit</span></span></h1>
+  </div>
+  <!-- Website-Screenshots kommen aus der Bildbibliothek bilder/referenzen/ (dieselben scharfen Aufnahmen wie in den Referenzen, Anna 11.10.2026) -->
+  <div class="hero-band" aria-hidden="true">
+    <div class="hero-spur">
+      <div class="band-teil h-l laptop"><div class="laptop-bildschirm"><div class="laptop-seite"><img src="bilder/referenzen/bauer-website.jpg" alt="" width="1440" height="6000"></div></div><div class="laptop-unterteil"></div></div>
+      <div class="band-teil h-l sheet"><div class="bs" style="--papier:#fbf9f4">
+        <div class="bs-a" style="background:#2d3b42;color:#f0eadb"><img class="rund" src="bilder/hero/kh-pfau-gold.svg" alt=""><span class="raleway">Swing</span></div>
+        <div class="bs-farben"><i style="--f:#3f9961"><b>#3F9961</b></i><i style="--f:#a88b45"><b>#A88B45</b></i><i style="--f:#2d3b42"><b>#2D3B42</b></i><i style="--f:#f0eadb;--t:#2d3b42"><b>#F0EADB</b></i></div>
+        <div class="bs-logo"><img src="bilder/hero/dte-logo.png" alt=""></div>
+        <div class="bs-schrift" style="color:#2d3b42"><span class="bs-aa raleway" style="color:#3f9961">Aa</span><span class="bs-name raleway">Raleway<br><small>Inter für Fließtext</small></span></div>
+        <p class="bs-titel">Down to Earth · Kerstin Hack</p>
+      </div></div>
+      <div class="band-teil h-l laptop laptop-lang"><div class="laptop-bildschirm"><div class="laptop-seite"><img src="bilder/referenzen/jana-website.jpg" alt="" width="1440" height="4040"></div></div><div class="laptop-unterteil"></div></div>
+      <div class="band-teil h-l"><div class="handy-bildschirm"><img src="bilder/referenzen/deinetwegen-handy.jpg" alt="" width="860" height="9000" decoding="async"></div></div>
+      <div class="band-teil h-l laptop laptop-lang"><div class="laptop-bildschirm"><div class="laptop-seite"><img src="bilder/referenzen/leben-website.jpg?v=2" alt="" width="1440" height="3136" loading="lazy"></div></div><div class="laptop-unterteil"></div></div>
+      <div class="band-teil h-m praes"><img src="bilder/hero/bauer-praes-04.jpg" alt="" loading="lazy"><img src="bilder/hero/bauer-praes-12.jpg" alt="" loading="lazy"><img src="bilder/hero/bauer-praes-01.jpg" alt="" loading="lazy"><span class="praes-chip">Unternehmenspräsentation · 20 Folien · PDF</span></div>
+      <div class="band-teil h-s vk"><img src="bilder/hero/goldhammer-visitenkarte.jpg" alt=""><img src="bilder/hero/goldhammer-visitenkarte.jpg" alt=""><img src="bilder/hero/goldhammer-visitenkarte.jpg" alt=""></div>
+    </div>
+  </div>
+  <div class="hero-text hero-unten">
+    <p class="alt-h2">Branding, Websites, UX &amp; KI-Lösungen für Unternehmen &amp; Selbstständige</p>
+    <p class="hero-knoepfe"><a class="button" href="kontakt/">Projekt anfragen <span aria-hidden="true">→</span></a> <a class="textlink" href="#leistungen">Zu den Leistungen <span aria-hidden="true">→</span></a></p>
+<!-- KENNZAHLEN:START -->
+    <dl class="fakten hero-fakten">
+      <div><dt><span data-zaehlen="40">40</span><span class="fakt-plus">+</span></dt><dd>Projekte</dd></div>
+      <div><dt><span data-zaehlen="6">6</span></dt><dd>Jahre selbstständig, seit 2020</dd></div>
+      <div><dt><svg class="fakt-ort" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.4 12.5h13.2L12 23z" fill="currentColor"/><circle cx="12" cy="9" r="7" fill="currentColor"/><circle cx="12" cy="9" r="3" fill="#fff"/></svg></dt><dd><span class="mit-liebe">Made with Love in Leipzig</span></dd></div>
+    </dl>
+<!-- KENNZAHLEN:ENDE -->
+  </div>
+  <script src="js/hero.js?v=20261016b" defer></script>
+    <script src="js/faden.js?v=20261016b" defer></script>
+</section>
+
+  <section class="intro" aria-labelledby="intro-titel">
+    <div class="intro-text intro-links">
+      <p class="meta">Anna Härtelt &amp; STUDIO AAH!</p>
+      <h2 class="gr-h2" id="intro-titel">Empathisch und rational. Design mit Weitblick.</h2>
+      <div class="intro-brief">
+        <p>Ihre Website ist Vertriebsinstrument. Sie entscheidet mit, ob aus Besuchern und Besucherinnen Kundinnen und Kunden werden. Ich gestalte Websites und digitale Produkte, die intuitiv führen, klar strukturiert sind und messbar wirken. Von der Strategie bis zur technischen Umsetzung aus einer Hand.</p>
+      </div>
+    </div>
+    <!-- Zwei Spalten (Anna 11.10.2026): links Überschrift und Einleitung, rechts Nutzen, Vorstellung und Werkzeuge -->
+    <div class="intro-text intro-rechts">
+      <ul class="intro-nutzen">
+        <li><strong>UX-Strategie und Konzeption</strong>Struktur, Userflows und Wireframes, die Schritt für Schritt zur Anfrage führen.</li>
+        <li><strong>B2B-Websites mit Conversion-Fokus</strong>Corporate Websites und Landingpages mit Webflow und WordPress. In einem aktuellen Projekt stieg die Conversion um 75 %, bei höherer Lead-Qualität.</li>
+        <li><strong>Gestaltung mit Nutzen</strong>Form follows function, ein Grundsatz des Bauhauses: Die Form folgt der Funktion. Jedes Element hat einen Zweck, vom Corporate Design bis zum Designsystem. <a class="textlink" href="profil/#ansatz-titel">Mein Ansatz</a></li>
+      </ul>
+      <p class="intro-wer">Ich bin Anna Härtelt, UX/UI-Designerin, Strategin und Webentwicklerin. Seit 2020 begleite ich mit STUDIO&nbsp;AAH! mittelständische Unternehmen und Start-ups aus Deutschland und der Schweiz im B2B-Bereich, unter anderem aus Software, Cyber Security, Gesundheitswesen und Bauingenieurwesen.</p>
+      <div class="intro-gruss">
+        <img class="intro-avatar" src="bilder/anna-haertelt-rund.jpg" alt="Anna Härtelt" width="240" height="240" loading="lazy"><p><strong>Anna Härtelt</strong><br><span class="gedaempft">Gründerin STUDIO AAH!</span></p>
+      </div>
+      <div class="intro-tools">
+        <p class="meta">Damit arbeite ich</p>
+        <ul class="tools">
+        <li><img src="bilder/figma-logo.png" alt="Figma" width="48" height="48"></li>
+        <li><img class="tool-klein" src="bilder/webflow-logo.png" alt="Webflow" width="192" height="48"></li>
+        <li><img class="tool-gross" src="bilder/wordpress-logo.png" alt="WordPress" width="165" height="48"></li>
+        <li><img class="tool-mittel" src="bilder/kadence-logo.svg" alt="Kadence" width="182" height="39"></li>
+        <li><img src="bilder/github-logo.svg" alt="GitHub" width="48" height="48"></li>
+        <li><img src="bilder/claude-logo.svg" alt="Claude" width="48" height="48"></li>
+      </ul>
+      </div>
+      <p><a class="textlink" href="profil/">Mehr über mich <span aria-hidden="true">→</span></a></p>
+    </div>
+  </section>
+
+
+<!-- LEISTUNGEN:START -->
+  <section class="start-leistungen" aria-labelledby="leistungen">
+    <div class="sektionskopf"><p class="meta">Was ich mache</p><h2 class="gr-xxl" id="leistungen">Leistungen</h2></div>
+    <nav class="leistungs-chips" aria-label="Leistungen"><a href="#k-brand">Brand</a><a href="#k-ui-ux">UI/UX</a><a href="#k-website">Website</a><a href="#k-marketing">Marketing &amp; Vertrieb</a><a href="#k-print">Print</a><a href="#k-illustration">Illustration &amp; Infografik</a><a href="#k-motion">Motion Design</a><a href="#k-retainer">Retainer</a><a href="#k-ki">KI &amp; Digitalisierung</a><a href="preise/#rechner">Kostenrechner →</a></nav>
+    <div class="ls-raster"><a class="ls-karte" href="service/brand/" id="k-brand"><img src="bilder/leistung-brand.webp" alt="" loading="lazy"><span class="ls-karte-titel">Brand</span><span class="ls-karte-text">Eine unverwechselbare Markenidentität, die bei Ihrer Zielgruppe wirklich ankommt – klar, glaubwürdig und zukunftsorientiert.</span></a><a class="ls-karte" href="service/ui-ux/" id="k-ui-ux"><img src="bilder/leistung-uiux.webp" alt="" loading="lazy"><span class="ls-karte-titel">UI/UX</span><span class="ls-karte-text">Digitale Erlebnisse, die Nutzer:innen verstehen – vom Expert Review bis zum Designsystem für Webanwendungen, SaaS und Apps.</span></a><a class="ls-karte" href="service/website/" id="k-website"><img src="bilder/leistung-website.webp" alt="" loading="lazy"><span class="ls-karte-titel">Website</span><span class="ls-karte-text">Klares Design mit technischer Präzision – individuell, responsiv und auf Ihre Ziele ausgerichtet.</span></a><a class="ls-karte" href="service/marketing-vertrieb/" id="k-marketing"><img src="bilder/leistung-marketing.jpg" alt="" loading="lazy"><span class="ls-karte-titel">Marketing &amp; Vertrieb</span><span class="ls-karte-text">Sichtbar werden, wo Ihre Kund:innen sind – mit klarer Positionierung und Inhalten, die zu Ihnen passen.</span></a><a class="ls-karte" href="service/print/" id="k-print"><img src="bilder/leistung-print.jpg" alt="" loading="lazy"><span class="ls-karte-titel">Print</span><span class="ls-karte-text">Professionelles Design für Gedrucktes – von der Visitenkarte bis zur Unternehmenspräsentation.</span></a><a class="ls-karte" href="service/illustration-infografik/" id="k-illustration"><img src="bilder/leistung-illustration.jpg" alt="" loading="lazy"><span class="ls-karte-titel">Illustration &amp; Infografik</span><span class="ls-karte-text">Illustrationen, Icons und Infografiken, die komplexe Inhalte auf einen Blick verständlich machen.</span></a><a class="ls-karte" href="service/motion-design/" id="k-motion"><img src="bilder/leistung-motion.jpg" alt="" loading="lazy"><span class="ls-karte-titel">Motion Design</span><span class="ls-karte-text">Bewegte Grafiken und Animationen für Website, Social Media und Präsentationen.</span></a><a class="ls-karte" href="service/retainer/" id="k-retainer"><img src="bilder/leistung-retainer.jpg" alt="" loading="lazy"><span class="ls-karte-titel">Retainer</span><span class="ls-karte-text">Betreute Weiterentwicklung Ihrer Website: neue Texte und Bilder, Unterseiten und Abschnitte, ab 65 € pro Stunde.</span></a><a class="ls-karte" href="service/ki-digitalisierung/" id="k-ki"><img src="bilder/leistung-ki.jpg" alt="" loading="lazy"><span class="ls-karte-titel">KI &amp; Digitalisierung</span><span class="ls-karte-text">KI-Check und Beratung: welche KI Ihrem Unternehmen im Alltag wirklich hilft.</span></a></div>
+    <p class="ls-grundsatz"><a class="textlink" href="service/brand/#corporate-identity">Grundlage für alles, was ich gestalte: die Corporate Identity <span aria-hidden="true">→</span></a></p>
+  </section>
+<!-- LEISTUNGEN:ENDE -->
+
+<!-- FUERWEN:START -->
+  <section class="dk" aria-labelledby="fuer-wen-titel">
+    <p class="meta">Für wen</p>
+    <h2 class="unsichtbar" id="fuer-wen-titel">Für wen ich arbeite</h2>
+    <div class="dk-umschalter" role="tablist" aria-label="Zielgruppe wählen"><button type="button" role="tab" id="fw-r-mittelstand" aria-controls="fw-mittelstand" aria-selected="true">Mittelstand</button><button type="button" role="tab" id="fw-r-selbststaendige" aria-controls="fw-selbststaendige" aria-selected="false" tabindex="-1">Selbstständige</button><button type="button" role="tab" id="fw-r-vereine" aria-controls="fw-vereine" aria-selected="false" tabindex="-1">Vereine &amp; Kultur</button></div>
+      <div class="dk-feld" id="fw-mittelstand" role="tabpanel" aria-labelledby="fw-r-mittelstand">
+        <h3 class="dk-titel">Ihre ganze Website, neu gedacht.</h3>
+        <div class="dk-karten"><a class="dk-karte" href="service/website/#pakete"><span class="meta">Website</span><span class="dk-karte-titel">Redesign für Unternehmen</span><span class="dk-karte-text">Für mittelständische Unternehmen, die ihre ganze Website umbauen: mit Leistungs-, Branchen-, Referenz- und Karriereseiten.</span><ul class="dk-punkte"><li>Design-System und neue Startseite</li><li>Leistungs-, Branchen- und Referenzseiten</li><li>Karrierebereich mit Stellenangeboten und Bewerbungsformular</li></ul><span class="dk-preis">ab 5.000 € <small>netto</small></span></a><a class="dk-karte dk-karte-ref" href="#referenzen"><span class="dk-ref-text"><span class="meta">Referenz</span><span class="dk-karte-titel">Wolfgang Bauer Ingenieurbau</span><span class="dk-karte-text">Strategie, Rebranding, UX/UI Design, Website und Unternehmenspräsentation.</span><span class="dk-preis">Projekt ansehen →</span></span><span class="dk-bild"><img src="bilder/referenzen/bauer-website.jpg" alt="" loading="lazy"></span></a></div>
+      </div>
+      <div class="dk-feld" id="fw-selbststaendige" role="tabpanel" aria-labelledby="fw-r-selbststaendige" hidden>
+        <h3 class="dk-titel">Klar auftreten, ohne Umwege.</h3>
+        <div class="dk-karten"><a class="dk-karte" href="service/website/#pakete"><span class="meta">Website</span><span class="dk-karte-titel">Onepager</span><span class="dk-karte-text">Für Selbstständige und kleine Angebote: eine Website, die alles auf den Punkt bringt, und eine Marke, die zu Ihnen passt.</span><ul class="dk-punkte"><li>Alles auf einer Seite, responsiv</li><li>Mit SEO & LLM-Zitierfähigkeit</li><li>Dazu buchbar: Brand Basic mit Fragebogen, Brand Experience und Mitbewerberrecherche, ab 850 € <small>netto</small></li></ul><span class="dk-preis">ab 1.150 € <small>netto</small></span></a><a class="dk-karte dk-karte-ref" href="#referenzen"><span class="dk-ref-text"><span class="meta">Referenz</span><span class="dk-karte-titel">Deinetwegen</span><span class="dk-karte-text">Branding, UI/UX Design und Website für eine HR-Beratung.</span><span class="dk-preis">Projekt ansehen →</span></span><span class="dk-bild"><img src="bilder/referenzen/deinetwegen-website.jpg" alt="" loading="lazy"></span></a></div>
+      </div>
+      <div class="dk-feld" id="fw-vereine" role="tabpanel" aria-labelledby="fw-r-vereine" hidden>
+        <h3 class="dk-titel">Demokratie braucht Sichtbarkeit.</h3>
+        <div class="dk-karten"><a class="dk-karte" href="demokratie-braucht-sichtbarkeit/"><span class="meta">Aktion</span><span class="dk-karte-titel">Kostenfreie Website</span><span class="dk-karte-text">Kostenfreie Websites für Vereine, NGOs, Kunst und Kultur. Du zahlst, was es dir wert ist.</span><ul class="dk-punkte"><li>Für Organisationen, die sich für Demokratie, Frauen- und Kinderrechte, Natur- und Tierschutz oder Kunst und Kultur einsetzen</li><li>Bis zu eine Website im Monat</li></ul><span class="dk-preis">kostenfrei</span></a><a class="dk-karte dk-karte-ref" href="#referenzen"><span class="dk-ref-text"><span class="meta">Referenz</span><span class="dk-karte-titel">Jana Voigtmann</span><span class="dk-karte-text">Webdesign für eine Künstlerin aus Leipzig.</span><span class="dk-preis">Projekt ansehen →</span></span><span class="dk-bild"><img src="bilder/referenzen/jana-mixed-media.jpg?v=2" alt="" loading="lazy"></span></a></div>
+      </div>
+  </section>
+<!-- FUERWEN:ENDE -->
+
+  <section class="prozess-kompakt" aria-labelledby="prozess">
+    <p class="meta">Wie ich arbeite</p>
+    <h2 class="preis-h2" id="prozess">Prozess</h2>
+    <ol class="zeitleiste zl-spalten">
+      <li><span class="zl-marke"><small>Schritt</small><b>01</b></span><div class="zl-text"><p class="meta">Analyse</p><h3>Erst verstehen, wo Sie stehen.</h3><p class="gedaempft">Ist-Analyse mit Brand Experience über alle digitalen und analogen Touchpoints, Expert Review Ihrer Website sowie Markt- und Mitbewerberrecherche.</p></div></li>
+      <li><span class="zl-marke"><small>Schritt</small><b>02</b></span><div class="zl-text"><p class="meta">Strategie</p><h3>Gemeinsam schärfen.</h3><p class="gedaempft">Im Gespräch klären wir Bedarf, Branche und Zielgruppe und legen die Ziele fest.</p></div></li>
+      <li><span class="zl-marke"><small>Schritt</small><b>03</b></span><div class="zl-text"><p class="meta">Design &amp; Umsetzung</p><h3>Vom Look and Feel zur fertigen Seite.</h3><p class="gedaempft">Research, Look and Feel und Prototyp in Figma, danach die Umsetzung in WordPress (Kadence) oder Claude Code.</p></div></li>
+      <li><span class="zl-marke"><small>Schritt</small><b>04</b></span><div class="zl-text"><h3>Launch.</h3><p class="gedaempft">Ihre Website geht live.</p></div></li>
+    </ol>
+    <p><a class="button" href="kontakt/">Projekt anfragen <span aria-hidden="true">→</span></a></p>
+  </section>
+
+  <section aria-labelledby="referenzen-titel" id="referenzen">
+    <div class="sektionskopf">
+      <div class="sektionskopf-zeile">
+        <p class="meta">Referenzen</p>
+      </div>
+      <h2 class="gr-xxl" id="referenzen-titel">Projekte</h2>
+      <p class="alt-klein">Lösungen, die Unternehmen sichtbar machen.</p>
+    </div>
+    <div class="referenz-rahmen">
+<!-- PROJEKTE:START -->
+    <div class="ks" data-karussell id="start-karussell">
+      <div class="ks-spur" aria-live="polite">
+      <article class="rk" style="--rk-farbe: #d9e2ec">
+        <div class="rk-text">
+          <p class="meta">Bauunternehmen – Ingenieurbau &amp; Bauen im Bestand · 2026 · 4 Monate</p>
+          <h3 class="rk-name">Wolfgang Bauer Ingenieurbau</h3>
+          <ul class="rk-chips"><li>Strategie</li><li>Rebranding</li><li>Website-Redesign</li><li>Webentwicklung in Kadence</li><li>Unternehmenspräsentation</li></ul>
+          <p class="rk-link"><a class="textlink" href="https://bauer-ingbau.de" target="_blank" rel="noopener">bauer-ingbau.de ↗</a></p>
+        </div>
+        <div class="rk-buehne"><div class="rk-browser"><img src="bilder/referenzen/bauer-website.jpg" alt="Website von Wolfgang Bauer Ingenieurbau" loading="lazy"></div><div class="rk-folien"><img src="bilder/hero/bauer-praes-01.jpg" alt="" loading="lazy"><img src="bilder/hero/bauer-praes-04.jpg" alt="" loading="lazy"><img src="bilder/hero/bauer-praes-12.jpg" alt="" loading="lazy"><span>Unternehmenspräsentation</span></div><button type="button" class="rk-schwebe rk-film film-knopf" data-film="videos/launchvideo-bauer.mp4" data-titel="Launch-Film: die neue Website von Wolfgang Bauer Ingenieurbau" aria-label="Launch-Film: die neue Website von Wolfgang Bauer Ingenieurbau ansehen"><span class="rk-film-bild"><img src="bilder/film-bauer-vorschau.jpg" alt="" loading="lazy"></span><b>Launch-Film ansehen</b><span>die neue Website im Film</span></button></div>
+      </article>
+      <article class="rk" style="--rk-farbe: #f6eab0">
+        <div class="rk-text">
+          <p class="meta">Gesundheit / Ärztin · seit 2022 · Retainer</p>
+          <h3 class="rk-name">Dr. Simone Goldhammer</h3>
+          <ul class="rk-chips"><li>Branding</li><li>Visual Design</li><li>neue Website</li><li>Webentwicklung in Kadence</li><li>Print: Flyer und Visitenkarten</li></ul>
+          <p class="rk-link"><a class="textlink" href="https://www.naturmedizin-goldhammer.de" target="_blank" rel="noopener">naturmedizin-goldhammer.de ↗</a></p>
+        </div>
+        <div class="rk-buehne"><div class="rk-browser"><img src="bilder/referenzen/goldhammer-website.jpg" alt="Website von Dr. Simone Goldhammer" loading="lazy"></div><div class="rk-visitenkarte"><img src="bilder/hero/goldhammer-visitenkarte.jpg" alt="Visitenkarte für Dr. Simone Goldhammer" loading="lazy"><span>Print</span></div></div>
+      </article>
+      <article class="rk" style="--rk-farbe: #efdcd8">
+        <div class="rk-text">
+          <p class="meta">Startup HR-Beratung · seit 2024 · Retainer</p>
+          <h3 class="rk-name">Deinetwegen</h3>
+          <ul class="rk-chips"><li>Branding</li><li>neue Website als Onepager</li><li>zweiter Onepager</li><li>Webentwicklung in Webflow</li></ul>
+          <p class="rk-link"><a class="textlink" href="https://www.deinetwegen-hr.de" target="_blank" rel="noopener">deinetwegen-hr.de ↗</a></p>
+        </div>
+        <div class="rk-buehne"><div class="rk-handy"><img src="bilder/referenzen/deinetwegen-handy.jpg" alt="Website von Deinetwegen auf dem Handy" loading="lazy"></div><div class="rk-schwebe"><img src="bilder/franziska-weihmann.jpeg" alt="" loading="lazy"><b>Franziska Weihmann</b><span>Gründerin von Deinetwegen HR</span><p>„Ich durfte mit Anna meine neue Website realisieren – und was soll ich sagen: absolute Herzensempfehlung!“</p></div></div>
+      </article>
+      <article class="rk" style="--rk-farbe: #efe3c4">
+        <div class="rk-text">
+          <p class="meta">Coaching, Seminare, Verlag · seit 2023 · Retainer</p>
+          <h3 class="rk-name">Down to Earth</h3>
+          <ul class="rk-chips"><li>Branding</li><li>Visual Design</li><li>UI/UX Design</li><li>neue Icons</li><li>Umsetzung in Kadence</li><li>jeden Monat neue Aufgaben</li></ul>
+          <p class="rk-link"><a class="textlink" href="https://down-to-earth.de/leben/" target="_blank" rel="noopener">down-to-earth.de/leben ↗</a></p>
+        </div>
+        <div class="rk-buehne"><div class="rk-browser"><img src="bilder/referenzen/leben-website.jpg?v=2" alt="Website von Down to Earth" loading="lazy"></div><div class="rk-icons"><div class="rk-icons-raster"><img src="bilder/referenzen/kh/pfau-1.svg" alt="" loading="lazy"><img src="bilder/referenzen/kh/pfau-2.svg" alt="" loading="lazy"><img src="bilder/referenzen/kh/pfau-3.svg" alt="" loading="lazy"><img src="bilder/referenzen/kh/pfau-4.svg" alt="" loading="lazy"><img src="bilder/referenzen/kh/pfau-5.svg" alt="" loading="lazy"><img src="bilder/referenzen/kh/pfau-6.svg" alt="" loading="lazy"><img src="bilder/referenzen/kh/pfau-7.svg" alt="" loading="lazy"><img src="bilder/referenzen/kh/pfau-8.svg" alt="" loading="lazy"></div><img class="rk-icons-bunt" src="bilder/referenzen/kh/lebenselemente.jpg" alt="" loading="lazy"><span>Swing-Pfau und Lebenselemente</span></div></div>
+      </article>
+      <article class="rk" style="--rk-farbe: #e2e1f6">
+        <div class="rk-text">
+          <p class="meta">Kunst – Künstlerin aus Leipzig · 2022</p>
+          <h3 class="rk-name">Jana Voigtmann</h3>
+          <ul class="rk-chips"><li>Branding</li><li>neue Website</li><li>UI/UX Design</li><li>Webentwicklung</li></ul>
+          <p class="rk-link"><a class="textlink" href="https://janavoigtmann.de" target="_blank" rel="noopener">janavoigtmann.de ↗</a></p>
+        </div>
+        <div class="rk-buehne"><div class="rk-browser"><img src="bilder/referenzen/jana-website.jpg" alt="Website von Jana Voigtmann" loading="lazy"></div></div>
+      </article>
+      </div>
+      <div class="ks-steuerung">
+        <div class="ks-pfeile"><button type="button" class="ks-knopf" data-zurueck aria-label="Vorheriges Projekt">←</button><button type="button" class="ks-knopf" data-weiter aria-label="Nächstes Projekt">→</button></div>
+        <div class="ks-rechts"><button type="button" class="ks-knopf" data-pause aria-label="Automatisches Weiterblättern anhalten">❚❚</button><div class="ks-punkte" aria-hidden="true"></div></div>
+      </div>
+    </div>
+<!-- PROJEKTE:ENDE -->
+    </div>
+  </section>
+
+  <section aria-labelledby="stimmen">
+    <div class="sektionskopf">
+      <div class="sektionskopf-zeile">
+        <p class="meta">Meinungen</p>
+      </div>
+      <h2 class="gr-xxl" id="stimmen">Stimmen,<br>die zählen.</h2>
+      <p class="alt-klein">Klingt gut – sagen jedenfalls andere.</p>
+    </div>
+
+    <div class="stimmen">
+<!-- STIMMEN:START -->
+      <article class="stimme hg-hellgrau">
+        <img class="stimme-icon" src="bilder/icon-quote.png" alt="" width="40" height="25" loading="lazy">
+        <h3 class="alt-h5">Website mit Herz und Verstand</h3>
+        <p class="gedaempft">Ich durfte mit Anna meine neue Website realisieren – und was soll ich sagen: absolute Herzensempfehlung! 💛 Neben ihrer strukturierten und zuverlässigen Arbeitsweise hat mich vor allem ihr Gespür für UX &amp; Design begeistert. Sie denkt nicht nur technisch, sondern fühlt sich in Zielgruppen, Markenwelten und Nutzerbedürfnisse ein.</p>
+        <p class="gedaempft">Das Ergebnis: Eine Website, die nicht nur funktioniert, sondern sich auch richtig gut anfühlt – klar, stimmig und mit Liebe zum Detail.</p>
+        <p class="gedaempft">Wer eine Partnerin sucht, die Webentwicklung und UI/UX Design wirklich ganzheitlich denkt, ist bei Anna in den besten Händen!</p>
+        <div class="person">
+          <img class="avatar" src="bilder/franziska-weihmann.jpeg" alt="Franziska Weihmann" width="60" height="60" loading="lazy">
+          <div>
+            <p class="alt-h6">Franziska Weihmann</p>
+            <p class="meta">Gründerin von Deinetwegen HR</p>
+          </div>
+        </div>
+      </article>
+      <article class="stimme hg-hellgrau-2">
+        <img class="stimme-icon" src="bilder/icon-quote.png" alt="" width="40" height="25" loading="lazy">
+        <h3 class="alt-h5">Kreative Visionärin mit Liebe zum Detail</h3>
+        <p class="gedaempft">Anna beeindruckt mit ihren kreativen Visionen und ihrem Blick für Details. Sie hat die Fähigkeit, komplexe Benutzeranforderungen in intuitive und ansprechende Designs zu übersetzen. Klare Empfehlung und eine Bereicherung für jedes Team.</p>
+        <div class="person">
+          <img class="avatar" src="bilder/ines-gottschalk.jpg" alt="Ines Gottschalk" width="60" height="60" loading="lazy">
+          <div>
+            <p class="alt-h6">Ines Gottschalk</p>
+            <p class="meta">Gründerin von Webwerkstatt Digitale Lösungen</p>
+          </div>
+        </div>
+      </article>
+      <article class="stimme hg-hellgrau">
+        <img class="stimme-icon" src="bilder/icon-quote.png" alt="" width="40" height="25" loading="lazy">
+        <h3 class="alt-h5">Sorgfältige UX-Designerin mit klarem Blick für Lösungen</h3>
+        <p class="gedaempft">"Anna ist eine außergewöhnlich sorgfältige UX-Designerin, die sich durch ihre schnelle Auffassungsgabe und Problemlösungsfähigkeit auszeichnet. Sie hakt immer nach, um sicherzustellen, dass keine Details übersehen werden, und geht systematisch an Herausforderungen heran. Ihre Designs sind nicht nur visuell ansprechend, sondern auch äußerst funktional und nutzerzentriert. Es ist beeindruckend, wie schnell sie komplexe Zusammenhänge erfasst und innovative Lösungen entwickelt. Anna ist eine wertvolle Bereicherung für jedes Team."</p>
+        <p class="gedaempft">Ich habe mit ihr 8 Monate zusammen arbeiten dürfen. Es war mir immer eine Freude. LG, Carolin Schaefer</p>
+        <div class="person">
+          <img class="avatar" src="bilder/carolin-schaefer.jpg" alt="Carolin Schaefer" width="60" height="60" loading="lazy">
+          <div>
+            <p class="alt-h6">Carolin Schaefer</p>
+            <p class="meta">CoS // Chief of Staff - Führungskraft</p>
+          </div>
+        </div>
+      </article>
+      <article class="stimme hg-hellgrau-2">
+        <img class="stimme-icon" src="bilder/icon-quote.png" alt="" width="40" height="25" loading="lazy">
+        <h3 class="alt-h5">Kompetent und inspirierend</h3>
+        <p class="gedaempft">Anna Härtelt ist eine kompetente und inspirierende UX/UI-Designerin und Projektmanagerin. Während meiner Tätigkeit bei der Digitalbegleiter GmbH hatte ich das Glück, von ihrer umfassenden Erfahrung zu profitieren.</p>
+        <p class="gedaempft">Sie hat mir nicht nur klare Aufgaben zugewiesen, sondern auch stets mit Rat und Tat zur Seite gestanden, wenn ich Unterstützung brauchte. Sie war immer bereit, meine Fragen zu beantworten, insbesondere zum Tool Figma, und hat meine Weiterbildung aktiv gefördert.</p>
+        <p class="gedaempft">Ich empfehle Anna ausdrücklich als UX/UI-Designerin. Wer sie nicht bucht oder einstellt, wird definitiv etwas verpassen!</p>
+        <div class="person">
+          <img class="avatar" src="bilder/anne-schreier.jpg" alt="Anne Schreier" width="60" height="60" loading="lazy">
+          <div>
+            <p class="alt-h6">Anne Schreier</p>
+            <p class="meta">Freelancerin UX/UI- &amp; Communications Design</p>
+          </div>
+        </div>
+      </article>
+      <article class="stimme hg-hellgrau">
+        <img class="stimme-icon" src="bilder/icon-quote.png" alt="" width="40" height="25" loading="lazy">
+        <h3 class="alt-h5">Reibungsloser Wechsel zu Figma</h3>
+        <p class="gedaempft">Während meiner Zeit als Werkstudentin bei der Digitalbegleiter GmbH hatte ich das Vergnügen, mit Anna im Design-Team zusammenzuarbeiten. Anna überzeugte mich von Anfang an durch ihre fachliche Kompetenz und ihren unermüdlichen Einsatz, unsere Projekte voranzubringen.</p>
+        <p class="gedaempft">Besonders hervorzuheben ist Annas Engagement bei der Umstellung des Teams von Adobe XD auf Figma. Dank ihrer Initiative und ihrer sorgfältigen Einführung in das neue Tool verlief der Wechsel reibungslos und trug maßgeblich zur Effizienz und Kreativität im Team bei.</p>
+        <p class="gedaempft">Ich würde jederzeit wieder mit Anna zusammenarbeiten und kann sie uneingeschränkt weiterempfehlen.</p>
+        <div class="person">
+          <img class="avatar" src="bilder/neve-boldt.jpg" alt="Neve Boldt" width="60" height="60" loading="lazy">
+          <div>
+            <p class="alt-h6">Neve Boldt</p>
+            <p class="meta">Information Architecture &amp; Systems Design</p>
+          </div>
+        </div>
+      </article>
+<!-- STIMMEN:ENDE -->
+    </div>
+  </section>
+
+  <section aria-labelledby="blog-neu" class="blog-neu">
+    <div class="sektionskopf">
+      <div class="sektionskopf-zeile">
+        <p class="meta">Blog</p>
+      </div>
+      <h2 class="gr-xxl" id="blog-neu">Deep Dives</h2>
+      <p class="alt-klein">Neu aus dem Blog. <a class="textlink" href="blog/">Alle Artikel →</a></p>
+    </div>
+    <ul class="blog-liste blog-vier">
+<!-- BLOG:START -->
+    <li>
+      <article class="blog-karte">
+        <a href="blog/was-kostet-eine-website/" aria-hidden="true" tabindex="-1"><img src="bilder/blog-geld-und-zeit.webp" alt="" width="1200" height="800" loading="lazy"></a>
+        <div class="blog-karte-text">
+          <p class="kategorie">Ratgeber</p>
+          <h3><a href="blog/was-kostet-eine-website/">Was kostet eine Website – und wie lange dauert sie?</a></h3>
+          <p class="artikel-meta">Von Anna · <time datetime="2026-10-13">13. Oktober 2026</time></p>
+          <p>Preise ab 1.150&nbsp;€, laufende Kosten und ein realistischer Zeitplan – mit Beispielrechnungen und Erfahrungen aus Projekten mit kleinen und mittleren Unternehmen.</p>
+          <a class="weiterlesen" href="blog/was-kostet-eine-website/">Weiterlesen →<span class="unsichtbar">: Was kostet eine Website – und wie lange dauert sie?</span></a>
+        </div>
+      </article>
+    </li>
+    <li>
+      <article class="blog-karte">
+        <a href="blog/was-ki-an-meiner-arbeit-veraendert-hat/" aria-hidden="true" tabindex="-1"><img src="bilder/blog-ki-arbeitsweise.jpg" alt="" width="1200" height="800" loading="lazy"></a>
+        <div class="blog-karte-text">
+          <p class="kategorie">UX &amp; Usability</p>
+          <h3><a href="blog/was-ki-an-meiner-arbeit-veraendert-hat/">Was KI an meiner Arbeit verändert hat – und was nicht</a></h3>
+          <p class="artikel-meta">Von Anna · <time datetime="2026-10-04">4. Oktober 2026</time></p>
+          <p>Ein Jahr mit KI im Designalltag: Was sich an meiner Arbeit als UX/UI-Designerin und Webentwicklerin verändert hat, was gleich geblieben ist – und was das für Sie bedeutet.</p>
+          <a class="weiterlesen" href="blog/was-ki-an-meiner-arbeit-veraendert-hat/">Weiterlesen →<span class="unsichtbar">: Was KI an meiner Arbeit verändert hat – und was nicht</span></a>
+        </div>
+      </article>
+    </li>
+    <li>
+      <article class="blog-karte">
+        <a href="blog/zwei-podcast-empfehlungen-die-jede-freelancerin-im-design-weiterbringen/" aria-hidden="true" tabindex="-1"><img src="bilder/blog-podcast.jpg" alt="" width="1024" height="538" loading="lazy"></a>
+        <div class="blog-karte-text">
+          <p class="kategorie">Ratgeber</p>
+          <h3><a href="blog/zwei-podcast-empfehlungen-die-jede-freelancerin-im-design-weiterbringen/">Zwei Podcast-Empfehlungen, die jede Freelancerin im Design weiterbringen</a></h3>
+          <p class="artikel-meta">Von Anna · <time datetime="2026-09-30">30. September 2026</time></p>
+          <p>Für Sie, wenn Sie als Freelancer im Design arbeiten.</p>
+          <a class="weiterlesen" href="blog/zwei-podcast-empfehlungen-die-jede-freelancerin-im-design-weiterbringen/">Weiterlesen →<span class="unsichtbar">: Zwei Podcast-Empfehlungen, die jede Freelancerin im Design weiterbringen</span></a>
+        </div>
+      </article>
+    </li>
+    <li>
+      <article class="blog-karte">
+        <a href="blog/von-icons-bis-ux-die-wichtigsten-websites-fuer-designerinnen/" aria-hidden="true" tabindex="-1"><img src="bilder/blog-links.png" alt="" width="1024" height="1024" loading="lazy"></a>
+        <div class="blog-karte-text">
+          <p class="kategorie">Design</p>
+          <h3><a href="blog/von-icons-bis-ux-die-wichtigsten-websites-fuer-designerinnen/">Von Icons bis UX: Die wichtigsten Websites für Designer:innen</a></h3>
+          <p class="artikel-meta">Von Anna · <time datetime="2026-09-29">29. September 2026</time></p>
+          <p>Eine kuratierte Sammlung nützlicher Websites, Tools und Ressourcen für Webdesigner:innen, UX- und UI-Professionals – von Icon- und Farbtools über Typografie bis hin zu Designsystemen, Inspiration und Lernplattformen.</p>
+          <a class="weiterlesen" href="blog/von-icons-bis-ux-die-wichtigsten-websites-fuer-designerinnen/">Weiterlesen →<span class="unsichtbar">: Von Icons bis UX: Die wichtigsten Websites für Designer:innen</span></a>
+        </div>
+      </article>
+    </li>
+<!-- BLOG:ENDE -->
+    </ul>
+  </section>
+
+  <section class="weg-ziel" aria-labelledby="weg-ziel-titel">
+  <p class="meta">Nächster Schritt</p>
+  <h2 class="gr-h2" id="weg-ziel-titel">Ihr Weg beginnt mit einem Gespräch.</h2>
+  <p class="alt-klein">Erstgespräch kostenlos &amp; unverbindlich.</p>
+  <p><a class="button weg-ziel-knopf" href="kontakt/">Projekt anfragen <span aria-hidden="true">→</span></a></p>
+</section>
+
+</main>
+
+  <!-- FUSS: auf allen Seiten gleich -->
+  <footer class="fuss">
+    <p class="meta">#uxstrategy #behaviouraldesign #servicedesign #kidesign</p>
+    <p class="fuss-gross"><img src="bilder/logo-studio-aah-weiss.svg" alt="STUDIO AAH!" width="1917" height="353"></p>
+    <p class="fuss-claim">Form follows function: Die Form folgt der Funktion. Ein Stück Bauhaus in jedem Projekt.</p>
+  <a class="fuss-karte" href="demokratie-braucht-sichtbarkeit/">
+    <span class="meta"><span class="ank-punkt" aria-hidden="true"></span> Aktion</span>
+    <span class="fuss-karte-titel">Demokratie braucht Sichtbarkeit.</span>
+    <span class="fuss-karte-text">Kostenfreie Websites für Vereine, NGOs, Kunst und Kultur.</span>
+    <span class="fuss-karte-link">Mehr erfahren →</span>
+    <img class="fuss-karte-icon" src="bilder/icons/megaphone.webp" alt="" width="400" height="400" loading="lazy">
+  </a>
+    <nav class="fuss-spalten" aria-label="Fußmenü">
+<div class="fuss-kontakt">
+  <p class="meta">Kontakt</p>
+  <p><a href="kontakt/">Projekt anfragen</a></p>
+  <p><a class="mit-symbol" href="mailto:info@studio-aah.de"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><rect x="2" y="5" width="20" height="14" fill="#2f6bff"/><path d="M2 5h20l-10 8z" fill="#fff" opacity=".9"/></svg>info@studio-aah.de</a></p>
+  <p><a class="mit-symbol" href="tel:+4917683089879"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><rect x="6" y="2" width="12" height="20" fill="#2f6bff"/><circle cx="12" cy="17.5" r="2" fill="#fff"/></svg>0176 830 898 79</a></p>
+  <p class="meta fuss-folge">Folge mir</p>
+  <p><a class="symbol-link" href="https://www.linkedin.com/in/anna-h%C3%A4rtelt-8513b8213/" target="_blank" rel="noopener" aria-label="Anna Härtelt auf LinkedIn"><svg viewBox="0 0 24 24" width="32" height="32" aria-hidden="true"><rect x="1.5" y="1.5" width="21" height="21" rx="4" fill="currentColor"/><rect x="5.5" y="9.5" width="2.8" height="8.5" fill="#0e1011"/><circle cx="6.9" cy="6.6" r="1.7" fill="#0e1011"/><path d="M10.6 9.5h2.7v1.2c.5-.8 1.5-1.5 3-1.5 2.4 0 3.2 1.5 3.2 4V18h-2.8v-4.3c0-1.2-.3-2-1.4-2s-1.9.8-1.9 2.1V18h-2.8z" fill="#0e1011"/></svg></a></p>
+</div>
+      <div>
+        <p class="meta">Leistungen</p>
+        <p><a href="service/brand/">Brand</a></p>
+        <p><a href="service/ui-ux/">UI/UX</a></p>
+        <p><a href="service/website/">Website</a></p>
+        <p><a href="service/marketing-vertrieb/">Marketing &amp; Vertrieb</a></p>
+        <p><a href="service/print/">Print</a></p>
+        <p><a href="service/illustration-infografik/">Illustration &amp; Infografik</a></p>
+        <p><a href="service/motion-design/">Motion Design</a></p>
+        <p><a href="service/retainer/">Retainer</a></p>
+        <p><a href="service/ki-digitalisierung/">KI &amp; Digitalisierung</a></p>
+        <p><a href="preise/">Preise</a></p>
+      </div>
+      <div>
+        <p class="meta">Studio</p>
+        <p><a href="profil/">Über mich</a></p>
+        <p><a href="#referenzen">Referenzen</a></p>
+        <p><a href="blog/">Blog</a></p>
+        <p><a href="demokratie-braucht-sichtbarkeit/">Aktion: Demokratie braucht Sichtbarkeit.</a></p>
+      </div>
+    </nav>
+    <form class="fuss-newsletter" method="POST" action="https://3d44b5cf.sibforms.com/serve/MUIFAKLk8ev4CQY-OwSY_ZaGT_pHnewS2Nv7E9Z1f5eMsrrJQbYxIoMqzmNBN5ALU0Vpj-zfkEZv3ww7rbqs9ZFYXIDoNjZN7ZoIXEFm-O7UMrJh5Jf0pG6XFWN006AcV1LS3KuoF7ltEzh0BYfaUyaHDp_LXhqDtwfA3cJfdr2vew82aXUIZ2qRo3v7Vhfo_Li5T7GfwO7fReCMAw==" target="_blank">
+      <div>
+        <p class="meta">Newsletter</p>
+        <p class="fuss-nl-text">Neue Artikel rund um Ihren Auftritt im Netz: modernes Webdesign, neue Funktionen, mehr Conversion und Branding. Dazu Neues aus der Aktion „Demokratie braucht Sichtbarkeit.“ und gelegentlich neue Projekte von STUDIO&nbsp;AAH!. Höchstens einmal pro Woche.</p>
+      </div>
+      <div>
+        <div class="fuss-nl-feld">
+          <label class="unsichtbar" for="nl-email">E-Mail-Adresse</label>
+          <input id="nl-email" type="email" name="EMAIL" autocomplete="email" placeholder="E-Mail-Adresse" required>
+          <input type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true" class="fuss-nl-falle">
+          <input type="hidden" name="locale" value="de">
+          <input type="hidden" name="html_type" value="simple">
+          <button class="button" type="submit">Newsletter abonnieren <span aria-hidden="true">→</span></button>
+        </div>
+        <p class="fuss-nl-hinweis">Mit dem Klick willigen Sie ein, den Newsletter von STUDIO&nbsp;AAH! zu erhalten. Sie bekommen eine E-Mail zur Bestätigung. Die Einwilligung können Sie jederzeit widerrufen, zum Beispiel über den Abmeldelink in jedem Newsletter. Mehr in der <a href="datenschutz/#newsletter">Datenschutzerklärung</a>.</p>
+        <p class="fuss-nl-meldung" role="status" hidden></p>
+      </div>
+    </form>
+    <div class="fuss-unten">
+      <p class="meta">© 2026 STUDIO AAH! · <span class="mit-liebe">Made with Love in Leipzig</span></p>
+      <p class="meta"><a href="impressum/">Impressum</a> · <a href="datenschutz/">Datenschutz</a></p>
+    </div>
+  </footer>
+  <!-- /FUSS -->
+
+  <script src="js/zaehlen.js?v=20261016b" defer></script>
+</body>
+</html>
