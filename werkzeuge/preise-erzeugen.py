@@ -66,8 +66,8 @@ BEISPIELE = {
     'website': ('<span class="kb-szene"><img class="kb-szene-bild" src="bilder/mockups/laptop-podest.webp" alt="" width="1000" height="750" loading="lazy">'
                 '<span class="kb-szene-schirm" style="transform:matrix3d(0.5768583309,-0.002993487456,0,6.037555358e-05,0.08645866767,0.6267902485,0,-1.30273683e-05,0,0,1,0,528,438,0,1)">'
                 '<span class="laptop-seite"><img src="bilder/referenzen/bauer-website.jpg" alt="" width="1440" height="6000" loading="lazy"></span></span></span>'),
-    # Druck: Flyer-Mockup Dr. Simone Goldhammer (Format 4:3 wie die Karte)
-    'print': '<img src="bilder/referenzen/goldhammer-flyer.jpg" alt="" loading="lazy">',
+    # Druck: Visitenkarten von Dr. Simone Goldhammer auf dem Schreibtisch (werkzeuge/grafiken/druck-mockup.py)
+    'print': '<img src="bilder/mockups/druck-schreibtisch.webp" alt="" width="1200" height="900" loading="lazy">',
     # Markenbildung wie bei Dribbble als Raster: Rebranding Wolfgang Bauer Ingenieurbau (Folien und Markenfarben, aus den Folien gemessen)
     'brand': ('<span class="kb-raster"><img class="kb-r-gross" src="bilder/hero/bauer-praes-01.jpg" alt="" loading="lazy">'
               '<span class="kb-r-farben"><i style="--f:#123261"></i><i style="--f:#f3d557"></i><i style="--f:#fff"></i></span>'
