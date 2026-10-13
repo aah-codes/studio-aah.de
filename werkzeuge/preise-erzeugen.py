@@ -50,7 +50,7 @@ start_html = ('  <section class="start-leistungen" aria-labelledby="leistungen">
               '<h2 class="gr-xxl" id="leistungen">Leistungen</h2></div>\n'
               f'    <nav class="leistungs-chips" aria-label="Leistungen">{chips}<a href="preise/#rechner">Kostenrechner →</a></nav>\n'
               f'    <div class="ls-raster">{karten_s}</div>\n'
-              '    <p class="ls-grundsatz"><a class="textlink" href="service/brand/#corporate-identity">Grundlage für alles, was ich gestalte: die Corporate Identity <span aria-hidden="true">→</span></a></p>\n  </section>')
+              '    <p class="ls-grundsatz"><a class="textlink" href="service/markenbildung/#corporate-identity">Grundlage für alles, was ich gestalte: die Corporate Identity <span aria-hidden="true">→</span></a></p>\n  </section>')
 start = basis / 'website' / 'index.html'
 start.write_text(einsetzen(start.read_text(encoding='utf-8'), 'LEISTUNGEN', start_html), encoding='utf-8')
 # --- Startseite, Hero: Leistungen als Kategorie-Leiste wie bei Dribbble (Anna 13.10.2026) ---
@@ -77,14 +77,14 @@ BEISPIELE = {
 }
 # Kategorien oben (Anna 13.10.2026), unabhängig von den Leistungskarten unten; ohne Beispiel steht das Kartenbild der Leistung
 KATEGORIEN = [
-    {'id': 'brand', 'titel': 'Markenbildung', 'link': 'service/brand/'},
-    {'id': 'print', 'titel': 'Druck', 'link': 'service/print/'},
+    {'id': 'brand', 'titel': 'Markenbildung', 'link': 'service/markenbildung/'},
+    {'id': 'print', 'titel': 'Druck', 'link': 'service/druck/'},
     {'id': 'mobil', 'titel': 'Mobil', 'link': 'service/ui-ux/'},
-    {'id': 'motion', 'titel': 'Animation', 'link': 'service/motion-design/'},
+    {'id': 'motion', 'titel': 'Animation', 'link': 'service/animation/'},
     {'id': 'illustration', 'titel': 'Illustration', 'link': 'service/illustration-infografik/'},
-    {'id': 'website', 'titel': 'Webdesign', 'link': 'service/website/'},
+    {'id': 'website', 'titel': 'Webdesign', 'link': 'service/webdesign/'},
     {'id': 'ui-ux', 'titel': 'Produktdesign', 'link': 'service/ui-ux/'},
-    {'id': 'typo', 'titel': 'Typografie', 'link': 'service/brand/'},
+    {'id': 'typo', 'titel': 'Typografie', 'link': 'service/markenbildung/'},
 ]
 def kat_bild(k):
     return BEISPIELE.get(k['id']) or '<img src="' + k['bild'] + '" alt="" loading="lazy">'

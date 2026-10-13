@@ -4,7 +4,7 @@
    "id": "brand",
    "kurz": "Markenbildung",
    "name": "Markenbildung",
-   "link": "../service/brand/",
+   "link": "../service/markenbildung/",
    "wahl": "eins",
    "pakete": [
     {
@@ -62,7 +62,7 @@
     }
    ],
    "intro": "Eine unverwechselbare Markenidentität, die bei Ihrer Zielgruppe wirklich ankommt – klar, glaubwürdig und zukunftsorientiert.",
-   "unterseite": "brand/",
+   "unterseite": "markenbildung/",
    "karte": "../bilder/leistung-brand.webp"
   },
   {
@@ -142,7 +142,7 @@
    "id": "website",
    "kurz": "Webdesign",
    "name": "Webdesign",
-   "link": "../service/website/",
+   "link": "../service/webdesign/",
    "wahl": "eins",
    "hinweis": "Typisch: Selbstständige 1–6 Unterseiten · kleine und mittlere Unternehmen mit Leistungs- und Branchenseiten 10–25 Unterseiten. Mehr als 25 Unterseiten, Shop oder Mitgliederbereich? Dann ist es ein komplexes Projekt ab 6.000 € – melden Sie sich am besten direkt.",
    "pakete": [
@@ -304,7 +304,7 @@
     }
    ],
    "intro": "Klares Design mit technischer Präzision – individuell, responsiv und auf Ihre Ziele ausgerichtet.",
-   "unterseite": "website/",
+   "unterseite": "webdesign/",
    "karte": "../bilder/leistung-website.webp"
   },
   {
@@ -376,7 +376,7 @@
    "id": "print",
    "kurz": "Druck",
    "name": "Druck",
-   "link": "../service/print/",
+   "link": "../service/druck/",
    "wahl": "mehrere",
    "pakete": [
     {
@@ -569,7 +569,7 @@
    "id": "brand",
    "titel": "Markenbildung",
    "bild": "bilder/leistung-brand.webp",
-   "link": "service/brand/",
+   "link": "service/markenbildung/",
    "text": "Eine unverwechselbare Markenidentität, die bei Ihrer Zielgruppe wirklich ankommt – klar, glaubwürdig und zukunftsorientiert."
   },
   {
@@ -583,7 +583,7 @@
    "id": "website",
    "titel": "Webdesign",
    "bild": "bilder/leistung-website.webp",
-   "link": "service/website/",
+   "link": "service/webdesign/",
    "text": "Klares Design mit technischer Präzision – individuell, responsiv und auf Ihre Ziele ausgerichtet."
   },
   {
@@ -597,7 +597,7 @@
    "id": "print",
    "titel": "Druck",
    "bild": "bilder/leistung-print.jpg",
-   "link": "service/print/",
+   "link": "service/druck/",
    "text": "Professionelles Design für Gedrucktes – von der Visitenkarte bis zur Unternehmenspräsentation."
   },
   {
@@ -611,7 +611,7 @@
    "id": "motion",
    "titel": "Animation",
    "bild": "bilder/leistung-motion.jpg",
-   "link": "service/motion-design/",
+   "link": "service/animation/",
    "text": "Bewegte Grafiken und Animationen für Website, Social Media und Präsentationen."
   },
   {

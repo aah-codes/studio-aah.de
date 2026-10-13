@@ -1,11 +1,11 @@
 {
  "_hinweis": "Inhalte der Leistungsunterseiten (Hero, Zusammenfassung, FAQ). Preise und Pakete kommen aus preise-daten.json. Erzeugen: python3 werkzeuge/leistungsseiten.py",
  "website": {
-  "pfad": "service/website/",
+  "pfad": "service/webdesign/",
   "gruppe": "website",
   "titel": "Webdesign",
-  "seitentitel": "Website erstellen lassen in Leipzig – Webdesign & WordPress | STUDIO AAH!",
-  "beschreibung": "Website erstellen lassen bei STUDIO AAH! in Leipzig: Onepager ab 1.150 €, Website ab 2.450 €, Redesign für Unternehmen ab 5.000 € (netto). WordPress (Kadence).",
+  "seitentitel": "Webdesign in Leipzig: Website erstellen lassen | STUDIO AAH!",
+  "beschreibung": "Webdesign bei STUDIO AAH! in Leipzig: Onepager ab 1.150 €, Website ab 2.450 €, Redesign für Unternehmen ab 5.000 € (netto). WordPress (Kadence).",
   "bild": "bilder/leistung-website.webp",
   "bildalt": "Bildschirm mit einer Website im Entwurf",
   "zusammenfassung": [
@@ -111,12 +111,12 @@
   "herz": true
  },
  "brand": {
-  "pfad": "service/brand/",
+  "pfad": "service/markenbildung/",
   "gruppe": "brand",
   "tag": "brand",
   "titel": "Markenbildung",
-  "seitentitel": "Marke entwickeln in Leipzig: Brand Design & Logo | STUDIO AAH!",
-  "beschreibung": "Marke entwickeln bei STUDIO AAH! in Leipzig: Basic ab 850 €, Medium mit Logo ab 2.500 €, Premium ab 4.500 € (netto). Festpreis nach kostenlosem Erstgespräch.",
+  "seitentitel": "Markenbildung in Leipzig: Marke, Logo & Design | STUDIO AAH!",
+  "beschreibung": "Markenbildung bei STUDIO AAH! in Leipzig: Basic ab 850 €, Medium mit Logo ab 2.500 €, Premium ab 4.500 € (netto). Festpreis nach kostenlosem Erstgespräch.",
   "bild": "bilder/leistung-brand.webp",
   "bildalt": "Bildschirm mit Farben, Schriften und Gestaltungselementen eines Designsystems",
   "icon": "bilder/icons/color-palette.webp",
@@ -515,12 +515,12 @@
   ]
  },
  "print": {
-  "pfad": "service/print/",
+  "pfad": "service/druck/",
   "gruppe": "print",
   "tag": "print",
   "titel": "Druck",
-  "seitentitel": "Printdesign in Leipzig: Visitenkarte, Flyer & mehr | STUDIO AAH!",
-  "beschreibung": "Printdesign bei STUDIO AAH! in Leipzig: Visitenkarte ab 195 €, Flyer oder Postkarte ab 290 €, Präsentation ab 1.200 € (netto). Festpreis nach Erstgespräch.",
+  "seitentitel": "Druck & Printdesign in Leipzig | STUDIO AAH!",
+  "beschreibung": "Druck und Printdesign bei STUDIO AAH! in Leipzig: Visitenkarte ab 195 €, Flyer oder Postkarte ab 290 €, Präsentation ab 1.200 € (netto).",
   "bild": "bilder/leistung-print.jpg",
   "bildalt": "Gefalteter Flyer in Gelb und Weiß für eine Arztpraxis, innen und außen gezeigt",
   "icon": "bilder/icons/notebook.webp",
@@ -678,15 +678,15 @@
  },
  "motion": {
   "artikel": false,
-  "pfad": "service/motion-design/",
+  "pfad": "service/animation/",
   "gruppe": "zusatz",
   "pakete": [
    "motion"
   ],
   "tag": "motion",
   "titel": "Animation",
-  "seitentitel": "Motion Design in Leipzig: Animationen | STUDIO AAH!",
-  "beschreibung": "Motion Design von STUDIO AAH! in Leipzig: bewegte Grafiken und Animationen für Website, Social Media und Präsentationen. Preis auf Anfrage.",
+  "seitentitel": "Animation & Motion Design in Leipzig | STUDIO AAH!",
+  "beschreibung": "Animation von STUDIO AAH! in Leipzig: bewegte Grafiken und Animationen für Website, Social Media und Präsentationen. Preis auf Anfrage.",
   "intro": "Bewegte Grafiken und Animationen für Website, Social Media und Präsentationen.",
   "bild": "bilder/leistung-motion.jpg",
   "bildalt": "Bildschirm mit der Zeitleiste einer Animations-Software",

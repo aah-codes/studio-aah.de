@@ -179,9 +179,9 @@ def seite(key, c):
     satz = termine if termine.startswith('Termine') else termine[0].lower() + termine[1:]  # Substantiv bleibt groß
     faq_termine = [['Wie oft gibt es bei STUDIO AAH! Abstimmungstermine?', 'Bei STUDIO AAH! gibt es ' + satz + ('' if 'nach Absprache' in termine else ' Weitere Termine vereinbaren wir nach Absprache.')]]
     pfad = basis / 'website' / c['pfad'] / 'index.html'
-    if not pfad.exists():  # neue Seite: Kopf und Fuß von der Website-Seite übernehmen (gleiche Ordnertiefe)
+    if not pfad.exists():  # neue Seite: Kopf und Fuß von der Webdesign-Seite übernehmen (gleiche Ordnertiefe)
         pfad.parent.mkdir(parents=True, exist_ok=True)
-        pfad.write_text((basis / 'website' / 'service' / 'website' / 'index.html').read_text(encoding='utf-8'), encoding='utf-8')
+        pfad.write_text((basis / 'website' / 'service' / 'webdesign' / 'index.html').read_text(encoding='utf-8'), encoding='utf-8')
     t = pfad.read_text(encoding='utf-8')
     tiefe = c['pfad'].strip('/').count('/') + 1
     pre = '../' * tiefe
@@ -210,7 +210,7 @@ def seite(key, c):
     <div class="lsx-pl-raster">
       <div class="lsx-pl-problem"><p class="meta">Woran es oft hakt</p><ul>{''.join(f'<li>{esc(x)}</li>' for x in c['probleme'])}</ul></div>
       <div class="lsx-pl-loesung"><p class="meta">So mache ich es</p><p class="lsx-pl-text">{esc(c['loesung_text'])}</p><ul>{''.join(f'<li>{esc(x)}</li>' for x in c['loesung_punkte'][:3])}</ul>
-        {'' if c.get('grafik') == 'corporate-identity' else f'<p class="lsx-grundsatz"><a class="textlink" href="{pre}service/brand/#corporate-identity">Form follows function, die Form folgt der Funktion. Grundlage für alles, was ich gestalte, ist die Corporate Identity <span aria-hidden="true">→</span></a></p>'}</div>
+        {'' if c.get('grafik') == 'corporate-identity' else f'<p class="lsx-grundsatz"><a class="textlink" href="{pre}service/markenbildung/#corporate-identity">Form follows function, die Form folgt der Funktion. Grundlage für alles, was ich gestalte, ist die Corporate Identity <span aria-hidden="true">→</span></a></p>'}</div>
       <p class="lsx-knoepfe"><a class="button" href="{pre}kontakt/">Projekt anfragen <span aria-hidden="true">→</span></a> <a class="textlink" href="{pre}preise/#r-{g['id']}">Kosten berechnen <span aria-hidden="true">→</span></a></p>
     </div>
   </section>
