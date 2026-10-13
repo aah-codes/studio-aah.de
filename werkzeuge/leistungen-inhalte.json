@@ -427,6 +427,7 @@
   "herz": true
  },
  "ki": {
+  "artikel": false,
   "pfad": "service/ki-digitalisierung/",
   "gruppe": "ki",
   "tag": "ki",
@@ -601,6 +602,7 @@
   "artikel": false
  },
  "illustration": {
+  "artikel": false,
   "pfad": "service/illustration-infografik/",
   "gruppe": "zusatz",
   "pakete": [
@@ -675,6 +677,7 @@
   }
  },
  "motion": {
+  "artikel": false,
   "pfad": "service/motion-design/",
   "gruppe": "zusatz",
   "pakete": [
@@ -752,6 +755,7 @@
   }
  },
  "retainer": {
+  "artikel": false,
   "pfad": "service/retainer/",
   "gruppe": "zusatz",
   "pakete": [
