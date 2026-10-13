@@ -296,6 +296,8 @@ h1, h2, h3 {
   line-height: 1;
   margin: .1em 0 .3em !important;
 }
+/* Logo (Variante 1, gedehntes A, Anna 13.10.2026): nur in Kopf und Fuß, sonst Social Media und Print */
+.fuss-gross img { display: block; width: 61vw; max-width: 100%; height: auto; }
 .fuss-spalten {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
