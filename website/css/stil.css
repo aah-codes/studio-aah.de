@@ -2203,3 +2203,6 @@ section[hidden] { display: none !important; }
 .artikel-text .checkliste, .artikel-text .vergleich, .artikel-text .ablauf, .artikel-text .methodik, .artikel-text .artikel-bild { margin-top: clamp(2rem, 4vw, 2.75rem); margin-bottom: clamp(2.25rem, 4.5vw, 3rem); }
 .artikel-text .artikel-tabelle caption { padding-bottom: 14px; }
 .artikel-text h2 + .tabelle-scroll, .artikel-text h3 + .tabelle-scroll, .artikel-text h2 + .grafik, .artikel-text h3 + .grafik { margin-top: 1.25rem; }
+/* Kapiteltrenner vor jedem Hauptabschnitt (Anna, 13.10.2026): großer Abstand, dann eine feine Linie über der Überschrift */
+.artikel-text > h2, .artikel-ratgeber .artikel-text > h2 { margin-top: clamp(4.5rem, 9vw, 6.5rem); padding-top: clamp(1.75rem, 3vw, 2.25rem); border-top: 1.5px solid var(--farbe-dunkel); }
+.artikel-text > .inhalt-verzeichnis + h2 { margin-top: clamp(2.5rem, 5vw, 3.5rem); }
