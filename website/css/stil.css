@@ -708,7 +708,6 @@ html { scroll-padding-top: calc(var(--kopf-hoehe) + 16px); }
 @keyframes band-rein { from { translate: 30vw 0; opacity: 0; } }
 .hero-spur { display: flex; align-items: center; gap: 36px; width: max-content; will-change: transform; }
 .band-teil { flex: none; height: var(--h); will-change: transform; transition: filter .3s; }
-.band-teil.h-s { --h: 100px; } .band-teil.h-m { --h: 130px; } .band-teil.h-l { --h: 160px; }
 .band-teil > img { height: 100%; width: auto; display: block; border-radius: 10px; box-shadow: 0 18px 40px rgba(14, 16, 17, .14); user-select: none; -webkit-user-drag: none; }
 /* Laptop: Website scrollt im Bildschirm */
 .band-teil.laptop { width: calc(var(--h) * 1.45); display: flex; flex-direction: column; justify-content: center; margin: 0 calc(var(--h) * .12); } /* Rand = Überstand des Unterteils */
@@ -737,21 +736,9 @@ html { scroll-padding-top: calc(var(--kopf-hoehe) + 16px); }
 .band-teil.vk img:nth-child(3) { rotate: 7deg; translate: 8% -6%; }
 .band-teil.vk.nah img:nth-child(1) { rotate: -24deg; translate: -34% 10%; }
 .band-teil.vk.nah img:nth-child(3) { rotate: 16deg; translate: 30% -10%; }
-/* Präsentation: Foliensatz als gestaffelter Stapel, fächert bei Annäherung der Maus auf */
-.band-teil.praes { position: relative; aspect-ratio: 16 / 10.5; margin: 0 24px; }
-.band-teil.praes img { position: absolute; left: 0; top: 0; width: 86%; height: auto; border-radius: 8px; box-shadow: 0 14px 34px rgba(14, 16, 17, .16); transition: translate .6s cubic-bezier(.2, .8, .2, 1), rotate .6s cubic-bezier(.2, .8, .2, 1); }
-.band-teil.praes img:nth-child(1) { translate: 14% 2%; rotate: 6deg; }
-.band-teil.praes img:nth-child(2) { translate: 7% 8%; rotate: 2deg; }
-.band-teil.praes img:nth-child(3) { translate: 0 14%; rotate: -3deg; }
-.band-teil.praes.nah img:nth-child(1) { translate: 22% -6%; rotate: 10deg; }
-.band-teil.praes.nah img:nth-child(2) { translate: 9% 6%; rotate: 3deg; }
-.band-teil.praes.nah img:nth-child(3) { translate: -6% 18%; rotate: -6deg; }
-.praes-chip { position: absolute; left: 4%; bottom: -14%; white-space: nowrap; font: 600 calc(var(--h) * .05) var(--schrift-text); color: #003366; background: #fbd52a; border-radius: 99px; padding: .35em .9em; }
 .hero-unten { position: relative; z-index: 1; }
 @media (max-width: 900px) {
   .hero-titel { font-size: calc((100vw - 2 * var(--rand-seite)) / 5.8); }
-  .band-teil.h-s { --h: 90px; } .band-teil.h-m { --h: 118px; } .band-teil.h-l { --h: 140px; }
-  .band-teil.vk { height: 84px; margin: 0 16px; }
   .hero-spur { gap: 26px; }
   .hero-band { padding: 22px 0 32px; }
 }
@@ -2353,3 +2340,55 @@ section[hidden] { display: none !important; }
 .brotkrumen a, nav[aria-label="Brotkrumen"] a { text-decoration: none; }
 .brotkrumen a:hover, .brotkrumen a:focus-visible, nav[aria-label="Brotkrumen"] a:hover, nav[aria-label="Brotkrumen"] a:focus-visible { text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 4px; }
 .brotkrumen [aria-current] { text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 4px; color: var(--farbe-dunkel); }
+/* Hero: Leistungen als Kategorie-Leiste wie bei Dribbble (Anna 13.10.2026): Karte mit gestapelten Ebenen, darin Beispiel oder Kartenbild, Name darunter */
+.hero-band { cursor: default; }
+.kat { flex: none; width: 236px; display: flex; flex-direction: column; gap: 16px; color: inherit; text-decoration: none; isolation: isolate; will-change: transform; }
+.kat-stapel { position: relative; display: block; margin: 14px 10px 0 0; }
+/* Ebenen dahinter wie bei Dribbble: nach oben rechts versetzt, links eingerückt, zart blau getönt (Blau ist der einzige Akzent) */
+.kat-stapel::before, .kat-stapel::after { content: ""; position: absolute; border-radius: 16px; }
+.kat-stapel::before { inset: -7px -5px 7px 14px; background: #eef2ff; border: 1.5px solid #dbe4ff; z-index: -1; }
+.kat-stapel::after { inset: -14px -10px 14px 28px; background: #f6f8ff; border: 1.5px solid #e8edff; z-index: -2; }
+.kat-bild { position: relative; display: grid; place-items: center; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 16px; background: var(--farbe-hellgrau); border: 1px solid var(--farbe-rahmen); }
+.kat-bild > img { width: 100%; height: 100%; object-fit: cover; }
+.kat-name { font-weight: 600; font-size: 20px; line-height: 1.25; letter-spacing: -.01em; }
+.kat:hover .kat-name, .kat:focus-visible .kat-name { text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 4px; }
+.kat .band-teil { will-change: auto; }
+.kb-laptop { --h: 116px; margin: 0; }
+.kb-laptop .laptop-bildschirm { border-width: 6px 6px 8px; border-radius: 9px 9px 0 0; box-shadow: 0 10px 24px rgba(14, 16, 17, .12); }
+.kb-laptop .laptop-unterteil { height: 6px; }
+.kb-handy { --h: 140px; display: block; }
+.kb-handy .handy-bildschirm { display: block; border-width: 5px; border-radius: 18px; box-shadow: 0 10px 24px rgba(14, 16, 17, .14); }
+.kb-handy .handy-bildschirm::before { top: 4px; height: 7px; }
+.kb-duo { display: flex; gap: 14px; align-items: center; }
+.kb-duo .kb-handy:last-child { translate: 0 10px; }
+.kb-duo .kb-handy:last-child img { animation-delay: -20s; }
+.kat .band-teil.vk { height: 74px; margin: 0; }
+.kat.nah .band-teil.vk img:nth-child(1) { rotate: -24deg; translate: -34% 10%; }
+.kat.nah .band-teil.vk img:nth-child(3) { rotate: 16deg; translate: 30% -10%; }
+.band-pause { position: absolute; right: var(--rand-seite); bottom: 4px; width: 32px; height: 32px; border-radius: 50%; border: 1.5px solid var(--farbe-dunkel); background: var(--farbe-weiss); cursor: pointer; display: grid; place-items: center; }
+.band-pause::before { content: ""; width: 9px; height: 10px; border-left: 3px solid var(--farbe-dunkel); border-right: 3px solid var(--farbe-dunkel); box-sizing: border-box; }
+.band-pause[aria-pressed="true"]::before { width: 0; height: 0; border: 0; border-left: 10px solid var(--farbe-dunkel); border-top: 6px solid transparent; border-bottom: 6px solid transparent; margin-left: 3px; }
+@media (max-width: 900px) {
+  .kat { width: 180px; gap: 12px; }
+  .kat-name { font-size: 17px; }
+  .kb-laptop { --h: 90px; }
+  .kb-handy { --h: 108px; }
+  .kb-duo { gap: 10px; }
+  .kat .band-teil.vk { height: 58px; }
+  .band-pause { right: var(--rand-seite-mobil); }
+}
+@media (prefers-reduced-motion: reduce) { .band-pause { display: none; } }
+.kb-typo { display: grid; justify-items: start; align-content: center; gap: 2px; width: 100%; height: 100%; padding: 0 22px; background: var(--farbe-weiss); }
+.kb-typo-aa { font-family: var(--schrift-ueberschrift); font-size: 64px; line-height: .95; }
+.kb-typo-text { font-family: var(--schrift-text); font-weight: 600; font-size: 18px; }
+.kb-typo-meta { font-family: var(--schrift-meta); font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--farbe-gedaempft); }
+@media (max-width: 900px) { .kb-typo-aa { font-size: 50px; } .kb-typo-text { font-size: 15px; } .kb-typo { padding: 0 16px; } }
+.kat { text-align: left; }
+.kb-play { position: absolute; left: 12px; bottom: 12px; width: 34px; height: 34px; border-radius: 50%; background: var(--farbe-dunkel); }
+.kb-play::before { content: ""; position: absolute; left: 13px; top: 10px; border-left: 11px solid var(--farbe-weiss); border-top: 7px solid transparent; border-bottom: 7px solid transparent; }
+.kb-raster { display: grid; grid-template-columns: 1fr 1fr .62fr; grid-template-rows: 1fr 1fr; gap: 5px; width: 100%; height: 100%; padding: 6px; background: var(--farbe-weiss); }
+.kb-raster > img { width: 100%; height: 100%; object-fit: cover; border-radius: 6px; }
+.kb-r-gross { grid-column: 1 / 3; }
+.kb-r-farben { grid-column: 3; grid-row: 1 / 3; display: flex; flex-direction: column; gap: 4px; }
+.kb-r-farben i { flex: 1; display: flex; align-items: flex-end; padding: 4px 5px; border-radius: 6px; background: var(--f); border: 1px solid var(--farbe-rahmen); }
+.kb-r-farben b { font: 500 7px var(--schrift-meta); color: var(--t, #fff); letter-spacing: .04em; }

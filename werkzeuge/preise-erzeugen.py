@@ -53,4 +53,41 @@ start_html = ('  <section class="start-leistungen" aria-labelledby="leistungen">
               '    <p class="ls-grundsatz"><a class="textlink" href="service/brand/#corporate-identity">Grundlage für alles, was ich gestalte: die Corporate Identity <span aria-hidden="true">→</span></a></p>\n  </section>')
 start = basis / 'website' / 'index.html'
 start.write_text(einsetzen(start.read_text(encoding='utf-8'), 'LEISTUNGEN', start_html), encoding='utf-8')
+# --- Startseite, Hero: Leistungen als Kategorie-Leiste wie bei Dribbble (Anna 13.10.2026) ---
+# Jede Karte führt zur Leistungsseite. Wo es ein echtes Beispiel gibt, steht es als Mockup in der Karte, sonst das Kartenbild der Leistung.
+BEISPIELE = {
+    # Mobil (Anna 13.10.2026, Vorbild Dribbble „Mobile“): zwei Handys nebeneinander, führt zu UI/UX
+    'mobil': '<span class="kb-duo">' + ''.join(f'<span class="band-teil kb-handy"><span class="handy-bildschirm"><img src="bilder/referenzen/{n}" alt="" width="860" height="{h}" decoding="async"></span></span>'
+                                              for n, h in [('deinetwegen-handy.jpg', 9000), ('studio-aah-handy.jpg', 9923)]) + '</span>',
+    'website': '<span class="band-teil laptop kb-laptop"><span class="laptop-bildschirm"><span class="laptop-seite"><img src="bilder/referenzen/bauer-website.jpg" alt="" width="1440" height="6000"></span></span><span class="laptop-unterteil"></span></span>',
+    # Druck: Flyer-Mockup Dr. Simone Goldhammer (Format 4:3 wie die Karte)
+    'print': '<img src="bilder/referenzen/goldhammer-flyer.jpg" alt="" loading="lazy">',
+    # Markenbildung wie bei Dribbble als Raster: Rebranding Wolfgang Bauer Ingenieurbau (Folien und Markenfarben, aus den Folien gemessen)
+    'brand': ('<span class="kb-raster"><img class="kb-r-gross" src="bilder/hero/bauer-praes-01.jpg" alt="" loading="lazy">'
+              '<span class="kb-r-farben"><i style="--f:#123261"><b>#123261</b></i><i style="--f:#f3d557;--t:#123261"><b>#F3D557</b></i><i style="--f:#fff;--t:#123261"><b>#FFFFFF</b></i></span>'
+              '<img src="bilder/hero/bauer-praes-04.jpg" alt="" loading="lazy"><img src="bilder/hero/bauer-praes-12.jpg" alt="" loading="lazy"></span>'),
+    'motion': '<img src="bilder/film-bauer-vorschau.jpg" alt="" loading="lazy"><span class="kb-play"></span>',
+    # Typografie: Schriftmuster aus den Hausschriften von STUDIO AAH! (Anton, Manrope, JetBrains Mono)
+    'typo': '<span class="kb-typo"><span class="kb-typo-aa">Aa</span><span class="kb-typo-text">Manrope</span><span class="kb-typo-meta">Anton · JetBrains Mono</span></span>',
+}
+# Kategorien oben (Anna 13.10.2026), unabhängig von den Leistungskarten unten; ohne Beispiel steht das Kartenbild der Leistung
+KATEGORIEN = [
+    {'id': 'brand', 'titel': 'Markenbildung', 'link': 'service/brand/'},
+    {'id': 'print', 'titel': 'Druck', 'link': 'service/print/'},
+    {'id': 'mobil', 'titel': 'Mobil', 'link': 'service/ui-ux/'},
+    {'id': 'motion', 'titel': 'Animation', 'link': 'service/motion-design/'},
+    {'id': 'illustration', 'titel': 'Illustration', 'link': 'service/illustration-infografik/', 'bild': 'bilder/leistung-illustration.jpg'},
+    {'id': 'website', 'titel': 'Webdesign', 'link': 'service/website/'},
+    {'id': 'ui-ux', 'titel': 'Produktdesign', 'link': 'service/ui-ux/', 'bild': 'bilder/leistung-uiux.webp'},
+    {'id': 'typo', 'titel': 'Typografie', 'link': 'service/brand/'},
+]
+def kat_bild(k):
+    return BEISPIELE.get(k['id']) or '<img src="' + k['bild'] + '" alt="" loading="lazy">'
+
+
+kategorien = ''.join('      <a class="kat" href="' + k['link'] + '"><span class="kat-stapel"><span class="kat-bild">' + kat_bild(k)
+                     + '</span></span><span class="kat-name">' + esc(k['titel']) + '</span></a>\n' for k in KATEGORIEN)
+hero_html = ('  <nav class="hero-band" aria-label="Leistungen im Überblick">\n    <div class="hero-spur">\n' + kategorien + '    </div>\n'
+             '    <button type="button" class="band-pause" aria-pressed="false"><span class="unsichtbar">Laufband anhalten</span></button>\n  </nav>')
+start.write_text(einsetzen(start.read_text(encoding='utf-8'), 'HEROBAND', hero_html), encoding='utf-8')
 print('Rechner-Daten, Leiste, Glossar und Startseite geschrieben')
