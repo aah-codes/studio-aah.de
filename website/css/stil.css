@@ -2171,8 +2171,8 @@ section[hidden] { display: none !important; }
 }
 
 /* 37b. Feinschliff nach Annas Rückmeldung (13.10.2026): weniger Beige und Grau, feine Linien statt Flächen */
-.artikel-ratgeber .artikel-bild { border: 1px solid var(--farbe-rahmen); border-radius: 20px; }
-.kurz { background: var(--farbe-weiss); border: 2px solid var(--farbe-dunkel); border-radius: 20px; }
+.artikel-ratgeber .artikel-bild { border: 1.5px solid #d6d8d9; border-radius: 20px; }
+.kurz { background: var(--farbe-weiss); border: 1.5px solid var(--farbe-dunkel); border-radius: 20px; }
 .diagramm { background: var(--farbe-weiss); border: 1.5px solid var(--farbe-dunkel); border-radius: 20px; }
 .balken { height: 12px; }
 .stapel { height: 18px; }
@@ -2180,12 +2180,12 @@ section[hidden] { display: none !important; }
 .kennzahlen-reihe div { background: var(--farbe-weiss); border: 1.5px solid var(--farbe-dunkel); border-radius: 20px; }
 .kennzahlen-reihe div:first-child { background: var(--farbe-dunkel); color: var(--farbe-weiss); border-color: var(--farbe-dunkel); }
 .praxis { border-left-width: 3px; }
-.methodik { background: var(--farbe-weiss); border: 1px solid var(--farbe-rahmen); }
+.methodik { background: var(--farbe-weiss); border: 1.5px solid #d6d8d9; }
 .vergleich > div { border-width: 1.5px; }
 .checkliste li::before { background: transparent; color: var(--farbe-dunkel); border: 1.5px solid var(--farbe-dunkel); box-sizing: border-box; width: 36px; height: 36px; font-size: 18px; }
-.checkliste li:first-child::before { background: #2f6bff; border-color: #2f6bff; color: var(--farbe-weiss); }
+.checkliste li:first-child::before { background: var(--farbe-primaer); border-color: var(--farbe-primaer); color: var(--farbe-weiss); } /* Weiß auf #2a5fe6: 5,4 : 1 */
 .checkliste li { padding-left: 52px; }
 .ablauf li { border: 1.5px solid var(--farbe-dunkel); }
 .ablauf-nr { width: 36px; height: 36px; font-size: 18px; }
-.artikel-schluss { background: var(--farbe-weiss); border: 2px solid var(--farbe-dunkel); border-radius: 20px; }
+.artikel-schluss { background: var(--farbe-weiss); border: 1.5px solid var(--farbe-dunkel); border-radius: 20px; }
 .grafik figcaption { color: rgba(14, 16, 17, .7); }

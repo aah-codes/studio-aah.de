@@ -5,7 +5,7 @@
 # Danach als Bild rendern (Schriften Anton und JetBrains Mono einbinden) und als website/bilder/blog-geld-und-zeit.webp speichern.
 import math, os
 SCH, BL, WS, GR, MG = '#0e1011', '#2f6bff', '#fff', '#d6d8d9', '#9a9d9e'
-FUGE = 8
+FUGE = 14  # sichtbar 7 px: bleibt auch in kleinen Vorschauen als Fuge erkennbar
 
 def balken(sx, sy, w, laenge=120, breite=16, hand=True):
     t = f'<g transform="translate({sx} {sy}) rotate({w})"><rect x="{-breite/2}" y="0" width="{breite}" height="{laenge}" fill="{SCH}"/>'
@@ -24,7 +24,7 @@ def figur(arm_l, arm_r, bein_l, bein_r, blick=1):
     return t
 
 linie = f'fill="none" stroke="{SCH}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"'
-grau = f'stroke="{MG}" stroke-width="1.5"'
+grau = f'stroke="{MG}" stroke-width="2"'
 s = []
 s.append(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">')
 s.append(f'<defs><pattern id="punkte" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="12" cy="12" r="1.3" fill="{GR}"/></pattern></defs>')
@@ -57,7 +57,7 @@ fx, fy, k = 985, 700, 1.0
 s.append(f'<g transform="translate({fx} {fy}) scale({k})">' + figur(124, -16, 16, -12, blick=-1) + '</g>')
 hx, hy = ende(-42, -292, 124); hx, hy = fx + hx * k, fy + hy * k
 s.append(f'<rect x="{hx-120}" y="{hy-76}" width="120" height="86" fill="{BL}" stroke="{WS}" stroke-width="{FUGE}" paint-order="stroke" transform="rotate(6 {hx-60} {hy-33})"/>')
-s.append(f'<path d="M{hx-122} {hy-10} Q{hx-200} {hy+70} 430 520" fill="none" stroke="{SCH}" stroke-width="2" stroke-dasharray="3 7" stroke-linecap="round"/>')
+s.append(f'<path d="M{hx-134} {hy+2} Q{hx-205} {hy+75} 430 520" fill="none" stroke="{SCH}" stroke-width="2" stroke-dasharray="3 7" stroke-linecap="round"/>')
 s.append('</svg>')
 ziel = os.path.join(os.path.dirname(__file__), 'geld-und-zeit-titel.svg')
 open(ziel, 'w').write('\n'.join(s) + '\n')
