@@ -22,7 +22,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 from duoton import einfaerben, FARBVERLAEUFE  # noqa: E402
 
 QUELLE = Path("website/bilder")
-ZIEL = Path("website/bilder/blau")
+ZIEL = Path("werkzeuge/grafiken/bilder-blau")  # nicht veröffentlicht; für den Einsatz nach website/bilder/ kopieren
 BILDER = ["anna-haertelt-portraet.jpg", "studio-aah-gruenderin-anna-haertelt.webp"]
 
 

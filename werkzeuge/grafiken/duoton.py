@@ -11,7 +11,7 @@ from pathlib import Path
 from PIL import Image, ImageOps
 
 QUELLE = Path("website/bilder")
-ZIEL = Path("website/bilder/blau")
+ZIEL = Path("werkzeuge/grafiken/bilder-blau")  # nicht veröffentlicht; für den Einsatz nach website/bilder/ kopieren
 BILDER = [  # (Datei, größte Breite in px, Fassungen)
     ("studio-anna-haertelt.jpg", 1600, ["triton"]),
     ("studio-aah-gruenderin-anna-haertelt.webp", 768, ["duoton", "triton"]),
