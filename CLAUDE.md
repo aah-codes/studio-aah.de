@@ -33,6 +33,8 @@
 - Bewegung, die von selbst startet, hält nach höchstens 5 s an oder hat eine Pause-Taste.
 - Startseiten-H1 bleibt ohne Farbverlauf und ohne Formen-Animation (Anna hat die Idee am 13.10.2026 verworfen).
 - Kartenreihen: Unterzeilen, Listen und Buttons auf einer Linie; H1 nie breiter als die Seite.
+- Prozesse und Zeitpläne (Abläufe, Timelines) immer mit derselben Zeitleisten-Grafik wie auf der Startseite (`ol.zeitleiste`, Anna 13.10.2026); in schmalen Spalten wie Artikeln einspaltig (`figure.grafik-prozess`). Blaue Marken in `--farbe-primaer` (Kontrast 5,4 : 1).
+- Lange Wörter in Überschriften (z. B. „Unternehmens&shy;präsentation“) mit weichem Trennstrich `&shy;` versehen; jede Seite bei 320 px Breite ohne seitliches Verschieben prüfen.
 - Website-Screenshots kommen aus der Bildbibliothek `website/bilder/referenzen/` (1440 px breit).
 - Wiedererkennung (Anna, 13.10.2026), immer gleich einsetzen:
   1. Eigene Figur aus Bauhaus-Grundformen nach Oskar Schlemmers Triadischem Ballett: Kopf Kreis mit weißem Auge, Rumpf Quadrat, blauer Halbkreis-Rock, Glieder als Balken; Arme sitzen immer direkt am Rumpf, ohne Abstand; ein herabhängender Arm ist abgespreizt, die Hand sichtbar neben dem Rock, nie dahinter; Beine mit Eckenradius 4 (Anna, 13.10.2026); weiße Fugen statt Blau an Schwarz. Konstruktion in `werkzeuge/grafiken/blog/geld-und-zeit-titel.py`.

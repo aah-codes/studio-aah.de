@@ -2239,3 +2239,20 @@ section[hidden] { display: none !important; }
 @media (max-width: 600px) { .artikel-ratgeber .artikel-text .grafik-prozess .zeitleiste { padding-left: 22px; } }
 /* Kontrast (Anna 13.10.2026): „Schritt“/„seit“ voll deckend, blaue Marken im Button-Blau – Weiß darauf 5,4 : 1 statt 4,5 : 1 */
 .zl-marke small { opacity: 1; }
+/* Ökosystem-Grafik: die Zoom-Animation (Start bei 122 %) darf die Seite nicht seitlich verbreitern (Handy) */
+.oeko-abschnitt { overflow-x: clip; }
+/* Schmale Handys (bis 400 px): nichts darf die Seite seitlich verbreitern (Prüfung 13.10.2026) */
+@media (max-width: 900px) {
+  .zeitleiste { grid-template-columns: minmax(0, 1fr); }
+  .zl-text { min-width: 0; hyphens: auto; overflow-wrap: break-word; }
+  .lsx-karten-2, .lsx-karten-3, .lsx-karte { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 420px) {
+  .lsx-karte-name { font-size: 1.5rem; }
+}
+@media (max-width: 400px) {
+  h1 { hyphens: auto; overflow-wrap: break-word; }
+  .bauhaus-raster { --u: 54px; }
+  .zeitleiste li .zl-marke, .zeitleiste li:nth-child(even) .zl-marke { width: 80px; margin-right: 14px; padding: 12px; }
+  .zl-marke b { font-size: 1.6rem; }
+}

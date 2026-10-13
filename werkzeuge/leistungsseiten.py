@@ -32,7 +32,7 @@ def karten(g):
     for e in g['pakete']:
         liste = ''.join(f'<li>{esc(x)}</li>' for x in e.get('items', []))
         out.append(f'''      <article class="lsx-karte{' lsx-gefragt' if e.get('gefragt') else ''}">
-        {'<p class="lsx-badge">Gefragt</p>' if e.get('gefragt') else ''}<h3 class="lsx-karte-name">{esc(e['name'])}</h3>
+        {'<p class="lsx-badge">Gefragt</p>' if e.get('gefragt') else ''}<h3 class="lsx-karte-name">{esc(e['name']).replace('Unternehmenspräsentation', 'Unternehmens&shy;präsentation')}</h3>
         <p class="lsx-karte-preis">{preis(e)}</p>
         <p class="lsx-karte-wer">{esc(e.get("wer") or "")}</p>
         <p class="lsx-karte-dauer">{f'<span class="meta">Dauer</span> {esc(e["dauer"])}' if e.get('dauer') else ''}</p>
@@ -275,7 +275,7 @@ def seite(key, c):
     ld = json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, indent=2)
     t = re.sub(r'<script type="application/ld\+json">.*?</script>', lambda m: f'<script type="application/ld+json">\n{ld}\n  </script>', t, count=1, flags=re.S)
     if 'zaehlen.js' not in t:
-        t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v=20261016i" defer></script>\n</body>', 1)
+        t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v=20261016l" defer></script>\n</body>', 1)
     pfad.write_text(t, encoding='utf-8')
     print('geschrieben:', c['pfad'])
 
