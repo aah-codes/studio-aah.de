@@ -2034,7 +2034,15 @@
        "titel": "Mitbewerber-Benchmark",
        "alt": "Benchmark-Board mit Websites von Mitbewerbern"
       }
-     ]
+     ],
+     "band": {
+      "von": "#e5e5e5",
+      "bis": "#e5e5e5",
+      "art": [
+       "figma",
+       "voll"
+      ]
+     }
     },
     {
      "typ": "kapitel",

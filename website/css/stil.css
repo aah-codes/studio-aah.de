@@ -3348,3 +3348,13 @@ section[hidden] { display: none !important; }
 .cs-nahtlos .st-notiz-alt::after { background: linear-gradient(315deg, transparent 48%, #a7c9ec 50%, #c6e0fb 100%); }
 @media (max-width: 900px) { .cs-nahtlos .st-notiz-alt { width: clamp(68px, 19cqw, 108px); } }
 .cs-nahtlos .st-notiz-alt { align-items: center; justify-content: center; text-align: center; } /* Text mittig (Anna 14.10.2026) */
+
+/* Variante B: Analyse-Boards wie auf der Figma-Arbeitsfläche (Anna 14.10.2026: „Darstellung besser, drin sein sollte es“) –
+   graue Fläche mit Punktraster, Boards groß ohne Kachel, Rahmenname klein darüber wie in Figma */
+.nl-band.nl-figma { background-color: #e5e5e5; background-image: radial-gradient(circle, rgba(14, 16, 17, .16) 1px, transparent 1.4px); background-size: 24px 24px; padding-left: clamp(16px, 3vw, 48px); padding-right: clamp(16px, 3vw, 48px); }
+.cs-nahtlos .nl-figma .cs-galerie { max-width: 1600px; margin-inline: auto; }
+.cs-nahtlos .nl-figma .cs-galerie .ga-raster { margin-top: 0; gap: clamp(28px, 4vw, 64px); align-items: start; }
+.cs-nahtlos .nl-figma .ga-bild { display: flex; flex-direction: column-reverse; gap: 8px; }
+.cs-nahtlos .nl-figma .ga-bild figcaption { margin: 0; font: 500 12px/1.2 var(--schrift-text); letter-spacing: 0; text-transform: none; color: #6b6f71; }
+.cs-nahtlos .nl-figma .ga-bild figcaption::before { content: "#  "; color: #9a9d9e; }
+.cs-nahtlos .nl-figma .ga-fenster { border-radius: 0; box-shadow: 0 0 0 1px rgba(14, 16, 17, .1), 0 2px 6px rgba(14, 16, 17, .08); }
