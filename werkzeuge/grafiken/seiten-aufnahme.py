@@ -5,7 +5,7 @@ Steuert das installierte Google Chrome ohne Fenster über das DevTools-Protokoll
 Aufruf vom Repository-Ordner aus:
     python3 werkzeuge/grafiken/seiten-aufnahme.py ZIELORDNER URL [URL …]
     python3 werkzeuge/grafiken/seiten-aufnahme.py ZIELORDNER --sitemap https://kunde.de/page-sitemap1.xml
-Optionen: --handy (390 px breit, dreifache Auflösung) · --wireframe (Seite als Wireframe: graue Bildflächen, Textbalken) · --abschnitte "CSS-Selektor" (Standard: Kadence-Zeilen und <section>)
+Optionen: --felder (Lage der Formularfelder mit speichern, z. B. für nachgestellte Eingaben) · --handy (390 px breit, dreifache Auflösung) · --wireframe (Seite als Wireframe: graue Bildflächen, Textbalken) · --abschnitte "CSS-Selektor" (Standard: Kadence-Zeilen und <section>)
 Ergebnis je Seite: <name>_ganz.jpg (sehr lange Seiten: _ganz_teil1.jpg, _teil2 …) und <name>_01.jpg, _02.jpg … (Abschnitte), dazu aufnahmen.json mit Lage und Text der Abschnitte.
 Die Aufnahmen gehören nicht ins Repository; für die Website nur ausgewählte Ausschnitte verkleinert übernehmen.
 """
@@ -102,7 +102,7 @@ def speichern(pfad, b64):
     pathlib.Path(pfad).write_bytes(base64.b64decode(b64))
 
 
-def aufnehmen(ws, url, ziel, handy, selektor, wireframe=False):
+def aufnehmen(ws, url, ziel, handy, selektor, wireframe=False, felder=False):
     breite, faktor = (390, 3) if handy else (1440, 2)
     ws.senden('Emulation.setDeviceMetricsOverride', width=breite, height=900, deviceScaleFactor=faktor, mobile=handy)
     ws.senden('Page.navigate', url=url)
@@ -127,6 +127,9 @@ def aufnehmen(ws, url, ziel, handy, selektor, wireframe=False):
             return alle.filter(e => !alle.some(a => a !== e && a.contains(e))).map(e => {{ const r = e.getBoundingClientRect();
               return {{ y: Math.round(r.top + window.scrollY), h: Math.round(r.height), text: (e.innerText || '').trim().split('\\n').filter(Boolean).slice(0, 2).join(' · ').slice(0, 90) }}; }})
               .filter(a => a.h > 80); }})()''') or []
+    feld_liste = ws.js('''[...document.querySelectorAll('input:not([type=hidden]):not([type=checkbox]):not([type=radio]):not([type=file]), select, textarea')]
+        .filter(e => e.offsetWidth > 0).map(e => { const r = e.getBoundingClientRect(); const l = e.labels && e.labels[0] ? e.labels[0].innerText.trim() : (e.placeholder || e.name);
+        return { x: Math.round(r.left), y: Math.round(r.top + scrollY), b: Math.round(r.width), h: Math.round(r.height), art: e.tagName.toLowerCase(), label: l.slice(0, 60) }; })''') if felder else None
     name = name_aus(url) + ('_handy' if handy else '') + ('_wireframe' if wireframe else '')
     # Chrome wiederholt bei Bildern über ca. 16 000 Pixel Höhe den oberen Teil: lange Seiten in Teilen aufnehmen
     teil = 16000 // faktor
@@ -140,14 +143,16 @@ def aufnehmen(ws, url, ziel, handy, selektor, wireframe=False):
         speichern(f'{ziel}/{name}_{i:02d}.jpg', bild['data'])
         a['datei'] = f'{name}_{i:02d}.jpg'
     print(f'{name}: {hoehe} px hoch, {len(abschnitte)} Abschnitte')
-    return {'url': url, 'datei': f'{name}_ganz.jpg', 'breite': breite, 'faktor': faktor, 'hoehe': hoehe, 'abschnitte': abschnitte}
+    e = {'url': url, 'datei': f'{name}_ganz.jpg', 'breite': breite, 'faktor': faktor, 'hoehe': hoehe, 'abschnitte': abschnitte}
+    if feld_liste is not None: e['felder'] = feld_liste
+    return e
 
 
 def main():
     args = sys.argv[1:]
     if len(args) < 2: sys.exit(__doc__)
-    ziel, handy, wireframe = args.pop(0), '--handy' in args, '--wireframe' in args
-    args = [a for a in args if a not in ('--handy', '--wireframe')]
+    ziel, handy, wireframe, felder = args.pop(0), '--handy' in args, '--wireframe' in args, '--felder' in args
+    args = [a for a in args if a not in ('--handy', '--wireframe', '--felder')]
     selektor = STANDARD_ABSCHNITTE
     if '--abschnitte' in args:
         i = args.index('--abschnitte'); selektor = args[i + 1]; del args[i:i + 2]
@@ -170,7 +175,7 @@ def main():
         ws.senden('Page.enable')
         protokoll = pathlib.Path(ziel) / 'aufnahmen.json'
         alt = json.loads(protokoll.read_text(encoding='utf-8')) if protokoll.exists() else []
-        neu = [aufnehmen(ws, u, ziel, handy, selektor, wireframe) for u in urls]
+        neu = [aufnehmen(ws, u, ziel, handy, selektor, wireframe, felder) for u in urls]
         schluessel = {(e['url'], e['breite']) for e in neu}
         protokoll.write_text(json.dumps([e for e in alt if (e['url'], e['breite']) not in schluessel] + neu, ensure_ascii=False, indent=1), encoding='utf-8')
     finally:

@@ -269,6 +269,46 @@
     "rechts_alt": "Fertige Startseite"
    },
    {
+    "typ": "visual-design",
+    "meta": "Schritt 05 · Visual Design",
+    "titel": "Solide, ruhig, vertrauenswürdig",
+    "entscheidungen": [
+     [
+      "Tonalität:",
+      "klar, sachlich, handwerklich – ohne Pathos"
+     ],
+     [
+      "UI-Stil:",
+      "große Headlines, viel Weißraum, konsequentes Grid"
+     ],
+     [
+      "Bildwelt:",
+      "echte Baustellen, Menschen bei der Arbeit, keine Stockfotos"
+     ],
+     [
+      "Vorher/Nachher",
+      "als Erzählmittel"
+     ]
+    ],
+    "favicon": "bilder/referenzen/bauer/vd-favicon.png",
+    "favicon_text": "Favicon · Vorschlag 4, vom Kunden gewählt",
+    "varianten": "bilder/referenzen/bauer/vd-favicons.jpg",
+    "varianten_alt": "Vier Vorschläge für das Favicon",
+    "varianten_text": "Vier Vorschläge für das Favicon",
+    "features": [
+     [
+      "bilder/referenzen/bauer/vd-kontaktformular.jpg",
+      "Kontaktformular",
+      "Kontaktformular der neuen Website"
+     ],
+     [
+      "bilder/referenzen/bauer/vd-cta-footer.jpg",
+      "Letzter Schritt und Footer",
+      "Abschluss der Seite mit Handlungsaufforderung und Footer"
+     ]
+    ]
+   },
+   {
     "typ": "designsystem",
     "meta": "Schritt 05 · Design-System",
     "titel": "Farben und Schrift",
@@ -276,12 +316,12 @@
      [
       "#003366",
       "Bauer-Blau",
-      "Überschriften, Flächen, Buttons"
+      "Überschriften, Flächen"
      ],
      [
       "#FBD52A",
       "Bauer-Gelb",
-      "Akzent, Hervorhebung"
+      "Akzent"
      ],
      [
       "#FFFFFF",
@@ -347,7 +387,8 @@
       " justify-self: start; display: inline-block; background: #003366; color: #fff; padding: 10px 22px; border-radius: 4px;",
       "Alle Leistungen anschauen →"
      ]
-    ]
+    ],
+    "farben_text": "Aus dem Logo: Blau und Gelb"
    },
    {
     "typ": "film-vergleich",
@@ -410,6 +451,51 @@
     ]
    },
    {
+    "typ": "buehne",
+    "meta": "Referenzen · im Detail",
+    "titel": "U8, U-Bhf. Pankstraße",
+    "text": "Jede Referenz hat eine eigene Seite: Bilder, Bauvorhaben, Bauherr, Zeitraum und Auftragswert.",
+    "hintergrund": "bilder/referenzen/bauer/vb-ubahn.jpg",
+    "browser": "bilder/referenzen/bauer/rd-pankstrasse.jpg",
+    "browser_alt": "Referenzseite U8, U-Bhf. Pankstraße",
+    "handy": "bilder/referenzen/bauer/rd-pankstrasse-handy.jpg",
+    "handy_alt": "Referenzseite U8, U-Bhf. Pankstraße am Handy"
+   },
+   {
+    "typ": "buehne",
+    "meta": "Key-Patterns",
+    "titel": "Spezialisierung, Referenzen, Eignung",
+    "text": "Vergabestellen prüfen in Sekunden: Macht dieser Anbieter das, was wir brauchen – und hat er es nachweislich schon getan?",
+    "hintergrund": "bilder/referenzen/bauer/bm-hintergrund.jpg",
+    "muster": [
+     [
+      "bilder/referenzen/bauer/bm-kompetenzen.jpg",
+      "Kernkompetenzen"
+     ],
+     [
+      "bilder/referenzen/bauer/bm-referenzen.jpg",
+      "Referenzen mit Filter"
+     ],
+     [
+      "bilder/referenzen/bauer/bm-zertifikate.jpg",
+      "Eignung und Zertifikate"
+     ]
+    ]
+   },
+   {
+    "typ": "geraete",
+    "desktop": "bilder/referenzen/bauer-referenzseite.jpg",
+    "handy": "bilder/referenzen/bauer/h-referenzen-lang.jpg",
+    "titel": "Referenzen mit Filter – am Rechner und am Handy"
+   },
+   {
+    "typ": "vollbild",
+    "bild": "bilder/referenzen/bauer/vb-karriere.jpg",
+    "alt": "Team von Wolfgang Bauer Ingenieurbau auf einem Stahlträger",
+    "meta": "Schwerpunkt",
+    "titel": "Karriere"
+   },
+   {
     "typ": "karriere",
     "meta": "Schwerpunkt Karriere",
     "titel_html": "Fachkräfte&shy;mangel? Karriere als Schwer&shy;punkt.",
@@ -434,61 +520,90 @@
     ]
    },
    {
-    "typ": "bento",
-    "kacheln": [
-     {
-      "bild": "bilder/referenzen/bauer/k-startseite_04.jpg",
-      "breit": true,
-      "titel": "Kompetenzen"
-     },
-     {
-      "bild": "bilder/referenzen/bauer/k-karriere_06.jpg",
-      "titel": "Bewerbung in drei Schritten"
-     },
-     {
-      "bild": "bilder/referenzen/bauer/k-karriere_03.jpg",
-      "titel": "Karriere"
-     },
-     {
-      "bild": "bilder/referenzen/bauer/k-wasserbau_07.jpg",
-      "titel": "Arbeitsweise"
-     },
-     {
-      "bild": "bilder/referenzen/bauer/k-unternehmen_09.jpg",
-      "titel": "Eignung und Zertifikate"
-     },
-     {
-      "bild": "bilder/referenzen/bauer/k-karriere_07.jpg",
-      "breit": true,
-      "titel": "Stimmen von der Baustelle"
-     },
-     {
-      "bild": "bilder/referenzen/bauer/k-unternehmen_05.jpg",
-      "titel": "Haltung"
-     }
+    "typ": "weg",
+    "meta": "Karriere · Wireframes",
+    "titel": "Der Weg zur Bewerbung",
+    "schritte": [
+     [
+      "bilder/referenzen/bauer/kw-karriere.jpg",
+      "Arbeiten bei Bauer",
+      "Karriereseite",
+      false
+     ],
+     [
+      "bilder/referenzen/bauer/kw-stelle.jpg",
+      "Stelle im Detail",
+      "Ausbildung Maurer",
+      false
+     ],
+     [
+      "bilder/referenzen/bauer/kw-baustellentag.jpg",
+      "Tag auf der Baustelle",
+      "Kennenlernen vor Ort",
+      true
+     ],
+     [
+      "bilder/referenzen/bauer/kw-bewerbung.jpg",
+      "Bewerbung",
+      "Formular",
+      true
+     ]
     ]
    },
    {
-    "typ": "handys",
-    "bilder": [
-     "bilder/referenzen/bauer/h-startseite.jpg",
-     "bilder/referenzen/bauer/h-karriere.jpg",
-     "bilder/referenzen/bauer/h-referenzen.jpg",
-     "bilder/referenzen/bauer/h-wasserbau.jpg"
+    "typ": "section",
+    "bild": "bilder/referenzen/bauer/ks-team.jpg",
+    "alt": "Section „Warum wir bei Bauer arbeiten. Unser Team erzählt.“",
+    "titel": "Arbeiten bei Bauer · Unser Team erzählt"
+   },
+   {
+    "typ": "section",
+    "bild": "bilder/referenzen/bauer/ks-konditionen.jpg",
+    "alt": "Section „Was du dafür bekommst“ der Stelle Ausbildung Maurer",
+    "titel": "Ausbildung Maurer · Was du dafür bekommst"
+   },
+   {
+    "typ": "handy-duo",
+    "meta": "Karriere · Mobil",
+    "titel": "Bewerben am Handy",
+    "text": "Wer auf der Baustelle arbeitet, sucht am Handy. Deshalb funktioniert der ganze Weg mobil – von der Stelle bis zum Formular.",
+    "links": "bilder/referenzen/bauer/hd-maurer.jpg",
+    "links_alt": "Stelle Ausbildung Maurer am Handy",
+    "rechts": "bilder/referenzen/bauer/hd-bewerbung.jpg",
+    "rechts_alt": "Bewerbungsformular am Handy",
+    "eingaben": [
+     [
+      "Max",
+      6.666666666666667,
+      30.3,
+      86.66666666666667
+     ],
+     [
+      "Mustermann",
+      6.666666666666667,
+      32.86666666666667,
+      86.66666666666667
+     ],
+     [
+      "max@beispiel.de",
+      6.666666666666667,
+      36.5,
+      38.71794871794872
+     ],
+     [
+      "0170 1234567",
+      6.666666666666667,
+      40.13333333333333,
+      38.71794871794872
+     ],
+     [
+      "Ich möchte Maurer werden.",
+      6.666666666666667,
+      72.66666666666667,
+      86.66666666666667
+     ]
     ],
-    "titel": "Am Handy"
-   },
-   {
-    "typ": "geraete",
-    "desktop": "bilder/referenzen/bauer-referenzseite.jpg",
-    "handy": "bilder/referenzen/bauer/h-referenzen-lang.jpg",
-    "titel": "Referenzen mit Filter – am Rechner und am Handy"
-   },
-   {
-    "typ": "film",
-    "datei": "videos/launchvideo-bauer.mp4",
-    "vorschau": "bilder/film-bauer-vorschau.jpg",
-    "titel": "Launch-Film"
+    "form_start": 24
    },
    {
     "typ": "raster",

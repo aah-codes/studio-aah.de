@@ -123,7 +123,12 @@ def block(b, pre):
                 f'    <div class="cs-kachel cs-split-bild{" hoch" if b.get("hoch") else ""}"><img src="{pre}{b["bild"]}" alt="{esc(b.get("alt", ""))}" loading="lazy"></div>\n  </figure>')
     if b['typ'] == 'designsystem':
         # Farben und Schrift wie ein Designsystem (Anna 14.10.2026): große Farbfelder, Schriftmuster H1 bis Fließtext in der echten Schrift
-        farben = ''.join(f'<div class="ds-farbe" style="--f: {c}"><span></span><p><b>{esc(n)}</b><small>{esc(c.upper())}</small><em>{esc(r)}</em></p></div>' for c, n, r in b['farben'])
+        # Farbkarten wie Behance „Skin First“ (Anna 14.10.2026): Name groß, darunter Zeilen mit Linien; RGB aus dem HEX-Wert berechnet
+        rgb = lambda c: ' '.join(str(int(c[i:i + 2], 16)) for i in (1, 3, 5))
+        hell = lambda c: sum(int(c[i:i + 2], 16) for i in (1, 3, 5)) > 450
+        farben = ''.join(f'<div class="ds-farbe{" ds-hell" if hell(c) else ""}" style="--f: {c}"><b>{esc(n)}</b><dl><div><dt>Digital HEX</dt><dd>{esc(c.upper())}</dd></div>'
+                         f'<div><dt>RGB</dt><dd>{rgb(c)}</dd></div><div><dt>Einsatz</dt><dd>{esc(r)}</dd></div></dl></div>' for c, n, r in b['farben'])
+        farben = f'<div class="ds-farben-kopf"><span>Farbpalette</span><span>{esc(b.get("farben_text", ""))}</span></div>' + farben
         stufen = ''.join(f'<li><span class="ds-mass">{esc(name)}<br><small>{esc(mass)}</small></span><span class="ds-probe" style="font-size: {gr}; font-weight: {gew}; line-height: {zh};{zusatz}">{esc(probe)}</span></li>'
                          for name, mass, gr, gew, zh, zusatz, probe in b['stufen'])
         return (f'  <figure class="cs-block cs-designsystem" style="--ds-schrift: {b["schrift_css"]}">\n    <figcaption class="cs-block-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3">{esc(b["titel"])}</h2></figcaption>\n'
@@ -145,6 +150,46 @@ def block(b, pre):
         seiten = ''.join(f'<div class="kr-seite"><span class="cs-etikett">{esc(n)}</span><div class="kr-fenster"><img src="{pre}{bild}" alt="{esc(alt)}" loading="lazy"></div></div>' for bild, n, alt in b['seiten'])
         return (f'  <section class="cs-block cs-karriere" aria-labelledby="karriere-titel">\n    <div class="kr-text"><p class="meta">{esc(b["meta"])}</p><h2 class="kr-titel" id="karriere-titel">{b["titel_html"]}</h2>'
                 f'<p>{esc(b["text"])}</p><ul>{punkte}</ul><p class="kr-steuerung"><button type="button" class="ks-knopf kr-knopf" aria-label="Bewegung anhalten">❚❚</button></p></div>\n    <div class="kr-seiten" data-einblenden>{seiten}</div>\n  </section>')
+    if b['typ'] == 'vollbild':
+        # großes Foto über die ganze Breite als Kapitelanfang (Anna 14.10.2026, Vorbild Behance „H&P Bauingenieure“)
+        return (f'  <figure class="cs-block cs-vollbild"><img src="{pre}{b["bild"]}" alt="{esc(b["alt"])}" loading="lazy">'
+                f'<figcaption><p class="meta">{esc(b["meta"])}</p><p class="cs-vollbild-titel">{esc(b["titel"])}</p></figcaption></figure>')
+    if b['typ'] == 'buehne':
+        # Bühne wie Behance „CreativMinds – Core Interface“ (Anna 14.10.2026): Hintergrundbild oder Verlauf, Text oben, große Muster oder Website darüber
+        text = f'<div class="bn-text"><p class="meta">{esc(b["meta"])}</p><h2 class="bn-titel">{esc(b["titel"])}</h2>' + (f'<p>{esc(b["text"])}</p>' if b.get('text') else '') + '</div>'
+        if b.get('muster'):
+            inhalt = '<div class="bn-muster">' + ''.join(f'<img src="{pre}{m}" alt="{esc(a)}" loading="lazy">' for m, a in b['muster']) + '</div>'
+        else:
+            inhalt = (f'<div class="bn-geraete"><div class="bn-browser"><span class="bn-leiste"></span><div class="bn-fenster"><img src="{pre}{b["browser"]}" alt="{esc(b["browser_alt"])}" loading="lazy"></div></div>'
+                      + handy3d(b['handy'], pre, b['handy_alt']) + '</div>')
+        return f'  <section class="cs-block cs-buehne-bild" data-einblenden style="--bn-bild: url({pre}{b["hintergrund"]})">{text}{inhalt}</section>'
+    if b['typ'] == 'weg':
+        # Wireframes der wichtigsten Seiten als Weg (Anna 14.10.2026, Vorbild Behance „CreativMinds – UX Process“)
+        schritte = ''
+        for i, (bild, titel, unter, oder) in enumerate(b['schritte'], 1):
+            kl = ' class="oder"' if oder else ''
+            schritte += (f'<li{kl}><span class="weg-nr">{i:02d}</span><span class="weg-titel">{esc(titel)}</span>'
+                         f'<div class="weg-bild"><img src="{pre}{bild}" alt="Wireframe: {esc(titel)}" loading="lazy"></div><span class="weg-unter">{esc(unter)}</span></li>')
+        return (f'  <figure class="cs-block cs-kachel cs-weg">\n    <figcaption class="cs-block-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3">{esc(b["titel"])}</h2>'
+                + (f'<p class="weg-einleitung">{esc(b["text"])}</p>' if b.get('text') else '') + f'</figcaption>\n    <ol class="weg-schritte">{schritte}</ol>\n  </figure>')
+    if b['typ'] == 'section':
+        # eine echte Section groß im Browserfenster
+        return (f'  <figure class="cs-block cs-section"><div class="cs-section-fenster"><img src="{pre}{b["bild"]}" alt="{esc(b["alt"])}" loading="lazy"></div>'
+                + (f'<figcaption class="meta">{esc(b["titel"])}</figcaption>' if b.get('titel') else '') + '</figure>')
+    if b['typ'] == 'handy-duo':
+        # zwei räumliche Handys, versetzt, scrollen von selbst (Pause-Taste); rechts füllt sich das Formular (nachgestellt, nichts wird gesendet)
+        felder = ''.join(f'<span class="hd-eingabe" data-text="{esc(x)}" style="left:{l:.2f}%;top:{o:.3f}%;width:{w:.2f}%"></span>' for x, l, o, w in b['eingaben'])
+        return (f'  <section class="cs-block cs-handy-duo" data-handyduo aria-label="{esc(b["titel"])}">\n    <div class="hd-text"><p class="meta">{esc(b["meta"])}</p><h2 class="bn-titel">{esc(b["titel"])}</h2><p>{esc(b["text"])}</p>'
+                f'<p><button type="button" class="ks-knopf hd-knopf" aria-label="Bewegung anhalten">❚❚</button></p></div>\n'
+                f'    <div class="hd-buehne">{handy3d(b["links"], pre, b["links_alt"], "hd-links")}{handy3d(b["rechts"], pre, b["rechts_alt"], "hd-rechts", felder, b.get("form_start", 0))}</div>\n  </section>')
+    if b['typ'] == 'visual-design':
+        # Visual Design wie Behance „CreativMinds – Visual Language“ (Anna 14.10.2026): Entscheidungen, gewähltes Favicon, Varianten, zwei Features
+        punkte = ''.join(f'<li><b>{esc(a)}</b> {esc(x)}</li>' for a, x in b['entscheidungen'])
+        features = ''.join(f'<figure class="vd-feature"><div class="vd-fenster"><img src="{pre}{bild}" alt="{esc(alt)}" loading="lazy"></div><figcaption class="meta">{esc(titel)}</figcaption></figure>' for bild, titel, alt in b['features'])
+        return (f'  <section class="cs-block cs-visual" aria-labelledby="vd-titel">\n    <div class="vd-text"><p class="meta">{esc(b["meta"])}</p><h2 class="bn-titel" id="vd-titel">{esc(b["titel"])}</h2><ul>{punkte}</ul></div>\n'
+                f'    <div class="vd-icon"><img src="{pre}{b["favicon"]}" alt="Favicon von Wolfgang Bauer Ingenieurbau" width="512" height="512" loading="lazy"><span class="meta">{esc(b["favicon_text"])}</span></div>\n'
+                f'    <figure class="vd-varianten"><img src="{pre}{b["varianten"]}" alt="{esc(b["varianten_alt"])}" loading="lazy"><figcaption class="meta">{esc(b["varianten_text"])}</figcaption></figure>\n'
+                f'    <div class="vd-features">{features}</div>\n  </section>')
     raise SystemExit('Unbekannter Bildblock: ' + b['typ'])
 
 
@@ -153,6 +198,11 @@ def zahlen(p):
     if not p.get('zahlen'): return ''
     z = ''.join(f'<div><dt>{esc(b)}</dt><dd>{esc(a)}</dd></div>' for a, b in p['zahlen'])
     return f'  <dl class="cs-zahlen">{z}</dl>\n'
+
+
+def handy3d(bild, pre, alt, klasse='', zusatz='', start=0):
+    # räumliches Handy mit Spiegelung (Anna 14.10.2026, Vorbild Behance „CreativMinds“): Seite scrollt im Bildschirm
+    return (f'<div class="h3d {klasse}" style="--start: {start}%"><div class="h3d-bildschirm"><div class="h3d-seite"><img src="{pre}{bild}" alt="{esc(alt)}" loading="lazy">{zusatz}</div></div></div>')
 
 
 def stimme(p, pre):

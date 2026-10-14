@@ -290,3 +290,40 @@
     k.textContent = p ? '▶' : '❚❚'; k.setAttribute('aria-label', p ? 'Bewegung fortsetzen' : 'Bewegung anhalten');
   }));
 })();
+
+// Handy-Paar (Projektseiten): rechts scrollt das Bewerbungsformular hoch und füllt sich wie von Hand (nachgestellt, nichts wird gesendet).
+// Läuft nur sichtbar und ohne „Bewegung reduzieren“; Pause-Taste hält beide Handys an.
+(() => {
+  const ruhig = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('[data-handyduo]').forEach((d) => {
+    const seite = d.querySelector('.hd-rechts .h3d-seite'), start = parseFloat(getComputedStyle(d.querySelector('.hd-rechts')).getPropertyValue('--start')) || 0;
+    const felder = [...d.querySelectorAll('.hd-eingabe')], knopf = d.querySelector('.hd-knopf');
+    let uhr = null, laeuft = false;
+    const warte = (ms) => new Promise((r) => { uhr = setTimeout(r, ms); });
+    const runde = async () => {
+      while (laeuft) {
+        felder.forEach((f) => { f.textContent = ''; f.classList.remove('tippt'); });
+        seite.style.transform = 'translateY(0)'; await warte(1800); if (!laeuft) return;
+        seite.style.transform = `translateY(-${start}%)`; await warte(2600);
+        for (const f of felder) {
+          if (!laeuft) return;
+          if (f.offsetTop + seite.offsetTop > seite.parentElement.offsetHeight * 0.85 - seite.getBoundingClientRect().top + seite.parentElement.getBoundingClientRect().top) {
+            seite.style.transform = `translateY(-${(f.offsetTop - seite.parentElement.offsetHeight * 0.4) / seite.offsetHeight * 100}%)`; await warte(2500);
+          }
+          f.classList.add('tippt');
+          for (const z of f.dataset.text) { if (!laeuft) return; f.textContent += z; await warte(70); }
+          f.classList.remove('tippt'); await warte(350);
+        }
+        await warte(3000);
+      }
+    };
+    const an = () => { if (laeuft || ruhig || d.dataset.angehalten) return; laeuft = true; d.classList.remove('pause'); runde(); };
+    const aus = () => { laeuft = false; clearTimeout(uhr); d.classList.add('pause'); };
+    knopf.addEventListener('click', () => {
+      if (laeuft) { aus(); d.dataset.angehalten = '1'; knopf.textContent = '▶'; knopf.setAttribute('aria-label', 'Bewegung fortsetzen'); }
+      else { delete d.dataset.angehalten; knopf.textContent = '❚❚'; knopf.setAttribute('aria-label', 'Bewegung anhalten'); an(); }
+    });
+    if (ruhig) { d.classList.add('pause'); felder.forEach((f) => { f.textContent = f.dataset.text; }); seite.style.transform = `translateY(-${start}%)`; }
+    else if ('IntersectionObserver' in window) new IntersectionObserver((e) => { if (e[0].isIntersecting) an(); else aus(); }, { threshold: 0.3 }).observe(d);
+  });
+})();
