@@ -5,7 +5,7 @@ Steuert das installierte Google Chrome ohne Fenster über das DevTools-Protokoll
 Aufruf vom Repository-Ordner aus:
     python3 werkzeuge/grafiken/seiten-aufnahme.py ZIELORDNER URL [URL …]
     python3 werkzeuge/grafiken/seiten-aufnahme.py ZIELORDNER --sitemap https://kunde.de/page-sitemap1.xml
-Optionen: --felder (Lage der Formularfelder mit speichern, z. B. für nachgestellte Eingaben) · --handy (390 px breit, dreifache Auflösung) · --wireframe (Seite als Wireframe: graue Bildflächen, Textbalken) · --abschnitte "CSS-Selektor" (Standard: Kadence-Zeilen und <section>)
+Optionen: --js "Code" (vor der Aufnahme im Browser ausführen, z. B. Slider weiterschalten) · --hover "CSS-Selektor" (Maus auf das Element, z. B. Mega-Menü; nimmt nur den sichtbaren Ausschnitt auf) · --felder (Lage der Formularfelder mit speichern, z. B. für nachgestellte Eingaben) · --handy (390 px breit, dreifache Auflösung) · --wireframe (Seite als Wireframe: graue Bildflächen, Textbalken) · --abschnitte "CSS-Selektor" (Standard: Kadence-Zeilen und <section>)
 Ergebnis je Seite: <name>_ganz.jpg (sehr lange Seiten: _ganz_teil1.jpg, _teil2 …) und <name>_01.jpg, _02.jpg … (Abschnitte), dazu aufnahmen.json mit Lage und Text der Abschnitte.
 Die Aufnahmen gehören nicht ins Repository; für die Website nur ausgewählte Ausschnitte verkleinert übernehmen.
 """
@@ -102,7 +102,7 @@ def speichern(pfad, b64):
     pathlib.Path(pfad).write_bytes(base64.b64decode(b64))
 
 
-def aufnehmen(ws, url, ziel, handy, selektor, wireframe=False, felder=False):
+def aufnehmen(ws, url, ziel, handy, selektor, wireframe=False, felder=False, hover=None, vorher_js=None):
     breite, faktor = (390, 3) if handy else (1440, 2)
     ws.senden('Emulation.setDeviceMetricsOverride', width=breite, height=900, deviceScaleFactor=faktor, mobile=handy)
     ws.senden('Page.navigate', url=url)
@@ -116,11 +116,26 @@ def aufnehmen(ws, url, ziel, handy, selektor, wireframe=False, felder=False):
             *, *::before, *::after {{ animation-play-state: paused !important; transition: none !important; }}
             #masthead, #masthead *, .site-header, .kadence-sticky-header {{ transform: none !important; }}
             [class*="kb-animate"], [data-aos], .kt-animate, .aos-init {{ opacity: 1 !important; transform: none !important; }}`; document.head.appendChild(s); return 1; }})()''')
+    if vorher_js:
+        ws.js(f'(async () => {{ {vorher_js}; await new Promise(r => setTimeout(r, 1500)); return 1; }})()')
     if wireframe:
         ws.js(f'''(() => {{ const s = document.createElement('style'); s.textContent = {json.dumps(WIREFRAME)}; document.head.appendChild(s); return 1; }})()''')
         time.sleep(0.3)
         ws.js(WIREFRAME_JS)
     time.sleep(0.8)
+    if hover:
+        # Maus auf ein Element (z. B. Menüpunkt mit Mega-Menü) und nur den sichtbaren Ausschnitt aufnehmen
+        pos = ws.js(f'''(() => {{ const e = document.querySelector({json.dumps(hover)}); if (!e) return null; const r = e.getBoundingClientRect(); return [r.left + r.width / 2, r.top + r.height / 2]; }})()''')
+        if not pos: raise SystemExit('Hover-Element nicht gefunden: ' + hover)
+        ws.senden('Input.dispatchMouseEvent', type='mouseMoved', x=pos[0], y=pos[1])
+        # Menüs, die sich per Klick öffnen (Kadence „sub-click“): Knopf anklicken
+        ws.js(f'''(() => {{ const e = document.querySelector({json.dumps(hover)}); if (e.tagName === 'BUTTON') e.click(); return 1; }})()''')
+        time.sleep(1.2)
+        name = name_aus(url) + '_hover'
+        bild = ws.senden('Page.captureScreenshot', format='jpeg', quality=82, clip={'x': 0, 'y': 0, 'width': breite, 'height': 900, 'scale': 1})
+        speichern(f'{ziel}/{name}.jpg', bild['data'])
+        print(name + ': Hover-Ausschnitt')
+        return {'url': url, 'datei': f'{name}.jpg', 'breite': breite, 'faktor': faktor, 'hoehe': 900, 'abschnitte': [], 'hover': hover}
     hoehe = ws.js('Math.ceil(document.documentElement.scrollHeight)')
     # nur äußerste Abschnitte (verschachtelte Zeilen gehören zum umgebenden Abschnitt)
     abschnitte = ws.js(f'''(() => {{ const alle = [...document.querySelectorAll({json.dumps(selektor)})];
@@ -153,7 +168,11 @@ def main():
     if len(args) < 2: sys.exit(__doc__)
     ziel, handy, wireframe, felder = args.pop(0), '--handy' in args, '--wireframe' in args, '--felder' in args
     args = [a for a in args if a not in ('--handy', '--wireframe', '--felder')]
-    selektor = STANDARD_ABSCHNITTE
+    selektor, hover, vorher_js = STANDARD_ABSCHNITTE, None, None
+    if '--js' in args:
+        i = args.index('--js'); vorher_js = args[i + 1]; del args[i:i + 2]
+    if '--hover' in args:
+        i = args.index('--hover'); hover = args[i + 1]; del args[i:i + 2]
     if '--abschnitte' in args:
         i = args.index('--abschnitte'); selektor = args[i + 1]; del args[i:i + 2]
     if args[0] == '--sitemap':
@@ -175,7 +194,7 @@ def main():
         ws.senden('Page.enable')
         protokoll = pathlib.Path(ziel) / 'aufnahmen.json'
         alt = json.loads(protokoll.read_text(encoding='utf-8')) if protokoll.exists() else []
-        neu = [aufnehmen(ws, u, ziel, handy, selektor, wireframe, felder) for u in urls]
+        neu = [aufnehmen(ws, u, ziel, handy, selektor, wireframe, felder, hover, vorher_js) for u in urls]
         schluessel = {(e['url'], e['breite']) for e in neu}
         protokoll.write_text(json.dumps([e for e in alt if (e['url'], e['breite']) not in schluessel] + neu, ensure_ascii=False, indent=1), encoding='utf-8')
     finally:

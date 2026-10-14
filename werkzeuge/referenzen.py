@@ -167,7 +167,7 @@ def block(b, pre):
             inhalt = '<div class="bn-muster">' + ''.join(f'<img src="{pre}{m}" alt="{esc(a)}" loading="lazy">' for m, a in b['muster']) + '</div>'
         else:
             inhalt = (f'<div class="bn-geraete"><div class="bn-browser"><span class="bn-leiste"></span><div class="bn-fenster"><img src="{pre}{b["browser"]}" alt="{esc(b["browser_alt"])}" loading="lazy"></div></div>'
-                      + handy3d(b['handy'], pre, b['handy_alt']) + '</div>')
+                      + handy3d(b['handy'], pre, b['handy_alt'], 'iph') + '</div>')
         return f'  <section class="cs-block cs-buehne-bild" data-einblenden style="--bn-bild: url({pre}{b["hintergrund"]})">{text}{inhalt}</section>'
     if b['typ'] == 'weg':
         # Wireframes der wichtigsten Seiten als Weg (Anna 14.10.2026, Vorbild Behance „CreativMinds – UX Process“)
@@ -191,11 +191,49 @@ def block(b, pre):
     if b['typ'] == 'visual-design':
         # Visual Design wie Behance „CreativMinds – Visual Language“ (Anna 14.10.2026): Entscheidungen, gewähltes Favicon, Varianten, zwei Features
         punkte = ''.join(f'<li><b>{esc(a)}</b> {esc(x)}</li>' for a, x in b['entscheidungen'])
-        features = ''.join(f'<figure class="vd-feature"><div class="vd-fenster"><img src="{pre}{bild}" alt="{esc(alt)}" loading="lazy"></div><figcaption class="meta">{esc(titel)}</figcaption></figure>' for bild, titel, alt in b['features'])
+        features = ''.join(f'<figure class="vd-feature"><div class="vd-fenster"><img src="{pre}{bild}" alt="{esc(alt)}" loading="lazy"></div><figcaption class="meta">{esc(titel)}</figcaption></figure>' for bild, titel, alt in b.get('features', []))
         return (f'  <section class="cs-block cs-visual" aria-labelledby="vd-titel">\n    <div class="vd-text"><p class="meta">{esc(b["meta"])}</p><h2 class="bn-titel" id="vd-titel">{esc(b["titel"])}</h2><ul>{punkte}</ul></div>\n'
                 f'    <div class="vd-icon"><img src="{pre}{b["favicon"]}" alt="Favicon von Wolfgang Bauer Ingenieurbau" width="512" height="512" loading="lazy"><span class="meta">{esc(b["favicon_text"])}</span></div>\n'
                 f'    <figure class="vd-varianten"><img src="{pre}{b["varianten"]}" alt="{esc(b["varianten_alt"])}" loading="lazy"><figcaption class="meta">{esc(b["varianten_text"])}</figcaption></figure>\n'
-                f'    <div class="vd-features">{features}</div>\n  </section>')
+                + (f'    <div class="vd-features">{features}</div>\n' if features else '') + '  </section>')
+    if b['typ'] == 'kapitel':
+        # Kapitel-Trenner ohne Foto (Anna 14.10.2026): große Überschrift, Nummer, feine Linie
+        return (f'  <div class="cs-block cs-kapitel"><span class="kp-nr">{esc(b["nr"])}</span><p class="meta">{esc(b["meta"])}</p>'
+                f'<h2 class="kp-titel">{esc(b["titel"])}</h2></div>')
+    if b['typ'] == 'ablauf':
+        # Prozess in der gewohnten Zeitleiste, einspaltig untereinander (Anna 14.10.2026, nicht im Zickzack)
+        li = ''.join(f'<li><span class="zl-marke"><small>Schritt</small><b>{i:02d}</b></span><div class="zl-text"><p class="meta">{esc(z)}</p><h3>{esc(x)}</h3></div></li>' for i, (z, x) in enumerate(b['schritte'], 1))
+        return (f'  <section class="cs-block cs-prozess" aria-labelledby="ablauf-titel"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3" id="ablauf-titel">{esc(b["titel"])}</h2>'
+                f'<figure class="grafik grafik-prozess"><ol class="zeitleiste">{li}</ol></figure></section>')
+    if b['typ'] == 'klickstrecke':
+        # Klickstrecke als Treppe: Schritte versetzt, Beschriftung neben der Karte statt darauf (Anna 14.10.2026)
+        punkte = ''.join(f'<li>{esc(x)}</li>' for x in b['punkte'])
+        stufen = ''.join(f'<li class="kl-stufe{" kl-oder" if oder else ""}" style="--n:{i}"><span class="kl-label"><b>{i + 1:02d}</b>{esc(titel)}</span>'
+                         f'<div class="kl-fenster"><img src="{pre}{bild}" alt="{esc(titel)}" loading="lazy"></div></li>' for i, (bild, titel, oder) in enumerate(b['stufen']))
+        return (f'  <section class="cs-block cs-klick" aria-labelledby="klick-titel">\n    <div class="kl-text"><p class="meta">{esc(b["meta"])}</p><h2 class="kr-titel" id="klick-titel">{b["titel_html"]}</h2>'
+                f'<p>{esc(b["text"])}</p><ul>{punkte}</ul></div>\n    <ol class="kl-treppe">{stufen}</ol>\n  </section>')
+    if b['typ'] == 'zwei-karten':
+        # zwei große Karten (Herausforderung, Ziele) statt kleinteiliger Chips (Anna 14.10.2026)
+        k = ''.join(f'<div class="zk-karte"><img src="{pre}bilder/icons/{i}" alt="" width="400" height="400" loading="lazy"><h2>{esc(h)}</h2><ul>'
+                    + ''.join(f'<li>{esc(x)}</li>' for x in liste) + '</ul></div>' for i, h, liste in b['karten'])
+        return f'  <section class="cs-block cs-zwei-karten" aria-label="Herausforderung und Ziele">{k}</section>'
+    if b['typ'] == 'storyfilm':
+        # Storytelling-Film im Browserfenster (Anna 14.10.2026): durch die alte Seite klicken, Zettel zeigen, was schlecht war;
+        # Blende; neue Seite mit Mega-Menü, Referenzen, CTA, Formularen. Szenen-Daten als JSON, Ablauf in js/menue.js
+        szenen = ''
+        for i, s in enumerate(b['szenen']):
+            eingaben = ''.join(f'<span class="st-eingabe" data-text="{esc(x)}" style="--x:{ex};--t:{ey};--w:{ew}"></span>' for x, ex, ey, ew in s.get('eingaben', []))
+            notizen = ''.join(f'<span class="st-notiz st-notiz-{s["phase"]}" style="left:{nx}%;top:{ny}%;--r:{(-2.5 if j % 2 else 2)}deg">{esc(n)}</span>' for j, (n, nx, ny, nt) in enumerate(s.get('notizen', [])))
+            szenen += (f'<div class="st-szene" data-i="{i}"><div class="st-zoom"><div class="st-seite"><img src="{pre}{s["bild"]}" alt="{esc(s["alt"])}" loading="lazy">{eingaben}</div></div>{notizen}</div>')
+        kapitel = ''.join(f'<button type="button" class="st-kapitel" data-ziel="{i}">{esc(s["kapitel"])}</button>' for i, s in enumerate(b['szenen']) if s.get('kapitel'))
+        daten = json.dumps([{k: s.get(k) for k in ('pfad', 'phase', 'titel', 'von', 'bis', 'dauer', 'notizen', 'zoom', 'klick', 'tippen_ab')} for s in b['szenen']], ensure_ascii=False)
+        return (f'  <figure class="cs-block cs-story" data-story aria-label="{esc(b["titel"])}">\n    <figcaption class="cs-block-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3">{esc(b["titel"])}</h2></figcaption>\n'
+                f'    <div class="st-rahmen"><span class="cs-etikett st-phase">{esc(b["alt_text"])}</span>'
+                f'<div class="st-browser"><div class="vf-leiste"><span class="vf-adresse">bauer-ingbau.de/</span></div><div class="st-fenster">{szenen}'
+                f'<span class="vf-zeiger" aria-hidden="true"></span><div class="vf-blende" aria-hidden="true"><b>{esc(b["blende_text"])}</b></div></div></div>'
+                f'<div class="st-leiste"><button type="button" class="ks-knopf st-knopf" aria-label="Film anhalten">❚❚</button><div class="st-kapitelreihe">{kapitel}</div>'
+                f'<p class="st-titel"></p></div></div>\n'
+                f'    <script type="application/json" class="st-daten" data-alt="{esc(b["alt_text"])}" data-neu="{esc(b["neu_text"])}">{daten}</script>\n  </figure>')
     raise SystemExit('Unbekannter Bildblock: ' + b['typ'])
 
 
@@ -224,20 +262,7 @@ def projektseite(p, nr):
     farbe = p['cover']['farbe']
     texte = ''.join(f'    <div class="cs-kachel"><h2 class="gr-h3">{esc(a)}</h2><p>{esc(b)}</p></div>\n' for a, b in p.get('abschnitte', []))
     texte = f'  <section class="cs-texte" aria-label="Projekt in Kürze">\n{texte}  </section>\n' if texte else ''
-    if p.get('ausgangslage'):
-        # Ausgangslage (Anna 14.10.2026): weniger Text, Icons, dazu groß die alte Seite mit den Notizzetteln aus dem Expert-Review
-        a = p['ausgangslage']
-        zettel = ''.join(f'<span class="cs-zettel" style="left:{x}%;top:{y}%;--dreh:{d}deg">{esc(n)}</span>' for n, x, y, d in a['notizen'])
-        karten = ''.join(f'<div class="cs-punkt"><img src="{pre}bilder/icons/{i}" alt="" width="400" height="400" loading="lazy"><div><h2>{esc(h)}</h2><ul>'
-                         + ''.join(f'<li>{esc(x)}</li>' for x in liste) + '</ul></div></div>' for i, h, liste in a['karten'])
-        texte = (f'  <section class="cs-ausgangslage" data-einblenden aria-label="Ausgangslage, Herausforderung und Ziele">\n'
-                 f'    <figure class="cs-alt"><span class="cs-etikett">{esc(a["bild_text"])}</span><div class="cs-alt-bild"><img src="{pre}{a["bild"]}" alt="{esc(a["bild_alt"])}" loading="lazy">{zettel}</div></figure>\n'
-                 f'    <div class="cs-punkte">{karten}</div>\n  </section>\n')
     ablauf = ''
-    if p.get('ablauf'):
-        # Schritte in einer Reihe von links nach rechts (NN/g 2017: Zickzack erschwert das Überfliegen), auf dem Handy untereinander
-        li = ''.join(f'<li><span class="cs-schritt-nr">{i:02d}</span><p class="meta">{esc(z)}</p><h3>{esc(x)}</h3></li>' for i, (z, x) in enumerate(p['ablauf'], 1))
-        ablauf = f'  <section class="cs-ablauf" aria-labelledby="ablauf-titel">\n    <p class="meta">Workflow</p>\n    <h2 class="gr-h3" id="ablauf-titel">So bin ich vorgegangen</h2>\n    <ol class="cs-schritte">{li}</ol>\n  </section>\n'
     bilder = '\n'.join(block(b, pre) for b in p.get('bilder', []))
     main = f'''<main id="inhalt" class="cs" style="--pc-farbe: {farbe}">
 

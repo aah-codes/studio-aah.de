@@ -75,47 +75,535 @@
    "ton": "dunkel",
    "bild": "bilder/referenzen/bauer-magazin-1.jpg"
   },
-  "abschnitte": [
-   [
-    "Ist-Stand",
-    "Kaum Infos zu den Leistungen, Referenzen eher versteckt, ein altmodisches Design – und Jobs, die wenig sichtbar waren."
-   ],
-   [
-    "Herausforderung",
-    "Öffentliche Bauaufträge laufen über Vergabeverfahren nach VOB/A. Die Website ist dabei nicht der Verkaufskanal, sondern der Plausibilitäts-Anker: Vergabestellen prüfen, ob ein Anbieter das kann, was sie brauchen – und ob er es nachweislich schon getan hat."
-   ],
-   [
-    "Ziele",
-    "Bauer klar für öffentliche Auftraggeber positionieren, Referenzen zum zentralen Vertrauensfaktor machen, Leistungen verständlich zeigen und Fachkräfte gezielt ansprechen – für mehr Anfragen und Bewerbungen."
-   ]
-  ],
-  "ablauf": [
-   [
-    "Analyse · April 2026",
-    "Expert-Review"
-   ],
-   [
-    "Analyse",
-    "Mitbewerber-Benchmark"
-   ],
-   [
-    "Strategie",
-    "Brand Experience und Sitemap"
-   ],
-   [
-    "Konzept",
-    "Inhaltsstruktur und Wireframes"
-   ],
-   [
-    "Design",
-    "Look & Feel und Design-System"
-   ],
-   [
-    "Umsetzung · Oktober 2026",
-    "Neu online"
-   ]
-  ],
   "bilder": [
+   {
+    "typ": "zwei-karten",
+    "karten": [
+     [
+      "compass.webp",
+      "Herausforderung",
+      [
+       "Vergabe nach VOB/A",
+       "Vergabestellen prüfen in 60 Sekunden",
+       "Auftraggeber und Bewerber auf einer Website"
+      ]
+     ],
+     [
+      "target.webp",
+      "Ziele",
+      [
+       "Klar für öffentliche Auftraggeber",
+       "Referenzen als Vertrauensfaktor",
+       "Leistungen verständlich zeigen",
+       "Fachkräfte gezielt ansprechen"
+      ]
+     ]
+    ]
+   },
+   {
+    "typ": "storyfilm",
+    "meta": "Vorher / Nachher",
+    "titel": "Einmal durch die alte und die neue Website",
+    "alt_text": "Vorher · April 2026",
+    "neu_text": "Nachher · Oktober 2026",
+    "blende_text": "Neu online",
+    "szenen": [
+     {
+      "bild": "bilder/referenzen/bauer/film/a-start.jpg",
+      "alt": "Alte Startseite",
+      "pfad": "",
+      "phase": "alt",
+      "titel": "Vorher: Startseite",
+      "dauer": 5000,
+      "von": 0,
+      "bis": 0,
+      "notizen": [
+       [
+        "Design altmodisch",
+        56,
+        22,
+        900
+       ]
+      ],
+      "kapitel": "Vorher",
+      "klick": [
+       30,
+       2.6
+      ],
+      "zoom": null,
+      "eingaben": []
+     },
+     {
+      "bild": "bilder/referenzen/bauer/film/a-leistungen.jpg",
+      "alt": "Alte Seite Leistungen",
+      "pfad": "leistungen/",
+      "phase": "alt",
+      "titel": "Vorher: Leistungen",
+      "dauer": 4500,
+      "von": 0,
+      "bis": 900,
+      "notizen": [
+       [
+        "Kaum Infos zu den Leistungen",
+        52,
+        48,
+        900
+       ]
+      ],
+      "kapitel": null,
+      "klick": [
+       46,
+       2.6
+      ],
+      "zoom": null,
+      "eingaben": []
+     },
+     {
+      "bild": "bilder/referenzen/bauer/film/a-projekte.jpg",
+      "alt": "Alte Seite Aktuelle Projekte",
+      "pfad": "aktuelle-projekte/",
+      "phase": "alt",
+      "titel": "Vorher: Aktuelle Projekte",
+      "dauer": 4500,
+      "von": 0,
+      "bis": 1200,
+      "notizen": [
+       [
+        "Referenzen eher versteckt",
+        54,
+        42,
+        900
+       ]
+      ],
+      "kapitel": null,
+      "klick": [
+       58,
+       2.6
+      ],
+      "zoom": null,
+      "eingaben": []
+     },
+     {
+      "bild": "bilder/referenzen/bauer/film/a-karriere.jpg",
+      "alt": "Alte Karriereseite",
+      "pfad": "karriere/",
+      "phase": "alt",
+      "titel": "Vorher: Karriere",
+      "dauer": 4800,
+      "von": 0,
+      "bis": 900,
+      "notizen": [
+       [
+        "Jobs wenig sichtbar und wenig informativ",
+        46,
+        50,
+        900
+       ]
+      ],
+      "kapitel": null,
+      "klick": null,
+      "zoom": null,
+      "eingaben": []
+     },
+     {
+      "bild": "bilder/referenzen/bauer/film/n-start.jpg",
+      "alt": "Neue Startseite",
+      "pfad": "",
+      "phase": "neu",
+      "titel": "Nachher: Startseite mit klarer Spezialisierung",
+      "dauer": 4200,
+      "von": 0,
+      "bis": 0,
+      "notizen": [
+       [
+        "Spezialisierung auf einen Blick",
+        40,
+        16,
+        700
+       ],
+       [
+        "Kennzahlen",
+        30,
+        86,
+        1700
+       ]
+      ],
+      "kapitel": "Startseite",
+      "klick": [
+       33,
+       5
+      ],
+      "zoom": null,
+      "eingaben": []
+     },
+     {
+      "bild": "bilder/referenzen/bauer/film/n-mega-kompetenzen.jpg",
+      "alt": "Mega-Menü Kompetenzen",
+      "pfad": "",
+      "phase": "neu",
+      "titel": "Mega-Menü: alle Kompetenzen, mit Bild und Direktlink",
+      "dauer": 4000,
+      "von": 0,
+      "bis": 0,
+      "notizen": [
+       [
+        "Neu: Mega-Menü",
+        58,
+        74,
+        600
+       ]
+      ],
+      "kapitel": null,
+      "klick": null,
+      "zoom": null,
+      "eingaben": []
+     },
+     {
+      "bild": "bilder/referenzen/bauer/film/n-start-kompetenzen.jpg",
+      "alt": "Kernkompetenzen auf der Startseite",
+      "pfad": "",
+      "phase": "neu",
+      "titel": "Die Kompetenzen aus dem Menü auch auf der Startseite",
+      "dauer": 4500,
+      "von": 0,
+      "bis": 560,
+      "notizen": [
+       [
+        "Menü und Startseite greifen ineinander",
+        52,
+        8,
+        800
+       ]
+      ],
+      "kapitel": null,
+      "klick": [
+       19,
+       2.6
+      ],
+      "zoom": null,
+      "eingaben": []
+     },
+     {
+      "bild": "bilder/referenzen/bauer/film/n-referenzen.jpg",
+      "alt": "Neue Referenzübersicht",
+      "pfad": "referenzen/",
+      "phase": "neu",
+      "titel": "Referenzen: das starke Bildmaterial im Mittelpunkt",
+      "dauer": 5200,
+      "von": 0,
+      "bis": 700,
+      "notizen": [
+       [
+        "Filter nach Kompetenz und Status",
+        3,
+        30,
+        800
+       ],
+       [
+        "Große Projektbilder",
+        58,
+        60,
+        2200
+       ]
+      ],
+      "kapitel": "Referenzen",
+      "klick": [
+       48,
+       52
+      ],
+      "zoom": null,
+      "eingaben": []
+     },
+     {
+      "bild": "bilder/referenzen/bauer/film/n-referenz-detail.jpg",
+      "alt": "Referenzseite U8, U-Bhf. Pankstraße",
+      "pfad": "u8-u-bhf-pankstrasse/",
+      "phase": "neu",
+      "titel": "Jede Referenz mit eigener Seite – und am Ende ein klarer Call to Action",
+      "dauer": 8000,
+      "von": 0,
+      "bis": 3300,
+      "notizen": [
+       [
+        "Alle Fakten zum Projekt",
+        56,
+        38,
+        1800
+       ],
+       [
+        "Klarer Call to Action",
+        58,
+        30,
+        6300
+       ]
+      ],
+      "kapitel": null,
+      "klick": [
+       50,
+       78
+      ],
+      "zoom": null,
+      "eingaben": []
+     },
+     {
+      "bild": "bilder/referenzen/bauer/film/n-kontakt.jpg",
+      "alt": "Kontaktformular",
+      "pfad": "kontakt/",
+      "phase": "neu",
+      "titel": "Kontaktformular: kurz und direkt",
+      "dauer": 7500,
+      "von": 0,
+      "bis": 520,
+      "notizen": [
+       [
+        "Ansprechpartner direkt sichtbar",
+        62,
+        64,
+        900
+       ]
+      ],
+      "kapitel": "Kontakt",
+      "klick": null,
+      "zoom": null,
+      "eingaben": [
+       [
+        "Max",
+        92,
+        751,
+        280
+       ],
+       [
+        "Mustermann",
+        409,
+        751,
+        280
+       ],
+       [
+        "Muster GmbH",
+        92,
+        860,
+        600
+       ],
+       [
+        "max@beispiel.de",
+        92,
+        969,
+        600
+       ],
+       [
+        "Wir planen ein ähnliches Vorhaben.",
+        92,
+        1125,
+        600
+       ]
+      ],
+      "tippen_ab": 2000
+     },
+     {
+      "bild": "bilder/referenzen/bauer/film/n-mega-karriere.jpg",
+      "alt": "Mega-Menü Jobs und Karriere",
+      "pfad": "",
+      "phase": "neu",
+      "titel": "Karriere direkt aus dem Menü",
+      "dauer": 3800,
+      "von": 0,
+      "bis": 0,
+      "notizen": [
+       [
+        "Bewerben mit einem Klick",
+        58,
+        74,
+        700
+       ]
+      ],
+      "kapitel": "Karriere",
+      "klick": [
+       12,
+       25
+      ],
+      "zoom": null,
+      "eingaben": []
+     },
+     {
+      "bild": "bilder/referenzen/bauer/film/n-karriere.jpg",
+      "alt": "Neue Karriereseite",
+      "pfad": "karriere/",
+      "phase": "neu",
+      "titel": "Karriere: eigene Seite für Fachkräfte und Nachwuchs",
+      "dauer": 5200,
+      "von": 0,
+      "bis": 0,
+      "notizen": [
+       [
+        "Zwei Wege: Stellen oder Tag auf der Baustelle",
+        40,
+        40,
+        900
+       ]
+      ],
+      "kapitel": null,
+      "klick": null,
+      "zoom": null,
+      "eingaben": []
+     },
+     {
+      "bild": "bilder/referenzen/bauer/film/n-stelle.jpg",
+      "alt": "Stelle Ausbildung Maurer",
+      "pfad": "ausbildung-maurer/",
+      "phase": "neu",
+      "titel": "Jede Stelle mit allen Infos",
+      "dauer": 5600,
+      "von": 0,
+      "bis": 700,
+      "notizen": [
+       [
+        "Alle Infos zur Ausbildung",
+        56,
+        14,
+        800
+       ],
+       [
+        "Dauer, Vergütung, Start, Schule",
+        56,
+        58,
+        3800
+       ]
+      ],
+      "kapitel": null,
+      "klick": null,
+      "zoom": null,
+      "eingaben": []
+     },
+     {
+      "bild": "bilder/referenzen/bauer/film/n-stelle-konditionen.jpg",
+      "alt": "Was du dafür bekommst",
+      "pfad": "ausbildung-maurer/",
+      "phase": "neu",
+      "titel": "Was man bekommt – auf einen Blick",
+      "dauer": 4200,
+      "von": 0,
+      "bis": 280,
+      "notizen": [
+       [
+        "Konditionen klar benannt",
+        60,
+        10,
+        600
+       ]
+      ],
+      "kapitel": null,
+      "klick": null,
+      "zoom": null,
+      "eingaben": []
+     },
+     {
+      "bild": "bilder/referenzen/bauer/film/n-bewerbung.jpg",
+      "alt": "Bewerbungsformular",
+      "pfad": "bewerbungsformular/",
+      "phase": "neu",
+      "titel": "Bewerbung: etwa 15 Minuten, alles in einem Formular",
+      "dauer": 8600,
+      "von": 0,
+      "bis": 380,
+      "notizen": [
+       [
+        "Etwa 15 Minuten",
+        62,
+        6,
+        700
+       ]
+      ],
+      "kapitel": "Bewerbung",
+      "klick": null,
+      "zoom": [
+       1.4,
+       45,
+       42,
+       2200
+      ],
+      "eingaben": [
+       [
+        "Max",
+        738,
+        668,
+        280
+       ],
+       [
+        "Mustermann",
+        1059,
+        668,
+        280
+       ],
+       [
+        "max@beispiel.de",
+        92,
+        808,
+        280
+       ],
+       [
+        "0170 1234567",
+        738,
+        808,
+        280
+       ]
+      ],
+      "tippen_ab": 3200
+     },
+     {
+      "bild": "bilder/referenzen/bauer/film/n-danke.jpg",
+      "alt": "Bestätigung nach der Bewerbung",
+      "pfad": "bewerbungsformular/danke/",
+      "phase": "neu",
+      "titel": "Bestätigung mit den nächsten Schritten",
+      "dauer": 4500,
+      "von": 0,
+      "bis": 0,
+      "notizen": [
+       [
+        "Bestätigung und nächste Schritte",
+        58,
+        40,
+        700
+       ]
+      ],
+      "kapitel": null,
+      "klick": null,
+      "zoom": null,
+      "eingaben": []
+     }
+    ]
+   },
+   {
+    "typ": "ablauf",
+    "meta": "Workflow",
+    "titel": "So bin ich vorgegangen",
+    "schritte": [
+     [
+      "Analyse · April 2026",
+      "Expert-Review"
+     ],
+     [
+      "Analyse",
+      "Mitbewerber-Benchmark"
+     ],
+     [
+      "Strategie",
+      "Brand Experience und Sitemap"
+     ],
+     [
+      "Konzept",
+      "Inhaltsstruktur und Wireframes"
+     ],
+     [
+      "Design",
+      "Look & Feel und Design-System"
+     ],
+     [
+      "Umsetzung · Oktober 2026",
+      "Neu online"
+     ]
+    ]
+   },
    {
     "typ": "split",
     "meta": "Schritt 01 · Expert-Review",
@@ -123,45 +611,6 @@
     "text": "Website, Struktur und digitale Touchpoints (Google, LinkedIn, Stepstone) geprüft und kommentiert.",
     "bild": "bilder/referenzen/bauer/p-review-website.jpg",
     "alt": "Expert-Review der alten Website mit Notizen"
-   },
-   {
-    "typ": "tabelle",
-    "meta": "Schritt 01 · Expert-Review",
-    "titel": "Was besser geworden ist",
-    "zeilen": [
-     [
-      "Startseite",
-      "Keine klare Scroll-Story, wenig Führung zu den Schwerpunkten",
-      "Spezialisierung im Hero, Kennzahlen, aktuelle Bauprojekte"
-     ],
-     [
-      "Leistungen",
-      "Als Liste auf einer Seite",
-      "Je Kompetenz eine eigene Seite"
-     ],
-     [
-      "Projekte",
-      "Aktuelle Projekte und Referenzen getrennt",
-      "Zusammengelegt: Übersicht mit Filter und 40 Projektseiten"
-     ],
-     [
-      "Kontakt",
-      "Kein klarer Funnel, CTA fehlt",
-      "Kontakt im Kopf, klare Buttons, Kontakt am Seitenende"
-     ],
-     [
-      "Karriere",
-      "Kein Recruiting-Fokus",
-      "Eigene Karriereseite mit Stellen, Bewerbung in drei Schritten und Stimmen von der Baustelle"
-     ],
-     [
-      "Vertrauen",
-      "Siegel und Zertifikate kaum sichtbar",
-      "„Belegbar statt behauptet.“ – Eignung und Zertifikate auf einen Blick"
-     ]
-    ],
-    "spalte_vorher": "Aus dem Expert-Review",
-    "spalte_nachher": "Umgesetzt"
    },
    {
     "typ": "split",
@@ -294,19 +743,7 @@
     "favicon_text": "Favicon · Vorschlag 4, vom Kunden gewählt",
     "varianten": "bilder/referenzen/bauer/vd-favicons.jpg",
     "varianten_alt": "Vier Vorschläge für das Favicon",
-    "varianten_text": "Vier Vorschläge für das Favicon",
-    "features": [
-     [
-      "bilder/referenzen/bauer/vd-kontaktformular.jpg",
-      "Kontaktformular",
-      "Kontaktformular der neuen Website"
-     ],
-     [
-      "bilder/referenzen/bauer/vd-cta-footer.jpg",
-      "Letzter Schritt und Footer",
-      "Abschluss der Seite mit Handlungsaufforderung und Footer"
-     ]
-    ]
+    "varianten_text": "Vier Vorschläge für das Favicon"
    },
    {
     "typ": "designsystem",
@@ -391,64 +828,10 @@
     "farben_text": "Aus dem Logo: Blau und Gelb"
    },
    {
-    "typ": "film-vergleich",
-    "meta": "Vorher / Nachher",
-    "titel": "Einmal durch die alte und die neue Website",
-    "alt_text": "Vorher · April 2026",
-    "neu_text": "Nachher · Oktober 2026",
-    "blende_text": "Neu online",
-    "alt": [
-     [
-      "bilder/referenzen/bauer/f-alt-startseite.jpg",
-      "",
-      0,
-      "Alte Startseite"
-     ],
-     [
-      "bilder/referenzen/bauer/f-alt-leistungen.jpg",
-      "leistungen/",
-      32,
-      "Alte Leistungsseite"
-     ],
-     [
-      "bilder/referenzen/bauer/f-alt-projekte.jpg",
-      "aktuelle-projekte/",
-      45,
-      "Alte Seite Aktuelle Projekte"
-     ],
-     [
-      "bilder/referenzen/bauer/f-alt-karriere.jpg",
-      "karriere/",
-      68,
-      "Alte Karriereseite"
-     ]
-    ],
-    "neu": [
-     [
-      "bilder/referenzen/bauer/f-neu-startseite.jpg",
-      "",
-      0,
-      "Neue Startseite"
-     ],
-     [
-      "bilder/referenzen/bauer/f-neu-leistungen.jpg",
-      "leistungen/",
-      38,
-      "Neue Leistungsseite"
-     ],
-     [
-      "bilder/referenzen/bauer/f-neu-referenzen.jpg",
-      "referenzen/",
-      47,
-      "Neue Referenzseite"
-     ],
-     [
-      "bilder/referenzen/bauer/f-neu-karriere.jpg",
-      "karriere/",
-      74,
-      "Neue Karriereseite"
-     ]
-    ]
+    "typ": "kapitel",
+    "nr": "01",
+    "meta": "Schwerpunkt",
+    "titel": "Referenzen"
    },
    {
     "typ": "buehne",
@@ -489,15 +872,14 @@
     "titel": "Referenzen mit Filter – am Rechner und am Handy"
    },
    {
-    "typ": "vollbild",
-    "bild": "bilder/referenzen/bauer/vb-karriere.jpg",
-    "alt": "Team von Wolfgang Bauer Ingenieurbau auf einem Stahlträger",
+    "typ": "kapitel",
+    "nr": "02",
     "meta": "Schwerpunkt",
     "titel": "Karriere"
    },
    {
-    "typ": "karriere",
-    "meta": "Schwerpunkt Karriere",
+    "typ": "klickstrecke",
+    "meta": "Karriere · Klickstrecke",
     "titel_html": "Fachkräfte&shy;mangel? Karriere als Schwer&shy;punkt.",
     "text": "Gute Leute zu finden war für Bauer eines der wichtigsten Ziele – wie für viele Betriebe im Baugewerbe. Deshalb bekam Karriere einen eigenen Bereich.",
     "punkte": [
@@ -506,16 +888,26 @@
      "Bewerbung in drei Schritten",
      "Stimmen von der Baustelle und Team-Video"
     ],
-    "seiten": [
+    "stufen": [
      [
-      "bilder/referenzen/bauer/f-neu-karriere.jpg",
-      "Karriere",
-      "Neue Karriereseite"
+      "bilder/referenzen/bauer/kl-karriere.jpg",
+      "Arbeiten bei Bauer",
+      false
      ],
      [
-      "bilder/referenzen/bauer/f-neu-bewerbung.jpg",
+      "bilder/referenzen/bauer/kl-stelle.jpg",
+      "Stelle im Detail",
+      false
+     ],
+     [
+      "bilder/referenzen/bauer/kl-baustellentag.jpg",
+      "Tag auf der Baustelle",
+      true
+     ],
+     [
+      "bilder/referenzen/bauer/kl-bewerbungsformular.jpg",
       "Bewerbung",
-      "Bewerbungsformular"
+      true
      ]
     ]
    },
@@ -644,78 +1036,22 @@
    "bilder/referenzen/bauer/w-karriere_06.jpg",
    "bilder/referenzen/bauer/w-bewerbungsformular_02.jpg"
   ],
-  "ausgangslage": {
-   "bild": "bilder/referenzen/bauer/v-start-vorher.jpg",
-   "bild_alt": "Alte Startseite von Wolfgang Bauer Ingenieurbau",
-   "bild_text": "Vorher · April 2026",
-   "notizen": [
-    [
-     "Keine klare Scroll-Story",
-     52,
-     16,
-     -4
-    ],
-    [
-     "CTA fehlt",
-     8,
-     62,
-     3
-    ],
-    [
-     "Kein Recruiting-Fokus",
-     55,
-     47,
-     -2
-    ]
-   ],
-   "karten": [
-    [
-     "computer.webp",
-     "Ist-Stand",
-     [
-      "Kaum Infos zu den Leistungen",
-      "Referenzen eher versteckt",
-      "Design altmodisch, wenig Kontrast",
-      "Jobs wenig sichtbar"
-     ]
-    ],
-    [
-     "compass.webp",
-     "Herausforderung",
-     [
-      "Vergabe nach VOB/A",
-      "Vergabestellen prüfen in 60 Sekunden",
-      "Auftraggeber und Bewerber auf einer Website"
-     ]
-    ],
-    [
-     "target.webp",
-     "Ziele",
-     [
-      "Klar für öffentliche Auftraggeber",
-      "Referenzen als Vertrauensfaktor",
-      "Leistungen verständlich zeigen",
-      "Fachkräfte gezielt ansprechen"
-     ]
-    ]
-   ]
-  },
   "zahlen": [
    [
-    "14",
-    "Seiten"
+    "48",
+    "Seiten online"
    ],
    [
     "40",
-    "Projekte im Detail"
-   ],
-   [
-    "6",
-    "Kompetenzen"
+    "Referenzprojekte mit eigener Seite"
    ],
    [
     "4",
-    "Stellenprofile"
+    "Monate"
+   ],
+   [
+    "Mehr",
+    "Bewerbungen"
    ]
   ]
  },

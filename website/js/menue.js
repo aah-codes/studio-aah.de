@@ -327,3 +327,72 @@
     else if ('IntersectionObserver' in window) new IntersectionObserver((e) => { if (e[0].isIntersecting) an(); else aus(); }, { threshold: 0.3 }).observe(d);
   });
 })();
+
+// Storytelling-Film (Projektseiten): Szenen nacheinander – scrollen, Zettel einblenden, tippen, zoomen, „klicken“; zwischen Vorher und Nachher eine Blende.
+// Läuft nur sichtbar und ohne „Bewegung reduzieren“; Pause-Taste; Kapitel-Knöpfe springen zu einer Szene.
+(() => {
+  const ruhig = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('[data-story]').forEach((f) => {
+    const datenEl = f.querySelector('.st-daten'), daten = JSON.parse(datenEl.textContent);
+    const szenen = [...f.querySelectorAll('.st-szene')], fenster = f.querySelector('.st-fenster'), blende = f.querySelector('.vf-blende');
+    const zeiger = f.querySelector('.vf-zeiger'), adresse = f.querySelector('.vf-adresse'), phase = f.querySelector('.st-phase');
+    const titel = f.querySelector('.st-titel'), knopf = f.querySelector('.st-knopf'), kapitel = [...f.querySelectorAll('.st-kapitel')];
+    let nr = 0, uhren = [], laeuft = false;
+    const spaeter = (ms, fn) => uhren.push(setTimeout(fn, ms));
+    const stopp = () => { uhren.forEach(clearTimeout); uhren = []; };
+    const zuruecksetzen = (sz) => {
+      const s = sz.querySelector('.st-seite'), z = sz.querySelector('.st-zoom');
+      s.style.setProperty('--d', '0ms'); s.style.setProperty('--y', daten[+sz.dataset.i].von || 0);
+      z.style.setProperty('--s', 1); sz.querySelectorAll('.st-notiz').forEach((n) => n.classList.remove('zeigen'));
+      sz.querySelectorAll('.st-eingabe').forEach((e) => { e.textContent = ''; e.classList.remove('tippt'); });
+    };
+    const tippe = (felder, i) => {
+      if (i >= felder.length) return;
+      const e = felder[i], text = e.dataset.text; let k = 0; e.classList.add('tippt');
+      const schritt = () => { e.textContent = text.slice(0, ++k); if (k < text.length) spaeter(55, schritt); else { e.classList.remove('tippt'); spaeter(250, () => tippe(felder, i + 1)); } };
+      schritt();
+    };
+    const zeige = (i, sofort) => {
+      const d = daten[i], sz = szenen[i];
+      szenen.forEach((x, j) => { if (j !== i) x.classList.remove('aktiv'); });
+      zuruecksetzen(sz); void sz.offsetWidth; sz.classList.add('aktiv'); nr = i;
+      adresse.textContent = 'bauer-ingbau.de/' + (d.pfad || ''); titel.textContent = d.titel;
+      phase.textContent = datenEl.dataset[d.phase];
+      const k = kapitel.filter((x) => +x.dataset.ziel <= i).pop(); kapitel.forEach((x) => x.setAttribute('aria-current', String(x === k)));
+      if (sofort) { // ruhig: Endzustand ohne Bewegung zeigen
+        sz.querySelector('.st-seite').style.setProperty('--y', d.bis || 0);
+        const alle = sz.querySelectorAll('.st-notiz'); alle.forEach((n, j) => { if ((d.bis || 0) === (d.von || 0) || j === alle.length - 1) n.classList.add('zeigen'); });
+        sz.querySelectorAll('.st-eingabe').forEach((e) => { e.textContent = e.dataset.text; });
+        return;
+      }
+      const s = sz.querySelector('.st-seite'), dauer = d.dauer;
+      if ((d.bis || 0) !== (d.von || 0)) spaeter(500, () => { s.style.setProperty('--d', Math.round(dauer * 0.55) + 'ms'); s.style.setProperty('--y', d.bis); });
+      // beim Scrollen: neuer Zettel ersetzt den vorigen (der zeigt sonst auf die falsche Stelle)
+      const scrollt = (d.bis || 0) !== (d.von || 0), zettel = sz.querySelectorAll('.st-notiz');
+      (d.notizen || []).forEach((n, j) => spaeter(n[3], () => { if (scrollt && j) zettel[j - 1].classList.remove('zeigen'); zettel[j].classList.add('zeigen'); }));
+      if (d.zoom) spaeter(d.zoom[3], () => { const z = sz.querySelector('.st-zoom'); z.style.setProperty('--ox', d.zoom[1] + '%'); z.style.setProperty('--oy', d.zoom[2] + '%'); z.style.setProperty('--s', d.zoom[0]); });
+      const felder = [...sz.querySelectorAll('.st-eingabe')];
+      if (felder.length) spaeter(d.tippen_ab || 1500, () => tippe(felder, 0));
+      spaeter(dauer, () => weiter(i));
+    };
+    const weiter = (i) => {
+      const d = daten[i], n = (i + 1) % daten.length;
+      const geh = () => {
+        if (daten[n].phase !== d.phase) { blende.classList.remove('weg'); blende.classList.add('an'); spaeter(1500, () => { zeige(n); blende.classList.add('weg'); blende.classList.remove('an'); }); }
+        else zeige(n);
+      };
+      if (d.klick) {
+        zeiger.style.opacity = 1; zeiger.style.left = d.klick[0] + '%'; zeiger.style.top = d.klick[1] + '%';
+        spaeter(800, () => { zeiger.classList.add('klick'); spaeter(220, () => { zeiger.classList.remove('klick'); zeiger.style.opacity = 0; geh(); }); });
+      } else geh();
+    };
+    const an = () => { if (laeuft) return; laeuft = true; knopf.textContent = '❚❚'; knopf.setAttribute('aria-label', 'Film anhalten'); zeige(nr); };
+    const aus = () => { laeuft = false; stopp(); knopf.textContent = '▶'; knopf.setAttribute('aria-label', 'Film abspielen'); };
+    knopf.addEventListener('click', () => { if (laeuft) { aus(); f.dataset.angehalten = '1'; } else { delete f.dataset.angehalten; an(); } });
+    kapitel.forEach((k) => k.addEventListener('click', () => { stopp(); nr = +k.dataset.ziel; if (ruhig || f.dataset.angehalten) zeige(nr, true); else { laeuft = false; an(); } }));
+    f.zeigeSzene = (i) => { aus(); f.dataset.angehalten = '1'; zeige(i, true); }; // Endzustand einer Szene (Prüfen, Kapitel bei Pause)
+    zeige(0, true);
+    if (!ruhig && 'IntersectionObserver' in window) new IntersectionObserver((e) => { if (e[0].isIntersecting) { if (!f.dataset.angehalten) an(); } else if (laeuft) { laeuft = false; stopp(); } }, { threshold: 0.45 }).observe(f);
+    else aus();
+  });
+})();
