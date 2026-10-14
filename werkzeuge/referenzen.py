@@ -3,7 +3,7 @@
 # Kopf mit Eckdaten, großes Titelbild oder Film, kurze Texte nur aus Quellen, danach Bildblöcke in voller Breite.
 # Kopf und Fuß kommen von der Profilseite (Übersicht) bzw. der Webdesign-Seite (Projektseiten, gleiche Ordnertiefe).
 # Aufruf im Repository-Ordner:  python3 werkzeuge/referenzen.py
-import html, importlib.util, json, pathlib, re
+import copy, html, importlib.util, json, pathlib, re
 
 basis = pathlib.Path(__file__).resolve().parent.parent
 esc = lambda s: html.escape(s, quote=False)
@@ -222,7 +222,7 @@ def block(b, pre):
                     f'<div class="pe-beispiele"><p class="pe-klein">So klingt es auf der Website</p><ul>{beispiele}</ul></div>'
                     f'<p class="pe-stoerer"><span class="unsichtbar">Ansprache: </span>„{esc(s["anrede"])}“</p></div>')
         return (f'  <section class="cs-block cs-personas" aria-labelledby="pe-titel"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3" id="pe-titel">{esc(b["titel"])}</h2>'
-                f'<p class="weg-einleitung">{esc(b["text"])}</p><div class="pe-zwei">{seite(b["auftraggeber"], "pe-sie")}{seite(b["bewerber"], "pe-du")}</div>'
+                + (f'<p class="weg-einleitung">{esc(b["text"])}</p>' if b.get('text') else '') + f'<div class="pe-zwei">{seite(b["auftraggeber"], "pe-sie")}{seite(b["bewerber"], "pe-du")}</div>'
                 f'<p class="pe-hinweis">Personas: Hypothesen aus Referenzen und Marktrecherche · Fotos: Symbolbilder</p></section>')
     if b['typ'] == 'heft':
         # Unternehmenspräsentation als flaches Heft mit Klammerheftung (Anna 14.10.2026: flach, Ecken sauber);
@@ -238,7 +238,8 @@ def block(b, pre):
     if b['typ'] == 'galerie':
         # große, scharfe Bildschirmausschnitte mit Unterschrift (z. B. Mega-Menü und Footer)
         f = ''.join(f'<figure class="ga-bild{" ga-breit" if x.get("breit") else ""}"><div class="ga-fenster"><img src="{pre}{x["bild"]}" alt="{esc(x["alt"])}" loading="lazy"></div><figcaption class="meta">{esc(x["titel"])}</figcaption></figure>' for x in b['bilder'])
-        return (f'  <section class="cs-block cs-galerie" aria-labelledby="ga-{b["id"]}"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3" id="ga-{b["id"]}">{esc(b["titel"])}</h2>'
+        kopf = (f'<p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3" id="ga-{b["id"]}">{esc(b["titel"])}</h2>' if b.get('titel') else '')
+        return (f'  <section class="cs-block cs-galerie" ' + (f'aria-labelledby="ga-{b["id"]}"' if b.get('titel') else f'aria-label="{esc(b.get("meta", "Galerie"))}"') + f'>{kopf}'
                 + (f'<p class="weg-einleitung">{esc(b["text"])}</p>' if b.get('text') else '') + f'<div class="ga-raster">{f}</div></section>')
     if b['typ'] == 'cta-wand':
         # alle Call-to-Actions schräg nebeneinander (Anna 14.10.2026, wie die Bildschirmwand oben)
@@ -329,11 +330,11 @@ def block(b, pre):
                      f'<script type="application/json" class="st-daten">{daten}</script></figure>')
         else:
             szene = f'<figure class="fm-buch" data-buch>{szene}<div class="st-leiste">{knopf}<span class="meta">{esc(b.get("unterschrift", ""))}</span></div></figure>'
-        if not b.get('text'):
+        if not b.get('text') and not b.get('titel_html'):
             return f'  <div class="cs-block fm-block">{szene}</div>'
         punkte = ''.join(f'<li>{esc(x)}</li>' for x in b.get('punkte', []))
         return (f'  <section class="cs-block fm-mit-text{" fm-dunkel" if b.get("dunkel") else ""}" aria-labelledby="fm-{b["id"]}">\n    <div class="fm-text"><p class="meta">{esc(b["meta"])}</p>'
-                f'<h2 class="kr-titel" id="fm-{b["id"]}">{b["titel_html"]}</h2><p>{esc(b["text"])}</p>' + (f'<ul>{punkte}</ul>' if punkte else '') + f'</div>\n    {szene}\n  </section>')
+                f'<h2 class="kr-titel" id="fm-{b["id"]}">{b["titel_html"]}</h2>' + (f'<p>{esc(b["text"])}</p>' if b.get('text') else '') + (f'<ul>{punkte}</ul>' if punkte else '') + f'</div>\n    {szene}\n  </section>')
     raise SystemExit('Unbekannter Bildblock: ' + b['typ'])
 
 
@@ -407,7 +408,10 @@ def projektseite(p, nr):
         datei = basis / 'website' / m.group(2)
         return m.group(1) + m.group(2) + (f'?v={int(datei.stat().st_mtime) % 1000000}' if datei.exists() else '')
     main = re.sub(r'(\.\./\.\./)(bilder/[^"\'()\s?]+\.(?:jpg|jpeg|png|webp))', version, main)
-    ziel.write_text(rahmen('service/webdesign/index.html', main, titel, p['satz'], url, ld), encoding='utf-8')
+    seite = rahmen('service/webdesign/index.html', main, titel, p['satz'], url, ld)
+    if p.get('_variante'):  # Entwurfs-Variante: nicht verlinkt, nicht für Suchmaschinen
+        seite = seite.replace('</head>', '  <meta name="robots" content="noindex, nofollow">\n</head>', 1)
+    ziel.write_text(seite, encoding='utf-8')
     print('geschrieben: referenzen/' + p['slug'] + '/')
 
 
@@ -439,4 +443,17 @@ def uebersicht():
 
 if __name__ == '__main__':
     uebersicht()
-    for i, p in enumerate(CASES): projektseite(p, i)
+    for i, p in enumerate(CASES):
+        projektseite(p, i)
+        # Varianten (Anna 14.10.2026: Variante B) – Blöcke aus der Hauptfassung per Nummer übernehmen, Felder weglassen oder ersetzen
+        for k, liste in p.get('varianten', {}).items():
+            bl = []
+            for e in liste:
+                if 'aus' in e:
+                    x = copy.deepcopy(p['bilder'][e['aus']])
+                    for f in e.get('ohne', []): x.pop(f, None)
+                    x.update(e.get('setze', {}))
+                    bl.append(x)
+                else:
+                    bl.append(e)
+            projektseite(dict(p, bilder=bl, slug=f'{p["slug"]}-{k}', _variante=k), i)

@@ -1441,7 +1441,127 @@
     "Mehr",
     "Bewerbungen"
    ]
-  ]
+  ],
+  "varianten": {
+   "b": [
+    {
+     "aus": 0
+    },
+    {
+     "typ": "kapitel",
+     "anker": "b-strategie",
+     "meta": "Analyse · Zielgruppen · Struktur",
+     "titel": "Strategie"
+    },
+    {
+     "typ": "galerie",
+     "id": "b-analyse",
+     "meta": "Analyse",
+     "bilder": [
+      {
+       "bild": "bilder/referenzen/bauer/p-review-website.jpg",
+       "titel": "Expert-Review der alten Website",
+       "alt": "Expert-Review der alten Website mit Notizen"
+      },
+      {
+       "bild": "bilder/referenzen/bauer/p-benchmark.jpg",
+       "titel": "Mitbewerber-Benchmark",
+       "alt": "Benchmark-Board mit Websites von Mitbewerbern"
+      }
+     ]
+    },
+    {
+     "aus": 9,
+     "ohne": [
+      "text"
+     ]
+    },
+    {
+     "aus": 8
+    },
+    {
+     "typ": "kapitel",
+     "anker": "b-design",
+     "meta": "Look & Feel · Design-System · Pattern",
+     "titel": "Design"
+    },
+    {
+     "aus": 14
+    },
+    {
+     "aus": 15,
+     "setze": {
+      "entscheidungen": []
+     }
+    },
+    {
+     "aus": 17,
+     "ohne": [
+      "text"
+     ]
+    },
+    {
+     "aus": 12,
+     "ohne": [
+      "text"
+     ]
+    },
+    {
+     "typ": "kapitel",
+     "anker": "b-launch",
+     "meta": "Website · Oktober 2026",
+     "titel": "Launch"
+    },
+    {
+     "typ": "vorher-nachher",
+     "meta": "Vorher / Nachher",
+     "titel": "Startseite",
+     "vorher": "bilder/referenzen/bauer/film/a-start.jpg",
+     "vorher_alt": "Alte Startseite",
+     "vorher_text": "Vorher",
+     "nachher": "bilder/referenzen/bauer/film/n-start.jpg",
+     "nachher_alt": "Neue Startseite",
+     "nachher_text": "Nachher"
+    },
+    {
+     "aus": 18,
+     "ohne": [
+      "text"
+     ]
+    },
+    {
+     "aus": 19,
+     "ohne": [
+      "text"
+     ]
+    },
+    {
+     "aus": 20,
+     "ohne": [
+      "text",
+      "punkte"
+     ]
+    },
+    {
+     "aus": 21,
+     "ohne": [
+      "text"
+     ]
+    },
+    {
+     "typ": "kapitel",
+     "anker": "b-print",
+     "meta": "Unternehmenspräsentation",
+     "titel": "Print"
+    },
+    {
+     "aus": 22
+    },
+    {
+     "aus": 23
+    }
+   ]
+  }
  },
  {
   "name": "Dr. Simone Goldhammer",
