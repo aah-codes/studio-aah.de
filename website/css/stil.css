@@ -2855,7 +2855,7 @@ section[hidden] { display: none !important; }
   .bn-geraete .h3d { width: 34%; bottom: 20px; }
   .cs-handy-duo { grid-template-columns: 1fr; padding: 32px 18px; border-radius: 20px; }
   .hd-buehne .h3d { width: 44%; }
-  .cs-visual, .vd-features { grid-template-columns: 1fr; }
+  .cs-visual, .vd-features { grid-template-columns: minmax(0, 1fr); }
   .vd-text { padding: 28px 22px; }
   .vd-icon { min-height: 300px; }
   .vd-varianten, .vd-feature { padding: 18px; }
@@ -3214,7 +3214,6 @@ section[hidden] { display: none !important; }
   mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent), linear-gradient(180deg, transparent, #000 12%, #000 78%, transparent); mask-composite: intersect; }
 .cs-nahtlos .cs-buehne .cs-wand-innen { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .cs-nahtlos .cs-buehne .cs-wand-innen > div:nth-child(4) { margin-top: -6%; }
-.cs-nahtlos .cs-zahlen { position: relative; z-index: 3; margin-top: calc(-1 * clamp(48px, 7vw, 120px)); }
 /* B: Kapitel und Blöcke ohne Kachel */
 .cs-nahtlos .nl-eng .cs-kapitel { padding-top: 32px; }
 .cs-nahtlos .cs-ziele-grafik { padding: 0; }
@@ -3276,10 +3275,9 @@ section[hidden] { display: none !important; }
   .pe-einzeln .pe-personen { grid-column: 1; grid-row: auto; margin-top: 28px; }
   .fk-stationen { grid-auto-flow: row; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .fk-station::after { display: none; }
-  .cs-nahtlos .cs-buehne .cs-wand { aspect-ratio: 4 / 5; }
 }
-/* lange Wörter in den Projektfakten am Handy trennen (z. B. „Unternehmenspräsentation“) */
-.cs-fakten dd { hyphens: auto; -webkit-hyphens: auto; overflow-wrap: break-word; }
+/* lange Wörter in den Projektfakten am Handy trennen (z. B. „Unternehmens|präsentation“) */
+.cs-fakten dd { hyphens: manual; -webkit-hyphens: manual; overflow-wrap: break-word; } /* Trennstellen per &shy; im Generator (TRENNEN), automatische Trennung zerlegte „Reb-randing“ */
 
 /* B: Mega-Menü-Film höchstens 1100 px (Quelle 2880 px → scharf); Boards mit Kontrast; CTA-Stationen so wie sie sind */
 .cs-nahtlos .cs-mega-film { max-width: 1100px; margin: 0 auto; }
@@ -3290,3 +3288,26 @@ section[hidden] { display: none !important; }
 /* Haftnotiz quadratisch (Anna 14.10.2026: „Sticky Notes sind meistens höher, könnten auch quadratisch sein“) */
 .st-notiz-alt { display: flex; align-items: flex-start; width: clamp(92px, 13cqw, 170px); max-width: none; aspect-ratio: 1 / 1; padding: .9em .85em; line-height: 1.22; white-space: normal; }
 @media (max-width: 900px) { .st-notiz-alt { width: clamp(72px, 22cqw, 120px); } }
+
+/* B Einstieg „Klartext“ (Recherche + Jury 14.10.2026): ein Screen auf Bauer-Blau mit harter Kante, Zahlen als Text darunter, Herausforderung/Ziele ohne Icons */
+.cs-nahtlos .nl-band.cs-hero { margin-top: 0; padding-bottom: clamp(40px, 6vw, 96px); }
+.cs-nahtlos .cs-hero-rahmen { max-width: 1200px; margin: 0 auto; aspect-ratio: 2880 / 1540; overflow: hidden; border-radius: 8px; }
+.cs-nahtlos .cs-hero-bild { display: block; width: 100%; max-width: none; height: auto; }
+.cs-nahtlos .cs-kennzahlen { list-style: none; width: min(1200px, 100% - 2 * var(--rand-seite)); margin: clamp(48px, 6vw, 96px) auto 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(24px, 3vw, 48px); }
+.cs-nahtlos .cs-kennzahlen li { display: flex; flex-direction: column; gap: 10px; padding-top: 16px; border-top: 1.5px solid var(--farbe-dunkel); font-size: 1.05rem; line-height: 1.35; color: var(--farbe-dunkel); }
+.cs-nahtlos .kz-zahl { font-family: var(--schrift-ueberschrift); font-size: clamp(56px, 7vw, 112px); line-height: .9; color: var(--pc-farbe); }
+.cs-nahtlos .cs-ziele-text { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(32px, 6vw, 96px); max-width: 1200px; margin: 0 auto; }
+.cs-nahtlos .zt-titel { margin: 0; padding-bottom: 18px; border-bottom: 1.5px solid var(--farbe-dunkel); font-family: var(--schrift-ueberschrift); font-weight: 400; font-size: clamp(32px, 3.4vw, 52px); line-height: 1; letter-spacing: .02em; text-transform: uppercase; color: var(--farbe-dunkel); }
+.cs-nahtlos .zt-liste { list-style: none; margin: 0; padding: 0; }
+.cs-nahtlos .zt-liste li { padding: 16px 0; border-bottom: 1.5px solid rgba(14, 16, 17, .15); font-size: clamp(18px, 1.6vw, 24px); line-height: 1.35; }
+@media (max-width: 900px) {
+  .cs-nahtlos .cs-kennzahlen { width: calc(100% - 2 * var(--rand-seite-mobil)); }
+  .cs-nahtlos .cs-ziele-text { grid-template-columns: 1fr; row-gap: 48px; }
+}
+@media (max-width: 600px) {
+  .cs-nahtlos .cs-hero-rahmen { aspect-ratio: 1391 / 1540; }
+  .cs-nahtlos .cs-hero-bild { width: 207%; } /* Schnitt in der Lücke nach „Referenzen“, vor dem Foto */
+  .cs-nahtlos .cs-kennzahlen { grid-template-columns: 1fr; gap: 0; }
+  .cs-nahtlos .cs-kennzahlen li { display: grid; grid-template-columns: 76px minmax(0, 1fr); align-items: center; gap: 12px; padding: 12px 0; }
+  .cs-nahtlos .kz-zahl { font-size: 52px; }
+}

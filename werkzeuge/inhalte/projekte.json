@@ -1443,38 +1443,22 @@
    "b": [
     {
      "projekt": {
-      "wand_reihen": [
+      "buehne_bild": {
+       "bild": "bilder/referenzen/bauer/mm/basis.jpg",
+       "alt": "Startseite der neuen Website"
+      },
+      "zahlen": [
        [
-        "bilder/referenzen/bauer/w-startseite_01.jpg",
-        "bilder/referenzen/bauer/w-karriere_03.jpg",
-        "bilder/referenzen/bauer/w-wasserbau_07.jpg",
-        "bilder/referenzen/bauer/w-startseite_04.jpg",
-        "bilder/referenzen/bauer/w-unternehmen_09.jpg",
-        "bilder/referenzen/bauer/w-startseite_05.jpg"
+        "83",
+        "Seiten online"
        ],
        [
-        "bilder/referenzen/bauer/w-startseite_04.jpg",
-        "bilder/referenzen/bauer/w-unternehmen_09.jpg",
-        "bilder/referenzen/bauer/w-startseite_05.jpg",
-        "bilder/referenzen/bauer/w-wasserbau_01.jpg",
-        "bilder/referenzen/bauer/w-karriere_07.jpg",
-        "bilder/referenzen/bauer/w-karriere_01.jpg"
+        "69",
+        "Referenzprojekte mit eigener Seite"
        ],
        [
-        "bilder/referenzen/bauer/w-wasserbau_01.jpg",
-        "bilder/referenzen/bauer/w-karriere_07.jpg",
-        "bilder/referenzen/bauer/w-karriere_01.jpg",
-        "bilder/referenzen/bauer/w-leistungen_10.jpg",
-        "bilder/referenzen/bauer/w-karriere_06.jpg",
-        "bilder/referenzen/bauer/w-bewerbungsformular_02.jpg"
-       ],
-       [
-        "bilder/referenzen/bauer/w-leistungen_10.jpg",
-        "bilder/referenzen/bauer/w-karriere_06.jpg",
-        "bilder/referenzen/bauer/w-bewerbungsformular_02.jpg",
-        "bilder/referenzen/bauer/w-startseite_01.jpg",
-        "bilder/referenzen/bauer/w-karriere_03.jpg",
-        "bilder/referenzen/bauer/w-wasserbau_07.jpg"
+        "4",
+        "Monate"
        ]
       ]
      }
@@ -1484,6 +1468,9 @@
      "band": {
       "von": "#ffffff",
       "bis": "#ffffff"
+     },
+     "setze": {
+      "typ": "ziele-text"
      }
     },
     {
@@ -1719,29 +1706,6 @@
      }
     },
     {
-     "typ": "mega-film",
-     "anker": "b-weiche",
-     "basis": "bilder/referenzen/bauer/mm/basis.jpg",
-     "basis_alt": "Startseite der neuen Website",
-     "menues": [
-      {
-       "bild": "bilder/referenzen/bauer/mm/kompetenzen.jpg",
-       "alt": "Mega-Menü Kompetenzen geöffnet",
-       "kopf": 16.8
-      },
-      {
-       "bild": "bilder/referenzen/bauer/mm/karriere.jpg",
-       "alt": "Mega-Menü Jobs & Karriere geöffnet",
-       "kopf": 18.4
-      }
-     ],
-     "unterschrift": "Mega-Menü Kompetenzen und Jobs & Karriere",
-     "band": {
-      "von": "var(--pc-farbe)",
-      "bis": "var(--pc-farbe)"
-     }
-    },
-    {
      "typ": "funnel-karte",
      "meta": "Click-Funnel",
      "titel": "Jede Seite führt zum nächsten Schritt.",
@@ -1847,6 +1811,31 @@
      }
     }
    ]
+  },
+  "varianten_ablage": {
+   "mega-film": {
+    "typ": "mega-film",
+    "anker": "b-weiche",
+    "basis": "bilder/referenzen/bauer/mm/basis.jpg",
+    "basis_alt": "Startseite der neuen Website",
+    "menues": [
+     {
+      "bild": "bilder/referenzen/bauer/mm/kompetenzen.jpg",
+      "alt": "Mega-Menü Kompetenzen geöffnet",
+      "kopf": 16.8
+     },
+     {
+      "bild": "bilder/referenzen/bauer/mm/karriere.jpg",
+      "alt": "Mega-Menü Jobs & Karriere geöffnet",
+      "kopf": 18.4
+     }
+    ],
+    "unterschrift": "Mega-Menü Kompetenzen und Jobs & Karriere",
+    "band": {
+     "von": "var(--pc-farbe)",
+     "bis": "var(--pc-farbe)"
+    }
+   }
   }
  },
  {

@@ -11,7 +11,7 @@ _spec = importlib.util.spec_from_file_location('inhalte', basis / 'werkzeuge' / 
 I = importlib.util.module_from_spec(_spec); _spec.loader.exec_module(I)
 ALLE = I.PROJEKTE
 CASES = [p for p in ALLE if p.get('case')]
-TRENNEN = {'Herausforderung': 'Heraus&shy;forderung', 'Zielgruppenführung': 'Zielgruppen&shy;führung', 'Eignungsnachweis': 'Eignungs&shy;nachweis'}
+TRENNEN = {'Herausforderung': 'Heraus&shy;forderung', 'Vergabestellen': 'Vergabe&shy;stellen', 'Vertrauensfaktor': 'Vertrauens&shy;faktor', 'Referenzprojekte': 'Referenz&shy;projekte', '60 Sekunden': '60&nbsp;Sekunden', 'Zielgruppenführung': 'Zielgruppen&shy;führung', 'Eignungsnachweis': 'Eignungs&shy;nachweis', 'Bauunternehmen': 'Bau&shy;unternehmen', 'Ingenieurbau &': 'Ingenieur&shy;bau &', 'Rebranding': 'Re&shy;branding', 'Webentwicklung': 'Web&shy;entwicklung', 'Unternehmenspräsentation': 'Unternehmens&shy;präsentation', 'vertrauenswürdig': 'vertrauens&shy;würdig', 'Spezialisierung': 'Spezia&shy;lisierung'}
 
 
 def trennen(s):
@@ -38,7 +38,7 @@ def rahmen(vorlage, main, titel, beschreibung, url, ld):
 
 def fakten(p):
     links = '<br>'.join(f'<a class="textlink" href="{l["url"]}" target="_blank" rel="noopener">{esc(l["text"])} <span aria-hidden="true">↗</span></a>' for l in p.get('links', [])[:1])
-    zeilen = [('Branche', esc(p['branche'])), ('Leistungen', esc(p['leistungen'])), ('Zeitraum', esc(p['zeitraum']))] + ([('Website', links)] if links else [])
+    zeilen = [('Branche', trennen(esc(p['branche']))), ('Leistungen', trennen(esc(p['leistungen']))), ('Zeitraum', esc(p['zeitraum']))] + ([('Website', links)] if links else [])
     return '<dl class="cs-fakten">' + ''.join(f'<div><dt>{a}</dt><dd>{b}</dd></div>' for a, b in zeilen) + '</dl>'
 
 
@@ -57,6 +57,10 @@ def wand(bilder, pre, spalten=3, reihen=None):
 
 
 def buehne(p, pre):
+    if p.get('buehne_bild'):  # Variante B (Anna 14.10.2026): EIN scharfer Screen auf Bauer-Blau, harte Kante, keine Maske, nichts darauf
+        b = p['buehne_bild']
+        return (f'  <div class="nl-band nl-schraege nl-blau cs-hero" style="--von:var(--pc-farbe);--bis:var(--pc-farbe)">'
+                f'<div class="cs-hero-rahmen"><img class="cs-hero-bild" src="{pre}{b["bild"]}" alt="{esc(b["alt"])}" width="2880" height="1800" fetchpriority="high" decoding="async"></div></div>')
     if p.get('wand_reihen'):  # feste Spalten (Variante B: vier Spalten, keine Wiederholung direkt untereinander)
         return f'  <div class="cs-buehne">{wand([], pre, reihen=p["wand_reihen"])}</div>'
     if p.get('wand'):
@@ -174,7 +178,7 @@ def block(b, pre):
                 f'<figcaption><p class="meta">{esc(b["meta"])}</p><p class="cs-vollbild-titel">{esc(b["titel"])}</p></figcaption></figure>')
     if b['typ'] == 'buehne':
         # Bühne wie Behance „CreativMinds – Core Interface“ (Anna 14.10.2026): Hintergrundbild oder Verlauf, Text oben, große Muster oder Website darüber
-        text = f'<div class="bn-text"><p class="meta">{esc(b["meta"])}</p><h2 class="bn-titel">{esc(b["titel"])}</h2>' + (f'<p>{esc(b["text"])}</p>' if b.get('text') else '') + '</div>'
+        text = f'<div class="bn-text"><p class="meta">{esc(b["meta"])}</p><h2 class="bn-titel">{trennen(esc(b["titel"]))}</h2>' + (f'<p>{esc(b["text"])}</p>' if b.get('text') else '') + '</div>'
         if b.get('muster'):
             inhalt = '<div class="bn-muster">' + ''.join(f'<img src="{pre}{m}" alt="{esc(a)}" loading="lazy">' for m, a in b['muster']) + '</div>'
         else:
@@ -197,14 +201,14 @@ def block(b, pre):
     if b['typ'] == 'handy-duo':
         # zwei räumliche Handys, versetzt, scrollen von selbst (Pause-Taste); rechts füllt sich das Formular (nachgestellt, nichts wird gesendet)
         felder = ''.join(f'<span class="hd-eingabe" data-text="{esc(x)}" style="left:{l:.2f}%;top:{o:.3f}%;width:{w:.2f}%"></span>' for x, l, o, w in b['eingaben'])
-        return (f'  <section class="cs-block cs-handy-duo" data-handyduo aria-label="{esc(b["titel"])}">\n    <div class="hd-text"><p class="meta">{esc(b["meta"])}</p><h2 class="bn-titel">{esc(b["titel"])}</h2><p>{esc(b["text"])}</p>'
+        return (f'  <section class="cs-block cs-handy-duo" data-handyduo aria-label="{esc(b["titel"])}">\n    <div class="hd-text"><p class="meta">{esc(b["meta"])}</p><h2 class="bn-titel">{trennen(esc(b["titel"]))}</h2><p>{esc(b["text"])}</p>'
                 f'<p><button type="button" class="ks-knopf hd-knopf" aria-label="Bewegung anhalten">❚❚</button></p></div>\n'
                 f'    <div class="hd-buehne">{handy3d(b["links"], pre, b["links_alt"], "hd-links")}{handy3d(b["rechts"], pre, b["rechts_alt"], "hd-rechts", felder, b.get("form_start", 0))}</div>\n  </section>')
     if b['typ'] == 'visual-design':
         # Visual Design wie Behance „CreativMinds – Visual Language“ (Anna 14.10.2026): Entscheidungen, gewähltes Favicon, Varianten, zwei Features
         punkte = ''.join(f'<li><b>{esc(a)}</b> {esc(x)}</li>' for a, x in b['entscheidungen'])
         features = ''.join(f'<figure class="vd-feature"><div class="vd-fenster"><img src="{pre}{bild}" alt="{esc(alt)}" loading="lazy"></div><figcaption class="meta">{esc(titel)}</figcaption></figure>' for bild, titel, alt in b.get('features', []))
-        return (f'  <section class="cs-block cs-visual" aria-labelledby="vd-titel">\n    <div class="vd-text"><p class="meta">{esc(b["meta"])}</p><h2 class="bn-titel" id="vd-titel">{esc(b["titel"])}</h2><ul>{punkte}</ul></div>\n'
+        return (f'  <section class="cs-block cs-visual" aria-labelledby="vd-titel">\n    <div class="vd-text"><p class="meta">{esc(b["meta"])}</p><h2 class="bn-titel" id="vd-titel">{trennen(esc(b["titel"]))}</h2><ul>{punkte}</ul></div>\n'
                 f'    <div class="vd-icon"><img src="{pre}{b["favicon"]}" alt="Favicon von Wolfgang Bauer Ingenieurbau" width="512" height="512" loading="lazy"><span class="meta">{esc(b["favicon_text"])}</span></div>\n'
                 f'    <figure class="vd-varianten"><img src="{pre}{b["varianten"]}" alt="{esc(b["varianten_alt"])}" loading="lazy"><figcaption class="meta">{esc(b["varianten_text"])}</figcaption></figure>\n'
                 + (f'    <div class="vd-features">{features}</div>\n' if features else '') + '  </section>')
@@ -296,6 +300,12 @@ def block(b, pre):
                 f'<span class="mf-zeiger" aria-hidden="true"></span></div></div>'
                 f'<div class="st-leiste"><button type="button" class="ks-knopf mf-knopf" aria-label="Film anhalten">❚❚</button>'
                 + (f'<span class="meta">{esc(b["unterschrift"])}</span>' if b.get('unterschrift') else '') + '</div></figure>')
+    if b['typ'] == 'ziele-text':  # B (Anna 14.10.2026: „zu viele Icons … ganz schlichte Sache“): zwei Spalten, nur Text und Linien
+        L, R = b['links'], b['rechts']
+        def spalte(titel, punkte):
+            li = ''.join(f'<li>{trennen(esc(x))}</li>' for x in punkte)
+            return f'<div class="zt-spalte"><h2 class="zt-titel">{trennen(esc(titel))}</h2><ul class="zt-liste">{li}</ul></div>'
+        return f'  <section class="cs-block cs-ziele-text">{spalte(L["titel"], [t for _, t in L["punkte"]])}{spalte(R["titel"], R["punkte"])}</section>'
     if b['typ'] == 'ziele-grafik':
         # Herausforderung → Website-Relaunch → Ziele als Grafik (Anna 14.10.2026): Linien laufen von links in den Kreis und weiter zu den Zielen
         def symbol(z):
@@ -373,6 +383,9 @@ def block(b, pre):
 def zahlen(p):
     # Kennzahlen des Projekts direkt unter dem Einstieg (Anna 14.10.2026: „14 Seiten, 40 Projekte“ weiter nach oben, ohne „Seiten, Seiten“)
     if not p.get('zahlen'): return ''
+    if p.get('_variante'):  # B (Anna 14.10.2026): Zahlen als Text unter dem Bild, nie darauf; Lesefolge „83 Seiten online“
+        z = ''.join(f'<li><span class="kz-zahl">{esc(a)}</span> <span>{trennen(esc(b))}</span></li>' for a, b in p['zahlen'])
+        return f'  <ul class="cs-kennzahlen" role="list" aria-label="Projekt in Kürze">{z}</ul>\n'
     z = ''.join(f'<div><dt>{esc(b)}</dt><dd>{esc(a)}</dd></div>' for a, b in p['zahlen'])
     return f'  <dl class="cs-zahlen">{z}</dl>\n'
 
