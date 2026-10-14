@@ -839,17 +839,6 @@
     "titel": "Click-Funnel & Wireframes"
    },
    {
-    "typ": "schieber",
-    "meta": "Wireframes",
-    "titel": "Vom Wireframe zur fertigen Seite",
-    "links": "bilder/referenzen/bauer/wf-startseite.jpg",
-    "rechts": "bilder/referenzen/bauer/v-start-nachher.jpg",
-    "links_text": "Wireframe",
-    "rechts_text": "Fertig",
-    "links_alt": "Wireframe der Startseite",
-    "rechts_alt": "Fertige Startseite"
-   },
-   {
     "typ": "weg",
     "meta": "Karriere · Wireframes",
     "titel": "Der Weg zur Bewerbung",
@@ -878,31 +867,6 @@
       "Formular",
       true
      ]
-    ]
-   },
-   {
-    "typ": "galerie",
-    "id": "muster",
-    "meta": "Design Pattern",
-    "titel": "Mega-Menü und Footer",
-    "text": "Das Mega-Menü führt beide Zielgruppen direkt zum Ziel – und wird auf der Startseite und im Footer wieder aufgegriffen.",
-    "bilder": [
-     {
-      "bild": "bilder/referenzen/bauer/dp-mega-kompetenzen.jpg",
-      "titel": "Mega-Menü Kompetenzen",
-      "alt": "Geöffnetes Mega-Menü Kompetenzen"
-     },
-     {
-      "bild": "bilder/referenzen/bauer/dp-mega-karriere.jpg",
-      "titel": "Mega-Menü Jobs & Karriere",
-      "alt": "Geöffnetes Mega-Menü Jobs und Karriere"
-     },
-     {
-      "bild": "bilder/referenzen/bauer/dp-footer.jpg",
-      "titel": "Footer",
-      "alt": "Footer der neuen Website",
-      "breit": true
-     }
     ]
    },
    {
@@ -953,59 +917,10 @@
     ]
    },
    {
-    "typ": "buehne",
-    "meta": "Key-Patterns",
-    "titel": "Spezialisierung, Referenzen, Eignung",
-    "text": "Vergabestellen prüfen in Sekunden: Macht dieser Anbieter das, was wir brauchen – und hat er es nachweislich schon getan?",
-    "hintergrund": "bilder/referenzen/bauer/bm-hintergrund.jpg",
-    "muster": [
-     [
-      "bilder/referenzen/bauer/bm-kompetenzen.jpg",
-      "Kernkompetenzen"
-     ],
-     [
-      "bilder/referenzen/bauer/bm-referenzen.jpg",
-      "Referenzen mit Filter"
-     ],
-     [
-      "bilder/referenzen/bauer/bm-zertifikate.jpg",
-      "Eignung und Zertifikate"
-     ]
-    ]
-   },
-   {
     "typ": "kapitel",
     "anker": "kap-look-and-feel",
     "meta": "Design · Prototyp",
     "titel": "Look & Feel"
-   },
-   {
-    "typ": "visual-design",
-    "meta": "Visual Design",
-    "titel": "Solide, ruhig, vertrauenswürdig",
-    "entscheidungen": [
-     [
-      "Tonalität:",
-      "klar, sachlich, handwerklich – ohne Pathos"
-     ],
-     [
-      "UI-Stil:",
-      "große Headlines, viel Weißraum, konsequentes Grid"
-     ],
-     [
-      "Bildwelt:",
-      "echte Baustellen, Menschen bei der Arbeit, keine Stockfotos"
-     ],
-     [
-      "Vorher/Nachher",
-      "als Erzählmittel"
-     ]
-    ],
-    "favicon": "bilder/referenzen/bauer/vd-favicon.png",
-    "favicon_text": "Favicon · Vorschlag 4, vom Kunden gewählt",
-    "varianten": "bilder/referenzen/bauer/vd-favicons.jpg",
-    "varianten_alt": "Vier Vorschläge für das Favicon",
-    "varianten_text": "Vier Vorschläge für das Favicon"
    },
    {
     "typ": "designsystem",
@@ -1090,10 +1005,84 @@
     "farben_text": "Aus dem Logo: Blau und Gelb"
    },
    {
+    "typ": "visual-design",
+    "meta": "Visual Design",
+    "titel": "Solide, ruhig, vertrauenswürdig",
+    "entscheidungen": [
+     [
+      "Tonalität:",
+      "klar, sachlich, handwerklich – ohne Pathos"
+     ],
+     [
+      "UI-Stil:",
+      "große Headlines, viel Weißraum, konsequentes Grid"
+     ],
+     [
+      "Bildwelt:",
+      "echte Baustellen, Menschen bei der Arbeit, keine Stockfotos"
+     ],
+     [
+      "Vorher/Nachher",
+      "als Erzählmittel"
+     ]
+    ],
+    "favicon": "bilder/referenzen/bauer/vd-favicon.png",
+    "favicon_text": "Favicon · Vorschlag 4, vom Kunden gewählt",
+    "varianten": "bilder/referenzen/bauer/vd-favicons.jpg",
+    "varianten_alt": "Vier Vorschläge für das Favicon",
+    "varianten_text": "Vier Vorschläge für das Favicon"
+   },
+   {
     "typ": "kapitel",
     "anker": "kap-relaunch",
     "meta": "Umsetzung · Oktober 2026",
     "titel": "Website-Relaunch"
+   },
+   {
+    "typ": "galerie",
+    "id": "muster",
+    "meta": "Design Pattern",
+    "titel": "Mega-Menü und Footer",
+    "text": "Das Mega-Menü führt beide Zielgruppen direkt zum Ziel – und wird auf der Startseite und im Footer wieder aufgegriffen.",
+    "bilder": [
+     {
+      "bild": "bilder/referenzen/bauer/dp-mega-kompetenzen.jpg",
+      "titel": "Mega-Menü Kompetenzen",
+      "alt": "Geöffnetes Mega-Menü Kompetenzen"
+     },
+     {
+      "bild": "bilder/referenzen/bauer/dp-mega-karriere.jpg",
+      "titel": "Mega-Menü Jobs & Karriere",
+      "alt": "Geöffnetes Mega-Menü Jobs und Karriere"
+     },
+     {
+      "bild": "bilder/referenzen/bauer/dp-footer.jpg",
+      "titel": "Footer",
+      "alt": "Footer der neuen Website",
+      "breit": true
+     }
+    ]
+   },
+   {
+    "typ": "buehne",
+    "meta": "Key-Patterns",
+    "titel": "Spezialisierung, Referenzen, Eignung",
+    "text": "Vergabestellen prüfen in Sekunden: Macht dieser Anbieter das, was wir brauchen – und hat er es nachweislich schon getan?",
+    "hintergrund": "bilder/referenzen/bauer/bm-hintergrund.jpg",
+    "muster": [
+     [
+      "bilder/referenzen/bauer/bm-kompetenzen.jpg",
+      "Kernkompetenzen"
+     ],
+     [
+      "bilder/referenzen/bauer/bm-referenzen.jpg",
+      "Referenzen mit Filter"
+     ],
+     [
+      "bilder/referenzen/bauer/bm-zertifikate.jpg",
+      "Eignung und Zertifikate"
+     ]
+    ]
    },
    {
     "typ": "buehne",
@@ -1215,7 +1204,7 @@
    {
     "typ": "heft",
     "alt": "Unternehmenspräsentation von Wolfgang Bauer Ingenieurbau, aufgeschlagen",
-    "unterschrift": "Unternehmenspräsentation · gedruckt als Heft, 24 Seiten",
+    "unterschrift": "Unternehmenspräsentation · gedruckt als Heft, 28 Seiten",
     "doppelseiten": [
      [
       "",
@@ -1250,8 +1239,8 @@
       "bilder/referenzen/bauer/mag/h17.jpg"
      ],
      [
-      "bilder/referenzen/bauer/mag/h20.jpg",
-      "bilder/referenzen/bauer/mag/h21.jpg"
+      "bilder/referenzen/bauer/mag/h18.jpg",
+      "bilder/referenzen/bauer/mag/h19.jpg"
      ],
      [
       "bilder/referenzen/bauer/mag/h22.jpg",
@@ -1259,6 +1248,14 @@
      ],
      [
       "bilder/referenzen/bauer/mag/h24.jpg",
+      "bilder/referenzen/bauer/mag/h25.jpg"
+     ],
+     [
+      "bilder/referenzen/bauer/mag/h26.jpg",
+      "bilder/referenzen/bauer/mag/h27.jpg"
+     ],
+     [
+      "bilder/referenzen/bauer/mag/h28.jpg",
       ""
      ]
     ]
