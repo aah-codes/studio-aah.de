@@ -10,6 +10,13 @@
 - Die Website ist umgesetzt und live. Die WordPress-Vorlage im Nachbarordner ist nur noch Archiv. Texte ändert Anna laufend; neue Texte nur nach ihrer Vorgabe, nichts dazuerfinden.
 - In Cloud-Sitzungen gibt es keinen Zugriff auf den iCloud-Ordner `Betrieb` (Projektstatus, Branding-Richtlinien). Die wichtigsten Regeln stehen deshalb unten. Was in `Betrieb` eingetragen werden müsste, am Ende als Liste für Anna ausgeben.
 
+## Besucherzahlen (Stand 14.10.2026)
+- Google Search Console ist eingerichtet (Domain-Property `studio-aah.de`, bestätigt 11.10.2026, Daten ab 11.10.2026). Sie zeigt nur Besuche aus der Google-Suche, pro Tag, mit 1–2 Tagen Verzögerung; kein Code auf der Website nötig.
+- Sonst läuft kein Zählwerkzeug. Die Regel „kein Analyse-Werkzeug“ (siehe Regeln für den Code) und der Satz in der Datenschutzerklärung („keine Cookies und keine Analyse- oder Tracking-Werkzeuge“) gelten weiter, bis Anna ein Werkzeug freigibt.
+- Anna wünscht eine Besucher-Statistik ohne Cookies (13.10.2026); Werkzeug noch offen. Im Gespräch: Matomo ohne Cookies auf eigenem Webspace (nur möglich, wenn bei IONOS ein Paket mit PHP und MySQL vorhanden ist – noch zu klären) oder ein bezahlter EU-Dienst eines Open-Source-Werkzeugs (z. B. Plausible). Vor dem Einbau: Rechtslage (§ 25 TDDDG, Einwilligung ja/nein) prüfen, Datenschutzerklärung anpassen, diese Regeln ändern; Skript in alle Seiten über die Vorlagen bzw. Generatoren.
+- Search Console meldet seit 12.10.2026 einen Fehler „Rezensions-Snippets: Mehrere Rezensionen ohne aggregateRating-Objekt“. Im Repository gibt es keine `Review`-Daten (auch nicht im Git-Verlauf); Ursache unbekannt, betroffene URL in der Search Console nachsehen.
+- Namen einzelner Besucher sind mit keinem zulässigen Werkzeug zu ermitteln (DSGVO); nur anonyme Zahlen.
+
 ## Generatoren (immer nach Änderungen an Daten oder Vorlagen, vom Repository-Ordner aus)
 - `python3 werkzeuge/preise-erzeugen.py` – Preise, Kostenrechner-Daten, Leiste, Glossar
 - `python3 werkzeuge/leistungsseiten.py` – alle Seiten unter `website/service/` aus `werkzeuge/leistungen-inhalte.json` und `werkzeuge/preise-daten.json`; Prozess, Kopf und Fuß kommen aus `website/index.html`
