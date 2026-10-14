@@ -48,9 +48,10 @@ def wand_bild(b, pre):
     return f'<a class="cs-wand-cta" href="{pre}{b["link"]}" aria-label="{esc(b["label"])}"><img src="{pre}{b["bild"]}" alt="" loading="lazy"></a>'
 
 
-def wand(bilder, pre, spalten=3):
-    # Einstieg wie bei Behance („Hedwig“, Anna 14.10.2026): viele Key-Screens schräg gestaffelt auf hellgrauer Fläche
-    reihen = [bilder[i::spalten] for i in range(spalten)]
+def wand(bilder, pre, spalten=3, reihen=None):
+    # Einstieg wie bei Behance („Hedwig“, Anna 14.10.2026): viele Key-Screens schräg gestaffelt auf hellgrauer Fläche;
+    # reihen = Spalten fest vorgegeben (CTA-Wand: jede Spalte lang genug, keine leeren Flächen)
+    reihen = reihen or [bilder[i::spalten] for i in range(spalten)]
     return ('<div class="cs-wand"><div class="cs-wand-innen">' + ''.join('<div>' + ''.join(wand_bild(b, pre) for b in s) + '</div>' for s in reihen)
             + '</div></div>')
 
@@ -197,24 +198,27 @@ def block(b, pre):
                 f'    <figure class="vd-varianten"><img src="{pre}{b["varianten"]}" alt="{esc(b["varianten_alt"])}" loading="lazy"><figcaption class="meta">{esc(b["varianten_text"])}</figcaption></figure>\n'
                 + (f'    <div class="vd-features">{features}</div>\n' if features else '') + '  </section>')
     if b['typ'] == 'personas':
-        # Zwei Zielgruppen, zwei Sprachen (Anna 14.10.2026): Auftraggeber gesiezt, Bewerber geduzt; Personas mit Symbolbild
-        def karte(x):
-            punkte = ''.join(f'<li>{esc(s)}</li>' for s in x['sucht'])
-            return (f'<article class="pe-karte"><img src="{pre}{x["bild"]}" alt="" width="800" height="1000" loading="lazy"><div><p class="meta">{esc(x["rolle"])}</p>'
-                    f'<h3>{esc(x["name"])}</h3><blockquote>„{esc(x["zitat"])}“</blockquote><p class="pe-sucht">Sucht zuerst:</p><ul>{punkte}</ul></div></article>')
-        def seite(s, kl):
+        # Zwei Zielgruppen, zwei Sprachen (Anna 14.10.2026): Auftraggeber gesiezt, Bewerber geduzt.
+        # Ruhig wie bei Apple (Anna 14.10.2026: „zu viele Schrifttypen und Farben“): eine Schrift, eine Akzentfarbe, Personen als Zeilen
+        def person(x):
+            return (f'<li class="pe-person"><img src="{pre}{x["bild"]}" alt="" width="800" height="1000" loading="lazy"><div>'
+                    f'<p class="pe-name">{esc(x["name"])}</p><p class="pe-rolle">{esc(x["rolle"].replace(" · ", ", "))}</p>'
+                    f'<blockquote>„{esc(x["zitat"])}“</blockquote><p class="pe-sucht"><span>Sucht zuerst</span>{" · ".join(esc(t) for t in x["sucht"])}</p></div></li>')
+        def seite(s):
             beispiele = ''.join(f'<li>„{esc(x)}“</li>' for x in s['beispiele'])
-            return (f'<div class="pe-seite {kl}"><div class="pe-kopf"><span class="pe-anrede">{esc(s["anrede"])}</span><div><p class="meta">{esc(s["meta"])}</p><h3 class="pe-titel">{esc(s["titel"])}</h3>'
-                    f'<p>{esc(s["ton"])}</p></div></div><div class="pe-karten">{"".join(karte(x) for x in s["personas"])}</div>'
-                    f'<div class="pe-beispiele"><p class="meta">So klingt es auf der Website</p><ul>{beispiele}</ul></div></div>')
+            return (f'<div class="pe-seite"><p class="pe-anrede">„{esc(s["anrede"])}“</p><p class="pe-gruppe">{esc(s["meta"])}</p>'
+                    f'<h3 class="pe-titel">{esc(s["titel"])}</h3><p class="pe-ton">{esc(s["ton"])}</p>'
+                    f'<ul class="pe-personen">{"".join(person(x) for x in s["personas"])}</ul>'
+                    f'<div class="pe-beispiele"><p class="pe-klein">So klingt es auf der Website</p><ul>{beispiele}</ul></div></div>')
         return (f'  <section class="cs-block cs-personas" aria-labelledby="pe-titel"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3" id="pe-titel">{esc(b["titel"])}</h2>'
-                f'<p class="weg-einleitung">{esc(b["text"])}</p><div class="pe-zwei">{seite(b["auftraggeber"], "pe-sie")}{seite(b["bewerber"], "pe-du")}</div>'
+                f'<p class="weg-einleitung">{esc(b["text"])}</p><div class="pe-zwei">{seite(b["auftraggeber"])}{seite(b["bewerber"])}</div>'
                 f'<p class="pe-hinweis">Personas: Hypothesen aus Referenzen und Marktrecherche · Fotos: Symbolbilder</p></section>')
     if b['typ'] == 'heft':
         # Unternehmenspräsentation als flaches Heft mit Klammerheftung (Anna 14.10.2026: flach, Ecken sauber);
         # die rechte Seite blättert in 3D um (js/menue.js), Pause-Taste
-        bogen = json.dumps([[pre + l, pre + r] for l, r in b['doppelseiten']])
-        l, r = b['doppelseiten'][0]
+        bogen = json.dumps([[pre + l if l else '', pre + r if r else ''] for l, r in b['doppelseiten']])
+        # Startbild: erste vollständige Doppelseite (ohne JavaScript sieht man so ein aufgeschlagenes Heft)
+        l, r = next((x, y) for x, y in b['doppelseiten'] if x and y)
         return (f'  <figure class="cs-block cs-heft" data-heft data-seiten=\'{bogen}\'><div class="hf-flaeche"><div class="hf-heft">'
                 f'<img class="hf-l" src="{pre}{l}" alt="{esc(b["alt"])}" loading="lazy"><img class="hf-r" src="{pre}{r}" alt="" loading="lazy">'
                 f'<div class="hf-blatt"><img class="hf-vorn" src="{pre}{r}" alt=""><img class="hf-hinten" src="{pre}{l}" alt=""></div>'
@@ -228,14 +232,17 @@ def block(b, pre):
     if b['typ'] == 'cta-wand':
         # alle Call-to-Actions schräg nebeneinander (Anna 14.10.2026, wie die Bildschirmwand oben)
         return (f'  <figure class="cs-block cs-cta-wand"><figcaption class="cs-block-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3">{esc(b["titel"])}</h2>'
-                + (f'<p class="weg-einleitung">{esc(b["text"])}</p>' if b.get('text') else '') + f'</figcaption><div class="cs-cta-flaeche" style="--spalten:{b.get("spalten", 3)}">{wand(b["bilder"], pre, b.get("spalten", 3))}</div></figure>')
+                + (f'<p class="weg-einleitung">{esc(b["text"])}</p>' if b.get('text') else '') + f'</figcaption><div class="cs-cta-flaeche" style="--spalten:{len(b["reihen"]) if b.get("reihen") else b.get("spalten", 3)}">{wand(b.get("bilder", []), pre, b.get("spalten", 3), b.get("reihen"))}</div></figure>')
     if b['typ'] == 'kapitel':
         # Kapitel-Trenner ohne Foto (Anna 14.10.2026): große Überschrift, Nummer, feine Linie
         return (f'  <div class="cs-block cs-kapitel"><span class="kp-nr">{esc(b["nr"])}</span><p class="meta">{esc(b["meta"])}</p>'
                 f'<h2 class="kp-titel">{esc(b["titel"])}</h2></div>')
     if b['typ'] == 'ablauf':
         # Prozess in der gewohnten Zeitleiste, einspaltig untereinander (Anna 14.10.2026, nicht im Zickzack)
-        li = [f'<li><span class="zl-marke"><small>Schritt</small><b>{i:02d}</b></span><div class="zl-text"><p class="meta">{esc(z)}</p><h3>{esc(x)}</h3></div></li>' for i, (z, x) in enumerate(b['schritte'], 1)]
+        # jeder Schritt springt zu seinem Abschnitt weiter unten (Anna 14.10.2026: „Anker zur jeweiligen Section“)
+        def titel_link(x, a):
+            return f'<a class="zl-anker" href="#{a}">{esc(x)} <span aria-hidden="true">↓</span></a>' if a else esc(x)
+        li = [f'<li><span class="zl-marke"><small>Schritt</small><b>{i:02d}</b></span><div class="zl-text"><p class="meta">{esc(s[0])}</p><h3>{titel_link(s[1], s[2] if len(s) > 2 else "")}</h3></div></li>' for i, s in enumerate(b['schritte'], 1)]
         halb = (len(li) + 1) // 2
         spalten = ''.join(f'<figure class="grafik grafik-prozess"><ol class="zeitleiste" start="{s + 1}">{"".join(li[s:s + halb])}</ol></figure>' for s in (0, halb))
         return (f'  <section class="cs-block cs-prozess" aria-labelledby="ablauf-titel"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3" id="ablauf-titel">{esc(b["titel"])}</h2>'
@@ -326,13 +333,16 @@ def projektseite(p, nr):
     texte = ''.join(f'    <div class="cs-kachel"><h2 class="gr-h3">{esc(a)}</h2><p>{esc(b)}</p></div>\n' for a, b in p.get('abschnitte', []))
     texte = f'  <section class="cs-texte" aria-label="Projekt in Kürze">\n{texte}  </section>\n' if texte else ''
     ablauf = ''
-    bilder = '\n'.join(block(b, pre) for b in p.get('bilder', []))
+    def mit_anker(b):
+        # Sprungziel für die Schritte im Ablauf: id auf das erste Element des Blocks
+        h = block(b, pre)
+        return re.sub(r'<(figure|section|div)\b', lambda m: f'<{m.group(1)} id="{b["anker"]}"', h, count=1) if b.get('anker') else h
+    bilder = '\n'.join(mit_anker(b) for b in p.get('bilder', []))
     main = f'''<main id="inhalt" class="cs" style="--pc-farbe: {farbe}">
 
   <section class="seitenkopf cs-kopf">
     <p class="meta brotkrumen"><a href="../">Projekte</a> / <span aria-current="page">{esc(p["kurzname"])}</span></p>
     <h1 class="cs-titel">{esc(p["kurzname"]).replace("Ingenieurbau", "Ingenieur&shy;bau")}</h1>
-    <p class="cs-satz">{esc(p["satz"])}</p>
     {fakten(p)}
   </section>
 

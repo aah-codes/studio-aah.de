@@ -418,18 +418,29 @@
 (() => {
   const ruhig = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.querySelectorAll('[data-heft]').forEach((h) => {
-    const bogen = JSON.parse(h.dataset.seiten), l = h.querySelector('.hf-l'), r = h.querySelector('.hf-r');
+    // Heft wie gedruckt (Anna 14.10.2026): zu (nur Umschlag, mittig) → aufklappen → Doppelseiten → Rückseite → von vorn.
+    // Leere Angabe = dort ist kein Blatt (links vom Umschlag, rechts von der Rückseite)
+    const bogen = JSON.parse(h.dataset.seiten), heft = h.querySelector('.hf-heft'), l = h.querySelector('.hf-l'), r = h.querySelector('.hf-r');
     const blatt = h.querySelector('.hf-blatt'), vorn = h.querySelector('.hf-vorn'), hinten = h.querySelector('.hf-hinten'), knopf = h.querySelector('.hf-knopf');
-    bogen.flat().forEach((s) => { const i = new Image(); i.src = s; });
+    bogen.flat().filter(Boolean).forEach((s) => { const i = new Image(); i.src = s; });
     let i = 0, uhr = null, sichtbar = false, aus = ruhig;
+    const setze = (img, s) => { img.classList.toggle('leer', !s); if (s) img.src = s; };
+    const lage = (k) => { heft.classList.toggle('hf-zu-vorn', !bogen[k][0]); heft.classList.toggle('hf-zu-hinten', !bogen[k][1]); };
+    const zeige = (k) => { setze(l, bogen[k][0]); setze(r, bogen[k][1]); lage(k); };
+    zeige(0);
     const blaettern = () => {
       const n = (i + 1) % bogen.length;
-      vorn.src = bogen[i][1]; hinten.src = bogen[n][0];
-      blatt.classList.add('bereit'); blatt.classList.remove('dreht'); void blatt.offsetWidth; blatt.classList.remove('bereit');
-      r.src = bogen[n][1]; blatt.classList.add('dreht');
-      setTimeout(() => { l.src = bogen[n][0]; blatt.classList.remove('dreht'); blatt.classList.add('bereit'); i = n; }, 1150);
+      if (n === 0) {
+        // nach der Rückseite: kurz ausblenden und wieder zugeklappt von vorn beginnen
+        heft.classList.add('hf-weg');
+        setTimeout(() => { zeige(0); i = 0; heft.classList.remove('hf-weg'); }, 500);
+        return;
+      }
+      // Blatt zeigt vorn die alte rechte Seite und dreht sie nach links; danach ohne Übergang zurück und unsichtbar
+      vorn.src = bogen[i][1]; hinten.src = bogen[n][0]; setze(r, bogen[n][1]); lage(n); blatt.classList.add('dreht');
+      setTimeout(() => { setze(l, bogen[n][0]); blatt.classList.add('still'); blatt.classList.remove('dreht'); void blatt.offsetWidth; blatt.classList.remove('still'); i = n; }, 1150);
     };
-    const lauf = () => { clearInterval(uhr); if (sichtbar && !aus) uhr = setInterval(blaettern, 3600); };
+    const lauf = () => { clearInterval(uhr); if (sichtbar && !aus) uhr = setInterval(blaettern, 3200); };
     knopf.addEventListener('click', () => { aus = !aus; knopf.textContent = aus ? '▶' : '❚❚'; knopf.setAttribute('aria-label', aus ? 'Blättern starten' : 'Blättern anhalten'); lauf(); });
     if (ruhig) { knopf.textContent = '▶'; knopf.setAttribute('aria-label', 'Blättern starten'); }
     if ('IntersectionObserver' in window) new IntersectionObserver((e) => { sichtbar = e[0].isIntersecting; lauf(); }, { threshold: 0.3 }).observe(h);

@@ -80,7 +80,7 @@
     "typ": "zwei-karten",
     "karten": [
      [
-      "compass.webp",
+      "warndreieck.jpg",
       "Herausforderung",
       [
        "Vergabe nach VOB/A",
@@ -106,7 +106,7 @@
     "titel": "Einmal durch die alte und die neue Website",
     "alt_text": "Vorher · April 2026",
     "neu_text": "Nachher · Oktober 2026",
-    "blende_text": "Neu online",
+    "blende_text": "Website-Relaunch",
     "szenen": [
      {
       "bild": "bilder/referenzen/bauer/film/a-start.jpg",
@@ -114,15 +114,21 @@
       "pfad": "",
       "phase": "alt",
       "titel": "Vorher: Startseite",
-      "dauer": 5000,
+      "dauer": 6000,
       "von": 0,
       "bis": 0,
       "notizen": [
        [
-        "Design altmodisch",
+        "Nicht barrierefrei",
         56,
         22,
-        900
+        700
+       ],
+       [
+        "Design altmodisch",
+        52,
+        44,
+        2300
        ]
       ],
       "kapitel": "Vorher",
@@ -169,10 +175,16 @@
       "bis": 1200,
       "notizen": [
        [
-        "Referenzen eher versteckt",
+        "Nicht barrierefrei",
         54,
-        42,
-        900
+        24,
+        700
+       ],
+       [
+        "Referenzen versteckt in Galerien – keine eigenen Unterseiten",
+        46,
+        50,
+        2300
        ]
       ],
       "kapitel": null,
@@ -248,8 +260,8 @@
       "notizen": [
        [
         "Neu: Mega-Menü",
-        58,
-        74,
+        60,
+        50,
         600
        ]
       ],
@@ -300,8 +312,8 @@
         800
        ],
        [
-        "Große Projektbilder",
-        58,
+        "Übersichtlich: alle Referenzen auf einer Seite",
+        52,
         60,
         2200
        ]
@@ -325,10 +337,16 @@
       "bis": 3300,
       "notizen": [
        [
+        "Große Projektgalerie mit Projektbildern",
+        56,
+        14,
+        900
+       ],
+       [
         "Alle Fakten zum Projekt",
         56,
         38,
-        1800
+        2400
        ],
        [
         "Klarer Call to Action",
@@ -411,8 +429,8 @@
       "notizen": [
        [
         "Bewerben mit einem Klick",
-        58,
-        74,
+        41,
+        49,
         700
        ]
       ],
@@ -580,27 +598,33 @@
     "schritte": [
      [
       "Analyse · Verstehen · April 2026",
-      "Expert-Review und digitale Touchpoints"
+      "Expert-Review und digitale Touchpoints",
+      "expert-review"
      ],
      [
       "Analyse · Beobachten",
-      "Mitbewerber-Benchmark"
+      "Mitbewerber-Benchmark",
+      "benchmark"
      ],
      [
       "Analyse · Sichtweise definieren",
-      "Brand Experience, Personas und Sitemap"
+      "Brand Experience, Personas und Sitemap",
+      "sitemap"
      ],
      [
       "Strategie und Konzept · Ideen finden",
-      "Inhaltsstruktur, Click-Funnel und Wireframes"
+      "Inhaltsstruktur, Click-Funnel und Wireframes",
+      "wireframes"
      ],
      [
       "Design · Prototyp",
-      "Look & Feel und Design-System"
+      "Look & Feel und Design-System",
+      "visual-design"
      ],
      [
       "Umsetzung · Oktober 2026",
-      "Neu online"
+      "Website-Relaunch",
+      "ergebnis"
      ]
     ],
     "text": "Grundlage meiner Arbeit ist der Design-Thinking-Prozess: erst verstehen, dann gestalten."
@@ -611,7 +635,8 @@
     "titel": "Die alte Website, Seite für Seite",
     "text": "Website, Struktur und digitale Touchpoints (Google, LinkedIn, Stepstone) geprüft und kommentiert.",
     "bild": "bilder/referenzen/bauer/p-review-website.jpg",
-    "alt": "Expert-Review der alten Website mit Notizen"
+    "alt": "Expert-Review der alten Website mit Notizen",
+    "anker": "expert-review"
    },
    {
     "typ": "split",
@@ -619,7 +644,8 @@
     "titel": "Was erfolgreiche Anbieter zeigen",
     "text": "Goldbeck, Aug. Prien, Köster, Gottlieb Tesch und weitere – mit Fokus auf Positionierung, Vertrauen, Recruiting und Corporate Design.",
     "bild": "bilder/referenzen/bauer/p-benchmark.jpg",
-    "alt": "Benchmark-Board mit Websites von Mitbewerbern"
+    "alt": "Benchmark-Board mit Websites von Mitbewerbern",
+    "anker": "benchmark"
    },
    {
     "typ": "sitemap",
@@ -658,7 +684,7 @@
       "Referenzen",
       [
        [
-        "40 Projektseiten, filterbar"
+        "69 Projektseiten, filterbar"
        ]
       ],
       "bilder/referenzen/bauer/sm-referenzen.jpg"
@@ -682,16 +708,34 @@
         "Arbeiten bei uns"
        ],
        [
+        "Maurer"
+       ],
+       [
+        "Beton- und Stahlbetonbauer"
+       ],
+       [
+        "Assistenz der Bauleitung"
+       ],
+       [
         "Bauleiter"
        ],
        [
         "Polier"
        ],
        [
+        "Praktikum"
+       ],
+       [
         "Ausbildung Maurer"
        ],
        [
+        "Ausbildung Beton- und Stahlbetonbauer"
+       ],
+       [
         "Duales Studium"
+       ],
+       [
+        "Baustellentag"
        ],
        [
         "Bewerbung"
@@ -705,7 +749,8 @@
       "bilder/referenzen/bauer/sm-kontakt.jpg"
      ]
     ],
-    "wurzel_bild": "bilder/referenzen/bauer/sm-startseite.jpg"
+    "wurzel_bild": "bilder/referenzen/bauer/sm-startseite.jpg",
+    "anker": "sitemap"
    },
    {
     "typ": "personas",
@@ -722,7 +767,7 @@
        "bild": "bilder/referenzen/bauer/persona-a.jpg",
        "name": "Sabine Reuter",
        "rolle": "Vergabestelle · 48",
-       "zitat": "Wenn auf der Website nicht in einer Minute steht, ob die Firma sowas wie unser Projekt schon mal gemacht hat – dann ist sie unten durch.",
+       "zitat": "Auf der Website möchte ich schnell erkennen, ob die Firma schon ein Projekt wie unseres umgesetzt hat.",
        "sucht": [
         "Passende Referenzen",
         "Zertifikate und PQ-VOB",
@@ -757,7 +802,7 @@
        "bild": "bilder/referenzen/bauer/persona-c.jpg",
        "name": "Daniel Schreiber",
        "rolle": "Polier · 38",
-       "zitat": "Jetzt suche ich was, wo ich morgens reinkomme und der Chef sagt: ‚Tach Daniel.‘ Und wo ich abends sehe, was ich gebaut habe.",
+       "zitat": "Ich suche eine Arbeit, wo ich morgens reinkomme und der Chef sagt: ‚Tag, Daniel.‘ Und wo ich abends sehe, was ich gebaut habe.",
        "sucht": [
         "Was hier gebaut wird",
         "Was ich bekomme",
@@ -781,7 +826,8 @@
     "links_text": "Wireframe",
     "rechts_text": "Fertig",
     "links_alt": "Wireframe der Startseite",
-    "rechts_alt": "Fertige Startseite"
+    "rechts_alt": "Fertige Startseite",
+    "anker": "wireframes"
    },
    {
     "typ": "visual-design",
@@ -809,7 +855,8 @@
     "favicon_text": "Favicon · Vorschlag 4, vom Kunden gewählt",
     "varianten": "bilder/referenzen/bauer/vd-favicons.jpg",
     "varianten_alt": "Vier Vorschläge für das Favicon",
-    "varianten_text": "Vier Vorschläge für das Favicon"
+    "varianten_text": "Vier Vorschläge für das Favicon",
+    "anker": "visual-design"
    },
    {
     "typ": "designsystem",
@@ -929,21 +976,47 @@
     "meta": "Schritt 04 · Click-Funnel",
     "titel": "Click-Funnel und Call to Action",
     "text": "Jede Seite führt zum nächsten Schritt: alle Calls to Action und Formulare – für Auftraggeber und für Bewerber.",
-    "bilder": [
-     "bilder/referenzen/bauer/cta-startseite_07.jpg",
-     "bilder/referenzen/bauer/cta-form-kontakt_02.jpg",
-     "bilder/referenzen/bauer/cta-mega-kompetenzen.jpg",
-     "bilder/referenzen/bauer/cta-karriere_08.jpg",
-     "bilder/referenzen/bauer/w-cta-vorhaben.jpg",
-     "bilder/referenzen/bauer/cta-form-bewerbungsformular_02.jpg",
-     "bilder/referenzen/bauer/cta-wasserbau_09.jpg",
-     "bilder/referenzen/bauer/cta-mega-karriere.jpg",
-     "bilder/referenzen/bauer/cta-bewerbungsformular_04.jpg",
-     "bilder/referenzen/bauer/cta-form-baustellentag_02.jpg",
-     "bilder/referenzen/bauer/cta-unternehmen_10.jpg",
-     "bilder/referenzen/bauer/cta-maurer_11.jpg"
-    ],
-    "spalten": 4
+    "spalten": 4,
+    "reihen": [
+     [
+      "bilder/referenzen/bauer/cta-vorhaben.jpg",
+      "bilder/referenzen/bauer/cta-form-kontakt.jpg",
+      "bilder/referenzen/bauer/cta-mega-karriere.jpg",
+      "bilder/referenzen/bauer/cta-projekt-planen.jpg",
+      "bilder/referenzen/bauer/cta-form-kontakt.jpg",
+      "bilder/referenzen/bauer/cta-mega-karriere.jpg",
+      "bilder/referenzen/bauer/cta-projekt-planen.jpg",
+      "bilder/referenzen/bauer/cta-vorhaben.jpg"
+     ],
+     [
+      "bilder/referenzen/bauer/cta-mega-kompetenzen.jpg",
+      "bilder/referenzen/bauer/cta-form-bewerbung.jpg",
+      "bilder/referenzen/bauer/cta-fragen-offen.jpg",
+      "bilder/referenzen/bauer/cta-form-bewerbung.jpg",
+      "bilder/referenzen/bauer/cta-fragen-offen.jpg",
+      "bilder/referenzen/bauer/cta-mega-kompetenzen.jpg"
+     ],
+     [
+      "bilder/referenzen/bauer/cta-bewirb-dich.jpg",
+      "bilder/referenzen/bauer/cta-form-baustellentag.jpg",
+      "bilder/referenzen/bauer/cta-direkt-sprechen.jpg",
+      "bilder/referenzen/bauer/cta-karriere-fritze.jpg",
+      "bilder/referenzen/bauer/cta-form-baustellentag.jpg",
+      "bilder/referenzen/bauer/cta-direkt-sprechen.jpg",
+      "bilder/referenzen/bauer/cta-karriere-fritze.jpg",
+      "bilder/referenzen/bauer/cta-bewirb-dich.jpg"
+     ],
+     [
+      "bilder/referenzen/bauer/cta-fragen-offen.jpg",
+      "bilder/referenzen/bauer/cta-mega-karriere.jpg",
+      "bilder/referenzen/bauer/cta-bewirb-dich.jpg",
+      "bilder/referenzen/bauer/cta-form-kontakt.jpg",
+      "bilder/referenzen/bauer/cta-mega-karriere.jpg",
+      "bilder/referenzen/bauer/cta-bewirb-dich.jpg",
+      "bilder/referenzen/bauer/cta-form-kontakt.jpg",
+      "bilder/referenzen/bauer/cta-fragen-offen.jpg"
+     ]
+    ]
    },
    {
     "typ": "kapitel",
@@ -956,7 +1029,7 @@
     "meta": "Referenzen · im Detail",
     "titel": "U6, U-Bhf. Seestraße",
     "text": "Jede Referenz hat eine eigene Seite: Bilder, Bauvorhaben, Bauherr, Zeitraum und Auftragswert.",
-    "hintergrund": "bilder/referenzen/bauer/vb-ubahn.jpg",
+    "hintergrund": "bilder/referenzen/bauer/vb-seestrasse.jpg",
     "browser": "bilder/referenzen/bauer/rd-seestrasse.jpg",
     "browser_alt": "Referenzseite U6, U-Bhf. Seestraße",
     "handy": "bilder/referenzen/bauer/rd-seestrasse-handy.jpg",
@@ -998,7 +1071,8 @@
     "text": "Gute Leute zu finden war für Bauer eines der wichtigsten Ziele – wie für viele Betriebe im Baugewerbe. Deshalb bekam Karriere einen eigenen Bereich.",
     "punkte": [
      "Eigene Karriereseite",
-     "Stellen für Bauleiter, Polier, Ausbildung und duales Studium",
+     "Stellen für Maurer, Beton- und Stahlbetonbauer, Assistenz der Bauleitung, Bauleiter und Polier",
+     "Praktikum, Ausbildung und duales Studium",
      "Bewerbung in drei Schritten",
      "Stimmen von der Baustelle und Team-Video"
     ],
@@ -1128,31 +1202,51 @@
    {
     "typ": "heft",
     "alt": "Unternehmenspräsentation von Wolfgang Bauer Ingenieurbau, aufgeschlagen",
-    "unterschrift": "Unternehmenspräsentation · Magazin A4 quer",
+    "unterschrift": "Unternehmenspräsentation · gedruckt als Heft, 24 Seiten",
     "doppelseiten": [
      [
-      "bilder/referenzen/bauer/mag/s04.jpg",
-      "bilder/referenzen/bauer/mag/s05.jpg"
+      "",
+      "bilder/referenzen/bauer/mag/h01.jpg"
      ],
      [
-      "bilder/referenzen/bauer/mag/s06.jpg",
-      "bilder/referenzen/bauer/mag/s07.jpg"
+      "bilder/referenzen/bauer/mag/h02.jpg",
+      "bilder/referenzen/bauer/mag/h03.jpg"
      ],
      [
-      "bilder/referenzen/bauer/mag/s08.jpg",
-      "bilder/referenzen/bauer/mag/s09.jpg"
+      "bilder/referenzen/bauer/mag/h06.jpg",
+      "bilder/referenzen/bauer/mag/h07.jpg"
      ],
      [
-      "bilder/referenzen/bauer/mag/s10.jpg",
-      "bilder/referenzen/bauer/mag/s11.jpg"
+      "bilder/referenzen/bauer/mag/h08.jpg",
+      "bilder/referenzen/bauer/mag/h09.jpg"
      ],
      [
-      "bilder/referenzen/bauer/mag/s12.jpg",
-      "bilder/referenzen/bauer/mag/s13.jpg"
+      "bilder/referenzen/bauer/mag/h10.jpg",
+      "bilder/referenzen/bauer/mag/h11.jpg"
      ],
      [
-      "bilder/referenzen/bauer/mag/s17.jpg",
-      "bilder/referenzen/bauer/mag/s18.jpg"
+      "bilder/referenzen/bauer/mag/h12.jpg",
+      "bilder/referenzen/bauer/mag/h13.jpg"
+     ],
+     [
+      "bilder/referenzen/bauer/mag/h14.jpg",
+      "bilder/referenzen/bauer/mag/h15.jpg"
+     ],
+     [
+      "bilder/referenzen/bauer/mag/h16.jpg",
+      "bilder/referenzen/bauer/mag/h17.jpg"
+     ],
+     [
+      "bilder/referenzen/bauer/mag/h20.jpg",
+      "bilder/referenzen/bauer/mag/h21.jpg"
+     ],
+     [
+      "bilder/referenzen/bauer/mag/h22.jpg",
+      "bilder/referenzen/bauer/mag/h23.jpg"
+     ],
+     [
+      "bilder/referenzen/bauer/mag/h24.jpg",
+      ""
      ]
     ]
    },
@@ -1163,7 +1257,8 @@
       "Ergebnis",
       "Mehr Bewerbungen und viel mehr Informationen für Interessenten und Bestandskunden – mit Referenzen, die sich nach Kompetenz und Status filtern lassen, und einem eigenen Karrierebereich für Ausbildung, duales Studium und offene Stellen."
      ]
-    ]
+    ],
+    "anker": "ergebnis"
    }
   ],
   "wand": [
@@ -1183,11 +1278,11 @@
   ],
   "zahlen": [
    [
-    "48",
+    "83",
     "Seiten online"
    ],
    [
-    "40",
+    "69",
     "Referenzprojekte mit eigener Seite"
    ],
    [
