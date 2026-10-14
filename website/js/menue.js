@@ -413,3 +413,25 @@
     if ('IntersectionObserver' in window) new IntersectionObserver((e) => { sichtbar = e[0].isIntersecting; lauf(); }, { threshold: 0.3 }).observe(b);
   });
 })();
+
+// Heft (Unternehmenspräsentation): rechte Seite blättert in 3D um, dann liegt die nächste Doppelseite offen; nur sichtbar, Pause-Taste
+(() => {
+  const ruhig = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('[data-heft]').forEach((h) => {
+    const bogen = JSON.parse(h.dataset.seiten), l = h.querySelector('.hf-l'), r = h.querySelector('.hf-r');
+    const blatt = h.querySelector('.hf-blatt'), vorn = h.querySelector('.hf-vorn'), hinten = h.querySelector('.hf-hinten'), knopf = h.querySelector('.hf-knopf');
+    bogen.flat().forEach((s) => { const i = new Image(); i.src = s; });
+    let i = 0, uhr = null, sichtbar = false, aus = ruhig;
+    const blaettern = () => {
+      const n = (i + 1) % bogen.length;
+      vorn.src = bogen[i][1]; hinten.src = bogen[n][0];
+      blatt.classList.add('bereit'); blatt.classList.remove('dreht'); void blatt.offsetWidth; blatt.classList.remove('bereit');
+      r.src = bogen[n][1]; blatt.classList.add('dreht');
+      setTimeout(() => { l.src = bogen[n][0]; blatt.classList.remove('dreht'); blatt.classList.add('bereit'); i = n; }, 1150);
+    };
+    const lauf = () => { clearInterval(uhr); if (sichtbar && !aus) uhr = setInterval(blaettern, 3600); };
+    knopf.addEventListener('click', () => { aus = !aus; knopf.textContent = aus ? '▶' : '❚❚'; knopf.setAttribute('aria-label', aus ? 'Blättern starten' : 'Blättern anhalten'); lauf(); });
+    if (ruhig) { knopf.textContent = '▶'; knopf.setAttribute('aria-label', 'Blättern starten'); }
+    if ('IntersectionObserver' in window) new IntersectionObserver((e) => { sichtbar = e[0].isIntersecting; lauf(); }, { threshold: 0.3 }).observe(h);
+  });
+})();

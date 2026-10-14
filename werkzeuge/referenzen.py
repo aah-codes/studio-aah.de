@@ -48,10 +48,10 @@ def wand_bild(b, pre):
     return f'<a class="cs-wand-cta" href="{pre}{b["link"]}" aria-label="{esc(b["label"])}"><img src="{pre}{b["bild"]}" alt="" loading="lazy"></a>'
 
 
-def wand(bilder, pre):
+def wand(bilder, pre, spalten=3):
     # Einstieg wie bei Behance („Hedwig“, Anna 14.10.2026): viele Key-Screens schräg gestaffelt auf hellgrauer Fläche
-    spalten = [bilder[i::3] for i in range(3)]
-    return ('<div class="cs-wand"><div class="cs-wand-innen">' + ''.join('<div>' + ''.join(wand_bild(b, pre) for b in s) + '</div>' for s in spalten)
+    reihen = [bilder[i::spalten] for i in range(spalten)]
+    return ('<div class="cs-wand"><div class="cs-wand-innen">' + ''.join('<div>' + ''.join(wand_bild(b, pre) for b in s) + '</div>' for s in reihen)
             + '</div></div>')
 
 
@@ -210,10 +210,25 @@ def block(b, pre):
         return (f'  <section class="cs-block cs-personas" aria-labelledby="pe-titel"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3" id="pe-titel">{esc(b["titel"])}</h2>'
                 f'<p class="weg-einleitung">{esc(b["text"])}</p><div class="pe-zwei">{seite(b["auftraggeber"], "pe-sie")}{seite(b["bewerber"], "pe-du")}</div>'
                 f'<p class="pe-hinweis">Personas: Hypothesen aus Referenzen und Marktrecherche · Fotos: Symbolbilder</p></section>')
+    if b['typ'] == 'heft':
+        # Unternehmenspräsentation als flaches Heft mit Klammerheftung (Anna 14.10.2026: flach, Ecken sauber);
+        # die rechte Seite blättert in 3D um (js/menue.js), Pause-Taste
+        bogen = json.dumps([[pre + l, pre + r] for l, r in b['doppelseiten']])
+        l, r = b['doppelseiten'][0]
+        return (f'  <figure class="cs-block cs-heft" data-heft data-seiten=\'{bogen}\'><div class="hf-flaeche"><div class="hf-heft">'
+                f'<img class="hf-l" src="{pre}{l}" alt="{esc(b["alt"])}" loading="lazy"><img class="hf-r" src="{pre}{r}" alt="" loading="lazy">'
+                f'<div class="hf-blatt"><img class="hf-vorn" src="{pre}{r}" alt=""><img class="hf-hinten" src="{pre}{l}" alt=""></div>'
+                f'<span class="hf-klammer" aria-hidden="true"></span><span class="hf-klammer hf-klammer-2" aria-hidden="true"></span></div></div>'
+                f'<div class="st-leiste"><button type="button" class="ks-knopf hf-knopf" aria-label="Blättern anhalten">❚❚</button><span class="meta">{esc(b["unterschrift"])}</span></div></figure>')
+    if b['typ'] == 'galerie':
+        # große, scharfe Bildschirmausschnitte mit Unterschrift (z. B. Mega-Menü und Footer)
+        f = ''.join(f'<figure class="ga-bild{" ga-breit" if x.get("breit") else ""}"><div class="ga-fenster"><img src="{pre}{x["bild"]}" alt="{esc(x["alt"])}" loading="lazy"></div><figcaption class="meta">{esc(x["titel"])}</figcaption></figure>' for x in b['bilder'])
+        return (f'  <section class="cs-block cs-galerie" aria-labelledby="ga-{b["id"]}"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3" id="ga-{b["id"]}">{esc(b["titel"])}</h2>'
+                + (f'<p class="weg-einleitung">{esc(b["text"])}</p>' if b.get('text') else '') + f'<div class="ga-raster">{f}</div></section>')
     if b['typ'] == 'cta-wand':
         # alle Call-to-Actions schräg nebeneinander (Anna 14.10.2026, wie die Bildschirmwand oben)
         return (f'  <figure class="cs-block cs-cta-wand"><figcaption class="cs-block-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3">{esc(b["titel"])}</h2>'
-                + (f'<p class="weg-einleitung">{esc(b["text"])}</p>' if b.get('text') else '') + f'</figcaption>{wand(b["bilder"], pre)}</figure>')
+                + (f'<p class="weg-einleitung">{esc(b["text"])}</p>' if b.get('text') else '') + f'</figcaption><div class="cs-cta-flaeche" style="--spalten:{b.get("spalten", 3)}">{wand(b["bilder"], pre, b.get("spalten", 3))}</div></figure>')
     if b['typ'] == 'kapitel':
         # Kapitel-Trenner ohne Foto (Anna 14.10.2026): große Überschrift, Nummer, feine Linie
         return (f'  <div class="cs-block cs-kapitel"><span class="kp-nr">{esc(b["nr"])}</span><p class="meta">{esc(b["meta"])}</p>'
@@ -224,7 +239,7 @@ def block(b, pre):
         halb = (len(li) + 1) // 2
         spalten = ''.join(f'<figure class="grafik grafik-prozess"><ol class="zeitleiste" start="{s + 1}">{"".join(li[s:s + halb])}</ol></figure>' for s in (0, halb))
         return (f'  <section class="cs-block cs-prozess" aria-labelledby="ablauf-titel"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3" id="ablauf-titel">{esc(b["titel"])}</h2>'
-                f'<div class="cs-prozess-spalten">{spalten}</div></section>')
+                + (f'<p class="weg-einleitung">{esc(b["text"])}</p>' if b.get('text') else '') + f'<div class="cs-prozess-spalten">{spalten}</div></section>')
     if b['typ'] == 'klickstrecke':
         # Klickstrecke als Treppe: Schritte versetzt, Beschriftung neben der Karte statt darauf (Anna 14.10.2026)
         punkte = ''.join(f'<li>{esc(x)}</li>' for x in b['punkte'])

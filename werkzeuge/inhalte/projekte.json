@@ -575,34 +575,35 @@
    },
    {
     "typ": "ablauf",
-    "meta": "Workflow",
+    "meta": "Workflow · Design Thinking",
     "titel": "So bin ich vorgegangen",
     "schritte": [
      [
-      "Analyse · April 2026",
-      "Expert-Review"
+      "Analyse · Verstehen · April 2026",
+      "Expert-Review und digitale Touchpoints"
      ],
      [
-      "Analyse",
+      "Analyse · Beobachten",
       "Mitbewerber-Benchmark"
      ],
      [
-      "Strategie",
-      "Brand Experience und Sitemap"
+      "Analyse · Sichtweise definieren",
+      "Brand Experience, Personas und Sitemap"
      ],
      [
-      "Konzept",
-      "Inhaltsstruktur und Wireframes"
+      "Strategie und Konzept · Ideen finden",
+      "Inhaltsstruktur, Click-Funnel und Wireframes"
      ],
      [
-      "Design",
+      "Design · Prototyp",
       "Look & Feel und Design-System"
      ],
      [
       "Umsetzung · Oktober 2026",
       "Neu online"
      ]
-    ]
+    ],
+    "text": "Grundlage meiner Arbeit ist der Design-Thinking-Prozess: erst verstehen, dann gestalten."
    },
    {
     "typ": "split",
@@ -893,25 +894,60 @@
     "farben_text": "Aus dem Logo: Blau und Gelb"
    },
    {
-    "typ": "cta-wand",
-    "meta": "Call to Action",
-    "titel": "CTA-Strategie",
-    "text": "Jede Seite endet mit einem klaren nächsten Schritt – für Auftraggeber wie für Bewerber.",
+    "typ": "kapitel",
+    "nr": "01",
+    "meta": "Schwerpunkt",
+    "titel": "Design Pattern"
+   },
+   {
+    "typ": "galerie",
+    "id": "muster",
+    "meta": "Design Pattern",
+    "titel": "Mega-Menü und Footer",
+    "text": "Das Mega-Menü führt beide Zielgruppen direkt zum Ziel – und wird auf der Startseite und im Footer wieder aufgegriffen.",
     "bilder": [
-     "bilder/referenzen/bauer/cta-startseite_07.jpg",
-     "bilder/referenzen/bauer/cta-mega-kompetenzen.jpg",
-     "bilder/referenzen/bauer/cta-karriere_08.jpg",
-     "bilder/referenzen/bauer/cta-wasserbau_09.jpg",
-     "bilder/referenzen/bauer/w-cta-vorhaben.jpg",
-     "bilder/referenzen/bauer/cta-bewerbungsformular_04.jpg",
-     "bilder/referenzen/bauer/cta-unternehmen_10.jpg",
-     "bilder/referenzen/bauer/cta-mega-karriere.jpg",
-     "bilder/referenzen/bauer/cta-maurer_11.jpg"
+     {
+      "bild": "bilder/referenzen/bauer/dp-mega-kompetenzen.jpg",
+      "titel": "Mega-Menü Kompetenzen",
+      "alt": "Geöffnetes Mega-Menü Kompetenzen"
+     },
+     {
+      "bild": "bilder/referenzen/bauer/dp-mega-karriere.jpg",
+      "titel": "Mega-Menü Jobs & Karriere",
+      "alt": "Geöffnetes Mega-Menü Jobs und Karriere"
+     },
+     {
+      "bild": "bilder/referenzen/bauer/dp-footer.jpg",
+      "titel": "Footer",
+      "alt": "Footer der neuen Website",
+      "breit": true
+     }
     ]
    },
    {
+    "typ": "cta-wand",
+    "meta": "Schritt 04 · Click-Funnel",
+    "titel": "Click-Funnel und Call to Action",
+    "text": "Jede Seite führt zum nächsten Schritt: alle Calls to Action und Formulare – für Auftraggeber und für Bewerber.",
+    "bilder": [
+     "bilder/referenzen/bauer/cta-startseite_07.jpg",
+     "bilder/referenzen/bauer/cta-form-kontakt_02.jpg",
+     "bilder/referenzen/bauer/cta-mega-kompetenzen.jpg",
+     "bilder/referenzen/bauer/cta-karriere_08.jpg",
+     "bilder/referenzen/bauer/w-cta-vorhaben.jpg",
+     "bilder/referenzen/bauer/cta-form-bewerbungsformular_02.jpg",
+     "bilder/referenzen/bauer/cta-wasserbau_09.jpg",
+     "bilder/referenzen/bauer/cta-mega-karriere.jpg",
+     "bilder/referenzen/bauer/cta-bewerbungsformular_04.jpg",
+     "bilder/referenzen/bauer/cta-form-baustellentag_02.jpg",
+     "bilder/referenzen/bauer/cta-unternehmen_10.jpg",
+     "bilder/referenzen/bauer/cta-maurer_11.jpg"
+    ],
+    "spalten": 4
+   },
+   {
     "typ": "kapitel",
-    "nr": "01",
+    "nr": "02",
     "meta": "Schwerpunkt",
     "titel": "Referenzen"
    },
@@ -949,7 +985,7 @@
    },
    {
     "typ": "kapitel",
-    "nr": "02",
+    "nr": "03",
     "meta": "Schwerpunkt",
     "titel": "Karriere"
    },
@@ -1044,8 +1080,8 @@
         "bild": "bilder/referenzen/bauer/hd-maurer.jpg",
         "alt": "Stelle Ausbildung Maurer am Handy",
         "von": 0,
-        "bis": 2400,
-        "dauer": 9000,
+        "bis": 2773,
+        "dauer": 10500,
         "klick": [
          50,
          80
@@ -1090,42 +1126,34 @@
     ]
    },
    {
-    "typ": "buch",
-    "foto": {
-     "bild": "bilder/mockups/buch-quer.jpg",
-     "maske": "bilder/mockups/buch-quer-maske.png",
-     "breite": 2000,
-     "hoehe": 1494,
-     "alt": "Aufgeschlagene Unternehmenspräsentation von Wolfgang Bauer Ingenieurbau"
-    },
+    "typ": "heft",
+    "alt": "Unternehmenspräsentation von Wolfgang Bauer Ingenieurbau, aufgeschlagen",
     "unterschrift": "Unternehmenspräsentation · Magazin A4 quer",
-    "schirme": [
-     {
-      "breite": 1400,
-      "hoehe": 990,
-      "matrix": "matrix3d(0.6268896328,-0.03299560168,0,1.999211132e-05,0.0118152492,0.5262682273,0,-6.147224996e-05,0,0,1,0,101,590,0,1)",
-      "seiten": [
-       "bilder/referenzen/bauer/mag/s04.jpg",
-       "bilder/referenzen/bauer/mag/s06.jpg",
-       "bilder/referenzen/bauer/mag/s08.jpg",
-       "bilder/referenzen/bauer/mag/s10.jpg",
-       "bilder/referenzen/bauer/mag/s12.jpg",
-       "bilder/referenzen/bauer/mag/s17.jpg"
-      ]
-     },
-     {
-      "breite": 1400,
-      "hoehe": 990,
-      "matrix": "matrix3d(0.6298851704,-0.02782060151,0,1.954351286e-05,0.002380810551,0.5021415914,0,-6.869771697e-05,0,0,1,0,952,529,0,1)",
-      "seiten": [
-       "bilder/referenzen/bauer/mag/s05.jpg",
-       "bilder/referenzen/bauer/mag/s07.jpg",
-       "bilder/referenzen/bauer/mag/s09.jpg",
-       "bilder/referenzen/bauer/mag/s11.jpg",
-       "bilder/referenzen/bauer/mag/s13.jpg",
-       "bilder/referenzen/bauer/mag/s18.jpg"
-      ]
-     }
+    "doppelseiten": [
+     [
+      "bilder/referenzen/bauer/mag/s04.jpg",
+      "bilder/referenzen/bauer/mag/s05.jpg"
+     ],
+     [
+      "bilder/referenzen/bauer/mag/s06.jpg",
+      "bilder/referenzen/bauer/mag/s07.jpg"
+     ],
+     [
+      "bilder/referenzen/bauer/mag/s08.jpg",
+      "bilder/referenzen/bauer/mag/s09.jpg"
+     ],
+     [
+      "bilder/referenzen/bauer/mag/s10.jpg",
+      "bilder/referenzen/bauer/mag/s11.jpg"
+     ],
+     [
+      "bilder/referenzen/bauer/mag/s12.jpg",
+      "bilder/referenzen/bauer/mag/s13.jpg"
+     ],
+     [
+      "bilder/referenzen/bauer/mag/s17.jpg",
+      "bilder/referenzen/bauer/mag/s18.jpg"
+     ]
     ]
    },
    {

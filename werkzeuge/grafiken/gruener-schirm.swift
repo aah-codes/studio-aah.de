@@ -21,11 +21,13 @@ let m = mctx.data!.assumingMemoryBound(to: UInt8.self)
 var gruen = [Bool](repeating: false, count: w * h)
 for i in 0..<(w * h) {
     let o = i * 4; let r = Int(d[o]), g = Int(d[o + 1]), b = Int(d[o + 2])
-    let stark = g > 120 && g > r + 60 && g > b + 60, rand = g > r + 22 && g > b + 22
+    // Loch nur im kräftigen Grün; an den Rändern Grünstich entfernen (Despill: Grün auf das Mittel von Rot und Blau),
+    // damit keine dunklen oder grünen Fransen bleiben (Anna 14.10.2026: „Ecken ausgefranst“)
+    let stark = g > 110 && g > r + 50 && g > b + 50
     gruen[i] = stark
-    let alpha: UInt8 = stark ? 0 : (rand ? 0 : 255)
-    if rand { d[o] = 20; d[o + 1] = 22; d[o + 2] = 24 }
-    m[o] = 255 * UInt8(alpha / 255); m[o + 1] = m[o]; m[o + 2] = m[o]; m[o + 3] = alpha
+    if !stark && g > max(r, b) { d[o + 1] = UInt8(min(g, max(r, b) + 6)) }
+    let alpha: UInt8 = stark ? 0 : 255
+    m[o] = alpha; m[o + 1] = alpha; m[o + 2] = alpha; m[o + 3] = alpha
 }
 func schreibe(_ c: CGContext, _ pfad: String, _ typ: CFString) {
     let z = CGImageDestinationCreateWithURL(URL(fileURLWithPath: pfad) as CFURL, typ, 1, nil)!
