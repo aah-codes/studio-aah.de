@@ -3295,7 +3295,7 @@ section[hidden] { display: none !important; }
 .cs-nahtlos .cs-hero-bild { display: block; width: 100%; max-width: none; height: auto; }
 .cs-nahtlos .cs-kennzahlen { list-style: none; width: min(1200px, 100% - 2 * var(--rand-seite)); margin: clamp(48px, 6vw, 96px) auto 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(24px, 3vw, 48px); }
 .cs-nahtlos .cs-kennzahlen li { display: flex; flex-direction: column; gap: 10px; padding-top: 16px; border-top: 1.5px solid var(--farbe-dunkel); font-size: 1.05rem; line-height: 1.35; color: var(--farbe-dunkel); }
-.cs-nahtlos .kz-zahl { font-family: var(--schrift-ueberschrift); font-size: clamp(56px, 7vw, 112px); line-height: .9; color: var(--pc-farbe); }
+.cs-nahtlos .kz-zahl { font-family: var(--schrift-ueberschrift); font-size: clamp(56px, 7vw, 112px); line-height: .9; color: var(--farbe-dunkel); /* Zahlen schwarz (Anna 14.10.2026) */ }
 .cs-nahtlos .cs-ziele-text { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(32px, 6vw, 96px); max-width: 1200px; margin: 0 auto; }
 .cs-nahtlos .zt-titel { margin: 0; padding-bottom: 18px; border-bottom: 1.5px solid var(--farbe-dunkel); font-family: var(--schrift-ueberschrift); font-weight: 400; font-size: clamp(32px, 3.4vw, 52px); line-height: 1; letter-spacing: .02em; text-transform: uppercase; color: var(--farbe-dunkel); }
 .cs-nahtlos .zt-liste { list-style: none; margin: 0; padding: 0; }
@@ -3310,4 +3310,33 @@ section[hidden] { display: none !important; }
   .cs-nahtlos .cs-kennzahlen { grid-template-columns: 1fr; gap: 0; }
   .cs-nahtlos .cs-kennzahlen li { display: grid; grid-template-columns: 76px minmax(0, 1fr); align-items: center; gap: 12px; padding: 12px 0; }
   .cs-nahtlos .kz-zahl { font-size: 52px; }
+}
+
+/* Variante B, Einstieg als laufende Wand (Anna 14.10.2026): 25 Sections in fünf Spalten laufen endlos nach oben,
+   gerade und senkrecht (Anna 14.10.2026; gedreht wie die Schräge wären es -3.86deg); harte Kanten, kein Verblassen.
+   Startseite als Kachel in der mittleren Spalte (schwebender Hero raus, Anna 14.10.2026). Pause-Taste; bei „Bewegung reduzieren“ steht alles still. */
+.cs-nahtlos .nl-band.cs-hero-wand { padding: 0; background: var(--farbe-dunkel, #0e1011); } /* Schwarz statt Bauer-Blau: blaue Sections heben sich ab (Anna 14.10.2026) */
+.cs-hero-wand { --hw-winkel: 0deg; --hw-luecke: clamp(12px, 1.4vw, 22px); }
+.hw-buehne { position: relative; height: calc(clamp(520px, 54vw, 800px) + clamp(40px, 6.75vw, 96px)); overflow: hidden; }
+.hw-wand { position: absolute; left: -8%; right: -8%; top: -9%; bottom: -9%; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: minmax(0, 100%); gap: var(--hw-luecke); transform: rotate(var(--hw-winkel)); }
+.hw-spalte { min-width: 0; min-height: 0; } /* Zeile = Höhe der Wand; laufende Spalten ragen darüber hinaus, die Bühne schneidet ab */
+/* feste Mitte: Kachel darüber, Hero, Kachel darunter – Hero genau in der Mitte des sichtbaren Bands (unter der Schräge) */
+.hw-fest { display: flex; flex-direction: column; justify-content: center; align-items: stretch; padding-top: clamp(40px, 6.75vw, 96px); }
+.hw-fest img { display: block; width: 100%; height: auto; max-width: none; margin: 0 0 var(--hw-luecke); border-radius: 6px; box-shadow: 0 0 0 1px rgba(255, 255, 255, .14), 0 12px 32px rgba(0, 0, 0, .5); }
+.hw-fest img:last-child { margin-bottom: 0; }
+.hw-lauf { display: flex; flex-direction: column; animation: hw-lauf var(--dauer, 80s) linear infinite; animation-delay: var(--start, 0s); will-change: transform; }
+.hw-lauf img { display: block; width: 100%; height: auto; max-width: none; margin: 0 0 var(--hw-luecke); border-radius: 6px; box-shadow: 0 0 0 1px rgba(255, 255, 255, .14), 0 12px 32px rgba(0, 0, 0, .5); }
+@keyframes hw-lauf { to { transform: translateY(calc(-100% / 3)); } }
+.cs-hero-wand.pause .hw-lauf { animation-play-state: paused; }
+.hw-knopf:hover { background: #2b2f31; }
+.hw-knopf:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { .hw-lauf { animation: none; } .hw-knopf { display: none; } }
+@media (max-width: 900px) {
+  .hw-buehne { height: calc(78vw + 6.75vw); }
+  .hw-wand { left: -22%; right: -22%; }
+}
+@media (max-width: 600px) {
+  .hw-buehne { height: calc(132vw + 6.75vw); }
+  .hw-wand { left: -48%; right: -48%; }
+  .hw-knopf { width: 44px; height: 44px; }
 }

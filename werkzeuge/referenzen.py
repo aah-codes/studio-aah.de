@@ -56,7 +56,30 @@ def wand(bilder, pre, spalten=3, reihen=None):
             + '</div></div>')
 
 
+def jpg_mass(datei):
+    # Breite und Höhe aus dem JPEG-Kopf (ohne Zusatzbibliothek), für width/height gegen Springen beim Laden
+    d = open(datei, "rb").read(); i = 2
+    while i < len(d):
+        m = d[i + 1]; n = int.from_bytes(d[i + 2:i + 4], 'big')
+        if m in (0xC0, 0xC1, 0xC2): return int.from_bytes(d[i + 7:i + 9], 'big'), int.from_bytes(d[i + 5:i + 7], 'big')
+        i += 2 + n
+    return 0, 0
+
+
 def buehne(p, pre):
+    if p.get('buehne_wand'):
+        # Variante B (Anna 14.10.2026): Wand aus 25 Sections in fünf Spalten, die endlos nach oben laufen, parallel zur Bauer-Schräge;
+        # Startseite als Kachel in der mittleren Spalte (schwebender Hero auf Annas Wunsch raus). Pause-Taste, steht bei „Bewegung reduzieren“ still.
+        w = p['buehne_wand']
+        def spalte(liste, i):
+            bilder = ''.join(f'<img src="{pre}{b}" alt="" width="{jpg_mass(basis / "website" / b)[0]}" height="{jpg_mass(basis / "website" / b)[1]}" decoding="async">' for b in liste)
+            if i == w.get('fest'):  # mittlere Spalte steht still, der Hero sitzt genau in der Mitte des Rasters (Anna 14.10.2026)
+                return f'<div class="hw-spalte hw-fest">{bilder}</div>'
+            return f'<div class="hw-spalte" style="--dauer:{w["dauer"][i]}s;--start:{w["start"][i]}"><div class="hw-lauf">{bilder * 3}</div></div>'
+        spalten = ''.join(spalte(s, i) for i, s in enumerate(w['spalten']))
+        return (f'  <div class="nl-band nl-schraege nl-blau cs-hero cs-hero-wand" style="--von:var(--pc-farbe);--bis:var(--pc-farbe)">'
+                f'<div class="hw-buehne"><div class="hw-wand" role="img" aria-label="{esc(w["alt"])}">{spalten}</div>'
+                f'<button type="button" class="ks-knopf hw-knopf" aria-label="Bewegung anhalten">❚❚</button></div></div>')
     if p.get('buehne_bild'):  # Variante B (Anna 14.10.2026): EIN scharfer Screen auf Bauer-Blau, harte Kante, keine Maske, nichts darauf
         b = p['buehne_bild']
         return (f'  <div class="nl-band nl-schraege nl-blau cs-hero" style="--von:var(--pc-farbe);--bis:var(--pc-farbe)">'

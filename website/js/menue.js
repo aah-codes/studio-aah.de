@@ -464,3 +464,11 @@
     k.addEventListener('click', () => { const aus = f.classList.toggle('pause'); k.textContent = aus ? '▶' : '❚❚'; k.setAttribute('aria-label', aus ? 'Bewegung starten' : 'Bewegung anhalten'); });
   });
 })();
+
+// Einstieg Variante B: laufende Wand – Pause-Taste (Anna 14.10.2026)
+(() => {
+  document.querySelectorAll('.cs-hero-wand').forEach((w) => {
+    const k = w.querySelector('.hw-knopf'); if (!k) return;
+    k.addEventListener('click', () => { const aus = w.classList.toggle('pause'); k.textContent = aus ? '▶' : '❚❚'; k.setAttribute('aria-label', aus ? 'Bewegung starten' : 'Bewegung anhalten'); });
+  });
+})();

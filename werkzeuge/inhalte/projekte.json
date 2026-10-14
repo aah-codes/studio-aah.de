@@ -1443,10 +1443,6 @@
    "b": [
     {
      "projekt": {
-      "buehne_bild": {
-       "bild": "bilder/referenzen/bauer/mm/basis.jpg",
-       "alt": "Startseite der neuen Website"
-      },
       "zahlen": [
        [
         "83",
@@ -1460,7 +1456,63 @@
         "4",
         "Monate"
        ]
-      ]
+      ],
+      "buehne_wand": {
+       "alt": "Bereiche der neuen Website im Überblick: Startseite, Kompetenzen, Referenzen, Karriere, Formulare und Kontakt",
+       "spalten": [
+        [
+         "bilder/referenzen/bauer/wl/wasserbau.jpg",
+         "bilder/referenzen/bauer/wl/bewirb-dich.jpg",
+         "bilder/referenzen/bauer/wl/weltmeisterlich.jpg",
+         "bilder/referenzen/bauer/wl/kompetenzen.jpg",
+         "bilder/referenzen/bauer/wl/kontaktformular.jpg",
+         "bilder/referenzen/bauer/wl/zertifikate.jpg"
+        ],
+        [
+         "bilder/referenzen/bauer/wl/referenzen.jpg",
+         "bilder/referenzen/bauer/wl/vier-schritte.jpg",
+         "bilder/referenzen/bauer/wl/bewerbungsformular.jpg",
+         "bilder/referenzen/bauer/wl/vorhaben.jpg",
+         "bilder/referenzen/bauer/wl/kennzahlen.jpg"
+        ],
+        [
+         "bilder/referenzen/bauer/wl/mega-menue.jpg",
+         "bilder/referenzen/bauer/wl/startseite.jpg",
+         "bilder/referenzen/bauer/wl/drei-schritte.jpg"
+        ],
+        [
+         "bilder/referenzen/bauer/wl/stellen.jpg",
+         "bilder/referenzen/bauer/wl/u6-galerie.jpg",
+         "bilder/referenzen/bauer/wl/direkt-sprechen.jpg",
+         "bilder/referenzen/bauer/wl/projektdaten.jpg",
+         "bilder/referenzen/bauer/wl/baustellentag.jpg",
+         "bilder/referenzen/bauer/wl/anforderungen.jpg"
+        ],
+        [
+         "bilder/referenzen/bauer/wl/bauprojekte.jpg",
+         "bilder/referenzen/bauer/wl/bewirb-dich-gelb.jpg",
+         "bilder/referenzen/bauer/wl/werte.jpg",
+         "bilder/referenzen/bauer/wl/vier-dinge.jpg",
+         "bilder/referenzen/bauer/wl/leistungen.jpg",
+         "bilder/referenzen/bauer/wl/karten.jpg"
+        ]
+       ],
+       "dauer": [
+        64,
+        82,
+        72,
+        90,
+        70
+       ],
+       "start": [
+        "-12s",
+        "-40s",
+        "-5s",
+        "-61s",
+        "-27s"
+       ],
+       "fest": 2
+      }
      }
     },
     {
