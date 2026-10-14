@@ -2873,11 +2873,6 @@ section[hidden] { display: none !important; }
 .ds-farbe.ds-hell[style*="#FFFFFF"] { box-shadow: inset 0 0 0 1.5px rgba(14, 16, 17, .12); }
 .cs-buehne-bild { background: linear-gradient(180deg, rgba(0, 24, 52, .88) 0%, rgba(0, 24, 52, .45) 38%, rgba(0, 24, 52, .12) 100%), var(--bn-bild) center / cover; }
 @media (max-width: 900px) { .ds-farben { grid-template-columns: 1fr; } .ds-farbe { min-height: 240px; } }
-/* CTA in der Mitte der Bildschirmwand: größer, hervorgehoben, klickbar (führt zu Annas Kontakt) */
-.cs-wand-cta { position: relative; z-index: 2; display: block; border-radius: 12px; transform: scale(1.18); box-shadow: 0 40px 80px rgba(0, 51, 102, .35); transition: transform .3s; }
-.cs-wand-cta img { box-shadow: none; }
-.cs-wand-cta:hover, .cs-wand-cta:focus-visible { transform: scale(1.24); }
-.cs-wand-cta:focus-visible { outline: 3px solid var(--farbe-dunkel); outline-offset: 4px; }
 
 /* Projektseite, Runde 5 (Anna 14.10.2026) */
 /* zwei große Karten: Herausforderung, Ziele */
@@ -2972,3 +2967,44 @@ section[hidden] { display: none !important; }
 .st-rahmen > .st-phase { top: 32px; }
 @media (max-width: 900px) { .cs-story .st-rahmen { padding-top: 52px; } .st-rahmen > .st-phase { top: 26px; left: 10px; } }
 @media (max-width: 900px) { .kl-stufe { grid-template-columns: 1fr; margin-left: 0; } .kl-label { justify-items: start; text-align: left; } }
+/* Clay-Icons wie auf der übrigen Website: weißer Grund mit runden Ecken */
+.zk-karte img { border-radius: 22px; background: #fff; padding: 6px; }
+
+/* Projektseite, Runde 6 (Anna 14.10.2026): Foto-Mockups aus Canva, CTA-Strategie, Prozess zweispaltig, Zeilenabstände */
+.st-seite { transform: translateY(calc(var(--y, 0) * -100cqw / var(--basis, 1440))); }
+.st-eingabe { left: calc(var(--x) * 100cqw / var(--basis, 1440)); top: calc(var(--t) * 100cqw / var(--basis, 1440)); max-width: calc(var(--w) * 100cqw / var(--basis, 1440)); font-size: calc(14 * 100cqw / var(--basis, 1440)); }
+.fm { position: relative; width: 100%; aspect-ratio: var(--sb) / var(--sh); overflow: hidden; border-radius: 24px; background: #222; }
+.fm-szene { position: absolute; left: 0; top: 0; width: calc(var(--sb) * 1px); height: calc(var(--sh) * 1px); transform-origin: 0 0; scale: var(--k, .5); }
+.fm-schirm { position: absolute; left: 0; top: 0; transform-origin: 0 0; overflow: hidden; background: #fff; }
+.fm-schirm .st-fenster { aspect-ratio: auto; width: 100%; height: 100%; }
+.fm-foto { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; -webkit-mask-size: 100% 100%; mask-size: 100% 100%; }
+.bu-seite { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .8s; }
+.bu-seite.aktiv { opacity: 1; }
+.fm-block .st-leiste, .fm-buch .st-leiste, .fm-story .st-leiste { margin-top: 14px; }
+.fm-buch { margin: 0; }
+.fm-mit-text { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.25fr); gap: 56px; align-items: center; padding: 56px; border-radius: 28px; background: var(--kachel); }
+.fm-mit-text .fm-story { margin: 0; }
+.fm-dunkel { background: var(--pc-farbe); color: #fff; }
+.fm-dunkel .meta { color: #fbd52a; }
+.fm-dunkel .fm-text p:not(.meta) { color: rgba(255, 255, 255, .85); }
+.fm-text p:not(.meta) { color: var(--farbe-gedaempft); }
+.fm-text ul { list-style: none; margin: 24px 0 0; padding: 0; display: grid; gap: 10px; }
+.fm-text li { padding-left: 30px; position: relative; }
+.fm-text li::before { content: ""; position: absolute; left: 0; top: .35em; width: 16px; height: 16px; border-radius: 50%; background: #fbd52a; }
+.fm-mit-text:not(.fm-dunkel) .kr-titel { color: var(--farbe-dunkel); }
+#fm-mobil ~ * , .fm-mit-text .fm-story .fm[style*="--sb:700"] { max-width: 520px; margin-inline: auto; }
+.fm-dunkel .ks-knopf { background: rgba(255, 255, 255, .15); color: #fff; }
+.cs-prozess-spalten { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.cs-prozess-spalten .grafik-prozess { max-width: none; }
+.bn-titel, .zk-karte h2 { line-height: 1.12; }
+.kr-titel { line-height: 1.06; }
+.cs-kapitel { row-gap: 22px; }
+.kp-titel { line-height: .9; }
+@media (max-width: 900px) {
+  .fm-mit-text { grid-template-columns: 1fr; padding: 28px 18px; gap: 28px; border-radius: 20px; }
+  .cs-prozess-spalten { grid-template-columns: 1fr; gap: 0; }
+  .fm { border-radius: 16px; }
+}
+/* Prozess zweispaltig: nur erster und letzter Schritt blau */
+.cs-prozess-spalten .grafik-prozess:first-child li:last-child .zl-marke, .cs-prozess-spalten .grafik-prozess:last-child li:first-child .zl-marke { background: var(--farbe-dunkel); }
+.cs-prozess-spalten .grafik-prozess:first-child li:last-child::before, .cs-prozess-spalten .grafik-prozess:last-child li:first-child::before { background: var(--farbe-dunkel); }

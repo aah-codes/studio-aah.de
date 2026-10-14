@@ -356,8 +356,8 @@
       const d = daten[i], sz = szenen[i];
       szenen.forEach((x, j) => { if (j !== i) x.classList.remove('aktiv'); });
       zuruecksetzen(sz); void sz.offsetWidth; sz.classList.add('aktiv'); nr = i;
-      adresse.textContent = 'bauer-ingbau.de/' + (d.pfad || ''); titel.textContent = d.titel;
-      phase.textContent = datenEl.dataset[d.phase];
+      if (adresse) adresse.textContent = 'bauer-ingbau.de/' + (d.pfad || ''); if (titel) titel.textContent = d.titel || '';
+      if (phase) phase.textContent = datenEl.dataset[d.phase] || '';
       const k = kapitel.filter((x) => +x.dataset.ziel <= i).pop(); kapitel.forEach((x) => x.setAttribute('aria-current', String(x === k)));
       if (sofort) { // ruhig: Endzustand ohne Bewegung zeigen
         sz.querySelector('.st-seite').style.setProperty('--y', d.bis || 0);
@@ -394,5 +394,22 @@
     zeige(0, true);
     if (!ruhig && 'IntersectionObserver' in window) new IntersectionObserver((e) => { if (e[0].isIntersecting) { if (!f.dataset.angehalten) an(); } else if (laeuft) { laeuft = false; stopp(); } }, { threshold: 0.45 }).observe(f);
     else aus();
+  });
+})();
+
+// Foto-Mockups (Projektseiten): Szene auf die Breite des Rahmens skalieren; Buch: Doppelseiten wechseln (Pause-Taste, nur sichtbar)
+(() => {
+  const ruhig = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const passe = (fm) => fm.style.setProperty('--k', fm.clientWidth / +getComputedStyle(fm).getPropertyValue('--sb'));
+  document.querySelectorAll('[data-fm]').forEach((fm) => { passe(fm); if ('ResizeObserver' in window) new ResizeObserver(() => passe(fm)).observe(fm); });
+  document.querySelectorAll('[data-buch]').forEach((b) => {
+    const schirme = [...b.querySelectorAll('.fm-schirm')], knopf = b.querySelector('.fm-knopf'), n = schirme[0].children.length;
+    let i = 0, uhr = null, sichtbar = false, aus = ruhig;
+    const zeige = () => schirme.forEach((s) => [...s.children].forEach((x, j) => x.classList.toggle('aktiv', j === i)));
+    const lauf = () => { clearInterval(uhr); if (sichtbar && !aus) uhr = setInterval(() => { i = (i + 1) % n; zeige(); }, 3200); };
+    knopf.addEventListener('click', () => { aus = !aus; knopf.textContent = aus ? '▶' : '❚❚'; knopf.setAttribute('aria-label', aus ? 'Blättern starten' : 'Blättern anhalten'); lauf(); });
+    if (ruhig) { knopf.textContent = '▶'; knopf.setAttribute('aria-label', 'Blättern starten'); }
+    zeige();
+    if ('IntersectionObserver' in window) new IntersectionObserver((e) => { sichtbar = e[0].isIntersecting; lauf(); }, { threshold: 0.3 }).observe(b);
   });
 })();

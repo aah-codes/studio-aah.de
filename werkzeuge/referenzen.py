@@ -196,15 +196,21 @@ def block(b, pre):
                 f'    <div class="vd-icon"><img src="{pre}{b["favicon"]}" alt="Favicon von Wolfgang Bauer Ingenieurbau" width="512" height="512" loading="lazy"><span class="meta">{esc(b["favicon_text"])}</span></div>\n'
                 f'    <figure class="vd-varianten"><img src="{pre}{b["varianten"]}" alt="{esc(b["varianten_alt"])}" loading="lazy"><figcaption class="meta">{esc(b["varianten_text"])}</figcaption></figure>\n'
                 + (f'    <div class="vd-features">{features}</div>\n' if features else '') + '  </section>')
+    if b['typ'] == 'cta-wand':
+        # alle Call-to-Actions schräg nebeneinander (Anna 14.10.2026, wie die Bildschirmwand oben)
+        return (f'  <figure class="cs-block cs-cta-wand"><figcaption class="cs-block-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3">{esc(b["titel"])}</h2>'
+                + (f'<p class="weg-einleitung">{esc(b["text"])}</p>' if b.get('text') else '') + f'</figcaption>{wand(b["bilder"], pre)}</figure>')
     if b['typ'] == 'kapitel':
         # Kapitel-Trenner ohne Foto (Anna 14.10.2026): große Überschrift, Nummer, feine Linie
         return (f'  <div class="cs-block cs-kapitel"><span class="kp-nr">{esc(b["nr"])}</span><p class="meta">{esc(b["meta"])}</p>'
                 f'<h2 class="kp-titel">{esc(b["titel"])}</h2></div>')
     if b['typ'] == 'ablauf':
         # Prozess in der gewohnten Zeitleiste, einspaltig untereinander (Anna 14.10.2026, nicht im Zickzack)
-        li = ''.join(f'<li><span class="zl-marke"><small>Schritt</small><b>{i:02d}</b></span><div class="zl-text"><p class="meta">{esc(z)}</p><h3>{esc(x)}</h3></div></li>' for i, (z, x) in enumerate(b['schritte'], 1))
+        li = [f'<li><span class="zl-marke"><small>Schritt</small><b>{i:02d}</b></span><div class="zl-text"><p class="meta">{esc(z)}</p><h3>{esc(x)}</h3></div></li>' for i, (z, x) in enumerate(b['schritte'], 1)]
+        halb = (len(li) + 1) // 2
+        spalten = ''.join(f'<figure class="grafik grafik-prozess"><ol class="zeitleiste" start="{s + 1}">{"".join(li[s:s + halb])}</ol></figure>' for s in (0, halb))
         return (f'  <section class="cs-block cs-prozess" aria-labelledby="ablauf-titel"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3" id="ablauf-titel">{esc(b["titel"])}</h2>'
-                f'<figure class="grafik grafik-prozess"><ol class="zeitleiste">{li}</ol></figure></section>')
+                f'<div class="cs-prozess-spalten">{spalten}</div></section>')
     if b['typ'] == 'klickstrecke':
         # Klickstrecke als Treppe: Schritte versetzt, Beschriftung neben der Karte statt darauf (Anna 14.10.2026)
         punkte = ''.join(f'<li>{esc(x)}</li>' for x in b['punkte'])
@@ -234,6 +240,34 @@ def block(b, pre):
                 f'<div class="st-leiste"><button type="button" class="ks-knopf st-knopf" aria-label="Film anhalten">❚❚</button><div class="st-kapitelreihe">{kapitel}</div>'
                 f'<p class="st-titel"></p></div></div>\n'
                 f'    <script type="application/json" class="st-daten" data-alt="{esc(b["alt_text"])}" data-neu="{esc(b["neu_text"])}">{daten}</script>\n  </figure>')
+    if b['typ'] in ('fotofilm', 'buch'):
+        # Foto-Mockup (Canva, Anna 14.10.2026: passend zur Zielgruppe): Foto mit Maske liegt über der Seite, die im Bildschirm läuft
+        fo = b['foto']
+        schirme = ''
+        for s in b['schirme']:
+            if b['typ'] == 'fotofilm':
+                szenen = ''.join(f'<div class="st-szene" data-i="{i}"><div class="st-zoom"><div class="st-seite"><img src="{pre}{z["bild"]}" alt="{esc(z["alt"])}" loading="lazy">'
+                                 + ''.join(f'<span class="st-eingabe" data-text="{esc(x)}" style="--x:{ex};--t:{ey};--w:{ew}"></span>' for x, ex, ey, ew in z.get('eingaben', []))
+                                 + '</div></div></div>' for i, z in enumerate(s['szenen']))
+                inhalt = f'<div class="st-fenster" style="--basis:{s["breite"]}">{szenen}<span class="vf-zeiger" aria-hidden="true"></span></div>'
+            else:
+                inhalt = ''.join(f'<img class="bu-seite" src="{pre}{x}" alt="" loading="lazy">' for x in s['seiten'])
+            schirme += f'<div class="fm-schirm" style="width:{s["breite"]}px;height:{s["hoehe"]}px;transform:{s["matrix"]}">{inhalt}</div>'
+        maske = f'-webkit-mask-image:url({pre}{fo["maske"]});mask-image:url({pre}{fo["maske"]})'
+        szene = (f'<div class="fm" data-fm style="--sb:{fo["breite"]};--sh:{fo["hoehe"]}"><div class="fm-szene">{schirme}'
+                 f'<img class="fm-foto" src="{pre}{fo["bild"]}" alt="{esc(fo["alt"])}" style="{maske}" loading="lazy"></div></div>')
+        knopf = '<button type="button" class="ks-knopf fm-knopf" aria-label="Bewegung anhalten">❚❚</button>'
+        if b['typ'] == 'fotofilm':
+            daten = json.dumps([{k: z.get(k) for k in ('von', 'bis', 'dauer', 'klick', 'tippen_ab')} for s in b['schirme'] for z in s['szenen']], ensure_ascii=False)
+            szene = (f'<figure class="cs-story fm-story" data-story>{szene}<div class="st-leiste">{knopf.replace("fm-knopf", "st-knopf")}</div>'
+                     f'<script type="application/json" class="st-daten">{daten}</script></figure>')
+        else:
+            szene = f'<figure class="fm-buch" data-buch>{szene}<div class="st-leiste">{knopf}<span class="meta">{esc(b.get("unterschrift", ""))}</span></div></figure>'
+        if not b.get('text'):
+            return f'  <div class="cs-block fm-block">{szene}</div>'
+        punkte = ''.join(f'<li>{esc(x)}</li>' for x in b.get('punkte', []))
+        return (f'  <section class="cs-block fm-mit-text{" fm-dunkel" if b.get("dunkel") else ""}" aria-labelledby="fm-{b["id"]}">\n    <div class="fm-text"><p class="meta">{esc(b["meta"])}</p>'
+                f'<h2 class="kr-titel" id="fm-{b["id"]}">{b["titel_html"]}</h2><p>{esc(b["text"])}</p>' + (f'<ul>{punkte}</ul>' if punkte else '') + f'</div>\n    {szene}\n  </section>')
     raise SystemExit('Unbekannter Bildblock: ' + b['typ'])
 
 
