@@ -599,57 +599,73 @@
      [
       "Analyse · Verstehen · April 2026",
       "Expert-Review und digitale Touchpoints",
-      "expert-review"
+      "kap-expert-review"
      ],
      [
       "Analyse · Beobachten",
       "Mitbewerber-Benchmark",
-      "benchmark"
+      "kap-benchmark"
      ],
      [
       "Analyse · Sichtweise definieren",
       "Brand Experience, Personas und Sitemap",
-      "sitemap"
+      "kap-personas-sitemap"
      ],
      [
       "Strategie und Konzept · Ideen finden",
       "Inhaltsstruktur, Click-Funnel und Wireframes",
-      "wireframes"
+      "kap-funnel-wireframes"
      ],
      [
       "Design · Prototyp",
       "Look & Feel und Design-System",
-      "visual-design"
+      "kap-look-and-feel"
      ],
      [
       "Umsetzung · Oktober 2026",
       "Website-Relaunch",
-      "ergebnis"
+      "kap-relaunch"
      ]
     ],
     "text": "Grundlage meiner Arbeit ist der Design-Thinking-Prozess: erst verstehen, dann gestalten."
    },
    {
+    "typ": "kapitel",
+    "anker": "kap-expert-review",
+    "meta": "Analyse · Verstehen",
+    "titel": "Expert-Review"
+   },
+   {
     "typ": "split",
-    "meta": "Schritt 01 · Expert-Review",
+    "meta": "Website und digitale Touchpoints",
     "titel": "Die alte Website, Seite für Seite",
     "text": "Website, Struktur und digitale Touchpoints (Google, LinkedIn, Stepstone) geprüft und kommentiert.",
     "bild": "bilder/referenzen/bauer/p-review-website.jpg",
-    "alt": "Expert-Review der alten Website mit Notizen",
-    "anker": "expert-review"
+    "alt": "Expert-Review der alten Website mit Notizen"
+   },
+   {
+    "typ": "kapitel",
+    "anker": "kap-benchmark",
+    "meta": "Analyse · Beobachten",
+    "titel": "Benchmark"
    },
    {
     "typ": "split",
-    "meta": "Schritt 02 · Mitbewerber-Benchmark",
+    "meta": "Mitbewerber",
     "titel": "Was erfolgreiche Anbieter zeigen",
     "text": "Goldbeck, Aug. Prien, Köster, Gottlieb Tesch und weitere – mit Fokus auf Positionierung, Vertrauen, Recruiting und Corporate Design.",
     "bild": "bilder/referenzen/bauer/p-benchmark.jpg",
-    "alt": "Benchmark-Board mit Websites von Mitbewerbern",
-    "anker": "benchmark"
+    "alt": "Benchmark-Board mit Websites von Mitbewerbern"
+   },
+   {
+    "typ": "kapitel",
+    "anker": "kap-personas-sitemap",
+    "meta": "Analyse · Sichtweise definieren",
+    "titel": "Personas & Sitemap"
    },
    {
     "typ": "sitemap",
-    "meta": "Schritt 03 · Sitemap",
+    "meta": "Sitemap",
     "titel": "Neue Struktur",
     "wurzel": "Startseite",
     "seiten": [
@@ -749,12 +765,11 @@
       "bilder/referenzen/bauer/sm-kontakt.jpg"
      ]
     ],
-    "wurzel_bild": "bilder/referenzen/bauer/sm-startseite.jpg",
-    "anker": "sitemap"
+    "wurzel_bild": "bilder/referenzen/bauer/sm-startseite.jpg"
    },
    {
     "typ": "personas",
-    "meta": "Schritt 03 · Personas",
+    "meta": "Personas",
     "titel": "Zwei Zielgruppen, zwei Sprachen",
     "text": "Auftraggeber und Bewerber suchen auf derselben Website – aber nicht dasselbe. Deshalb gibt es zwei Kommunikationsstrategien: Auftraggeber werden gesiezt, im Karrierebereich wird geduzt.",
     "auftraggeber": {
@@ -818,20 +833,155 @@
     }
    },
    {
+    "typ": "kapitel",
+    "anker": "kap-funnel-wireframes",
+    "meta": "Strategie und Konzept · Ideen finden",
+    "titel": "Click-Funnel & Wireframes"
+   },
+   {
     "typ": "schieber",
-    "meta": "Schritt 04 · Wireframes",
+    "meta": "Wireframes",
     "titel": "Vom Wireframe zur fertigen Seite",
     "links": "bilder/referenzen/bauer/wf-startseite.jpg",
     "rechts": "bilder/referenzen/bauer/v-start-nachher.jpg",
     "links_text": "Wireframe",
     "rechts_text": "Fertig",
     "links_alt": "Wireframe der Startseite",
-    "rechts_alt": "Fertige Startseite",
-    "anker": "wireframes"
+    "rechts_alt": "Fertige Startseite"
+   },
+   {
+    "typ": "weg",
+    "meta": "Karriere · Wireframes",
+    "titel": "Der Weg zur Bewerbung",
+    "schritte": [
+     [
+      "bilder/referenzen/bauer/kw-karriere.jpg",
+      "Arbeiten bei Bauer",
+      "Karriereseite",
+      false
+     ],
+     [
+      "bilder/referenzen/bauer/kw-stelle.jpg",
+      "Stelle im Detail",
+      "Ausbildung Maurer",
+      false
+     ],
+     [
+      "bilder/referenzen/bauer/kw-baustellentag.jpg",
+      "Tag auf der Baustelle",
+      "Kennenlernen vor Ort",
+      true
+     ],
+     [
+      "bilder/referenzen/bauer/kw-bewerbung.jpg",
+      "Bewerbung",
+      "Formular",
+      true
+     ]
+    ]
+   },
+   {
+    "typ": "galerie",
+    "id": "muster",
+    "meta": "Design Pattern",
+    "titel": "Mega-Menü und Footer",
+    "text": "Das Mega-Menü führt beide Zielgruppen direkt zum Ziel – und wird auf der Startseite und im Footer wieder aufgegriffen.",
+    "bilder": [
+     {
+      "bild": "bilder/referenzen/bauer/dp-mega-kompetenzen.jpg",
+      "titel": "Mega-Menü Kompetenzen",
+      "alt": "Geöffnetes Mega-Menü Kompetenzen"
+     },
+     {
+      "bild": "bilder/referenzen/bauer/dp-mega-karriere.jpg",
+      "titel": "Mega-Menü Jobs & Karriere",
+      "alt": "Geöffnetes Mega-Menü Jobs und Karriere"
+     },
+     {
+      "bild": "bilder/referenzen/bauer/dp-footer.jpg",
+      "titel": "Footer",
+      "alt": "Footer der neuen Website",
+      "breit": true
+     }
+    ]
+   },
+   {
+    "typ": "cta-wand",
+    "meta": "Click-Funnel",
+    "titel": "Click-Funnel und Call to Action",
+    "text": "Jede Seite führt zum nächsten Schritt: alle Calls to Action und Formulare – für Auftraggeber und für Bewerber.",
+    "spalten": 4,
+    "reihen": [
+     [
+      "bilder/referenzen/bauer/cta-vorhaben.jpg",
+      "bilder/referenzen/bauer/cta-form-kontakt.jpg",
+      "bilder/referenzen/bauer/cta-mega-karriere.jpg",
+      "bilder/referenzen/bauer/cta-projekt-planen.jpg",
+      "bilder/referenzen/bauer/cta-form-kontakt.jpg",
+      "bilder/referenzen/bauer/cta-mega-karriere.jpg",
+      "bilder/referenzen/bauer/cta-projekt-planen.jpg",
+      "bilder/referenzen/bauer/cta-vorhaben.jpg"
+     ],
+     [
+      "bilder/referenzen/bauer/cta-mega-kompetenzen.jpg",
+      "bilder/referenzen/bauer/cta-form-bewerbung.jpg",
+      "bilder/referenzen/bauer/cta-fragen-offen.jpg",
+      "bilder/referenzen/bauer/cta-form-bewerbung.jpg",
+      "bilder/referenzen/bauer/cta-fragen-offen.jpg",
+      "bilder/referenzen/bauer/cta-mega-kompetenzen.jpg"
+     ],
+     [
+      "bilder/referenzen/bauer/cta-bewirb-dich.jpg",
+      "bilder/referenzen/bauer/cta-form-baustellentag.jpg",
+      "bilder/referenzen/bauer/cta-direkt-sprechen.jpg",
+      "bilder/referenzen/bauer/cta-karriere-fritze.jpg",
+      "bilder/referenzen/bauer/cta-form-baustellentag.jpg",
+      "bilder/referenzen/bauer/cta-direkt-sprechen.jpg",
+      "bilder/referenzen/bauer/cta-karriere-fritze.jpg",
+      "bilder/referenzen/bauer/cta-bewirb-dich.jpg"
+     ],
+     [
+      "bilder/referenzen/bauer/cta-fragen-offen.jpg",
+      "bilder/referenzen/bauer/cta-mega-karriere.jpg",
+      "bilder/referenzen/bauer/cta-bewirb-dich.jpg",
+      "bilder/referenzen/bauer/cta-form-kontakt.jpg",
+      "bilder/referenzen/bauer/cta-mega-karriere.jpg",
+      "bilder/referenzen/bauer/cta-bewirb-dich.jpg",
+      "bilder/referenzen/bauer/cta-form-kontakt.jpg",
+      "bilder/referenzen/bauer/cta-fragen-offen.jpg"
+     ]
+    ]
+   },
+   {
+    "typ": "buehne",
+    "meta": "Key-Patterns",
+    "titel": "Spezialisierung, Referenzen, Eignung",
+    "text": "Vergabestellen prüfen in Sekunden: Macht dieser Anbieter das, was wir brauchen – und hat er es nachweislich schon getan?",
+    "hintergrund": "bilder/referenzen/bauer/bm-hintergrund.jpg",
+    "muster": [
+     [
+      "bilder/referenzen/bauer/bm-kompetenzen.jpg",
+      "Kernkompetenzen"
+     ],
+     [
+      "bilder/referenzen/bauer/bm-referenzen.jpg",
+      "Referenzen mit Filter"
+     ],
+     [
+      "bilder/referenzen/bauer/bm-zertifikate.jpg",
+      "Eignung und Zertifikate"
+     ]
+    ]
+   },
+   {
+    "typ": "kapitel",
+    "anker": "kap-look-and-feel",
+    "meta": "Design · Prototyp",
+    "titel": "Look & Feel"
    },
    {
     "typ": "visual-design",
-    "meta": "Schritt 05 · Visual Design",
+    "meta": "Visual Design",
     "titel": "Solide, ruhig, vertrauenswürdig",
     "entscheidungen": [
      [
@@ -855,12 +1005,11 @@
     "favicon_text": "Favicon · Vorschlag 4, vom Kunden gewählt",
     "varianten": "bilder/referenzen/bauer/vd-favicons.jpg",
     "varianten_alt": "Vier Vorschläge für das Favicon",
-    "varianten_text": "Vier Vorschläge für das Favicon",
-    "anker": "visual-design"
+    "varianten_text": "Vier Vorschläge für das Favicon"
    },
    {
     "typ": "designsystem",
-    "meta": "Schritt 05 · Design-System",
+    "meta": "Design-System",
     "titel": "Farben und Schrift",
     "farben": [
      [
@@ -942,87 +1091,9 @@
    },
    {
     "typ": "kapitel",
-    "nr": "01",
-    "meta": "Schwerpunkt",
-    "titel": "Design Pattern"
-   },
-   {
-    "typ": "galerie",
-    "id": "muster",
-    "meta": "Design Pattern",
-    "titel": "Mega-Menü und Footer",
-    "text": "Das Mega-Menü führt beide Zielgruppen direkt zum Ziel – und wird auf der Startseite und im Footer wieder aufgegriffen.",
-    "bilder": [
-     {
-      "bild": "bilder/referenzen/bauer/dp-mega-kompetenzen.jpg",
-      "titel": "Mega-Menü Kompetenzen",
-      "alt": "Geöffnetes Mega-Menü Kompetenzen"
-     },
-     {
-      "bild": "bilder/referenzen/bauer/dp-mega-karriere.jpg",
-      "titel": "Mega-Menü Jobs & Karriere",
-      "alt": "Geöffnetes Mega-Menü Jobs und Karriere"
-     },
-     {
-      "bild": "bilder/referenzen/bauer/dp-footer.jpg",
-      "titel": "Footer",
-      "alt": "Footer der neuen Website",
-      "breit": true
-     }
-    ]
-   },
-   {
-    "typ": "cta-wand",
-    "meta": "Schritt 04 · Click-Funnel",
-    "titel": "Click-Funnel und Call to Action",
-    "text": "Jede Seite führt zum nächsten Schritt: alle Calls to Action und Formulare – für Auftraggeber und für Bewerber.",
-    "spalten": 4,
-    "reihen": [
-     [
-      "bilder/referenzen/bauer/cta-vorhaben.jpg",
-      "bilder/referenzen/bauer/cta-form-kontakt.jpg",
-      "bilder/referenzen/bauer/cta-mega-karriere.jpg",
-      "bilder/referenzen/bauer/cta-projekt-planen.jpg",
-      "bilder/referenzen/bauer/cta-form-kontakt.jpg",
-      "bilder/referenzen/bauer/cta-mega-karriere.jpg",
-      "bilder/referenzen/bauer/cta-projekt-planen.jpg",
-      "bilder/referenzen/bauer/cta-vorhaben.jpg"
-     ],
-     [
-      "bilder/referenzen/bauer/cta-mega-kompetenzen.jpg",
-      "bilder/referenzen/bauer/cta-form-bewerbung.jpg",
-      "bilder/referenzen/bauer/cta-fragen-offen.jpg",
-      "bilder/referenzen/bauer/cta-form-bewerbung.jpg",
-      "bilder/referenzen/bauer/cta-fragen-offen.jpg",
-      "bilder/referenzen/bauer/cta-mega-kompetenzen.jpg"
-     ],
-     [
-      "bilder/referenzen/bauer/cta-bewirb-dich.jpg",
-      "bilder/referenzen/bauer/cta-form-baustellentag.jpg",
-      "bilder/referenzen/bauer/cta-direkt-sprechen.jpg",
-      "bilder/referenzen/bauer/cta-karriere-fritze.jpg",
-      "bilder/referenzen/bauer/cta-form-baustellentag.jpg",
-      "bilder/referenzen/bauer/cta-direkt-sprechen.jpg",
-      "bilder/referenzen/bauer/cta-karriere-fritze.jpg",
-      "bilder/referenzen/bauer/cta-bewirb-dich.jpg"
-     ],
-     [
-      "bilder/referenzen/bauer/cta-fragen-offen.jpg",
-      "bilder/referenzen/bauer/cta-mega-karriere.jpg",
-      "bilder/referenzen/bauer/cta-bewirb-dich.jpg",
-      "bilder/referenzen/bauer/cta-form-kontakt.jpg",
-      "bilder/referenzen/bauer/cta-mega-karriere.jpg",
-      "bilder/referenzen/bauer/cta-bewirb-dich.jpg",
-      "bilder/referenzen/bauer/cta-form-kontakt.jpg",
-      "bilder/referenzen/bauer/cta-fragen-offen.jpg"
-     ]
-    ]
-   },
-   {
-    "typ": "kapitel",
-    "nr": "02",
-    "meta": "Schwerpunkt",
-    "titel": "Referenzen"
+    "anker": "kap-relaunch",
+    "meta": "Umsetzung · Oktober 2026",
+    "titel": "Website-Relaunch"
    },
    {
     "typ": "buehne",
@@ -1034,33 +1105,6 @@
     "browser_alt": "Referenzseite U6, U-Bhf. Seestraße",
     "handy": "bilder/referenzen/bauer/rd-seestrasse-handy.jpg",
     "handy_alt": "Referenzseite U6, U-Bhf. Seestraße am Handy"
-   },
-   {
-    "typ": "buehne",
-    "meta": "Key-Patterns",
-    "titel": "Spezialisierung, Referenzen, Eignung",
-    "text": "Vergabestellen prüfen in Sekunden: Macht dieser Anbieter das, was wir brauchen – und hat er es nachweislich schon getan?",
-    "hintergrund": "bilder/referenzen/bauer/bm-hintergrund.jpg",
-    "muster": [
-     [
-      "bilder/referenzen/bauer/bm-kompetenzen.jpg",
-      "Kernkompetenzen"
-     ],
-     [
-      "bilder/referenzen/bauer/bm-referenzen.jpg",
-      "Referenzen mit Filter"
-     ],
-     [
-      "bilder/referenzen/bauer/bm-zertifikate.jpg",
-      "Eignung und Zertifikate"
-     ]
-    ]
-   },
-   {
-    "typ": "kapitel",
-    "nr": "03",
-    "meta": "Schwerpunkt",
-    "titel": "Karriere"
    },
    {
     "typ": "fotofilm",
@@ -1098,37 +1142,6 @@
        }
       ]
      }
-    ]
-   },
-   {
-    "typ": "weg",
-    "meta": "Karriere · Wireframes",
-    "titel": "Der Weg zur Bewerbung",
-    "schritte": [
-     [
-      "bilder/referenzen/bauer/kw-karriere.jpg",
-      "Arbeiten bei Bauer",
-      "Karriereseite",
-      false
-     ],
-     [
-      "bilder/referenzen/bauer/kw-stelle.jpg",
-      "Stelle im Detail",
-      "Ausbildung Maurer",
-      false
-     ],
-     [
-      "bilder/referenzen/bauer/kw-baustellentag.jpg",
-      "Tag auf der Baustelle",
-      "Kennenlernen vor Ort",
-      true
-     ],
-     [
-      "bilder/referenzen/bauer/kw-bewerbung.jpg",
-      "Bewerbung",
-      "Formular",
-      true
-     ]
     ]
    },
    {
@@ -1257,8 +1270,7 @@
       "Ergebnis",
       "Mehr Bewerbungen und viel mehr Informationen für Interessenten und Bestandskunden – mit Referenzen, die sich nach Kompetenz und Status filtern lassen, und einem eigenen Karrierebereich für Ausbildung, duales Studium und offene Stellen."
      ]
-    ],
-    "anker": "ergebnis"
+    ]
    }
   ],
   "wand": [

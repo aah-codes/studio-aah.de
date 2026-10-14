@@ -234,9 +234,8 @@ def block(b, pre):
         return (f'  <figure class="cs-block cs-cta-wand"><figcaption class="cs-block-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3">{esc(b["titel"])}</h2>'
                 + (f'<p class="weg-einleitung">{esc(b["text"])}</p>' if b.get('text') else '') + f'</figcaption><div class="cs-cta-flaeche" style="--spalten:{len(b["reihen"]) if b.get("reihen") else b.get("spalten", 3)}">{wand(b.get("bilder", []), pre, b.get("spalten", 3), b.get("reihen"))}</div></figure>')
     if b['typ'] == 'kapitel':
-        # Kapitel-Trenner ohne Foto (Anna 14.10.2026): große Überschrift, Nummer, feine Linie
-        return (f'  <div class="cs-block cs-kapitel"><span class="kp-nr">{esc(b["nr"])}</span><p class="meta">{esc(b["meta"])}</p>'
-                f'<h2 class="kp-titel">{esc(b["titel"])}</h2></div>')
+        # Kapitel nach den Schritten der Übersicht (Anna 14.10.2026): große schwarze Überschrift wie „Leistungen“ auf der Startseite, ohne Nummer
+        return f'  <div class="cs-block cs-kapitel"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-xxl lang-wort kp-titel">{esc(b["titel"])}</h2></div>'
     if b['typ'] == 'ablauf':
         # Prozess in der gewohnten Zeitleiste, einspaltig untereinander (Anna 14.10.2026, nicht im Zickzack)
         # jeder Schritt springt zu seinem Abschnitt weiter unten (Anna 14.10.2026: „Anker zur jeweiligen Section“)
