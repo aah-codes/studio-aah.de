@@ -1540,7 +1540,7 @@
         ],
         [
          "",
-         "Veraltetes Design, wenig Information"
+         "Gestaltung mit Potenzial zur Modernisierung"
         ]
        ]
       }
@@ -2048,8 +2048,8 @@
       "Expert-Review",
       "Mitbewerber / Benchmark"
      ],
-     "bild": "bilder/referenzen/bauer/p-benchmark.jpg",
-     "alt": "Benchmark-Board mit Websites von Mitbewerbern",
+     "bild": "bilder/referenzen/bauer/p-benchmark-anonym.jpg",
+     "alt": "Benchmark-Board mit Websites von Mitbewerbern, Inhalte unkenntlich gemacht",
      "band": {
       "von": "#ffffff",
       "bis": "#ffffff"
@@ -2533,52 +2533,6 @@
      }
     },
     {
-     "aus": 22,
-     "band": {
-      "von": "#ffffff",
-      "bis": "#ffffff",
-      "art": [
-       "schraege"
-      ]
-     },
-     "setze": {
-      "doppelseiten": [
-       [
-        "",
-        "bilder/referenzen/bauer/mag/h01.jpg"
-       ],
-       [
-        "bilder/referenzen/bauer/mag/h06.jpg",
-        "bilder/referenzen/bauer/mag/h07.jpg"
-       ],
-       [
-        "bilder/referenzen/bauer/mag/h08.jpg",
-        "bilder/referenzen/bauer/mag/h09.jpg"
-       ],
-       [
-        "bilder/referenzen/bauer/mag/h10.jpg",
-        "bilder/referenzen/bauer/mag/h11.jpg"
-       ],
-       [
-        "bilder/referenzen/bauer/mag/h12.jpg",
-        "bilder/referenzen/bauer/mag/h13.jpg"
-       ],
-       [
-        "bilder/referenzen/bauer/mag/h14.jpg",
-        "bilder/referenzen/bauer/mag/h15.jpg"
-       ],
-       [
-        "bilder/referenzen/bauer/mag/h22.jpg",
-        "bilder/referenzen/bauer/mag/h23.jpg"
-       ],
-       [
-        "bilder/referenzen/bauer/mag/h28.jpg",
-        ""
-       ]
-      ]
-     }
-    },
-    {
      "aus": 23,
      "setze": {
       "abschnitte": [
@@ -2591,7 +2545,9 @@
      "band": {
       "von": "#ffffff",
       "bis": "#ffffff",
-      "art": []
+      "art": [
+       "schraege"
+      ]
      }
     }
    ]
@@ -2618,6 +2574,52 @@
     "band": {
      "von": "var(--pc-farbe)",
      "bis": "var(--pc-farbe)"
+    }
+   },
+   "heft": {
+    "aus": 22,
+    "band": {
+     "von": "#ffffff",
+     "bis": "#ffffff",
+     "art": [
+      "schraege"
+     ]
+    },
+    "setze": {
+     "doppelseiten": [
+      [
+       "",
+       "bilder/referenzen/bauer/mag/h01.jpg"
+      ],
+      [
+       "bilder/referenzen/bauer/mag/h06.jpg",
+       "bilder/referenzen/bauer/mag/h07.jpg"
+      ],
+      [
+       "bilder/referenzen/bauer/mag/h08.jpg",
+       "bilder/referenzen/bauer/mag/h09.jpg"
+      ],
+      [
+       "bilder/referenzen/bauer/mag/h10.jpg",
+       "bilder/referenzen/bauer/mag/h11.jpg"
+      ],
+      [
+       "bilder/referenzen/bauer/mag/h12.jpg",
+       "bilder/referenzen/bauer/mag/h13.jpg"
+      ],
+      [
+       "bilder/referenzen/bauer/mag/h14.jpg",
+       "bilder/referenzen/bauer/mag/h15.jpg"
+      ],
+      [
+       "bilder/referenzen/bauer/mag/h22.jpg",
+       "bilder/referenzen/bauer/mag/h23.jpg"
+      ],
+      [
+       "bilder/referenzen/bauer/mag/h28.jpg",
+       ""
+      ]
+     ]
     }
    }
   },
