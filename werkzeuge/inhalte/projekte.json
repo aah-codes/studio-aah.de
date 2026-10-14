@@ -1622,7 +1622,7 @@
         "eingaben": []
        },
        {
-        "bild": "bilder/referenzen/bauer/film/a-karriere.jpg",
+        "bild": "bilder/referenzen/bauer/film/a-karriere-b.jpg",
         "alt": "Alte Karriereseite",
         "pfad": "karriere/",
         "phase": "alt",
@@ -1869,47 +1869,40 @@
         "eingaben": []
        },
        {
-        "bild": "bilder/referenzen/bauer/film/n-karriere.jpg",
+        "bild": "bilder/referenzen/bauer/film/n-karriere-b.jpg",
         "alt": "Neue Karriereseite",
         "pfad": "karriere/",
         "phase": "neu",
         "titel": "Karriere: eigene Seite für Fachkräfte und Nachwuchs",
         "dauer": 5200,
         "von": 0,
-        "bis": 0,
-        "notizen": [
-         [
-          "Zwei Wege: Stellen oder Tag auf der Baustelle",
-          40,
-          40,
-          900
-         ]
-        ],
+        "bis": 700,
+        "notizen": [],
         "kapitel": null,
         "klick": null,
         "zoom": null,
         "eingaben": []
        },
        {
-        "bild": "bilder/referenzen/bauer/film/n-stelle.jpg",
-        "alt": "Stelle Ausbildung Maurer",
+        "bild": "bilder/referenzen/bauer/film/n-stelle-b.jpg",
+        "alt": "Stelle Maurer (m/w/d)",
         "pfad": "ausbildung-maurer/",
         "phase": "neu",
         "titel": "Jede Stelle mit allen Infos",
         "dauer": 5600,
         "von": 0,
-        "bis": 700,
+        "bis": 900,
         "notizen": [
          [
-          "Alle Infos zur Ausbildung",
-          56,
+          "Standort, Anstellung, Start, Vergütung",
+          78,
           14,
           800
          ],
          [
-          "Dauer, Vergütung, Start, Schule",
-          56,
-          58,
+          "Alle Infos zur Stelle",
+          74,
+          55,
           3800
          ]
         ],
@@ -2125,13 +2118,13 @@
         },
         {
          "label": "Karriere",
-         "bild": "bilder/referenzen/bauer/film/n-karriere.jpg",
+         "bild": "bilder/referenzen/bauer/film/n-karriere-b.jpg",
          "alt": "Karriereseite"
         },
         {
          "label": "Stelle im Detail",
-         "bild": "bilder/referenzen/bauer/film/n-stelle.jpg",
-         "alt": "Stelle Ausbildung Maurer"
+         "bild": "bilder/referenzen/bauer/film/n-stelle-b.jpg",
+         "alt": "Stelle Maurer (m/w/d)"
         },
         {
          "label": "Bewirb dich.",
@@ -2333,6 +2326,24 @@
        "blau",
        "schraege"
       ]
+     },
+     "setze": {
+      "schirme": [
+       {
+        "breite": 1440,
+        "hoehe": 900,
+        "matrix": "matrix3d(0.7264391286,0.03275483135,0,7.65429652e-05,0.02253650235,0.6544033264,0,-1.075431938e-05,0,0,1,0,667,438,0,1)",
+        "szenen": [
+         {
+          "bild": "bilder/referenzen/bauer/lp-karriere-b.jpg",
+          "alt": "Karriereseite",
+          "von": 0,
+          "bis": 2209,
+          "dauer": 16000
+         }
+        ]
+       }
+      ]
      }
     },
     {
@@ -2342,6 +2353,190 @@
       "bis": "var(--pc-farbe)",
       "art": [
        "blau"
+      ]
+     },
+     "setze": {
+      "schirme": [
+       {
+        "breite": 390,
+        "hoehe": 844,
+        "matrix": "matrix3d(0.592212485,0.001442295204,0,-5.694453602e-06,-0.01171287424,0.5015523423,0,-2.010423364e-05,0,0,1,0,235,196,0,1)",
+        "szenen": [
+         {
+          "bild": "bilder/referenzen/bauer/hd-maurer-b.jpg",
+          "alt": "Stelle Maurer (m/w/d) am Handy",
+          "von": 0,
+          "bis": 4126,
+          "dauer": 12000,
+          "klick": [
+           50,
+           73
+          ]
+         },
+         {
+          "bild": "bilder/referenzen/bauer/hd-bewerbung.jpg",
+          "alt": "Bewerbungsformular am Handy",
+          "von": 0,
+          "bis": 560,
+          "dauer": 8000,
+          "tippen_ab": 2600,
+          "eingaben": [
+           [
+            "Herr",
+            26,
+            804,
+            300,
+            "decke"
+           ],
+           [
+            "Max",
+            26,
+            909,
+            338
+           ],
+           [
+            "Mustermann",
+            26,
+            986,
+            338
+           ],
+           [
+            "max@beispiel.de",
+            26,
+            1095,
+            151
+           ],
+           [
+            "0170 1234567",
+            26,
+            1204,
+            151
+           ],
+           [
+            "Nachmittags",
+            26,
+            1312,
+            140,
+            "decke"
+           ]
+          ]
+         },
+         {
+          "bild": "bilder/referenzen/bauer/hd-bewerbung.jpg",
+          "alt": "Bewerbungsformular am Handy: Position und Text",
+          "von": 560,
+          "bis": 1500,
+          "dauer": 10000,
+          "tippen_ab": 6000,
+          "eingaben": [
+           [
+            "Herr",
+            26,
+            804,
+            300,
+            "decke fertig"
+           ],
+           [
+            "Max",
+            26,
+            909,
+            338,
+            "fertig"
+           ],
+           [
+            "Mustermann",
+            26,
+            986,
+            338,
+            "fertig"
+           ],
+           [
+            "max@beispiel.de",
+            26,
+            1095,
+            151,
+            "fertig"
+           ],
+           [
+            "0170 1234567",
+            26,
+            1204,
+            151,
+            "fertig"
+           ],
+           [
+            "Nachmittags",
+            26,
+            1312,
+            140,
+            "decke fertig"
+           ],
+           [
+            "●",
+            21,
+            1702,
+            20,
+            "marke"
+           ],
+           [
+            "Ich bin gelernter Maurer und möchte bei euch an Bestandsbauten in Berlin mitarbeiten.",
+            28,
+            2183,
+            330,
+            "mehrzeilig"
+           ]
+          ]
+         },
+         {
+          "bild": "bilder/referenzen/bauer/hd-bewerbung.jpg",
+          "alt": "Bewerbungsformular am Handy: Unterlagen, Datenschutz, absenden",
+          "von": 1500,
+          "bis": 2190,
+          "dauer": 7500,
+          "tippen_ab": 4500,
+          "eingaben": [
+           [
+            "●",
+            21,
+            1702,
+            20,
+            "marke fertig"
+           ],
+           [
+            "Ich bin gelernter Maurer und möchte bei euch an Bestandsbauten in Berlin mitarbeiten.",
+            28,
+            2183,
+            330,
+            "mehrzeilig fertig"
+           ],
+           [
+            "Lebenslauf_Max_Mustermann.pdf",
+            30,
+            2466,
+            330
+           ],
+           [
+            "✓",
+            20,
+            2763,
+            20,
+            "marke"
+           ]
+          ],
+          "klick": [
+           27,
+           85
+          ]
+         },
+         {
+          "bild": "bilder/referenzen/bauer/hd-danke.jpg",
+          "alt": "Danke-Seite nach der Bewerbung am Handy",
+          "von": 0,
+          "bis": 240,
+          "dauer": 4500
+         }
+        ]
+       }
       ]
      }
     },
