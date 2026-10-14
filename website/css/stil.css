@@ -3367,3 +3367,67 @@ section[hidden] { display: none !important; }
 .cs-nahtlos .cs-texte-block h2 { font: 500 .8rem/1 var(--schrift-meta); letter-spacing: .12em; text-transform: uppercase; margin: 0 0 20px; }
 .cs-nahtlos .cs-texte-block p { font-size: clamp(24px, 2.7vw, 40px); line-height: 1.28; letter-spacing: -.01em; color: var(--farbe-dunkel); }
 @media (max-width: 600px) { .cs-nahtlos .st-notiz-alt { width: clamp(88px, 27cqw, 112px); font-size: 10px; hyphens: auto; -webkit-hyphens: auto; } }
+
+/* ===== Variante B, Runde 15.10.2026 (Annas Rückmeldung mit 7 Bildern) ===== */
+/* Abstand Kennzahlen → Herausforderung/Ziele größer */
+.cs-nahtlos .cs-kennzahlen { margin-bottom: clamp(56px, 8vw, 136px); }
+/* Haftnotizen: größer, Schrift etwas kleiner; Hauptbefunde hellrot, Nebenbefunde hellblau */
+.cs-nahtlos .st-notiz-alt { width: clamp(112px, 15cqw, 196px); font-size: clamp(11px, 1.3cqw, 17px); padding: .9em; }
+.cs-nahtlos .st-notiz-alt.st-notiz-wichtig { background: linear-gradient(175deg, #ffe6ec, #ffcfdb 70%, #ffbccd); }
+.cs-nahtlos .st-notiz-alt.st-notiz-wichtig::after { background: linear-gradient(315deg, transparent 48%, #f0a3b6 50%, #ffd3de 100%); }
+@media (max-width: 600px) { .cs-nahtlos .st-notiz-alt { width: clamp(96px, 30cqw, 128px); font-size: 10px; } }
+/* Vorher-Film im Standrechner, größer */
+.cs-nahtlos .cs-story .st-rahmen { max-width: 1240px; }
+.st-monitor { position: relative; padding-bottom: clamp(70px, 8vw, 120px); }
+.st-monitor .st-browser { border: clamp(8px, 1vw, 14px) solid #1d1f20; border-bottom-width: clamp(26px, 3vw, 44px); border-radius: clamp(12px, 1.4vw, 20px); box-shadow: 0 0 0 1px #3a3d3f, 0 40px 80px rgba(14, 16, 17, .25); }
+.st-monitor .st-browser .vf-leiste { border-radius: 0; }
+.st-hals { position: absolute; left: 50%; bottom: clamp(10px, 1vw, 14px); width: 15%; height: calc(clamp(70px, 8vw, 120px) - clamp(10px, 1vw, 14px)); transform: translateX(-50%); background: linear-gradient(90deg, #b9bcbe, #e4e6e7 45%, #c9cccd); clip-path: polygon(14% 0, 86% 0, 100% 100%, 0 100%); }
+.st-fuss { position: absolute; left: 50%; bottom: 0; width: 30%; height: clamp(10px, 1vw, 14px); transform: translateX(-50%); border-radius: 4px 4px 10px 10px; background: linear-gradient(#d6d8d9, #a9acae); box-shadow: 0 14px 24px rgba(14, 16, 17, .18); }
+/* Benchmark in Figma-Oberfläche */
+.cs-figma { margin: 0 auto; max-width: 1480px; }
+.fg-app { display: grid; grid-template-columns: minmax(0, 15%) minmax(0, 1fr) minmax(0, 16%); grid-template-rows: auto 1fr; border-radius: 14px; overflow: hidden; background: #e5e5e5; box-shadow: 0 0 0 1px rgba(14, 16, 17, .12), 0 40px 80px rgba(14, 16, 17, .18); font: 500 12px/1.3 var(--schrift-text); color: #1d1f20; }
+.fg-oben { grid-column: 1 / -1; display: flex; align-items: center; gap: 16px; height: 44px; padding: 0 14px; background: #2c2c2c; color: #fff; }
+.fg-werkzeuge { display: flex; gap: 10px; }
+.fg-werkzeuge i { width: 16px; height: 16px; border-radius: 3px; background: rgba(255, 255, 255, .28); }
+.fg-werkzeuge i:first-child { background: #0d99ff; }
+.fg-datei { flex: 1; text-align: center; opacity: .85; }
+.fg-teilen { padding: 6px 12px; border-radius: 6px; background: #0d99ff; font-weight: 600; }
+.fg-links, .fg-rechts { background: #fff; padding: 12px 0; min-width: 0; }
+.fg-links { border-right: 1px solid #e0e0e0; }
+.fg-rechts { border-left: 1px solid #e0e0e0; }
+.fg-kopf { margin: 10px 14px 6px; font-weight: 600; }
+.fg-links ul { list-style: none; margin: 0 0 8px; padding: 0; }
+.fg-links li { padding: 6px 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.fg-links li span { color: #8a8a8a; margin-right: 6px; }
+.fg-links li.fg-aktiv { background: #e5f4ff; }
+.fg-reiter { display: flex; gap: 14px; margin: 0 14px 10px; padding-bottom: 10px; border-bottom: 1px solid #e0e0e0; }
+.fg-reiter span { color: #8a8a8a; }
+.fg-teil { padding: 10px 14px 14px; border-bottom: 1px solid #eee; display: grid; gap: 8px; }
+.fg-teil i { display: block; height: 8px; border-radius: 4px; background: #eee; }
+.fg-teil i + i { width: 60%; }
+.fg-flaeche { padding: clamp(28px, 4vw, 64px); background: #e5e5e5 radial-gradient(circle, rgba(14, 16, 17, .14) 1px, transparent 1.4px) 0 0 / 22px 22px; min-width: 0; }
+.fg-board { position: relative; outline: 1.5px solid #0d99ff; outline-offset: 0; }
+.fg-board img { display: block; width: 100%; height: auto; }
+.fg-name { position: absolute; left: 0; bottom: calc(100% + 6px); font-size: 11px; color: #0d99ff; }
+.cs-figma > figcaption { margin-top: 14px; }
+@media (max-width: 900px) { .fg-app { grid-template-columns: minmax(0, 1fr); } .fg-links, .fg-rechts { display: none; } .fg-flaeche { padding: 28px 12px 16px; } }
+/* Style Guide: Gelb-Karte bündig mit der Schrift-Karte darunter (gleiches Raster) */
+.cs-nahtlos .ds-farben, .cs-nahtlos .ds-schrift { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 20px; }
+.cs-nahtlos .ds-stufen { grid-column: span 2; }
+@media (max-width: 900px) { .cs-nahtlos .ds-farben, .cs-nahtlos .ds-schrift { grid-template-columns: 1fr; } .cs-nahtlos .ds-stufen { grid-column: auto; } }
+/* Dachzeilen auf hellen Karten in blauen Bändern: Blau statt Gelb (Gelb auf Weiß nicht lesbar) */
+.nl-blau .vd-text .meta, .nl-blau .fm-mit-text:not(.fm-dunkel) .meta, .nl-blau .ds-stufen .meta { color: var(--pc-farbe); }
+.nl-blau .vd-text .meta::before, .nl-blau .fm-mit-text:not(.fm-dunkel) .meta::before { background: var(--pc-farbe) !important; }
+/* Fachkräfte-Abschnitt mit Laptop und Handy */
+.cs-nahtlos .fm-mit-text:has(.fm-paar) { grid-template-columns: minmax(0, 1fr); gap: clamp(32px, 4vw, 56px); }
+.cs-nahtlos .fm-mit-text:has(.fm-paar) .fm-text { max-width: 900px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 48px; }
+.cs-nahtlos .fm-mit-text:has(.fm-paar) .fm-text > .meta, .cs-nahtlos .fm-mit-text:has(.fm-paar) .fm-text > .kr-titel { grid-column: 1 / -1; }
+.fm-paar { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: clamp(20px, 3vw, 40px); align-items: center; }
+.fm-paar > .cs-block { margin: 0; padding: 0; }
+@media (max-width: 900px) { .cs-nahtlos .fm-mit-text:has(.fm-paar) .fm-text { grid-template-columns: 1fr; } .fm-paar { grid-template-columns: 1fr; } }
+/* Heft: größer, Pause oben rechts am Heft mit Abstand, Unterschrift unten */
+.cs-nahtlos .cs-heft { display: flex; flex-direction: column; max-width: 1240px; margin-inline: auto; }
+.cs-nahtlos .cs-heft .hf-flaeche { max-width: none; width: 100%; padding: 0; }
+.cs-nahtlos .cs-heft .st-leiste { display: contents; }
+.cs-nahtlos .cs-heft .hf-knopf { order: -1; align-self: flex-end; margin-bottom: clamp(28px, 4vw, 56px); }
+.cs-nahtlos .cs-heft .meta { order: 2; margin-top: clamp(32px, 4vw, 56px); }

@@ -1522,7 +1522,28 @@
       "bis": "#ffffff"
      },
      "setze": {
-      "typ": "ziele-text"
+      "typ": "ziele-text",
+      "links": {
+       "titel": "Herausforderung",
+       "punkte": [
+        [
+         "",
+         "Vergabe nach VOB/A"
+        ],
+        [
+         "",
+         "Vergabestellen brauchen Infos in kürzester Zeit"
+        ],
+        [
+         "",
+         "Auftraggeber und Bewerber auf einer Website"
+        ],
+        [
+         "",
+         "Veraltetes Design, wenig Information"
+        ]
+       ]
+      }
      }
     },
     {
@@ -1585,7 +1606,8 @@
           "Leistungen nur kurz beschrieben",
           80,
           30,
-          900
+          900,
+          "wichtig"
          ]
         ],
         "kapitel": null,
@@ -1610,7 +1632,8 @@
           "Referenzen als Galerie, ohne eigene Projektseiten",
           80,
           36,
-          900
+          900,
+          "wichtig"
          ]
         ],
         "kapitel": null,
@@ -1635,7 +1658,8 @@
           "Stellenangebote als Aufklappliste",
           74,
           60,
-          900
+          900,
+          "wichtig"
          ]
         ],
         "kapitel": null,
@@ -2009,32 +2033,26 @@
         "eingaben": []
        }
       ],
-      "ohne_kopf": true
+      "ohne_kopf": true,
+      "monitor": true
      }
     },
     {
-     "typ": "galerie",
+     "typ": "figma",
      "id": "b-analyse",
-     "meta": "Analyse",
-     "bilder": [
-      {
-       "bild": "bilder/referenzen/bauer/p-review-website.jpg",
-       "titel": "Expert-Review der alten Website",
-       "alt": "Expert-Review der alten Website mit Notizen"
-      },
-      {
-       "bild": "bilder/referenzen/bauer/p-benchmark.jpg",
-       "titel": "Mitbewerber-Benchmark",
-       "alt": "Benchmark-Board mit Websites von Mitbewerbern"
-      }
+     "titel": "Mitbewerber-Benchmark",
+     "datei": "Wolfgang Bauer Ingenieurbau",
+     "seite": "Analyse",
+     "rahmen": "Mitbewerber / Benchmark",
+     "ebenen": [
+      "Expert-Review",
+      "Mitbewerber / Benchmark"
      ],
+     "bild": "bilder/referenzen/bauer/p-benchmark.jpg",
+     "alt": "Benchmark-Board mit Websites von Mitbewerbern",
      "band": {
-      "von": "#e5e5e5",
-      "bis": "#e5e5e5",
-      "art": [
-       "figma",
-       "voll"
-      ]
+      "von": "#ffffff",
+      "bis": "#ffffff"
      }
     },
     {
@@ -2205,15 +2223,23 @@
      }
     },
     {
-     "typ": "kapitel",
-     "anker": "b-design",
-     "meta": "Design · Prototyp",
-     "titel": "Design",
+     "aus": 14,
      "band": {
-      "von": "#ffffff",
-      "bis": "#ffffff",
+      "von": "var(--pc-farbe)",
+      "bis": "var(--pc-farbe)",
       "art": [
-       "eng"
+       "blau",
+       "schraege"
+      ]
+     }
+    },
+    {
+     "aus": 15,
+     "band": {
+      "von": "var(--pc-farbe)",
+      "bis": "var(--pc-farbe)",
+      "art": [
+       "blau"
       ]
      }
     },
@@ -2239,8 +2265,7 @@
       "von": "var(--pc-farbe)",
       "bis": "var(--pc-farbe)",
       "art": [
-       "blau",
-       "schraege"
+       "blau"
       ]
      }
     },
@@ -2269,43 +2294,12 @@
      }
     },
     {
-     "aus": 14,
-     "band": {
-      "von": "var(--pc-farbe)",
-      "bis": "var(--pc-farbe)",
-      "art": [
-       "blau"
-      ]
-     }
-    },
-    {
-     "aus": 15,
-     "band": {
-      "von": "var(--pc-farbe)",
-      "bis": "var(--pc-farbe)",
-      "art": [
-       "blau"
-      ]
-     }
-    },
-    {
      "aus": 18,
      "band": {
       "von": "#ffffff",
       "bis": "#ffffff",
-      "art": []
-     }
-    },
-    {
-     "typ": "kapitel",
-     "anker": "b-launch",
-     "meta": "Umsetzung · Oktober 2026",
-     "titel": "Launch",
-     "band": {
-      "von": "#ffffff",
-      "bis": "#ffffff",
       "art": [
-       "eng"
+       "schraege"
       ]
      }
     },
@@ -2343,215 +2337,198 @@
          }
         ]
        }
-      ]
-     }
-    },
-    {
-     "aus": 21,
-     "band": {
-      "von": "var(--pc-farbe)",
-      "bis": "var(--pc-farbe)",
-      "art": [
-       "blau"
-      ]
-     },
-     "setze": {
-      "schirme": [
-       {
-        "breite": 390,
-        "hoehe": 844,
-        "matrix": "matrix3d(0.592212485,0.001442295204,0,-5.694453602e-06,-0.01171287424,0.5015523423,0,-2.010423364e-05,0,0,1,0,235,196,0,1)",
-        "szenen": [
-         {
-          "bild": "bilder/referenzen/bauer/hd-maurer-b.jpg",
-          "alt": "Stelle Maurer (m/w/d) am Handy",
-          "von": 0,
-          "bis": 4126,
-          "dauer": 12000,
-          "klick": [
-           50,
-           73
-          ]
-         },
-         {
-          "bild": "bilder/referenzen/bauer/hd-bewerbung.jpg",
-          "alt": "Bewerbungsformular am Handy",
-          "von": 0,
-          "bis": 560,
-          "dauer": 8000,
-          "tippen_ab": 2600,
-          "eingaben": [
-           [
-            "Herr",
-            26,
-            804,
-            300,
-            "decke"
-           ],
-           [
-            "Max",
-            26,
-            909,
-            338
-           ],
-           [
-            "Mustermann",
-            26,
-            986,
-            338
-           ],
-           [
-            "max@beispiel.de",
-            26,
-            1095,
-            151
-           ],
-           [
-            "0170 1234567",
-            26,
-            1204,
-            151
-           ],
-           [
-            "Nachmittags",
-            26,
-            1312,
-            140,
-            "decke"
+      ],
+      "dazu": {
+       "foto": {
+        "bild": "bilder/mockups/handy-baustelle.jpg",
+        "maske": "bilder/mockups/handy-baustelle-maske.png",
+        "breite": 700,
+        "hoehe": 960,
+        "alt": "Hand mit Handy auf der Baustelle, darauf die Bewerbung bei Wolfgang Bauer Ingenieurbau"
+       },
+       "schirme": [
+        {
+         "breite": 390,
+         "hoehe": 844,
+         "matrix": "matrix3d(0.592212485,0.001442295204,0,-5.694453602e-06,-0.01171287424,0.5015523423,0,-2.010423364e-05,0,0,1,0,235,196,0,1)",
+         "szenen": [
+          {
+           "bild": "bilder/referenzen/bauer/hd-maurer-b.jpg",
+           "alt": "Stelle Maurer (m/w/d) am Handy",
+           "von": 0,
+           "bis": 4126,
+           "dauer": 12000,
+           "klick": [
+            50,
+            73
            ]
-          ]
-         },
-         {
-          "bild": "bilder/referenzen/bauer/hd-bewerbung.jpg",
-          "alt": "Bewerbungsformular am Handy: Position und Text",
-          "von": 560,
-          "bis": 1500,
-          "dauer": 10000,
-          "tippen_ab": 6000,
-          "eingaben": [
-           [
-            "Herr",
-            26,
-            804,
-            300,
-            "decke fertig"
-           ],
-           [
-            "Max",
-            26,
-            909,
-            338,
-            "fertig"
-           ],
-           [
-            "Mustermann",
-            26,
-            986,
-            338,
-            "fertig"
-           ],
-           [
-            "max@beispiel.de",
-            26,
-            1095,
-            151,
-            "fertig"
-           ],
-           [
-            "0170 1234567",
-            26,
-            1204,
-            151,
-            "fertig"
-           ],
-           [
-            "Nachmittags",
-            26,
-            1312,
-            140,
-            "decke fertig"
-           ],
-           [
-            "●",
-            21,
-            1702,
-            20,
-            "marke"
-           ],
-           [
-            "Ich bin gelernter Maurer und möchte bei euch an Bestandsbauten in Berlin mitarbeiten.",
-            28,
-            2183,
-            330,
-            "mehrzeilig"
+          },
+          {
+           "bild": "bilder/referenzen/bauer/hd-bewerbung.jpg",
+           "alt": "Bewerbungsformular am Handy",
+           "von": 0,
+           "bis": 560,
+           "dauer": 8000,
+           "tippen_ab": 2600,
+           "eingaben": [
+            [
+             "Herr",
+             26,
+             804,
+             300,
+             "decke"
+            ],
+            [
+             "Max",
+             26,
+             909,
+             338
+            ],
+            [
+             "Mustermann",
+             26,
+             986,
+             338
+            ],
+            [
+             "max@beispiel.de",
+             26,
+             1095,
+             151
+            ],
+            [
+             "0170 1234567",
+             26,
+             1204,
+             151
+            ],
+            [
+             "Nachmittags",
+             26,
+             1312,
+             140,
+             "decke"
+            ]
            ]
-          ]
-         },
-         {
-          "bild": "bilder/referenzen/bauer/hd-bewerbung.jpg",
-          "alt": "Bewerbungsformular am Handy: Unterlagen, Datenschutz, absenden",
-          "von": 1500,
-          "bis": 2190,
-          "dauer": 7500,
-          "tippen_ab": 4500,
-          "eingaben": [
-           [
-            "●",
-            21,
-            1702,
-            20,
-            "marke fertig"
-           ],
-           [
-            "Ich bin gelernter Maurer und möchte bei euch an Bestandsbauten in Berlin mitarbeiten.",
-            28,
-            2183,
-            330,
-            "mehrzeilig fertig"
-           ],
-           [
-            "Lebenslauf_Max_Mustermann.pdf",
-            30,
-            2466,
-            330
-           ],
-           [
-            "✓",
-            20,
-            2763,
-            20,
-            "marke"
+          },
+          {
+           "bild": "bilder/referenzen/bauer/hd-bewerbung.jpg",
+           "alt": "Bewerbungsformular am Handy: Position und Text",
+           "von": 560,
+           "bis": 1500,
+           "dauer": 10000,
+           "tippen_ab": 6000,
+           "eingaben": [
+            [
+             "Herr",
+             26,
+             804,
+             300,
+             "decke fertig"
+            ],
+            [
+             "Max",
+             26,
+             909,
+             338,
+             "fertig"
+            ],
+            [
+             "Mustermann",
+             26,
+             986,
+             338,
+             "fertig"
+            ],
+            [
+             "max@beispiel.de",
+             26,
+             1095,
+             151,
+             "fertig"
+            ],
+            [
+             "0170 1234567",
+             26,
+             1204,
+             151,
+             "fertig"
+            ],
+            [
+             "Nachmittags",
+             26,
+             1312,
+             140,
+             "decke fertig"
+            ],
+            [
+             "●",
+             21,
+             1702,
+             20,
+             "marke"
+            ],
+            [
+             "Ich bin gelernter Maurer und möchte bei euch an Bestandsbauten in Berlin mitarbeiten.",
+             28,
+             2183,
+             330,
+             "mehrzeilig"
+            ]
            ]
-          ],
-          "klick": [
-           27,
-           85
-          ]
-         },
-         {
-          "bild": "bilder/referenzen/bauer/hd-danke.jpg",
-          "alt": "Danke-Seite nach der Bewerbung am Handy",
-          "von": 0,
-          "bis": 240,
-          "dauer": 4500
-         }
-        ]
-       }
-      ]
-     }
-    },
-    {
-     "typ": "kapitel",
-     "anker": "b-print",
-     "meta": "Unternehmenspräsentation",
-     "titel": "Print",
-     "band": {
-      "von": "#ffffff",
-      "bis": "#ffffff",
-      "art": [
-       "schraege",
-       "eng"
-      ]
+          },
+          {
+           "bild": "bilder/referenzen/bauer/hd-bewerbung.jpg",
+           "alt": "Bewerbungsformular am Handy: Unterlagen, Datenschutz, absenden",
+           "von": 1500,
+           "bis": 2190,
+           "dauer": 7500,
+           "tippen_ab": 4500,
+           "eingaben": [
+            [
+             "●",
+             21,
+             1702,
+             20,
+             "marke fertig"
+            ],
+            [
+             "Ich bin gelernter Maurer und möchte bei euch an Bestandsbauten in Berlin mitarbeiten.",
+             28,
+             2183,
+             330,
+             "mehrzeilig fertig"
+            ],
+            [
+             "Lebenslauf_Max_Mustermann.pdf",
+             30,
+             2466,
+             330
+            ],
+            [
+             "✓",
+             20,
+             2763,
+             20,
+             "marke"
+            ]
+           ],
+           "klick": [
+            27,
+            85
+           ]
+          },
+          {
+           "bild": "bilder/referenzen/bauer/hd-danke.jpg",
+           "alt": "Danke-Seite nach der Bewerbung am Handy",
+           "von": 0,
+           "bis": 240,
+           "dauer": 4500
+          }
+         ]
+        }
+       ]
+      }
      }
     },
     {
@@ -2559,7 +2536,9 @@
      "band": {
       "von": "#ffffff",
       "bis": "#ffffff",
-      "art": []
+      "art": [
+       "schraege"
+      ]
      }
     },
     {

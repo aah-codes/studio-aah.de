@@ -276,6 +276,18 @@ def block(b, pre):
         kopf = (f'<p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3" id="ga-{b["id"]}">{esc(b["titel"])}</h2>' if b.get('titel') else '')
         return (f'  <section class="cs-block cs-galerie" ' + (f'aria-labelledby="ga-{b["id"]}"' if b.get('titel') else f'aria-label="{esc(b.get("meta", "Galerie"))}"') + f'>{kopf}'
                 + (f'<p class="weg-einleitung">{esc(b["text"])}</p>' if b.get('text') else '') + f'<div class="ga-raster">{f}</div></section>')
+    if b['typ'] == 'figma':
+        # ein Board in nachgebauter Figma-Oberfläche (Anna 15.10.2026: „links und rechts das User Interface von Figma, damit klar ist: das liegt in Figma“);
+        # Oberfläche nur Kulisse (aria-hidden), Beschriftungen nur aus dem Board selbst und allgemeine Programmbegriffe
+        akt = ' class="fg-aktiv"'
+        eb = ''.join(f'<li{akt if e == b["rahmen"] else ""}><span>#</span>{esc(e)}</li>' for e in b['ebenen'])
+        teile = ''.join(f'<div class="fg-teil"><b>{esc(x)}</b><i></i><i></i></div>' for x in ('Rahmen', 'Auto-Layout', 'Füllung', 'Kontur', 'Effekte', 'Exportieren'))
+        return (f'  <figure class="cs-block cs-figma"><div class="fg-app">'
+                f'<div class="fg-oben" aria-hidden="true"><span class="fg-werkzeuge"><i></i><i></i><i></i><i></i><i></i></span><span class="fg-datei">{esc(b["datei"])}</span><span class="fg-teilen">Teilen</span></div>'
+                f'<div class="fg-links" aria-hidden="true"><p class="fg-kopf">Seiten</p><ul><li class="fg-aktiv">{esc(b["seite"])}</li></ul><p class="fg-kopf">Ebenen</p><ul>{eb}</ul></div>'
+                f'<div class="fg-flaeche"><div class="fg-board"><span class="fg-name" aria-hidden="true">{esc(b["rahmen"])}</span><img src="{pre}{b["bild"]}" alt="{esc(b["alt"])}" loading="lazy"></div></div>'
+                f'<div class="fg-rechts" aria-hidden="true"><p class="fg-reiter"><b>Design</b><span>Prototyp</span></p>{teile}</div>'
+                f'</div><figcaption class="meta">{esc(b["titel"])}</figcaption></figure>')
     if b['typ'] == 'cta-wand':
         # alle Call-to-Actions schräg nebeneinander (Anna 14.10.2026, wie die Bildschirmwand oben)
         return (f'  <figure class="cs-block cs-cta-wand"><figcaption class="cs-block-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3">{esc(b["titel"])}</h2>'
@@ -360,16 +372,19 @@ def block(b, pre):
         szenen = ''
         for i, s in enumerate(b['szenen']):
             eingaben = ''.join(eingabe(e) for e in s.get('eingaben', []))
-            notizen = ''.join(f'<span class="st-notiz st-notiz-{s["phase"]}" style="left:{nx}%;top:{ny}%;--r:{(-2.5 if j % 2 else 2)}deg">{esc(n)}</span>' for j, (n, nx, ny, nt) in enumerate(s.get('notizen', [])))
+            # fünfter Wert „wichtig“: Hauptbefund als hellroter Zettel, sonst hellblau (Anna 15.10.2026)
+            notizen = ''.join(f'<span class="st-notiz st-notiz-{s["phase"]}{" st-notiz-wichtig" if "wichtig" in z[4:] else ""}" style="left:{z[1]}%;top:{z[2]}%;--r:{(-2.5 if j % 2 else 2)}deg">{esc(z[0])}</span>' for j, z in enumerate(s.get('notizen', [])))
             szenen += (f'<div class="st-szene" data-i="{i}"><div class="st-zoom"><div class="st-seite"><img src="{pre}{s["bild"]}" alt="{esc(s["alt"])}" loading="lazy">{eingaben}</div></div>{notizen}</div>')
         kapitel = ''.join(f'<button type="button" class="st-kapitel" data-ziel="{i}">{esc(s["kapitel"])}</button>' for i, s in enumerate(b['szenen']) if s.get('kapitel'))
         daten = json.dumps([{k: s.get(k) for k in ('pfad', 'phase', 'titel', 'von', 'bis', 'dauer', 'notizen', 'zoom', 'klick', 'tippen_ab')} for s in b['szenen']], ensure_ascii=False)
         kopf_film = '' if b.get('ohne_kopf') else f'<figcaption class="cs-block-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3">{esc(b["titel"])}</h2></figcaption>'
         return (f'  <figure class="cs-block cs-story" data-story aria-label="{esc(b["titel"])}">\n    {kopf_film}\n'
                 f'    <div class="st-rahmen"><span class="cs-etikett st-phase">{esc(b["alt_text"])}</span>'
-                f'<div class="st-browser"><div class="vf-leiste"><span class="vf-adresse">bauer-ingbau.de/</span></div><div class="st-fenster">{szenen}'
+                + ('<div class="st-monitor">' if b.get('monitor') else '')  # Standrechner (Anna 15.10.2026)
+                + f'<div class="st-browser"><div class="vf-leiste"><span class="vf-adresse">bauer-ingbau.de/</span></div><div class="st-fenster">{szenen}'
                 f'<span class="vf-zeiger" aria-hidden="true"></span><div class="vf-blende" aria-hidden="true"><b>{esc(b["blende_text"])}</b></div></div></div>'
-                f'<div class="st-leiste"><button type="button" class="ks-knopf st-knopf" aria-label="Film anhalten">❚❚</button><div class="st-kapitelreihe">{kapitel}</div>'
+                + ('<span class="st-hals" aria-hidden="true"></span><span class="st-fuss" aria-hidden="true"></span></div>' if b.get('monitor') else '')
+                + f'<div class="st-leiste"><button type="button" class="ks-knopf st-knopf" aria-label="Film anhalten">❚❚</button><div class="st-kapitelreihe">{kapitel}</div>'
                 f'<p class="st-titel"></p></div></div>\n'
                 f'    <script type="application/json" class="st-daten" data-alt="{esc(b["alt_text"])}" data-neu="{esc(b["neu_text"])}">{daten}</script>\n  </figure>')
     if b['typ'] in ('fotofilm', 'buch'):
@@ -395,6 +410,8 @@ def block(b, pre):
                      f'<script type="application/json" class="st-daten">{daten}</script></figure>')
         else:
             szene = f'<figure class="fm-buch" data-buch>{szene}<div class="st-leiste">{knopf}<span class="meta">{esc(b.get("unterschrift", ""))}</span></div></figure>'
+        if b.get('dazu'):  # zweites Gerät daneben (Anna 15.10.2026: Handy zum Fachkräftemangel, spart eine Section)
+            szene = f'<div class="fm-paar">{szene}{block(dict(b["dazu"], typ="fotofilm"), pre)}</div>'
         if not b.get('text') and not b.get('titel_html'):
             return f'  <div class="cs-block fm-block">{szene}</div>'
         punkte = ''.join(f'<li>{esc(x)}</li>' for x in b.get('punkte', []))
