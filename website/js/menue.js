@@ -448,3 +448,19 @@
     if ('IntersectionObserver' in window) new IntersectionObserver((e) => { sichtbar = e[0].isIntersecting; lauf(); }, { threshold: 0.3 }).observe(h);
   });
 })();
+
+// Mega-Menü-Film: Pause-Taste (Anna 14.10.2026)
+(() => {
+  document.querySelectorAll('.cs-mega-film').forEach((f) => {
+    const k = f.querySelector('.mf-knopf'); if (!k) return;
+    k.addEventListener('click', () => { const aus = f.classList.toggle('pause'); k.textContent = aus ? '▶' : '❚❚'; k.setAttribute('aria-label', aus ? 'Film abspielen' : 'Film anhalten'); });
+  });
+})();
+
+// Funnel-Karte (Variante B): Pause-Taste für das langsame Durchscrollen der Seiten
+(() => {
+  document.querySelectorAll('.cs-funnel-karte').forEach((f) => {
+    const k = f.querySelector('.fk-knopf'); if (!k) return;
+    k.addEventListener('click', () => { const aus = f.classList.toggle('pause'); k.textContent = aus ? '▶' : '❚❚'; k.setAttribute('aria-label', aus ? 'Bewegung starten' : 'Bewegung anhalten'); });
+  });
+})();

@@ -57,6 +57,8 @@ def wand(bilder, pre, spalten=3, reihen=None):
 
 
 def buehne(p, pre):
+    if p.get('wand_reihen'):  # feste Spalten (Variante B: vier Spalten, keine Wiederholung direkt untereinander)
+        return f'  <div class="cs-buehne">{wand([], pre, reihen=p["wand_reihen"])}</div>'
     if p.get('wand'):
         return f'  <div class="cs-buehne">{wand(p["wand"], pre)}</div>'
     f = p.get('film')
@@ -95,7 +97,7 @@ def block(b, pre):
             return f'<li style="--i:{i}"><span class="sm-haupt">{bild}<b>{esc(k[0])}</b></span>{unter}</li>'
         wbild = '<img src="' + pre + b['wurzel_bild'] + '" alt="" loading="lazy">' if b.get('wurzel_bild') else ''
         wurzel = f'<span class="sm-wurzel">{wbild}<b>{esc(b["wurzel"])}</b></span>'
-        return (f'  <figure class="cs-block cs-kachel cs-sitemap">\n    <figcaption class="cs-block-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3">{esc(b["titel"])}</h2></figcaption>\n'
+        return (f'  <figure class="cs-block cs-kachel cs-sitemap">\n    <figcaption class="cs-block-kopf"><p class="meta">{esc(b["meta"])}</p>' + (f'<h2 class="gr-h3">{esc(b["titel"])}</h2>' if b.get('titel') else '') + '</figcaption>\n'
                 f'    <div class="sm" data-einblenden>{wurzel}<ul>{"".join(box(k, n * 2 + 1) for n, k in enumerate(b["seiten"]))}</ul></div>\n  </figure>')
     if b['typ'] == 'schieber':
         # Wireframe und fertige Seite übereinander, Regler zum Vergleichen; beim ersten Einblenden wischt die fertige Seite einmal herein
@@ -186,7 +188,7 @@ def block(b, pre):
             kl = ' class="oder"' if oder else ''
             schritte += (f'<li{kl}><span class="weg-nr">{i:02d}</span><span class="weg-titel">{esc(titel)}</span>'
                          f'<div class="weg-bild"><img src="{pre}{bild}" alt="Wireframe: {esc(titel)}" loading="lazy"></div><span class="weg-unter">{esc(unter)}</span></li>')
-        return (f'  <figure class="cs-block cs-kachel cs-weg">\n    <figcaption class="cs-block-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3">{esc(b["titel"])}</h2>'
+        return (f'  <figure class="cs-block cs-kachel cs-weg">\n    <figcaption class="cs-block-kopf"><p class="meta">{esc(b["meta"])}</p>' + (f'<h2 class="gr-h3">{esc(b["titel"])}</h2>' if b.get('titel') else '')
                 + (f'<p class="weg-einleitung">{esc(b["text"])}</p>' if b.get('text') else '') + f'</figcaption>\n    <ol class="weg-schritte">{schritte}</ol>\n  </figure>')
     if b['typ'] == 'section':
         # eine echte Section groß im Browserfenster
@@ -221,6 +223,12 @@ def block(b, pre):
                     f'<ul class="pe-personen pe-anzahl-{len(s["personas"])}">{"".join(person(x) for x in s["personas"])}</ul>'
                     f'<div class="pe-beispiele"><p class="pe-klein">So klingt es auf der Website</p><ul>{beispiele}</ul></div>'
                     f'<p class="pe-stoerer"><span class="unsichtbar">Ansprache: </span>„{esc(s["anrede"])}“</p></div>')
+        if b.get('nur'):
+            kl = {'auftraggeber': 'pe-sie', 'bewerber': 'pe-du'}[b['nur']]
+            kopf_pe = (f'<p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3">{esc(b["titel"])}</h2>' if b.get('mit_kopf') else '')
+            hinweis = '<p class="pe-hinweis">Personas: Hypothesen aus Referenzen und Marktrecherche · Fotos: Symbolbilder</p>' if b.get('hinweis') else ''
+            return (f'  <section class="cs-block cs-personas pe-einzeln" aria-label="Persona {esc(b[b["nur"]]["meta"])}">{kopf_pe}'
+                    f'{seite(b[b["nur"]], kl)}{hinweis}</section>')
         return (f'  <section class="cs-block cs-personas" aria-labelledby="pe-titel"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3" id="pe-titel">{esc(b["titel"])}</h2>'
                 + (f'<p class="weg-einleitung">{esc(b["text"])}</p>' if b.get('text') else '') + f'<div class="pe-zwei">{seite(b["auftraggeber"], "pe-sie")}{seite(b["bewerber"], "pe-du")}</div>'
                 f'<p class="pe-hinweis">Personas: Hypothesen aus Referenzen und Marktrecherche · Fotos: Symbolbilder</p></section>')
@@ -265,6 +273,29 @@ def block(b, pre):
                          f'<div class="kl-fenster"><img src="{pre}{bild}" alt="{esc(titel)}" loading="lazy"></div></li>' for i, (bild, titel, oder) in enumerate(b['stufen']))
         return (f'  <section class="cs-block cs-klick" aria-labelledby="klick-titel">\n    <div class="kl-text"><p class="meta">{esc(b["meta"])}</p><h2 class="kr-titel" id="klick-titel">{b["titel_html"]}</h2>'
                 f'<p>{esc(b["text"])}</p><ul>{punkte}</ul></div>\n    <ol class="kl-treppe">{stufen}</ol>\n  </section>')
+    if b['typ'] == 'funnel-karte':
+        # Beide Click-Funnels auf einen Blick (Anna 14.10.2026: „die zwei Zielgruppen … die eine hat einen anderen Klickfunnel als die andere“):
+        # je Spur Störer, Zielgruppe, nummerierte Stationen mit der echten Seite; die Seiten scrollen langsam durch (Pause-Taste)
+        def spur(sp):
+            st = ''.join(f'<li class="fk-station{" fk-cta" if x.get("cta") else ""}{" fk-ganz" if x.get("ganz") else ""}"><span class="fk-nr">{i:02d}</span><span class="fk-label">{esc(x["label"])}</span>'
+                         f'<div class="fk-fenster"><img src="{pre}{x["bild"]}" alt="{esc(x["alt"])}" loading="lazy" style="--dauer:{x.get("dauer", 14)}s"></div></li>'
+                         for i, x in enumerate(sp['stationen'], 1))
+            return (f'<div class="fk-spur fk-{sp["art"]}"><div class="fk-kopf"><span class="fk-stoerer">„{esc(sp["anrede"])}“</span><p class="meta">{esc(sp["gruppe"])}</p></div>'
+                    f'<ol class="fk-stationen">{st}</ol></div>')
+        kopf = (f'<p class="meta">{esc(b["meta"])}</p>' if b.get('meta') else '') + (f'<h2 class="fk-gross">{esc(b["titel"])}</h2>' if b.get('titel') else '')
+        return (f'  <section class="cs-block cs-funnel-karte" data-einblenden aria-label="Click-Funnels der beiden Zielgruppen">{kopf}'
+                + ''.join(spur(sp) for sp in b['spuren'])
+                + '<p class="fk-steuerung"><button type="button" class="ks-knopf fk-knopf" aria-label="Bewegung anhalten">❚❚</button></p></section>')
+    if b['typ'] == 'mega-film':
+        # Mega-Menü als kleiner Film (Anna 14.10.2026: „einen Film davon, wie das Ease-In, Ease-Out“): Zeiger fährt auf den Menüpunkt,
+        # das Menü gleitet auf, die Seite darunter dunkelt ab, schließt wieder; Pause-Taste, bei reduzierter Bewegung steht das Menü offen
+        menues = ''.join(f'<img class="mf-menue mf-menue-{i}" src="{pre}{m["bild"]}" alt="{esc(m["alt"])}" style="--kopf:{m.get("kopf", 17)}%" loading="lazy">' for i, m in enumerate(b['menues']))
+        kopf = (f'<p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3">{esc(b["titel"])}</h2>' if b.get('titel') else '')
+        return (f'  <figure class="cs-block cs-mega-film" data-einblenden>{kopf}<div class="mf-browser"><span class="bn-leiste"></span><div class="mf-fenster">'
+                f'<img class="mf-basis" src="{pre}{b["basis"]}" alt="{esc(b["basis_alt"])}" loading="lazy"><span class="mf-dunkel" aria-hidden="true"></span>{menues}'
+                f'<span class="mf-zeiger" aria-hidden="true"></span></div></div>'
+                f'<div class="st-leiste"><button type="button" class="ks-knopf mf-knopf" aria-label="Film anhalten">❚❚</button>'
+                + (f'<span class="meta">{esc(b["unterschrift"])}</span>' if b.get('unterschrift') else '') + '</div></figure>')
     if b['typ'] == 'ziele-grafik':
         # Herausforderung → Website-Relaunch → Ziele als Grafik (Anna 14.10.2026): Linien laufen von links in den Kreis und weiter zu den Zielen
         def symbol(z):
@@ -300,7 +331,8 @@ def block(b, pre):
             szenen += (f'<div class="st-szene" data-i="{i}"><div class="st-zoom"><div class="st-seite"><img src="{pre}{s["bild"]}" alt="{esc(s["alt"])}" loading="lazy">{eingaben}</div></div>{notizen}</div>')
         kapitel = ''.join(f'<button type="button" class="st-kapitel" data-ziel="{i}">{esc(s["kapitel"])}</button>' for i, s in enumerate(b['szenen']) if s.get('kapitel'))
         daten = json.dumps([{k: s.get(k) for k in ('pfad', 'phase', 'titel', 'von', 'bis', 'dauer', 'notizen', 'zoom', 'klick', 'tippen_ab')} for s in b['szenen']], ensure_ascii=False)
-        return (f'  <figure class="cs-block cs-story" data-story aria-label="{esc(b["titel"])}">\n    <figcaption class="cs-block-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3">{esc(b["titel"])}</h2></figcaption>\n'
+        kopf_film = '' if b.get('ohne_kopf') else f'<figcaption class="cs-block-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3">{esc(b["titel"])}</h2></figcaption>'
+        return (f'  <figure class="cs-block cs-story" data-story aria-label="{esc(b["titel"])}">\n    {kopf_film}\n'
                 f'    <div class="st-rahmen"><span class="cs-etikett st-phase">{esc(b["alt_text"])}</span>'
                 f'<div class="st-browser"><div class="vf-leiste"><span class="vf-adresse">bauer-ingbau.de/</span></div><div class="st-fenster">{szenen}'
                 f'<span class="vf-zeiger" aria-hidden="true"></span><div class="vf-blende" aria-hidden="true"><b>{esc(b["blende_text"])}</b></div></div></div>'
@@ -368,8 +400,21 @@ def projektseite(p, nr):
         # Sprungziel für die Schritte im Ablauf: id auf das erste Element des Blocks
         h = block(b, pre)
         return re.sub(r'<(figure|section|div)\b', lambda m: f'<{m.group(1)} id="{b["anker"]}"', h, count=1) if b.get('anker') else h
-    bilder = '\n'.join(mit_anker(b) for b in p.get('bilder', []))
-    main = f'''<main id="inhalt" class="cs" style="--pc-farbe: {farbe}">
+    if p.get('_variante'):
+        # Seamless (Anna 14.10.2026): jeder Block liegt in einem Band über die volle Breite; der Verlauf beginnt mit der Endfarbe
+        # des vorigen Bands (--von = letztes --bis), damit nirgends eine Kante entsteht; Arten: schraege (Bauer-Schräge mit gelbem
+        # Streifen oben), eng (wenig Abstand), voll (ohne Seitenrand)
+        teile, letzt = [], '#ffffff'
+        for b in p.get('bilder', []):
+            bd = b.get('band', {})
+            von = bd.get('von', letzt); bis = bd.get('bis', von); letzt = bis
+            kl = ' '.join(['nl-band'] + [f'nl-{a}' for a in bd.get('art', [])])
+            stil = f'--von:{von};--bis:{bis}' + (f';--davor:{bd["davor"]}' if bd.get('davor') else '')
+            teile.append(f'<div class="{kl}" style="{stil}">\n{mit_anker(b)}\n</div>')
+        bilder = '\n'.join(teile)
+    else:
+        bilder = '\n'.join(mit_anker(b) for b in p.get('bilder', []))
+    main = f'''<main id="inhalt" class="cs{' cs-nahtlos' if p.get('_variante') else ''}" style="--pc-farbe: {farbe}">
 
   <section class="seitenkopf cs-kopf">
     <p class="meta brotkrumen"><a href="../">Projekte</a> / <span aria-current="page">{esc(p["kurzname"])}</span></p>
@@ -447,13 +492,16 @@ if __name__ == '__main__':
         projektseite(p, i)
         # Varianten (Anna 14.10.2026: Variante B) – Blöcke aus der Hauptfassung per Nummer übernehmen, Felder weglassen oder ersetzen
         for k, liste in p.get('varianten', {}).items():
-            bl = []
+            bl, projekt = [], {}
             for e in liste:
+                if 'projekt' in e:
+                    projekt.update(e['projekt']); continue
                 if 'aus' in e:
                     x = copy.deepcopy(p['bilder'][e['aus']])
                     for f in e.get('ohne', []): x.pop(f, None)
                     x.update(e.get('setze', {}))
+                    if 'band' in e: x['band'] = e['band']
                     bl.append(x)
                 else:
                     bl.append(e)
-            projektseite(dict(p, bilder=bl, slug=f'{p["slug"]}-{k}', _variante=k), i)
+            projektseite(dict(p, **projekt, bilder=bl, slug=f'{p["slug"]}-{k}', _variante=k), i)

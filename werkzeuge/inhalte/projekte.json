@@ -750,9 +750,6 @@
         "Polier"
        ],
        [
-        "Praktikum"
-       ],
-       [
         "Ausbildung Maurer"
        ],
        [
@@ -1445,13 +1442,208 @@
   "varianten": {
    "b": [
     {
-     "aus": 0
+     "projekt": {
+      "wand_reihen": [
+       [
+        "bilder/referenzen/bauer/w-startseite_01.jpg",
+        "bilder/referenzen/bauer/w-karriere_03.jpg",
+        "bilder/referenzen/bauer/w-wasserbau_07.jpg",
+        "bilder/referenzen/bauer/w-startseite_04.jpg",
+        "bilder/referenzen/bauer/w-unternehmen_09.jpg",
+        "bilder/referenzen/bauer/w-startseite_05.jpg"
+       ],
+       [
+        "bilder/referenzen/bauer/w-startseite_04.jpg",
+        "bilder/referenzen/bauer/w-unternehmen_09.jpg",
+        "bilder/referenzen/bauer/w-startseite_05.jpg",
+        "bilder/referenzen/bauer/w-wasserbau_01.jpg",
+        "bilder/referenzen/bauer/w-karriere_07.jpg",
+        "bilder/referenzen/bauer/w-karriere_01.jpg"
+       ],
+       [
+        "bilder/referenzen/bauer/w-wasserbau_01.jpg",
+        "bilder/referenzen/bauer/w-karriere_07.jpg",
+        "bilder/referenzen/bauer/w-karriere_01.jpg",
+        "bilder/referenzen/bauer/w-leistungen_10.jpg",
+        "bilder/referenzen/bauer/w-karriere_06.jpg",
+        "bilder/referenzen/bauer/w-bewerbungsformular_02.jpg"
+       ],
+       [
+        "bilder/referenzen/bauer/w-leistungen_10.jpg",
+        "bilder/referenzen/bauer/w-karriere_06.jpg",
+        "bilder/referenzen/bauer/w-bewerbungsformular_02.jpg",
+        "bilder/referenzen/bauer/w-startseite_01.jpg",
+        "bilder/referenzen/bauer/w-karriere_03.jpg",
+        "bilder/referenzen/bauer/w-wasserbau_07.jpg"
+       ]
+      ]
+     }
+    },
+    {
+     "aus": 0,
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff"
+     }
     },
     {
      "typ": "kapitel",
      "anker": "b-strategie",
-     "meta": "Analyse · Zielgruppen · Struktur",
-     "titel": "Strategie"
+     "meta": "Analyse · Verstehen · April 2026",
+     "titel": "Strategie",
+     "band": {
+      "art": [
+       "eng"
+      ]
+     }
+    },
+    {
+     "aus": 1,
+     "setze": {
+      "szenen": [
+       {
+        "bild": "bilder/referenzen/bauer/film/a-start.jpg",
+        "alt": "Alte Startseite",
+        "pfad": "",
+        "phase": "alt",
+        "titel": "Vorher: Startseite",
+        "dauer": 6000,
+        "von": 0,
+        "bis": 0,
+        "notizen": [
+         [
+          "Nicht barrierefrei",
+          56,
+          22,
+          700
+         ],
+         [
+          "Design altmodisch",
+          52,
+          44,
+          2300
+         ]
+        ],
+        "kapitel": "Vorher",
+        "klick": [
+         30,
+         2.6
+        ],
+        "zoom": null,
+        "eingaben": []
+       },
+       {
+        "bild": "bilder/referenzen/bauer/film/a-leistungen.jpg",
+        "alt": "Alte Seite Leistungen",
+        "pfad": "leistungen/",
+        "phase": "alt",
+        "titel": "Vorher: Leistungen",
+        "dauer": 4500,
+        "von": 0,
+        "bis": 900,
+        "notizen": [
+         [
+          "Kaum Infos zu den Leistungen",
+          52,
+          48,
+          900
+         ]
+        ],
+        "kapitel": null,
+        "klick": [
+         46,
+         2.6
+        ],
+        "zoom": null,
+        "eingaben": []
+       },
+       {
+        "bild": "bilder/referenzen/bauer/film/a-projekte.jpg",
+        "alt": "Alte Seite Aktuelle Projekte",
+        "pfad": "aktuelle-projekte/",
+        "phase": "alt",
+        "titel": "Vorher: Aktuelle Projekte",
+        "dauer": 4500,
+        "von": 0,
+        "bis": 1200,
+        "notizen": [
+         [
+          "Nicht barrierefrei",
+          54,
+          24,
+          700
+         ],
+         [
+          "Referenzen versteckt in Galerien – keine eigenen Unterseiten",
+          46,
+          50,
+          2300
+         ]
+        ],
+        "kapitel": null,
+        "klick": [
+         58,
+         2.6
+        ],
+        "zoom": null,
+        "eingaben": []
+       },
+       {
+        "bild": "bilder/referenzen/bauer/film/a-karriere.jpg",
+        "alt": "Alte Karriereseite",
+        "pfad": "karriere/",
+        "phase": "alt",
+        "titel": "Vorher: Karriere",
+        "dauer": 4800,
+        "von": 0,
+        "bis": 900,
+        "notizen": [
+         [
+          "Jobs wenig sichtbar und wenig informativ",
+          46,
+          50,
+          900
+         ]
+        ],
+        "kapitel": null,
+        "klick": null,
+        "zoom": null,
+        "eingaben": []
+       },
+       {
+        "bild": "bilder/referenzen/bauer/film/n-start.jpg",
+        "alt": "Neue Startseite",
+        "pfad": "",
+        "phase": "neu",
+        "titel": "Nachher: Startseite mit klarer Spezialisierung",
+        "dauer": 4200,
+        "von": 0,
+        "bis": 0,
+        "notizen": [
+         [
+          "Spezialisierung auf einen Blick",
+          40,
+          16,
+          700
+         ],
+         [
+          "Kennzahlen",
+          30,
+          86,
+          1700
+         ]
+        ],
+        "kapitel": "Startseite",
+        "klick": [
+         33,
+         5
+        ],
+        "zoom": null,
+        "eingaben": []
+       }
+      ],
+      "ohne_kopf": true
+     }
     },
     {
      "typ": "galerie",
@@ -1471,94 +1663,194 @@
      ]
     },
     {
-     "aus": 9,
-     "ohne": [
-      "text"
-     ]
-    },
-    {
-     "aus": 8
-    },
-    {
      "typ": "kapitel",
-     "anker": "b-design",
-     "meta": "Look & Feel · Design-System · Pattern",
-     "titel": "Design"
-    },
-    {
-     "aus": 14
-    },
-    {
-     "aus": 15,
-     "setze": {
-      "entscheidungen": []
+     "anker": "b-funnel",
+     "meta": "Strategie und Konzept · Ideen finden",
+     "titel": "Click-Funnel",
+     "band": {
+      "art": [
+       "eng"
+      ]
      }
     },
     {
-     "aus": 17,
-     "ohne": [
-      "text"
-     ]
+     "aus": 9,
+     "setze": {
+      "nur": "auftraggeber",
+      "mit_kopf": true,
+      "hinweis": true
+     }
     },
     {
-     "aus": 12,
-     "ohne": [
-      "text"
-     ]
+     "aus": 9,
+     "setze": {
+      "nur": "bewerber"
+     },
+     "band": {
+      "von": "var(--pc-farbe)",
+      "bis": "var(--pc-farbe)",
+      "art": [
+       "schraege",
+       "blau"
+      ]
+     }
     },
     {
-     "typ": "kapitel",
-     "anker": "b-launch",
-     "meta": "Website · Oktober 2026",
-     "titel": "Launch"
+     "aus": 8,
+     "setze": {
+      "titel": ""
+     },
+     "band": {
+      "von": "var(--pc-farbe)",
+      "bis": "var(--pc-farbe)",
+      "art": [
+       "blau",
+       "raster"
+      ]
+     }
     },
     {
-     "typ": "vorher-nachher",
-     "meta": "Vorher / Nachher",
-     "titel": "Startseite",
-     "vorher": "bilder/referenzen/bauer/film/a-start.jpg",
-     "vorher_alt": "Alte Startseite",
-     "vorher_text": "Vorher",
-     "nachher": "bilder/referenzen/bauer/film/n-start.jpg",
-     "nachher_alt": "Neue Startseite",
-     "nachher_text": "Nachher"
+     "aus": 11,
+     "setze": {
+      "titel": ""
+     },
+     "band": {
+      "von": "var(--pc-farbe)",
+      "bis": "var(--pc-farbe)",
+      "art": [
+       "blau",
+       "raster",
+       "eng"
+      ]
+     }
     },
     {
-     "aus": 18,
-     "ohne": [
-      "text"
-     ]
+     "typ": "mega-film",
+     "anker": "b-weiche",
+     "basis": "bilder/referenzen/bauer/mm/basis.jpg",
+     "basis_alt": "Startseite der neuen Website",
+     "menues": [
+      {
+       "bild": "bilder/referenzen/bauer/mm/kompetenzen.jpg",
+       "alt": "Mega-Menü Kompetenzen geöffnet",
+       "kopf": 16.8
+      },
+      {
+       "bild": "bilder/referenzen/bauer/mm/karriere.jpg",
+       "alt": "Mega-Menü Jobs & Karriere geöffnet",
+       "kopf": 18.4
+      }
+     ],
+     "unterschrift": "Mega-Menü Kompetenzen und Jobs & Karriere",
+     "band": {
+      "von": "var(--pc-farbe)",
+      "bis": "var(--pc-farbe)"
+     }
     },
     {
-     "aus": 19,
-     "ohne": [
-      "text"
-     ]
+     "typ": "funnel-karte",
+     "meta": "Click-Funnel",
+     "titel": "Jede Seite führt zum nächsten Schritt.",
+     "spuren": [
+      {
+       "art": "du",
+       "anrede": "Du",
+       "gruppe": "Bewerber · Facharbeiter, Poliere, Azubis",
+       "stationen": [
+        {
+         "label": "Mega-Menü",
+         "bild": "bilder/referenzen/bauer/mm/karriere.jpg",
+         "alt": "Mega-Menü Jobs & Karriere geöffnet",
+         "dauer": 10,
+         "ganz": true
+        },
+        {
+         "label": "Karriere",
+         "bild": "bilder/referenzen/bauer/film/n-karriere.jpg",
+         "alt": "Karriereseite"
+        },
+        {
+         "label": "Stelle im Detail",
+         "bild": "bilder/referenzen/bauer/film/n-stelle.jpg",
+         "alt": "Stelle Ausbildung Maurer"
+        },
+        {
+         "label": "Bewirb dich.",
+         "bild": "bilder/referenzen/bauer/cta-bewirb-dich.jpg",
+         "alt": "Call to Action „Bewirb dich. Ganz unkompliziert.“",
+         "cta": true,
+         "dauer": 8,
+         "ganz": true
+        },
+        {
+         "label": "Bewerbung",
+         "bild": "bilder/referenzen/bauer/film/n-bewerbung.jpg",
+         "alt": "Bewerbungsformular"
+        },
+        {
+         "label": "Danke-Seite",
+         "bild": "bilder/referenzen/bauer/film/n-danke.jpg",
+         "alt": "Bestätigung mit den nächsten Schritten"
+        }
+       ]
+      }
+     ],
+     "band": {
+      "von": "var(--pc-farbe)",
+      "bis": "var(--pc-farbe)",
+      "art": [
+       "blau"
+      ]
+     }
     },
     {
-     "aus": 20,
-     "ohne": [
-      "text",
-      "punkte"
-     ]
-    },
-    {
-     "aus": 21,
-     "ohne": [
-      "text"
-     ]
-    },
-    {
-     "typ": "kapitel",
-     "anker": "b-print",
-     "meta": "Unternehmenspräsentation",
-     "titel": "Print"
-    },
-    {
-     "aus": 22
-    },
-    {
-     "aus": 23
+     "typ": "funnel-karte",
+     "spuren": [
+      {
+       "art": "sie",
+       "anrede": "Sie",
+       "gruppe": "Auftraggeber · Bund, Land, Stiftungen",
+       "stationen": [
+        {
+         "label": "Mega-Menü",
+         "bild": "bilder/referenzen/bauer/mm/kompetenzen.jpg",
+         "alt": "Mega-Menü Kompetenzen geöffnet",
+         "dauer": 10,
+         "ganz": true
+        },
+        {
+         "label": "Kernkompetenzen",
+         "bild": "bilder/referenzen/bauer/film/n-start-kompetenzen.jpg",
+         "alt": "Kernkompetenzen auf der Startseite"
+        },
+        {
+         "label": "Referenz",
+         "bild": "bilder/referenzen/bauer/film/n-referenz-detail.jpg",
+         "alt": "Referenz im Detail mit Call to Action"
+        },
+        {
+         "label": "Sie planen ein vergleichbares Vorhaben?",
+         "bild": "bilder/referenzen/bauer/cta-vorhaben.jpg",
+         "alt": "Call to Action „Sie planen ein vergleichbares Vorhaben?“",
+         "cta": true,
+         "dauer": 8,
+         "ganz": true
+        },
+        {
+         "label": "Kontakt",
+         "bild": "bilder/referenzen/bauer/film/n-kontakt.jpg",
+         "alt": "Kontaktformular"
+        }
+       ]
+      }
+     ],
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": [
+       "schraege"
+      ]
+     }
     }
    ]
   }

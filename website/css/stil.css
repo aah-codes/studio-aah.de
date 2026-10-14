@@ -3162,3 +3162,119 @@ section[hidden] { display: none !important; }
   .zg-kopf img { width: 52px; height: 52px; border-radius: 14px; }
   .zg-kopf h2 { font-size: 28px; }
 }
+/* Mega-Menü-Film (Anna 14.10.2026): 12 s Schleife – Kompetenzen auf/zu, Jobs & Karriere auf/zu; Ease-in/Ease-out */
+.cs-mega-film .mf-browser { border-radius: 14px; overflow: hidden; background: #fff; box-shadow: 0 40px 80px rgba(0, 20, 40, .25); }
+.mf-fenster { position: relative; aspect-ratio: 1440 / 900; overflow: hidden; }
+.mf-basis { display: block; width: 100%; }
+.mf-dunkel { position: absolute; left: 0; right: 0; top: 10.6%; bottom: 0; background: rgba(0, 26, 51, .55); opacity: 0; animation: mf-dunkel 12s infinite; }
+.mf-menue { position: absolute; left: 0; top: 0; width: 100%; clip-path: inset(0 0 calc(100% - var(--kopf)) 0); filter: drop-shadow(0 18px 30px rgba(0, 20, 40, .18)); }
+.mf-menue-0 { animation: mf-auf-0 12s infinite; }
+.mf-menue-1 { animation: mf-auf-1 12s infinite; }
+.mf-zeiger { position: absolute; z-index: 3; width: 18px; height: 18px; margin: -9px 0 0 -9px; border-radius: 50%; background: rgba(14, 16, 17, .55); box-shadow: 0 0 0 4px rgba(255, 255, 255, .8); left: 50%; top: 60%; animation: mf-zeiger 12s infinite; }
+@keyframes mf-zeiger {
+  0% { left: 50%; top: 60%; } 10%, 40% { left: 32.2%; top: 5.2%; animation-timing-function: cubic-bezier(.45, 0, .25, 1); }
+  52%, 82% { left: 65.9%; top: 5.2%; } 100% { left: 50%; top: 60%; }
+}
+@keyframes mf-auf-0 {
+  0%, 12% { clip-path: inset(0 0 calc(100% - var(--kopf)) 0); animation-timing-function: cubic-bezier(.2, .8, .2, 1); }
+  18%, 38% { clip-path: inset(0 0 0 0); animation-timing-function: cubic-bezier(.6, 0, .8, .2); }
+  44%, 100% { clip-path: inset(0 0 calc(100% - var(--kopf)) 0); }
+}
+@keyframes mf-auf-1 {
+  0%, 54% { clip-path: inset(0 0 calc(100% - var(--kopf)) 0); animation-timing-function: cubic-bezier(.2, .8, .2, 1); }
+  60%, 80% { clip-path: inset(0 0 0 0); animation-timing-function: cubic-bezier(.6, 0, .8, .2); }
+  86%, 100% { clip-path: inset(0 0 calc(100% - var(--kopf)) 0); }
+}
+@keyframes mf-dunkel { 0%, 12% { opacity: 0; } 18%, 38% { opacity: 1; } 44%, 54% { opacity: 0; } 60%, 80% { opacity: 1; } 86%, 100% { opacity: 0; } }
+.cs-mega-film.pause .mf-dunkel, .cs-mega-film.pause .mf-menue, .cs-mega-film.pause .mf-zeiger, .cs-mega-film:not(.sichtbar) .mf-dunkel, .cs-mega-film:not(.sichtbar) .mf-menue, .cs-mega-film:not(.sichtbar) .mf-zeiger { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .mf-dunkel, .mf-menue, .mf-zeiger { animation: none; }
+  .mf-dunkel { opacity: 1; } .mf-menue-0 { clip-path: inset(0 0 0 0); } .mf-zeiger { display: none; }
+}
+/* ===== Variante B: Seamless Presentation (Anna 14.10.2026) – nur unter .cs-nahtlos, Variante A bleibt unverändert ===== */
+.cs-nahtlos { overflow-x: clip; }
+.cs-nahtlos .cs-bilder { display: block; padding: 0; }
+.nl-band { position: relative; padding: clamp(56px, 7vw, 112px) var(--rand-seite); background: linear-gradient(180deg, var(--von), var(--bis)); }
+.nl-band.nl-eng { padding-top: 24px; padding-bottom: 24px; }
+.nl-band.nl-voll { padding-left: 0; padding-right: 0; }
+/* Bauer-Schräge: Farbe des Bands steigt schräg in das vorige Band, mit gelbem Streifen (wie im Footer der Bauer-Website) */
+.nl-band.nl-schraege { margin-top: calc(-1 * clamp(40px, 6.75vw, 96px)); padding-top: calc(clamp(56px, 7vw, 112px) + clamp(40px, 6.75vw, 96px)); clip-path: polygon(0 clamp(40px, 6.75vw, 96px), 100% 0, 100% 100%, 0 100%); }
+.nl-band.nl-schraege::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: calc(clamp(40px, 6.75vw, 96px) + 12px); background: #fbd52a; clip-path: polygon(0 calc(100% - 12px), 100% 0, 100% 12px, 0 100%); z-index: 1; pointer-events: none; }
+/* Kacheln und Lücken der Blöcke auflösen */
+.cs-nahtlos .cs-block { position: relative; z-index: 2; }
+.cs-nahtlos .cs-ziele-grafik, .cs-nahtlos .cs-kachel, .cs-nahtlos .cs-sitemap, .cs-nahtlos .ga-bild, .cs-nahtlos .cs-designsystem, .cs-nahtlos .vd-varianten, .cs-nahtlos .cs-handy-duo { background: transparent; box-shadow: none; }
+.cs-nahtlos .cs-kapitel { padding: 0; }
+@media (max-width: 900px) { .nl-band { padding-left: var(--rand-seite-mobil); padding-right: var(--rand-seite-mobil); } }
+/* B: Bildschirmwand über die volle Breite, taucht an allen Seiten aus Weiß auf (Storyboard 14.10.2026, Abschnitt 2) */
+.cs-nahtlos .cs-buehne { margin: 0; }
+.cs-nahtlos .cs-buehne .cs-wand { aspect-ratio: 16 / 8; max-width: 1520px; margin: 0 auto; border-radius: 0; background: transparent;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent), linear-gradient(180deg, transparent, #000 12%, #000 78%, transparent); -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent), linear-gradient(180deg, transparent, #000 12%, #000 78%, transparent); mask-composite: intersect; }
+.cs-nahtlos .cs-buehne .cs-wand-innen { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.cs-nahtlos .cs-buehne .cs-wand-innen > div:nth-child(4) { margin-top: -6%; }
+.cs-nahtlos .cs-zahlen { position: relative; z-index: 3; margin-top: calc(-1 * clamp(48px, 7vw, 120px)); }
+/* B: Kapitel und Blöcke ohne Kachel */
+.cs-nahtlos .nl-eng .cs-kapitel { padding-top: 32px; }
+.cs-nahtlos .cs-ziele-grafik { padding: 0; }
+.cs-nahtlos .cs-story .st-rahmen { max-width: 1000px; margin: 0 auto; padding: 56px 0 0; background: transparent; }
+.cs-nahtlos .cs-story .st-rahmen > .st-phase { left: 0; top: 8px; }
+.cs-nahtlos .ga-bild { padding: 0; border-radius: 0; }
+/* B: blaue Bänder – Schrift weiß, Dachzeilen gelb */
+.nl-blau { color: #fff; }
+.nl-blau .meta { color: #fbd52a; }
+.nl-blau .meta::before { background: #fbd52a !important; }
+.nl-blau h2, .nl-blau h3 { color: #fff; }
+.nl-raster { background-image: linear-gradient(rgba(255, 255, 255, .07) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .07) 1px, transparent 1px), linear-gradient(180deg, var(--von), var(--bis)); background-size: 40px 40px, 40px 40px, auto; }
+/* B: Personas als einzelne Welt – Text links, große Fotos rechts, Störer am Ende */
+.pe-einzeln .pe-seite { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.4fr); column-gap: clamp(32px, 5vw, 80px); align-items: start; padding: 0; border-radius: 0; background: transparent; }
+.pe-einzeln .pe-gruppe, .pe-einzeln .pe-titel, .pe-einzeln .pe-ton, .pe-einzeln .pe-beispiele, .pe-einzeln .pe-stoerer { grid-column: 1; }
+.pe-einzeln .pe-personen { grid-column: 2; grid-row: 1 / span 6; margin: 0; }
+.pe-einzeln .pe-anzahl-1 { max-width: 420px; }
+.pe-einzeln .pe-beispiele { max-width: none; }
+.pe-einzeln .pe-stoerer { position: relative; right: auto; bottom: auto; margin: 32px 0 0; }
+.pe-einzeln > .meta, .pe-einzeln > .gr-h3 { grid-column: 1 / -1; }
+.pe-einzeln > .gr-h3 { margin-bottom: 40px; }
+.pe-einzeln .pe-hinweis { margin-top: 28px; }
+.nl-blau .pe-du .pe-beispiele li { color: #fff; }
+/* B: Sitemap und Wireframes als Blaupause (weiße Linien auf Bauer-Blau) */
+.nl-blau .sm { --l: 1.5px solid rgba(255, 255, 255, .85); }
+.nl-blau .sm span { background: transparent; border-color: rgba(255, 255, 255, .7); color: #fff; }
+.nl-blau .sm .sm-haupt { background: rgba(255, 255, 255, .06); }
+.nl-blau .sm .sm-wurzel { background: #fff !important; color: var(--pc-farbe); border-color: #fff; }
+.nl-blau .weg-titel { color: #fff; }
+.nl-blau .weg-unter { color: rgba(255, 255, 255, .75); }
+.nl-blau .weg-schritte li:not(:last-child)::after { color: rgba(255, 255, 255, .7); }
+/* B: Funnel-Karte – beide Wege, echte Seiten, die langsam durchscrollen */
+.fk-gross { margin: 8px 0 48px; font-family: var(--schrift-ueberschrift); font-weight: 400; font-size: clamp(36px, 5.2vw, 84px); line-height: .95; letter-spacing: .9px; text-transform: uppercase; }
+.fk-kopf { display: flex; align-items: center; gap: 18px; margin: 0 0 28px; }
+.fk-kopf .meta { margin: 0; }
+.fk-stoerer { flex: none; display: grid; place-items: center; width: 88px; height: 88px; border-radius: 50%; font: 800 28px/1 var(--schrift-text); letter-spacing: -.02em; transform: rotate(-10deg); box-shadow: 0 14px 30px rgba(0, 20, 40, .25); }
+.fk-du .fk-stoerer { background: #fbd52a; color: var(--pc-farbe); }
+.fk-sie .fk-stoerer { background: var(--pc-farbe); color: #fff; }
+.fk-stationen { list-style: none; margin: 0; padding: 0; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: clamp(18px, 2.4vw, 36px); }
+.fk-station { position: relative; display: flex; flex-direction: column; gap: 8px; }
+.fk-station:not(:last-child)::after { content: "→"; position: absolute; right: calc(-1 * clamp(18px, 2.4vw, 36px) / 2 - .4em); top: 58%; font-size: 1.2rem; opacity: .7; }
+.fk-nr { font-family: var(--schrift-meta); font-size: .78rem; letter-spacing: .08em; opacity: .8; }
+.fk-label { min-height: 2.7em; font-weight: 700; font-size: .98rem; line-height: 1.35; }
+.fk-fenster { position: relative; container-type: size; aspect-ratio: 3 / 4.2; border-radius: 12px; overflow: hidden; background: #fff; box-shadow: 0 18px 44px rgba(0, 20, 40, .28); }
+/* Seite immer in voller Breite (nichts seitlich abgeschnitten), scrollt senkrecht bis zum Ende und zurück */
+.fk-fenster img { position: absolute; left: 0; top: 0; display: block; width: 100%; height: auto; animation: fk-scrollen var(--dauer, 14s) ease-in-out infinite alternate; }
+@keyframes fk-scrollen { 0%, 12% { transform: translateY(0); } 88%, 100% { transform: translateY(min(0px, calc(100cqh - 100%))); } }
+/* breite, kurze Bilder (CTA, Mega-Menü) ganz zeigen, ohne Scrollen */
+.fk-ganz .fk-fenster { container-type: normal; aspect-ratio: auto; margin-top: auto; margin-bottom: auto; }
+.fk-ganz .fk-fenster img { position: static; animation: none; }
+.fk-cta .fk-fenster { outline: 4px solid #fbd52a; outline-offset: 5px; }
+.fk-sie .fk-cta .fk-label { align-self: flex-start; padding: 2px 8px; border-radius: 6px; background: #fbd52a; color: var(--pc-farbe); }
+.fk-du .fk-cta .fk-label { color: #fbd52a; }
+.fk-steuerung { margin: 28px 0 0; }
+.cs-funnel-karte.pause .fk-fenster img, .cs-funnel-karte:not(.sichtbar) .fk-fenster img { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .fk-fenster img { animation: none; } }
+@media (max-width: 900px) {
+  .pe-einzeln .pe-seite { grid-template-columns: 1fr; }
+  .pe-einzeln .pe-personen { grid-column: 1; grid-row: auto; margin-top: 28px; }
+  .fk-stationen { grid-auto-flow: row; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fk-station::after { display: none; }
+  .cs-nahtlos .cs-buehne .cs-wand { aspect-ratio: 4 / 5; }
+}
+/* lange Wörter in den Projektfakten am Handy trennen (z. B. „Unternehmenspräsentation“) */
+.cs-fakten dd { hyphens: auto; -webkit-hyphens: auto; overflow-wrap: break-word; }
