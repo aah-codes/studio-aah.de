@@ -3340,3 +3340,11 @@ section[hidden] { display: none !important; }
   .hw-wand { left: -48%; right: -48%; }
   .hw-knopf { width: 44px; height: 44px; }
 }
+
+/* Variante B: aktiver Kapitel-Knopf im Vorher-Film schwarz statt Kundenblau (Anna 14.10.2026) */
+.cs-nahtlos .st-kapitel[aria-current="true"] { background: var(--farbe-dunkel); color: #fff; }
+/* Variante B: Haftnotizen hellblau (Anna 14.10.2026, wie die hellblauen Zettel im Figma-Review), kleiner, damit sie keinen Inhalt verdecken */
+.cs-nahtlos .st-notiz-alt { width: clamp(84px, 10.5cqw, 136px); padding: .75em .75em; background: linear-gradient(175deg, #e4f2ff, #cfe6ff 70%, #bddcfb); color: var(--farbe-dunkel); }
+.cs-nahtlos .st-notiz-alt::after { background: linear-gradient(315deg, transparent 48%, #a7c9ec 50%, #c6e0fb 100%); }
+@media (max-width: 900px) { .cs-nahtlos .st-notiz-alt { width: clamp(68px, 19cqw, 108px); } }
+.cs-nahtlos .st-notiz-alt { align-items: center; justify-content: center; text-align: center; } /* Text mittig (Anna 14.10.2026) */

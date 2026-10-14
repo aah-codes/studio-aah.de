@@ -1552,14 +1552,14 @@
         "notizen": [
          [
           "Barrierefreiheit ausbaufähig",
-          50,
-          16,
+          72,
+          12,
           700
          ],
          [
           "Gestaltung: Potenzial zur Modernisierung",
-          68,
-          44,
+          80,
+          42,
           2300
          ]
         ],
@@ -1583,8 +1583,8 @@
         "notizen": [
          [
           "Leistungen nur kurz beschrieben",
-          52,
-          48,
+          80,
+          30,
           900
          ]
         ],
@@ -1608,8 +1608,8 @@
         "notizen": [
          [
           "Referenzen als Galerie, ohne eigene Projektseiten",
-          46,
-          44,
+          80,
+          36,
           900
          ]
         ],
@@ -1633,8 +1633,8 @@
         "notizen": [
          [
           "Stellenangebote als Aufklappliste",
-          46,
-          50,
+          74,
+          60,
           900
          ]
         ],
@@ -1671,6 +1671,347 @@
          33,
          5
         ],
+        "zoom": null,
+        "eingaben": []
+       },
+       {
+        "bild": "bilder/referenzen/bauer/film/n-mega-kompetenzen.jpg",
+        "alt": "Mega-Menü Kompetenzen",
+        "pfad": "",
+        "phase": "neu",
+        "titel": "Mega-Menü: alle Kompetenzen, mit Bild und Direktlink",
+        "dauer": 4000,
+        "von": 0,
+        "bis": 0,
+        "notizen": [
+         [
+          "Neu: Mega-Menü",
+          60,
+          50,
+          600
+         ]
+        ],
+        "kapitel": null,
+        "klick": null,
+        "zoom": null,
+        "eingaben": []
+       },
+       {
+        "bild": "bilder/referenzen/bauer/film/n-start-kompetenzen.jpg",
+        "alt": "Kernkompetenzen auf der Startseite",
+        "pfad": "",
+        "phase": "neu",
+        "titel": "Die Kompetenzen aus dem Menü auch auf der Startseite",
+        "dauer": 4500,
+        "von": 0,
+        "bis": 560,
+        "notizen": [
+         [
+          "Menü und Startseite greifen ineinander",
+          52,
+          8,
+          800
+         ]
+        ],
+        "kapitel": null,
+        "klick": [
+         19,
+         2.6
+        ],
+        "zoom": null,
+        "eingaben": []
+       },
+       {
+        "bild": "bilder/referenzen/bauer/film/n-referenzen.jpg",
+        "alt": "Neue Referenzübersicht",
+        "pfad": "referenzen/",
+        "phase": "neu",
+        "titel": "Referenzen: das starke Bildmaterial im Mittelpunkt",
+        "dauer": 5200,
+        "von": 0,
+        "bis": 700,
+        "notizen": [
+         [
+          "Filter nach Kompetenz und Status",
+          3,
+          30,
+          800
+         ],
+         [
+          "Übersichtlich: alle Referenzen auf einer Seite",
+          52,
+          60,
+          2200
+         ]
+        ],
+        "kapitel": "Referenzen",
+        "klick": [
+         48,
+         52
+        ],
+        "zoom": null,
+        "eingaben": []
+       },
+       {
+        "bild": "bilder/referenzen/bauer/film/n-referenz-detail.jpg",
+        "alt": "Referenzseite U8, U-Bhf. Pankstraße",
+        "pfad": "u8-u-bhf-pankstrasse/",
+        "phase": "neu",
+        "titel": "Jede Referenz mit eigener Seite – und am Ende ein klarer Call to Action",
+        "dauer": 8000,
+        "von": 0,
+        "bis": 3300,
+        "notizen": [
+         [
+          "Große Projektgalerie mit Projektbildern",
+          56,
+          14,
+          900
+         ],
+         [
+          "Alle Fakten zum Projekt",
+          56,
+          38,
+          2400
+         ],
+         [
+          "Klarer Call to Action",
+          58,
+          30,
+          6300
+         ]
+        ],
+        "kapitel": null,
+        "klick": [
+         50,
+         78
+        ],
+        "zoom": null,
+        "eingaben": []
+       },
+       {
+        "bild": "bilder/referenzen/bauer/film/n-kontakt.jpg",
+        "alt": "Kontaktformular",
+        "pfad": "kontakt/",
+        "phase": "neu",
+        "titel": "Kontaktformular: kurz und direkt",
+        "dauer": 7500,
+        "von": 0,
+        "bis": 520,
+        "notizen": [
+         [
+          "Ansprechpartner direkt sichtbar",
+          62,
+          64,
+          900
+         ]
+        ],
+        "kapitel": "Kontakt",
+        "klick": null,
+        "zoom": null,
+        "eingaben": [
+         [
+          "Max",
+          92,
+          751,
+          280
+         ],
+         [
+          "Mustermann",
+          409,
+          751,
+          280
+         ],
+         [
+          "Muster GmbH",
+          92,
+          860,
+          600
+         ],
+         [
+          "max@beispiel.de",
+          92,
+          969,
+          600
+         ],
+         [
+          "Wir planen ein ähnliches Vorhaben.",
+          92,
+          1125,
+          600
+         ]
+        ],
+        "tippen_ab": 2000
+       },
+       {
+        "bild": "bilder/referenzen/bauer/film/n-mega-karriere.jpg",
+        "alt": "Mega-Menü Jobs und Karriere",
+        "pfad": "",
+        "phase": "neu",
+        "titel": "Karriere direkt aus dem Menü",
+        "dauer": 3800,
+        "von": 0,
+        "bis": 0,
+        "notizen": [
+         [
+          "Bewerben mit einem Klick",
+          66,
+          50,
+          700
+         ]
+        ],
+        "kapitel": "Karriere",
+        "klick": [
+         12,
+         25
+        ],
+        "zoom": null,
+        "eingaben": []
+       },
+       {
+        "bild": "bilder/referenzen/bauer/film/n-karriere.jpg",
+        "alt": "Neue Karriereseite",
+        "pfad": "karriere/",
+        "phase": "neu",
+        "titel": "Karriere: eigene Seite für Fachkräfte und Nachwuchs",
+        "dauer": 5200,
+        "von": 0,
+        "bis": 0,
+        "notizen": [
+         [
+          "Zwei Wege: Stellen oder Tag auf der Baustelle",
+          40,
+          40,
+          900
+         ]
+        ],
+        "kapitel": null,
+        "klick": null,
+        "zoom": null,
+        "eingaben": []
+       },
+       {
+        "bild": "bilder/referenzen/bauer/film/n-stelle.jpg",
+        "alt": "Stelle Ausbildung Maurer",
+        "pfad": "ausbildung-maurer/",
+        "phase": "neu",
+        "titel": "Jede Stelle mit allen Infos",
+        "dauer": 5600,
+        "von": 0,
+        "bis": 700,
+        "notizen": [
+         [
+          "Alle Infos zur Ausbildung",
+          56,
+          14,
+          800
+         ],
+         [
+          "Dauer, Vergütung, Start, Schule",
+          56,
+          58,
+          3800
+         ]
+        ],
+        "kapitel": null,
+        "klick": null,
+        "zoom": null,
+        "eingaben": []
+       },
+       {
+        "bild": "bilder/referenzen/bauer/film/n-stelle-konditionen.jpg",
+        "alt": "Was du dafür bekommst",
+        "pfad": "ausbildung-maurer/",
+        "phase": "neu",
+        "titel": "Was man bekommt – auf einen Blick",
+        "dauer": 4200,
+        "von": 0,
+        "bis": 280,
+        "notizen": [
+         [
+          "Konditionen klar benannt",
+          60,
+          10,
+          600
+         ]
+        ],
+        "kapitel": null,
+        "klick": null,
+        "zoom": null,
+        "eingaben": []
+       },
+       {
+        "bild": "bilder/referenzen/bauer/film/n-bewerbung.jpg",
+        "alt": "Bewerbungsformular",
+        "pfad": "bewerbungsformular/",
+        "phase": "neu",
+        "titel": "Bewerbung: etwa 15 Minuten, alles in einem Formular",
+        "dauer": 8600,
+        "von": 0,
+        "bis": 380,
+        "notizen": [
+         [
+          "Etwa 15 Minuten",
+          62,
+          6,
+          700
+         ]
+        ],
+        "kapitel": "Bewerbung",
+        "klick": null,
+        "zoom": [
+         1.4,
+         45,
+         42,
+         2200
+        ],
+        "eingaben": [
+         [
+          "Max",
+          738,
+          668,
+          280
+         ],
+         [
+          "Mustermann",
+          1059,
+          668,
+          280
+         ],
+         [
+          "max@beispiel.de",
+          92,
+          808,
+          280
+         ],
+         [
+          "0170 1234567",
+          738,
+          808,
+          280
+         ]
+        ],
+        "tippen_ab": 3200
+       },
+       {
+        "bild": "bilder/referenzen/bauer/film/n-danke.jpg",
+        "alt": "Bestätigung nach der Bewerbung",
+        "pfad": "bewerbungsformular/danke/",
+        "phase": "neu",
+        "titel": "Bestätigung mit den nächsten Schritten",
+        "dauer": 4500,
+        "von": 0,
+        "bis": 0,
+        "notizen": [
+         [
+          "Bestätigung und nächste Schritte",
+          58,
+          40,
+          700
+         ]
+        ],
+        "kapitel": null,
+        "klick": null,
         "zoom": null,
         "eingaben": []
        }
