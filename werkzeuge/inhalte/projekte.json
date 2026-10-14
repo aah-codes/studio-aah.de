@@ -630,14 +630,19 @@
    "bilder/referenzen/bauer/w-karriere_03.jpg",
    "bilder/referenzen/bauer/w-wasserbau_07.jpg",
    "bilder/referenzen/bauer/w-startseite_04.jpg",
-   "bilder/referenzen/bauer/w-bewerbungsformular_02.jpg",
+   {
+    "bild": "bilder/referenzen/bauer/w-cta-vorhaben.jpg",
+    "link": "kontakt/",
+    "label": "Sie planen ein vergleichbares Vorhaben? Projekt bei STUDIO AAH! anfragen"
+   },
    "bilder/referenzen/bauer/w-unternehmen_09.jpg",
    "bilder/referenzen/bauer/w-startseite_05.jpg",
    "bilder/referenzen/bauer/w-wasserbau_01.jpg",
    "bilder/referenzen/bauer/w-karriere_07.jpg",
    "bilder/referenzen/bauer/w-karriere_01.jpg",
    "bilder/referenzen/bauer/w-leistungen_10.jpg",
-   "bilder/referenzen/bauer/w-karriere_06.jpg"
+   "bilder/referenzen/bauer/w-karriere_06.jpg",
+   "bilder/referenzen/bauer/w-bewerbungsformular_02.jpg"
   ],
   "ausgangslage": {
    "bild": "bilder/referenzen/bauer/v-start-vorher.jpg",

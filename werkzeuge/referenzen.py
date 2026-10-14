@@ -42,10 +42,16 @@ def fakten(p):
     return '<dl class="cs-fakten">' + ''.join(f'<div><dt>{a}</dt><dd>{b}</dd></div>' for a, b in zeilen) + '</dl>'
 
 
+def wand_bild(b, pre):
+    # Eintrag der Bildschirmwand: Pfad oder {bild, link, label}; mit Link wird das Bild zum Button (CTA in der Mitte, Anna 14.10.2026)
+    if isinstance(b, str): return f'<img src="{pre}{b}" alt="" loading="lazy">'
+    return f'<a class="cs-wand-cta" href="{pre}{b["link"]}" aria-label="{esc(b["label"])}"><img src="{pre}{b["bild"]}" alt="" loading="lazy"></a>'
+
+
 def wand(bilder, pre):
     # Einstieg wie bei Behance („Hedwig“, Anna 14.10.2026): viele Key-Screens schräg gestaffelt auf hellgrauer Fläche
     spalten = [bilder[i::3] for i in range(3)]
-    return ('<div class="cs-wand"><div class="cs-wand-innen">' + ''.join('<div>' + ''.join(f'<img src="{pre}{b}" alt="" loading="lazy">' for b in s) + '</div>' for s in spalten)
+    return ('<div class="cs-wand"><div class="cs-wand-innen">' + ''.join('<div>' + ''.join(wand_bild(b, pre) for b in s) + '</div>' for s in spalten)
             + '</div></div>')
 
 
