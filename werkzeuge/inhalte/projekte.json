@@ -936,7 +936,7 @@
     "titel": "Farben und Schrift",
     "farben": [
      [
-      "#003366",
+      "#003466",
       "Bauer-Blau",
       "Überschriften, Flächen"
      ],
@@ -1006,7 +1006,7 @@
       "18px",
       600,
       1.6,
-      " justify-self: start; display: inline-block; background: #003366; color: #fff; padding: 10px 22px; border-radius: 4px;",
+      " justify-self: start; display: inline-block; background: #003466; color: #fff; padding: 10px 22px; border-radius: 4px;",
       "Alle Leistungen anschauen →"
      ]
     ],
@@ -1512,14 +1512,14 @@
         "bis": 0,
         "notizen": [
          [
-          "Nicht barrierefrei",
-          56,
-          22,
+          "Barrierefreiheit ausbaufähig",
+          50,
+          16,
           700
          ],
          [
-          "Design altmodisch",
-          52,
+          "Gestaltung: Potenzial zur Modernisierung",
+          68,
           44,
           2300
          ]
@@ -1543,7 +1543,7 @@
         "bis": 900,
         "notizen": [
          [
-          "Kaum Infos zu den Leistungen",
+          "Leistungen nur kurz beschrieben",
           52,
           48,
           900
@@ -1568,16 +1568,10 @@
         "bis": 1200,
         "notizen": [
          [
-          "Nicht barrierefrei",
-          54,
-          24,
-          700
-         ],
-         [
-          "Referenzen versteckt in Galerien – keine eigenen Unterseiten",
+          "Referenzen als Galerie, ohne eigene Projektseiten",
           46,
-          50,
-          2300
+          44,
+          900
          ]
         ],
         "kapitel": null,
@@ -1599,7 +1593,7 @@
         "bis": 900,
         "notizen": [
          [
-          "Jobs wenig sichtbar und wenig informativ",
+          "Stellenangebote als Aufklappliste",
           46,
           50,
           900
@@ -1838,7 +1832,7 @@
         },
         {
          "label": "Kontakt",
-         "bild": "bilder/referenzen/bauer/film/n-kontakt.jpg",
+         "bild": "bilder/referenzen/bauer/fu-kontakt.jpg",
          "alt": "Kontaktformular"
         }
        ]

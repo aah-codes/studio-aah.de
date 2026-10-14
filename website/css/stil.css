@@ -2949,7 +2949,9 @@ section[hidden] { display: none !important; }
 .st-eingabe.tippt::after { content: ""; display: inline-block; width: 1px; height: 1em; margin-left: 1px; background: #1d1f20; vertical-align: -2px; animation: hd-cursor .7s steps(1) infinite; }
 .st-notiz { position: absolute; z-index: 3; max-width: 34%; padding: .7em 1em; font: 700 clamp(12px, 1.5cqw, 20px) / 1.25 var(--schrift-text); box-shadow: 0 12px 26px rgba(14, 16, 17, .28); opacity: 0; transform: rotate(var(--r)) scale(.6); transition: transform .45s cubic-bezier(.3, 1.6, .5, 1), opacity .25s; }
 .st-notiz.zeigen { opacity: 1; transform: rotate(var(--r)); }
-.st-notiz-alt { background: #fbd52a; color: var(--farbe-dunkel); }
+.st-notiz-alt { background: linear-gradient(175deg, #fff7b0, #ffee80 70%, #fbe36a); color: #1d1f20; border-radius: 2px 2px 16px 2px / 2px 2px 8px 2px; box-shadow: 0 1px 1px rgba(0, 0, 0, .06), 0 14px 22px -10px rgba(0, 0, 0, .45); }
+/* Haftnotiz: umgeknickte Ecke unten rechts (Anna 14.10.2026: „mehr nach Sticky Note“) */
+.st-notiz-alt::after { content: ""; position: absolute; right: 0; bottom: 0; width: 1.1em; height: 1.1em; background: linear-gradient(315deg, transparent 48%, #e9cf55 50%, #f6e27a 100%); border-radius: 0 0 16px 0 / 0 0 8px 0; box-shadow: -1px -1px 2px rgba(0, 0, 0, .08); }
 .st-notiz-neu { background: #fff; color: var(--farbe-dunkel); padding-left: 2.4em; border-radius: 10px; }
 .st-notiz-neu::before { content: ""; position: absolute; left: .8em; top: 50%; width: 1em; height: 1em; margin-top: -.5em; border-radius: 50%; background: var(--farbe-primaer) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5.5' fill='none' stroke='white' stroke-width='2'/%3E%3C/svg%3E") center / 80% no-repeat; }
 .st-fenster .vf-zeiger { z-index: 5; }
@@ -3126,7 +3128,7 @@ section[hidden] { display: none !important; }
 /* Formular im Film komplett ausfüllen (Anna 14.10.2026): Auswahlfeld überdecken, Textfeld mehrzeilig, Häkchen/Punkt in Bauer-Blau */
 .st-eingabe.decke { background: #fff; width: calc(var(--w) * 100cqw / var(--basis, 1440)); }
 .st-eingabe.mehrzeilig { white-space: normal; }
-.st-eingabe.marke { color: #003366; font-weight: 800; overflow: visible; }
+.st-eingabe.marke { color: #003466; font-weight: 800; overflow: visible; }
 /* Herausforderung → Website-Relaunch → Ziele als Grafik (Anna 14.10.2026) */
 .cs-ziele-grafik { display: grid; grid-template-columns: minmax(0, 1fr) minmax(160px, .7fr) minmax(0, 1fr); column-gap: 0; row-gap: 28px; padding: 56px 48px; border-radius: 28px; background: var(--kachel); font-family: var(--schrift-text); }
 .zg-kopf { display: flex; align-items: center; gap: 18px; }
@@ -3278,3 +3280,13 @@ section[hidden] { display: none !important; }
 }
 /* lange Wörter in den Projektfakten am Handy trennen (z. B. „Unternehmenspräsentation“) */
 .cs-fakten dd { hyphens: auto; -webkit-hyphens: auto; overflow-wrap: break-word; }
+
+/* B: Mega-Menü-Film höchstens 1100 px (Quelle 2880 px → scharf); Boards mit Kontrast; CTA-Stationen so wie sie sind */
+.cs-nahtlos .cs-mega-film { max-width: 1100px; margin: 0 auto; }
+.cs-nahtlos .cs-galerie .ga-raster { gap: clamp(28px, 4vw, 56px); }
+.cs-nahtlos .ga-fenster { box-shadow: 0 0 0 1.5px rgba(14, 16, 17, .22), 0 28px 60px rgba(14, 16, 17, .18); }
+.fk-cta .fk-fenster { outline: 0; }
+.fk-sie .fk-cta .fk-label, .fk-du .fk-cta .fk-label { padding: 0; background: none; color: inherit; }
+/* Haftnotiz quadratisch (Anna 14.10.2026: „Sticky Notes sind meistens höher, könnten auch quadratisch sein“) */
+.st-notiz-alt { display: flex; align-items: flex-start; width: clamp(92px, 13cqw, 170px); max-width: none; aspect-ratio: 1 / 1; padding: .9em .85em; line-height: 1.22; white-space: normal; }
+@media (max-width: 900px) { .st-notiz-alt { width: clamp(72px, 22cqw, 120px); } }
