@@ -68,6 +68,8 @@
 - Kleine Commits mit deutscher Beschreibung.
 - Nicht öffentlich nennen, wie und wo studio-aah.de gebaut und gehostet ist (Anna, 13.10.2026).
 - Vor dem Melden prüfen: Seite im Browser ansehen (Desktop und Handy-Breite), Links und Bilder laden, Kopf und Fuß auf allen Seiten gleich.
+- Gelernt 13.10.2026: Bilder von Anna kommen nur als Datei an, wenn sie aus dem Finder in den Chat gezogen werden; eingefügte Bilder sind nur Vorschau. Fehlt die Datei, nachfragen statt Bildschirmfotos zu nutzen.
+- Gelernt 13.10.2026: In Cloud-Sitzungen sind viele fremde Websites gesperrt (z. B. mockuptree.com, share.icloud.com); Vorlagen und Fotos als Datei erbitten.
 
 ## Regeln für den Code
 - Eine CSS-Datei `website/css/stil.css`; Farben, Schriften und Abstände als CSS-Variablen am Anfang.
