@@ -125,54 +125,51 @@
     "alt": "Expert-Review der alten Website mit Notizen"
    },
    {
+    "typ": "tabelle",
+    "meta": "Schritt 01 · Expert-Review",
+    "titel": "Was besser geworden ist",
+    "zeilen": [
+     [
+      "Startseite",
+      "Keine klare Scroll-Story, wenig Führung zu den Schwerpunkten",
+      "Spezialisierung im Hero, Kennzahlen, aktuelle Bauprojekte"
+     ],
+     [
+      "Leistungen",
+      "Als Liste auf einer Seite",
+      "Je Kompetenz eine eigene Seite"
+     ],
+     [
+      "Projekte",
+      "Aktuelle Projekte und Referenzen getrennt",
+      "Zusammengelegt: Übersicht mit Filter und 40 Projektseiten"
+     ],
+     [
+      "Kontakt",
+      "Kein klarer Funnel, CTA fehlt",
+      "Kontakt im Kopf, klare Buttons, Kontakt am Seitenende"
+     ],
+     [
+      "Karriere",
+      "Kein Recruiting-Fokus",
+      "Eigene Karriereseite mit Stellen, Bewerbung in drei Schritten und Stimmen von der Baustelle"
+     ],
+     [
+      "Vertrauen",
+      "Siegel und Zertifikate kaum sichtbar",
+      "„Belegbar statt behauptet.“ – Eignung und Zertifikate auf einen Blick"
+     ]
+    ],
+    "spalte_vorher": "Aus dem Expert-Review",
+    "spalte_nachher": "Umgesetzt"
+   },
+   {
     "typ": "split",
     "meta": "Schritt 02 · Mitbewerber-Benchmark",
     "titel": "Was erfolgreiche Anbieter zeigen",
     "text": "Goldbeck, Aug. Prien, Köster, Gottlieb Tesch und weitere – mit Fokus auf Positionierung, Vertrauen, Recruiting und Corporate Design.",
     "bild": "bilder/referenzen/bauer/p-benchmark.jpg",
     "alt": "Benchmark-Board mit Websites von Mitbewerbern"
-   },
-   {
-    "typ": "tabelle",
-    "meta": "Schritt 03 · Brand Experience",
-    "titel": "Was sich gegenüber dem Ist-Stand ändert",
-    "zeilen": [
-     [
-      "Positionierung",
-      "„Wir bauen alles“ – generisch",
-      "Spezialisiert: Bestand, Denkmal, öffentliche Bauten"
-     ],
-     [
-      "Tonalität",
-      "werblich, pathosgeladen",
-      "klar, sachlich, handwerklich"
-     ],
-     [
-      "Zielgruppenführung",
-      "Auftraggeber und Bewerber vermischt",
-      "zwei klar getrennte Wege"
-     ],
-     [
-      "Referenzen",
-      "als Liste / Kategorien",
-      "als Trust-Träger inszeniert, filterbar"
-     ],
-     [
-      "Eignungsnachweis",
-      "nicht sichtbar",
-      "Zertifikate und Zahlen prominent"
-     ],
-     [
-      "Branchenseiten",
-      "keine",
-      "eigene Seiten je Kompetenz"
-     ],
-     [
-      "Recruiting",
-      "Stellen versteckt",
-      "eigene Karriereseite mit emotionaler Ansprache"
-     ]
-    ]
    },
    {
     "typ": "sitemap",
@@ -183,6 +180,9 @@
      [
       "Kompetenzen",
       [
+       [
+        "Leistungen"
+       ],
        [
         "Denkmal und Bestand"
        ],
@@ -201,10 +201,8 @@
        [
         "Wasserbau"
        ]
-      ]
-     ],
-     [
-      "Leistungen"
+      ],
+      "bilder/referenzen/bauer/sm-wasserbau.jpg"
      ],
      [
       "Referenzen",
@@ -212,7 +210,8 @@
        [
         "40 Projektseiten, filterbar"
        ]
-      ]
+      ],
+      "bilder/referenzen/bauer/sm-referenzen.jpg"
      ],
      [
       "Unternehmen",
@@ -223,7 +222,8 @@
        [
         "Downloads"
        ]
-      ]
+      ],
+      "bilder/referenzen/bauer/sm-unternehmen.jpg"
      ],
      [
       "Jobs & Karriere",
@@ -242,90 +242,195 @@
        ],
        [
         "Duales Studium"
+       ],
+       [
+        "Bewerbung"
        ]
-      ]
+      ],
+      "bilder/referenzen/bauer/sm-karriere.jpg"
      ],
      [
-      "Kontakt"
+      "Kontakt",
+      [],
+      "bilder/referenzen/bauer/sm-kontakt.jpg"
+     ]
+    ],
+    "wurzel_bild": "bilder/referenzen/bauer/sm-startseite.jpg"
+   },
+   {
+    "typ": "schieber",
+    "meta": "Schritt 04 · Wireframes",
+    "titel": "Vom Wireframe zur fertigen Seite",
+    "links": "bilder/referenzen/bauer/wf-startseite.jpg",
+    "rechts": "bilder/referenzen/bauer/v-start-nachher.jpg",
+    "links_text": "Wireframe",
+    "rechts_text": "Fertig",
+    "links_alt": "Wireframe der Startseite",
+    "rechts_alt": "Fertige Startseite"
+   },
+   {
+    "typ": "designsystem",
+    "meta": "Schritt 05 · Design-System",
+    "titel": "Farben und Schrift",
+    "farben": [
+     [
+      "#003366",
+      "Bauer-Blau",
+      "Überschriften, Flächen, Buttons"
+     ],
+     [
+      "#FBD52A",
+      "Bauer-Gelb",
+      "Akzent, Hervorhebung"
+     ],
+     [
+      "#FFFFFF",
+      "Weiß",
+      "Grund"
+     ]
+    ],
+    "schrift": "Inter",
+    "schrift_css": "\"Inter Bauer\", Inter, system-ui, sans-serif",
+    "warum": "Klar, kraftvoll, leicht ingenieurhaft – und kostenfrei, ohne Lizenzärger in WordPress.",
+    "stufen": [
+     [
+      "H1",
+      "72 / 78 · 600",
+      "clamp(34px, 5vw, 72px)",
+      600,
+      1.08,
+      " letter-spacing: -0.03em;",
+      "Schleusen, Wehre, Wasserbauwerke."
+     ],
+     [
+      "H2",
+      "44 / 50 · 600",
+      "clamp(26px, 3.2vw, 44px)",
+      600,
+      1.14,
+      " letter-spacing: -0.02em;",
+      "Betreiber von Wasserstraßen"
+     ],
+     [
+      "H3",
+      "32 / 38 · 600",
+      "clamp(22px, 2.3vw, 32px)",
+      600,
+      1.18,
+      "",
+      "Erst trocken, dann bauen."
+     ],
+     [
+      "Dachzeile",
+      "16 · 400 · Versalien",
+      "16px",
+      400,
+      1.8,
+      " letter-spacing: .08em; text-transform: uppercase;",
+      "Wasserbau"
+     ],
+     [
+      "Fließtext",
+      "18 / 29 · 400",
+      "18px",
+      400,
+      1.6,
+      "",
+      "Spundwände, Nadelwehre, Lenzhaltung: Bevor am Bauwerk gearbeitet werden kann, muss das Wasser kontrolliert weichen."
+     ],
+     [
+      "Button",
+      "18 · 600",
+      "18px",
+      600,
+      1.6,
+      " justify-self: start; display: inline-block; background: #003366; color: #fff; padding: 10px 22px; border-radius: 4px;",
+      "Alle Leistungen anschauen →"
      ]
     ]
    },
    {
-    "typ": "vorher-nachher",
-    "meta": "Schritt 04 · Wireframes",
-    "titel": "Vom Wireframe zur fertigen Seite",
-    "hoch": true,
-    "vorher": "bilder/referenzen/bauer/wf-startseite.jpg",
-    "nachher": "bilder/referenzen/bauer/v-start-nachher.jpg",
-    "vorher_text": "Wireframe",
-    "nachher_text": "Fertig",
-    "vorher_alt": "Wireframe der Startseite",
-    "nachher_alt": "Fertige Startseite"
-   },
-   {
-    "typ": "split",
-    "meta": "Schritt 05 · Look & Feel",
-    "titel": "Erster Entwurf der Startseite",
-    "text": "Bauen im Bestand, Zahlen im Hero, Eignungsnachweise direkt darunter – die Richtung aus Analyse und Strategie als erster Entwurf.",
-    "bild": "bilder/referenzen/bauer/e-startseite-entwurf.jpg",
-    "alt": "Erster Entwurf der Startseite",
-    "hoch": true
-   },
-   {
-    "typ": "stil",
-    "farben": [
+    "typ": "film-vergleich",
+    "meta": "Vorher / Nachher",
+    "titel": "Einmal durch die alte und die neue Website",
+    "alt_text": "Vorher · April 2026",
+    "neu_text": "Nachher · Oktober 2026",
+    "blende_text": "Neu online",
+    "alt": [
      [
-      "#003366",
-      "Bauer-Blau"
+      "bilder/referenzen/bauer/f-alt-startseite.jpg",
+      "",
+      0,
+      "Alte Startseite"
      ],
      [
-      "#FBD52A",
-      "Bauer-Gelb"
+      "bilder/referenzen/bauer/f-alt-leistungen.jpg",
+      "leistungen/",
+      32,
+      "Alte Leistungsseite"
      ],
      [
-      "#3A3A3A",
-      "Anthrazit"
+      "bilder/referenzen/bauer/f-alt-projekte.jpg",
+      "aktuelle-projekte/",
+      45,
+      "Alte Seite Aktuelle Projekte"
      ],
      [
-      "#FFFFFF",
-      "Weiß"
+      "bilder/referenzen/bauer/f-alt-karriere.jpg",
+      "karriere/",
+      68,
+      "Alte Karriereseite"
      ]
     ],
-    "schrift": "Inter"
+    "neu": [
+     [
+      "bilder/referenzen/bauer/f-neu-startseite.jpg",
+      "",
+      0,
+      "Neue Startseite"
+     ],
+     [
+      "bilder/referenzen/bauer/f-neu-leistungen.jpg",
+      "leistungen/",
+      38,
+      "Neue Leistungsseite"
+     ],
+     [
+      "bilder/referenzen/bauer/f-neu-referenzen.jpg",
+      "referenzen/",
+      47,
+      "Neue Referenzseite"
+     ],
+     [
+      "bilder/referenzen/bauer/f-neu-karriere.jpg",
+      "karriere/",
+      74,
+      "Neue Karriereseite"
+     ]
+    ]
    },
    {
-    "typ": "vorher-nachher",
-    "meta": "Vorher / Nachher",
-    "titel": "Startseite",
-    "hoch": true,
-    "vorher": "bilder/referenzen/bauer/v-start-vorher.jpg",
-    "nachher": "bilder/referenzen/bauer/v-start-nachher.jpg",
-    "vorher_text": "Vorher · April 2026",
-    "nachher_text": "Nachher · Oktober 2026",
-    "vorher_alt": "Alte Startseite",
-    "nachher_alt": "Neue Startseite"
-   },
-   {
-    "typ": "vorher-nachher",
-    "meta": "Vorher / Nachher",
-    "titel": "Karriere",
-    "hoch": true,
-    "vorher": "bilder/referenzen/bauer/v-karriere-vorher.jpg",
-    "nachher": "bilder/referenzen/bauer/v-karriere-nachher.jpg",
-    "vorher_text": "Vorher · April 2026",
-    "nachher_text": "Nachher · Oktober 2026",
-    "vorher_alt": "Alte Karriereseite",
-    "nachher_alt": "Neue Karriereseite"
-   },
-   {
-    "typ": "stapel",
-    "zahl_html": "14 Seiten<br>40 Projektseiten",
-    "text": "Kompetenzen, Leistungen, Referenzen, Unternehmen und Karriere – ein Auftritt, ein Aufbau.",
-    "bilder": [
-     "bilder/referenzen/bauer/s-denkmal-und-bestand.jpg",
-     "bilder/referenzen/bauer/s-wasserbau.jpg",
-     "bilder/referenzen/bauer/s-unternehmen.jpg",
-     "bilder/referenzen/bauer/s-karriere.jpg"
+    "typ": "karriere",
+    "meta": "Schwerpunkt Karriere",
+    "titel_html": "Fachkräfte&shy;mangel? Karriere als Schwer&shy;punkt.",
+    "text": "Gute Leute zu finden war für Bauer eines der wichtigsten Ziele – wie für viele Betriebe im Baugewerbe. Deshalb bekam Karriere einen eigenen Bereich.",
+    "punkte": [
+     "Eigene Karriereseite",
+     "Stellen für Bauleiter, Polier, Ausbildung und duales Studium",
+     "Bewerbung in drei Schritten",
+     "Stimmen von der Baustelle und Team-Video"
+    ],
+    "seiten": [
+     [
+      "bilder/referenzen/bauer/f-neu-karriere.jpg",
+      "Karriere",
+      "Neue Karriereseite"
+     ],
+     [
+      "bilder/referenzen/bauer/f-neu-bewerbung.jpg",
+      "Bewerbung",
+      "Bewerbungsformular"
+     ]
     ]
    },
    {
@@ -410,14 +515,88 @@
    "bilder/referenzen/bauer/w-karriere_03.jpg",
    "bilder/referenzen/bauer/w-wasserbau_07.jpg",
    "bilder/referenzen/bauer/w-startseite_04.jpg",
-   "bilder/referenzen/bauer/w-karriere_06.jpg",
+   "bilder/referenzen/bauer/w-bewerbungsformular_02.jpg",
    "bilder/referenzen/bauer/w-unternehmen_09.jpg",
    "bilder/referenzen/bauer/w-startseite_05.jpg",
    "bilder/referenzen/bauer/w-wasserbau_01.jpg",
    "bilder/referenzen/bauer/w-karriere_07.jpg",
    "bilder/referenzen/bauer/w-karriere_01.jpg",
    "bilder/referenzen/bauer/w-leistungen_10.jpg",
-   "bilder/referenzen/bauer/w-wasserbau_04.jpg"
+   "bilder/referenzen/bauer/w-karriere_06.jpg"
+  ],
+  "ausgangslage": {
+   "bild": "bilder/referenzen/bauer/v-start-vorher.jpg",
+   "bild_alt": "Alte Startseite von Wolfgang Bauer Ingenieurbau",
+   "bild_text": "Vorher · April 2026",
+   "notizen": [
+    [
+     "Keine klare Scroll-Story",
+     52,
+     16,
+     -4
+    ],
+    [
+     "CTA fehlt",
+     8,
+     62,
+     3
+    ],
+    [
+     "Kein Recruiting-Fokus",
+     55,
+     47,
+     -2
+    ]
+   ],
+   "karten": [
+    [
+     "computer.webp",
+     "Ist-Stand",
+     [
+      "Kaum Infos zu den Leistungen",
+      "Referenzen eher versteckt",
+      "Design altmodisch, wenig Kontrast",
+      "Jobs wenig sichtbar"
+     ]
+    ],
+    [
+     "compass.webp",
+     "Herausforderung",
+     [
+      "Vergabe nach VOB/A",
+      "Vergabestellen prüfen in 60 Sekunden",
+      "Auftraggeber und Bewerber auf einer Website"
+     ]
+    ],
+    [
+     "target.webp",
+     "Ziele",
+     [
+      "Klar für öffentliche Auftraggeber",
+      "Referenzen als Vertrauensfaktor",
+      "Leistungen verständlich zeigen",
+      "Fachkräfte gezielt ansprechen"
+     ]
+    ]
+   ]
+  },
+  "zahlen": [
+   [
+    "14",
+    "Seiten"
+   ],
+   [
+    "40",
+    "Projekte im Detail"
+   ],
+   [
+    "6",
+    "Kompetenzen"
+   ],
+   [
+    "4",
+    "Stellenprofile"
+   ]
   ]
  },
  {

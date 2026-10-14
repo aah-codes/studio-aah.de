@@ -233,3 +233,60 @@
     document.querySelector('.kopf-mobil .mobil-unter > summary')?.classList.add('aktiv');
   }
 })();
+
+// Projektseiten: Elemente mit data-einblenden bekommen beim ersten Sichtbarwerden die Klasse „sichtbar“ (Sitemap, Notizzettel, Schieberegler);
+// Schieberegler Wireframe ↔ fertig folgt dem Regler
+(() => {
+  const els = document.querySelectorAll('[data-einblenden]');
+  if (els.length && 'IntersectionObserver' in window) {
+    const b = new IntersectionObserver((e) => e.forEach((x) => { if (x.isIntersecting) { x.target.classList.add('sichtbar'); b.unobserve(x.target); } }), { threshold: 0.35 });
+    els.forEach((e) => b.observe(e));
+  } else els.forEach((e) => e.classList.add('sichtbar'));
+  document.querySelectorAll('.cs-schieber input').forEach((r) => r.addEventListener('input', () => {
+    const s = r.closest('.cs-schieber'); s.style.transition = 'none'; s.style.setProperty('--pos', r.value + '%');
+  }));
+})();
+
+// Vorher/Nachher-Film (Projektseiten): blättert durch alte und neue Seiten, jede Seite scrollt einmal durch; dazwischen eine Wischblende.
+// Läuft nur sichtbar und ohne „Bewegung reduzieren“, Pause-Taste hält an. Karriere-Abschnitt: Pause-Taste für das Durchlaufen der Seiten.
+(() => {
+  const ruhig = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('[data-vfilm]').forEach((f) => {
+    const seiten = [...f.querySelectorAll('.vf-seite')], fenster = f.querySelector('.vf-fenster'), blende = f.querySelector('.vf-blende');
+    const zeiger = f.querySelector('.vf-zeiger'), adresse = f.querySelector('.vf-adresse'), phase = f.querySelector('.vf-phase'), texte = f.querySelector('.vf-texte');
+    const knopf = f.querySelector('.vf-knopf');
+    let nr = -1, uhr = null, laeuft = false, sichtbar = false;
+    const warte = (ms, fn) => { clearTimeout(uhr); uhr = setTimeout(fn, ms); };
+    const zeige = (n) => {
+      const s = seiten[n], vorher = seiten[nr];
+      if (vorher) { vorher.classList.remove('aktiv'); vorher.style.transition = 'opacity .5s'; vorher.style.transform = 'translateY(0)'; }
+      s.style.transition = 'opacity .5s'; s.style.transform = 'translateY(0)'; s.classList.add('aktiv'); nr = n;
+      adresse.textContent = 'bauer-ingbau.de/' + s.dataset.pfad; phase.textContent = texte.dataset[s.dataset.phase];
+      const weg = Math.max(0, s.offsetHeight - fenster.offsetHeight);
+      warte(700, () => { s.style.transition = 'opacity .5s, transform 4s ease-in-out'; s.style.transform = `translateY(-${weg}px)`; warte(4300, weiter); });
+    };
+    const weiter = () => {
+      if (!laeuft) return;
+      const n = (nr + 1) % seiten.length, s = seiten[n];
+      if (seiten[nr] && s.dataset.phase !== seiten[nr].dataset.phase) {   // Wischblende zwischen Vorher und Nachher
+        blende.classList.remove('weg'); blende.classList.add('an');
+        warte(1400, () => { zeige(n); blende.classList.add('weg'); blende.classList.remove('an'); });
+        return;
+      }
+      if (+s.dataset.x > 0) {   // „Klick“ in die Navigation
+        zeiger.style.opacity = 1; zeiger.style.left = s.dataset.x + '%'; zeiger.style.top = '3%';
+        warte(800, () => { zeiger.classList.add('klick'); setTimeout(() => { zeiger.classList.remove('klick'); zeiger.style.opacity = 0; }, 200); zeige(n); });
+      } else zeige(n);
+    };
+    const start = () => { if (laeuft || ruhig) return; laeuft = true; knopf.textContent = '❚❚'; knopf.setAttribute('aria-label', 'Film anhalten'); weiter(); };
+    const halt = () => { laeuft = false; clearTimeout(uhr); knopf.textContent = '▶'; knopf.setAttribute('aria-label', 'Film abspielen');
+      const s = seiten[nr]; if (s) { const m = getComputedStyle(s).transform; s.style.transition = 'opacity .5s'; s.style.transform = m === 'none' ? '' : m; } };
+    knopf.addEventListener('click', () => { if (laeuft) { halt(); f.dataset.angehalten = '1'; } else { delete f.dataset.angehalten; laeuft = true; knopf.textContent = '❚❚'; knopf.setAttribute('aria-label', 'Film anhalten'); weiter(); } });
+    zeige(0); if (ruhig) halt();
+    if ('IntersectionObserver' in window) new IntersectionObserver((e) => { sichtbar = e[0].isIntersecting; if (sichtbar && !f.dataset.angehalten) start(); else if (!sichtbar && laeuft) halt(); }, { threshold: 0.4 }).observe(f);
+  });
+  document.querySelectorAll('.kr-knopf').forEach((k) => k.addEventListener('click', () => {
+    const s = k.closest('.cs-karriere'), p = s.classList.toggle('pause');
+    k.textContent = p ? '▶' : '❚❚'; k.setAttribute('aria-label', p ? 'Bewegung fortsetzen' : 'Bewegung anhalten');
+  }));
+})();

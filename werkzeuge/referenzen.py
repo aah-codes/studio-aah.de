@@ -11,6 +11,14 @@ _spec = importlib.util.spec_from_file_location('inhalte', basis / 'werkzeuge' / 
 I = importlib.util.module_from_spec(_spec); _spec.loader.exec_module(I)
 ALLE = I.PROJEKTE
 CASES = [p for p in ALLE if p.get('case')]
+TRENNEN = {'Zielgruppenführung': 'Zielgruppen&shy;führung', 'Eignungsnachweis': 'Eignungs&shy;nachweis'}
+
+
+def trennen(s):
+    # weiche Trennstriche für lange Wörter in schmalen Spalten (Anna 14.10.2026: „Zielgruppenführung“)
+    for a, b in TRENNEN.items(): s = s.replace(a, b)
+    return s
+
 LINKEDIN = 'https://www.linkedin.com/in/anna-h%C3%A4rtelt-8513b8213/details/recommendations/'
 
 
@@ -60,14 +68,27 @@ def block(b, pre):
         return (f'  <figure class="cs-block cs-vergleich{hoch}">\n    {kopf}<div><img src="{pre}{b["vorher"]}" alt="{esc(b.get("vorher_alt", "Vorher"))}" loading="lazy"><span class="cs-marke">{esc(b["vorher_text"])}</span></div>\n'
                 f'    <div><img src="{pre}{b["nachher"]}" alt="{esc(b.get("nachher_alt", "Nachher"))}" loading="lazy"><span class="cs-marke cs-marke-neu">{esc(b["nachher_text"])}</span></div>\n  </figure>')
     if b['typ'] == 'tabelle':
-        zeilen = ''.join(f'<tr><th scope="row">{esc(a)}</th><td>{esc(v)}</td><td>{esc(n)}</td></tr>' for a, v, n in b['zeilen'])
+        zeilen = ''.join(f'<tr><th scope="row">{trennen(esc(a))}</th><td>{esc(v)}</td><td class="cs-neu"><span class="cs-haken" aria-hidden="true"></span>{esc(n)}</td></tr>' for a, v, n in b['zeilen'])
         return (f'  <figure class="cs-block cs-kachel cs-tabelle">\n    <figcaption class="cs-block-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3">{esc(b["titel"])}</h2></figcaption>\n'
-                f'    <div class="cs-tabelle-rahmen"><table><thead><tr><th scope="col"></th><th scope="col">Vorher</th><th scope="col">Nachher</th></tr></thead><tbody>{zeilen}</tbody></table></div>\n  </figure>')
+                f'    <div class="cs-tabelle-rahmen"><table><thead><tr><th scope="col"></th><th scope="col">{esc(b.get("spalte_vorher", "Vorher"))}</th><th scope="col" class="cs-neu">{esc(b.get("spalte_nachher", "Nachher"))}</th></tr></thead><tbody>{zeilen}</tbody></table></div>\n  </figure>')
     if b['typ'] == 'sitemap':
-        def ebene(knoten):
-            return '<ul>' + ''.join(f'<li><span>{esc(k[0])}</span>{ebene(k[1]) if len(k) > 1 and k[1] else ""}</li>' for k in knoten) + '</ul>'
+        # Sitemap (Anna 14.10.2026): Hauptseiten mit kleinem Wireframe, alle Boxen gleich hoch; Linien und Boxen bauen sich beim Einblenden auf
+        def box(k, i):
+            bild = f'<img src="{pre}{k[2]}" alt="" loading="lazy">' if len(k) > 2 and k[2] else ''
+            unter = ('<ul>' + ''.join(f'<li style="--i:{i + j + 1}"><span>{esc(u[0])}</span></li>' for j, u in enumerate(k[1])) + '</ul>') if len(k) > 1 and k[1] else ''
+            return f'<li style="--i:{i}"><span class="sm-haupt">{bild}<b>{esc(k[0])}</b></span>{unter}</li>'
+        wbild = '<img src="' + pre + b['wurzel_bild'] + '" alt="" loading="lazy">' if b.get('wurzel_bild') else ''
+        wurzel = f'<span class="sm-wurzel">{wbild}<b>{esc(b["wurzel"])}</b></span>'
         return (f'  <figure class="cs-block cs-kachel cs-sitemap">\n    <figcaption class="cs-block-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3">{esc(b["titel"])}</h2></figcaption>\n'
-                f'    <div class="sm"><span class="sm-wurzel">{esc(b["wurzel"])}</span>{ebene(b["seiten"])}</div>\n  </figure>')
+                f'    <div class="sm" data-einblenden>{wurzel}<ul>{"".join(box(k, n * 2 + 1) for n, k in enumerate(b["seiten"]))}</ul></div>\n  </figure>')
+    if b['typ'] == 'schieber':
+        # Wireframe und fertige Seite übereinander, Regler zum Vergleichen; beim ersten Einblenden wischt die fertige Seite einmal herein
+        kopf = f'<figcaption class="cs-block-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3">{esc(b["titel"])}</h2></figcaption>' if b.get('titel') else ''
+        return (f'  <figure class="cs-block cs-schieber-block">\n    {kopf}\n    <div class="cs-schieber" data-einblenden style="--pos: 50%">'
+                f'<span class="cs-etikett">{esc(b["links_text"])}</span><span class="cs-etikett cs-etikett-rechts">{esc(b["rechts_text"])}</span>'
+                f'<div class="cs-schieber-bild"><img src="{pre}{b["links"]}" alt="{esc(b["links_alt"])}" loading="lazy">'
+                f'<div class="cs-schieber-oben"><img src="{pre}{b["rechts"]}" alt="{esc(b["rechts_alt"])}" loading="lazy"></div><span class="cs-schieber-linie" aria-hidden="true"></span></div>'
+                f'<input type="range" min="0" max="100" value="50" aria-label="{esc(b["links_text"])} und {esc(b["rechts_text"])} vergleichen"></div>\n  </figure>')
     if b['typ'] == 'texte':
         k = ''.join(f'<div class="cs-kachel"><h2 class="gr-h3">{esc(a)}</h2><p>{esc(x)}</p></div>' for a, x in b['abschnitte'])
         return f'  <div class="cs-block cs-texte cs-texte-block">{k}</div>'
@@ -100,7 +121,38 @@ def block(b, pre):
     if b['typ'] == 'split':
         return (f'  <figure class="cs-block cs-split">\n    <div class="cs-kachel"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3">{esc(b["titel"])}</h2><p class="gedaempft">{esc(b["text"])}</p></div>\n'
                 f'    <div class="cs-kachel cs-split-bild{" hoch" if b.get("hoch") else ""}"><img src="{pre}{b["bild"]}" alt="{esc(b.get("alt", ""))}" loading="lazy"></div>\n  </figure>')
+    if b['typ'] == 'designsystem':
+        # Farben und Schrift wie ein Designsystem (Anna 14.10.2026): große Farbfelder, Schriftmuster H1 bis Fließtext in der echten Schrift
+        farben = ''.join(f'<div class="ds-farbe" style="--f: {c}"><span></span><p><b>{esc(n)}</b><small>{esc(c.upper())}</small><em>{esc(r)}</em></p></div>' for c, n, r in b['farben'])
+        stufen = ''.join(f'<li><span class="ds-mass">{esc(name)}<br><small>{esc(mass)}</small></span><span class="ds-probe" style="font-size: {gr}; font-weight: {gew}; line-height: {zh};{zusatz}">{esc(probe)}</span></li>'
+                         for name, mass, gr, gew, zh, zusatz, probe in b['stufen'])
+        return (f'  <figure class="cs-block cs-designsystem" style="--ds-schrift: {b["schrift_css"]}">\n    <figcaption class="cs-block-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3">{esc(b["titel"])}</h2></figcaption>\n'
+                f'    <div class="ds-farben">{farben}</div>\n'
+                f'    <div class="ds-schrift"><div class="ds-schrift-kopf"><p class="ds-aa">Aa</p><p class="ds-name">{esc(b["schrift"])}</p><p class="ds-warum">{esc(b["warum"])}</p></div><ol class="ds-stufen">{stufen}</ol></div>\n  </figure>')
+    if b['typ'] == 'film-vergleich':
+        # Vorher/Nachher als inszenierter Film im Browserfenster (Anna 14.10.2026): durch die alte Seite klicken, Wischblende, dieselben Seiten neu.
+        # Läuft nur, solange sichtbar; Pause-Taste (Bewegung über 5 s braucht eine Pause-Taste)
+        seiten = ''.join(f'<img class="vf-seite" data-phase="{ph}" data-pfad="{esc(pfad)}" data-x="{x}" src="{pre}{bild}" alt="{esc(alt)}" loading="lazy">'
+                         for ph, liste in (('alt', b['alt']), ('neu', b['neu'])) for bild, pfad, x, alt in liste)
+        return (f'  <figure class="cs-block cs-vfilm" data-vfilm>\n    <figcaption class="cs-block-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3">{esc(b["titel"])}</h2></figcaption>\n'
+                f'    <div class="vf-rahmen"><span class="cs-etikett vf-phase" aria-live="polite">{esc(b["alt_text"])}</span>'
+                f'<div class="vf-browser"><div class="vf-leiste"><span class="vf-adresse">bauer-ingbau.de/</span></div><div class="vf-fenster">{seiten}'
+                f'<span class="vf-zeiger" aria-hidden="true"></span><div class="vf-blende" aria-hidden="true"><b>{esc(b["blende_text"])}</b></div></div></div>'
+                f'<div class="vf-steuerung"><button type="button" class="ks-knopf vf-knopf" aria-label="Film anhalten">❚❚</button><span class="vf-texte" data-alt="{esc(b["alt_text"])}" data-neu="{esc(b["neu_text"])}"></span></div></div>\n  </figure>')
+    if b['typ'] == 'karriere':
+        # Schwerpunkt Karriere (Anna 14.10.2026: Fachkräftemangel groß, höchstens zwei Seiten, die durchlaufen)
+        punkte = ''.join(f'<li>{esc(x)}</li>' for x in b['punkte'])
+        seiten = ''.join(f'<div class="kr-seite"><span class="cs-etikett">{esc(n)}</span><div class="kr-fenster"><img src="{pre}{bild}" alt="{esc(alt)}" loading="lazy"></div></div>' for bild, n, alt in b['seiten'])
+        return (f'  <section class="cs-block cs-karriere" aria-labelledby="karriere-titel">\n    <div class="kr-text"><p class="meta">{esc(b["meta"])}</p><h2 class="kr-titel" id="karriere-titel">{b["titel_html"]}</h2>'
+                f'<p>{esc(b["text"])}</p><ul>{punkte}</ul><p class="kr-steuerung"><button type="button" class="ks-knopf kr-knopf" aria-label="Bewegung anhalten">❚❚</button></p></div>\n    <div class="kr-seiten" data-einblenden>{seiten}</div>\n  </section>')
     raise SystemExit('Unbekannter Bildblock: ' + b['typ'])
+
+
+def zahlen(p):
+    # Kennzahlen des Projekts direkt unter dem Einstieg (Anna 14.10.2026: „14 Seiten, 40 Projekte“ weiter nach oben, ohne „Seiten, Seiten“)
+    if not p.get('zahlen'): return ''
+    z = ''.join(f'<div><dt>{esc(b)}</dt><dd>{esc(a)}</dd></div>' for a, b in p['zahlen'])
+    return f'  <dl class="cs-zahlen">{z}</dl>\n'
 
 
 def stimme(p, pre):
@@ -116,10 +168,20 @@ def projektseite(p, nr):
     farbe = p['cover']['farbe']
     texte = ''.join(f'    <div class="cs-kachel"><h2 class="gr-h3">{esc(a)}</h2><p>{esc(b)}</p></div>\n' for a, b in p.get('abschnitte', []))
     texte = f'  <section class="cs-texte" aria-label="Projekt in Kürze">\n{texte}  </section>\n' if texte else ''
+    if p.get('ausgangslage'):
+        # Ausgangslage (Anna 14.10.2026): weniger Text, Icons, dazu groß die alte Seite mit den Notizzetteln aus dem Expert-Review
+        a = p['ausgangslage']
+        zettel = ''.join(f'<span class="cs-zettel" style="left:{x}%;top:{y}%;--dreh:{d}deg">{esc(n)}</span>' for n, x, y, d in a['notizen'])
+        karten = ''.join(f'<div class="cs-punkt"><img src="{pre}bilder/icons/{i}" alt="" width="400" height="400" loading="lazy"><div><h2>{esc(h)}</h2><ul>'
+                         + ''.join(f'<li>{esc(x)}</li>' for x in liste) + '</ul></div></div>' for i, h, liste in a['karten'])
+        texte = (f'  <section class="cs-ausgangslage" data-einblenden aria-label="Ausgangslage, Herausforderung und Ziele">\n'
+                 f'    <figure class="cs-alt"><span class="cs-etikett">{esc(a["bild_text"])}</span><div class="cs-alt-bild"><img src="{pre}{a["bild"]}" alt="{esc(a["bild_alt"])}" loading="lazy">{zettel}</div></figure>\n'
+                 f'    <div class="cs-punkte">{karten}</div>\n  </section>\n')
     ablauf = ''
     if p.get('ablauf'):
-        li = ''.join(f'<li><span class="zl-marke"><small>Schritt</small><b>{i:02d}</b></span><div class="zl-text"><p class="meta">{esc(z)}</p><h3>{esc(x)}</h3></div></li>' for i, (z, x) in enumerate(p['ablauf'], 1))
-        ablauf = f'  <section class="cs-ablauf" aria-labelledby="ablauf-titel">\n    <p class="meta">Workflow</p>\n    <h2 class="gr-h3" id="ablauf-titel">So bin ich vorgegangen</h2>\n    <ol class="zeitleiste">{li}</ol>\n  </section>\n'
+        # Schritte in einer Reihe von links nach rechts (NN/g 2017: Zickzack erschwert das Überfliegen), auf dem Handy untereinander
+        li = ''.join(f'<li><span class="cs-schritt-nr">{i:02d}</span><p class="meta">{esc(z)}</p><h3>{esc(x)}</h3></li>' for i, (z, x) in enumerate(p['ablauf'], 1))
+        ablauf = f'  <section class="cs-ablauf" aria-labelledby="ablauf-titel">\n    <p class="meta">Workflow</p>\n    <h2 class="gr-h3" id="ablauf-titel">So bin ich vorgegangen</h2>\n    <ol class="cs-schritte">{li}</ol>\n  </section>\n'
     bilder = '\n'.join(block(b, pre) for b in p.get('bilder', []))
     main = f'''<main id="inhalt" class="cs" style="--pc-farbe: {farbe}">
 
@@ -132,7 +194,7 @@ def projektseite(p, nr):
 
 {buehne(p, pre)}
 
-{texte}{ablauf}
+{zahlen(p)}{texte}{ablauf}
   <section class="cs-bilder" aria-label="Bilder aus dem Projekt">
 {bilder}
   </section>

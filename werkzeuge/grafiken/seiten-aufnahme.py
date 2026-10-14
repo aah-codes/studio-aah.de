@@ -16,28 +16,28 @@ PORT = int(os.environ.get('AUFNAHME_PORT', 9333))  # eigener Port, falls zwei Au
 STANDARD_ABSCHNITTE = 'main .kb-row-layout-wrap, main > section, main .wp-block-cover, main .wp-block-group.alignfull'
 # Cookie-Banner und Chat-Knöpfe ausblenden (gängige WordPress-Erweiterungen)
 # Wireframe-Ansicht (Anna 14.10.2026: fehlende Wireframes nachträglich aus der fertigen Seite erzeugen)
+# Wireframe-Ansicht (Anna 14.10.2026: fehlende Wireframes nachträglich aus der fertigen Seite erzeugen, „ordentlich“):
+# echte Überschriften und Texte in Grau, Bilder als Flächen mit Kreuz, Buttons als Rahmen, keine Farben
 WIREFRAME = '''
-* { color: transparent !important; -webkit-text-fill-color: transparent !important; text-shadow: none !important; box-shadow: none !important;
-    background-image: none !important; border-color: #d6d8d9 !important; }
-html, body, header, footer, main, section, nav, article, aside, div, span, a, ul, li, p { background-color: transparent !important; }
+* { color: #6b6f71 !important; -webkit-text-fill-color: currentColor !important; text-shadow: none !important; box-shadow: none !important;
+    background-image: none !important; border-color: #c9cccd !important; font-family: -apple-system, "Helvetica Neue", Arial, sans-serif !important; }
+h1, h2, h3, h4, h5, h6, h1 *, h2 *, h3 *, h4 * { color: #1d1f20 !important; }
+html, body, header, footer, main, section, nav, article, aside, div, span, a, ul, li, p, figure, form, fieldset { background-color: transparent !important; }
 body { background: #fff !important; }
-section, .kb-row-layout-wrap, header, footer { outline: 1px dashed #d6d8d9; outline-offset: -1px; }
-img, video, iframe, svg, picture, canvas { opacity: 0 !important; }
-a.button, .button, button, .kb-button, .wp-block-button__link, input, select, textarea { border: 1.5px solid #9a9d9e !important; }
+section, .kb-row-layout-wrap, header, footer { outline: 1px dashed #c9cccd; outline-offset: -1px; }
+img, video, iframe, picture, canvas { opacity: 0 !important; }
+svg { filter: grayscale(1) opacity(.6); }
+a.button, .button, button, .kb-button, .wp-block-button__link, input, select, textarea { background: #fff !important; border: 1.5px solid #3a3d3f !important; color: #1d1f20 !important; }
+nav button, .dropdown-nav-toggle, .kadence-svg-iconset { border: 0 !important; }
 '''
 WIREFRAME_JS = '''(() => {
-  const grau = (e, f) => { const r = e.getBoundingClientRect(); if (r.width < 4 || r.height < 4) return; const d = document.createElement('div');
-    d.style.cssText = `position:absolute;left:${r.left + scrollX}px;top:${r.top + scrollY}px;width:${r.width}px;height:${r.height}px;z-index:2147483646;pointer-events:none;border-radius:4px`;
-    d.style.setProperty('background-color', f, 'important'); document.body.appendChild(d); };
-  document.querySelectorAll('img, video, iframe, picture, canvas').forEach((e) => { grau(e, '#e3e5e6'); });
-  // Text als Balken: je Textzeile ein grauer Balken (über Range-Rechtecke)
-  const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
-  let n; while ((n = w.nextNode())) { if (!n.textContent.trim()) continue; const el = n.parentElement; if (!el || el.closest('script,style,noscript')) continue;
-    const s = getComputedStyle(el); if (s.visibility === 'hidden' || s.display === 'none') continue;
-    const r = document.createRange(); r.selectNodeContents(n); const ueberschrift = el.closest('h1,h2,h3,h4');
-    [...r.getClientRects()].forEach((q) => { if (q.width < 2) return; const d = document.createElement('div'); const h = Math.max(4, q.height * (ueberschrift ? .62 : .5));
-      d.style.cssText = `position:absolute;left:${q.left + scrollX}px;top:${q.top + scrollY + (q.height - h) / 2}px;width:${q.width}px;height:${h}px;z-index:2147483647;pointer-events:none;border-radius:2px`;
-      d.style.setProperty('background-color', ueberschrift ? '#9a9d9e' : '#d6d8d9', 'important'); document.body.appendChild(d); }); }
+  const kreuz = 'linear-gradient(to top right, transparent calc(50% - 1px), #c9cccd calc(50% - 1px), #c9cccd calc(50% + 1px), transparent calc(50% + 1px)), linear-gradient(to bottom right, transparent calc(50% - 1px), #c9cccd calc(50% - 1px), #c9cccd calc(50% + 1px), transparent calc(50% + 1px)), #eef0f1';
+  document.querySelectorAll('img, video, iframe, picture, canvas').forEach((e) => { const r = e.getBoundingClientRect(); if (r.width < 24 || r.height < 24) return;
+    const d = document.createElement('div');
+    d.style.cssText = `position:absolute;left:${r.left + scrollX}px;top:${r.top + scrollY}px;width:${r.width}px;height:${r.height}px;z-index:2147483646;pointer-events:none;border:1px solid #c9cccd;border-radius:4px`;
+    d.style.setProperty('background', kreuz, 'important'); document.body.appendChild(d); });
+  // Farben aus Inline-Stilen und Blöcken überschreiben: Überschriften dunkel, alles andere grau
+  document.querySelectorAll('body *').forEach((e) => { e.style.setProperty('color', e.closest('h1,h2,h3,h4,h5,h6') ? '#1d1f20' : '#6b6f71', 'important'); });
   return 1; })()'''
 STOERER = '#cmplz-cookiebanner-container, .cmplz-cookiebanner, #BorlabsCookieBox, #moove_gdpr_cookie_info_bar, .cky-consent-container, #cookie-law-info-bar, #usercentrics-root, .grecaptcha-badge, [data-hook="consent-banner-root"], [fs-cc="banner"], .fs-cc-banner_component, #wix-ad, #WIX_ADS'
 
@@ -114,6 +114,7 @@ def aufnehmen(ws, url, ziel, handy, selektor, wireframe=False):
             window.scrollTo(0, 0); await new Promise(r => setTimeout(r, 1500)); return 1; })()''')
     ws.js(f'''(() => {{ const s = document.createElement('style'); s.textContent = `{STOERER} {{ display: none !important; }}
             *, *::before, *::after {{ animation-play-state: paused !important; transition: none !important; }}
+            #masthead, #masthead *, .site-header, .kadence-sticky-header {{ transform: none !important; }}
             [class*="kb-animate"], [data-aos], .kt-animate, .aos-init {{ opacity: 1 !important; transform: none !important; }}`; document.head.appendChild(s); return 1; }})()''')
     if wireframe:
         ws.js(f'''(() => {{ const s = document.createElement('style'); s.textContent = {json.dumps(WIREFRAME)}; document.head.appendChild(s); return 1; }})()''')
