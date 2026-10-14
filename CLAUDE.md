@@ -68,6 +68,7 @@
 - Kleine Commits mit deutscher Beschreibung.
 - Nicht öffentlich nennen, wie und wo studio-aah.de gebaut und gehostet ist (Anna, 13.10.2026).
 - Vor dem Melden prüfen: Seite im Browser ansehen (Desktop und Handy-Breite), Links und Bilder laden, Kopf und Fuß auf allen Seiten gleich.
+- Nach jeder Änderung den aktuellen Stand selbst in der Vorschau öffnen (Browser-Bereich der Desktop-App, `.claude/launch.json` → `website`, Port 8123) und die Adresse nennen, z. B. `http://localhost:8123/referenzen/bauer/` (Anna, 14.10.2026). GitHub Desktop zeigt nur Code, die Live-Seite erst nach dem Hochladen.
 
 ## Regeln für den Code
 - Eine CSS-Datei `website/css/stil.css`; Farben, Schriften und Abstände als CSS-Variablen am Anfang.
