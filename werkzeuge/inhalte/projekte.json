@@ -1593,7 +1593,7 @@
         "eingaben": []
        },
        {
-        "bild": "bilder/referenzen/bauer/film/a-leistungen.jpg",
+        "bild": "bilder/referenzen/bauer/film/a-leistungen-b.jpg",
         "alt": "Alte Seite Leistungen",
         "pfad": "leistungen/",
         "phase": "alt",
@@ -2077,7 +2077,8 @@
     {
      "aus": 9,
      "setze": {
-      "nur": "bewerber"
+      "nur": "bewerber",
+      "hinweis": true
      },
      "band": {
       "von": "var(--pc-farbe)",
@@ -2538,6 +2539,42 @@
       "bis": "#ffffff",
       "art": [
        "schraege"
+      ]
+     },
+     "setze": {
+      "doppelseiten": [
+       [
+        "",
+        "bilder/referenzen/bauer/mag/h01.jpg"
+       ],
+       [
+        "bilder/referenzen/bauer/mag/h06.jpg",
+        "bilder/referenzen/bauer/mag/h07.jpg"
+       ],
+       [
+        "bilder/referenzen/bauer/mag/h08.jpg",
+        "bilder/referenzen/bauer/mag/h09.jpg"
+       ],
+       [
+        "bilder/referenzen/bauer/mag/h10.jpg",
+        "bilder/referenzen/bauer/mag/h11.jpg"
+       ],
+       [
+        "bilder/referenzen/bauer/mag/h12.jpg",
+        "bilder/referenzen/bauer/mag/h13.jpg"
+       ],
+       [
+        "bilder/referenzen/bauer/mag/h14.jpg",
+        "bilder/referenzen/bauer/mag/h15.jpg"
+       ],
+       [
+        "bilder/referenzen/bauer/mag/h22.jpg",
+        "bilder/referenzen/bauer/mag/h23.jpg"
+       ],
+       [
+        "bilder/referenzen/bauer/mag/h28.jpg",
+        ""
+       ]
       ]
      }
     },
