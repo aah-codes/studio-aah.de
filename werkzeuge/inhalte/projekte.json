@@ -77,28 +77,39 @@
   },
   "bilder": [
    {
-    "typ": "zwei-karten",
-    "karten": [
-     [
-      "warndreieck.jpg",
-      "Herausforderung",
+    "typ": "ziele-grafik",
+    "links": {
+     "icon": "warndreieck.jpg",
+     "titel": "Herausforderung",
+     "punkte": [
       [
-       "Vergabe nach VOB/A",
-       "Vergabestellen prüfen in 60 Sekunden",
+       "§",
+       "Vergabe nach VOB/A"
+      ],
+      [
+       "60",
+       "Vergabestellen prüfen in 60 Sekunden"
+      ],
+      [
+       "2",
        "Auftraggeber und Bewerber auf einer Website"
       ]
-     ],
-     [
-      "target.webp",
-      "Ziele",
-      [
-       "Klar für öffentliche Auftraggeber",
-       "Referenzen als Vertrauensfaktor",
-       "Leistungen verständlich zeigen",
-       "Fachkräfte gezielt ansprechen"
-      ]
      ]
-    ]
+    },
+    "mitte": {
+     "bild": "bilder/referenzen/bauer/vd-favicon.png",
+     "text": "Website-Relaunch"
+    },
+    "rechts": {
+     "icon": "target.webp",
+     "titel": "Ziele",
+     "punkte": [
+      "Klar für öffentliche Auftraggeber",
+      "Referenzen als Vertrauensfaktor",
+      "Leistungen verständlich zeigen",
+      "Fachkräfte gezielt ansprechen"
+     ]
+    }
    },
    {
     "typ": "storyfilm",
@@ -1168,9 +1179,16 @@
         "alt": "Bewerbungsformular am Handy",
         "von": 0,
         "bis": 560,
-        "dauer": 10000,
+        "dauer": 8000,
         "tippen_ab": 2600,
         "eingaben": [
+         [
+          "Herr",
+          26,
+          804,
+          300,
+          "decke"
+         ],
          [
           "Max",
           26,
@@ -1194,8 +1212,129 @@
           26,
           1204,
           151
+         ],
+         [
+          "Nachmittags",
+          26,
+          1312,
+          140,
+          "decke"
          ]
         ]
+       },
+       {
+        "bild": "bilder/referenzen/bauer/hd-bewerbung.jpg",
+        "alt": "Bewerbungsformular am Handy: Position und Text",
+        "von": 560,
+        "bis": 1500,
+        "dauer": 10000,
+        "tippen_ab": 6000,
+        "eingaben": [
+         [
+          "Herr",
+          26,
+          804,
+          300,
+          "decke fertig"
+         ],
+         [
+          "Max",
+          26,
+          909,
+          338,
+          "fertig"
+         ],
+         [
+          "Mustermann",
+          26,
+          986,
+          338,
+          "fertig"
+         ],
+         [
+          "max@beispiel.de",
+          26,
+          1095,
+          151,
+          "fertig"
+         ],
+         [
+          "0170 1234567",
+          26,
+          1204,
+          151,
+          "fertig"
+         ],
+         [
+          "Nachmittags",
+          26,
+          1312,
+          140,
+          "decke fertig"
+         ],
+         [
+          "●",
+          21,
+          1702,
+          20,
+          "marke"
+         ],
+         [
+          "Ich bin gelernter Maurer und möchte bei euch an Bestandsbauten in Berlin mitarbeiten.",
+          28,
+          2183,
+          330,
+          "mehrzeilig"
+         ]
+        ]
+       },
+       {
+        "bild": "bilder/referenzen/bauer/hd-bewerbung.jpg",
+        "alt": "Bewerbungsformular am Handy: Unterlagen, Datenschutz, absenden",
+        "von": 1500,
+        "bis": 2190,
+        "dauer": 7500,
+        "tippen_ab": 4500,
+        "eingaben": [
+         [
+          "●",
+          21,
+          1702,
+          20,
+          "marke fertig"
+         ],
+         [
+          "Ich bin gelernter Maurer und möchte bei euch an Bestandsbauten in Berlin mitarbeiten.",
+          28,
+          2183,
+          330,
+          "mehrzeilig fertig"
+         ],
+         [
+          "Lebenslauf_Max_Mustermann.pdf",
+          30,
+          2466,
+          330
+         ],
+         [
+          "✓",
+          20,
+          2763,
+          20,
+          "marke"
+         ]
+        ],
+        "klick": [
+         27,
+         85
+        ]
+       },
+       {
+        "bild": "bilder/referenzen/bauer/hd-danke.jpg",
+        "alt": "Danke-Seite nach der Bewerbung am Handy",
+        "von": 0,
+        "bis": 240,
+        "dauer": 4500
        }
       ]
      }

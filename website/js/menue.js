@@ -371,7 +371,9 @@
       const scrollt = (d.bis || 0) !== (d.von || 0), zettel = sz.querySelectorAll('.st-notiz');
       (d.notizen || []).forEach((n, j) => spaeter(n[3], () => { if (scrollt && j) zettel[j - 1].classList.remove('zeigen'); zettel[j].classList.add('zeigen'); }));
       if (d.zoom) spaeter(d.zoom[3], () => { const z = sz.querySelector('.st-zoom'); z.style.setProperty('--ox', d.zoom[1] + '%'); z.style.setProperty('--oy', d.zoom[2] + '%'); z.style.setProperty('--s', d.zoom[0]); });
-      const felder = [...sz.querySelectorAll('.st-eingabe')];
+      // vorausgefüllte Felder (aus der vorigen Szene) stehen sofort da, die übrigen werden getippt
+      sz.querySelectorAll('.st-eingabe[data-fertig]').forEach((e) => { e.textContent = e.dataset.text; });
+      const felder = [...sz.querySelectorAll('.st-eingabe:not([data-fertig])')];
       if (felder.length) spaeter(d.tippen_ab || 1500, () => tippe(felder, 0));
       spaeter(dauer, () => weiter(i));
     };

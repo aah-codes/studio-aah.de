@@ -3123,3 +3123,42 @@ section[hidden] { display: none !important; }
 /* Abstand zwischen Einleitung und Bildwand (Anna 14.10.2026: „zu klein“) */
 .cs-cta-wand .cs-block-kopf { margin-bottom: 48px; }
 @media (max-width: 900px) { .cs-cta-wand .cs-block-kopf { margin-bottom: 28px; } }
+/* Formular im Film komplett ausfüllen (Anna 14.10.2026): Auswahlfeld überdecken, Textfeld mehrzeilig, Häkchen/Punkt in Bauer-Blau */
+.st-eingabe.decke { background: #fff; width: calc(var(--w) * 100cqw / var(--basis, 1440)); }
+.st-eingabe.mehrzeilig { white-space: normal; }
+.st-eingabe.marke { color: #003366; font-weight: 800; overflow: visible; }
+/* Herausforderung → Website-Relaunch → Ziele als Grafik (Anna 14.10.2026) */
+.cs-ziele-grafik { display: grid; grid-template-columns: minmax(0, 1fr) minmax(160px, .7fr) minmax(0, 1fr); column-gap: 0; row-gap: 28px; padding: 56px 48px; border-radius: 28px; background: var(--kachel); font-family: var(--schrift-text); }
+.zg-kopf { display: flex; align-items: center; gap: 18px; }
+.zg-kopf img { width: 76px; height: 76px; border-radius: 20px; background: #fff; padding: 6px; object-fit: contain; }
+.zg-kopf h2 { margin: 0; font-family: var(--schrift-ueberschrift); font-weight: 400; font-size: clamp(30px, 3vw, 46px); line-height: 1; letter-spacing: .9px; text-transform: uppercase; }
+.zg-links, .zg-rechts { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.zg-links { grid-template-rows: repeat(3, 1fr); }
+.zg-rechts { grid-template-rows: repeat(4, 1fr); }
+.zg-links li, .zg-rechts li { display: flex; align-items: center; gap: 16px; padding: 14px 18px; border-radius: 18px; background: #fff; box-shadow: 0 10px 30px rgba(0, 20, 40, .06); font-size: 1.05rem; line-height: 1.35; position: relative; z-index: 1; }
+.zg-rechts li { background: var(--pc-farbe); color: #fff; }
+.zg-symbol { flex: none; display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; background: var(--pc-farbe); color: #fff; font-weight: 800; font-size: 22px; }
+.zg-symbol svg { width: 34px; height: 34px; fill: #fff; stroke: #fff; }
+.zg-symbol svg .zg-bogen { stroke: #fbd52a; }
+.zg-symbol svg text { font: 800 15px var(--schrift-text); stroke: none; }
+.zg-haken { flex: none; position: relative; width: 30px; height: 30px; border-radius: 50%; background: #fbd52a; }
+.zg-haken::after { content: ""; position: absolute; left: 11px; top: 7px; width: 7px; height: 13px; border: solid var(--pc-farbe); border-width: 0 3px 3px 0; transform: rotate(45deg); }
+.zg-mitte { position: relative; display: grid; place-items: center; }
+.zg-linien { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.zg-linien path { fill: none; stroke: var(--pc-farbe); stroke-width: 1.5; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 1; opacity: .5; }
+.cs-ziele-grafik.sichtbar .zg-linien path { animation: zg-zeichnen 1.4s cubic-bezier(.45, 0, .25, 1) forwards; }
+.cs-ziele-grafik.sichtbar .zg-linien path:nth-child(n+4) { animation-delay: .9s; }
+@keyframes zg-zeichnen { to { stroke-dashoffset: 0; } }
+.zg-kern { position: relative; z-index: 1; display: grid; place-items: center; align-content: center; gap: 6px; width: min(170px, 100%); aspect-ratio: 1; border-radius: 50%; background: var(--pc-farbe); color: #fff; box-shadow: 0 0 0 10px rgba(0, 51, 102, .1), 0 24px 50px rgba(0, 20, 40, .25); }
+.zg-kern img { width: 42%; height: auto; border-radius: 12px; }
+.zg-kern span { font-weight: 700; font-size: .95rem; }
+@media (prefers-reduced-motion: reduce) { .zg-linien path { stroke-dashoffset: 0; } .cs-ziele-grafik.sichtbar .zg-linien path { animation: none; } }
+@media (max-width: 900px) {
+  .cs-ziele-grafik { grid-template-columns: 1fr; padding: 28px 20px; border-radius: 20px; }
+  .zg-leer { display: none; }
+  .zg-kopf-links { order: 1; } .zg-links { order: 2; } .zg-mitte { order: 3; padding: 8px 0; } .zg-kopf-rechts { order: 4; margin-top: 8px; } .zg-rechts { order: 5; }
+  .zg-linien { display: none; }
+  .zg-kern { width: 140px; }
+  .zg-kopf img { width: 52px; height: 52px; border-radius: 14px; }
+  .zg-kopf h2 { font-size: 28px; }
+}

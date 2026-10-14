@@ -11,7 +11,7 @@ _spec = importlib.util.spec_from_file_location('inhalte', basis / 'werkzeuge' / 
 I = importlib.util.module_from_spec(_spec); _spec.loader.exec_module(I)
 ALLE = I.PROJEKTE
 CASES = [p for p in ALLE if p.get('case')]
-TRENNEN = {'Zielgruppenführung': 'Zielgruppen&shy;führung', 'Eignungsnachweis': 'Eignungs&shy;nachweis'}
+TRENNEN = {'Herausforderung': 'Heraus&shy;forderung', 'Zielgruppenführung': 'Zielgruppen&shy;führung', 'Eignungsnachweis': 'Eignungs&shy;nachweis'}
 
 
 def trennen(s):
@@ -64,6 +64,15 @@ def buehne(p, pre):
         return (f'  <figure class="cs-buehne cs-film">\n    <video controls preload="none" playsinline poster="{pre}{f["vorschau"]}" src="{pre}{f["datei"]}"></video>\n'
                 f'    <figcaption class="unsichtbar">{esc(f["titel"])}</figcaption>\n  </figure>')
     return f'  <div class="cs-buehne">{I.cover(p, pre)}</div>'
+
+
+def eingabe(e):
+    # nachgestellte Formulareingabe: [Text, x, y, Breite, Optionen]; Optionen (Anna 14.10.2026, ganzer Funnel):
+    # fertig = steht schon da (aus der vorigen Szene), decke = überdeckt den Platzhalter (Auswahlfeld), mehrzeilig = Textfeld, marke = Häkchen/Punkt
+    x, ex, ey, ew = e[:4]; opt = e[4] if len(e) > 4 else ''
+    kl = ' '.join(o for o in opt.split() if o in ('decke', 'mehrzeilig', 'marke'))
+    return (f'<span class="st-eingabe{" " + kl if kl else ""}" data-text="{esc(x)}"' + (' data-fertig' if 'fertig' in opt.split() else '')
+            + f' style="--x:{ex};--t:{ey};--w:{ew}"></span>')
 
 
 def block(b, pre):
@@ -255,6 +264,26 @@ def block(b, pre):
                          f'<div class="kl-fenster"><img src="{pre}{bild}" alt="{esc(titel)}" loading="lazy"></div></li>' for i, (bild, titel, oder) in enumerate(b['stufen']))
         return (f'  <section class="cs-block cs-klick" aria-labelledby="klick-titel">\n    <div class="kl-text"><p class="meta">{esc(b["meta"])}</p><h2 class="kr-titel" id="klick-titel">{b["titel_html"]}</h2>'
                 f'<p>{esc(b["text"])}</p><ul>{punkte}</ul></div>\n    <ol class="kl-treppe">{stufen}</ol>\n  </section>')
+    if b['typ'] == 'ziele-grafik':
+        # Herausforderung → Website-Relaunch → Ziele als Grafik (Anna 14.10.2026): Linien laufen von links in den Kreis und weiter zu den Zielen
+        def symbol(z):
+            if z == '60':  # Stoppuhr
+                return ('<svg viewBox="0 0 48 48" aria-hidden="true"><rect x="20" y="2" width="8" height="5" rx="1.5"/><circle cx="24" cy="27" r="18" fill="none" stroke-width="4"/>'
+                        '<path d="M24 9 A18 18 0 0 1 41.4 22.3" fill="none" stroke-width="4" class="zg-bogen"/><text x="24" y="32.5" text-anchor="middle">60</text></svg>')
+            return f'<span>{esc(z)}</span>'
+        L, M, R = b['links'], b['mitte'], b['rechts']
+        links = ''.join(f'<li><span class="zg-symbol">{symbol(z)}</span><span class="zg-text">{esc(t)}</span></li>' for z, t in L['punkte'])
+        rechts = ''.join(f'<li><span class="zg-haken" aria-hidden="true"></span><span class="zg-text">{esc(t)}</span></li>' for t in R['punkte'])
+        nl, nr = len(L['punkte']), len(R['punkte'])
+        pfade = ''.join(f'<path d="M0 {(k + .5) * 100 / nl:.2f} C 22 {(k + .5) * 100 / nl:.2f}, 22 50, 50 50" pathLength="1"/>' for k in range(nl))
+        pfade += ''.join(f'<path d="M50 50 C 78 50, 78 {(k + .5) * 100 / nr:.2f}, 100 {(k + .5) * 100 / nr:.2f}" pathLength="1"/>' for k in range(nr))
+        kopf = lambda x, k: f'<div class="zg-kopf zg-kopf-{k}"><img src="{pre}bilder/icons/{x["icon"]}" alt="" width="400" height="400" loading="lazy"><h2>{trennen(esc(x["titel"]))}</h2></div>'
+        return (f'  <section class="cs-block cs-ziele-grafik" data-einblenden aria-label="{esc(L["titel"])} und {esc(R["titel"])}">'
+                f'{kopf(L, "links")}<div class="zg-leer"></div>{kopf(R, "rechts")}'
+                f'<ul class="zg-links">{links}</ul>'
+                f'<div class="zg-mitte"><svg class="zg-linien" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">{pfade}</svg>'
+                f'<div class="zg-kern"><img src="{pre}{M["bild"]}" alt="" width="512" height="512" loading="lazy"><span>{esc(M["text"])}</span></div></div>'
+                f'<ul class="zg-rechts">{rechts}</ul></section>')
     if b['typ'] == 'zwei-karten':
         # zwei große Karten (Herausforderung, Ziele) statt kleinteiliger Chips (Anna 14.10.2026)
         k = ''.join(f'<div class="zk-karte"><img src="{pre}bilder/icons/{i}" alt="" width="400" height="400" loading="lazy"><h2>{esc(h)}</h2><ul>'
@@ -265,7 +294,7 @@ def block(b, pre):
         # Blende; neue Seite mit Mega-Menü, Referenzen, CTA, Formularen. Szenen-Daten als JSON, Ablauf in js/menue.js
         szenen = ''
         for i, s in enumerate(b['szenen']):
-            eingaben = ''.join(f'<span class="st-eingabe" data-text="{esc(x)}" style="--x:{ex};--t:{ey};--w:{ew}"></span>' for x, ex, ey, ew in s.get('eingaben', []))
+            eingaben = ''.join(eingabe(e) for e in s.get('eingaben', []))
             notizen = ''.join(f'<span class="st-notiz st-notiz-{s["phase"]}" style="left:{nx}%;top:{ny}%;--r:{(-2.5 if j % 2 else 2)}deg">{esc(n)}</span>' for j, (n, nx, ny, nt) in enumerate(s.get('notizen', [])))
             szenen += (f'<div class="st-szene" data-i="{i}"><div class="st-zoom"><div class="st-seite"><img src="{pre}{s["bild"]}" alt="{esc(s["alt"])}" loading="lazy">{eingaben}</div></div>{notizen}</div>')
         kapitel = ''.join(f'<button type="button" class="st-kapitel" data-ziel="{i}">{esc(s["kapitel"])}</button>' for i, s in enumerate(b['szenen']) if s.get('kapitel'))
@@ -284,7 +313,7 @@ def block(b, pre):
         for s in b['schirme']:
             if b['typ'] == 'fotofilm':
                 szenen = ''.join(f'<div class="st-szene" data-i="{i}"><div class="st-zoom"><div class="st-seite"><img src="{pre}{z["bild"]}" alt="{esc(z["alt"])}" loading="lazy">'
-                                 + ''.join(f'<span class="st-eingabe" data-text="{esc(x)}" style="--x:{ex};--t:{ey};--w:{ew}"></span>' for x, ex, ey, ew in z.get('eingaben', []))
+                                 + ''.join(eingabe(e) for e in z.get('eingaben', []))
                                  + '</div></div></div>' for i, z in enumerate(s['szenen']))
                 inhalt = f'<div class="st-fenster" style="--basis:{s["breite"]}">{szenen}<span class="vf-zeiger" aria-hidden="true"></span></div>'
             else:
