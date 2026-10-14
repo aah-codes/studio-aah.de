@@ -707,6 +707,71 @@
     "wurzel_bild": "bilder/referenzen/bauer/sm-startseite.jpg"
    },
    {
+    "typ": "personas",
+    "meta": "Schritt 03 · Personas",
+    "titel": "Zwei Zielgruppen, zwei Sprachen",
+    "text": "Auftraggeber und Bewerber suchen auf derselben Website – aber nicht dasselbe. Deshalb gibt es zwei Kommunikationsstrategien: Auftraggeber werden gesiezt, im Karrierebereich wird geduzt.",
+    "auftraggeber": {
+     "anrede": "Sie",
+     "meta": "Auftraggeber · Bund, Land, Stiftungen",
+     "titel": "Sachlich und prüfbar",
+     "ton": "Klar, sachlich, belegbar – Fakten, Referenzen und Nachweise statt Werbesprache.",
+     "personas": [
+      {
+       "bild": "bilder/referenzen/bauer/persona-a.jpg",
+       "name": "Sabine Reuter",
+       "rolle": "Vergabestelle · 48",
+       "zitat": "Wenn auf der Website nicht in einer Minute steht, ob die Firma sowas wie unser Projekt schon mal gemacht hat – dann ist sie unten durch.",
+       "sucht": [
+        "Passende Referenzen",
+        "Zertifikate und PQ-VOB",
+        "Ansprechpartner für die Vergabe"
+       ]
+      },
+      {
+       "bild": "bilder/referenzen/bauer/persona-b.jpg",
+       "name": "Martin Kowalski",
+       "rolle": "Bauherrenvertreter · 54",
+       "zitat": "Bei Denkmal habe ich immer dasselbe Problem: Drei Anbieter, einer kann’s wirklich.",
+       "sucht": [
+        "Vergleichbare Projekte",
+        "Wie es gelöst wurde",
+        "Wer die Bauleitung macht"
+       ]
+      }
+     ],
+     "beispiele": [
+      "Sie planen ein vergleichbares Vorhaben?",
+      "Belegbar statt behauptet.",
+      "Direkt mit uns sprechen"
+     ]
+    },
+    "bewerber": {
+     "anrede": "Du",
+     "meta": "Bewerber · Facharbeiter, Poliere, Azubis",
+     "titel": "Direkt und auf Augenhöhe",
+     "ton": "Handwerklich, ehrlich, ohne Floskeln – echte Projekte, echte Menschen, einfache Bewerbung.",
+     "personas": [
+      {
+       "bild": "bilder/referenzen/bauer/persona-c.jpg",
+       "name": "Daniel Schreiber",
+       "rolle": "Polier · 38",
+       "zitat": "Jetzt suche ich was, wo ich morgens reinkomme und der Chef sagt: ‚Tach Daniel.‘ Und wo ich abends sehe, was ich gebaut habe.",
+       "sucht": [
+        "Was hier gebaut wird",
+        "Was ich bekomme",
+        "Wie ich mich einfach bewerbe"
+       ]
+      }
+     ],
+     "beispiele": [
+      "Du baust mit. Was du baust, steht in 50 Jahren noch.",
+      "Du willst dich bewerben. Los geht’s.",
+      "Bewirb dich."
+     ]
+    }
+   },
+   {
     "typ": "schieber",
     "meta": "Schritt 04 · Wireframes",
     "titel": "Vom Wireframe zur fertigen Seite",

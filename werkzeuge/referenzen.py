@@ -196,6 +196,20 @@ def block(b, pre):
                 f'    <div class="vd-icon"><img src="{pre}{b["favicon"]}" alt="Favicon von Wolfgang Bauer Ingenieurbau" width="512" height="512" loading="lazy"><span class="meta">{esc(b["favicon_text"])}</span></div>\n'
                 f'    <figure class="vd-varianten"><img src="{pre}{b["varianten"]}" alt="{esc(b["varianten_alt"])}" loading="lazy"><figcaption class="meta">{esc(b["varianten_text"])}</figcaption></figure>\n'
                 + (f'    <div class="vd-features">{features}</div>\n' if features else '') + '  </section>')
+    if b['typ'] == 'personas':
+        # Zwei Zielgruppen, zwei Sprachen (Anna 14.10.2026): Auftraggeber gesiezt, Bewerber geduzt; Personas mit Symbolbild
+        def karte(x):
+            punkte = ''.join(f'<li>{esc(s)}</li>' for s in x['sucht'])
+            return (f'<article class="pe-karte"><img src="{pre}{x["bild"]}" alt="" width="800" height="1000" loading="lazy"><div><p class="meta">{esc(x["rolle"])}</p>'
+                    f'<h3>{esc(x["name"])}</h3><blockquote>„{esc(x["zitat"])}“</blockquote><p class="pe-sucht">Sucht zuerst:</p><ul>{punkte}</ul></div></article>')
+        def seite(s, kl):
+            beispiele = ''.join(f'<li>„{esc(x)}“</li>' for x in s['beispiele'])
+            return (f'<div class="pe-seite {kl}"><div class="pe-kopf"><span class="pe-anrede">{esc(s["anrede"])}</span><div><p class="meta">{esc(s["meta"])}</p><h3 class="pe-titel">{esc(s["titel"])}</h3>'
+                    f'<p>{esc(s["ton"])}</p></div></div><div class="pe-karten">{"".join(karte(x) for x in s["personas"])}</div>'
+                    f'<div class="pe-beispiele"><p class="meta">So klingt es auf der Website</p><ul>{beispiele}</ul></div></div>')
+        return (f'  <section class="cs-block cs-personas" aria-labelledby="pe-titel"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3" id="pe-titel">{esc(b["titel"])}</h2>'
+                f'<p class="weg-einleitung">{esc(b["text"])}</p><div class="pe-zwei">{seite(b["auftraggeber"], "pe-sie")}{seite(b["bewerber"], "pe-du")}</div>'
+                f'<p class="pe-hinweis">Personas: Hypothesen aus Referenzen und Marktrecherche · Fotos: Symbolbilder</p></section>')
     if b['typ'] == 'cta-wand':
         # alle Call-to-Actions schräg nebeneinander (Anna 14.10.2026, wie die Bildschirmwand oben)
         return (f'  <figure class="cs-block cs-cta-wand"><figcaption class="cs-block-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3">{esc(b["titel"])}</h2>'
