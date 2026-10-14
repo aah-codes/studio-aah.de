@@ -2583,7 +2583,8 @@
      "bis": "var(--pc-farbe)"
     }
    }
-  }
+  },
+  "hauptvariante": "b"
  },
  {
   "name": "Dr. Simone Goldhammer",

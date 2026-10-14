@@ -507,7 +507,7 @@ def projektseite(p, nr):
         return m.group(1) + m.group(2) + (f'?v={int(datei.stat().st_mtime) % 1000000}' if datei.exists() else '')
     main = re.sub(r'(\.\./\.\./)(bilder/[^"\'()\s?]+\.(?:jpg|jpeg|png|webp))', version, main)
     seite = rahmen('service/webdesign/index.html', main, titel, p['satz'], url, ld)
-    if p.get('_variante'):  # Entwurfs-Variante: nicht verlinkt, nicht für Suchmaschinen
+    if p.get('_variante') and not p.get('_haupt'):  # Entwurfs-Variante: nicht verlinkt, nicht für Suchmaschinen
         seite = seite.replace('</head>', '  <meta name="robots" content="noindex, nofollow">\n</head>', 1)
     ziel.write_text(seite, encoding='utf-8')
     print('geschrieben: referenzen/' + p['slug'] + '/')
@@ -542,7 +542,9 @@ def uebersicht():
 if __name__ == '__main__':
     uebersicht()
     for i, p in enumerate(CASES):
-        projektseite(p, i)
+        # hauptvariante (Anna 15.10.2026: Bauer Variante B wird die Projektseite): dann keine Seite aus der Grundfassung,
+        # die Variante erscheint unter der normalen Adresse und ist für Suchmaschinen sichtbar
+        if not p.get('hauptvariante'): projektseite(p, i)
         # Varianten (Anna 14.10.2026: Variante B) – Blöcke aus der Hauptfassung per Nummer übernehmen, Felder weglassen oder ersetzen
         for k, liste in p.get('varianten', {}).items():
             bl, projekt = [], {}
@@ -557,4 +559,5 @@ if __name__ == '__main__':
                     bl.append(x)
                 else:
                     bl.append(e)
-            projektseite(dict(p, **projekt, bilder=bl, slug=f'{p["slug"]}-{k}', _variante=k), i)
+            haupt = p.get('hauptvariante') == k
+            projektseite(dict(p, **projekt, bilder=bl, slug=p['slug'] if haupt else f'{p["slug"]}-{k}', _variante=k, _haupt=haupt), i)
