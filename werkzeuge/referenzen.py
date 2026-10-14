@@ -11,7 +11,7 @@ _spec = importlib.util.spec_from_file_location('inhalte', basis / 'werkzeuge' / 
 I = importlib.util.module_from_spec(_spec); _spec.loader.exec_module(I)
 ALLE = I.PROJEKTE
 CASES = [p for p in ALLE if p.get('case')]
-TRENNEN = {'Herausforderung': 'Heraus&shy;forderung', 'Vergabestellen': 'Vergabe&shy;stellen', 'Vertrauensfaktor': 'Vertrauens&shy;faktor', 'Referenzprojekte': 'Referenz&shy;projekte', '60 Sekunden': '60&nbsp;Sekunden', 'Zielgruppenführung': 'Zielgruppen&shy;führung', 'Eignungsnachweis': 'Eignungs&shy;nachweis', 'Bauunternehmen': 'Bau&shy;unternehmen', 'Ingenieurbau &': 'Ingenieur&shy;bau &', 'Rebranding': 'Re&shy;branding', 'Webentwicklung': 'Web&shy;entwicklung', 'Unternehmenspräsentation': 'Unternehmens&shy;präsentation', 'vertrauenswürdig': 'vertrauens&shy;würdig', 'Spezialisierung': 'Spezia&shy;lisierung'}
+TRENNEN = {'Herausforderung': 'Heraus&shy;forderung', 'Vergabestellen': 'Vergabe&shy;stellen', 'Vertrauensfaktor': 'Vertrauens&shy;faktor', 'Referenzprojekte': 'Referenz&shy;projekte', '60 Sekunden': '60&nbsp;Sekunden', 'Zielgruppenführung': 'Zielgruppen&shy;führung', 'Eignungsnachweis': 'Eignungs&shy;nachweis', 'Bauunternehmen': 'Bau&shy;unternehmen', 'Ingenieurbau &': 'Ingenieur&shy;bau &', 'Rebranding': 'Re&shy;branding', 'Webentwicklung': 'Web&shy;entwicklung', 'Unternehmenspräsentation': 'Unternehmens&shy;präsentation', 'vertrauenswürdig': 'vertrauens&shy;würdig', 'Spezialisierung': 'Spezia&shy;lisierung', 'Kernkompetenzen': 'Kern&shy;kompetenzen'}
 
 
 def trennen(s):
@@ -304,7 +304,7 @@ def block(b, pre):
         # Beide Click-Funnels auf einen Blick (Anna 14.10.2026: „die zwei Zielgruppen … die eine hat einen anderen Klickfunnel als die andere“):
         # je Spur Störer, Zielgruppe, nummerierte Stationen mit der echten Seite; die Seiten scrollen langsam durch (Pause-Taste)
         def spur(sp):
-            st = ''.join(f'<li class="fk-station{" fk-cta" if x.get("cta") else ""}{" fk-ganz" if x.get("ganz") else ""}"><span class="fk-nr">{i:02d}</span><span class="fk-label">{esc(x["label"])}</span>'
+            st = ''.join(f'<li class="fk-station{" fk-cta" if x.get("cta") else ""}{" fk-ganz" if x.get("ganz") else ""}"><span class="fk-nr">{i:02d}</span><span class="fk-label">{trennen(esc(x["label"]))}</span>'
                          f'<div class="fk-fenster"><img src="{pre}{x["bild"]}" alt="{esc(x["alt"])}" loading="lazy" style="--dauer:{x.get("dauer", 14)}s"></div></li>'
                          for i, x in enumerate(sp['stationen'], 1))
             return (f'<div class="fk-spur fk-{sp["art"]}"><div class="fk-kopf"><span class="fk-stoerer">„{esc(sp["anrede"])}“</span><p class="meta">{esc(sp["gruppe"])}</p></div>'

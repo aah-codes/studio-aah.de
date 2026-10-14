@@ -3358,3 +3358,12 @@ section[hidden] { display: none !important; }
 .cs-nahtlos .nl-figma .ga-bild figcaption { margin: 0; font: 500 12px/1.2 var(--schrift-text); letter-spacing: 0; text-transform: none; color: #6b6f71; }
 .cs-nahtlos .nl-figma .ga-bild figcaption::before { content: "#  "; color: #9a9d9e; }
 .cs-nahtlos .nl-figma .ga-fenster { border-radius: 0; box-shadow: 0 0 0 1px rgba(14, 16, 17, .1), 0 2px 6px rgba(14, 16, 17, .08); }
+/* Variante B: Kapitel-Band vor einer Schräge – Platz lassen, damit die Schräge die Überschrift nicht anschneidet */
+.nl-band.nl-eng:has(+ .nl-band.nl-schraege) { padding-bottom: calc(24px + clamp(40px, 6.75vw, 96px)); }
+/* Variante B: Heft ohne blaue Fläche, groß (Storyboard Nr. 17) */
+.cs-nahtlos .hf-flaeche { background: none; padding: 2% 0; max-width: 1100px; margin-inline: auto; }
+/* Variante B: Ergebnis als großer, ruhiger Schlusssatz (Storyboard Nr. 18) */
+.cs-nahtlos .cs-texte-block { display: block; max-width: 1100px; margin: 0 auto; padding: clamp(24px, 4vw, 64px) 0 clamp(48px, 7vw, 112px); }
+.cs-nahtlos .cs-texte-block h2 { font: 500 .8rem/1 var(--schrift-meta); letter-spacing: .12em; text-transform: uppercase; margin: 0 0 20px; }
+.cs-nahtlos .cs-texte-block p { font-size: clamp(24px, 2.7vw, 40px); line-height: 1.28; letter-spacing: -.01em; color: var(--farbe-dunkel); }
+@media (max-width: 600px) { .cs-nahtlos .st-notiz-alt { width: clamp(88px, 27cqw, 112px); font-size: 10px; hyphens: auto; -webkit-hyphens: auto; } }

@@ -2210,6 +2210,178 @@
        "schraege"
       ]
      }
+    },
+    {
+     "typ": "kapitel",
+     "anker": "b-design",
+     "meta": "Design · Prototyp",
+     "titel": "Design",
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": [
+       "eng"
+      ]
+     }
+    },
+    {
+     "typ": "mega-film",
+     "anker": "b-weiche",
+     "basis": "bilder/referenzen/bauer/mm/basis.jpg",
+     "basis_alt": "Startseite der neuen Website",
+     "menues": [
+      {
+       "bild": "bilder/referenzen/bauer/mm/kompetenzen.jpg",
+       "alt": "Mega-Menü Kompetenzen geöffnet",
+       "kopf": 16.8
+      },
+      {
+       "bild": "bilder/referenzen/bauer/mm/karriere.jpg",
+       "alt": "Mega-Menü Jobs & Karriere geöffnet",
+       "kopf": 18.4
+      }
+     ],
+     "unterschrift": "Mega-Menü Kompetenzen und Jobs & Karriere",
+     "band": {
+      "von": "var(--pc-farbe)",
+      "bis": "var(--pc-farbe)",
+      "art": [
+       "blau",
+       "schraege"
+      ]
+     }
+    },
+    {
+     "aus": 17,
+     "setze": {
+      "titel": "",
+      "bilder": [
+       {
+        "bild": "bilder/referenzen/bauer/dp-footer.jpg",
+        "titel": "Footer",
+        "alt": "Footer der neuen Website",
+        "breit": true
+       }
+      ]
+     },
+     "ohne": [
+      "text"
+     ],
+     "band": {
+      "von": "var(--pc-farbe)",
+      "bis": "var(--pc-farbe)",
+      "art": [
+       "blau"
+      ]
+     }
+    },
+    {
+     "aus": 14,
+     "band": {
+      "von": "var(--pc-farbe)",
+      "bis": "var(--pc-farbe)",
+      "art": [
+       "blau"
+      ]
+     }
+    },
+    {
+     "aus": 15,
+     "band": {
+      "von": "var(--pc-farbe)",
+      "bis": "var(--pc-farbe)",
+      "art": [
+       "blau"
+      ]
+     }
+    },
+    {
+     "aus": 18,
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": []
+     }
+    },
+    {
+     "typ": "kapitel",
+     "anker": "b-launch",
+     "meta": "Umsetzung · Oktober 2026",
+     "titel": "Launch",
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": [
+       "eng"
+      ]
+     }
+    },
+    {
+     "aus": 19,
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": []
+     }
+    },
+    {
+     "aus": 20,
+     "band": {
+      "von": "var(--pc-farbe)",
+      "bis": "var(--pc-farbe)",
+      "art": [
+       "blau",
+       "schraege"
+      ]
+     }
+    },
+    {
+     "aus": 21,
+     "band": {
+      "von": "var(--pc-farbe)",
+      "bis": "var(--pc-farbe)",
+      "art": [
+       "blau"
+      ]
+     }
+    },
+    {
+     "typ": "kapitel",
+     "anker": "b-print",
+     "meta": "Unternehmenspräsentation",
+     "titel": "Print",
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": [
+       "schraege",
+       "eng"
+      ]
+     }
+    },
+    {
+     "aus": 22,
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": []
+     }
+    },
+    {
+     "aus": 23,
+     "setze": {
+      "abschnitte": [
+       [
+        "Ergebnis",
+        "Viel mehr Informationen für Interessenten und Bestandskunden – mit Referenzen, die sich nach Kompetenz und Status filtern lassen, und einem eigenen Karrierebereich für Ausbildung, duales Studium und offene Stellen."
+       ]
+      ]
+     },
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": []
+     }
     }
    ]
   },
