@@ -132,9 +132,7 @@
     const pk = ks.querySelector('[data-pause]');
     karten.forEach(() => punkte.appendChild(document.createElement('i')));
     let nr = 0, uhr = null, sichtbar = false;
-    // Scrollende Screenshots der gezeigten Karte von oben starten, damit zuerst der Hero zu sehen ist (Anna 11.10.2026: Jana zeigte sonst den Footer)
-    const vonOben = (k) => k.querySelectorAll('.rk-browser img, .rk-handy img').forEach((b) => { b.style.animation = 'none'; void b.offsetWidth; b.style.animation = ''; });
-    const markiere = () => { [...punkte.children].forEach((p, i) => { p.classList.remove('aktiv'); void p.offsetWidth; p.classList.toggle('aktiv', i === nr); }); vonOben(karten[nr]); };
+    const markiere = () => { [...punkte.children].forEach((p, i) => { p.classList.remove('aktiv'); void p.offsetWidth; p.classList.toggle('aktiv', i === nr); }); };
     const zeige = (n) => { nr = (n + karten.length) % karten.length; spur.scrollTo({ left: karten[nr].offsetLeft - spur.offsetLeft }); markiere(); };
     const lauf = () => { clearInterval(uhr); if (sichtbar && !ks.classList.contains('pause')) uhr = setInterval(() => zeige(nr + 1), 7000); };
     ks.querySelector('[data-weiter]').addEventListener('click', () => { zeige(nr + 1); lauf(); });
@@ -178,22 +176,6 @@
       if (n === null) return;
       e.preventDefault(); const b = tabs[(n + tabs.length) % tabs.length]; waehle(b); b.focus();
     });
-  });
-})();
-
-// Magazin in den Referenzkarten: alle 2,6 Sekunden eine Seite umblättern, danach von vorn
-(() => {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  document.querySelectorAll('.rk-heft').forEach((heft) => {
-    const seiten = [...heft.querySelectorAll('img')];
-    seiten.forEach((s, i) => { s.style.zIndex = String(seiten.length - i); });
-    let k = 0;
-    setInterval(() => {
-      if (heft.closest('.ks.pause')) return; // Pause-Knopf des Karussells hält auch das Blättern an
-      if (k < seiten.length - 1) { seiten[k].classList.add('umgeblaettert'); k += 1; return; }
-      heft.classList.add('ohne-uebergang'); seiten.forEach((s) => s.classList.remove('umgeblaettert'));
-      void heft.offsetWidth; heft.classList.remove('ohne-uebergang'); k = 0;
-    }, 2600);
   });
 })();
 

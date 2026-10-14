@@ -58,7 +58,367 @@
     "bilder/referenzen/bauer-magazin-5.jpg"
    ],
    "ohne_film": true
-  }
+  },
+  "slug": "bauer",
+  "case": true,
+  "kopf": "Rebranding & Website",
+  "jahr": "2026",
+  "satz": "Strategie, Rebranding, neue Website und Unternehmenspräsentation für ein Bauunternehmen im Ingenieurbau.",
+  "cover": {
+   "farbe": "#003466",
+   "ton": "dunkel",
+   "desktop": "bilder/referenzen/bauer-website.jpg",
+   "handy": "bilder/referenzen/bauer-handy.jpg"
+  },
+  "cover_print": {
+   "farbe": "#003466",
+   "ton": "dunkel",
+   "bild": "bilder/referenzen/bauer-magazin-1.jpg"
+  },
+  "abschnitte": [
+   [
+    "Ist-Stand",
+    "Kaum Infos zu den Leistungen, Referenzen eher versteckt, ein altmodisches Design – und Jobs, die wenig sichtbar waren."
+   ],
+   [
+    "Herausforderung",
+    "Öffentliche Bauaufträge laufen über Vergabeverfahren nach VOB/A. Die Website ist dabei nicht der Verkaufskanal, sondern der Plausibilitäts-Anker: Vergabestellen prüfen, ob ein Anbieter das kann, was sie brauchen – und ob er es nachweislich schon getan hat."
+   ],
+   [
+    "Ziele",
+    "Bauer klar für öffentliche Auftraggeber positionieren, Referenzen zum zentralen Vertrauensfaktor machen, Leistungen verständlich zeigen und Fachkräfte gezielt ansprechen – für mehr Anfragen und Bewerbungen."
+   ]
+  ],
+  "ablauf": [
+   [
+    "Analyse · April 2026",
+    "Expert-Review"
+   ],
+   [
+    "Analyse",
+    "Mitbewerber-Benchmark"
+   ],
+   [
+    "Strategie",
+    "Brand Experience und Sitemap"
+   ],
+   [
+    "Konzept",
+    "Inhaltsstruktur und Wireframes"
+   ],
+   [
+    "Design",
+    "Look & Feel und Design-System"
+   ],
+   [
+    "Umsetzung · Oktober 2026",
+    "Neu online"
+   ]
+  ],
+  "bilder": [
+   {
+    "typ": "split",
+    "meta": "Schritt 01 · Expert-Review",
+    "titel": "Die alte Website, Seite für Seite",
+    "text": "Website, Struktur und digitale Touchpoints (Google, LinkedIn, Stepstone) geprüft und kommentiert.",
+    "bild": "bilder/referenzen/bauer/p-review-website.jpg",
+    "alt": "Expert-Review der alten Website mit Notizen"
+   },
+   {
+    "typ": "split",
+    "meta": "Schritt 02 · Mitbewerber-Benchmark",
+    "titel": "Was erfolgreiche Anbieter zeigen",
+    "text": "Goldbeck, Aug. Prien, Köster, Gottlieb Tesch und weitere – mit Fokus auf Positionierung, Vertrauen, Recruiting und Corporate Design.",
+    "bild": "bilder/referenzen/bauer/p-benchmark.jpg",
+    "alt": "Benchmark-Board mit Websites von Mitbewerbern"
+   },
+   {
+    "typ": "tabelle",
+    "meta": "Schritt 03 · Brand Experience",
+    "titel": "Was sich gegenüber dem Ist-Stand ändert",
+    "zeilen": [
+     [
+      "Positionierung",
+      "„Wir bauen alles“ – generisch",
+      "Spezialisiert: Bestand, Denkmal, öffentliche Bauten"
+     ],
+     [
+      "Tonalität",
+      "werblich, pathosgeladen",
+      "klar, sachlich, handwerklich"
+     ],
+     [
+      "Zielgruppenführung",
+      "Auftraggeber und Bewerber vermischt",
+      "zwei klar getrennte Wege"
+     ],
+     [
+      "Referenzen",
+      "als Liste / Kategorien",
+      "als Trust-Träger inszeniert, filterbar"
+     ],
+     [
+      "Eignungsnachweis",
+      "nicht sichtbar",
+      "Zertifikate und Zahlen prominent"
+     ],
+     [
+      "Branchenseiten",
+      "keine",
+      "eigene Seiten je Kompetenz"
+     ],
+     [
+      "Recruiting",
+      "Stellen versteckt",
+      "eigene Karriereseite mit emotionaler Ansprache"
+     ]
+    ]
+   },
+   {
+    "typ": "sitemap",
+    "meta": "Schritt 03 · Sitemap",
+    "titel": "Neue Struktur",
+    "wurzel": "Startseite",
+    "seiten": [
+     [
+      "Kompetenzen",
+      [
+       [
+        "Denkmal und Bestand"
+       ],
+       [
+        "Sozial- und Bildungsbau"
+       ],
+       [
+        "Verkehr und Infrastruktur"
+       ],
+       [
+        "Verwaltung und Forschung"
+       ],
+       [
+        "Ingenieur- und Gewerbebau"
+       ],
+       [
+        "Wasserbau"
+       ]
+      ]
+     ],
+     [
+      "Leistungen"
+     ],
+     [
+      "Referenzen",
+      [
+       [
+        "40 Projektseiten, filterbar"
+       ]
+      ]
+     ],
+     [
+      "Unternehmen",
+      [
+       [
+        "Über uns"
+       ],
+       [
+        "Downloads"
+       ]
+      ]
+     ],
+     [
+      "Jobs & Karriere",
+      [
+       [
+        "Arbeiten bei uns"
+       ],
+       [
+        "Bauleiter"
+       ],
+       [
+        "Polier"
+       ],
+       [
+        "Ausbildung Maurer"
+       ],
+       [
+        "Duales Studium"
+       ]
+      ]
+     ],
+     [
+      "Kontakt"
+     ]
+    ]
+   },
+   {
+    "typ": "vorher-nachher",
+    "meta": "Schritt 04 · Wireframes",
+    "titel": "Vom Wireframe zur fertigen Seite",
+    "hoch": true,
+    "vorher": "bilder/referenzen/bauer/wf-startseite.jpg",
+    "nachher": "bilder/referenzen/bauer/v-start-nachher.jpg",
+    "vorher_text": "Wireframe",
+    "nachher_text": "Fertig",
+    "vorher_alt": "Wireframe der Startseite",
+    "nachher_alt": "Fertige Startseite"
+   },
+   {
+    "typ": "split",
+    "meta": "Schritt 05 · Look & Feel",
+    "titel": "Erster Entwurf der Startseite",
+    "text": "Bauen im Bestand, Zahlen im Hero, Eignungsnachweise direkt darunter – die Richtung aus Analyse und Strategie als erster Entwurf.",
+    "bild": "bilder/referenzen/bauer/e-startseite-entwurf.jpg",
+    "alt": "Erster Entwurf der Startseite",
+    "hoch": true
+   },
+   {
+    "typ": "stil",
+    "farben": [
+     [
+      "#003366",
+      "Bauer-Blau"
+     ],
+     [
+      "#FBD52A",
+      "Bauer-Gelb"
+     ],
+     [
+      "#3A3A3A",
+      "Anthrazit"
+     ],
+     [
+      "#FFFFFF",
+      "Weiß"
+     ]
+    ],
+    "schrift": "Inter"
+   },
+   {
+    "typ": "vorher-nachher",
+    "meta": "Vorher / Nachher",
+    "titel": "Startseite",
+    "hoch": true,
+    "vorher": "bilder/referenzen/bauer/v-start-vorher.jpg",
+    "nachher": "bilder/referenzen/bauer/v-start-nachher.jpg",
+    "vorher_text": "Vorher · April 2026",
+    "nachher_text": "Nachher · Oktober 2026",
+    "vorher_alt": "Alte Startseite",
+    "nachher_alt": "Neue Startseite"
+   },
+   {
+    "typ": "vorher-nachher",
+    "meta": "Vorher / Nachher",
+    "titel": "Karriere",
+    "hoch": true,
+    "vorher": "bilder/referenzen/bauer/v-karriere-vorher.jpg",
+    "nachher": "bilder/referenzen/bauer/v-karriere-nachher.jpg",
+    "vorher_text": "Vorher · April 2026",
+    "nachher_text": "Nachher · Oktober 2026",
+    "vorher_alt": "Alte Karriereseite",
+    "nachher_alt": "Neue Karriereseite"
+   },
+   {
+    "typ": "stapel",
+    "zahl_html": "14 Seiten<br>40 Projektseiten",
+    "text": "Kompetenzen, Leistungen, Referenzen, Unternehmen und Karriere – ein Auftritt, ein Aufbau.",
+    "bilder": [
+     "bilder/referenzen/bauer/s-denkmal-und-bestand.jpg",
+     "bilder/referenzen/bauer/s-wasserbau.jpg",
+     "bilder/referenzen/bauer/s-unternehmen.jpg",
+     "bilder/referenzen/bauer/s-karriere.jpg"
+    ]
+   },
+   {
+    "typ": "bento",
+    "kacheln": [
+     {
+      "bild": "bilder/referenzen/bauer/k-startseite_04.jpg",
+      "breit": true,
+      "titel": "Kompetenzen"
+     },
+     {
+      "bild": "bilder/referenzen/bauer/k-karriere_06.jpg",
+      "titel": "Bewerbung in drei Schritten"
+     },
+     {
+      "bild": "bilder/referenzen/bauer/k-karriere_03.jpg",
+      "titel": "Karriere"
+     },
+     {
+      "bild": "bilder/referenzen/bauer/k-wasserbau_07.jpg",
+      "titel": "Arbeitsweise"
+     },
+     {
+      "bild": "bilder/referenzen/bauer/k-unternehmen_09.jpg",
+      "titel": "Eignung und Zertifikate"
+     },
+     {
+      "bild": "bilder/referenzen/bauer/k-karriere_07.jpg",
+      "breit": true,
+      "titel": "Stimmen von der Baustelle"
+     },
+     {
+      "bild": "bilder/referenzen/bauer/k-unternehmen_05.jpg",
+      "titel": "Haltung"
+     }
+    ]
+   },
+   {
+    "typ": "handys",
+    "bilder": [
+     "bilder/referenzen/bauer/h-startseite.jpg",
+     "bilder/referenzen/bauer/h-karriere.jpg",
+     "bilder/referenzen/bauer/h-referenzen.jpg",
+     "bilder/referenzen/bauer/h-wasserbau.jpg"
+    ],
+    "titel": "Am Handy"
+   },
+   {
+    "typ": "geraete",
+    "desktop": "bilder/referenzen/bauer-referenzseite.jpg",
+    "handy": "bilder/referenzen/bauer/h-referenzen-lang.jpg",
+    "titel": "Referenzen mit Filter – am Rechner und am Handy"
+   },
+   {
+    "typ": "film",
+    "datei": "videos/launchvideo-bauer.mp4",
+    "vorschau": "bilder/film-bauer-vorschau.jpg",
+    "titel": "Launch-Film"
+   },
+   {
+    "typ": "raster",
+    "bilder": [
+     "bilder/referenzen/bauer-magazin-1.jpg",
+     "bilder/referenzen/bauer-magazin-2.jpg",
+     "bilder/referenzen/bauer-magazin-3.jpg",
+     "bilder/referenzen/bauer-magazin-5.jpg"
+    ],
+    "titel": "Unternehmenspräsentation · Magazin A4 quer"
+   },
+   {
+    "typ": "texte",
+    "abschnitte": [
+     [
+      "Ergebnis",
+      "Mehr Bewerbungen und viel mehr Informationen für Interessenten und Bestandskunden – mit Referenzen, die sich nach Kompetenz und Status filtern lassen, und einem eigenen Karrierebereich für Ausbildung, duales Studium und offene Stellen."
+     ]
+    ]
+   }
+  ],
+  "wand": [
+   "bilder/referenzen/bauer/w-startseite_01.jpg",
+   "bilder/referenzen/bauer/w-karriere_03.jpg",
+   "bilder/referenzen/bauer/w-wasserbau_07.jpg",
+   "bilder/referenzen/bauer/w-startseite_04.jpg",
+   "bilder/referenzen/bauer/w-karriere_06.jpg",
+   "bilder/referenzen/bauer/w-unternehmen_09.jpg",
+   "bilder/referenzen/bauer/w-startseite_05.jpg",
+   "bilder/referenzen/bauer/w-wasserbau_01.jpg",
+   "bilder/referenzen/bauer/w-karriere_07.jpg",
+   "bilder/referenzen/bauer/w-karriere_01.jpg",
+   "bilder/referenzen/bauer/w-leistungen_10.jpg",
+   "bilder/referenzen/bauer/w-wasserbau_04.jpg"
+  ]
  },
  {
   "name": "Dr. Simone Goldhammer",
@@ -87,6 +447,19 @@
    "karte": "bilder/referenzen/goldhammer-flyer.jpg",
    "visitenkarte": "bilder/hero/goldhammer-visitenkarte.jpg",
    "ohne_film": true
+  },
+  "kopf": "Branding, Website & Druck",
+  "jahr": "seit 2022",
+  "satz": "Branding, Website und Druck für eine Ärztin für Naturheilkunde.",
+  "cover": {
+   "farbe": "#fce300",
+   "ton": "hell",
+   "bild": "bilder/referenzen/goldhammer-flyer.jpg"
+  },
+  "cover_print": {
+   "farbe": "#fce300",
+   "ton": "hell",
+   "bild": "bilder/referenzen/goldhammer-flyer.jpg"
   }
  },
  {
@@ -110,7 +483,26 @@
   "mockup": {
    "handy": "bilder/referenzen/deinetwegen-handy.jpg"
   },
-  "stimme": "Franziska Weihmann"
+  "stimme": "Franziska Weihmann",
+  "slug": "deinetwegen",
+  "case": true,
+  "kopf": "Branding & Onepager",
+  "jahr": "seit 2024",
+  "satz": "Branding und zwei Onepager für ein Startup in der HR-Beratung.",
+  "cover": {
+   "farbe": "#1f100c",
+   "ton": "dunkel",
+   "desktop": "bilder/referenzen/deinetwegen-website.jpg",
+   "handy": "bilder/referenzen/deinetwegen-handy.jpg"
+  },
+  "bilder": [
+   {
+    "typ": "geraete",
+    "desktop": "bilder/referenzen/deinetwegen-website.jpg",
+    "handy": "bilder/referenzen/deinetwegen-handy.jpg",
+    "titel": "Onepager – am Rechner und am Handy"
+   }
+  ]
  },
  {
   "name": "Down to Earth – Kerstin Hack",
@@ -153,6 +545,14 @@
    ],
    "icons_bunt": "bilder/referenzen/kh/lebenselemente.jpg",
    "icons_titel": "Swing-Pfau und Lebenselemente"
+  },
+  "kopf": "Visual Design & Icons",
+  "jahr": "seit 2023",
+  "satz": "Visual Design, neue Icons und laufende Betreuung für Coaching, Seminare und Verlag.",
+  "cover": {
+   "farbe": "#00915f",
+   "ton": "hell",
+   "desktop": "bilder/referenzen/leben-website.jpg?v=2"
   }
  },
  {
@@ -175,6 +575,28 @@
   "kurzname": "Jana Voigtmann",
   "mockup": {
    "browser": "bilder/referenzen/jana-website.jpg"
-  }
+  },
+  "slug": "jana-voigtmann",
+  "case": true,
+  "kopf": "Branding & Website",
+  "jahr": "2022",
+  "satz": "Branding und Website für eine Künstlerin aus Leipzig.",
+  "cover": {
+   "farbe": "#161616",
+   "ton": "dunkel",
+   "desktop": "bilder/referenzen/jana-website.jpg"
+  },
+  "bilder": [
+   {
+    "typ": "geraete",
+    "desktop": "bilder/referenzen/jana-website.jpg",
+    "titel": "Startseite"
+   },
+   {
+    "typ": "geraete",
+    "desktop": "bilder/hero/jana-mixed-media.jpg",
+    "titel": "Werkseite Mixed Media"
+   }
+  ]
  }
 ]

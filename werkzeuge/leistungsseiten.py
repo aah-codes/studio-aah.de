@@ -127,7 +127,7 @@ def ablauf(pre):
 def stimmen(pre, tag):
     liste = I.mit_tag(I.STIMMEN, [tag])[:3]
     if not liste: return ''
-    return '  <section class="lsx-stimmen" aria-labelledby="stimmen-titel">\n    <p class="meta">Stimmen</p>\n    <h2 class="gr-h3" id="stimmen-titel">Das sagen Kundinnen und Kolleginnen</h2>\n    <div class="stimmen">\n' + I.stimmen(liste, pre) + '\n    </div>\n  </section>'
+    return '  <section class="lsx-stimmen" aria-labelledby="stimmen-titel">\n    <p class="meta">Stimmen</p>\n    <h2 class="gr-h3" id="stimmen-titel">Das sagen Kundinnen und Kolleginnen</h2>\n    <div class="stimmen">\n' + I.stimmen(liste, pre) + '\n    </div>\n    <p class="stimmen-quelle"><a class="textlink" href="https://www.linkedin.com/in/anna-h%C3%A4rtelt-8513b8213/details/recommendations/" target="_blank" rel="noopener">Alle Empfehlungen auf LinkedIn <span aria-hidden="true">↗</span></a></p>\n  </section>'
 
 
 def fakten(pre):
@@ -305,7 +305,7 @@ def seite(key, c):
     ld = json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, indent=2)
     t = re.sub(r'<script type="application/ld\+json">.*?</script>', lambda m: f'<script type="application/ld+json">\n{ld}\n  </script>', t, count=1, flags=re.S)
     if 'zaehlen.js' not in t:
-        t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v=20261017q" defer></script>\n</body>', 1)
+        t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v=20261017s" defer></script>\n</body>', 1)
     pfad.write_text(t, encoding='utf-8')
     print('geschrieben:', c['pfad'])
 

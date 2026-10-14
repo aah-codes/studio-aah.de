@@ -37,65 +37,48 @@ def projekte(liste, pre=''):
 
 
 
-# --- Referenzkarten (Vorbild Google Business Profile, Mockups wie Behance/Dribbble): Text links, Mockup rechts,
-#     schwebende Karte (Launch-Film oder Kundenstimme) über dem Rand; Kartenfarbe = Hausfarbe des Projekts ---
-def _chips(p):
-    teile = [x.strip() for s in p['leistungen'].split(', ') for x in s.split(' & ')]
-    return ''.join(f'<li>{esc(x)}</li>' for x in teile if x)
+# --- Projekt-Titelbild (Cover) wie bei Behance (Anna 14.10.2026): Fläche in der Hausfarbe des Kunden, oben eine Kopfzeile
+#     „Kunde · Leistung · Jahr“ (redaktioneller Rahmen), Geräte gerade gestellt, bei allen Projekten gleiche Machart.
+#     Beim Überfahren scrollt der Bildschirm langsam nach unten (nur ohne „Bewegung reduzieren“).
+def cover(p, pre, c=None, kopfzeile=True):
+    c, h = c or p['cover'], []
+    if kopfzeile:
+        h.append(f'<p class="pc-zeile" aria-hidden="true"><span>{esc(p["kurzname"])}</span><span>{esc(p["kopf"])}</span><span>{esc(p["jahr"])}</span></p>')
+    if c.get('desktop'):
+        h.append(f'<span class="pc-desktop"><img src="{pre}{c["desktop"]}" alt="" loading="lazy"></span>')
+    if c.get('handy'):
+        h.append(f'<span class="pc-handy"><img src="{pre}{c["handy"]}" alt="" loading="lazy"></span>')
+    if c.get('bild'):
+        h.append(f'<span class="pc-bild"><img src="{pre}{c["bild"]}" alt="" loading="lazy"></span>')
+    art = ' pc-mit-handy' if c.get('handy') else ''
+    return f'<span class="pc pc-{c.get("ton", "dunkel")}{art}" style="--pc-farbe: {c["farbe"]}">{"".join(h)}</span>'
 
 
-def _mockup(p, pre, m=None):
-    m, h = m or p.get('mockup', {}), []
-    if m.get('browser'):
-        h.append(f'<div class="rk-browser"><img src="{pre}{m["browser"]}" alt="Website von {esc(p["kurzname"])}" loading="lazy"></div>')
-    if m.get('handy'):
-        h.append(f'<div class="rk-handy"><img src="{pre}{m["handy"]}" alt="Website von {esc(p["kurzname"])} auf dem Handy" loading="lazy"></div>')
-    if m.get('karte'):
-        h.append(f'<div class="rk-objekt"><img src="{pre}{m["karte"]}" alt="Gestaltung für {esc(p["kurzname"])}" loading="lazy"></div>')
-    if m.get('icons'):
-        # Icon-Set als schwebende Karte (Vorbild Behance: Icon-Raster neben dem Einsatz)
-        h.append('<div class="rk-icons"><div class="rk-icons-raster">' + ''.join(f'<img src="{pre}{s}" alt="" loading="lazy">' for s in m['icons']) + '</div>'
-                 + (f'<img class="rk-icons-bunt" src="{pre}{m["icons_bunt"]}" alt="" loading="lazy">' if m.get('icons_bunt') else '')
-                 + f'<span>{esc(m.get("icons_titel", "Icons"))}</span></div>')
-    if m.get('visitenkarte'):
-        h.append(f'<div class="rk-visitenkarte"><img src="{pre}{m["visitenkarte"]}" alt="Visitenkarte für {esc(p["kurzname"])}" loading="lazy"><span>Druck</span></div>')
-    if m.get('magazin'):
-        # Magazin im Querformat: Seiten blättern nacheinander um (js/menue.js)
-        h.append('<div class="rk-magazin"><div class="rk-heft">' + ''.join(f'<img src="{pre}{s}" alt="" loading="lazy">' for s in m['magazin'])
-                 + '</div><span>Unternehmenspräsentation · Magazin A4 quer</span></div>')
-    if m.get('folien'):
-        h.append('<div class="rk-folien">' + ''.join(f'<img src="{pre}{f}" alt="" loading="lazy">' for f in m['folien']) + '<span>Unternehmenspräsentation</span></div>')
-    f = None if m.get('ohne_film') else p.get('film')
-    if f:
-        h.append(f'<button type="button" class="rk-schwebe rk-film film-knopf" data-film="{pre}{f["datei"]}" data-titel="{html.escape(f["titel"])}" aria-label="{html.escape(f["titel"])} ansehen">'
-                 f'<span class="rk-film-bild"><img src="{pre}{f["vorschau"]}" alt="" loading="lazy"></span><b>Launch-Film ansehen</b><span>die neue Website im Film</span></button>')
-    elif p.get('stimme') and not m.get('ohne_film'):
-        s = next((x for x in STIMMEN if x['name'] == p['stimme']), None)
-        if s:
-            satz = re.sub(r'<[^>]+>', '', s['absaetze_html'][0])
-            satz = satz[:satz.find('!') + 1] if '!' in satz[:200] else satz[:160].rsplit(' ', 1)[0] + ' …'
-            bild = f'<img src="{pre}bilder/{s["bild"]}" alt="" loading="lazy">' if s.get('bild') else ''
-            h.append(f'<div class="rk-schwebe">{bild}<b>{esc(s["name"])}</b><span>{s["rolle_html"]}</span><p>„{html.escape(satz, quote=False)}“</p></div>')
-    return ''.join(h)
+def projekt_link(p, pre):
+    # Projekte mit eigener Seite verlinken dorthin, alle anderen auf die Website der Kundin
+    if p.get('case'):
+        return f'{pre}referenzen/{p["slug"]}/', 'Projekt ansehen <span aria-hidden="true">→</span>', ''
+    l = p['links'][0]
+    return l['url'], f'{esc(l["text"])} <span aria-hidden="true">↗</span>', ' target="_blank" rel="noopener"'
+
+
+def projekt_karte(p, pre, ansicht=None, h='h3'):
+    url, text, ziel = projekt_link(p, pre)
+    c = p.get(f'cover_{ansicht}') if ansicht else None
+    return (f'<article class="pk">\n'
+            f'          <a class="pk-bild" href="{url}"{ziel} tabindex="-1" aria-hidden="true">{cover(p, pre, c)}</a>\n'
+            f'          <{h} class="pk-name"><a href="{url}"{ziel}>{esc(p["kurzname"])}</a></{h}>\n'
+            f'          <p class="pk-satz">{esc(p["satz"])}</p>\n'
+            f'          <p class="pk-link"><a class="textlink" href="{url}"{ziel}>{text}</a></p>\n'
+            f'        </article>')
 
 
 def referenz_karten(liste, pre, kennung='ref', ansicht=None):
-    # ansicht (z. B. 'print'): eigenes Mockup je Leistungsseite, falls im Projekt hinterlegt (mockup_print)
-    karten = []
-    for p in liste:
-        link = p['links'][0] if p.get('links') else None
-        karten.append(f'''      <article class="rk" style="--rk-farbe: {p.get("farbe", "#eeece7")}">
-        <div class="rk-text">
-          <p class="meta">{esc(p["branche"])} · {esc(p["zeitraum"])}</p>
-          <h3 class="rk-name">{esc(p["kurzname"])}</h3>
-          <ul class="rk-chips">{_chips(p)}</ul>
-          {f'<p class="rk-link"><a class="textlink" href="{link["url"]}" target="_blank" rel="noopener">{esc(link["text"])} ↗</a></p>' if link else ''}
-        </div>
-        <div class="rk-buehne">{_mockup(p, pre, p.get(f'mockup_{ansicht}') if ansicht else None)}</div>
-      </article>''')
+    # Karussell (Startseite, Leistungsseiten): ein Projekt pro Blatt, großes Titelbild, darunter Name, ein Satz, Link
+    karten = [projekt_karte(p, pre, ansicht) for p in liste]
     if len(karten) == 1:
-        return '    <div class="rk-einzeln">\n' + karten[0] + '\n    </div>'
-    return (f'    <div class="ks" data-karussell id="{kennung}-karussell">\n      <div class="ks-spur" aria-live="polite">\n' + '\n'.join(karten) + '\n      </div>\n'
+        return '    <div class="pk-einzeln">\n        ' + karten[0] + '\n    </div>'
+    return (f'    <div class="ks" data-karussell id="{kennung}-karussell">\n      <div class="ks-spur" aria-live="polite">\n        ' + '\n        '.join(karten) + '\n      </div>\n'
             '      <div class="ks-steuerung">\n        <div class="ks-pfeile"><button type="button" class="ks-knopf" data-zurueck aria-label="Vorheriges Projekt">←</button>'
             '<button type="button" class="ks-knopf" data-weiter aria-label="Nächstes Projekt">→</button></div>\n'
             '        <div class="ks-rechts"><button type="button" class="ks-knopf" data-pause aria-label="Automatisches Weiterblättern anhalten">❚❚</button><div class="ks-punkte" aria-hidden="true"></div></div>\n'
@@ -114,17 +97,17 @@ def fuer_wen(pre=''):
          ('Webdesign', paket['unternehmen']['name'], paket['unternehmen']['wer'],
           ['Design-System und neue Startseite', 'Leistungs-, Branchen- und Referenzseiten', 'Karrierebereich mit Stellenangeboten und Bewerbungsformular'],
           preis('unternehmen'), f'{pre}service/webdesign/#pakete'),
-         ('Wolfgang Bauer Ingenieurbau', 'Strategie, Rebranding, UX/UI Design, Website und Unternehmenspräsentation.', 'bauer-website.jpg', f'{pre}#referenzen')),
+         ('Wolfgang Bauer Ingenieurbau', 'Strategie, Rebranding, UX/UI Design, Website und Unternehmenspräsentation.', 'bauer-website.jpg', f'{pre}referenzen/bauer/')),
         ('selbststaendige', 'Selbstständige', 'Klar auftreten, ohne Umwege.',
          ('Webdesign', paket['onepager']['name'], 'Für Selbstständige und kleine Angebote: eine Website, die alles auf den Punkt bringt, und eine Marke, die zu Ihnen passt.',
           ['Alles auf einer Seite, responsiv', 'Mit SEO & LLM-Zitierfähigkeit', f'Dazu buchbar: Brand Basic mit Fragebogen, Brand Experience und Mitbewerberrecherche, {preis("brand-0")}'],
           preis('onepager'), f'{pre}service/webdesign/#pakete'),
-         ('Deinetwegen', 'Branding, UI/UX Design und Website für eine HR-Beratung.', 'deinetwegen-website.jpg', f'{pre}#referenzen')),
+         ('Deinetwegen', 'Branding, UI/UX Design und Website für eine HR-Beratung.', 'deinetwegen-website.jpg', f'{pre}referenzen/deinetwegen/')),
         ('vereine', 'Vereine &amp; Kultur', 'Demokratie braucht Sichtbarkeit.',
          ('Aktion', 'Kostenfreie Website', 'Kostenfreie Websites für Vereine, NGOs, Kunst und Kultur. Du zahlst, was es dir wert ist.',
           ['Für Organisationen, die sich für Demokratie, Frauen- und Kinderrechte, Natur- und Tierschutz oder Kunst und Kultur einsetzen', 'Bis zu eine Website im Monat'],
           'kostenfrei', f'{pre}demokratie-braucht-sichtbarkeit/'),
-         ('Jana Voigtmann', 'Webdesign für eine Künstlerin aus Leipzig.', 'jana-mixed-media.jpg?v=2', f'{pre}#referenzen')),
+         ('Jana Voigtmann', 'Webdesign für eine Künstlerin aus Leipzig.', 'jana-mixed-media.jpg?v=2', f'{pre}referenzen/jana-voigtmann/')),
     ]
     TAB_AUS = ' tabindex="-1"'
     knoepfe = ''.join(f'<button type="button" role="tab" id="fw-r-{k}" aria-controls="fw-{k}" aria-selected="{"true" if i == 0 else "false"}"{"" if i == 0 else TAB_AUS}>{n}</button>' for i, (k, n, *_ ) in enumerate(felder))
@@ -272,7 +255,7 @@ def einsetzen(text, name, inhalt):
 
 if __name__ == '__main__':
     seiten = {
-        'index.html': [('PROJEKTE', lambda: referenz_karten(PROJEKTE, '', 'start')), ('FUERWEN', lambda: fuer_wen('')), ('STIMMEN', lambda: stimmen(STIMMEN, '')),
+        'index.html': [('PROJEKTE', lambda: referenz_karten([x for x in PROJEKTE if x.get('case')], '', 'start')), ('FUERWEN', lambda: fuer_wen('')), ('STIMMEN', lambda: stimmen(STIMMEN, '')),
                        ('BLOG', lambda: blog(BLOG[:4], '', 'blog/')), ('KENNZAHLEN', lambda: kennzahlen())],
         'profil/index.html': [('STIMMEN', lambda: stimmen(STIMMEN, '../')), ('BLOG', lambda: blog(BLOG[:4], '../', '../blog/')),
                               ('KENNZAHLEN', lambda: kennzahlen('fakten', '      '))],
