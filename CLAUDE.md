@@ -6,7 +6,7 @@
 - Veröffentlicht wird nur der Ordner `website/` (GitHub Pages, Workflow `.github/workflows/github-pages.yml`). Alles andere (Werkzeuge) bleibt draußen.
 - Das Repository ist öffentlich: nur Dateien hinein, die jeder sehen darf. Nur Schriften mit freier Lizenz (SIL OFL), keine internen Notizen, Preise oder Kundendaten.
 
-## Stand (13.10.2026)
+## Stand (14.10.2026)
 - Die Website ist umgesetzt und live. Die WordPress-Vorlage im Nachbarordner ist nur noch Archiv. Texte ändert Anna laufend; neue Texte nur nach ihrer Vorgabe, nichts dazuerfinden.
 - In Cloud-Sitzungen gibt es keinen Zugriff auf den iCloud-Ordner `Betrieb` (Projektstatus, Branding-Richtlinien). Die wichtigsten Regeln stehen deshalb unten. Was in `Betrieb` eingetragen werden müsste, am Ende als Liste für Anna ausgeben.
 
@@ -54,6 +54,14 @@
 - Leistungsseiten: weiter unten „Aus der Praxis“ mit passendem Kundenbeispiel (`MOCKUPS` in `werkzeuge/leistungsseiten.py`).
 - Mockup-Nachweise (Mockuptree, Bendito Mockup) stehen im Impressum unter „Bildnachweise“.
 
+## Blog (Anna 13.10.2026)
+- Übersicht `website/blog/` (Funktion `blog_themen` in `werkzeuge/inhalte-erzeugen.py`): oben Chip-Leiste, dann „Aktuelles“ mit den 3 neuesten Beiträgen (der neueste groß), darunter je Kategorie Überschrift mit Linie und Kartenreihe.
+- Kategorien: `BLOG_KATEGORIEN` in `werkzeuge/inhalte-erzeugen.py` (Brand, UI/UX, Website, Marketing & Vertrieb). Kategorien ohne Beitrag bleiben ausgeblendet; eine unbekannte Kategorie in `blog.json` bricht den Generator ab. Offen: Anna fragen, ob die Namen an die neuen Leistungsnamen (Markenbildung, Webdesign) angepasst werden.
+- Neuer Beitrag: Eintrag in `werkzeuge/inhalte/blog.json` mit `kategorie` (aus der Liste) und `tags` (`brand`, `ui-ux`, `website`, `marketing` – danach wählt „Passende Artikel“ auf den Leistungsseiten aus). Das Kategorie-Label im Artikel selbst gleich setzen.
+- „Passende Artikel“ nur auf Leistungsseiten mit Blog-Kategorie; sonst `"artikel": false` in `werkzeuge/leistungen-inhalte.json`.
+- Vorschaukarten: die ganze Karte ist ein Link (Titel-Link spannt sich per CSS über die Karte), Lesezeit automatisch (aus „Lesezeit N Minuten“ im Artikel, sonst 200 Wörter pro Minute), Teaser höchstens 3 Zeilen.
+- Weiche Trennstriche für lange Wörter: `TRENNEN` in `werkzeuge/leistungsseiten.py`, Kostenrechner in `website/js/rechner.js`.
+
 ## Inspiration (von Anna gesammelt, „passt zu meinem Stil“) – keine Regel, nicht kopieren
 - 13.10.2026, Dribbble „Mall Website Retail Shopping Center“ (https://dribbble.com/shots/27796777): Foto im ganzen Bild, einfarbig eingefärbt (Duoton, duotone) in Orangerot, große weiße Serifen-Überschrift im Bild, kleine Zeichen (Kreuz, Stern, Plus) als Schmuck. Anna will ihre Bilder so – in Blau, leicht bewegt. Die Animation selbst war in der Cloud nicht sichtbar.
 - 13.10.2026, Farbtafel: `#8B1D00` (Rostrot), `#1B100F` (warmes Fast-Schwarz), `#F8F8F8`, `#EFE7EF` (blasses Flieder) – als Raster aus Quadraten und Kreisen im Wechsel.
@@ -75,6 +83,7 @@
 - Keine Fremddienste, keine Cookies, kein Analyse-Werkzeug, kein JavaScript-Rahmenwerk. JavaScript nur, wo es ohne nicht geht (z. B. Mobilmenü), und dann wenige Zeilen.
 - Nur relative Pfade – der Benutzername ist auf den beiden Macs verschieden.
 - Zugänglichkeit: sinnvolle Überschriften-Reihenfolge, Alternativtexte, sichtbarer Fokus, ausreichender Kontrast.
+- Sprungmarken: Abstand unter Kopf und Chip-Leiste nur über `html { scroll-padding-top }`; kein zusätzliches `scroll-margin-top` an Abschnitten (sonst doppelt).
 - Nie ins Repository: Zugangsdaten, `.env`, Kundendaten, PDFs (siehe `.gitignore`).
 
 ## Bilder
