@@ -3010,30 +3010,41 @@ section[hidden] { display: none !important; }
 .cs-prozess-spalten .grafik-prozess:first-child li:last-child::before, .cs-prozess-spalten .grafik-prozess:last-child li:first-child::before { background: var(--farbe-dunkel); }
 /* Personas: zwei Zielgruppen, zwei Sprachen (Anna 14.10.2026) */
 .cs-personas > .gr-h3 { margin: 0; }
-.pe-zwei { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 32px; }
-.pe-seite { border-radius: 28px; padding: 44px 40px; background: var(--kachel); font-family: var(--schrift-text); }
-.pe-anrede { margin: 0 0 18px; font-size: clamp(44px, 4.4vw, 64px); font-weight: 700; line-height: 1; letter-spacing: -.02em; color: var(--pc-farbe); }
-.pe-gruppe { margin: 0; font-size: .95rem; color: var(--farbe-gedaempft); }
-.pe-titel { margin: 4px 0 10px; font-family: var(--schrift-text); font-size: clamp(22px, 1.9vw, 28px); font-weight: 700; line-height: 1.2; letter-spacing: -.01em; text-transform: none; }
-.pe-ton { margin: 0; color: var(--farbe-gedaempft); line-height: 1.55; }
-.pe-personen { list-style: none; margin: 32px 0 0; padding: 0; display: grid; gap: 12px; }
-.pe-person { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 20px; align-items: start; padding: 18px; border-radius: 20px; background: #fff; }
-.pe-person img { width: 112px; height: 140px; object-fit: cover; object-position: 50% 20%; border-radius: 14px; display: block; }
-.pe-name { margin: 2px 0 0; font-weight: 700; font-size: 1.05rem; }
-.pe-rolle { margin: 0 0 10px; font-size: .9rem; color: var(--farbe-gedaempft); }
-.pe-person blockquote { margin: 0 0 12px; font-size: 1rem; line-height: 1.5; }
-.pe-sucht { margin: 0; font-size: .88rem; line-height: 1.5; color: var(--farbe-gedaempft); }
-.pe-sucht span { display: block; font-weight: 700; color: var(--farbe-dunkel); }
-.pe-beispiele { margin-top: 32px; }
+.pe-zwei { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 32px; }
+.pe-seite { position: relative; border-radius: 28px; padding: 44px 40px 72px; font-family: var(--schrift-text); }
+.pe-sie { background: var(--kachel); color: var(--farbe-dunkel); }
+.pe-du { background: var(--pc-farbe); color: #fff; }
+.pe-gruppe { margin: 0; font-size: .95rem; opacity: .7; }
+.pe-titel { margin: 4px 0 10px; font-family: var(--schrift-text); font-size: clamp(24px, 2.2vw, 32px); font-weight: 700; line-height: 1.2; letter-spacing: -.01em; text-transform: none; }
+.pe-ton { margin: 0; line-height: 1.55; opacity: .8; max-width: 34em; }
+.pe-personen { list-style: none; margin: 36px 0 0; padding: 0; display: grid; gap: 24px; }
+.pe-anzahl-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.pe-foto { margin: 0; border-radius: 22px; overflow: hidden; }
+.pe-foto img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 22%; }
+.pe-anzahl-1 .pe-foto img { aspect-ratio: 1 / 1; }
+/* Zitat als Sprechblase, ragt in das Foto und zeigt mit einem Zipfel auf die Person */
+.pe-blase { position: relative; margin: -56px 16px 0; padding: 18px 20px; border-radius: 18px; background: #fff; color: var(--farbe-dunkel); font-size: 1.02rem; line-height: 1.5; box-shadow: 0 18px 40px rgba(0, 20, 40, .18); }
+.pe-blase::before { content: ""; position: absolute; left: 32px; top: -9px; width: 20px; height: 20px; background: #fff; transform: rotate(45deg); border-radius: 3px; }
+.pe-name { margin: 18px 4px 0; font-weight: 700; font-size: 1.05rem; }
+.pe-name span { display: block; font-weight: 400; font-size: .9rem; opacity: .7; }
+.pe-sucht { margin: 10px 4px 0; font-size: .88rem; line-height: 1.5; opacity: .75; }
+.pe-sucht span { display: block; font-weight: 700; }
+.pe-beispiele { margin-top: 36px; max-width: calc(100% - 150px); }
 .pe-klein { margin: 0 0 8px; font-size: .9rem; font-weight: 700; }
 .pe-beispiele ul { list-style: none; margin: 0; padding: 0; }
-.pe-beispiele li { padding: 12px 0; border-top: 1px solid rgba(14, 16, 17, .12); font-size: 1.05rem; color: var(--pc-farbe); font-weight: 600; }
+.pe-beispiele li { padding: 12px 0; border-top: 1px solid currentColor; border-color: rgba(14, 16, 17, .12); font-size: 1.05rem; font-weight: 600; color: var(--pc-farbe); }
+.pe-du .pe-beispiele li { border-color: rgba(255, 255, 255, .2); color: #fff; }
+/* Störer am Ende: runder Kreis mit der Ansprache */
+.pe-stoerer { position: absolute; right: 32px; bottom: 32px; display: grid; place-items: center; width: 132px; height: 132px; margin: 0; border-radius: 50%; font-size: 40px; font-weight: 800; letter-spacing: -.02em; transform: rotate(-10deg); box-shadow: 0 16px 34px rgba(0, 20, 40, .22); }
+.pe-sie .pe-stoerer { background: var(--pc-farbe); color: #fff; }
+.pe-du .pe-stoerer { background: #fbd52a; color: var(--pc-farbe); }
 @media (max-width: 900px) {
   .pe-zwei { grid-template-columns: 1fr; }
-  .pe-seite { padding: 28px 20px; border-radius: 20px; }
-  .pe-person { grid-template-columns: 84px minmax(0, 1fr); gap: 14px; padding: 14px; }
-  .pe-person img { width: 84px; height: 105px; }
+  .pe-seite { padding: 28px 20px 28px; border-radius: 20px; }
+  .pe-beispiele { max-width: none; }
+  .pe-stoerer { position: relative; right: auto; bottom: auto; width: 96px; height: 96px; font-size: 30px; margin: 20px 4px 0 auto; }
 }
+@media (max-width: 600px) { .pe-anzahl-2 { grid-template-columns: 1fr; } }
 .pe-hinweis { margin: 14px 0 0; font-size: .8rem; color: var(--farbe-gedaempft); }
 @media (max-width: 1000px) { .pe-zwei { grid-template-columns: 1fr; } }
 @media (max-width: 600px) { .pe-seite { padding: 24px 18px; border-radius: 20px; } .pe-kopf { grid-template-columns: 1fr; gap: 8px; } }

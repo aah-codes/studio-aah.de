@@ -4,7 +4,7 @@
 //   swift werkzeuge/grafiken/heft-druck.swift QUELLE.pdf FOTO.jpg SCHRIFT.woff2 AUS.pdf "2,-,-,1,3,…" [JPG-ORDNER BREITE]
 // Reihenfolge: Seitennummern der Quelle, "-" = leere Seite, "F" = Hälfte der Foto-Doppelseite (zweimal hintereinander).
 // Die erste Seite (Umschlag) und die letzte (Rückseite) bekommen keine Seitenzahl, leere Seiten auch nicht.
-// Seitenzahlfeld der Vorlage: gelbes Schrägfeld unten rechts (gemessen an der Vorlage vom 02.10.2026, 1920 × 1080 pt).
+// Seitenzahlfeld der Vorlage: gelbes Schrägfeld unten rechts (gemessen an der Vorlage vom 02.10.2026, 1920 × 1080 pt); im Heft steht es immer außen.
 import Foundation; import CoreGraphics; import ImageIO; import UniformTypeIdentifiers; import CoreText
 
 let a = CommandLine.arguments
@@ -28,15 +28,28 @@ func text(_ c: CGContext, _ s: String, _ x: CGFloat, _ yGrund: CGFloat, _ f: CTF
                                                           NSAttributedString.Key(kCTKernAttributeName as String): sperren])
     c.textPosition = CGPoint(x: x, y: H - yGrund); CTLineDraw(CTLineCreateWithAttributedString(att), c)
 }
-func seitenzahl(_ c: CGContext, _ n: Int) {
-    // gelbes Schrägfeld überdecken und neue Zahl setzen
+func seitenzahl(_ c: CGContext, _ n: Int, _ seite: CGPDFPage? = nil) {
+    // Seitenzahl immer außen (Anna 14.10.2026): rechte Seiten (ungerade) unten rechts, linke Seiten (gerade) unten links.
+    // Linke Seiten: altes Feld unten rechts verschwindet – die Seite wird dort, nur in diesem Rechteck, um 62 pt versetzt
+    // noch einmal gezeichnet (der Inhalt direkt darüber füllt die Stelle, bleibt Vektor)
+    let links = n % 2 == 0
+    if links, let p = seite {
+        c.saveGState(); c.clip(to: CGRect(x: 1846, y: H - 1006, width: W - 1846, height: 60))
+        c.translateBy(x: 0, y: -62); c.drawPDFPage(p); c.restoreGState()
+    }
     c.setFillColor(gelb); c.beginPath()
-    c.move(to: CGPoint(x: 1858, y: H - 953)); c.addLine(to: CGPoint(x: W, y: H - 953)); c.addLine(to: CGPoint(x: W, y: H - 997)); c.addLine(to: CGPoint(x: 1871, y: H - 997)); c.closePath(); c.fillPath()
+    if links {
+        c.move(to: CGPoint(x: 0, y: H - 953)); c.addLine(to: CGPoint(x: W - 1858, y: H - 953)); c.addLine(to: CGPoint(x: W - 1871, y: H - 997)); c.addLine(to: CGPoint(x: 0, y: H - 997))
+    } else {
+        c.move(to: CGPoint(x: 1858, y: H - 953)); c.addLine(to: CGPoint(x: W, y: H - 953)); c.addLine(to: CGPoint(x: W, y: H - 997)); c.addLine(to: CGPoint(x: 1871, y: H - 997))
+    }
+    c.closePath(); c.fillPath()
     let s = String(format: "%02d", n), f = schrift(19, 700)
     let att = NSAttributedString(string: s, attributes: [NSAttributedString.Key(kCTFontAttributeName as String): f, NSAttributedString.Key(kCTForegroundColorAttributeName as String): blau,
                                                           NSAttributedString.Key(kCTKernAttributeName as String): 1.5])
     let l = CTLineCreateWithAttributedString(att); let b = CTLineGetBoundsWithOptions(l, .useGlyphPathBounds)
-    c.textPosition = CGPoint(x: 1894 - b.width / 2, y: H - 982); CTLineDraw(l, c)
+    let mitte: CGFloat = links ? W - 1894 : 1894
+    c.textPosition = CGPoint(x: mitte - b.width / 2, y: H - 982); CTLineDraw(l, c)
 }
 func fotoHaelfte(_ c: CGContext, rechts: Bool) {
     // Foto über beide Seiten: Streifen 32:9 aus der Mitte (etwas tiefer, Stützen und Kran bleiben im Bild).
@@ -74,7 +87,7 @@ for (i, r) in reihe.enumerated() {
     pdf.setFillColor(CGColor(gray: 1, alpha: 1)); pdf.fill(mb)
     let heftSeite = i + 1, rand = i == 0 || i == reihe.count - 1
     if r == "F" { fotoHaelfte(pdf, rechts: fotoSeite == 1); fotoSeite += 1; if fotoSeite == 2 { seitenzahl(pdf, heftSeite) } }
-    else if r != "-" { pdf.drawPDFPage(quelle.page(at: Int(r)!)!); if !rand { seitenzahl(pdf, heftSeite) } }
+    else if r != "-" { let p = quelle.page(at: Int(r)!)!; pdf.drawPDFPage(p); if !rand { seitenzahl(pdf, heftSeite, p) } }
     pdf.endPDFPage()
 }
 pdf.closePDF()

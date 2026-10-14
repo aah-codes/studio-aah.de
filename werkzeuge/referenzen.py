@@ -198,20 +198,22 @@ def block(b, pre):
                 f'    <figure class="vd-varianten"><img src="{pre}{b["varianten"]}" alt="{esc(b["varianten_alt"])}" loading="lazy"><figcaption class="meta">{esc(b["varianten_text"])}</figcaption></figure>\n'
                 + (f'    <div class="vd-features">{features}</div>\n' if features else '') + '  </section>')
     if b['typ'] == 'personas':
-        # Zwei Zielgruppen, zwei Sprachen (Anna 14.10.2026): Auftraggeber gesiezt, Bewerber geduzt.
-        # Ruhig wie bei Apple (Anna 14.10.2026: „zu viele Schrifttypen und Farben“): eine Schrift, eine Akzentfarbe, Personen als Zeilen
+        # Zwei Zielgruppen, zwei Sprachen (Anna 14.10.2026): zwei klar getrennte Welten (Auftraggeber hell, Bewerber in Bauer-Blau),
+        # große Fotos, Zitate als Sprechblasen, „Sie“ / „Du“ als runder Störer am Ende; eine Schrift
         def person(x):
-            return (f'<li class="pe-person"><img src="{pre}{x["bild"]}" alt="" width="800" height="1000" loading="lazy"><div>'
-                    f'<p class="pe-name">{esc(x["name"])}</p><p class="pe-rolle">{esc(x["rolle"].replace(" · ", ", "))}</p>'
-                    f'<blockquote>„{esc(x["zitat"])}“</blockquote><p class="pe-sucht"><span>Sucht zuerst</span>{" · ".join(esc(t) for t in x["sucht"])}</p></div></li>')
-        def seite(s):
+            return (f'<li class="pe-person"><figure class="pe-foto"><img src="{pre}{x["bild"]}" alt="" width="800" height="1000" loading="lazy"></figure>'
+                    f'<blockquote class="pe-blase">„{esc(x["zitat"])}“</blockquote>'
+                    f'<p class="pe-name">{esc(x["name"])} <span>{esc(x["rolle"].replace(" · ", ", "))}</span></p>'
+                    f'<p class="pe-sucht"><span>Sucht zuerst</span>{" · ".join(esc(t) for t in x["sucht"])}</p></li>')
+        def seite(s, kl):
             beispiele = ''.join(f'<li>„{esc(x)}“</li>' for x in s['beispiele'])
-            return (f'<div class="pe-seite"><p class="pe-anrede">„{esc(s["anrede"])}“</p><p class="pe-gruppe">{esc(s["meta"])}</p>'
+            return (f'<div class="pe-seite {kl}"><p class="pe-gruppe">{esc(s["meta"])}</p>'
                     f'<h3 class="pe-titel">{esc(s["titel"])}</h3><p class="pe-ton">{esc(s["ton"])}</p>'
-                    f'<ul class="pe-personen">{"".join(person(x) for x in s["personas"])}</ul>'
-                    f'<div class="pe-beispiele"><p class="pe-klein">So klingt es auf der Website</p><ul>{beispiele}</ul></div></div>')
+                    f'<ul class="pe-personen pe-anzahl-{len(s["personas"])}">{"".join(person(x) for x in s["personas"])}</ul>'
+                    f'<div class="pe-beispiele"><p class="pe-klein">So klingt es auf der Website</p><ul>{beispiele}</ul></div>'
+                    f'<p class="pe-stoerer"><span class="unsichtbar">Ansprache: </span>„{esc(s["anrede"])}“</p></div>')
         return (f'  <section class="cs-block cs-personas" aria-labelledby="pe-titel"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3" id="pe-titel">{esc(b["titel"])}</h2>'
-                f'<p class="weg-einleitung">{esc(b["text"])}</p><div class="pe-zwei">{seite(b["auftraggeber"])}{seite(b["bewerber"])}</div>'
+                f'<p class="weg-einleitung">{esc(b["text"])}</p><div class="pe-zwei">{seite(b["auftraggeber"], "pe-sie")}{seite(b["bewerber"], "pe-du")}</div>'
                 f'<p class="pe-hinweis">Personas: Hypothesen aus Referenzen und Marktrecherche · Fotos: Symbolbilder</p></section>')
     if b['typ'] == 'heft':
         # Unternehmenspräsentation als flaches Heft mit Klammerheftung (Anna 14.10.2026: flach, Ecken sauber);
@@ -371,6 +373,11 @@ def projektseite(p, nr):
           "creator": {"@id": "https://studio-aah.de/#studio"}, "inLanguage": "de"}
     ziel = basis / 'website' / 'referenzen' / p['slug'] / 'index.html'
     ziel.parent.mkdir(parents=True, exist_ok=True)
+    # Bilder mit Versionsnummer (Änderungszeit), damit Browser nach neuen Aufnahmen nicht das alte Bild zeigen (Anna 14.10.2026)
+    def version(m):
+        datei = basis / 'website' / m.group(2)
+        return m.group(1) + m.group(2) + (f'?v={int(datei.stat().st_mtime) % 1000000}' if datei.exists() else '')
+    main = re.sub(r'(\.\./\.\./)(bilder/[^"\'()\s?]+\.(?:jpg|jpeg|png|webp))', version, main)
     ziel.write_text(rahmen('service/webdesign/index.html', main, titel, p['satz'], url, ld), encoding='utf-8')
     print('geschrieben: referenzen/' + p['slug'] + '/')
 
