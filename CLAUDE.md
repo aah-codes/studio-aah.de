@@ -65,7 +65,8 @@
 ## Projektseite Bauer (Stand 15.10.2026)
 - `/referenzen/bauer/` wird aus `varianten.b` erzeugt (`hauptvariante: "b"` in `werkzeuge/inhalte/projekte.json`); Variante A nur im Tag `bauer-variante-a-2026-10-14`.
 - Heft (Unternehmenspräsentation) ausgeblendet bis zur Abnahme der Druckdatei; Einstellungen in `varianten_ablage.heft`. Vor dem Einblenden Seiten neu erzeugen und auf Personen und Platzhalter prüfen.
-- Mockup (Anna, 15.10.2026): Standrechner als typischer schwarzer Büromonitor mit dunklem Standfuß, hochmodern, kein iMac (Zielgruppe öffentliche Auftraggeber, Vergabestellen). Ersetzt den gezeichneten Standrechner im Vorher-Film (`storyfilm` mit `monitor`); dafür frontales Foto-Mockup mit grünem Bildschirm (Film läuft im Bildschirm, vgl. `werkzeuge/grafiken/gruener-schirm.swift`).
+- Mockup (Anna, 15.10.2026): Vorher-Film läuft im echten Foto „heller Monitor auf Holzschreibtisch“ (Sora Sagano, Unsplash; MacBook und Controller wegretuschiert, `bilder/referenzen/bauer/monitor-foto.jpg`, Option `monitor` mit `foto`/`schirm`). Anna hatte zuerst einen schwarzen Büromonitor gewünscht und dann dieses Foto gewählt.
+- Einstieg wie Deinetwegen (Anna, 15.10.2026: Deinetwegen ist der Blueprint für den Einstieg): H1 ohne Einleitung, Bildschirmwand, Überblick (Aussage + Leistungen), Kennzahlen, Inhalt; Ausgangslage als zwei Karten (Herausforderung weiß, Ziele Bauer-Blau).
 - Keine Mitarbeitenden zeigen: Ausschnitte mit Personen ersetzen statt weichzeichnen. Vor jeder Veröffentlichung Prüfer-Agent auf Personen, Platzhalter und interne Inhalte.
 - Bilder, die keine Seite mehr nutzt, aus `website/` entfernen – sonst sind sie öffentlich abrufbar.
 - Übergabe mit allen Details liegt in `Betrieb` (Studio AAH/Website/2026-10-15_uebergabe-bauer-projektseite.md).

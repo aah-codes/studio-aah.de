@@ -3616,3 +3616,20 @@ section[hidden] { display: none !important; }
 .eg-stimme .stimme { margin: 0; break-inside: avoid; }
 .eg-stimme .stimmen-quelle { padding: 16px 0 0; margin: 0; }
 @media (max-width: 900px) { .eg-mit-stimme { grid-template-columns: 1fr; } }
+
+/* Vorher-Film im echten Monitor-Foto (Anna 15.10.2026: nur echte Mockups; Bauer: heller Monitor auf Holztisch, Sora Sagano/Unsplash) */
+@media (min-width: 901px) { .cs-nahtlos .cs-story .st-rahmen:has(.st-monitor-foto) { --mon-b: min(100%, 1100px, max(560px, calc((100svh - var(--kopf-hoehe) - 170px) * 1.279))); } }
+.cs-nahtlos .cs-story .st-monitor.st-monitor-foto { position: relative; padding: 0; max-width: var(--mon-b, 100%); margin-inline: auto; }
+.st-foto { display: block; width: 100%; height: auto; border-radius: clamp(10px, 1.2vw, 18px); }
+.st-schirm { position: absolute; left: var(--sx); top: var(--sy); width: var(--sw); height: var(--sh); overflow: hidden; background: #fff; }
+.st-monitor-foto .st-browser { display: flex; flex-direction: column; height: 100%; border: 0; border-radius: 0; box-shadow: none; }
+.st-monitor-foto .st-browser .vf-leiste { border-radius: 0; flex: none; }
+.st-monitor-foto .st-fenster { flex: 1; aspect-ratio: auto; }
+
+/* Herausforderung und Ziele als Listen in den Karten (Bauer, Anna 15.10.2026: wie Deinetwegen) */
+.hk-karte.hk-mit-liste { justify-content: flex-start; gap: 28px; min-height: 0; }
+.hk-dunkel .hk-etikett::before { background: var(--pc-akzent-dunkel, var(--pc-akzent)); }
+.hk-liste { list-style: none; margin: 0; padding: 0; }
+.hk-liste li { padding: 16px 0; border-top: 1.5px solid currentColor; border-top-color: rgba(14, 16, 17, .15); font-size: clamp(18px, 1.6vw, 24px); line-height: 1.35; }
+.hk-dunkel .hk-liste li { border-top-color: rgba(255, 255, 255, .25); }
+.cs-nahtlos .cs-kennzahlen.cs-block { margin-top: 0; }

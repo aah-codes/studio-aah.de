@@ -414,10 +414,12 @@ def block(b, pre):
         kopf_film = '' if b.get('ohne_kopf') else f'<figcaption class="cs-block-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3">{esc(b["titel"])}</h2></figcaption>'
         return (f'  <figure class="cs-block cs-story" data-story aria-label="{esc(b["titel"])}">\n    {kopf_film}\n'
                 f'    <div class="st-rahmen"><span class="cs-etikett st-phase">{esc(b["alt_text"])}</span>'
-                + ('<div class="st-monitor">' if b.get('monitor') else '')  # Standrechner (Anna 15.10.2026)
+                + ((f'<div class="st-monitor st-monitor-foto" style="--sx:{b["monitor"]["schirm"][0]}%;--sy:{b["monitor"]["schirm"][1]}%;--sw:{b["monitor"]["schirm"][2]}%;--sh:{b["monitor"]["schirm"][3]}%;--fv:{b["monitor"]["verhaeltnis"]}">'
+                    f'<img class="st-foto" src="{pre}{b["monitor"]["foto"]}" alt="" width="{jpg_mass(basis / "website" / b["monitor"]["foto"])[0]}" height="{jpg_mass(basis / "website" / b["monitor"]["foto"])[1]}" loading="lazy"><div class="st-schirm">')
+                   if isinstance(b.get('monitor'), dict) else ('<div class="st-monitor">' if b.get('monitor') else ''))  # Standrechner (Anna 15.10.2026): Foto-Mockup oder (alt) gezeichnet
                 + f'<div class="st-browser"><div class="vf-leiste"><span class="vf-adresse">bauer-ingbau.de/</span></div><div class="st-fenster">{szenen}'
                 f'<span class="vf-zeiger" aria-hidden="true"></span><div class="vf-blende" aria-hidden="true"><b>{esc(b["blende_text"])}</b></div></div></div>'
-                + ('<span class="st-hals" aria-hidden="true"></span><span class="st-fuss" aria-hidden="true"></span></div>' if b.get('monitor') else '')
+                + ('</div></div>' if isinstance(b.get('monitor'), dict) else ('<span class="st-hals" aria-hidden="true"></span><span class="st-fuss" aria-hidden="true"></span></div>' if b.get('monitor') else ''))
                 + f'<div class="st-leiste"><button type="button" class="ks-knopf st-knopf" aria-label="Film anhalten">❚❚</button><div class="st-kapitelreihe">{kapitel}</div>'
                 f'<p class="st-titel"></p></div></div>\n'
                 f'    <script type="application/json" class="st-daten" data-alt="{esc(b["alt_text"])}" data-neu="{esc(b["neu_text"])}">{daten}</script>\n  </figure>')
@@ -459,7 +461,10 @@ def block(b, pre):
                 f'<div class="ub-leistungen"><p class="ub-klein">{esc(b.get("leistungen_titel", "Leistungen"))}</p><ul>{li}</ul></div></section>')
     if b['typ'] == 'hl-karten':
         # Herausforderung und Lösung als zwei große Karten (Behance „Challenge / Solution“), darunter die Ziele (Deinetwegen, Anna 15.10.2026)
-        k = ''.join(f'<div class="hk-karte{" hk-dunkel" if x.get("dunkel") else ""}"><h2 class="hk-etikett">{esc(x["etikett"])}</h2><p class="hk-text">{trennen(esc(x["text"]))}</p></div>' for x in b['karten'])
+        def inhalt_karte(x):  # Aussage (Deinetwegen) oder Liste (Bauer: Herausforderung und Ziele)
+            if x.get('punkte'): return '<ul class="hk-liste">' + ''.join(f'<li>{trennen(esc(t))}</li>' for t in x['punkte']) + '</ul>'
+            return f'<p class="hk-text">{trennen(esc(x["text"]))}</p>'
+        k = ''.join(f'<div class="hk-karte{" hk-dunkel" if x.get("dunkel") else ""}{" hk-mit-liste" if x.get("punkte") else ""}"><h2 class="hk-etikett">{esc(x["etikett"])}</h2>{inhalt_karte(x)}</div>' for x in b['karten'])
         z = ''.join(f'<li><span class="hk-nr" aria-hidden="true">{i}</span><span>{esc(x)}</span></li>' for i, x in enumerate(b.get('ziele', []), 1))
         ziele = f'<div class="hk-ziele"><h3 class="ub-klein">{esc(b.get("ziele_titel", "Ziele"))}</h3><ol>{z}</ol></div>' if z else ''
         return f'  <section class="cs-block cs-hl-karten" aria-label="Herausforderung und Lösung"><div class="hk-paar">{k}</div>{ziele}</section>'
@@ -491,6 +496,9 @@ def block(b, pre):
                          f'<div class="sp-fenster"><img src="{pre}{x["bild"]}" alt="{esc(x["alt"])}" width="{jpg_mass(basis / "website" / x["bild"])[0]}" height="{jpg_mass(basis / "website" / x["bild"])[1]}" loading="lazy"></div></figure>' for x in b['seiten'])
         return (f'  <section class="cs-block cs-seiten-pillen" aria-labelledby="sp-titel"><div class="sp-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="la-titel" id="sp-titel">{trennen(esc(b["titel"]))}</h2>'
                 + (f'<p>{esc(b["text"])}</p>' if b.get('text') else '') + f'</div><div class="sp-reihe">{seiten}</div></section>')
+    if b['typ'] == 'kennzahlen':  # Zahlen als eigener Block an beliebiger Stelle (Bauer: nach dem Überblick, Anna 15.10.2026)
+        z = ''.join(f'<li><span class="kz-zahl">{esc(x)}</span> <span>{trennen(esc(t))}</span></li>' for x, t in b['zahlen'])
+        return f'  <ul class="cs-block cs-kennzahlen" role="list" aria-label="Projekt in Kürze">{z}</ul>'
     raise SystemExit('Unbekannter Bildblock: ' + b['typ'])
 
 

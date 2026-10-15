@@ -1443,20 +1443,6 @@
    "b": [
     {
      "projekt": {
-      "zahlen": [
-       [
-        "83",
-        "Seiten online"
-       ],
-       [
-        "69",
-        "Referenzprojekte mit eigener Seite"
-       ],
-       [
-        "13",
-        "Bewerbungen seit dem Launch"
-       ]
-      ],
       "buehne_wand": {
        "alt": "Bereiche der neuen Website im Überblick: Startseite, Kompetenzen, Referenzen, Karriere, Formulare und Kontakt",
        "spalten": [
@@ -1513,7 +1499,49 @@
        ],
        "fest": 2
       },
-      "einleitung": "Strategie, Rebranding, neue Website und Unternehmenspräsentation für ein Bauunternehmen im Ingenieurbau."
+      "klasse": "cs-bauer",
+      "stil": ";--pc-dunkel:#003466;--pc-akzent-dunkel:#FBD52A",
+      "zahlen": []
+     }
+    },
+    {
+     "typ": "ueberblick",
+     "meta": "Überblick",
+     "aussage": "Eine Website, zwei Wege – für öffentliche Auftraggeber und für Fachkräfte.",
+     "leistungen_titel": "Leistungen",
+     "leistungen": [
+      "Strategie",
+      "Rebranding",
+      "Website-Redesign",
+      "Webentwicklung in Kadence",
+      "Unternehmenspräsentation"
+     ],
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": []
+     }
+    },
+    {
+     "typ": "kennzahlen",
+     "zahlen": [
+      [
+       "83",
+       "Seiten online"
+      ],
+      [
+       "69",
+       "Referenzprojekte mit eigener Seite"
+      ],
+      [
+       "13",
+       "Bewerbungen seit dem Launch"
+      ]
+     ],
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": []
      }
     },
     {
@@ -1558,42 +1586,39 @@
      "titel": "Ausgangslage",
      "band": {
       "von": "#ffffff",
-      "bis": "#ffffff",
+      "bis": "#EEF2F6",
       "art": [
        "eng"
       ]
      }
     },
     {
-     "aus": 0,
-     "band": {
-      "von": "#ffffff",
-      "bis": "#ffffff",
-      "art": []
-     },
-     "setze": {
-      "typ": "ziele-text",
-      "links": {
-       "titel": "Herausforderung",
+     "typ": "hl-karten",
+     "karten": [
+      {
+       "etikett": "Herausforderung",
        "punkte": [
-        [
-         "",
-         "Vergabe nach VOB/A"
-        ],
-        [
-         "",
-         "Vergabestellen brauchen Infos in kürzester Zeit"
-        ],
-        [
-         "",
-         "Auftraggeber und Bewerber auf einer Website"
-        ],
-        [
-         "",
-         "Gestaltung mit Potenzial zur Modernisierung"
-        ]
+        "Vergabe nach VOB/A",
+        "Vergabestellen brauchen Infos in kürzester Zeit",
+        "Auftraggeber und Bewerber auf einer Website",
+        "Gestaltung mit Potenzial zur Modernisierung"
        ]
+      },
+      {
+       "etikett": "Ziele",
+       "punkte": [
+        "Klar für öffentliche Auftraggeber",
+        "Referenzen als Vertrauensfaktor",
+        "Leistungen verständlich zeigen",
+        "Fachkräfte gezielt ansprechen"
+       ],
+       "dunkel": true
       }
+     ],
+     "band": {
+      "von": "#EEF2F6",
+      "bis": "#EEF2F6",
+      "art": []
      }
     },
     {
@@ -1708,10 +1733,19 @@
        }
       ],
       "ohne_kopf": true,
-      "monitor": true
+      "monitor": {
+       "foto": "bilder/referenzen/bauer/monitor-foto.jpg",
+       "schirm": [
+        9.818,
+        6.047,
+        77.909,
+        66.163
+       ],
+       "verhaeltnis": "1.279"
+      }
      },
      "band": {
-      "von": "#ffffff",
+      "von": "#EEF2F6",
       "bis": "#ffffff",
       "art": []
      }
