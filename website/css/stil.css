@@ -3662,3 +3662,14 @@ section[hidden] { display: none !important; }
 /* Raster auf hellem Grund (Jana: Tusche-Striche, Anna 16.10.2026): Kacheln mit feinem dunklem Rand und weichem Schatten */
 .hw-hell .hw-fest img, .hw-hell .hw-lauf img { box-shadow: 0 0 0 1px rgba(0, 0, 0, .14), 0 18px 44px rgba(0, 0, 0, .22); }
 .hw-hell .hw-knopf { background: #000; color: #fff; }
+
+/* Seiten nebeneinander in voller Länge (Jana: Werkbereiche) – Etikett im Stil der Kundin über --pc-pille */
+.cs { --pc-pille: var(--pc-akzent); --pc-pille-text: var(--pc-dunkel); --pc-pille-rand: transparent; }
+.cs-seiten-spalten { max-width: 1200px; margin: 0 auto; }
+.ss-reihe { display: grid; grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); gap: clamp(16px, 2.4vw, 40px); align-items: start; }
+.ss-seite { margin: 0; }
+.ss-seite figcaption { margin: 0 0 12px; }
+.ss-pille { display: inline-block; padding: .45em 1.1em; border-radius: 999px; background: var(--pc-pille); color: var(--pc-pille-text); box-shadow: inset 0 0 0 1.5px var(--pc-pille-rand); font-weight: 700; font-size: clamp(14px, 1.1vw, 17px); text-transform: uppercase; letter-spacing: .04em; }
+.ss-fenster { border-radius: clamp(8px, 1vw, 14px); overflow: hidden; background: #fff; box-shadow: 0 0 0 1px rgba(0, 0, 0, .1), 0 24px 60px rgba(0, 0, 0, .14); }
+.ss-fenster img { display: block; width: 100%; height: auto; }
+@media (max-width: 700px) { .ss-reihe { grid-template-columns: 1fr; } .ss-seite { width: min(420px, 100%); margin-inline: auto; } }

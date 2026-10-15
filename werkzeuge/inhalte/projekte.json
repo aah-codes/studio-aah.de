@@ -2889,7 +2889,7 @@
     {
      "projekt": {
       "klasse": "cs-jana",
-      "stil": ";--pc-dunkel:#000000;--pc-akzent:#000000;--pc-akzent-dunkel:#00FF00;--pc-meta-dunkel:#00FF00;--pc-titel:#000000;--pc-streifen:#00FF00",
+      "stil": ";--pc-dunkel:#000000;--pc-akzent:#000000;--pc-akzent-dunkel:#00FF00;--pc-meta-dunkel:#00FF00;--pc-titel:#000000;--pc-streifen:#00FF00;--pc-pille:#FFFF00;--pc-pille-text:#000000;--pc-pille-rand:#000000",
       "buehne_wand": {
        "alt": "Alle Seiten der Website im Überblick: Startseite, Mixed Media, Malerei, Grafik und Über",
        "spalten": [
@@ -2944,6 +2944,152 @@
        "grund": "bilder/referenzen/jana/tusche-g3.jpg",
        "luecke": "clamp(26px, 3.2vw, 52px)"
       }
+     }
+    },
+    {
+     "typ": "inhalt",
+     "titel": "Inhalt",
+     "punkte": [
+      [
+       "Startseite",
+       "j-start"
+      ],
+      [
+       "Werke",
+       "j-werke"
+      ],
+      [
+       "Über und Kontakt",
+       "j-ueber"
+      ],
+      [
+       "Gestaltung",
+       "j-gestaltung"
+      ]
+     ],
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": []
+     }
+    },
+    {
+     "typ": "langaufnahmen",
+     "anker": "j-start",
+     "meta": "Website",
+     "titel": "Startseite",
+     "desktop": "bilder/referenzen/jana/lang-desktop.jpg",
+     "desktop_alt": "Ganze Startseite von Jana Voigtmann am Rechner",
+     "handy": "bilder/referenzen/jana/lang-handy.jpg",
+     "handy_alt": "Ganze Startseite von Jana Voigtmann am Handy",
+     "band": {
+      "von": "#F4F4F4",
+      "bis": "#F4F4F4",
+      "art": []
+     }
+    },
+    {
+     "typ": "seiten-spalten",
+     "id": "werke",
+     "anker": "j-werke",
+     "meta": "Werke",
+     "titel": "Mixed Media, Malerei, Grafik",
+     "seiten": [
+      {
+       "bild": "bilder/referenzen/jana/seite-mixed-media.jpg",
+       "alt": "Ganze Seite Mixed Media mit Ausstellungsfotos",
+       "label": "Mixed Media"
+      },
+      {
+       "bild": "bilder/referenzen/jana/seite-malerei.jpg",
+       "alt": "Ganze Seite Malerei",
+       "label": "Malerei"
+      },
+      {
+       "bild": "bilder/referenzen/jana/seite-grafik.jpg",
+       "alt": "Ganze Seite Grafik",
+       "label": "Grafik"
+      }
+     ],
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": []
+     }
+    },
+    {
+     "typ": "langaufnahmen",
+     "anker": "j-ueber",
+     "meta": "Vita",
+     "titel": "Über und Kontakt",
+     "desktop": "bilder/referenzen/jana/ueber-desktop.jpg",
+     "desktop_alt": "Ganze Seite Über mit Vita am Rechner",
+     "handy": "bilder/referenzen/jana/ueber-handy.jpg",
+     "handy_alt": "Ganze Seite Über mit Vita am Handy",
+     "band": {
+      "von": "#F4F4F4",
+      "bis": "#F4F4F4",
+      "art": []
+     }
+    },
+    {
+     "typ": "kapitel",
+     "anker": "j-gestaltung",
+     "meta": "Gestaltung",
+     "titel": "Gestaltung",
+     "band": {
+      "von": "#ffffff",
+      "bis": "#F4F4F4",
+      "art": [
+       "eng"
+      ]
+     }
+    },
+    {
+     "typ": "marke",
+     "meta": "Corporate Design",
+     "titel": "Logo, Farben, Schrift",
+     "logos": [
+      [
+       "bilder/referenzen/jana/logo-schwarz.png",
+       "Wortmarke @JANA_VOIGTMANN schwarz",
+       "#ffffff"
+      ],
+      [
+       "bilder/referenzen/jana/logo-weiss.png",
+       "Wortmarke @JANA_VOIGTMANN weiß",
+       "#000000"
+      ]
+     ],
+     "farben": [
+      [
+       "#000000",
+       "Schwarz",
+       "Schrift, Fuß"
+      ],
+      [
+       "#FFFFFF",
+       "Weiß",
+       "Flächen"
+      ],
+      [
+       "#00FF00",
+       "Neongrün",
+       "Kontakt"
+      ],
+      [
+       "#FFFF00",
+       "Gelb",
+       "Markierung im Menü"
+      ]
+     ],
+     "schrift_bild": "bilder/referenzen/jana/schrift-helvetica.png",
+     "schrift_alt": "Schriftmuster Helvetica: Aa, Alphabet in Roman und Bold",
+     "schrift_text": "Schrift: Helvetica, dazu DIN Next Light",
+     "band": {
+      "von": "#F4F4F4",
+      "bis": "#F4F4F4",
+      "art": []
      }
     }
    ]

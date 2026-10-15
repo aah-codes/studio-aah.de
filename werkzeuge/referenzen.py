@@ -67,7 +67,12 @@ def jpg_mass(datei):
 
 
 def svg_mass(datei):
-    # width/height aus der viewBox einer SVG-Datei (gegen Springen beim Laden)
+    # width/height aus der viewBox einer SVG-Datei bzw. aus dem Kopf von PNG/JPEG (gegen Springen beim Laden)
+    pfad = basis / 'website' / datei
+    if datei.endswith('.png'):
+        d = pfad.read_bytes()[16:24]; return f' width="{int.from_bytes(d[:4], "big")}" height="{int.from_bytes(d[4:], "big")}"'
+    if datei.endswith(('.jpg', '.jpeg')):
+        w, h = jpg_mass(pfad); return f' width="{w}" height="{h}"'
     m = re.search(r'viewBox="[\d.\-]+ [\d.\-]+ ([\d.]+) ([\d.]+)"', (basis / 'website' / datei).read_text(encoding='utf-8'))
     return f' width="{round(float(m.group(1)))}" height="{round(float(m.group(2)))}"' if m else ''
 
@@ -497,6 +502,12 @@ def block(b, pre):
                          f'<div class="sp-fenster"><img src="{pre}{x["bild"]}" alt="{esc(x["alt"])}" width="{jpg_mass(basis / "website" / x["bild"])[0]}" height="{jpg_mass(basis / "website" / x["bild"])[1]}" loading="lazy"></div></figure>' for x in b['seiten'])
         return (f'  <section class="cs-block cs-seiten-pillen" aria-labelledby="sp-titel"><div class="sp-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="la-titel" id="sp-titel">{trennen(esc(b["titel"]))}</h2>'
                 + (f'<p>{esc(b["text"])}</p>' if b.get('text') else '') + f'</div><div class="sp-reihe">{seiten}</div></section>')
+    if b['typ'] == 'seiten-spalten':
+        # mehrere Unterseiten in voller Länge nebeneinander, oben je ein Etikett (Jana: drei Werkbereiche, Anna 15.10.2026)
+        sp = ''.join(f'<figure class="ss-seite"><figcaption><span class="ss-pille">{esc(x["label"])}</span></figcaption>'
+                     f'<div class="ss-fenster"><img src="{pre}{x["bild"]}" alt="{esc(x["alt"])}" width="{jpg_mass(basis / "website" / x["bild"])[0]}" height="{jpg_mass(basis / "website" / x["bild"])[1]}" loading="lazy"></div></figure>' for x in b['seiten'])
+        return (f'  <section class="cs-block cs-seiten-spalten" aria-labelledby="ss-{b["id"]}"><div class="la-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="la-titel" id="ss-{b["id"]}">{trennen(esc(b["titel"]))}</h2>'
+                + (f'<p>{esc(b["text"])}</p>' if b.get('text') else '') + f'</div><div class="ss-reihe" style="--n:{len(b["seiten"])}">{sp}</div></section>')
     if b['typ'] == 'kennzahlen':  # Zahlen als eigener Block an beliebiger Stelle (Bauer: nach dem Überblick, Anna 15.10.2026)
         z = ''.join(f'<li><span class="kz-zahl">{esc(x)}</span> <span>{trennen(esc(t))}</span></li>' for x, t in b['zahlen'])
         return f'  <ul class="cs-block cs-kennzahlen" role="list" aria-label="Projekt in Kürze">{z}</ul>'
