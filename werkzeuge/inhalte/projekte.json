@@ -2929,7 +2929,8 @@
         "-27s"
        ],
        "fest": 2,
-       "grund": "bilder/referenzen/jana/tusche-g3.jpg",
+       "farbe": "#c0b7f8",
+       "gerade": true,
        "luecke": "clamp(26px, 3.2vw, 52px)"
       },
       "zeitraum": "2022 · 6–8 Wochen",
