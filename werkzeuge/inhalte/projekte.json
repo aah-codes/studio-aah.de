@@ -2882,6 +2882,11 @@
        "alt": "Alle Seiten der Website im Überblick: Startseite, Mixed Media, Malerei, Grafik und Über",
        "spalten": [
         [
+         "bilder/referenzen/jana/wl/abschnitt-26.jpg",
+         "bilder/referenzen/jana/wl/abschnitt-27.jpg",
+         "bilder/referenzen/jana/wl/abschnitt-29.jpg"
+        ],
+        [
          "bilder/referenzen/jana/wl/abschnitt-30.jpg",
          "bilder/referenzen/jana/wl/abschnitt-31.jpg",
          "bilder/referenzen/jana/wl/abschnitt-32.jpg"
@@ -2890,9 +2895,6 @@
          "bilder/referenzen/jana/wl/abschnitt-33.jpg",
          "bilder/referenzen/jana/wl/abschnitt-34.jpg",
          "bilder/referenzen/jana/wl/abschnitt-35.jpg"
-        ],
-        [
-         "bilder/referenzen/jana/wl/startseite-mitte.jpg"
         ],
         [
          "bilder/referenzen/jana/wl/abschnitt-36.jpg",
@@ -2915,16 +2917,16 @@
        ],
        "start": [
         "0s",
-        "0s",
-        "0s",
-        "0s",
-        "0s"
+        "-14s",
+        "-6s",
+        "-20s",
+        "-9s"
        ],
-       "fest": 2,
        "farbe": "#fff",
        "gerade": true,
        "luecke": "clamp(26px, 3.2vw, 52px)",
-       "fest_ganz": true
+       "muster": true,
+       "winkel": -6
       },
       "zeitraum": "2022 · 6–8 Wochen",
       "leistungen": "Schriften und Layout, neue Website, UI/UX Design, Webentwicklung"

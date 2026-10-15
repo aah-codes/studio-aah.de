@@ -93,6 +93,10 @@ def buehne(p, pre):
         if w.get('farbe'):  # Jana (Anna 16.10.2026): einfarbiger Grund (Flieder aus dem Roboterfoto) statt Tusche
             grund += f';background:{w["farbe"]}'
         hell = ' hw-hell' if w.get('grund') or w.get('farbe') else ''
+        if w.get('muster'):  # Jana (Anna 16.10.2026): gleichmäßiges Muster ohne feste Mitte, Kacheln gleich groß, leicht schräg aufsteigend, ohne Umriss
+            hell += ' hw-muster'
+        if w.get('winkel') is not None:
+            grund += f';--hw-winkel:{w["winkel"]}deg'
         form = 'nl-voll' if w.get('gerade') else 'nl-schraege'  # gerade: ohne Schräge und ohne Streifen, das Band beginnt gerade (Anna 16.10.2026)
         return (f'  <div class="nl-band {form} nl-blau cs-hero cs-hero-wand{hell}" style="--von:var(--pc-farbe);--bis:var(--pc-farbe){grund}">'
                 f'<div class="hw-buehne"><div class="hw-wand" role="img" aria-label="{esc(w["alt"])}">{spalten}</div>'

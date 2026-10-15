@@ -3324,6 +3324,11 @@ section[hidden] { display: none !important; }
 .hw-fest { display: flex; flex-direction: column; justify-content: center; align-items: stretch; padding-top: clamp(40px, 6.75vw, 96px); }
 .hw-fest img { display: block; width: 100%; height: auto; max-width: none; margin: 0 0 var(--hw-luecke); border-radius: 6px; box-shadow: 0 0 0 1px rgba(255, 255, 255, .14), 0 12px 32px rgba(0, 0, 0, .5); }
 .hw-fest img:last-child { margin-bottom: 0; }
+/* Muster (Jana, Anna 16.10.2026): fünf gleich breite laufende Spalten, Kacheln gleich groß (oben beschnitten), groß gezoomt, ohne Umriss */
+.hw-muster .hw-wand { left: -50%; right: -50%; top: -45%; bottom: -45%; grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.hw-hell.hw-muster .hw-lauf img { aspect-ratio: 16 / 9; object-fit: cover; object-position: top; border-radius: 4px; box-shadow: 0 16px 40px rgba(0, 0, 0, .14); }
+@media (max-width: 900px) { .hw-muster .hw-wand { left: -60%; right: -60%; } }
+@media (max-width: 600px) { .hw-muster .hw-wand { left: -110%; right: -110%; } }
 /* ganze Seite in der festen Mitte (Jana, Anna 16.10.2026): Kachel so hoch wie das sichtbare Band, Breite folgt dem Seitenverhältnis */
 .hw-fest-ganz { padding-top: 0; align-items: center; }
 .hw-fest-ganz img { width: auto; max-width: 100%; max-height: calc(clamp(520px, 54vw, 800px) + clamp(40px, 6.75vw, 96px) - 2 * var(--hw-luecke)); }
@@ -3333,6 +3338,7 @@ section[hidden] { display: none !important; }
 .hw-lauf img { display: block; width: 100%; height: auto; max-width: none; margin: 0 0 var(--hw-luecke); border-radius: 6px; box-shadow: 0 0 0 1px rgba(255, 255, 255, .14), 0 12px 32px rgba(0, 0, 0, .5); }
 @keyframes hw-lauf { to { transform: translateY(calc(-100% / 3)); } }
 .cs-hero-wand.pause .hw-lauf { animation-play-state: paused; }
+.hw-knopf { position: absolute; z-index: 3; right: clamp(16px, 2.5vw, 32px); bottom: clamp(16px, 2.5vw, 32px); } /* über der Wand, sonst unerreichbar (Anna 16.10.2026) */
 .hw-knopf:hover { background: #2b2f31; }
 .hw-knopf:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) { .hw-lauf { animation: none; } .hw-knopf { display: none; } }
