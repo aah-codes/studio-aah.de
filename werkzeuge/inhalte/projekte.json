@@ -2940,7 +2940,9 @@
         "-61s",
         "-27s"
        ],
-       "fest": 2
+       "fest": 2,
+       "grund": "bilder/referenzen/jana/tusche-g3.jpg",
+       "luecke": "clamp(26px, 3.2vw, 52px)"
       }
      }
     }

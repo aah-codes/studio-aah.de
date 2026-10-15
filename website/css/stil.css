@@ -3658,3 +3658,7 @@ section[hidden] { display: none !important; }
 .eg-abschluss .button:hover { background: #fff; border-color: #fff; color: var(--farbe-dunkel); }
 .cs-weiter > div { text-align: center; }
 .cs-weiter > div .gedaempft { margin-inline: auto; }
+
+/* Raster auf hellem Grund (Jana: Tusche-Striche, Anna 16.10.2026): Kacheln mit feinem dunklem Rand und weichem Schatten */
+.hw-hell .hw-fest img, .hw-hell .hw-lauf img { box-shadow: 0 0 0 1px rgba(0, 0, 0, .14), 0 18px 44px rgba(0, 0, 0, .22); }
+.hw-hell .hw-knopf { background: #000; color: #fff; }

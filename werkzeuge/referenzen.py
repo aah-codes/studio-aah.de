@@ -83,7 +83,8 @@ def buehne(p, pre):
                 return f'<div class="hw-spalte hw-fest">{bilder}</div>'
             return f'<div class="hw-spalte" style="--dauer:{w["dauer"][i]}s;--start:{w["start"][i]}"><div class="hw-lauf">{bilder * 3}</div></div>'
         spalten = ''.join(spalte(s, i) for i, s in enumerate(w['spalten']))
-        return (f'  <div class="nl-band nl-schraege nl-blau cs-hero cs-hero-wand" style="--von:var(--pc-farbe);--bis:var(--pc-farbe)">'
+        grund = (f';background:#fff url({pre}{w["grund"]}) center / cover no-repeat' if w.get('grund') else '') + (f';--hw-luecke:{w["luecke"]}' if w.get('luecke') else '')  # Jana: Tusche-Striche hinter dem Raster (Anna 16.10.2026)
+        return (f'  <div class="nl-band nl-schraege nl-blau cs-hero cs-hero-wand{" hw-hell" if w.get("grund") else ""}" style="--von:var(--pc-farbe);--bis:var(--pc-farbe){grund}">'
                 f'<div class="hw-buehne"><div class="hw-wand" role="img" aria-label="{esc(w["alt"])}">{spalten}</div>'
                 f'<button type="button" class="ks-knopf hw-knopf" aria-label="Bewegung anhalten">❚❚</button></div></div>')
     if p.get('buehne_laptop'):  # Deinetwegen (Anna 15.10.2026): Bühne auf dem Markenverlauf, Logo oben links; Gerät nur als echtes Foto-Mockup
