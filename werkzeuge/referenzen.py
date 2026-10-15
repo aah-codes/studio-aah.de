@@ -176,7 +176,7 @@ def block(b, pre):
         farben = f'<div class="ds-farben-kopf"><span>Farbpalette</span><span>{esc(b.get("farben_text", ""))}</span></div>' + farben
         stufen = ''.join(f'<li><span class="ds-mass">{esc(name)}<br><small>{esc(mass)}</small></span><span class="ds-probe" style="font-size: {gr}; font-weight: {gew}; line-height: {zh};{zusatz}">{esc(probe)}</span></li>'
                          for name, mass, gr, gew, zh, zusatz, probe in b['stufen'])
-        return (f'  <figure class="cs-block cs-designsystem" style="--ds-schrift: {b["schrift_css"]}">\n    <figcaption class="cs-block-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3">{esc(b["titel"])}</h2></figcaption>\n'
+        return (f'  <figure class="cs-block cs-designsystem" style="--ds-schrift: {b["schrift_css"].replace(chr(34), "&quot;")}">\n    <figcaption class="cs-block-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3">{esc(b["titel"])}</h2></figcaption>\n'
                 f'    <div class="ds-farben">{farben}</div>\n'
                 f'    <div class="ds-schrift"><div class="ds-schrift-kopf"><p class="ds-aa">Aa</p><p class="ds-name">{esc(b["schrift"])}</p><p class="ds-warum">{esc(b["warum"])}</p></div><ol class="ds-stufen">{stufen}</ol></div>\n  </figure>')
     if b['typ'] == 'film-vergleich':
@@ -276,6 +276,17 @@ def block(b, pre):
         kopf = (f'<p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3" id="ga-{b["id"]}">{esc(b["titel"])}</h2>' if b.get('titel') else '')
         return (f'  <section class="cs-block cs-galerie" ' + (f'aria-labelledby="ga-{b["id"]}"' if b.get('titel') else f'aria-label="{esc(b.get("meta", "Galerie"))}"') + f'>{kopf}'
                 + (f'<p class="weg-einleitung">{esc(b["text"])}</p>' if b.get('text') else '') + f'<div class="ga-raster">{f}</div></section>')
+    if b['typ'] == 'inhalt':
+        # Inhaltsverzeichnis mit Sprungmarken (Recherche 15.10.2026: Überblick in den ersten Sekunden, wie IKEA bei Work & Co)
+        li = ''.join(f'<li><a href="#{a}">{esc(x)} <span aria-hidden="true">↓</span></a></li>' for x, a in b['punkte'])
+        return f'  <nav class="cs-block cs-inhalt" aria-label="{esc(b.get("titel", "Inhalt"))}"><p class="meta">{esc(b.get("titel", "Inhalt"))}</p><ol>{li}</ol></nav>'
+    if b['typ'] == 'ergebnis':
+        # Ergebnis (Recherche 15.10.2026): jedes Ziel vom Anfang bekommt eine Antwort, dazu Credits und ein Abschluss für die Zielgruppe
+        karten = ''.join(f'<li><p class="meta">Ziel</p><h3>{trennen(esc(z))}</h3><p>{esc(a)}</p></li>' for z, a in b['ziele'])
+        ab = b.get('abschluss')
+        abschluss = (f'<div class="eg-abschluss"><p class="eg-frage">{esc(ab["frage"])}</p><a class="button" href="{ab["link"]}">{esc(ab["knopf"])} <span aria-hidden="true">→</span></a></div>') if ab else ''
+        return (f'  <section class="cs-block cs-ergebnis" aria-label="Ergebnis"><ul class="eg-karten">{karten}</ul>'
+                + (f'<p class="eg-credits">{esc(b["credits"])}</p>' if b.get('credits') else '') + abschluss + '</section>')
     if b['typ'] == 'figma':
         # ein Board in nachgebauter Figma-Oberfläche (Anna 15.10.2026: „links und rechts das User Interface von Figma, damit klar ist: das liegt in Figma“);
         # Oberfläche nur Kulisse (aria-hidden), Beschriftungen nur aus dem Board selbst und allgemeine Programmbegriffe
@@ -320,9 +331,9 @@ def block(b, pre):
                          f'<div class="fk-fenster"><img src="{pre}{x["bild"]}" alt="{esc(x["alt"])}" loading="lazy" style="--dauer:{x.get("dauer", 14)}s"></div></li>'
                          for i, x in enumerate(sp['stationen'], 1))
             return (f'<div class="fk-spur fk-{sp["art"]}"><div class="fk-kopf"><span class="fk-stoerer">„{esc(sp["anrede"])}“</span><p class="meta">{esc(sp["gruppe"])}</p></div>'
-                    f'<ol class="fk-stationen">{st}</ol></div>')
+                    f'<ol class="fk-stationen" data-n="{len(sp["stationen"])}">{st}</ol></div>')
         kopf = (f'<p class="meta">{esc(b["meta"])}</p>' if b.get('meta') else '') + (f'<h2 class="fk-gross">{esc(b["titel"])}</h2>' if b.get('titel') else '')
-        return (f'  <section class="cs-block cs-funnel-karte" data-einblenden aria-label="Click-Funnels der beiden Zielgruppen">{kopf}'
+        return (f'  <section class="cs-block cs-funnel-karte" data-einblenden aria-label="{esc(b.get("aria", "Click-Funnels der beiden Zielgruppen"))}">{kopf}'
                 + ''.join(spur(sp) for sp in b['spuren'])
                 + '<p class="fk-steuerung"><button type="button" class="ks-knopf fk-knopf" aria-label="Bewegung anhalten">❚❚</button></p></section>')
     if b['typ'] == 'mega-film':
@@ -472,13 +483,14 @@ def projektseite(p, nr):
   <section class="seitenkopf cs-kopf">
     <p class="meta brotkrumen"><a href="../">Projekte</a> / <span aria-current="page">{esc(p["kurzname"])}</span></p>
     <h1 class="cs-titel">{esc(p["kurzname"]).replace("Ingenieurbau", "Ingenieur&shy;bau")}</h1>
+    {('<p class="cs-einleitung">' + esc(p['einleitung']) + '</p>') if p.get('einleitung') else ''}
     {fakten(p)}
   </section>
 
 {buehne(p, pre)}
 
 {zahlen(p)}{texte}{ablauf}
-  <section class="cs-bilder" aria-label="Bilder aus dem Projekt">
+  <section class="cs-bilder" aria-label="Projekt im Detail">
 {bilder}
   </section>
 

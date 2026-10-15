@@ -1453,8 +1453,8 @@
         "Referenzprojekte mit eigener Seite"
        ],
        [
-        "4",
-        "Monate"
+        "13",
+        "Bewerbungen seit dem Launch"
        ]
       ],
       "buehne_wand": {
@@ -1512,14 +1512,64 @@
         "-27s"
        ],
        "fest": 2
-      }
+      },
+      "einleitung": "Strategie, Rebranding, neue Website und Unternehmenspräsentation für ein Bauunternehmen im Ingenieurbau."
+     }
+    },
+    {
+     "typ": "inhalt",
+     "titel": "Inhalt",
+     "punkte": [
+      [
+       "Ausgangslage",
+       "b-ausgangslage"
+      ],
+      [
+       "Konzept",
+       "b-konzept"
+      ],
+      [
+       "Auftraggeber",
+       "b-sie"
+      ],
+      [
+       "Bewerber",
+       "b-du"
+      ],
+      [
+       "Gestaltung",
+       "b-gestaltung"
+      ],
+      [
+       "Ergebnis",
+       "b-ergebnis"
+      ]
+     ],
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": []
+     }
+    },
+    {
+     "typ": "kapitel",
+     "anker": "b-ausgangslage",
+     "meta": "Analyse · Verstehen · April 2026",
+     "titel": "Ausgangslage",
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": [
+       "eng"
+      ]
      }
     },
     {
      "aus": 0,
      "band": {
       "von": "#ffffff",
-      "bis": "#ffffff"
+      "bis": "#ffffff",
+      "art": []
      },
      "setze": {
       "typ": "ziele-text",
@@ -1544,17 +1594,6 @@
         ]
        ]
       }
-     }
-    },
-    {
-     "typ": "kapitel",
-     "anker": "b-strategie",
-     "meta": "Analyse · Verstehen · April 2026",
-     "titel": "Strategie",
-     "band": {
-      "art": [
-       "eng"
-      ]
      }
     },
     {
@@ -1666,401 +1705,25 @@
         "klick": null,
         "zoom": null,
         "eingaben": []
-       },
-       {
-        "bild": "bilder/referenzen/bauer/film/n-start.jpg",
-        "alt": "Neue Startseite",
-        "pfad": "",
-        "phase": "neu",
-        "titel": "Nachher: Startseite mit klarer Spezialisierung",
-        "dauer": 4200,
-        "von": 0,
-        "bis": 0,
-        "notizen": [
-         [
-          "Spezialisierung auf einen Blick",
-          40,
-          16,
-          700
-         ],
-         [
-          "Kennzahlen",
-          30,
-          86,
-          1700
-         ]
-        ],
-        "kapitel": "Startseite",
-        "klick": [
-         33,
-         5
-        ],
-        "zoom": null,
-        "eingaben": []
-       },
-       {
-        "bild": "bilder/referenzen/bauer/film/n-mega-kompetenzen.jpg",
-        "alt": "Mega-Menü Kompetenzen",
-        "pfad": "",
-        "phase": "neu",
-        "titel": "Mega-Menü: alle Kompetenzen, mit Bild und Direktlink",
-        "dauer": 4000,
-        "von": 0,
-        "bis": 0,
-        "notizen": [
-         [
-          "Neu: Mega-Menü",
-          60,
-          50,
-          600
-         ]
-        ],
-        "kapitel": null,
-        "klick": null,
-        "zoom": null,
-        "eingaben": []
-       },
-       {
-        "bild": "bilder/referenzen/bauer/film/n-start-kompetenzen.jpg",
-        "alt": "Kernkompetenzen auf der Startseite",
-        "pfad": "",
-        "phase": "neu",
-        "titel": "Die Kompetenzen aus dem Menü auch auf der Startseite",
-        "dauer": 4500,
-        "von": 0,
-        "bis": 560,
-        "notizen": [
-         [
-          "Menü und Startseite greifen ineinander",
-          52,
-          8,
-          800
-         ]
-        ],
-        "kapitel": null,
-        "klick": [
-         19,
-         2.6
-        ],
-        "zoom": null,
-        "eingaben": []
-       },
-       {
-        "bild": "bilder/referenzen/bauer/film/n-referenzen.jpg",
-        "alt": "Neue Referenzübersicht",
-        "pfad": "referenzen/",
-        "phase": "neu",
-        "titel": "Referenzen: das starke Bildmaterial im Mittelpunkt",
-        "dauer": 5200,
-        "von": 0,
-        "bis": 700,
-        "notizen": [
-         [
-          "Filter nach Kompetenz und Status",
-          3,
-          30,
-          800
-         ],
-         [
-          "Übersichtlich: alle Referenzen auf einer Seite",
-          52,
-          60,
-          2200
-         ]
-        ],
-        "kapitel": "Referenzen",
-        "klick": [
-         48,
-         52
-        ],
-        "zoom": null,
-        "eingaben": []
-       },
-       {
-        "bild": "bilder/referenzen/bauer/film/n-referenz-detail.jpg",
-        "alt": "Referenzseite U8, U-Bhf. Pankstraße",
-        "pfad": "u8-u-bhf-pankstrasse/",
-        "phase": "neu",
-        "titel": "Jede Referenz mit eigener Seite – und am Ende ein klarer Call to Action",
-        "dauer": 8000,
-        "von": 0,
-        "bis": 3300,
-        "notizen": [
-         [
-          "Große Projektgalerie mit Projektbildern",
-          56,
-          14,
-          900
-         ],
-         [
-          "Alle Fakten zum Projekt",
-          56,
-          38,
-          2400
-         ],
-         [
-          "Klarer Call to Action",
-          58,
-          30,
-          6300
-         ]
-        ],
-        "kapitel": null,
-        "klick": [
-         50,
-         78
-        ],
-        "zoom": null,
-        "eingaben": []
-       },
-       {
-        "bild": "bilder/referenzen/bauer/film/n-kontakt.jpg",
-        "alt": "Kontaktformular",
-        "pfad": "kontakt/",
-        "phase": "neu",
-        "titel": "Kontaktformular: kurz und direkt",
-        "dauer": 7500,
-        "von": 0,
-        "bis": 520,
-        "notizen": [
-         [
-          "Ansprechpartner direkt sichtbar",
-          62,
-          64,
-          900
-         ]
-        ],
-        "kapitel": "Kontakt",
-        "klick": null,
-        "zoom": null,
-        "eingaben": [
-         [
-          "Max",
-          92,
-          751,
-          280
-         ],
-         [
-          "Mustermann",
-          409,
-          751,
-          280
-         ],
-         [
-          "Muster GmbH",
-          92,
-          860,
-          600
-         ],
-         [
-          "max@beispiel.de",
-          92,
-          969,
-          600
-         ],
-         [
-          "Wir planen ein ähnliches Vorhaben.",
-          92,
-          1125,
-          600
-         ]
-        ],
-        "tippen_ab": 2000
-       },
-       {
-        "bild": "bilder/referenzen/bauer/film/n-mega-karriere.jpg",
-        "alt": "Mega-Menü Jobs und Karriere",
-        "pfad": "",
-        "phase": "neu",
-        "titel": "Karriere direkt aus dem Menü",
-        "dauer": 3800,
-        "von": 0,
-        "bis": 0,
-        "notizen": [
-         [
-          "Bewerben mit einem Klick",
-          66,
-          50,
-          700
-         ]
-        ],
-        "kapitel": "Karriere",
-        "klick": [
-         12,
-         25
-        ],
-        "zoom": null,
-        "eingaben": []
-       },
-       {
-        "bild": "bilder/referenzen/bauer/film/n-karriere-b.jpg",
-        "alt": "Neue Karriereseite",
-        "pfad": "karriere/",
-        "phase": "neu",
-        "titel": "Karriere: eigene Seite für Fachkräfte und Nachwuchs",
-        "dauer": 5200,
-        "von": 0,
-        "bis": 700,
-        "notizen": [],
-        "kapitel": null,
-        "klick": null,
-        "zoom": null,
-        "eingaben": []
-       },
-       {
-        "bild": "bilder/referenzen/bauer/film/n-stelle-b.jpg",
-        "alt": "Stelle Maurer (m/w/d)",
-        "pfad": "ausbildung-maurer/",
-        "phase": "neu",
-        "titel": "Jede Stelle mit allen Infos",
-        "dauer": 5600,
-        "von": 0,
-        "bis": 900,
-        "notizen": [
-         [
-          "Standort, Anstellung, Start, Vergütung",
-          78,
-          14,
-          800
-         ],
-         [
-          "Alle Infos zur Stelle",
-          74,
-          55,
-          3800
-         ]
-        ],
-        "kapitel": null,
-        "klick": null,
-        "zoom": null,
-        "eingaben": []
-       },
-       {
-        "bild": "bilder/referenzen/bauer/film/n-stelle-konditionen.jpg",
-        "alt": "Was du dafür bekommst",
-        "pfad": "ausbildung-maurer/",
-        "phase": "neu",
-        "titel": "Was man bekommt – auf einen Blick",
-        "dauer": 4200,
-        "von": 0,
-        "bis": 280,
-        "notizen": [
-         [
-          "Konditionen klar benannt",
-          60,
-          10,
-          600
-         ]
-        ],
-        "kapitel": null,
-        "klick": null,
-        "zoom": null,
-        "eingaben": []
-       },
-       {
-        "bild": "bilder/referenzen/bauer/film/n-bewerbung.jpg",
-        "alt": "Bewerbungsformular",
-        "pfad": "bewerbungsformular/",
-        "phase": "neu",
-        "titel": "Bewerbung: etwa 15 Minuten, alles in einem Formular",
-        "dauer": 8600,
-        "von": 0,
-        "bis": 380,
-        "notizen": [
-         [
-          "Etwa 15 Minuten",
-          62,
-          6,
-          700
-         ]
-        ],
-        "kapitel": "Bewerbung",
-        "klick": null,
-        "zoom": [
-         1.4,
-         45,
-         42,
-         2200
-        ],
-        "eingaben": [
-         [
-          "Max",
-          738,
-          668,
-          280
-         ],
-         [
-          "Mustermann",
-          1059,
-          668,
-          280
-         ],
-         [
-          "max@beispiel.de",
-          92,
-          808,
-          280
-         ],
-         [
-          "0170 1234567",
-          738,
-          808,
-          280
-         ]
-        ],
-        "tippen_ab": 3200
-       },
-       {
-        "bild": "bilder/referenzen/bauer/film/n-danke.jpg",
-        "alt": "Bestätigung nach der Bewerbung",
-        "pfad": "bewerbungsformular/danke/",
-        "phase": "neu",
-        "titel": "Bestätigung mit den nächsten Schritten",
-        "dauer": 4500,
-        "von": 0,
-        "bis": 0,
-        "notizen": [
-         [
-          "Bestätigung und nächste Schritte",
-          58,
-          40,
-          700
-         ]
-        ],
-        "kapitel": null,
-        "klick": null,
-        "zoom": null,
-        "eingaben": []
        }
       ],
       "ohne_kopf": true,
       "monitor": true
-     }
-    },
-    {
-     "typ": "figma",
-     "id": "b-analyse",
-     "titel": "Mitbewerber-Benchmark",
-     "datei": "Wolfgang Bauer Ingenieurbau",
-     "seite": "Analyse",
-     "rahmen": "Mitbewerber / Benchmark",
-     "ebenen": [
-      "Expert-Review",
-      "Mitbewerber / Benchmark"
-     ],
-     "bild": "bilder/referenzen/bauer/p-benchmark-anonym.jpg",
-     "alt": "Benchmark-Board mit Websites von Mitbewerbern, Inhalte unkenntlich gemacht",
+     },
      "band": {
       "von": "#ffffff",
-      "bis": "#ffffff"
+      "bis": "#ffffff",
+      "art": []
      }
     },
     {
      "typ": "kapitel",
-     "anker": "b-funnel",
-     "meta": "Strategie und Konzept · Ideen finden",
-     "titel": "Click-Funnel",
+     "anker": "b-konzept",
+     "meta": "Eine Website, zwei Wege",
+     "titel": "Konzept",
      "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
       "art": [
        "eng"
       ]
@@ -2076,7 +1739,8 @@
       "bis": "var(--pc-farbe)",
       "art": [
        "blau",
-       "raster"
+       "raster",
+       "schraege"
       ]
      }
     },
@@ -2107,18 +1771,29 @@
      }
     },
     {
+     "typ": "kapitel",
+     "anker": "b-sie",
+     "meta": "Weg „Sie“",
+     "titel": "Auftraggeber",
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": [
+       "schraege",
+       "eng"
+      ]
+     }
+    },
+    {
      "aus": 9,
      "setze": {
       "nur": "auftraggeber",
-      "mit_kopf": true,
       "hinweis": true
      },
      "band": {
       "von": "#ffffff",
       "bis": "#ffffff",
-      "art": [
-       "schraege"
-      ]
+      "art": []
      }
     },
     {
@@ -2129,13 +1804,6 @@
        "anrede": "Sie",
        "gruppe": "Auftraggeber · Bund, Land, Stiftungen",
        "stationen": [
-        {
-         "label": "Mega-Menü",
-         "bild": "bilder/referenzen/bauer/mm/kompetenzen.jpg",
-         "alt": "Mega-Menü Kompetenzen geöffnet",
-         "dauer": 10,
-         "ganz": true
-        },
         {
          "label": "Kernkompetenzen",
          "bild": "bilder/referenzen/bauer/film/n-start-kompetenzen.jpg",
@@ -2168,7 +1836,8 @@
       "art": []
      },
      "meta": "Click-Funnel",
-     "titel": "Jede Seite führt zum nächsten Schritt."
+     "titel": "Jede Seite führt zum nächsten Schritt.",
+     "aria": "Click-Funnel Auftraggeber"
     },
     {
      "aus": 18,
@@ -2187,6 +1856,19 @@
      }
     },
     {
+     "typ": "kapitel",
+     "anker": "b-du",
+     "meta": "Weg „Du“",
+     "titel": "Bewerber",
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": [
+       "eng"
+      ]
+     }
+    },
+    {
      "aus": 9,
      "setze": {
       "nur": "bewerber",
@@ -2196,8 +1878,8 @@
       "von": "var(--pc-farbe)",
       "bis": "var(--pc-farbe)",
       "art": [
-       "schraege",
-       "blau"
+       "blau",
+       "schraege"
       ]
      }
     },
@@ -2209,13 +1891,6 @@
        "anrede": "Du",
        "gruppe": "Bewerber · Facharbeiter, Poliere, Azubis",
        "stationen": [
-        {
-         "label": "Mega-Menü",
-         "bild": "bilder/referenzen/bauer/mm/karriere.jpg",
-         "alt": "Mega-Menü Jobs & Karriere geöffnet",
-         "dauer": 10,
-         "ganz": true
-        },
         {
          "label": "Karriere",
          "bild": "bilder/referenzen/bauer/film/n-karriere-b.jpg",
@@ -2253,7 +1928,9 @@
       "art": [
        "blau"
       ]
-     }
+     },
+     "aria": "Click-Funnel Bewerber",
+     "meta": ""
     },
     {
      "aus": 20,
@@ -2475,47 +2152,99 @@
      }
     },
     {
+     "typ": "kapitel",
+     "anker": "b-gestaltung",
+     "meta": "Design · Prototyp",
+     "titel": "Gestaltung",
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": [
+       "schraege",
+       "eng"
+      ]
+     }
+    },
+    {
      "aus": 14,
      "band": {
-      "von": "var(--pc-farbe)",
-      "bis": "var(--pc-farbe)",
-      "art": [
-       "blau",
-       "schraege"
-      ]
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": []
      }
     },
     {
      "aus": 15,
      "band": {
-      "von": "var(--pc-farbe)",
-      "bis": "var(--pc-farbe)",
-      "art": [
-       "blau"
-      ]
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": []
      },
      "ohne": [
       "varianten",
       "varianten_alt",
       "varianten_text"
-     ]
-    },
-    {
-     "aus": 23,
+     ],
      "setze": {
-      "abschnitte": [
+      "entscheidungen": [
        [
-        "Ergebnis",
-        "Viel mehr Informationen für Interessenten und Bestandskunden – mit Referenzen, die sich nach Kompetenz und Status filtern lassen, und einem eigenen Karrierebereich für Ausbildung, duales Studium und offene Stellen."
+        "Tonalität:",
+        "klar, sachlich, handwerklich – ohne Pathos"
+       ],
+       [
+        "UI-Stil:",
+        "große Headlines, viel Weißraum, konsequentes Grid"
+       ],
+       [
+        "Bildwelt:",
+        "echte Baustellen, Menschen bei der Arbeit, keine Stockfotos"
        ]
       ]
-     },
+     }
+    },
+    {
+     "typ": "kapitel",
+     "anker": "b-ergebnis",
+     "meta": "Ziele und Wirkung",
+     "titel": "Ergebnis",
      "band": {
       "von": "#ffffff",
       "bis": "#ffffff",
       "art": [
-       "schraege"
+       "eng"
       ]
+     }
+    },
+    {
+     "typ": "ergebnis",
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": []
+     },
+     "ziele": [
+      [
+       "Klar für öffentliche Auftraggeber",
+       "Spezialisierung, Referenzen und Eignungsnachweise (PQ-VOB, Zertifikate) stehen gesammelt auf der Website."
+      ],
+      [
+       "Referenzen als Vertrauensfaktor",
+       "69 Referenzprojekte mit eigener Seite, filterbar nach Kompetenz und Status."
+      ],
+      [
+       "Leistungen verständlich zeigen",
+       "Jede Kernkompetenz hat eine eigene Seite und ist direkt im Mega-Menü erreichbar."
+      ],
+      [
+       "Fachkräfte gezielt ansprechen",
+       "Eigener Karrierebereich mit allen Stellen und Bewerbung in drei Schritten. Seit dem Launch 13 Bewerbungen über das neue Formular (Stand: 15.10.2026)."
+      ]
+     ],
+     "credits": "Strategie, Konzept, Design und Umsetzung: Anna Härtelt, STUDIO AAH!",
+     "abschluss": {
+      "frage": "Sie wollen Auftraggeber und Fachkräfte mit einer Website erreichen?",
+      "knopf": "Projekt anfragen",
+      "link": "../../kontakt/"
      }
     }
    ]

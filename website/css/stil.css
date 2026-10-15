@@ -3441,3 +3441,35 @@ section[hidden] { display: none !important; }
 .cs-nahtlos .cs-heft .st-leiste { display: contents; }
 .cs-nahtlos .cs-heft .hf-knopf { order: -1; align-self: flex-end; margin-bottom: clamp(28px, 4vw, 56px); }
 .cs-nahtlos .cs-heft .meta { order: 2; margin-top: clamp(32px, 4vw, 56px); }
+
+/* ===== Bauer, neuer Aufbau nach der Recherche (15.10.2026) ===== */
+/* Einleitungssatz im Kopf: Kernaussage zuerst */
+.cs-einleitung { max-width: 46ch; margin: 18px 0 28px; font-size: clamp(19px, 1.7vw, 24px); line-height: 1.4; color: var(--farbe-dunkel); }
+/* Inhaltsverzeichnis mit Sprungmarken */
+.cs-nahtlos .cs-inhalt { max-width: 1200px; margin: 0 auto; }
+.cs-inhalt ol { list-style: none; margin: 12px 0 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); border-top: 1.5px solid var(--farbe-dunkel); }
+.cs-inhalt li { border-bottom: 1.5px solid rgba(14, 16, 17, .15); }
+.cs-inhalt a { display: flex; justify-content: flex-start; gap: 8px; padding: 14px 12px 14px 0; font-weight: 600; color: var(--farbe-dunkel); text-decoration: none; }
+.cs-inhalt a:hover { color: var(--pc-farbe); }
+@media (max-width: 900px) { .cs-inhalt ol { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 20px; } }
+/* Ergebnis: Ziel-Karten, Credits, Abschluss */
+.cs-nahtlos .cs-ergebnis { max-width: 1200px; margin: 0 auto; }
+.eg-karten { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(20px, 2.4vw, 36px); }
+.eg-karten li { padding-top: 18px; border-top: 1.5px solid var(--farbe-dunkel); }
+.eg-karten .meta { margin: 0 0 8px; }
+.eg-karten h3 { margin: 0 0 12px; font: 400 clamp(24px, 2.2vw, 32px)/1.05 var(--schrift-ueberschrift); text-transform: uppercase; color: var(--farbe-dunkel); }
+.eg-karten p:not(.meta) { margin: 0; color: var(--farbe-gedaempft); line-height: 1.5; }
+.eg-credits { margin: clamp(40px, 5vw, 72px) 0 0; padding-top: 16px; border-top: 1.5px solid rgba(14, 16, 17, .15); font-size: .95rem; color: var(--farbe-gedaempft); }
+.eg-abschluss { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 32px; margin-top: clamp(40px, 5vw, 72px); padding: clamp(28px, 4vw, 48px); border-radius: 20px; background: var(--farbe-dunkel); color: #fff; }
+.eg-frage { margin: 0; max-width: 28ch; font: 400 clamp(26px, 3vw, 44px)/1.05 var(--schrift-ueberschrift); text-transform: uppercase; }
+@media (max-width: 900px) { .eg-karten { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .eg-karten { grid-template-columns: 1fr; } }
+/* Korrekturen aus der Prüfung 15.10.2026 */
+.cs-nahtlos .ds-stufen .ds-mass { color: var(--farbe-dunkel); }                               /* war weiß auf Weiß */
+.cs-nahtlos .ds-farbe[style*="#003466"] { box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .35); }
+.nl-blau .pe-hinweis { color: rgba(255, 255, 255, .8); }                                      /* war fast unsichtbar auf Blau */
+@media (prefers-reduced-motion: reduce) { .mf-knopf, .fk-knopf { display: none; } }          /* nichts läuft, also kein „anhalten“ */
+@media (max-width: 600px) { .cs-nahtlos .sm { overflow-x: visible; } .cs-nahtlos .sm > ul { grid-template-columns: minmax(0, 1fr); } .cs-nahtlos .sm > ul::before { display: none; } }
+@media (max-width: 380px) { .cs-inhalt ol { grid-template-columns: minmax(0, 1fr); } }  /* „Ausgangslage ↓“ passt nicht in zwei Spalten */
+/* Funnel-Seiten größer: am Desktop drei Spalten statt aller Stationen in einer Reihe */
+@media (min-width: 901px) { .cs-nahtlos .fk-stationen { grid-auto-flow: row; grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 40px; } .cs-nahtlos .fk-stationen[data-n="4"] { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
