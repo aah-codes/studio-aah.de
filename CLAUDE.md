@@ -57,6 +57,10 @@
 - Leistungsseiten: weiter unten „Aus der Praxis“ mit passendem Kundenbeispiel (`MOCKUPS` in `werkzeuge/leistungsseiten.py`).
 - Mockup-Nachweise (Mockuptree, Bendito Mockup) stehen im Impressum unter „Bildnachweise“.
 
+## Referenzseiten (Case Studies)
+- **Vor jeder neuen Referenzseite lesen:** `werkzeuge/anleitung-referenzseite.md` (Ablauf, Storyline-Schablone, Bausteine, Prüfliste, Recherche-Erkenntnisse). Vollständige Fassung mit Briefing der nächsten Referenz in `Betrieb` (Studio AAH/Website/2026-10-15_anleitung-referenzseite.md).
+- Bildwerkzeuge (Zusammensetzen, Ausschnitt, Kontaktbogen, Retusche) in `werkzeuge/grafiken/bild/`.
+
 ## Projektseite Bauer (Stand 15.10.2026)
 - `/referenzen/bauer/` wird aus `varianten.b` erzeugt (`hauptvariante: "b"` in `werkzeuge/inhalte/projekte.json`); Variante A nur im Tag `bauer-variante-a-2026-10-14`.
 - Heft (Unternehmenspräsentation) ausgeblendet bis zur Abnahme der Druckdatei; Einstellungen in `varianten_ablage.heft`. Vor dem Einblenden Seiten neu erzeugen und auf Personen und Platzhalter prüfen.
