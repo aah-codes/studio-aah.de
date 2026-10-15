@@ -86,7 +86,7 @@
 - Über und Kontakt nur Hero bis Stipendien plus Fuß mit Kontakt (Anna: „viel Textwüste“); am Handy Ausstellungen und Sammlungen herausgeschnitten.
 - Nicht nennen: Plattform (Wix). Kein „Branding“ (kein eigenes Logo; Wortmarke = Instagram-Name „@JANA_VOIGTMANN“, aus Helvetica nachgesetzt).
 - Stopp-Knopf der Bildschirmwand sitzt unten rechts über den Kacheln (`.hw-knopf`, vorher unerreichbar, alle Referenzen).
-- Galerie (Anna, 16.10.2026: „bei Klick auf Bild geht Slider auf mit Titel und Beschreibung“): eigene schwarze Sektion zwischen den drei Genres und „Über und Kontakt“, Baustein `durchklick` (drei Aufnahmen `galerie-1…3.jpg`, Klick aufs Bild zeigt die nächste; keine eigenen Pfeile oder Zähler – Anna: „irreführend“). Überschrift und Text sind Textvorschlag – Freigabe Anna.
+- Galerie (Anna, 16.10.2026: „bei Klick auf Bild geht Slider auf mit Titel und Beschreibung“): eigene schwarze Sektion zwischen den drei Genres und „Über und Kontakt“, Baustein `durchklick` (drei Aufnahmen `galerie-1…3.jpg`, Klick aufs Bild zeigt die nächste; keine eigenen Pfeile oder Zähler – Anna: „irreführend“). Text von Anna freigegeben (16.10.2026).
 - Kein Geräte-Mockup (Anna, 16.10.2026: „mockup raus“; Atelier-Monitor und MacBook entfernt, Bildnachweise gelöscht).
 
 ## Inspiration (von Anna gesammelt, „passt zu meinem Stil“) – keine Regel, nicht kopieren
