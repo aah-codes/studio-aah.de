@@ -2882,36 +2882,31 @@
        "alt": "Alle Seiten der Website im Überblick: Startseite, Mixed Media, Malerei, Grafik und Über",
        "spalten": [
         [
-         "bilder/referenzen/jana/wl/grafik-00.jpg",
-         "bilder/referenzen/jana/wl/malerei-01.jpg",
-         "bilder/referenzen/jana/wl/mixed-media-03.jpg",
-         "bilder/referenzen/jana/wl/grafik-03.jpg",
-         "bilder/referenzen/jana/wl/c3-bcber-01.jpg"
+         "bilder/referenzen/jana/wl/abschnitt-37.jpg",
+         "bilder/referenzen/jana/wl/abschnitt-33.jpg",
+         "bilder/referenzen/jana/wl/abschnitt-41.jpg",
+         "bilder/referenzen/jana/wl/abschnitt-31.jpg"
         ],
         [
-         "bilder/referenzen/jana/wl/mixed-media-00.jpg",
-         "bilder/referenzen/jana/wl/grafik-05.jpg",
-         "bilder/referenzen/jana/wl/malerei-03.jpg",
-         "bilder/referenzen/jana/wl/mixed-media-10.jpg",
-         "bilder/referenzen/jana/wl/grafik-07.jpg"
+         "bilder/referenzen/jana/wl/abschnitt-30.jpg",
+         "bilder/referenzen/jana/wl/abschnitt-39.jpg",
+         "bilder/referenzen/jana/wl/abschnitt-35.jpg",
+         "bilder/referenzen/jana/wl/abschnitt-42.jpg"
         ],
         [
-         "bilder/referenzen/jana/wl/startseite-00.jpg",
-         "bilder/referenzen/jana/wl/startseite-01.jpg",
-         "bilder/referenzen/jana/wl/mixed-media-01.jpg"
+         "bilder/referenzen/jana/wl/abschnitt-26.jpg",
+         "bilder/referenzen/jana/wl/abschnitt-29.jpg"
         ],
         [
-         "bilder/referenzen/jana/wl/malerei-00.jpg",
-         "bilder/referenzen/jana/wl/grafik-01.jpg",
-         "bilder/referenzen/jana/wl/grafik-04.jpg",
-         "bilder/referenzen/jana/wl/malerei-04.jpg",
-         "bilder/referenzen/jana/wl/c3-bcber-02.jpg"
+         "bilder/referenzen/jana/wl/abschnitt-40.jpg",
+         "bilder/referenzen/jana/wl/abschnitt-32.jpg",
+         "bilder/referenzen/jana/wl/abschnitt-38.jpg",
+         "bilder/referenzen/jana/wl/abschnitt-27.jpg"
         ],
         [
-         "bilder/referenzen/jana/wl/mixed-media-09.jpg",
-         "bilder/referenzen/jana/wl/grafik-02.jpg",
-         "bilder/referenzen/jana/wl/malerei-02.jpg",
-         "bilder/referenzen/jana/wl/mixed-media-12.jpg"
+         "bilder/referenzen/jana/wl/abschnitt-34.jpg",
+         "bilder/referenzen/jana/wl/abschnitt-36.jpg",
+         "bilder/referenzen/jana/wl/abschnitt-28.jpg"
         ]
        ],
        "dauer": [
@@ -2929,7 +2924,7 @@
         "-27s"
        ],
        "fest": 2,
-       "farbe": "#c0b7f8",
+       "farbe": "#fff",
        "gerade": true,
        "luecke": "clamp(26px, 3.2vw, 52px)"
       },
