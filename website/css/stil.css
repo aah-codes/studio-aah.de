@@ -3505,11 +3505,14 @@ section[hidden] { display: none !important; }
 .bl-kopf { display: flex; justify-content: space-between; align-items: center; gap: 24px; max-width: 1200px; margin: 0 auto clamp(32px, 5vw, 72px); position: relative; z-index: 2; }
 .bl-logo { width: clamp(96px, 11vw, 160px); height: auto; }
 .bl-kopf .meta { margin: 0; text-align: right; }
-.bl-laptop { position: relative; z-index: 2; width: min(960px, 100%); margin: 0 auto; }
-.bl-schirm { background: #111; border-radius: 18px 18px 0 0; padding: clamp(8px, 1.4vw, 18px) clamp(8px, 1.4vw, 18px) 0; box-shadow: 0 0 0 2px #3a3a3c inset; }
-.bl-schirm img { display: block; width: 100%; height: auto; border-radius: 4px 4px 0 0; }
-.bl-fuss { display: block; height: clamp(10px, 1.6vw, 20px); margin: 0 -7%; border-radius: 0 0 14px 14px; background: linear-gradient(180deg, #d9dadc, #a9abae); box-shadow: 0 18px 40px rgba(0, 0, 0, .35); }
-.bl-hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 22%; background: var(--pc-hell); z-index: 1; }
+/* ohne echtes Mockup: flaches Bildschirmbild; mit Mockup: das Foto (Gerät nach Zielgruppe, Anna 15.10.2026) */
+.bl-flach, .bl-mockup { position: relative; z-index: 2; width: min(1000px, 100%); margin: 0 auto; }
+.bl-flach img { display: block; width: 100%; height: auto; border-radius: clamp(8px, 1vw, 14px); box-shadow: 0 30px 70px rgba(0, 0, 0, .35); }
+.bl-mockup { width: min(1200px, 100%); }
+.bl-mockup img { display: block; width: 100%; height: auto; }
+.cs-nahtlos .nl-band.bl-hero { padding-bottom: clamp(32px, 4vw, 64px); }
+.bl-hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: clamp(90px, 14vw, 220px); background: var(--pc-hell); z-index: 1; }
+
 
 /* Überblick: große Aussage + Leistungsspalte */
 .cs-ueberblick { display: grid; grid-template-columns: minmax(0, 2.2fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); align-items: end; max-width: 1200px; margin: 0 auto; }
@@ -3559,10 +3562,11 @@ section[hidden] { display: none !important; }
 .la-handy { flex: calc(var(--rh) * 1000) 1 0; min-width: 0; }
 .la-karte img { display: block; width: 100%; height: auto; border-radius: clamp(6px, .8vw, 12px); }
 .la-karte figcaption { margin-top: 10px; text-align: center; }
+/* am Handy nur die Handy-Fassung (Anna 15.10.2026: sonst „zweimal dasselbe“) */
 @media (max-width: 700px) {
-  .la-paar { flex-direction: column; align-items: center; }
-  .la-desktop, .la-handy { flex: none; width: 100%; }
-  .la-handy { width: min(300px, 78%); }
+  .la-paar { justify-content: center; }
+  .la-desktop { display: none; }
+  .la-handy { flex: none; width: min(320px, 86%); }
 }
 
 /* weitere Seiten mit Pillen und Pfeil */
@@ -3593,3 +3597,11 @@ section[hidden] { display: none !important; }
 .cs-nahtlos .gr-h3, .cs-nahtlos .zeitleiste h3 { line-height: 1.2; }
 .cs-ergebnis .eg-karten.eg-anzahl-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 @media (max-width: 900px) { .cs-ergebnis .eg-karten.eg-anzahl-3 { grid-template-columns: 1fr; } }
+
+/* Ergebnis mit Kundenstimme daneben */
+.eg-mit-stimme { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(28px, 4vw, 64px); align-items: start; }
+.cs-ergebnis .eg-mit-stimme .eg-karten { grid-template-columns: 1fr; gap: 28px; }
+.eg-stimme .stimmen { display: block; columns: auto; padding: 0; }
+.eg-stimme .stimme { margin: 0; break-inside: avoid; }
+.eg-stimme .stimmen-quelle { padding: 16px 0 0; margin: 0; }
+@media (max-width: 900px) { .eg-mit-stimme { grid-template-columns: 1fr; } }

@@ -72,6 +72,7 @@ Schablone (bewährt bei Bauer, abgeleitet aus der Recherche):
 
 - Weitere: `werkzeuge/grafiken/unkenntlich.swift`, `heft-druck.swift`, `schriftmuster.swift` (Schriftmuster als PNG, wenn die Schriftlizenz keine Weitergabe der Datei erlaubt, z. B. Satoshi; Repository nur SIL OFL).
 - **Schärfe:** Quellbild mindestens doppelt so breit wie angezeigt.
+- **Mockups (Anna, 15.10.2026):** nur hochwertige, echte Foto-Mockups moderner Geräte (z. B. silberner Laptop, Canva-Mockups oder Mockuptree, Lizenz gewerblich, Nachweis im Impressum). Keine gezeichneten/CSS-Geräte, keine KI-Bilder. Gerät nach Zielgruppe der Kund:innen wählen (Anna, 15.10.2026): Wie schauen deren Besucher:innen auf die Website? HR/B2B (z. B. Deinetwegen) → moderner Apple-Standrechner (iMac) im Hero; Ärztinnen (z. B. Simone) → vor allem Handy; Kreative (z. B. Jana) → Laptop und Handy.
 
 ### Schritt 3 – Daten und Generator
 - **Vorlagen (Anna, 15.10.2026):** Referenzseiten funktionieren wie ein CMS – wiederkehrende Bausteine, nur die Inhalte wechseln.

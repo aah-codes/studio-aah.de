@@ -86,11 +86,14 @@ def buehne(p, pre):
         return (f'  <div class="nl-band nl-schraege nl-blau cs-hero cs-hero-wand" style="--von:var(--pc-farbe);--bis:var(--pc-farbe)">'
                 f'<div class="hw-buehne"><div class="hw-wand" role="img" aria-label="{esc(w["alt"])}">{spalten}</div>'
                 f'<button type="button" class="ks-knopf hw-knopf" aria-label="Bewegung anhalten">❚❚</button></div></div>')
-    if p.get('buehne_laptop'):  # Deinetwegen (Anna 15.10.2026, Vorlage Behance „Reslink“): Laptop mit der Startseite auf dem Verlauf der Marke, Logo oben links
+    if p.get('buehne_laptop'):  # Deinetwegen (Anna 15.10.2026): Bühne auf dem Markenverlauf, Logo oben links; Gerät nur als echtes Foto-Mockup
+        # ("mockup": fertiges Bild aus Canva o. Ä., Gerät nach Zielgruppe); ohne Mockup das flache Bildschirmbild, nie ein gezeichnetes Gerät
         b = p['buehne_laptop']
         logo = f'<img class="bl-logo" src="{pre}{b["logo"]}" alt="" width="160" height="79">' if b.get('logo') else ''
+        bild = b.get('mockup') or b['bild']; w, h = jpg_mass(basis / 'website' / bild) if bild.endswith('.jpg') else (b.get('breite', 2400), b.get('hoehe', 1500))
+        kl = 'bl-mockup' if b.get('mockup') else 'bl-flach'
         return (f'  <div class="nl-band nl-dunkel cs-hero bl-hero" style="--von:{b["von"]};--bis:{b["bis"]}"><div class="bl-kopf">{logo}<p class="meta">{esc(b["meta"])}</p></div>'
-                f'<div class="bl-laptop"><div class="bl-schirm"><img src="{pre}{b["bild"]}" alt="{esc(b["alt"])}" width="1800" height="1125" fetchpriority="high" decoding="async"></div><span class="bl-fuss" aria-hidden="true"></span></div></div>')
+                f'<div class="{kl}"><img src="{pre}{bild}" alt="{esc(b["alt"])}" width="{w}" height="{h}" fetchpriority="high" decoding="async"></div></div>')
     if p.get('buehne_bild'):  # Variante B (Anna 14.10.2026): EIN scharfer Screen auf Bauer-Blau, harte Kante, keine Maske, nichts darauf
         b = p['buehne_bild']
         return (f'  <div class="nl-band nl-schraege nl-blau cs-hero" style="--von:var(--pc-farbe);--bis:var(--pc-farbe)">'
@@ -298,7 +301,10 @@ def block(b, pre):
         karten = ''.join(f'<li><h3>{trennen(esc(z))}</h3><p>{esc(a)}</p></li>' for z, a in b['ziele'])
         ab = b.get('abschluss')
         abschluss = (f'<div class="eg-abschluss"><p class="eg-frage">{esc(ab["frage"])}</p><a class="button" href="{ab["link"]}">{esc(ab["knopf"])} <span aria-hidden="true">→</span></a></div>') if ab else ''
-        return (f'  <section class="cs-block cs-ergebnis" aria-label="Ergebnis"><ul class="eg-karten eg-anzahl-{len(b["ziele"])}">{karten}</ul>'
+        liste = f'<ul class="eg-karten eg-anzahl-{len(b["ziele"])}">{karten}</ul>'
+        if b.get('_stimme_html'):  # Kundenstimme neben den Antworten (Anna 15.10.2026: Zitat unten „ziemlich lost“)
+            liste = f'<div class="eg-mit-stimme">{liste}<div class="eg-stimme">{b["_stimme_html"]}</div></div>'
+        return (f'  <section class="cs-block cs-ergebnis" aria-label="Ergebnis">{liste}'
                 + (f'<p class="eg-credits">{esc(b["credits"])}</p>' if b.get('credits') else '') + abschluss + '</section>')
     if b['typ'] == 'figma':
         # ein Board in nachgebauter Figma-Oberfläche (Anna 15.10.2026: „links und rechts das User Interface von Figma, damit klar ist: das liegt in Figma“);
@@ -517,6 +523,10 @@ def projektseite(p, nr):
         # Sprungziel für die Schritte im Ablauf: id auf das erste Element des Blocks
         h = block(b, pre)
         return re.sub(r'<(figure|section|div)\b', lambda m: f'<{m.group(1)} id="{b["anker"]}"', h, count=1) if b.get('anker') else h
+    stimme_unten = stimme(p, pre)
+    for b in p.get('bilder', []):
+        if b.get('typ') == 'ergebnis' and b.get('stimme') and stimme_unten:
+            b['_stimme_html'] = stimme_unten.replace('<section class="cs-stimme" aria-label="Kundenstimme">', '<div class="cs-stimme-innen">').replace('</section>', '</div>'); stimme_unten = ''
     if p.get('_variante'):
         # Seamless (Anna 14.10.2026): jeder Block liegt in einem Band über die volle Breite; der Verlauf beginnt mit der Endfarbe
         # des vorigen Bands (--von = letztes --bis), damit nirgends eine Kante entsteht; Arten: schraege (Bauer-Schräge mit gelbem
@@ -547,7 +557,7 @@ def projektseite(p, nr):
 {bilder}
   </section>
 
-{stimme(p, pre)}
+{stimme_unten}
 
   <nav class="cs-weiter" aria-label="Weitere Projekte">
     <a class="pk-bild" href="../{nxt["slug"]}/" tabindex="-1" aria-hidden="true">{I.cover(nxt, pre)}</a>

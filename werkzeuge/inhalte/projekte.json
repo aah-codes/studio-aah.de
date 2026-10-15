@@ -2405,9 +2405,9 @@
  },
  {
   "name": "Deinetwegen – Franziska Weihmann",
-  "branche": "HR-Beratung, gegründet 2024",
-  "zeitraum": "2025 · Umsetzung in zwei Monaten",
-  "leistungen": "Branding, Onepager mit Blog und Artikelseite, Webdesign und Entwicklung in Webflow",
+  "branche": "HR-Beratung – Mitarbeiterbindung & Unternehmenskultur",
+  "zeitraum": "2025 · 2 Monate",
+  "leistungen": "Branding, Onepager mit Blog und Artikelseite, Webentwicklung in Webflow",
   "tags": [
    "brand",
    "website"
@@ -2442,7 +2442,6 @@
     {
      "projekt": {
       "kurzname": "Deinetwegen HR",
-      "einleitung": "Ein erster Startpunkt für eine frisch gegründete HR-Beratung: ein Onepager mit Blog, der zeigt, wofür Deinetwegen HR steht und wen sie anspricht.",
       "klasse": "cs-deinetwegen",
       "stil": ";--pc-dunkel:#2A1E2B;--pc-akzent:#FF5000;--pc-zweit:#BEC9C6;--pc-hell:#EBEBF0;--pc-meta-dunkel:#BEC9C6;--pc-marke:#2A1E2B",
       "buehne_laptop": {
@@ -2602,7 +2601,7 @@
      "typ": "marke",
      "meta": "Corporate Design",
      "titel": "Logo, Farben, Schrift",
-     "text": "Das Corporate Design habe ich optimiert und im Brand Manual festgehalten: die Wortmarke mit orangem D und Stern, das D als Bildmarke, Farben und Schrift.",
+     "text": "Die Wortmarke hat Franziska als Grundlage mitgebracht. Ich habe Ausrichtung und Farben angepasst und das Corporate Design im Brand Manual festgehalten: Wortmarke mit orangem D und Stern, das D als Bildmarke, Farben und Schrift.",
      "logos": [
       [
        "bilder/referenzen/deinetwegen/logo-hell.svg",
@@ -2747,7 +2746,8 @@
       "von": "#ffffff",
       "bis": "#ffffff",
       "art": []
-     }
+     },
+     "stimme": true
     }
    ]
   }
