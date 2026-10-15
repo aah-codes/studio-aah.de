@@ -3383,6 +3383,16 @@ section[hidden] { display: none !important; }
 .st-monitor .st-browser .vf-leiste { border-radius: 0; }
 .st-hals { position: absolute; left: 50%; bottom: clamp(10px, 1vw, 14px); width: 15%; height: calc(clamp(70px, 8vw, 120px) - clamp(10px, 1vw, 14px)); transform: translateX(-50%); background: linear-gradient(90deg, #b9bcbe, #e4e6e7 45%, #c9cccd); clip-path: polygon(14% 0, 86% 0, 100% 100%, 0 100%); }
 .st-fuss { position: absolute; left: 50%; bottom: 0; width: 30%; height: clamp(10px, 1vw, 14px); transform: translateX(-50%); border-radius: 4px 4px 10px 10px; background: linear-gradient(#d6d8d9, #a9acae); box-shadow: 0 14px 24px rgba(14, 16, 17, .18); }
+/* Standrechner passt am Laptop ganz in den Bildschirm (Anna 15.10.2026): Breite aus der Fensterhöhe, Fuß und Rand flacher */
+@media (min-width: 901px) {
+  .cs-nahtlos .cs-story .st-rahmen { --fuss-h: clamp(44px, 6svh, 90px); --mon-b: min(100%, 1240px, max(520px, calc((100svh - var(--kopf-hoehe) - 300px) * 1.6))); }
+  .cs-nahtlos .cs-story .st-monitor { max-width: var(--mon-b); margin-inline: auto; }
+  .cs-nahtlos .cs-story .st-rahmen > .st-phase { left: max(0px, calc(50% - var(--mon-b) / 2)); }
+  .cs-nahtlos .cs-story .st-leiste { justify-content: center; text-align: center; }
+  .st-monitor { padding-bottom: var(--fuss-h); }
+  .st-monitor .st-browser { border-bottom-width: clamp(18px, 2.6svh, 36px); }
+  .st-hals { height: calc(var(--fuss-h) - clamp(10px, 1vw, 14px)); }
+}
 /* Benchmark in Figma-Oberfläche */
 .cs-figma { margin: 0 auto; max-width: 1480px; }
 .fg-app { display: grid; grid-template-columns: minmax(0, 15%) minmax(0, 1fr) minmax(0, 16%); grid-template-rows: auto 1fr; border-radius: 14px; overflow: hidden; background: #e5e5e5; box-shadow: 0 0 0 1px rgba(14, 16, 17, .12), 0 40px 80px rgba(14, 16, 17, .18); font: 500 12px/1.3 var(--schrift-text); color: #1d1f20; }
