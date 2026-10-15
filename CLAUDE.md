@@ -86,7 +86,7 @@
 - Über und Kontakt nur Hero bis Stipendien plus Fuß mit Kontakt (Anna: „viel Textwüste“); am Handy Ausstellungen und Sammlungen herausgeschnitten.
 - Nicht nennen: Plattform (Wix). Kein „Branding“ (kein eigenes Logo; Wortmarke = Instagram-Name „@JANA_VOIGTMANN“, aus Helvetica nachgesetzt).
 - Stopp-Knopf der Bildschirmwand sitzt unten rechts über den Kacheln (`.hw-knopf`, vorher unerreichbar, alle Referenzen).
-- Mockup: nur MacBook auf Lochblech (Mayank Girdhar, Unsplash, Bildnachweis im Impressum); Bildschirm zeigt „Walking Men“ von der Seite Grafik (`macbook-walking-men.jpg`, Annas Wahl, mit echter Schrift eingesetzt mit `bildschirm-ersetzen.swift`), Atelier-Monitor entfernt. Handy-Aufnahmen mit `AUFNAHME_HANDY_BREITE=320` (festes 320-px-Layout).
+- Kein Geräte-Mockup (Anna, 16.10.2026: „mockup raus“; Atelier-Monitor und MacBook entfernt, Bildnachweise gelöscht).
 
 ## Inspiration (von Anna gesammelt, „passt zu meinem Stil“) – keine Regel, nicht kopieren
 - 13.10.2026, Dribbble „Mall Website Retail Shopping Center“ (https://dribbble.com/shots/27796777): Foto im ganzen Bild, einfarbig eingefärbt (Duoton, duotone) in Orangerot, große weiße Serifen-Überschrift im Bild, kleine Zeichen (Kreuz, Stern, Plus) als Schmuck. Anna will ihre Bilder so – in Blau, leicht bewegt. Die Animation selbst war in der Cloud nicht sichtbar.
