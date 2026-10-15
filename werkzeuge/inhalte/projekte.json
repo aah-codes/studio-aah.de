@@ -2943,13 +2943,36 @@
        "fest": 2,
        "grund": "bilder/referenzen/jana/tusche-g3.jpg",
        "luecke": "clamp(26px, 3.2vw, 52px)"
-      }
+      },
+      "zeitraum": "2022 · 6–8 Wochen",
+      "leistungen": "Schriften und Layout, neue Website, UI/UX Design, Webentwicklung"
+     }
+    },
+    {
+     "typ": "ueberblick",
+     "meta": "Überblick",
+     "aussage": "Drei Genres, eine Website – und viel Raum für die Werke.",
+     "leistungen_titel": "Leistungen",
+     "leistungen": [
+      "Schriften und Layout",
+      "Neue Website",
+      "UI/UX Design",
+      "Webentwicklung"
+     ],
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": []
      }
     },
     {
      "typ": "inhalt",
      "titel": "Inhalt",
      "punkte": [
+      [
+       "Ausgangslage",
+       "j-ausgangslage"
+      ],
       [
        "Startseite",
        "j-start"
@@ -2965,11 +2988,53 @@
       [
        "Gestaltung",
        "j-gestaltung"
+      ],
+      [
+       "Ergebnis",
+       "j-ergebnis"
       ]
      ],
      "band": {
       "von": "#ffffff",
       "bis": "#ffffff",
+      "art": []
+     }
+    },
+    {
+     "typ": "kapitel",
+     "anker": "j-ausgangslage",
+     "meta": "Erste digitale Präsenz",
+     "titel": "Ausgangslage",
+     "band": {
+      "von": "#ffffff",
+      "bis": "#F4F4F4",
+      "art": [
+       "eng"
+      ]
+     }
+    },
+    {
+     "typ": "hl-karten",
+     "karten": [
+      {
+       "etikett": "Herausforderung",
+       "text": "Jana hatte noch keine Website und keine digitale Präsenz. Ihre drei Genres sollten auf einer Website zusammenkommen."
+      },
+      {
+       "etikett": "Lösung",
+       "text": "Zurückhaltendes Schwarz-Weiß und viel Weißraum, damit die Arbeiten Luft zum Atmen haben.",
+       "dunkel": true
+      }
+     ],
+     "ziele_titel": "Ziele",
+     "ziele": [
+      "Mixed Media, Malerei und Grafik auf einer Website vereinen.",
+      "Die Werke glänzen lassen.",
+      "Interessierte können Kontakt aufnehmen."
+     ],
+     "band": {
+      "von": "#F4F4F4",
+      "bis": "#F4F4F4",
       "art": []
      }
     },
@@ -3089,6 +3154,48 @@
      "band": {
       "von": "#F4F4F4",
       "bis": "#F4F4F4",
+      "art": []
+     },
+     "text": "Kein eigenes Logo: Als Wortmarke dient ihr Instagram-Name. Ich habe die Schriften festgelegt und Layout und Interface gestaltet."
+    },
+    {
+     "typ": "kapitel",
+     "anker": "j-ergebnis",
+     "meta": "Ziele und Wirkung",
+     "titel": "Ergebnis",
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": [
+       "eng"
+      ]
+     }
+    },
+    {
+     "typ": "ergebnis",
+     "ziele": [
+      [
+       "Drei Genres, eine Website",
+       "Seit 2022 stehen alle drei Genres auf einer Website."
+      ],
+      [
+       "Die Werke glänzen lassen",
+       "Schwarz-Weiß und viel Weißraum geben den Arbeiten Luft."
+      ],
+      [
+       "Kontakt für Interessierte",
+       "Bei Bewerbungen für Ausstellungen gibt die Website einen Überblick über ihr Werk, mit Vita und Kontakt."
+      ]
+     ],
+     "credits": "Schriften, Layout, UI/UX Design und Webentwicklung: Anna Härtelt",
+     "abschluss": {
+      "frage": "Sie zeigen Kunst und brauchen eine Website, auf der Ihre Werke wirken?",
+      "knopf": "Projekt anfragen",
+      "link": "../../kontakt/"
+     },
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
       "art": []
      }
     }
