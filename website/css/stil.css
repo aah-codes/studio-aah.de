@@ -3201,7 +3201,7 @@ section[hidden] { display: none !important; }
 .nl-band.nl-voll { padding-left: 0; padding-right: 0; }
 /* Bauer-Schräge: Farbe des Bands steigt schräg in das vorige Band, mit gelbem Streifen (wie im Footer der Bauer-Website) */
 .nl-band.nl-schraege { margin-top: calc(-1 * clamp(40px, 6.75vw, 96px)); padding-top: calc(clamp(56px, 7vw, 112px) + clamp(40px, 6.75vw, 96px)); clip-path: polygon(0 clamp(40px, 6.75vw, 96px), 100% 0, 100% 100%, 0 100%); }
-.nl-band.nl-schraege::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: calc(clamp(40px, 6.75vw, 96px) + 12px); background: #fbd52a; clip-path: polygon(0 calc(100% - 12px), 100% 0, 100% 12px, 0 100%); z-index: 1; pointer-events: none; }
+.nl-band.nl-schraege::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: calc(clamp(40px, 6.75vw, 96px) + 12px); background: var(--pc-streifen, #fbd52a); clip-path: polygon(0 calc(100% - 12px), 100% 0, 100% 12px, 0 100%); z-index: 1; pointer-events: none; }
 /* Kacheln und Lücken der Blöcke auflösen */
 .cs-nahtlos .cs-block { position: relative; z-index: 2; }
 .cs-nahtlos .cs-ziele-grafik, .cs-nahtlos .cs-kachel, .cs-nahtlos .cs-sitemap, .cs-nahtlos .ga-bild, .cs-nahtlos .cs-designsystem, .cs-nahtlos .vd-varianten, .cs-nahtlos .cs-handy-duo { background: transparent; box-shadow: none; }
