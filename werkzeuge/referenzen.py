@@ -228,12 +228,12 @@ def block(b, pre):
                 f'<p><button type="button" class="ks-knopf hd-knopf" aria-label="Bewegung anhalten">❚❚</button></p></div>\n'
                 f'    <div class="hd-buehne">{handy3d(b["links"], pre, b["links_alt"], "hd-links")}{handy3d(b["rechts"], pre, b["rechts_alt"], "hd-rechts", felder, b.get("form_start", 0))}</div>\n  </section>')
     if b['typ'] == 'visual-design':
-        # Visual Design wie Behance „CreativMinds – Visual Language“ (Anna 14.10.2026): Entscheidungen, gewähltes Favicon, Varianten, zwei Features
+        # Visual Design wie Behance „CreativMinds – Visual Language“ (Anna 14.10.2026): Entscheidungen, gewähltes Favicon, Varianten (optional; Storyline 15.10.2026 ohne), zwei Features
         punkte = ''.join(f'<li><b>{esc(a)}</b> {esc(x)}</li>' for a, x in b['entscheidungen'])
         features = ''.join(f'<figure class="vd-feature"><div class="vd-fenster"><img src="{pre}{bild}" alt="{esc(alt)}" loading="lazy"></div><figcaption class="meta">{esc(titel)}</figcaption></figure>' for bild, titel, alt in b.get('features', []))
         return (f'  <section class="cs-block cs-visual" aria-labelledby="vd-titel">\n    <div class="vd-text"><p class="meta">{esc(b["meta"])}</p><h2 class="bn-titel" id="vd-titel">{trennen(esc(b["titel"]))}</h2><ul>{punkte}</ul></div>\n'
                 f'    <div class="vd-icon"><img src="{pre}{b["favicon"]}" alt="Favicon von Wolfgang Bauer Ingenieurbau" width="512" height="512" loading="lazy"><span class="meta">{esc(b["favicon_text"])}</span></div>\n'
-                f'    <figure class="vd-varianten"><img src="{pre}{b["varianten"]}" alt="{esc(b["varianten_alt"])}" loading="lazy"><figcaption class="meta">{esc(b["varianten_text"])}</figcaption></figure>\n'
+                + (f'    <figure class="vd-varianten"><img src="{pre}{b["varianten"]}" alt="{esc(b["varianten_alt"])}" loading="lazy"><figcaption class="meta">{esc(b["varianten_text"])}</figcaption></figure>\n' if b.get('varianten') else '')
                 + (f'    <div class="vd-features">{features}</div>\n' if features else '') + '  </section>')
     if b['typ'] == 'personas':
         # Zwei Zielgruppen, zwei Sprachen (Anna 14.10.2026): zwei klar getrennte Welten (Auftraggeber hell, Bewerber in Bauer-Blau),

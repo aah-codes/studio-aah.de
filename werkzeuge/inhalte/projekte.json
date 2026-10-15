@@ -2067,11 +2067,123 @@
      }
     },
     {
+     "aus": 8,
+     "setze": {
+      "titel": ""
+     },
+     "band": {
+      "von": "var(--pc-farbe)",
+      "bis": "var(--pc-farbe)",
+      "art": [
+       "blau",
+       "raster"
+      ]
+     }
+    },
+    {
+     "typ": "mega-film",
+     "anker": "b-weiche",
+     "basis": "bilder/referenzen/bauer/mm/basis.jpg",
+     "basis_alt": "Startseite der neuen Website",
+     "menues": [
+      {
+       "bild": "bilder/referenzen/bauer/mm/kompetenzen.jpg",
+       "alt": "Mega-Menü Kompetenzen geöffnet",
+       "kopf": 16.8
+      },
+      {
+       "bild": "bilder/referenzen/bauer/mm/karriere.jpg",
+       "alt": "Mega-Menü Jobs & Karriere geöffnet",
+       "kopf": 18.4
+      }
+     ],
+     "unterschrift": "Mega-Menü Kompetenzen und Jobs & Karriere",
+     "band": {
+      "von": "var(--pc-farbe)",
+      "bis": "var(--pc-farbe)",
+      "art": [
+       "blau"
+      ]
+     }
+    },
+    {
      "aus": 9,
      "setze": {
       "nur": "auftraggeber",
       "mit_kopf": true,
       "hinweis": true
+     },
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": [
+       "schraege"
+      ]
+     }
+    },
+    {
+     "typ": "funnel-karte",
+     "spuren": [
+      {
+       "art": "sie",
+       "anrede": "Sie",
+       "gruppe": "Auftraggeber · Bund, Land, Stiftungen",
+       "stationen": [
+        {
+         "label": "Mega-Menü",
+         "bild": "bilder/referenzen/bauer/mm/kompetenzen.jpg",
+         "alt": "Mega-Menü Kompetenzen geöffnet",
+         "dauer": 10,
+         "ganz": true
+        },
+        {
+         "label": "Kernkompetenzen",
+         "bild": "bilder/referenzen/bauer/film/n-start-kompetenzen.jpg",
+         "alt": "Kernkompetenzen auf der Startseite"
+        },
+        {
+         "label": "Referenz",
+         "bild": "bilder/referenzen/bauer/film/n-referenz-detail.jpg",
+         "alt": "Referenz im Detail mit Call to Action"
+        },
+        {
+         "label": "Sie planen ein vergleichbares Vorhaben?",
+         "bild": "bilder/referenzen/bauer/cta-vorhaben.jpg",
+         "alt": "Call to Action „Sie planen ein vergleichbares Vorhaben?“",
+         "cta": true,
+         "dauer": 8,
+         "ganz": true
+        },
+        {
+         "label": "Kontakt",
+         "bild": "bilder/referenzen/bauer/fu-kontakt.jpg",
+         "alt": "Kontaktformular"
+        }
+       ]
+      }
+     ],
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": []
+     },
+     "meta": "Click-Funnel",
+     "titel": "Jede Seite führt zum nächsten Schritt."
+    },
+    {
+     "aus": 18,
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": []
+     }
+    },
+    {
+     "aus": 19,
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": []
      }
     },
     {
@@ -2090,38 +2202,7 @@
      }
     },
     {
-     "aus": 8,
-     "setze": {
-      "titel": ""
-     },
-     "band": {
-      "von": "var(--pc-farbe)",
-      "bis": "var(--pc-farbe)",
-      "art": [
-       "blau",
-       "raster"
-      ]
-     }
-    },
-    {
-     "aus": 11,
-     "setze": {
-      "titel": ""
-     },
-     "band": {
-      "von": "var(--pc-farbe)",
-      "bis": "var(--pc-farbe)",
-      "art": [
-       "blau",
-       "raster",
-       "eng"
-      ]
-     }
-    },
-    {
      "typ": "funnel-karte",
-     "meta": "Click-Funnel",
-     "titel": "Jede Seite führt zum nächsten Schritt.",
      "spuren": [
       {
        "art": "du",
@@ -2175,151 +2256,12 @@
      }
     },
     {
-     "typ": "funnel-karte",
-     "spuren": [
-      {
-       "art": "sie",
-       "anrede": "Sie",
-       "gruppe": "Auftraggeber · Bund, Land, Stiftungen",
-       "stationen": [
-        {
-         "label": "Mega-Menü",
-         "bild": "bilder/referenzen/bauer/mm/kompetenzen.jpg",
-         "alt": "Mega-Menü Kompetenzen geöffnet",
-         "dauer": 10,
-         "ganz": true
-        },
-        {
-         "label": "Kernkompetenzen",
-         "bild": "bilder/referenzen/bauer/film/n-start-kompetenzen.jpg",
-         "alt": "Kernkompetenzen auf der Startseite"
-        },
-        {
-         "label": "Referenz",
-         "bild": "bilder/referenzen/bauer/film/n-referenz-detail.jpg",
-         "alt": "Referenz im Detail mit Call to Action"
-        },
-        {
-         "label": "Sie planen ein vergleichbares Vorhaben?",
-         "bild": "bilder/referenzen/bauer/cta-vorhaben.jpg",
-         "alt": "Call to Action „Sie planen ein vergleichbares Vorhaben?“",
-         "cta": true,
-         "dauer": 8,
-         "ganz": true
-        },
-        {
-         "label": "Kontakt",
-         "bild": "bilder/referenzen/bauer/fu-kontakt.jpg",
-         "alt": "Kontaktformular"
-        }
-       ]
-      }
-     ],
-     "band": {
-      "von": "#ffffff",
-      "bis": "#ffffff",
-      "art": [
-       "schraege"
-      ]
-     }
-    },
-    {
-     "aus": 14,
-     "band": {
-      "von": "var(--pc-farbe)",
-      "bis": "var(--pc-farbe)",
-      "art": [
-       "blau",
-       "schraege"
-      ]
-     }
-    },
-    {
-     "aus": 15,
-     "band": {
-      "von": "var(--pc-farbe)",
-      "bis": "var(--pc-farbe)",
-      "art": [
-       "blau"
-      ]
-     }
-    },
-    {
-     "typ": "mega-film",
-     "anker": "b-weiche",
-     "basis": "bilder/referenzen/bauer/mm/basis.jpg",
-     "basis_alt": "Startseite der neuen Website",
-     "menues": [
-      {
-       "bild": "bilder/referenzen/bauer/mm/kompetenzen.jpg",
-       "alt": "Mega-Menü Kompetenzen geöffnet",
-       "kopf": 16.8
-      },
-      {
-       "bild": "bilder/referenzen/bauer/mm/karriere.jpg",
-       "alt": "Mega-Menü Jobs & Karriere geöffnet",
-       "kopf": 18.4
-      }
-     ],
-     "unterschrift": "Mega-Menü Kompetenzen und Jobs & Karriere",
-     "band": {
-      "von": "var(--pc-farbe)",
-      "bis": "var(--pc-farbe)",
-      "art": [
-       "blau"
-      ]
-     }
-    },
-    {
-     "aus": 17,
-     "setze": {
-      "titel": "",
-      "bilder": [
-       {
-        "bild": "bilder/referenzen/bauer/dp-footer.jpg",
-        "titel": "Footer",
-        "alt": "Footer der neuen Website",
-        "breit": true
-       }
-      ]
-     },
-     "ohne": [
-      "text"
-     ],
-     "band": {
-      "von": "var(--pc-farbe)",
-      "bis": "var(--pc-farbe)",
-      "art": [
-       "blau"
-      ]
-     }
-    },
-    {
-     "aus": 18,
-     "band": {
-      "von": "#ffffff",
-      "bis": "#ffffff",
-      "art": [
-       "schraege"
-      ]
-     }
-    },
-    {
-     "aus": 19,
-     "band": {
-      "von": "#ffffff",
-      "bis": "#ffffff",
-      "art": []
-     }
-    },
-    {
      "aus": 20,
      "band": {
       "von": "var(--pc-farbe)",
       "bis": "var(--pc-farbe)",
       "art": [
-       "blau",
-       "schraege"
+       "blau"
       ]
      },
      "setze": {
@@ -2533,6 +2475,32 @@
      }
     },
     {
+     "aus": 14,
+     "band": {
+      "von": "var(--pc-farbe)",
+      "bis": "var(--pc-farbe)",
+      "art": [
+       "blau",
+       "schraege"
+      ]
+     }
+    },
+    {
+     "aus": 15,
+     "band": {
+      "von": "var(--pc-farbe)",
+      "bis": "var(--pc-farbe)",
+      "art": [
+       "blau"
+      ]
+     },
+     "ohne": [
+      "varianten",
+      "varianten_alt",
+      "varianten_text"
+     ]
+    },
+    {
      "aus": 23,
      "setze": {
       "abschnitte": [
@@ -2619,6 +2587,45 @@
        "bilder/referenzen/bauer/mag/h28.jpg",
        ""
       ]
+     ]
+    }
+   },
+   "wireframes": {
+    "aus": 11,
+    "setze": {
+     "titel": ""
+    },
+    "band": {
+     "von": "var(--pc-farbe)",
+     "bis": "var(--pc-farbe)",
+     "art": [
+      "blau",
+      "raster",
+      "eng"
+     ]
+    }
+   },
+   "footer": {
+    "aus": 17,
+    "setze": {
+     "titel": "",
+     "bilder": [
+      {
+       "bild": "bilder/referenzen/bauer/dp-footer.jpg",
+       "titel": "Footer",
+       "alt": "Footer der neuen Website",
+       "breit": true
+      }
+     ]
+    },
+    "ohne": [
+     "text"
+    ],
+    "band": {
+     "von": "var(--pc-farbe)",
+     "bis": "var(--pc-farbe)",
+     "art": [
+      "blau"
      ]
     }
    }
