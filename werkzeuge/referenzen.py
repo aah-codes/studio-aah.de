@@ -92,6 +92,10 @@ def buehne(p, pre):
         logo = f'<img class="bl-logo" src="{pre}{b["logo"]}" alt="" width="160" height="79">' if b.get('logo') else ''
         bild = b.get('mockup') or b['bild']; w, h = jpg_mass(basis / 'website' / bild) if bild.endswith('.jpg') else (b.get('breite', 2400), b.get('hoehe', 1500))
         kl = 'bl-mockup' if b.get('mockup') else 'bl-flach'
+        if b.get('mockup'):  # Foto über die ganze Breite (heller Fotogrund), Logo und Dachzeile dunkel darauf
+            logo = f'<img class="bl-logo" src="{pre}{b.get("logo_mockup", b["logo"])}" alt="" width="160" height="79">'
+            return (f'  <div class="nl-band nl-voll cs-hero bl-hero bl-mit-mockup" style="--von:{b.get("grund", "#f3f3f3")};--bis:{b.get("grund", "#f3f3f3")}"><div class="bl-kopf">{logo}<p class="meta">{esc(b["meta"])}</p></div>'
+                    f'<div class="bl-mockup"><img src="{pre}{bild}" alt="{esc(b["alt"])}" width="{w}" height="{h}" fetchpriority="high" decoding="async"></div></div>')
         return (f'  <div class="nl-band nl-dunkel cs-hero bl-hero" style="--von:{b["von"]};--bis:{b["bis"]}"><div class="bl-kopf">{logo}<p class="meta">{esc(b["meta"])}</p></div>'
                 f'<div class="{kl}"><img src="{pre}{bild}" alt="{esc(b["alt"])}" width="{w}" height="{h}" fetchpriority="high" decoding="async"></div></div>')
     if p.get('buehne_bild'):  # Variante B (Anna 14.10.2026): EIN scharfer Screen auf Bauer-Blau, harte Kante, keine Maske, nichts darauf

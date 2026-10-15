@@ -2446,11 +2446,14 @@
       "stil": ";--pc-dunkel:#2A1E2B;--pc-akzent:#FF5000;--pc-zweit:#BEC9C6;--pc-hell:#EBEBF0;--pc-meta-dunkel:#BEC9C6;--pc-marke:#2A1E2B",
       "buehne_laptop": {
        "bild": "bilder/referenzen/deinetwegen/start.jpg",
-       "alt": "Startseite von Deinetwegen HR am Laptop: „Feelgood Workplaces. Culture Design.“",
+       "alt": "Startseite von Deinetwegen HR auf einem iMac: „Feelgood Workplaces. Culture Design.“",
        "logo": "bilder/referenzen/deinetwegen/logo-dunkel.svg",
        "meta": "Branding · Onepager",
        "von": "#2A1E2B",
-       "bis": "#5A2F28"
+       "bis": "#5A2F28",
+       "mockup": "bilder/referenzen/deinetwegen/imac-start.jpg",
+       "logo_mockup": "bilder/referenzen/deinetwegen/logo-hell.svg",
+       "grund": "#FFFFFF"
       }
      }
     },
@@ -2466,7 +2469,7 @@
       "Webdesign und Entwicklung in Webflow"
      ],
      "band": {
-      "von": "#EBEBF0",
+      "von": "#ECECEC",
       "bis": "#ffffff",
       "art": []
      }

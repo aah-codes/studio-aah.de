@@ -3508,8 +3508,19 @@ section[hidden] { display: none !important; }
 /* ohne echtes Mockup: flaches Bildschirmbild; mit Mockup: das Foto (Gerät nach Zielgruppe, Anna 15.10.2026) */
 .bl-flach, .bl-mockup { position: relative; z-index: 2; width: min(1000px, 100%); margin: 0 auto; }
 .bl-flach img { display: block; width: 100%; height: auto; border-radius: clamp(8px, 1vw, 14px); box-shadow: 0 30px 70px rgba(0, 0, 0, .35); }
-.bl-mockup { width: min(1200px, 100%); }
+/* mit echtem Foto-Mockup: Foto über die ganze Breite, Logo und Dachzeile oben darauf */
+.cs-nahtlos .nl-band.bl-mit-mockup { padding: 0; }
+.bl-mit-mockup::after { display: none; }
+.bl-mit-mockup .bl-kopf { position: relative; z-index: 3; width: min(1200px, 100% - 2 * var(--rand-seite)); margin: 0 auto; padding-top: clamp(24px, 3vw, 48px); }
+.bl-mit-mockup .bl-kopf .meta { color: var(--pc-dunkel); }
+.bl-mockup { width: 100%; position: relative; }
+/* Oberkante des Fotos läuft in den weißen Kopf aus (Anna 15.10.2026: Streifen weiß) */
+.bl-mit-mockup .bl-mockup::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 16%; background: linear-gradient(180deg, #fff, rgba(255, 255, 255, 0)); pointer-events: none; }
 .bl-mockup img { display: block; width: 100%; height: auto; }
+@media (max-width: 900px) {
+  .bl-mit-mockup .bl-kopf { width: calc(100% - 2 * var(--rand-seite-mobil)); }
+  .bl-mockup img { aspect-ratio: 1 / 1; max-height: none; object-position: 51% 60%; }
+}
 .cs-nahtlos .nl-band.bl-hero { padding-bottom: clamp(32px, 4vw, 64px); }
 .bl-hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: clamp(90px, 14vw, 220px); background: var(--pc-hell); z-index: 1; }
 
