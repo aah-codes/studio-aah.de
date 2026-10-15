@@ -1,5 +1,5 @@
 // Ersetzt den Bildschirminhalt eines Foto-Mockups durch eine Website-Aufnahme (Anna 16.10.2026, Jana: MacBook mit fremder Seite).
-// Ersetzt wird die ganze Fläche zwischen den vier Ecken; nur dunkle Pixel des Fotos in einem schmalen Saum am Rand bleiben stehen,
+// Ersetzt wird die Fläche zwischen den vier Ecken mit geglätteten Kanten; nur dunkle Pixel des Fotos in einem Saum am Rand bleiben stehen,
 // so bleiben Rahmen, Kerbe (Notch) und Rundungen aus dem Foto erhalten. Die Seite wird perspektivisch auf die vier Ecken gelegt.
 // Aufruf vom Repository-Ordner aus:
 //   swift werkzeuge/grafiken/bildschirm-ersetzen.swift FOTO.jpg SEITE.jpg AUS.jpg SAUM SCHWELLE UNUSED  OLx OLy ORx ORy URx URy ULx ULy [HELLIGKEIT] [QUALITÄT]
@@ -31,18 +31,11 @@ func abstand(_ x: Double, _ y: Double) -> Double {   // > 0 innen: kleinster Abs
     let d = ((x2 - x1) * (y - y1) - (y2 - y1) * (x - x1)) / hypot(x2 - x1, y2 - y1); m = min(m, d) }
   return m
 }
-var m2 = [UInt8](repeating: 0, count: W * H)
-let xs = ecken.map { $0.0 }, ys = ecken.map { $0.1 }
-for y in (Int(ys.min()!) - 5)...(Int(ys.max()!) + 5) { for x in (Int(xs.min()!) - 5)...(Int(xs.max()!) + 5) {
-  let d = abstand(Double(x), Double(y)); if d < -4 { continue }   // 4 px über den Rand: Kantensaum der alten Farbe überdecken
-  let i = (y * W + x) * 4, dunkel = (Int(foto[i]) + Int(foto[i + 1]) + Int(foto[i + 2])) / 3 < schwelle
-  if d < saum && dunkel { continue }
-  m2[y * W + x] = 2 } }
 // 2. Seite perspektivisch auf die Ecken legen
 // Seite etwas größer als das Viereck, damit der überstehende Saum gefüllt ist
 let roh = (7...14).map { CGFloat(Double(a[$0])!) }
 let mx = (roh[0] + roh[2] + roh[4] + roh[6]) / 4, my = (roh[1] + roh[3] + roh[5] + roh[7]) / 4
-let p = roh.enumerated().map { (i, v) in i % 2 == 0 ? mx + (v - mx) * 1.012 : my + (v - my) * 1.012 }
+let p = roh.enumerated().map { (i, v) in i % 2 == 0 ? mx + (v - mx) * 1.006 : my + (v - my) * 1.006 }
 func pkt(_ x: CGFloat, _ y: CGFloat) -> CIVector { CIVector(x: x, y: CGFloat(H) - y) }
 var seite = CIImage(contentsOf: URL(fileURLWithPath: a[2]))!
 seite = seite.applyingFilter("CIColorControls", parameters: [kCIInputBrightnessKey: hell - 1])
@@ -52,8 +45,22 @@ let leer = CIImage(color: CIColor(red: 0, green: 0, blue: 0, alpha: 0)).cropped(
 let ctx = CIContext()
 let seiteCG = ctx.createCGImage(seite.composited(over: leer), from: CGRect(x: 0, y: 0, width: W, height: H))!
 let s = bitmap(seiteCG)
-// 3. Zusammensetzen: nur in der Maske die Seite
-for k in 0..<(W * H) where m2[k] == 2 { let i = k * 4; for c in 0..<3 { foto[i + c] = s[i + c] } }
+let q2 = roh.enumerated().map { (i, v) in i % 2 == 0 ? mx + (v - mx) * 1.0025 : my + (v - my) * 1.0025 }   // Maske einen Hauch größer: kein Saum der alten Farbe
+// 3. Weiche Maske (Kantenglättung): weiße Fläche in Seitengröße auf dieselben Ecken verzerrt; in der Kerbe/den Rundungen
+//    (dunkle Foto-Pixel im Saum am Rand) bleibt das Foto stehen
+let weiss = CIImage(color: CIColor(red: 1, green: 1, blue: 1)).cropped(to: CIImage(contentsOf: URL(fileURLWithPath: a[2]))!.extent)
+  .applyingFilter("CIPerspectiveTransform", parameters: ["inputTopLeft": pkt(q2[0], q2[1]), "inputTopRight": pkt(q2[2], q2[3]),
+    "inputBottomRight": pkt(q2[4], q2[5]), "inputBottomLeft": pkt(q2[6], q2[7])])
+let mCG = ctx.createCGImage(weiss.composited(over: leer), from: CGRect(x: 0, y: 0, width: W, height: H))!
+let mk = bitmap(mCG)
+for y in 0..<H { for x in 0..<W {
+  let k = y * W + x, i = k * 4
+  var al = Double(mk[i + 3]) / 255; if al <= 0 { continue }
+  let r = Int(foto[i]), g = Int(foto[i + 1]), bl = Int(foto[i + 2])
+  // Kerbe/Rahmen: dunkel UND grau (ohne Farbe) – die alte Seite ist farbig und wird immer ersetzt
+  let d = abstand(Double(x), Double(y)), dunkel = (r + g + bl) / 3 < schwelle && max(r, g, bl) - min(r, g, bl) < 40
+  if d < saum && dunkel { al = 0 }
+  for c in 0..<3 { foto[i + c] = UInt8(Double(s[i + c]) * al + Double(foto[i + c]) * (1 - al)) } } }
 let aus = CGContext(data: &foto, width: W, height: H, bitsPerComponent: 8, bytesPerRow: W * 4, space: CGColorSpace(name: CGColorSpace.sRGB)!,
                     bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)!
 let ziel = CGImageDestinationCreateWithURL(URL(fileURLWithPath: a[3]) as CFURL, UTType.jpeg.identifier as CFString, 1, nil)!

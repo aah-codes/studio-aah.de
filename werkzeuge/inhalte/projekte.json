@@ -3027,19 +3027,6 @@
      }
     },
     {
-     "typ": "foto",
-     "anker": "j-start",
-     "bild": "bilder/referenzen/jana/monitor-start.jpg",
-     "alt": "Startseite von Jana Voigtmann auf einem Monitor in einem Atelier mit Kunstdrucken",
-     "band": {
-      "von": "#ffffff",
-      "bis": "#ffffff",
-      "art": [
-       "voll"
-      ]
-     }
-    },
-    {
      "typ": "langaufnahmen",
      "meta": "Website",
      "titel": "Startseite",
@@ -3051,7 +3038,8 @@
       "von": "#F4F4F4",
       "bis": "#F4F4F4",
       "art": []
-     }
+     },
+     "anker": "j-start"
     },
     {
      "typ": "seiten-spalten",
