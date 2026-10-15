@@ -82,7 +82,7 @@
 
 ## Projektseite Jana Voigtmann (Stand 16.10.2026)
 - `/referenzen/jana-voigtmann/` aus `varianten.b` (`hauptvariante: "b"`), alte Fassung verworfen. Muster Deinetwegen (Einstieg) plus Bauer (Raster aller Seiten oben). Texte von Anna freigegeben (16.10.2026).
-- Raster (Anna, 16.10.2026): gerade Kante ohne Streifen (`buehne_wand.gerade`), Grund Weiß (`buehne_wand.farbe`), keine Tusche. Kacheln = 17 Abschnitte, die Anna von Janas Seite ausgewählt hat (`wl/abschnitt-*.jpg`); Mitte steht: die Startseite als ein durchgehendes Bild ohne Lücken (Hero, Ausstellungen, Fuß; `wl/startseite-mitte.jpg`). Etiketten Gelb `#FFFF00` mit schwarzem Rand.
+- Raster (Anna, 16.10.2026): gerade Kante ohne Streifen (`buehne_wand.gerade`), Grund Weiß (`buehne_wand.farbe`), keine Tusche. Kacheln = 17 Abschnitte, die Anna von Janas Seite ausgewählt hat (`wl/abschnitt-*.jpg`); Mitte steht: die ganze Startseite als ein Bild aus Annas Bildschirmaufnahme (PDF), von oben bis unten sichtbar (`wl/startseite-mitte.jpg`, Option `fest_ganz`). Kacheln in der Reihenfolge, in der man durch die Seite geht (Mixed Media → Malerei → Grafik → Über, Spalten von links nach rechts). Etiketten Gelb `#FFFF00` mit schwarzem Rand.
 - Über und Kontakt nur Hero bis Stipendien plus Fuß mit Kontakt (Anna: „viel Textwüste“); am Handy Ausstellungen und Sammlungen herausgeschnitten.
 - Nicht nennen: Plattform (Wix). Kein „Branding“ (kein eigenes Logo; Wortmarke = Instagram-Name „@JANA_VOIGTMANN“, aus Helvetica nachgesetzt).
 - Mockup: nur MacBook auf Lochblech (Mayank Girdhar, Unsplash, Bildnachweis im Impressum); Bild `macbook-malerei.jpg` hat Anna selbst geliefert (16.10.2026), Atelier-Monitor entfernt. Handy-Aufnahmen mit `AUFNAHME_HANDY_BREITE=320` (festes 320-px-Layout).

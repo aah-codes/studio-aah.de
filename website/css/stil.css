@@ -3324,6 +3324,11 @@ section[hidden] { display: none !important; }
 .hw-fest { display: flex; flex-direction: column; justify-content: center; align-items: stretch; padding-top: clamp(40px, 6.75vw, 96px); }
 .hw-fest img { display: block; width: 100%; height: auto; max-width: none; margin: 0 0 var(--hw-luecke); border-radius: 6px; box-shadow: 0 0 0 1px rgba(255, 255, 255, .14), 0 12px 32px rgba(0, 0, 0, .5); }
 .hw-fest img:last-child { margin-bottom: 0; }
+/* ganze Seite in der festen Mitte (Jana, Anna 16.10.2026): Kachel so hoch wie das sichtbare Band, Breite folgt dem Seitenverhältnis */
+.hw-fest-ganz { padding-top: 0; align-items: center; }
+.hw-fest-ganz img { width: auto; max-width: 100%; max-height: calc(clamp(520px, 54vw, 800px) + clamp(40px, 6.75vw, 96px) - 2 * var(--hw-luecke)); }
+@media (max-width: 900px) { .hw-fest-ganz img { max-height: calc(84.75vw - 2 * var(--hw-luecke)); } }
+@media (max-width: 600px) { .hw-fest-ganz img { max-height: calc(138.75vw - 2 * var(--hw-luecke)); } }
 .hw-lauf { display: flex; flex-direction: column; animation: hw-lauf var(--dauer, 80s) linear infinite; animation-delay: var(--start, 0s); will-change: transform; }
 .hw-lauf img { display: block; width: 100%; height: auto; max-width: none; margin: 0 0 var(--hw-luecke); border-radius: 6px; box-shadow: 0 0 0 1px rgba(255, 255, 255, .14), 0 12px 32px rgba(0, 0, 0, .5); }
 @keyframes hw-lauf { to { transform: translateY(calc(-100% / 3)); } }

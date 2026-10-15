@@ -85,7 +85,8 @@ def buehne(p, pre):
         def spalte(liste, i):
             bilder = ''.join(f'<img src="{pre}{b}" alt="" width="{jpg_mass(basis / "website" / b)[0]}" height="{jpg_mass(basis / "website" / b)[1]}" decoding="async">' for b in liste)
             if i == w.get('fest'):  # mittlere Spalte steht still, der Hero sitzt genau in der Mitte des Rasters (Anna 14.10.2026)
-                return f'<div class="hw-spalte hw-fest">{bilder}</div>'
+                ganz = ' hw-fest-ganz' if w.get('fest_ganz') else ''  # Jana (Anna 16.10.2026): ganze Startseite in der Mitte, von oben bis unten sichtbar
+                return f'<div class="hw-spalte hw-fest{ganz}">{bilder}</div>'
             return f'<div class="hw-spalte" style="--dauer:{w["dauer"][i]}s;--start:{w["start"][i]}"><div class="hw-lauf">{bilder * 3}</div></div>'
         spalten = ''.join(spalte(s, i) for i, s in enumerate(w['spalten']))
         grund = (f';background:#fff url({pre}{w["grund"]}) center / cover no-repeat' if w.get('grund') else '') + (f';--hw-luecke:{w["luecke"]}' if w.get('luecke') else '')  # Jana: Tusche-Striche hinter dem Raster (Anna 16.10.2026)
