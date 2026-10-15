@@ -480,3 +480,14 @@
     k.addEventListener('click', () => { const aus = b.classList.toggle('pause'); k.textContent = aus ? '▶' : '❚❚'; k.setAttribute('aria-label', aus ? 'Bewegung starten' : 'Bewegung anhalten'); });
   });
 })();
+
+// Galerie zum Durchklicken (Referenz Jana, Anna 16.10.2026)
+(() => {
+  document.querySelectorAll('.cs-durchklick').forEach((g) => {
+    const bilder = [...g.querySelectorAll('.dk-bilder img')], zahl = g.querySelector('.dk-zahl'); let i = 0;
+    const zeige = (n) => { i = (n + bilder.length) % bilder.length; bilder.forEach((b, k) => { b.hidden = k !== i; }); zahl.textContent = `${i + 1} / ${bilder.length}`; };
+    g.querySelector('.dk-zurueck').addEventListener('click', () => zeige(i - 1));
+    g.querySelector('.dk-weiter').addEventListener('click', () => zeige(i + 1));
+    g.querySelector('.dk-bilder').addEventListener('click', () => zeige(i + 1));
+  });
+})();

@@ -2966,6 +2966,10 @@
        "j-werke"
       ],
       [
+       "Galerie",
+       "j-galerie"
+      ],
+      [
        "Über und Kontakt",
        "j-ueber"
       ],
@@ -3065,6 +3069,35 @@
       "bis": "#ffffff",
       "art": []
      }
+    },
+    {
+     "typ": "durchklick",
+     "id": "j-galerie",
+     "meta": "Werke im Detail",
+     "titel": "Galerie mit Titel und Beschreibung",
+     "text": "Ein Klick auf ein Bild öffnet die Galerie: das Werk groß, daneben Titel und Beschreibung, mit Pfeilen zum nächsten Bild.",
+     "bilder": [
+      {
+       "bild": "bilder/referenzen/jana/galerie-1.jpg",
+       "alt": "Galerie auf Jana Voigtmanns Website: Plakat „turn turn turn“, daneben Titel, Beschreibung, Kuratorin und Design"
+      },
+      {
+       "bild": "bilder/referenzen/jana/galerie-2.jpg",
+       "alt": "Galerie: Installation VRANK mit VR-Brille, daneben Titel und Beschreibung"
+      },
+      {
+       "bild": "bilder/referenzen/jana/galerie-3.jpg",
+       "alt": "Galerie: Kunstquartier Bethanien in Berlin, daneben Titel und Beschreibung"
+      }
+     ],
+     "band": {
+      "von": "#000000",
+      "bis": "#000000",
+      "art": [
+       "dunkel"
+      ]
+     },
+     "anker": "j-galerie"
     },
     {
      "typ": "langaufnahmen",

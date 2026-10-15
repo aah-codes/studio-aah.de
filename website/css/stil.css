@@ -3689,3 +3689,15 @@ section[hidden] { display: none !important; }
 .cs-foto { margin: 0; }
 .cs-foto img { display: block; width: 100%; height: auto; }
 .cs-weiter-name { line-height: 1.15; }
+
+/* Galerie zum Durchklicken (Referenz Jana, Anna 16.10.2026): Fenster mit Aufnahme, darunter Pfeile und Zähler */
+.cs-durchklick { max-width: 1200px; margin: 0 auto; }
+.dk-fenster { border-radius: clamp(10px, 1.2vw, 16px); overflow: hidden; background: #fff; box-shadow: 0 24px 60px rgba(0, 0, 0, .14); }
+.dk-bilder { aspect-ratio: 2000 / 1110; cursor: pointer; }
+.dk-bilder img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.dk-bilder img[hidden] { display: none; }
+.dk-leiste { display: flex; align-items: center; justify-content: center; gap: 20px; padding: 14px; border-top: 1.5px solid var(--farbe-hellgrau, #d6d8d9); }
+.dk-knopf { width: 48px; height: 48px; border-radius: 50%; border: 1.5px solid var(--farbe-dunkel, #0e1011); background: #fff; color: var(--farbe-dunkel, #0e1011); font-size: 1.2rem; cursor: pointer; }
+.dk-knopf:hover { background: var(--farbe-dunkel, #0e1011); color: #fff; }
+.dk-knopf:focus-visible { outline: 3px solid var(--farbe-primaer, #2a5fe6); outline-offset: 3px; }
+.cs-durchklick .dk-leiste .dk-zahl { min-width: 4em; text-align: center; color: var(--farbe-dunkel, #0e1011); }

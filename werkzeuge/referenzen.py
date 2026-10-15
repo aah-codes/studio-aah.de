@@ -512,6 +512,17 @@ def block(b, pre):
                          f'<div class="sp-fenster"><img src="{pre}{x["bild"]}" alt="{esc(x["alt"])}" width="{jpg_mass(basis / "website" / x["bild"])[0]}" height="{jpg_mass(basis / "website" / x["bild"])[1]}" loading="lazy"></div></figure>' for x in b['seiten'])
         return (f'  <section class="cs-block cs-seiten-pillen" aria-labelledby="sp-titel"><div class="sp-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="la-titel" id="sp-titel">{trennen(esc(b["titel"]))}</h2>'
                 + (f'<p>{esc(b["text"])}</p>' if b.get('text') else '') + f'</div><div class="sp-reihe">{seiten}</div></section>')
+    if b['typ'] == 'durchklick':
+        # Galerie der Kund:innen-Seite zum Durchklicken (Jana: Klick aufs Bild öffnet Slider mit Titel und Beschreibung, Anna 16.10.2026)
+        n = len(b['bilder'])
+        zusatz = (' loading="lazy"', ' hidden')  # Folgebilder ohne lazy, damit sie beim Weiterklicken schon geladen sind
+        bilder = ''.join(f'<img src="{pre}{x["bild"]}" alt="{esc(x["alt"])}" width="{jpg_mass(basis / "website" / x["bild"])[0]}" height="{jpg_mass(basis / "website" / x["bild"])[1]}"{zusatz[i > 0]}>' for i, x in enumerate(b['bilder']))
+        return (f'  <section class="cs-block cs-durchklick" aria-labelledby="dk-{b["id"]}"><div class="la-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="la-titel" id="dk-{b["id"]}">{trennen(esc(b["titel"]))}</h2>'
+                + (f'<p>{esc(b["text"])}</p>' if b.get('text') else '') + f'</div>'
+                f'<div class="dk-fenster" role="group" aria-roledescription="Bildfolge" aria-label="{esc(b["titel"])}"><div class="dk-bilder">{bilder}</div>'
+                f'<div class="dk-leiste"><button type="button" class="dk-knopf dk-zurueck" aria-label="Vorheriges Bild">←</button>'
+                f'<span class="dk-zahl meta" aria-live="polite">1 / {n}</span>'
+                f'<button type="button" class="dk-knopf dk-weiter" aria-label="Nächstes Bild">→</button></div></div></section>')
     if b['typ'] == 'seiten-spalten':
         # mehrere Unterseiten in voller Länge nebeneinander, oben je ein Etikett (Jana: drei Werkbereiche, Anna 15.10.2026)
         sp = ''.join(f'<figure class="ss-seite"><figcaption><span class="ss-pille">{esc(x["label"])}</span></figcaption>'
