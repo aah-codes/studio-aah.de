@@ -29,6 +29,7 @@
 - Ausnahme Farbband (Anna, 13.10.2026): 12 px hohes Regenbogen-Band mit rotem Block am unteren Rand des Fußes (`.fuss::after`, Variable `--farbband` in `stil.css`). Nur dort; sonst gilt die Farbregel.
 - Dachzeilen müssen auf ihrem Grund lesbar sein (Anna, 15.10.2026): Gelb nur auf Blau oder Schwarz, auf hellen Karten Blau oder Schwarz.
 - Kein Blau auf Schwarz (Kontrast). Kein blaues Herz; Herzen nur als Grundform-Herz (siehe Erweiterte Formen).
+- Ausnahme (Anna, 15.10.2026): Anfrage-Knopf in der schwarzen Abschlussbox der Projektseiten ist blau (`--farbe-primaer`, Knopf zur Fläche 3,4 : 1, Schrift 5,4 : 1).
 - Buttons: Primär blau gefüllt (`--farbe-primaer` `#2a5fe6`), Sekundär schwarze Outline (`button button-zweit`), Tertiär unterstrichener Textlink. Jeder Button und jeder eigenständige Link hat einen Pfeil (→, extern ↗, Download ↓).
 - Dachzeilen über Überschriften beginnen mit blauem Punkt (per CSS automatisch).
 - Leitsatz: „Form follows function“ immer mit kurzer Erklärung („Die Form folgt der Funktion.“).

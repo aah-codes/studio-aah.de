@@ -577,7 +577,6 @@ def projektseite(p, nr):
       <p class="meta">Nächstes Projekt</p>
       <p class="cs-weiter-name"><a href="../{nxt["slug"]}/">{esc(nxt["kurzname"])} <span aria-hidden="true">→</span></a></p>
       <p class="gedaempft">{esc(nxt["satz"])}</p>
-      <p class="cs-knoepfe"><a class="button" href="{pre}kontakt/">Projekt anfragen <span aria-hidden="true">→</span></a> <a class="button button-zweit" href="../">Alle Projekte <span aria-hidden="true">→</span></a></p>
     </div>
   </nav>
 

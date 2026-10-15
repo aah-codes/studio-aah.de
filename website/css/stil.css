@@ -3651,3 +3651,10 @@ section[hidden] { display: none !important; }
 /* Bauer (Anna 15.10.2026): Punkt der Dachzeile gelb; auf hellem Grund mit feinem dunkelblauem Rand, damit er sichtbar bleibt (Gelb auf Weiß zu schwach) */
 .cs-nahtlos .meta:has(+ :is(h1, h2))::before, .cs-nahtlos div:has(+ :is(h1, h2)) > .meta:last-child::before, .hk-karte:not(.hk-dunkel) .hk-etikett::before { box-shadow: 0 0 0 1.5px var(--pc-punkt-rand, transparent); }
 .nl-blau .meta::before, .nl-dunkel .meta::before { box-shadow: none; }
+
+/* Anna 15.10.2026: Anfrage-Knopf im Abschluss blau (Ausnahme von „kein Blau auf Schwarz“, Knopf 3,4 : 1, Schrift 5,4 : 1);
+   „Nächstes Projekt“ ohne Knöpfe, Name mit Pfeil mittig */
+.eg-abschluss .button { background: var(--farbe-primaer); border-color: var(--farbe-primaer); color: #fff; }
+.eg-abschluss .button:hover { background: #fff; border-color: #fff; color: var(--farbe-dunkel); }
+.cs-weiter > div { text-align: center; }
+.cs-weiter > div .gedaempft { margin-inline: auto; }
