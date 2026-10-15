@@ -3519,7 +3519,7 @@ section[hidden] { display: none !important; }
 .bl-mockup img { display: block; width: 100%; height: auto; }
 @media (max-width: 900px) {
   .bl-mit-mockup .bl-kopf { width: calc(100% - 2 * var(--rand-seite-mobil)); }
-  .bl-mockup img { aspect-ratio: 1 / 1; max-height: none; object-position: 51% 60%; }
+  .bl-mockup img { aspect-ratio: 1 / 1; max-height: none; object-fit: cover; object-position: 51% 60%; }
 }
 .cs-nahtlos .nl-band.bl-hero { padding-bottom: clamp(32px, 4vw, 64px); }
 .bl-hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: clamp(90px, 14vw, 220px); background: var(--pc-hell); z-index: 1; }
@@ -3633,3 +3633,21 @@ section[hidden] { display: none !important; }
 .hk-liste li { padding: 16px 0; border-top: 1.5px solid currentColor; border-top-color: rgba(14, 16, 17, .15); font-size: clamp(18px, 1.6vw, 24px); line-height: 1.35; }
 .hk-dunkel .hk-liste li { border-top-color: rgba(255, 255, 255, .25); }
 .cs-nahtlos .cs-kennzahlen.cs-block { margin-top: 0; }
+/* Prüfer 15.10.2026: Kennzahlen bündig mit Überblick und Inhalt; Browser-Leiste im Monitor-Foto am Handy flacher */
+.cs-nahtlos .cs-kennzahlen.cs-block { width: auto; max-width: 1200px; margin: 0 auto; }
+@media (max-width: 900px) {
+  .st-monitor-foto .vf-leiste { height: 20px; padding-left: 40px; background: radial-gradient(circle at 10px 10px, #d6d8d9 3px, transparent 4px), radial-gradient(circle at 19px 10px, #d6d8d9 3px, transparent 4px), radial-gradient(circle at 28px 10px, #d6d8d9 3px, transparent 4px), #f3f4f5; }
+  .st-monitor-foto .vf-adresse { padding: 1px 8px; font-size: 9px; }
+}
+
+/* Anna 15.10.2026: kein weißer Spalt unter der Mockup-Bühne; Überschriften je Projekt (Bauer: schwarz); Ziele-Spalten nach Anzahl */
+.cs-nahtlos .nl-band.bl-hero.bl-mit-mockup { padding: 0; }
+.cs { --pc-titel: var(--pc-dunkel); }
+.ub-aussage, .hk-karte:not(.hk-dunkel) .hk-text, .hk-nr { color: var(--pc-titel); }
+.hk-ziele ol { grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); }
+@media (max-width: 900px) { .hk-ziele ol { grid-template-columns: 1fr; } }
+.hk-karte:not(.hk-dunkel) { color: var(--pc-titel); }
+.cs-nahtlos .vd-text .bn-titel { color: var(--pc-titel); }
+/* Bauer (Anna 15.10.2026): Punkt der Dachzeile gelb; auf hellem Grund mit feinem dunkelblauem Rand, damit er sichtbar bleibt (Gelb auf Weiß zu schwach) */
+.cs-nahtlos .meta:has(+ :is(h1, h2))::before, .cs-nahtlos div:has(+ :is(h1, h2)) > .meta:last-child::before, .hk-karte:not(.hk-dunkel) .hk-etikett::before { box-shadow: 0 0 0 1.5px var(--pc-punkt-rand, transparent); }
+.nl-blau .meta::before, .nl-dunkel .meta::before { box-shadow: none; }

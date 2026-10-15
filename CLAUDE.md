@@ -66,13 +66,16 @@
 - `/referenzen/bauer/` wird aus `varianten.b` erzeugt (`hauptvariante: "b"` in `werkzeuge/inhalte/projekte.json`); Variante A nur im Tag `bauer-variante-a-2026-10-14`.
 - Heft (Unternehmenspräsentation) ausgeblendet bis zur Abnahme der Druckdatei; Einstellungen in `varianten_ablage.heft`. Vor dem Einblenden Seiten neu erzeugen und auf Personen und Platzhalter prüfen.
 - Mockup (Anna, 15.10.2026): Vorher-Film läuft im echten Foto „heller Monitor auf Holzschreibtisch“ (Sora Sagano, Unsplash; MacBook und Controller wegretuschiert, `bilder/referenzen/bauer/monitor-foto.jpg`, Option `monitor` mit `foto`/`schirm`). Anna hatte zuerst einen schwarzen Büromonitor gewünscht und dann dieses Foto gewählt.
-- Einstieg wie Deinetwegen (Anna, 15.10.2026: Deinetwegen ist der Blueprint für den Einstieg): H1 ohne Einleitung, Bildschirmwand, Überblick (Aussage + Leistungen), Kennzahlen, Inhalt; Ausgangslage als zwei Karten (Herausforderung weiß, Ziele Bauer-Blau).
+- Einstieg wie Deinetwegen (Anna, 15.10.2026: Deinetwegen ist der Blueprint für den Einstieg): H1 ohne Einleitung, Bildschirmwand, Überblick (Aussage + Leistungen), Inhalt; Ausgangslage: Karte Herausforderung (Liste, weiß) + Karte Lösung (Bauer-Blau), darunter Ziele 1–4 nummeriert. Kennzahlen 83/69/13 stehen im Ergebnis, nicht im Einstieg.
+- Bauer-Farben auf der Projektseite (Anna, 15.10.2026): alle Überschriften schwarz, nie blau; Punkt der Dachzeile gelb, auf hellem Grund mit feinem dunkelblauem Rand (Gelb allein auf Weiß zu schwach).
+- Vorher-Film mit Knöpfen „Vorher“ und „Nachher“ (Anna, 15.10.2026: direkt zur neuen Seite springen); Nachher-Folge nur aus geprüften Aufnahmen ohne Personen (Startseite, Referenz, Karriere).
 - Keine Mitarbeitenden zeigen: Ausschnitte mit Personen ersetzen statt weichzeichnen. Vor jeder Veröffentlichung Prüfer-Agent auf Personen, Platzhalter und interne Inhalte.
 - Bilder, die keine Seite mehr nutzt, aus `website/` entfernen – sonst sind sie öffentlich abrufbar.
 - Übergabe mit allen Details liegt in `Betrieb` (Studio AAH/Website/2026-10-15_uebergabe-bauer-projektseite.md).
 
 ## Projektseite Deinetwegen (Stand 15.10.2026)
 - `/referenzen/deinetwegen/` aus `varianten.b` (`hauptvariante: "b"`); alte Fassung verworfen. **Vorlage für Onepager-Referenzen** (nächste: Jana Voigtmann); Bauer ist die Vorlage für KMU-Websiteprojekte (Anna, 15.10.2026).
+- Kein Kapitel „Vorgehen / Vier Schritte“ (Anna, 15.10.2026, gestrichen).
 - Nicht erwähnen: Folgeauftrag „People First“ (nie online), Gründungsumstände, Absage/Plattform. Live-Link nur mit „Stand 10/2026“; entfernen, sobald Franziskas neue Seite online ist.
 - Schrift Satoshi (ITF, keine OFL) nie als Datei ins Repository; nur als Bild (`werkzeuge/grafiken/schriftmuster.swift`).
 

@@ -1500,7 +1500,7 @@
        "fest": 2
       },
       "klasse": "cs-bauer",
-      "stil": ";--pc-dunkel:#003466;--pc-akzent-dunkel:#FBD52A",
+      "stil": ";--pc-dunkel:#003466;--pc-akzent:#FBD52A;--pc-akzent-dunkel:#FBD52A;--pc-titel:#0e1011;--pc-punkt-rand:#003466",
       "zahlen": []
      }
     },
@@ -1515,28 +1515,6 @@
       "Website-Redesign",
       "Webentwicklung in Kadence",
       "Unternehmenspräsentation"
-     ],
-     "band": {
-      "von": "#ffffff",
-      "bis": "#ffffff",
-      "art": []
-     }
-    },
-    {
-     "typ": "kennzahlen",
-     "zahlen": [
-      [
-       "83",
-       "Seiten online"
-      ],
-      [
-       "69",
-       "Referenzprojekte mit eigener Seite"
-      ],
-      [
-       "13",
-       "Bewerbungen seit dem Launch"
-      ]
      ],
      "band": {
       "von": "#ffffff",
@@ -1605,13 +1583,8 @@
        ]
       },
       {
-       "etikett": "Ziele",
-       "punkte": [
-        "Klar für öffentliche Auftraggeber",
-        "Referenzen als Vertrauensfaktor",
-        "Leistungen verständlich zeigen",
-        "Fachkräfte gezielt ansprechen"
-       ],
+       "etikett": "Lösung",
+       "text": "Eine Website, die Vergabestellen schnell informiert und Fachkräfte direkt anspricht.",
        "dunkel": true
       }
      ],
@@ -1619,7 +1592,14 @@
       "von": "#EEF2F6",
       "bis": "#EEF2F6",
       "art": []
-     }
+     },
+     "ziele_titel": "Ziele",
+     "ziele": [
+      "Klar für öffentliche Auftraggeber",
+      "Referenzen als Vertrauensfaktor",
+      "Leistungen verständlich zeigen",
+      "Fachkräfte gezielt ansprechen"
+     ]
     },
     {
      "aus": 1,
@@ -1726,6 +1706,51 @@
           "wichtig"
          ]
         ],
+        "kapitel": null,
+        "klick": null,
+        "zoom": null,
+        "eingaben": []
+       },
+       {
+        "bild": "bilder/referenzen/bauer/film/n-start-kompetenzen.jpg",
+        "alt": "Neue Startseite mit den Kernkompetenzen",
+        "pfad": "",
+        "phase": "neu",
+        "titel": "Nachher: Startseite mit klarer Spezialisierung",
+        "dauer": 6000,
+        "von": 0,
+        "bis": 600,
+        "notizen": [],
+        "kapitel": "Nachher",
+        "klick": null,
+        "zoom": null,
+        "eingaben": []
+       },
+       {
+        "bild": "bilder/referenzen/bauer/film/n-referenz-oper.jpg",
+        "alt": "Neue Referenzseite mit großem Bild und Anfrage am Ende",
+        "pfad": "referenzen/",
+        "phase": "neu",
+        "titel": "Jede Referenz mit eigener Seite – und am Ende ein klarer Call to Action",
+        "dauer": 7000,
+        "von": 0,
+        "bis": 2400,
+        "notizen": [],
+        "kapitel": null,
+        "klick": null,
+        "zoom": null,
+        "eingaben": []
+       },
+       {
+        "bild": "bilder/referenzen/bauer/film/n-karriere-b.jpg",
+        "alt": "Neue Karriereseite für Fachkräfte und Nachwuchs",
+        "pfad": "karriere/",
+        "phase": "neu",
+        "titel": "Karriere: eigene Seite für Fachkräfte und Nachwuchs",
+        "dauer": 7000,
+        "von": 0,
+        "bis": 2000,
+        "notizen": [],
         "kapitel": null,
         "klick": null,
         "zoom": null,
@@ -2250,6 +2275,30 @@
      }
     },
     {
+     "typ": "kennzahlen",
+     "zahlen": [
+      [
+       "83",
+       "Seiten online"
+      ],
+      [
+       "69",
+       "Referenzprojekte mit eigener Seite"
+      ],
+      [
+       "13",
+       "Bewerbungen seit dem Launch"
+      ]
+     ],
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": [
+       "eng"
+      ]
+     }
+    },
+    {
      "typ": "ergebnis",
      "band": {
       "von": "#ffffff",
@@ -2479,7 +2528,7 @@
       "klasse": "cs-deinetwegen",
       "stil": ";--pc-dunkel:#2A1E2B;--pc-akzent:#FF5000;--pc-zweit:#BEC9C6;--pc-hell:#EBEBF0;--pc-meta-dunkel:#BEC9C6;--pc-marke:#2A1E2B",
       "buehne_laptop": {
-       "bild": "bilder/referenzen/deinetwegen/start.jpg",
+       "bild": "bilder/referenzen/deinetwegen/imac-start.jpg",
        "alt": "Startseite von Deinetwegen HR auf einem iMac: „Feelgood Workplaces. Culture Design.“",
        "logo": "bilder/referenzen/deinetwegen/logo-dunkel.svg",
        "meta": "Branding · Onepager",
@@ -2515,10 +2564,6 @@
       [
        "Ausgangslage",
        "d-ausgangslage"
-      ],
-      [
-       "Vorgehen",
-       "d-vorgehen"
       ],
       [
        "Gestaltung",
@@ -2579,55 +2624,11 @@
     },
     {
      "typ": "kapitel",
-     "anker": "d-vorgehen",
-     "meta": "Umsetzung in zwei Monaten",
-     "titel": "Vorgehen",
-     "band": {
-      "von": "#EBEBF0",
-      "bis": "#BEC9C6",
-      "art": [
-       "eng"
-      ]
-     }
-    },
-    {
-     "typ": "ablauf",
-     "meta": "Vom Briefing zum Launch",
-     "titel": "Vier Schritte",
-     "schritte": [
-      [
-       "Briefing · Zielgruppenanalyse · Recherche",
-       "Konzeption"
-      ],
-      [
-       "Corporate Design optimieren",
-       "Design",
-       "d-gestaltung"
-      ],
-      [
-       "Webflow · responsiv · SEO · Kontaktformular",
-       "Entwicklung",
-       "d-onepager"
-      ],
-      [
-       "Geräte prüfen · Feedback · Launch",
-       "Test und Launch"
-      ]
-     ],
-     "band": {
-      "von": "#BEC9C6",
-      "bis": "#BEC9C6",
-      "art": []
-     },
-     "spalten": 1
-    },
-    {
-     "typ": "kapitel",
      "anker": "d-gestaltung",
      "meta": "Brand Manual 2025",
      "titel": "Gestaltung",
      "band": {
-      "von": "#BEC9C6",
+      "von": "#EBEBF0",
       "bis": "#EBEBF0",
       "art": [
        "eng"

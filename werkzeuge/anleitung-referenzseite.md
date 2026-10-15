@@ -75,6 +75,7 @@ Schablone (bewährt bei Bauer, abgeleitet aus der Recherche):
 - **Mockups (Anna, 15.10.2026):** nur hochwertige, echte Foto-Mockups moderner Geräte (z. B. silberner Laptop, Canva-Mockups oder Mockuptree, Lizenz gewerblich, Nachweis im Impressum). Keine gezeichneten/CSS-Geräte, keine KI-Bilder. Gerät nach Zielgruppe der Kund:innen wählen (Anna, 15.10.2026): Wie schauen deren Besucher:innen auf die Website? HR/B2B (z. B. Deinetwegen) → moderner Apple-Standrechner (iMac) im Hero; Behörden/öffentliche Auftraggeber (z. B. Bauer) → schwarzer Büromonitor mit dunklem Standfuß, hochmodern, kein iMac; Ärztinnen (z. B. Simone) → vor allem Handy; Kreative (z. B. Jana) → Laptop und Handy.
 
 ### Schritt 3 – Daten und Generator
+- **Einstieg überall gleich (Anna, 15.10.2026, Blueprint Deinetwegen):** H1 ohne Einleitung → Bühne → Überblick (Aussage + Leistungen) → Inhalt → Ausgangslage (zwei Karten + Ziele). Kennzahlen gehören ins Ergebnis. Überschriften schwarz; Projektfarben über `stil`.
 - **Vorlagen (Anna, 15.10.2026):** Referenzseiten funktionieren wie ein CMS – wiederkehrende Bausteine, nur die Inhalte wechseln.
   - **KMU-Websiteprojekt** (mehrere Seiten, zwei Zielgruppen): Variante `b` von **Bauer** kopieren.
   - **Onepager** (auch mit Blog): Variante `b` von **Deinetwegen** kopieren. Nächste Anwendung: **Jana Voigtmann**.
@@ -94,8 +95,8 @@ Schablone (bewährt bei Bauer, abgeleitet aus der Recherche):
 - **Projektfarben** (in `{"projekt": {...}}` der Variante): `klasse` (z. B. `cs-deinetwegen`) und `stil` mit CSS-Variablen `--pc-dunkel`, `--pc-akzent`, `--pc-zweit`, `--pc-hell`, `--pc-meta-dunkel` (Dachzeile auf dunklem Grund, Kontrast ≥ 4,5 : 1 prüfen), `--pc-marke` (erste/letzte Marke der Zeitleiste). Band-Art `dunkel` = weiße Schrift auf dunklem Band.
 - **Bühnen:** `buehne_wand` (Bauer), `buehne_bild`, `buehne_laptop` (Laptop mit Startseite auf dem Markenverlauf, Logo oben links; Deinetwegen).
 - **Bausteine** (`typ`):
-  - **Kapitel und Rahmen:** `kapitel` (mit `anker`), `inhalt`, `ueberblick` (große Aussage + Leistungsspalte), `ergebnis`
-  - **Ausgangslage:** `hl-karten` (Herausforderung/Lösung als zwei Karten + Ziele), `ziele-text`, `ziele-grafik`, `storyfilm` (Option `monitor`; Notizen `[Text, x, y, ms, "wichtig"]`), `vorher-nachher`, `film-vergleich`
+  - **Kapitel und Rahmen:** `kapitel` (mit `anker`), `inhalt`, `ueberblick` (große Aussage + Leistungsspalte), `kennzahlen` (eigener Block, z. B. im Ergebnis), `ergebnis` (Option `stimme: true` = Kundenstimme daneben)
+  - **Ausgangslage:** `hl-karten` (zwei Karten mit Aussage `text` oder Liste `punkte`, darunter `ziele` nummeriert), `ziele-text`, `ziele-grafik`, `storyfilm` (Option `monitor`; Notizen `[Text, x, y, ms, "wichtig"]`), `vorher-nachher`, `film-vergleich`
   - **Konzept und Wege:** `sitemap`, `personas`, `funnel-karte`, `weg`, `klickstrecke`, `ablauf` (Option `spalten: 1` bei wenigen Schritten), `mega-film`
   - **Gestaltung:** `marke` (Logos, Farben, Schrift als Bild), `designsystem`, `visual-design`, `stil`, `tabelle`
   - **Bilder:** `langaufnahmen` (ganze Seite Rechner + Handy nebeneinander, gleich hoch, unbewegt), `seiten-pillen` (weitere Seiten versetzt mit Pillen und Pfeil), `buehne`, `galerie`, `geraete`, `handys`, `handy-duo`, `fotofilm` (Option `dazu` = zweites Gerät), `heft`, `figma`, `bento`, `raster`, `split`, `stapel`, `vollbild`, `zwei-karten`, `cta-wand`, `karriere`

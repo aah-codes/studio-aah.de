@@ -466,7 +466,7 @@ def block(b, pre):
             return f'<p class="hk-text">{trennen(esc(x["text"]))}</p>'
         k = ''.join(f'<div class="hk-karte{" hk-dunkel" if x.get("dunkel") else ""}{" hk-mit-liste" if x.get("punkte") else ""}"><h2 class="hk-etikett">{esc(x["etikett"])}</h2>{inhalt_karte(x)}</div>' for x in b['karten'])
         z = ''.join(f'<li><span class="hk-nr" aria-hidden="true">{i}</span><span>{esc(x)}</span></li>' for i, x in enumerate(b.get('ziele', []), 1))
-        ziele = f'<div class="hk-ziele"><h3 class="ub-klein">{esc(b.get("ziele_titel", "Ziele"))}</h3><ol>{z}</ol></div>' if z else ''
+        ziele = f'<div class="hk-ziele"><h3 class="ub-klein">{esc(b.get("ziele_titel", "Ziele"))}</h3><ol style="--n:{len(b.get("ziele", []))}">{z}</ol></div>' if z else ''
         return f'  <section class="cs-block cs-hl-karten" aria-label="Herausforderung und Lösung"><div class="hk-paar">{k}</div>{ziele}</section>'
     if b['typ'] == 'marke':
         # Corporate Design auf einen Blick (Deinetwegen, Anna 15.10.2026): Logos, Farben, Schrift als Bild (Lizenz der Schrift erlaubt keine Weitergabe)
