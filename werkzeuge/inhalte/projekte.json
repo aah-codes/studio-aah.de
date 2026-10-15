@@ -2845,9 +2845,8 @@
   "name": "Jana Voigtmann",
   "branche": "Kunst – Künstlerin aus Leipzig",
   "zeitraum": "2022",
-  "leistungen": "Branding, neue Website, UI/UX Design, Webentwicklung",
+  "leistungen": "Schriften und Layout, neue Website, UI/UX Design, Webentwicklung",
   "tags": [
-   "brand",
    "website",
    "ui-ux"
   ],
@@ -2864,9 +2863,9 @@
   },
   "slug": "jana-voigtmann",
   "case": true,
-  "kopf": "Branding & Website",
+  "kopf": "Website",
   "jahr": "2022",
-  "satz": "Branding und Website für eine Künstlerin aus Leipzig.",
+  "satz": "Website für eine Künstlerin aus Leipzig.",
   "cover": {
    "farbe": "#161616",
    "ton": "dunkel",
@@ -3112,7 +3111,7 @@
     {
      "typ": "kapitel",
      "anker": "j-gestaltung",
-     "meta": "Gestaltung",
+     "meta": "Schrift und Layout",
      "titel": "Gestaltung",
      "band": {
       "von": "#ffffff",
@@ -3125,7 +3124,7 @@
     {
      "typ": "marke",
      "meta": "Corporate Design",
-     "titel": "Logo, Farben, Schrift",
+     "titel": "Wortmarke, Farben, Schrift",
      "logos": [
       [
        "bilder/referenzen/jana/logo-schwarz.png",

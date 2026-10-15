@@ -491,7 +491,8 @@ def block(b, pre):
         # Breiten so, dass beide gleich hoch sind (Seitenverhältnisse aus den Bilddateien)
         dw, dh = jpg_mass(basis / 'website' / b['desktop']); hw, hh = jpg_mass(basis / 'website' / b['handy'])
         rd, rh = dw / dh, hw / hh
-        return (f'  <section class="cs-block cs-lang" aria-labelledby="la-titel"><div class="la-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="la-titel" id="la-titel">{trennen(esc(b["titel"]))}</h2>'
+        lid = 'la-' + (b.get('anker') or b.get('id') or 'titel')  # eindeutige ID je Abschnitt (Prüfer 16.10.2026)
+        return (f'  <section class="cs-block cs-lang" aria-labelledby="{lid}"><div class="la-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="la-titel" id="{lid}">{trennen(esc(b["titel"]))}</h2>'
                 + (f'<p>{esc(b["text"])}</p>' if b.get('text') else '') + f'</div>'
                 f'<div class="la-paar" style="--rd:{rd:.5f};--rh:{rh:.5f}"><figure class="la-karte la-desktop"><img src="{pre}{b["desktop"]}" alt="{esc(b["desktop_alt"])}" width="{dw}" height="{dh}" loading="lazy"><figcaption class="meta">Rechner</figcaption></figure>'
                 f'<figure class="la-karte la-handy"><img src="{pre}{b["handy"]}" alt="{esc(b["handy_alt"])}" width="{hw}" height="{hh}" loading="lazy"><figcaption class="meta">Handy</figcaption></figure></div></section>')

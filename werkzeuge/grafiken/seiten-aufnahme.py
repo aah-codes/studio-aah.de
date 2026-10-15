@@ -103,7 +103,7 @@ def speichern(pfad, b64):
 
 
 def aufnehmen(ws, url, ziel, handy, selektor, wireframe=False, felder=False, hover=None, vorher_js=None):
-    breite, faktor = (390, 3) if handy else (1440, 2)
+    breite, faktor = (int(os.environ.get('AUFNAHME_HANDY_BREITE', 390)), 3) if handy else (1440, 2)  # AUFNAHME_HANDY_BREITE=320 für Seiten mit festem 320-px-Layout (Wix)
     ws.senden('Emulation.setDeviceMetricsOverride', width=breite, height=900, deviceScaleFactor=faktor, mobile=handy)
     if handy:  # Baukasten-Seiten (z. B. Wix) liefern die Handy-Fassung nur an echte Handys aus (Jana, 15.10.2026)
         ws.senden('Emulation.setUserAgentOverride', userAgent='Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1')

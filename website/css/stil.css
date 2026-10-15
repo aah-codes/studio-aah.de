@@ -3677,3 +3677,4 @@ section[hidden] { display: none !important; }
 /* großes Foto-Mockup über die ganze Breite */
 .cs-foto { margin: 0; }
 .cs-foto img { display: block; width: 100%; height: auto; }
+.cs-weiter-name { line-height: 1.15; }
