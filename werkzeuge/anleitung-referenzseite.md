@@ -1,6 +1,6 @@
 # Anleitung: Referenzseite (Case Study) erstellen
 
-Stand: 15.10.2026 · Vorbild: `/referenzen/bauer/`
+Stand: 15.10.2026 · Vorbilder: `/referenzen/bauer/` (KMU-Website) und `/referenzen/deinetwegen/` (Onepager)
 
 Diese Datei ist öffentlich (Repository). Sie enthält nur Technik, Gestaltungs- und Prüfregeln. Kundeninterna, Briefings und die vollständige Recherche liegen in `Betrieb` unter `Kunden Studio AAH/Studio AAH/Website/`:
 - `2026-10-15_anleitung-referenzseite.md`: diese Anleitung plus Briefing der nächsten Referenz
@@ -70,10 +70,14 @@ Schablone (bewährt bei Bauer, abgeleitet aus der Recherche):
 | `stempel` | Retusche: Fläche weich mit einer Fläche daneben überdecken (z. B. eine kleine Figur im Hintergrund) |
 | `anonym` | ganzes Bild unlesbar machen (nur Notlösung; besser weglassen) |
 
-- Weitere: `werkzeuge/grafiken/unkenntlich.swift`, `heft-druck.swift`.
+- Weitere: `werkzeuge/grafiken/unkenntlich.swift`, `heft-druck.swift`, `schriftmuster.swift` (Schriftmuster als PNG, wenn die Schriftlizenz keine Weitergabe der Datei erlaubt, z. B. Satoshi; Repository nur SIL OFL).
 - **Schärfe:** Quellbild mindestens doppelt so breit wie angezeigt.
 
 ### Schritt 3 – Daten und Generator
+- **Vorlagen (Anna, 15.10.2026):** Referenzseiten funktionieren wie ein CMS – wiederkehrende Bausteine, nur die Inhalte wechseln.
+  - **KMU-Websiteprojekt** (mehrere Seiten, zwei Zielgruppen): Variante `b` von **Bauer** kopieren.
+  - **Onepager** (auch mit Blog): Variante `b` von **Deinetwegen** kopieren. Nächste Anwendung: **Jana Voigtmann**.
+  - Kopieren heißt: Liste `varianten.b` übernehmen, Texte, Bilder und Projektfarben (`stil`) tauschen; Bausteine, die nicht passen, weglassen.
 - **Daten:** `werkzeuge/inhalte/projekte.json`, Generator: `werkzeuge/referenzen.py`. Erzeugte Seite: `website/referenzen/<slug>/`.
 - **Varianten:**
   - `varianten.<k>` ist eine Liste aus:
@@ -86,12 +90,14 @@ Schablone (bewährt bei Bauer, abgeleitet aus der Recherche):
   - Jeder Block liegt in `nl-band` mit `von` und `bis` (Farben).
   - Arten: `schraege` (Kundenschräge), `blau`, `raster`, `eng`, `voll`, `figma`.
   - Ein Kapitel direkt vor einer Schräge bekommt automatisch mehr Abstand.
+- **Projektfarben** (in `{"projekt": {...}}` der Variante): `klasse` (z. B. `cs-deinetwegen`) und `stil` mit CSS-Variablen `--pc-dunkel`, `--pc-akzent`, `--pc-zweit`, `--pc-hell`, `--pc-meta-dunkel` (Dachzeile auf dunklem Grund, Kontrast ≥ 4,5 : 1 prüfen), `--pc-marke` (erste/letzte Marke der Zeitleiste). Band-Art `dunkel` = weiße Schrift auf dunklem Band.
+- **Bühnen:** `buehne_wand` (Bauer), `buehne_bild`, `buehne_laptop` (Laptop mit Startseite auf dem Markenverlauf, Logo oben links; Deinetwegen).
 - **Bausteine** (`typ`):
-  - **Kapitel und Rahmen:** `kapitel` (mit `anker`), `inhalt`, `ergebnis`
-  - **Ausgangslage:** `ziele-text`, `ziele-grafik`, `storyfilm` (Option `monitor`; Notizen `[Text, x, y, ms, "wichtig"]`), `vorher-nachher`, `film-vergleich`
-  - **Konzept und Wege:** `sitemap`, `personas`, `funnel-karte`, `weg`, `klickstrecke`, `ablauf`, `mega-film`
-  - **Gestaltung:** `designsystem`, `visual-design`, `stil`, `tabelle`
-  - **Bilder:** `buehne`, `galerie`, `geraete`, `handys`, `handy-duo`, `fotofilm` (Option `dazu` = zweites Gerät), `heft`, `figma`, `bento`, `raster`, `split`, `stapel`, `vollbild`, `zwei-karten`, `cta-wand`, `karriere`
+  - **Kapitel und Rahmen:** `kapitel` (mit `anker`), `inhalt`, `ueberblick` (große Aussage + Leistungsspalte), `ergebnis`
+  - **Ausgangslage:** `hl-karten` (Herausforderung/Lösung als zwei Karten + Ziele), `ziele-text`, `ziele-grafik`, `storyfilm` (Option `monitor`; Notizen `[Text, x, y, ms, "wichtig"]`), `vorher-nachher`, `film-vergleich`
+  - **Konzept und Wege:** `sitemap`, `personas`, `funnel-karte`, `weg`, `klickstrecke`, `ablauf` (Option `spalten: 1` bei wenigen Schritten), `mega-film`
+  - **Gestaltung:** `marke` (Logos, Farben, Schrift als Bild), `designsystem`, `visual-design`, `stil`, `tabelle`
+  - **Bilder:** `langaufnahmen` (ganze Seite Rechner + Handy nebeneinander, gleich hoch, unbewegt), `seiten-pillen` (weitere Seiten versetzt mit Pillen und Pfeil), `buehne`, `galerie`, `geraete`, `handys`, `handy-duo`, `fotofilm` (Option `dazu` = zweites Gerät), `heft`, `figma`, `bento`, `raster`, `split`, `stapel`, `vollbild`, `zwei-karten`, `cta-wand`, `karriere`
   - **Text:** `texte`, `section`, `schieber`
 - **Danach:**
   - alle Generatoren laufen lassen (`CLAUDE.md`);

@@ -2405,21 +2405,20 @@
  },
  {
   "name": "Deinetwegen – Franziska Weihmann",
-  "branche": "Startup HR-Beratung",
-  "zeitraum": "seit 2024 · Retainer",
-  "leistungen": "Branding, Website als Onepager, Webdesign und Entwicklung in Webflow",
+  "branche": "HR-Beratung, gegründet 2024",
+  "zeitraum": "2025 · Umsetzung in zwei Monaten",
+  "leistungen": "Branding, Onepager mit Blog und Artikelseite, Webdesign und Entwicklung in Webflow",
   "tags": [
    "brand",
-   "website",
-   "retainer"
+   "website"
   ],
   "links": [
    {
     "url": "https://www.deinetwegen-hr.de",
-    "text": "deinetwegen-hr.de"
+    "text": "deinetwegen-hr.de · Stand 10/2026"
    }
   ],
-  "farbe": "#efdcd8",
+  "farbe": "#BEC9C6",
   "kurzname": "Deinetwegen",
   "mockup": {
    "handy": "bilder/referenzen/deinetwegen-handy.jpg"
@@ -2428,22 +2427,330 @@
   "slug": "deinetwegen",
   "case": true,
   "kopf": "Branding & Onepager",
-  "jahr": "seit 2024",
-  "satz": "Branding und Onepager für eine frisch gegründete HR-Beratung.",
+  "jahr": "2025",
+  "satz": "Branding, Onepager und Blog für eine frisch gegründete HR-Beratung.",
   "cover": {
    "farbe": "#1f100c",
    "ton": "dunkel",
    "desktop": "bilder/referenzen/deinetwegen-website.jpg",
    "handy": "bilder/referenzen/deinetwegen-handy.jpg"
   },
-  "bilder": [
-   {
-    "typ": "geraete",
-    "desktop": "bilder/referenzen/deinetwegen-website.jpg",
-    "handy": "bilder/referenzen/deinetwegen-handy.jpg",
-    "titel": "Onepager – am Rechner und am Handy"
-   }
-  ]
+  "bilder": [],
+  "hauptvariante": "b",
+  "varianten": {
+   "b": [
+    {
+     "projekt": {
+      "kurzname": "Deinetwegen HR",
+      "einleitung": "Ein erster Startpunkt für eine frisch gegründete HR-Beratung: ein Onepager mit Blog, der zeigt, wofür Deinetwegen HR steht und wen sie anspricht.",
+      "klasse": "cs-deinetwegen",
+      "stil": ";--pc-dunkel:#2A1E2B;--pc-akzent:#FF5000;--pc-zweit:#BEC9C6;--pc-hell:#EBEBF0;--pc-meta-dunkel:#BEC9C6;--pc-marke:#2A1E2B",
+      "buehne_laptop": {
+       "bild": "bilder/referenzen/deinetwegen/start.jpg",
+       "alt": "Startseite von Deinetwegen HR am Laptop: „Feelgood Workplaces. Culture Design.“",
+       "logo": "bilder/referenzen/deinetwegen/logo-dunkel.svg",
+       "meta": "Branding · Onepager",
+       "von": "#2A1E2B",
+       "bis": "#5A2F28"
+      }
+     }
+    },
+    {
+     "typ": "ueberblick",
+     "meta": "Überblick",
+     "aussage": "Eine Website für die Frage, die sich Unternehmen stellen: Wie halte ich meine Mitarbeiter?",
+     "leistungen_titel": "Leistungen",
+     "leistungen": [
+      "Konzeption und Zielgruppenanalyse",
+      "Corporate Design optimiert",
+      "Onepager mit Blog und Artikelseite",
+      "Webdesign und Entwicklung in Webflow"
+     ],
+     "band": {
+      "von": "#EBEBF0",
+      "bis": "#ffffff",
+      "art": []
+     }
+    },
+    {
+     "typ": "inhalt",
+     "titel": "Inhalt",
+     "punkte": [
+      [
+       "Ausgangslage",
+       "d-ausgangslage"
+      ],
+      [
+       "Vorgehen",
+       "d-vorgehen"
+      ],
+      [
+       "Gestaltung",
+       "d-gestaltung"
+      ],
+      [
+       "Onepager",
+       "d-onepager"
+      ],
+      [
+       "Ergebnis",
+       "d-ergebnis"
+      ]
+     ],
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": []
+     }
+    },
+    {
+     "typ": "kapitel",
+     "anker": "d-ausgangslage",
+     "meta": "Auftrag · Januar 2025",
+     "titel": "Ausgangslage",
+     "band": {
+      "von": "#ffffff",
+      "bis": "#EBEBF0",
+      "art": [
+       "eng"
+      ]
+     }
+    },
+    {
+     "typ": "hl-karten",
+     "karten": [
+      {
+       "etikett": "Herausforderung",
+       "text": "Eine frisch gegründete Beratung braucht einen ersten Auftritt, der Ausrichtung, Schwerpunkte und Zielgruppe klar macht."
+      },
+      {
+       "etikett": "Lösung",
+       "text": "Ein Onepager als erster Anfang: eine Seite, die Unternehmen direkt anspricht.",
+       "dunkel": true
+      }
+     ],
+     "ziele_titel": "Ziele",
+     "ziele": [
+      "Ausrichtung und Schwerpunkte zeigen: Mitarbeiterbindung, Unternehmenskultur und -kommunikation.",
+      "Die Zielgruppe konkret ansprechen: KMU, Konzerne und Betriebsräte.",
+      "Einen ersten Startpunkt schaffen – als Partner für Workshops, Schulungen und Konzepte zur Mitarbeiterbindung."
+     ],
+     "band": {
+      "von": "#EBEBF0",
+      "bis": "#EBEBF0",
+      "art": []
+     }
+    },
+    {
+     "typ": "kapitel",
+     "anker": "d-vorgehen",
+     "meta": "Umsetzung in zwei Monaten",
+     "titel": "Vorgehen",
+     "band": {
+      "von": "#EBEBF0",
+      "bis": "#BEC9C6",
+      "art": [
+       "eng"
+      ]
+     }
+    },
+    {
+     "typ": "ablauf",
+     "meta": "Vom Briefing zum Launch",
+     "titel": "Vier Schritte",
+     "schritte": [
+      [
+       "Briefing · Zielgruppenanalyse · Recherche",
+       "Konzeption"
+      ],
+      [
+       "Corporate Design optimieren",
+       "Design",
+       "d-gestaltung"
+      ],
+      [
+       "Webflow · responsiv · SEO · Kontaktformular",
+       "Entwicklung",
+       "d-onepager"
+      ],
+      [
+       "Geräte prüfen · Feedback · Launch",
+       "Test und Launch"
+      ]
+     ],
+     "band": {
+      "von": "#BEC9C6",
+      "bis": "#BEC9C6",
+      "art": []
+     },
+     "spalten": 1
+    },
+    {
+     "typ": "kapitel",
+     "anker": "d-gestaltung",
+     "meta": "Brand Manual 2025",
+     "titel": "Gestaltung",
+     "band": {
+      "von": "#BEC9C6",
+      "bis": "#EBEBF0",
+      "art": [
+       "eng"
+      ]
+     }
+    },
+    {
+     "typ": "marke",
+     "meta": "Corporate Design",
+     "titel": "Logo, Farben, Schrift",
+     "text": "Das Corporate Design habe ich optimiert und im Brand Manual festgehalten: die Wortmarke mit orangem D und Stern, das D als Bildmarke, Farben und Schrift.",
+     "logos": [
+      [
+       "bilder/referenzen/deinetwegen/logo-hell.svg",
+       "Logo Deinetwegen auf hellem Grund",
+       "#ffffff"
+      ],
+      [
+       "bilder/referenzen/deinetwegen/logo-dunkel.svg",
+       "Logo Deinetwegen auf dunklem Grund",
+       "#2A1E2B"
+      ],
+      [
+       "bilder/referenzen/deinetwegen/marke-orange.svg",
+       "Bildmarke D mit Stern in Orange",
+       "#ffffff"
+      ],
+      [
+       "bilder/referenzen/deinetwegen/marke-tuerkis.svg",
+       "Bildmarke D mit Stern in Türkis",
+       "#2A1E2B"
+      ]
+     ],
+     "farben": [
+      [
+       "#FF5000",
+       "Signalfarbe",
+       "Knöpfe, Akzente"
+      ],
+      [
+       "#2A1E2B",
+       "Schwarz",
+       "Logo, Überschriften"
+      ],
+      [
+       "#BEC9C6",
+       "Türkis",
+       "Logo, Flächen"
+      ],
+      [
+       "#5A2F28",
+       "Verlauf",
+       "Flächen, aus Schwarz"
+      ],
+      [
+       "#EBEBF0",
+       "Hellgrau",
+       "Flächen"
+      ]
+     ],
+     "schrift_bild": "bilder/referenzen/deinetwegen/schrift-satoshi.png",
+     "schrift_alt": "Schriftmuster Satoshi: Aa groß, Alphabet in Regular und Bold",
+     "schrift_text": "Schrift: Satoshi · Indian Type Foundry",
+     "band": {
+      "von": "#EBEBF0",
+      "bis": "#EBEBF0",
+      "art": []
+     }
+    },
+    {
+     "typ": "langaufnahmen",
+     "anker": "d-onepager",
+     "meta": "Website · Webflow",
+     "titel": "Der Onepager",
+     "text": "Eine Seite, ein Weg: Herausforderungen, Motivation, Leistungen, Zitat der Gründerin, Fragen und Antworten, Blog – am Rechner und am Handy.",
+     "desktop": "bilder/referenzen/deinetwegen/lang-desktop.jpg",
+     "desktop_alt": "Ganze Startseite von Deinetwegen HR am Rechner, von oben bis unten",
+     "handy": "bilder/referenzen/deinetwegen/lang-handy.jpg",
+     "handy_alt": "Ganze Startseite von Deinetwegen HR am Handy, von oben bis unten",
+     "band": {
+      "von": "#EBEBF0",
+      "bis": "#EBEBF0",
+      "art": []
+     }
+    },
+    {
+     "typ": "seiten-pillen",
+     "meta": "Inhalte",
+     "titel": "Blog und Beiträge",
+     "text": "Zum Onepager gehören ein Blog und eine Artikelseite für Fachbeiträge zu Unternehmenskultur und psychologischer Sicherheit.",
+     "seiten": [
+      {
+       "bild": "bilder/referenzen/deinetwegen/blog.jpg",
+       "alt": "Blog-Übersicht von Deinetwegen HR",
+       "label": "Blog-Übersicht"
+      },
+      {
+       "bild": "bilder/referenzen/deinetwegen/beitrag.jpg",
+       "alt": "Beitrag „Psychologische Sicherheit“ am Rechner",
+       "label": "Beitrag"
+      },
+      {
+       "bild": "bilder/referenzen/deinetwegen/beitrag-handy.jpg",
+       "alt": "Beitrag „Psychologische Sicherheit“ am Handy",
+       "label": "Am Handy",
+       "art": "handy"
+      }
+     ],
+     "band": {
+      "von": "#2A1E2B",
+      "bis": "#5A2F28",
+      "art": [
+       "dunkel"
+      ]
+     }
+    },
+    {
+     "typ": "kapitel",
+     "anker": "d-ergebnis",
+     "meta": "Ziele und Wirkung",
+     "titel": "Ergebnis",
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": [
+       "eng"
+      ]
+     }
+    },
+    {
+     "typ": "ergebnis",
+     "ziele": [
+      [
+       "Ausrichtung und Schwerpunkte zeigen",
+       "Seit 2025 zeigt der Onepager auf einer Seite, wofür Deinetwegen HR steht."
+      ],
+      [
+       "Die Zielgruppe ansprechen",
+       "Über den Onepager kamen die ersten Aufträge."
+      ],
+      [
+       "Ein erster Startpunkt",
+       "Von allen Seiten bekam Franziska Lob für ihren Auftritt."
+      ]
+     ],
+     "credits": "Konzeption, Optimierung des Corporate Designs, Webdesign und Entwicklung in Webflow: Anna Härtelt",
+     "abschluss": {
+      "frage": "Sie gründen gerade und brauchen einen ersten Auftritt?",
+      "knopf": "Projekt anfragen",
+      "link": "../../kontakt/"
+     },
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": []
+     }
+    }
+   ]
+  }
  },
  {
   "name": "Down to Earth – Kerstin Hack",

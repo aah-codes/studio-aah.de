@@ -66,6 +66,12 @@ def jpg_mass(datei):
     return 0, 0
 
 
+def svg_mass(datei):
+    # width/height aus der viewBox einer SVG-Datei (gegen Springen beim Laden)
+    m = re.search(r'viewBox="[\d.\-]+ [\d.\-]+ ([\d.]+) ([\d.]+)"', (basis / 'website' / datei).read_text(encoding='utf-8'))
+    return f' width="{round(float(m.group(1)))}" height="{round(float(m.group(2)))}"' if m else ''
+
+
 def buehne(p, pre):
     if p.get('buehne_wand'):
         # Variante B (Anna 14.10.2026): Wand aus 25 Sections in fünf Spalten, die endlos nach oben laufen, parallel zur Bauer-Schräge;
@@ -80,6 +86,11 @@ def buehne(p, pre):
         return (f'  <div class="nl-band nl-schraege nl-blau cs-hero cs-hero-wand" style="--von:var(--pc-farbe);--bis:var(--pc-farbe)">'
                 f'<div class="hw-buehne"><div class="hw-wand" role="img" aria-label="{esc(w["alt"])}">{spalten}</div>'
                 f'<button type="button" class="ks-knopf hw-knopf" aria-label="Bewegung anhalten">❚❚</button></div></div>')
+    if p.get('buehne_laptop'):  # Deinetwegen (Anna 15.10.2026, Vorlage Behance „Reslink“): Laptop mit der Startseite auf dem Verlauf der Marke, Logo oben links
+        b = p['buehne_laptop']
+        logo = f'<img class="bl-logo" src="{pre}{b["logo"]}" alt="" width="160" height="79">' if b.get('logo') else ''
+        return (f'  <div class="nl-band nl-dunkel cs-hero bl-hero" style="--von:{b["von"]};--bis:{b["bis"]}"><div class="bl-kopf">{logo}<p class="meta">{esc(b["meta"])}</p></div>'
+                f'<div class="bl-laptop"><div class="bl-schirm"><img src="{pre}{b["bild"]}" alt="{esc(b["alt"])}" width="1800" height="1125" fetchpriority="high" decoding="async"></div><span class="bl-fuss" aria-hidden="true"></span></div></div>')
     if p.get('buehne_bild'):  # Variante B (Anna 14.10.2026): EIN scharfer Screen auf Bauer-Blau, harte Kante, keine Maske, nichts darauf
         b = p['buehne_bild']
         return (f'  <div class="nl-band nl-schraege nl-blau cs-hero" style="--von:var(--pc-farbe);--bis:var(--pc-farbe)">'
@@ -287,7 +298,7 @@ def block(b, pre):
         karten = ''.join(f'<li><h3>{trennen(esc(z))}</h3><p>{esc(a)}</p></li>' for z, a in b['ziele'])
         ab = b.get('abschluss')
         abschluss = (f'<div class="eg-abschluss"><p class="eg-frage">{esc(ab["frage"])}</p><a class="button" href="{ab["link"]}">{esc(ab["knopf"])} <span aria-hidden="true">→</span></a></div>') if ab else ''
-        return (f'  <section class="cs-block cs-ergebnis" aria-label="Ergebnis"><ul class="eg-karten">{karten}</ul>'
+        return (f'  <section class="cs-block cs-ergebnis" aria-label="Ergebnis"><ul class="eg-karten eg-anzahl-{len(b["ziele"])}">{karten}</ul>'
                 + (f'<p class="eg-credits">{esc(b["credits"])}</p>' if b.get('credits') else '') + abschluss + '</section>')
     if b['typ'] == 'figma':
         # ein Board in nachgebauter Figma-Oberfläche (Anna 15.10.2026: „links und rechts das User Interface von Figma, damit klar ist: das liegt in Figma“);
@@ -314,8 +325,8 @@ def block(b, pre):
         def titel_link(x, a):
             return f'<a class="zl-anker" href="#{a}">{esc(x)} <span aria-hidden="true">↓</span></a>' if a else esc(x)
         li = [f'<li><span class="zl-marke"><small>Schritt</small><b>{i:02d}</b></span><div class="zl-text"><p class="meta">{esc(s[0])}</p><h3>{titel_link(s[1], s[2] if len(s) > 2 else "")}</h3></div></li>' for i, s in enumerate(b['schritte'], 1)]
-        halb = (len(li) + 1) // 2
-        spalten = ''.join(f'<figure class="grafik grafik-prozess"><ol class="zeitleiste" start="{s + 1}">{"".join(li[s:s + halb])}</ol></figure>' for s in (0, halb))
+        halb = (len(li) + 1) // 2 if b.get('spalten', 2) == 2 else len(li)  # spalten: 1 = eine Zeitleiste (wenige Schritte, Lesefolge 01–04)
+        spalten = ''.join(f'<figure class="grafik grafik-prozess"><ol class="zeitleiste" start="{s + 1}">{"".join(li[s:s + halb])}</ol></figure>' for s in range(0, len(li), halb))
         return (f'  <section class="cs-block cs-prozess" aria-labelledby="ablauf-titel"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3" id="ablauf-titel">{esc(b["titel"])}</h2>'
                 + (f'<p class="weg-einleitung">{esc(b["text"])}</p>' if b.get('text') else '') + f'<div class="cs-prozess-spalten">{spalten}</div></section>')
     if b['typ'] == 'klickstrecke':
@@ -430,6 +441,46 @@ def block(b, pre):
         punkte = ''.join(f'<li>{esc(x)}</li>' for x in b.get('punkte', []))
         return (f'  <section class="cs-block fm-mit-text{" fm-dunkel" if b.get("dunkel") else ""}" aria-labelledby="fm-{b["id"]}">\n    <div class="fm-text"><p class="meta">{esc(b["meta"])}</p>'
                 f'<h2 class="kr-titel" id="fm-{b["id"]}">{b["titel_html"]}</h2>' + (f'<p>{esc(b["text"])}</p>' if b.get('text') else '') + (f'<ul>{punkte}</ul>' if punkte else '') + f'</div>\n    {szene}\n  </section>')
+    if b['typ'] == 'ueberblick':
+        # Überblick wie Behance „Overview + Scope“ (Deinetwegen, Anna 15.10.2026): große Aussage links, Leistungen als Spalte rechts
+        li = ''.join(f'<li>{esc(x)}</li>' for x in b['leistungen'])
+        return (f'  <section class="cs-block cs-ueberblick" aria-labelledby="ub-titel"><div class="ub-text"><p class="meta">{esc(b["meta"])}</p>'
+                f'<h2 class="ub-aussage" id="ub-titel">{trennen(esc(b["aussage"]))}</h2></div>'
+                f'<div class="ub-leistungen"><p class="ub-klein">{esc(b.get("leistungen_titel", "Leistungen"))}</p><ul>{li}</ul></div></section>')
+    if b['typ'] == 'hl-karten':
+        # Herausforderung und Lösung als zwei große Karten (Behance „Challenge / Solution“), darunter die Ziele (Deinetwegen, Anna 15.10.2026)
+        k = ''.join(f'<div class="hk-karte{" hk-dunkel" if x.get("dunkel") else ""}"><h2 class="hk-etikett">{esc(x["etikett"])}</h2><p class="hk-text">{trennen(esc(x["text"]))}</p></div>' for x in b['karten'])
+        z = ''.join(f'<li><span class="hk-nr" aria-hidden="true">{i}</span><span>{esc(x)}</span></li>' for i, x in enumerate(b.get('ziele', []), 1))
+        ziele = f'<div class="hk-ziele"><h3 class="ub-klein">{esc(b.get("ziele_titel", "Ziele"))}</h3><ol>{z}</ol></div>' if z else ''
+        return f'  <section class="cs-block cs-hl-karten" aria-label="Herausforderung und Lösung"><div class="hk-paar">{k}</div>{ziele}</section>'
+    if b['typ'] == 'marke':
+        # Corporate Design auf einen Blick (Deinetwegen, Anna 15.10.2026): Logos, Farben, Schrift als Bild (Lizenz der Schrift erlaubt keine Weitergabe)
+        logos = ''.join(f'<figure class="mk-logo" style="--grund:{g}"><img src="{pre}{bild}" alt="{esc(alt)}"{svg_mass(bild)} loading="lazy"></figure>' for bild, alt, g in b['logos'])
+        def lum(c):
+            k = [int(c[i:i + 2], 16) / 255 for i in (1, 3, 5)]; k = [x / 12.92 if x <= .03928 else ((x + .055) / 1.055) ** 2.4 for x in k]
+            return .2126 * k[0] + .7152 * k[1] + .0722 * k[2]
+        hell = lambda c: 1.05 / (lum(c) + .05) < 4.5  # dunkle Schrift, wenn Weiß zu wenig Kontrast hat
+        farben = ''.join(f'<li class="mk-farbe{" mk-hell" if hell(c) else ""}" style="--f:{c}"><b>{esc(n)}</b><span>{esc(c.upper())}</span><small>{esc(r)}</small></li>' for c, n, r in b['farben'])
+        return (f'  <section class="cs-block cs-cd" aria-labelledby="mk-titel"><div class="mk-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3" id="mk-titel">{esc(b["titel"])}</h2>'
+                + (f'<p class="weg-einleitung">{esc(b["text"])}</p>' if b.get('text') else '') + f'</div>'
+                f'<div class="mk-logos">{logos}</div><ul class="mk-farben">{farben}</ul>'
+                f'<figure class="mk-schrift"><img src="{pre}{b["schrift_bild"]}" alt="{esc(b["schrift_alt"])}" width="1600" height="900" loading="lazy"><figcaption class="meta">{esc(b["schrift_text"])}</figcaption></figure></section>')
+    if b['typ'] == 'langaufnahmen':
+        # ganze Seite am Rechner und am Handy nebeneinander, unbewegt (Anna 15.10.2026: „fullscreenshot von desktop und handy nebeneinander“);
+        # Breiten so, dass beide gleich hoch sind (Seitenverhältnisse aus den Bilddateien)
+        dw, dh = jpg_mass(basis / 'website' / b['desktop']); hw, hh = jpg_mass(basis / 'website' / b['handy'])
+        rd, rh = dw / dh, hw / hh
+        return (f'  <section class="cs-block cs-lang" aria-labelledby="la-titel"><div class="la-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="la-titel" id="la-titel">{trennen(esc(b["titel"]))}</h2>'
+                + (f'<p>{esc(b["text"])}</p>' if b.get('text') else '') + f'</div>'
+                f'<div class="la-paar" style="--rd:{rd:.5f};--rh:{rh:.5f}"><figure class="la-karte la-desktop"><img src="{pre}{b["desktop"]}" alt="{esc(b["desktop_alt"])}" width="{dw}" height="{dh}" loading="lazy"><figcaption class="meta">Rechner</figcaption></figure>'
+                f'<figure class="la-karte la-handy"><img src="{pre}{b["handy"]}" alt="{esc(b["handy_alt"])}" width="{hw}" height="{hh}" loading="lazy"><figcaption class="meta">Handy</figcaption></figure></div></section>')
+    if b['typ'] == 'seiten-pillen':
+        # weitere Seiten versetzt nebeneinander, beschriftet mit Pillen und Pfeil (Behance „Other Pages“, Deinetwegen, Anna 15.10.2026)
+        pfeil = '<svg class="sp-pfeil" viewBox="0 0 60 34" aria-hidden="true"><path d="M2 6 C 18 2, 34 6, 44 24"/><path d="M34 22 L 45 26 L 49 14"/></svg>'
+        seiten = ''.join(f'<figure class="sp-seite sp-{x.get("art", "desktop")}"><figcaption><span class="sp-pille">{esc(x["label"])}</span>{pfeil}</figcaption>'
+                         f'<div class="sp-fenster"><img src="{pre}{x["bild"]}" alt="{esc(x["alt"])}" width="{jpg_mass(basis / "website" / x["bild"])[0]}" height="{jpg_mass(basis / "website" / x["bild"])[1]}" loading="lazy"></div></figure>' for x in b['seiten'])
+        return (f'  <section class="cs-block cs-seiten-pillen" aria-labelledby="sp-titel"><div class="sp-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="la-titel" id="sp-titel">{trennen(esc(b["titel"]))}</h2>'
+                + (f'<p>{esc(b["text"])}</p>' if b.get('text') else '') + f'</div><div class="sp-reihe">{seiten}</div></section>')
     raise SystemExit('Unbekannter Bildblock: ' + b['typ'])
 
 
@@ -480,7 +531,7 @@ def projektseite(p, nr):
         bilder = '\n'.join(teile)
     else:
         bilder = '\n'.join(mit_anker(b) for b in p.get('bilder', []))
-    main = f'''<main id="inhalt" class="cs{' cs-nahtlos' if p.get('_variante') else ''}" style="--pc-farbe: {farbe}">
+    main = f'''<main id="inhalt" class="cs{' cs-nahtlos' if p.get('_variante') else ''}{(' ' + p['klasse']) if p.get('klasse') else ''}" style="--pc-farbe: {farbe}{p.get('stil', '')}">
 
   <section class="seitenkopf cs-kopf">
     <p class="meta brotkrumen"><a href="../">Projekte</a> / <span aria-current="page">{esc(p["kurzname"])}</span></p>
