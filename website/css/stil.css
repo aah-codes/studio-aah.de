@@ -3475,3 +3475,11 @@ section[hidden] { display: none !important; }
 @media (min-width: 901px) { .cs-nahtlos .fk-stationen { grid-auto-flow: row; grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 40px; } .cs-nahtlos .fk-stationen[data-n="4"] { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 /* Umlaut-Punkte dürfen die Zeile darüber nicht berühren (Anna 15.10.2026) */
 .cs-nahtlos .fk-gross, .cs-nahtlos .kr-titel, .cs-nahtlos .bn-titel { line-height: 1.2; }
+/* Bühne mit Handy: Pause-Taste */
+.bn-steuerung { position: relative; z-index: 2; margin: 20px 0 0; }
+.cs-buehne-bild .bn-knopf { background: rgba(255, 255, 255, .9); }
+.cs-buehne-bild.pause .h3d-seite { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .bn-knopf { display: none; } }
+/* Abschluss: kein Blau auf Schwarz (Hausregel) – weißer Knopf */
+.eg-abschluss .button { background: #fff; border-color: #fff; color: var(--farbe-dunkel); }
+.eg-abschluss .button:hover { background: var(--farbe-creme, #eeece7); border-color: var(--farbe-creme, #eeece7); }

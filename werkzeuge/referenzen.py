@@ -206,7 +206,9 @@ def block(b, pre):
             inhalt = '<div class="bn-muster">' + ''.join(f'<img src="{pre}{m}" alt="{esc(a)}" loading="lazy">' for m, a in b['muster']) + '</div>'
         else:
             inhalt = (f'<div class="bn-geraete"><div class="bn-browser"><span class="bn-leiste"></span><div class="bn-fenster"><img src="{pre}{b["browser"]}" alt="{esc(b["browser_alt"])}" loading="lazy"></div></div>'
-                      + handy3d(b['handy'], pre, b['handy_alt'], 'iph') + '</div>')
+                      + handy3d(b['handy'], pre, b['handy_alt'], 'iph') + '</div>'
+                      # Handy scrollt endlos → Pause-Taste (WCAG 2.2.2, Prüfer 15.10.2026)
+                      + '<p class="bn-steuerung"><button type="button" class="ks-knopf bn-knopf" aria-label="Bewegung anhalten">❚❚</button></p>')
         return f'  <section class="cs-block cs-buehne-bild" data-einblenden style="--bn-bild: url({pre}{b["hintergrund"]})">{text}{inhalt}</section>'
     if b['typ'] == 'weg':
         # Wireframes der wichtigsten Seiten als Weg (Anna 14.10.2026, Vorbild Behance „CreativMinds – UX Process“)

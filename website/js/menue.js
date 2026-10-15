@@ -472,3 +472,11 @@
     k.addEventListener('click', () => { const aus = w.classList.toggle('pause'); k.textContent = aus ? '▶' : '❚❚'; k.setAttribute('aria-label', aus ? 'Bewegung starten' : 'Bewegung anhalten'); });
   });
 })();
+
+// Bühne mit Handy (Referenz im Detail): Pause-Taste für das endlose Scrollen (Prüfer 15.10.2026)
+(() => {
+  document.querySelectorAll('.cs-buehne-bild').forEach((b) => {
+    const k = b.querySelector('.bn-knopf'); if (!k) return;
+    k.addEventListener('click', () => { const aus = b.classList.toggle('pause'); k.textContent = aus ? '▶' : '❚❚'; k.setAttribute('aria-label', aus ? 'Bewegung starten' : 'Bewegung anhalten'); });
+  });
+})();
