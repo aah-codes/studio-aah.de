@@ -508,6 +508,9 @@ def block(b, pre):
                      f'<div class="ss-fenster"><img src="{pre}{x["bild"]}" alt="{esc(x["alt"])}" width="{jpg_mass(basis / "website" / x["bild"])[0]}" height="{jpg_mass(basis / "website" / x["bild"])[1]}" loading="lazy"></div></figure>' for x in b['seiten'])
         return (f'  <section class="cs-block cs-seiten-spalten" aria-labelledby="ss-{b["id"]}"><div class="la-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="la-titel" id="ss-{b["id"]}">{trennen(esc(b["titel"]))}</h2>'
                 + (f'<p>{esc(b["text"])}</p>' if b.get('text') else '') + f'</div><div class="ss-reihe" style="--n:{len(b["seiten"])}">{sp}</div></section>')
+    if b['typ'] == 'foto':  # großes Foto-Mockup über die ganze Breite (Jana: Atelier mit Monitor, Anna 16.10.2026)
+        w, h = jpg_mass(basis / 'website' / b['bild'])
+        return f'  <figure class="cs-block cs-foto"><img src="{pre}{b["bild"]}" alt="{esc(b["alt"])}" width="{w}" height="{h}" loading="lazy"></figure>'
     if b['typ'] == 'kennzahlen':  # Zahlen als eigener Block an beliebiger Stelle (Bauer: nach dem Überblick, Anna 15.10.2026)
         z = ''.join(f'<li><span class="kz-zahl">{esc(x)}</span> <span>{trennen(esc(t))}</span></li>' for x, t in b['zahlen'])
         return f'  <ul class="cs-block cs-kennzahlen" role="list" aria-label="Projekt in Kürze">{z}</ul>'
