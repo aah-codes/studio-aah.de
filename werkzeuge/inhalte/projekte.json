@@ -2871,18 +2871,7 @@
    "ton": "dunkel",
    "desktop": "bilder/referenzen/jana-website.jpg"
   },
-  "bilder": [
-   {
-    "typ": "geraete",
-    "desktop": "bilder/referenzen/jana-website.jpg",
-    "titel": "Startseite"
-   },
-   {
-    "typ": "geraete",
-    "desktop": "bilder/hero/jana-mixed-media.jpg",
-    "titel": "Werkseite Mixed Media"
-   }
-  ],
+  "bilder": [],
   "varianten": {
    "b": [
     {
@@ -3223,6 +3212,7 @@
      }
     }
    ]
-  }
+  },
+  "hauptvariante": "b"
  }
 ]

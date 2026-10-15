@@ -80,6 +80,12 @@
 - Nicht erwähnen: Folgeauftrag „People First“ (nie online), Gründungsumstände, Absage/Plattform. Live-Link nur mit „Stand 10/2026“; entfernen, sobald Franziskas neue Seite online ist.
 - Schrift Satoshi (ITF, keine OFL) nie als Datei ins Repository; nur als Bild (`werkzeuge/grafiken/schriftmuster.swift`).
 
+## Projektseite Jana Voigtmann (Stand 16.10.2026)
+- `/referenzen/jana-voigtmann/` aus `varianten.b` (`hauptvariante: "b"`), alte Fassung verworfen. Muster Deinetwegen (Einstieg) plus Bauer (Raster aller Seiten oben). Texte von Anna freigegeben (16.10.2026).
+- Raster auf Tusche-Strichen aus Janas Grafik „G_3“ (Einverständnis laut Anna), Streifen Neongrün `#00FF00`, Etiketten Gelb `#FFFF00` mit schwarzem Rand.
+- Nicht nennen: Plattform (Wix). Kein „Branding“ (kein eigenes Logo; Wortmarke = Instagram-Name „@JANA_VOIGTMANN“, aus Helvetica nachgesetzt).
+- Mockups: Atelier mit Monitor (Frelo Design) und MacBook auf Lochblech (Mayank Girdhar), beide Unsplash, Bildnachweise im Impressum. Handy-Aufnahmen mit `AUFNAHME_HANDY_BREITE=320` (festes 320-px-Layout).
+
 ## Inspiration (von Anna gesammelt, „passt zu meinem Stil“) – keine Regel, nicht kopieren
 - 13.10.2026, Dribbble „Mall Website Retail Shopping Center“ (https://dribbble.com/shots/27796777): Foto im ganzen Bild, einfarbig eingefärbt (Duoton, duotone) in Orangerot, große weiße Serifen-Überschrift im Bild, kleine Zeichen (Kreuz, Stern, Plus) als Schmuck. Anna will ihre Bilder so – in Blau, leicht bewegt. Die Animation selbst war in der Cloud nicht sichtbar.
 - 13.10.2026, Farbtafel: `#8B1D00` (Rostrot), `#1B100F` (warmes Fast-Schwarz), `#F8F8F8`, `#EFE7EF` (blasses Flieder) – als Raster aus Quadraten und Kreisen im Wechsel.
