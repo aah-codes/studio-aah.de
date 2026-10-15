@@ -3171,6 +3171,18 @@
      "text": "Kein eigenes Logo: Als Wortmarke dient ihr Instagram-Name. Ich habe die Schriften festgelegt und Layout und Interface gestaltet."
     },
     {
+     "typ": "foto",
+     "bild": "bilder/referenzen/jana/macbook-malerei.jpg",
+     "alt": "Seite Malerei von Jana Voigtmann auf einem Laptop, der auf einem Tisch aus Lochblech steht",
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": [
+       "voll"
+      ]
+     }
+    },
+    {
      "typ": "kapitel",
      "anker": "j-ergebnis",
      "meta": "Ziele und Wirkung",
