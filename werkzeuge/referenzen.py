@@ -282,7 +282,7 @@ def block(b, pre):
         return f'  <nav class="cs-block cs-inhalt" aria-label="{esc(b.get("titel", "Inhalt"))}"><p class="meta">{esc(b.get("titel", "Inhalt"))}</p><ol>{li}</ol></nav>'
     if b['typ'] == 'ergebnis':
         # Ergebnis (Recherche 15.10.2026): jedes Ziel vom Anfang bekommt eine Antwort, dazu Credits und ein Abschluss für die Zielgruppe
-        karten = ''.join(f'<li><p class="meta">Ziel</p><h3>{trennen(esc(z))}</h3><p>{esc(a)}</p></li>' for z, a in b['ziele'])
+        karten = ''.join(f'<li><h3>{trennen(esc(z))}</h3><p>{esc(a)}</p></li>' for z, a in b['ziele'])
         ab = b.get('abschluss')
         abschluss = (f'<div class="eg-abschluss"><p class="eg-frage">{esc(ab["frage"])}</p><a class="button" href="{ab["link"]}">{esc(ab["knopf"])} <span aria-hidden="true">→</span></a></div>') if ab else ''
         return (f'  <section class="cs-block cs-ergebnis" aria-label="Ergebnis"><ul class="eg-karten">{karten}</ul>'

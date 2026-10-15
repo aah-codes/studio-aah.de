@@ -38,6 +38,7 @@
 - Startseiten-H1 bleibt ohne Farbverlauf und ohne Formen-Animation (Anna hat die Idee am 13.10.2026 verworfen).
 - Kartenreihen: Unterzeilen, Listen und Buttons auf einer Linie; H1 nie breiter als die Seite.
 - Prozesse und Zeitpläne (Abläufe, Timelines) immer mit derselben Zeitleisten-Grafik wie auf der Startseite (`ol.zeitleiste`, Anna 13.10.2026); in schmalen Spalten wie Artikeln einspaltig (`figure.grafik-prozess`). Blaue Marken in `--farbe-primaer` (Kontrast 5,4 : 1).
+- Satzzeichen und Umlaut-Punkte dürfen sich nie mit der Zeile darüber oder darunter berühren (Anna, 15.10.2026): Versal-Überschriften in Anton mit Zeilenabstand mindestens 1,15, bei Umlauten in Versalien 1,2.
 - Lange Wörter in Überschriften (z. B. „Unternehmens&shy;präsentation“) mit weichem Trennstrich `&shy;` versehen; jede Seite bei 320 px Breite ohne seitliches Verschieben prüfen.
 - Website-Screenshots kommen aus der Bildbibliothek `website/bilder/referenzen/` (1440 px breit).
 - Wiedererkennung (Anna, 13.10.2026), immer gleich einsetzen:
