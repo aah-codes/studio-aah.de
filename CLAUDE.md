@@ -56,6 +56,13 @@
 - Leistungsseiten: weiter unten „Aus der Praxis“ mit passendem Kundenbeispiel (`MOCKUPS` in `werkzeuge/leistungsseiten.py`).
 - Mockup-Nachweise (Mockuptree, Bendito Mockup) stehen im Impressum unter „Bildnachweise“.
 
+## Projektseite Bauer (Stand 15.10.2026)
+- `/referenzen/bauer/` wird aus `varianten.b` erzeugt (`hauptvariante: "b"` in `werkzeuge/inhalte/projekte.json`); Variante A nur im Tag `bauer-variante-a-2026-10-14`.
+- Heft (Unternehmenspräsentation) ausgeblendet bis zur Abnahme der Druckdatei; Einstellungen in `varianten_ablage.heft`. Vor dem Einblenden Seiten neu erzeugen und auf Personen und Platzhalter prüfen.
+- Keine Mitarbeitenden zeigen: Ausschnitte mit Personen ersetzen statt weichzeichnen. Vor jeder Veröffentlichung Prüfer-Agent auf Personen, Platzhalter und interne Inhalte.
+- Bilder, die keine Seite mehr nutzt, aus `website/` entfernen – sonst sind sie öffentlich abrufbar.
+- Übergabe mit allen Details liegt in `Betrieb` (Studio AAH/Website/2026-10-15_uebergabe-bauer-projektseite.md).
+
 ## Inspiration (von Anna gesammelt, „passt zu meinem Stil“) – keine Regel, nicht kopieren
 - 13.10.2026, Dribbble „Mall Website Retail Shopping Center“ (https://dribbble.com/shots/27796777): Foto im ganzen Bild, einfarbig eingefärbt (Duoton, duotone) in Orangerot, große weiße Serifen-Überschrift im Bild, kleine Zeichen (Kreuz, Stern, Plus) als Schmuck. Anna will ihre Bilder so – in Blau, leicht bewegt. Die Animation selbst war in der Cloud nicht sichtbar.
 - 13.10.2026, Farbtafel: `#8B1D00` (Rostrot), `#1B100F` (warmes Fast-Schwarz), `#F8F8F8`, `#EFE7EF` (blasses Flieder) – als Raster aus Quadraten und Kreisen im Wechsel.
