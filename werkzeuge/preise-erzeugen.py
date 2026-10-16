@@ -1,5 +1,5 @@
-# Erzeugt aus EINER Datenquelle (preise-daten.json): Rechner-Daten js/pakete-daten.js,
-# Bereichsleiste + Glossar der Preisseite und Leistungskarten der Startseite. Preise und Paketinhalte nur in preise-daten.json ändern.
+# Erzeugt aus EINER Datenquelle (preise-daten.json): Daten des Kostenrechners Webdesign js/pakete-daten.js,
+# Bereichsleiste, Preislisten + Glossar der Preisseite und Leistungskarten der Startseite. Preise und Paketinhalte nur in preise-daten.json ändern.
 # Aufruf im Repository-Ordner:  python3 werkzeuge/preise-erzeugen.py
 import html, json, pathlib, re
 
@@ -10,24 +10,46 @@ esc = lambda s: html.escape(s, quote=False)
 
 seite = basis / 'website' / 'preise' / 'index.html'
 t = seite.read_text(encoding='utf-8')
-leiste = ''.join(f'<a href="#r-{g["id"]}">{esc(g["kurz"])}</a>' for g in daten['gruppen'])
-t = re.sub(r'(<nav class="preis-leiste"[^>]*>\n  <a href="#rechner">Kostenrechner</a>).*?(<a href="#glossar">Glossar</a>)',
+# Bereichsleiste: Kostenrechner (nur Webdesign), dann die Preislisten der übrigen Leistungen (Anna 16.10.2026)
+LISTEN = [g for g in daten['gruppen'] if g['id'] != 'website']
+leiste = ''.join(f'<a href="#r-{g["id"]}">{esc(g["kurz"])}</a>' for g in LISTEN)
+t = re.sub(r'(<nav class="preis-leiste"[^>]*>\n  <a href="#rechner">Kostenrechner Webdesign</a>).*?(<a href="#glossar">Glossar</a>)',
            lambda m: m.group(1) + leiste + m.group(2), t, count=1, flags=re.S)
 seite.write_text(t, encoding='utf-8')
 
-# Rechner bekommt nur, was er braucht; der automatische Launch-Posten wird zur Zahl „launch“
-weg = ('kurz', 'link', 'karte', 'intro', 'unterseite', 'startseite')
-schlank = lambda e: {k: v for k, v in e.items() if k not in weg}
-rechner = {'launch': next(x['preis'] for g in daten['gruppen'] for x in g.get('extras', []) if x.get('auto')), 'gruppen': []}
-for g in daten['gruppen']:
-    r = schlank(g)
-    r['pakete'] = [schlank(e) for e in g['pakete']]
-    # nurSeite: steht nur auf der Leistungsseite; im Rechner gibt es die Leistung schon in einer eigenen Gruppe
-    if 'extras' in g: r['extras'] = [schlank(e) for e in g['extras'] if not e.get('auto') and not e.get('nurSeite')]
-    rechner['gruppen'].append(r)
+# Kostenrechner Webdesign (js/webrechner.js) bekommt nur die Gruppe „website“ und den Block „webrechner“
+web = next(g for g in daten['gruppen'] if g['id'] == 'website')
+paket = {e['id']: e for e in web['pakete']}
+rechner = {'basis': paket['neu']['preis'], 'redesign': paket['redesign']['preis'] - paket['neu']['preis'], 'seite': paket['neu']['seite'],
+           'extras': {e['id']: {k: v for k, v in e.items() if k != 'id'} for e in web['extras']},
+           **{k: v for k, v in daten['webrechner'].items() if not k.startswith('_')}}
+assert len(rechner) == 4 + sum(not k.startswith('_') for k in daten['webrechner']), 'Schlüssel in „webrechner“ überschreibt basis/redesign/seite/extras'
 (basis / 'website' / 'js' / 'pakete-daten.js').write_text(
-    '// Erzeugt von werkzeuge/preise-erzeugen.py aus werkzeuge/preise-daten.json – nicht von Hand ändern\nwindow.PREISE = '
+    '// Erzeugt von werkzeuge/preise-erzeugen.py aus werkzeuge/preise-daten.json – nicht von Hand ändern\nwindow.WEBRECHNER = '
     + json.dumps(rechner, ensure_ascii=False, indent=1) + ';\n', encoding='utf-8')
+
+
+# --- Preislisten der übrigen Leistungen (ohne Rechner), gleiche Karten wie auf den Leistungsseiten ---
+euro = lambda n: f"{n:,}".replace(',', '.') + '&nbsp;€'
+def preis(e):
+    if e.get('anfrage'): return 'auf Anfrage'
+    if e.get('stunde') and e.get('stundeBis'): return f"{e['stunde']}–{euro(e['stundeBis'])} / Stunde"
+    return ('ab ' if e.get('ab', True) else '') + euro(e['preis']) + ' <small class="lsx-netto">netto</small>'
+def karte(e):
+    liste = ''.join(f'<li>{esc(x)}</li>' for x in e.get('items', []))
+    badge = '<p class="lsx-badge">Gefragt</p>' if e.get('gefragt') else ''
+    return (f'      <article class="lsx-karte{" lsx-gefragt" if e.get("gefragt") else ""}">\n'
+            f'        {badge}<h3 class="lsx-karte-name">{esc(e["name"])}</h3>\n'
+            f'        <p class="lsx-karte-preis">{preis(e)}</p>\n        <p class="lsx-karte-wer">{esc(e.get("wer") or "")}</p>\n'
+            f'        <p class="lsx-karte-dauer"></p>\n        <p class="lsx-karte-plus">{esc(e.get("plus") or "")}</p><ul class="lsx-karte-liste">{liste}</ul>\n      </article>')
+def liste_html(g):
+    mehr = f'<p><a class="textlink" href="{g["link"]}">Mehr zu {esc(g["name"])} <span aria-hidden="true">→</span></a></p>' if g.get('link') else ''
+    return (f'<section class="preisliste" id="r-{g["id"]}" aria-labelledby="r-{g["id"]}-titel">\n  <div class="preisliste-kopf"><p class="meta">Preisliste</p>'
+            f'<h2 class="preis-h2" id="r-{g["id"]}-titel">{esc(g["name"])}</h2><p class="gedaempft">{esc(g.get("intro") or "")}</p>{mehr}</div>\n'
+            '    <div class="lsx-karten">\n' + '\n'.join(karte(e) for e in g['pakete']) + '\n    </div>\n</section>')
+preislisten = '\n'.join(liste_html(g) for g in LISTEN) + '\n<p class="preis-netto gedaempft preisliste-netto">Alle Preise sind Nettopreise zzgl. 19&nbsp;% Umsatzsteuer (USt.).</p>'
+
+
 # --- Glossar (Preisseite) ---
 def glossar_html():
     zeilen = ''.join(f'    <div><dt>{esc(a)}</dt><dd>{esc(b)}</dd></div>\n' for a, b in daten['glossar'])
@@ -40,7 +62,7 @@ def einsetzen(text, name, inhalt):
 
 
 seite = basis / 'website' / 'preise' / 'index.html'
-seite.write_text(einsetzen(seite.read_text(encoding='utf-8'), 'GLOSSAR', glossar_html()), encoding='utf-8')
+seite.write_text(einsetzen(einsetzen(seite.read_text(encoding='utf-8'), 'GLOSSAR', glossar_html()), 'PREISLISTEN', preislisten), encoding='utf-8')
 
 # --- Startseite: Leistungen als Karten (9 Stück) mit Chips darüber ---
 chips = ''.join(f'<a href="#k-{k["id"]}">{esc(k["titel"])}</a>' for k in daten['startseite'])

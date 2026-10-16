@@ -15,7 +15,7 @@
   <meta property="og:description" content="Projekt anfragen bei STUDIO AAH!: per E-Mail an info@studio-aah.de oder telefonisch. Das Erstgespräch ist kostenlos und unverbindlich.">
   <meta property="og:url" content="https://studio-aah.de/kontakt/">
   <meta property="og:image" content="https://studio-aah.de/bilder/vorschaubild.jpg">
-  <link rel="stylesheet" href="../css/stil.css?v=20261016k">
+  <link rel="stylesheet" href="../css/stil.css?v=20261016l">
 </head>
 <body>
 <a class="sprunglink" href="#inhalt">Zum Inhalt springen</a>
@@ -33,7 +33,6 @@
   <nav class="kopf-nav" aria-label="Hauptmenü">
     <ul>
       <li><a href="../#leistungen" class="mm-toggle" aria-expanded="false" aria-controls="mm">Leistungen <svg class="mm-pfeil" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-      <li><a href="../preise/">Preise</a></li>
       <li><a href="../profil/">Über mich</a></li>
       <li><a href="../blog/">Blog</a></li>
     </ul>
@@ -83,7 +82,6 @@
             </ul>
           </details>
         </li>
-        <li><a href="../preise/">Preise</a></li>
         <li><a href="../profil/">Über mich</a></li>
         <li><a href="../blog/">Blog</a></li>
         <li><a href="../kontakt/">Projekt anfragen</a></li>
@@ -92,7 +90,7 @@
   </details>
 </header>
 <div class="mm-schleier" hidden></div>
-<script src="../js/menue.js?v=20261016k" defer></script>
+<script src="../js/menue.js?v=20261016l" defer></script>
 <!-- /KOPF -->
 
 <main id="inhalt">
@@ -106,10 +104,18 @@
       <p class="gedaempft">Machen Sie Ihre Website zu Ihrem stärksten Vertriebs- und Marketinginstrument. Klare Botschaften, markenzentriertes Design und ein flexibles CMS schaffen das Fundament, auf dem Ihr Unternehmen wachsen kann. Gemeinsam entwickeln wir eine Online Experience, die Ihr Business und Ihre Marke langfristig voranbringt.</p>
       <p class="meta">Erstgespräch kostenlos &amp; unverbindlich</p>
       <h2 class="alt-h3">Projektanfrage</h2>
-<div class="kontaktwege">
-  <a class="button" href="mailto:info@studio-aah.de?subject=Projektanfrage">E-Mail schreiben <span aria-hidden="true">→</span></a>
-  <a class="textlink" href="tel:+4917683089879">0176 830 898 79</a>
-</div>
+<!-- Anfrageformular (Anna 16.10.2026): dieselben Felder wie im Kostenrechner; baut eine E-Mail, js/anfrage.js -->
+<form class="anfrage-form kontakt-anfrage" data-anfrage="Projektanfrage" action="mailto:info@studio-aah.de?subject=Projektanfrage" method="post" enctype="text/plain">
+  <div class="anfrage-felder">
+    <label for="ka-name">Name<input id="ka-name" name="name" autocomplete="name" required></label>
+    <label for="ka-email">E-Mail<input id="ka-email" name="email" type="email" autocomplete="email" required></label>
+    <label for="ka-website" class="anfrage-ganz">Ihre Website (falls vorhanden)<input id="ka-website" name="website" type="text" inputmode="url" autocomplete="url" placeholder="www.ihre-website.de"></label>
+    <label for="ka-nachricht" class="anfrage-ganz">Nachricht<textarea id="ka-nachricht" name="nachricht" rows="5"></textarea></label>
+  </div>
+  <p class="anfrage-knoepfe"><button type="submit" class="button">Projekt anfragen <span aria-hidden="true">→</span></button> <a class="textlink" href="tel:+4917683089879">0176 830 898 79</a></p>
+  <p class="hinweis-klein">Beim Klick öffnet sich Ihr E-Mail-Programm mit einer fertigen Nachricht an info@studio-aah.de. Erst wenn Sie sie dort absenden, erhalte ich Ihre Angaben – die Website selbst speichert und überträgt nichts. Mehr in der <a href="../datenschutz/#kontakt">Datenschutzerklärung</a>.</p>
+  <div class="anfrage-danach" role="status" hidden></div>
+</form>
 <p class="mail-zeile">
   <a href="mailto:info@studio-aah.de?subject=Projektanfrage">info@studio-aah.de</a>
   <button type="button" class="kopier-knopf" data-kopieren="info@studio-aah.de" aria-label="E-Mail-Adresse kopieren" title="Adresse kopieren" hidden>
@@ -125,7 +131,8 @@
   <a class="button button-zweit" href="https://calendar.app.google/v194ByGxpY69CZou9" target="_blank" rel="noopener">Termin buchen <span aria-hidden="true">↗</span></a>
 </div>
 <p class="hinweis-klein">Die Terminbuchung läuft über Google Kalender. Dort gelten die Datenschutzhinweise von Google.</p>
-<script src="../js/kontakt.js?v=20261016k" defer></script>
+<script src="../js/kontakt.js?v=20261016l" defer></script>
+<script src="../js/anfrage.js?v=20261016l" defer></script>
     </div>
   </section>
 
@@ -196,6 +203,7 @@
       <p class="meta"><a href="../impressum/">Impressum</a> · <a href="../datenschutz/">Datenschutz</a></p>
     </div>
   </footer>
+  <a class="sticky-rechner" href="../preise/#rechner"><span class="sticky-rechner-icon"><img src="../bilder/icons/money-bag.webp" alt="" width="400" height="400" loading="lazy"></span>Kostenrechner <span aria-hidden="true">→</span></a>
   <!-- /FUSS -->
 
 </body>

@@ -11,6 +11,18 @@ _spec = importlib.util.spec_from_file_location('inhalte', basis / 'werkzeuge' / 
 I = importlib.util.module_from_spec(_spec); _spec.loader.exec_module(I)
 GEMEINSAM = json.loads((basis / 'werkzeuge' / 'inhalte' / 'faq-gemeinsam.json').read_text(encoding='utf-8'))['faq']
 euro = lambda n: f"{n:,}".replace(',', '.') + '&nbsp;€'
+# Webdesign-Pakete (Neue Website, Redesign) übernehmen ihre Inhaltsliste aus dem Kostenrechner (eine Quelle, Anna 16.10.2026)
+_W = preise['webrechner']
+_basis = [_W['texte']['liste'] if i == 'TEXTE' else i for g in _W['basis_inhalt'] for i in g['items']]
+_redesign = [i for v in _W['redesign_inhalt'].values() for i in v]
+for _g in preise['gruppen']:
+    for _e in _g['pakete']:
+        if _e.get('items_aus'): _e['items'] = _basis + [f"Jede Unterseite {_e['seite']} € mit Texten und Bildern"] if _e['items_aus'] == 'basis' else _redesign
+
+
+def preise_link(g, pre):
+    # Rechner gibt es nur für Webdesign; die übrigen Leistungen haben eine Preisliste auf der Preisseite
+    return (f'{pre}preise/#rechner', 'Kostenrechner') if g['id'] == 'website' else (f'{pre}preise/#r-{g["id"]}', 'Alle Preise')
 
 
 TERMINE = 'Einmal pro Woche einen Termin, 45 Minuten, online über Google Meet oder Teams, je nachdem, was Sie brauchen.'
@@ -86,7 +98,7 @@ def vergleich(g):
 
 
 def extras(g):
-    ex = [e for e in g.get('extras', []) if not e.get('auto')]  # Launch ist bei jeder Website dabei, keine Zusatzleistung
+    ex = [e for e in g.get('extras', []) if not e.get('nurRechner')]  # seltene Funktionen nur im Kostenrechner
     if not ex: return ''
     li = ''.join(f'<li><span class="lsx-extra-name">{esc(e["name"])}</span><span class="lsx-extra-text">{esc(e.get("kurz") or e.get("wer") or "")}</span><span class="lsx-extra-preis">{preis(e)}</span></li>' for e in ex)
     return f'''  <section class="lsx-extras" id="extras" aria-labelledby="extras-titel">
@@ -111,6 +123,13 @@ def trennen(t):
 def dachzeile(m, h):
     # Dachzeile weglassen, wenn sie die Überschrift nur wiederholt (z. B. „Launch“ über „Launch.“, Anna 12.10.2026)
     return '' if m.rstrip('.').lower() == h.rstrip('.').lower() else f'<p class="meta">{esc(m)}</p>'
+
+
+# Hinweiskarte neben „Direkt anfragen“: Webdesign führt zum Kostenrechner, alle anderen zur Preisliste
+DUO_WEB = ('<p class="meta">Kostenrechner</p>\n      <h2 class="gr-h3" id="rechner-hinweis">Was kostet Ihre Website?</h2>\n'
+           '      <p>In fünf Schritten zum unverbindlichen Kostenvoranschlag: Marke, neu oder Redesign, Seitenstruktur und Extras. Der Kassenbon rechnet mit, als PDF oder per E-Mail.</p>')
+DUO_PREISE = ('<p class="meta">Preise</p>\n      <h2 class="gr-h3" id="rechner-hinweis">Was kostet Ihr Projekt?</h2>\n'
+              '      <p>Alle Pakete und Einstiegspreise im Überblick – und für Websites der Kostenrechner mit unverbindlichem Kostenvoranschlag.</p>')
 
 
 def ablauf_eigen(pre, schritte):
@@ -198,6 +217,7 @@ def seite(key, c):
     termine = c.get('termine', TERMINE)
     satz = termine if termine.startswith('Termine') else termine[0].lower() + termine[1:]  # Substantiv bleibt groß
     faq_termine = [['Wie oft gibt es bei STUDIO AAH! Abstimmungstermine?', 'Bei STUDIO AAH! gibt es ' + satz + ('' if 'nach Absprache' in termine else ' Weitere Termine vereinbaren wir nach Absprache.')]]
+    link, link_text = preise_link(g, '../' * (c['pfad'].strip('/').count('/') + 1))
     pfad = basis / 'website' / c['pfad'] / 'index.html'
     if not pfad.exists():  # neue Seite: Kopf und Fuß von der Webdesign-Seite übernehmen (gleiche Ordnertiefe)
         pfad.parent.mkdir(parents=True, exist_ok=True)
@@ -222,7 +242,7 @@ def seite(key, c):
     {fakten(pre)}
   </section>
 
-  <nav class="preis-leiste lsx-chips" aria-label="Auf dieser Seite"><a href="#loesung">Problem &amp; Lösung</a><a href="#pakete">Pakete</a>{'<a href="#vergleich">Vergleich</a>' if vergleich(g) else ''}{'<a href="#extras">Zusatzleistungen</a>' if g.get('extras') else ''}{'<a href="#ablauf">Ablauf</a>' if mit_ablauf else ''}{'<a href="#referenzen">Referenzen</a>' if I.mit_tag(I.PROJEKTE, [c['tag']]) else ''}{'<a href="#artikel">Artikel</a>' if c.get('artikel', True) and I.mit_tag(I.BLOG, [c['tag']]) else ''}<a href="#faq">Fragen</a><a href="{pre}preise/#r-{g['id']}">Kostenrechner →</a></nav>
+  <nav class="preis-leiste lsx-chips" aria-label="Auf dieser Seite"><a href="#loesung">Problem &amp; Lösung</a><a href="#pakete">Pakete</a>{'<a href="#vergleich">Vergleich</a>' if vergleich(g) else ''}{'<a href="#extras">Zusatzleistungen</a>' if g.get('extras') else ''}{'<a href="#ablauf">Ablauf</a>' if mit_ablauf else ''}{'<a href="#referenzen">Referenzen</a>' if I.mit_tag(I.PROJEKTE, [c['tag']]) else ''}{'<a href="#artikel">Artikel</a>' if c.get('artikel', True) and I.mit_tag(I.BLOG, [c['tag']]) else ''}<a href="#faq">Fragen</a><a href="{link}">{link_text} →</a></nav>
 
   <section class="lsx-loesung lsx-pl" id="loesung" aria-labelledby="loesung-titel">
     <p class="meta">Problem &amp; Lösung</p>
@@ -231,7 +251,7 @@ def seite(key, c):
       <div class="lsx-pl-problem"><p class="meta">Woran es oft hakt</p><ul>{''.join(f'<li>{esc(x)}</li>' for x in c['probleme'])}</ul></div>
       <div class="lsx-pl-loesung"><p class="meta">So mache ich es</p><p class="lsx-pl-text">{esc(c['loesung_text'])}</p><ul>{''.join(f'<li>{esc(x)}</li>' for x in c['loesung_punkte'][:3])}</ul>
         {'' if c.get('grafik') == 'corporate-identity' else f'<p class="lsx-grundsatz"><a class="textlink" href="{pre}service/markenbildung/#corporate-identity">Form follows function, die Form folgt der Funktion. Grundlage für alles, was ich gestalte, ist die Corporate Identity <span aria-hidden="true">→</span></a></p>'}</div>
-      <p class="lsx-knoepfe"><a class="button" href="{pre}kontakt/">Projekt anfragen <span aria-hidden="true">→</span></a> <a class="textlink" href="{pre}preise/#r-{g['id']}">Kosten berechnen <span aria-hidden="true">→</span></a></p>
+      <p class="lsx-knoepfe"><a class="button" href="{pre}kontakt/">Projekt anfragen <span aria-hidden="true">→</span></a> <a class="textlink" href="{link}">{'Kosten berechnen' if g['id'] == 'website' else 'Alle Preise'} <span aria-hidden="true">→</span></a></p>
     </div>
   </section>
 
@@ -266,10 +286,8 @@ def seite(key, c):
 {direkt(pre)}
     <div class="lsx-duo-karte lsx-duo-rechner">
       <img class="lsx-duo-icon" src="{pre}bilder/icons/money-bag.webp" alt="" width="400" height="400" loading="lazy">
-      <p class="meta">Kostenrechner</p>
-      <h2 class="gr-h3" id="rechner-hinweis">Was kostet Ihr Projekt?</h2>
-      <p>Stellen Sie sich Ihre Pakete und Zusatzleistungen selbst zusammen und erhalten Sie sofort einen unverbindlichen Kostenvoranschlag, als PDF oder per E-Mail.</p>
-      <p><a class="button button-zweit button-hell" href="{pre}preise/#r-{g['id']}">Zum Kostenrechner <span aria-hidden="true">→</span></a></p>
+      {DUO_WEB if g['id'] == 'website' else DUO_PREISE}
+      <p><a class="button button-zweit button-hell" href="{link}">{'Zum Kostenrechner' if g['id'] == 'website' else 'Zu den Preisen'} <span aria-hidden="true">→</span></a></p>
     </div>
   </section>
 
@@ -306,7 +324,7 @@ def seite(key, c):
     ld = json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, indent=2)
     t = re.sub(r'<script type="application/ld\+json">.*?</script>', lambda m: f'<script type="application/ld+json">\n{ld}\n  </script>', t, count=1, flags=re.S)
     if 'zaehlen.js' not in t:
-        t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v=20261016k" defer></script>\n</body>', 1)
+        t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v=20261016l" defer></script>\n</body>', 1)
     pfad.write_text(t, encoding='utf-8')
     print('geschrieben:', c['pfad'])
 

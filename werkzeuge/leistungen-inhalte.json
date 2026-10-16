@@ -5,7 +5,7 @@
   "gruppe": "website",
   "titel": "Webdesign",
   "seitentitel": "Webdesign in Leipzig: Website erstellen lassen | STUDIO AAH!",
-  "beschreibung": "Webdesign bei STUDIO AAH! in Leipzig: Onepager ab 1.150 €, Website ab 2.450 €, Redesign für Unternehmen ab 5.000 € (netto). WordPress (Kadence).",
+  "beschreibung": "Webdesign bei STUDIO AAH! in Leipzig: neue Website ab 2.450 € (auch als Onepager), Redesign ab 2.850 €, jede Unterseite 190 € (netto). WordPress (Kadence).",
   "bild": "bilder/leistung-website.webp",
   "bildalt": "Bildschirm mit einer Website im Entwurf",
   "zusammenfassung": [
@@ -15,7 +15,7 @@
   "faq": [
    [
     "Was kostet eine Website in Leipzig bei STUDIO AAH!?",
-    "Bei STUDIO AAH! in Leipzig beginnt ein Onepager bei 1.150 € und eine Website mit bis zu 6 Unterseiten bei 2.450 €. Jede weitere Unterseite kostet 150 €. Ein Redesign für mittelständische Unternehmen mit Leistungs-, Branchen-, Referenz- und Karriereseiten beginnt bei 5.000 €. Für jede neue Website kommt einmalig der Launch für 150 € dazu. Projekte mit mehr als 25 Unterseiten, Shop oder Mitgliederbereich beginnen bei 6.000 €. Alle Preise sind Einstiegspreise ohne Umsatzsteuer; den Festpreis erhalten Sie nach einem kostenlosen Erstgespräch."
+    "Bei STUDIO AAH! in Leipzig beginnt eine neue Website bei 2.450 €, auch als Onepager. Darin sind Startseite, Impressum, Datenschutz und der Launch enthalten. Jede Unterseite kostet 190 € mit Texten und Bildern. Ein Redesign einer bestehenden Website kostet 400 € mehr, also ab 2.850 €. Shop, Mitgliederbereich und weitere Funktionen gibt es auf Anfrage. Alle Preise sind Einstiegspreise ohne Umsatzsteuer; den Festpreis erhalten Sie nach einem kostenlosen Erstgespräch."
    ],
    [
     "Wie lange dauert es, eine Website erstellen zu lassen?",
@@ -23,7 +23,7 @@
    ],
    [
     "Was ist ein Onepager und für wen lohnt er sich?",
-    "Ein Onepager ist eine Website, die alles auf einer einzigen, langen Seite zeigt. Er passt zu Selbstständigen und kleinen Angeboten, die ihr Angebot kompakt vorstellen wollen. Bei STUDIO AAH! beginnt ein Onepager bei 1.150 €."
+    "Ein Onepager ist eine Website, die alles auf einer einzigen, langen Seite zeigt. Er passt zu Selbstständigen und kleinen Angeboten, die ihr Angebot kompakt vorstellen wollen. Bei STUDIO AAH! gilt für den Onepager der Basispreis ab 2.450 €."
    ],
    [
     "Was ist eine Brand Experience?",
@@ -47,11 +47,11 @@
    ],
    [
     "Ist SEO und LLM-Zitierfähigkeit im Preis enthalten?",
-    "Ja, SEO und LLM-Zitierfähigkeit sind immer zusammen enthalten. SEO bedeutet Suchmaschinen-Optimierung, damit Ihre Website bei Google gefunden wird. LLM-Zitierfähigkeit (Fachbegriff: GEO, Generative Engine Optimization) bedeutet, dass KI-Assistenten wie ChatGPT, Claude oder Perplexity Ihre Inhalte verstehen und als Quelle nennen können, zum Beispiel durch eine klare Struktur, Fragen und Antworten und strukturierte Daten. Beides steckt in jedem Website-Paket. Für bestehende Websites gibt es SEO & LLM-Zitierfähigkeit ab 260 €."
+    "Ja, SEO und LLM-Zitierfähigkeit sind immer zusammen enthalten. SEO bedeutet Suchmaschinen-Optimierung, damit Ihre Website bei Google gefunden wird. LLM-Zitierfähigkeit (Fachbegriff: GEO, Generative Engine Optimization) bedeutet, dass KI-Assistenten wie ChatGPT, Claude oder Perplexity Ihre Inhalte verstehen und als Quelle nennen können, zum Beispiel durch eine klare Struktur, Fragen und Antworten und strukturierte Daten. Beides steckt in jedem Website-Paket."
    ],
    [
     "Was passiert beim Launch?",
-    "Beim Launch geht Ihre Website online: Ich verbinde die Domain, setze die technischen Einträge (DNS), ziehe die Website um und begleite den Livegang. Der Launch kostet einmalig 150 € und gehört zu jeder neuen Website."
+    "Beim Launch geht Ihre Website online: Ich verbinde die Domain, setze die technischen Einträge (DNS), ziehe die Website um und begleite den Livegang. Der Launch ist im Basispreis jeder neuen Website enthalten."
    ],
    [
     "Mit welchem System baut STUDIO AAH! Websites?",
@@ -59,7 +59,7 @@
    ],
    [
     "Kann ich meine Website danach selbst pflegen?",
-    "Ja. Für die Selbstpflege gibt es eine Schulung für 70 €, wahlweise als PDF-Anleitung oder Online-Termin."
+    "Ja. Für die Selbstpflege gibt es eine Schulung: als PDF-Anleitung für 15 € oder als Online-Termin für 70 €."
    ],
    [
     "Wer kümmert sich nach dem Start um die Technik?",
@@ -96,7 +96,8 @@
   ],
   "nicht_enthalten": [
    "Hosting, Domain und Lizenzen: zahlen Sie direkt an den jeweiligen Anbieter",
-   "Shop, Mitgliederbereich oder mehr als 25 Unterseiten: eigenes Projekt ab 6.000 €",
+   "Kontaktformular, Shop, Mitgliederbereich und weitere Funktionen: als Zusatzleistung oder auf Anfrage",
+   "Cookie-Banner und Tracking: Ich berate Sie dazu, die Kosten stehen im Angebot",
    "Übersetzungen für weitere Sprachen: liefern Sie",
    "Spätere Text- und Inhaltsänderungen: Texte liefere ich einmal für die ganze Website. Änderungen danach setzen Sie am besten selbst in WordPress (Kadence) um; übernehme ich sie, rechne ich nach Aufwand ab, 50–85 € netto pro Stunde, je nach Unternehmensgröße",
    "Mehr als zwei Korrekturrunden: nach Aufwand, 50–85 € netto pro Stunde, je nach Unternehmensgröße"
@@ -780,7 +781,7 @@
    "Neue Unterseiten erstellen",
    "Abschnitte bearbeiten",
    "Abrechnung nach Aufwand, 50–85 € netto pro Stunde, je nach Unternehmensgröße, kein fester Monatsbetrag",
-   "Lieber selbst pflegen? Schulung für 70 € netto, als PDF-Anleitung oder Online-Termin"
+   "Lieber selbst pflegen? Schulung als PDF-Anleitung für 15 € oder als Online-Termin für 70 € (netto)"
   ],
   "zusammenfassung": [
    "Mit dem Retainer entwickle ich Ihre Website nach dem Start weiter: Ich tausche Texte und Bilder aus, erstelle neue Unterseiten und bearbeite Abschnitte. Abgerechnet wird nach Aufwand, 50–85 € netto pro Stunde, je nach Unternehmensgröße.",
@@ -810,7 +811,7 @@
    ],
    [
     "Kann ich meine Website auch selbst pflegen?",
-    "Ja. Für die Selbstpflege bietet STUDIO AAH! eine Schulung für 70 € netto an, wahlweise als PDF-Anleitung oder als Online-Termin."
+    "Ja. Für die Selbstpflege bietet STUDIO AAH! eine Schulung an: als PDF-Anleitung für 15 € netto oder als Online-Termin für 70 € netto."
    ],
    [
     "Wie starte ich einen Retainer mit STUDIO AAH!?",

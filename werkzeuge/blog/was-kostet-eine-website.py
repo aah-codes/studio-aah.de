@@ -7,18 +7,18 @@ slug='was-kostet-eine-website'
 url=f'https://studio-aah.de/blog/{slug}/'
 titel='Was kostet eine Website? Preise, laufende Kosten und Dauer 2026'
 h1='Was kostet eine Website – und wie lange dauert sie?'
-beschr='Was kostet eine Website 2026? Preise ab 1.150 €, laufende Kosten und realistische Dauer – mit Beispielrechnungen und Erfahrungen aus Projekten eines Leipziger Studios.'
+beschr='Was kostet eine Website 2026? Preise ab 2.450 €, laufende Kosten und realistische Dauer – mit Beispielrechnungen und Erfahrungen aus Projekten eines Leipziger Studios.'
 faq=[
 ("Was kostet eine einfache Website für Selbstständige?",
- "Bei STUDIO AAH! beginnt ein Onepager bei 1.150 € netto, eine Website mit bis zu 6 Unterseiten bei 2.450 € netto. Für jede neue Website kommt einmalig der Launch für 150 € dazu."),
+ "Bei STUDIO AAH! beginnt eine neue Website bei 2.450 € netto, auch als Onepager; der Launch ist enthalten. Jede Unterseite kostet 190 € mit Texten und Bildern, ein Redesign 400 € mehr."),
 ("Was kostet eine Website im Monat?",
  "Nach dem Launch zahlen Sie Hosting, Domain und eventuelle Lizenzen direkt an die Anbieter; die Höhe hängt von Anbieter und Tarif ab. Wer Unterstützung möchte: Wartung kostet bei STUDIO AAH! ab 45 € im Monat, Änderungen und Weiterentwicklung 50–85 € netto pro Stunde, je nach Unternehmensgröße."),
 ("Wie lange dauert es, eine Website erstellen zu lassen?",
  "Ein Onepager dauert bei STUDIO AAH! etwa 4 bis 6 Wochen. Eine Website mit mehreren Unterseiten dauert etwa 3 bis 4 Monate, je nach Umfang bis zu 6 Monate. Wie schnell es geht, hängt auch davon ab, wie zügig Texte, Bilder und Feedback vorliegen."),
 ("Was kostet eine zusätzliche Unterseite?",
- "Im Paket „Website – neu oder Redesign“ (ab 2.450 €) sind 6 Unterseiten enthalten. Jede weitere Unterseite kostet 150 €. Eine Website mit 10 Unterseiten kostet damit ab 3.050 €, mit Launch 3.200 € netto."),
+ "Bei STUDIO AAH! kostet jede Unterseite 190 € mit Texten und Bildern, dazu kommt der Basispreis ab 2.450 €. Eine Website mit 10 Unterseiten kostet damit ab 4.350 € netto, Launch eingerechnet."),
 ("Was kostet eine mehrsprachige Website?",
- "Jede weitere Sprache kostet 30 % des Website-Preises. Die Übersetzung liefern Sie. Eine zweisprachige Website mit 6 Unterseiten kostet damit ab 3.185 €, mit Launch 3.335 € netto."),
+ "Jede weitere Sprache kostet 30 % des Website-Preises. Die Übersetzung liefern Sie. Eine zweisprachige Website mit 6 Unterseiten kostet damit ab 4.667 € netto, Launch eingerechnet."),
 ("Woher kommen die Bilder für meine Website?",
  "Sie können eigene Fotos liefern. Außerdem kann STUDIO AAH! Bilder liefern: lizenzfreie Bilder von Plattformen wie Unsplash oder mit KI erstellte Bilder. Ein Fotoshooting führt STUDIO AAH! nicht selbst durch, kann es aber vermitteln."),
 ("Muss ich alles auf einmal bezahlen?",

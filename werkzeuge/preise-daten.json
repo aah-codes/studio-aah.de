@@ -144,85 +144,68 @@
    "name": "Webdesign",
    "link": "../service/webdesign/",
    "wahl": "eins",
-   "hinweis": "Typisch: Selbstständige 1–6 Unterseiten · kleine und mittlere Unternehmen mit Leistungs- und Branchenseiten 10–25 Unterseiten. Mehr als 25 Unterseiten, Shop oder Mitgliederbereich? Dann ist es ein komplexes Projekt ab 6.000 € – melden Sie sich am besten direkt.",
+   "hinweis": "Startseite, Impressum und Datenschutz sind im Basispreis. Jede Unterseite kostet 190 € mit Texten und Bildern. Typisch: Selbstständige 1–6 Unterseiten, Unternehmen 8–25. Shop, Mitgliederbereich und weitere Funktionen auf Anfrage.",
    "pakete": [
     {
-     "id": "onepager",
-     "name": "Onepager",
-     "preis": 1150,
-     "wer": "Für Selbstständige und kleine Angebote, die alles auf einer Seite zeigen.",
-     "plus": "Enthalten:",
-     "items": [
-      "Expert Review (wenn es schon eine Website gibt)",
-      "Marktanalyse",
-      "Seitenstruktur (Sitemap)",
-      "SEO & LLM-Zitierfähigkeit",
-      "Texte (einmal für die ganze Website) und Bilder kann ich liefern",
-      "Design für Desktop & Handy (responsiv)",
-      "Umsetzung in WordPress (Kadence) / Claude Code",
-      "Kontaktformular",
-      "Launch & Übergabe",
-      "Schulung zur Selbstpflege: als Zusatz buchbar"
-     ],
-     "launch": true,
-     "ab": true,
-     "dauer": "4–6 Wochen"
-    },
-    {
-     "id": "website",
-     "name": "Website – neu oder Redesign",
+     "id": "neu",
+     "name": "Neue Website",
      "preis": 2450,
-     "inkl": 6,
-     "seite": 150,
-     "wer": "Für Unternehmen, die ihr Angebot ausführlich vorstellen.",
-     "plus": "Alles aus Onepager, plus:",
-     "items": [
-      "Bei Redesign: Analyse der bestehenden Website, Übernahme vorhandener Inhalte, Weiterleitungen alter Adressen",
-      "Mehrere Unterseiten nach Ihrer Sitemap"
-     ],
-     "launch": true,
+     "seite": 190,
      "ab": true,
-     "dauer": "3–4 Monate, je nach Umfang bis 6 Monate"
+     "wer": "Es gibt noch keine Website. Der Basispreis gilt auch für den Onepager.",
+     "plus": "Im Basispreis enthalten:",
+     "items_aus": "basis",
+     "dauer": "Onepager 4–6 Wochen, mit Unterseiten 3–4 Monate, je nach Umfang bis 6 Monate"
     },
     {
-     "id": "unternehmen",
-     "name": "Redesign für Unternehmen",
-     "preis": 5000,
-     "wer": "Für mittelständische Unternehmen, die ihre ganze Website umbauen: mit Leistungs-, Branchen-, Referenz- und Karriereseiten.",
-     "plus": "Alles aus Website, plus:",
-     "items": [
-      "Design-System: Typografie, Farben, Abstände und Komponenten (Figma + Kadence)",
-      "Neu strukturierte Startseite mit klaren nächsten Schritten für Anfragen und Bewerbungen",
-      "Leistungsseiten mit Verlinkung zu passenden Referenzen",
-      "Branchenseiten für Ihre Zielgruppen",
-      "Referenzen als eigene Projektseiten mit Filter",
-      "Karrierebereich mit Stellenangeboten und Bewerbungsformular",
-      "Blog / News",
-      "Einweisung in die Pflege von Referenzen, Karriere und Blog"
-     ],
-     "gefragt": true,
-     "launch": true,
+     "id": "redesign",
+     "name": "Redesign",
+     "preis": 2850,
+     "seite": 190,
      "ab": true,
-     "dauer": "3–4 Monate, je nach Umfang bis 6 Monate"
+     "wer": "Die bestehende Website wird neu – Inhalte übernehmen, alte Adressen weiterleiten.",
+     "plus": "Alles aus Neue Website, plus:",
+     "items_aus": "redesign",
+     "dauer": "Onepager 4–6 Wochen, mit Unterseiten 3–4 Monate, je nach Umfang bis 6 Monate"
     }
    ],
    "extras": [
     {
-     "id": "launch",
-     "name": "Launch",
+     "id": "kontakt",
+     "name": "Kontaktformular",
      "preis": 150,
      "ab": false,
-     "auto": true,
-     "kurz": "Domain verbinden, DNS-Einträge, Umzug, Livegang",
-     "wer": "bei jeder neuen Website dabei"
+     "kurz": "Anfragen direkt über die Website",
+     "oft": true,
+     "funktion": true
     },
     {
-     "id": "sprache",
-     "name": "Weitere Sprache",
-     "anteil": 0.3,
-     "art": "anzahl",
-     "kurz": "+30 % auf den Website-Preis, je Sprache · Übersetzung liefern Sie",
-     "wer": "ohne Website-Paket: auf Anfrage"
+     "id": "termin",
+     "name": "Terminbuchung",
+     "preis": 200,
+     "ab": false,
+     "kurz": "Termine online buchen",
+     "oft": true,
+     "funktion": true
+    },
+    {
+     "id": "faq",
+     "name": "FAQ zum Aufklappen",
+     "preis": 100,
+     "ab": false,
+     "kurz": "Häufige Fragen übersichtlich beantwortet",
+     "oft": true,
+     "funktion": true
+    },
+    {
+     "id": "karriere",
+     "name": "Karriere mit Bewerbungsformular",
+     "preis": 600,
+     "ab": true,
+     "kurz": "Übersichtsseite mit Team und Werten, Stellenbörse mit Vorlage für Stellenanzeigen, Bewerbungsformular",
+     "oft": true,
+     "bereich": true,
+     "funktion": true
     },
     {
      "id": "blog",
@@ -230,7 +213,96 @@
      "preis": 490,
      "ab": false,
      "kurz": "Blog einrichten, Übersicht, Beitragsvorlage",
-     "wer": "auch für bestehende Websites"
+     "wer": "auch für bestehende Websites",
+     "funktion": true,
+     "oft": true,
+     "bereich": true
+    },
+    {
+     "id": "shop",
+     "name": "Shop",
+     "anfrage": true,
+     "kurz": "Online-Shop in WordPress mit WooCommerce",
+     "wer": "Umfang und Preis nach Absprache",
+     "funktion": true,
+     "oft": true,
+     "bereich": true
+    },
+    {
+     "id": "filter",
+     "name": "Referenzen mit Filter",
+     "anfrage": true,
+     "kurz": "Projekte nach Branche oder Leistung filtern",
+     "nurRechner": true,
+     "funktion": true
+    },
+    {
+     "id": "mitglieder",
+     "name": "Mitgliederbereich",
+     "anfrage": true,
+     "kurz": "Geschützter Bereich mit Login",
+     "bereich": true,
+     "nurRechner": true,
+     "funktion": true
+    },
+    {
+     "id": "standorte",
+     "name": "Standorte mit Karte",
+     "anfrage": true,
+     "kurz": "Ein oder mehrere Standorte auf einer Karte",
+     "bereich": true,
+     "nurRechner": true,
+     "funktion": true
+    },
+    {
+     "id": "download",
+     "name": "Downloadbereich",
+     "anfrage": true,
+     "kurz": "Dokumente und Unterlagen zum Herunterladen",
+     "bereich": true,
+     "nurRechner": true,
+     "funktion": true
+    },
+    {
+     "id": "veranstaltungen",
+     "name": "Veranstaltungskalender",
+     "anfrage": true,
+     "kurz": "Termine und Veranstaltungen im Überblick",
+     "bereich": true,
+     "nurRechner": true,
+     "funktion": true
+    },
+    {
+     "id": "suche",
+     "name": "Suche",
+     "anfrage": true,
+     "kurz": "Inhalte der Website durchsuchen",
+     "nurRechner": true,
+     "funktion": true
+    },
+    {
+     "id": "bewertungen",
+     "name": "Google-Bewertungen",
+     "anfrage": true,
+     "kurz": "Bewertungen auf der Website zeigen",
+     "nurRechner": true,
+     "funktion": true
+    },
+    {
+     "id": "kostenrechner",
+     "name": "Kostenrechner",
+     "anfrage": true,
+     "kurz": "Besucher:innen stellen sich Leistungen zusammen und sehen sofort den Preis",
+     "nurRechner": true,
+     "funktion": true
+    },
+    {
+     "id": "chatbot",
+     "name": "KI-Assistent (Chatbot)",
+     "anfrage": true,
+     "kurz": "Beantwortet Fragen auf der Website",
+     "nurRechner": true,
+     "funktion": true
     },
     {
      "id": "newsletter",
@@ -241,45 +313,41 @@
      "wer": "auch für bestehende Websites"
     },
     {
-     "id": "shop",
-     "name": "WooCommerce-Shop",
-     "anfrage": true,
-     "kurz": "Online-Shop in WordPress mit WooCommerce",
-     "wer": "Umfang und Preis nach Absprache"
-    },
-    {
      "id": "illu-web",
      "name": "Illustrationen & Infografiken",
      "anfrage": true,
-     "kurz": "Eigene Illustrationen, Icons und Infografiken für Ihre Website",
-     "nurSeite": true
+     "kurz": "Eigene Illustrationen, Icons und Infografiken für Ihre Website"
     },
     {
      "id": "motion-web",
      "name": "Animation",
      "anfrage": true,
-     "kurz": "Bewegte Grafiken und Animationen für Ihre Website",
-     "nurSeite": true
+     "kurz": "Bewegte Grafiken und Animationen für Ihre Website"
     },
     {
-     "id": "seo",
-     "name": "SEO & LLM-Zitierfähigkeit",
-     "preis": 260,
-     "ab": false,
-     "ohnePaket": true,
-     "kurz": "im Website-Paket enthalten · für bestehende Websites",
-     "wer": "für bestehende Websites"
+     "id": "sprache",
+     "name": "Weitere Sprache",
+     "anteil": 0.3,
+     "art": "anzahl",
+     "kurz": "+30 % auf den Website-Preis (Basis und Unterseiten), je Sprache · Übersetzung liefern Sie",
+     "wer": "ohne Website-Paket: auf Anfrage"
     },
     {
      "id": "schulung",
      "name": "Schulung",
-     "preis": 70,
-     "ab": false,
+     "preis": 15,
+     "ab": true,
      "wahl": [
-      "PDF-Anleitung",
-      "Online-Termin"
+      {
+       "name": "PDF-Anleitung",
+       "preis": 15
+      },
+      {
+       "name": "Online-Termin",
+       "preis": 70
+      }
      ],
-     "kurz": "PDF-Anleitung oder Online-Termin – Sie wählen",
+     "kurz": "PDF-Anleitung 15 € oder Online-Termin 70 € – Sie wählen",
      "wer": "für alle, die selbst pflegen"
     },
     {
@@ -301,7 +369,8 @@
      "stunde": 50,
      "stundeBis": 85,
      "kurz": "Betreute Weiterentwicklung Ihrer Website: Texte und Bilder austauschen, neue Unterseiten erstellen, Abschnitte bearbeiten",
-     "nurSeite": true
+     "rechner": "Ich werte das Tracking aus und verbessere die Website auf dieser Grundlage weiter. Dazu setze ich Änderungen um: Texte, Bilder, neue Unterseiten.",
+     "mindestens": "mindestens 3 Monate"
     }
    ],
    "intro": "Klares Design mit technischer Präzision – individuell, responsiv und auf Ihre Ziele ausgerichtet.",
@@ -633,5 +702,151 @@
    "link": "service/ki-digitalisierung/",
    "text": "KI-Check und Beratung: welche KI Ihrem Unternehmen im Alltag wirklich hilft."
   }
- ]
+ ],
+ "webrechner": {
+  "_hinweis": "Kostenrechner Webdesign in 5 Schritten (Konzept Anna 16.10.2026). Basispreis = Paket „neu“, Redesign-Aufpreis = „redesign“ minus „neu“, Unterseite = „seite“. Preise der Funktionen und Extras: Gruppe „website“, extras.",
+  "marke": [
+   {
+    "id": "",
+    "titel": "Ja, Logo und Erscheinungsbild passen",
+    "wer": "Wir arbeiten mit Ihrer bestehenden Marke.",
+    "preis": 0,
+    "bon": "Logo und Erscheinungsbild passen"
+   },
+   {
+    "id": "marke-auffrischen",
+    "name": "Logo & Erscheinungsbild überarbeiten",
+    "titel": "Ja, aber Logo und Erscheinungsbild sollen überarbeitet werden",
+    "preis": 300,
+    "ab": true,
+    "wer": "Behutsames Redesign: Wir behalten, was Sie ausmacht."
+   },
+   {
+    "id": "marke-basis",
+    "name": "Logo & Basis",
+    "titel": "Nein – Logo & Basis neu",
+    "preis": 1500,
+    "ab": true,
+    "wer": "Für alle, die ein neues Logo und ein stimmiges Erscheinungsbild brauchen.",
+    "items": [
+     "Positionierung & Zielgruppe",
+     "Logo-Entwicklung",
+     "Farben, Schriften, Bildwelt, Gestaltungselemente",
+     "Basishandbuch (kompakt)"
+    ]
+   },
+   {
+    "id": "marke-komplett",
+    "name": "Marke komplett",
+    "titel": "Marke komplett",
+    "anfrage": true,
+    "breit": true,
+    "wer": "Für Unternehmen, die ihre Marke umfassend aufstellen und im Alltag einheitlich einsetzen wollen.",
+    "items": [
+     "Alles aus Logo & Basis",
+     "Messaging & Tonalität",
+     "Brand Manual (ausführlich)",
+     "Erste Vorlagen: Visitenkarte, Präsentation, Social Media"
+    ]
+   }
+  ],
+  "basis_inhalt": [
+   {
+    "titel": "Verstehen",
+    "items": [
+     "Mitbewerberrecherche",
+     "Brand Experience: alle digitalen und analogen Berührungspunkte (Touchpoints)",
+     "Personas"
+    ]
+   },
+   {
+    "titel": "Gestalten",
+    "items": [
+     "Look and Feel",
+     "Startseite, Impressum, Datenschutz",
+     "TEXTE",
+     "Design für Handy und Desktop (responsiv)",
+     "Barrierefrei",
+     "2 Feedbackrunden, weitere nach Aufwand (50–85 € netto pro Stunde, je nach Unternehmensgröße)"
+    ]
+   },
+   {
+    "titel": "Technik & Gefunden werden",
+    "items": [
+     "Technische Einrichtung",
+     "Test auf Handy und Desktop",
+     "SEO & GEO (Suchmaschinen und KI-Antworten)",
+     "Rechtstexte: erste Fassung, mit KI erstellt – bitte anwaltlich prüfen lassen"
+    ]
+   },
+   {
+    "titel": "Live gehen",
+    "items": [
+     "Launch: Domain verbinden, DNS, Livegang"
+    ]
+   }
+  ],
+  "texte": {
+   "studio": "Texte und Bilder, mit KI erstellt auf Basis der Analyse, von mir geprüft und überarbeitet",
+   "selbst": "Übernahme Ihrer Texte und Bilder in die Website",
+   "liste": "Texte und Bilder: mit KI erstellt auf Basis der Analyse, von mir geprüft und überarbeitet – oder Sie liefern sie selbst, zum gleichen Preis"
+  },
+  "redesign_inhalt": {
+   "Verstehen": [
+    "Expert Review Ihrer Website"
+   ],
+   "Live gehen": [
+    "Sicherung der alten Website",
+    "Inhalte übernehmen",
+    "Weiterleitungen der alten Adressen (Redirects)",
+    "Search Console auf die neue Website umstellen"
+   ]
+  },
+  "nicht_enthalten": [
+   "Hosting und Domain – buchen und zahlen Sie selbst",
+   "Kontaktformular und weitere Funktionen – in Schritt 3",
+   "Cookie-Banner, Tracking und Schulung – als Extra"
+  ],
+  "extras_schritt4": [
+   "newsletter",
+   "illu-web",
+   "motion-web"
+  ],
+  "sitemap": [
+   {
+    "name": "Leistungen",
+    "kinder": [
+     "Leistung 1",
+     "Leistung 2",
+     "Leistung 3"
+    ]
+   },
+   {
+    "name": "Über uns",
+    "kinder": [
+     "Team"
+    ]
+   },
+   {
+    "name": "Referenzen",
+    "kinder": []
+   },
+   {
+    "name": "Kontakt",
+    "kinder": []
+   }
+  ],
+  "vorschlaege": [
+   "Leistungen",
+   "Über uns",
+   "Team",
+   "Referenzen",
+   "Kontakt",
+   "Branchen",
+   "Preise",
+   "Ablauf"
+  ],
+  "gross_ab": 25,
+  "review": "https://calendar.app.google/v194ByGxpY69CZou9"
+ }
 }

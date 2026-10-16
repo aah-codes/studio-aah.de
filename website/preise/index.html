@@ -15,7 +15,7 @@
   <meta property="og:description" content="Pakete und Einstiegspreise für Branding, Design, Websites, UI/UX, KI und Marketing. Den genauen Festpreis gibt es nach einem kostenlosen Erstgespräch.">
   <meta property="og:url" content="https://studio-aah.de/preise/">
   <meta property="og:image" content="https://studio-aah.de/bilder/vorschaubild.jpg">
-  <link rel="stylesheet" href="../css/stil.css?v=20261016k">
+  <link rel="stylesheet" href="../css/stil.css?v=20261016l">
 </head>
 <body>
 <a class="sprunglink" href="#inhalt">Zum Inhalt springen</a>
@@ -33,7 +33,6 @@
   <nav class="kopf-nav" aria-label="Hauptmenü">
     <ul>
       <li><a href="../#leistungen" class="mm-toggle" aria-expanded="false" aria-controls="mm">Leistungen <svg class="mm-pfeil" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-      <li><a href="../preise/">Preise</a></li>
       <li><a href="../profil/">Über mich</a></li>
       <li><a href="../blog/">Blog</a></li>
     </ul>
@@ -83,7 +82,6 @@
             </ul>
           </details>
         </li>
-        <li><a href="../preise/">Preise</a></li>
         <li><a href="../profil/">Über mich</a></li>
         <li><a href="../blog/">Blog</a></li>
         <li><a href="../kontakt/">Projekt anfragen</a></li>
@@ -92,7 +90,7 @@
   </details>
 </header>
 <div class="mm-schleier" hidden></div>
-<script src="../js/menue.js?v=20261016k" defer></script>
+<script src="../js/menue.js?v=20261016l" defer></script>
 <!-- /KOPF -->
 
 <main id="inhalt" class="preisseite">
@@ -102,47 +100,227 @@
   <p class="alt-klein">Finden Sie das passende Paket für Ihre Bedürfnisse.</p>
   <ul class="bedingungen">
     <li><strong>Ab-Preise:</strong> Die Preise hier sind Richtwerte. Ihr Angebot mit festem Preis bekommen Sie nach dem kostenlosen Erstgespräch.</li>
-    <li><strong>Zwei Korrekturrunden inklusive:</strong> In jedem Bereich (zum Beispiel Logo oder Website) sind zwei Runden enthalten. Jede weitere rechne ich nach Aufwand ab, 65&nbsp;€ pro Stunde.</li>
+    <li><strong>Zwei Korrekturrunden inklusive:</strong> In jedem Bereich (zum Beispiel Logo oder Website) sind zwei Runden enthalten. Jede weitere rechne ich nach Aufwand ab, 50–85&nbsp;€ netto pro Stunde, je nach Unternehmensgröße.</li>
     <li><strong>3 Raten</strong> bei größeren Projekten: bei Start, nach Freigabe des Konzepts, beim Go-live.</li>
     <li><strong>Hosting und Lizenzen</strong> zahlen Sie direkt an den Anbieter.</li>
   </ul>
 </section>
 
 <nav class="preis-leiste" aria-label="Bereiche der Preisseite">
-  <a href="#rechner">Kostenrechner</a><a href="#r-brand">Markenbildung</a><a href="#r-ui-ux">UI/UX</a><a href="#r-website">Webdesign</a><a href="#r-marketing">Marketing</a><a href="#r-print">Druck</a><a href="#r-ki">KI</a><a href="#r-zusatz">Zusatzleistungen</a><a href="#glossar">Glossar</a><a href="#kostenlos-titel">Programm</a>
+  <a href="#rechner">Kostenrechner Webdesign</a><a href="#r-brand">Markenbildung</a><a href="#r-ui-ux">UI/UX</a><a href="#r-marketing">Marketing</a><a href="#r-print">Druck</a><a href="#r-ki">KI</a><a href="#r-zusatz">Zusatzleistungen</a><a href="#glossar">Glossar</a><a href="#kostenlos-titel">Programm</a>
 </nav>
 
-<section class="rechner" id="rechner" aria-labelledby="rechner-titel">
-  <div class="rechner-kopf">
-    <p class="meta">Kostenrechner</p>
-    <h2 class="gr-h2" id="rechner-titel">Stellen Sie sich Ihr Projekt zusammen.</h2>
-    <p class="alt-klein">Wählen Sie, was Sie brauchen – die Summe rechnet sofort mit. So bekommen Sie in einer Minute einen ersten Kostenvoranschlag.</p>
-  </div>
-  <div class="rechner-raster">
-    <form class="rechner-wahl" id="rechner-wahl" aria-label="Leistungen auswählen" onsubmit="return false"></form>
-    <aside class="rechner-summe" aria-live="polite">
-      <p class="meta">Ihr Kostenvoranschlag</p>
-      <ul class="summe-liste" id="summe-liste"></ul>
-      <div class="summe-fuss">
-        <p class="summe-zahl"><span>Summe</span> <b><small>ab</small> <span id="summe-einmalig">0</span>&nbsp;€</b></p>
-        <p class="summe-zusatz gedaempft">netto, einmalig · <span id="summe-brutto">0</span>&nbsp;€ inkl. 19&nbsp;% USt.</p>
-        <p class="summe-monat" id="summe-monat-zeile" hidden><small>zzgl.</small> <span id="summe-monat">0</span>&nbsp;€ / Monat</p>
+<!-- Kostenrechner Webdesign v4 (Anna 16.10.2026): fünf Schritte wie an einer Kasse, js/webrechner.js -->
+<section class="wr" id="rechner" aria-labelledby="rechner-titel">
+  <div class="wr-raster">
+    <div class="wr-haupt">
+      <p class="meta">Kostenrechner Webdesign</p>
+      <h2 class="gr-h2 wr-titel" id="rechner-titel">Was kostet meine Website?</h2>
+      <p class="wr-lead">In fünf Schritten zum Kostenvoranschlag – in der Reihenfolge, in der wir auch im Projekt vorgehen. Der Kassenbon rechnet mit.</p>
+      <ol class="wr-leiste" id="wr-leiste" aria-label="Schritte"></ol>
+      <div class="wr-leiste-mobil" id="wr-leiste-mobil"></div>
+      <div class="wr-schritt" id="wr-schritt" tabindex="-1"></div>
+      <div class="wr-knoepfe">
+        <button class="button button-zweit" type="button" id="wr-zurueck"><span aria-hidden="true">←</span> Zurück</button>
+        <button class="button" type="button" id="wr-weiter">Weiter <span aria-hidden="true">→</span></button>
       </div>
-      <div class="summe-knoepfe">
-        <a class="button" id="rechner-mail" href="mailto:info@studio-aah.de">Per E-Mail anfragen <span aria-hidden="true">→</span></a>
-        <button type="button" class="button button-zweit" id="rechner-pdf">Als PDF speichern <span aria-hidden="true">↓</span></button>
-      </div>
-      <ol class="summe-schritte">
-        <li><b>Kostenvoranschlag</b> – unverbindlich, aus diesem Rechner</li>
-        <li><b>Erstgespräch</b> – kostenlos: Wo stehen Sie, was wollen Sie, was brauchen Sie, wen wollen Sie erreichen?</li>
-        <li><b>Angebot</b> – auf dieser Grundlage</li>
-        <li><b>Vertrag</b> – und los geht’s</li>
-      </ol>
-    </aside>
+      <p class="wr-kein-kauf" id="wr-kein-kauf">Kein Kauf, keine Bestellung. Am Ende speichern Sie den Kostenvoranschlag als PDF und können eine unverbindliche Anfrage senden – mit allen Angaben von hier.</p>
+    </div>
+    <aside class="wr-bon" id="wr-bon" aria-label="Kassenbon"></aside>
   </div>
-  <noscript><p class="gedaempft">Der Rechner braucht JavaScript. Alle Preise finden Sie unten bei den Paketen.</p></noscript>
+  <div class="wr-bon-leiste"><div class="wr-bon-summe-leiste" id="wr-bon-summe"></div><button type="button" id="wr-bon-auf" aria-controls="wr-bon" aria-expanded="false">Bon ansehen <span aria-hidden="true">↑</span></button></div>
+  <p class="unsichtbar" id="wr-ansage" aria-live="polite"></p>
+  <noscript><p class="gedaempft">Der Kostenrechner braucht JavaScript. Die Preise für Webdesign finden Sie auf der Seite <a href="../service/webdesign/#pakete">Webdesign</a>.</p></noscript>
   <div class="druck-bereich" id="druck-bereich" aria-hidden="true"></div>
 </section>
+
+<!-- PREISLISTEN:START -->
+<section class="preisliste" id="r-brand" aria-labelledby="r-brand-titel">
+  <div class="preisliste-kopf"><p class="meta">Preisliste</p><h2 class="preis-h2" id="r-brand-titel">Markenbildung</h2><p class="gedaempft">Eine unverwechselbare Markenidentität, die bei Ihrer Zielgruppe wirklich ankommt – klar, glaubwürdig und zukunftsorientiert.</p><p><a class="textlink" href="../service/markenbildung/">Mehr zu Markenbildung <span aria-hidden="true">→</span></a></p></div>
+    <div class="lsx-karten">
+      <article class="lsx-karte">
+        <h3 class="lsx-karte-name">Basic</h3>
+        <p class="lsx-karte-preis">ab 850&nbsp;€ <small class="lsx-netto">netto</small></p>
+        <p class="lsx-karte-wer">Für Gründer:innen und Selbstständige, die erst Klarheit über Positionierung und Stil brauchen.</p>
+        <p class="lsx-karte-dauer"></p>
+        <p class="lsx-karte-plus">Enthalten:</p><ul class="lsx-karte-liste"><li>Fragebogen</li><li>Brand Experience</li><li>Mitbewerberrecherche</li></ul>
+      </article>
+      <article class="lsx-karte lsx-gefragt">
+        <p class="lsx-badge">Gefragt</p><h3 class="lsx-karte-name">Medium</h3>
+        <p class="lsx-karte-preis">ab 2.500&nbsp;€ <small class="lsx-netto">netto</small></p>
+        <p class="lsx-karte-wer">Für Unternehmen, die eine neue Marke mit Logo und Erscheinungsbild brauchen.</p>
+        <p class="lsx-karte-dauer"></p>
+        <p class="lsx-karte-plus">Alles aus Basic, plus:</p><ul class="lsx-karte-liste"><li>Positionierung &amp; Zielgruppe</li><li>Personas</li><li>Logo-Entwicklung</li><li>Farben, Schriften, Bildwelt, Gestaltungselemente</li><li>Basishandbuch (kompakt)</li></ul>
+      </article>
+      <article class="lsx-karte">
+        <h3 class="lsx-karte-name">Premium</h3>
+        <p class="lsx-karte-preis">ab 4.500&nbsp;€ <small class="lsx-netto">netto</small></p>
+        <p class="lsx-karte-wer">Für Unternehmen, die ihre Marke umfassend aufstellen und im Alltag einheitlich einsetzen wollen.</p>
+        <p class="lsx-karte-dauer"></p>
+        <p class="lsx-karte-plus">Alles aus Medium, plus:</p><ul class="lsx-karte-liste"><li>Messaging &amp; Tonalität</li><li>Brand Manual (ausführlich)</li><li>Erste Vorlagen: Visitenkarte, Präsentation, Social Media</li></ul>
+      </article>
+      <article class="lsx-karte">
+        <h3 class="lsx-karte-name">Logo einzeln</h3>
+        <p class="lsx-karte-preis">ab 990&nbsp;€ <small class="lsx-netto">netto</small></p>
+        <p class="lsx-karte-wer"></p>
+        <p class="lsx-karte-dauer"></p>
+        <p class="lsx-karte-plus"></p><ul class="lsx-karte-liste"></ul>
+      </article>
+    </div>
+</section>
+<section class="preisliste" id="r-ui-ux" aria-labelledby="r-ui-ux-titel">
+  <div class="preisliste-kopf"><p class="meta">Preisliste</p><h2 class="preis-h2" id="r-ui-ux-titel">UI/UX</h2><p class="gedaempft">Digitale Erlebnisse, die Nutzer:innen verstehen – vom Expert Review bis zum Designsystem für Webanwendungen, SaaS und Apps.</p><p><a class="textlink" href="../service/ui-ux/">Mehr zu UI/UX <span aria-hidden="true">→</span></a></p></div>
+    <div class="lsx-karten">
+      <article class="lsx-karte">
+        <h3 class="lsx-karte-name">Expert Review</h3>
+        <p class="lsx-karte-preis">ab 1.200&nbsp;€ <small class="lsx-netto">netto</small></p>
+        <p class="lsx-karte-wer">Expertenblick auf Ihre gesamte Website oder Anwendung.</p>
+        <p class="lsx-karte-dauer"></p>
+        <p class="lsx-karte-plus">Enthalten:</p><ul class="lsx-karte-liste"><li>Ich versetze mich in Ihre Zielgruppe und nutze Ihre Website oder Anwendung</li><li>Analyse: was sich verbessern lässt</li><li>Handlungsempfehlungen</li></ul>
+      </article>
+      <article class="lsx-karte">
+        <h3 class="lsx-karte-name">UI/UX Audit Pro</h3>
+        <p class="lsx-karte-preis">ab 2.900&nbsp;€ <small class="lsx-netto">netto</small></p>
+        <p class="lsx-karte-wer">Die ganze Anwendung unter der Lupe.</p>
+        <p class="lsx-karte-dauer"></p>
+        <p class="lsx-karte-plus">Enthalten:</p><ul class="lsx-karte-liste"><li>Expert Review</li><li>Brand Experience</li><li>Personas</li><li>Mitbewerberrecherche</li><li>Trendanalyse</li><li>Ausführlicher PDF-Report mit Prioritäten</li></ul>
+      </article>
+      <article class="lsx-karte">
+        <h3 class="lsx-karte-name">Redesign kleine Webanwendung</h3>
+        <p class="lsx-karte-preis">ab 4.500&nbsp;€ <small class="lsx-netto">netto</small></p>
+        <p class="lsx-karte-wer">Für Teams mit bestehender Webanwendung, die einfacher zu bedienen sein soll.</p>
+        <p class="lsx-karte-dauer"></p>
+        <p class="lsx-karte-plus">Alles aus UI/UX Audit Pro, plus:</p><ul class="lsx-karte-liste"><li>Neue Nutzerführung</li><li>Wireframes &amp; klickbarer Prototyp (Figma)</li><li>UI-Kit</li><li>Übergabe mit Spezifikationen</li></ul>
+      </article>
+      <article class="lsx-karte">
+        <h3 class="lsx-karte-name">Plattform / SaaS</h3>
+        <p class="lsx-karte-preis">ab 5.850&nbsp;€ <small class="lsx-netto">netto</small></p>
+        <p class="lsx-karte-wer">Für Software-Produkte, die von Grund auf durchdacht gestaltet werden sollen.</p>
+        <p class="lsx-karte-dauer"></p>
+        <p class="lsx-karte-plus">Alles aus Redesign, plus:</p><ul class="lsx-karte-liste"><li>Umfassendes UX-Research &amp; Zielgruppenanalyse</li><li>Vollständiges Designsystem</li></ul>
+      </article>
+    </div>
+</section>
+<section class="preisliste" id="r-marketing" aria-labelledby="r-marketing-titel">
+  <div class="preisliste-kopf"><p class="meta">Preisliste</p><h2 class="preis-h2" id="r-marketing-titel">Marketing &amp; Vertrieb</h2><p class="gedaempft">Sichtbar werden, wo Ihre Kund:innen sind – mit klarer Positionierung und Inhalten, die zu Ihnen passen. Einzeln buchbar.</p><p><a class="textlink" href="../service/marketing-vertrieb/">Mehr zu Marketing &amp; Vertrieb <span aria-hidden="true">→</span></a></p></div>
+    <div class="lsx-karten">
+      <article class="lsx-karte">
+        <h3 class="lsx-karte-name">LinkedIn aufsetzen</h3>
+        <p class="lsx-karte-preis">ab 500&nbsp;€ <small class="lsx-netto">netto</small></p>
+        <p class="lsx-karte-wer">Damit die richtigen Menschen Sie finden und sofort verstehen, was Sie anbieten.</p>
+        <p class="lsx-karte-dauer"></p>
+        <p class="lsx-karte-plus">Enthalten:</p><ul class="lsx-karte-liste"><li>Profil</li><li>Unternehmensseite</li><li>Positionierung</li></ul>
+      </article>
+      <article class="lsx-karte">
+        <h3 class="lsx-karte-name">Social-Media- &amp; Post-Vorlagen</h3>
+        <p class="lsx-karte-preis">ab 400&nbsp;€ <small class="lsx-netto">netto</small></p>
+        <p class="lsx-karte-wer">Damit Sie regelmäßig posten können, ohne jedes Mal bei null anzufangen.</p>
+        <p class="lsx-karte-dauer"></p>
+        <p class="lsx-karte-plus">Enthalten:</p><ul class="lsx-karte-liste"><li>5 Vorlagen in Canva</li><li>im eigenen Design</li></ul>
+      </article>
+      <article class="lsx-karte">
+        <h3 class="lsx-karte-name">Fachartikel</h3>
+        <p class="lsx-karte-preis">ab 300&nbsp;€ <small class="lsx-netto">netto</small></p>
+        <p class="lsx-karte-wer">Für Blog, LinkedIn oder Fachmedien – mit Ihrer Expertise im Mittelpunkt.</p>
+        <p class="lsx-karte-dauer"></p>
+        <p class="lsx-karte-plus">Pro Artikel:</p><ul class="lsx-karte-liste"><li>1.000–1.500 Wörter</li><li>recherchiert und verständlich</li></ul>
+      </article>
+      <article class="lsx-karte">
+        <h3 class="lsx-karte-name">Webinar aufsetzen</h3>
+        <p class="lsx-karte-preis">ab 850&nbsp;€ <small class="lsx-netto">netto</small></p>
+        <p class="lsx-karte-wer">Damit Sie sich ganz auf Ihren Auftritt konzentrieren können.</p>
+        <p class="lsx-karte-dauer"></p>
+        <p class="lsx-karte-plus">Enthalten:</p><ul class="lsx-karte-liste"><li>Konzept</li><li>Anmeldeseite</li><li>Folien als PowerPoint oder PDF</li></ul>
+      </article>
+    </div>
+</section>
+<section class="preisliste" id="r-print" aria-labelledby="r-print-titel">
+  <div class="preisliste-kopf"><p class="meta">Preisliste</p><h2 class="preis-h2" id="r-print-titel">Druck</h2><p class="gedaempft">Professionelles Design für Gedrucktes – von der Visitenkarte bis zur Unternehmenspräsentation.</p><p><a class="textlink" href="../service/druck/">Mehr zu Druck <span aria-hidden="true">→</span></a></p></div>
+    <div class="lsx-karten">
+      <article class="lsx-karte">
+        <h3 class="lsx-karte-name">Visitenkarte</h3>
+        <p class="lsx-karte-preis">ab 195&nbsp;€ <small class="lsx-netto">netto</small></p>
+        <p class="lsx-karte-wer">Gestaltung, druckfertig.</p>
+        <p class="lsx-karte-dauer"></p>
+        <p class="lsx-karte-plus">Enthalten:</p><ul class="lsx-karte-liste"><li>Vorder- und Rückseite</li><li>Druckdaten</li></ul>
+      </article>
+      <article class="lsx-karte">
+        <h3 class="lsx-karte-name">Flyer oder Postkarte</h3>
+        <p class="lsx-karte-preis">ab 290&nbsp;€ <small class="lsx-netto">netto</small></p>
+        <p class="lsx-karte-wer">Für Aktionen, Veranstaltungen, Angebote.</p>
+        <p class="lsx-karte-dauer"></p>
+        <p class="lsx-karte-plus">Enthalten:</p><ul class="lsx-karte-liste"><li>A6 oder A5</li><li>Vorder- und Rückseite</li><li>Druckdaten</li></ul>
+      </article>
+      <article class="lsx-karte">
+        <h3 class="lsx-karte-name">Broschüre (zweiseitig)</h3>
+        <p class="lsx-karte-preis">ab 450&nbsp;€ <small class="lsx-netto">netto</small></p>
+        <p class="lsx-karte-wer">Für kompakte Informationen auf Papier.</p>
+        <p class="lsx-karte-dauer"></p>
+        <p class="lsx-karte-plus">Enthalten:</p><ul class="lsx-karte-liste"><li>zwei Seiten</li><li>Druckdaten</li></ul>
+      </article>
+      <article class="lsx-karte lsx-gefragt">
+        <p class="lsx-badge">Gefragt</p><h3 class="lsx-karte-name">Unternehmenspräsentation</h3>
+        <p class="lsx-karte-preis">ab 1.200&nbsp;€ <small class="lsx-netto">netto</small></p>
+        <p class="lsx-karte-wer">Als PDF und für den Druck – für Gespräche, Angebote, Messen.</p>
+        <p class="lsx-karte-dauer"></p>
+        <p class="lsx-karte-plus">Enthalten:</p><ul class="lsx-karte-liste"><li>bis zu 20 Folien</li><li>PDF und Druckdaten</li></ul>
+      </article>
+      <article class="lsx-karte">
+        <h3 class="lsx-karte-name">Mehrseitige Publikation</h3>
+        <p class="lsx-karte-preis">ab 2.600&nbsp;€ <small class="lsx-netto">netto</small></p>
+        <p class="lsx-karte-wer">Magazin, Katalog, Jahresbericht.</p>
+        <p class="lsx-karte-dauer"></p>
+        <p class="lsx-karte-plus">Enthalten:</p><ul class="lsx-karte-liste"><li>Mehrseitige Publikation</li><li>Druckbegleitung</li></ul>
+      </article>
+    </div>
+</section>
+<section class="preisliste" id="r-ki" aria-labelledby="r-ki-titel">
+  <div class="preisliste-kopf"><p class="meta">Preisliste</p><h2 class="preis-h2" id="r-ki-titel">KI &amp; Digitalisierung</h2><p class="gedaempft">KI und digitale Abläufe, die im Alltag wirklich entlasten – für KMU und Solo-Selbstständige.</p><p><a class="textlink" href="../service/ki-digitalisierung/">Mehr zu KI &amp; Digitalisierung <span aria-hidden="true">→</span></a></p></div>
+    <div class="lsx-karten">
+      <article class="lsx-karte">
+        <h3 class="lsx-karte-name">KI-Check</h3>
+        <p class="lsx-karte-preis">ab 900&nbsp;€ <small class="lsx-netto">netto</small></p>
+        <p class="lsx-karte-wer">Für alle, die wissen wollen, wo KI im Alltag wirklich Zeit spart.</p>
+        <p class="lsx-karte-dauer"></p>
+        <p class="lsx-karte-plus">Enthalten:</p><ul class="lsx-karte-liste"><li>Fragebogen</li><li>Analyse Ihrer Abläufe</li><li>Empfehlungsbericht</li></ul>
+      </article>
+      <article class="lsx-karte">
+        <h3 class="lsx-karte-name">KI-Einführung</h3>
+        <p class="lsx-karte-preis">ab 2.000&nbsp;€ <small class="lsx-netto">netto</small></p>
+        <p class="lsx-karte-wer">Für Teams, die die Empfehlungen aus dem Check umsetzen wollen.</p>
+        <p class="lsx-karte-dauer"></p>
+        <p class="lsx-karte-plus">Nach dem KI-Check:</p><ul class="lsx-karte-liste"><li>Auswahl &amp; Einrichtung passender KI-Werkzeuge</li><li>1–2 digitale Arbeitsabläufe</li><li>Team-Schulung</li></ul>
+      </article>
+    </div>
+</section>
+<section class="preisliste" id="r-zusatz" aria-labelledby="r-zusatz-titel">
+  <div class="preisliste-kopf"><p class="meta">Preisliste</p><h2 class="preis-h2" id="r-zusatz-titel">Zusatzleistungen</h2><p class="gedaempft">Illustrationen, Infografiken und Bewegtbild – sehr individuell, deshalb klären wir sie im Erstgespräch.</p></div>
+    <div class="lsx-karten">
+      <article class="lsx-karte">
+        <h3 class="lsx-karte-name">Illustration &amp; Infografik</h3>
+        <p class="lsx-karte-preis">auf Anfrage</p>
+        <p class="lsx-karte-wer">sehr individuell – wir klären es im Erstgespräch</p>
+        <p class="lsx-karte-dauer"></p>
+        <p class="lsx-karte-plus"></p><ul class="lsx-karte-liste"></ul>
+      </article>
+      <article class="lsx-karte">
+        <h3 class="lsx-karte-name">Animation</h3>
+        <p class="lsx-karte-preis">auf Anfrage</p>
+        <p class="lsx-karte-wer">sehr individuell – wir klären es im Erstgespräch</p>
+        <p class="lsx-karte-dauer"></p>
+        <p class="lsx-karte-plus"></p><ul class="lsx-karte-liste"></ul>
+      </article>
+      <article class="lsx-karte">
+        <h3 class="lsx-karte-name">Retainer – laufende Betreuung</h3>
+        <p class="lsx-karte-preis">auf Anfrage</p>
+        <p class="lsx-karte-wer">Betreute Weiterentwicklung Ihrer Website, 50–85 € netto pro Stunde, je nach Unternehmensgröße: Texte und Bilder austauschen, neue Unterseiten, Abschnitte bearbeiten.</p>
+        <p class="lsx-karte-dauer"></p>
+        <p class="lsx-karte-plus"></p><ul class="lsx-karte-liste"></ul>
+      </article>
+    </div>
+</section>
+<p class="preis-netto gedaempft preisliste-netto">Alle Preise sind Nettopreise zzgl. 19&nbsp;% Umsatzsteuer (USt.).</p>
+<!-- PREISLISTEN:ENDE -->
 
 <!-- GLOSSAR:START -->
 <section class="glossar" id="glossar" aria-labelledby="glossar-titel">
@@ -254,9 +432,11 @@
       <p class="meta"><a href="../impressum/">Impressum</a> · <a href="../datenschutz/">Datenschutz</a></p>
     </div>
   </footer>
+  <a class="sticky-rechner" href="../preise/#rechner"><span class="sticky-rechner-icon"><img src="../bilder/icons/money-bag.webp" alt="" width="400" height="400" loading="lazy"></span>Kostenrechner <span aria-hidden="true">→</span></a>
   <!-- /FUSS -->
 
-<script src="../js/pakete-daten.js?v=20261016k" defer></script>
-<script src="../js/rechner.js?v=20261016k" defer></script>
+<script src="../js/pakete-daten.js?v=20261016l" defer></script>
+<script src="../js/anfrage.js?v=20261016l" defer></script>
+<script src="../js/webrechner.js?v=20261016l" defer></script>
 </body>
 </html>

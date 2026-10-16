@@ -94,14 +94,15 @@ def fuer_wen(pre=''):
     # Je Zielgruppe zwei Karten (Anna 11.10.2026, Skizze): links das Angebot mit Unterzeile und Punkten, rechts breit die Referenz mit großem Screenshot
     felder = [
         ('mittelstand', 'Mittelstand', 'Ihre ganze Website, neu gedacht.',
-         ('Webdesign', paket['unternehmen']['name'], paket['unternehmen']['wer'],
+         # Kostenrechner v4 (Anna 16.10.2026): Paket „Redesign für Unternehmen“ gestrichen, die Karte zeigt das Redesign; Text der Karte bleibt
+         ('Webdesign', paket['redesign']['name'], 'Für mittelständische Unternehmen, die ihre ganze Website umbauen: mit Leistungs-, Branchen-, Referenz- und Karriereseiten.',
           ['Design-System und neue Startseite', 'Leistungs-, Branchen- und Referenzseiten', 'Karrierebereich mit Stellenangeboten und Bewerbungsformular'],
-          preis('unternehmen'), f'{pre}service/webdesign/#pakete'),
+          preis('redesign'), f'{pre}service/webdesign/#pakete'),
          ('Wolfgang Bauer Ingenieurbau', 'Strategie, Rebranding, UX/UI Design, Website und Unternehmenspräsentation.', 'bauer-website.jpg', f'{pre}referenzen/bauer/')),
         ('selbststaendige', 'Selbstständige', 'Klar auftreten, ohne Umwege.',
-         ('Webdesign', paket['onepager']['name'], 'Für Selbstständige und kleine Angebote: eine Website, die alles auf den Punkt bringt, und eine Marke, die zu Ihnen passt.',
+         ('Webdesign', 'Onepager', 'Für Selbstständige und kleine Angebote: eine Website, die alles auf den Punkt bringt, und eine Marke, die zu Ihnen passt.',
           ['Alles auf einer Seite, responsiv', 'Mit SEO & LLM-Zitierfähigkeit', f'Dazu buchbar: Brand Basic mit Fragebogen, Brand Experience und Mitbewerberrecherche, {preis("brand-0")}'],
-          preis('onepager'), f'{pre}service/webdesign/#pakete'),
+          preis('neu'), f'{pre}service/webdesign/#pakete'),
          ('Deinetwegen', 'Branding, UI/UX Design und Website für eine HR-Beratung.', 'deinetwegen-website.jpg', f'{pre}referenzen/deinetwegen/')),
         ('vereine', 'Vereine &amp; Kultur', 'Demokratie braucht Sichtbarkeit.',
          ('Aktion', 'Kostenfreie Website', 'Kostenfreie Websites für Vereine, NGOs, Kunst und Kultur. Du zahlst, was es dir wert ist.',
