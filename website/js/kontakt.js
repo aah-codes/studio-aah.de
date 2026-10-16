@@ -11,7 +11,7 @@
       knopf.classList.add('ok');
       if (status) status.textContent = 'Kopiert';
       setTimeout(() => { knopf.classList.remove('ok'); if (status) status.textContent = ''; }, 2500);
-    } catch (e) {
+    } catch {
       if (status) status.textContent = 'Bitte Adresse markieren';
     }
   });

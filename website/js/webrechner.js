@@ -113,6 +113,15 @@
   const preisText = (e) => e.anfrage ? 'auf Anfrage' : `${e.ab ? 'ab ' : ''}${euro(e.preis)} €`;
 
   /* ---------- Schritte ---------- */
+  // Formularfelder überleben das Neuzeichnen
+  const F = { name: '', email: '', website: '', nachricht: '' };
+  const felder = (p) => `<div class="anfrage-felder">
+      <label for="${p}-name">Name<input id="${p}-name" name="name" autocomplete="name" required value="${esc(F.name)}"></label>
+      <label for="${p}-email">E-Mail<input id="${p}-email" name="email" type="email" autocomplete="email" required value="${esc(F.email)}"></label>
+      <label for="${p}-website" class="anfrage-ganz">Ihre Website (falls vorhanden)<input id="${p}-website" name="website" type="text" inputmode="url" autocomplete="url" placeholder="www.ihre-website.de" value="${esc(F.website)}"></label>
+      <label for="${p}-nachricht" class="anfrage-ganz">Nachricht (freiwillig)<textarea id="${p}-nachricht" name="nachricht" rows="3">${esc(F.nachricht)}</textarea></label>
+    </div>
+    <p class="anfrage-falle" aria-hidden="true"><label>Bitte leer lassen<input name="_honeypot" tabindex="-1" autocomplete="off"></label></p>`;
   const R = {
     marke() {
       return `<h3 class="wr-h">Gibt es schon eine Marke?</h3><p class="wr-warum">Eine Website wirkt nur so klar wie die Marke dahinter. Wenn Logo und Erscheinungsbild schon da sind und passen, bauen wir darauf auf.</p>
@@ -198,15 +207,6 @@
         <p class="hinweis-klein">Die Terminbuchung läuft über Google Kalender. Dort gelten die Datenschutzhinweise von Google.</p></div>` : ''}`;
     },
   };
-  const felder = (p) => `<div class="anfrage-felder">
-      <label for="${p}-name">Name<input id="${p}-name" name="name" autocomplete="name" required value="${esc(F.name)}"></label>
-      <label for="${p}-email">E-Mail<input id="${p}-email" name="email" type="email" autocomplete="email" required value="${esc(F.email)}"></label>
-      <label for="${p}-website" class="anfrage-ganz">Ihre Website (falls vorhanden)<input id="${p}-website" name="website" type="text" inputmode="url" autocomplete="url" placeholder="www.ihre-website.de" value="${esc(F.website)}"></label>
-      <label for="${p}-nachricht" class="anfrage-ganz">Nachricht (freiwillig)<textarea id="${p}-nachricht" name="nachricht" rows="3">${esc(F.nachricht)}</textarea></label>
-    </div>
-    <p class="anfrage-falle" aria-hidden="true"><label>Bitte leer lassen<input name="_honeypot" tabindex="-1" autocomplete="off"></label></p>`;
-  // Formularfelder überleben das Neuzeichnen
-  const F = { name: '', email: '', website: '', nachricht: '' };
 
   /* ---------- Angaben für Anfrage und PDF ---------- */
   const baumText = (liste, tiefe = 0) => liste.map((k) => `${'  '.repeat(tiefe)}– ${k.name}${k.typ !== 'seite' ? ' (Funktion)' : ''}\n${baumText(k.kinder, tiefe + 1)}`).join('');

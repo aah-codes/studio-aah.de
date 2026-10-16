@@ -97,7 +97,7 @@
   (() => {
     document.querySelectorAll('[data-story]').forEach((f) => {
       const datenEl = f.querySelector('.st-daten'), daten = JSON.parse(datenEl.textContent);
-      const szenen = [...f.querySelectorAll('.st-szene')], fenster = f.querySelector('.st-fenster'), blende = f.querySelector('.vf-blende');
+      const szenen = [...f.querySelectorAll('.st-szene')], blende = f.querySelector('.vf-blende');
       const zeiger = f.querySelector('.vf-zeiger'), adresse = f.querySelector('.vf-adresse'), phase = f.querySelector('.st-phase');
       const titel = f.querySelector('.st-titel'), knopf = f.querySelector('.st-knopf'), kapitel = [...f.querySelectorAll('.st-kapitel')];
       const basis = adresse ? adresse.textContent : '';

@@ -107,7 +107,7 @@
       let ruhe = null, rest = DAUER, seit = 0;
       const anhalten = (an) => {
         film.classList.toggle('angehalten', an);
-        svgs.forEach((s) => { if (s.pauseAnimations) an ? s.pauseAnimations() : s.unpauseAnimations(); });
+        svgs.forEach((s) => { if (!s.pauseAnimations) return; if (an) s.pauseAnimations(); else s.unpauseAnimations(); });
         if (pause) pause.innerHTML = an ? 'Weiter <span aria-hidden="true">▶</span>' : 'Anhalten <span aria-hidden="true">❚❚</span>';
       };
       const zurRuhe = () => {
