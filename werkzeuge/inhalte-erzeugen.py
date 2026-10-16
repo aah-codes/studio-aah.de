@@ -97,30 +97,32 @@ def fuer_wen(pre=''):
          ('Webdesign', paket['unternehmen']['name'], paket['unternehmen']['wer'],
           ['Design-System und neue Startseite', 'Leistungs-, Branchen- und Referenzseiten', 'Karrierebereich mit Stellenangeboten und Bewerbungsformular'],
           preis('unternehmen'), f'{pre}service/webdesign/#pakete'),
-         ('Wolfgang Bauer Ingenieurbau', 'Strategie, Rebranding, UX/UI Design, Website und Unternehmenspräsentation.', 'bauer-website.jpg', f'{pre}referenzen/bauer/')),
+         ('Wolfgang Bauer Ingenieurbau', f'{pre}referenzen/bauer/'), 'bilder/fuer-wen-mittelstand.webp', 'Paket ansehen'),
         ('selbststaendige', 'Selbstständige', 'Klar auftreten, ohne Umwege.',
          ('Webdesign', paket['onepager']['name'], 'Für Selbstständige und kleine Angebote: eine Website, die alles auf den Punkt bringt, und eine Marke, die zu Ihnen passt.',
           ['Alles auf einer Seite, responsiv', 'Mit SEO & LLM-Zitierfähigkeit', f'Dazu buchbar: Brand Basic mit Fragebogen, Brand Experience und Mitbewerberrecherche, {preis("brand-0")}'],
           preis('onepager'), f'{pre}service/webdesign/#pakete'),
-         ('Deinetwegen', 'Branding, UI/UX Design und Website für eine HR-Beratung.', 'deinetwegen-website.jpg', f'{pre}referenzen/deinetwegen/')),
+         ('Deinetwegen', f'{pre}referenzen/deinetwegen/'), 'bilder/fuer-wen-selbststaendige.webp', 'Paket ansehen'),
         ('vereine', 'Vereine &amp; Kultur', 'Demokratie braucht Sichtbarkeit.',
          ('Aktion', 'Kostenfreie Website', 'Kostenfreie Websites für Vereine, NGOs, Kunst und Kultur. Du zahlst, was es dir wert ist.',
           ['Für Organisationen, die sich für Demokratie, Frauen- und Kinderrechte, Natur- und Tierschutz oder Kunst und Kultur einsetzen', 'Bis zu eine Website im Monat'],
           'kostenfrei', f'{pre}demokratie-braucht-sichtbarkeit/'),
-         ('Jana Voigtmann', 'Webdesign für eine Künstlerin aus Leipzig.', 'jana-mixed-media.jpg?v=2', f'{pre}referenzen/jana-voigtmann/')),
+         ('Jana Voigtmann', f'{pre}referenzen/jana-voigtmann/'), 'bilder/programm-haende.jpg', 'Zur Aktion'),
     ]
     TAB_AUS = ' tabindex="-1"'
     knoepfe = ''.join(f'<button type="button" role="tab" id="fw-r-{k}" aria-controls="fw-{k}" aria-selected="{"true" if i == 0 else "false"}"{"" if i == 0 else TAB_AUS}>{n}</button>' for i, (k, n, *_ ) in enumerate(felder))
     teile = []
-    for i, (k, n, titel, (m, h, x, punkte, pr, l), (rn, rx, rb, rl)) in enumerate(felder):
+    # Angebot im Mittelpunkt (Anna 16.10.2026): eine Karte mit eigenem Bild je Zielgruppe; Referenz nur als kleiner Link (Referenzen stehen weiter unten)
+    for i, (k, n, titel, (m, h, x, punkte, pr, l), (rn, rl), bild, knopf) in enumerate(felder):
         li = ''.join(f'<li>{p}</li>' for p in punkte)
-        angebot = (f'<a class="dk-karte" href="{l}"><span class="meta">{m}</span><span class="dk-karte-titel">{esc(h)}</span>'
-                   f'<span class="dk-karte-text">{esc(x)}</span><ul class="dk-punkte">{li}</ul><span class="dk-preis">{pr}</span></a>')
-        referenz = (f'<a class="dk-karte dk-karte-ref" href="{rl}"><span class="dk-ref-text"><span class="meta">Referenz</span><span class="dk-karte-titel">{esc(rn)}</span>'
-                    f'<span class="dk-karte-text">{esc(rx)}</span><span class="dk-preis">Projekt ansehen →</span></span>'
-                    f'<span class="dk-bild"><img src="{pre}bilder/referenzen/{rb}" alt="" loading="lazy"></span></a>')
+        review = '' if k == 'vereine' else f'<a class="textlink" href="{pre}kontakt/">Kostenloses Website-Review <span aria-hidden="true">→</span></a>'
+        angebot = (f'<div class="dk-angebot"><div class="dk-angebot-text"><p class="meta">{m}</p><h4 class="dk-karte-titel">{esc(h)}</h4>'
+                   f'<p class="dk-karte-text">{esc(x)}</p><ul class="dk-punkte">{li}</ul>'
+                   f'<p class="dk-preis">{pr}</p><p class="dk-aktionen"><a class="button" href="{l}">{knopf} <span aria-hidden="true">→</span></a>{review}</p></div>'
+                   f'<div class="dk-angebot-bild"><img src="{pre}{bild}" alt="" loading="lazy" width="1200" height="900"></div></div>'
+                   f'<p class="dk-beleg">{"Aus Kunst und Kultur:" if k == "vereine" else "Zum Beispiel umgesetzt für"} <a href="{rl}">{esc(rn)} <span aria-hidden="true">→</span></a></p>')
         teile.append(f'      <div class="dk-feld" id="fw-{k}" role="tabpanel" aria-labelledby="fw-r-{k}"{"" if i == 0 else " hidden"}>\n        <h3 class="dk-titel">{esc(titel)}</h3>\n'
-                     f'        <div class="dk-karten">{angebot}{referenz}</div>\n      </div>')
+                     f'        {angebot}\n      </div>')
     return (f'  <section class="dk" aria-labelledby="fuer-wen-titel">\n    <p class="meta">Für wen</p>\n    <h2 class="unsichtbar" id="fuer-wen-titel">Für wen ich arbeite</h2>\n'
             f'    <div class="dk-umschalter" role="tablist" aria-label="Zielgruppe wählen">{knoepfe}</div>\n' + '\n'.join(teile) + '\n  </section>')
 
