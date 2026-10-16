@@ -2484,6 +2484,238 @@
    "farbe": "#fce300",
    "ton": "hell",
    "bild": "bilder/referenzen/goldhammer-flyer.jpg"
+  },
+  "slug": "goldhammer",
+  "case": true,
+  "hauptvariante": "b",
+  "varianten": {
+   "b": [
+    {
+     "projekt": {
+      "klasse": "cs-goldhammer",
+      "stil": ";--pc-dunkel:#3A3A3A;--pc-akzent:#FFED00;--pc-akzent-dunkel:#FFED00;--pc-meta-dunkel:#FFED00;--pc-titel:#0e1011;--pc-punkt-rand:#3A3A3A;--pc-pille:#FFED00;--pc-pille-text:#3A3A3A;--pc-pille-rand:transparent",
+      "buehne_wand": {
+       "alt": "Seiten der Website im Überblick: Startseite, Therapien, Darmdiagnostik und Über mich",
+       "spalten": [
+        [
+         "bilder/referenzen/goldhammer/wl/abschnitt-0.jpg",
+         "bilder/referenzen/goldhammer/wl/abschnitt-1.jpg"
+        ],
+        [
+         "bilder/referenzen/goldhammer/wl/abschnitt-2.jpg",
+         "bilder/referenzen/goldhammer/wl/abschnitt-3.jpg"
+        ],
+        [
+         "bilder/referenzen/goldhammer/wl/abschnitt-4.jpg",
+         "bilder/referenzen/goldhammer/wl/abschnitt-5.jpg"
+        ],
+        [
+         "bilder/referenzen/goldhammer/wl/abschnitt-6.jpg",
+         "bilder/referenzen/goldhammer/wl/abschnitt-7.jpg"
+        ],
+        [
+         "bilder/referenzen/goldhammer/wl/abschnitt-8.jpg",
+         "bilder/referenzen/goldhammer/wl/abschnitt-0.jpg"
+        ]
+       ],
+       "dauer": [
+        64,
+        82,
+        72,
+        90,
+        70
+       ],
+       "start": [
+        "0s",
+        "-14s",
+        "-6s",
+        "-20s",
+        "-9s"
+       ],
+       "farbe": "#fff",
+       "gerade": true,
+       "luecke": "clamp(26px, 3.2vw, 52px)",
+       "muster": true,
+       "winkel": -6
+      },
+      "zeitraum": "seit 2022",
+      "branche": "Gesundheit – Praxis für Naturheilkunde in Leipzig",
+      "leistungen": "Logo und Branding, Website, Flyer, Visitenkarten"
+     }
+    },
+    {
+     "typ": "ueberblick",
+     "meta": "Überblick",
+     "aussage": "Naturheilkunde in Leipzig – persönlich, verständlich und auf dem Handy gut lesbar.",
+     "leistungen_titel": "Leistungen",
+     "leistungen": [
+      "Logo und Branding",
+      "Website",
+      "Flyer",
+      "Visitenkarten"
+     ],
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": []
+     }
+    },
+    {
+     "typ": "inhalt",
+     "titel": "Inhalt",
+     "punkte": [
+      [
+       "Startseite",
+       "g-start"
+      ],
+      [
+       "Therapien",
+       "g-seiten"
+      ],
+      [
+       "Gestaltung",
+       "g-gestaltung"
+      ],
+      [
+       "Druck",
+       "g-druck"
+      ]
+     ],
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": []
+     }
+    },
+    {
+     "typ": "langaufnahmen",
+     "meta": "Website",
+     "titel": "Startseite",
+     "desktop": "bilder/referenzen/goldhammer/lang-desktop.jpg",
+     "desktop_alt": "Ganze Startseite von Dr. Simone Goldhammer am Rechner",
+     "handy": "bilder/referenzen/goldhammer/lang-handy.jpg",
+     "handy_alt": "Ganze Startseite von Dr. Simone Goldhammer am Handy",
+     "band": {
+      "von": "#F4F4F4",
+      "bis": "#F4F4F4",
+      "art": []
+     },
+     "anker": "g-start"
+    },
+    {
+     "typ": "seiten-spalten",
+     "id": "seiten",
+     "anker": "g-seiten",
+     "meta": "Am Handy",
+     "titel": "Therapien, Darmdiagnostik, Über mich",
+     "seiten": [
+      {
+       "bild": "bilder/referenzen/goldhammer/handy-th.jpg",
+       "alt": "Seite Anliegen und Therapien am Handy, Anfang",
+       "label": "Therapien"
+      },
+      {
+       "bild": "bilder/referenzen/goldhammer/handy-darm.jpg",
+       "alt": "Seite Darmdiagnostik und Mikrobiom-Therapie am Handy, Anfang",
+       "label": "Darmdiagnostik"
+      },
+      {
+       "bild": "bilder/referenzen/goldhammer/handy-ueber.jpg",
+       "alt": "Seite Über mich am Handy, Anfang",
+       "label": "Über mich"
+      }
+     ],
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": []
+     }
+    },
+    {
+     "typ": "kapitel",
+     "anker": "g-gestaltung",
+     "meta": "Corporate Design",
+     "titel": "Gestaltung",
+     "band": {
+      "von": "#ffffff",
+      "bis": "#F4F4F4",
+      "art": [
+       "eng"
+      ]
+     }
+    },
+    {
+     "typ": "marke",
+     "meta": "Markenzeichen",
+     "titel": "Logo, Farben, Schrift",
+     "logos": [
+      [
+       "bilder/referenzen/goldhammer/logo.jpg",
+       "Logo Dr. med. Simone Goldhammer: gelber Pinselkreis, daneben der Name",
+       "#ffffff"
+      ]
+     ],
+     "farben": [
+      [
+       "#FFED00",
+       "Gelb",
+       "Flächen, Knöpfe, Linien"
+      ],
+      [
+       "#3A3A3A",
+       "Anthrazit",
+       "Überschriften"
+      ],
+      [
+       "#FFFFFF",
+       "Weiß",
+       "Grund"
+      ]
+     ],
+     "schrift_bild": "bilder/referenzen/goldhammer/schrift.png",
+     "schrift_alt": "Ausschnitt der Website: Überschrift in Montserrat, Text in Helvetica",
+     "schrift_text": "Schrift: Montserrat für Überschriften, Helvetica für Text",
+     "band": {
+      "von": "#F4F4F4",
+      "bis": "#F4F4F4",
+      "art": []
+     }
+    },
+    {
+     "typ": "kapitel",
+     "anker": "g-druck",
+     "meta": "Flyer und Visitenkarten",
+     "titel": "Druck",
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": [
+       "eng"
+      ]
+     }
+    },
+    {
+     "typ": "galerie",
+     "id": "druck",
+     "bilder": [
+      {
+       "bild": "bilder/referenzen/goldhammer-flyer.jpg",
+       "alt": "Praxis-Flyer von Dr. Simone Goldhammer, aufgeklappt",
+       "titel": "Flyer"
+      },
+      {
+       "bild": "bilder/mockups/druck-schreibtisch.webp",
+       "alt": "Visitenkarten von Dr. Simone Goldhammer auf einem Schreibtisch",
+       "titel": "Visitenkarten"
+      }
+     ],
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": []
+     }
+    }
+   ]
   }
  },
  {

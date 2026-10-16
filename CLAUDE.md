@@ -89,6 +89,12 @@
 - Galerie (Anna, 16.10.2026: „bei Klick auf Bild geht Slider auf mit Titel und Beschreibung“): eigene schwarze Sektion zwischen den drei Genres und „Über und Kontakt“, Baustein `durchklick` (drei Aufnahmen `galerie-1…3.jpg`, Klick aufs Bild zeigt die nächste; keine eigenen Pfeile oder Zähler – Anna: „irreführend“). Text von Anna freigegeben (16.10.2026).
 - Kein Geräte-Mockup (Anna, 16.10.2026: „mockup raus“; Atelier-Monitor und MacBook entfernt, Bildnachweise gelöscht).
 
+## Projektseite Dr. Simone Goldhammer (Entwurf, Stand 16.10.2026)
+- `/referenzen/goldhammer/` aus `varianten.b` (`hauptvariante: "b"`), Duplikat von Janas Aufbau (Anna, 16.10.2026: „dupliziere die seite von jana und füge die inhalte zu simone ein“). **Nicht hochladen, bevor Anna die Texte geliefert/freigegeben hat** (Ausgangslage, Ziele, Ergebnis fehlen noch; Überblick-Aussage ist Textvorschlag).
+- Website ist von Anna (jetzige Seite); Plattform (Wix) nicht nennen. Gezeigt: Website, Logo/Branding, Flyer, Visitenkarten; nicht: Google-Eintrag, Praxisschild. Simone einverstanden laut Anna.
+- Farben laut Quelltext: Gelb `#FFED00`, Überschriften `#3A3A3A`; Schrift Montserrat + Helvetica (als Bildausschnitt der Website). Logo = Logo der Website (nicht das neuere Logo-Paket vom August 2026).
+- Aufnahmen: Desktop mit `AUFNAHME_BREITE=1920` (darunter ist der Kopf abgeschnitten), Handy mit `AUFNAHME_HANDY_BREITE=320`.
+
 ## Inspiration (von Anna gesammelt, „passt zu meinem Stil“) – keine Regel, nicht kopieren
 - 13.10.2026, Dribbble „Mall Website Retail Shopping Center“ (https://dribbble.com/shots/27796777): Foto im ganzen Bild, einfarbig eingefärbt (Duoton, duotone) in Orangerot, große weiße Serifen-Überschrift im Bild, kleine Zeichen (Kreuz, Stern, Plus) als Schmuck. Anna will ihre Bilder so – in Blau, leicht bewegt. Die Animation selbst war in der Cloud nicht sichtbar.
 - 13.10.2026, Farbtafel: `#8B1D00` (Rostrot), `#1B100F` (warmes Fast-Schwarz), `#F8F8F8`, `#EFE7EF` (blasses Flieder) – als Raster aus Quadraten und Kreisen im Wechsel.
