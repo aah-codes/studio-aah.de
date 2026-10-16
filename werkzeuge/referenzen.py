@@ -314,8 +314,16 @@ def block(b, pre):
                 f'<span class="hf-klammer" aria-hidden="true"></span><span class="hf-klammer hf-klammer-2" aria-hidden="true"></span></div></div>'
                 f'<div class="st-leiste"><button type="button" class="ks-knopf hf-knopf" aria-label="Blättern anhalten">❚❚</button><span class="meta">{esc(b["unterschrift"])}</span></div></figure>')
     if b['typ'] == 'galerie':
+        def ga_mass(bild):  # width/height gegen Springen beim Laden (Prüfer 16.10.2026); WebP: Maße aus dem VP8-Kopf
+            pf = basis / 'website' / bild
+            if bild.endswith('.webp'):
+                k = pf.read_bytes()[:30]
+                if k[12:16] == b'VP8X': return f' width="{int.from_bytes(k[24:27], "little") + 1}" height="{int.from_bytes(k[27:30], "little") + 1}"'
+                if k[12:16] == b'VP8 ': return f' width="{int.from_bytes(k[26:28], "little") & 0x3fff}" height="{int.from_bytes(k[28:30], "little") & 0x3fff}"'
+                return ''
+            return svg_mass(bild)
         # große, scharfe Bildschirmausschnitte mit Unterschrift (z. B. Mega-Menü und Footer)
-        f = ''.join(f'<figure class="ga-bild{" ga-breit" if x.get("breit") else ""}"><div class="ga-fenster"><img src="{pre}{x["bild"]}" alt="{esc(x["alt"])}" loading="lazy"></div><figcaption class="meta">{esc(x["titel"])}</figcaption></figure>' for x in b['bilder'])
+        f = ''.join(f'<figure class="ga-bild{" ga-breit" if x.get("breit") else ""}"><div class="ga-fenster"><img src="{pre}{x["bild"]}" alt="{esc(x["alt"])}"{ga_mass(x["bild"])} loading="lazy"></div><figcaption class="meta">{esc(x["titel"])}</figcaption></figure>' for x in b['bilder'])
         kopf = (f'<p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3" id="ga-{b["id"]}">{esc(b["titel"])}</h2>' if b.get('titel') else '')
         return (f'  <section class="cs-block cs-galerie" ' + (f'aria-labelledby="ga-{b["id"]}"' if b.get('titel') else f'aria-label="{esc(b.get("meta", "Galerie"))}"') + f'>{kopf}'
                 + (f'<p class="weg-einleitung">{esc(b["text"])}</p>' if b.get('text') else '') + f'<div class="ga-raster">{f}</div></section>')
