@@ -1,23 +1,32 @@
 # Erzeugt die Leistungsunterseiten (service/…/index.html) aus werkzeuge/leistungen-inhalte.json (Texte, FAQ)
-# und werkzeuge/preise-daten.json (Pakete, Preise, Zusatzleistungen). Kopf und Fuß bleiben aus der bestehenden Seite erhalten.
+# und werkzeuge/preise-daten.json (Pakete, Preise, Zusatzleistungen). Kopf und Fuß bleiben aus der bestehenden Seite erhalten,
+# der Prozess kommt von der Startseite.
 # Aufruf im Repository-Ordner:  python3 werkzeuge/leistungsseiten.py [id …]   (ohne id: alle)
-import html, importlib.util, json, pathlib, re, sys
+import json, re, sys
 
-basis = pathlib.Path(__file__).resolve().parent.parent
-preise = json.loads((basis / 'werkzeuge' / 'preise-daten.json').read_text(encoding='utf-8'))
-inhalte = json.loads((basis / 'werkzeuge' / 'leistungen-inhalte.json').read_text(encoding='utf-8'))
-esc = lambda s: html.escape(s, quote=False)
-_spec = importlib.util.spec_from_file_location('inhalte', basis / 'werkzeuge' / 'inhalte-erzeugen.py')
-I = importlib.util.module_from_spec(_spec); _spec.loader.exec_module(I)
-GEMEINSAM = json.loads((basis / 'werkzeuge' / 'inhalte' / 'faq-gemeinsam.json').read_text(encoding='utf-8'))['faq']
-euro = lambda n: f"{n:,}".replace(',', '.') + '&nbsp;€'
-# Webdesign-Pakete (Neue Website, Redesign) übernehmen ihre Inhaltsliste aus dem Kostenrechner (eine Quelle, Anna 16.10.2026)
-_W = preise['webrechner']
-_basis = [_W['texte']['liste'] if i == 'TEXTE' else i for g in _W['basis_inhalt'] for i in g['items']]
-_redesign = [i for v in _W['redesign_inhalt'].values() for i in v]
-for _g in preise['gruppen']:
-    for _e in _g['pakete']:
-        if _e.get('items_aus'): _e['items'] = _basis + [f"Jede Unterseite {_e['seite']} € mit Texten und Bildern"] if _e['items_aus'] == 'basis' else _redesign
+from gemeinsam import (LINKEDIN, NETTO_SATZ, STUDIO_ID, WEBSITE, WERKZEUGE, esc, lade_json, lade_skript,
+                       paket_karte, preis, seitenrahmen, trennen as trennen_mit)
+
+preise = lade_json('preise-daten.json')
+inhalte = lade_json('leistungen-inhalte.json')
+I = lade_skript('inhalte-erzeugen.py')
+GEMEINSAM = lade_json('inhalte/faq-gemeinsam.json')['faq']
+
+
+def inhaltslisten(preise):
+    """Webdesign-Pakete (Neue Website, Redesign) übernehmen ihre Inhaltsliste aus dem Kostenrechner (eine Quelle, Anna 16.10.2026)."""
+    w = preise['webrechner']
+    neu = [w['texte']['liste'] if i == 'TEXTE' else i for g in w['basis_inhalt'] for i in g['items']]
+    redesign = [i for v in w['redesign_inhalt'].values() for i in v]
+    for g in preise['gruppen']:
+        for e in g['pakete']:
+            if e.get('items_aus') == 'basis':
+                e['items'] = neu + [f"Jede Unterseite {e['seite']} € mit Texten und Bildern"]
+            elif e.get('items_aus'):
+                e['items'] = redesign
+
+
+inhaltslisten(preise)
 
 
 def preise_link(g, pre):
@@ -26,32 +35,18 @@ def preise_link(g, pre):
 
 
 TERMINE = 'Einmal pro Woche einen Termin, 45 Minuten, online über Google Meet oder Teams, je nachdem, was Sie brauchen.'
-NETTO = '<small class="lsx-netto">netto</small>'
 # Hinweis im Kleingedruckten unter Karten, Tabelle und Zusatzleistungen (B2B: Nettopreise, Umsatzsteuer kommt dazu)
-NETTO_HINWEIS = '<p class="lsx-klein">Alle Preise sind Nettopreise zzgl. 19&nbsp;% Umsatzsteuer (USt.).</p>'
+NETTO_HINWEIS = f'<p class="lsx-klein">{NETTO_SATZ}</p>'
+# Weiche Trennstriche für lange Wörter, damit sie auf schmalen Handys sauber umbrechen (Anna 13.10.2026); nach esc() anwenden
+TRENNEN = {'Unternehmenspräsentation': 'Unternehmens&shy;präsentation', 'Mitbewerberrecherche': 'Mitbewerber&shy;recherche', 'Unternehmensidentität': 'Unternehmens&shy;identität'}
 
 
-def preis(e):
-    if e.get('anfrage'): return 'auf Anfrage'
-    if e.get('anteil'): return f"+{int(e['anteil'] * 100)}&nbsp;% {NETTO}"
-    if e.get('monat'): return f"ab {euro(e['monat'])} {NETTO} / Monat"
-    if e.get('stunde') and e.get('stundeBis'): return f"{e['stunde']}–{euro(e['stundeBis'])} {NETTO} / Stunde, je nach Unternehmensgröße"
-    if e.get('stunde'): return f"ab {euro(e['stunde'])} {NETTO} / Stunde"
-    return ('ab ' if e.get('ab', True) else '') + euro(e['preis']) + ' ' + NETTO
+def trennen(text):
+    return trennen_mit(text, TRENNEN)
 
 
 def karten(g):
-    out = []
-    for e in g['pakete']:
-        liste = ''.join(f'<li>{esc(x)}</li>' for x in e.get('items', []))
-        out.append(f'''      <article class="lsx-karte{' lsx-gefragt' if e.get('gefragt') else ''}">
-        {'<p class="lsx-badge">Gefragt</p>' if e.get('gefragt') else ''}<h3 class="lsx-karte-name">{trennen(esc(e['name']))}</h3>
-        <p class="lsx-karte-preis">{preis(e)}</p>
-        <p class="lsx-karte-wer">{esc(e.get("wer") or "")}</p>
-        <p class="lsx-karte-dauer">{f'<span class="meta">Dauer</span> {esc(e["dauer"])}' if e.get('dauer') else ''}</p>
-        <p class="lsx-karte-plus">{esc(e.get("plus") or "")}</p><ul class="lsx-karte-liste">{liste}</ul>
-      </article>''')
-    return '\n'.join(out)
+    return '\n'.join(paket_karte(e, TRENNEN) for e in g['pakete'])
 
 
 def paket_reihen(g, c, pre=''):
@@ -108,16 +103,7 @@ def extras(g):
   </section>'''
 
 
-START = (basis / 'website' / 'index.html').read_text(encoding='utf-8')
-
-
-# Weiche Trennstriche für lange Wörter, damit sie auf schmalen Handys sauber umbrechen (Anna 13.10.2026); nach esc() anwenden
-TRENNEN = {'Unternehmenspräsentation': 'Unternehmens&shy;präsentation', 'Mitbewerberrecherche': 'Mitbewerber&shy;recherche', 'Unternehmensidentität': 'Unternehmens&shy;identität'}
-
-
-def trennen(t):
-    for w, n in TRENNEN.items(): t = t.replace(w, n)
-    return t
+START = (WEBSITE / 'index.html').read_text(encoding='utf-8')
 
 
 def dachzeile(m, h):
@@ -140,6 +126,7 @@ def ablauf_eigen(pre, schritte):
 
 def ablauf(pre):
     m = re.search(r'<section class="prozess-kompakt".*?</section>', START, re.S)
+    if not m: raise SystemExit('Prozess (section.prozess-kompakt) fehlt in website/index.html')
     s = m.group(0).replace('href="kontakt/"', f'href="{pre}kontakt/"')
     return '  ' + s.replace('<section class="prozess-kompakt"', '<section class="prozess-kompakt" id="ablauf"', 1)
 
@@ -147,11 +134,7 @@ def ablauf(pre):
 def stimmen(pre, tag):
     liste = I.mit_tag(I.STIMMEN, [tag])[:3]
     if not liste: return ''
-    return '  <section class="lsx-stimmen" aria-labelledby="stimmen-titel">\n    <p class="meta">Stimmen</p>\n    <h2 class="gr-h3" id="stimmen-titel">Das sagen Kundinnen und Kolleginnen</h2>\n    <div class="stimmen">\n' + I.stimmen(liste, pre) + '\n    </div>\n    <p class="stimmen-quelle"><a class="textlink" href="https://www.linkedin.com/in/anna-h%C3%A4rtelt-8513b8213/details/recommendations/" target="_blank" rel="noopener">Alle Empfehlungen auf LinkedIn <span aria-hidden="true">↗</span></a></p>\n  </section>'
-
-
-def fakten(pre):
-    return I.kennzahlen('fakten lsx-fakten', '    ')
+    return '  <section class="lsx-stimmen" aria-labelledby="stimmen-titel">\n    <p class="meta">Stimmen</p>\n    <h2 class="gr-h3" id="stimmen-titel">Das sagen Kundinnen und Kolleginnen</h2>\n    <div class="stimmen">\n' + I.stimmen(liste, pre) + '\n    </div>\n    <p class="stimmen-quelle"><a class="textlink" href="' + LINKEDIN + '" target="_blank" rel="noopener">Alle Empfehlungen auf LinkedIn <span aria-hidden="true">↗</span></a></p>\n  </section>'
 
 
 def nicht_enthalten(c):
@@ -195,6 +178,11 @@ MOCKUPS = {
 }
 
 
+def grafik(name):
+    """Grafik aus werkzeuge/grafiken/<name>.html (für Leistungsseiten mit ../../ geschrieben)."""
+    return (WERKZEUGE / 'grafiken' / f'{name}.html').read_text(encoding='utf-8')
+
+
 def mockup(key, pre):
     if key not in MOCKUPS: return ''
     datei, text = MOCKUPS[key]
@@ -217,16 +205,13 @@ def seite(key, c):
     termine = c.get('termine', TERMINE)
     satz = termine if termine.startswith('Termine') else termine[0].lower() + termine[1:]  # Substantiv bleibt groß
     faq_termine = [['Wie oft gibt es bei STUDIO AAH! Abstimmungstermine?', 'Bei STUDIO AAH! gibt es ' + satz + ('' if 'nach Absprache' in termine else ' Weitere Termine vereinbaren wir nach Absprache.')]]
-    link, link_text = preise_link(g, '../' * (c['pfad'].strip('/').count('/') + 1))
-    pfad = basis / 'website' / c['pfad'] / 'index.html'
-    if not pfad.exists():  # neue Seite: Kopf und Fuß von der Webdesign-Seite übernehmen (gleiche Ordnertiefe)
-        pfad.parent.mkdir(parents=True, exist_ok=True)
-        pfad.write_text((basis / 'website' / 'service' / 'webdesign' / 'index.html').read_text(encoding='utf-8'), encoding='utf-8')
-    t = pfad.read_text(encoding='utf-8')
-    tiefe = c['pfad'].strip('/').count('/') + 1
-    pre = '../' * tiefe
+    pre = '../' * (c['pfad'].strip('/').count('/') + 1)
+    link, link_text = preise_link(g, pre)
+    pfad = WEBSITE / c['pfad'] / 'index.html'
+    # neue Seite: Kopf und Fuß von der Webdesign-Seite übernehmen (gleiche Ordnertiefe)
+    vorlage = (pfad if pfad.exists() else WEBSITE / 'service' / 'webdesign' / 'index.html').read_text(encoding='utf-8')
     url = 'https://studio-aah.de/' + c['pfad']
-    absatz = ''.join(f'<p>{esc(a)}</p>' for a in c['zusammenfassung'])
+    vergleich_html = vergleich(g)
     faq = ''.join(f'''      <details class="faq-eintrag">
         <summary>{esc(q)}</summary>
         <div class="faq-antwort"><p>{esc(a)}</p></div>
@@ -239,10 +224,10 @@ def seite(key, c):
     <h1 class="gr-xxl lsx-titel" style="--n:{max(len(w) for w in c['titel'].split())}">{titel_vorne}<span class="wort-mit-icon">{esc(c['titel'].split()[-1])}<img class="icon-3d" src="{pre}{c['icon']}" alt="" width="400" height="400"></span></h1>
     <p class="alt-klein">{trennen(esc(intro))}</p>
     <p class="lsx-termine"><span class="meta">So arbeite ich</span> {esc(termine)}</p>
-    {fakten(pre)}
+    {I.kennzahlen('fakten lsx-fakten', '    ')}
   </section>
 
-  <nav class="preis-leiste lsx-chips" aria-label="Auf dieser Seite"><a href="#loesung">Problem &amp; Lösung</a><a href="#pakete">Pakete</a>{'<a href="#vergleich">Vergleich</a>' if vergleich(g) else ''}{'<a href="#extras">Zusatzleistungen</a>' if g.get('extras') else ''}{'<a href="#ablauf">Ablauf</a>' if mit_ablauf else ''}{'<a href="#referenzen">Referenzen</a>' if I.mit_tag(I.PROJEKTE, [c['tag']]) else ''}{'<a href="#artikel">Artikel</a>' if c.get('artikel', True) and I.mit_tag(I.BLOG, [c['tag']]) else ''}<a href="#faq">Fragen</a><a href="{link}">{link_text} →</a></nav>
+  <nav class="preis-leiste lsx-chips" aria-label="Auf dieser Seite"><a href="#loesung">Problem &amp; Lösung</a><a href="#pakete">Pakete</a>{'<a href="#vergleich">Vergleich</a>' if vergleich_html else ''}{'<a href="#extras">Zusatzleistungen</a>' if g.get('extras') else ''}{'<a href="#ablauf">Ablauf</a>' if mit_ablauf else ''}{'<a href="#referenzen">Referenzen</a>' if I.mit_tag(I.PROJEKTE, [c['tag']]) else ''}{'<a href="#artikel">Artikel</a>' if c.get('artikel', True) and I.mit_tag(I.BLOG, [c['tag']]) else ''}<a href="#faq">Fragen</a><a href="{link}">{link_text} →</a></nav>
 
   <section class="lsx-loesung lsx-pl" id="loesung" aria-labelledby="loesung-titel">
     <p class="meta">Problem &amp; Lösung</p>
@@ -255,9 +240,9 @@ def seite(key, c):
     </div>
   </section>
 
-{(basis / 'werkzeuge' / 'grafiken' / 'website-oekosystem.html').read_text(encoding='utf-8') if c.get('herz') else ''}
-{(basis / 'werkzeuge' / 'grafiken' / (c['grafik'] + '.html')).read_text(encoding='utf-8') if c.get('grafik') else ''}
-{(basis / 'werkzeuge' / 'grafiken' / (c['nutzen'] + '.html')).read_text(encoding='utf-8') if c.get('nutzen') else ''}
+{grafik('website-oekosystem') if c.get('herz') else ''}
+{grafik(c['grafik']) if c.get('grafik') else ''}
+{grafik(c['nutzen']) if c.get('nutzen') else ''}
 
   <section class="lsx-pakete" id="pakete" aria-labelledby="pakete-titel">
     <p class="meta">Pakete</p>
@@ -268,7 +253,7 @@ def seite(key, c):
     {'' if len(g['pakete']) == 1 and not c.get('hintergrund') else nicht_enthalten(c)}
   </section>
 
-{vergleich(g)}
+{vergleich_html}
 
 {extras(g)}
 
@@ -280,7 +265,6 @@ def seite(key, c):
 
 {referenzen(c['tag'], pre)}
 
-{I.erfolg(next(x for x in I.PROJEKTE if x['name'] == c['erfolg']), pre) if c.get('erfolg') else ''}
 
   <section class="lsx-duo" aria-label="Kontakt und Kostenrechner">
 {direkt(pre)}
@@ -301,33 +285,28 @@ def seite(key, c):
   </section>
 
 </main>'''
-    t = re.sub(r'<main id="inhalt">.*?</main>', lambda m: main, t, count=1, flags=re.S)
-    t = re.sub(r'<title>.*?</title>', f'<title>{esc(c["seitentitel"])}</title>', t, count=1)
-    for name in ('name="description"', 'property="og:description"'):
-        t = re.sub(rf'<meta {name} content="[^"]*">', f'<meta {name} content="{html.escape(c["beschreibung"])}">', t, count=1)
-    t = re.sub(r'<link rel="canonical" href="[^"]*">', f'<link rel="canonical" href="{url}">', t, count=1)
-    t = re.sub(r'<meta property="og:url" content="[^"]*">', f'<meta property="og:url" content="{url}">', t, count=1)
-    t = re.sub(r'<meta property="og:title" content="[^"]*">', f'<meta property="og:title" content="{html.escape(c["seitentitel"])}">', t, count=1)
     # Strukturierte Daten: Leistung mit Angeboten und FAQ (für Suchmaschinen und KI-Antworten)
-    studio = re.search(r'\{\s*"@type": "ProfessionalService".*?"areaServed": \[[^\]]*\]\s*\}', t, re.S)
+    studio = re.search(r'\{\s*"@type": "ProfessionalService".*?"areaServed": \[[^\]]*\]\s*\}', vorlage, re.S)
     angebote = [{"@type": "Offer", "name": e['name'], "priceCurrency": "EUR", "price": str(e['preis']),
                  "priceSpecification": {"@type": "PriceSpecification", "minPrice": e['preis'], "priceCurrency": "EUR", "valueAddedTaxIncluded": False}}
                 for e in g['pakete'] if e.get('preis')]
     angebote += [{"@type": "Offer", "name": e['name'], "priceCurrency": "EUR",
                   "priceSpecification": {"@type": "UnitPriceSpecification", "minPrice": e['stunde'], **({"maxPrice": e['stundeBis']} if e.get('stundeBis') else {}), "priceCurrency": "EUR", "unitText": "Stunde", "valueAddedTaxIncluded": False}}
                  for e in g['pakete'] if e.get('stunde') and not e.get('preis')]
-    graph = [json.loads(studio.group(0)) if studio else {"@id": "https://studio-aah.de/#studio"},
+    graph = [json.loads(studio.group(0)) if studio else {"@id": STUDIO_ID},
              {"@type": "Service", "@id": url + '#leistung', "name": c['titel'], "description": intro, "url": url,
-              "provider": {"@id": "https://studio-aah.de/#studio"}, "areaServed": "Leipzig", "offers": angebote},
+              "provider": {"@id": STUDIO_ID}, "areaServed": "Leipzig", "offers": angebote},
              {"@type": "FAQPage", "@id": url + '#faq', "url": url, "inLanguage": "de",
               "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in c['faq'] + faq_termine + GEMEINSAM]}]
-    ld = json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, indent=2)
-    t = re.sub(r'<script type="application/ld\+json">.*?</script>', lambda m: f'<script type="application/ld+json">\n{ld}\n  </script>', t, count=1, flags=re.S)
-    if 'zaehlen.js' not in t:
-        t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v=20261016s" defer></script>\n</body>', 1)
+    t = seitenrahmen(vorlage, main, c['seitentitel'], c['beschreibung'], url, {"@context": "https://schema.org", "@graph": graph})
+    if 'zaehlen.js' not in t:  # Kennzahlen zählen hoch; Version wie auf der Startseite
+        version = re.search(r'zaehlen\.js\?v=(\w+)', START).group(1)
+        t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v={version}" defer></script>\n</body>', 1)
+    pfad.parent.mkdir(parents=True, exist_ok=True)
     pfad.write_text(t, encoding='utf-8')
     print('geschrieben:', c['pfad'])
 
 
-wahl = sys.argv[1:] or [k for k in inhalte if not k.startswith('_')]
-for k in wahl: seite(k, inhalte[k])
+if __name__ == '__main__':
+    for k in sys.argv[1:] or [k for k in inhalte if not k.startswith('_')]:
+        seite(k, inhalte[k])

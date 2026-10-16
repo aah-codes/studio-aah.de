@@ -2,12 +2,11 @@
 # und setzt sie zwischen die Marker <!-- NAME:START --> … <!-- NAME:ENDE --> der Seiten.
 # Jeder Eintrag hat Schlagworte (tags), z. B. "website", "brand", "ui-ux"; die Leistungsseiten wählen danach aus.
 # Neuer Eintrag: in die passende Datei schreiben, dann  python3 werkzeuge/inhalte-erzeugen.py  (und danach leistungsseiten.py)
-import datetime, html, json, pathlib, re
+import datetime, re
 
-basis = pathlib.Path(__file__).resolve().parent.parent
-lade = lambda n: json.loads((basis / 'werkzeuge' / 'inhalte' / f'{n}.json').read_text(encoding='utf-8'))
-esc = lambda s: html.escape(s, quote=False)
-PROJEKTE, STIMMEN, BLOG, ZAHLEN = lade('projekte'), lade('stimmen'), lade('blog'), lade('kennzahlen')
+from gemeinsam import PFEIL, WEBSITE, einsetzen, esc, euro, lade_json, lesezeit as minuten
+
+PROJEKTE, STIMMEN, BLOG, ZAHLEN = (lade_json(f'inhalte/{n}.json') for n in ('projekte', 'stimmen', 'blog', 'kennzahlen'))
 BLOG = sorted(BLOG, key=lambda b: b['datum'], reverse=True)
 ORT = '<svg class="fakt-ort" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.4 12.5h13.2L12 23z" fill="currentColor"/><circle cx="12" cy="9" r="7" fill="currentColor"/><circle cx="12" cy="9" r="3" fill="#fff"/></svg>'
 
@@ -15,25 +14,6 @@ ORT = '<svg class="fakt-ort" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.
 def mit_tag(liste, tags):
     if not tags: return liste
     return [x for x in liste if set(x.get('tags', [])) & set(tags)]
-
-
-def projekte(liste, pre=''):
-    out = []
-    for p in liste:
-        links = '<br>'.join(f'<a class="textlink" href="{l["url"]}" target="_blank" rel="noopener">{esc(l["text"])} ↗</a>' for l in p.get('links', []))
-        web = f'\n    <div><dt>Website</dt><dd>{links}</dd></div>' if links else ''
-        f = p.get('film')
-        film = (f'\n    <div class="referenz-film"><dt class="unsichtbar">Film</dt><dd><button type="button" class="film-knopf" data-film="{pre}{f["datei"]}" data-titel="{html.escape(f["titel"])}" aria-label="{html.escape(f["titel"])} ansehen">'
-                f'<img src="{pre}{f["vorschau"]}" alt="" width="960" height="540" loading="lazy"><span class="film-play" aria-hidden="true"></span></button></dd></div>') if f else ''
-        out.append(f'''<details class="referenz">
-  <summary><span class="referenz-name">{esc(p["name"])}</span><span class="referenz-zeichen" aria-hidden="true"></span></summary>
-  <dl class="referenz-fakten{' mit-film' if p.get('film') else ''}">{film}
-    <div><dt>Branche</dt><dd>{esc(p["branche"])}</dd></div>
-    <div><dt>Zeitraum</dt><dd>{esc(p["zeitraum"])}</dd></div>
-    <div><dt>Leistungen</dt><dd>{esc(p["leistungen"])}</dd></div>{web}
-  </dl>
-</details>''')
-    return '\n'.join(out)
 
 
 
@@ -85,75 +65,39 @@ def referenz_karten(liste, pre, kennung='ref', ansicht=None):
             '      </div>\n    </div>')
 
 
-# --- Für wen: dunkler Abschnitt mit Umschalter; zeigt je Zielgruppe, was STUDIO AAH! vor allem verkauft ---
+# --- Für wen: dunkler Abschnitt mit Umschalter; zeigt je Zielgruppe, was STUDIO AAH! vor allem verkauft (Texte in inhalte/fuer-wen.json) ---
 def fuer_wen(pre=''):
-    pd = json.loads((basis / 'werkzeuge' / 'preise-daten.json').read_text(encoding='utf-8'))
-    paket = {e['id']: e for g in pd['gruppen'] for e in g['pakete']}
-    euro = lambda n: f'{n:,.0f}'.replace(',', '.') + ' €'
-    preis = lambda i: f'ab {euro(paket[i]["preis"])} <small>netto</small>'
-    # Je Zielgruppe zwei Karten (Anna 11.10.2026, Skizze): links das Angebot mit Unterzeile und Punkten, rechts breit die Referenz mit großem Screenshot
-    felder = [
-        ('mittelstand', 'Mittelstand', 'Ihre ganze Website, neu gedacht.',
-         # Kostenrechner v4 (Anna 16.10.2026): Paket „Redesign für Unternehmen“ gestrichen, die Karte zeigt das Redesign; Text der Karte bleibt
-         ('Webdesign', paket['redesign']['name'], 'Für mittelständische Unternehmen, die ihre ganze Website umbauen: mit Leistungs-, Branchen-, Referenz- und Karriereseiten.',
-          ['Design-System und neue Startseite', 'Leistungs-, Branchen- und Referenzseiten', 'Karrierebereich mit Stellenangeboten und Bewerbungsformular'],
-          preis('redesign'), f'{pre}service/webdesign/#pakete'),
-         ('Wolfgang Bauer Ingenieurbau', f'{pre}referenzen/bauer/'), 'bilder/fuer-wen-mittelstand.webp', 'review'),
-        ('selbststaendige', 'Selbstständige', 'Klar auftreten, ohne Umwege.',
-         ('Webdesign', 'Onepager', 'Für Selbstständige und kleine Angebote: eine Website, die alles auf den Punkt bringt, und eine Marke, die zu Ihnen passt.',
-          ['Alles auf einer Seite, responsiv', 'Mit SEO & LLM-Zitierfähigkeit', f'Dazu buchbar: Brand Basic mit Fragebogen, Brand Experience und Mitbewerberrecherche, {preis("brand-0")}'],
-          preis('neu'), f'{pre}service/webdesign/#pakete'),
-         ('Deinetwegen', f'{pre}referenzen/deinetwegen/'), 'bilder/fuer-wen-selbststaendige.webp', 'rechner'),
-        ('vereine', 'Vereine &amp; Kultur', 'Demokratie braucht Sichtbarkeit.',
-         ('Initiative', 'Website ohne Honorar', 'Für Vereine, NGOs, Kunst und Kultur. Ihr zahlt, was ihr könnt – weniger oder nichts ist auch in Ordnung.',
-          ['Für Organisationen, die sich für Demokratie, Frauen- und Kinderrechte, Natur- und Tierschutz oder Kunst und Kultur einsetzen',
-           'Bis zu eine Website im Monat'],
-          'Richtwert ab 250 € <small>Onepager · etwa 500 € Vereinswebsite</small>', f'{pre}demokratie-braucht-sichtbarkeit/'),
-         ('Jana Voigtmann', f'{pre}referenzen/jana-voigtmann/'), 'bilder/programm-haende.jpg', 'initiative'),
-    ]
-    TAB_AUS = ' tabindex="-1"'
-    knoepfe = ''.join(f'<button type="button" role="tab" id="fw-r-{k}" aria-controls="fw-{k}" aria-selected="{"true" if i == 0 else "false"}"{"" if i == 0 else TAB_AUS}>{n}</button>' for i, (k, n, *_ ) in enumerate(felder))
+    paket = {e['id']: e for g in lade_json('preise-daten.json')['gruppen'] for e in g['pakete']}
+
+    def fuellen(text):  # Platzhalter {name:ID} und {preis:ID} aus preise-daten.json
+        text = re.sub(r'\{name:([\w-]+)\}', lambda m: paket[m.group(1)]['name'], text)
+        return re.sub(r'\{preis:([\w-]+)\}', lambda m: f'ab {euro(paket[m.group(1)]["preis"], " ")} <small>netto</small>', text)
+
+    gruppen = lade_json('inhalte/fuer-wen.json')['gruppen']
+    tab_aus = ' tabindex="-1"'
+    knoepfe = ''.join(f'<button type="button" role="tab" id="fw-r-{g["id"]}" aria-controls="fw-{g["id"]}" aria-selected="{"true" if i == 0 else "false"}"'
+                      f'{"" if i == 0 else tab_aus}>{g["reiter_html"]}</button>' for i, g in enumerate(gruppen))
     teile = []
-    # Angebot im Mittelpunkt (Anna 16.10.2026): eine Karte mit eigenem Bild je Zielgruppe; Referenz nur als kleiner Link (Referenzen stehen weiter unten)
-    for i, (k, n, titel, (m, h, x, punkte, pr, l), (rn, rl), bild, knopf) in enumerate(felder):
-        li = ''.join(f'<li>{p}</li>' for p in punkte)
+    for i, g in enumerate(gruppen):
+        link, ref = pre + g['link'], g['referenz']
         # Handlungsaufforderung je Zielgruppe (Anna 16.10.2026): Mittelstand zuerst Website-Review, Selbstständige zuerst Kostenrechner
-        pfeil = ' <span aria-hidden="true">→</span>'
-        ziele = {'review': (f'{pre}website-review/', 'Kostenloses Website-Review'), 'rechner': (f'{pre}preise/#rechner', 'Kosten berechnen'), 'initiative': (l, 'Zur Initiative')}
-        reihen = {'review': ['review', 'rechner'], 'rechner': ['rechner', 'review'], 'initiative': ['initiative']}[knopf]
-        haupt, *neben = [ziele[r] for r in reihen]
-        aktionen = f'<a class="button" href="{haupt[0]}">{haupt[1]}{pfeil}</a>' + ''.join(f'<a class="textlink" href="{u}">{t}{pfeil}</a>' for u, t in neben)
-        angebot = (f'<div class="dk-angebot"><div class="dk-angebot-text"><p class="meta">{m}</p><h4 class="dk-karte-titel"><a href="{l}">{esc(h)}</a></h4>'
-                   f'<p class="dk-karte-text">{esc(x)}</p><ul class="dk-punkte">{li}</ul>'
-                   f'<p class="dk-preis">{pr}</p><p class="dk-aktionen">{aktionen}</p></div>'
-                   f'<div class="dk-angebot-bild{"" if bild.endswith(".jpg") else " dk-grafik"}"><img src="{pre}{bild}" alt="" loading="lazy" width="1200" height="900"></div></div>'
-                   f'<p class="dk-beleg">{"Aus Kunst und Kultur:" if k == "vereine" else "Zum Beispiel umgesetzt für"} <a href="{rl}">{esc(rn)} <span aria-hidden="true">→</span></a></p>')
-        teile.append(f'      <div class="dk-feld" id="fw-{k}" role="tabpanel" aria-labelledby="fw-r-{k}"{"" if i == 0 else " hidden"}>\n        <h3 class="dk-titel">{esc(titel)}</h3>\n'
+        ziele = {'review': (f'{pre}website-review/', 'Kostenloses Website-Review'), 'rechner': (f'{pre}preise/#rechner', 'Kosten berechnen'), 'initiative': (link, 'Zur Initiative')}
+        reihen = {'review': ['review', 'rechner'], 'rechner': ['rechner', 'review'], 'initiative': ['initiative']}[g['aktion']]
+        (haupt_url, haupt_text), *neben = [ziele[r] for r in reihen]
+        aktionen = f'<a class="button" href="{haupt_url}">{haupt_text}{PFEIL}</a>' + ''.join(f'<a class="textlink" href="{u}">{x}{PFEIL}</a>' for u, x in neben)
+        punkte = ''.join(f'<li>{fuellen(x)}</li>' for x in g['punkte_html'])
+        # Angebot im Mittelpunkt (Anna 16.10.2026): eine Karte mit eigenem Bild je Zielgruppe; Referenz nur als kleiner Link (Referenzen stehen weiter unten)
+        angebot = (f'<div class="dk-angebot"><div class="dk-angebot-text"><p class="meta">{g["dachzeile"]}</p><h4 class="dk-karte-titel"><a href="{link}">{esc(fuellen(g["name"]))}</a></h4>'
+                   f'<p class="dk-karte-text">{esc(g["text"])}</p><ul class="dk-punkte">{punkte}</ul>'
+                   f'<p class="dk-preis">{fuellen(g["preis_html"])}</p><p class="dk-aktionen">{aktionen}</p></div>'
+                   f'<div class="dk-angebot-bild{"" if g["bild"].endswith(".jpg") else " dk-grafik"}"><img src="{pre}{g["bild"]}" alt="" loading="lazy" width="1200" height="900"></div></div>'
+                   f'<p class="dk-beleg">{ref.get("vorsatz", "Zum Beispiel umgesetzt für")} <a href="{pre}{ref["link"]}">{esc(ref["name"])}{PFEIL}</a></p>')
+        teile.append(f'      <div class="dk-feld" id="fw-{g["id"]}" role="tabpanel" aria-labelledby="fw-r-{g["id"]}"{"" if i == 0 else " hidden"}>\n        <h3 class="dk-titel">{esc(g["titel"])}</h3>\n'
                      f'        {angebot}\n      </div>')
     return (f'  <section class="dk" aria-labelledby="fuer-wen-titel">\n    <p class="meta">Für wen</p>\n    <h2 class="unsichtbar" id="fuer-wen-titel">Für wen ich arbeite</h2>\n'
             f'    <div class="dk-umschalter" role="tablist" aria-label="Zielgruppe wählen">{knoepfe}</div>\n' + '\n'.join(teile) + '\n  </section>')
 
 
-# --- Erfolgsgeschichte (Website-Seite): Film groß, Zitat nur mit Freigabe der Person ---
-def erfolg(p, pre):
-    e, f = p['erfolg'], p.get('film')
-    if e.get('freigegeben'):
-        kopf = f'<blockquote class="eg-zitat"><p>„{esc(e["zitat"])}“</p></blockquote><p class="eg-person"><b>{esc(e["person"])}</b> · {esc(e["rolle"])}, {esc(p["name"])}</p>'
-    else:
-        kopf = f'<h2 class="eg-zitat" id="erfolg-titel">{esc(p["kurzname"])}</h2><p class="eg-person">{esc(p["branche"])}</p>'
-    fakten = ''.join(f'<div><dt>{esc(a)}</dt><dd>{esc(b)}</dd></div>' for a, b in e['fakten'])
-    link = p['links'][0] if p.get('links') else None
-    film = (f'<button type="button" class="eg-film film-knopf" data-film="{pre}{f["datei"]}" data-titel="{html.escape(f["titel"])}" aria-label="{html.escape(f["titel"])} ansehen">'
-            f'<img src="{pre}{f["vorschau"]}" alt="" loading="lazy"><span>▶ Launch-Film ansehen</span></button>') if f else ''
-    return (f'''  <section class="eg" aria-labelledby="erfolg-titel">
-    {film}
-    <div>
-      <p class="meta">Erfolgsgeschichte</p>
-      {kopf}
-      <dl class="eg-fakten">{fakten}</dl>
-      {f'<p><a class="button button-zweit" href="{link["url"]}" target="_blank" rel="noopener">Website ansehen ↗</a></p>' if link else ''}
-    </div>
-  </section>''')
 
 def stimmen(liste, pre):
     out = []
@@ -175,12 +119,12 @@ def stimmen(liste, pre):
 
 def lesezeit(slug):
     # Lesezeit wie im Artikel angegeben („Lesezeit 18 Minuten“), sonst aus dem Text des Artikels, 200 Wörter pro Minute
-    t = (basis / 'website' / 'blog' / slug / 'index.html').read_text(encoding='utf-8')
+    t = (WEBSITE / 'blog' / slug / 'index.html').read_text(encoding='utf-8')
     m = re.search(r'Lesezeit (\d+) Minuten', t)
     if m: return int(m.group(1))
     a = re.search(r'<article.*?</article>', t, re.S)
     text = re.sub(r'<(script|style)[^>]*>.*?</\1>|<[^>]+>', ' ', a.group(0) if a else t, flags=re.S)
-    return max(1, round(len(re.findall(r'\w+', text)) / 200))
+    return minuten(len(re.findall(r'\w+', text)))
 
 
 def blog(liste, pre, linkpre, h='h3', einrueck='    ', kategorie=True, klasse='blog-karte', lazy=True):
@@ -254,15 +198,6 @@ def kennzahlen(klasse='fakten hero-fakten', einrueck='    '):
     return f'{einrueck}<dl class="{klasse}">\n' + '\n'.join(z) + f'\n{einrueck}</dl>'
 
 
-def oeko(pre):
-    # Grafik Website-Ökosystem (Quelle: werkzeuge/grafiken/website-oekosystem.html, dort für Leistungsseiten mit ../../ geschrieben)
-    return (basis / 'werkzeuge' / 'grafiken' / 'website-oekosystem.html').read_text(encoding='utf-8').replace('../../', pre).rstrip()
-
-
-def einsetzen(text, name, inhalt):
-    neu, n = re.subn(rf'<!-- {name}:START -->.*?<!-- {name}:ENDE -->', lambda m: f'<!-- {name}:START -->\n{inhalt}\n<!-- {name}:ENDE -->', text, count=1, flags=re.S)
-    if not n: raise SystemExit(f'Marker {name} fehlt')
-    return neu
 
 
 if __name__ == '__main__':
@@ -274,7 +209,7 @@ if __name__ == '__main__':
         'blog/index.html': [('BLOG', lambda: blog_themen())],
     }
     for datei, teile in seiten.items():
-        p = basis / 'website' / datei
+        p = WEBSITE / datei
         t = p.read_text(encoding='utf-8')
         for name, f in teile: t = einsetzen(t, name, f())
         p.write_text(t, encoding='utf-8')

@@ -1,8 +1,13 @@
-# Baut website/blog/was-kostet-eine-website/index.html aus Vorlage (Kopf/Fuß vom KI-Artikel) + Inhalt + FAQ + JSON-LD
-import json, re, html, sys
-# Aufruf vom Repository-Ordner: python3 werkzeuge/blog/was-kostet-eine-website.py
-vorlage=open('website/blog/was-ki-an-meiner-arbeit-veraendert-hat/index.html').read()
-main=open('werkzeuge/blog/was-kostet-eine-website-inhalt.html').read()
+# Baut website/blog/was-kostet-eine-website/index.html aus Vorlage (Kopf/Fuß vom KI-Artikel) + Inhalt + FAQ + JSON-LD.
+# Texte nur in was-kostet-eine-website-inhalt.html und in der FAQ unten ändern.
+# Aufruf im Repository-Ordner: python3 werkzeuge/blog/was-kostet-eine-website.py
+import html, json, pathlib, re, sys
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
+from gemeinsam import STUDIO_ID, WEBSITE, WERKZEUGE, esc, lesezeit as minuten
+
+vorlage = (WEBSITE / 'blog' / 'was-ki-an-meiner-arbeit-veraendert-hat' / 'index.html').read_text(encoding='utf-8')
+main = (WERKZEUGE / 'blog' / 'was-kostet-eine-website-inhalt.html').read_text(encoding='utf-8')
 slug='was-kostet-eine-website'
 url=f'https://studio-aah.de/blog/{slug}/'
 titel='Was kostet eine Website? Preise, laufende Kosten und Dauer 2026'
@@ -33,13 +38,13 @@ faq=[
 fh=[]
 for f,a in faq:
     fh.append(f'''        <details class="faq-eintrag">
-          <summary>{html.escape(f, quote=False)}</summary>
-          <div class="faq-antwort"><p>{html.escape(a, quote=False)}</p></div>
+          <summary>{esc(f)}</summary>
+          <div class="faq-antwort"><p>{esc(a)}</p></div>
         </details>''')
 main=main.replace('FAQ_HTML','\n'.join(fh))
 # Lesezeit aus dem Text der Seite (ohne Tags), 200 Wörter pro Minute
 text=re.sub(r'<[^>]+>',' ',main); woerter=len(re.findall(r'\w+',text))
-lesezeit=max(1,round(woerter/200))
+lesezeit=minuten(woerter)
 main=main.replace('LESEZEIT',str(lesezeit))
 ld={"@context":"https://schema.org","@graph":[
  {"@type":"BlogPosting","@id":url+"#beitrag","headline":h1,"name":titel,"description":beschr,
@@ -47,10 +52,10 @@ ld={"@context":"https://schema.org","@graph":[
   "datePublished":"2026-10-13","dateModified":"2026-10-13","inLanguage":"de-DE","url":url,"mainEntityOfPage":url,
   "wordCount":woerter,"articleSection":"Website",
   "keywords":["Website Kosten","Was kostet eine Website","Website erstellen lassen Dauer","laufende Kosten Website","Relaunch","Webdesign Leipzig"],
-  "author":{"@type":"Person","name":"Anna Härtelt","url":"https://studio-aah.de/profil/","jobTitle":"UX/UI-Designerin, Strategin und Webentwicklerin","worksFor":{"@id":"https://studio-aah.de/#studio"}},
-  "publisher":{"@id":"https://studio-aah.de/#studio"},
+  "author":{"@type":"Person","name":"Anna Härtelt","url":"https://studio-aah.de/profil/","jobTitle":"UX/UI-Designerin, Strategin und Webentwicklerin","worksFor":{"@id":STUDIO_ID}},
+  "publisher":{"@id":STUDIO_ID},
   "isPartOf":{"@type":"Blog","@id":"https://studio-aah.de/blog/#blog","name":"Blog von STUDIO AAH!","url":"https://studio-aah.de/blog/"}},
- {"@type":"ProfessionalService","@id":"https://studio-aah.de/#studio","name":"STUDIO AAH!","url":"https://studio-aah.de/","logo":"https://studio-aah.de/bilder/icon-512.png",
+ {"@type":"ProfessionalService","@id":STUDIO_ID,"name":"STUDIO AAH!","url":"https://studio-aah.de/","logo":"https://studio-aah.de/bilder/icon-512.png",
   "address":{"@type":"PostalAddress","streetAddress":"Gießerstraße 75","postalCode":"04229","addressLocality":"Leipzig","addressCountry":"DE"},
   "founder":{"@type":"Person","name":"Anna Härtelt"}},
  {"@type":"FAQPage","@id":url+"#faq","url":url,"inLanguage":"de","mainEntity":[{"@type":"Question","name":f,"acceptedAnswer":{"@type":"Answer","text":a}} for f,a in faq]},
@@ -88,7 +93,7 @@ neu_head=f'''<title>{titel} | STUDIO AAH!</title>
   '''
 head=head.replace(alt_head,neu_head)
 seite=head+'<main id="inhalt">\n\n'+main+'\n</main>'+vorlage[fuss_start+len('</main>'):]
-import os
-os.makedirs(f'website/blog/{slug}',exist_ok=True)
-open(f'website/blog/{slug}/index.html','w').write(seite)
+ziel = WEBSITE / 'blog' / slug / 'index.html'
+ziel.parent.mkdir(parents=True, exist_ok=True)
+ziel.write_text(seite, encoding='utf-8')
 print('Wörter',woerter,'Lesezeit',lesezeit)

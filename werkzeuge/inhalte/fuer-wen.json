@@ -1,0 +1,47 @@
+{
+  "_hinweis": "Abschnitt „Für wen“ der Startseite: je Zielgruppe ein Reiter mit einer Angebotskarte (Anna 11. und 16.10.2026). Texte hier ändern, dann bash werkzeuge/alle-erzeugen.sh. Platzhalter: {name:ID} = Paketname, {preis:ID} = „ab … € netto“ aus preise-daten.json. Felder mit _html werden nicht maskiert (&amp; schreiben). aktion: review = zuerst Website-Review, rechner = zuerst Kostenrechner, initiative = nur „Zur Initiative“. Kostenrechner v4 (Anna 16.10.2026): Paket „Redesign für Unternehmen“ gestrichen, die Mittelstand-Karte zeigt das Redesign.",
+  "gruppen": [
+    {
+      "id": "mittelstand",
+      "reiter_html": "Mittelstand",
+      "titel": "Ihre ganze Website, neu gedacht.",
+      "dachzeile": "Webdesign",
+      "name": "{name:redesign}",
+      "text": "Für mittelständische Unternehmen, die ihre ganze Website umbauen: mit Leistungs-, Branchen-, Referenz- und Karriereseiten.",
+      "punkte_html": ["Design-System und neue Startseite", "Leistungs-, Branchen- und Referenzseiten", "Karrierebereich mit Stellenangeboten und Bewerbungsformular"],
+      "preis_html": "{preis:redesign}",
+      "link": "service/webdesign/#pakete",
+      "referenz": {"name": "Wolfgang Bauer Ingenieurbau", "link": "referenzen/bauer/"},
+      "bild": "bilder/fuer-wen-mittelstand.webp",
+      "aktion": "review"
+    },
+    {
+      "id": "selbststaendige",
+      "reiter_html": "Selbstständige",
+      "titel": "Klar auftreten, ohne Umwege.",
+      "dachzeile": "Webdesign",
+      "name": "Onepager",
+      "text": "Für Selbstständige und kleine Angebote: eine Website, die alles auf den Punkt bringt, und eine Marke, die zu Ihnen passt.",
+      "punkte_html": ["Alles auf einer Seite, responsiv", "Mit SEO & LLM-Zitierfähigkeit", "Dazu buchbar: Brand Basic mit Fragebogen, Brand Experience und Mitbewerberrecherche, {preis:brand-0}"],
+      "preis_html": "{preis:neu}",
+      "link": "service/webdesign/#pakete",
+      "referenz": {"name": "Deinetwegen", "link": "referenzen/deinetwegen/"},
+      "bild": "bilder/fuer-wen-selbststaendige.webp",
+      "aktion": "rechner"
+    },
+    {
+      "id": "vereine",
+      "reiter_html": "Vereine &amp; Kultur",
+      "titel": "Demokratie braucht Sichtbarkeit.",
+      "dachzeile": "Initiative",
+      "name": "Website ohne Honorar",
+      "text": "Für Vereine, NGOs, Kunst und Kultur. Ihr zahlt, was ihr könnt – weniger oder nichts ist auch in Ordnung.",
+      "punkte_html": ["Für Organisationen, die sich für Demokratie, Frauen- und Kinderrechte, Natur- und Tierschutz oder Kunst und Kultur einsetzen", "Bis zu eine Website im Monat"],
+      "preis_html": "Richtwert ab 250 € <small>Onepager · etwa 500 € Vereinswebsite</small>",
+      "link": "demokratie-braucht-sichtbarkeit/",
+      "referenz": {"name": "Jana Voigtmann", "link": "referenzen/jana-voigtmann/", "vorsatz": "Aus Kunst und Kultur:"},
+      "bild": "bilder/programm-haende.jpg",
+      "aktion": "initiative"
+    }
+  ]
+}
