@@ -2672,6 +2672,8 @@ section[hidden] { display: none !important; }
 }
 
 /* Projektseite, Runde 3 (Anna 14.10.2026): Zahlenleiste, Designsystem, Vorher/Nachher-Film, Karriere-Schwerpunkt */
+@font-face { font-family: "Montserrat Goldhammer"; src: url("../schriften/montserrat-latin-600.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+@font-face { font-family: "Montserrat Goldhammer"; src: url("../schriften/montserrat-latin-700.woff2") format("woff2"); font-weight: 700; font-display: swap; }
 @font-face { font-family: "Inter Bauer"; src: url("../schriften/inter-latin.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
 .cs-zahlen { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; margin: 40px var(--rand-seite) 0; padding: 0; }
 .cs-zahlen div { display: flex; flex-direction: column-reverse; padding: 6px 24px; border-left: 1.5px solid var(--farbe-dunkel); }
@@ -2692,6 +2694,7 @@ section[hidden] { display: none !important; }
 .ds-aa { font-size: clamp(110px, 12vw, 200px); font-weight: 600; line-height: .9; letter-spacing: -0.04em; margin: 0; }
 .ds-name { font-size: 2rem; font-weight: 600; margin: 18px 0 8px; }
 .ds-warum { margin: auto 0 0; line-height: 1.5; opacity: .85; }
+.cs-goldhammer .ds-schrift-kopf { background: var(--pc-akzent); color: var(--pc-dunkel); } /* Gelb mit Anthrazit wie auf Simones Seite; Weiß auf Gelb wäre unlesbar */
 .ds-stufen { list-style: none; margin: 0; padding: 12px 36px; background: #fff; border-radius: 28px; box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--pc-farbe) 18%, #fff); }
 .ds-stufen li { display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: 20px; align-items: baseline; padding: 16px 0; border-top: 1px solid rgba(14, 16, 17, .08); }
 .ds-stufen li:first-child { border-top: 0; }

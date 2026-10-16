@@ -490,11 +490,12 @@ def block(b, pre):
             k = [int(c[i:i + 2], 16) / 255 for i in (1, 3, 5)]; k = [x / 12.92 if x <= .03928 else ((x + .055) / 1.055) ** 2.4 for x in k]
             return .2126 * k[0] + .7152 * k[1] + .0722 * k[2]
         hell = lambda c: 1.05 / (lum(c) + .05) < 4.5  # dunkle Schrift, wenn Weiß zu wenig Kontrast hat
-        farben = ''.join(f'<li class="mk-farbe{" mk-hell" if hell(c) else ""}" style="--f:{c}"><b>{esc(n)}</b><span>{esc(c.upper())}</span><small>{esc(r)}</small></li>' for c, n, r in b['farben'])
+        farben = ''.join(f'<li class="mk-farbe{" mk-hell" if hell(c) else ""}" style="--f:{c}"><b>{esc(n)}</b><span>{esc(c.upper())}</span><small>{esc(r)}</small></li>' for c, n, r in b.get('farben', []))
         return (f'  <section class="cs-block cs-cd" aria-labelledby="mk-titel"><div class="mk-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3" id="mk-titel">{esc(b["titel"])}</h2>'
                 + (f'<p class="weg-einleitung">{esc(b["text"])}</p>' if b.get('text') else '') + f'</div>'
-                f'<div class="mk-logos">{logos}</div><ul class="mk-farben">{farben}</ul>'
-                f'<figure class="mk-schrift"><img src="{pre}{b["schrift_bild"]}" alt="{esc(b["schrift_alt"])}" width="1600" height="900" loading="lazy"><figcaption class="meta">{esc(b["schrift_text"])}</figcaption></figure></section>')
+                f'<div class="mk-logos">{logos}</div>' + (f'<ul class="mk-farben">{farben}</ul>' if farben else '')
+                + (f'<figure class="mk-schrift"><img src="{pre}{b["schrift_bild"]}" alt="{esc(b["schrift_alt"])}" width="1600" height="900" loading="lazy"><figcaption class="meta">{esc(b["schrift_text"])}</figcaption></figure>' if b.get('schrift_bild') else '')
+                + '</section>')  # Farben und Schrift optional: bei Goldhammer zeigt sie das Designsystem wie bei Bauer (Anna 16.10.2026)
     if b['typ'] == 'langaufnahmen':
         # ganze Seite am Rechner und am Handy nebeneinander, unbewegt (Anna 15.10.2026: „fullscreenshot von desktop und handy nebeneinander“);
         # Breiten so, dass beide gleich hoch sind (Seitenverhältnisse aus den Bilddateien)
