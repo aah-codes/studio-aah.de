@@ -2,6 +2,7 @@
 # Prüfskript für website/ – ändert nichts, meldet nur.
 # 1. Kopf und Fuß sind auf allen Seiten gleich (wie in website/index.html).
 # 2. Alle internen Links und Bilder zeigen auf vorhandene Dateien.
+# 3. Die erzeugten Bereiche sind aktuell (alle Generatoren laufen in einer Kopie, nichts ändert sich).
 # Aufruf im Repository-Ordner:  bash werkzeuge/pruefen.sh
 
 cd "$(dirname "$0")/../website" || exit 1
@@ -38,6 +39,17 @@ meldungen=$(for s in $seiten; do
   done
 done)
 if [ -n "$meldungen" ]; then echo "$meldungen"; fehler=1; fi
+
+echo "== Erzeugte Bereiche aktuell"
+kopie=$(mktemp -d)
+cp -R ../website ../werkzeuge "$kopie"/
+if bash "$kopie/werkzeuge/alle-erzeugen.sh" >/dev/null 2>"$kopie/fehler.txt"; then
+  veraltet=$(diff -rq . "$kopie/website" | sed -E "s#^Files \./([^ ]+) and .*#  VERALTET: \1#")
+  if [ -n "$veraltet" ]; then echo "$veraltet"; echo "  -> bash werkzeuge/alle-erzeugen.sh ausführen"; fehler=1; fi
+else
+  echo "  FEHLER beim Erzeugen:"; sed 's/^/    /' "$kopie/fehler.txt"; fehler=1
+fi
+rm -rf "$kopie"
 
 [ $fehler -eq 0 ] && echo "Alles in Ordnung." || echo "Es gibt Meldungen (siehe oben)."
 exit $fehler

@@ -3,7 +3,7 @@
 # Kopf mit Eckdaten, großes Titelbild oder Film, kurze Texte nur aus Quellen, danach Bildblöcke in voller Breite.
 # Kopf und Fuß kommen von der Profilseite (Übersicht) bzw. der Webdesign-Seite (Projektseiten, gleiche Ordnertiefe).
 # Aufruf im Repository-Ordner:  python3 werkzeuge/referenzen.py
-import copy, html, importlib.util, json, pathlib, re
+import copy, hashlib, html, importlib.util, json, pathlib, re
 
 basis = pathlib.Path(__file__).resolve().parent.parent
 esc = lambda s: html.escape(s, quote=False)
@@ -636,10 +636,11 @@ def projektseite(p, nr):
           "creator": {"@id": "https://studio-aah.de/#studio"}, "inLanguage": "de"}
     ziel = basis / 'website' / 'referenzen' / p['slug'] / 'index.html'
     ziel.parent.mkdir(parents=True, exist_ok=True)
-    # Bilder mit Versionsnummer (Änderungszeit), damit Browser nach neuen Aufnahmen nicht das alte Bild zeigen (Anna 14.10.2026)
+    # Bilder mit Versionsnummer, damit Browser nach neuen Aufnahmen nicht das alte Bild zeigen (Anna 14.10.2026).
+    # Aus dem Dateiinhalt, nicht aus der Änderungszeit: so bleibt sie nach dem Klonen und auf beiden Macs gleich.
     def version(m):
         datei = basis / 'website' / m.group(2)
-        return m.group(1) + m.group(2) + (f'?v={int(datei.stat().st_mtime) % 1000000}' if datei.exists() else '')
+        return m.group(1) + m.group(2) + (f'?v={hashlib.md5(datei.read_bytes()).hexdigest()[:8]}' if datei.exists() else '')
     main = re.sub(r'(\.\./\.\./)(bilder/[^"\'()\s?]+\.(?:jpg|jpeg|png|webp))', version, main)
     seite = rahmen('service/webdesign/index.html', main, titel, p['satz'], url, ld)
     if p.get('_variante') and not p.get('_haupt'):  # Entwurfs-Variante: nicht verlinkt, nicht für Suchmaschinen

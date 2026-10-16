@@ -11,17 +11,20 @@
 - In Cloud-Sitzungen gibt es keinen Zugriff auf den iCloud-Ordner `Betrieb` (Projektstatus, Branding-Richtlinien). Die wichtigsten Regeln stehen deshalb unten. Was in `Betrieb` eingetragen werden müsste, am Ende als Liste für Anna ausgeben.
 
 ## Generatoren (immer nach Änderungen an Daten oder Vorlagen, vom Repository-Ordner aus)
+- **`bash werkzeuge/alle-erzeugen.sh`** – startet die fünf Seiten-Generatoren in der richtigen Reihenfolge (Preise → Blogbeitrag → Inhalte → Leistungsseiten → Referenzen). Einzeln nur, wenn man genau weiß, was man tut:
 - `python3 werkzeuge/preise-erzeugen.py` – Preise, Kostenrechner-Daten, Leiste, Glossar
-- `python3 werkzeuge/leistungsseiten.py` – alle Seiten unter `website/service/` aus `werkzeuge/leistungen-inhalte.json` und `werkzeuge/preise-daten.json`; Prozess, Kopf und Fuß kommen aus `website/index.html`
+- `python3 werkzeuge/blog/was-kostet-eine-website.py` – Blogbeitrag „Was kostet eine Website“ aus `werkzeuge/blog/was-kostet-eine-website-inhalt.html` (Inhalt) und Kopf/Fuß des KI-Artikels; Texte nur in der Inhaltsdatei ändern
 - `python3 werkzeuge/inhalte-erzeugen.py` – Referenzen, „Für wen“, Stimmen, Blog-Vorschau, Kennzahlen (Marker `<!-- NAME:START -->` … `<!-- NAME:ENDE -->`)
   - Kennzahl „Jahre selbstständig“ wird aus `"seit": 2020` in `werkzeuge/inhalte/kennzahlen.json` berechnet (Anna, 16.10.2026); sie zählt bei jedem Erzeugen weiter – nach dem Jahreswechsel einmal alle Generatoren laufen lassen und hochladen.
-- `python3 werkzeuge/blog/was-kostet-eine-website.py` – Blogbeitrag „Was kostet eine Website“ aus `werkzeuge/blog/was-kostet-eine-website-inhalt.html` (Inhalt) und Kopf/Fuß des KI-Artikels; Texte nur in der Inhaltsdatei ändern
+  - Liest die Lesezeit aus den fertigen Blogseiten, läuft also nach dem Blog-Skript.
+- `python3 werkzeuge/leistungsseiten.py` – alle Seiten unter `website/service/` aus `werkzeuge/leistungen-inhalte.json` und `werkzeuge/preise-daten.json`; der Prozess kommt aus `website/index.html`, Kopf und Fuß bleiben aus der bestehenden Seite erhalten
+- `python3 werkzeuge/referenzen.py` – Projektübersicht und Projektseiten unter `website/referenzen/` aus `werkzeuge/inhalte/projekte.json`; Kopf und Fuß von der Profil- bzw. Webdesign-Seite. Bild-Versionen `?v=` aus dem Dateiinhalt
 - `python3 werkzeuge/grafiken/ci-film.py` – CI-Grafik (`werkzeuge/grafiken/corporate-identity.html`)
 - `python3 werkzeuge/grafiken/druck-mockup.py PFAD/schreibtisch.jpg` – Druck-Mockup (Goldhammer-Visitenkarten auf Schreibtisch); Foto liegt nicht im Repository
 - `python3 werkzeuge/grafiken/fotostudio.py` – Porträts mit blauer Studiowand (Entwurf, Schwarz-Weiß-Vorlagen)
 - Erzeugte Bereiche nie direkt in `website/` ändern, sondern in der Quelle, dann neu erzeugen.
 - Nach CSS- oder JS-Änderungen die Cache-Version `?v=…` überall erhöhen (z. B. `sed` über `grep -rl` in `website` und `werkzeuge`), dann alle Generatoren laufen lassen.
-- Prüfen mit `bash werkzeuge/pruefen.sh` (Meldungen zu Entwurfsseiten `website/entwurf-…` ignorieren, falls es welche gibt; sie haben bewusst keinen Kopf und Fuß).
+- Prüfen mit `bash werkzeuge/pruefen.sh` – Kopf und Fuß, Links und Bilder, und ob die erzeugten Bereiche aktuell sind (Meldungen zu Entwurfsseiten `website/entwurf-…` ignorieren, falls es welche gibt; sie haben bewusst keinen Kopf und Fuß).
 - Python 3.9: keine verschachtelten f-Strings mit gleichen Anführungszeichen.
 
 ## Gestaltungsregeln (Kurzfassung der Branding-Richtlinien)
@@ -118,7 +121,7 @@
 ## Regeln für den Code
 - Eine CSS-Datei `website/css/stil.css`; Farben, Schriften und Abstände als CSS-Variablen am Anfang.
 - Schriften lokal aus `website/schriften/` (woff2), nichts von fremden Servern laden.
-- Keine Fremddienste, keine Cookies, kein Analyse-Werkzeug, kein JavaScript-Rahmenwerk. JavaScript nur, wo es ohne nicht geht (z. B. Mobilmenü), und dann wenige Zeilen.
+- Keine Fremddienste, keine Cookies, kein Analyse-Werkzeug, kein JavaScript-Rahmenwerk. Ausnahmen (Anna, 16.10.2026): Formspark für die Anfrageformulare und Brevo für den Newsletter; beide stehen in der Datenschutzerklärung. Neue Dienste nur nach Annas OK und mit Eintrag in der Datenschutzerklärung. JavaScript nur, wo es ohne nicht geht (z. B. Mobilmenü), und dann wenige Zeilen.
 - Nur relative Pfade – der Benutzername ist auf den beiden Macs verschieden.
 - Zugänglichkeit: sinnvolle Überschriften-Reihenfolge, Alternativtexte, sichtbarer Fokus, ausreichender Kontrast.
 - Nie ins Repository: Zugangsdaten, `.env`, Kundendaten, PDFs (siehe `.gitignore`).
