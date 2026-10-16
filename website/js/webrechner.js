@@ -180,7 +180,7 @@
       const re = Z.bestand === 'redesign', a = angaben();
       return `<h3 class="wr-h">Ihr Kostenvoranschlag</h3><p class="wr-warum">Das ist ein erster Richtwert. Den genauen Preis klären wir gemeinsam im kostenlosen Erstgespräch.</p>
       <ol class="wr-ablauf"><li><span class="wr-ablauf-k">01</span><span><b>Kostenvoranschlag</b> – unverbindlich, aus diesem Rechner</span></li><li><span class="wr-ablauf-k">02</span><span><b>Erstgespräch</b> – kostenlos: Wo stehen Sie, was wollen Sie, wen wollen Sie erreichen?</span></li><li><span class="wr-ablauf-k">03</span><span><b>Angebot</b> – auf dieser Grundlage</span></li><li><span class="wr-ablauf-k">04</span><span><b>Vertrag</b> – und los geht’s</span></li></ol>
-      <form class="wr-uebergabe anfrage-form" id="wr-anfrage" action="mailto:info@studio-aah.de?subject=Projektanfrage%20%C3%BCber%20den%20Kostenrechner" method="post" enctype="text/plain">
+      <form class="wr-uebergabe anfrage-form" id="wr-anfrage" action="https://submit-form.com/PQ3YFrvCS" method="post">
         <h4 class="wr-box-titel">Das geht mit Ihrer Anfrage an STUDIO AAH!</h4>
         <ul class="wr-uebersicht">${a.map(([t, v]) => `<li><span>${t}</span><span>${esc(v)}</span></li>`).join('')}</ul>
         ${felder('wr')}

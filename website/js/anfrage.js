@@ -3,7 +3,7 @@
 // Solange ENDPUNKT leer ist, baut das Formular wie bisher eine fertige E-Mail im E-Mail-Programm (mailto).
 // Die Formulare liegen auf Seiten eine Ebene tief (kontakt/, preise/), daher die Pfade mit ../
 window.Anfrage = (() => {
-  const ENDPUNKT = ''; // Formspark-Adresse des Formulars, z. B. 'https://submit-form.com/AbC123xy'
+  const ENDPUNKT = 'https://submit-form.com/PQ3YFrvCS'; // Formspark-Adresse des Formulars, z. B. 'https://submit-form.com/AbC123xy'
   const ADRESSE = 'info@studio-aah.de';
   const wert = (form, n) => (form.elements[n] ? form.elements[n].value.trim() : '');
 

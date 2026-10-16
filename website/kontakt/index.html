@@ -15,7 +15,7 @@
   <meta property="og:description" content="Projekt anfragen bei STUDIO AAH!: per E-Mail an info@studio-aah.de oder telefonisch. Das Erstgespräch ist kostenlos und unverbindlich.">
   <meta property="og:url" content="https://studio-aah.de/kontakt/">
   <meta property="og:image" content="https://studio-aah.de/bilder/vorschaubild.jpg">
-  <link rel="stylesheet" href="../css/stil.css?v=20261016q">
+  <link rel="stylesheet" href="../css/stil.css?v=20261016r">
 </head>
 <body>
 <a class="sprunglink" href="#inhalt">Zum Inhalt springen</a>
@@ -92,7 +92,7 @@
   </details>
 </header>
 <div class="mm-schleier" hidden></div>
-<script src="../js/menue.js?v=20261016q" defer></script>
+<script src="../js/menue.js?v=20261016r" defer></script>
 <!-- /KOPF -->
 
 <main id="inhalt">
@@ -106,8 +106,9 @@
       <p class="gedaempft">Machen Sie Ihre Website zu Ihrem stärksten Vertriebs- und Marketinginstrument. Klare Botschaften, markenzentriertes Design und ein flexibles CMS schaffen das Fundament, auf dem Ihr Unternehmen wachsen kann. Gemeinsam entwickeln wir eine Online Experience, die Ihr Business und Ihre Marke langfristig voranbringt.</p>
       <p class="meta">Erstgespräch kostenlos &amp; unverbindlich</p>
       <h2 class="alt-h3">Projektanfrage</h2>
-<!-- Anfrageformular (Anna 16.10.2026): dieselben Felder wie im Kostenrechner; baut eine E-Mail, js/anfrage.js -->
-<form class="anfrage-form kontakt-anfrage" data-anfrage="Projektanfrage" action="mailto:info@studio-aah.de?subject=Projektanfrage" method="post" enctype="text/plain">
+<!-- Anfrageformular (Anna 16.10.2026): dieselben Felder wie im Kostenrechner; Versand über Formspark (js/anfrage.js, ohne JavaScript per normalem POST mit Weiterleitung auf /danke/) -->
+<form class="anfrage-form kontakt-anfrage" data-anfrage="Projektanfrage" action="https://submit-form.com/PQ3YFrvCS" method="post">
+  <input type="hidden" name="_redirect" value="https://studio-aah.de/danke/"><input type="hidden" name="_append" value="false"><input type="hidden" name="betreff" value="Projektanfrage">
   <div class="anfrage-felder">
     <label for="ka-name">Name<input id="ka-name" name="name" autocomplete="name" required></label>
     <label for="ka-email">E-Mail<input id="ka-email" name="email" type="email" autocomplete="email" required></label>
@@ -116,7 +117,7 @@
   </div>
   <p class="anfrage-falle" aria-hidden="true"><label>Bitte leer lassen<input name="_honeypot" tabindex="-1" autocomplete="off"></label></p>
   <p class="anfrage-knoepfe"><button type="submit" class="button">Projekt anfragen <span aria-hidden="true">→</span></button> <a class="textlink" href="tel:+4917683089879">0176 830 898 79</a></p>
-  <p class="hinweis-klein anfrage-hinweis">Beim Klick öffnet sich Ihr E-Mail-Programm mit einer fertigen Nachricht an info@studio-aah.de. Erst wenn Sie sie dort absenden, erhalte ich Ihre Angaben – die Website selbst speichert und überträgt nichts. Mehr in der <a href="../datenschutz/#kontakt">Datenschutzerklärung</a>.</p>
+  <p class="hinweis-klein anfrage-hinweis">Ihre Angaben gehen über den Formulardienst Formspark (Belgien, Speicherung in der EU) per E-Mail an mich. Mehr in der <a href="../datenschutz/#kontakt">Datenschutzerklärung</a>.</p>
   <div class="anfrage-danach" role="status" hidden></div>
 </form>
 <p class="mail-zeile">
@@ -136,8 +137,8 @@
   <a class="textlink" href="../website-review/">Mehr zum Website-Review <span aria-hidden="true">→</span></a>
 </div>
 <p class="hinweis-klein">Die Terminbuchung läuft über Google Kalender. Dort gelten die Datenschutzhinweise von Google.</p>
-<script src="../js/kontakt.js?v=20261016q" defer></script>
-<script src="../js/anfrage.js?v=20261016q" defer></script>
+<script src="../js/kontakt.js?v=20261016r" defer></script>
+<script src="../js/anfrage.js?v=20261016r" defer></script>
     </div>
   </section>
 
