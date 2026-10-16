@@ -446,7 +446,7 @@ window.PREISE = {
      "id": "retainer",
      "name": "Retainer – laufende Betreuung",
      "anfrage": true,
-     "wer": "Betreute Weiterentwicklung Ihrer Website, ab 65 € pro Stunde: Texte und Bilder austauschen, neue Unterseiten, Abschnitte bearbeiten.",
+     "wer": "Betreute Weiterentwicklung Ihrer Website, 50–85 € netto pro Stunde, je nach Unternehmensgröße: Texte und Bilder austauschen, neue Unterseiten, Abschnitte bearbeiten.",
      "items": [],
      "ab": true
     }

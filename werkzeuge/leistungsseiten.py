@@ -23,6 +23,7 @@ def preis(e):
     if e.get('anfrage'): return 'auf Anfrage'
     if e.get('anteil'): return f"+{int(e['anteil'] * 100)}&nbsp;% {NETTO}"
     if e.get('monat'): return f"ab {euro(e['monat'])} {NETTO} / Monat"
+    if e.get('stunde') and e.get('stundeBis'): return f"{e['stunde']}–{euro(e['stundeBis'])} {NETTO} / Stunde, je nach Unternehmensgröße"
     if e.get('stunde'): return f"ab {euro(e['stunde'])} {NETTO} / Stunde"
     return ('ab ' if e.get('ab', True) else '') + euro(e['preis']) + ' ' + NETTO
 
@@ -295,7 +296,7 @@ def seite(key, c):
                  "priceSpecification": {"@type": "PriceSpecification", "minPrice": e['preis'], "priceCurrency": "EUR", "valueAddedTaxIncluded": False}}
                 for e in g['pakete'] if e.get('preis')]
     angebote += [{"@type": "Offer", "name": e['name'], "priceCurrency": "EUR",
-                  "priceSpecification": {"@type": "UnitPriceSpecification", "minPrice": e['stunde'], "priceCurrency": "EUR", "unitText": "Stunde", "valueAddedTaxIncluded": False}}
+                  "priceSpecification": {"@type": "UnitPriceSpecification", "minPrice": e['stunde'], **({"maxPrice": e['stundeBis']} if e.get('stundeBis') else {}), "priceCurrency": "EUR", "unitText": "Stunde", "valueAddedTaxIncluded": False}}
                  for e in g['pakete'] if e.get('stunde') and not e.get('preis')]
     graph = [json.loads(studio.group(0)) if studio else {"@id": "https://studio-aah.de/#studio"},
              {"@type": "Service", "@id": url + '#leistung', "name": c['titel'], "description": intro, "url": url,

@@ -298,7 +298,8 @@
     {
      "id": "retainer-web",
      "name": "Retainer",
-     "stunde": 65,
+     "stunde": 50,
+     "stundeBis": 85,
      "kurz": "Betreute Weiterentwicklung Ihrer Website: Texte und Bilder austauschen, neue Unterseiten erstellen, Abschnitte bearbeiten",
      "nurSeite": true
     }
@@ -513,7 +514,7 @@
      "id": "retainer",
      "name": "Retainer – laufende Betreuung",
      "anfrage": true,
-     "wer": "Betreute Weiterentwicklung Ihrer Website, ab 65 € pro Stunde: Texte und Bilder austauschen, neue Unterseiten, Abschnitte bearbeiten.",
+     "wer": "Betreute Weiterentwicklung Ihrer Website, 50–85 € netto pro Stunde, je nach Unternehmensgröße: Texte und Bilder austauschen, neue Unterseiten, Abschnitte bearbeiten.",
      "items": [],
      "ab": true
     }
@@ -562,6 +563,10 @@
   [
    "Wireframe, Prototyp",
    "Wireframe = einfacher Bauplan einer Seite. Prototyp = klickbarer Entwurf, bevor programmiert wird."
+  ],
+  [
+   "Stundensatz",
+   "Für Arbeiten nach Aufwand, etwa spätere Änderungen, weitere Korrekturrunden oder den Retainer. Er richtet sich nach der Größe Ihres Unternehmens: Für Selbstständige und kleine Betriebe liegt er bei 50 bis 65 €, für mittelständische Unternehmen bei bis zu 85 € netto. Den genauen Satz nenne ich Ihnen im Angebot."
   ]
  ],
  "startseite": [
@@ -619,7 +624,7 @@
    "titel": "Retainer",
    "bild": "bilder/leistung-retainer.jpg",
    "link": "service/retainer/",
-   "text": "Betreute Weiterentwicklung Ihrer Website: neue Texte und Bilder, Unterseiten und Abschnitte, ab 65 € pro Stunde."
+   "text": "Betreute Weiterentwicklung Ihrer Website: neue Texte und Bilder, Unterseiten und Abschnitte, 50–85 € netto pro Stunde, je nach Unternehmensgröße."
   },
   {
    "id": "ki",
