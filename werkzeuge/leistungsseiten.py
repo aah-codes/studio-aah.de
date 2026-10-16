@@ -4,7 +4,7 @@
 # Aufruf im Repository-Ordner:  python3 werkzeuge/leistungsseiten.py [id …]   (ohne id: alle)
 import json, re, sys
 
-from gemeinsam import (LINKEDIN, NETTO_SATZ, STUDIO_ID, WEBSITE, WERKZEUGE, esc, lade_json, lade_skript,
+from gemeinsam import (LINKEDIN, NETTO_SATZ, STUDIO_ID, TRENNEN_LEISTUNGEN, WEBSITE, WERKZEUGE, esc, lade_json, lade_skript,
                        paket_karte, preis, seitenrahmen, trennen as trennen_mit)
 
 preise = lade_json('preise-daten.json')
@@ -37,8 +37,7 @@ def preise_link(g, pre):
 TERMINE = 'Einmal pro Woche einen Termin, 45 Minuten, online über Google Meet oder Teams, je nachdem, was Sie brauchen.'
 # Hinweis im Kleingedruckten unter Karten, Tabelle und Zusatzleistungen (B2B: Nettopreise, Umsatzsteuer kommt dazu)
 NETTO_HINWEIS = f'<p class="lsx-klein">{NETTO_SATZ}</p>'
-# Weiche Trennstriche für lange Wörter, damit sie auf schmalen Handys sauber umbrechen (Anna 13.10.2026); nach esc() anwenden
-TRENNEN = {'Unternehmenspräsentation': 'Unternehmens&shy;präsentation', 'Mitbewerberrecherche': 'Mitbewerber&shy;recherche', 'Unternehmensidentität': 'Unternehmens&shy;identität'}
+TRENNEN = TRENNEN_LEISTUNGEN
 
 
 def trennen(text):

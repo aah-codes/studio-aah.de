@@ -1,86 +1,65 @@
 # Erzeugt aus EINER Datenquelle (preise-daten.json): Daten des Kostenrechners Webdesign js/pakete-daten.js,
 # Bereichsleiste, Preislisten + Glossar der Preisseite und Leistungskarten der Startseite. Preise und Paketinhalte nur in preise-daten.json ändern.
 # Aufruf im Repository-Ordner:  python3 werkzeuge/preise-erzeugen.py
-import html, json, pathlib, re
+import json, re
 
-basis = pathlib.Path(__file__).resolve().parent.parent
-daten = json.loads((basis / 'werkzeuge' / 'preise-daten.json').read_text(encoding='utf-8'))
-esc = lambda s: html.escape(s, quote=False)
+from gemeinsam import NETTO_SATZ, PFEIL, TRENNEN_LEISTUNGEN, WEBSITE, einsetzen, ersetze_einmal, esc, lade_json, paket_karte
 
-
-seite = basis / 'website' / 'preise' / 'index.html'
-t = seite.read_text(encoding='utf-8')
-# Bereichsleiste: Kostenrechner (nur Webdesign), dann die Preislisten der übrigen Leistungen (Anna 16.10.2026)
+daten = lade_json('preise-daten.json')
+# Preislisten der übrigen Leistungen; Webdesign hat stattdessen den Kostenrechner (Anna 16.10.2026)
 LISTEN = [g for g in daten['gruppen'] if g['id'] != 'website']
-leiste = ''.join(f'<a href="#r-{g["id"]}">{esc(g["kurz"])}</a>' for g in LISTEN)
-t = re.sub(r'(<nav class="preis-leiste"[^>]*>\n  <a href="#rechner">Kostenrechner Webdesign</a>).*?(<a href="#glossar">Glossar</a>)',
-           lambda m: m.group(1) + leiste + m.group(2), t, count=1, flags=re.S)
-seite.write_text(t, encoding='utf-8')
-
-# Kostenrechner Webdesign (js/webrechner.js) bekommt nur die Gruppe „website“ und den Block „webrechner“
-web = next(g for g in daten['gruppen'] if g['id'] == 'website')
-paket = {e['id']: e for e in web['pakete']}
-rechner = {'basis': paket['neu']['preis'], 'redesign': paket['redesign']['preis'] - paket['neu']['preis'], 'seite': paket['neu']['seite'],
-           'extras': {e['id']: {k: v for k, v in e.items() if k != 'id'} for e in web['extras']},
-           **{k: v for k, v in daten['webrechner'].items() if not k.startswith('_')}}
-assert len(rechner) == 4 + sum(not k.startswith('_') for k in daten['webrechner']), 'Schlüssel in „webrechner“ überschreibt basis/redesign/seite/extras'
-(basis / 'website' / 'js' / 'pakete-daten.js').write_text(
-    '// Erzeugt von werkzeuge/preise-erzeugen.py aus werkzeuge/preise-daten.json – nicht von Hand ändern\nwindow.WEBRECHNER = '
-    + json.dumps(rechner, ensure_ascii=False, indent=1) + ';\n', encoding='utf-8')
 
 
-# --- Preislisten der übrigen Leistungen (ohne Rechner), gleiche Karten wie auf den Leistungsseiten ---
-euro = lambda n: f"{n:,}".replace(',', '.') + '&nbsp;€'
-def preis(e):
-    if e.get('anfrage'): return 'auf Anfrage'
-    if e.get('stunde') and e.get('stundeBis'): return f"{e['stunde']}–{euro(e['stundeBis'])} / Stunde"
-    return ('ab ' if e.get('ab', True) else '') + euro(e['preis']) + ' <small class="lsx-netto">netto</small>'
-def karte(e):
-    liste = ''.join(f'<li>{esc(x)}</li>' for x in e.get('items', []))
-    badge = '<p class="lsx-badge">Gefragt</p>' if e.get('gefragt') else ''
-    return (f'      <article class="lsx-karte{" lsx-gefragt" if e.get("gefragt") else ""}">\n'
-            f'        {badge}<h3 class="lsx-karte-name">{esc(e["name"])}</h3>\n'
-            f'        <p class="lsx-karte-preis">{preis(e)}</p>\n        <p class="lsx-karte-wer">{esc(e.get("wer") or "")}</p>\n'
-            f'        <p class="lsx-karte-dauer"></p>\n        <p class="lsx-karte-plus">{esc(e.get("plus") or "")}</p><ul class="lsx-karte-liste">{liste}</ul>\n      </article>')
-def liste_html(g):
-    mehr = f'<p><a class="textlink" href="{g["link"]}">Mehr zu {esc(g["name"])} <span aria-hidden="true">→</span></a></p>' if g.get('link') else ''
+def rechner_daten():
+    """Kostenrechner Webdesign (js/webrechner.js) bekommt nur die Gruppe „website“ und den Block „webrechner“."""
+    web = next(g for g in daten['gruppen'] if g['id'] == 'website')
+    paket = {e['id']: e for e in web['pakete']}
+    rechner = {'basis': paket['neu']['preis'], 'redesign': paket['redesign']['preis'] - paket['neu']['preis'], 'seite': paket['neu']['seite'],
+               'extras': {e['id']: {k: v for k, v in e.items() if k != 'id'} for e in web['extras']},
+               **{k: v for k, v in daten['webrechner'].items() if not k.startswith('_')}}
+    if len(rechner) != 4 + sum(not k.startswith('_') for k in daten['webrechner']):
+        raise SystemExit('Schlüssel in „webrechner“ überschreibt basis/redesign/seite/extras')
+    return ('// Erzeugt von werkzeuge/preise-erzeugen.py aus werkzeuge/preise-daten.json – nicht von Hand ändern\nwindow.WEBRECHNER = '
+            + json.dumps(rechner, ensure_ascii=False, indent=1) + ';\n')
+
+
+def preisliste(g):
+    """Preisliste einer Leistung mit denselben Paketkarten wie auf der Leistungsseite (Anna 16.10.2026)."""
+    mehr = f'<p><a class="textlink" href="{g["link"]}">Mehr zu {esc(g["name"])}{PFEIL}</a></p>' if g.get('link') else ''
     return (f'<section class="preisliste" id="r-{g["id"]}" aria-labelledby="r-{g["id"]}-titel">\n  <div class="preisliste-kopf"><p class="meta">Preisliste</p>'
             f'<h2 class="preis-h2" id="r-{g["id"]}-titel">{esc(g["name"])}</h2><p class="gedaempft">{esc(g.get("intro") or "")}</p>{mehr}</div>\n'
-            '    <div class="lsx-karten">\n' + '\n'.join(karte(e) for e in g['pakete']) + '\n    </div>\n</section>')
-preislisten = '\n'.join(liste_html(g) for g in LISTEN) + '\n<p class="preis-netto gedaempft preisliste-netto">Alle Preise sind Nettopreise zzgl. 19&nbsp;% Umsatzsteuer (USt.).</p>'
+            '    <div class="lsx-karten">\n' + '\n'.join(paket_karte(e, TRENNEN_LEISTUNGEN) for e in g['pakete']) + '\n    </div>\n</section>')
 
 
-# --- Glossar (Preisseite) ---
-def glossar_html():
+def glossar():
     zeilen = ''.join(f'    <div><dt>{esc(a)}</dt><dd>{esc(b)}</dd></div>\n' for a, b in daten['glossar'])
     return ('<section class="glossar" id="glossar" aria-labelledby="glossar-titel">\n  <p class="meta">Begriffe kurz erklärt</p>\n'
             '  <h2 class="preis-h2" id="glossar-titel">Glossar</h2>\n  <dl class="glossar-liste">\n' + zeilen + '  </dl>\n</section>')
 
 
-def einsetzen(text, name, inhalt):
-    return re.sub(rf'<!-- {name}:START -->.*?<!-- {name}:ENDE -->', lambda m: f'<!-- {name}:START -->\n{inhalt}\n<!-- {name}:ENDE -->', text, count=1, flags=re.S)
+def preisseite(t):
+    # Bereichsleiste: Kostenrechner (nur Webdesign), dann die Preislisten der übrigen Leistungen (Anna 16.10.2026)
+    leiste = ''.join(f'<a href="#r-{g["id"]}">{esc(g["kurz"])}</a>' for g in LISTEN)
+    t = ersetze_einmal(r'(<nav class="preis-leiste"[^>]*>\n  <a href="#rechner">Kostenrechner Webdesign</a>).*?(<a href="#glossar">Glossar</a>)',
+                       lambda m: m.group(1) + leiste + m.group(2), t, 'Bereichsleiste der Preisseite', re.S)
+    preislisten = '\n'.join(preisliste(g) for g in LISTEN) + f'\n<p class="preis-netto gedaempft preisliste-netto">{NETTO_SATZ}</p>'
+    return einsetzen(einsetzen(t, 'GLOSSAR', glossar()), 'PREISLISTEN', preislisten)
 
 
-seite = basis / 'website' / 'preise' / 'index.html'
-seite.write_text(einsetzen(einsetzen(seite.read_text(encoding='utf-8'), 'GLOSSAR', glossar_html()), 'PREISLISTEN', preislisten), encoding='utf-8')
+def start_leistungen():
+    """Startseite: Leistungen als Karten (9 Stück) mit Chips darüber.
+    Ohne Kundenbilder (Anna 13.10.2026: Kunden stehen in den Success Stories): nur das Clay-Icon, ohne Formen."""
+    icons = {k: v['icon'] for k, v in lade_json('leistungen-inhalte.json').items() if isinstance(v, dict) and 'icon' in v}
+    chips = ''.join(f'<a href="#k-{k["id"]}">{esc(k["titel"])}</a>' for k in daten['startseite'])
+    karten = ''.join(f'<a class="ls-karte" href="{k["link"]}" id="k-{k["id"]}"><span class="ls-bild"><img src="{icons[k["id"]]}" alt="" width="400" height="400" loading="lazy"></span>'
+                     f'<span class="ls-karte-titel">{esc(k["titel"])}</span><span class="ls-karte-text">{esc(k["text"])}</span></a>' for k in daten['startseite'])
+    return ('  <section class="start-leistungen" aria-labelledby="leistungen">\n    <div class="sektionskopf"><p class="meta">Was ich mache</p>'
+            '<h2 class="gr-xxl" id="leistungen">Leistungen</h2></div>\n'
+            f'    <nav class="leistungs-chips" aria-label="Leistungen">{chips}<a href="preise/#rechner">Kostenrechner →</a></nav>\n'
+            f'    <div class="ls-raster">{karten}</div>\n'
+            f'    <p class="ls-grundsatz"><a class="textlink" href="service/markenbildung/#corporate-identity">Grundlage für alles, was ich gestalte: die Corporate Identity{PFEIL}</a></p>\n  </section>')
 
-# --- Startseite: Leistungen als Karten (9 Stück) mit Chips darüber ---
-chips = ''.join(f'<a href="#k-{k["id"]}">{esc(k["titel"])}</a>' for k in daten['startseite'])
-# Leistungskarten ohne Kundenbilder (Anna 13.10.2026: Kunden stehen in den Success Stories): nur das Clay-Icon, ohne Formen
-ICONS = {k: v['icon'] for k, v in json.loads((basis / 'werkzeuge' / 'leistungen-inhalte.json').read_text(encoding='utf-8')).items() if isinstance(v, dict) and 'icon' in v}
-def ls_bild(i, k):
-    return f'<span class="ls-bild"><img src="{ICONS[k["id"]]}" alt="" width="400" height="400" loading="lazy"></span>'
 
-
-karten_s = ''.join(f'<a class="ls-karte" href="{k["link"]}" id="k-{k["id"]}">{ls_bild(i, k)}'
-                   f'<span class="ls-karte-titel">{esc(k["titel"])}</span><span class="ls-karte-text">{esc(k["text"])}</span></a>' for i, k in enumerate(daten['startseite']))
-start_html = ('  <section class="start-leistungen" aria-labelledby="leistungen">\n    <div class="sektionskopf"><p class="meta">Was ich mache</p>'
-              '<h2 class="gr-xxl" id="leistungen">Leistungen</h2></div>\n'
-              f'    <nav class="leistungs-chips" aria-label="Leistungen">{chips}<a href="preise/#rechner">Kostenrechner →</a></nav>\n'
-              f'    <div class="ls-raster">{karten_s}</div>\n'
-              '    <p class="ls-grundsatz"><a class="textlink" href="service/markenbildung/#corporate-identity">Grundlage für alles, was ich gestalte: die Corporate Identity <span aria-hidden="true">→</span></a></p>\n  </section>')
-start = basis / 'website' / 'index.html'
-start.write_text(einsetzen(start.read_text(encoding='utf-8'), 'LEISTUNGEN', start_html), encoding='utf-8')
 # --- Startseite, Hero: Leistungen als Kategorie-Leiste wie bei Dribbble (Anna 13.10.2026) ---
 # Jede Karte führt zur Leistungsseite. Wo es ein echtes Beispiel gibt, steht es als Mockup in der Karte, sonst das Kartenbild der Leistung.
 BEISPIELE = {
@@ -127,13 +106,22 @@ KATEGORIEN = [
     {'id': 'ui-ux', 'titel': 'Produktdesign', 'link': 'service/ui-ux/'},
     {'id': 'typo', 'titel': 'Typografie', 'link': 'service/markenbildung/'},
 ]
-def kat_bild(k):
-    return BEISPIELE.get(k['id']) or '<img src="' + k['bild'] + '" alt="" loading="lazy">'
 
 
-kategorien = ''.join('      <a class="kat" href="' + k['link'] + '"><span class="kat-stapel"><span class="kat-bild">' + kat_bild(k)
-                     + '</span></span><span class="kat-name">' + esc(k['titel']) + '</span></a>\n' for k in KATEGORIEN)
-hero_html = ('  <nav class="hero-band" aria-label="Leistungen im Überblick">\n    <div class="hero-spur">\n' + kategorien + '    </div>\n'
-             '    <button type="button" class="band-pause" aria-pressed="false"><span class="unsichtbar">Laufband anhalten</span></button>\n  </nav>')
-start.write_text(einsetzen(start.read_text(encoding='utf-8'), 'HEROBAND', hero_html), encoding='utf-8')
-print('Rechner-Daten, Leiste, Glossar und Startseite geschrieben')
+def heroband():
+    kategorien = ''.join('      <a class="kat" href="' + k['link'] + '"><span class="kat-stapel"><span class="kat-bild">' + BEISPIELE[k['id']]
+                         + '</span></span><span class="kat-name">' + esc(k['titel']) + '</span></a>\n' for k in KATEGORIEN)
+    return ('  <nav class="hero-band" aria-label="Leistungen im Überblick">\n    <div class="hero-spur">\n' + kategorien + '    </div>\n'
+            '    <button type="button" class="band-pause" aria-pressed="false"><span class="unsichtbar">Laufband anhalten</span></button>\n  </nav>')
+
+
+def schreibe(datei, aendern):
+    pfad = WEBSITE / datei
+    pfad.write_text(aendern(pfad.read_text(encoding='utf-8')), encoding='utf-8')
+
+
+if __name__ == '__main__':
+    (WEBSITE / 'js' / 'pakete-daten.js').write_text(rechner_daten(), encoding='utf-8')
+    schreibe('preise/index.html', preisseite)
+    schreibe('index.html', lambda t: einsetzen(einsetzen(t, 'LEISTUNGEN', start_leistungen()), 'HEROBAND', heroband()))
+    print('Rechner-Daten, Leiste, Glossar und Startseite geschrieben')

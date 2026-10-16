@@ -24,6 +24,7 @@
 - `python3 werkzeuge/grafiken/druck-mockup.py PFAD/schreibtisch.jpg` – Druck-Mockup (Goldhammer-Visitenkarten auf Schreibtisch); Foto liegt nicht im Repository
 - `python3 werkzeuge/grafiken/fotostudio.py` – Porträts mit blauer Studiowand (Entwurf, Schwarz-Weiß-Vorlagen)
 - Erzeugte Bereiche nie direkt in `website/` ändern, sondern in der Quelle, dann neu erzeugen.
+- Gemeinsame Hilfsfunktionen der Generatoren (Pfade, `esc`, `euro`, `einsetzen`, Seitenrahmen, Bildmaße, Paketkarte) stehen in `werkzeuge/gemeinsam.py` – dort ändern, nicht in den Skripten kopieren. Ersetzungen brechen mit Meldung ab, wenn ein Marker fehlt. Texte von „Für wen“ (Startseite) in `werkzeuge/inhalte/fuer-wen.json`.
 - Nach CSS- oder JS-Änderungen die Cache-Version `?v=…` überall erhöhen (z. B. `sed` über `grep -rl` in `website` und `werkzeuge`), dann alle Generatoren laufen lassen.
 - Prüfen mit `bash werkzeuge/pruefen.sh` – Kopf und Fuß, Links und Bilder, und ob die erzeugten Bereiche aktuell sind (Meldungen zu Entwurfsseiten `website/entwurf-…` ignorieren, falls es welche gibt; sie haben bewusst keinen Kopf und Fuß).
 - Python 3.9: keine verschachtelten f-Strings mit gleichen Anführungszeichen.

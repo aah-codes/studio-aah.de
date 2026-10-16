@@ -11,6 +11,8 @@ LINKEDIN = 'https://www.linkedin.com/in/anna-h%C3%A4rtelt-8513b8213/details/reco
 NETTO = '<small class="lsx-netto">netto</small>'
 NETTO_SATZ = 'Alle Preise sind Nettopreise zzgl. 19&nbsp;% Umsatzsteuer (USt.).'
 PFEIL = ' <span aria-hidden="true">→</span>'
+# Weiche Trennstriche in Paketnamen und Prozess-Schritten, damit lange Wörter auf schmalen Handys sauber umbrechen (Anna 13.10.2026)
+TRENNEN_LEISTUNGEN = {'Unternehmenspräsentation': 'Unternehmens&shy;präsentation', 'Mitbewerberrecherche': 'Mitbewerber&shy;recherche', 'Unternehmensidentität': 'Unternehmens&shy;identität'}
 
 
 def esc(text):
