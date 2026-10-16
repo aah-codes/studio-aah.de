@@ -1,6 +1,6 @@
 // Kostenrechner Webdesign auf der Preisseite: fünf Schritte wie an einer Kasse (Konzept Anna 16.10.2026).
 // Marke → Neu oder Redesign (Basispreis) → Seitenstruktur (Sitemap zum Bauen) → Extras → Ihr Bon. Der Kassenbon rechnet mit.
-// Rechnet nur im Browser, speichert nichts. Anfrage über das E-Mail-Programm (js/anfrage.js), PDF über den Druckdialog.
+// Rechnet nur im Browser, speichert nichts. Anfrage über den Formulardienst (js/anfrage.js), PDF über den Druckdialog.
 // Daten: js/pakete-daten.js (erzeugt aus werkzeuge/preise-daten.json).
 (() => {
   const D = window.WEBRECHNER;
@@ -35,7 +35,7 @@
   /* ---------- Sitemap ---------- */
   const alle = (liste = Z.sitemap, aus = []) => { liste.forEach((k) => { aus.push(k); alle(k.kinder, aus); }); return aus; };
   function finde(id, liste = Z.sitemap, eltern = null) {
-    for (const k of liste) { if (k.id == id) return { k, liste, eltern }; const r = finde(id, k.kinder, k); if (r) return r; }
+    for (const k of liste) { if (k.id === +id) return { k, liste, eltern }; const r = finde(id, k.kinder, k); if (r) return r; }
     return null;
   }
   const seitenzahl = () => alle().filter((k) => k.typ === 'seite').length;
@@ -45,7 +45,7 @@
     return Object.keys(MODULE).filter((t) => m.has(t));
   };
   const nimmRaus = (id) => { const r = finde(id); r.liste.splice(r.liste.indexOf(r.k), 1); return r.k; };
-  const istNachfahre = (k, id) => k.kinder.some((c) => c.id == id || istNachfahre(c, id));
+  const istNachfahre = (k, id) => k.kinder.some((c) => c.id === +id || istNachfahre(c, id));
   function setzeModul(typ, an) {
     if (!MODULE[typ].bereich) { if (an) Z.funk.add(typ); else Z.funk.delete(typ); return; }
     const da = alle().find((k) => k.typ === typ);
@@ -180,25 +180,24 @@
       const re = Z.bestand === 'redesign', a = angaben();
       return `<h3 class="wr-h">Ihr Kostenvoranschlag</h3><p class="wr-warum">Das ist ein erster Richtwert. Den genauen Preis klären wir gemeinsam im kostenlosen Erstgespräch.</p>
       <ol class="wr-ablauf"><li><span class="wr-ablauf-k">01</span><span><b>Kostenvoranschlag</b> – unverbindlich, aus diesem Rechner</span></li><li><span class="wr-ablauf-k">02</span><span><b>Erstgespräch</b> – kostenlos: Wo stehen Sie, was wollen Sie, wen wollen Sie erreichen?</span></li><li><span class="wr-ablauf-k">03</span><span><b>Angebot</b> – auf dieser Grundlage</span></li><li><span class="wr-ablauf-k">04</span><span><b>Vertrag</b> – und los geht’s</span></li></ol>
-      <form class="wr-uebergabe anfrage-form" id="wr-anfrage" action="https://submit-form.com/PQ3YFrvCS" method="post">
+      <form class="wr-uebergabe anfrage-form" id="wr-anfrage" action="${window.Anfrage.ENDPUNKT}" method="post">
         <h4 class="wr-box-titel">Das geht mit Ihrer Anfrage an STUDIO AAH!</h4>
         <ul class="wr-uebersicht">${a.map(([t, v]) => `<li><span>${t}</span><span>${esc(v)}</span></li>`).join('')}</ul>
         ${felder('wr')}
         <p class="anfrage-knoepfe"><button type="submit" class="button">Projekt anfragen ${PFEIL}</button><button type="button" class="button button-zweit" data-pdf>Als PDF speichern <span aria-hidden="true">↓</span></button></p>
-        <p class="hinweis-klein">Alle Angaben aus dem Rechner gehen mit Ihrer Anfrage an mich und sind die Grundlage für unser Erstgespräch. Unverbindlich und kostenlos. <span class="anfrage-hinweis">${DATENSCHUTZ}</span></p>
+        <p class="hinweis-klein">Alle Angaben aus dem Rechner gehen mit Ihrer Anfrage an mich und sind die Grundlage für unser Erstgespräch. Unverbindlich und kostenlos. <span class="anfrage-hinweis">${window.Anfrage.HINWEIS}</span></p>
         <div class="anfrage-danach" role="status" hidden></div>
       </form>
       ${re ? `<div class="wr-review"><p class="meta">Für bestehende Websites</p><h4 class="wr-box-titel">Kostenloses Website-Review</h4>
         <p>30 Minuten online: Ich schaue mir Ihre Website mit dem Blick Ihrer Kundschaft und Ihrer Bewerberinnen und Bewerber an und nenne Ihnen konkrete Ansatzpunkte. Kostenlos und unverbindlich.</p>
         <p>Ihre Angaben aus dem Rechner schicken Sie mir vorab – Sie müssen nichts herunterladen. Dafür oben Name und E-Mail eintragen. <a href="../website-review/">Mehr zum Website-Review <span aria-hidden="true">→</span></a></p>
-        <ol class="wr-review-schritte"><li>Angaben senden${window.Anfrage.mitDienst ? '' : ': Ihr E-Mail-Programm öffnet sich mit allen Angaben'}.</li><li>Termin buchen in Google Kalender.</li></ol>
+        <ol class="wr-review-schritte"><li>Angaben senden.</li><li>Termin buchen in Google Kalender.</li></ol>
         <p><button type="button" class="button button-zweit" data-review>Angaben senden ${PFEIL}</button></p>
-        <div id="wr-review-termin" role="status" hidden><p>${window.Anfrage.mitDienst ? '<b>Danke, Ihre Angaben sind bei mir angekommen.</b> Jetzt noch den Termin wählen:' : '<b>Ihr E-Mail-Programm öffnet sich mit Ihren Angaben.</b> Bitte senden Sie die E-Mail dort ab. Öffnet sich nichts, finden Sie oben die Nachricht zum Kopieren. Danach:'}</p>
+        <div id="wr-review-termin" role="status" hidden><p><b>Danke, Ihre Angaben sind bei mir angekommen.</b> Jetzt noch den Termin wählen:</p>
           <p><a class="button button-zweit" href="${esc(D.review)}" target="_blank" rel="noopener">Jetzt Termin buchen <span aria-hidden="true">↗</span></a></p></div>
         <p class="hinweis-klein">Die Terminbuchung läuft über Google Kalender. Dort gelten die Datenschutzhinweise von Google.</p></div>` : ''}`;
     },
   };
-  const DATENSCHUTZ = 'Beim Klick öffnet sich Ihr E-Mail-Programm mit einer fertigen Nachricht an info@studio-aah.de. Erst wenn Sie sie dort absenden, erhalte ich Ihre Angaben – die Website selbst speichert und überträgt nichts. Mehr in der <a href="../datenschutz/#kontakt">Datenschutzerklärung</a>.';
   const felder = (p) => `<div class="anfrage-felder">
       <label for="${p}-name">Name<input id="${p}-name" name="name" autocomplete="name" required value="${esc(F.name)}"></label>
       <label for="${p}-email">E-Mail<input id="${p}-email" name="email" type="email" autocomplete="email" required value="${esc(F.email)}"></label>
@@ -283,7 +282,6 @@
     $('wr-leiste-mobil').innerHTML = `<div class="wr-lm-oben"><span>Schritt ${aktiv + 1} von ${SCHRITTE.length}</span><span>${s.nm}</span></div><div class="wr-lm-balken"><i style="width:${(aktiv + 1) / SCHRITTE.length * 100}%"></i></div>`;
     const el = $('wr-schritt');
     el.innerHTML = `<p class="meta wr-dach">${s.dt}</p>` + R[s.id]();
-    window.Anfrage.hinweise(el);
     $('wr-zurueck').hidden = aktiv === 0;
     $('wr-kein-kauf').hidden = aktiv !== 0;
     const w = $('wr-weiter');
@@ -401,8 +399,8 @@
     zug.ziel = null;
     if (!k || !schritt.contains(k)) return;
     const gezogeneKarte = finde(zug.id).k;
-    if (k.dataset.id) { if (k.dataset.id != zug.id && !istNachfahre(gezogeneKarte, k.dataset.id)) { k.classList.add('wr-ziel-vor'); zug.ziel = { art: 'vor', id: k.dataset.id }; } }
-    else if (k.dataset.ziel === 'kind') { if (k.dataset.kind != zug.id && gezogeneKarte.typ === 'seite' && !istNachfahre(gezogeneKarte, k.dataset.kind)) { k.classList.add('wr-ziel'); zug.ziel = { art: 'kind', id: k.dataset.kind }; } }
+    if (k.dataset.id) { if (k.dataset.id !== zug.id && !istNachfahre(gezogeneKarte, k.dataset.id)) { k.classList.add('wr-ziel-vor'); zug.ziel = { art: 'vor', id: k.dataset.id }; } }
+    else if (k.dataset.ziel === 'kind') { if (k.dataset.kind !== zug.id && gezogeneKarte.typ === 'seite' && !istNachfahre(gezogeneKarte, k.dataset.kind)) { k.classList.add('wr-ziel'); zug.ziel = { art: 'kind', id: k.dataset.kind }; } }
     else { (k.dataset.ziel === 'ende' ? k : schritt.querySelector('[data-neu]')).classList.add('wr-ziel'); zug.ziel = { art: 'ende' }; }
   }, { passive: false });
   window.addEventListener('pointerup', () => {
@@ -421,22 +419,4 @@
 
   wurzel.classList.add('wr-bereit');
   zeichne();
-})();
-
-// Bereichsleiste: markiert beim Scrollen den Abschnitt, in dem man gerade ist
-(() => {
-  const leiste = document.querySelector('.preis-leiste');
-  const links = leiste ? [...leiste.querySelectorAll('a[href^="#"]')] : [];
-  if (!links.length || !('IntersectionObserver' in window)) return;
-  const ziele = links.map((a) => document.querySelector(a.getAttribute('href'))).filter(Boolean);
-  const beob = new IntersectionObserver((eintraege) => {
-    eintraege.forEach((e) => {
-      if (!e.isIntersecting) return;
-      links.forEach((a) => a.classList.toggle('aktiv', a.getAttribute('href') === `#${e.target.id}`));
-      const aktiv = links.find((a) => a.classList.contains('aktiv'));
-      // nur die Leiste waagerecht nachführen – nie die Seite selbst scrollen
-      if (aktiv) leiste.scrollTo({ left: aktiv.offsetLeft - 16, behavior: 'smooth' });
-    });
-  }, { rootMargin: '-35% 0px -60% 0px' });
-  ziele.forEach((z) => beob.observe(z));
 })();

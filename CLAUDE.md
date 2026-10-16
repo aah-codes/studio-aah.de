@@ -122,8 +122,10 @@
 - Nach jeder Änderung den aktuellen Stand selbst in der Vorschau öffnen (Browser-Bereich der Desktop-App, `.claude/launch.json` → `website`, Port 8123) und die Adresse nennen, z. B. `http://localhost:8123/referenzen/bauer/` (Anna, 14.10.2026). GitHub Desktop zeigt nur Code, die Live-Seite erst nach dem Hochladen.
 
 ## Regeln für den Code
-- Eine CSS-Datei `website/css/stil.css`; Farben, Schriften und Abstände als CSS-Variablen am Anfang.
+- CSS: `website/css/stil.css` für alle Seiten, Farben, Schriften und Abstände als CSS-Variablen im einen `:root` am Anfang (keine festen Farbwerte im Rest der Datei). Bausteine der Projektseiten in `website/css/referenzen.css`, nur dort geladen (Anna, 16.10.2026; `referenzen.py` setzt den Link mit derselben Version wie `stil.css`).
+- Breakpoints: `max-width: 767.98px` / `min-width: 768px` und `max-width: 900px` / `min-width: 900.02px` (keine Lücke bei Zwischenbreiten durch Zoom); neue Regeln möglichst an die vorhandenen Stufen hängen.
 - Schriften lokal aus `website/schriften/` (woff2), nichts von fremden Servern laden.
+- JavaScript: `js/menue.js` für alle Seiten (ein Block, nichts global), Abläufe der Projektseiten in `js/referenzen.js` (nur dort geladen, Version wie `menue.js`). Pause-Tasten über die gemeinsame Hilfsfunktion in `referenzen.js`.
 - Keine Fremddienste, keine Cookies, kein Analyse-Werkzeug, kein JavaScript-Rahmenwerk. Ausnahmen (Anna, 16.10.2026): Formspark für die Anfrageformulare und Brevo für den Newsletter; beide stehen in der Datenschutzerklärung. Neue Dienste nur nach Annas OK und mit Eintrag in der Datenschutzerklärung. JavaScript nur, wo es ohne nicht geht (z. B. Mobilmenü), und dann wenige Zeilen.
 - Nur relative Pfade – der Benutzername ist auf den beiden Macs verschieden.
 - Zugänglichkeit: sinnvolle Überschriften-Reihenfolge, Alternativtexte, sichtbarer Fokus, ausreichender Kontrast.

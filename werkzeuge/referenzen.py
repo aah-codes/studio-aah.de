@@ -5,7 +5,7 @@
 # Aufruf im Repository-Ordner:  python3 werkzeuge/referenzen.py
 import copy, hashlib, json, re
 
-from gemeinsam import LINKEDIN, STUDIO_ID, WEBSITE, bildmass, esc, lade_skript, mass_attr, seitenrahmen, trennen as trennen_mit
+from gemeinsam import LINKEDIN, STUDIO_ID, WEBSITE, bildmass, ersetze_einmal, esc, lade_skript, mass_attr, seitenrahmen, trennen as trennen_mit
 
 I = lade_skript('inhalte-erzeugen.py')
 ALLE = I.PROJEKTE
@@ -765,6 +765,12 @@ def projektseite(p, nr):
         return m.group(1) + m.group(2) + (f'?v={hashlib.md5(datei.read_bytes()).hexdigest()[:8]}' if datei.exists() else '')
     main = re.sub(r'(\.\./\.\./)(bilder/[^"\'()\s?]+\.(?:jpg|jpeg|png|webp))', version, main)
     seite = rahmen('service/webdesign/index.html', main, titel, p['satz'], url, ld)
+    # Bausteine der Projektseiten stehen in einer eigenen CSS-Datei (Anna 16.10.2026), gleiche Version wie stil.css
+    seite = ersetze_einmal(r'(<link rel="stylesheet" href="\.\./\.\./css/stil\.css\?v=(\w+)">)',
+                           r'\1\n  <link rel="stylesheet" href="../../css/referenzen.css?v=\2">', seite, 'stil.css-Link')
+    # ebenso die Abläufe der Bausteine (js/referenzen.js), gleiche Version wie js/menue.js; am Seitenende, außerhalb von Kopf und Fuß
+    version = re.search(r'js/menue\.js\?v=(\w+)', seite).group(1)
+    seite = ersetze_einmal(r'\n</body>', f'\n  <script src="../../js/referenzen.js?v={version}" defer></script>\n</body>', seite, '</body>')
     if p.get('_variante') and not p.get('_haupt'):  # Entwurfs-Variante: nicht verlinkt, nicht für Suchmaschinen
         seite = seite.replace('</head>', '  <meta name="robots" content="noindex, nofollow">\n</head>', 1)
     ziel.write_text(seite, encoding='utf-8')

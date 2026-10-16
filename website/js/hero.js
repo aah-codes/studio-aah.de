@@ -20,17 +20,22 @@
     kopie.setAttribute('tabindex', '-1');
     spur.appendChild(kopie);
   });
-    const grund = still ? 0 : -0.9;
+  const grund = still ? 0 : -0.9; // Grundtempo in px pro Bild
   let x = 0, tempo = 0, zielTempo = grund, maus = null, ziehen = null, gezogen = false, breite = 0, angehalten = false, ueberKarte = false, fokus = false;
-  const messen = () => { breite = spur.scrollWidth / 2; };
+  // Die Bildschleife läuft nur, solange der Hero sichtbar ist und sich etwas bewegt (spart Rechenzeit und Akku)
+  let sichtbar = true, laeuft = false;
+  const wecken = () => { if (!laeuft && sichtbar) { laeuft = true; requestAnimationFrame(schritt); } };
+  const messen = () => { breite = spur.scrollWidth / 2; wecken(); };
   messen();
   window.addEventListener('resize', messen);
   window.addEventListener('load', messen);
+  if ('IntersectionObserver' in window) new IntersectionObserver((e) => { sichtbar = e[0].isIntersecting; wecken(); }).observe(hero);
 
   if (pause) pause.addEventListener('click', () => {
     angehalten = !angehalten;
+    // Umschalt-Taste: Beschriftung bleibt „Laufband anhalten“, der Zustand steckt in aria-pressed (sonst widerspricht sich die Ansage)
     pause.setAttribute('aria-pressed', String(angehalten));
-    pause.querySelector('.unsichtbar').textContent = angehalten ? 'Laufband weiterlaufen lassen' : 'Laufband anhalten';
+    wecken();
   });
 
   hero.addEventListener('pointermove', (e) => {
@@ -41,13 +46,15 @@
     maus = { x: e.clientX, y: e.clientY };
     ueberKarte = !!e.target.closest('.kat');
     if (!still) zielTempo = -((e.clientX - r.left) / r.width - .5) * 7;
+    wecken();
   });
-  hero.addEventListener('pointerleave', () => { maus = null; ueberKarte = false; zielTempo = grund; band.classList.remove('aktiv'); });
+  hero.addEventListener('pointerleave', () => { maus = null; ueberKarte = false; zielTempo = grund; band.classList.remove('aktiv'); wecken(); });
 
   // Ziehen erst ab 6 px Bewegung, damit ein normaler Klick auf eine Karte den Link öffnet
   band.addEventListener('pointerdown', (e) => {
     if (e.target.closest('.band-pause')) return;
     ziehen = { x: e.clientX, start: x, id: e.pointerId }; gezogen = false;
+    wecken();
   });
   band.addEventListener('pointermove', (e) => {
     if (!ziehen) return;
@@ -67,22 +74,26 @@
     fokus = true; tempo = 0;
     const b = band.getBoundingClientRect(), k = karte.getBoundingClientRect();
     if (k.left < b.left + 24 || k.right > b.right - 24) x -= k.left - b.left - 24;
+    wecken();
   });
-  band.addEventListener('focusout', () => { fokus = false; });
+  band.addEventListener('focusout', () => { fokus = false; wecken(); });
 
   function schritt() {
+    let ruht = false;
     if (breite) {
       const bandR = band.getBoundingClientRect();
-            const imBand = !!maus && maus.y > bandR.top - 40 && maus.y < bandR.bottom + 40;
+      const imBand = !!maus && maus.y > bandR.top - 40 && maus.y < bandR.bottom + 40;
       const halt = angehalten || ueberKarte || fokus;
-      if (!ziehen || !gezogen) { tempo += ((halt ? 0 : imBand ? zielTempo * .35 : zielTempo) - tempo) * .06; x += tempo; }
+      const ziel = halt ? 0 : imBand ? zielTempo * .35 : zielTempo;
+      if (!ziehen || !gezogen) { tempo += (ziel - tempo) * .06; x += tempo; }
       x = ((x % breite) - breite) % breite;
       spur.style.transform = `translate3d(${Math.round(x)}px,0,0)`; // ganze Pixel: Bilder und Schrift bleiben scharf
       band.classList.toggle('aktiv', imBand && !still);
+      ruht = !ziehen && ziel === 0 && Math.abs(tempo) < 0.01;
     }
+    if (!sichtbar || ruht) { laeuft = false; return; }
     requestAnimationFrame(schritt);
   }
-  requestAnimationFrame(schritt);
 })();
 
 // Animation-Karte: der Erklärfilm (animiertes WebP, läuft einmal) startet beim Darüberfahren neu;
