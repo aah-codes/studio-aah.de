@@ -55,7 +55,7 @@ s.append(f'<g transform="translate(1040 170)"><circle r="80" fill="{WS}" stroke=
          f'<line x1="0" y1="0" x2="0" y2="-56" stroke-width="3"/><line x1="0" y1="0" x2="44" y2="0" stroke-width="3"/></g><circle r="5" fill="{SCH}"/></g>')
 s.append(f'<g transform="translate(600 610) rotate(-6)"><path d="M0 0 H170 L212 50 L170 100 H0 Z" fill="{WS}" stroke="{SCH}" stroke-width="2" stroke-linejoin="round"/>'
          f'<circle cx="180" cy="50" r="8" fill="none" stroke="{SCH}" stroke-width="2"/><text x="18" y="38" font-family="JetBrains Mono, monospace" font-size="14" fill="{SCH}">AB</text>'
-         f'<text x="16" y="82" font-family="Anton, Impact, sans-serif" font-size="42" fill="{SCH}" letter-spacing="1">1.150 €</text></g>')
+         f'<text x="16" y="82" font-family="Anton, Impact, sans-serif" font-size="42" fill="{SCH}" letter-spacing="1">2.450 €</text></g>')
 # Boden und Figur, die das blaue Modul in die gestrichelte Lücke setzt
 s.append(f'<line x1="840" y1="700" x2="1150" y2="700" stroke="{SCH}" stroke-width="2"/>')
 fx, fy, k = 985, 700, 1.0
