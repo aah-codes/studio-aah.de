@@ -144,7 +144,7 @@ html = f'''  <figure class="ci-grafik ci-film" id="corporate-identity" role="img
     <figcaption class="ci-titel"><span class="ci-titel-gross">Das Corporate Design baut auf Culture, Communication und Behaviour auf.</span><span class="ci-unter">Zusammen ergeben sie die Corporate Identity, die in Wechselwirkung mit dem Corporate Image steht.</span></figcaption>
     {bild('quer')}
     {bild('hoch')}
-    <p class="ci-nochmal"><button type="button" class="textlink ci-nochmal-knopf">Noch einmal ansehen <span aria-hidden="true">↻</span></button></p>
+    <p class="ci-nochmal"><button type="button" class="textlink ci-pause-knopf" hidden>Anhalten <span aria-hidden="true">❚❚</span></button><button type="button" class="textlink ci-nochmal-knopf">Noch einmal ansehen <span aria-hidden="true">↻</span></button></p>
   </figure>'''
 ZIEL.write_text(html, encoding='utf-8')
 print('geschrieben:', ZIEL.name, len(html), 'Zeichen')

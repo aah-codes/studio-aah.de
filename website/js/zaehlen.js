@@ -12,7 +12,16 @@
     requestAnimationFrame(schritt);
   };
   const beob = new IntersectionObserver((e) => e.forEach((x) => { if (x.isIntersecting) { beob.unobserve(x.target); los(x.target); } }), { threshold: .6 });
-  zahlen.forEach((z) => { z.textContent = '0'; beob.observe(z); });
+  // Bildschirmleser bekommen die echte Zahl in einem unsichtbaren Text, die laufende Zahl ist nur fürs Auge
+  zahlen.forEach((z) => {
+    const echt = document.createElement('span');
+    echt.className = 'unsichtbar';
+    echt.textContent = z.dataset.zaehlen;
+    z.before(echt);
+    z.setAttribute('aria-hidden', 'true');
+    z.textContent = '0';
+    beob.observe(z);
+  });
 })();
 
 // Studio-Foto: Hinweise erscheinen nacheinander, sobald das Bild ins Bild kommt (bei „Bewegung reduzieren“ sofort)

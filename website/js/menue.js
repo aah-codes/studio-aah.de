@@ -1,3 +1,6 @@
+// Klasse „js“ am <html>: Einblend-Animationen verstecken Inhalte nur, wenn JavaScript läuft (ohne bleibt alles sichtbar)
+document.documentElement.classList.add('js');
+
 // Mega-Menü „Service“: öffnet per Klick, schließt mit Esc oder Klick daneben.
 // Ohne JavaScript führt „Service“ einfach auf /service/.
 (() => {
@@ -25,12 +28,24 @@
   }
   schalter.addEventListener('click', (e) => {
     e.preventDefault();
-    schalter.getAttribute('aria-expanded') === 'true' ? schliessen(false) : oeffnen(e.detail === 0);
+    if (schalter.getAttribute('aria-expanded') === 'true') schliessen(false);
+    else oeffnen(e.detail === 0);
   });
   schleier.addEventListener('click', () => schliessen(false));
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') schliessen(true); });
   menue.addEventListener('focusout', (e) => {
     if (!menue.contains(e.relatedTarget) && e.relatedTarget !== schalter) schliessen(false);
+  });
+})();
+
+// Mobilmenü (<details>, funktioniert ohne JavaScript): Escape schließt es, der Fokus geht zurück auf „Menü“
+(() => {
+  const mobil = document.querySelector('.kopf-mobil');
+  if (!mobil) return;
+  mobil.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape' || !mobil.open) return;
+    mobil.open = false;
+    mobil.querySelector('summary').focus();
   });
 })();
 
@@ -103,16 +118,38 @@
     }
     film.classList.add('wartet');
     svgs.forEach((s) => s.pauseAnimations && s.pauseAnimations());
-    // WCAG 2.2.2: Bewegung, die von selbst läuft, hält nach dem Aufbau an (rund 10 s Austausch, dann Ruhe)
-    let ruhe = null;
+    // WCAG 2.2.2: Bewegung, die von selbst läuft, hält nach dem Aufbau an (rund 22 s, dann Ruhe);
+    // bis dahin lässt sie sich mit „Anhalten“ stoppen und mit „Weiter“ fortsetzen
+    const DAUER = 22000;
+    const pause = film.querySelector('.ci-pause-knopf');
+    let ruhe = null, rest = DAUER, seit = 0;
+    const anhalten = (an) => {
+      film.classList.toggle('angehalten', an);
+      svgs.forEach((s) => { if (s.pauseAnimations) an ? s.pauseAnimations() : s.unpauseAnimations(); });
+      if (pause) pause.innerHTML = an ? 'Weiter <span aria-hidden="true">▶</span>' : 'Anhalten <span aria-hidden="true">❚❚</span>';
+    };
+    const zurRuhe = () => {
+      svgs.forEach((s) => s.pauseAnimations && s.pauseAnimations());
+      film.classList.add('ruhe');
+      if (pause) pause.hidden = true;
+    };
+    const laufen = () => { seit = Date.now(); ruhe = setTimeout(zurRuhe, rest); };
     const start = () => {
       clearTimeout(ruhe);
       film.classList.add('neu');
       void film.offsetWidth; // Animationen zurücksetzen
       film.classList.remove('neu', 'wartet', 'ruhe');
-      svgs.forEach((s) => { if (s.setCurrentTime) { s.setCurrentTime(0); s.unpauseAnimations(); } });
-      ruhe = setTimeout(() => { svgs.forEach((s) => s.pauseAnimations && s.pauseAnimations()); film.classList.add('ruhe'); }, 22000);
+      svgs.forEach((s) => s.setCurrentTime && s.setCurrentTime(0));
+      anhalten(false);
+      if (pause) pause.hidden = false;
+      rest = DAUER;
+      laufen();
     };
+    if (pause) pause.addEventListener('click', () => {
+      const an = !film.classList.contains('angehalten');
+      if (an) { clearTimeout(ruhe); rest -= Date.now() - seit; } else laufen();
+      anhalten(an);
+    });
     const knopf = film.querySelector('.ci-nochmal-knopf');
     if (knopf) knopf.addEventListener('click', start);
     if (!('IntersectionObserver' in window)) { start(); return; }
@@ -125,16 +162,25 @@
 
 // Referenz-Karussell: blättert alle 7 Sekunden weiter (nur sichtbar und ohne „Bewegung reduzieren“),
 // Pfeile blättern, Pause-Knopf hält an; Wischen auf dem Handy funktioniert über das Scrollen der Spur.
+// Barrierefrei nach WAI-Muster „Carousel“: steht still, solange der Tastatur-Fokus darin ist; Bildschirmleser
+// sagen die neue Karte nur an, wenn nicht automatisch geblättert wird (aria-live „off“ beim Laufen).
 (() => {
   const ruhig = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.querySelectorAll('[data-karussell]').forEach((ks) => {
     const spur = ks.querySelector('.ks-spur'), karten = [...spur.children], punkte = ks.querySelector('.ks-punkte');
     const pk = ks.querySelector('[data-pause]');
     karten.forEach(() => punkte.appendChild(document.createElement('i')));
-    let nr = 0, uhr = null, sichtbar = false;
+    let nr = 0, uhr = null, sichtbar = false, fokus = false;
     const markiere = () => { [...punkte.children].forEach((p, i) => { p.classList.remove('aktiv'); void p.offsetWidth; p.classList.toggle('aktiv', i === nr); }); };
     const zeige = (n) => { nr = (n + karten.length) % karten.length; spur.scrollTo({ left: karten[nr].offsetLeft - spur.offsetLeft }); markiere(); };
-    const lauf = () => { clearInterval(uhr); if (sichtbar && !ks.classList.contains('pause')) uhr = setInterval(() => zeige(nr + 1), 7000); };
+    const lauf = () => {
+      clearInterval(uhr);
+      const an = sichtbar && !fokus && !ks.classList.contains('pause');
+      if (an) uhr = setInterval(() => zeige(nr + 1), 7000);
+      spur.setAttribute('aria-live', an ? 'off' : 'polite');
+    };
+    ks.addEventListener('focusin', () => { fokus = true; lauf(); });
+    ks.addEventListener('focusout', (e) => { if (!ks.contains(e.relatedTarget)) { fokus = false; lauf(); } });
     ks.querySelector('[data-weiter]').addEventListener('click', () => { zeige(nr + 1); lauf(); });
     ks.querySelector('[data-zurueck]').addEventListener('click', () => { zeige(nr - 1); lauf(); });
     pk.addEventListener('click', () => {

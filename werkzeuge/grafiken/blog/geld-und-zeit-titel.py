@@ -4,7 +4,7 @@
 # Aufruf vom Repository-Ordner: python3 werkzeuge/grafiken/blog/geld-und-zeit-titel.py
 # Danach als Bild rendern (Schriften Anton und JetBrains Mono einbinden) und als website/bilder/blog-geld-und-zeit.webp speichern.
 import math, os
-SCH, BL, WS, GR, MG = '#0e1011', '#2f6bff', '#fff', '#d6d8d9', '#9a9d9e'
+SCH, BL, WS, GR, MG = '#0e1011', '#2a5fe6', '#fff', '#d6d8d9', '#9a9d9e'
 FUGE = 14  # sichtbar 7 px: bleibt auch in kleinen Vorschauen als Fuge erkennbar
 # Arme sitzen immer direkt am Rumpf, ohne Abstand (Anna, 13.10.2026): Drehpunkt innen im Rumpf, Arm entsprechend länger
 SCHULTER_X, SCHULTER_Y, ARM = 30, -290, 132

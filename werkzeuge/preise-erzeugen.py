@@ -78,7 +78,7 @@ BEISPIELE = {
     # Markenbildung: STUDIO AAH! als eigenes Beispiel (Anna 13.10.2026: ein Kunde, ein Platz; Bauer steht bei Webdesign):
     # Logo auf Creme, Markenfarben, Kreis auf Blau, „AAH!“ auf Schwarz
     'brand': ('<span class="kb-raster kb-eigen"><span class="kb-e-logo"><img src="bilder/logo-studio-aah.svg" alt="" width="180" height="33"></span>'
-              '<span class="kb-r-farben"><i style="--f:#0e1011"></i><i style="--f:#2f6bff"></i><i style="--f:#eeece7"></i><i style="--f:#d6d8d9"></i></span>'
+              '<span class="kb-r-farben"><i style="--f:#0e1011"></i><i style="--f:#2a5fe6"></i><i style="--f:#eeece7"></i><i style="--f:#d6d8d9"></i></span>'
               '<span class="kb-e-blau"><i></i></span><span class="kb-e-schwarz">AAH!</span></span>'),
     # Animation: Foto-Mockup Laptop in Händen vor Wolken (Bendito Mockup); im Bildschirm der eigene Erklärfilm Corporate Identity
     # als kurze Animation (einmal 4,7 s, dann Standbild; beim Darüberfahren neu, js/hero.js); bei „Bewegung reduzieren“ nur das Standbild

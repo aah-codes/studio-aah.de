@@ -7,7 +7,7 @@
 # Aufruf vom Repository-Ordner: python3 werkzeuge/grafiken/fuer-wen-bilder.py
 # Danach rendern und als website/bilder/fuer-wen-*.webp (1200 × 900) speichern.
 import math, os
-SCH, BL, WS, GR, MG, CR = '#0e1011', '#2f6bff', '#fff', '#d6d8d9', '#9a9d9e', '#eeece7'
+SCH, BL, WS, GR, MG, CR = '#0e1011', '#2a5fe6', '#fff', '#d6d8d9', '#9a9d9e', '#eeece7'
 FUGE = 14
 SCHULTER_X, SCHULTER_Y, ARM = 30, -290, 132
 ARM_UNTEN, BEIN_RADIUS = -34, 4

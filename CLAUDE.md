@@ -30,7 +30,7 @@
 - Python 3.9: keine verschachtelten f-Strings mit gleichen Anführungszeichen.
 
 ## Gestaltungsregeln (Kurzfassung der Branding-Richtlinien)
-- Farben: Schwarz `#0e1011`, Weiß, Creme `#eeece7` (Flächen, Plakatgrund), Blau `#2f6bff` als einziger Akzent, Grau `#d6d8d9` / `#9a9d9e`. Kein Rot, Gelb, Grün.
+- Farben: Schwarz `#0e1011`, Weiß, Creme `#eeece7` (Flächen, Plakatgrund), Blau `#2a5fe6` (`--farbe-primaer`) als einziger Akzent (bis 16.10.2026 auch `#2f6bff`, auf Annas Wunsch vereinheitlicht), Grau `#d6d8d9` / `#9a9d9e`. Kein Rot, Gelb, Grün.
 - Ausnahme Projektseiten (Anna, 14.10.2026): Auf Projektseiten (`/referenzen/…`) gelten die Farben der Kund:innen; dort darf die Farbregel gebrochen werden (z. B. Bauer-Blau `#003466`, Bauer-Gelb `#FBD52A`). Kopf, Fuß und Navigation bleiben in Studio-Farben.
 - Ausnahme Farbband (Anna, 13.10.2026): 12 px hohes Regenbogen-Band mit rotem Block am unteren Rand des Fußes (`.fuss::after`, Variable `--farbband` in `stil.css`). Nur dort; sonst gilt die Farbregel.
 - Dachzeilen müssen auf ihrem Grund lesbar sein (Anna, 15.10.2026): Gelb nur auf Blau oder Schwarz, auf hellen Karten Blau oder Schwarz.
@@ -42,6 +42,7 @@
 - Icons aus gefüllten Bauhaus-Grundformen (Kreis, Halbkreis, Quadrat, Dreieck, Balken), jedes mit Schwarz. Clay-Icons (`website/bilder/icons/`) bleiben.
 - Erweiterte Formen (Anna, 13.10.2026), alle aus den Grundformen gebaut, Vorlagen in `werkzeuge/grafiken/formen/`: Herz (gedrehtes Quadrat + zwei Halbkreise), Zackenkreis (Kreis mit 16 kleinen Kreisen am Rand), Kreis in Klammern (Kreis zwischen zwei Sicheln). Herzen nur in dieser Konstruktion und nie blau.
 - Bewegung, die von selbst startet, hält nach höchstens 5 s an oder hat eine Pause-Taste.
+- Einblend-Animationen: Inhalte im CSS nur unter `:where(.js)` verstecken (`js/menue.js` setzt die Klasse `js` am `<html>`), damit ohne JavaScript alles sichtbar bleibt.
 - Startseiten-H1 bleibt ohne Farbverlauf und ohne Formen-Animation (Anna hat die Idee am 13.10.2026 verworfen).
 - Kartenreihen: Unterzeilen, Listen und Buttons auf einer Linie; H1 nie breiter als die Seite.
 - Prozesse und Zeitpläne (Abläufe, Timelines) immer mit derselben Zeitleisten-Grafik wie auf der Startseite (`ol.zeitleiste`, Anna 13.10.2026); in schmalen Spalten wie Artikeln einspaltig (`figure.grafik-prozess`). Blaue Marken in `--farbe-primaer` (Kontrast 5,4 : 1).

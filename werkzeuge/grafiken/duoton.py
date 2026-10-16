@@ -18,8 +18,8 @@ BILDER = [  # (Datei, größte Breite in px, Fassungen)
     ("anna-haertelt-portraet.jpg", 794, ["duoton", "triton"]),
 ]
 FARBVERLAEUFE = {
-    "duoton": [(0.0, "#0e1011"), (1.0, "#2f6bff")],
-    "triton": [(0.0, "#0e1011"), (0.52, "#2f6bff"), (1.0, "#ffffff")],
+    "duoton": [(0.0, "#0e1011"), (1.0, "#2a5fe6")],
+    "triton": [(0.0, "#0e1011"), (0.52, "#2a5fe6"), (1.0, "#ffffff")],
 }
 
 
