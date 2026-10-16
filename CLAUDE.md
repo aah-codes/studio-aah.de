@@ -11,7 +11,8 @@
 - In Cloud-Sitzungen gibt es keinen Zugriff auf den iCloud-Ordner `Betrieb` (Projektstatus, Branding-Richtlinien). Die wichtigsten Regeln stehen deshalb unten. Was in `Betrieb` eingetragen werden müsste, am Ende als Liste für Anna ausgeben.
 
 ## Generatoren (immer nach Änderungen an Daten oder Vorlagen, vom Repository-Ordner aus)
-- **`bash werkzeuge/alle-erzeugen.sh`** – startet die fünf Seiten-Generatoren in der richtigen Reihenfolge (Preise → Blogbeitrag → Inhalte → Leistungsseiten → Referenzen). Einzeln nur, wenn man genau weiß, was man tut:
+- **`bash werkzeuge/alle-erzeugen.sh`** – startet die Seiten-Generatoren in der richtigen Reihenfolge (Kopf und Fuß → Preise → Blogbeitrag → Inhalte → Leistungsseiten → Referenzen). Einzeln nur, wenn man genau weiß, was man tut:
+- `python3 werkzeuge/kopf-fuss.py` – Kopf und Fuß aus `website/index.html` in alle Seiten (Pfade passend zur Ordnertiefe, 404-Seite ab der Wurzel). Kopf und Fuß nur in `website/index.html` ändern.
 - `python3 werkzeuge/preise-erzeugen.py` – Preise, Kostenrechner-Daten, Leiste, Glossar
 - `python3 werkzeuge/blog/was-kostet-eine-website.py` – Blogbeitrag „Was kostet eine Website“ aus `werkzeuge/blog/was-kostet-eine-website-inhalt.html` (Inhalt) und Kopf/Fuß des KI-Artikels; Texte nur in der Inhaltsdatei ändern
 - `python3 werkzeuge/inhalte-erzeugen.py` – Referenzen, „Für wen“, Stimmen, Blog-Vorschau, Kennzahlen (Marker `<!-- NAME:START -->` … `<!-- NAME:ENDE -->`)
