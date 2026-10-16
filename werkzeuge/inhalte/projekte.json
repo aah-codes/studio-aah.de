@@ -2565,6 +2565,10 @@
      "titel": "Inhalt",
      "punkte": [
       [
+       "Ausgangslage",
+       "g-ausgangslage"
+      ],
+      [
        "Startseite",
        "g-start"
       ],
@@ -2579,11 +2583,54 @@
       [
        "Druck",
        "g-druck"
+      ],
+      [
+       "Ergebnis",
+       "g-ergebnis"
       ]
      ],
      "band": {
       "von": "#ffffff",
       "bis": "#ffffff",
+      "art": []
+     }
+    },
+    {
+     "typ": "kapitel",
+     "anker": "g-ausgangslage",
+     "meta": "Viele Therapien, eine Ärztin",
+     "titel": "Ausgangslage",
+     "band": {
+      "von": "#ffffff",
+      "bis": "#F4F4F4",
+      "art": [
+       "eng"
+      ]
+     }
+    },
+    {
+     "typ": "hl-karten",
+     "karten": [
+      {
+       "etikett": "Herausforderung",
+       "text": "Viele Therapien, eine Ärztin: Patientinnen und Patienten sollten schnell finden, was zu ihrem Anliegen passt."
+      },
+      {
+       "etikett": "Lösung",
+       "text": "Ein gelbes Erkennungszeichen für Website, Flyer und Visitenkarte – und eine eigene Seite für jede Therapie.",
+       "dunkel": true
+      }
+     ],
+     "ziele_titel": "Ziele",
+     "ziele": [
+      "Die Praxis und Dr. Simone Goldhammer persönlich vorstellen.",
+      "Jede Therapie verständlich auf einer eigenen Seite erklären.",
+      "Am Handy gut lesbar sein.",
+      "Online und gedruckt einheitlich auftreten."
+     ],
+     "band": {
+      "von": "#F4F4F4",
+      "bis": "#F4F4F4",
       "art": []
      }
     },
@@ -2709,6 +2756,51 @@
        "titel": "Visitenkarten"
       }
      ],
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": []
+     }
+    },
+    {
+     "typ": "kapitel",
+     "anker": "g-ergebnis",
+     "meta": "Ziele und Wirkung",
+     "titel": "Ergebnis",
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": [
+       "eng"
+      ]
+     }
+    },
+    {
+     "typ": "ergebnis",
+     "ziele": [
+      [
+       "Persönlich vorgestellt",
+       "Startseite und „Über mich“ zeigen Simone mit Foto und ihrem Weg zur Naturheilkunde."
+      ],
+      [
+       "Therapien verständlich erklärt",
+       "Zwölf Therapieangebote, jedes mit eigener Seite – darunter Long Covid und Post-Vac."
+      ],
+      [
+       "Gut lesbar am Handy",
+       "Jede Seite hat eine eigene Ansicht für das Handy."
+      ],
+      [
+       "Einheitlicher Auftritt",
+       "Das Gelb verbindet Website, Flyer und Visitenkarte."
+      ]
+     ],
+     "credits": "Logo und Branding, Website, Flyer und Visitenkarten: Anna Härtelt",
+     "abschluss": {
+      "frage": "Sie führen eine Praxis und möchten online so auftreten, wie Sie arbeiten?",
+      "knopf": "Projekt anfragen",
+      "link": "../../kontakt/"
+     },
      "band": {
       "von": "#ffffff",
       "bis": "#ffffff",
