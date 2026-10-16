@@ -8,7 +8,7 @@ window.Anfrage = (() => {
   function text(form, { einleitung = '', angaben = '' } = {}) {
     const nachricht = wert(form, 'nachricht');
     const kontakt = [`Name: ${wert(form, 'name')}`, `E-Mail: ${wert(form, 'email')}`];
-    if (wert(form, 'website')) kontakt.push(`Ihre Website: ${wert(form, 'website')}`);
+    if (wert(form, 'website')) kontakt.push(`Website: ${wert(form, 'website')}`);
     return ['Hallo Anna,', einleitung, angaben, nachricht ? `Nachricht:\n${nachricht}` : '', kontakt.join('\n')].filter(Boolean).join('\n\n') + '\n';
   }
 
