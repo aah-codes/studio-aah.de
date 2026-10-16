@@ -3722,3 +3722,13 @@ section[hidden] { display: none !important; }
   .dk-angebot-bild { order: -1; min-height: 0; aspect-ratio: 4 / 3; }
   .dk-angebot-text { padding: 24px 22px 26px; }
 }
+/* Illustrationen mit Abstand zum Kartenrand (Anna 16.10.2026); Foto (Vereine) bleibt randlos */
+.dk-angebot-bild.dk-grafik { background: var(--farbe-weiss); padding: 32px; display: flex; align-items: center; justify-content: center; }
+.dk-angebot-bild.dk-grafik img { position: static; width: 100%; height: auto; object-fit: contain; }
+/* Umschalter am Handy: eine Zeile, mit dem Finger seitlich ziehen (Anna 16.10.2026) */
+@media (max-width: 900px) {
+  .dk-angebot-bild.dk-grafik { aspect-ratio: auto; padding: 20px 20px 4px; }
+  .dk-umschalter { display: flex; flex-wrap: nowrap; justify-content: flex-start; max-width: 100%; overflow-x: auto; scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch; scrollbar-width: none; overscroll-behavior-x: contain; }
+  .dk-umschalter::-webkit-scrollbar { display: none; }
+  .dk-umschalter button { flex: none; white-space: nowrap; scroll-snap-align: start; }
+}

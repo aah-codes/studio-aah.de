@@ -119,7 +119,7 @@ def fuer_wen(pre=''):
         angebot = (f'<div class="dk-angebot"><div class="dk-angebot-text"><p class="meta">{m}</p><h4 class="dk-karte-titel">{esc(h)}</h4>'
                    f'<p class="dk-karte-text">{esc(x)}</p><ul class="dk-punkte">{li}</ul>'
                    f'<p class="dk-preis">{pr}</p><p class="dk-aktionen"><a class="button" href="{l}">{knopf} <span aria-hidden="true">→</span></a>{review}</p></div>'
-                   f'<div class="dk-angebot-bild"><img src="{pre}{bild}" alt="" loading="lazy" width="1200" height="900"></div></div>'
+                   f'<div class="dk-angebot-bild{"" if bild.endswith(".jpg") else " dk-grafik"}"><img src="{pre}{bild}" alt="" loading="lazy" width="1200" height="900"></div></div>'
                    f'<p class="dk-beleg">{"Aus Kunst und Kultur:" if k == "vereine" else "Zum Beispiel umgesetzt für"} <a href="{rl}">{esc(rn)} <span aria-hidden="true">→</span></a></p>')
         teile.append(f'      <div class="dk-feld" id="fw-{k}" role="tabpanel" aria-labelledby="fw-r-{k}"{"" if i == 0 else " hidden"}>\n        <h3 class="dk-titel">{esc(titel)}</h3>\n'
                      f'        {angebot}\n      </div>')
