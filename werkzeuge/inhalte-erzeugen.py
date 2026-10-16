@@ -104,9 +104,10 @@ def fuer_wen(pre=''):
           preis('onepager'), f'{pre}service/webdesign/#pakete'),
          ('Deinetwegen', f'{pre}referenzen/deinetwegen/'), 'bilder/fuer-wen-selbststaendige.webp', 'rechner'),
         ('vereine', 'Vereine &amp; Kultur', 'Demokratie braucht Sichtbarkeit.',
-         ('Initiative', 'Kostenfreie Website', 'Kostenfreie Websites für Vereine, NGOs, Kunst und Kultur. Du zahlst, was es dir wert ist.',
-          ['Für Organisationen, die sich für Demokratie, Frauen- und Kinderrechte, Natur- und Tierschutz oder Kunst und Kultur einsetzen', 'Bis zu eine Website im Monat'],
-          'kostenfrei', f'{pre}demokratie-braucht-sichtbarkeit/'),
+         ('Initiative', 'Website ohne Honorar', 'Für Vereine, NGOs, Kunst und Kultur. Ihr zahlt, was ihr könnt – weniger oder nichts ist auch in Ordnung.',
+          ['Für Organisationen, die sich für Demokratie, Frauen- und Kinderrechte, Natur- und Tierschutz oder Kunst und Kultur einsetzen',
+           'Bis zu eine Website im Monat'],
+          'Richtwert ab 250 € <small>Onepager · etwa 500 € Vereinswebsite</small>', f'{pre}demokratie-braucht-sichtbarkeit/'),
          ('Jana Voigtmann', f'{pre}referenzen/jana-voigtmann/'), 'bilder/programm-haende.jpg', 'initiative'),
     ]
     TAB_AUS = ' tabindex="-1"'
