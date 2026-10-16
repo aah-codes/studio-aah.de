@@ -5,9 +5,9 @@
   "text": "Projekte"
  },
  {
-  "zahl": 6,
   "zusatz": "",
-  "text": "Jahre selbstständig, seit 2020"
+  "text": "Jahre selbstständig, seit {seit}",
+  "seit": 2020
  },
  {
   "symbol": "ort",

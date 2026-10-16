@@ -14,6 +14,7 @@
 - `python3 werkzeuge/preise-erzeugen.py` – Preise, Kostenrechner-Daten, Leiste, Glossar
 - `python3 werkzeuge/leistungsseiten.py` – alle Seiten unter `website/service/` aus `werkzeuge/leistungen-inhalte.json` und `werkzeuge/preise-daten.json`; Prozess, Kopf und Fuß kommen aus `website/index.html`
 - `python3 werkzeuge/inhalte-erzeugen.py` – Referenzen, „Für wen“, Stimmen, Blog-Vorschau, Kennzahlen (Marker `<!-- NAME:START -->` … `<!-- NAME:ENDE -->`)
+  - Kennzahl „Jahre selbstständig“ wird aus `"seit": 2020` in `werkzeuge/inhalte/kennzahlen.json` berechnet (Anna, 16.10.2026); sie zählt bei jedem Erzeugen weiter – nach dem Jahreswechsel einmal alle Generatoren laufen lassen und hochladen.
 - `python3 werkzeuge/blog/was-kostet-eine-website.py` – Blogbeitrag „Was kostet eine Website“ aus `werkzeuge/blog/was-kostet-eine-website-inhalt.html` (Inhalt) und Kopf/Fuß des KI-Artikels; Texte nur in der Inhaltsdatei ändern
 - `python3 werkzeuge/grafiken/ci-film.py` – CI-Grafik (`werkzeuge/grafiken/corporate-identity.html`)
 - `python3 werkzeuge/grafiken/druck-mockup.py PFAD/schreibtisch.jpg` – Druck-Mockup (Goldhammer-Visitenkarten auf Schreibtisch); Foto liegt nicht im Repository

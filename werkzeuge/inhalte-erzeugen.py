@@ -2,7 +2,7 @@
 # und setzt sie zwischen die Marker <!-- NAME:START --> … <!-- NAME:ENDE --> der Seiten.
 # Jeder Eintrag hat Schlagworte (tags), z. B. "website", "brand", "ui-ux"; die Leistungsseiten wählen danach aus.
 # Neuer Eintrag: in die passende Datei schreiben, dann  python3 werkzeuge/inhalte-erzeugen.py  (und danach leistungsseiten.py)
-import html, json, pathlib, re
+import datetime, html, json, pathlib, re
 
 basis = pathlib.Path(__file__).resolve().parent.parent
 lade = lambda n: json.loads((basis / 'werkzeuge' / 'inhalte' / f'{n}.json').read_text(encoding='utf-8'))
@@ -238,7 +238,10 @@ def kennzahlen(klasse='fakten hero-fakten', einrueck='    '):
             z.append(f'{einrueck}  <div><dt>{ORT}</dt><dd><span class="mit-liebe">{esc(k["text"])}</span></dd></div>')
         else:
             plus = f'<span class="fakt-plus">{k["zusatz"]}</span>' if k["zusatz"] else ''
-            z.append(f'{einrueck}  <div><dt><span data-zaehlen="{k["zahl"]}">{k["zahl"]}</span>{plus}</dt><dd>{esc(k["text"])}</dd></div>')
+            # "seit": Jahre aus dem Startjahr berechnen (Anna 16.10.2026: selbstständig seit 2020) – zählt bei jedem Erzeugen von selbst weiter
+            zahl = datetime.date.today().year - k['seit'] if 'seit' in k else k['zahl']
+            text = k['text'].replace('{seit}', str(k.get('seit', '')))
+            z.append(f'{einrueck}  <div><dt><span data-zaehlen="{zahl}">{zahl}</span>{plus}</dt><dd>{esc(text)}</dd></div>')
     return f'{einrueck}<dl class="{klasse}">\n' + '\n'.join(z) + f'\n{einrueck}</dl>'
 
 
