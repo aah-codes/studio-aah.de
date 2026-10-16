@@ -1436,8 +1436,9 @@ h1, h2, h3, .gr-xxl, .gr-xl, .gr-h2, .gr-klein, .gr-h3, .artikel h1, .mm-karte-t
   .lsx-loesung { grid-template-columns: minmax(0, 1fr); gap: 32px; padding-top: 64px; }
   .lsx-gegenueber { grid-template-columns: minmax(0, 1fr); }
   .lsx-pakete, .lsx-vergleich, .lsx-extras, .lsx-stimmen { padding-top: 64px; }
-  .lsx-extra-liste li { grid-template-columns: minmax(0, 1fr) auto; }
+  .lsx-extra-liste li { grid-template-columns: minmax(0, 1fr) fit-content(60%); }
   .lsx-extra-text { grid-column: 1 / -1; grid-row: 2; }
+  .lsx-extra-preis { white-space: normal; } /* lange Preise („50–85 € … je nach Unternehmensgröße“) umbrechen statt überlaufen */
   .lsx-rechner { padding: 32px 24px; margin: 64px var(--rand-seite); }
   .faq-liste { grid-template-columns: minmax(0, 1fr); }
 }
