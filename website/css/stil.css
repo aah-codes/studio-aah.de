@@ -3872,3 +3872,34 @@ section[hidden] { display: none !important; }
 .dk-bilder img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
 .dk-bilder img[hidden] { display: none; }
 .dk-bilder:focus-visible { outline: 3px solid var(--farbe-primaer, #2a5fe6); outline-offset: -3px; }
+
+/* Für wen – Angebot im Mittelpunkt, eigenes Bild je Zielgruppe, Referenz nur als kleiner Link (Anna 16.10.2026) */
+.dk-angebot { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); background: var(--farbe-weiss); border-radius: 28px; overflow: hidden; text-align: left; box-shadow: 0 12px 30px rgba(14, 16, 17, .07); max-width: 1180px; margin: 0 auto; }
+.dk-angebot-text { display: flex; flex-direction: column; gap: 10px; padding: 40px 40px 36px; }
+.dk-angebot-text .meta { margin: 0; }
+.dk-angebot .dk-karte-titel { margin: 0; font-size: clamp(1.5rem, 2.2vw, 2rem); }
+.dk-angebot .dk-karte-text { margin: 0; }
+.dk-angebot .dk-punkte { margin: 6px 0 8px; }
+.dk-angebot .dk-preis { margin: auto 0 0; padding-top: 16px; border-top: 1px solid var(--farbe-rahmen); font-size: 1.6rem; }
+.dk-aktionen { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin: 8px 0 0; }
+.dk-angebot-bild { position: relative; min-height: 360px; background: var(--farbe-hellgrau); }
+.dk-angebot-bild img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 60%; display: block; }
+.dk-beleg { margin: 20px 0 0; font-size: .95rem; color: var(--farbe-gedaempft); }
+.dk-beleg a { color: var(--farbe-dunkel); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 900px) {
+  .dk-angebot { grid-template-columns: 1fr; }
+  .dk-angebot-bild { order: -1; min-height: 0; aspect-ratio: 4 / 3; }
+  .dk-angebot-text { padding: 24px 22px 26px; }
+}
+/* Illustrationen mit Abstand zum Kartenrand (Anna 16.10.2026); Foto (Vereine) bleibt randlos */
+.dk-angebot-bild.dk-grafik { background: var(--farbe-weiss); padding: 32px; display: flex; align-items: center; justify-content: center; }
+.dk-angebot-bild.dk-grafik img { position: static; width: 100%; height: auto; object-fit: contain; }
+/* Umschalter am Handy: eine Zeile, mit dem Finger seitlich ziehen (Anna 16.10.2026) */
+@media (max-width: 900px) {
+  .dk-angebot-bild.dk-grafik { aspect-ratio: auto; padding: 20px 20px 4px; }
+  .dk-umschalter { display: flex; flex-wrap: nowrap; justify-content: flex-start; max-width: 100%; overflow-x: auto; scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch; scrollbar-width: none; overscroll-behavior-x: contain; }
+  .dk-umschalter::-webkit-scrollbar { display: none; }
+  .dk-umschalter button { flex: none; white-space: nowrap; scroll-snap-align: start; }
+}
+.dk-angebot .dk-karte-titel a { color: inherit; text-decoration: none; }
+.dk-angebot .dk-karte-titel a:hover { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 2px; }

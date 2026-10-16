@@ -168,6 +168,8 @@
       const an = x === b;
       x.setAttribute('aria-selected', String(an)); x.tabIndex = an ? 0 : -1;
       document.getElementById(x.getAttribute('aria-controls')).hidden = !an;
+      // am Handy gewählten Reiter ganz ins Bild schieben (Leiste ist seitlich ziehbar)
+      if (an && liste.scrollWidth > liste.clientWidth) liste.scrollTo({ left: x.offsetLeft - (liste.clientWidth - x.offsetWidth) / 2, behavior: 'smooth' });
     });
     liste.addEventListener('click', (e) => { const b = e.target.closest('[role="tab"]'); if (b) waehle(b); });
     liste.addEventListener('keydown', (e) => {
