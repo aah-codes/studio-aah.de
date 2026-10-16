@@ -15,7 +15,7 @@
   <meta property="og:description" content="Du setzt dich für Demokratie, Frauen- und Kinderrechte, Natur- und Tierschutz oder Kunst und Kultur ein? STUDIO AAH! aus Leipzig gestaltet euren Auftritt – ohne Honorar, ihr zahlt, was ihr könnt.">
   <meta property="og:url" content="https://studio-aah.de/demokratie-braucht-sichtbarkeit/">
   <meta property="og:image" content="https://studio-aah.de/bilder/vorschaubild.jpg">
-  <link rel="stylesheet" href="../css/stil.css?v=20261016r">
+  <link rel="stylesheet" href="../css/stil.css?v=20261016s">
 </head>
 <body>
 <a class="sprunglink" href="#inhalt">Zum Inhalt springen</a>
@@ -92,7 +92,7 @@
   </details>
 </header>
 <div class="mm-schleier" hidden></div>
-<script src="../js/menue.js?v=20261016r" defer></script>
+<script src="../js/menue.js?v=20261016s" defer></script>
 <!-- /KOPF -->
 
 <main id="inhalt" class="programm">
@@ -101,7 +101,7 @@
     <p class="meta">Initiative</p>
     <h1 class="gr-xxl lp-titel">Demokratie braucht <span class="wort-mit-icon">Sichtbarkeit.<img class="icon-3d" src="../bilder/icons/megaphone.webp" alt="" width="400" height="400"></span></h1>
     <p class="alt-klein lp-einleitung">Du setzt dich für Demokratie, Frauen- und Kinderrechte, Natur- und Tierschutz oder Kunst und Kultur ein – und deine Website zeigt das noch nicht? Dann lass uns das ändern. Ohne Honorar – ihr zahlt, was ihr könnt.</p>
-    <p class="lp-aktion"><a class="button" href="mailto:info@studio-aah.de?subject=Demokratie%20sichtbar%20machen">Schreib mir <span aria-hidden="true">→</span></a> <a class="textlink" href="#ablauf">So läuft es ab ↓</a></p>
+    <p class="lp-aktion"><a class="button" href="#anfrage">Schreib mir <span aria-hidden="true">→</span></a> <a class="textlink" href="#ablauf">So läuft es ab ↓</a></p>
     <ul class="chips" aria-label="Themen">
       <li>Demokratie</li><li>Frauenrechte</li><li>Kinderrechte</li><li>Natur- und Tierschutz</li><li>Kunst und Kultur</li>
     </ul>
@@ -180,16 +180,30 @@
   </section>
 
   <section class="lp-sektion">
-    <div class="lp-karte lp-creme lp-cta">
+    <div class="lp-karte lp-creme lp-cta" id="anfrage">
       <p class="meta">Nächster Schritt</p>
       <h2 class="gr-h2">Demokratie sichtbar machen.</h2>
-      <p>Schreib mir eine E-Mail mit diesen Angaben:</p>
+      <p>Schreib mir mit diesen Angaben:</p>
       <ul class="lp-liste">
         <li>Worum geht es – wer bist du, was machst du?</li>
         <li>Was gibt es schon: Website, Logo, Texte, Bilder, Domain?</li>
         <li>Wann soll es losgehen, und bis wann soll die Website fertig sein?</li>
       </ul>
-      <p class="lp-aktion"><a class="button" href="mailto:info@studio-aah.de?subject=Demokratie%20sichtbar%20machen">E-Mail schreiben <span aria-hidden="true">→</span></a> <a class="textlink" href="mailto:info@studio-aah.de">info@studio-aah.de</a></p>
+      <!-- Anfrageformular über Formspark (Anna 16.10.2026: E-Mail-Knöpfe funktionierten nicht), Skript anfrage -->
+      <form class="anfrage-form" data-anfrage="Initiative Demokratie braucht Sichtbarkeit" action="https://submit-form.com/PQ3YFrvCS" method="post">
+        <input type="hidden" name="_redirect" value="https://studio-aah.de/danke/"><input type="hidden" name="_append" value="false"><input type="hidden" name="_email.subject" value="Initiative Demokratie braucht Sichtbarkeit"><input type="hidden" name="betreff" value="Initiative Demokratie braucht Sichtbarkeit">
+        <div class="anfrage-felder">
+          <label for="ds-name">Name<input id="ds-name" name="name" autocomplete="name" required></label>
+          <label for="ds-email">E-Mail<input id="ds-email" name="email" type="email" autocomplete="email" required></label>
+          <label for="ds-organisation">Organisation<input id="ds-organisation" name="organisation" autocomplete="organization"></label>
+          <label for="ds-website">Deine Website (falls vorhanden)<input id="ds-website" name="website" type="text" inputmode="url" autocomplete="url" placeholder="www.eure-website.de"></label>
+          <label for="ds-nachricht" class="anfrage-ganz">Nachricht<textarea id="ds-nachricht" name="nachricht" rows="6" required></textarea></label>
+        </div>
+        <p class="anfrage-falle" aria-hidden="true"><label>Bitte leer lassen<input name="_honeypot" tabindex="-1" autocomplete="off"></label></p>
+        <p class="anfrage-knoepfe"><button type="submit" class="button">Anfrage senden <span aria-hidden="true">→</span></button> <a class="textlink" href="mailto:info@studio-aah.de">info@studio-aah.de</a></p>
+        <p class="hinweis-klein">Deine Angaben gehen über den Formulardienst Formspark (Belgien, Speicherung in der EU) per E-Mail an mich. Mehr in der <a href="../datenschutz/#kontakt">Datenschutzerklärung</a>.</p>
+        <div class="anfrage-danach" role="status" hidden></div>
+      </form>
     </div>
   </section>
 
@@ -274,5 +288,6 @@
   <a class="sticky-rechner" href="../preise/#rechner"><span class="sticky-rechner-icon"><img src="../bilder/icons/money-bag.webp" alt="" width="400" height="400" loading="lazy"></span>Kostenrechner <span aria-hidden="true">→</span></a>
   <!-- /FUSS -->
 
+<script src="../js/anfrage.js?v=20261016s" defer></script>
 </body>
 </html>

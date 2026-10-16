@@ -357,7 +357,7 @@
       // Website-Review in zwei Schritten (Anna 16.10.2026): erst Angaben per E-Mail, dann der Termin-Link
       const f = anfrageForm();
       if (!f.reportValidity()) return;
-      window.Anfrage.senden(f, { betreff: 'Website-Review: Angaben aus dem Kostenrechner', einleitung: 'ich möchte ein kostenloses Website-Review buchen. Vorab meine Angaben aus dem Kostenrechner.', angaben: mailAngaben(), meldung: 'Ihr E-Mail-Programm öffnet sich mit Ihren Angaben für das Website-Review.',
+      window.Anfrage.senden(f, { betreff: 'Website-Review (Angaben aus dem Kostenrechner)', einleitung: 'ich möchte ein kostenloses Website-Review buchen. Vorab meine Angaben aus dem Kostenrechner.', angaben: mailAngaben(), meldung: 'Ihr E-Mail-Programm öffnet sich mit Ihren Angaben für das Website-Review.',
         fertig: () => { $('wr-review-termin').hidden = false; $('wr-review-termin').querySelector('a').focus(); } });
     }
   });

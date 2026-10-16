@@ -10,6 +10,7 @@ window.Anfrage = (() => {
   function text(form, { einleitung = '', angaben = '' } = {}) {
     const nachricht = wert(form, 'nachricht');
     const kontakt = [`Name: ${wert(form, 'name')}`, `E-Mail: ${wert(form, 'email')}`];
+    if (wert(form, 'organisation')) kontakt.push(`Organisation: ${wert(form, 'organisation')}`);
     if (wert(form, 'website')) kontakt.push(`Website: ${wert(form, 'website')}`);
     return ['Hallo Anna,', einleitung, angaben, nachricht ? `Nachricht:\n${nachricht}` : '', kontakt.join('\n')].filter(Boolean).join('\n\n') + '\n';
   }
@@ -56,6 +57,10 @@ window.Anfrage = (() => {
     if (knopf) { knopf.disabled = true; knopf.textContent = 'Wird gesendet …'; }
     const daten = { betreff: opt.betreff || 'Projektanfrage', name: wert(form, 'name'), email: wert(form, 'email'), website: wert(form, 'website'), nachricht: wert(form, 'nachricht'), _honeypot: wert(form, '_honeypot') };
     if (opt.angaben) daten.kostenrechner = opt.angaben;
+    if (form.elements.organisation) daten.organisation = wert(form, 'organisation');
+    // Betreff und Absendername der Benachrichtigung (Formspark-Felder _email.subject und _email.from; im Namen kein @, < oder >)
+    daten['_email.subject'] = `${daten.betreff}: ${daten.name}`;
+    daten['_email.from'] = daten.name.replace(/[@<>]/g, '') || 'Website studio-aah.de';
     try {
       const antwort = await fetch(ENDPUNKT, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(daten) });
       if (!antwort.ok) throw new Error(String(antwort.status));
