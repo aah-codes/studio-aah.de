@@ -119,7 +119,7 @@ def fuer_wen(pre=''):
         li = ''.join(f'<li>{p}</li>' for p in punkte)
         # Handlungsaufforderung je Zielgruppe (Anna 16.10.2026): Mittelstand zuerst Website-Review, Selbstständige zuerst Kostenrechner
         pfeil = ' <span aria-hidden="true">→</span>'
-        ziele = {'review': (f'{pre}kontakt/', 'Kostenloses Website-Review'), 'rechner': (f'{pre}preise/#rechner', 'Kosten berechnen'), 'initiative': (l, 'Zur Initiative')}
+        ziele = {'review': (f'{pre}website-review/', 'Kostenloses Website-Review'), 'rechner': (f'{pre}preise/#rechner', 'Kosten berechnen'), 'initiative': (l, 'Zur Initiative')}
         reihen = {'review': ['review', 'rechner'], 'rechner': ['rechner', 'review'], 'initiative': ['initiative']}[knopf]
         haupt, *neben = [ziele[r] for r in reihen]
         aktionen = f'<a class="button" href="{haupt[0]}">{haupt[1]}{pfeil}</a>' + ''.join(f'<a class="textlink" href="{u}">{t}{pfeil}</a>' for u, t in neben)

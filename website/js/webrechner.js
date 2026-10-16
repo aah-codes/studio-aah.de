@@ -185,15 +185,15 @@
         <ul class="wr-uebersicht">${a.map(([t, v]) => `<li><span>${t}</span><span>${esc(v)}</span></li>`).join('')}</ul>
         ${felder('wr')}
         <p class="anfrage-knoepfe"><button type="submit" class="button">Projekt anfragen ${PFEIL}</button><button type="button" class="button button-zweit" data-pdf>Als PDF speichern <span aria-hidden="true">↓</span></button></p>
-        <p class="hinweis-klein">Alle Angaben aus dem Rechner stehen in der E-Mail und sind die Grundlage für unser Erstgespräch. Unverbindlich und kostenlos. ${DATENSCHUTZ}</p>
+        <p class="hinweis-klein">Alle Angaben aus dem Rechner gehen mit Ihrer Anfrage an mich und sind die Grundlage für unser Erstgespräch. Unverbindlich und kostenlos. <span class="anfrage-hinweis">${DATENSCHUTZ}</span></p>
         <div class="anfrage-danach" role="status" hidden></div>
       </form>
       ${re ? `<div class="wr-review"><p class="meta">Für bestehende Websites</p><h4 class="wr-box-titel">Kostenloses Website-Review</h4>
         <p>30 Minuten online: Ich schaue mir Ihre Website mit dem Blick Ihrer Kundschaft und Ihrer Bewerberinnen und Bewerber an und nenne Ihnen konkrete Ansatzpunkte. Kostenlos und unverbindlich.</p>
-        <p>Ihre Angaben aus dem Rechner schicken Sie mir vorab per E-Mail – Sie müssen nichts herunterladen. Dafür oben Name und E-Mail eintragen.</p>
-        <ol class="wr-review-schritte"><li>Angaben senden: Ihr E-Mail-Programm öffnet sich mit allen Angaben.</li><li>Termin buchen in Google Kalender.</li></ol>
+        <p>Ihre Angaben aus dem Rechner schicken Sie mir vorab – Sie müssen nichts herunterladen. Dafür oben Name und E-Mail eintragen. <a href="../website-review/">Mehr zum Website-Review <span aria-hidden="true">→</span></a></p>
+        <ol class="wr-review-schritte"><li>Angaben senden${window.Anfrage.mitDienst ? '' : ': Ihr E-Mail-Programm öffnet sich mit allen Angaben'}.</li><li>Termin buchen in Google Kalender.</li></ol>
         <p><button type="button" class="button button-zweit" data-review>Angaben senden ${PFEIL}</button></p>
-        <div id="wr-review-termin" role="status" hidden><p><b>Ihr E-Mail-Programm öffnet sich mit Ihren Angaben.</b> Bitte senden Sie die E-Mail dort ab. Öffnet sich nichts, finden Sie oben die Nachricht zum Kopieren. Danach:</p>
+        <div id="wr-review-termin" role="status" hidden><p>${window.Anfrage.mitDienst ? '<b>Danke, Ihre Angaben sind bei mir angekommen.</b> Jetzt noch den Termin wählen:' : '<b>Ihr E-Mail-Programm öffnet sich mit Ihren Angaben.</b> Bitte senden Sie die E-Mail dort ab. Öffnet sich nichts, finden Sie oben die Nachricht zum Kopieren. Danach:'}</p>
           <p><a class="button button-zweit" href="${esc(D.review)}" target="_blank" rel="noopener">Jetzt Termin buchen <span aria-hidden="true">↗</span></a></p></div>
         <p class="hinweis-klein">Die Terminbuchung läuft über Google Kalender. Dort gelten die Datenschutzhinweise von Google.</p></div>` : ''}`;
     },
@@ -204,7 +204,8 @@
       <label for="${p}-email">E-Mail<input id="${p}-email" name="email" type="email" autocomplete="email" required value="${esc(F.email)}"></label>
       <label for="${p}-website" class="anfrage-ganz">Ihre Website (falls vorhanden)<input id="${p}-website" name="website" type="text" inputmode="url" autocomplete="url" placeholder="www.ihre-website.de" value="${esc(F.website)}"></label>
       <label for="${p}-nachricht" class="anfrage-ganz">Nachricht (freiwillig)<textarea id="${p}-nachricht" name="nachricht" rows="3">${esc(F.nachricht)}</textarea></label>
-    </div>`;
+    </div>
+    <p class="anfrage-falle" aria-hidden="true"><label>Bitte leer lassen<input name="_honeypot" tabindex="-1" autocomplete="off"></label></p>`;
   // Formularfelder überleben das Neuzeichnen
   const F = { name: '', email: '', website: '', nachricht: '' };
 
@@ -282,6 +283,7 @@
     $('wr-leiste-mobil').innerHTML = `<div class="wr-lm-oben"><span>Schritt ${aktiv + 1} von ${SCHRITTE.length}</span><span>${s.nm}</span></div><div class="wr-lm-balken"><i style="width:${(aktiv + 1) / SCHRITTE.length * 100}%"></i></div>`;
     const el = $('wr-schritt');
     el.innerHTML = `<p class="meta wr-dach">${s.dt}</p>` + R[s.id]();
+    window.Anfrage.hinweise(el);
     $('wr-zurueck').hidden = aktiv === 0;
     $('wr-kein-kauf').hidden = aktiv !== 0;
     const w = $('wr-weiter');
@@ -355,9 +357,8 @@
       // Website-Review in zwei Schritten (Anna 16.10.2026): erst Angaben per E-Mail, dann der Termin-Link
       const f = anfrageForm();
       if (!f.reportValidity()) return;
-      window.Anfrage.senden(f, { betreff: 'Website-Review: Angaben aus dem Kostenrechner', einleitung: 'ich möchte ein kostenloses Website-Review buchen. Vorab meine Angaben aus dem Kostenrechner.', angaben: mailAngaben(), meldung: 'Ihr E-Mail-Programm öffnet sich mit Ihren Angaben für das Website-Review.' });
-      $('wr-review-termin').hidden = false;
-      $('wr-review-termin').querySelector('a').focus();
+      window.Anfrage.senden(f, { betreff: 'Website-Review: Angaben aus dem Kostenrechner', einleitung: 'ich möchte ein kostenloses Website-Review buchen. Vorab meine Angaben aus dem Kostenrechner.', angaben: mailAngaben(), meldung: 'Ihr E-Mail-Programm öffnet sich mit Ihren Angaben für das Website-Review.',
+        fertig: () => { $('wr-review-termin').hidden = false; $('wr-review-termin').querySelector('a').focus(); } });
     }
   });
   // Tastatur: Alt + Pfeiltasten verschiebt die Seite
