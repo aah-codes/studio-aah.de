@@ -3732,3 +3732,5 @@ section[hidden] { display: none !important; }
   .dk-umschalter::-webkit-scrollbar { display: none; }
   .dk-umschalter button { flex: none; white-space: nowrap; scroll-snap-align: start; }
 }
+.dk-angebot .dk-karte-titel a { color: inherit; text-decoration: none; }
+.dk-angebot .dk-karte-titel a:hover { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 2px; }
