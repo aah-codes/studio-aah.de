@@ -2688,12 +2688,27 @@
     {
      "typ": "marke",
      "meta": "Markenzeichen",
-     "titel": "Logo",
+     "titel": "Logo und Bildmarke",
      "logos": [
       [
        "bilder/referenzen/goldhammer/logo.jpg",
        "Logo Dr. med. Simone Goldhammer: gelber Pinselkreis, daneben der Name",
        "#ffffff"
+      ],
+      [
+       "bilder/referenzen/goldhammer/bildmarke.png",
+       "Bildmarke: gelber Pinselkreis auf Anthrazit",
+       "#3A3A3A"
+      ],
+      [
+       "bilder/referenzen/goldhammer/bildmarke.png",
+       "Pinselkreis als Favicon auf Weiß",
+       "#ffffff"
+      ],
+      [
+       "bilder/referenzen/goldhammer/bildmarke.png",
+       "Pinselkreis als Favicon auf Anthrazit",
+       "#3A3A3A"
       ]
      ],
      "band": {
