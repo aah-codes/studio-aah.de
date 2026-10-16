@@ -12,6 +12,7 @@
 .leistung {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  scroll-margin-top: calc(var(--kopf-hoehe) + 64px);
 }
 /* Angebot: Überschrift links, Paket-Kasten rechts */
 .paket {
@@ -46,7 +47,6 @@
   .kacheln { grid-template-columns: 1fr; padding: 0 var(--rand-seite); }
 }
 /* ---------- 23. Leistungsseite (service/): synchron mit Kostenrechner, Daten aus werkzeuge/preise-daten.json ---------- */
-.leistung { scroll-margin-top: calc(var(--kopf-hoehe) + 64px); }
 /* „ecke“: Linie erst waagerecht nach rechts (--l), dann senkrecht hoch (--h) zum Etikett */
 .studio-punkt.ecke .studio-label { left: calc(100% + var(--l) - 20px); top: auto; bottom: calc(50% + var(--h)); transform: none; }
 .studio-punkt.ecke .studio-label::after { content: ""; position: absolute; left: 19px; top: 100%; width: 2px; height: calc(var(--h) - 7px); background: var(--farbe-weiss); }
@@ -82,7 +82,7 @@
 .dk-bild { display: block; height: 140px; border-radius: 16px; overflow: hidden; background: var(--farbe-hellgrau); border: 1px solid var(--farbe-rahmen); }
 .dk-bild img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; transition: object-position 2.4s ease; }
 /* Zwei Karten: Angebot (1/3) und breite Referenz mit großem Screenshot (2/3) */
-.dk-karte { display: flex; flex-direction: column; }
+.dk-karte { display: flex; flex-direction: column; box-shadow: 0 12px 30px rgba(14, 16, 17, .07); }
 .dk-karte > .dk-preis { margin-top: auto; }
 .ablauf { list-style: none; padding: 0 !important; margin: 0 !important; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
 .ablauf li { background: var(--farbe-weiss); border-radius: 20px; padding: 18px; margin: 0 !important; display: flex; flex-direction: column; gap: 8px; font-size: 15px; line-height: 1.45; }
@@ -92,7 +92,6 @@
   .ablauf { grid-template-columns: minmax(0, 1fr); }
 }
 .ablauf li { border: 1.5px solid var(--farbe-dunkel); }
-.dk-karte { box-shadow: 0 12px 30px rgba(14, 16, 17, .07); }
 .pk-einzeln { max-width: 1180px; }
 /* Projektseite (Case Study) */
 .cs-fakten { display: grid; grid-template-columns: 1fr 2fr 1fr 1fr; gap: 24px; margin: 0; padding: 20px 0 0; border-top: 1.5px solid var(--farbe-dunkel); }
@@ -208,7 +207,7 @@
 .cs-tabelle tbody th { width: 22%; }
 .cs-texte-block { padding: 0; grid-template-columns: 1fr; }
 .sm { overflow-x: auto; }
-.sm-wurzel { background: var(--farbe-dunkel) !important; color: var(--farbe-weiss); font-weight: 600; }
+.sm-wurzel { background: var(--farbe-dunkel); color: var(--farbe-weiss); font-weight: 600; }
 .sm > ul { grid-template-columns: repeat(6, minmax(130px, 1fr)); border-top: 1.5px solid var(--farbe-dunkel); }
 .sm > ul::before { height: 28px; border-left: 1.5px solid var(--farbe-dunkel); }
 .sm > ul > li { align-items: flex-start; }
@@ -233,7 +232,7 @@
   .sm > ul::before, .sm > ul > li::before { display: none; }
 }
 /* Projektseite, Runde 2 (Anna 14.10.2026): kein Grau – Kacheln mit Verlauf in der Hausfarbe, weniger Text, Icons, Bewegung */
-.cs { --kachel: linear-gradient(140deg, color-mix(in srgb, var(--pc-farbe) 4%, var(--farbe-weiss)) 0%, color-mix(in srgb, var(--pc-farbe) 16%, var(--farbe-weiss)) 100%); }
+.cs { --kachel: linear-gradient(140deg, color-mix(in srgb, var(--pc-farbe) 4%, var(--farbe-weiss)) 0%, color-mix(in srgb, var(--pc-farbe) 16%, var(--farbe-weiss)) 100%); --pc-marke: var(--farbe-primaer); --pc-dunkel: var(--farbe-dunkel); --pc-akzent: var(--farbe-primaer); --pc-zweit: var(--farbe-grau-hell); --pc-hell: #f3f3f3; --pc-meta-dunkel: var(--farbe-weiss); --pc-titel: var(--pc-dunkel); --pc-pille: var(--pc-akzent); --pc-pille-text: var(--pc-dunkel); --pc-pille-rand: transparent; }
 .cs-etikett { position: absolute; top: 0; left: 24px; z-index: 4; transform: translateY(-50%); background: var(--farbe-dunkel); color: var(--farbe-weiss); font-family: var(--schrift-meta); font-size: .72rem; letter-spacing: 1.2px; text-transform: uppercase; padding: 7px 14px; border-radius: 999px; white-space: nowrap; }
 .cs-etikett-rechts { left: auto; right: 24px; background: var(--farbe-primaer); }
 /* Tabelle: Spalte „Umgesetzt“ hervorgehoben */
@@ -326,8 +325,7 @@
 .vf-rahmen { position: relative; margin-top: 30px; padding: 40px 6% 28px; background: var(--kachel); border-radius: 28px; }
 .vf-rahmen > .vf-phase { left: 6%; top: 40px; }
 .vf-browser { border-radius: 14px; overflow: hidden; background: var(--farbe-weiss); box-shadow: 0 40px 80px rgba(14, 16, 17, .22); }
-.vf-leiste { display: flex; align-items: center; height: 38px; padding: 0 16px 0 78px; border-bottom: 1px solid #e3e5e6; }
-.vf-leiste { background: radial-gradient(circle at 20px 19px, var(--farbe-grau-hell) 5px, transparent 6px), radial-gradient(circle at 38px 19px, var(--farbe-grau-hell) 5px, transparent 6px), radial-gradient(circle at 56px 19px, var(--farbe-grau-hell) 5px, transparent 6px), #f3f4f5; }
+.vf-leiste { display: flex; align-items: center; height: 38px; padding: 0 16px 0 78px; border-bottom: 1px solid #e3e5e6; background: radial-gradient(circle at 20px 19px, var(--farbe-grau-hell) 5px, transparent 6px), radial-gradient(circle at 38px 19px, var(--farbe-grau-hell) 5px, transparent 6px), radial-gradient(circle at 56px 19px, var(--farbe-grau-hell) 5px, transparent 6px), #f3f4f5; }
 .vf-adresse { flex: 1; max-width: 420px; margin: 0 auto; padding: 4px 14px; border-radius: 999px; background: var(--farbe-weiss); font-size: .8rem; color: var(--farbe-gedaempft); text-align: center; }
 .vf-fenster { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: var(--farbe-weiss); }
 .vf-seite { position: absolute; top: 0; left: 0; width: 100%; height: auto; opacity: 0; transform: translateY(0); transition: opacity .5s; }
@@ -335,7 +333,7 @@
 .vf-zeiger { position: absolute; z-index: 3; top: 3%; left: 50%; width: 22px; height: 22px; border-radius: 50%; background: rgba(14, 16, 17, .55); box-shadow: 0 0 0 4px rgba(255, 255, 255, .7); opacity: 0; transition: left .7s ease, top .7s ease, opacity .3s, transform .2s; pointer-events: none; }
 .vf-zeiger.klick { transform: scale(.6); }
 .vf-blende { position: absolute; inset: 0; z-index: 4; display: grid; place-items: center; background: var(--pc-farbe); transition: transform .7s cubic-bezier(.7, 0, .3, 1); }
-.vf-blende::before { content: ""; position: absolute; top: 0; bottom: 0; width: 80px; background: #fbd52a; transform: skewX(-12deg); }
+.vf-blende::before { content: ""; position: absolute; top: 0; bottom: 0; width: 80px; background: #fbd52a; transform: skewX(-12deg); right: 0; }
 .vf-blende b { position: relative; font-family: var(--schrift-ueberschrift); font-weight: 400; font-size: clamp(36px, 6vw, 96px); letter-spacing: .02em; text-transform: uppercase; color: var(--farbe-weiss); }
 .vf-blende.an { transform: translateX(0); }
 .vf-steuerung { display: flex; align-items: center; gap: 16px; margin-top: 18px; }
@@ -351,10 +349,9 @@
 .kr-seiten { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 .kr-seite { position: relative; padding-top: 14px; }
 .kr-seite:nth-child(2) { margin-top: 60px; }
-.kr-fenster { aspect-ratio: 3 / 4; border-radius: 14px; overflow: hidden; background: var(--farbe-weiss); box-shadow: 0 30px 60px rgba(0, 0, 0, .35); }
+.kr-fenster { aspect-ratio: 3 / 4; border-radius: 14px; overflow: hidden; background: var(--farbe-weiss); box-shadow: 0 30px 60px rgba(0, 0, 0, .35); container-type: size; }
 .kr-fenster img { width: 100%; display: block; transform: translateY(0); }
 .kr-seiten.sichtbar .kr-fenster img { animation: kr-scrollen 14s ease-in-out .4s 1 both; }
-.kr-fenster { container-type: size; }
 .kr-seite .cs-etikett { background: #fbd52a; color: var(--farbe-dunkel); }
 @media (prefers-reduced-motion: reduce) {
   .kr-seiten.sichtbar .kr-fenster img { animation: none; }
@@ -375,7 +372,6 @@
 .cs-karriere .ks-knopf { background: rgba(255, 255, 255, .15); color: var(--farbe-weiss); }
 .vf-blende { transform: translateX(-115%); }
 .vf-blende.weg { transform: translateX(115%); }
-.vf-blende::before { right: 0; }
 .sm > ul::before { left: calc((100% - 72px) / 10); right: calc((100% - 72px) / 10); }
 @media (max-width: 1100px) {
   .sm > ul::before { left: calc((100% - 36px) / 6); right: calc((100% - 36px) / 6); }
@@ -872,7 +868,7 @@
 /* B: blaue Bänder – Schrift weiß, Dachzeilen gelb */
 .nl-blau { color: var(--farbe-weiss); }
 .nl-blau .meta { color: #fbd52a; }
-.nl-blau .meta::before { background: #fbd52a !important; }
+.nl-blau .meta::before { background: #fbd52a; }
 .nl-blau h2, .nl-blau h3 { color: var(--farbe-weiss); }
 .nl-raster { background-image: linear-gradient(rgba(255, 255, 255, .07) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .07) 1px, transparent 1px), linear-gradient(180deg, var(--von), var(--bis)); background-size: 40px 40px, 40px 40px, auto; }
 /* B: Personas als einzelne Welt – Text links, große Fotos rechts, Störer am Ende */
@@ -1015,12 +1011,11 @@
 /* Variante B: aktiver Kapitel-Knopf im Vorher-Film schwarz statt Kundenblau (Anna 14.10.2026) */
 .cs-nahtlos .st-kapitel[aria-current="true"] { background: var(--farbe-dunkel); color: var(--farbe-weiss); }
 /* Variante B: Haftnotizen hellblau (Anna 14.10.2026, wie die hellblauen Zettel im Figma-Review), kleiner, damit sie keinen Inhalt verdecken */
-.cs-nahtlos .st-notiz-alt { width: clamp(84px, 10.5cqw, 136px); background: linear-gradient(175deg, #e4f2ff, #cfe6ff 70%, #bddcfb); color: var(--farbe-dunkel); }
+.cs-nahtlos .st-notiz-alt { width: clamp(84px, 10.5cqw, 136px); background: linear-gradient(175deg, #e4f2ff, #cfe6ff 70%, #bddcfb); color: var(--farbe-dunkel); align-items: center; justify-content: center; text-align: center; }
 .cs-nahtlos .st-notiz-alt::after { background: linear-gradient(315deg, transparent 48%, #a7c9ec 50%, #c6e0fb 100%); }
 @media (max-width: 900px) {
   .cs-nahtlos .st-notiz-alt { width: clamp(68px, 19cqw, 108px); }
 }
-.cs-nahtlos .st-notiz-alt { align-items: center; justify-content: center; text-align: center; }
 /* Variante B: Kapitel-Band vor einer Schräge – Platz lassen, damit die Schräge die Überschrift nicht anschneidet */
 .nl-band.nl-eng:has(+ .nl-band.nl-schraege) { padding-bottom: calc(24px + clamp(40px, 6.75vw, 96px)); }
 /* Variante B: Heft ohne blaue Fläche, groß (Storyboard Nr. 17) */
@@ -1175,7 +1170,6 @@
 /* ===== Referenz-Bausteine für alle Projekte (Anna 15.10.2026: „wie eine Art CMS, wiederkehrende Pattern“) =====
    Farben kommen aus dem Projekt (Feld "stil" in projekte.json): --pc-dunkel, --pc-akzent, --pc-zweit, --pc-hell, --pc-meta-dunkel.
    Erster Einsatz: Deinetwegen (Vorlage Behance „Reslink“, nur Prinzipien). */
-.cs { --pc-marke: var(--farbe-primaer); --pc-dunkel: var(--farbe-dunkel); --pc-akzent: var(--farbe-primaer); --pc-zweit: var(--farbe-grau-hell); --pc-hell: #f3f3f3; --pc-meta-dunkel: var(--farbe-weiss); }
 .cs-nahtlos .meta:has(+ :is(h1, h2))::before, .cs-nahtlos div:has(+ :is(h1, h2)) > .meta:last-child::before { background: var(--pc-akzent); }
 /* dunkles Band: weiße Schrift, Dachzeile in einer Farbe mit genug Kontrast (nicht automatisch die Akzentfarbe) */
 .nl-dunkel { color: var(--farbe-weiss); }
@@ -1321,7 +1315,6 @@
 }
 /* Anna 15.10.2026: kein weißer Spalt unter der Mockup-Bühne; Überschriften je Projekt (Bauer: schwarz); Ziele-Spalten nach Anzahl */
 .cs-nahtlos .nl-band.bl-hero.bl-mit-mockup { padding: 0; }
-.cs { --pc-titel: var(--pc-dunkel); }
 .ub-aussage, .hk-karte:not(.hk-dunkel) .hk-text, .hk-nr { color: var(--pc-titel); }
 .hk-ziele ol { grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); }
 @media (max-width: 900px) {
@@ -1342,7 +1335,6 @@
 .hw-hell .hw-fest img, .hw-hell .hw-lauf img { box-shadow: 0 0 0 1px rgba(0, 0, 0, .14), 0 18px 44px rgba(0, 0, 0, .22); }
 .hw-hell .hw-knopf { background: #000; color: var(--farbe-weiss); }
 /* Seiten nebeneinander in voller Länge (Jana: Werkbereiche) – Etikett im Stil der Kundin über --pc-pille */
-.cs { --pc-pille: var(--pc-akzent); --pc-pille-text: var(--pc-dunkel); --pc-pille-rand: transparent; }
 .cs-seiten-spalten { max-width: 1200px; margin: 0 auto; }
 .ss-reihe { display: grid; grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); gap: clamp(16px, 2.4vw, 40px); align-items: start; }
 .ss-seite { margin: 0; }

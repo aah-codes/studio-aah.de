@@ -190,20 +190,125 @@ def mockup(key, pre):
             '<figcaption><p class="meta">Aus der Praxis</p><p>' + esc(text) + '</p></figcaption></figure>\n  </section>')
 
 
-def seite(key, c):
+def gruppe_fuer(c):
+    """Preisgruppe der Seite. Mehrere Seiten teilen sich eine Gruppe (zusatz): nur die genannten Pakete, eigener Einleitungssatz;
+    „paket_extra“ ergänzt die Paketdaten nur für diese Seite (z. B. Stundensatz statt „auf Anfrage“)."""
     g = next(x for x in preise['gruppen'] if x['id'] == c['gruppe'])
-    # Mehrere Seiten teilen sich eine Gruppe (zusatz): nur die genannten Pakete, eigener Einleitungssatz;
-    # „paket_extra“ ergänzt die Paketdaten nur für diese Seite (z. B. Stundensatz statt „auf Anfrage“)
     if c.get('pakete'):
         g = {**g, 'pakete': [{**e, **c.get('paket_extra', {})} for e in g['pakete'] if e['id'] in c['pakete']], 'extras': []}
+    return g
+
+
+def fragen_fuer(c, termine):
+    """FAQ der Seite: eigene Fragen, Frage zu den Abstimmungsterminen, gemeinsame Fragen aller Leistungsseiten."""
+    satz = termine if termine.startswith('Termine') else termine[0].lower() + termine[1:]  # Substantiv bleibt groß
+    zusatz = '' if 'nach Absprache' in termine else ' Weitere Termine vereinbaren wir nach Absprache.'
+    return c['faq'] + [['Wie oft gibt es bei STUDIO AAH! Abstimmungstermine?', 'Bei STUDIO AAH! gibt es ' + satz + zusatz]] + GEMEINSAM
+
+
+def seitenkopf(c, pre, intro, termine):
+    woerter = c['titel'].split()
+    titel_vorne = esc(' '.join(woerter[:-1])) + ' ' if len(woerter) > 1 else ''
+    return f'''  <section class="seitenkopf lsx-kopf">
+    <p class="meta brotkrumen"><a href="{pre}#leistungen">Leistungen</a> / <span aria-current="page">{esc(c['titel'])}</span></p>
+    <h1 class="gr-xxl lsx-titel" style="--n:{max(len(w) for w in woerter)}">{titel_vorne}<span class="wort-mit-icon">{esc(woerter[-1])}<img class="icon-3d" src="{pre}{c['icon']}" alt="" width="400" height="400"></span></h1>
+    <p class="alt-klein">{trennen(esc(intro))}</p>
+    <p class="lsx-termine"><span class="meta">So arbeite ich</span> {esc(termine)}</p>
+    {I.kennzahlen('fakten lsx-fakten', '    ')}
+  </section>'''
+
+
+def sprungleiste(c, g, mit_vergleich, mit_ablauf, link, link_text):
+    ziele = [('loesung', 'Problem &amp; Lösung', True), ('pakete', 'Pakete', True), ('vergleich', 'Vergleich', mit_vergleich),
+             ('extras', 'Zusatzleistungen', bool(g.get('extras'))), ('ablauf', 'Ablauf', mit_ablauf),
+             ('referenzen', 'Referenzen', bool(I.mit_tag(I.PROJEKTE, [c['tag']]))),
+             ('artikel', 'Artikel', bool(c.get('artikel', True) and I.mit_tag(I.BLOG, [c['tag']]))), ('faq', 'Fragen', True)]
+    links = ''.join(f'<a href="#{anker}">{text}</a>' for anker, text, an in ziele if an)
+    return f'  <nav class="preis-leiste lsx-chips" aria-label="Auf dieser Seite">{links}<a href="{link}">{link_text} →</a></nav>'
+
+
+def problem_loesung(c, g, pre, link):
+    probleme = ''.join(f'<li>{esc(x)}</li>' for x in c['probleme'])
+    punkte = ''.join(f'<li>{esc(x)}</li>' for x in c['loesung_punkte'][:3])
+    grundsatz = '' if c.get('grafik') == 'corporate-identity' else (
+        f'<p class="lsx-grundsatz"><a class="textlink" href="{pre}service/markenbildung/#corporate-identity">Form follows function, die Form folgt der Funktion. '
+        'Grundlage für alles, was ich gestalte, ist die Corporate Identity <span aria-hidden="true">→</span></a></p>')
+    return f'''  <section class="lsx-loesung lsx-pl" id="loesung" aria-labelledby="loesung-titel">
+    <p class="meta">Problem &amp; Lösung</p>
+    <h2 class="gr-h3" id="loesung-titel">{esc(c['problem_titel'])}</h2>
+    <div class="lsx-pl-raster">
+      <div class="lsx-pl-problem"><p class="meta">Woran es oft hakt</p><ul>{probleme}</ul></div>
+      <div class="lsx-pl-loesung"><p class="meta">So mache ich es</p><p class="lsx-pl-text">{esc(c['loesung_text'])}</p><ul>{punkte}</ul>
+        {grundsatz}</div>
+      <p class="lsx-knoepfe"><a class="button" href="{pre}kontakt/">Projekt anfragen <span aria-hidden="true">→</span></a> <a class="textlink" href="{link}">{'Kosten berechnen' if g['id'] == 'website' else 'Alle Preise'} <span aria-hidden="true">→</span></a></p>
+    </div>
+  </section>'''
+
+
+def pakete(c, g, pre):
+    hinweis = f'<p class="lsx-hinweis">{esc(g["hinweis"])}</p>' if g.get('hinweis') else ''
+    return f'''  <section class="lsx-pakete" id="pakete" aria-labelledby="pakete-titel">
+    <p class="meta">Pakete</p>
+    <h2 class="gr-h3" id="pakete-titel">Pakete im Überblick</h2>
+    {hinweis}
+{paket_reihen(g, c, pre)}
+    {NETTO_HINWEIS}
+    {'' if len(g['pakete']) == 1 and not c.get('hintergrund') else nicht_enthalten(c)}
+  </section>'''
+
+
+def duo(g, pre, link):
+    web = g['id'] == 'website'
+    return f'''  <section class="lsx-duo" aria-label="Kontakt und Kostenrechner">
+{direkt(pre)}
+    <div class="lsx-duo-karte lsx-duo-rechner">
+      <img class="lsx-duo-icon" src="{pre}bilder/icons/money-bag.webp" alt="" width="400" height="400" loading="lazy">
+      {DUO_WEB if web else DUO_PREISE}
+      <p><a class="button button-zweit button-hell" href="{link}">{'Zum Kostenrechner' if web else 'Zu den Preisen'} <span aria-hidden="true">→</span></a></p>
+    </div>
+  </section>'''
+
+
+def faq(fragen, pre):
+    eintraege = ''.join(f'''      <details class="faq-eintrag">
+        <summary>{esc(q)}</summary>
+        <div class="faq-antwort"><p>{esc(a)}</p></div>
+      </details>
+''' for q, a in fragen)
+    return f'''  <section class="faq" id="faq" aria-labelledby="faq-titel">
+    <h2 class="gr-h2" id="faq-titel">Häufige Fragen</h2>
+    <div class="faq-liste">
+{eintraege}    </div>
+    <p class="faq-mehr">Noch Fragen? Ich freue mich auf Ihre Nachricht. <a class="textlink" href="{pre}kontakt/">Kontakt</a></p>
+  </section>'''
+
+
+def strukturierte_daten(c, g, intro, url, fragen, vorlage):
+    """Leistung mit Angeboten und FAQ (für Suchmaschinen und KI-Antworten); Studio-Angaben aus der Vorlage."""
+    studio = re.search(r'\{\s*"@type": "ProfessionalService".*?"areaServed": \[[^\]]*\]\s*\}', vorlage, re.S)
+    angebote = [{"@type": "Offer", "name": e['name'], "priceCurrency": "EUR", "price": str(e['preis']),
+                 "priceSpecification": {"@type": "PriceSpecification", "minPrice": e['preis'], "priceCurrency": "EUR", "valueAddedTaxIncluded": False}}
+                for e in g['pakete'] if e.get('preis')]
+    angebote += [{"@type": "Offer", "name": e['name'], "priceCurrency": "EUR",
+                  "priceSpecification": {"@type": "UnitPriceSpecification", "minPrice": e['stunde'], **({"maxPrice": e['stundeBis']} if e.get('stundeBis') else {}),
+                                         "priceCurrency": "EUR", "unitText": "Stunde", "valueAddedTaxIncluded": False}}
+                 for e in g['pakete'] if e.get('stunde') and not e.get('preis')]
+    graph = [json.loads(studio.group(0)) if studio else {"@id": STUDIO_ID},
+             {"@type": "Service", "@id": url + '#leistung', "name": c['titel'], "description": intro, "url": url,
+              "provider": {"@id": STUDIO_ID}, "areaServed": "Leipzig", "offers": angebote},
+             {"@type": "FAQPage", "@id": url + '#faq', "url": url, "inLanguage": "de",
+              "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in fragen]}]
+    return {"@context": "https://schema.org", "@graph": graph}
+
+
+def seite(key, c):
+    g = gruppe_fuer(c)
     intro = c.get('intro') or g['intro']
-    titel_vorne = esc(' '.join(c['titel'].split()[:-1])) + ' ' if len(c['titel'].split()) > 1 else ''
-    # Der Prozess der Startseite beschreibt Website-Projekte; andere Leistungen brauchen eigene Schritte (noch offen)
+    # Der Prozess der Startseite beschreibt Website-Projekte; andere Leistungen brauchen eigene Schritte
     mit_ablauf = bool(c.get('ablauf_schritte')) or c.get('ablauf', c['gruppe'] == 'website')
     # Abstimmungstermine (Anna, 11.10.2026): im Projekt wöchentlich, bei laufender Betreuung seltener
     termine = c.get('termine', TERMINE)
-    satz = termine if termine.startswith('Termine') else termine[0].lower() + termine[1:]  # Substantiv bleibt groß
-    faq_termine = [['Wie oft gibt es bei STUDIO AAH! Abstimmungstermine?', 'Bei STUDIO AAH! gibt es ' + satz + ('' if 'nach Absprache' in termine else ' Weitere Termine vereinbaren wir nach Absprache.')]]
+    fragen = fragen_fuer(c, termine)
     pre = '../' * (c['pfad'].strip('/').count('/') + 1)
     link, link_text = preise_link(g, pre)
     pfad = WEBSITE / c['pfad'] / 'index.html'
@@ -211,52 +316,26 @@ def seite(key, c):
     vorlage = (pfad if pfad.exists() else WEBSITE / 'service' / 'webdesign' / 'index.html').read_text(encoding='utf-8')
     url = 'https://studio-aah.de/' + c['pfad']
     vergleich_html = vergleich(g)
-    faq = ''.join(f'''      <details class="faq-eintrag">
-        <summary>{esc(q)}</summary>
-        <div class="faq-antwort"><p>{esc(a)}</p></div>
-      </details>
-''' for q, a in c['faq'] + faq_termine + GEMEINSAM)
+    prozess = (ablauf_eigen(pre, c['ablauf_schritte']) if c.get('ablauf_schritte') else ablauf(pre)) if mit_ablauf else ''
     main = f'''<main id="inhalt">
 
-  <section class="seitenkopf lsx-kopf">
-    <p class="meta brotkrumen"><a href="{pre}#leistungen">Leistungen</a> / <span aria-current="page">{esc(c['titel'])}</span></p>
-    <h1 class="gr-xxl lsx-titel" style="--n:{max(len(w) for w in c['titel'].split())}">{titel_vorne}<span class="wort-mit-icon">{esc(c['titel'].split()[-1])}<img class="icon-3d" src="{pre}{c['icon']}" alt="" width="400" height="400"></span></h1>
-    <p class="alt-klein">{trennen(esc(intro))}</p>
-    <p class="lsx-termine"><span class="meta">So arbeite ich</span> {esc(termine)}</p>
-    {I.kennzahlen('fakten lsx-fakten', '    ')}
-  </section>
+{seitenkopf(c, pre, intro, termine)}
 
-  <nav class="preis-leiste lsx-chips" aria-label="Auf dieser Seite"><a href="#loesung">Problem &amp; Lösung</a><a href="#pakete">Pakete</a>{'<a href="#vergleich">Vergleich</a>' if vergleich_html else ''}{'<a href="#extras">Zusatzleistungen</a>' if g.get('extras') else ''}{'<a href="#ablauf">Ablauf</a>' if mit_ablauf else ''}{'<a href="#referenzen">Referenzen</a>' if I.mit_tag(I.PROJEKTE, [c['tag']]) else ''}{'<a href="#artikel">Artikel</a>' if c.get('artikel', True) and I.mit_tag(I.BLOG, [c['tag']]) else ''}<a href="#faq">Fragen</a><a href="{link}">{link_text} →</a></nav>
+{sprungleiste(c, g, bool(vergleich_html), mit_ablauf, link, link_text)}
 
-  <section class="lsx-loesung lsx-pl" id="loesung" aria-labelledby="loesung-titel">
-    <p class="meta">Problem &amp; Lösung</p>
-    <h2 class="gr-h3" id="loesung-titel">{esc(c['problem_titel'])}</h2>
-    <div class="lsx-pl-raster">
-      <div class="lsx-pl-problem"><p class="meta">Woran es oft hakt</p><ul>{''.join(f'<li>{esc(x)}</li>' for x in c['probleme'])}</ul></div>
-      <div class="lsx-pl-loesung"><p class="meta">So mache ich es</p><p class="lsx-pl-text">{esc(c['loesung_text'])}</p><ul>{''.join(f'<li>{esc(x)}</li>' for x in c['loesung_punkte'][:3])}</ul>
-        {'' if c.get('grafik') == 'corporate-identity' else f'<p class="lsx-grundsatz"><a class="textlink" href="{pre}service/markenbildung/#corporate-identity">Form follows function, die Form folgt der Funktion. Grundlage für alles, was ich gestalte, ist die Corporate Identity <span aria-hidden="true">→</span></a></p>'}</div>
-      <p class="lsx-knoepfe"><a class="button" href="{pre}kontakt/">Projekt anfragen <span aria-hidden="true">→</span></a> <a class="textlink" href="{link}">{'Kosten berechnen' if g['id'] == 'website' else 'Alle Preise'} <span aria-hidden="true">→</span></a></p>
-    </div>
-  </section>
+{problem_loesung(c, g, pre, link)}
 
 {grafik('website-oekosystem') if c.get('herz') else ''}
 {grafik(c['grafik']) if c.get('grafik') else ''}
 {grafik(c['nutzen']) if c.get('nutzen') else ''}
 
-  <section class="lsx-pakete" id="pakete" aria-labelledby="pakete-titel">
-    <p class="meta">Pakete</p>
-    <h2 class="gr-h3" id="pakete-titel">Pakete im Überblick</h2>
-    {f'<p class="lsx-hinweis">{esc(g["hinweis"])}</p>' if g.get('hinweis') else ''}
-{paket_reihen(g, c, pre)}
-    {NETTO_HINWEIS}
-    {'' if len(g['pakete']) == 1 and not c.get('hintergrund') else nicht_enthalten(c)}
-  </section>
+{pakete(c, g, pre)}
 
 {vergleich_html}
 
 {extras(g)}
 
-{(ablauf_eigen(pre, c['ablauf_schritte']) if c.get('ablauf_schritte') else ablauf(pre)) if mit_ablauf else ''}
+{prozess}
 
 {stimmen(pre, c['tag'])}
 
@@ -265,39 +344,14 @@ def seite(key, c):
 {referenzen(c['tag'], pre)}
 
 
-  <section class="lsx-duo" aria-label="Kontakt und Kostenrechner">
-{direkt(pre)}
-    <div class="lsx-duo-karte lsx-duo-rechner">
-      <img class="lsx-duo-icon" src="{pre}bilder/icons/money-bag.webp" alt="" width="400" height="400" loading="lazy">
-      {DUO_WEB if g['id'] == 'website' else DUO_PREISE}
-      <p><a class="button button-zweit button-hell" href="{link}">{'Zum Kostenrechner' if g['id'] == 'website' else 'Zu den Preisen'} <span aria-hidden="true">→</span></a></p>
-    </div>
-  </section>
+{duo(g, pre, link)}
 
 {artikel(pre, c['tag']) if c.get('artikel', True) else ''}
 
-  <section class="faq" id="faq" aria-labelledby="faq-titel">
-    <h2 class="gr-h2" id="faq-titel">Häufige Fragen</h2>
-    <div class="faq-liste">
-{faq}    </div>
-    <p class="faq-mehr">Noch Fragen? Ich freue mich auf Ihre Nachricht. <a class="textlink" href="{pre}kontakt/">Kontakt</a></p>
-  </section>
+{faq(fragen, pre)}
 
 </main>'''
-    # Strukturierte Daten: Leistung mit Angeboten und FAQ (für Suchmaschinen und KI-Antworten)
-    studio = re.search(r'\{\s*"@type": "ProfessionalService".*?"areaServed": \[[^\]]*\]\s*\}', vorlage, re.S)
-    angebote = [{"@type": "Offer", "name": e['name'], "priceCurrency": "EUR", "price": str(e['preis']),
-                 "priceSpecification": {"@type": "PriceSpecification", "minPrice": e['preis'], "priceCurrency": "EUR", "valueAddedTaxIncluded": False}}
-                for e in g['pakete'] if e.get('preis')]
-    angebote += [{"@type": "Offer", "name": e['name'], "priceCurrency": "EUR",
-                  "priceSpecification": {"@type": "UnitPriceSpecification", "minPrice": e['stunde'], **({"maxPrice": e['stundeBis']} if e.get('stundeBis') else {}), "priceCurrency": "EUR", "unitText": "Stunde", "valueAddedTaxIncluded": False}}
-                 for e in g['pakete'] if e.get('stunde') and not e.get('preis')]
-    graph = [json.loads(studio.group(0)) if studio else {"@id": STUDIO_ID},
-             {"@type": "Service", "@id": url + '#leistung', "name": c['titel'], "description": intro, "url": url,
-              "provider": {"@id": STUDIO_ID}, "areaServed": "Leipzig", "offers": angebote},
-             {"@type": "FAQPage", "@id": url + '#faq', "url": url, "inLanguage": "de",
-              "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in c['faq'] + faq_termine + GEMEINSAM]}]
-    t = seitenrahmen(vorlage, main, c['seitentitel'], c['beschreibung'], url, {"@context": "https://schema.org", "@graph": graph})
+    t = seitenrahmen(vorlage, main, c['seitentitel'], c['beschreibung'], url, strukturierte_daten(c, g, intro, url, fragen, vorlage))
     if 'zaehlen.js' not in t:  # Kennzahlen zählen hoch; Version wie auf der Startseite
         version = re.search(r'zaehlen\.js\?v=(\w+)', START).group(1)
         t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v={version}" defer></script>\n</body>', 1)
