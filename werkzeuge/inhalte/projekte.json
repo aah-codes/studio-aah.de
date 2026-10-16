@@ -3034,7 +3034,7 @@
     {
      "typ": "marke",
      "meta": "Corporate Design",
-     "titel": "Logo, Farben, Schrift",
+     "titel": "Logo und Bildmarke",
      "text": "Die Wortmarke hat Franziska als Grundlage mitgebracht. Ich habe Ausrichtung und Farben angepasst und das Corporate Design im Brand Manual festgehalten: Wortmarke mit orangem D und Stern, das D als Bildmarke, Farben und Schrift.",
      "logos": [
       [
@@ -3058,6 +3058,16 @@
        "#2A1E2B"
       ]
      ],
+     "band": {
+      "von": "#EBEBF0",
+      "bis": "#EBEBF0",
+      "art": []
+     }
+    },
+    {
+     "typ": "designsystem",
+     "meta": "Design-System",
+     "titel": "Farben und Schrift",
      "farben": [
       [
        "#FF5000",
@@ -3085,14 +3095,54 @@
        "Flächen"
       ]
      ],
-     "schrift_bild": "bilder/referenzen/deinetwegen/schrift-satoshi.png",
-     "schrift_alt": "Schriftmuster Satoshi: Aa groß, Alphabet in Regular und Bold",
-     "schrift_text": "Schrift: Satoshi · Indian Type Foundry",
+     "farben_text": "Signalfarbe Orange, dazu Schwarz und Türkis",
+     "schrift": "Satoshi",
+     "schrift_css": "inherit",
+     "warum": "Satoshi von der Indian Type Foundry: Bold für Überschriften, Light für Fließtext.",
+     "aa_bild": "bilder/referenzen/deinetwegen/schrift-aa.png",
      "band": {
       "von": "#EBEBF0",
       "bis": "#EBEBF0",
       "art": []
-     }
+     },
+     "stufen": [
+      [
+       "H1",
+       "86 / 86 · 700",
+       "bilder/referenzen/deinetwegen/schriftstufe-1.png",
+       "Feelgood Workplaces. Culture Design."
+      ],
+      [
+       "H2",
+       "44 / 58 · 700",
+       "bilder/referenzen/deinetwegen/schriftstufe-2.png",
+       "Warum gute Mitarbeitende gehen und Teams nicht performen."
+      ],
+      [
+       "H3",
+       "34 / 42 · 700",
+       "bilder/referenzen/deinetwegen/schriftstufe-3.png",
+       "Strategische Kultur in Unternehmen"
+      ],
+      [
+       "H4",
+       "24 / 32 · 700",
+       "bilder/referenzen/deinetwegen/schriftstufe-4.png",
+       "Hohe Fluktuation – wertvolles Wissen geht verloren."
+      ],
+      [
+       "Fließtext",
+       "17,5 / 24 · 300",
+       "bilder/referenzen/deinetwegen/schriftstufe-5.png",
+       "Unternehmen, die Mitarbeiter langfristig binden wollen."
+      ],
+      [
+       "Button",
+       "16 · 700",
+       "bilder/referenzen/deinetwegen/schriftstufe-6.png",
+       "Kontaktiere uns!"
+      ]
+     ]
     },
     {
      "typ": "langaufnahmen",
@@ -3526,7 +3576,7 @@
     {
      "typ": "marke",
      "meta": "Corporate Design",
-     "titel": "Wortmarke, Farben, Schrift",
+     "titel": "Wortmarke",
      "logos": [
       [
        "bilder/referenzen/jana/logo-schwarz.png",
@@ -3539,6 +3589,17 @@
        "#000000"
       ]
      ],
+     "band": {
+      "von": "#F4F4F4",
+      "bis": "#F4F4F4",
+      "art": []
+     },
+     "text": "Kein eigenes Logo: Als Wortmarke dient ihr Instagram-Name. Ich habe die Schriften festgelegt und Layout und Interface gestaltet."
+    },
+    {
+     "typ": "designsystem",
+     "meta": "Design-System",
+     "titel": "Farben und Schrift",
      "farben": [
       [
        "#000000",
@@ -3561,15 +3622,42 @@
        "Markierung im Menü"
       ]
      ],
-     "schrift_bild": "bilder/referenzen/jana/schrift-helvetica.png",
-     "schrift_alt": "Schriftmuster Helvetica: Aa, Alphabet in Roman und Bold",
-     "schrift_text": "Schrift: Helvetica, dazu DIN Next Light",
+     "farben_text": "Schwarz und Weiß, dazu Neongrün und Gelb",
+     "schrift": "Helvetica",
+     "schrift_css": "inherit",
+     "warum": "Helvetica Bold in Versalien für Überschriften, Roman für Text, dazu DIN Next Light.",
+     "aa_bild": "bilder/referenzen/jana/schrift-aa.png",
+     "stufen": [
+      [
+       "H1",
+       "120 / 120 · Bold · Versalien",
+       "bilder/referenzen/jana/schriftstufe-1.png",
+       "JANA VOIGTMANN"
+      ],
+      [
+       "H2",
+       "80 · Bold · Versalien",
+       "bilder/referenzen/jana/schriftstufe-2.png",
+       "AKTUELLE AUSSTELLUNGEN"
+      ],
+      [
+       "Fließtext",
+       "16 / 27 · Roman",
+       "bilder/referenzen/jana/schriftstufe-3.png",
+       "Acryl und Kugelschreiberpaste auf Leinwand"
+      ],
+      [
+       "Menü",
+       "16 · Roman · Versalien",
+       "bilder/referenzen/jana/schriftstufe-4.png",
+       "MALEREI"
+      ]
+     ],
      "band": {
       "von": "#F4F4F4",
       "bis": "#F4F4F4",
       "art": []
-     },
-     "text": "Kein eigenes Logo: Als Wortmarke dient ihr Instagram-Name. Ich habe die Schriften festgelegt und Layout und Interface gestaltet."
+     }
     },
     {
      "typ": "kapitel",

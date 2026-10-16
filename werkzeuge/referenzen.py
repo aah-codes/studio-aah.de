@@ -207,11 +207,19 @@ def block(b, pre):
         farben = ''.join(f'<div class="ds-farbe{" ds-hell" if hell(c) else ""}" style="--f: {c}"><b>{esc(n)}</b><dl><div><dt>Digital HEX</dt><dd>{esc(c.upper())}</dd></div>'
                          f'<div><dt>RGB</dt><dd>{rgb(c)}</dd></div><div><dt>Einsatz</dt><dd>{esc(r)}</dd></div></dl></div>' for c, n, r in b['farben'])
         farben = f'<div class="ds-farben-kopf"><span>Farbpalette</span><span>{esc(b.get("farben_text", ""))}</span></div>' + farben
-        stufen = ''.join(f'<li><span class="ds-mass">{esc(name)}<br><small>{esc(mass)}</small></span><span class="ds-probe" style="font-size: {gr}; font-weight: {gew}; line-height: {zh};{zusatz}">{esc(probe)}</span></li>'
-                         for name, mass, gr, gew, zh, zusatz, probe in b['stufen'])
+        def stufe(s):
+            if len(s) == 4:  # [Stufe, Maß, Bild, Alternativtext]: Probe als Bild in der echten Schrift, in halber Pixelgröße (Bild in doppelter Auflösung)
+                name, mass, bild, alt = s
+                d = (basis / 'website' / bild).read_bytes()[16:24]; w, h = int.from_bytes(d[:4], 'big') // 2, int.from_bytes(d[4:], 'big') // 2
+                return f'<li><span class="ds-mass">{esc(name)}<br><small>{esc(mass)}</small></span><span class="ds-probe ds-probe-bild"><img src="{pre}{bild}" alt="{esc(alt)}" width="{w}" height="{h}" loading="lazy"></span></li>'
+            name, mass, gr, gew, zh, zusatz, probe = s
+            return f'<li><span class="ds-mass">{esc(name)}<br><small>{esc(mass)}</small></span><span class="ds-probe" style="font-size: {gr}; font-weight: {gew}; line-height: {zh};{zusatz}">{esc(probe)}</span></li>'
+        stufen = ''.join(stufe(s) for s in b.get('stufen', []))
+        stufen_html = f'<ol class="ds-stufen">{stufen}</ol>'
+        aa_html = (f'<p class="ds-aa ds-aa-bild"><img src="{pre}{b["aa_bild"]}" alt="Aa in {esc(b["schrift"])}"{svg_mass(b["aa_bild"])} loading="lazy"></p>' if b.get('aa_bild') else '<p class="ds-aa">Aa</p>')
         return (f'  <figure class="cs-block cs-designsystem" style="--ds-schrift: {b["schrift_css"].replace(chr(34), "&quot;")}">\n    <figcaption class="cs-block-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3">{esc(b["titel"])}</h2></figcaption>\n'
                 f'    <div class="ds-farben">{farben}</div>\n'
-                f'    <div class="ds-schrift"><div class="ds-schrift-kopf"><p class="ds-aa">Aa</p><p class="ds-name">{esc(b["schrift"])}</p><p class="ds-warum">{esc(b["warum"])}</p></div><ol class="ds-stufen">{stufen}</ol></div>\n  </figure>')
+                f'    <div class="ds-schrift"><div class="ds-schrift-kopf">{aa_html}<p class="ds-name">{esc(b["schrift"])}</p><p class="ds-warum">{esc(b["warum"])}</p></div>{stufen_html}</div>\n  </figure>')
     if b['typ'] == 'film-vergleich':
         # Vorher/Nachher als inszenierter Film im Browserfenster (Anna 14.10.2026): durch die alte Seite klicken, Wischblende, dieselben Seiten neu.
         # Läuft nur, solange sichtbar; Pause-Taste (Bewegung über 5 s braucht eine Pause-Taste)

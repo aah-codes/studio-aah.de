@@ -89,6 +89,9 @@
 - Galerie (Anna, 16.10.2026: „bei Klick auf Bild geht Slider auf mit Titel und Beschreibung“): eigene schwarze Sektion zwischen den drei Genres und „Über und Kontakt“, Baustein `durchklick` (drei Aufnahmen `galerie-1…3.jpg`, Klick aufs Bild zeigt die nächste; keine eigenen Pfeile oder Zähler – Anna: „irreführend“). Text von Anna freigegeben (16.10.2026).
 - Kein Geräte-Mockup (Anna, 16.10.2026: „mockup raus“; Atelier-Monitor und MacBook entfernt, Bildnachweise gelöscht).
 
+## Typografie auf Referenzseiten (Anna, 16.10.2026)
+- Überall wie bei Bauer: Baustein `designsystem` (Farbkarten, „Aa“, Schriftstufen H1 bis Button mit den Werten der Live-Seite). Schriften ohne freie Lizenz (Satoshi, Helvetica) als Bild je Stufe (`werkzeuge/grafiken/schriftstufen.swift`), freie Schriften (Inter, Montserrat) lokal als woff2. Details in `werkzeuge/anleitung-referenzseite.md`.
+
 ## Projektseite Dr. Simone Goldhammer (Entwurf, Stand 16.10.2026)
 - `/referenzen/goldhammer/` aus `varianten.b` (`hauptvariante: "b"`), Duplikat von Janas Aufbau (Anna, 16.10.2026: „dupliziere die seite von jana und füge die inhalte zu simone ein“). **Nicht hochladen, bevor Anna die Texte geliefert/freigegeben hat** (Ausgangslage, Ziele, Ergebnis fehlen noch; Überblick-Aussage ist Textvorschlag).
 - Website ist von Anna (jetzige Seite); Plattform (Wix) nicht nennen. Gezeigt: Website, Logo/Branding, Flyer, Visitenkarten; nicht: Google-Eintrag, Praxisschild. Simone einverstanden laut Anna.
