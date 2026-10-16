@@ -787,6 +787,7 @@ html { scroll-padding-top: calc(var(--kopf-hoehe) + 16px); }
 .kopier-knopf.ok .symbol-kopieren { display: none; }
 .kopiert { font-size: .85rem; color: var(--farbe-gedaempft); }
 .hinweis-klein { font-size: .85rem; color: var(--farbe-gedaempft); margin: 0; }
+.hinweis-klein + .alt-h3 { margin-top: 2.5rem; }
 
 
 /* ---------- 19. Startseite: „Roter Faden“ und Ziel „Projekt anfragen“ ---------- */
