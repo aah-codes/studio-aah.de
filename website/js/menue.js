@@ -262,4 +262,31 @@
       document.querySelector('.kopf-mobil .mobil-unter > summary')?.classList.add('aktiv');
     }
   })();
+
+  // Kostenrechner-Knopf unten rechts verdeckt nie einen anderen Knopf, Mail-/Telefon-Link oder Kontakt-/Anfrage-Link (Website-Check 18.10.2026):
+  // liegt einer darunter, blendet er sich aus, bis wieder Platz ist. Ohne JavaScript bleibt er wie bisher sichtbar.
+  (() => {
+    const knopf = document.querySelector('.sticky-rechner');
+    if (!knopf) return;
+    const ziele = [...document.querySelectorAll('a, button, input[type="submit"]')].filter((el) => !knopf.contains(el)
+      && (el.matches('.button, button, input[type="submit"], a[href^="mailto:"], a[href^="tel:"], form a')
+        || /anfrag|kontakt|termin|e-mail|anrufen/i.test(el.textContent)));
+    function pruefen() {
+      const k = knopf.getBoundingClientRect();
+      const verdeckt = ziele.some((el) => {
+        const r = el.getBoundingClientRect();
+        return r.width && r.left < k.right + 8 && r.right > k.left - 8 && r.top < k.bottom + 8 && r.bottom > k.top - 8;
+      });
+      knopf.classList.toggle('weg', verdeckt);
+    }
+    // Scroll-Ereignisse kommen höchstens einmal je Bild, deshalb ohne eigene Drosselung
+    addEventListener('scroll', pruefen, { passive: true });
+    addEventListener('resize', pruefen);
+    addEventListener('load', pruefen);
+    // erste Prüfung ohne Überblendung, sonst blitzt der Knopf beim Laden über „Projekt anfragen“ auf
+    knopf.style.transition = 'none';
+    pruefen();
+    knopf.getBoundingClientRect(); // Stil jetzt anwenden, bevor die Überblendung zurückkommt
+    knopf.style.transition = '';
+  })();
 })();

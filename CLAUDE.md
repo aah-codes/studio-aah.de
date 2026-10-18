@@ -23,6 +23,7 @@
 - `python3 werkzeuge/grafiken/ci-film.py` – CI-Grafik (`werkzeuge/grafiken/corporate-identity.html`)
 - `python3 werkzeuge/grafiken/druck-mockup.py PFAD/schreibtisch.jpg` – Druck-Mockup (Goldhammer-Visitenkarten auf Schreibtisch); Foto liegt nicht im Repository
 - `python3 werkzeuge/grafiken/fotostudio.py` – Porträts mit blauer Studiowand (Entwurf, Schwarz-Weiß-Vorlagen)
+- `bash werkzeuge/grafiken/bild/varianten.sh` – kleine Fassungen der langen Seitenaufnahmen (`<bild>-<breite>.webp`, bei Bedarf `.jpg`) für Projektkarten und Hero-Leiste; `bild_attr()` in `gemeinsam.py` baut daraus `srcset`. Braucht `sips` (macOS) und `cwebp` (libwebp von Google, liegt auf dem MacBook in `~/bin`). Danach alle Generatoren laufen lassen.
 - Erzeugte Bereiche nie direkt in `website/` ändern, sondern in der Quelle, dann neu erzeugen.
 - Gemeinsame Hilfsfunktionen der Generatoren (Pfade, `esc`, `euro`, `einsetzen`, Seitenrahmen, Bildmaße, Paketkarte) stehen in `werkzeuge/gemeinsam.py` – dort ändern, nicht in den Skripten kopieren. Ersetzungen brechen mit Meldung ab, wenn ein Marker fehlt. Texte von „Für wen“ (Startseite) in `werkzeuge/inhalte/fuer-wen.json`.
 - Nach CSS- oder JS-Änderungen die Cache-Version `?v=…` überall erhöhen (z. B. `sed` über `grep -rl` in `website` und `werkzeuge`), dann alle Generatoren laufen lassen.

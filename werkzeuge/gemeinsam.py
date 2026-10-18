@@ -107,8 +107,25 @@ def bildmass(datei):
 
 def mass_attr(datei, teiler=1):
     """' width="…" height="…"' für ein Bild unter website/ (gegen Springen beim Laden); teiler 2 = Bild in doppelter Auflösung."""
-    mass = bildmass(datei)
+    mass = bildmass(datei.split('?')[0])
     return f' width="{mass[0] // teiler}" height="{mass[1] // teiler}"' if mass else ''
+
+
+def bild_attr(datei, pre='', sizes=None):
+    """' src="…" width="…" height="…"' und, wenn es kleinere Fassungen <bild>-<breite>.webp/.jpg gibt (werkzeuge/grafiken/bild/varianten.sh),
+    ' srcset="…" sizes="…"' – so laden Handys nicht die 1440-px-Seitenaufnahmen (Website-Check 18.10.2026)."""
+    a = f' src="{pre}{datei}"{mass_attr(datei)}'
+    pfad = WEBSITE / datei.split('?')[0]
+    breite = bildmass(datei.split('?')[0])[0]
+    # nur Fassungen, deren Zahl wirklich eine kleinere Breite ist (nicht z. B. bauer-magazin-1.webp)
+    ordner = datei.split('?')[0].rsplit('/', 1)[0]
+    varianten = sorted((int(m.group(1)), v.name) for v in pfad.parent.glob(f'{pfad.stem}-*')
+                       if v.suffix in ('.webp', '.jpg') and (m := re.fullmatch(re.escape(pfad.stem) + r'-(\d+)', v.stem))
+                       and bildmass(f'{ordner}/{v.name}')[0] == int(m.group(1)) < breite)
+    if sizes and varianten:
+        liste = [f'{pre}{ordner}/{n} {b}w' for b, n in varianten] + [f'{pre}{datei} {breite}w']
+        a += f' srcset="{", ".join(liste)}" sizes="{sizes}"'
+    return a
 
 
 # --- Preise und Paketkarten (Preisseite und Leistungsseiten zeigen dieselben Karten, Anna 16.10.2026) ---

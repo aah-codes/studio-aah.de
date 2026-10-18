@@ -95,7 +95,7 @@
 .pk-einzeln { max-width: 1180px; }
 /* Projektseite (Case Study) */
 .cs-fakten { display: grid; grid-template-columns: 1fr 2fr 1fr 1fr; gap: 24px; margin: 0; padding: 20px 0 0; border-top: 1.5px solid var(--farbe-dunkel); }
-.cs-fakten dt { font-family: var(--schrift-meta); font-size: .72rem; letter-spacing: 1.2px; text-transform: uppercase; color: var(--farbe-gedaempft); }
+.cs-fakten dt { font-family: var(--schrift-meta); font-size: .75rem; letter-spacing: 1.2px; text-transform: uppercase; color: var(--farbe-gedaempft); }
 .cs-fakten dd { margin: 6px 0 0; }
 .cs-buehne { margin: 0 var(--rand-seite); }
 .cs-film video { width: 100%; aspect-ratio: 16 / 9; display: block; border-radius: 28px; background: var(--pc-farbe, #000); }
@@ -154,7 +154,7 @@
 .cs-farben > div { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 16px; margin-top: 20px; }
 .cs-farbe span { display: block; height: 72px; border-radius: 14px; box-shadow: inset 0 0 0 1px rgba(14, 16, 17, .08); }
 .cs-farbe p { margin: 10px 0 0; line-height: 1.35; }
-.cs-farbe small { font-family: var(--schrift-meta); color: var(--farbe-gedaempft); }
+.cs-farbe small { font-family: var(--schrift-meta); font-size: max(12px, .8em); color: var(--farbe-gedaempft); }
 .cs-schrift-name { font-size: clamp(40px, 4vw, 64px); font-weight: 600; line-height: 1; margin: 16px 0 12px; }
 .cs-flaeche-grau { display: flex; justify-content: center; gap: 3%; padding: 5% 4% 0; background: var(--kachel); border-radius: 28px; overflow: hidden; }
 .cs-handys .pc-handy { position: static; width: 21%; border-bottom: 0; border-radius: clamp(16px, 2.2vw, 30px) clamp(16px, 2.2vw, 30px) 0 0; aspect-ratio: 9 / 16; box-shadow: 0 24px 50px rgba(14, 16, 17, .18); }
@@ -233,7 +233,7 @@
 }
 /* Projektseite, Runde 2 (Anna 14.10.2026): kein Grau – Kacheln mit Verlauf in der Hausfarbe, weniger Text, Icons, Bewegung */
 .cs { --kachel: linear-gradient(140deg, color-mix(in srgb, var(--pc-farbe) 4%, var(--farbe-weiss)) 0%, color-mix(in srgb, var(--pc-farbe) 16%, var(--farbe-weiss)) 100%); --pc-marke: var(--farbe-primaer); --pc-dunkel: var(--farbe-dunkel); --pc-akzent: var(--farbe-primaer); --pc-zweit: var(--farbe-grau-hell); --pc-hell: #f3f3f3; --pc-meta-dunkel: var(--farbe-weiss); --pc-titel: var(--pc-dunkel); --pc-pille: var(--pc-akzent); --pc-pille-text: var(--pc-dunkel); --pc-pille-rand: transparent; }
-.cs-etikett { position: absolute; top: 0; left: 24px; z-index: 4; transform: translateY(-50%); background: var(--farbe-dunkel); color: var(--farbe-weiss); font-family: var(--schrift-meta); font-size: .72rem; letter-spacing: 1.2px; text-transform: uppercase; padding: 7px 14px; border-radius: 999px; white-space: nowrap; }
+.cs-etikett { position: absolute; top: 0; left: 24px; z-index: 4; transform: translateY(-50%); background: var(--farbe-dunkel); color: var(--farbe-weiss); font-family: var(--schrift-meta); font-size: .75rem; letter-spacing: 1.2px; text-transform: uppercase; padding: 7px 14px; border-radius: 999px; white-space: nowrap; }
 .cs-etikett-rechts { left: auto; right: 24px; background: var(--farbe-primaer); }
 /* Tabelle: Spalte „Umgesetzt“ hervorgehoben */
 .cs-tabelle table { border-collapse: separate; border-spacing: 0; }
@@ -319,7 +319,7 @@
 .ds-stufen li { display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: 20px; align-items: baseline; padding: 16px 0; border-top: 1px solid rgba(14, 16, 17, .08); }
 .ds-stufen li:first-child { border-top: 0; }
 .ds-mass { font-family: var(--schrift-meta); font-size: .78rem; letter-spacing: 1px; text-transform: uppercase; }
-.ds-mass small { color: var(--farbe-gedaempft); text-transform: none; letter-spacing: 0; }
+.ds-mass small { font-size: max(12px, .8em); color: var(--farbe-gedaempft); text-transform: none; letter-spacing: 0; }
 .ds-probe { font-family: var(--ds-schrift); color: var(--pc-farbe); overflow-wrap: break-word; min-width: 0; }
 /* Vorher/Nachher-Film im Browserfenster */
 .vf-rahmen { position: relative; margin-top: 30px; padding: 40px 6% 28px; background: var(--kachel); border-radius: 28px; }

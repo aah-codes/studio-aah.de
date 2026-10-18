@@ -984,8 +984,9 @@ main.mit-faden { position: relative; }
 .preisliste-kopf p { margin: 0 0 12px; }
 .preisliste-netto { padding: 0 var(--rand-seite); }
 /* Kostenrechner-Knopf unten rechts auf jeder Seite (Anna 16.10.2026: statt „Preise“ in der Navigation) */
-.sticky-rechner { position: fixed; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 40; display: inline-flex; align-items: center; gap: 10px; padding: 6px 18px 6px 6px; border-radius: 999px; background: var(--farbe-primaer); color: var(--farbe-weiss); font-weight: 600; text-decoration: none; box-shadow: 0 10px 30px rgba(14, 16, 17, .18); transition: background .2s; }
+.sticky-rechner { position: fixed; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 40; display: inline-flex; align-items: center; gap: 10px; padding: 6px 18px 6px 6px; border-radius: 999px; background: var(--farbe-primaer); color: var(--farbe-weiss); font-weight: 600; text-decoration: none; box-shadow: 0 10px 30px rgba(14, 16, 17, .18); transition: background .2s, opacity .2s, visibility .2s; }
 .sticky-rechner:hover { background: var(--farbe-primaer-dunkel); }
+.sticky-rechner.weg { opacity: 0; visibility: hidden; pointer-events: none; } /* menue.js: liegt ein Knopf oder Kontakt-Link darunter */
 .sticky-rechner:focus-visible { outline: 2px solid var(--farbe-dunkel); outline-offset: 3px; }
 .sticky-rechner-icon { width: 36px; height: 36px; border-radius: 50%; background: var(--farbe-weiss); display: grid; place-items: center; overflow: hidden; }
 .sticky-rechner-icon img { width: 30px; height: 30px; }
@@ -1215,7 +1216,7 @@ h1, h2, h3, .gr-xxl, .gr-xl, .gr-h2, .gr-h3, .artikel h1, .mm-karte-titel, .fuss
 .lsx-karten { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr)); gap: 20px; }
 .lsx-karte { position: relative; border: 1px solid var(--farbe-rahmen); border-radius: 24px; padding: 32px 28px; flex-direction: column; gap: 8px; }
 .lsx-gefragt { border: 2px solid var(--farbe-dunkel); }
-.lsx-badge { position: absolute; top: -13px; left: 24px; margin: 0; padding: 3px 12px; border-radius: 999px; background: var(--farbe-dunkel); color: var(--farbe-weiss); font-family: var(--schrift-meta); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; }
+.lsx-badge { position: absolute; top: -13px; left: 24px; margin: 0; padding: 3px 12px; border-radius: 999px; background: var(--farbe-dunkel); color: var(--farbe-weiss); font-family: var(--schrift-meta); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
 .lsx-karte-name { font-size: 1.8rem; margin: 0; hyphens: auto; overflow-wrap: break-word; }
 .lsx-karte-preis { font-family: var(--schrift-ueberschrift); font-size: 2.4rem; line-height: 1.12; margin: 0; }
 .lsx-karte-wer { color: var(--farbe-gedaempft); margin: 0 0 8px; }
@@ -1282,7 +1283,7 @@ main section[id] { scroll-margin-top: 0; } /* Abstand kommt schon aus html { scr
 
 /* 37. Netto-Hinweis an Preisen der Leistungsseiten */
 .lsx-netto { font-family: var(--schrift-text); font-size: .4em; letter-spacing: 0; font-weight: 400; text-transform: none; vertical-align: .35em; margin-left: .15em; }
-.lsx-extra-preis .lsx-netto, .lsx-tabelle .lsx-netto { font-size: .8em; vertical-align: baseline; }
+.lsx-extra-preis .lsx-netto, .lsx-tabelle .lsx-netto { font-size: max(12px, .8em); vertical-align: baseline; }
 .lsx-klein { font-size: .85rem; color: var(--farbe-gedaempft); margin: 16px 0 0; }
 
 /* 38. Grafik Corporate Identity (Brand-Seite) und Kleingedrucktes „Nicht enthalten“ */
@@ -1597,7 +1598,7 @@ img.profil-bildtext-bild, .profil-bildtext-bild img { width: 100%; height: auto;
 .oeko-linien .oeko-punkt-blau { fill: var(--farbe-primaer); }
 .oeko-website { text-align: left; padding: 18px 20px 22px; }
 .oeko-browser { align-items: center; }
-.oeko-adresse { margin-left: 10px; flex: 1; font-size: .72rem; color: var(--farbe-gedaempft); background: var(--farbe-hellgrau); border-radius: 999px; padding: 3px 12px; }
+.oeko-adresse { margin-left: 10px; flex: 1; font-size: .75rem; color: var(--farbe-gedaempft); background: var(--farbe-hellgrau); border-radius: 999px; padding: 3px 12px; }
 .oeko-website-titel { text-align: center; margin: 4px 0 14px; }
 .oeko-wf { display: grid; gap: 10px; position: relative; }
 .wf-nav { display: flex; align-items: center; gap: 8px; padding: 0 2px 4px; }
@@ -2065,7 +2066,7 @@ section[hidden] { display: none !important; }
   .om-flaeche { aspect-ratio: 1 / 1.1; }
   .om-seite { width: 50%; padding: 8px 10px 10px; gap: 6px; }
   .om-browser b { display: none; }
-  .om-knopf { font-size: 10px; padding: 4px 9px; }
+  .om-knopf { padding: 4px 9px; }
   .om-chip { flex-direction: column; gap: 0; padding: 2px 5px 3px; background: var(--farbe-hellgrau); border: 0; border-radius: 8px; box-shadow: none; font-size: 12px; }
   .om-chip img { width: 34px; height: 34px; }
   .intro-karte { padding: 22px; }
@@ -2108,7 +2109,7 @@ section[hidden] { display: none !important; }
 .kb-typo { display: grid; justify-items: start; align-content: center; gap: 2px; width: 100%; height: 100%; padding: 0 22px; background: var(--farbe-weiss); }
 .kb-typo-aa { font-family: var(--schrift-ueberschrift); font-size: 64px; line-height: .95; }
 .kb-typo-text { font-family: var(--schrift-text); font-weight: 600; font-size: 18px; }
-.kb-typo-meta { font-family: var(--schrift-meta); font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--farbe-gedaempft); }
+.kb-typo-meta { font-family: var(--schrift-meta); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--farbe-gedaempft); }
 @media (max-width: 900px) { .kb-typo-aa { font-size: 50px; } .kb-typo-text { font-size: 15px; } .kb-typo { padding: 0 16px; } }
 .kat { text-align: left; }
 .kb-raster { display: grid; grid-template-columns: 1fr 1fr .62fr; grid-template-rows: 1fr 1fr; gap: 5px; width: 100%; height: 100%; padding: 6px; background: var(--farbe-weiss); }
@@ -2189,7 +2190,7 @@ section[hidden] { display: none !important; }
    Geräte gerade gestellt, bei allen Projekten gleiche Machart. Beim Überfahren scrollt der Bildschirm langsam nach unten. */
 .pc { --pc-farbe: var(--farbe-creme); position: relative; display: block; aspect-ratio: 16 / 9; background: var(--pc-farbe); border-radius: 28px; overflow: hidden; color: var(--farbe-weiss); isolation: isolate; }
 .pc-hell { color: var(--farbe-dunkel); }
-.pc-zeile { position: absolute; top: 5.5%; left: 5%; right: 5%; z-index: 3; margin: 0; display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; padding-bottom: 10px; border-bottom: 1px solid currentColor; font-family: var(--schrift-meta); font-size: clamp(9px, .8vw, 12px); letter-spacing: 1.2px; text-transform: uppercase; }
+.pc-zeile { position: absolute; top: 5.5%; left: 5%; right: 5%; z-index: 3; margin: 0; display: grid; grid-template-columns: 1fr auto 1fr; gap: 8px; padding-bottom: 10px; border-bottom: 1px solid currentColor; font-family: var(--schrift-meta); font-size: 11px; letter-spacing: .3px; text-transform: uppercase; } /* Bildbestandteil (aria-hidden, Name steht lesbar darunter): 11 px statt 9 px, engere Laufweite, damit Namen nicht abgeschnitten werden (Website-Check 18.10.2026) */
 .pc-zeile span:last-child { text-align: right; }
 .pc-desktop { position: absolute; left: 12%; right: 12%; top: 19%; bottom: -8%; display: flex; flex-direction: column; background: var(--farbe-weiss); border-radius: 12px 12px 0 0; overflow: hidden; box-shadow: 0 30px 80px rgba(0, 0, 0, .35); }
 .pc-desktop::before { content: ""; flex: 0 0 22px; border-bottom: 1px solid var(--farbe-rahmen); background: radial-gradient(circle at 14px 11px, #dcdcdc 3.5px, transparent 4.5px), radial-gradient(circle at 28px 11px, #dcdcdc 3.5px, transparent 4.5px), radial-gradient(circle at 42px 11px, #dcdcdc 3.5px, transparent 4.5px), #fafafa; }

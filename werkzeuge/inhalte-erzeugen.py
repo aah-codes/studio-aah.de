@@ -4,7 +4,7 @@
 # Neuer Eintrag: in die passende Datei schreiben, dann  python3 werkzeuge/inhalte-erzeugen.py  (und danach leistungsseiten.py)
 import datetime, re
 
-from gemeinsam import PFEIL, WEBSITE, einsetzen, esc, euro, lade_json, lesezeit as minuten
+from gemeinsam import PFEIL, WEBSITE, bild_attr, einsetzen, esc, euro, lade_json, lesezeit as minuten
 
 PROJEKTE, STIMMEN, BLOG, ZAHLEN = (lade_json(f'inhalte/{n}.json') for n in ('projekte', 'stimmen', 'blog', 'kennzahlen'))
 BLOG = sorted(BLOG, key=lambda b: b['datum'], reverse=True)
@@ -17,6 +17,12 @@ def mit_tag(liste, tags):
 
 
 
+# Angezeigte Breite der Seitenaufnahmen im Cover (gemessen 320–1920 px, 19.10.2026): Desktop-Bild am Handy bis 66 %, am Tablet bis 72 %,
+# sonst bis 63 % der Breite, höchstens 900 px; Handy-Bild bis 15 %, höchstens 210 px
+GROESSE_DESKTOP = '(max-width: 600px) 66vw, (max-width: 1024px) 72vw, min(63vw, 900px)'
+GROESSE_HANDY = '(max-width: 767.98px) 15vw, min(15vw, 210px)'
+
+
 # --- Projekt-Titelbild (Cover) wie bei Behance (Anna 14.10.2026): Fläche in der Hausfarbe des Kunden, oben eine Kopfzeile
 #     „Kunde · Leistung · Jahr“ (redaktioneller Rahmen), Geräte gerade gestellt, bei allen Projekten gleiche Machart.
 #     Beim Überfahren scrollt der Bildschirm langsam nach unten (nur ohne „Bewegung reduzieren“).
@@ -25,11 +31,11 @@ def cover(p, pre, c=None, kopfzeile=True):
     if kopfzeile:
         h.append(f'<p class="pc-zeile" aria-hidden="true"><span>{esc(p["kurzname"])}</span><span>{esc(p["kopf"])}</span><span>{esc(p["jahr"])}</span></p>')
     if c.get('desktop'):
-        h.append(f'<span class="pc-desktop"><img src="{pre}{c["desktop"]}" alt="" loading="lazy"></span>')
+        h.append(f'<span class="pc-desktop"><img{bild_attr(c["desktop"], pre, GROESSE_DESKTOP)} alt="" loading="lazy"></span>')
     if c.get('handy'):
-        h.append(f'<span class="pc-handy"><img src="{pre}{c["handy"]}" alt="" loading="lazy"></span>')
+        h.append(f'<span class="pc-handy"><img{bild_attr(c["handy"], pre, GROESSE_HANDY)} alt="" loading="lazy"></span>')
     if c.get('bild'):
-        h.append(f'<span class="pc-bild"><img src="{pre}{c["bild"]}" alt="" loading="lazy"></span>')
+        h.append(f'<span class="pc-bild"><img{bild_attr(c["bild"], pre)} alt="" loading="lazy"></span>')
     art = ' pc-mit-handy' if c.get('handy') else ''
     return f'<span class="pc pc-{c.get("ton", "dunkel")}{art}" style="--pc-farbe: {c["farbe"]}">{"".join(h)}</span>'
 
