@@ -40,19 +40,42 @@ def _text(t):
     return re.sub(r'\s+', ' ', html.unescape(re.sub(r'<[^>]+>', '', t))).strip()
 
 
+def _fussnoten(main):
+    """Belege als Fußnoten (Anna: Quellen nicht im Lesefluss, sondern wie in einer wissenschaftlichen Arbeit am Ende).
+    Im Text steht [[schlüssel]], in der Quellenliste <li data-quelle="schlüssel">. Nummeriert wird in der Reihenfolge des ersten Vorkommens;
+    die Liste wird zur nummerierten Liste (ol) mit Sprungzielen #quelle-n, im Text steht eine hochgestellte, verlinkte Ziffer."""
+    reihe = []
+    for k in re.findall(r'\[\[([a-z0-9-]+)\]\]', main):
+        if k not in reihe: reihe.append(k)
+    if not reihe: return main
+    m = re.search(r'<ul class="quellen">(.*?)</ul>', main, re.S)
+    if not m: raise SystemExit('Fußnoten im Text, aber keine Quellenliste (ul.quellen)')
+    eintraege = dict(re.findall(r'<li data-quelle="([a-z0-9-]+)">(.*?)</li>', m.group(1), re.S))
+    fehlt = [k for k in reihe if k not in eintraege]
+    if fehlt: raise SystemExit(f'Fußnote ohne Quelle: {fehlt}')
+    ohne = [k for k in eintraege if k not in reihe]
+    if ohne: raise SystemExit(f'Quelle ohne Fußnote im Text: {ohne}')
+    nr = {k: i + 1 for i, k in enumerate(reihe)}
+    einrueck = '\n        '
+    ol = '<ol class="quellen">' + ''.join(f'{einrueck}<li id="quelle-{nr[k]}">{eintraege[k]}</li>' for k in reihe) + '\n      </ol>'
+    main = main[:m.start()] + ol + main[m.end():]
+    return re.sub(r'\[\[([a-z0-9-]+)\]\]', lambda x: f'<sup class="fn"><a href="#quelle-{nr[x.group(1)]}" aria-label="Quelle {nr[x.group(1)]}">{nr[x.group(1)]}</a></sup>', main)
+
+
 def _kurz(main):
     """Punkte aus „Kurz gesagt“ (Antwort zuerst) als Text – für abstract im JSON-LD."""
     m = re.search(r'<section class="kurz".*?<ul>(.*?)</ul>', main, re.S)
     if not m: raise SystemExit('Schema: Abschnitt „Kurz gesagt“ (section.kurz) fehlt')
-    return ' '.join(_text(li) for li in re.findall(r'<li>(.*?)</li>', m.group(1), re.S))
+    ohne_fn = re.sub(r'<sup class="fn">.*?</sup>', '', m.group(1))
+    return ' '.join(_text(li) for li in re.findall(r'<li>(.*?)</li>', ohne_fn, re.S))
 
 
 def _quellen(main):
     """Externe Links aus der Quellenliste (ul.quellen) als citation."""
-    m = re.search(r'<ul class="quellen">(.*?)</ul>', main, re.S)
+    m = re.search(r'<(?:ul|ol) class="quellen">(.*?)</(?:ul|ol)>', main, re.S)
     if not m: return []
     aus = []
-    for li in re.findall(r'<li>(.*?)</li>', m.group(1), re.S):
+    for li in re.findall(r'<li[^>]*>(.*?)</li>', m.group(1), re.S):
         for href in re.findall(r'<a href="(https?://[^"]+)">', li):
             # ganzer Eintrag als Name (Herausgeber, Titel, Datum), damit die Quelle ohne Seite verständlich ist
             name = re.sub(r'\s*↗', '', _text(li)).strip()
@@ -78,6 +101,7 @@ def bauen(slug, titel, h1, beschr, datum, geaendert, bild, og_bild, og_alt, keyw
         if teil_html not in main: raise SystemExit(f'Schema: Teil „{name}“ fehlt in {slug}-inhalt.html')
     if not faq: raise SystemExit('Schema: FAQ fehlt')
     main = main.replace('FAQ_HTML', _faq_html(faq))
+    main = _fussnoten(main)
     # sichtbares Änderungsdatum, sobald ein veröffentlichter Beitrag geändert wurde (passt zu dateModified)
     if geaendert != datum:
         alt = f'<time datetime="{datum}">'

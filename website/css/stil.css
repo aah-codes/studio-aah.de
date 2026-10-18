@@ -2595,3 +2595,10 @@ section[hidden] { display: none !important; }
 .zahlen-kacheln span, .zahlen-kacheln small { min-width: 0; overflow-wrap: break-word; hyphens: auto; }
 @media (max-width: 600px) { .zahlen-kacheln li { grid-template-columns: 4.4rem minmax(0, 1fr); gap: 4px 12px; } .zahlen-kacheln b { font-size: 1.75rem; } }
 .faq-eintrag summary { overflow-wrap: anywhere; }
+/* Fußnoten im Artikel (Belege am Ende, Anna 19.10.2026): kleine hochgestellte Ziffer, springt zur Quelle */
+sup.fn { font-size: .62em; line-height: 0; vertical-align: super; margin-left: 1px; }
+.artikel-text sup.fn a { font-family: var(--schrift-meta); text-decoration: none; color: var(--farbe-primaer); padding: 0 1px; }
+.artikel-text sup.fn a:hover, .artikel-text sup.fn a:focus-visible { text-decoration: underline; }
+ol.quellen { padding-left: 1.8em !important; }
+ol.quellen li { scroll-margin-top: calc(var(--kopf-hoehe) + 16px); }
+ol.quellen li:target { background: var(--farbe-creme); border-radius: 6px; }
