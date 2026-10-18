@@ -87,7 +87,7 @@ BEISPIELE = {
                '<picture><source media="(prefers-reduced-motion: reduce)" srcset="bilder/mockups/ci-animation-still.webp">'
                '<img class="kb-anim" src="bilder/mockups/ci-animation.webp" alt="" width="720" height="450"></picture></span></span>'),
     # Produktdesign wie bei Dribbble: Website von Down to Earth (Kerstin Hack) und daneben ihre Markenfarben ohne Beschriftung
-    'ui-ux': ('<span class="kb-produkt"><span class="kb-p-buehne"><span class="kb-p-seite"><img src="bilder/referenzen/leben-website.jpg?v=2" alt="" loading="lazy"></span></span>'
+    'ui-ux': ('<span class="kb-produkt"><span class="kb-p-buehne"><span class="kb-p-seite"><img src="bilder/referenzen/leben-website.webp?v=2" alt="" loading="lazy"></span></span>'
               '<span class="kb-p-farben">' + ''.join(f'<i style="--f:{f};--t:{t}">{f.upper()}</i>' for f, t in
                   [('#2d3b42', '#fff'), ('#3f9961', '#fff'), ('#a88b45', '#fff'), ('#f0eadb', '#2d3b42'), ('#ffffff', '#2d3b42')]) + '</span></span>'),
     # Illustration von STUDIO AAH! selbst (Bauhaus-Figur aus dem Blog)

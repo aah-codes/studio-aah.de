@@ -133,3 +133,4 @@
 
 ## Bilder
 - Bilder liegen in `website/bilder/`. Für das Web verkleinern; Ziel: ganzer Ordner `website/` klein halten.
+- Format (Anna, 18.10.2026): WebP, höchstens 250 KB; Schärfe geht vor. Ausnahmen bleiben JPG: lange Seitenaufnahmen (höher als 2,5 × breit; WebP kann höchstens 16 383 px hoch sein), Vorschaubilder für soziale Netzwerke (`og:image`) und Bilder, die als WebP nicht unter 250 KB kommen, ohne sichtbar zu verlieren. Umwandeln nur mit Prüfung (Ähnlichkeit SSIM ≥ 0,985 je Farbkanal, Stichprobe in doppelter Vergrößerung). JPGs verlustfrei mit `jpegtran -copy icc -optimize -progressive`.

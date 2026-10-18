@@ -440,7 +440,7 @@
    ],
    "intro": "Sichtbar werden, wo Ihre Kund:innen sind – mit klarer Positionierung und Inhalten, die zu Ihnen passen. Einzeln buchbar.",
    "unterseite": "marketing-vertrieb/",
-   "karte": "../bilder/leistung-marketing.jpg"
+   "karte": "../bilder/leistung-marketing.webp"
   },
   {
    "id": "print",
@@ -514,7 +514,7 @@
    ],
    "intro": "Professionelles Design für Gedrucktes – von der Visitenkarte bis zur Unternehmenspräsentation.",
    "unterseite": null,
-   "karte": "../bilder/leistung-print.jpg"
+   "karte": "../bilder/leistung-print.webp"
   },
   {
    "id": "ki",
@@ -554,7 +554,7 @@
    ],
    "intro": "KI und digitale Abläufe, die im Alltag wirklich entlasten – für KMU und Solo-Selbstständige.",
    "unterseite": "ki-digitalisierung/",
-   "karte": "../bilder/leistung-ki.jpg"
+   "karte": "../bilder/leistung-ki.webp"
   },
   {
    "id": "zusatz",
@@ -663,21 +663,21 @@
   {
    "id": "marketing",
    "titel": "Marketing & Vertrieb",
-   "bild": "bilder/leistung-marketing.jpg",
+   "bild": "bilder/leistung-marketing.webp",
    "link": "service/marketing-vertrieb/",
    "text": "Sichtbar werden, wo Ihre Kund:innen sind – mit klarer Positionierung und Inhalten, die zu Ihnen passen."
   },
   {
    "id": "print",
    "titel": "Druck",
-   "bild": "bilder/leistung-print.jpg",
+   "bild": "bilder/leistung-print.webp",
    "link": "service/druck/",
    "text": "Professionelles Design für Gedrucktes – von der Visitenkarte bis zur Unternehmenspräsentation."
   },
   {
    "id": "illustration",
    "titel": "Illustration & Infografik",
-   "bild": "bilder/leistung-illustration.jpg",
+   "bild": "bilder/leistung-illustration.webp",
    "link": "service/illustration-infografik/",
    "text": "Illustrationen, Icons und Infografiken, die komplexe Inhalte auf einen Blick verständlich machen."
   },
@@ -691,14 +691,14 @@
   {
    "id": "retainer",
    "titel": "Retainer",
-   "bild": "bilder/leistung-retainer.jpg",
+   "bild": "bilder/leistung-retainer.webp",
    "link": "service/retainer/",
    "text": "Betreute Weiterentwicklung Ihrer Website: neue Texte und Bilder, Unterseiten und Abschnitte, 50–85 € netto pro Stunde, je nach Unternehmensgröße."
   },
   {
    "id": "ki",
    "titel": "KI & Digitalisierung",
-   "bild": "bilder/leistung-ki.jpg",
+   "bild": "bilder/leistung-ki.webp",
    "link": "service/ki-digitalisierung/",
    "text": "KI-Check und Beratung: welche KI Ihrem Unternehmen im Alltag wirklich hilft."
   }

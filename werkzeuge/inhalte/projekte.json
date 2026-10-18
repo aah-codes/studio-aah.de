@@ -17,7 +17,7 @@
   ],
   "film": {
    "datei": "videos/launchvideo-bauer.mp4",
-   "vorschau": "bilder/film-bauer-vorschau.jpg",
+   "vorschau": "bilder/film-bauer-vorschau.webp",
    "titel": "Launch-Film: die neue Website von Wolfgang Bauer Ingenieurbau"
   },
   "farbe": "#d9e2ec",
@@ -25,9 +25,9 @@
   "mockup": {
    "browser": "bilder/referenzen/bauer-website.jpg",
    "folien": [
-    "bilder/hero/bauer-praes-01.jpg",
-    "bilder/hero/bauer-praes-04.jpg",
-    "bilder/hero/bauer-praes-12.jpg"
+    "bilder/hero/bauer-praes-01.webp",
+    "bilder/hero/bauer-praes-04.webp",
+    "bilder/hero/bauer-praes-12.webp"
    ]
   },
   "erfolg": {
@@ -52,10 +52,10 @@
   },
   "mockup_print": {
    "magazin": [
-    "bilder/referenzen/bauer-magazin-1.jpg",
-    "bilder/referenzen/bauer-magazin-2.jpg",
-    "bilder/referenzen/bauer-magazin-3.jpg",
-    "bilder/referenzen/bauer-magazin-5.jpg"
+    "bilder/referenzen/bauer-magazin-1.webp",
+    "bilder/referenzen/bauer-magazin-2.webp",
+    "bilder/referenzen/bauer-magazin-3.webp",
+    "bilder/referenzen/bauer-magazin-5.webp"
    ],
    "ohne_film": true
   },
@@ -73,13 +73,13 @@
   "cover_print": {
    "farbe": "#003466",
    "ton": "dunkel",
-   "bild": "bilder/referenzen/bauer-magazin-1.jpg"
+   "bild": "bilder/referenzen/bauer-magazin-1.webp"
   },
   "bilder": [
    {
     "typ": "ziele-grafik",
     "links": {
-     "icon": "warndreieck.jpg",
+     "icon": "warndreieck.webp",
      "titel": "Herausforderung",
      "punkte": [
       [
@@ -120,7 +120,7 @@
     "blende_text": "Website-Relaunch",
     "szenen": [
      {
-      "bild": "bilder/referenzen/bauer/film/a-start.jpg",
+      "bild": "bilder/referenzen/bauer/film/a-start.webp",
       "alt": "Alte Startseite",
       "pfad": "",
       "phase": "alt",
@@ -176,7 +176,7 @@
       "eingaben": []
      },
      {
-      "bild": "bilder/referenzen/bauer/film/a-projekte.jpg",
+      "bild": "bilder/referenzen/bauer/film/a-projekte.webp",
       "alt": "Alte Seite Aktuelle Projekte",
       "pfad": "aktuelle-projekte/",
       "phase": "alt",
@@ -526,7 +526,7 @@
       "eingaben": []
      },
      {
-      "bild": "bilder/referenzen/bauer/film/n-bewerbung.jpg",
+      "bild": "bilder/referenzen/bauer/film/n-bewerbung.webp",
       "alt": "Bewerbungsformular",
       "pfad": "bewerbungsformular/",
       "phase": "neu",
@@ -579,7 +579,7 @@
       "tippen_ab": 3200
      },
      {
-      "bild": "bilder/referenzen/bauer/film/n-danke.jpg",
+      "bild": "bilder/referenzen/bauer/film/n-danke.webp",
       "alt": "Bestätigung nach der Bewerbung",
       "pfad": "bewerbungsformular/danke/",
       "phase": "neu",
@@ -705,7 +705,7 @@
         "Wasserbau"
        ]
       ],
-      "bilder/referenzen/bauer/sm-wasserbau.jpg"
+      "bilder/referenzen/bauer/sm-wasserbau.webp"
      ],
      [
       "Referenzen",
@@ -714,7 +714,7 @@
         "69 Projektseiten, filterbar"
        ]
       ],
-      "bilder/referenzen/bauer/sm-referenzen.jpg"
+      "bilder/referenzen/bauer/sm-referenzen.webp"
      ],
      [
       "Unternehmen",
@@ -726,7 +726,7 @@
         "Downloads"
        ]
       ],
-      "bilder/referenzen/bauer/sm-unternehmen.jpg"
+      "bilder/referenzen/bauer/sm-unternehmen.webp"
      ],
      [
       "Jobs & Karriere",
@@ -765,15 +765,15 @@
         "Bewerbung"
        ]
       ],
-      "bilder/referenzen/bauer/sm-karriere.jpg"
+      "bilder/referenzen/bauer/sm-karriere.webp"
      ],
      [
       "Kontakt",
       [],
-      "bilder/referenzen/bauer/sm-kontakt.jpg"
+      "bilder/referenzen/bauer/sm-kontakt.webp"
      ]
     ],
-    "wurzel_bild": "bilder/referenzen/bauer/sm-startseite.jpg"
+    "wurzel_bild": "bilder/referenzen/bauer/sm-startseite.webp"
    },
    {
     "typ": "personas",
@@ -787,7 +787,7 @@
      "ton": "Klar, sachlich, belegbar – Fakten, Referenzen und Nachweise statt Werbesprache.",
      "personas": [
       {
-       "bild": "bilder/referenzen/bauer/persona-a.jpg",
+       "bild": "bilder/referenzen/bauer/persona-a.webp",
        "name": "Sabine Reuter",
        "rolle": "Vergabestelle · 48",
        "zitat": "Auf der Website möchte ich schnell erkennen, ob die Firma schon ein Projekt wie unseres umgesetzt hat.",
@@ -1087,7 +1087,7 @@
       "Referenzen mit Filter"
      ],
      [
-      "bilder/referenzen/bauer/bm-zertifikate.jpg",
+      "bilder/referenzen/bauer/bm-zertifikate.webp",
       "Eignung und Zertifikate"
      ]
     ]
@@ -1118,7 +1118,7 @@
      "Stimmen von der Baustelle und Team-Video"
     ],
     "foto": {
-     "bild": "bilder/mockups/laptop-baucontainer.jpg",
+     "bild": "bilder/mockups/laptop-baucontainer.webp",
      "maske": "bilder/mockups/laptop-baucontainer-maske.png",
      "breite": 2000,
      "hoehe": 1494,
@@ -1447,40 +1447,40 @@
        "alt": "Bereiche der neuen Website im Überblick: Startseite, Kompetenzen, Referenzen, Karriere, Formulare und Kontakt",
        "spalten": [
         [
-         "bilder/referenzen/bauer/wl/wasserbau.jpg",
-         "bilder/referenzen/bauer/wl/bewirb-dich.jpg",
-         "bilder/referenzen/bauer/wl/weltmeisterlich.jpg",
-         "bilder/referenzen/bauer/wl/kompetenzen.jpg",
-         "bilder/referenzen/bauer/wl/kontaktformular.jpg",
-         "bilder/referenzen/bauer/wl/zertifikate.jpg"
+         "bilder/referenzen/bauer/wl/wasserbau.webp",
+         "bilder/referenzen/bauer/wl/bewirb-dich.webp",
+         "bilder/referenzen/bauer/wl/weltmeisterlich.webp",
+         "bilder/referenzen/bauer/wl/kompetenzen.webp",
+         "bilder/referenzen/bauer/wl/kontaktformular.webp",
+         "bilder/referenzen/bauer/wl/zertifikate.webp"
         ],
         [
-         "bilder/referenzen/bauer/wl/referenzen.jpg",
-         "bilder/referenzen/bauer/wl/vier-schritte.jpg",
-         "bilder/referenzen/bauer/wl/bewerbungsformular.jpg",
+         "bilder/referenzen/bauer/wl/referenzen.webp",
+         "bilder/referenzen/bauer/wl/vier-schritte.webp",
+         "bilder/referenzen/bauer/wl/bewerbungsformular.webp",
          "bilder/referenzen/bauer/wl/vorhaben.jpg",
-         "bilder/referenzen/bauer/wl/kennzahlen.jpg"
+         "bilder/referenzen/bauer/wl/kennzahlen.webp"
         ],
         [
-         "bilder/referenzen/bauer/wl/mega-menue.jpg",
-         "bilder/referenzen/bauer/wl/startseite.jpg",
-         "bilder/referenzen/bauer/wl/drei-schritte.jpg"
+         "bilder/referenzen/bauer/wl/mega-menue.webp",
+         "bilder/referenzen/bauer/wl/startseite.webp",
+         "bilder/referenzen/bauer/wl/drei-schritte.webp"
         ],
         [
-         "bilder/referenzen/bauer/wl/stellen.jpg",
-         "bilder/referenzen/bauer/wl/u6-galerie.jpg",
-         "bilder/referenzen/bauer/wl/direkt-sprechen.jpg",
-         "bilder/referenzen/bauer/wl/projektdaten.jpg",
-         "bilder/referenzen/bauer/wl/baustellentag.jpg",
-         "bilder/referenzen/bauer/wl/anforderungen.jpg"
+         "bilder/referenzen/bauer/wl/stellen.webp",
+         "bilder/referenzen/bauer/wl/u6-galerie.webp",
+         "bilder/referenzen/bauer/wl/direkt-sprechen.webp",
+         "bilder/referenzen/bauer/wl/projektdaten.webp",
+         "bilder/referenzen/bauer/wl/baustellentag.webp",
+         "bilder/referenzen/bauer/wl/anforderungen.webp"
         ],
         [
-         "bilder/referenzen/bauer/wl/bauprojekte.jpg",
-         "bilder/referenzen/bauer/wl/bewirb-dich-gelb.jpg",
-         "bilder/referenzen/bauer/wl/werte.jpg",
-         "bilder/referenzen/bauer/wl/vier-dinge.jpg",
-         "bilder/referenzen/bauer/wl/leistungen.jpg",
-         "bilder/referenzen/bauer/wl/karten.jpg"
+         "bilder/referenzen/bauer/wl/bauprojekte.webp",
+         "bilder/referenzen/bauer/wl/bewirb-dich-gelb.webp",
+         "bilder/referenzen/bauer/wl/werte.webp",
+         "bilder/referenzen/bauer/wl/vier-dinge.webp",
+         "bilder/referenzen/bauer/wl/leistungen.webp",
+         "bilder/referenzen/bauer/wl/karten.webp"
         ]
        ],
        "dauer": [
@@ -1606,7 +1606,7 @@
      "setze": {
       "szenen": [
        {
-        "bild": "bilder/referenzen/bauer/film/a-start.jpg",
+        "bild": "bilder/referenzen/bauer/film/a-start.webp",
         "alt": "Alte Startseite",
         "pfad": "",
         "phase": "alt",
@@ -1637,7 +1637,7 @@
         "eingaben": []
        },
        {
-        "bild": "bilder/referenzen/bauer/film/a-leistungen-b.jpg",
+        "bild": "bilder/referenzen/bauer/film/a-leistungen-b.webp",
         "alt": "Alte Seite Leistungen",
         "pfad": "leistungen/",
         "phase": "alt",
@@ -1663,7 +1663,7 @@
         "eingaben": []
        },
        {
-        "bild": "bilder/referenzen/bauer/film/a-projekte.jpg",
+        "bild": "bilder/referenzen/bauer/film/a-projekte.webp",
         "alt": "Alte Seite Aktuelle Projekte",
         "pfad": "aktuelle-projekte/",
         "phase": "alt",
@@ -1689,7 +1689,7 @@
         "eingaben": []
        },
        {
-        "bild": "bilder/referenzen/bauer/film/a-karriere-b.jpg",
+        "bild": "bilder/referenzen/bauer/film/a-karriere-b.webp",
         "alt": "Alte Karriereseite",
         "pfad": "karriere/",
         "phase": "alt",
@@ -1742,7 +1742,7 @@
         "eingaben": []
        },
        {
-        "bild": "bilder/referenzen/bauer/film/n-karriere-b.jpg",
+        "bild": "bilder/referenzen/bauer/film/n-karriere-b.webp",
         "alt": "Neue Karriereseite für Fachkräfte und Nachwuchs",
         "pfad": "karriere/",
         "phase": "neu",
@@ -1759,7 +1759,7 @@
       ],
       "ohne_kopf": true,
       "monitor": {
-       "foto": "bilder/referenzen/bauer/monitor-foto.jpg",
+       "foto": "bilder/referenzen/bauer/monitor-foto.webp",
        "schirm": [
         9.818,
         6.047,
@@ -1810,12 +1810,12 @@
      "basis_alt": "Startseite der neuen Website",
      "menues": [
       {
-       "bild": "bilder/referenzen/bauer/mm/kompetenzen.jpg",
+       "bild": "bilder/referenzen/bauer/mm/kompetenzen.webp",
        "alt": "Mega-Menü Kompetenzen geöffnet",
        "kopf": 16.8
       },
       {
-       "bild": "bilder/referenzen/bauer/mm/karriere.jpg",
+       "bild": "bilder/referenzen/bauer/mm/karriere.webp",
        "alt": "Mega-Menü Jobs & Karriere geöffnet",
        "kopf": 18.4
       }
@@ -1883,7 +1883,7 @@
         },
         {
          "label": "Kontakt",
-         "bild": "bilder/referenzen/bauer/fu-kontakt.jpg",
+         "bild": "bilder/referenzen/bauer/fu-kontakt.webp",
          "alt": "Kontaktformular"
         }
        ]
@@ -1952,7 +1952,7 @@
        "stationen": [
         {
          "label": "Karriere",
-         "bild": "bilder/referenzen/bauer/film/n-karriere-b.jpg",
+         "bild": "bilder/referenzen/bauer/film/n-karriere-b.webp",
          "alt": "Karriereseite"
         },
         {
@@ -1970,12 +1970,12 @@
         },
         {
          "label": "Bewerbung",
-         "bild": "bilder/referenzen/bauer/film/n-bewerbung.jpg",
+         "bild": "bilder/referenzen/bauer/film/n-bewerbung.webp",
          "alt": "Bewerbungsformular"
         },
         {
          "label": "Danke-Seite",
-         "bild": "bilder/referenzen/bauer/film/n-danke.jpg",
+         "bild": "bilder/referenzen/bauer/film/n-danke.webp",
          "alt": "Bestätigung mit den nächsten Schritten"
         }
        ]
@@ -2008,7 +2008,7 @@
         "matrix": "matrix3d(0.7264391286,0.03275483135,0,7.65429652e-05,0.02253650235,0.6544033264,0,-1.075431938e-05,0,0,1,0,667,438,0,1)",
         "szenen": [
          {
-          "bild": "bilder/referenzen/bauer/lp-karriere-b.jpg",
+          "bild": "bilder/referenzen/bauer/lp-karriere-b.webp",
           "alt": "Karriereseite",
           "von": 0,
           "bis": 2209,
@@ -2340,12 +2340,12 @@
     "basis_alt": "Startseite der neuen Website",
     "menues": [
      {
-      "bild": "bilder/referenzen/bauer/mm/kompetenzen.jpg",
+      "bild": "bilder/referenzen/bauer/mm/kompetenzen.webp",
       "alt": "Mega-Menü Kompetenzen geöffnet",
       "kopf": 16.8
      },
      {
-      "bild": "bilder/referenzen/bauer/mm/karriere.jpg",
+      "bild": "bilder/referenzen/bauer/mm/karriere.webp",
       "alt": "Mega-Menü Jobs & Karriere geöffnet",
       "kopf": 18.4
      }
@@ -2459,11 +2459,11 @@
   "kurzname": "Dr. Simone Goldhammer",
   "mockup": {
    "browser": "bilder/referenzen/goldhammer-website.jpg",
-   "visitenkarte": "bilder/hero/goldhammer-visitenkarte.jpg"
+   "visitenkarte": "bilder/hero/goldhammer-visitenkarte.webp"
   },
   "mockup_print": {
-   "karte": "bilder/referenzen/goldhammer-flyer.jpg",
-   "visitenkarte": "bilder/hero/goldhammer-visitenkarte.jpg",
+   "karte": "bilder/referenzen/goldhammer-flyer.webp",
+   "visitenkarte": "bilder/hero/goldhammer-visitenkarte.webp",
    "ohne_film": true
   },
   "kopf": "Branding, Website & Druck",
@@ -2472,12 +2472,12 @@
   "cover": {
    "farbe": "#fce300",
    "ton": "hell",
-   "bild": "bilder/referenzen/goldhammer-flyer.jpg"
+   "bild": "bilder/referenzen/goldhammer-flyer.webp"
   },
   "cover_print": {
    "farbe": "#fce300",
    "ton": "hell",
-   "bild": "bilder/referenzen/goldhammer-flyer.jpg"
+   "bild": "bilder/referenzen/goldhammer-flyer.webp"
   },
   "slug": "goldhammer",
   "case": true,
@@ -2493,22 +2493,22 @@
        "spalten": [
         [
          "bilder/referenzen/goldhammer/wl/abschnitt-0.jpg",
-         "bilder/referenzen/goldhammer/wl/abschnitt-1.jpg"
+         "bilder/referenzen/goldhammer/wl/abschnitt-1.webp"
         ],
         [
-         "bilder/referenzen/goldhammer/wl/abschnitt-2.jpg",
-         "bilder/referenzen/goldhammer/wl/abschnitt-3.jpg"
+         "bilder/referenzen/goldhammer/wl/abschnitt-2.webp",
+         "bilder/referenzen/goldhammer/wl/abschnitt-3.webp"
         ],
         [
          "bilder/referenzen/goldhammer/wl/abschnitt-4.jpg",
-         "bilder/referenzen/goldhammer/wl/abschnitt-5.jpg"
+         "bilder/referenzen/goldhammer/wl/abschnitt-5.webp"
         ],
         [
-         "bilder/referenzen/goldhammer/wl/abschnitt-6.jpg",
+         "bilder/referenzen/goldhammer/wl/abschnitt-6.webp",
          "bilder/referenzen/goldhammer/wl/abschnitt-7.jpg"
         ],
         [
-         "bilder/referenzen/goldhammer/wl/abschnitt-8.jpg",
+         "bilder/referenzen/goldhammer/wl/abschnitt-8.webp",
          "bilder/referenzen/goldhammer/wl/abschnitt-0.jpg"
         ]
        ],
@@ -2691,7 +2691,7 @@
      "titel": "Logo und Bildmarke",
      "logos": [
       [
-       "bilder/referenzen/goldhammer/logo.jpg",
+       "bilder/referenzen/goldhammer/logo.webp",
        "Logo Dr. med. Simone Goldhammer: gelber Pinselkreis, daneben der Name",
        "#ffffff"
       ],
@@ -2827,7 +2827,7 @@
      "id": "druck",
      "bilder": [
       {
-       "bild": "bilder/referenzen/goldhammer-flyer.jpg",
+       "bild": "bilder/referenzen/goldhammer-flyer.webp",
        "alt": "Praxis-Flyer von Dr. Simone Goldhammer, aufgeklappt",
        "titel": "Flyer"
       },
@@ -2933,13 +2933,13 @@
       "klasse": "cs-deinetwegen",
       "stil": ";--pc-dunkel:#2A1E2B;--pc-akzent:#FF5000;--pc-zweit:#BEC9C6;--pc-hell:#EBEBF0;--pc-meta-dunkel:#BEC9C6;--pc-marke:#2A1E2B",
       "buehne_laptop": {
-       "bild": "bilder/referenzen/deinetwegen/imac-start.jpg",
+       "bild": "bilder/referenzen/deinetwegen/imac-start.webp",
        "alt": "Startseite von Deinetwegen HR auf einem iMac: „Feelgood Workplaces. Culture Design.“",
        "logo": "bilder/referenzen/deinetwegen/logo-dunkel.svg",
        "meta": "Branding · Onepager",
        "von": "#2A1E2B",
        "bis": "#5A2F28",
-       "mockup": "bilder/referenzen/deinetwegen/imac-start.jpg",
+       "mockup": "bilder/referenzen/deinetwegen/imac-start.webp",
        "logo_mockup": "bilder/referenzen/deinetwegen/logo-hell.svg",
        "grund": "#FFFFFF"
       }
@@ -3176,12 +3176,12 @@
      "text": "Zum Onepager gehören ein Blog und eine Artikelseite für Fachbeiträge zu Unternehmenskultur und psychologischer Sicherheit.",
      "seiten": [
       {
-       "bild": "bilder/referenzen/deinetwegen/blog.jpg",
+       "bild": "bilder/referenzen/deinetwegen/blog.webp",
        "alt": "Blog-Übersicht von Deinetwegen HR",
        "label": "Blog-Übersicht"
       },
       {
-       "bild": "bilder/referenzen/deinetwegen/beitrag.jpg",
+       "bild": "bilder/referenzen/deinetwegen/beitrag.webp",
        "alt": "Beitrag „Psychologische Sicherheit“ am Rechner",
        "label": "Beitrag"
       },
@@ -3273,7 +3273,7 @@
   "farbe": "#efe3c4",
   "kurzname": "Down to Earth",
   "mockup": {
-   "browser": "bilder/referenzen/leben-website.jpg?v=2",
+   "browser": "bilder/referenzen/leben-website.webp?v=2",
    "icons": [
     "bilder/referenzen/kh/pfau-1.svg",
     "bilder/referenzen/kh/pfau-2.svg",
@@ -3284,7 +3284,7 @@
     "bilder/referenzen/kh/pfau-7.svg",
     "bilder/referenzen/kh/pfau-8.svg"
    ],
-   "icons_bunt": "bilder/referenzen/kh/lebenselemente.jpg",
+   "icons_bunt": "bilder/referenzen/kh/lebenselemente.webp",
    "icons_titel": "Swing-Pfau und Lebenselemente"
   },
   "kopf": "Visual Design & Icons",
@@ -3293,7 +3293,7 @@
   "cover": {
    "farbe": "#00915f",
    "ton": "hell",
-   "desktop": "bilder/referenzen/leben-website.jpg?v=2"
+   "desktop": "bilder/referenzen/leben-website.webp?v=2"
   }
  },
  {
@@ -3337,30 +3337,30 @@
        "alt": "Alle Seiten der Website im Überblick: Startseite, Mixed Media, Malerei, Grafik und Über",
        "spalten": [
         [
-         "bilder/referenzen/jana/wl/abschnitt-26.jpg",
-         "bilder/referenzen/jana/wl/abschnitt-27.jpg",
-         "bilder/referenzen/jana/wl/abschnitt-29.jpg"
+         "bilder/referenzen/jana/wl/abschnitt-26.webp",
+         "bilder/referenzen/jana/wl/abschnitt-27.webp",
+         "bilder/referenzen/jana/wl/abschnitt-29.webp"
         ],
         [
-         "bilder/referenzen/jana/wl/abschnitt-30.jpg",
-         "bilder/referenzen/jana/wl/abschnitt-31.jpg",
-         "bilder/referenzen/jana/wl/abschnitt-32.jpg"
+         "bilder/referenzen/jana/wl/abschnitt-30.webp",
+         "bilder/referenzen/jana/wl/abschnitt-31.webp",
+         "bilder/referenzen/jana/wl/abschnitt-32.webp"
         ],
         [
-         "bilder/referenzen/jana/wl/abschnitt-33.jpg",
-         "bilder/referenzen/jana/wl/abschnitt-34.jpg",
-         "bilder/referenzen/jana/wl/abschnitt-35.jpg"
+         "bilder/referenzen/jana/wl/abschnitt-33.webp",
+         "bilder/referenzen/jana/wl/abschnitt-34.webp",
+         "bilder/referenzen/jana/wl/abschnitt-35.webp"
         ],
         [
-         "bilder/referenzen/jana/wl/abschnitt-36.jpg",
-         "bilder/referenzen/jana/wl/abschnitt-37.jpg",
-         "bilder/referenzen/jana/wl/abschnitt-38.jpg",
-         "bilder/referenzen/jana/wl/abschnitt-39.jpg"
+         "bilder/referenzen/jana/wl/abschnitt-36.webp",
+         "bilder/referenzen/jana/wl/abschnitt-37.webp",
+         "bilder/referenzen/jana/wl/abschnitt-38.webp",
+         "bilder/referenzen/jana/wl/abschnitt-39.webp"
         ],
         [
-         "bilder/referenzen/jana/wl/abschnitt-40.jpg",
-         "bilder/referenzen/jana/wl/abschnitt-41.jpg",
-         "bilder/referenzen/jana/wl/abschnitt-42.jpg"
+         "bilder/referenzen/jana/wl/abschnitt-40.webp",
+         "bilder/referenzen/jana/wl/abschnitt-41.webp",
+         "bilder/referenzen/jana/wl/abschnitt-42.webp"
         ]
        ],
        "dauer": [
@@ -3533,15 +3533,15 @@
      "text": "Ein Klick auf ein Bild öffnet die Galerie: das Werk groß, daneben Titel und Beschreibung, mit Pfeilen zum nächsten Bild.",
      "bilder": [
       {
-       "bild": "bilder/referenzen/jana/galerie-1.jpg",
+       "bild": "bilder/referenzen/jana/galerie-1.webp",
        "alt": "Galerie auf Jana Voigtmanns Website: Plakat „turn turn turn“, daneben Titel, Beschreibung, Kuratorin und Design"
       },
       {
-       "bild": "bilder/referenzen/jana/galerie-2.jpg",
+       "bild": "bilder/referenzen/jana/galerie-2.webp",
        "alt": "Galerie: Installation VRANK mit VR-Brille, daneben Titel und Beschreibung"
       },
       {
-       "bild": "bilder/referenzen/jana/galerie-3.jpg",
+       "bild": "bilder/referenzen/jana/galerie-3.webp",
        "alt": "Galerie: Kunstquartier Bethanien in Berlin, daneben Titel und Beschreibung"
       }
      ],
@@ -3559,7 +3559,7 @@
      "anker": "j-ueber",
      "meta": "Vita",
      "titel": "Über und Kontakt",
-     "desktop": "bilder/referenzen/jana/ueber-desktop.jpg",
+     "desktop": "bilder/referenzen/jana/ueber-desktop.webp",
      "desktop_alt": "Ganze Seite Über mit Vita am Rechner",
      "handy": "bilder/referenzen/jana/ueber-handy.jpg",
      "handy_alt": "Ganze Seite Über mit Vita am Handy",

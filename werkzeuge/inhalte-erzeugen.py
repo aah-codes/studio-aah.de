@@ -90,7 +90,7 @@ def fuer_wen(pre=''):
         angebot = (f'<div class="dk-angebot"><div class="dk-angebot-text"><p class="meta">{g["dachzeile"]}</p><h4 class="dk-karte-titel"><a href="{link}">{esc(fuellen(g["name"]))}</a></h4>'
                    f'<p class="dk-karte-text">{esc(g["text"])}</p><ul class="dk-punkte">{punkte}</ul>'
                    f'<p class="dk-preis">{fuellen(g["preis_html"])}</p><p class="dk-aktionen">{aktionen}</p></div>'
-                   f'<div class="dk-angebot-bild{"" if g["bild"].endswith(".jpg") else " dk-grafik"}"><img src="{pre}{g["bild"]}" alt="" loading="lazy" width="1200" height="900"></div></div>'
+                   f'<div class="dk-angebot-bild{"" if g.get("foto") else " dk-grafik"}"><img src="{pre}{g["bild"]}" alt="" loading="lazy" width="1200" height="900"></div></div>'
                    f'<p class="dk-beleg">{ref.get("vorsatz", "Zum Beispiel umgesetzt für")} <a href="{pre}{ref["link"]}">{esc(ref["name"])}{PFEIL}</a></p>')
         teile.append(f'      <div class="dk-feld" id="fw-{g["id"]}" role="tabpanel" aria-labelledby="fw-r-{g["id"]}"{"" if i == 0 else " hidden"}>\n        <h3 class="dk-titel">{esc(g["titel"])}</h3>\n'
                      f'        {angebot}\n      </div>')

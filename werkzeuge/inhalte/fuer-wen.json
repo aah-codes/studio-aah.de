@@ -1,5 +1,5 @@
 {
-  "_hinweis": "Abschnitt „Für wen“ der Startseite: je Zielgruppe ein Reiter mit einer Angebotskarte (Anna 11. und 16.10.2026). Texte hier ändern, dann bash werkzeuge/alle-erzeugen.sh. Platzhalter: {name:ID} = Paketname, {preis:ID} = „ab … € netto“ aus preise-daten.json. Felder mit _html werden nicht maskiert (&amp; schreiben). aktion: review = zuerst Website-Review, rechner = zuerst Kostenrechner, initiative = nur „Zur Initiative“. Kostenrechner v4 (Anna 16.10.2026): Paket „Redesign für Unternehmen“ gestrichen, die Mittelstand-Karte zeigt das Redesign.",
+  "_hinweis": "Abschnitt „Für wen“ der Startseite: je Zielgruppe ein Reiter mit einer Angebotskarte (Anna 11. und 16.10.2026). Texte hier ändern, dann bash werkzeuge/alle-erzeugen.sh. Platzhalter: {name:ID} = Paketname, {preis:ID} = „ab … € netto“ aus preise-daten.json. Felder mit _html werden nicht maskiert (&amp; schreiben). foto: true = Foto statt Grafik (eigener Bildrahmen). aktion: review = zuerst Website-Review, rechner = zuerst Kostenrechner, initiative = nur „Zur Initiative“. Kostenrechner v4 (Anna 16.10.2026): Paket „Redesign für Unternehmen“ gestrichen, die Mittelstand-Karte zeigt das Redesign.",
   "gruppen": [
     {
       "id": "mittelstand",
@@ -40,7 +40,8 @@
       "preis_html": "Richtwert ab 250 € <small>Onepager · etwa 500 € Vereinswebsite</small>",
       "link": "demokratie-braucht-sichtbarkeit/",
       "referenz": {"name": "Jana Voigtmann", "link": "referenzen/jana-voigtmann/", "vorsatz": "Aus Kunst und Kultur:"},
-      "bild": "bilder/programm-haende.jpg",
+      "bild": "bilder/programm-haende.webp",
+      "foto": true,
       "aktion": "initiative"
     }
   ]

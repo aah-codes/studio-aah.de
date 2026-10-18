@@ -23,7 +23,7 @@ from duoton import einfaerben, FARBVERLAEUFE  # noqa: E402
 
 QUELLE = Path("website/bilder")
 ZIEL = Path("werkzeuge/grafiken/bilder-blau")  # nicht veröffentlicht; für den Einsatz nach website/bilder/ kopieren
-BILDER = ["anna-haertelt-portraet.jpg", "studio-aah-gruenderin-anna-haertelt.webp"]
+BILDER = ["anna-haertelt-portraet.webp", "studio-aah-gruenderin-anna-haertelt.webp"]
 
 
 def maske(sitzung, bild, birefnet):

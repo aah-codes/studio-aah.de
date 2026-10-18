@@ -10,7 +10,7 @@ import sys
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter
 
-KARTE = 'website/bilder/hero/goldhammer-visitenkarte.jpg'
+KARTE = 'website/bilder/hero/goldhammer-visitenkarte.webp'
 ZIEL = 'website/bilder/mockups/druck-schreibtisch.webp'
 K = 2  # Überabtastung für saubere Kanten
 BREITE = 440  # Kartenbreite im Foto (Tasse ≈ 9 cm ≈ 470 px → 85 mm ≈ 440 px)

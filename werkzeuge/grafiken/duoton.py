@@ -15,7 +15,7 @@ ZIEL = Path("werkzeuge/grafiken/bilder-blau")  # nicht veröffentlicht; für den
 BILDER = [  # (Datei, größte Breite in px, Fassungen)
     ("studio-anna-haertelt.jpg", 1600, ["triton"]),
     ("studio-aah-gruenderin-anna-haertelt.webp", 768, ["duoton", "triton"]),
-    ("anna-haertelt-portraet.jpg", 794, ["duoton", "triton"]),
+    ("anna-haertelt-portraet.webp", 794, ["duoton", "triton"]),
 ]
 FARBVERLAEUFE = {
     "duoton": [(0.0, "#0e1011"), (1.0, "#2a5fe6")],

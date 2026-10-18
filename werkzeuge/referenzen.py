@@ -70,7 +70,7 @@ def buehne(p, pre):
         # ("mockup": fertiges Bild aus Canva o. Ä., Gerät nach Zielgruppe); ohne Mockup das flache Bildschirmbild, nie ein gezeichnetes Gerät
         b = p['buehne_laptop']
         logo = f'<img class="bl-logo" src="{pre}{b["logo"]}" alt="" width="160" height="79">' if b.get('logo') else ''
-        bild = b.get('mockup') or b['bild']; w, h = bildmass(bild) if bild.endswith('.jpg') else (b.get('breite', 2400), b.get('hoehe', 1500))
+        bild = b.get('mockup') or b['bild']; w, h = bildmass(bild) if bild.endswith(('.jpg', '.webp')) else (b.get('breite', 2400), b.get('hoehe', 1500))
         kl = 'bl-mockup' if b.get('mockup') else 'bl-flach'
         if b.get('mockup'):  # Foto über die ganze Breite (heller Fotogrund), Logo und Dachzeile dunkel darauf
             logo = f'<img class="bl-logo" src="{pre}{b.get("logo_mockup", b["logo"])}" alt="" width="160" height="79">'

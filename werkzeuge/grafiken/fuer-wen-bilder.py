@@ -1,7 +1,7 @@
 # Erzeugt die Bilder für den Abschnitt „Für wen“ der Startseite (Entwurf 16.10.2026):
 #   werkzeuge/grafiken/fuer-wen-mittelstand.svg   – Team aus drei Bauhaus-Figuren vor einer Website mit vielen Unterseiten
 #   werkzeuge/grafiken/fuer-wen-selbststaendige.svg – eine Figur winkt neben einem Onepager
-# Vereine & Kultur nutzen das bekannte Foto website/bilder/programm-haende.jpg.
+# Vereine & Kultur nutzen das bekannte Foto website/bilder/programm-haende.webp.
 # Bildidee: eine Figur (Selbstständige) – ein Team (Mittelstand) – viele Hände (Vereine).
 # Figur wie in werkzeuge/grafiken/blog/geld-und-zeit-titel.py (Konstruktion nach Anna, 13.10.2026). Blau berührt nie Schwarz.
 # Aufruf vom Repository-Ordner: python3 werkzeuge/grafiken/fuer-wen-bilder.py
