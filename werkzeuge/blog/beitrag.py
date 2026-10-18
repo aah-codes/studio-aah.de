@@ -9,6 +9,20 @@ BASIS = 'https://studio-aah.de'
 REIHEN = {'website-fragen': 'Website-Fragen'}  # Reihen im Blog: Schlüssel -> Name
 
 
+MONATE = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember']
+
+
+def _datum_text(d):
+    j, m, t = d.split('-'); return f'{int(t)}. {MONATE[int(m) - 1]} {j}'
+
+
+def _anker(k):
+    """Anker der Blog-Kategorie wie auf /blog/ (z. B. Webdesign -> webdesign)."""
+    k = k.lower().replace('&', '').replace('/', '-')
+    for a, b in (('ä', 'ae'), ('ö', 'oe'), ('ü', 'ue'), ('ß', 'ss')): k = k.replace(a, b)
+    return re.sub(r'[^a-z0-9]+', '-', k).strip('-')
+
+
 def _faq_html(faq):
     return '\n'.join(f'''        <details class="faq-eintrag">
           <summary>{esc(f)}</summary>
@@ -33,9 +47,11 @@ def _quellen(main):
     m = re.search(r'<ul class="quellen">(.*?)</ul>', main, re.S)
     if not m: return []
     aus = []
-    for href, text in re.findall(r'<a href="(https?://[^"]+)">(.*?)</a>', m.group(1), re.S):
-        name = _text(text).rstrip(' ↗').strip()
-        aus.append({"@type": "CreativeWork", "name": name, "url": href})
+    for li in re.findall(r'<li>(.*?)</li>', m.group(1), re.S):
+        for href in re.findall(r'<a href="(https?://[^"]+)">', li):
+            # ganzer Eintrag als Name (Herausgeber, Titel, Datum), damit die Quelle ohne Seite verständlich ist
+            name = re.sub(r'\s*↗', '', _text(li)).strip()
+            aus.append({"@type": "CreativeWork", "name": name, "url": href})
     return aus
 
 
@@ -57,6 +73,11 @@ def bauen(slug, titel, h1, beschr, datum, geaendert, bild, og_bild, og_alt, keyw
         if teil_html not in main: raise SystemExit(f'Schema: Teil „{name}“ fehlt in {slug}-inhalt.html')
     if not faq: raise SystemExit('Schema: FAQ fehlt')
     main = main.replace('FAQ_HTML', _faq_html(faq))
+    # sichtbares Änderungsdatum, sobald ein veröffentlichter Beitrag geändert wurde (passt zu dateModified)
+    if geaendert != datum:
+        alt = f'<time datetime="{datum}">'
+        i = main.index(alt); j = main.index('</span>', i) + len('</span>')
+        main = main[:j] + f'<span>Aktualisiert <time datetime="{geaendert}">{_datum_text(geaendert)}</time></span>' + main[j:]
     # Lesezeit aus dem Text der Seite (ohne Tags), 200 Wörter pro Minute
     text = re.sub(r'<figure.*?</figure>', ' ', main, flags=re.S) if ohne_figuren else main
     text = re.sub(r'<[^>]+>', ' ', text); woerter = len(re.findall(r'\w+', text))
@@ -81,11 +102,12 @@ def bauen(slug, titel, h1, beschr, datum, geaendert, bild, og_bild, og_alt, keyw
         {"@type": "ProfessionalService", "@id": STUDIO_ID, "name": "STUDIO AAH!", "url": f"{BASIS}/", "logo": f"{BASIS}/bilder/icon-512.png",
          "address": {"@type": "PostalAddress", "streetAddress": "Gießerstraße 75", "postalCode": "04229", "addressLocality": "Leipzig", "addressCountry": "DE"},
          "founder": {"@type": "Person", "name": "Anna Härtelt"}},
-        {"@type": "FAQPage", "@id": url + "#faq", "url": url, "inLanguage": "de", "mainEntity": [{"@type": "Question", "name": f, "acceptedAnswer": {"@type": "Answer", "text": a}} for f, a in faq]},
+        {"@type": "FAQPage", "@id": url + "#faq", "url": url, "inLanguage": "de-DE", "isPartOf": {"@id": url + "#beitrag"}, "mainEntity": [{"@type": "Question", "name": f, "acceptedAnswer": {"@type": "Answer", "text": a}} for f, a in faq]},
         {"@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "Startseite", "item": f"{BASIS}/"},
             {"@type": "ListItem", "position": 2, "name": "Blog", "item": f"{BASIS}/blog/"},
-            {"@type": "ListItem", "position": 3, "name": h1, "item": url}]}
+            {"@type": "ListItem", "position": 3, "name": abschnitt, "item": f"{BASIS}/blog/#thema-{_anker(abschnitt)}"},
+            {"@type": "ListItem", "position": 4, "name": h1, "item": url}]}
     ]}
     kopf_ende = vorlage.index('<main id="inhalt">')
     fuss_start = vorlage.index('</main>')
