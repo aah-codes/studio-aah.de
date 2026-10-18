@@ -73,10 +73,10 @@ def seite(inhalt):
     return f'<!doctype html><meta charset="utf-8"><style>{schriften()} html,body{{margin:0;background:#fff}} svg{{display:block}}</style>{inhalt}'
 
 
-def aufnahme(html, b, h, ziel_png):
+def aufnahme(html, b, h, ziel_png, skala=1):
     with tempfile.TemporaryDirectory() as tmp:
         datei = pathlib.Path(tmp) / 'seite.html'; datei.write_text(html, encoding='utf-8')
-        subprocess.run([CHROME, '--headless=new', '--disable-gpu', '--hide-scrollbars', '--force-device-scale-factor=1',
+        subprocess.run([CHROME, '--headless=new', '--disable-gpu', '--hide-scrollbars', f'--force-device-scale-factor={skala}',
                         f'--window-size={b},{h}', '--virtual-time-budget=3000', f'--screenshot={ziel_png}', datei.as_uri()],
                        check=True, capture_output=True)
 
