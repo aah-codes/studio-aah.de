@@ -2530,3 +2530,76 @@ section[hidden] { display: none !important; }
 .schluss-karte .rv-hell { color: var(--farbe-weiss); }
 @media (max-width: 1024px) { .rv-karten { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 600px) { .rv-karten { grid-template-columns: minmax(0, 1fr); } .rv-abschnitt { padding-top: 48px; } }
+
+/* 60. Blog „Was sollte eine Website 2027 können?“ (Anna 19.10.2026): Golden Circle, Zwischenüberschriften h4, breite Grafiken im Artikel */
+.golden-circle { max-width: 520px; margin: clamp(2rem, 4vw, 2.75rem) auto clamp(2.25rem, 4.5vw, 3rem); }
+.golden-circle svg { display: block; width: 100%; height: auto; overflow: visible; }
+.golden-circle .gc-ring { transform-box: fill-box; transform-origin: center; }
+.golden-circle .gc-ring--was { fill: var(--farbe-weiss); stroke: var(--farbe-dunkel); stroke-width: 2; }
+.golden-circle .gc-ring--wie { fill: var(--farbe-creme); stroke: var(--farbe-dunkel); stroke-width: 2; }
+.golden-circle .gc-ring--warum { fill: var(--farbe-dunkel); }
+.golden-circle .gc-label { font-family: var(--schrift-ueberschrift); letter-spacing: .04em; text-anchor: middle; fill: var(--farbe-dunkel); }
+.golden-circle .gc-sub { font-family: var(--schrift-text); font-size: 15px; text-anchor: middle; fill: var(--farbe-gedaempft); }
+.golden-circle .gc-text--warum .gc-label { fill: var(--farbe-weiss); }
+.golden-circle .gc-text--warum .gc-sub { fill: var(--farbe-gedaempft-invers); }
+.golden-circle figcaption { margin-top: 16px; text-align: center; font-size: 15px; color: var(--farbe-gedaempft); }
+/* Animation von innen nach außen: Warum, Wie, Was – einmal, 2,75 s. Die Klasse is-animated setzt erst js/menue.js, ohne JavaScript steht das fertige Bild. */
+.golden-circle.is-animated .gc-ring, .golden-circle.is-animated .gc-text { opacity: 0; }
+.golden-circle.is-animated.is-visible .gc-ring { animation: gc-grow .7s cubic-bezier(.2, .8, .2, 1) forwards; }
+.golden-circle.is-animated.is-visible .gc-text { animation: gc-fade .5s ease-out forwards; }
+.golden-circle.is-animated.is-visible .gc-text--warum { animation-delay: .45s; }
+.golden-circle.is-animated.is-visible .gc-ring--wie { animation-delay: .9s; }
+.golden-circle.is-animated.is-visible .gc-text--wie { animation-delay: 1.35s; }
+.golden-circle.is-animated.is-visible .gc-ring--was { animation-delay: 1.8s; }
+.golden-circle.is-animated.is-visible .gc-text--was { animation-delay: 2.25s; }
+@keyframes gc-grow { from { opacity: 0; transform: scale(.6); } to { opacity: 1; transform: scale(1); } }
+@keyframes gc-fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .golden-circle.is-animated .gc-ring, .golden-circle.is-animated .gc-text { opacity: 1; animation: none !important; } }
+.artikel-text h4 { font-size: 1.15rem; line-height: 1.35; margin: clamp(2.25rem, 4.5vw, 3rem) 0 .6rem; }
+/* Grafiken der Leistungsseiten im Artikel (CI-Film, Ökosystem): so breit wie der Inhaltsbereich der Seite, mittig über der Textspalte */
+.artikel-breit { --breit: min(var(--inhalt-breite), calc(100vw - 2 * var(--rand-seite))); width: var(--breit); margin: clamp(2.5rem, 5vw, 3.5rem) 0 clamp(2.5rem, 5vw, 3.5rem) calc((100% - var(--breit)) / 2); overflow-x: clip; }
+/* Zweispaltige Tabelle passt auch am Handy ohne seitliches Scrollen (Website-Check: Tabelle „Aufgaben (Gartner)“ lesbar) */
+.artikel-tabelle-zwei { min-width: 0; }
+.artikel-tabelle-zwei th, .artikel-tabelle-zwei td { width: 50%; }
+/* bis 600 px: jede Zeile als Block (Aufgabe fett, darunter das Angebot); die ARIA-Rollen im HTML halten die Tabelle für Screenreader zusammen */
+@media (max-width: 600px) {
+  .artikel-tabelle-zwei, .artikel-tabelle-zwei tbody, .artikel-tabelle-zwei tr, .artikel-tabelle-zwei th, .artikel-tabelle-zwei td { display: block; width: auto; }
+  .artikel-tabelle-zwei thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .artikel-tabelle-zwei tr { padding: 12px 0; border-bottom: 1px solid var(--farbe-rahmen); }
+  .artikel-tabelle-zwei tr:first-child { border-top: 1.5px solid var(--farbe-dunkel); }
+  .artikel-tabelle-zwei th, .artikel-tabelle-zwei td { padding: 0; border: 0; }
+  .artikel-tabelle-zwei td { margin-top: 4px; }
+}
+@media (max-width: 600px) { .golden-circle .gc-sub { font-size: 22px; } } /* skaliert mit der Grafik: bei 320 px Breite sonst unter 8 px */
+.kein-trennen { hyphens: none; -webkit-hyphens: none; } /* „Website“ im Titel nicht als „Web-site“ trennen */
+/* Kennzahlen als Kacheln im Artikel (Blog 2027, Teil 3): große Zahl in Anton, Aussage, Quelle; eine Kachel blau hervorgehoben */
+.zahlen-grafik > .meta { margin: 0 0 14px; }
+.zahlen-kacheln { list-style: none; padding: 0 !important; margin: 0 !important; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr)); gap: 12px; }
+.zahlen-kacheln li { margin: 0; display: flex; flex-direction: column; gap: 8px; padding: 20px; border: 1.5px solid var(--farbe-dunkel); border-radius: 20px; background: var(--farbe-weiss); }
+.zahlen-kacheln b { font-family: var(--schrift-ueberschrift); font-weight: 400; font-size: clamp(2.4rem, 5vw, 3rem); line-height: 1.15; }
+.zahlen-kacheln span { font-size: 15px; line-height: 1.45; }
+.zahlen-kacheln small { margin-top: auto; font-family: var(--schrift-meta); font-size: 12px; letter-spacing: .04em; color: var(--farbe-gedaempft); }
+.zahlen-kacheln .zahl-blau { background: var(--farbe-primaer); border-color: var(--farbe-primaer); color: var(--farbe-weiss); }
+.zahlen-kacheln .zahl-blau small { color: var(--farbe-weiss); } /* Weiß auf var(--farbe-primaer): 5,4 : 1 */
+.zahlen-grafik figcaption { margin-top: 14px; }
+/* Hervorgehobene Checkliste „Wie Sie sich vorbereiten“ */
+.vorbereiten { margin: clamp(2.5rem, 5vw, 3.5rem) 0; padding: clamp(24px, 4vw, 40px); background: var(--farbe-creme); border-radius: 24px; }
+.vorbereiten > .meta { margin: 0 0 6px; }
+.artikel-text .vorbereiten h3 { margin-top: 0; }
+.vorbereiten .checkliste { margin-bottom: 0 !important; }
+/* am Handy: Zahl links, Aussage und Quelle rechts – kompakt, ohne enge Spalten */
+@media (max-width: 600px) { .zahlen-kacheln { gap: 10px; } .zahlen-kacheln li { display: grid; grid-template-columns: 5.6rem minmax(0, 1fr); gap: 4px 14px; align-items: start; padding: 16px; border-radius: 16px; } .zahlen-kacheln b { grid-row: span 2; font-size: 2rem; } .zahlen-kacheln small { margin-top: 0; } }
+/* Lange Wörter (z. B. Barrierefreiheitsstärkungsgesetz) sprengen bei 320 px sonst Checkliste und FAQ: Spalten dürfen schrumpfen, Wörter umbrechen */
+.checkliste, .artikel-faq { grid-template-columns: minmax(0, 1fr); }
+.artikel-text .checkliste li, .faq-eintrag summary, .faq-antwort { overflow-wrap: break-word; }
+@media (max-width: 600px) { .vorbereiten { padding: 20px 16px; border-radius: 18px; } .vorbereiten .checkliste li { padding-left: 42px; } .vorbereiten .checkliste li::before { width: 30px; height: 30px; font-size: 15px; } }
+.zahlen-kacheln span, .zahlen-kacheln small { min-width: 0; overflow-wrap: break-word; hyphens: auto; }
+@media (max-width: 600px) { .zahlen-kacheln li { grid-template-columns: 4.4rem minmax(0, 1fr); gap: 4px 12px; } .zahlen-kacheln b { font-size: 1.75rem; } }
+.faq-eintrag summary { overflow-wrap: anywhere; }
+/* Fußnoten im Artikel (Belege am Ende, Anna 19.10.2026): kleine hochgestellte Ziffer, springt zur Quelle */
+sup.fn { font-size: .62em; line-height: 0; vertical-align: super; margin-left: 1px; }
+.artikel-text sup.fn a { font-family: var(--schrift-meta); text-decoration: none; color: var(--farbe-primaer); padding: 0 1px; }
+.artikel-text sup.fn a:hover, .artikel-text sup.fn a:focus-visible { text-decoration: underline; }
+ol.quellen { padding-left: 1.8em !important; }
+ol.quellen li { scroll-margin-top: calc(var(--kopf-hoehe) + 16px); }
+ol.quellen li:target { background: var(--farbe-creme); border-radius: 6px; }

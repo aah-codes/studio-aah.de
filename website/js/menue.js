@@ -246,6 +246,15 @@
     });
   })();
 
+  // Golden Circle im Blog (Anna 19.10.2026): Kreise erscheinen einmal von innen nach außen, sobald die Grafik zu 40 % sichtbar ist.
+  // Ohne IntersectionObserver oder JavaScript bleibt das fertige Bild stehen; „weniger Bewegung“ regelt stil.css.
+  (() => {
+    const gc = document.querySelector('.golden-circle');
+    if (!gc || !('IntersectionObserver' in window)) return;
+    gc.classList.add('is-animated');
+    new IntersectionObserver((e, b) => { if (e[0].isIntersecting) { gc.classList.add('is-visible'); b.disconnect(); } }, { threshold: 0.4 }).observe(gc);
+  })();
+
   // Aktivstatus im Menü (Anna 13.10.2026): Der Kopf ist auf allen Seiten gleich, deshalb markiert dieses Skript die aktuelle Seite
   // (aria-current="page") und den Bereich, in dem sie liegt (aria-current="true", z. B. Blog bei einem Artikel, Leistungen auf /service/).
   (() => {
