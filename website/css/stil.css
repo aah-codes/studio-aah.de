@@ -33,7 +33,7 @@
 
   /* Abstände */
   --inhalt-breite: 1200px;
-  --rand-seite: 64px;
+  --rand-seite: clamp(24px, calc(5.8824vw - 11.294px), 64px); /* fließend: 24 px bis 600 px Breite, 64 px ab 1280 px (Anna, 18.10.2026) */
   --rand-seite-mobil: 24px;
   --rahmen: 2px;
   --kopf-hoehe: 80px;
@@ -215,7 +215,7 @@ h1, h2, h3 {
   padding: 0 var(--rand-seite);
 }
 
-.kopf-logo img { width: 180px; height: auto; }
+.kopf-logo img { width: clamp(140px, calc(100px + 6.25vw), 180px); height: auto; } /* fließend: 140 px am Handy, 180 px ab 1280 px */
 
 .kopf-nav {
   display: flex;
@@ -501,16 +501,12 @@ h1, h2, h3 {
 
 /* ---------- 9. Tablet und Handy ---------- */
 @media (max-width: 1024px) {
-  :root { --rand-seite: 32px; }
   .kopf-nav { display: none; }
   .kopf-mobil { display: block; }
-  .kopf-logo img { width: 160px; }
 }
 
 @media (max-width: 767.98px) {
-  :root { --rand-seite: var(--rand-seite-mobil); }
   body { font-size: 16px; }
-  .kopf-logo img { width: 140px; }
 
   .golden { grid-template-columns: 1fr; padding-bottom: 64px; }
   .liste { grid-template-columns: 1fr; }
