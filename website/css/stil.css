@@ -2572,3 +2572,4 @@ section[hidden] { display: none !important; }
   .artikel-tabelle-zwei td { margin-top: 4px; }
 }
 @media (max-width: 600px) { .golden-circle .gc-sub { font-size: 22px; } } /* skaliert mit der Grafik: bei 320 px Breite sonst unter 8 px */
+.kein-trennen { hyphens: none; -webkit-hyphens: none; } /* „Website“ im Titel nicht als „Web-site“ trennen */
