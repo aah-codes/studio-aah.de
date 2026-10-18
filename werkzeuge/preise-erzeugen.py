@@ -3,7 +3,7 @@
 # Aufruf im Repository-Ordner:  python3 werkzeuge/preise-erzeugen.py
 import json, re
 
-from gemeinsam import NETTO_SATZ, PFEIL, TRENNEN_LEISTUNGEN, WEBSITE, einsetzen, ersetze_einmal, esc, lade_json, paket_karte
+from gemeinsam import NETTO_SATZ, PFEIL, TRENNEN_LEISTUNGEN, WEBSITE, einsetzen, ersetze_einmal, esc, lade_json, mass_attr, paket_karte
 
 daten = lade_json('preise-daten.json')
 # Preislisten der übrigen Leistungen; Webdesign hat stattdessen den Kostenrechner (Anna 16.10.2026)
@@ -65,14 +65,15 @@ def start_leistungen():
 BEISPIELE = {
     # Mobil (Anna 13.10.2026, Vorbild Dribbble „Mobile“): zwei Handys nebeneinander, führt zu UI/UX
     # Mobil wie bei Dribbble: zwei Handys mit dünnem schwarzem Rahmen, heller Grund mit Lichtkante, eine große Form dahinter (Anna 13.10.2026)
+    # Bildschirme zeigen kleine Fassungen der Seitenaufnahmen (höchstens 58 px breit angezeigt; werkzeuge/grafiken/bild/varianten.sh)
     'mobil': ('<span class="kb-mobil"><i class="kb-form-gross"></i>'
-              + ''.join(f'<span class="kb-phone"><span class="kb-phone-screen"><img src="bilder/referenzen/{n}" alt="" width="860" height="{h}" decoding="async"></span></span>'
-                        for n, h in [('deinetwegen-handy.jpg', 9000), ('studio-aah-handy.jpg', 9923)]) + '</span>'),
+              + ''.join(f'<span class="kb-phone"><span class="kb-phone-screen"><img src="bilder/referenzen/{n}"{mass_attr("bilder/referenzen/" + n)} alt="" decoding="async"></span></span>'
+                        for n in ['deinetwegen-handy-180.webp', 'studio-aah-handy-180.webp']) + '</span>'),
     # Webdesign: Foto-Mockup Laptop auf Podest (Vorlage von Anna, Mockuptree, 13.10.2026); die Website sitzt per matrix3d
     # genau im Bildschirm (Ecken im 2000 × 1500 px großen Foto: 530|440, 1248|401, 1334|926, 615|1012) und scrollt wie bisher
     'website': ('<span class="kb-szene" style="--sb:2000;--sh:1500"><img class="kb-szene-bild" src="bilder/mockups/laptop-podest.webp" alt="" width="1000" height="750" loading="lazy">'
                 '<span class="kb-szene-schirm" style="transform:matrix3d(0.5768583309,-0.002993487456,0,6.037555358e-05,0.08645866767,0.6267902485,0,-1.30273683e-05,0,0,1,0,528,438,0,1)">'
-                '<span class="laptop-seite"><img src="bilder/referenzen/bauer-website.jpg" alt="" width="1440" height="6000" loading="lazy"></span></span></span>'),
+                '<span class="laptop-seite"><img src="bilder/referenzen/bauer-website-320.webp"' + mass_attr('bilder/referenzen/bauer-website-320.webp') + ' alt="" loading="lazy"></span></span></span>'),
     # Druck: Visitenkarten von Dr. Simone Goldhammer auf dem Schreibtisch (werkzeuge/grafiken/druck-mockup.py)
     'print': '<img src="bilder/mockups/druck-schreibtisch.webp" alt="" width="1200" height="900" loading="lazy">',
     # Markenbildung: STUDIO AAH! als eigenes Beispiel (Anna 13.10.2026: ein Kunde, ein Platz; Bauer steht bei Webdesign):
@@ -87,13 +88,13 @@ BEISPIELE = {
                '<picture><source media="(prefers-reduced-motion: reduce)" srcset="bilder/mockups/ci-animation-still.webp">'
                '<img class="kb-anim" src="bilder/mockups/ci-animation.webp" alt="" width="720" height="450"></picture></span></span>'),
     # Produktdesign wie bei Dribbble: Website von Down to Earth (Kerstin Hack) und daneben ihre Markenfarben ohne Beschriftung
-    'ui-ux': ('<span class="kb-produkt"><span class="kb-p-buehne"><span class="kb-p-seite"><img src="bilder/referenzen/leben-website.webp?v=2" alt="" loading="lazy"></span></span>'
+    'ui-ux': ('<span class="kb-produkt"><span class="kb-p-buehne"><span class="kb-p-seite"><img src="bilder/referenzen/leben-website-320.webp"' + mass_attr('bilder/referenzen/leben-website-320.webp') + ' alt="" loading="lazy"></span></span>'
               '<span class="kb-p-farben">' + ''.join(f'<i style="--f:{f};--t:{t}">{f.upper()}</i>' for f, t in
                   [('#2d3b42', '#fff'), ('#3f9961', '#fff'), ('#a88b45', '#fff'), ('#f0eadb', '#2d3b42'), ('#ffffff', '#2d3b42')]) + '</span></span>'),
     # Illustration von STUDIO AAH! selbst (Bauhaus-Figur aus dem Blog)
-    'illustration': '<img src="bilder/blog-geld-und-zeit.webp" alt="" loading="lazy">',
+    'illustration': '<img src="bilder/blog-geld-und-zeit.webp"' + mass_attr('bilder/blog-geld-und-zeit.webp') + ' alt="" loading="lazy">',
     # Typografie: Schriftmuster aus den Hausschriften von STUDIO AAH! (Anton, Manrope, JetBrains Mono)
-    'typo': '<span class="kb-typo"><span class="kb-typo-aa">Aa</span><span class="kb-typo-text">Manrope</span><span class="kb-typo-meta">Anton · JetBrains Mono</span></span>',
+    'typo': '<span class="kb-typo"><span class="kb-typo-aa">Aa</span><span class="kb-typo-text">Manrope</span><span class="kb-typo-meta">Anton · JetBrains&nbsp;Mono</span></span>',
 }
 # Kategorien oben (Anna 13.10.2026), unabhängig von den Leistungskarten unten; ohne Beispiel steht das Kartenbild der Leistung
 KATEGORIEN = [
@@ -109,7 +110,8 @@ KATEGORIEN = [
 
 
 def heroband():
-    kategorien = ''.join('      <a class="kat" href="' + k['link'] + '"><span class="kat-stapel"><span class="kat-bild">' + BEISPIELE[k['id']]
+    # Kartenbilder sind Illustrationen (Farbcodes, Schriftmuster, Mockups): aria-hidden, damit der Link nur „Webdesign“, „UI/UX“ … heißt
+    kategorien = ''.join('      <a class="kat" href="' + k['link'] + '"><span class="kat-stapel"><span class="kat-bild" aria-hidden="true">' + BEISPIELE[k['id']]
                          + '</span></span><span class="kat-name">' + esc(k['titel']) + '</span></a>\n' for k in KATEGORIEN)
     return ('  <nav class="hero-band" aria-label="Leistungen im Überblick">\n    <div class="hero-spur">\n' + kategorien + '    </div>\n'
             '    <button type="button" class="band-pause" aria-pressed="false"><span class="unsichtbar">Laufband anhalten</span></button>\n  </nav>')
