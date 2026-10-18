@@ -36,6 +36,9 @@ def main():
     for seite in sorted(website.rglob('*.html')):
         if seite == website / 'index.html':
             continue
+        # Entwurfsseiten (website/entwurf-…) haben bewusst keinen Kopf und Fuß (CLAUDE.md)
+        if seite.relative_to(website).parts[0].startswith('entwurf-'):
+            continue
         text = seite.read_text(encoding='utf-8')
         if 'http-equiv="refresh"' in text:
             continue
