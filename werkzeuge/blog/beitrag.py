@@ -23,6 +23,11 @@ def _anker(k):
     return re.sub(r'[^a-z0-9]+', '-', k).strip('-')
 
 
+def _ohne_trenn(t):
+    """Weiche Trennstriche (U+00AD, für schmale Bildschirme in langen Wörtern) gehören nicht in die strukturierten Daten."""
+    return t.replace('\u00ad', '')
+
+
 def _faq_html(faq):
     return '\n'.join(f'''        <details class="faq-eintrag">
           <summary>{esc(f)}</summary>
@@ -102,7 +107,7 @@ def bauen(slug, titel, h1, beschr, datum, geaendert, bild, og_bild, og_alt, keyw
         {"@type": "ProfessionalService", "@id": STUDIO_ID, "name": "STUDIO AAH!", "url": f"{BASIS}/", "logo": f"{BASIS}/bilder/icon-512.png",
          "address": {"@type": "PostalAddress", "streetAddress": "Gießerstraße 75", "postalCode": "04229", "addressLocality": "Leipzig", "addressCountry": "DE"},
          "founder": {"@type": "Person", "name": "Anna Härtelt"}},
-        {"@type": "FAQPage", "@id": url + "#faq", "url": url, "inLanguage": "de-DE", "isPartOf": {"@id": url + "#beitrag"}, "mainEntity": [{"@type": "Question", "name": f, "acceptedAnswer": {"@type": "Answer", "text": a}} for f, a in faq]},
+        {"@type": "FAQPage", "@id": url + "#faq", "url": url, "inLanguage": "de-DE", "isPartOf": {"@id": url + "#beitrag"}, "mainEntity": [{"@type": "Question", "name": _ohne_trenn(f), "acceptedAnswer": {"@type": "Answer", "text": _ohne_trenn(a)}} for f, a in faq]},
         {"@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "Startseite", "item": f"{BASIS}/"},
             {"@type": "ListItem", "position": 2, "name": "Blog", "item": f"{BASIS}/blog/"},

@@ -27,8 +27,8 @@ faq = [
  "Mit eigenen, fachkundigen Inhalten statt Allerweltstexten und mit konkreten Antworten auf echte Fragen: Was kostet das, wie lange dauert es, für wen ist das? Dazu kommen saubere Technik und Barrierefreiheit, denn klare Überschriften, beschriftete Formulare und sauberer Code helfen Menschen und KI-Agenten, die Websites lesen. Messen Sie den Erfolg an Anfragen, nicht an Klicks."),
 ("Bringt eine llms.txt-Datei etwas?",
  "Dafür gibt es bisher keinen Hinweis. Google unterstützt llms.txt nicht, und kein KI-Dienst hat öffentlich erklärt, die Datei zu nutzen (TechWyse, Juni 2026). Deshalb gilt vorerst: abwarten."),
-("Gilt das Barrierefreiheitsstärkungsgesetz für meine Website?",
- "Das Barrierefreiheitsstärkungsgesetz gilt seit dem 28. Juni 2025 für bestimmte Produkte und Dienstleistungen, darunter Angebote im elektronischen Geschäftsverkehr. Kleinstunternehmen mit Dienstleistungen sind ausgenommen. Ob es für Sie gilt, sollten Sie prüfen lassen."),
+("Gilt das Barrierefreiheits\u00adstärkungs\u00adgesetz für meine Website?",
+ "Das Barrierefreiheits\u00adstärkungs\u00adgesetz gilt seit dem 28. Juni 2025 für bestimmte Produkte und Dienstleistungen, darunter Angebote im elektronischen Geschäftsverkehr. Kleinstunternehmen mit Dienstleistungen sind ausgenommen. Ob es für Sie gilt, sollten Sie prüfen lassen."),
 ("Was kostet eine Website bei STUDIO AAH!?",
  "Eine neue Website beginnt bei STUDIO AAH! bei 2.450 € netto, auch als Onepager; der Launch ist enthalten. Jede Unterseite kostet 190 € mit Texten und Bildern. Einen ersten Kostenvoranschlag gibt der Kostenrechner auf studio-aah.de, ausführlich erklärt Teil 1 der Reihe „Website-Fragen“ Preise, laufende Kosten und Dauer."),
 ]
