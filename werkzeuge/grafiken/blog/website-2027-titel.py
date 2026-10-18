@@ -36,7 +36,10 @@ def szene(cx, cy, k, fx, fy, fk, boden):
     s.append(f'<g transform="translate({fx} {fy}) scale({fk})">' + figur(100, ns['ARM_UNTEN'], 14, -10, blick=-1) + '</g>')
     hx, hy = ns['ende'](-ns['SCHULTER_X'], ns['SCHULTER_Y'], 100, ns['ARM'])
     hx, hy = fx + hx * fk, fy + hy * fk
-    s.append(f'<path d="M{hx - 16 * fk:.0f} {hy:.0f} L{cx + 84 * k:.0f} {cy:.0f}" fill="none" stroke="{BL}" stroke-width="3" stroke-dasharray="2 9" stroke-linecap="round"/>')
+    # Blau berührt nie Schwarz: weiße Fuge unter der Punktlinie (Kreuzung mit den Kreisumrissen), Start mit Abstand zur Hand, Ende vor dem Kern
+    weg = f'M{hx - 26 * fk:.0f} {hy:.0f} L{cx + 92 * k:.0f} {cy:.0f}'
+    s.append(f'<path d="{weg}" fill="none" stroke="{WS}" stroke-width="12" stroke-linecap="round"/>')
+    s.append(f'<path d="{weg}" fill="none" stroke="{BL}" stroke-width="3" stroke-dasharray="2 9" stroke-linecap="round"/>')
     return ''.join(s)
 
 

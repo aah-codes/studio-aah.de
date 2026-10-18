@@ -1,23 +1,23 @@
       <!-- Golden Circle (Anna 19.10.2026): drei Kreise, von innen nach außen Warum, Wie, Was. js/menue.js startet die Animation beim Hineinscrollen (einmal, unter 3 s);
-           ohne JavaScript und bei „weniger Bewegung“ steht sofort das fertige Bild. Stil in css/stil.css (Abschnitt Golden Circle). -->
+           ohne JavaScript und bei „weniger Bewegung“ steht sofort das fertige Bild. Stil in css/stil.css (Abschnitt 60); die fill-Attribute sind nur Rückfall, falls noch ein altes stil.css im Zwischenspeicher liegt. -->
       <figure class="golden-circle" id="golden-circle">
         <svg viewBox="0 0 520 520" role="img" aria-labelledby="gc-title gc-desc">
           <title id="gc-title">Der Golden Circle nach Simon Sinek</title>
           <desc id="gc-desc">Drei Kreise ineinander. Innen: Warum – Ihr Antrieb. In der Mitte: Wie – was Sie unterscheidet. Außen: Was – Ihr Angebot.</desc>
-          <circle class="gc-ring gc-ring--was" cx="260" cy="260" r="250"/>
+          <circle class="gc-ring gc-ring--was" cx="260" cy="260" r="250" fill="#fff" stroke="#0e1011" stroke-width="2"/>
           <g class="gc-text gc-text--was">
-            <text class="gc-label" x="260" y="62" font-size="34">WAS</text>
-            <text class="gc-sub" x="260" y="86">Ihr Angebot</text>
+            <text class="gc-label" x="260" text-anchor="middle" y="62" font-size="34">WAS</text>
+            <text class="gc-sub" x="260" text-anchor="middle" y="86">Ihr Angebot</text>
           </g>
-          <circle class="gc-ring gc-ring--wie" cx="260" cy="260" r="165"/>
+          <circle class="gc-ring gc-ring--wie" cx="260" cy="260" r="165" fill="#eeece7" stroke="#0e1011" stroke-width="2"/>
           <g class="gc-text gc-text--wie">
-            <text class="gc-label" x="260" y="148" font-size="34">WIE</text>
-            <text class="gc-sub" x="260" y="172">Was Sie unterscheidet</text>
+            <text class="gc-label" x="260" text-anchor="middle" y="148" font-size="34">WIE</text>
+            <text class="gc-sub" x="260" text-anchor="middle" y="172">Was Sie unterscheidet</text>
           </g>
-          <circle class="gc-ring gc-ring--warum" cx="260" cy="260" r="80"/>
+          <circle class="gc-ring gc-ring--warum" cx="260" cy="260" r="80" fill="#0e1011"/>
           <g class="gc-text gc-text--warum">
-            <text class="gc-label" x="260" y="266" font-size="38">WARUM</text>
-            <text class="gc-sub" x="260" y="292">Ihr Antrieb</text>
+            <text class="gc-label" x="260" text-anchor="middle" y="266" font-size="38" fill="#fff">WARUM</text>
+            <text class="gc-sub" x="260" text-anchor="middle" y="292" fill="#fff">Ihr Antrieb</text>
           </g>
         </svg>
         <figcaption>Der Golden Circle: erst das Warum, dann das Wie, dann das Was.</figcaption>
