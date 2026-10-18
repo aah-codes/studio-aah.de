@@ -1,18 +1,12 @@
-# Baut website/blog/was-kostet-eine-website/index.html aus Vorlage (Kopf/Fuß vom KI-Artikel) + Inhalt + FAQ + JSON-LD.
-# Texte nur in was-kostet-eine-website-inhalt.html und in der FAQ unten ändern.
+# Baut website/blog/was-kostet-eine-website/index.html (Reihe „Website-Fragen“, Teil 1) mit dem gemeinsamen Baustein werkzeuge/blog/beitrag.py.
+# Texte nur in was-kostet-eine-website-inhalt.html und in der FAQ unten ändern. Schema: werkzeuge/blog/schema-blogbeitrag.md
 # Aufruf im Repository-Ordner: python3 werkzeuge/blog/was-kostet-eine-website.py
-import html, json, pathlib, re, sys
+import pathlib, sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
-from gemeinsam import STUDIO_ID, WEBSITE, WERKZEUGE, esc, lesezeit as minuten
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from beitrag import bauen
 
-vorlage = (WEBSITE / 'blog' / 'was-ki-an-meiner-arbeit-veraendert-hat' / 'index.html').read_text(encoding='utf-8')
-main = (WERKZEUGE / 'blog' / 'was-kostet-eine-website-inhalt.html').read_text(encoding='utf-8')
-slug='was-kostet-eine-website'
-url=f'https://studio-aah.de/blog/{slug}/'
-titel='Was kostet eine Website? Preise, laufende Kosten und Dauer 2026'
-h1='Was kostet eine Website – und wie lange dauert sie?'
-beschr='Was kostet eine Website 2026? Preise ab 2.450 €, laufende Kosten und realistische Dauer – mit Beispielrechnungen und Erfahrungen aus Projekten eines Leipziger Studios.'
 faq=[
 ("Was kostet eine einfache Website für Selbstständige?",
  "Bei STUDIO AAH! beginnt eine neue Website bei 2.450 € netto, auch als Onepager; der Launch ist enthalten. Jede Unterseite kostet 190 € mit Texten und Bildern, ein Redesign 400 € mehr."),
@@ -35,65 +29,14 @@ faq=[
 ("Sind die Preise netto?",
  "Ja. Alle genannten Preise sind Einstiegspreise ohne Umsatzsteuer. Den Festpreis erhalten Sie nach einem kostenlosen Erstgespräch."),
 ]
-fh=[]
-for f,a in faq:
-    fh.append(f'''        <details class="faq-eintrag">
-          <summary>{esc(f)}</summary>
-          <div class="faq-antwort"><p>{esc(a)}</p></div>
-        </details>''')
-main=main.replace('FAQ_HTML','\n'.join(fh))
-# Lesezeit aus dem Text der Seite (ohne Tags), 200 Wörter pro Minute
-text=re.sub(r'<[^>]+>',' ',main); woerter=len(re.findall(r'\w+',text))
-lesezeit=minuten(woerter)
-main=main.replace('LESEZEIT',str(lesezeit))
-ld={"@context":"https://schema.org","@graph":[
- {"@type":"BlogPosting","@id":url+"#beitrag","headline":h1,"name":titel,"description":beschr,
-  "image":["https://studio-aah.de/bilder/blog-geld-und-zeit-og.jpg","https://studio-aah.de/bilder/blog-geld-und-zeit.webp"],
-  "datePublished":"2026-10-13","dateModified":"2026-10-19","inLanguage":"de-DE","url":url,"mainEntityOfPage":url,
-  "wordCount":woerter,"articleSection":"Website",
-  "keywords":["Website Kosten","Was kostet eine Website","Website erstellen lassen Dauer","laufende Kosten Website","Relaunch","Webdesign Leipzig"],
-  "author":{"@type":"Person","name":"Anna Härtelt","url":"https://studio-aah.de/profil/","jobTitle":"UX/UI-Designerin, Strategin und Webentwicklerin","worksFor":{"@id":STUDIO_ID}},
-  "publisher":{"@id":STUDIO_ID},
-  "isPartOf":{"@type":"Blog","@id":"https://studio-aah.de/blog/#blog","name":"Blog von STUDIO AAH!","url":"https://studio-aah.de/blog/"}},
- {"@type":"ProfessionalService","@id":STUDIO_ID,"name":"STUDIO AAH!","url":"https://studio-aah.de/","logo":"https://studio-aah.de/bilder/icon-512.png",
-  "address":{"@type":"PostalAddress","streetAddress":"Gießerstraße 75","postalCode":"04229","addressLocality":"Leipzig","addressCountry":"DE"},
-  "founder":{"@type":"Person","name":"Anna Härtelt"}},
- {"@type":"FAQPage","@id":url+"#faq","url":url,"inLanguage":"de","mainEntity":[{"@type":"Question","name":f,"acceptedAnswer":{"@type":"Answer","text":a}} for f,a in faq]},
- {"@type":"BreadcrumbList","itemListElement":[
-  {"@type":"ListItem","position":1,"name":"Startseite","item":"https://studio-aah.de/"},
-  {"@type":"ListItem","position":2,"name":"Blog","item":"https://studio-aah.de/blog/"},
-  {"@type":"ListItem","position":3,"name":h1,"item":url}]}
-]}
-kopf_ende=vorlage.index('<main id="inhalt">')
-fuss_start=vorlage.index('</main>')
-head=vorlage[:kopf_ende]
-alt_head=head[head.index('<title>'):head.index('<link rel="stylesheet"')]
-neu_head=f'''<title>{titel} | STUDIO AAH!</title>
-  <meta name="description" content="{html.escape(beschr)}">
-  <meta name="author" content="Anna Härtelt">
-  <link rel="canonical" href="{url}">
-  <link rel="icon" href="../../bilder/favicon-32.png" sizes="32x32" type="image/png">
-  <link rel="apple-touch-icon" href="../../bilder/apple-touch-icon.png">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="STUDIO AAH!">
-  <meta property="og:locale" content="de_DE">
-  <meta property="og:title" content="{titel}">
-  <meta property="og:description" content="{html.escape(beschr)}">
-  <meta property="og:url" content="{url}">
-  <meta property="og:image" content="https://studio-aah.de/bilder/blog-geld-und-zeit-og.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Titel „Was kostet eine Website – und wie lange dauert sie?“ neben einer Figur aus Bauhaus-Grundformen mit blauem Modul und einer Uhr.">
-  <meta property="article:published_time" content="2026-10-13">
-  <meta property="article:author" content="Anna Härtelt">
-  <meta name="twitter:card" content="summary_large_image">
-  <script type="application/ld+json">
-{json.dumps(ld, ensure_ascii=False, indent=1)}
-  </script>
-  '''
-head=head.replace(alt_head,neu_head)
-seite=head+'<main id="inhalt">\n\n'+main+'\n</main>'+vorlage[fuss_start+len('</main>'):]
-ziel = WEBSITE / 'blog' / slug / 'index.html'
-ziel.parent.mkdir(parents=True, exist_ok=True)
-ziel.write_text(seite, encoding='utf-8')
-print('Wörter',woerter,'Lesezeit',lesezeit)
+
+bauen('was-kostet-eine-website',
+      titel='Was kostet eine Website? Preise, laufende Kosten und Dauer 2026',
+      h1='Was kostet eine Website – und wie lange dauert sie?',
+      beschr='Was kostet eine Website 2026? Preise ab 2.450 €, laufende Kosten und realistische Dauer – mit Beispielrechnungen und Erfahrungen aus Projekten eines Leipziger Studios.',
+      datum='2026-10-13', geaendert='2026-10-19',
+      bild='blog-geld-und-zeit.webp', og_bild='blog-geld-und-zeit-og.jpg',
+      og_alt='Titel „Was kostet eine Website – und wie lange dauert sie?“ neben einer Figur aus Bauhaus-Grundformen mit blauem Modul und einer Uhr.',
+      keywords=["Website Kosten", "Was kostet eine Website", "Website erstellen lassen Dauer", "laufende Kosten Website", "Relaunch", "Webdesign Leipzig"],
+      faq=faq, reihe='website-fragen', teil=1,
+      about=["Website-Kosten", "Webdesign", "Hosting"])

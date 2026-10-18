@@ -2555,8 +2555,6 @@ section[hidden] { display: none !important; }
 @keyframes gc-fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .golden-circle.is-animated .gc-ring, .golden-circle.is-animated .gc-text { opacity: 1; animation: none !important; } }
 .artikel-text h4 { font-size: 1.15rem; line-height: 1.35; margin: clamp(2.25rem, 4.5vw, 3rem) 0 .6rem; }
-.artikel-text .knoepfe { display: flex; flex-wrap: wrap; gap: 12px; margin: 1.5rem 0 0; }
-.artikel-text .knoepfe .button { text-decoration: none; }
 /* Grafiken der Leistungsseiten im Artikel (CI-Film, Ökosystem): so breit wie der Inhaltsbereich der Seite, mittig über der Textspalte */
 .artikel-breit { --breit: min(var(--inhalt-breite), calc(100vw - 2 * var(--rand-seite))); width: var(--breit); margin: clamp(2.5rem, 5vw, 3.5rem) 0 clamp(2.5rem, 5vw, 3.5rem) calc((100% - var(--breit)) / 2); overflow-x: clip; }
 /* Zweispaltige Tabelle passt auch am Handy ohne seitliches Scrollen (Website-Check: Tabelle „Aufgaben (Gartner)“ lesbar) */

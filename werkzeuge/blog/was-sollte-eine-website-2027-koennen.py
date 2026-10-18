@@ -1,22 +1,37 @@
-# Baut website/blog/was-sollte-eine-website-2027-koennen/index.html aus Vorlage (Kopf/Fuß vom KI-Artikel) + Inhalt + Grafiken + JSON-LD.
-# Reihe „Website-Fragen“, Teil 2 (Anna 19.10.2026). Texte nur in was-sollte-eine-website-2027-koennen-inhalt.html ändern (Reinzeichnung, von Anna freigegeben 19.10.2026).
+# Baut website/blog/was-sollte-eine-website-2027-koennen/index.html (Reihe „Website-Fragen“, Teil 2) mit dem gemeinsamen Baustein werkzeuge/blog/beitrag.py.
+# Fließtext = Reinzeichnung, von Anna freigegeben 19.10.2026 – nur in was-sollte-eine-website-2027-koennen-inhalt.html ändern. Schema: werkzeuge/blog/schema-blogbeitrag.md
+# „Kurz gesagt“ und FAQ fassen nur Aussagen aus dem Artikel bzw. aus Teil 1 zusammen (keine neuen Zahlen).
 # Eingebunden: Golden Circle (werkzeuge/grafiken/golden-circle.html), CI-Grafik der Markenbildung und Ökosystem der Webdesign-Seite (dieselben Dateien wie dort).
 # Aufruf im Repository-Ordner: python3 werkzeuge/blog/was-sollte-eine-website-2027-koennen.py
-import html, json, pathlib, re, sys
+import pathlib, sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
-from gemeinsam import STUDIO_ID, WEBSITE, WERKZEUGE, lesezeit as minuten
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from beitrag import bauen
+from gemeinsam import WERKZEUGE
 
-vorlage = (WEBSITE / 'blog' / 'was-ki-an-meiner-arbeit-veraendert-hat' / 'index.html').read_text(encoding='utf-8')
-main = (WERKZEUGE / 'blog' / 'was-sollte-eine-website-2027-koennen-inhalt.html').read_text(encoding='utf-8')
-slug = 'was-sollte-eine-website-2027-koennen'
-url = f'https://studio-aah.de/blog/{slug}/'
-titel = 'Was sollte eine Website 2027 können?'
-h1 = titel
-beschr = 'Markenidentität, Nutzen, Zukunft: was eine Website 2027 leisten muss – mit Beispielen aus Software, Arztpraxis und Handwerk und dem Blick auf KI.'
-datum = '2026-10-20'
-alt_titel = 'Figur aus Bauhaus-Grundformen zeigt auf den Golden Circle: drei Kreise ineinander, innen schwarz das Warum, darum das Wie, außen das Was.'
-alt_og = 'Titel „Was sollte eine Website 2027 können?“ neben einer Figur aus Bauhaus-Grundformen und dem Golden Circle aus drei Kreisen.'
+faq = [
+("Was sollte eine Website 2027 können?",
+ "Sie sollte das Angebot in Sekunden erklären, Vertrauen aufbauen, den Einstieg leicht machen, bei Google (SEO) und in KI-Suchen (GEO) gefunden werden und zu Anfragen führen. Dazu muss sie auf dem Handy funktionieren, gepflegt und barrierefrei sein. Das Fundament ist eine klare Markenidentität."),
+("Was ist der Golden Circle?",
+ "Der Golden Circle ist ein Modell von Simon Sinek: erst das Warum, dann das Wie, dann das Was. Wer beantworten kann, warum er macht, was er macht, wie er es macht und was genau er für wen anbietet, hat das Fundament für seine Marke und für seine Website."),
+("Warum sehen sich viele Websites so ähnlich?",
+ "Häufige Gründe sind zu wenig oder die falschen Informationen, kein klarer Weg zur Anfrage, fehlende Suchmaschinenoptimierung und eine Marke, die nur als Farben, Schrift und Logo verstanden wird. Oft wurden Werte, Haltung, Sprache und Zielgruppen nie geklärt, der Blick auf die Mitbewerber fehlt, und Funktionen wie Terminbuchung oder Newsletter fehlen. Wer austauschbar wirkt, wird schnell nur noch über Preis und Leistung verglichen."),
+("Braucht jedes Unternehmen eine Website?",
+ "Nein. Ein Google-Unternehmensprofil mit Öffnungszeiten, Telefonnummer und Bewertungen kann genügen, wenn der Betrieb sehr lokal ist und von Laufkundschaft lebt, voll ausgelastet ist und niemanden sucht und das Angebot nichts erklären muss. Ein Profil auf einer Plattform gehört Ihnen aber nicht: Google hat 2024 zum Beispiel die kostenlosen Websites im Unternehmensprofil abgeschaltet."),
+("Warum braucht eine Arztpraxis eine Website?",
+ "Weil sie das Telefon entlastet. 64 Prozent der Deutschen ab 16 Jahren haben schon einmal einen Arzttermin online vereinbart, und wer Online-Termine nutzt oder sich das vorstellen kann, nennt am häufigsten als Vorteil, nicht auf die telefonische Erreichbarkeit der Praxis angewiesen zu sein (Bitkom, Dezember 2025). Eine automatische Erinnerung vor dem Termin kann leere Termine und Ausfälle verringern. Für Werbung und Datenschutz gelten bei Arztpraxen besondere Regeln."),
+("Gibt es wegen KI bald keine Websites mehr?",
+ "Dafür gibt es keinen Beleg. Die Suche verändert sich: Zeigt Google eine KI-Übersicht an, klicken Menschen seltener auf Websites, in einer US-Studie bei 8 statt 15 Prozent der Suchen (Pew Research, 2025). Doch KI-Antworten stützen sich auf Inhalte aus dem Web, und die Nielsen Norman Group geht davon aus, dass Menschen weiter Oberflächen brauchen. Die Website wird zur Quelle, aus der Menschen und KI ihre Antworten holen."),
+("Wie bereite ich meine Website auf KI-Suchen und KI-Agenten vor?",
+ "Mit eigenen, fachkundigen Inhalten statt Allerweltstexten und mit konkreten Antworten auf echte Fragen: Was kostet das, wie lange dauert es, für wen ist das? Dazu kommen saubere Technik und Barrierefreiheit, denn klare Überschriften, beschriftete Formulare und sauberer Code helfen Menschen und KI-Agenten, die Websites lesen. Messen Sie den Erfolg an Anfragen, nicht an Klicks."),
+("Bringt eine llms.txt-Datei etwas?",
+ "Bisher nicht nachweisbar. Google unterstützt llms.txt nicht, und kein KI-Dienst hat öffentlich erklärt, die Datei zu nutzen (TechWyse, Juni 2026). Deshalb gilt vorerst: abwarten."),
+("Gilt das Barrierefreiheitsstärkungsgesetz für meine Website?",
+ "Das Barrierefreiheitsstärkungsgesetz gilt seit dem 28. Juni 2025 für bestimmte Produkte und Dienstleistungen, darunter Angebote im elektronischen Geschäftsverkehr. Kleinstunternehmen mit Dienstleistungen sind ausgenommen. Ob es für Sie gilt, sollten Sie prüfen lassen."),
+("Was kostet eine Website bei STUDIO AAH!?",
+ "Eine neue Website beginnt bei STUDIO AAH! bei 2.450 € netto, auch als Onepager; der Launch ist enthalten. Jede Unterseite kostet 190 € mit Texten und Bildern. Einen ersten Kostenvoranschlag gibt der Kostenrechner auf studio-aah.de, ausführlich erklärt Teil 1 der Reihe „Website-Fragen“ Preise, laufende Kosten und Dauer."),
+]
 
 
 def grafik(name):
@@ -29,62 +44,16 @@ def nur_figur(t):
     return t[a:e]
 
 
-for marke, inhalt in (('GOLDEN_CIRCLE', grafik('golden-circle')), ('CI_GRAFIK', grafik('corporate-identity')), ('OEKOSYSTEM', nur_figur(grafik('website-oekosystem')))):
-    if main.count(marke) != 1: raise SystemExit(f'Marke {marke} fehlt oder doppelt in der Inhaltsdatei')
-    main = main.replace(marke, inhalt)
-main = main.replace('ALT_TITELBILD', html.escape(alt_titel))
-# Lesezeit nur aus dem Fließtext: Grafiken (figure) zählen nicht mit, 200 Wörter pro Minute
-text = re.sub(r'<figure.*?</figure>', ' ', main, flags=re.S)
-text = re.sub(r'<[^>]+>', ' ', text); woerter = len(re.findall(r'\w+', text))
-lesezeit = minuten(woerter)
-main = main.replace('LESEZEIT', str(lesezeit))
-ld = {"@context": "https://schema.org", "@graph": [
- {"@type": "BlogPosting", "@id": url + "#beitrag", "headline": h1, "name": titel, "description": beschr,
-  "image": ["https://studio-aah.de/bilder/blog-website-2027-og.jpg", "https://studio-aah.de/bilder/blog-website-2027.webp"],
-  "datePublished": datum, "dateModified": datum, "inLanguage": "de-DE", "url": url, "mainEntityOfPage": url,
-  "wordCount": woerter, "articleSection": "Webdesign",
-  "keywords": ["Website 2027", "Was muss eine Website können", "Corporate Identity", "Golden Circle", "Website und KI", "GEO", "Webdesign Leipzig"],
-  "author": {"@type": "Person", "name": "Anna Härtelt", "url": "https://studio-aah.de/profil/", "jobTitle": "UX/UI-Designerin, Strategin und Webentwicklerin", "worksFor": {"@id": STUDIO_ID}},
-  "publisher": {"@id": STUDIO_ID},
-  "isPartOf": {"@type": "Blog", "@id": "https://studio-aah.de/blog/#blog", "name": "Blog von STUDIO AAH!", "url": "https://studio-aah.de/blog/"}},
- {"@type": "ProfessionalService", "@id": STUDIO_ID, "name": "STUDIO AAH!", "url": "https://studio-aah.de/", "logo": "https://studio-aah.de/bilder/icon-512.png",
-  "address": {"@type": "PostalAddress", "streetAddress": "Gießerstraße 75", "postalCode": "04229", "addressLocality": "Leipzig", "addressCountry": "DE"},
-  "founder": {"@type": "Person", "name": "Anna Härtelt"}},
- {"@type": "BreadcrumbList", "itemListElement": [
-  {"@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://studio-aah.de/"},
-  {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://studio-aah.de/blog/"},
-  {"@type": "ListItem", "position": 3, "name": h1, "item": url}]}
-]}
-kopf_ende = vorlage.index('<main id="inhalt">')
-fuss_start = vorlage.index('</main>')
-head = vorlage[:kopf_ende]
-alt_head = head[head.index('<title>'):head.index('<link rel="stylesheet"')]
-neu_head = f'''<title>{titel} | STUDIO AAH!</title>
-  <meta name="description" content="{html.escape(beschr)}">
-  <meta name="author" content="Anna Härtelt">
-  <link rel="canonical" href="{url}">
-  <link rel="icon" href="../../bilder/favicon-32.png" sizes="32x32" type="image/png">
-  <link rel="apple-touch-icon" href="../../bilder/apple-touch-icon.png">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="STUDIO AAH!">
-  <meta property="og:locale" content="de_DE">
-  <meta property="og:title" content="{titel}">
-  <meta property="og:description" content="{html.escape(beschr)}">
-  <meta property="og:url" content="{url}">
-  <meta property="og:image" content="https://studio-aah.de/bilder/blog-website-2027-og.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="{html.escape(alt_og)}">
-  <meta property="article:published_time" content="{datum}">
-  <meta property="article:author" content="Anna Härtelt">
-  <meta name="twitter:card" content="summary_large_image">
-  <script type="application/ld+json">
-{json.dumps(ld, ensure_ascii=False, indent=1)}
-  </script>
-  '''
-head = head.replace(alt_head, neu_head)
-seite = head + '<main id="inhalt">\n\n' + main + '\n</main>' + vorlage[fuss_start + len('</main>'):]
-ziel = WEBSITE / 'blog' / slug / 'index.html'
-ziel.parent.mkdir(parents=True, exist_ok=True)
-ziel.write_text(seite, encoding='utf-8')
-print('Wörter', woerter, 'Lesezeit', lesezeit)
+bauen('was-sollte-eine-website-2027-koennen',
+      titel='Was sollte eine Website 2027 können?',
+      h1='Was sollte eine Website 2027 können?',
+      beschr='Markenidentität, Nutzen, Zukunft: was eine Website 2027 leisten muss – mit Beispielen aus Software, Arztpraxis und Handwerk und dem Blick auf KI.',
+      datum='2026-10-20', geaendert='2026-10-20',
+      bild='blog-website-2027.webp', og_bild='blog-website-2027-og.jpg',
+      og_alt='Titel „Was sollte eine Website 2027 können?“ neben einer Figur aus Bauhaus-Grundformen und dem Golden Circle aus drei Kreisen.',
+      keywords=["Website 2027", "Was muss eine Website können", "Corporate Identity", "Golden Circle", "Website und KI", "GEO", "KI-Agenten", "Webdesign Leipzig"],
+      faq=faq, reihe='website-fragen', teil=2, ohne_figuren=True,
+      ersetzen={'GOLDEN_CIRCLE': grafik('golden-circle'), 'CI_GRAFIK': grafik('corporate-identity'), 'OEKOSYSTEM': nur_figur(grafik('website-oekosystem')),
+                'ALT_TITELBILD': 'Figur aus Bauhaus-Grundformen zeigt auf den Golden Circle: drei Kreise ineinander, innen schwarz das Warum, darum das Wie, außen das Was.'},
+      about=["Website", "Corporate Identity", "Golden Circle", "Generative Engine Optimization", "KI-Suche", "Barrierefreiheit"],
+      mentions=["Simon Sinek"])
