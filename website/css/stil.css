@@ -631,7 +631,7 @@ h1, h2, h3 {
 @keyframes icon-plopp { from { scale: 0; } to { scale: 1; } }
 @keyframes icon-schweben { 0%, 100% { translate: 0 0; } 50% { translate: 0 -.06em; } }
 @media (prefers-reduced-motion: reduce) { .icon-3d { animation: none; } }
-@media (max-width: 360px) { .wort-mit-icon { white-space: normal; } } /* sehr kleine Handys: Icon darf in die nächste Zeile */
+@media (max-width: 400px) { .wort-mit-icon { white-space: normal; } } /* kleine Handys: Icon darf in die nächste Zeile */
 
 /* ---------- 15. Fuß: Karte „Eine Website im Monat“ ---------- */
 .fuss-karte { position: relative; display: grid; gap: 10px; max-width: none; margin: 0 0 3rem; padding: 48px 56px; padding-right: min(360px, 34%); background: var(--farbe-creme); border-radius: 32px; color: var(--farbe-dunkel); text-decoration: none; font-weight: 400 !important; overflow: hidden; transition: transform .25s; }
@@ -710,7 +710,7 @@ main.mit-faden { position: relative; }
 .ank-zusatz { color: var(--farbe-gedaempft-invers); }
 .ank-link { color: var(--farbe-weiss); font-weight: 600; text-decoration: none; white-space: nowrap; border-bottom: 1px solid transparent; transition: border-color .2s; }
 .ank-link:hover, .ank-link:focus-visible { border-bottom-color: currentColor; }
-@media (max-width: 640px) {
+@media (max-width: 767.98px) {
   .ankuendigung { gap: 10px; font-size: 13px; padding: 8px var(--rand-seite); justify-content: space-between; }
   .ank-zusatz { display: none; }
 }
@@ -753,7 +753,7 @@ main.mit-faden { position: relative; }
   .lp-karte, .lp-cta { padding: 28px 24px; }
   .lp-held, .lp-sektion { padding: 40px var(--rand-seite); }
 }
-@media (max-width: 520px) { .lp-schritte { grid-template-columns: 1fr; } .lp-schritte li + li { border-left: 0; padding-left: 0; } }
+@media (max-width: 600px) { .lp-schritte { grid-template-columns: 1fr; } .lp-schritte li + li { border-left: 0; padding-left: 0; } }
 
 /* ---------- 21. Preisseite: Bedingungen, Bereichsleiste, Kostenrechner, Preisliste ---------- */
 .preisseite .seitenkopf .alt-klein { font-size: clamp(20px, 2vw, 28px); line-height: 1.3; max-width: 40ch; }
@@ -1000,7 +1000,7 @@ body:has(.wr) .sticky-rechner, body:has(.kopf-mobil[open]) .sticky-rechner, body
   .sticky-rechner-icon { width: 32px; height: 32px; }
   .sticky-rechner-icon img { width: 26px; height: 26px; }
 }
-@media (max-width: 960px) {
+@media (max-width: 1024px) {
   .wr { margin: 24px 12px; padding: 24px 16px 32px; border-radius: 24px; }
   .wr-raster { grid-template-columns: minmax(0, 1fr); gap: 0; }
   .wr-leiste { display: none; }
@@ -1122,7 +1122,7 @@ h1, h2, h3, .gr-xxl, .gr-xl, .gr-h2, .gr-h3, .artikel h1, .mm-karte-titel, .fuss
 .stimme .gedaempft { font-size: .95rem; line-height: 1.55; }
 .stimme .person { padding-top: 1.25rem; }
 @media (max-width: 1024px) { .stimmen { columns: 2 280px; } }
-@media (max-width: 640px) { .stimmen { columns: 1; } }
+@media (max-width: 767.98px) { .stimmen { columns: 1; } }
 
 /* ---------- 28. Profilseite: Ansatz und Engagement, Aktivitäten, Werdegang, Empfehlungen ---------- */
 .profil-zweispaltig { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; padding: 0 var(--rand-seite) 96px; }
@@ -1142,7 +1142,7 @@ h1, h2, h3, .gr-xxl, .gr-xl, .gr-h2, .gr-h3, .artikel h1, .mm-karte-titel, .fuss
 .profil-wer .gr-h3 { margin: 12px 0 24px; }
 /* Website in der Mitte, sechs Kanäle im Kreis darum */
 .mit-liebe svg { width: 12px; height: 12px; vertical-align: -1px; fill: currentColor; }
-@media (max-width: 640px) {
+@media (max-width: 767.98px) {
   .fakten { grid-template-columns: minmax(0, 1fr); }
   .fakten > div + div { border-left: 0; border-top: 1px solid var(--farbe-rahmen); }
   }
@@ -1271,7 +1271,7 @@ main section[id] { scroll-margin-top: 0; } /* Abstand kommt schon aus html { scr
 .lsx-direkt { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 40px; align-items: center; padding: 96px var(--rand-seite) 0; max-width: 1000px; }
 .lsx-direkt img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 20px; }
 .lsx-direkt .gr-h3 { margin: 12px 0 16px; }
-@media (max-width: 640px) { .lsx-direkt { grid-template-columns: 120px minmax(0, 1fr); gap: 20px; padding-top: 64px; } }
+@media (max-width: 767.98px) { .lsx-direkt { grid-template-columns: 120px minmax(0, 1fr); gap: 20px; padding-top: 64px; } }
 /* FAQ: kein schwarzer Rahmen beim Aufklappen mit der Maus; Tastatur sieht eine Unterstreichung */
 .faq-eintrag summary:focus-visible { outline: none; text-decoration: underline; text-underline-offset: 4px; }
 /* FAQ: mehr Luft zwischen Frage und Antwort */
@@ -1959,7 +1959,7 @@ section[hidden] { display: none !important; }
   .zl-text { min-width: 0; hyphens: auto; overflow-wrap: break-word; }
   .lsx-karten-2, .lsx-karten-3, .lsx-karte { grid-template-columns: minmax(0, 1fr); }
 }
-@media (max-width: 420px) {
+@media (max-width: 600px) {
   .lsx-karte-name { font-size: 1.5rem; }
 }
 @media (max-width: 400px) {
@@ -1991,7 +1991,7 @@ section[hidden] { display: none !important; }
 .blog-thema .blog-li-gross { grid-column: 1 / -1; }
 /* Aktuelles: großer neuester Beitrag, darunter die zwei nächsten nebeneinander */
 .blog-thema.blog-aktuell .blog-liste { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-@media (min-width: 1000px) {
+@media (min-width: 1024.02px) {
   .blog-aktuell .blog-karte:not(.blog-karte-gross) { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); }
   .blog-aktuell .blog-karte:not(.blog-karte-gross) .blog-karte-bild { aspect-ratio: auto; min-height: 100%; border-bottom: 0; border-right: 1px solid var(--farbe-rahmen); }
 }
@@ -2027,8 +2027,6 @@ section[hidden] { display: none !important; }
 .zeitleiste li.zl-aktuell::before, .zeitleiste li:first-child::before, .zeitleiste li:last-child::before { background: var(--farbe-primaer); }
 .profil-erfahrung .zeitleiste li:not(.zl-aktuell)::before { background: var(--farbe-dunkel); }
 @media (max-width: 400px) { .zl-text h3 { font-size: 1.25rem; } }
-@media (min-width: 371px) { .bauhaus-raster { --u: 64px; } }
-@media (min-width: 900.02px) { .bauhaus-raster { --u: clamp(56px, 6.6vw, 104px); } }
 /* Startseite nach dem Hero (Anna 13.10.2026): links Text, rechts kleine Ökosystem-Grafik (Link zur ganzen Grafik), darunter drei Karten */
 .intro-neu { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 40px 80px; align-items: center; }
 .intro-neu .intro-links { position: static; }
@@ -2067,7 +2065,7 @@ section[hidden] { display: none !important; }
   .intro-neu { grid-template-columns: minmax(0, 1fr); gap: 40px; }
   .intro-karten { margin-top: 8px; gap: 16px; }
 }
-@media (max-width: 560px) {
+@media (max-width: 600px) {
   .om-flaeche { aspect-ratio: 1 / 1.1; }
   .om-seite { width: 50%; padding: 8px 10px 10px; gap: 6px; }
   .om-browser b { display: none; }
@@ -2077,7 +2075,7 @@ section[hidden] { display: none !important; }
   .intro-karte { padding: 22px; }
 }
 @media (prefers-reduced-motion: reduce) { .intro-oeko .om-seite { transition: none; } .intro-oeko:hover .om-seite { transform: none; } }
-@media (max-width: 560px) {
+@media (max-width: 600px) {
   .profil-tools .tools { gap: 14px 20px; }
   .profil-tools .tools img { height: 34px; } .profil-tools .tools .tool-klein { height: 22px; }
   .profil-tools .tools .tool-gross { height: 40px; } .profil-tools .tools .tool-mittel { height: 23px; }

@@ -123,7 +123,7 @@
 
 ## Regeln für den Code
 - CSS: `website/css/stil.css` für alle Seiten, Farben, Schriften und Abstände als CSS-Variablen im einen `:root` am Anfang (keine festen Farbwerte im Rest der Datei). Bausteine der Projektseiten in `website/css/referenzen.css`, nur dort geladen (Anna, 16.10.2026; `referenzen.py` setzt den Link mit derselben Version wie `stil.css`).
-- Breakpoints: `max-width: 767.98px` / `min-width: 768px` und `max-width: 900px` / `min-width: 900.02px` (keine Lücke bei Zwischenbreiten durch Zoom); neue Regeln möglichst an die vorhandenen Stufen hängen.
+- Breakpoints (Anna, 18.10.2026): nur noch die Stufen 400 / 600 / 768 / 900 / 1024 / 1200 px, geschrieben als `max-width: 767.98px` / `min-width: 768px`, `max-width: 900px` / `min-width: 900.02px`, `max-width: 1024px` / `min-width: 1024.02px` (keine Lücke bei Zwischenbreiten durch Zoom). Einzige Ausnahme: 1100 px für Sitemap und Weg der Projektseiten (darunter 3 Spalten). Neue Regeln an diese Stufen hängen.
 - Schriften lokal aus `website/schriften/` (woff2), nichts von fremden Servern laden.
 - JavaScript: `js/menue.js` für alle Seiten (ein Block, nichts global), Abläufe der Projektseiten in `js/referenzen.js` (nur dort geladen, Version wie `menue.js`). Pause-Tasten über die gemeinsame Hilfsfunktion in `referenzen.js`.
 - Keine Fremddienste, keine Cookies, kein Analyse-Werkzeug, kein JavaScript-Rahmenwerk. Ausnahmen (Anna, 16.10.2026): Formspark für die Anfrageformulare und Brevo für den Newsletter; beide stehen in der Datenschutzerklärung. Neue Dienste nur nach Annas OK und mit Eintrag in der Datenschutzerklärung. JavaScript nur, wo es ohne nicht geht (z. B. Mobilmenü), und dann wenige Zeilen.
