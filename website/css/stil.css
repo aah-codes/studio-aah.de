@@ -2657,3 +2657,6 @@ ol.quellen li:target { background: var(--farbe-creme); border-radius: 6px; }
   .wc-zwei { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 600px) { .wc-punkte, .wc-wege { grid-template-columns: minmax(0, 1fr); } }
+.wc-platzhalter-zeile { margin: 0 0 12px; padding: 10px 14px; border: 1.5px dashed var(--farbe-grau); border-radius: 12px; color: var(--farbe-gedaempft); }
+.wc-platzhalter-zeile .meta { margin: 0 8px 0 0; }
+.wc-form .button:disabled { cursor: not-allowed; opacity: .55; }

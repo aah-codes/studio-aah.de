@@ -1,5 +1,5 @@
 {
-  "_hinweis": "Landingpage /website-check/ (Anna 24.10.2026): die 8 Prüfpunkte und die häufigen Fragen. Texte aus dem Entwurf Betrieb/Kunden Studio AAH/Studio AAH/Website/texte/2026-10-24_entwurf_website-check.md (Stand 20:20, nicht freigegeben). Die Prüfpunkte müssen zum Regelwerk Website-Check (P1–P8) passen; der Chat „Website-Check aufsetzen“ kann sie noch ändern – dann nur hier ändern und python3 werkzeuge/website-check.py (oder alle-erzeugen.sh) laufen lassen.",
+  "_hinweis": "Landingpage /website-check/ (Anna 24.10.2026): die 8 Prüfpunkte und die häufigen Fragen. Prüfpunkte passen zum Regelwerk Website-Check (P1–P8); Änderungen nur hier, dann python3 werkzeuge/website-check.py (oder alle-erzeugen.sh) laufen lassen.",
   "pruefpunkte": [
     {"titel": "Erster Eindruck", "text": "Versteht man auf der Startseite in wenigen Sekunden, was Sie anbieten und für wen?"},
     {"titel": "Weg zur Anfrage", "text": "Wie leicht finden Kundschaft und Bewerber:innen den nächsten Schritt: Kontakt, Formular, Bewerbung?"},

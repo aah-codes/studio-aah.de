@@ -9,10 +9,10 @@ window.Anfrage = (() => {
 
   function text(form, { einleitung = '', angaben = '' } = {}) {
     const nachricht = wert(form, 'nachricht');
-    const kontakt = [`Name: ${wert(form, 'name')}`, `E-Mail: ${wert(form, 'email')}`];
+    const kontakt = [wert(form, 'name') ? `Name: ${wert(form, 'name')}` : '', `E-Mail: ${wert(form, 'email')}`].filter(Boolean);
     if (wert(form, 'organisation')) kontakt.push(`Organisation: ${wert(form, 'organisation')}`);
     if (wert(form, 'website')) kontakt.push(`Website: ${wert(form, 'website')}`);
-    form.querySelectorAll('input[type="checkbox"][name]').forEach((h) => kontakt.push(`${h.closest('label').textContent.trim()} ${h.checked ? 'ja' : 'nein'}`));
+    form.querySelectorAll('input[type="checkbox"][name]').forEach((h) => kontakt.push(`${(h.closest('label')?.textContent || h.name).trim()} ${h.checked ? 'ja' : 'nein'}`));
     return ['Hallo Anna,', einleitung, angaben, nachricht ? `Nachricht:\n${nachricht}` : '', kontakt.join('\n')].filter(Boolean).join('\n\n') + '\n';
   }
 
