@@ -14,11 +14,13 @@ kopf() { awk '/<a class="sprunglink"/,/<!-- \/KOPF -->/' "$1" | einheitlich; }
 fuss() { awk '/<!-- FUSS:/,/<!-- \/FUSS -->/' "$1" | einheitlich; }
 
 seiten=$(find . -name "*.html" | sort | while read -r s; do grep -q 'http-equiv="refresh"' "$s" || echo "$s"; done)
-# Weiterleitungsseiten (work/, angebot/ …) haben keinen Kopf und Fuß und werden übersprungen
+# Weiterleitungsseiten (work/, angebot/ …) haben keinen Kopf und Fuß und werden übersprungen;
+# Landingpages (<!-- LANDINGPAGE, z. B. website-check/) haben eigenen Kopf und Fuß: nur Links und Bilder prüfen
 
 echo "== Kopf und Fuß"
 for s in $seiten; do
   [ "$s" = "./index.html" ] && continue
+  grep -q '<!-- LANDINGPAGE' "$s" && continue
   if ! diff -q <(kopf index.html) <(kopf "$s") >/dev/null; then
     echo "  ABWEICHUNG Kopf: $s"; fehler=1
   fi

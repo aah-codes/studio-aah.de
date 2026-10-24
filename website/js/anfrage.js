@@ -12,6 +12,7 @@ window.Anfrage = (() => {
     const kontakt = [`Name: ${wert(form, 'name')}`, `E-Mail: ${wert(form, 'email')}`];
     if (wert(form, 'organisation')) kontakt.push(`Organisation: ${wert(form, 'organisation')}`);
     if (wert(form, 'website')) kontakt.push(`Website: ${wert(form, 'website')}`);
+    form.querySelectorAll('input[type="checkbox"][name]').forEach((h) => kontakt.push(`${h.closest('label').textContent.trim()} ${h.checked ? 'ja' : 'nein'}`));
     return ['Hallo Anna,', einleitung, angaben, nachricht ? `Nachricht:\n${nachricht}` : '', kontakt.join('\n')].filter(Boolean).join('\n\n') + '\n';
   }
 
@@ -43,8 +44,10 @@ window.Anfrage = (() => {
     const daten = { betreff: opt.betreff || 'Projektanfrage', name: wert(form, 'name'), email: wert(form, 'email'), website: wert(form, 'website'), nachricht: wert(form, 'nachricht'), _honeypot: wert(form, '_honeypot') };
     if (opt.angaben) daten.kostenrechner = opt.angaben;
     if (form.elements.organisation) daten.organisation = wert(form, 'organisation');
+    // Häkchen (z. B. Schnell-Check auf website-check/): immer mitschicken, angehakt oder nicht
+    form.querySelectorAll('input[type="checkbox"][name]').forEach((h) => { daten[h.name] = h.checked ? 'ja' : 'nein'; });
     // Betreff und Absendername der Benachrichtigung (Formspark-Felder _email.subject und _email.from; im Namen kein @, < oder >)
-    daten['_email.subject'] = `${daten.betreff}: ${daten.name}`;
+    daten['_email.subject'] = `${daten.betreff}: ${daten.name || daten.website}`;
     daten['_email.from'] = daten.name.replace(/[@<>]/g, '') || 'Website studio-aah.de';
     try {
       const antwort = await fetch(ENDPUNKT, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(daten) });
@@ -61,10 +64,10 @@ window.Anfrage = (() => {
   // Hinweis unter dem Formular zum Versandweg (Datenschutz)
   const HINWEIS = 'Ihre Angaben gehen über den Formulardienst Formspark (Belgien, Speicherung in der EU) per E-Mail an mich. Mehr in der <a href="../datenschutz/#kontakt">Datenschutzerklärung</a>.';
 
-  // Projekt anfragen: Formulare mit data-anfrage (= Betreff) selbst verbinden; Pflichtfelder prüft der Browser vor dem Absenden
+  // Projekt anfragen: Formulare mit data-anfrage (= Betreff, data-weiter = eigene Danke-Seite) selbst verbinden; Pflichtfelder prüft der Browser vor dem Absenden
   document.querySelectorAll('form[data-anfrage]').forEach((form) => form.addEventListener('submit', (e) => {
     e.preventDefault();
-    senden(form, { betreff: form.dataset.anfrage });
+    senden(form, { betreff: form.dataset.anfrage, weiter: form.dataset.weiter });
   }));
 
   return { senden, ENDPUNKT, HINWEIS };
