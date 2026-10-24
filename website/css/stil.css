@@ -629,7 +629,7 @@ h1, h2, h3 {
 @media (prefers-reduced-motion: reduce) { .icon-3d { animation: none; } }
 @media (max-width: 400px) { .wort-mit-icon { white-space: normal; } } /* kleine Handys: Icon darf in die nächste Zeile */
 
-/* ---------- 15. Fuß: Karte „Eine Website im Monat“ ---------- */
+/* ---------- 15. Fuß: Karte „Demokratie braucht Sichtbarkeit.“ ---------- */
 .fuss-karte { position: relative; display: grid; gap: 10px; max-width: none; margin: 0 0 3rem; padding: 48px 56px; padding-right: min(360px, 34%); background: var(--farbe-creme); border-radius: 32px; color: var(--farbe-dunkel); text-decoration: none; font-weight: 400 !important; overflow: hidden; transition: transform .25s; }
 .fuss-karte:hover { opacity: 1 !important; transform: translateY(-3px); }
 .fuss-karte .meta { color: var(--farbe-gedaempft); display: inline-flex; align-items: center; gap: 8px; }
