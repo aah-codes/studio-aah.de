@@ -326,6 +326,5 @@ window.WEBRECHNER = {
   "Preise",
   "Ablauf"
  ],
- "gross_ab": 25,
- "review": "https://calendar.app.google/v194ByGxpY69CZou9"
+ "gross_ab": 25
 };
