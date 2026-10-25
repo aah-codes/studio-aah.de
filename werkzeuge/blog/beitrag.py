@@ -147,6 +147,7 @@ def bauen(slug, titel, h1, beschr, datum, geaendert, bild, og_bild, og_alt, keyw
   <meta name="author" content="Anna Härtelt">
   <link rel="canonical" href="{url}">
   <link rel="icon" href="../../bilder/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="../../bilder/favicon-144.png" sizes="144x144" type="image/png">
   <link rel="apple-touch-icon" href="../../bilder/apple-touch-icon.png">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="STUDIO AAH!">

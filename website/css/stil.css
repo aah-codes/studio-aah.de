@@ -560,6 +560,8 @@ h1, h2, h3 {
 .kopf-mobil .mobil-unterliste a { font-size: 1.05rem; padding: .4rem 0; }
 .kopf-mobil .mobil-weitere { margin: .6rem 0 .2rem; }
 .fuss .fuss-weitere { margin-top: 1.2rem; }
+/* Name und Adresse wie im Google-Unternehmensprofil (Anna 25.10.2026, lokale Suche Leipzig) */
+.fuss-adresse { font-style: normal; margin: 0 0 1em; line-height: 1.5; }
 @media (max-width: 1024px) { .mm, .mm-schleier { display: none !important; } }
 
 /* ---------- 11. Leistungsseiten: Pakete und FAQ ---------- */
@@ -1837,6 +1839,10 @@ section[hidden] { display: none !important; }
 /* Blog: eine mittige Lesespalte für alle Textteile (höchstens etwa 80 Zeichen pro Zeile, Website-Check 25.10.2026; mittig: Anna 25.10.2026).
    Bilder, Grafiken und Tabellen bleiben breiter. */
 .artikel { --lesespalte: 37rem; }
+/* Profil (Anna 25.10.2026, SEO): H1 mit Aussage als Dachzeile, „Aaha!“ bleibt optisch groß wie bisher */
+.profil-h1 { margin: 0 0 .6em; }
+.profil-aaha { font-family: var(--schrift-ueberschrift); font-weight: 400; text-transform: uppercase; letter-spacing: .9px; margin: 0 0 .15em; }
+.artikel-weiter { margin-top: 2.5rem; } /* Link auf die passende Leistung am Ende jedes Artikels (Anna 25.10.2026) */
 .artikel > :is(nav.meta, p.meta, h1, .artikel-lead, .artikel-meta, .artikel-nav),
 .artikel .artikel-text > :is(p, ul, ol, h2, h3, h4, aside, nav, section, .artikel-faq) { max-width: var(--lesespalte); margin-left: auto; margin-right: auto; }
 .artikel-ratgeber .artikel-text h2 { font-size: clamp(24px, 2.4vw, 30px); margin: 3.5rem 0 1rem; scroll-margin-top: 24px; }

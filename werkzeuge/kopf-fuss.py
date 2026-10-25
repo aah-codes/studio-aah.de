@@ -41,9 +41,19 @@ def vorladen(text):
     return STIL.sub(ersetzen, text, count=1)
 
 
+# Favicon für das Suchergebnis (Anna 25.10.2026): randlos, quadratisch, Vielfaches von 48 px (Google) – neben dem bestehenden 32-px-Link
+FAVICON = re.compile(r'([ \t]*)<link rel="icon" href="([^"]*?)bilder/favicon-32\.png" sizes="32x32" type="image/png">')
+
+
+def favicon(text):
+    if 'favicon-144.png' in text:
+        return text
+    return FAVICON.sub(lambda m: m.group(0) + f'\n{m.group(1)}<link rel="icon" href="{m.group(2)}bilder/favicon-144.png" sizes="144x144" type="image/png">', text, count=1)
+
+
 def main():
     start = (website / 'index.html').read_text(encoding='utf-8')
-    neu_start = vorladen(start)
+    neu_start = favicon(vorladen(start))
     if neu_start != start:
         (website / 'index.html').write_text(neu_start, encoding='utf-8')
         start = neu_start
@@ -65,7 +75,7 @@ def main():
         # Landingpages (z. B. website-check/) haben einen eigenen Kopf ohne Hauptnavigation und einen eigenen Fuß
         if 'http-equiv="refresh"' in text:
             continue
-        text_vorher, text = text, vorladen(text)
+        text_vorher, text = text, favicon(vorladen(text))
         if text != text_vorher:
             seite.write_text(text, encoding='utf-8')
             geaendert += 1

@@ -97,15 +97,16 @@ BEISPIELE = {
     'typo': '<span class="kb-typo"><span class="kb-typo-aa">Aa</span><span class="kb-typo-text">Manrope</span><span class="kb-typo-meta">Anton · JetBrains&nbsp;Mono</span></span>',
 }
 # Kategorien oben (Anna 13.10.2026), unabhängig von den Leistungskarten unten; ohne Beispiel steht das Kartenbild der Leistung
+# Reihenfolge wie das Mega-Menü (Anna 25.10.2026, SEO-Schwerpunkt): Webdesign zuerst, dann UI/UX, Marke, weitere Leistungen zuletzt
 KATEGORIEN = [
-    {'id': 'brand', 'titel': 'Markenbildung', 'link': 'service/markenbildung/'},
-    {'id': 'print', 'titel': 'Druck', 'link': 'service/druck/'},
+    {'id': 'website', 'titel': 'Webdesign', 'link': 'service/webdesign/'},
     {'id': 'mobil', 'titel': 'Mobil', 'link': 'service/ui-ux/'},
+    {'id': 'ui-ux', 'titel': 'Produktdesign', 'link': 'service/ui-ux/'},
+    {'id': 'brand', 'titel': 'Markenbildung', 'link': 'service/markenbildung/'},
+    {'id': 'typo', 'titel': 'Typografie', 'link': 'service/markenbildung/'},
+    {'id': 'print', 'titel': 'Druck', 'link': 'service/druck/'},
     {'id': 'motion', 'titel': 'Animation', 'link': 'service/animation/'},
     {'id': 'illustration', 'titel': 'Illustration', 'link': 'service/illustration-infografik/'},
-    {'id': 'website', 'titel': 'Webdesign', 'link': 'service/webdesign/'},
-    {'id': 'ui-ux', 'titel': 'Produktdesign', 'link': 'service/ui-ux/'},
-    {'id': 'typo', 'titel': 'Typografie', 'link': 'service/markenbildung/'},
 ]
 
 
