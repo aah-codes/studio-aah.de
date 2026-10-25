@@ -1843,6 +1843,11 @@ section[hidden] { display: none !important; }
 .artikel { --lesespalte: 37rem; }
 /* Profil (Anna 25.10.2026, SEO): H1 mit Aussage als Dachzeile, „Aaha!“ bleibt optisch groß wie bisher */
 .profil-h1 { margin: 0 0 .6em; }
+/* LinkedIn weit oben auf dem Profil (Anna 25.10.2026) */
+.profil-linkedin { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin: 1.5rem 0 0; }
+.profil-linkedin .meta { margin: 0; }
+.profil-linkedin svg { color: var(--farbe-dunkel); flex: none; }
+.profil-linkedin { margin: 0 0 1.5rem; }
 /* Alle Dachzeilen mit blauem Punkt (Anna 25.10.2026) – auch die Profil-H1, die selbst Dachzeile ist */
 .profil-h1::before { content: ""; display: inline-block; width: .62em; height: .62em; margin: 0 .55em .08em 0; border-radius: 50%; background: var(--farbe-primaer); vertical-align: middle; }
 .profil-aaha { font-family: var(--schrift-ueberschrift); font-weight: 400; text-transform: uppercase; letter-spacing: .9px; margin: 0 0 .15em; }
