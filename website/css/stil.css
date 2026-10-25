@@ -1523,9 +1523,13 @@ main section[id] { scroll-margin-top: 0; } /* Abstand kommt schon aus html { scr
 .lsx-duo-icon { position: static; width: 96px; height: 96px; margin: 0 0 8px; filter: none; }
 /* Megamenü ab 25.10.2026 (Anna): links Schwerpunkt Webdesign groß, rechts Marke und Marketing, darunter „Weitere Leistungen“ klein */
 .mm-bereiche { display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; }
-.mm-liste-haupt li:first-child .mm-name { font-size: 2.6rem; }
-/* Anton gibt es nur in einer Stärke – im Mega-Menü mit mehr Buchstabenabstand besser lesbar (Anna 25.10.2026) */
-.kopf-nav .mm-name { letter-spacing: .06em; }
+/* Mega-Menü ruhig wie bei Tesla (Anna 25.10.2026): nur zwei Größen – Namen in Anton (eine Stärke, mehr Buchstabenabstand), Text und kleine Leistungen gleich groß */
+.kopf-nav .mm-name { font-size: 1.35rem; letter-spacing: .06em; }
+.kopf-nav .mm-text, .kopf-nav .mm-weitere a { font-size: .95rem; }
+.kopf-nav .mm-weitere a { font-weight: 500; }
+/* Fokusrahmen um „Leistungen“ mit mehr Luft (bleibt für die Bedienung mit Tastatur) */
+.kopf-nav .mm-toggle { padding: 6px 12px; margin: -6px -12px; border-radius: 10px; }
+.kopf-nav .mm-toggle:focus-visible { outline-offset: 0; }
 .mm-label-weitere { margin-top: 28px; }
 .mm-weitere { list-style: none; margin: 0; padding: 14px 0 0; border-top: var(--rahmen) solid var(--farbe-rahmen); display: flex; flex-wrap: wrap; gap: 8px 24px; }
 .kopf-nav .mm-weitere a { text-decoration: none; font-weight: 600; }
@@ -1830,8 +1834,11 @@ section[hidden] { display: none !important; }
 .artikel-lead { font-size: clamp(18px, 1.5vw, 21px); line-height: 1.55; margin: 0 0 1.25rem; }
 .artikel-ratgeber .artikel-meta { display: flex; flex-wrap: wrap; gap: 4px 14px; }
 .artikel-ratgeber .artikel-text { font-size: 18px; line-height: 1.7; }
-/* Zeilenlänge im Blog höchstens etwa 80 Zeichen (Website-Check 25.10.2026: vorher Median 96) – alle Artikel, auch Einleitung, Kästen, Fragen, Schluss */
-.artikel .artikel-text p, .artikel .artikel-text li, .artikel .artikel-lead, .artikel .faq-antwort p, .artikel .artikel-schluss p { max-width: 34em; }
+/* Blog: eine mittige Lesespalte für alle Textteile (höchstens etwa 80 Zeichen pro Zeile, Website-Check 25.10.2026; mittig: Anna 25.10.2026).
+   Bilder, Grafiken und Tabellen bleiben breiter. */
+.artikel { --lesespalte: 37rem; }
+.artikel > :is(nav.meta, p.meta, h1, .artikel-lead, .artikel-meta, .artikel-nav),
+.artikel .artikel-text > :is(p, ul, ol, h2, h3, h4, aside, nav, section, .artikel-faq) { max-width: var(--lesespalte); margin-left: auto; margin-right: auto; }
 .artikel-ratgeber .artikel-text h2 { font-size: clamp(24px, 2.4vw, 30px); margin: 3.5rem 0 1rem; scroll-margin-top: 24px; }
 .artikel-ratgeber .artikel-text h3 { margin: 2rem 0 .5rem; }
 .artikel-ratgeber .artikel-text ol { padding-left: 1.4em; margin: 0 0 1.5rem; }
