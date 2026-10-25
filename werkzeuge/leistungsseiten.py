@@ -233,6 +233,9 @@ def problem_loesung(c, g, pre, link):
     grundsatz = '' if c.get('grafik') == 'corporate-identity' else (
         f'<p class="lsx-grundsatz"><a class="textlink" href="{pre}service/markenbildung/#corporate-identity">Form follows function, die Form folgt der Funktion. '
         'Grundlage für alles, was ich gestalte, ist die Corporate Identity <span aria-hidden="true">→</span></a></p>')
+    # Webdesign: Website-Check als zweiter Knopf (Anna 25.10.2026: niedrigschwelligster Einstieg)
+    check = (f'<a class="button button-zweit" href="{pre}website-check/">Kostenloser <span class="ohne-umbruch">Website-Check&nbsp;<span aria-hidden="true">→</span></span></a> '
+             if g['id'] == 'website' else '')
     return f'''  <section class="lsx-loesung lsx-pl" id="loesung" aria-labelledby="loesung-titel">
     <p class="meta">Problem &amp; Lösung</p>
     <h2 class="gr-h3" id="loesung-titel">{esc(c['problem_titel'])}</h2>
@@ -240,7 +243,7 @@ def problem_loesung(c, g, pre, link):
       <div class="lsx-pl-problem"><p class="meta">Woran es oft hakt</p><ul>{probleme}</ul></div>
       <div class="lsx-pl-loesung"><p class="meta">So mache ich es</p><p class="lsx-pl-text">{esc(c['loesung_text'])}</p><ul>{punkte}</ul>
         {grundsatz}</div>
-      <p class="lsx-knoepfe"><a class="button" href="{pre}kontakt/">Projekt anfragen <span aria-hidden="true">→</span></a> <a class="textlink" href="{link}">{'Kosten berechnen' if g['id'] == 'website' else 'Alle Preise'} <span aria-hidden="true">→</span></a></p>
+      <p class="lsx-knoepfe"><a class="button" href="{pre}kontakt/">Projekt anfragen <span aria-hidden="true">→</span></a> {check}<a class="textlink" href="{link}">{'Kosten berechnen' if g['id'] == 'website' else 'Alle Preise'} <span aria-hidden="true">→</span></a></p>
     </div>
   </section>'''
 

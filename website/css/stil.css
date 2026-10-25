@@ -1204,6 +1204,8 @@ h1, h2, h3, .gr-xxl, .gr-xl, .gr-h2, .gr-h3, .artikel h1, .mm-karte-titel, .fuss
 .mm-text { font-size: .88rem; }
 .mm-karte-bild { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 16px; display: block; }
 .mm-karte-bild-person { object-position: 50% 15%; }
+.mm-extra { margin: 16px 0 0; }
+.ohne-umbruch { white-space: nowrap; }
 .mm-karte { padding: 20px 20px 28px; }
 .mm-karte-titel { font-size: 2rem; }
 
