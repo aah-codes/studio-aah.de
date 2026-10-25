@@ -1,13 +1,231 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta charset="utf-8">
-<title>Weiterleitung zum Website-Check | STUDIO AAH!</title>
-<meta name="robots" content="noindex">
-<link rel="canonical" href="https://studio-aah.de/website-check/">
-<meta http-equiv="refresh" content="0; url=../website-check/">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kostenloses Website-Review | STUDIO AAH!</title>
+  <meta name="description" content="Kostenloses Website-Review von STUDIO AAH! aus Leipzig: 30 Minuten online, konkrete Ansatzpunkte für Ihre Website und eine kurze Zusammenfassung per E-Mail.">
+  <link rel="canonical" href="https://studio-aah.de/website-review/">
+  <link rel="icon" href="../bilder/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="../bilder/favicon-144.png" sizes="144x144" type="image/png">
+  <link rel="apple-touch-icon" href="../bilder/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="STUDIO AAH!">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:title" content="Kostenloses Website-Review | STUDIO AAH!">
+  <meta property="og:description" content="Kostenloses Website-Review von STUDIO AAH! aus Leipzig: 30 Minuten online, konkrete Ansatzpunkte für Ihre Website und eine kurze Zusammenfassung per E-Mail.">
+  <meta property="og:url" content="https://studio-aah.de/website-review/">
+  <meta property="og:image" content="https://studio-aah.de/bilder/vorschaubild.jpg">
+  <link rel="stylesheet" href="../css/stil.css?v=20261019e">
+  <link rel="preload" href="../schriften/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../schriften/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
 </head>
 <body>
-<p>Diese Seite ist umgezogen: <a href="../website-check/">Kostenloser Website-Check</a>.</p>
+<a class="sprunglink" href="#inhalt">Zum Inhalt springen</a>
+
+<!-- DACHZEILE: Programm, auf allen Seiten gleich -->
+<div class="ankuendigung">
+  <span class="ank-punkt" aria-hidden="true"></span>
+  <p class="ank-text"><strong>Demokratie braucht Sichtbarkeit.</strong> <span class="ank-zusatz">– Websites ohne Honorar für Vereine, NGOs, Kunst und Kultur.</span></p>
+  <a class="ank-link" href="../demokratie-braucht-sichtbarkeit/">Mehr erfahren <span aria-hidden="true">→</span></a>
+</div>
+
+<!-- KOPF: auf allen Seiten gleich -->
+<header class="kopf">
+  <a class="kopf-logo" href="../"><img src="../bilder/logo-studio-aah.svg" alt="STUDIO AAH!" width="180" height="33"></a>
+  <nav class="kopf-nav" aria-label="Hauptmenü">
+    <ul>
+      <li><a href="../referenzen/">Referenzen</a></li>
+      <li><a href="../#leistungen" class="mm-toggle" aria-expanded="false" aria-controls="mm">Leistungen <svg class="mm-pfeil" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+      <li><a href="../profil/">Über mich</a></li>
+      <li><a href="../blog/">Blog</a></li>
+    </ul>
+    <a class="kopf-button" href="../kontakt/">Projekt anfragen</a>
+    <div class="mm" id="mm" hidden>
+      <div class="mm-innen">
+        <div class="mm-bereiche">
+          <div>
+            <p class="meta mm-label">Kernkompetenzen</p>
+            <ul class="mm-liste mm-liste-haupt">
+            <li><a href="../service/webdesign/"><span class="mm-name">Webdesign</span><span class="mm-text">Neuentwicklung und Redesign</span></a></li>
+            <li><a href="../service/ui-ux/"><span class="mm-name">UI/UX</span><span class="mm-text">UI/UX-Design für Software und digitale Produkte</span></a></li>
+            <li><a href="../service/retainer/"><span class="mm-name">Retainer</span><span class="mm-text">Betreute Weiterentwicklung Ihrer Projekte</span></a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="meta mm-label">Marke und Marketing</p>
+            <ul class="mm-liste">
+            <li><a href="../service/markenbildung/"><span class="mm-name">Markenbildung</span><span class="mm-text">Markenfindung, Logo, Erscheinungsbild, Markenrichtlinien</span></a></li>
+            <li><a href="../service/marketing-vertrieb/"><span class="mm-name">Marketing &amp; Vertrieb</span><span class="mm-text">LinkedIn, Vorlagen, Fachartikel, Webinare</span></a></li>
+            </ul>
+            <p class="meta mm-label mm-label-weitere">Weitere Leistungen</p>
+            <ul class="mm-weitere">
+            <li><a href="../service/ki-digitalisierung/">KI &amp; Digitalisierung</a></li>
+            <li><a href="../service/druck/">Druck</a></li>
+            <li><a href="../service/animation/">Animation</a></li>
+            <li><a href="../service/illustration-infografik/">Illustration &amp; Infografik</a></li>
+            </ul>
+          </div>
+        </div>
+        <a class="mm-karte mm-karte-dunkel" href="../preise/">
+          <img class="mm-karte-icon" src="../bilder/icons/money-bag.webp" alt="" width="400" height="400" loading="lazy">
+          <span class="meta">Preise</span>
+          <span class="mm-karte-titel">Was kostet Ihr Projekt?</span>
+          <span>Alle Pakete und Einstiegspreise im Überblick – und für Websites der Kostenrechner mit unverbindlichem Kostenvoranschlag.</span>
+          <span class="button button-zweit">Zu den Preisen →</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+  <details class="kopf-mobil">
+    <summary><span class="kopf-mobil-icon" aria-hidden="true"></span><span class="unsichtbar">Menü</span></summary>
+    <nav aria-label="Mobilmenü">
+      <ul>
+        <li><a href="../referenzen/">Referenzen</a></li>
+        <li>
+          <details class="mobil-unter">
+            <summary>Leistungen</summary>
+            <ul class="mobil-unterliste">
+              <li><a href="../service/webdesign/">Webdesign</a></li>
+              <li><a href="../service/ui-ux/">UI/UX</a></li>
+              <li><a href="../service/retainer/">Retainer</a></li>
+              <li><a href="../service/markenbildung/">Markenbildung</a></li>
+              <li><a href="../service/marketing-vertrieb/">Marketing &amp; Vertrieb</a></li>
+              <li class="meta mobil-weitere">Weitere Leistungen</li>
+              <li><a href="../service/ki-digitalisierung/">KI &amp; Digitalisierung</a></li>
+              <li><a href="../service/druck/">Druck</a></li>
+              <li><a href="../service/animation/">Animation</a></li>
+              <li><a href="../service/illustration-infografik/">Illustration &amp; Infografik</a></li>
+            </ul>
+          </details>
+        </li>
+        <li><a href="../profil/">Über mich</a></li>
+        <li><a href="../blog/">Blog</a></li>
+        <li><a href="../preise/#rechner">Kostenrechner</a></li>
+        <li><a href="../kontakt/">Projekt anfragen</a></li>
+      </ul>
+    </nav>
+  </details>
+</header>
+<div class="mm-schleier" hidden></div>
+<script src="../js/menue.js?v=20261025s" defer></script>
+<!-- /KOPF -->
+
+<main id="inhalt" class="rv">
+
+  <!-- Landingpage Website-Review (Anna 16.10.2026): Infos und Termin-Knopf; Buchung über Google Kalender. Texte: Entwurf, Freigabe Anna -->
+  <section class="seitenkopf rv-kopf">
+    <p class="meta">Für bestehende Websites</p>
+    <h1 class="gr-xxl lang-wort">Kostenloses <span class="wort-mit-icon">Website-Review<img class="icon-3d" src="../bilder/icons/computer.webp" alt="" width="400" height="400"></span></h1>
+    <p class="rv-intro">30 Minuten online: Ich schaue mir Ihre Website mit dem Blick Ihrer Kundschaft und Ihrer Bewerberinnen und Bewerber an und nenne Ihnen konkrete Ansatzpunkte. Kostenlos und unverbindlich.</p>
+    <p class="rv-knopf"><a class="button" href="https://calendar.app.google/v194ByGxpY69CZou9" target="_blank" rel="noopener">Termin buchen <span aria-hidden="true">↗</span></a></p>
+    <p class="hinweis-klein">Die Terminbuchung läuft über Google Kalender. Dort gelten die Datenschutzhinweise von Google.</p>
+  </section>
+
+  <section class="rv-abschnitt" aria-labelledby="rv-was">
+    <p class="meta">Was ist ein Website-Review?</p>
+    <h2 class="preis-h2" id="rv-was">Ein Blick von außen auf Ihre ganze Website.</h2>
+    <p class="rv-text">Bei einem Website-Review analysiere ich Ihre gesamte Website – so, wie Ihre Kundschaft und Ihre Bewerberinnen und Bewerber sie erleben. Darauf schaue ich besonders:</p>
+    <ul class="rv-karten"><li class="rv-karte"><img src="../bilder/icons/bulb.webp" alt="" width="400" height="400" loading="lazy"><h3>Erster Eindruck</h3><p>Versteht man auf der Startseite in wenigen Sekunden, was Sie anbieten und für wen?</p></li><li class="rv-karte"><img src="../bilder/icons/target.webp" alt="" width="400" height="400" loading="lazy"><h3>Weg zur Anfrage</h3><p>Wie leicht finden Kundschaft und Bewerber:innen den nächsten Schritt: Kontakt, Formular, Bewerbung?</p></li><li class="rv-karte"><img src="../bilder/icons/mobile.webp" alt="" width="400" height="400" loading="lazy"><h3>Handy-Ansicht</h3><p>Lässt sich Ihre Website auf dem Smartphone gut lesen und bedienen?</p></li><li class="rv-karte"><img src="../bilder/icons/compass.webp" alt="" width="400" height="400" loading="lazy"><h3>Gefunden werden</h3><p>Stimmen die Grundlagen für Google und KI-Antworten: Titel, Struktur, Inhalte?</p></li></ul>
+  </section>
+
+  <section class="rv-abschnitt rv-bekommen" aria-labelledby="rv-bekommen">
+    <p class="meta">Das bekommen Sie</p>
+    <h2 class="preis-h2" id="rv-bekommen">Gespräch und Zusammenfassung.</h2>
+    <ul class="bedingungen">
+      <li><strong>30 Minuten Gespräch</strong> online über Google Meet</li>
+      <li><strong>Konkrete Ansatzpunkte</strong> für Ihre Website</li>
+      <li><strong>Kurze schriftliche Zusammenfassung</strong> danach per E-Mail</li>
+      <li><strong>Kostenlos und unverbindlich</strong></li>
+    </ul>
+  </section>
+
+  <section class="prozess-kompakt" aria-labelledby="rv-ablauf">
+    <p class="meta">So läuft es ab</p>
+    <h2 class="preis-h2" id="rv-ablauf">In vier Schritten.</h2>
+    <ol class="zeitleiste"><li><span class="zl-marke"><small>Schritt</small><b>01</b></span><div class="zl-text"><h3>Termin buchen</h3><p class="gedaempft">Wählen Sie einen Termin und geben Sie die Adresse Ihrer Website an.</p></div></li><li><span class="zl-marke"><small>Schritt</small><b>02</b></span><div class="zl-text"><h3>Analyse</h3><p class="gedaempft">Ich sehe mir Ihre gesamte Website vor dem Termin an.</p></div></li><li><span class="zl-marke"><small>Schritt</small><b>03</b></span><div class="zl-text"><h3>Gespräch</h3><p class="gedaempft">30 Minuten online über Google Meet: Ich zeige Ihnen die Ansatzpunkte.</p></div></li><li><span class="zl-marke"><small>Schritt</small><b>04</b></span><div class="zl-text"><h3>Zusammenfassung</h3><p class="gedaempft">Danach bekommen Sie die Ansatzpunkte kurz schriftlich per E-Mail.</p></div></li></ol>
+  </section>
+
+  <section class="preis-schluss">
+    <div class="schluss-karte">
+      <p class="meta">Kostenloses Website-Review</p>
+      <h2 class="gr-h2">Termin buchen.</h2>
+      <p>Sie haben den <a class="rv-hell" href="../preise/#rechner">Kostenrechner</a> auf studio-aah.de genutzt? Schicken Sie mir Ihren Kostenvoranschlag gern vorab an <a class="rv-hell" href="mailto:info@studio-aah.de?subject=Kostenvoranschlag%20f%C3%BCr%20das%20Website-Review">info@studio-aah.de</a>.</p>
+      <p><a class="button" href="https://calendar.app.google/v194ByGxpY69CZou9" target="_blank" rel="noopener">Termin buchen <span aria-hidden="true">↗</span></a></p>
+    </div>
+  </section>
+
+</main>
+
+  <!-- FUSS: auf allen Seiten gleich -->
+  <footer class="fuss">
+    <p class="meta">#uxstrategy #behaviouraldesign #servicedesign #kidesign</p>
+    <p class="fuss-gross"><img src="../bilder/logo-studio-aah-weiss.svg" alt="STUDIO AAH!" width="1917" height="353"></p>
+    <p class="fuss-claim">Form follows function: Die Form folgt der Funktion. Ein Stück Bauhaus in jedem Projekt.</p>
+  <a class="fuss-karte" href="../demokratie-braucht-sichtbarkeit/">
+    <span class="meta"><span class="ank-punkt" aria-hidden="true"></span> Initiative</span>
+    <span class="fuss-karte-titel">Demokratie braucht Sichtbarkeit.</span>
+    <span class="fuss-karte-text">Websites ohne Honorar für Vereine, NGOs, Kunst und Kultur.</span>
+    <span class="fuss-karte-link">Mehr erfahren →</span>
+    <img class="fuss-karte-icon" src="../bilder/icons/megaphone.webp" alt="" width="400" height="400" loading="lazy">
+  </a>
+    <nav class="fuss-spalten" aria-label="Fußmenü">
+<div class="fuss-kontakt">
+  <p class="meta">Kontakt</p>
+  <p><a href="../kontakt/">Projekt anfragen</a></p>
+  <p><a class="mit-symbol" href="mailto:info@studio-aah.de"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>info@studio-aah.de</a></p>
+  <p><a class="mit-symbol" href="tel:+4917683089879"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg>0176 830 898 79</a></p>
+  <address class="fuss-adresse">STUDIO AAH<br>Gießerstraße 75, 04229 Leipzig</address>
+  <p class="meta fuss-folge">Folge mir</p>
+  <p><a class="symbol-link" href="https://www.linkedin.com/in/anna-h%C3%A4rtelt-8513b8213/" target="_blank" rel="noopener" aria-label="Anna Härtelt auf LinkedIn"><svg viewBox="0 0 24 24" width="32" height="32" aria-hidden="true"><rect x="1.5" y="1.5" width="21" height="21" rx="4" fill="currentColor"/><rect x="5.5" y="9.5" width="2.8" height="8.5" fill="#0e1011"/><circle cx="6.9" cy="6.6" r="1.7" fill="#0e1011"/><path d="M10.6 9.5h2.7v1.2c.5-.8 1.5-1.5 3-1.5 2.4 0 3.2 1.5 3.2 4V18h-2.8v-4.3c0-1.2-.3-2-1.4-2s-1.9.8-1.9 2.1V18h-2.8z" fill="#0e1011"/></svg></a></p>
+</div>
+      <div>
+        <p class="meta">Leistungen</p>
+        <p><a href="../service/webdesign/">Webdesign</a></p>
+        <p><a href="../service/ui-ux/">UI/UX</a></p>
+        <p><a href="../service/retainer/">Retainer</a></p>
+        <p><a href="../service/markenbildung/">Markenbildung</a></p>
+        <p><a href="../service/marketing-vertrieb/">Marketing &amp; Vertrieb</a></p>
+        <p class="meta fuss-weitere">Weitere Leistungen</p>
+        <p><a href="../service/ki-digitalisierung/">KI &amp; Digitalisierung</a></p>
+        <p><a href="../service/druck/">Druck</a></p>
+        <p><a href="../service/animation/">Animation</a></p>
+        <p><a href="../service/illustration-infografik/">Illustration &amp; Infografik</a></p>
+        <p><a href="../preise/">Preise</a></p>
+      </div>
+      <div>
+        <p class="meta">Studio</p>
+        <p><a href="../profil/">Über mich</a></p>
+        <p><a href="../#referenzen">Referenzen</a></p>
+        <p><a href="../blog/">Blog</a></p>
+        <p><a href="../demokratie-braucht-sichtbarkeit/">Initiative: Demokratie braucht Sichtbarkeit.</a></p>
+      </div>
+    </nav>
+    <form class="fuss-newsletter" method="POST" action="https://3d44b5cf.sibforms.com/serve/MUIFAKLk8ev4CQY-OwSY_ZaGT_pHnewS2Nv7E9Z1f5eMsrrJQbYxIoMqzmNBN5ALU0Vpj-zfkEZv3ww7rbqs9ZFYXIDoNjZN7ZoIXEFm-O7UMrJh5Jf0pG6XFWN006AcV1LS3KuoF7ltEzh0BYfaUyaHDp_LXhqDtwfA3cJfdr2vew82aXUIZ2qRo3v7Vhfo_Li5T7GfwO7fReCMAw==" target="_blank">
+      <div>
+        <p class="meta">Newsletter</p>
+        <p class="fuss-nl-text">Neue Artikel rund um Ihren Auftritt im Netz: modernes Webdesign, neue Funktionen, mehr Conversion und Branding. Dazu Neues aus der Initiative „Demokratie braucht Sichtbarkeit.“ und gelegentlich neue Projekte von STUDIO&nbsp;AAH!. Höchstens einmal pro Woche.</p>
+      </div>
+      <div>
+        <div class="fuss-nl-feld">
+          <label class="unsichtbar" for="nl-email">E-Mail-Adresse</label>
+          <input id="nl-email" type="email" name="EMAIL" autocomplete="email" placeholder="E-Mail-Adresse" required>
+          <input type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true" class="fuss-nl-falle">
+          <input type="hidden" name="locale" value="de">
+          <input type="hidden" name="html_type" value="simple">
+          <button class="button" type="submit">Newsletter abonnieren <span aria-hidden="true">→</span></button>
+        </div>
+        <p class="fuss-nl-hinweis">Mit dem Klick willigen Sie ein, den Newsletter von STUDIO&nbsp;AAH! zu erhalten. Sie bekommen eine E-Mail zur Bestätigung. Die Einwilligung können Sie jederzeit widerrufen, zum Beispiel über den Abmeldelink in jedem Newsletter. Mehr in der <a href="../datenschutz/#newsletter">Datenschutzerklärung</a>.</p>
+        <p class="fuss-nl-meldung" role="status" hidden></p>
+      </div>
+    </form>
+    <div class="fuss-unten">
+      <p class="meta">© 2026 STUDIO AAH! · <span class="mit-liebe">Made with Love in Leipzig</span></p>
+      <p class="meta"><a href="../impressum/">Impressum</a> · <a href="../datenschutz/">Datenschutz</a></p>
+    </div>
+  </footer>
+  <a class="sticky-rechner" href="../preise/#rechner"><span class="sticky-rechner-icon"><img src="../bilder/icons/money-bag.webp" alt="" width="400" height="400" loading="lazy"></span>Kostenrechner <span aria-hidden="true">→</span></a>
+  <!-- /FUSS -->
+
 </body>
 </html>

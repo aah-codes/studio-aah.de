@@ -197,9 +197,14 @@
         <p class="hinweis-klein">Alle Angaben aus dem Rechner gehen mit Ihrer Anfrage an mich und sind die Grundlage für unser Erstgespräch. Unverbindlich und kostenlos. <span class="anfrage-hinweis">${window.Anfrage.HINWEIS}</span></p>
         <div class="anfrage-danach" role="status" hidden></div>
       </form>
-      ${re ? `<div class="wr-review"><p class="meta">Für bestehende Websites</p><h4 class="wr-box-titel">Kostenloser Website-Check</h4>
-        <p>Ich schaue mir Ihre Website mit dem Blick Ihrer Kundschaft und Ihrer Bewerberinnen und Bewerber an und nenne Ihnen konkrete Ansatzpunkte. Kostenlos und unverbindlich.</p>
-        <p><a class="button button-zweit" href="../website-check/#anfordern">Website-Check anfordern ${PFEIL}</a></p></div>` : ''}`;
+      ${re ? `<div class="wr-review"><p class="meta">Für bestehende Websites</p><h4 class="wr-box-titel">Kostenloses Website-Review</h4>
+        <p>30 Minuten online: Ich schaue mir Ihre Website mit dem Blick Ihrer Kundschaft und Ihrer Bewerberinnen und Bewerber an und nenne Ihnen konkrete Ansatzpunkte. Kostenlos und unverbindlich.</p>
+        <p>Ihre Angaben aus dem Rechner schicken Sie mir vorab – Sie müssen nichts herunterladen. Dafür oben Name und E-Mail eintragen. <a href="../website-review/">Mehr zum Website-Review <span aria-hidden="true">→</span></a></p>
+        <ol class="wr-review-schritte"><li>Angaben senden.</li><li>Termin buchen in Google Kalender.</li></ol>
+        <p><button type="button" class="button button-zweit" data-review>Angaben senden ${PFEIL}</button></p>
+        <div id="wr-review-termin" role="status" hidden><p><b>Danke, Ihre Angaben sind bei mir angekommen.</b> Jetzt noch den Termin wählen:</p>
+          <p><a class="button button-zweit" href="${esc(D.review)}" target="_blank" rel="noopener">Jetzt Termin buchen <span aria-hidden="true">↗</span></a></p></div>
+        <p class="hinweis-klein">Die Terminbuchung läuft über Google Kalender. Dort gelten die Datenschutzhinweise von Google.</p></div>` : ''}`;
     },
   };
 
@@ -346,6 +351,13 @@
     else if (b.dataset.gehZu) geh(+b.dataset.gehZu);
     else if (b.dataset.sprache) { Z.sprachen = Math.max(0, Math.min(5, Z.sprachen + +b.dataset.sprache)); zeichne(); }
     else if (b.hasAttribute('data-pdf')) drucken();
+    else if (b.hasAttribute('data-review')) {
+      // Website-Review in zwei Schritten (Anna 16.10.2026): erst Angaben per E-Mail, dann der Termin-Link
+      const f = anfrageForm();
+      if (!f.reportValidity()) return;
+      window.Anfrage.senden(f, { betreff: 'Website-Review (Angaben aus dem Kostenrechner)', einleitung: 'ich möchte ein kostenloses Website-Review buchen. Vorab meine Angaben aus dem Kostenrechner.', angaben: mailAngaben(), meldung: 'Ihr E-Mail-Programm öffnet sich mit Ihren Angaben für das Website-Review.',
+        fertig: () => { $('wr-review-termin').hidden = false; $('wr-review-termin').querySelector('a').focus(); } });
+    }
   });
   // Tastatur: Alt + Pfeiltasten verschiebt die Seite
   schritt.addEventListener('keydown', (e) => {

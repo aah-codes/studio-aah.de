@@ -86,8 +86,8 @@ def fuer_wen(pre=''):
     teile = []
     for i, g in enumerate(gruppen):
         link, ref = pre + g['link'], g['referenz']
-        # Handlungsaufforderung je Zielgruppe (Anna 16.10.2026): Mittelstand zuerst Website-Check (bis 24.10.2026 Website-Review), Selbstständige zuerst Kostenrechner
-        ziele = {'review': (f'{pre}website-check/', 'Kostenloser Website-Check'), 'rechner': (f'{pre}preise/#rechner', 'Kosten berechnen'), 'initiative': (link, 'Zur Initiative')}
+        # Handlungsaufforderung je Zielgruppe (Anna 16.10.2026): Mittelstand zuerst Website-Review, Selbstständige zuerst Kostenrechner
+        ziele = {'review': (f'{pre}website-review/', 'Kostenloses Website-Review'), 'rechner': (f'{pre}preise/#rechner', 'Kosten berechnen'), 'initiative': (link, 'Zur Initiative')}
         reihen = {'review': ['review', 'rechner'], 'rechner': ['rechner', 'review'], 'initiative': ['initiative']}[g['aktion']]
         (haupt_url, haupt_text), *neben = [ziele[r] for r in reihen]
         aktionen = f'<a class="button" href="{haupt_url}">{haupt_text}{PFEIL}</a>' + ''.join(f'<a class="textlink" href="{u}">{x}{PFEIL}</a>' for u, x in neben)

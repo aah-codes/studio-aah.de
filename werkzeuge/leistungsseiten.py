@@ -13,6 +13,10 @@ I = lade_skript('inhalte-erzeugen.py')
 GEMEINSAM = lade_json('inhalte/faq-gemeinsam.json')['faq']
 
 
+# Website-Check-Knopf und -Karte nur, wenn es die Seite /website-check/ gibt (im Zweig mit dem Website-Check-Formular)
+MIT_CHECK = (WEBSITE / 'website-check' / 'index.html').exists()
+
+
 def inhaltslisten(preise):
     """Webdesign-Pakete (Neue Website, Redesign) übernehmen ihre Inhaltsliste aus dem Kostenrechner (eine Quelle, Anna 16.10.2026)."""
     w = preise['webrechner']
@@ -216,7 +220,7 @@ def problem_loesung(c, g, pre, link):
         'Grundlage für alles, was ich gestalte, ist die Corporate Identity <span aria-hidden="true">→</span></a></p>')
     # Webdesign: Website-Check als zweiter Knopf (Anna 25.10.2026: niedrigschwelligster Einstieg)
     check = (f'<a class="button button-zweit" href="{pre}website-check/">Kostenloser <span class="ohne-umbruch">Website-Check&nbsp;<span aria-hidden="true">→</span></span></a> '
-             if g['id'] == 'website' else '')
+             if g['id'] == 'website' and MIT_CHECK else '')
     return f'''  <section class="lsx-loesung lsx-pl" id="loesung" aria-labelledby="loesung-titel">
     <p class="meta">Problem &amp; Lösung</p>
     <h2 class="gr-h3" id="loesung-titel">{esc(c['problem_titel'])}</h2>
@@ -254,9 +258,9 @@ def karte_check(pre):
 
 def duo(g, pre, link):
     web = g['id'] == 'website'
-    return f'''  <section class="lsx-duo lsx-trio" aria-label="Ansprechpartnerin, Website-Check und Preise">
+    return f'''  <section class="lsx-duo{' lsx-trio' if MIT_CHECK else ''}" aria-label="{'Ansprechpartnerin, Website-Check und Preise' if MIT_CHECK else 'Ansprechpartnerin und Preise'}">
 {direkt(pre)}
-{karte_check(pre)}
+{karte_check(pre) if MIT_CHECK else ''}
     <div class="lsx-duo-karte lsx-duo-rechner">
       <img class="lsx-duo-icon" src="{pre}bilder/icons/money-bag.webp" alt="" width="400" height="400" loading="lazy">
       {DUO_WEB if web else DUO_PREISE}
