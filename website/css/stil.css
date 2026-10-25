@@ -2672,8 +2672,7 @@ ol.quellen li:target { background: var(--farbe-creme); border-radius: 6px; }
    Eigener Kopf nur mit Logo und kleiner Fuß (Impressum, Datenschutz); Prüfpunkte und Fragen erzeugt werkzeuge/website-check.py */
 .wc [id] { scroll-margin-top: calc(var(--kopf-hoehe) + 16px); }
 .wc-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, 360px); gap: 48px; align-items: center; padding: 64px var(--rand-seite) 32px; }
-.wc-titel { font-size: clamp(38px, 6.4vw, 104px); line-height: 1.2; hyphens: manual; margin: 0 0 24px; max-width: 13ch; }
-.wc-text { max-width: 62ch; font-size: 18px; margin: 0 0 24px; }
+.wc-titel { font-size: clamp(38px, 5vw, 80px); line-height: 1.2; hyphens: manual; margin: 0 0 24px; max-width: 13ch; }
 .wc-zeile { max-width: 60ch; font-weight: 600; margin: 0 0 8px; }
 .wc-person { margin: 0; }
 .wc-person img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 24px; }
@@ -2684,7 +2683,20 @@ ol.quellen li:target { background: var(--farbe-creme); border-radius: 6px; }
 .wc-nr { display: block; font-family: var(--schrift-ueberschrift); font-size: 40px; line-height: 1.15; color: var(--farbe-primaer); margin: 0 0 8px; }
 .wc-punkt h3 { margin: 0 0 6px; font-size: 1.25rem; line-height: 1.2; }
 .wc-punkt p { margin: 0; color: var(--farbe-gedaempft); }
-.wc-umfang { margin-top: 24px; }
+/* Hero: Was, Wie, Warum auf einen Blick (Anna 25.10.2026) */
+.wc-kurz { display: grid; gap: 10px; margin: 0 0 28px; max-width: 62ch; }
+.wc-kurz > div { display: grid; grid-template-columns: 7.5em minmax(0, 1fr); gap: 12px; align-items: baseline; border-top: var(--rahmen) solid var(--farbe-rahmen); padding-top: 10px; }
+.wc-kurz dt { font-family: var(--schrift-meta); font-size: 14px; letter-spacing: .08em; text-transform: uppercase; color: var(--farbe-gedaempft); }
+.wc-kurz dd { margin: 0; }
+@media (max-width: 600px) { .wc-kurz > div { grid-template-columns: minmax(0, 1fr); gap: 2px; } }
+/* Wahl im Formular: Fachgespräch ja/nein (freiwillig, nie vorausgewählt) */
+.wc-haekchen { margin: 16px 0 0; }
+.wc-haekchen label { display: flex; align-items: flex-start; gap: 10px; font-size: 16px; line-height: 1.4; cursor: pointer; }
+.wc-haekchen input { flex: none; width: 22px; height: 22px; margin: 0; accent-color: var(--farbe-primaer); }
+/* Schluss-Aufruf in Website-Check-Blau */
+.schluss-karte.schluss-blau { background: var(--farbe-primaer); }
+.schluss-karte.schluss-blau .meta { color: var(--farbe-weiss); }
+.schluss-karte.schluss-blau .meta::before { background: var(--farbe-weiss); }
 .wc-liste { grid-template-columns: minmax(0, 1fr); margin-top: 8px; }
 .wc-wege { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; max-width: 1000px; }
 .wc-wege li { border: 1.5px solid var(--farbe-rahmen); border-radius: 24px; padding: 28px; }
@@ -2710,6 +2722,3 @@ body:has(.sticky-check) .sticky-rechner:not(.sticky-check) { display: none; }
   .wc-person figcaption { margin: 0; }
 }
 @media (max-width: 600px) { .wc-punkte, .wc-wege { grid-template-columns: minmax(0, 1fr); } }
-.wc-platzhalter-zeile { margin: 0 0 12px; padding: 10px 14px; border: 1.5px dashed var(--farbe-grau); border-radius: 12px; color: var(--farbe-gedaempft); }
-.wc-platzhalter-zeile .meta { margin: 0 8px 0 0; }
-.wc-form .button:disabled { cursor: not-allowed; opacity: .55; }
