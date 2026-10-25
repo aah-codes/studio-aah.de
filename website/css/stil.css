@@ -1447,8 +1447,10 @@ main section[id] { scroll-margin-top: 0; } /* Abstand kommt schon aus html { scr
 /* Pakete in Reihen (Print: 2 große, darunter 3) */
 .lsx-karten + .lsx-karten { margin-top: 20px; }
 .lsx-karten-2 { grid-template-columns: repeat(2, 1fr); }
+/* Vier Pakete: 2 × 2 statt 3 + 1 mit viel Weißraum (Anna 25.10.2026) */
+.lsx-karten:has(> .lsx-karte:nth-child(4):last-child) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .lsx-karten-3 { grid-template-columns: repeat(3, 1fr); }
-@media (max-width: 900px) { .lsx-karten-2, .lsx-karten-3 { grid-template-columns: 1fr; } }
+@media (max-width: 900px) { .lsx-karten-2, .lsx-karten-3, .lsx-karten:has(> .lsx-karte:nth-child(4):last-child) { grid-template-columns: 1fr; } }
 
 /* Ansprechpartnerin und Kostenrechner als zwei Karten nebeneinander */
 .lsx-duo { display: grid; grid-template-columns: 1.3fr 1fr; gap: 24px; padding: 96px var(--rand-seite) 0; align-items: stretch; }
@@ -1522,6 +1524,8 @@ main section[id] { scroll-margin-top: 0; } /* Abstand kommt schon aus html { scr
 /* Megamenü ab 25.10.2026 (Anna): links Schwerpunkt Webdesign groß, rechts Marke und Marketing, darunter „Weitere Leistungen“ klein */
 .mm-bereiche { display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; }
 .mm-liste-haupt li:first-child .mm-name { font-size: 2.6rem; }
+/* Anton gibt es nur in einer Stärke – im Mega-Menü mit mehr Buchstabenabstand besser lesbar (Anna 25.10.2026) */
+.kopf-nav .mm-name { letter-spacing: .06em; }
 .mm-label-weitere { margin-top: 28px; }
 .mm-weitere { list-style: none; margin: 0; padding: 14px 0 0; border-top: var(--rahmen) solid var(--farbe-rahmen); display: flex; flex-wrap: wrap; gap: 8px 24px; }
 .kopf-nav .mm-weitere a { text-decoration: none; font-weight: 600; }

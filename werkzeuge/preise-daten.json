@@ -161,7 +161,6 @@
      "id": "redesign",
      "name": "Redesign",
      "gefragt": true,
-     "badge": "Beliebt",
      "preis": 2850,
      "seite": 190,
      "ab": true,
@@ -397,7 +396,7 @@
       "Unternehmensseite",
       "Positionierung"
      ],
-     "gefragt": false,
+     "gefragt": true,
      "ab": true
     },
     {

@@ -142,7 +142,7 @@ def preis(e):
 def paket_karte(e, woerter):
     """Karte eines Pakets (Name, Preis, für wen, Dauer, Inhalt); woerter: Trennliste für den Namen."""
     gefragt = e.get('gefragt')
-    badge = f'<p class="lsx-badge">{esc(e.get("badge", "Gefragt"))}</p>' if gefragt else ''
+    badge = f'<p class="lsx-badge">{esc(e.get("badge", "Beliebt"))}</p>' if gefragt else ''
     liste = ''.join(f'<li>{esc(x)}</li>' for x in e.get('items', []))
     dauer = f'<span class="meta">Dauer</span> {esc(e["dauer"])}' if e.get('dauer') else ''
     return (f'      <article class="lsx-karte{" lsx-gefragt" if gefragt else ""}">\n'
