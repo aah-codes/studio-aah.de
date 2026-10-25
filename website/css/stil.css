@@ -1449,6 +1449,8 @@ main section[id] { scroll-margin-top: 0; } /* Abstand kommt schon aus html { scr
 /* Pakete in Reihen (Print: 2 große, darunter 3) */
 .lsx-karten + .lsx-karten { margin-top: 20px; }
 .lsx-karten-2 { grid-template-columns: repeat(2, 1fr); }
+/* Drei Pakete nebeneinander (Anna 25.10.2026, UI/UX) */
+@media (min-width: 900.02px) { .lsx-karten:has(> .lsx-karte:nth-child(3):last-child) { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 /* Vier Pakete: 2 × 2 statt 3 + 1 mit viel Weißraum (Anna 25.10.2026) */
 .lsx-karten:has(> .lsx-karte:nth-child(4):last-child) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .lsx-karten-3 { grid-template-columns: repeat(3, 1fr); }

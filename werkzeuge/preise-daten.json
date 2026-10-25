@@ -73,34 +73,20 @@
    "wahl": "eins",
    "pakete": [
     {
-     "id": "ui-ux-0",
-     "name": "Expert Review",
-     "preis": 1200,
-     "wer": "Expertenblick auf Ihre gesamte Website oder Anwendung.",
-     "plus": "Enthalten:",
-     "items": [
-      "Ich versetze mich in Ihre Zielgruppe und nutze Ihre Website oder Anwendung",
-      "Analyse: was sich verbessern lässt",
-      "Handlungsempfehlungen"
-     ],
-     "gefragt": false,
-     "ab": true
-    },
-    {
      "id": "ui-ux-1",
      "name": "UI/UX Audit Pro",
      "preis": 2900,
      "wer": "Die ganze Anwendung unter der Lupe.",
      "plus": "Enthalten:",
      "items": [
-      "Expert Review",
+      "Website-Check",
       "Brand Experience",
       "Personas",
       "Mitbewerberrecherche",
       "Trendanalyse",
       "Ausführlicher PDF-Report mit Prioritäten"
      ],
-     "gefragt": false,
+     "gefragt": true,
      "ab": true,
      "vorschlag": true
     },
@@ -134,7 +120,7 @@
      "ab": true
     }
    ],
-   "intro": "Digitale Erlebnisse, die Nutzer:innen verstehen – vom Expert Review bis zum Designsystem für Webanwendungen, SaaS und Apps.",
+   "intro": "Digitale Erlebnisse, die Nutzer:innen verstehen – vom UX-Audit bis zum Designsystem für Webanwendungen, SaaS und Apps.",
    "unterseite": "ui-ux/",
    "karte": "../bilder/leistung-uiux.webp"
   },
@@ -535,7 +521,7 @@
       "Analyse Ihrer Abläufe",
       "Empfehlungsbericht"
      ],
-     "gefragt": false,
+     "gefragt": true,
      "ab": true
     },
     {
@@ -615,7 +601,7 @@
    "Die Website passt sich jedem Bildschirm an – vom Handy bis zum großen Monitor."
   ],
   [
-   "Expert Review",
+   "Website-Check (Expert Review)",
    "Ich versetze mich in Ihre Zielgruppe, nutze Ihre Website oder Anwendung und zeige, was sich verbessern lässt."
   ],
   [
@@ -652,7 +638,7 @@
    "titel": "UI/UX",
    "bild": "bilder/leistung-uiux.webp",
    "link": "service/ui-ux/",
-   "text": "Digitale Erlebnisse, die Nutzer:innen verstehen – vom Expert Review bis zum Designsystem für Webanwendungen, SaaS und Apps."
+   "text": "Digitale Erlebnisse, die Nutzer:innen verstehen – vom UX-Audit bis zum Designsystem für Webanwendungen, SaaS und Apps."
   },
   {
    "id": "website",

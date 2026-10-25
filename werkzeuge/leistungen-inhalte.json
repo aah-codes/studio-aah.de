@@ -249,8 +249,8 @@
   "gruppe": "ui-ux",
   "tag": "ui-ux",
   "titel": "UI/UX",
-  "seitentitel": "UI/UX Design in Leipzig: Expert Review & Prototyp | STUDIO AAH!",
-  "beschreibung": "UI/UX Design bei STUDIO AAH! in Leipzig: Expert Review ab 1.200 €, Audit Pro ab 2.900 €, Redesign ab 4.500 € (netto). Festpreis nach kostenlosem Erstgespräch.",
+  "seitentitel": "UI/UX Design in Leipzig: UX-Audit & Prototyp | STUDIO AAH!",
+  "beschreibung": "UI/UX Design bei STUDIO AAH! in Leipzig: Audit Pro ab 2.900 €, Redesign ab 4.500 € (netto). Festpreis nach kostenlosem Erstgespräch.",
   "bild": "bilder/leistung-uiux.webp",
   "bildalt": "Frau am Tisch mit Smartphone in der Hand, daneben ein Laptop",
   "icon": "bilder/icons/mobile.webp",
@@ -263,7 +263,7 @@
    "Die Anwendung ist schwer zu bedienen"
   ],
   "loesungen": [
-   "Expert Review: Ich versetze mich in Ihre Zielgruppe, nutze Ihre Website oder Anwendung und zeige, was sich verbessern lässt",
+   "Website-Check: Ich versetze mich in Ihre Zielgruppe, nutze Ihre Website oder Anwendung und zeige, was sich verbessern lässt",
    "Personas: greifbare Abbilder Ihrer Zielgruppe für Entscheidungen, die nicht aus dem Bauch kommen",
    "Erst recherchieren und denken, dann designen: Wireframes und klickbarer Prototyp in Figma, bevor programmiert wird",
    "Neue Nutzerführung und UI-Kit, für Plattformen ein vollständiges Designsystem",
@@ -271,7 +271,7 @@
   ],
   "zusammenfassung": [
    "Bei STUDIO AAH! gestalte ich digitale Erlebnisse, die Nutzer:innen verstehen: für Webanwendungen, SaaS und Apps. Bevor gestaltet wird, höre ich zu, werte Daten aus und lerne, wer Ihre Nutzer:innen sind und was sie wirklich brauchen.",
-   "Vom Expert Review über das UI/UX Audit Pro bis zum Redesign Ihrer Webanwendung oder einer Plattform mit vollständigem Designsystem: Mit Wireframes und Prototypen in Figma werden Ideen sichtbar, lange bevor programmiert wird. Das spart Zeit und Geld."
+   "Vom UI/UX Audit Pro bis zum Redesign Ihrer Webanwendung oder einer Plattform mit vollständigem Designsystem: Mit Wireframes und Prototypen in Figma werden Ideen sichtbar, lange bevor programmiert wird. Das spart Zeit und Geld."
   ],
   "nicht_enthalten": [
    "Usability-Tests mit Nutzer:innen",
@@ -281,23 +281,15 @@
   "faq": [
    [
     "Was kostet UI/UX Design bei STUDIO AAH! in Leipzig?",
-    "Bei STUDIO AAH! in Leipzig beginnt ein Expert Review bei 1.200 €, das UI/UX Audit Pro bei 2.900 €, das Redesign einer kleinen Webanwendung bei 4.500 € und eine Plattform oder SaaS bei 5.850 €. Alle Preise sind Einstiegspreise, netto ohne Umsatzsteuer; den Festpreis erhalten Sie nach einem kostenlosen Erstgespräch."
+    "Bei STUDIO AAH! in Leipzig beginnt das UI/UX Audit Pro bei 2.900 €, das Redesign einer kleinen Webanwendung bei 4.500 € und eine Plattform oder SaaS bei 5.850 €. Alle Preise sind Einstiegspreise, netto ohne Umsatzsteuer; den Festpreis erhalten Sie nach einem kostenlosen Erstgespräch."
    ],
    [
     "Für welche digitalen Produkte gestaltet STUDIO AAH! UI/UX?",
-    "STUDIO AAH! gestaltet UI/UX für Webanwendungen, SaaS und Apps. Ein Expert Review gibt es für Websites und für Anwendungen."
-   ],
-   [
-    "Was ist ein Expert Review?",
-    "Bei einem Expert Review von STUDIO AAH! versetze ich mich in Ihre Zielgruppe, nutze Ihre Website oder Anwendung und zeige, was sich verbessern lässt. Sie erhalten eine Analyse und Handlungsempfehlungen. Das Expert Review beginnt bei 1.200 € netto."
+    "STUDIO AAH! gestaltet UI/UX für Webanwendungen, SaaS und Apps."
    ],
    [
     "Was ist eine Brand Experience?",
     "Eine Brand Experience ist bei STUDIO AAH! die Analyse, wie eine Marke an allen digitalen und analogen Berührungspunkten (Touchpoints) wirkt. STUDIO AAH! schaut sich die Brand Experience bei Brand, Website, UI/UX und Marketing an, zusätzlich zum Website-Check."
-   ],
-   [
-    "Was ist der Unterschied zwischen Expert Review und UI/UX Audit Pro?",
-    "Das Expert Review von STUDIO AAH! ist der Expertenblick auf Ihre gesamte Website oder Anwendung, mit Analyse und Handlungsempfehlungen. Das UI/UX Audit Pro nimmt die ganze Anwendung unter die Lupe: Es enthält das Expert Review, dazu Brand Experience, Personas, Mitbewerberrecherche, Trendanalyse und einen ausführlichen PDF-Report mit Prioritäten. Das Expert Review beginnt bei 1.200 €, das Audit Pro bei 2.900 €, jeweils netto."
    ],
    [
     "Was sind Personas?",
@@ -321,7 +313,7 @@
    ],
    [
     "Bietet STUDIO AAH! Usability-Tests an?",
-    "Nein, Usability-Tests mit Nutzer:innen gehören bei STUDIO AAH! nicht zum Angebot. Jedes Projekt beginnt stattdessen mit einer Analyse: Im Redesign einer kleinen Webanwendung sind das Expert Review, Personas, Mitbewerberrecherche und Trendanalyse; für eine Plattform oder SaaS kommt umfassendes UX-Research mit Zielgruppenanalyse dazu."
+    "Nein, Usability-Tests mit Nutzer:innen gehören bei STUDIO AAH! nicht zum Angebot. Jedes Projekt beginnt stattdessen mit einer Analyse: Im Redesign einer kleinen Webanwendung sind das Website-Check, Personas, Mitbewerberrecherche und Trendanalyse; für eine Plattform oder SaaS kommt umfassendes UX-Research mit Zielgruppenanalyse dazu."
    ],
    [
     "Wie viele Korrekturrunden sind bei STUDIO AAH! im Festpreis enthalten?",
@@ -334,7 +326,7 @@
   ],
   "loesung_text": "Bevor gestaltet wird, höre ich zu, werte Daten aus und lerne, wer Ihre Nutzer:innen sind und was sie wirklich brauchen. Mit Wireframes und Prototypen in Figma werden Ideen sichtbar, lange bevor programmiert wird.",
   "loesung_punkte": [
-   "Expert Review: Ich versetze mich in Ihre Zielgruppe, nutze Ihre Website oder Anwendung und zeige, was sich verbessern lässt",
+   "Website-Check: Ich versetze mich in Ihre Zielgruppe, nutze Ihre Website oder Anwendung und zeige, was sich verbessern lässt",
    "Personas: greifbare Abbilder Ihrer Zielgruppe für Entscheidungen, die nicht aus dem Bauch kommen",
    "Neue Nutzerführung und UI-Kit, für Plattformen ein vollständiges Designsystem"
   ]
