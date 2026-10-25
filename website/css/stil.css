@@ -959,7 +959,6 @@ main.mit-faden { position: relative; }
 .wr-uebersicht li span:first-child { font-family: var(--schrift-meta); font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: var(--farbe-gedaempft); padding-top: 2px; }
 .wr-review { margin-top: 24px; padding: 22px; background: var(--farbe-creme); border-radius: 14px; }
 .wr-review p { max-width: 62ch; }
-.wr-review-schritte { margin: 0 0 12px; padding-left: 1.3em; }
 .wr-review .meta { margin-bottom: 6px; }
 /* Anfrageformular (Kostenrechner und Projekt anfragen): baut eine E-Mail, js/anfrage.js */
 .anfrage-felder { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -1204,6 +1203,7 @@ h1, h2, h3, .gr-xxl, .gr-xl, .gr-h2, .gr-h3, .artikel h1, .mm-karte-titel, .fuss
 .mm-name { font-size: 1.45rem; }
 .mm-text { font-size: .88rem; }
 .mm-karte-bild { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 16px; display: block; }
+.mm-karte-bild-person { object-position: 50% 15%; }
 .mm-karte { padding: 20px 20px 28px; }
 .mm-karte-titel { font-size: 2rem; }
 
@@ -2606,7 +2606,6 @@ ol.quellen li:target { background: var(--farbe-creme); border-radius: 6px; }
 
 /* ---------- Landingpage Website-Check (/website-check/, Anna 24.10.2026) ----------
    Eigener Kopf nur mit Logo und kleiner Fuß (Impressum, Datenschutz); Prüfpunkte und Fragen erzeugt werkzeuge/website-check.py */
-.kopf-landing { justify-content: flex-start; }
 .wc [id] { scroll-margin-top: calc(var(--kopf-hoehe) + 16px); }
 .wc-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, 360px); gap: 48px; align-items: center; padding: 64px var(--rand-seite) 32px; }
 .wc-titel { font-size: clamp(38px, 6.4vw, 104px); line-height: 1.2; hyphens: manual; margin: 0 0 24px; max-width: 13ch; }
@@ -2616,15 +2615,12 @@ ol.quellen li:target { background: var(--farbe-creme); border-radius: 6px; }
 .wc-person img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 24px; }
 .wc-person figcaption { margin-top: 12px; font-family: var(--schrift-meta); font-size: 14px; letter-spacing: .08em; text-transform: uppercase; color: var(--farbe-gedaempft); }
 .wc-person figcaption strong { display: block; font-family: var(--schrift-text); font-size: 18px; letter-spacing: 0; text-transform: none; color: var(--farbe-dunkel); }
-.wc-punkte-raster { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 16px; align-items: stretch; }
 .wc-punkte { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 .wc-punkt { background: var(--farbe-hellgrau); border-radius: 24px; padding: 24px; }
 .wc-nr { display: block; font-family: var(--schrift-ueberschrift); font-size: 40px; line-height: 1.15; color: var(--farbe-primaer); margin: 0 0 8px; }
 .wc-punkt h3 { margin: 0 0 6px; font-size: 1.25rem; line-height: 1.2; }
 .wc-punkt p { margin: 0; color: var(--farbe-gedaempft); }
-.wc-platzhalter { margin: 0; min-height: 280px; display: grid; place-content: center; text-align: center; gap: 4px; padding: 24px; background: var(--farbe-creme); border: 1.5px dashed var(--farbe-grau); border-radius: 24px; color: var(--farbe-gedaempft); }
-.wc-platzhalter p { margin: 0; }
-.wc-zwei { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 32px; align-items: start; }
+.wc-umfang { margin-top: 24px; }
 .wc-liste { grid-template-columns: minmax(0, 1fr); margin-top: 8px; }
 .wc-wege { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; max-width: 1000px; }
 .wc-wege li { border: 1.5px solid var(--farbe-rahmen); border-radius: 24px; padding: 28px; }
@@ -2632,20 +2628,14 @@ ol.quellen li:target { background: var(--farbe-creme); border-radius: 6px; }
 .wc-wege p:last-child { margin-bottom: 0; }
 .wc-schnell-karte { background: var(--farbe-creme); border-radius: 32px; padding: clamp(24px, 5vw, 56px); }
 .wc-form { max-width: 760px; }
-.wc-haekchen { display: grid; gap: 10px; margin: 16px 0 0; }
-.wc-haekchen label { display: flex; align-items: flex-start; gap: 10px; font-size: 16px; line-height: 1.4; cursor: pointer; }
-.wc-haekchen input { flex: none; width: 22px; height: 22px; margin: 0; accent-color: var(--farbe-primaer); }
-.wc-haekchen input:focus-visible { outline: 2px solid var(--farbe-primaer); outline-offset: 2px; }
+.wc-berechtigung { max-width: 68ch; font-size: 15px; line-height: 1.5; margin: 16px 0 12px; }
 .wc-faq-gruppe { max-width: 1200px; margin: 48px auto 16px; font-size: clamp(24px, 2.5vw, 32px); line-height: 1.2; }
 .wc-faq h2 + .wc-faq-gruppe { margin-top: 0; }
-.wc-schluss-hinweis { font-size: .85rem; color: var(--farbe-gedaempft-invers); margin: 0; }
-.fuss-landing { padding: 2.5rem var(--rand-seite) calc(2rem + 12px); }
-.fuss-landing .fuss-unten { border-top: 0; padding-top: 0; }
-.wc-cookies { margin: 1rem 0 0 !important; }
 .sticky-rechner.sticky-check { padding: 14px 22px; }
+/* Landingpage Website-Check: statt des Kostenrechner-Knopfs aus dem Fuß nur der Knopf zum Formular (am Handy) */
+body:has(.sticky-check) .sticky-rechner:not(.sticky-check) { display: none; }
 @media (min-width: 768px) { .sticky-check { display: none; } }
-@media (max-width: 767.98px) { body:has(.sticky-check) .fuss-landing { padding-bottom: calc(5rem + 12px); } }
-@media (max-width: 1024px) { .wc-punkte-raster { grid-template-columns: minmax(0, 1fr); } .wc-platzhalter-grafik { min-height: 200px; } }
+@media (min-width: 1200.02px) { .wc-punkte { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 @media (max-width: 900px) {
   .wc-hero { display: flex; flex-direction: column; align-items: stretch; gap: 0; padding-top: 40px; }
   .wc-hero-text { display: contents; }
@@ -2654,7 +2644,6 @@ ol.quellen li:target { background: var(--farbe-creme); border-radius: 6px; }
   .wc-person { order: 1; display: flex; align-items: center; gap: 14px; margin: 0 0 24px; }
   .wc-person img { width: 72px; height: 72px; aspect-ratio: 1; border-radius: 50%; object-position: 50% 18%; }
   .wc-person figcaption { margin: 0; }
-  .wc-zwei { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 600px) { .wc-punkte, .wc-wege { grid-template-columns: minmax(0, 1fr); } }
 .wc-platzhalter-zeile { margin: 0 0 12px; padding: 10px 14px; border: 1.5px dashed var(--farbe-grau); border-radius: 12px; color: var(--farbe-gedaempft); }

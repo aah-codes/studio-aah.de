@@ -272,10 +272,25 @@
     }
   })();
 
+  // Link auf eine Frage im FAQ (z. B. #was-der-check-ist vom Formular): Frage aufklappen, dann hinspringen
+  (() => {
+    function oeffnen(hash) {
+      let ziel = null;
+      try { ziel = hash.length > 1 && document.getElementById(decodeURIComponent(hash.slice(1))); } catch (e) { return; }
+      const frage = ziel && ziel.closest('details');
+      if (frage && !frage.open) { frage.open = true; ziel.scrollIntoView(); }
+    }
+    addEventListener('hashchange', () => oeffnen(location.hash));
+    // auch beim zweiten Klick auf denselben Link (dann gibt es kein hashchange)
+    document.addEventListener('click', (e) => { const a = e.target.closest('a[href^="#"]'); if (a) oeffnen(a.getAttribute('href')); });
+    oeffnen(location.hash);
+  })();
+
   // Kostenrechner-Knopf unten rechts verdeckt nie einen anderen Knopf, Mail-/Telefon-Link oder Kontakt-/Anfrage-Link (Website-Check 18.10.2026):
   // liegt einer darunter, blendet er sich aus, bis wieder Platz ist. Ohne JavaScript bleibt er wie bisher sichtbar.
   (() => {
-    const knopf = document.querySelector('.sticky-rechner');
+    // auf der Landingpage Website-Check der eigene Knopf zum Formular (der Kostenrechner-Knopf ist dort ausgeblendet)
+    const knopf = document.querySelector('.sticky-check') || document.querySelector('.sticky-rechner');
     if (!knopf) return;
     const ziele = [...document.querySelectorAll('a, button, input[type="submit"]')].filter((el) => !knopf.contains(el)
       && (el.matches('.button, button, input[type="submit"], a[href^="mailto:"], a[href^="tel:"], form a')

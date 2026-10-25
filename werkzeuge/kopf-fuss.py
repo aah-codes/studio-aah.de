@@ -2,7 +2,7 @@
 # die 404-Seite bekommt Pfade ab der Wurzel, weil der Server sie unter jeder Adresse ausliefert).
 # Kopf: von <a class="sprunglink" bis <!-- /KOPF -->, Fuß: von <!-- FUSS: bis <!-- /FUSS -->.
 # Kopf oder Fuß also nur in website/index.html ändern, dann dieses Skript (oder alle-erzeugen.sh) laufen lassen.
-# Weiterleitungsseiten (http-equiv="refresh") und Landingpages (Kommentar <!-- LANDINGPAGE) bleiben unberührt.
+# Weiterleitungsseiten (http-equiv="refresh") und Seiten mit dem Kommentar <!-- LANDINGPAGE (eigener Kopf/Fuß; derzeit keine) bleiben unberührt.
 # Aufruf im Repository-Ordner:  python3 werkzeuge/kopf-fuss.py
 import pathlib, re
 
