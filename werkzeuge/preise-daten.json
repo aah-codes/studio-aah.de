@@ -160,6 +160,8 @@
     {
      "id": "redesign",
      "name": "Redesign",
+     "gefragt": true,
+     "badge": "Beliebt",
      "preis": 2850,
      "seite": 190,
      "ab": true,
@@ -793,7 +795,7 @@
   },
   "redesign_inhalt": {
    "Verstehen": [
-    "Expert Review Ihrer Website"
+    "Website-Check Ihrer Website"
    ],
    "Live gehen": [
     "Sicherung der alten Website",

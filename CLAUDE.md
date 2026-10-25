@@ -46,7 +46,9 @@
 - Einblend-Animationen: Inhalte im CSS nur unter `:where(.js)` verstecken (`js/menue.js` setzt die Klasse `js` am `<html>`), damit ohne JavaScript alles sichtbar bleibt.
 - Die große Startseiten-Zeile „Hier werden Sie gesehen.“ bleibt ohne Farbverlauf und ohne Formen-Animation (Anna hat die Idee am 13.10.2026 verworfen).
 - Kartenreihen: Unterzeilen, Listen und Buttons auf einer Linie; H1 nie breiter als die Seite.
-- Prozesse und Zeitpläne (Abläufe, Timelines) immer mit derselben Zeitleisten-Grafik wie auf der Startseite (`ol.zeitleiste`, Anna 13.10.2026); in schmalen Spalten wie Artikeln einspaltig (`figure.grafik-prozess`). Blaue Marken in `--farbe-primaer` (Kontrast 5,4 : 1).
+- Prozesse und Zeitpläne (Abläufe, Timelines) immer mit derselben Zeitleisten-Grafik wie auf der Startseite (`ol.zeitleiste`, Anna 13.10.2026); in schmalen Spalten wie Artikeln einspaltig (`figure.grafik-prozess`). Blaue Marken in `--farbe-primaer` (Kontrast 5,4 : 1). Lesereihenfolge spaltenweise, nie im Zickzack (Anna, 25.10.2026, gilt global): links 01 und 02 untereinander, rechts versetzt 03 und 04 – die CSS-Regel greift automatisch bei jeder Zeitleiste mit vier Schritten.
+- Begriff (Anna, 25.10.2026): Die Prüfung der bestehenden Website heißt überall „Website-Check“, auch als erster Schritt jedes Projekts (Ist-Analyse); „Expert Review“ nur auf der Website-Check-Seite als Fachbegriff erklären. Offen: das bezahlte UI/UX-Paket „Expert Review“ (Anna entscheidet).
+- Design Thinking als Sprache der Abläufe (Anna, 25.10.2026): erster Schritt „Verstehen“, Entwürfe „Ideation“.
 - Satzzeichen und Umlaut-Punkte dürfen sich nie mit der Zeile darüber oder darunter berühren (Anna, 15.10.2026): Versal-Überschriften in Anton mit Zeilenabstand mindestens 1,15, bei Umlauten in Versalien 1,2.
 - Lange Wörter in Überschriften (z. B. „Unternehmens&shy;präsentation“) mit weichem Trennstrich `&shy;` versehen; jede Seite bei 320 px Breite ohne seitliches Verschieben prüfen.
 - Website-Screenshots kommen aus der Bildbibliothek `website/bilder/referenzen/` (1440 px breit).
@@ -65,7 +67,7 @@
 - Mega-Menü (Anna, 25.10.2026): Schwerpunkt Webdesign vorn und groß (mit UI/UX, Retainer), dann Markenbildung und Marketing, kleine Leistungen unter „Weitere Leistungen“; rechts Karte Kostenrechner. Fester Knopf unten auf allen Seiten: „Kostenloser Website-Check“. Konzept und offene Schritte: Betrieb `Studio AAH/Website/2026-10-24_konzept_sitemap-megamenue-seo-geo.md`.
 - Hero-Leiste: Kategorien wie bei Dribbble, verlinkt, mit Pause-Taste (Daten in `werkzeuge/preise-erzeugen.py`, `KATEGORIEN` und `BEISPIELE`). Regel „ein Kunde, ein Platz“: jeder Kunde höchstens einmal, Lücken mit STUDIO AAH! selbst. Foto-Mockups liegen in `website/bilder/mockups/` (Inhalt per `matrix3d` im Bildschirm). Alle Bilder müssen scharf sein: Quellbilder mindestens doppelt so breit wie angezeigt.
 - Leistungskarten der Startseite: keine Kundenbilder, sondern nur das Clay-Icon (multiply), ohne Formen. Kunden stehen in den Success Stories.
-- Leistungsseiten: weiter unten „Aus der Praxis“ mit passendem Kundenbeispiel (`MOCKUPS` in `werkzeuge/leistungsseiten.py`).
+- Leistungsseiten (Anna, 25.10.2026): kein „Aus der Praxis“ mehr (darunter stehen die Referenzen). Reihenfolge unten: Ablauf → (Webdesign: Retainer „Nach dem Launch“) → Stimmen → Referenzen → Häufige Fragen → drei Karten (Ansprechpartnerin, Website-Check, Preise) → Artikel. **Artikel immer zuletzt.** Die Karte „Preise“ (schwarz, „Zu den Preisen“) steht genauso im Mega-Menü.
 - Mockup-Nachweise (Mockuptree, Bendito Mockup) stehen im Impressum unter „Bildnachweise“.
 
 ## Referenzseiten (Case Studies)

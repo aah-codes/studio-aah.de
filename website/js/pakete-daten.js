@@ -273,7 +273,7 @@ window.WEBRECHNER = {
  },
  "redesign_inhalt": {
   "Verstehen": [
-   "Expert Review Ihrer Website"
+   "Website-Check Ihrer Website"
   ],
   "Live gehen": [
    "Sicherung der alten Website",

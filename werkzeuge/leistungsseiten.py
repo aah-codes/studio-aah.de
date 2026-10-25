@@ -126,7 +126,7 @@ def ablauf_eigen(pre, schritte):
 def ablauf(pre):
     m = re.search(r'<section class="prozess-kompakt".*?</section>', START, re.S)
     if not m: raise SystemExit('Prozess (section.prozess-kompakt) fehlt in website/index.html')
-    s = m.group(0).replace('href="kontakt/"', f'href="{pre}kontakt/"')
+    s = re.sub(r'href="(kontakt/|website-check/)"', lambda h: f'href="{pre}{h.group(1)}"', m.group(0))
     return '  ' + s.replace('<section class="prozess-kompakt"', '<section class="prozess-kompakt" id="ablauf"', 1)
 
 
@@ -166,28 +166,9 @@ def direkt(pre):
     </div>'''
 
 
-# Beispiel aus der Praxis (Anna 13.10.2026): dasselbe Mockup wie in der Leiste der Startseite, weiter unten auf der Seite
-MOCKUPS = {
-    'brand': ('seite-markenbildung.webp', 'Rebranding für Wolfgang Bauer Ingenieurbau: Unternehmenspräsentation in den neuen Markenfarben.'),
-    'website': ('seite-webdesign.webp', 'Website für Wolfgang Bauer Ingenieurbau.'),
-    'print': ('seite-druck.webp', 'Visitenkarten für Dr. Simone Goldhammer.'),
-    'motion': ('seite-animation.webp', 'Launch-Film zur neuen Website von Wolfgang Bauer Ingenieurbau.'),
-    'illustration': ('seite-illustration.webp', 'Eigene Illustration: Figur aus Bauhaus-Grundformen.'),
-    'ui-ux': ('seite-ui-ux.webp', 'Mobile Ansicht: die Websites von Deinetwegen und STUDIO AAH!'),
-}
-
-
 def grafik(name):
     """Grafik aus werkzeuge/grafiken/<name>.html (für Leistungsseiten mit ../../ geschrieben)."""
     return (WERKZEUGE / 'grafiken' / f'{name}.html').read_text(encoding='utf-8')
-
-
-def mockup(key, pre):
-    if key not in MOCKUPS: return ''
-    datei, text = MOCKUPS[key]
-    return ('  <section class="lsx-beispiel" aria-label="Beispiel aus der Praxis">\n    <figure class="lsx-beispiel-figur">'
-            '<img src="' + pre + 'bilder/mockups/' + datei + '" alt="' + esc(text) + '" width="896" height="672" loading="lazy">'
-            '<figcaption><p class="meta">Aus der Praxis</p><p>' + esc(text) + '</p></figcaption></figure>\n  </section>')
 
 
 def gruppe_fuer(c):
@@ -222,7 +203,7 @@ def sprungleiste(c, g, mit_vergleich, mit_ablauf, link, link_text):
     ziele = [('loesung', 'Problem &amp; Lösung', True), ('pakete', 'Pakete', True), ('vergleich', 'Vergleich', mit_vergleich),
              ('extras', 'Zusatzleistungen', bool(g.get('extras'))), ('ablauf', 'Ablauf', mit_ablauf),
              ('referenzen', 'Referenzen', bool(I.mit_tag(I.PROJEKTE, [c['tag']]))),
-             ('artikel', 'Artikel', bool(c.get('artikel', True) and I.mit_tag(I.BLOG, [c['tag']]))), ('faq', 'Fragen', True)]
+             ('faq', 'Fragen', True), ('artikel', 'Artikel', bool(c.get('artikel', True) and I.mit_tag(I.BLOG, [c['tag']])))]
     links = ''.join(f'<a href="#{anker}">{text}</a>' for anker, text, an in ziele if an)
     return f'  <nav class="preis-leiste lsx-chips" aria-label="Auf dieser Seite">{links}<a href="{link}">{link_text} →</a></nav>'
 
@@ -260,15 +241,40 @@ def pakete(c, g, pre):
   </section>'''
 
 
+def karte_check(pre):
+    # Website-Check als dritter Einstieg neben Ansprechpartnerin und Preisen (Anna 25.10.2026)
+    return f'''    <div class="lsx-duo-karte lsx-duo-check">
+      <img class="lsx-duo-icon" src="{pre}bilder/icons/target.webp" alt="" width="400" height="400" loading="lazy">
+      <p class="meta">Website-Check</p>
+      <h2 class="gr-h3" id="check-hinweis">Ist Ihre Website fit für 2027?</h2>
+      <p>Ich sehe mir Ihre Website mit Prüfwerkzeugen an. Sie bekommen einen kurzen Bericht per E-Mail – kostenlos und unverbindlich.</p>
+      <p><a class="button" href="{pre}website-check/">Kostenloser <span class="ohne-umbruch">Website-Check&nbsp;<span aria-hidden="true">→</span></span></a></p>
+    </div>'''
+
+
 def duo(g, pre, link):
     web = g['id'] == 'website'
-    return f'''  <section class="lsx-duo" aria-label="Kontakt und Kostenrechner">
+    return f'''  <section class="lsx-duo lsx-trio" aria-label="Ansprechpartnerin, Website-Check und Preise">
 {direkt(pre)}
+{karte_check(pre)}
     <div class="lsx-duo-karte lsx-duo-rechner">
       <img class="lsx-duo-icon" src="{pre}bilder/icons/money-bag.webp" alt="" width="400" height="400" loading="lazy">
       {DUO_WEB if web else DUO_PREISE}
       <p><a class="button button-zweit button-hell" href="{link}">{'Zum Kostenrechner' if web else 'Zu den Preisen'} <span aria-hidden="true">→</span></a></p>
     </div>
+  </section>'''
+
+
+def retainer_hinweis(g, pre):
+    """Nach dem Ablauf: Retainer als nächster Schritt nach dem Launch (Anna 25.10.2026, nur Webdesign). Texte aus den Paketdaten."""
+    r = next((e for e in g['pakete'] + g.get('extras', []) if e['id'] == 'retainer-web'), None)
+    if not r: return ''
+    preis = f"{r['stunde']}–{r['stundeBis']} € netto pro Stunde, {r['mindestens']}"
+    return f'''  <section class="lsx-retainer" aria-labelledby="retainer-titel">
+    <p class="meta">Nach dem Launch</p>
+    <h2 class="gr-h3" id="retainer-titel">{esc(r['name'])}</h2>
+    <p>{esc(r['kurz'])}. {esc(preis)}.</p>
+    <p><a class="textlink" href="{pre}service/retainer/">Mehr zum Retainer <span aria-hidden="true">→</span></a></p>
   </section>'''
 
 
@@ -340,18 +346,17 @@ def seite(key, c):
 
 {prozess}
 
-{stimmen(pre, c['tag'])}
+{retainer_hinweis(g, pre) if mit_ablauf else ''}
 
-{mockup(key, pre)}
+{stimmen(pre, c['tag'])}
 
 {referenzen(c['tag'], pre)}
 
+{faq(fragen, pre)}
 
 {duo(g, pre, link)}
 
 {artikel(pre, c['tag']) if c.get('artikel', True) else ''}
-
-{faq(fragen, pre)}
 
 </main>'''
     t = seitenrahmen(vorlage, main, c['seitentitel'], c['beschreibung'], url, strukturierte_daten(c, g, intro, url, fragen, vorlage))
