@@ -1841,6 +1841,8 @@ section[hidden] { display: none !important; }
 .artikel { --lesespalte: 37rem; }
 /* Profil (Anna 25.10.2026, SEO): H1 mit Aussage als Dachzeile, „Aaha!“ bleibt optisch groß wie bisher */
 .profil-h1 { margin: 0 0 .6em; }
+/* Alle Dachzeilen mit blauem Punkt (Anna 25.10.2026) – auch die Profil-H1, die selbst Dachzeile ist */
+.profil-h1::before { content: ""; display: inline-block; width: .62em; height: .62em; margin: 0 .55em .08em 0; border-radius: 50%; background: var(--farbe-primaer); vertical-align: middle; }
 .profil-aaha { font-family: var(--schrift-ueberschrift); font-weight: 400; text-transform: uppercase; letter-spacing: .9px; margin: 0 0 .15em; }
 .artikel-weiter { margin-top: 2.5rem; } /* Link auf die passende Leistung am Ende jedes Artikels (Anna 25.10.2026) */
 .artikel > :is(nav.meta, p.meta, h1, .artikel-lead, .artikel-meta, .artikel-nav),
