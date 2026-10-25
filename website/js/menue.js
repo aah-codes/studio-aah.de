@@ -261,7 +261,7 @@
     const ohneIndex = (p) => p.replace(/index\.html$/, '');
     const hier = ohneIndex(location.pathname);
     const start = ohneIndex(new URL(document.querySelector('.kopf-logo')?.getAttribute('href') || './', location.href).pathname);
-    document.querySelectorAll('.kopf-nav > ul > li > a:not(.mm-toggle), .kopf-nav .mm-liste a, .kopf-mobil nav a').forEach((a) => {
+    document.querySelectorAll('.kopf-nav > ul > li > a:not(.mm-toggle), .kopf-nav .mm-liste a, .kopf-nav .mm-weitere a, .kopf-mobil nav a').forEach((a) => {
       const ziel = ohneIndex(new URL(a.getAttribute('href'), location.href).pathname);
       if (ziel === hier) a.setAttribute('aria-current', 'page');
       else if (ziel !== start && hier.startsWith(ziel)) a.setAttribute('aria-current', 'true');

@@ -534,7 +534,7 @@ h1, h2, h3 {
 .mm.offen { clip-path: inset(0 0 0 0); }
 .mm-innen { display: grid; grid-template-columns: 2fr 1fr; gap: 48px; padding: 48px var(--rand-seite) 32px; max-width: 1440px; margin: 0 auto; }
 .mm-label { margin: 0 0 16px; }
-.mm-liste { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; }
+.mm-liste { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); }
 .mm-liste a { display: block; border-top: var(--rahmen) solid var(--farbe-rahmen); text-decoration: none; color: inherit; }
 .mm-name { display: block; font-family: var(--schrift-ueberschrift); text-transform: uppercase; line-height: 1.1; transition: transform .25s; }
 .mm-liste a:hover .mm-name, .mm-liste a:focus-visible .mm-name { transform: translateX(6px); }
@@ -548,7 +548,7 @@ h1, h2, h3 {
 .mm.offen > * { opacity: 1; transform: none; }
 .mm-schleier { position: fixed; inset: 0; z-index: 10; background: rgba(14, 16, 17, .35); opacity: 0; transition: opacity .4s; }
 .mm-schleier.offen { opacity: 1; }
-.kopf-nav .mm-liste { display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; }
+.kopf-nav .mm-liste { display: grid; gap: 0; }
 .kopf-nav .mm-liste a, .kopf-nav .mm-karte { line-height: 1.4; }
 .kopf-nav .mm-liste a:hover, .kopf-nav .mm-karte:hover { opacity: 1; }
 /* Mobilmenü: Leistungen aufklappbar */
@@ -558,6 +558,8 @@ h1, h2, h3 {
 .kopf-mobil .mobil-unter[open] summary::after { content: " ↑"; }
 .kopf-mobil .mobil-unterliste { position: static; padding: 0 0 .5rem 1rem; border: 0; background: none; }
 .kopf-mobil .mobil-unterliste a { font-size: 1.05rem; padding: .4rem 0; }
+.kopf-mobil .mobil-weitere { margin: .6rem 0 .2rem; }
+.fuss .fuss-weitere { margin-top: 1.2rem; }
 @media (max-width: 1024px) { .mm, .mm-schleier { display: none !important; } }
 
 /* ---------- 11. Leistungsseiten: Pakete und FAQ ---------- */
@@ -590,13 +592,14 @@ h1, h2, h3 {
 .hero-buehne { position: relative; overflow: hidden; padding: 48px 0 72px; text-align: center; }
 .hero-buehne .hero-text { position: relative; z-index: 2; padding: 0 var(--rand-seite); }
 .hero-buehne .alt-h2 { max-width: 30ch; margin-left: auto; margin-right: auto; }
+.hero-buehne h1.alt-h2 { letter-spacing: normal; }
 /* Punkteraster: dezent hellgrau, nur im Umkreis der Maus sichtbar */
 .hero-raster { position: absolute; inset: 0; z-index: 0; pointer-events: none;
   background-image: radial-gradient(circle, #dcdfdf 1.3px, transparent 1.5px); background-size: 14px 14px;
   -webkit-mask-image: radial-gradient(circle at var(--mx, 50%) var(--my, 55%), #000 0, transparent 30%);
           mask-image: radial-gradient(circle at var(--mx, 50%) var(--my, 55%), #000 0, transparent 30%); }
 .hero-titel { font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-weight: 400; font-size: clamp(52px, 9vw, 9vw); margin: 8px 0 0; }
-.hero-titel > span { display: block; overflow: hidden; }
+.hero-titel > span { display: block; overflow: hidden; white-space: nowrap; } /* bricht auch mit Ersatzschrift nicht um (kein Verrutschen beim Laden) */
 .hero-titel > span > span { display: inline-block; animation: aus-maske .9s cubic-bezier(.2, .8, .2, 1) both; }
 .hero-titel > span:nth-child(2) > span { animation-delay: .12s; }
 @keyframes aus-maske { from { translate: 0 105%; } }
@@ -1485,8 +1488,14 @@ main section[id] { scroll-margin-top: 0; } /* Abstand kommt schon aus html { scr
 .lsx-duo { padding-bottom: 96px; }
 @media (max-width: 900px) { .lsx-duo { padding-bottom: 64px; } }
 .lsx-duo-icon { position: static; width: 96px; height: 96px; margin: 0 0 8px; filter: none; }
-/* Megamenü: links Brand, UI/UX, Website, Marketing, Illustration – rechts Motion, Print, Retainer, KI (Anna 11.10.2026) */
-.mm-liste, .kopf-nav .mm-liste { grid-auto-flow: column; grid-template-rows: repeat(5, auto); }
+/* Megamenü ab 25.10.2026 (Anna): links Schwerpunkt Webdesign groß, rechts Marke und Marketing, darunter „Weitere Leistungen“ klein */
+.mm-bereiche { display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; }
+.mm-liste-haupt li:first-child .mm-name { font-size: 2.6rem; }
+.mm-label-weitere { margin-top: 28px; }
+.mm-weitere { list-style: none; margin: 0; padding: 14px 0 0; border-top: var(--rahmen) solid var(--farbe-rahmen); display: flex; flex-wrap: wrap; gap: 8px 24px; }
+.kopf-nav .mm-weitere a { text-decoration: none; font-weight: 600; }
+.kopf-nav .mm-weitere a:hover, .kopf-nav .mm-weitere a:focus-visible { text-decoration: underline; opacity: 1; }
+.kopf-nav .mm-weitere a[aria-current] { color: var(--farbe-primaer); }
 /* Menüleiste (Anna 11.10.2026): Leistungen · Preise · Über mich · Blog · [Projekt anfragen] – ein einziger Button */
 .kopf-nav .kopf-button { text-decoration: none !important; padding: 8px 18px; border-radius: 999px; color: var(--farbe-weiss); }
 .mm-toggle { display: inline-flex; align-items: center; gap: 6px; }
@@ -1785,6 +1794,8 @@ section[hidden] { display: none !important; }
 .artikel-lead { font-size: clamp(18px, 1.5vw, 21px); line-height: 1.55; margin: 0 0 1.25rem; }
 .artikel-ratgeber .artikel-meta { display: flex; flex-wrap: wrap; gap: 4px 14px; }
 .artikel-ratgeber .artikel-text { font-size: 18px; line-height: 1.7; }
+/* Zeilenlänge im Blog höchstens etwa 80 Zeichen (Website-Check 25.10.2026: vorher Median 96) – alle Artikel, auch Einleitung, Kästen, Fragen, Schluss */
+.artikel .artikel-text p, .artikel .artikel-text li, .artikel .artikel-lead, .artikel .faq-antwort p, .artikel .artikel-schluss p { max-width: 34em; }
 .artikel-ratgeber .artikel-text h2 { font-size: clamp(24px, 2.4vw, 30px); margin: 3.5rem 0 1rem; scroll-margin-top: 24px; }
 .artikel-ratgeber .artikel-text h3 { margin: 2rem 0 .5rem; }
 .artikel-ratgeber .artikel-text ol { padding-left: 1.4em; margin: 0 0 1.5rem; }

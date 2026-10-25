@@ -2,7 +2,8 @@
 # die 404-Seite bekommt Pfade ab der Wurzel, weil der Server sie unter jeder Adresse ausliefert).
 # Kopf: von <a class="sprunglink" bis <!-- /KOPF -->, Fuß: von <!-- FUSS: bis <!-- /FUSS -->.
 # Kopf oder Fuß also nur in website/index.html ändern, dann dieses Skript (oder alle-erzeugen.sh) laufen lassen.
-# Weiterleitungsseiten (http-equiv="refresh") und Seiten mit dem Kommentar <!-- LANDINGPAGE (eigener Kopf/Fuß; derzeit keine) bleiben unberührt.
+# Weiterleitungsseiten (http-equiv="refresh") bleiben unberührt; Seiten mit dem Kommentar <!-- LANDINGPAGE (eigener Kopf/Fuß)
+# bekommen nur die preload-Zeilen. Derzeit gibt es keine solche Seite (website-check/ hat seit 25.10.2026 den normalen Kopf).
 # Aufruf im Repository-Ordner:  python3 werkzeuge/kopf-fuss.py
 import pathlib, re
 
@@ -23,8 +24,29 @@ def umschreiben(block, vorne):
     return re.sub(r'\b(href|src)="([^"]*)"', pfad, block)
 
 
+# Hauptschriften vorab laden (Anna 25.10.2026, Website-Check: Verrutschen beim Laden am Handy, weil Überschriften
+# mit der Ersatzschrift breiter sind und anders umbrechen). Steht direkt nach dem Link auf stil.css, Pfad passend zur Ordnertiefe.
+SCHRIFTEN = ('anton-latin.woff2', 'manrope-latin.woff2')
+STIL = re.compile(r'(\n?)([ \t]*)<link rel="stylesheet" href="([^"]*?)css/stil\.css\?v=[^"]*">')
+
+
+def vorladen(text):
+    """Setzt die preload-Zeilen für die Hauptschriften hinter den Link auf stil.css (nur einmal)."""
+    if 'rel="preload"' in text and 'anton-latin.woff2' in text:
+        return text
+    def ersetzen(m):
+        zeilen = ''.join(f'\n{m.group(2)}<link rel="preload" href="{m.group(3)}schriften/{s}" as="font" type="font/woff2" crossorigin>'
+                         for s in SCHRIFTEN)
+        return m.group(0) + zeilen
+    return STIL.sub(ersetzen, text, count=1)
+
+
 def main():
     start = (website / 'index.html').read_text(encoding='utf-8')
+    neu_start = vorladen(start)
+    if neu_start != start:
+        (website / 'index.html').write_text(neu_start, encoding='utf-8')
+        start = neu_start
     vorlagen = {}
     for name, muster in BEREICHE.items():
         m = re.search(muster, start, flags=re.S)
@@ -41,7 +63,13 @@ def main():
             continue
         text = seite.read_text(encoding='utf-8')
         # Landingpages (z. B. website-check/) haben einen eigenen Kopf ohne Hauptnavigation und einen eigenen Fuß
-        if 'http-equiv="refresh"' in text or '<!-- LANDINGPAGE' in text:
+        if 'http-equiv="refresh"' in text:
+            continue
+        text_vorher, text = text, vorladen(text)
+        if text != text_vorher:
+            seite.write_text(text, encoding='utf-8')
+            geaendert += 1
+        if '<!-- LANDINGPAGE' in text:
             continue
         vorne = '/' if seite == website / '404.html' else '../' * (len(seite.relative_to(website).parts) - 1)
         neu = text

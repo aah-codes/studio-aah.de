@@ -140,8 +140,9 @@ def bild(art):
             + ''.join(t for t in teile if 'data-kante' not in t) + '</svg>')
 
 
-html = f'''  <figure class="ci-grafik ci-film" id="corporate-identity" role="img" aria-label="Erklärfilm Corporate Identity: Nacheinander erscheinen Corporate Culture (Leitbild, Werte, Philosophie), Corporate Communication (Kanäle, Stimme, Tonalität intern und extern), Corporate Behaviour (Service, Verhalten, Beziehungen) und Corporate Design (Gestaltung, Logo, Farben, Bildwelt, Typografie). Zusammen bilden sie die Corporate Identity. Zum Schluss steht das ganze System: Alle Bereiche tauschen Informationen untereinander und mit dem Corporate Image aus.">
+html = f'''  <figure class="ci-grafik ci-film" id="corporate-identity" aria-describedby="ci-beschreibung">
     <figcaption class="ci-titel"><span class="ci-titel-gross">Das Corporate Design baut auf Culture, Communication und Behaviour auf.</span><span class="ci-unter">Zusammen ergeben sie die Corporate Identity, die in Wechselwirkung mit dem Corporate Image steht.</span></figcaption>
+    <p class="unsichtbar" id="ci-beschreibung">Erklärfilm Corporate Identity: Nacheinander erscheinen Corporate Culture (Leitbild, Werte, Philosophie), Corporate Communication (Kanäle, Stimme, Tonalität intern und extern), Corporate Behaviour (Service, Verhalten, Beziehungen) und Corporate Design (Gestaltung, Logo, Farben, Bildwelt, Typografie). Zusammen bilden sie die Corporate Identity. Zum Schluss steht das ganze System: Alle Bereiche tauschen Informationen untereinander und mit dem Corporate Image aus.</p>
     {bild('quer')}
     {bild('hoch')}
     <p class="ci-nochmal"><button type="button" class="textlink ci-pause-knopf" hidden>Anhalten <span aria-hidden="true">❚❚</span></button><button type="button" class="textlink ci-nochmal-knopf">Noch einmal ansehen <span aria-hidden="true">↻</span></button></p>

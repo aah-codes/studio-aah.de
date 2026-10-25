@@ -44,7 +44,7 @@
 - Erweiterte Formen (Anna, 13.10.2026), alle aus den Grundformen gebaut, Vorlagen in `werkzeuge/grafiken/formen/`: Herz (gedrehtes Quadrat + zwei Halbkreise), Zackenkreis (Kreis mit 16 kleinen Kreisen am Rand), Kreis in Klammern (Kreis zwischen zwei Sicheln). Herzen nur in dieser Konstruktion und nie blau.
 - Bewegung, die von selbst startet, hält nach höchstens 5 s an oder hat eine Pause-Taste.
 - Einblend-Animationen: Inhalte im CSS nur unter `:where(.js)` verstecken (`js/menue.js` setzt die Klasse `js` am `<html>`), damit ohne JavaScript alles sichtbar bleibt.
-- Startseiten-H1 bleibt ohne Farbverlauf und ohne Formen-Animation (Anna hat die Idee am 13.10.2026 verworfen).
+- Die große Startseiten-Zeile „Hier werden Sie gesehen.“ bleibt ohne Farbverlauf und ohne Formen-Animation (Anna hat die Idee am 13.10.2026 verworfen).
 - Kartenreihen: Unterzeilen, Listen und Buttons auf einer Linie; H1 nie breiter als die Seite.
 - Prozesse und Zeitpläne (Abläufe, Timelines) immer mit derselben Zeitleisten-Grafik wie auf der Startseite (`ol.zeitleiste`, Anna 13.10.2026); in schmalen Spalten wie Artikeln einspaltig (`figure.grafik-prozess`). Blaue Marken in `--farbe-primaer` (Kontrast 5,4 : 1).
 - Satzzeichen und Umlaut-Punkte dürfen sich nie mit der Zeile darüber oder darunter berühren (Anna, 15.10.2026): Versal-Überschriften in Anton mit Zeilenabstand mindestens 1,15, bei Umlauten in Versalien 1,2.
@@ -61,7 +61,8 @@
 
 ## Startseite und Leistungen (Anna 13.10.2026)
 - Leistungsnamen: Markenbildung, UI/UX, Webdesign, Marketing & Vertrieb, Druck, Illustration & Infografik, Animation, Retainer, KI & Digitalisierung. Adressen: `service/markenbildung/`, `webdesign/`, `druck/`, `animation/` (alte Adressen `brand/`, `website/`, `print/`, `motion-design/` leiten weiter).
-- H1 der Startseite: „Hier werden Sie gesehen.“ (Desktop einzeilig).
+- Startseite (Anna, 25.10.2026, SEO-Schwerpunkt Webdesign und Leipzig): H1 ist „Webdesign und Strategie für den Mittelstand – aus Leipzig.“, Seitentitel „Webdesign in Leipzig für den Mittelstand | STUDIO AAH!“. „Hier werden Sie gesehen.“ bleibt optisch groß darüber (Desktop einzeilig), ist aber kein H1.
+- Mega-Menü (Anna, 25.10.2026): Schwerpunkt Webdesign vorn und groß (mit UI/UX, Retainer), dann Markenbildung und Marketing, kleine Leistungen unter „Weitere Leistungen“; rechts Karte Kostenrechner. Fester Knopf unten auf allen Seiten: „Kostenloser Website-Check“. Konzept und offene Schritte: Betrieb `Studio AAH/Website/2026-10-24_konzept_sitemap-megamenue-seo-geo.md`.
 - Hero-Leiste: Kategorien wie bei Dribbble, verlinkt, mit Pause-Taste (Daten in `werkzeuge/preise-erzeugen.py`, `KATEGORIEN` und `BEISPIELE`). Regel „ein Kunde, ein Platz“: jeder Kunde höchstens einmal, Lücken mit STUDIO AAH! selbst. Foto-Mockups liegen in `website/bilder/mockups/` (Inhalt per `matrix3d` im Bildschirm). Alle Bilder müssen scharf sein: Quellbilder mindestens doppelt so breit wie angezeigt.
 - Leistungskarten der Startseite: keine Kundenbilder, sondern nur das Clay-Icon (multiply), ohne Formen. Kunden stehen in den Success Stories.
 - Leistungsseiten: weiter unten „Aus der Praxis“ mit passendem Kundenbeispiel (`MOCKUPS` in `werkzeuge/leistungsseiten.py`).
