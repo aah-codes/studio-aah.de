@@ -2703,7 +2703,7 @@ body:has(.sticky-check) .sticky-rechner:not(.sticky-check) { display: none; }
    Abschnitte mit Bild daneben, drei Wege, Formular als Pop-up, mehr Weißraum zwischen den Abschnitten */
 .wc .rv-abschnitt { padding-top: clamp(96px, 12vw, 160px); }
 .wc .wc-faq { margin-top: clamp(96px, 12vw, 160px); }
-.wc-hero { text-align: center; padding: clamp(56px, 8vw, 104px) var(--rand-seite) 0; }
+.wc-hero { text-align: center; padding: clamp(24px, 3vw, 40px) var(--rand-seite) 0; }
 .wc-hero .meta { justify-content: center; }
 .wc-titel { font-size: clamp(38px, 5vw, 80px); line-height: 1.2; hyphens: manual; margin: 0 auto 24px; max-width: 16ch; }
 .wc-hero .rv-intro { max-width: 46ch; margin-left: auto; margin-right: auto; }
@@ -2735,7 +2735,7 @@ body:has(.sticky-check) .sticky-rechner:not(.sticky-check) { display: none; }
 .wc-bild { margin: 0; }
 .wc-bild img { display: block; width: 100%; height: auto; border-radius: 24px; }
 .wc-bild-hoch { max-width: 380px; justify-self: center; }
-.wc-wege { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.wc-wege { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; max-width: 1000px; }
 .wc-wege li { border: 1.5px solid var(--farbe-rahmen); border-radius: 24px; padding: 28px; display: flex; flex-direction: column; }
 .wc-wege h3 { font-size: 1.5rem; line-height: 1.2; margin: 0 0 8px; }
 .wc-wege p:last-child { margin-bottom: 0; margin-top: auto; }
