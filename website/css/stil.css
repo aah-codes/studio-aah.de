@@ -2734,7 +2734,25 @@ body:has(.sticky-check) .sticky-rechner:not(.sticky-check) { display: none; }
 .wc-spalten { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); align-items: center; }
 .wc-bild { margin: 0; }
 .wc-bild img { display: block; width: 100%; height: auto; border-radius: 24px; }
-.wc-bild-hoch { max-width: 380px; justify-self: center; }
+.wc-bild-quadrat { max-width: 560px; justify-self: start; }
+.wc-bild-quadrat img { aspect-ratio: 1; object-fit: cover; }
+/* Golden Circle größer; die Bildunterschrift mit Jahr im Bild wird abgeschnitten und als Text darunter gesetzt (Anna 26.10.2026) */
+.wc-spalten-bild { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); }
+.wc-bild-kreis img { aspect-ratio: 1200 / 730; object-fit: cover; object-position: top; }
+.wc-bild-kreis figcaption { margin-top: 8px; text-align: right; font-family: var(--schrift-meta); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--farbe-gedaempft); }
+/* Hero: Icon bis Buttons sitzen im ersten Bildschirm mittig (Anna 26.10.2026) */
+@media (min-width: 768px) and (min-height: 640px) {
+  .wc-hero { padding-top: 0; }
+  .wc-hero-oben { min-height: calc(100svh - var(--kopf-hoehe) - var(--leiste-hoehe, 44px)); display: flex; flex-direction: column; justify-content: center; }
+}
+/* Navigation auf der Website-Check-Seite mittig (Anna 26.10.2026) */
+@media (min-width: 1024.02px) {
+  body:has(main.wc) .kopf { position: sticky; }
+  body:has(main.wc) .kopf-nav > ul { position: absolute; left: 50%; transform: translateX(-50%); }
+}
+/* Abschlussbox der Website-Check-Seite zentriert */
+.wc .preis-schluss .schluss-karte { text-align: center; }
+.wc .preis-schluss .schluss-karte .meta { justify-content: center; }
 .wc-wege { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; max-width: 1000px; }
 .wc-wege li { border: 1.5px solid var(--farbe-rahmen); border-radius: 24px; padding: 28px; display: flex; flex-direction: column; }
 .wc-wege h3 { font-size: 1.5rem; line-height: 1.2; margin: 0 0 8px; }
