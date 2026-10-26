@@ -2745,6 +2745,14 @@ body:has(.sticky-check) .sticky-rechner:not(.sticky-check) { display: none; }
 .wc-dialog .anfrage-felder { grid-template-columns: minmax(0, 1fr); }
 .wc-zu-form { position: absolute; top: 16px; right: 16px; margin: 0; }
 .wc-zu { width: 44px; height: 44px; border: 0; border-radius: 50%; background: var(--farbe-weiss); font-size: 26px; line-height: 1; cursor: pointer; }
+/* Danke-Seite: Text links, Porträt rechts (Anna 26.10.2026) */
+.wc-danke { display: grid; grid-template-columns: minmax(0, 1fr) minmax(200px, 320px); gap: clamp(32px, 6vw, 96px); align-items: center; }
+.wc-danke .wc-titel { margin-left: 0; }
+.wc-danke-bild { margin: 0; }
+.wc-danke-bild img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 24px; }
+.wc-danke-bild figcaption { margin-top: 12px; font-family: var(--schrift-meta); font-size: 14px; letter-spacing: .08em; text-transform: uppercase; color: var(--farbe-gedaempft); }
+.wc-danke-bild figcaption strong { display: block; font-family: var(--schrift-text); font-size: 18px; letter-spacing: 0; text-transform: none; color: var(--farbe-dunkel); }
+@media (max-width: 767.98px) { .wc-danke { grid-template-columns: minmax(0, 1fr); } .wc-danke-bild { max-width: 220px; } }
 /* ohne JavaScript steht das Formular als Karte in der Seite */
 html:not(.js) .wc-dialog { display: block; position: static; width: auto; max-width: 640px; margin: 96px auto 0; }
 html:not(.js) .wc-zu-form { display: none; }
