@@ -317,16 +317,21 @@
   // Website-Check: Formular als Pop-up (<dialog>); ohne JavaScript steht es normal in der Seite
   (() => {
     const dialog = document.querySelector('dialog#anfordern');
-    if (!dialog || !dialog.showModal) return;
+    if (!dialog) return;
+    // Browser ohne <dialog>-Unterstützung: Formular bleibt in der Seite
+    if (!dialog.showModal) { document.documentElement.classList.add('ohne-dialog'); return; }
     const oeffnen = () => { if (!dialog.open) dialog.showModal(); };
     document.addEventListener('click', (e) => {
       const a = e.target.closest('a[href$="#anfordern"]');
       if (a && a.pathname === location.pathname) { e.preventDefault(); oeffnen(); }
     });
     // Klick auf den Schleier neben der Karte oder auf einen Sprunglink in der Seite (z. B. zur FAQ) schließt
+    // Schließen nur, wenn auch der Druck auf dem Schleier begann (nicht beim Markieren von Text im Feld)
+    let druckAufSchleier = false;
+    dialog.addEventListener('mousedown', (e) => { druckAufSchleier = e.target === dialog; });
     dialog.addEventListener('click', (e) => {
       const ziel = e.target.closest('a[href^="#"]');
-      if (e.target === dialog || ziel) dialog.close();
+      if ((e.target === dialog && druckAufSchleier) || ziel) dialog.close();
       const frage = ziel && document.querySelector(ziel.getAttribute('href'));
       if (frage && frage.tagName === 'DETAILS') frage.open = true;
     });
