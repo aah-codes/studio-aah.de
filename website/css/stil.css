@@ -2709,6 +2709,13 @@ body:has(.sticky-check) .sticky-rechner:not(.sticky-check) { display: none; }
 .wc-hero .rv-intro { max-width: 46ch; margin-left: auto; margin-right: auto; }
 .wc-hero .rv-knopf { justify-content: center; }
 .wc-zeile { font-size: 15px; color: var(--farbe-gedaempft); margin: 12px 0 0; }
+/* GMX-Muster (Anna 26.10.2026): Icon über der Dachzeile, Medienfläche 16:9 unter dem Knopf, Häkchen-Reihe darunter */
+.wc-hero-icon { display: block; width: 88px; height: 88px; margin: 0 auto 8px; mix-blend-mode: multiply; }
+.wc-video { max-width: 960px; aspect-ratio: 16 / 9; margin: 48px auto 0; border-radius: 32px; background: var(--farbe-creme); display: grid; place-items: center; overflow: hidden; }
+.wc-video .wc-buehne { margin: 0 auto; }
+.wc-haken { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 32px; max-width: 960px; margin: 24px auto 0; padding: 0; font-weight: 600; }
+.wc-haken li { display: flex; align-items: center; gap: 8px; }
+.wc-haken li::before { content: "✓"; display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--farbe-primaer); color: var(--farbe-weiss); font-size: 13px; }
 .wc-buehne { position: relative; width: 500px; max-width: 100%; margin: 56px auto 0; padding-right: 120px; box-sizing: content-box; }
 .wc-geraet { position: relative; width: 500px; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 24px; }
 .wc-geraet .kb-szene { scale: calc(500 / var(--sb)); }
@@ -2750,10 +2757,12 @@ html:not(.js) .wc-zu-form { display: none; }
   .wc-person { width: 150px; }
 }
 @media (max-width: 600px) {
+  .wc-video { aspect-ratio: auto; padding: 24px 0; border-radius: 24px; }
+  .wc-haken { flex-direction: column; align-items: flex-start; width: fit-content; }
   .wc-punkte { grid-template-columns: minmax(0, 1fr); }
   .wc-buehne { width: 280px; padding-right: 0; padding-bottom: 40px; }
   .wc-geraet { width: 280px; }
   .wc-geraet .kb-szene { scale: calc(280 / var(--sb)); }
-  .wc-person { width: 110px; right: -8px; bottom: 0; }
+  .wc-person { width: 110px; right: 8px; bottom: 0; }
   .wc-person figcaption { display: none; }
 }
