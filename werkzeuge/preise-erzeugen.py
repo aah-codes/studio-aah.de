@@ -28,7 +28,7 @@ def preisliste(g):
     mehr = f'<p><a class="textlink" href="{g["link"]}">Mehr zu {esc(g["name"])}{PFEIL}</a></p>' if g.get('link') else ''
     return (f'<section class="preisliste" id="r-{g["id"]}" aria-labelledby="r-{g["id"]}-titel">\n  <div class="preisliste-kopf"><p class="meta">Preisliste</p>'
             f'<h2 class="preis-h2" id="r-{g["id"]}-titel">{esc(g["name"])}</h2><p class="gedaempft">{esc(g.get("intro") or "")}</p>{mehr}</div>\n'
-            '    <div class="lsx-karten">\n' + '\n'.join(paket_karte(e, TRENNEN_LEISTUNGEN) for e in g['pakete']) + '\n    </div>\n</section>')
+            '    <div class="lsx-karten">\n' + '\n'.join(paket_karte(e, TRENNEN_LEISTUNGEN, '../') for e in g['pakete']) + '\n    </div>\n</section>')
 
 
 def glossar():

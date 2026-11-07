@@ -48,8 +48,8 @@ def trennen(text):
     return trennen_mit(text, TRENNEN)
 
 
-def karten(g):
-    return '\n'.join(paket_karte(e, TRENNEN) for e in g['pakete'])
+def karten(g, pre=''):
+    return '\n'.join(paket_karte(e, TRENNEN, pre) for e in g['pakete'])
 
 
 def paket_reihen(g, c, pre=''):
@@ -58,11 +58,11 @@ def paket_reihen(g, c, pre=''):
         rechts = (f'<div class="lsx-hintergrund"><p class="meta">Mein Hintergrund</p><h3 class="lsx-hintergrund-titel">{esc(h["titel"])}</h3>'
                   + ''.join(f'<p>{esc(x)}</p>' for x in h['text'])
                   + (f'<p><a class="textlink" href="{pre}profil/#ansatz-titel">Mehr über meinen Hintergrund <span aria-hidden="true">→</span></a></p>' if h.get('link') else '') + '</div>') if h else nicht_enthalten(c)
-        return '    <div class="lsx-einzeln">\n' + karten(g) + '\n      ' + rechts + '\n    </div>'
+        return '    <div class="lsx-einzeln">\n' + karten(g, pre) + '\n      ' + rechts + '\n    </div>'
     if not c.get('paket_reihen'):
-        return '    <div class="lsx-karten">\n' + karten(g) + '\n    </div>'
+        return '    <div class="lsx-karten">\n' + karten(g, pre) + '\n    </div>'
     nach_id = {e['id']: e for e in g['pakete']}
-    return '\n'.join(f'    <div class="lsx-karten lsx-karten-{len(r)}">\n' + karten({**g, 'pakete': [nach_id[i] for i in r]}) + '\n    </div>' for r in c['paket_reihen'])
+    return '\n'.join(f'    <div class="lsx-karten lsx-karten-{len(r)}">\n' + karten({**g, 'pakete': [nach_id[i] for i in r]}, pre) + '\n    </div>' for r in c['paket_reihen'])
 
 
 def vergleich(g):

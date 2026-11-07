@@ -295,9 +295,15 @@
     const ziele = [...document.querySelectorAll('a, button, input[type="submit"]')].filter((el) => !knopf.contains(el)
       && (el.matches('.button, button, input[type="submit"], a[href^="mailto:"], a[href^="tel:"], form a')
         || /anfrag|kontakt|termin|e-mail|anrufen/i.test(el.textContent)));
+    // Landingpages: solange das Formular, zu dem der Knopf führt, im Bild ist, braucht es ihn nicht
+    const sprung = knopf.getAttribute('href') || '';
+    const formular = sprung.startsWith('#') ? document.querySelector(sprung) : null;
+    // … und solange ein anderer Button mit demselben Ziel zu sehen ist (z. B. im ersten Bildschirm)
+    const gleiche = formular ? [...document.querySelectorAll(`a[href="${sprung}"]`)].filter((a) => a !== knopf) : [];
+    const sichtbar = (el) => { const r = el.getBoundingClientRect(); return r.width && r.bottom > 0 && r.top < innerHeight; };
     function pruefen() {
       const k = knopf.getBoundingClientRect();
-      const verdeckt = ziele.some((el) => {
+      const verdeckt = (formular && (sichtbar(formular) || gleiche.some(sichtbar))) || ziele.some((el) => {
         const r = el.getBoundingClientRect();
         return r.width && r.left < k.right + 8 && r.right > k.left - 8 && r.top < k.bottom + 8 && r.bottom > k.top - 8;
       });
