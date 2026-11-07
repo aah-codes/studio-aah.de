@@ -2919,6 +2919,7 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 
 @media (prefers-reduced-motion: reduce) { .mr-hero-bild img { animation: none; } }
 @media (max-width: 1024px) {
+  .mr-hero::after { background: linear-gradient(0deg, var(--schleier-stark) 0%, var(--schleier-mittel) 60%, var(--schleier-leer) 100%), linear-gradient(90deg, var(--schleier-mittel) 0%, var(--schleier-leer) 80%); }
   .mr-drei { grid-template-columns: 1fr; }
   .mr-schluss-innen { grid-template-columns: 1fr; }
 }
@@ -2943,3 +2944,5 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
   .mr-b-feld { padding: 24px 18px; }
   .mr-knoepfe .button { width: 100%; text-align: center; box-sizing: border-box; }
 }
+/* Tippflächen mindestens 44 px hoch (WCAG 2.5.8; Prüfer 07.11.2026) */
+.mr-schluss-karte .anfrage-knoepfe .textlink, .mr-grenzen .textlink { display: inline-block; padding: 11px 0; }
