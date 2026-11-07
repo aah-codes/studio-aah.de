@@ -2946,3 +2946,15 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 }
 /* Tippflächen mindestens 44 px hoch (WCAG 2.5.8; Prüfer 07.11.2026) */
 .mr-schluss-karte .anfrage-knoepfe .textlink, .mr-grenzen .textlink { display: inline-block; padding: 12px 0; }
+/* Echtes Projekt unter dem erfundenen Beispiel (07.11.2026) */
+.mr-echt { display: grid; grid-template-columns: auto 1fr auto; gap: 24px; align-items: center; margin-top: 20px; padding: 24px 28px; border: 1.5px solid var(--farbe-rahmen); border-radius: 24px; color: var(--farbe-dunkel); text-decoration: none; transition: border-color .2s; }
+.mr-echt:hover { border-color: var(--farbe-dunkel); }
+.mr-echt:focus-visible { outline: 2px solid var(--farbe-primaer); outline-offset: 3px; }
+.mr-echt-farben { display: flex; }
+.mr-echt-farben i { width: 44px; height: 44px; border-radius: 50%; background: var(--f); border: 3px solid var(--farbe-weiss); }
+.mr-echt-farben i + i { margin-left: -12px; }
+.mr-echt-text { display: grid; gap: 4px; }
+.mr-echt-text .meta { margin: 0; }
+.mr-echt-titel { font-weight: 700; font-size: 18px; }
+.mr-echt-link { font-weight: 600; text-decoration: underline; text-underline-offset: 4px; white-space: nowrap; }
+@media (max-width: 767.98px) { .mr-echt { grid-template-columns: 1fr; } }
