@@ -10,7 +10,8 @@ fehler=0
 
 # Pfade vereinheitlichen, damit Unterseiten (../) mit der Startseite vergleichbar sind
 einheitlich() { sed -E 's#="(\.\./)+#="#g; s#(href|src)="/#\1="#g; s#href="\.\./"#href="./"#g; s#href=""#href="./"#g'; }
-kopf() { awk '/<a class="sprunglink"/,/<!-- \/KOPF -->/' "$1" | einheitlich; }
+# Die Dachzeile wechselt je Seite (werkzeuge/kopf-fuss.py: Website-Check, Programm oder keine) – sie zählt beim Vergleich nicht mit
+kopf() { awk '/<a class="sprunglink"/,/<!-- \/KOPF -->/' "$1" | awk '/<!-- DACHZEILE/{d=1} d&&/^<\/div>/{d=0; next} !d' | einheitlich; }
 fuss() { awk '/<!-- FUSS:/,/<!-- \/FUSS -->/' "$1" | einheitlich; }
 
 seiten=$(find . -name "*.html" | sort | while read -r s; do grep -q 'http-equiv="refresh"' "$s" || echo "$s"; done)
