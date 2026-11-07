@@ -2900,6 +2900,14 @@ sup.lp-fn a { color: var(--farbe-primaer); text-decoration: none; }
   .lp-zwei .lp-bericht { order: 2; }
 }
 @media (max-width: 767.98px) {
+  .lp-hero { padding-top: 12px; gap: 16px; }
+  .lp-hero .rv-intro { font-size: 17px; margin-bottom: 16px; }
+  .lp-form-karte { padding: 18px; }
+  .lp-form-karte h2 { font-size: 20px; margin-bottom: 8px; }
+  .lp-form-karte .wc-haekchen { margin-top: 12px; }
+  .lp-form-karte .wc-haekchen label { font-size: 15px; }
+  .lp-form-karte .wc-berechtigung { font-size: 12px; margin-top: 8px; }
+  .lp-form-karte .anfrage-knoepfe { margin-top: 12px; }
   .lp-form-karte .anfrage-felder { grid-template-columns: minmax(0, 1fr); }
   .lp-zahl-band { grid-template-columns: minmax(0, 1fr); align-items: start; }
   .lp-karten { grid-template-columns: minmax(0, 1fr); }
