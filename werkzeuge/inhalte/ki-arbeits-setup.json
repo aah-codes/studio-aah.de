@@ -17,7 +17,7 @@
     ],
     [
       "Welchen Tarif von Claude brauche ich?",
-      "Für das KI-Arbeits-Setup braucht es einen bezahlten Tarif von Claude, den Sie direkt beim Anbieter Anthropic buchen. Arbeiten Sie nur mit eigenen Texten und anonymisierten Daten, reicht der Tarif Pro – das Training mit Ihren Chats schalten wir gemeinsam aus. Soll Claude Ihr Geschäftspostfach oder Kundendaten lesen, empfiehlt Anna Härtelt Claude Team (ab zwei Plätzen): Nur dort gibt es einen Vertrag zur Auftragsverarbeitung, und Anthropic trainiert nicht mit Ihren Daten. Ob Ihre Datenverarbeitung zulässig ist, entscheiden Sie bzw. Ihre Datenschutzberatung."
+      "Für das KI-Arbeits-Setup braucht es einen bezahlten Tarif von Claude, den Sie direkt beim Anbieter Anthropic buchen. Arbeiten Sie nur mit eigenen Texten und anonymisierten Daten, reicht der Tarif Pro – das Training mit Ihren Chats schalten wir gemeinsam aus. Soll Claude Ihr Geschäftspostfach oder Kundendaten lesen, empfiehlt Anna Härtelt Claude Team (ab zwei Plätzen): Dort gilt ein Vertrag zur Auftragsverarbeitung, und Anthropic nutzt Ihre Eingaben standardmäßig nicht zum Training. Ob Ihre Datenverarbeitung zulässig ist, entscheiden Sie bzw. Ihre Datenschutzberatung."
     ],
     [
       "Wie lange dauert das KI-Arbeits-Setup?",
@@ -25,7 +25,7 @@
     ],
     [
       "Bekommt STUDIO AAH! Zugriff auf meine Konten und Daten?",
-      "Nein. Anna Härtelt bereitet alle Vorlagen mit Beispieldaten vor. Eingerichtet wird auf Ihrem eigenen Rechner: Sie klicken, sie leitet per Bildschirmfreigabe an."
+      "Nein. Anna Härtelt bereitet alle Vorlagen mit Beispieldaten vor. Eingerichtet wird auf Ihrem eigenen Rechner: Sie klicken, Anna Härtelt leitet Sie per Bildschirmfreigabe an."
     ],
     [
       "Geht das KI-Arbeits-Setup auch mit ChatGPT oder Microsoft Copilot?",
