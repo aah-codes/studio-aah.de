@@ -23,6 +23,11 @@
      Blau #2a5fe6 ist der einzige Akzent (Anna 16.10.2026: vorher auch #2f6bff); Kontrast zu Weiß 5,4 : 1 (WCAG AA). */
   --farbe-primaer: #2a5fe6;
   --farbe-primaer-dunkel: #1f4cc4;
+  /* Schleier über dunklen, blau eingefärbten Fotos (Landingpage Marken-Regelwerk, 07.11.2026) */
+  --schleier-stark: rgba(6, 7, 10, .9);
+  --schleier-mittel: rgba(6, 7, 10, .55);
+  --schleier-leer: rgba(6, 7, 10, 0);
+  --schatten-weich: 0 24px 60px rgba(14, 16, 17, .12);
   /* Farbband am unteren Rand des Fußes (Anna 13.10.2026) – bewusste Ausnahme von „Blau als einziger Akzent“ */
   --farbband: linear-gradient(90deg, #d8c4fd 0%, #ee8fea 3%, #fe5fbe 6%, #ff3e3d 9%, #fe5100 12%, #fd9400 15%, #ffd700 18%, #c0ee28 22%, #6cee5e 26%, #18ef94 30%, #04ecb9 35%, #0fe6ef 45%, #19a3f9 55%, #255dfc 65%, #263fe4 70%, #212e85 75%, #1e254c 78%, #1d1d1d 81.5%, #ff2f00 81.5%, #ff2f00 100%);
 
@@ -2793,4 +2798,148 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
   .wc-geraet .kb-szene { scale: calc(256 / var(--sb)); }
   .wc-person { width: 110px; right: 8px; bottom: 0; }
   .wc-person figcaption { display: none; }
+}
+
+
+/* ---------- Landingpage Marken-Regelwerk (/marken-regelwerk/, 07.11.2026) ----------
+   Fotos von Unsplash, als Verlaufsumsetzung (gradient map) in Schwarz und Markenblau – so wirken unterschiedliche Fotos wie eine Serie.
+   Auf dunklem Grund: weiße Buttons und weiße Punkte (kein Blau auf Schwarz). Bewegung: Hero zoomt einmal 5 s, bei „Bewegung reduzieren“ nicht. */
+.mr { overflow-x: clip; }
+.mr-hero { position: relative; display: flex; align-items: flex-end; min-height: min(88vh, 860px); color: var(--farbe-weiss); background: var(--farbe-dunkel); overflow: hidden; }
+.mr-hero-bild, .mr-band-bild { position: absolute; inset: 0; margin: 0; }
+.mr-hero-bild img, .mr-band-bild img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.mr-hero-bild img { object-position: 62% 50%; animation: mr-zoom 5s cubic-bezier(.2, .7, .2, 1) both; }
+@keyframes mr-zoom { from { transform: scale(1.07); } to { transform: scale(1); } }
+.mr-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, var(--schleier-stark) 0%, var(--schleier-mittel) 42%, var(--schleier-leer) 72%), linear-gradient(0deg, var(--schleier-mittel) 0%, var(--schleier-leer) 45%); pointer-events: none; }
+.mr-hero-text { position: relative; z-index: 1; width: 100%; max-width: var(--inhalt-breite); margin: 0 auto; padding: 120px var(--rand-seite) clamp(56px, 9vh, 104px); box-sizing: content-box; }
+.mr-titel { font-family: var(--schrift-ueberschrift); font-weight: 400; text-transform: uppercase; font-size: clamp(54px, 8.4vw, 132px); line-height: 1.15; letter-spacing: .005em; margin: 0; }
+.mr-zeile { display: block; }
+.mr-dach { display: flex; align-items: center; gap: 10px; font-family: var(--schrift-meta); font-size: 14px; font-weight: 500; letter-spacing: .1em; line-height: 1.4; text-transform: uppercase; color: var(--farbe-gedaempft-invers); margin: 0 0 20px; }
+.mr-dach::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--farbe-weiss); flex: none; }
+.mr-hero-lead { font-size: clamp(18px, 1.55vw, 22px); line-height: 1.55; max-width: 30em; color: var(--farbe-weiss); margin: 28px 0 0; }
+.mr-knoepfe { display: flex; flex-wrap: wrap; gap: 12px 16px; margin: 36px 0 0; }
+.mr .button.mr-button-hell { background: var(--farbe-weiss); color: var(--farbe-dunkel); border-color: var(--farbe-weiss); }
+.mr .button.mr-button-hell:hover { background: var(--farbe-hellgrau-2); border-color: var(--farbe-hellgrau-2); }
+.mr .button.mr-button-umriss { background: transparent; color: var(--farbe-weiss); border-color: var(--farbe-weiss); }
+.mr .button.mr-button-umriss:hover { background: var(--farbe-weiss); color: var(--farbe-dunkel); }
+.mr .button:focus-visible { outline: 3px solid var(--farbe-weiss); outline-offset: 3px; }
+.mr-haken { margin-top: 32px; padding: 0 var(--rand-seite); }
+
+.mr-abschnitt { max-width: var(--inhalt-breite); margin: 0 auto; padding: clamp(96px, 12vw, 168px) var(--rand-seite) 0; box-sizing: content-box; }
+.mr-gross { font-family: var(--schrift-ueberschrift); font-weight: 400; text-transform: uppercase; font-size: clamp(38px, 5.4vw, 76px); line-height: 1.15; margin: 0 0 28px; max-width: 16ch; }
+.mr-text { font-size: clamp(18px, 1.4vw, 21px); line-height: 1.6; max-width: 32em; margin: 0 0 18px; }
+.mr-text-breit { max-width: 40em; }
+.mr-pointe { font-weight: 700; font-size: clamp(22px, 2vw, 28px); margin-top: 28px; }
+.mr-hakt { list-style: none; margin: 32px 0 0; padding: 28px 0 0; border-top: 1.5px solid var(--farbe-dunkel); display: grid; gap: 14px; max-width: 32em; }
+.mr-hakt li { position: relative; padding-left: 30px; line-height: 1.5; color: var(--farbe-gedaempft); }
+.mr-hakt li::before { content: "×" / ""; position: absolute; left: 0; top: -2px; font-size: 22px; line-height: 1; color: var(--farbe-dunkel); }
+.mr-alltag { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(40px, 6vw, 96px); align-items: center; }
+.mr-foto { margin: 0; border-radius: 28px; overflow: hidden; background: var(--farbe-dunkel); }
+.mr-foto img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.mr-foto-hoch { aspect-ratio: 4 / 5; }
+.mr-foto-hoch img { object-position: 55% 50%; }
+
+.mr-band { position: relative; display: grid; place-items: center; min-height: min(78vh, 760px); margin-top: clamp(96px, 12vw, 168px); padding: 96px var(--rand-seite); color: var(--farbe-weiss); background: var(--farbe-dunkel); overflow: hidden; text-align: center; }
+.mr-band::after { content: ""; position: absolute; inset: 0; background: var(--schleier-mittel); pointer-events: none; }
+.mr-band-text { position: relative; z-index: 1; font-family: var(--schrift-ueberschrift); font-weight: 400; text-transform: uppercase; font-size: clamp(36px, 5.6vw, 84px); line-height: 1.15; max-width: 18ch; margin: 0; }
+.mr-band-text span { display: block; color: var(--farbe-gedaempft-invers); }
+
+.mr-drei { list-style: none; margin: 56px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.mr-teil { background: var(--farbe-hellgrau); border-radius: 28px; padding: 36px 32px 40px; }
+.mr-teil-nr { display: block; font-family: var(--schrift-ueberschrift); font-size: 56px; line-height: 1.15; color: var(--farbe-primaer); margin-bottom: 28px; }
+.mr-teil .meta { margin-bottom: 8px; }
+.mr-teil h3 { font-size: 24px; line-height: 1.3; margin: 0 0 12px; }
+.mr-teil p:last-child { margin: 0; line-height: 1.55; color: var(--farbe-gedaempft); }
+.mr-dazu { margin: 28px 0 0; font-weight: 600; }
+
+/* Beispiel: erfundene Firma; Farben der Firma als Variablen am Element (wie Kundenfarben auf Projektseiten) */
+.mr-beispiel { margin-top: 56px; background: var(--farbe-hellgrau); border-radius: 36px; padding: clamp(16px, 3vw, 40px); }
+.mr-b-kopf { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; background: var(--m-blau); color: var(--farbe-weiss); border-radius: 24px 24px 0 0; padding: 22px 28px; }
+.mr-b-firma { margin: 0; font-family: "Inter Bauer", var(--schrift-text); font-weight: 800; font-size: 20px; }
+.mr-b-firma span { font-weight: 400; opacity: .8; }
+.mr-b-hinweis { margin: 0; font-family: var(--schrift-meta); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; border: 1.5px solid var(--farbe-weiss); border-radius: 999px; padding: 4px 12px; }
+.mr-b-raster { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--farbe-rahmen); border-radius: 0 0 24px 24px; overflow: hidden; box-shadow: var(--schatten-weich); }
+.mr-b-feld { background: var(--farbe-weiss); padding: 32px 28px; font-family: "Inter Bauer", var(--schrift-text); color: var(--m-blau); }
+.mr-b-feld-breit { grid-column: 1 / -1; }
+.mr-b-titel { font-family: var(--schrift-meta); font-size: 13px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--farbe-gedaempft); margin: 0 0 20px; }
+.mr-b-farben { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.mr-b-farben li { font-size: 13px; line-height: 1.4; color: var(--farbe-gedaempft); }
+.mr-b-farben i { display: block; aspect-ratio: 1; border-radius: 16px; background: var(--f); border: 1.5px solid var(--farbe-rahmen); margin-bottom: 10px; }
+.mr-b-farben b { display: block; color: var(--m-blau); font-size: 15px; }
+.mr-b-farben small { display: block; margin-top: 4px; font-size: 13px; }
+.mr-b-regel { margin: 20px 0 0; font-size: 15px; line-height: 1.5; color: var(--farbe-gedaempft); }
+.mr-b-aa { margin: 0; font-size: clamp(88px, 10vw, 140px); line-height: 1; font-weight: 800; letter-spacing: -.03em; }
+.mr-b-schriftname { margin: 4px 0 16px; font-weight: 600; }
+.mr-b-liste { margin: 0; padding-left: 18px; line-height: 1.7; color: var(--farbe-dunkel); }
+.mr-b-ton { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.mr-b-ja, .mr-b-nein { margin: 0; border-radius: 18px; padding: 20px 22px; font-size: 18px; line-height: 1.5; }
+.mr-b-ja { background: var(--m-grau); color: var(--m-blau); }
+.mr-b-nein { border: 1.5px dashed var(--farbe-grau); color: var(--farbe-gedaempft); }
+.mr-b-nein .mr-b-zitat { text-decoration: line-through; text-decoration-thickness: 1.5px; }
+.mr-b-zitat { display: block; }
+.mr-b-ja > span:first-child, .mr-b-nein > span:first-child, .mr-b-marke { display: block; font-family: var(--schrift-meta); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 8px; text-decoration: none; }
+.mr-b-vergleich { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.mr-b-anzeige { margin: 0; }
+.mr-b-anzeige figcaption { margin-top: 12px; font-size: 15px; line-height: 1.5; color: var(--farbe-dunkel); }
+.mr-b-marke { display: inline-block; margin: 0 8px 0 0; font-weight: 700; color: var(--farbe-dunkel); }
+.mr-b-post { aspect-ratio: 4 / 5; border-radius: 18px; padding: 28px 26px; display: flex; flex-direction: column; overflow: hidden; }
+.mr-b-post p { margin: 0; }
+.mr-b-anzeige-ja .mr-b-post { background: var(--m-blau); color: var(--farbe-weiss); }
+.mr-b-anzeige-ja .mr-b-post-dach { font-size: 14px; font-weight: 600; opacity: .8; }
+.mr-b-anzeige-ja .mr-b-post-titel { margin-top: auto; font-weight: 800; font-size: clamp(24px, 2.6vw, 34px); line-height: 1.15; hyphens: manual; }
+.mr-b-anzeige-ja .mr-b-post-text { margin-top: 12px; font-size: 15px; opacity: .85; }
+.mr-b-anzeige-ja .mr-b-post-knopf { margin-top: 24px; align-self: flex-start; background: var(--m-kupfer); color: var(--farbe-weiss); border-radius: 999px; padding: 10px 18px; font-weight: 700; font-size: 15px; }
+.mr-b-anzeige-nein .mr-b-post { background: var(--m-falsch-1); color: var(--m-falsch-2); text-align: center; justify-content: space-around; font-family: Georgia, "Times New Roman", serif; }
+.mr-b-anzeige-nein .mr-b-post-dach { font-family: var(--schrift-meta); font-size: 15px; color: var(--farbe-weiss); }
+.mr-b-anzeige-nein .mr-b-post-titel { font-family: Impact, "Arial Narrow", sans-serif; font-size: clamp(26px, 3vw, 40px); line-height: 1.15; font-style: italic; }
+.mr-b-anzeige-nein .mr-b-post-text { font-size: 17px; font-style: italic; color: var(--farbe-weiss); }
+.mr-b-anzeige-nein .mr-b-post-knopf { align-self: center; border: 3px dotted var(--m-falsch-2); padding: 6px 14px; font-size: 14px; text-transform: uppercase; }
+.mr-b-ki { background: var(--farbe-dunkel); color: var(--farbe-weiss); }
+.mr-b-ki .mr-b-titel, .mr-b-ki .mr-b-regel { color: var(--farbe-gedaempft-invers); }
+.mr-b-anweisung { font-family: var(--schrift-meta); font-size: 15px; line-height: 1.65; border-left: 2px solid var(--farbe-weiss); padding: 4px 0 4px 22px; }
+.mr-b-anweisung p { margin: 0 0 10px; }
+.mr-b-anweisung p:last-child { margin: 0; }
+
+.mr-ablauf-kopf { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 80px); align-items: end; }
+.mr-ablauf-kopf .mr-foto { aspect-ratio: 3 / 2; }
+.mr-karten { margin-top: 48px; }
+.mr-grenzen { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 48px; margin-top: 40px; padding-top: 28px; border-top: 1.5px solid var(--farbe-dunkel); line-height: 1.6; }
+.mr-grenzen p { margin: 0; }
+.mr-ich { display: grid; grid-template-columns: minmax(0, 420px) 1fr; gap: clamp(40px, 6vw, 96px); align-items: center; }
+.mr-ich-bild { margin: 0; }
+.mr-ich-bild img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 28px; }
+.mr-fragen .faq-liste { margin-top: 40px; }
+
+.mr-schluss { position: relative; margin-top: clamp(96px, 12vw, 168px); padding: clamp(80px, 10vw, 140px) var(--rand-seite); color: var(--farbe-weiss); background: var(--farbe-dunkel); overflow: hidden; }
+.mr-schluss::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, var(--schleier-stark) 0%, var(--schleier-mittel) 60%, var(--schleier-mittel) 100%); pointer-events: none; }
+.mr-schluss-innen { position: relative; z-index: 1; max-width: var(--inhalt-breite); margin: 0 auto; display: grid; grid-template-columns: 1fr minmax(0, 520px); gap: clamp(40px, 6vw, 96px); align-items: center; }
+.mr-schluss-titel { text-align: left; }
+.mr-schluss-karte { background: var(--farbe-weiss); color: var(--farbe-dunkel); border-radius: 28px; padding: clamp(24px, 3vw, 40px); }
+.mr-schluss-karte .anfrage-form { margin: 0; }
+
+@media (prefers-reduced-motion: reduce) { .mr-hero-bild img { animation: none; } }
+@media (max-width: 1024px) {
+  .mr-drei { grid-template-columns: 1fr; }
+  .mr-schluss-innen { grid-template-columns: 1fr; }
+}
+@media (max-width: 900px) {
+  .mr-alltag, .mr-ablauf-kopf, .mr-ich { grid-template-columns: 1fr; }
+  .mr-ich-bild { max-width: 360px; }
+  .mr-b-raster, .mr-b-ton, .mr-grenzen { grid-template-columns: 1fr; }
+  .mr-b-feld-breit { grid-column: auto; }
+  .mr-b-farben { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 767.98px) {
+  .mr-hero { min-height: 92svh; }
+  .mr-hero-bild img { object-position: 50% 40%; }
+  .mr-hero::after { background: linear-gradient(0deg, var(--schleier-stark) 0%, var(--schleier-mittel) 55%, var(--schleier-leer) 85%); }
+  .mr-hero-text { padding-top: 96px; }
+  .mr-b-vergleich { grid-template-columns: 1fr; }
+  .mr-b-post { max-width: 360px; }
+  .mr-band { min-height: 60svh; }
+}
+@media (max-width: 400px) {
+  .mr-titel { font-size: 46px; }
+  .mr-b-feld { padding: 24px 18px; }
+  .mr-knoepfe .button { width: 100%; text-align: center; box-sizing: border-box; }
 }
