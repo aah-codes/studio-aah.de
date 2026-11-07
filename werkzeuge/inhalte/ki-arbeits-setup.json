@@ -3,14 +3,45 @@
   "name": "KI-Arbeits-Setup mit Projekt-Cockpit",
   "preis": 990,
   "faq": [
-    ["Was ist das KI-Arbeits-Setup von STUDIO AAH!?", "Das KI-Arbeits-Setup ist ein Festpreis-Paket von STUDIO AAH!, in dem Anna Härtelt die KI Claude für Selbstständige und kleine Büros einrichtet. Dazu gehören ein Arbeitsordner, eine Start-Datei mit Ihren Regeln, drei wiederverwendbare Arbeitsabläufe und ein Projekt-Cockpit. Die Einrichtung läuft in drei Online-Terminen über etwa drei Wochen."],
-    ["Für wen ist das KI-Arbeits-Setup gedacht?", "Das KI-Arbeits-Setup ist für Selbstständige, Freiberufler:innen und kleine Büros mit bis zu fünf Personen gedacht, die mehrere Kund:innen und Projekte gleichzeitig betreuen. Größere Teams sind im Paket KI-Einführung besser aufgehoben. Wer mit Gesundheitsdaten oder anderen besonders geschützten Daten arbeitet, klärt im Erstgespräch, ob und wie das Setup passt."],
-    ["Was kostet das KI-Arbeits-Setup?", "Das KI-Arbeits-Setup kostet bei STUDIO AAH! 990 € netto zum Festpreis. Für die ersten drei Aufträge gilt ein Pilotpreis von 690 € netto. Das KI-Abo selbst ist nicht enthalten; es wird direkt beim Anbieter gebucht und bezahlt."],
-    ["Brauche ich ein bezahltes Abo für Claude?", "Ja, für das KI-Arbeits-Setup ist ein bezahlter Tarif von Claude nötig. Welcher Tarif zu Ihrer Arbeit passt, klären wir im Erstgespräch; gebucht und bezahlt wird er direkt beim Anbieter Anthropic."],
-    ["Wie lange dauert das KI-Arbeits-Setup?", "Das KI-Arbeits-Setup dauert vom Erstgespräch bis zum Feinschliff etwa drei Wochen. Sie investieren drei Online-Termine von 90, 90 und 60 Minuten und etwa 15 Minuten für einen Fragebogen."],
-    ["Bekommt STUDIO AAH! Zugriff auf meine Konten und Daten?", "Nein. Anna Härtelt bereitet alle Vorlagen mit Beispieldaten vor. Eingerichtet wird auf Ihrem eigenen Rechner: Sie klicken, sie leitet per Bildschirmfreigabe an."],
-    ["Geht das KI-Arbeits-Setup auch mit ChatGPT oder Microsoft Copilot?", "Das KI-Arbeits-Setup ist für Claude von Anthropic gebaut, weil Anna Härtelt selbst täglich damit arbeitet. Ob es sich auf ChatGPT oder Copilot übertragen lässt, klären wir im Erstgespräch. Passt es nicht, sagt sie Ihnen das ehrlich."],
-    ["Was passiert nach dem Termin „Einrichten“?", "Nach dem Termin „Einrichten“ beantwortet Anna Härtelt 14 Tage lang Ihre Fragen per E-Mail, und etwa zwei Wochen später folgt der Termin „Feinschliff“. Weitere Abläufe, Termine oder eine Team-Schulung gibt es danach nach Aufwand."],
-    ["Ist das KI-Arbeits-Setup eine Datenschutz- oder Rechtsberatung?", "Nein. Sie bekommen eine Checkliste, welche Daten in die KI dürfen, und wir prüfen gemeinsam die Einstellungen Ihres Kontos. Für die Datenschutzpflichten Ihres Unternehmens bleiben Sie selbst verantwortlich; im Zweifel hilft eine Fachperson für Datenschutz."]
+    [
+      "Was ist das KI-Arbeits-Setup von STUDIO AAH!?",
+      "Das KI-Arbeits-Setup ist ein Festpreis-Paket von STUDIO AAH!, in dem Anna Härtelt die KI Claude für Selbstständige und kleine Büros einrichtet. Dazu gehören ein Arbeitsordner, eine Start-Datei mit Ihren Regeln, drei wiederverwendbare Arbeitsabläufe und ein Projekt-Cockpit. Die Einrichtung läuft in drei Online-Terminen über etwa drei Wochen. STUDIO AAH! ist unabhängig und kein Partner von Anthropic, dem Anbieter von Claude."
+    ],
+    [
+      "Für wen ist das KI-Arbeits-Setup gedacht?",
+      "Das KI-Arbeits-Setup ist für Selbstständige, Freiberufler:innen und kleine Büros mit bis zu fünf Personen gedacht, die mehrere Kund:innen und Projekte gleichzeitig betreuen. Größere Teams sind im Paket KI-Einführung besser aufgehoben. Wer mit Gesundheitsdaten oder anderen besonders geschützten Daten arbeitet, klärt im Erstgespräch, ob und wie das Setup passt."
+    ],
+    [
+      "Was kostet das KI-Arbeits-Setup?",
+      "Das KI-Arbeits-Setup kostet bei STUDIO AAH! 990 € netto zum Festpreis. Für die ersten drei Aufträge gilt ein Pilotpreis von 690 € netto. Das KI-Abo selbst ist nicht enthalten; es wird direkt beim Anbieter gebucht und bezahlt."
+    ],
+    [
+      "Welchen Tarif von Claude brauche ich?",
+      "Für das KI-Arbeits-Setup braucht es einen bezahlten Tarif von Claude, den Sie direkt beim Anbieter Anthropic buchen. Arbeiten Sie nur mit eigenen Texten und anonymisierten Daten, reicht der Tarif Pro – das Training mit Ihren Chats schalten wir gemeinsam aus. Soll Claude Ihr Geschäftspostfach oder Kundendaten lesen, empfiehlt Anna Härtelt Claude Team (ab zwei Plätzen): Nur dort gibt es einen Vertrag zur Auftragsverarbeitung, und Anthropic trainiert nicht mit Ihren Daten. Ob Ihre Datenverarbeitung zulässig ist, entscheiden Sie bzw. Ihre Datenschutzberatung."
+    ],
+    [
+      "Wie lange dauert das KI-Arbeits-Setup?",
+      "Das KI-Arbeits-Setup dauert vom Erstgespräch bis zum Feinschliff etwa drei Wochen. Sie investieren drei Online-Termine von 90, 90 und 60 Minuten und etwa 15 Minuten für einen Fragebogen."
+    ],
+    [
+      "Bekommt STUDIO AAH! Zugriff auf meine Konten und Daten?",
+      "Nein. Anna Härtelt bereitet alle Vorlagen mit Beispieldaten vor. Eingerichtet wird auf Ihrem eigenen Rechner: Sie klicken, sie leitet per Bildschirmfreigabe an."
+    ],
+    [
+      "Geht das KI-Arbeits-Setup auch mit ChatGPT oder Microsoft Copilot?",
+      "Das KI-Arbeits-Setup ist für Claude von Anthropic gebaut, weil Anna Härtelt selbst täglich damit arbeitet. Ob es sich auf ChatGPT oder Copilot übertragen lässt, klären wir im Erstgespräch. Passt es nicht, sagt sie Ihnen das ehrlich."
+    ],
+    [
+      "Was passiert nach dem Termin „Einrichten“?",
+      "Nach dem Termin „Einrichten“ beantwortet Anna Härtelt 14 Tage lang Ihre Fragen per E-Mail, und etwa zwei Wochen später folgt der Termin „Feinschliff“. Weitere Abläufe, Termine oder eine Team-Schulung gibt es danach nach Aufwand."
+    ],
+    [
+      "Gibt es eine Bestätigung zur KI-Kompetenz?",
+      "Ja. Zum KI-Arbeits-Setup gehört eine Einweisung ins sichere Arbeiten mit KI: wie Claude arbeitet, wo die Grenzen liegen, welche Daten hinein dürfen und wie Sie Ergebnisse prüfen. Sie erhalten eine Teilnahmebestätigung, die Sie als Maßnahme zur KI-Kompetenz nach Artikel 4 der KI-Verordnung ablegen können. Ein Zertifikat ist das nicht."
+    ],
+    [
+      "Ist das KI-Arbeits-Setup eine Datenschutz- oder Rechtsberatung?",
+      "Nein. Sie bekommen eine Checkliste, welche Daten in die KI dürfen, und wir prüfen gemeinsam die Einstellungen Ihres Kontos. Für die Datenschutzpflichten Ihres Unternehmens bleiben Sie selbst verantwortlich; im Zweifel hilft eine Fachperson für Datenschutz."
+    ]
   ]
 }
