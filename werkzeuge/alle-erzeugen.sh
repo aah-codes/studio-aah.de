@@ -12,5 +12,6 @@ python3 werkzeuge/blog/was-sollte-eine-website-2027-koennen.py
 python3 werkzeuge/inhalte-erzeugen.py
 python3 werkzeuge/leistungsseiten.py
 python3 werkzeuge/website-check.py
+python3 werkzeuge/marken-regelwerk.py
 python3 werkzeuge/ki-arbeits-setup.py
 python3 werkzeuge/referenzen.py

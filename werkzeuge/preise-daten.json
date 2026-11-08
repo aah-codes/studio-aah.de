@@ -66,6 +66,62 @@
    "karte": "../bilder/leistung-brand.webp"
   },
   {
+   "id": "regelwerk",
+   "kurz": "Marken-Regelwerk",
+   "name": "Marken-Regelwerk",
+   "link": "../marken-regelwerk/",
+   "pakete": [
+    {
+     "id": "regelwerk-start",
+     "name": "Regelwerk Start",
+     "preis": 1450,
+     "wer": "Für kleine Teams, die vor allem Social-Media-Posts und Stellenanzeigen selbst machen.",
+     "dauer": "2–3 Wochen",
+     "plus": "Enthalten:",
+     "items": [
+      "Bestandsaufnahme: Logo, Farben, Schriften, vorhandene Vorlagen",
+      "Regelwerk als Online-Seite und PDF",
+      "KI-Markenanweisung für ChatGPT, Claude oder Gemini",
+      "3 Vorlagen in Canva oder PowerPoint",
+      "1 Stunde Einweisung online",
+      "2 Feedbackrunden"
+     ],
+     "gefragt": false,
+     "ab": true
+    },
+    {
+     "id": "regelwerk-team",
+     "name": "Regelwerk Team",
+     "preis": 2650,
+     "wer": "Für Unternehmen, in denen mehrere Personen oder Abteilungen gestalten.",
+     "dauer": "4–6 Wochen",
+     "plus": "Alles aus Start, plus:",
+     "items": [
+      "10 statt 3 Vorlagen, z. B. Präsentation, Angebot, E-Mail-Signatur",
+      "Workshop mit Ihrem Team (3 Stunden, vor Ort in Leipzig oder online)",
+      "30 Tage Rückfragen nach der Übergabe"
+     ],
+     "gefragt": true,
+     "badge": "Empfehlung",
+     "ab": true
+    },
+    {
+     "id": "regelwerk-pflege",
+     "name": "Regelwerk-Pflege",
+     "monat": 140,
+     "wer": "Damit Regeln und Vorlagen mit Ihrem Unternehmen mitwachsen.",
+     "plus": "Enthalten:",
+     "items": [
+      "2 Stunden im Monat für neue Vorlagen oder Anpassungen",
+      "Rückmeldung zu Stichproben aus Ihrem Team",
+      "Mindestlaufzeit 6 Monate"
+     ],
+     "ab": true
+    }
+   ],
+   "intro": "Regeln, Vorlagen und eine KI-Markenanweisung, damit Ihr Team Stellenanzeigen, Posts und Präsentationen selbst einheitlich gestaltet."
+  },
+  {
    "id": "ui-ux",
    "kurz": "UI/UX",
    "name": "UI/UX",
@@ -639,6 +695,14 @@
   [
    "Stundensatz",
    "Für Arbeiten nach Aufwand, etwa spätere Änderungen, weitere Korrekturrunden oder den Retainer. Er richtet sich nach der Größe Ihres Unternehmens: Für Selbstständige und kleine Betriebe liegt er bei 50 bis 65 €, für mittelständische Unternehmen bei bis zu 85 € netto. Den genauen Satz nenne ich Ihnen im Angebot."
+  ],
+  [
+   "Marken-Regelwerk (Brand Guidelines)",
+   "Kurze, praktische Regeln für den Auftritt einer Marke – Logo, Farben, Schriften, Bildsprache und Ton – mit Beispielen, Vorlagen und einer KI-Markenanweisung für das Team."
+  ],
+  [
+   "KI-Markenanweisung (Brand Prompt)",
+   "Ein Text, den ein Team einmal in seinem KI-Werkzeug hinterlegt. Er beschreibt Ton, Begriffe, Farben und Regeln der Marke, damit niemand sie in jeder Anfrage neu erklären muss."
   ]
  ],
  "startseite": [
