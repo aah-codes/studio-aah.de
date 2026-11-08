@@ -139,16 +139,19 @@ def preis(e):
     return ('ab ' if e.get('ab', True) else '') + euro(e['preis']) + ' ' + NETTO
 
 
-def paket_karte(e, woerter):
-    """Karte eines Pakets (Name, Preis, für wen, Dauer, Inhalt); woerter: Trennliste für den Namen."""
+def paket_karte(e, woerter, pre=''):
+    """Karte eines Pakets (Name, Preis, für wen, Dauer, Inhalt); woerter: Trennliste für den Namen.
+    Optional "link" (ab der Website-Wurzel, z. B. "ki-arbeits-setup/"): Textlink zur eigenen Paketseite, pre = Pfad zur Wurzel."""
     gefragt = e.get('gefragt')
+    zur_seite = (f' <a class="textlink" href="{pre}{e["link"]}">Zur Paketseite <span aria-hidden="true">→</span></a>'
+                 if e.get('link') else '')
     badge = f'<p class="lsx-badge">{esc(e.get("badge", "Beliebt"))}</p>' if gefragt else ''
     liste = ''.join(f'<li>{esc(x)}</li>' for x in e.get('items', []))
     dauer = f'<span class="meta">Dauer</span> {esc(e["dauer"])}' if e.get('dauer') else ''
     return (f'      <article class="lsx-karte{" lsx-gefragt" if gefragt else ""}">\n'
             f'        {badge}<h3 class="lsx-karte-name">{trennen(esc(e["name"]), woerter)}</h3>\n'
             f'        <p class="lsx-karte-preis">{preis(e)}</p>\n'
-            f'        <p class="lsx-karte-wer">{esc(e.get("wer") or "")}</p>\n'
+            f'        <p class="lsx-karte-wer">{esc(e.get("wer") or "")}{zur_seite}</p>\n'
             f'        <p class="lsx-karte-dauer">{dauer}</p>\n'
             f'        <p class="lsx-karte-plus">{esc(e.get("plus") or "")}</p><ul class="lsx-karte-liste">{liste}</ul>\n'
             '      </article>')

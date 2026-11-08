@@ -51,6 +51,30 @@ def favicon(text):
     return FAVICON.sub(lambda m: m.group(0) + f'\n{m.group(1)}<link rel="icon" href="{m.group(2)}bilder/favicon-144.png" sizes="144x144" type="image/png">', text, count=1)
 
 
+# Dachzeile je Seite (Anna 07.11.2026, Plan „Mittelstand erreichen“, Option A): Website-Check überall (Vorlage in website/index.html),
+# das Programm „Demokratie braucht Sichtbarkeit.“ nur auf seinen eigenen Seiten und im Blog, auf Landingpages keine Dachzeile (ein Ziel pro Seite).
+DACHZEILE = re.compile(r'<!-- DACHZEILE:.*?<div class="ankuendigung">.*?</div>\n', re.S)
+PROGRAMM = ('demokratie-braucht-sichtbarkeit', 'eine-website-im-monat', 'blog')
+LANDINGPAGES = ('website-check', 'ki-arbeits-setup')
+DACHZEILE_PROGRAMM = (
+    '<!-- DACHZEILE: Programm (werkzeuge/kopf-fuss.py) -->\n'
+    '<div class="ankuendigung">\n'
+    '  <span class="ank-punkt" aria-hidden="true"></span>\n'
+    '  <p class="ank-text"><strong>Demokratie braucht Sichtbarkeit.</strong> <span class="ank-zusatz">– Websites ohne Honorar für Vereine, NGOs, Kunst und Kultur.</span></p>\n'
+    '  <a class="ank-link" href="{vorne}demokratie-braucht-sichtbarkeit/">Mehr erfahren <span aria-hidden="true">→</span></a>\n'
+    '</div>\n')
+
+
+def dachzeile(text, seite, vorne):
+    teile = seite.relative_to(website).parts
+    bereich = teile[0] if len(teile) > 1 else ''
+    if bereich in LANDINGPAGES:
+        return DACHZEILE.sub('', text, count=1)
+    if bereich in PROGRAMM:
+        return DACHZEILE.sub(lambda _: DACHZEILE_PROGRAMM.format(vorne=vorne), text, count=1)
+    return text
+
+
 def main():
     start = (website / 'index.html').read_text(encoding='utf-8')
     neu_start = favicon(vorladen(start))
@@ -87,6 +111,7 @@ def main():
             neu, n = re.subn(muster, lambda _: umschreiben(block, vorne), neu, count=1, flags=re.S)
             if not n:
                 raise SystemExit(f'{name} fehlt in {seite.relative_to(website)}')
+        neu = dachzeile(neu, seite, vorne)
         if neu != text:
             seite.write_text(neu, encoding='utf-8')
             geaendert += 1

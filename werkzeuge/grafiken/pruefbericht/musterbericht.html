@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Website-Check – Prüfbericht (Muster)</title>
+<!--
+  Vorlage Prüfbericht Website-Check (STUDIO AAH!), Stand 07.11.2026.
+  Muster mit erfundener Website „Mustermann & Co. Haustechnik GmbH“ – alle Befunde ausgedacht.
+  Aufbau nach Recherche 07.11.2026: Deckblatt → Übersicht aller 8 Punkte → Befunde je Punkt
+  (Beobachtung · Was das für Sie bedeutet · Empfehlung · Aufwand) → Maßnahmen → Rückseite.
+  Bilder für die Landingpage: python3 werkzeuge/grafiken/pruefbericht/mockup.py
+-->
+<style>
+@font-face { font-family: "Anton"; src: url(../../../website/schriften/anton-latin.woff2) format("woff2"); }
+@font-face { font-family: "Anton"; src: url(../../../website/schriften/anton-latin-ext.woff2) format("woff2"); unicode-range: U+0100-024F; }
+@font-face { font-family: "Manrope"; font-weight: 100 900; src: url(../../../website/schriften/manrope-latin.woff2) format("woff2"); }
+@font-face { font-family: "Manrope"; font-weight: 100 900; src: url(../../../website/schriften/manrope-latin-ext.woff2) format("woff2"); unicode-range: U+0100-024F; }
+@font-face { font-family: "JetBrains Mono"; src: url(../../../website/schriften/jetbrains-mono-latin.woff2) format("woff2"); }
+
+:root {
+  --dunkel: #0e1011; --weiss: #fff; --creme: #eeece7; --blau: #2a5fe6;
+  --grau: #9a9d9e; --grau-hell: #d6d8d9; --rahmen: #e3e6e6; --gedaempft: rgba(14,16,17,.62);
+  --ueberschrift: "Anton", Impact, sans-serif; --text: "Manrope", sans-serif; --meta: "JetBrains Mono", monospace;
+}
+@page { size: A4; margin: 0; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #e9e9e6; }
+body { font-family: var(--text); color: var(--dunkel); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.seite { width: 210mm; height: 297mm; background: var(--weiss); position: relative; overflow: hidden;
+  padding: 16mm 16mm 20mm; margin: 0 auto 10mm; page-break-after: always; break-after: page; display: flex; flex-direction: column; }
+@media print { html, body { background: var(--weiss); } .seite { margin: 0; } }
+.raster { background-image: radial-gradient(circle, rgba(14,16,17,.16) .45mm, transparent .5mm); background-size: 6mm 6mm; background-position: 3mm 3mm; }
+
+/* Kopf und Fuß */
+.kopf { display: flex; justify-content: space-between; gap: 8mm; font-family: var(--meta); font-size: 7.6pt; letter-spacing: .1em; text-transform: uppercase; color: var(--gedaempft); padding-bottom: 3mm; border-bottom: 1.6pt solid var(--dunkel); }
+.fuss { position: absolute; left: 16mm; right: 16mm; bottom: 9mm; display: flex; justify-content: space-between; font-family: var(--meta); font-size: 6.6pt; letter-spacing: .08em; text-transform: uppercase; color: var(--gedaempft); }
+.muster { color: var(--blau); }
+.meta { font-family: var(--meta); font-size: 8pt; letter-spacing: .12em; text-transform: uppercase; color: var(--gedaempft); margin: 0; }
+.meta.punkt::before { content: ""; display: inline-block; width: 2.2mm; height: 2.2mm; border-radius: 50%; background: var(--blau); margin-right: 2.2mm; vertical-align: .1mm; }
+h1, h2 { font-family: var(--ueberschrift); font-weight: 400; text-transform: uppercase; line-height: 1.12; margin: 0; letter-spacing: .005em; }
+h2 { font-size: 34pt; margin: 7mm 0 4mm; }
+h3 { font-size: 12.5pt; font-weight: 700; margin: 0; line-height: 1.25; }
+p { margin: 0; }
+
+/* Stufen: Bauhaus-Grundformen wie auf der Website */
+.stufe { display: inline-flex; align-items: center; gap: 2mm; font-family: var(--meta); font-size: 7pt; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
+.form { width: 3.6mm; height: 3.6mm; flex: none; display: inline-block; }
+.f-ok { border: .5mm solid var(--dunkel); border-radius: 50%; }
+.f-klein { border: .5mm solid var(--blau); border-radius: 50%; background: linear-gradient(90deg, var(--blau) 50%, transparent 50%); }
+.f-erheblich { border-radius: 50%; background: var(--dunkel); }
+.f-dringend { background: var(--dunkel); }
+
+/* Seite 1: Deckblatt */
+.deck { padding: 14mm 16mm 18mm; }
+.deck-oben { display: flex; justify-content: space-between; align-items: flex-start; }
+.deck-oben img { width: 52mm; }
+.deck-titel { font-size: 86pt; line-height: .98; margin: 30mm 0 5mm; letter-spacing: -.005em; }
+.deck-unter { font-size: 15pt; font-weight: 600; max-width: 140mm; line-height: 1.35; }
+.deck-formen { display: grid; grid-template-columns: repeat(8, 1fr); gap: 3mm; margin: 16mm 0 0; padding: 6mm 0; border-top: 1.6pt solid var(--dunkel); border-bottom: 1px solid var(--grau-hell); background: rgba(255,255,255,.85); }
+.deck-formen div { display: flex; flex-direction: column; gap: 2.4mm; align-items: flex-start; }
+.deck-formen .form { width: 9mm; height: 9mm; }
+.deck-formen .f-ok, .deck-formen .f-klein { border-width: .8mm; }
+.deck-formen b { font-family: var(--meta); font-size: 7pt; font-weight: 400; color: var(--gedaempft); }
+.deck-formen span.n { font-size: 7.4pt; font-weight: 600; line-height: 1.25; }
+.deck-daten { display: grid; grid-template-columns: 34mm 1fr; gap: 2.2mm 6mm; margin-top: 9mm; font-size: 9.5pt; background: rgba(255,255,255,.85); }
+.deck-daten dt { font-family: var(--meta); font-size: 7.4pt; letter-spacing: .1em; text-transform: uppercase; color: var(--gedaempft); padding-top: .6mm; }
+.deck-daten dd { margin: 0; font-weight: 600; }
+.deck-person { position: absolute; left: 16mm; right: 16mm; bottom: 20mm; display: flex; gap: 5mm; align-items: center; padding-top: 6mm; border-top: 1px solid var(--grau-hell); background: var(--weiss); }
+.deck-person img { width: 17mm; height: 17mm; border-radius: 50%; object-fit: cover; }
+.deck-person p { font-size: 9pt; line-height: 1.45; }
+
+/* Seite 2: Übersicht */
+.fazit { font-size: 12pt; line-height: 1.5; max-width: 165mm; }
+.zaehler { display: flex; gap: 8mm; margin: 6mm 0 5mm; padding: 4mm 0; border-top: 1px solid var(--grau-hell); border-bottom: 1px solid var(--grau-hell); }
+.zaehler div { display: flex; align-items: center; gap: 2.5mm; font-size: 9pt; }
+.zaehler strong { font-family: var(--ueberschrift); font-weight: 400; font-size: 20pt; line-height: 1; }
+.tabelle { width: 100%; border-collapse: collapse; font-size: 9.2pt; }
+.tabelle th { text-align: left; font-family: var(--meta); font-weight: 400; font-size: 6.8pt; letter-spacing: .1em; text-transform: uppercase; color: var(--gedaempft); padding: 0 0 2mm; border-bottom: 1.6pt solid var(--dunkel); }
+.tabelle td { padding: 3.1mm 3mm 3.1mm 0; border-bottom: 1px solid var(--rahmen); vertical-align: top; line-height: 1.4; }
+.tabelle td.nr { font-family: var(--meta); font-size: 7.6pt; color: var(--gedaempft); width: 9mm; padding-top: 3.6mm; }
+.tabelle td.bereich { font-weight: 700; width: 46mm; }
+.tabelle td.st { width: 38mm; padding-top: 3.4mm; }
+.tabelle td.satz { color: var(--gedaempft); }
+.staerken { display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; margin-top: 7mm; font-size: 9pt; line-height: 1.45; }
+.staerken h3 { font-size: 10pt; margin-bottom: 1.5mm; }
+.staerken ul { margin: 0; padding-left: 4mm; }
+
+/* Seiten 3–4: Befunde */
+.befund { display: grid; grid-template-columns: 11mm 1fr; gap: 0 4mm; padding: 4.6mm 0 4.4mm; border-bottom: 1px solid var(--rahmen); }
+.befund:last-of-type { border-bottom: 0; }
+.befund .nr { font-family: var(--ueberschrift); font-size: 22pt; line-height: 1; }
+.befund-kopf { display: flex; justify-content: space-between; align-items: baseline; gap: 4mm; margin-bottom: 2.2mm; }
+.befund dl { display: grid; grid-template-columns: 37mm 1fr; gap: 1.4mm 4mm; margin: 0; font-size: 8.9pt; line-height: 1.42; }
+.befund dt { font-family: var(--meta); font-size: 6.6pt; letter-spacing: .08em; text-transform: uppercase; color: var(--gedaempft); padding-top: .6mm; }
+.befund dd { margin: 0; }
+.aufwand { font-family: var(--meta); font-size: 6.8pt; letter-spacing: .08em; text-transform: uppercase; }
+.messung { display: grid; grid-template-columns: 37mm 1fr; gap: 1.4mm 4mm; margin-top: 2mm; font-size: 8pt; }
+.balken { position: relative; height: 4.2mm; background: var(--creme); }
+.balken i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--dunkel); }
+.balken em { position: absolute; top: -1mm; bottom: -1mm; width: .5mm; background: var(--blau); }
+.balken small { position: absolute; right: 3.5mm; top: .3mm; font-family: var(--meta); font-size: 6.4pt; color: var(--weiss); }
+
+/* Seite 5: Maßnahmen */
+.massnahmen { list-style: none; margin: 2mm 0 0; padding: 0; counter-reset: m; }
+.massnahmen li { display: grid; grid-template-columns: 20mm 1fr; gap: 0 5mm; padding: 5mm 0; border-bottom: 1px solid var(--rahmen); counter-increment: m; }
+.massnahmen li::before { content: "0" counter(m); font-family: var(--ueberschrift); font-size: 40pt; line-height: .9; }
+.massnahmen h3 { font-size: 13pt; margin-bottom: 1.6mm; }
+.massnahmen p { font-size: 9.4pt; line-height: 1.45; color: var(--gedaempft); }
+.massnahmen .zeile { display: flex; gap: 6mm; margin-top: 2mm; }
+.zwei-spalten { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; margin-top: 8mm; }
+.kasten { border: 1.2pt solid var(--dunkel); padding: 5mm; font-size: 9pt; line-height: 1.5; }
+.kasten.creme { background: var(--creme); border-color: var(--creme); }
+.kasten h3 { font-size: 10.5pt; margin-bottom: 2mm; }
+.kasten ul { margin: 0; padding-left: 4mm; }
+.grenzen { margin-top: 8mm; font-size: 7.8pt; line-height: 1.5; color: var(--gedaempft); max-width: 170mm; }
+.grenzen strong { color: var(--dunkel); }
+
+/* Seite 6: Rückseite */
+.rueck { background: var(--creme); }
+.rueck h2 { font-size: 58pt; margin: 18mm 0 8mm; }
+.wege { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5mm; }
+.weg { border: 1.2pt solid var(--dunkel); background: var(--weiss); padding: 5mm; display: flex; flex-direction: column; gap: 2.5mm; min-height: 62mm; }
+.weg.haupt { background: var(--blau); border-color: var(--blau); color: var(--weiss); }
+.weg.haupt .meta { color: rgba(255,255,255,.8); }
+.weg h3 { font-size: 13pt; }
+.weg p { font-size: 9pt; line-height: 1.5; }
+.weg.haupt p { color: var(--weiss); }
+.weg .pfeil { margin-top: auto; font-family: var(--meta); font-size: 7.6pt; letter-spacing: .08em; text-transform: uppercase; }
+.kontakt { display: grid; grid-template-columns: 30mm 1fr 1fr; gap: 6mm; align-items: center; margin-top: 12mm; padding-top: 8mm; border-top: 1px solid rgba(14,16,17,.25); }
+.kontakt img.foto { width: 30mm; height: 30mm; border-radius: 50%; object-fit: cover; }
+.kontakt p { font-size: 10pt; line-height: 1.6; }
+.kontakt strong { font-size: 12pt; }
+.rueck-logo { position: absolute; left: 16mm; right: 16mm; bottom: 22mm; }
+.rueck-logo img { width: 100%; display: block; }
+</style>
+</head>
+<body>
+
+<!-- 1 Deckblatt -->
+<section class="seite deck raster" id="s1">
+  <div class="deck-oben">
+    <img src="../../../website/bilder/logo-studio-aah.svg" alt="STUDIO AAH!">
+    <p class="meta">Prüfbericht</p>
+  </div>
+  <h1 class="deck-titel">Website-<br>Check.</h1>
+  <p class="deck-unter">Prüfbericht für Mustermann &amp; Co. Haustechnik GmbH – acht Punkte, von außen gemessen wie eine Besucherin.</p>
+  <div class="deck-formen" aria-label="Übersicht der acht Punkte">
+    <div><span class="form f-erheblich"></span><b>01</b><span class="n">Erster Eindruck</span></div>
+    <div><span class="form f-erheblich"></span><b>02</b><span class="n">Weg zur Anfrage</span></div>
+    <div><span class="form f-dringend"></span><b>03</b><span class="n">Handy und Tempo</span></div>
+    <div><span class="form f-erheblich"></span><b>04</b><span class="n">Gefunden bei Google</span></div>
+    <div><span class="form f-erheblich"></span><b>05</b><span class="n">Gefunden in KI-Antworten</span></div>
+    <div><span class="form f-klein"></span><b>06</b><span class="n">Bedienbar für KI-Agenten</span></div>
+    <div><span class="form f-erheblich"></span><b>07</b><span class="n">Barriere&shy;freiheit</span></div>
+    <div><span class="form f-klein"></span><b>08</b><span class="n">Technik und Sicherheit</span></div>
+  </div>
+  <dl class="deck-daten">
+    <dt>Website</dt><dd>www.mustermann-haustechnik.example</dd>
+    <dt>Gemessen am</dt><dd>05.11.2026, 09:40 Uhr</dd>
+    <dt>Geprüfte Seiten</dt><dd>Startseite, Leistungen, Badsanierung, Kontakt, Karriere</dd>
+    <dt>Geräte</dt><dd>Handy (390 und 320 px), Desktop (1280 px)</dd>
+    <dt>Werkzeuge</dt><dd>Lighthouse, axe, eigener Browser-Test – gemessen aus Leipzig</dd>
+  </dl>
+  <div class="deck-person">
+    <img src="../../../website/bilder/anna-haertelt-studio-blau-rund.jpg" alt="">
+    <p><strong>Geprüft von Anna Härtelt</strong><br>UX-Designerin, STUDIO AAH! · Leipzig · info@studio-aah.de</p>
+  </div>
+  <div class="fuss"><span>STUDIO AAH! · info@studio-aah.de</span><span>Seite 1 / 6</span></div>
+</section>
+
+<!-- 2 Übersicht -->
+<section class="seite" id="s2">
+  <div class="kopf"><span>Website-Check · mustermann-haustechnik.example</span><span>05.11.2026</span></div>
+  <h2>Übersicht.</h2>
+  <p class="fazit">Ihre Website ist gepflegt, verliert aber Interessierte auf dem Weg zur Anfrage: Am Handy lädt sie zu langsam, und Ihr Angebot ist im ersten Moment nicht zu erkennen. Bei Google und in KI-Antworten taucht sie kaum auf. Die gute Nachricht: Sechs von acht Punkten lassen sich mit wenig Aufwand verbessern.</p>
+  <div class="zaehler">
+    <div><span class="form f-dringend"></span><strong>1</strong> dringend</div>
+    <div><span class="form f-erheblich"></span><strong>5</strong> erheblicher Mangel</div>
+    <div><span class="form f-klein"></span><strong>2</strong> kleiner Mangel</div>
+    <div><span class="form f-ok"></span><strong>0</strong> ohne Befund</div>
+  </div>
+  <table class="tabelle">
+    <thead><tr><th>Nr.</th><th>Bereich</th><th>Stufe</th><th>In einem Satz</th></tr></thead>
+    <tbody>
+      <tr><td class="nr">01</td><td class="bereich">Erster Eindruck</td><td class="st"><span class="stufe"><span class="form f-erheblich"></span>erheblicher Mangel</span></td><td class="satz">Was Sie anbieten und wo, steht erst nach dem dritten Scrollen.</td></tr>
+      <tr><td class="nr">02</td><td class="bereich">Weg zur Anfrage</td><td class="st"><span class="stufe"><span class="form f-erheblich"></span>erheblicher Mangel</span></td><td class="satz">Kontakt nur über das Menü, Formular mit elf Pflichtfeldern.</td></tr>
+      <tr><td class="nr">03</td><td class="bereich">Handy und Tempo</td><td class="st"><span class="stufe"><span class="form f-dringend"></span>dringend</span></td><td class="satz">Am Handy dauert es 9,8 Sekunden, bis die Startseite steht.</td></tr>
+      <tr><td class="nr">04</td><td class="bereich">Gefunden werden bei Google</td><td class="st"><span class="stufe"><span class="form f-erheblich"></span>erheblicher Mangel</span></td><td class="satz">Alle Seiten heißen in der Google-Vorschau „Startseite“.</td></tr>
+      <tr><td class="nr">05</td><td class="bereich">Gefunden werden in KI-Antworten</td><td class="st"><span class="stufe"><span class="form f-erheblich"></span>erheblicher Mangel</span></td><td class="satz">Leistungen stehen nur in einem PDF aus Bildern.</td></tr>
+      <tr><td class="nr">06</td><td class="bereich">Bedienbar für KI-Agenten</td><td class="st"><span class="stufe"><span class="form f-klein"></span>kleiner Mangel</span></td><td class="satz">Ein Button und zwei Formularfelder haben keine Beschriftung.</td></tr>
+      <tr><td class="nr">07</td><td class="bereich">Barrierefreiheit</td><td class="st"><span class="stufe"><span class="form f-erheblich"></span>erheblicher Mangel</span></td><td class="satz">Hellgraue Schrift auf Weiß, Bilder ohne Beschreibung.</td></tr>
+      <tr><td class="nr">08</td><td class="bereich">Technik und Sicherheit</td><td class="st"><span class="stufe"><span class="form f-klein"></span>kleiner Mangel</span></td><td class="satz">Verschlüsselung in Ordnung, einige Sicherheitseinstellungen fehlen.</td></tr>
+    </tbody>
+  </table>
+  <div class="staerken">
+    <div><h3>Das funktioniert schon</h3><ul><li>Echte Fotos von Team und Baustellen</li><li>Referenzen mit Vorher-nachher-Bildern</li><li>Verschlüsselte Verbindung (HTTPS), Impressum gefunden</li></ul></div>
+    <div><h3>Die größten Baustellen</h3><ul><li>Ladezeit und Darstellung am Handy</li><li>Angebot und Anfrage im ersten Bildschirm</li><li>Titel und Texte für Google und KI-Suchen</li></ul></div>
+  </div>
+  <div class="fuss"><span>STUDIO AAH! · info@studio-aah.de</span><span>Seite 2 / 6</span></div>
+</section>
+
+<!-- 3 Befunde 1–4 -->
+<section class="seite" id="s3">
+  <div class="kopf"><span>Website-Check · mustermann-haustechnik.example</span><span>Befunde 01–04</span></div>
+  <h2>Befunde.</h2>
+  <article class="befund"><span class="nr">01</span><div>
+    <div class="befund-kopf"><h3>Erster Eindruck</h3><span class="stufe"><span class="form f-erheblich"></span>erheblicher Mangel</span></div>
+    <dl><dt>Beobachtung</dt><dd>Im ersten Bildschirm wechseln fünf Fotos. „Heizung und Bad in Leipzig“ steht erst nach dem dritten Scrollen.</dd>
+    <dt>Was das für Sie bedeutet</dt><dd>Wer in wenigen Sekunden nicht erkennt, was Sie anbieten, sucht weiter.</dd>
+    <dt>Empfehlung</dt><dd>Eine Überschrift mit Leistung und Ort, darunter ein Button „Termin anfragen“.</dd>
+    <dt>Aufwand</dt><dd class="aufwand">klein</dd></dl></div></article>
+  <article class="befund"><span class="nr">02</span><div>
+    <div class="befund-kopf"><h3>Weg zur Anfrage</h3><span class="stufe"><span class="form f-erheblich"></span>erheblicher Mangel</span></div>
+    <dl><dt>Beobachtung</dt><dd>Kontakt nur über „Unternehmen › Kontakt“. Die Telefonnummer ist nicht antippbar. Das Formular hat elf Pflichtfelder.</dd>
+    <dt>Was das für Sie bedeutet</dt><dd>Jeder zusätzliche Schritt kostet Anfragen – am Handy besonders.</dd>
+    <dt>Empfehlung</dt><dd>Telefon und „Anfrage“ in den Kopf jeder Seite, Formular auf vier Felder kürzen.</dd>
+    <dt>Aufwand</dt><dd class="aufwand">klein</dd></dl></div></article>
+  <article class="befund"><span class="nr">03</span><div>
+    <div class="befund-kopf"><h3>Handy und Tempo</h3><span class="stufe"><span class="form f-dringend"></span>dringend</span></div>
+    <dl><dt>Beobachtung</dt><dd>Die Startseite braucht am Handy 9,8 Sekunden, bis der größte Inhalt sichtbar ist (Labormessung). Bei 390 px Breite muss man seitlich wischen.</dd>
+    <dt>Was das für Sie bedeutet</dt><dd>Wer mit dem Handy kommt, schaut lange auf eine leere Seite und bricht eher ab.</dd>
+    <dt>Empfehlung</dt><dd>Fotos verkleinern, den Wechsel der Startfotos ersetzen, das Layout fürs Handy anpassen.</dd>
+    <dt>Aufwand</dt><dd class="aufwand">mittel</dd></dl>
+    <div class="messung"><span class="meta" style="font-size:6.6pt">Ladezeit Handy<br>(gut: bis 2,5 s)</span><div class="balken"><i style="width:98%"></i><em style="left:25%"></em><small>9,8 s</small></div></div></div></article>
+  <article class="befund"><span class="nr">04</span><div>
+    <div class="befund-kopf"><h3>Gefunden werden bei Google</h3><span class="stufe"><span class="form f-erheblich"></span>erheblicher Mangel</span></div>
+    <dl><dt>Beobachtung</dt><dd>Alle 14 Seiten tragen den Titel „Startseite“. Beschreibungen fehlen, die Leistungsseiten haben keine Hauptüberschrift.</dd>
+    <dt>Was das für Sie bedeutet</dt><dd>Google kann Ihre Seiten kaum unterscheiden. Bei „Badsanierung Leipzig“ erscheinen andere.</dd>
+    <dt>Empfehlung</dt><dd>Jede Seite mit eigenem Titel, eigener Beschreibung und einer Hauptüberschrift.</dd>
+    <dt>Aufwand</dt><dd class="aufwand">klein</dd></dl></div></article>
+  <div class="fuss"><span>STUDIO AAH! · info@studio-aah.de</span><span>Seite 3 / 6</span></div>
+</section>
+
+<!-- 4 Befunde 5–8 -->
+<section class="seite" id="s4">
+  <div class="kopf"><span>Website-Check · mustermann-haustechnik.example</span><span>Befunde 05–08</span></div>
+  <h2>Befunde.</h2>
+  <article class="befund"><span class="nr">05</span><div>
+    <div class="befund-kopf"><h3>Gefunden werden in KI-Antworten</h3><span class="stufe"><span class="form f-erheblich"></span>erheblicher Mangel</span></div>
+    <dl><dt>Beobachtung</dt><dd>Leistungen und Preise stehen nur in einem PDF aus Bildern. Firmendaten wie Adresse und Öffnungszeiten sind nicht als strukturierte Daten hinterlegt.</dd>
+    <dt>Was das für Sie bedeutet</dt><dd>KI-Suchen wie ChatGPT oder die „Übersicht mit KI“ bei Google lesen Text, keine Bilder. Ihr Angebot kommt dort nicht vor.</dd>
+    <dt>Empfehlung</dt><dd>Leistungen als Text auf die Seite, Firmendaten als strukturierte Daten hinterlegen.</dd>
+    <dt>Aufwand</dt><dd class="aufwand">mittel</dd></dl></div></article>
+  <article class="befund"><span class="nr">06</span><div>
+    <div class="befund-kopf"><h3>Bedienbar für KI-Agenten</h3><span class="stufe"><span class="form f-klein"></span>kleiner Mangel</span></div>
+    <dl><dt>Beobachtung</dt><dd>Der Button im Kopf ist nur ein Symbol. Zwei Formularfelder haben keinen Namen.</dd>
+    <dt>Was das für Sie bedeutet</dt><dd>Programme, die im Auftrag Ihrer Kundschaft suchen und anfragen, finden den Weg schwerer.</dd>
+    <dt>Empfehlung</dt><dd>Buttons und Felder sichtbar beschriften.</dd>
+    <dt>Aufwand</dt><dd class="aufwand">klein</dd></dl></div></article>
+  <article class="befund"><span class="nr">07</span><div>
+    <div class="befund-kopf"><h3>Barrierefreiheit</h3><span class="stufe"><span class="form f-erheblich"></span>erheblicher Mangel</span></div>
+    <dl><dt>Beobachtung</dt><dd>Hellgraue Schrift auf Weiß (Kontrast 2,1 : 1, empfohlen mindestens 4,5 : 1). 23 Bilder ohne Beschreibung. Mit der Tastatur sieht man nicht, wo man ist.</dd>
+    <dt>Was das für Sie bedeutet</dt><dd>Menschen mit Sehschwäche oder ohne Maus können Ihre Seite kaum nutzen.</dd>
+    <dt>Empfehlung</dt><dd>Schrift dunkler, Bilder beschreiben, die aktuelle Stelle sichtbar markieren.</dd>
+    <dt>Aufwand</dt><dd class="aufwand">klein</dd></dl></div></article>
+  <article class="befund"><span class="nr">08</span><div>
+    <div class="befund-kopf"><h3>Technik und Sicherheit</h3><span class="stufe"><span class="form f-klein"></span>kleiner Mangel</span></div>
+    <dl><dt>Beobachtung</dt><dd>Verschlüsselte Verbindung und Weiterleitungen sind in Ordnung. Einige Sicherheitseinstellungen des Servers fehlen.</dd>
+    <dt>Was das für Sie bedeutet</dt><dd>Kein akutes Warnzeichen. Mit wenigen Einstellungen wird die Seite robuster.</dd>
+    <dt>Empfehlung</dt><dd>Die fehlenden Einstellungen bei Ihrem Hosting einschalten lassen.</dd>
+    <dt>Aufwand</dt><dd class="aufwand">klein</dd></dl></div></article>
+  <div class="fuss"><span>STUDIO AAH! · info@studio-aah.de</span><span>Seite 4 / 6</span></div>
+</section>
+
+<!-- 5 Maßnahmen -->
+<section class="seite" id="s5">
+  <div class="kopf"><span>Website-Check · mustermann-haustechnik.example</span><span>Maßnahmen</span></div>
+  <h2>Die drei wichtigsten Maßnahmen.</h2>
+  <ol class="massnahmen">
+    <li><div><h3>Startseite fürs Handy schnell machen</h3><p>Fotos verkleinern, Layout anpassen. Das wirkt auf alle anderen Punkte.</p><div class="zeile"><span class="stufe"><span class="form f-dringend"></span>Punkt 03</span><span class="aufwand">Aufwand mittel</span></div></div></li>
+    <li><div><h3>Angebot und Anfrage in den ersten Bildschirm</h3><p>Leistung und Ort als Überschrift, Telefon und Button „Termin anfragen“ auf jeder Seite.</p><div class="zeile"><span class="stufe"><span class="form f-erheblich"></span>Punkte 01, 02</span><span class="aufwand">Aufwand klein</span></div></div></li>
+    <li><div><h3>Titel und Texte für Google und KI-Suchen</h3><p>Eigene Titel je Seite, Leistungen als Text statt PDF, Firmendaten als strukturierte Daten.</p><div class="zeile"><span class="stufe"><span class="form f-erheblich"></span>Punkte 04, 05</span><span class="aufwand">Aufwand mittel</span></div></div></li>
+  </ol>
+  <div class="zwei-spalten">
+    <div class="kasten"><h3>Das können Sie selbst sofort tun</h3><ul><li>Telefonnummer antippbar machen</li><li>Formular auf vier Felder kürzen</li><li>Bilder beschreiben (Alternativtext)</li><li>Schriftfarbe dunkler stellen</li></ul></div>
+    <div class="kasten creme"><h3>Dafür braucht es Fachleute</h3><ul><li>Ladezeit und Handy-Layout</li><li>Strukturierte Daten für Google und KI</li><li>Startseite neu ordnen: Angebot, Beweise, Anfrage</li></ul></div>
+  </div>
+  <p class="grenzen"><strong>Was dieser Check ist – und was nicht:</strong> Gemessen wurde von außen, wie eine Besucherin – ohne Zugänge zu Ihrer Website, zur Search Console oder zu Ihrem Google-Profil. Ladezeiten sind Labormessungen mit simuliertem Mittelklasse-Handy. Dieser Bericht enthält technische Befunde und allgemeine Hinweise. Er ist keine Rechtsberatung und ersetzt keine Prüfung durch eine Anwältin. Einige Befunde können rechtliche Fragen berühren. Ob und welche Pflichten für Ihre Website gelten, klärt Ihre Rechtsberatung. Nächster Check empfohlen in zwölf Monaten.</p>
+  <div class="fuss"><span>STUDIO AAH! · info@studio-aah.de</span><span>Seite 5 / 6</span></div>
+</section>
+
+<!-- 6 Rückseite -->
+<section class="seite rueck" id="s6">
+  <div class="kopf"><span>Website-Check · mustermann-haustechnik.example</span><span>Wie es weitergeht</span></div>
+  <h2>So geht es<br>weiter.</h2>
+  <div class="wege">
+    <div class="weg"><p class="meta">Weg 1</p><h3>Selbst umsetzen</h3><p>Mit den Maßnahmen auf Seite 5 kann Ihr Team sofort anfangen.</p><span class="pfeil">Seite 5 →</span></div>
+    <div class="weg haupt"><p class="meta">Weg 2</p><h3>Gespräch zum Bericht</h3><p>45 Minuten am Telefon, kostenlos: Ich erkläre die Ergebnisse und beantworte Ihre Fragen.</p><span class="pfeil">Termin über den Link in der E-Mail →</span></div>
+    <div class="weg"><p class="meta">Weg 3</p><h3>Umsetzen lassen</h3><p>Auf Wunsch mache ich Ihnen ein Angebot – für einzelne Maßnahmen oder einen Relaunch.</p><span class="pfeil">info@studio-aah.de →</span></div>
+  </div>
+  <div class="kontakt">
+    <img class="foto" src="../../../website/bilder/anna-haertelt-studio-blau-rund.jpg" alt="Anna Härtelt">
+    <p><strong>Anna Härtelt</strong><br>STUDIO AAH!<br>Gießerstraße 75<br>04229 Leipzig</p>
+    <p>0176 830 898 79<br>info@studio-aah.de<br>studio-aah.de</p>
+  </div>
+  <div class="rueck-logo"><img src="../../../website/bilder/logo-studio-aah.svg" alt="STUDIO AAH!"></div>
+  <div class="fuss"><span>STUDIO AAH! · info@studio-aah.de</span><span>Seite 6 / 6</span></div>
+</section>
+
+</body>
+</html>

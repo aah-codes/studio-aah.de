@@ -22,6 +22,7 @@
 - `python3 werkzeuge/referenzen.py` – Projektübersicht und Projektseiten unter `website/referenzen/` aus `werkzeuge/inhalte/projekte.json`; Kopf und Fuß von der Profil- bzw. Webdesign-Seite. Bild-Versionen `?v=` aus dem Dateiinhalt
 - `python3 werkzeuge/grafiken/ci-film.py` – CI-Grafik (`werkzeuge/grafiken/corporate-identity.html`)
 - `python3 werkzeuge/grafiken/druck-mockup.py PFAD/schreibtisch.jpg` – Druck-Mockup (Goldhammer-Visitenkarten auf Schreibtisch); Foto liegt nicht im Repository
+- `python3 werkzeuge/grafiken/pruefbericht/rendern.py /tmp/pruefbericht`, danach `python3 werkzeuge/grafiken/pruefbericht/mockup.py /tmp/pruefbericht` – Musterbericht des Website-Checks (`musterbericht.html`, 6 Seiten: Deckblatt, Übersicht aller 8 Punkte, Befunde, Maßnahmen, Rückseite) als PDF und Papier-Mockup `website/bilder/website-check/pruefbericht-mockup*.webp`. Immer mit erfundener Website (Platzhalter wie „Mustermann“), nie mit Annas eigener oder einer echten (Anna, 07.11.2026); kein Hinweis wie „erfunden“ oder „Beispiel mit erfundenen Daten“ im Gestalteten (Anna, 07.11.2026: „Das schreibt keiner“); Deckblatt liegt oben, nichts angeschnitten; PDF nicht ins Repository.
 - `python3 werkzeuge/grafiken/fotostudio.py` – Porträts mit blauer Studiowand (Entwurf, Schwarz-Weiß-Vorlagen)
 - `bash werkzeuge/grafiken/bild/varianten.sh` – kleine Fassungen der langen Seitenaufnahmen (`<bild>-<breite>.webp`, bei Bedarf `.jpg`) für Projektkarten und Hero-Leiste; `bild_attr()` in `gemeinsam.py` baut daraus `srcset`. Braucht `sips` (macOS) und `cwebp` (libwebp von Google, liegt auf dem MacBook in `~/bin`). Danach alle Generatoren laufen lassen.
 - Erzeugte Bereiche nie direkt in `website/` ändern, sondern in der Quelle, dann neu erzeugen.
@@ -119,6 +120,7 @@
 
 ## Arbeitsweise
 - Antworten auf Deutsch, in Stichpunkten, Schritt für Schritt; Fachbegriffe mit dem englischen Begriff in Klammern.
+- E-Mail-Adresse immer und überall: info@studio-aah.de (Anna, 07.11.2026) – nie eine andere Adresse auf Seiten, in Vorlagen oder Grafiken.
 - Nichts erfinden; Unsicheres als „Unsicher“ kennzeichnen.
 - Vor jedem Schritt mit Wirkung nach außen fragen: Hochladen (Push) auf `main` – jeder Push auf `main` geht sofort live –, Installationen, Änderungen bei IONOS. In Cloud-Sitzungen auf einem eigenen Zweig arbeiten; Anna führt ihn über GitHub Desktop zusammen.
 - Kleine Commits mit deutscher Beschreibung.

@@ -2800,6 +2800,125 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
   .wc-person figcaption { display: none; }
 }
 
+/* ---------- Landingpages (Website-Check, KI-Arbeits-Setup) – Lead-Design 07.11.2026 ----------
+   Ziel Conversion: Formular sofort sichtbar, eine Aussage pro Abschnitt, das Produkt selbst zeigen (Prüfbericht, Cockpit),
+   große Typografie statt Stockfotos. Nur Weiß, Schwarz, Blau; keine großen schwarzen Flächen (Branding-Richtlinien 10.10.2026). */
+.lp [id] { scroll-margin-top: calc(var(--kopf-hoehe) + 16px); }
+.lp-abschnitt { max-width: var(--inhalt-breite); margin: 0 auto; padding: clamp(96px, 12vw, 168px) var(--rand-seite) 0; }
+.lp .preis-h2 { font-size: clamp(30px, 3.8vw, 52px); line-height: 1.15; max-width: 24ch; margin: 8px 0 16px; }
+.lp-hero { max-width: var(--inhalt-breite); margin: 0 auto; padding: clamp(24px, 3.5vw, 48px) var(--rand-seite) 0; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 24px clamp(32px, 5vw, 80px); align-items: start; }
+.lp-hero-kopf { grid-column: 1 / -1; }
+.lp-titel { font-size: clamp(40px, 5.4vw, 84px); line-height: 1.15; max-width: 24ch; margin: 8px 0 0; hyphens: manual; }
+.lp-hero .rv-intro { max-width: 38ch; font-size: clamp(18px, 1.6vw, 22px); margin-bottom: 24px; }
+.lp-buehne { position: relative; padding-top: 8px; }
+.lp-buehne .wc-buehne { margin: 0 auto; }
+.lp-haken { list-style: none; display: flex; flex-wrap: wrap; gap: 10px 24px; margin: 20px 0 0; padding: 0; font-weight: 600; font-size: 16px; }
+.lp-haken li { display: flex; align-items: center; gap: 8px; }
+.lp-haken li::before { content: "✓" / ""; display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--farbe-primaer); color: var(--farbe-weiss); font-size: 13px; flex: none; }
+.lp-zeile { font-size: 15px; color: var(--farbe-gedaempft); margin: 12px 0 0; }
+/* Formular-Karte direkt im ersten Bildschirm */
+.lp-form-karte { background: var(--farbe-weiss); border: 1.5px solid var(--farbe-rahmen); border-radius: 24px; padding: clamp(20px, 3vw, 32px); box-shadow: 0 14px 40px rgba(14, 16, 17, .08); max-width: 620px; }
+.lp-form-karte h2 { font-size: clamp(22px, 2.2vw, 28px); line-height: 1.2; margin: 0 0 12px; }
+.lp-form-karte .anfrage-felder { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.lp-form-karte .anfrage-knoepfe { margin: 16px 0 0; }
+.lp-form-karte .anfrage-knoepfe .button { width: 100%; justify-content: center; }
+.lp-form-karte .wc-berechtigung { font-size: 13px; line-height: 1.45; color: var(--farbe-gedaempft); margin: 12px 0 0; max-width: none; }
+.lp-form-karte .anfrage-hinweis { margin-top: 10px; font-size: 13px; }
+.lp-form-karte textarea { min-height: 96px; }
+.lp-felder-eins { grid-template-columns: minmax(0, 1fr) !important; }
+/* Große Zahl als Aussage (statt Stimmungsbild) */
+.lp-zahl-band { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(24px, 4vw, 64px); align-items: end; border-top: 1.5px solid var(--farbe-dunkel); padding-top: 32px; }
+.lp-zahl { font-family: var(--schrift-ueberschrift); font-size: clamp(110px, 17vw, 250px); line-height: .9; margin: 0; letter-spacing: -.01em; }
+.lp-zahl-text h2 { font-size: clamp(36px, 5vw, 72px); line-height: 1.15; margin: 0 0 16px; }
+.lp-zahl-text h2 span { color: var(--farbe-primaer); }
+.lp-zahl-text p { font-size: clamp(18px, 1.6vw, 22px); max-width: 40ch; margin: 0 0 12px; }
+.lp-quelle { font-size: 13px; color: var(--farbe-gedaempft); margin: 16px 0 0; max-width: 80ch; }
+.lp-quelle a { color: inherit; }
+.lp-zwei.lp-bekommen { align-items: start; }
+.lp-mockup { margin: clamp(40px, 6vw, 80px) 0 0; }
+.lp-mockup img { display: block; width: 100%; height: auto; }
+.lp-mockup figcaption { font-size: 14px; color: var(--farbe-gedaempft); margin-top: 16px; text-align: center; }
+.lp-mockup figcaption a { color: var(--farbe-dunkel); }
+.lp-quellen { max-width: var(--inhalt-breite); margin: -64px auto 0; padding: 0 var(--rand-seite) 48px; }
+/* Prüfbericht zeigen */
+.lp-zwei { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); align-items: center; }
+/* Stufen als Bauhaus-Grundformen (keine Ampelfarben: kein Rot, Gelb, Grün) */
+.lp-stufe { display: inline-flex; align-items: center; gap: 8px; font-family: var(--schrift-meta); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
+.lp-stufe::before { content: ""; width: 14px; height: 14px; flex: none; box-sizing: border-box; }
+.lp-stufe-ok::before { border: 2px solid var(--farbe-dunkel); border-radius: 50%; }
+.lp-stufe-klein::before { border-radius: 50%; background: linear-gradient(90deg, var(--farbe-primaer) 50%, transparent 50%); border: 2px solid var(--farbe-primaer); }
+.lp-stufe-erheblich::before { border-radius: 50%; background: var(--farbe-dunkel); }
+.lp-stufe-dringend::before { background: var(--farbe-dunkel); }
+.lp-legende { list-style: none; display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 16px 0 0; padding: 0; }
+/* Erzählung in großen Zeilen */
+.lp-zeilen { list-style: none; margin: 32px 0 0; padding: 0; max-width: 980px; }
+.lp-zeilen li { font-size: clamp(22px, 2.6vw, 36px); line-height: 1.3; font-weight: 600; padding: 20px 0; border-top: 1.5px solid var(--farbe-rahmen); display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 16px; align-items: start; }
+.lp-zeilen li img { width: 48px; height: 48px; mix-blend-mode: multiply; margin-top: 2px; }
+.lp-zeilen li span { color: var(--farbe-gedaempft); font-weight: 400; }
+.lp-kern { font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-size: clamp(30px, 4vw, 56px); line-height: 1.15; margin: 48px 0 0; max-width: 22ch; }
+.lp-kern span { color: var(--farbe-primaer); }
+/* Karten mit Clay-Icon */
+.lp-karten { list-style: none; margin: 32px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.lp-karten li { background: var(--farbe-hellgrau); border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 8px; }
+.lp-karten img { width: 88px; height: 88px; mix-blend-mode: multiply; margin: -8px 0 4px -8px; }
+.lp-karten h3 { margin: 0; font-size: 1.35rem; line-height: 1.2; }
+.lp-karten p { margin: 0; color: var(--farbe-gedaempft); }
+/* Preis */
+.lp-preis { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(24px, 4vw, 56px); align-items: start; margin-top: 32px; }
+.lp-preis-karte { border: var(--rahmen) solid var(--farbe-dunkel); border-radius: 32px; padding: clamp(24px, 4vw, 44px); }
+.lp-preis-betrag { font-family: var(--schrift-ueberschrift); font-size: clamp(64px, 8vw, 112px); line-height: 1; margin: 8px 0 4px; }
+.lp-preis-betrag small { display: block; font-family: var(--schrift-text); font-size: 16px; font-weight: 600; margin-top: 8px; color: var(--farbe-gedaempft); }
+.lp-pilot { display: block; background: var(--farbe-creme); color: var(--farbe-dunkel); border-radius: 12px; padding: 12px 16px; font-size: 15px; line-height: 1.45; margin: 16px 0 0; }
+.lp .preis-h2.lp-h2-breit { max-width: none; }
+.lp-preis-karte .button { width: 100%; justify-content: center; }
+.lp-liste { list-style: none; margin: 0 0 24px; padding: 0; }
+.lp-liste li { position: relative; padding: 10px 0 10px 30px; border-bottom: 1px solid var(--farbe-rahmen); }
+.lp-liste li::before { content: "✓" / ""; position: absolute; left: 0; top: 10px; color: var(--farbe-primaer); font-weight: 700; }
+.lp-liste.lp-ohne li::before { content: "–" / ""; color: var(--farbe-gedaempft); }
+.lp-liste-titel { font-family: var(--schrift-meta); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--farbe-gedaempft); margin: 0 0 4px; }
+/* Person und Stimme */
+.lp-person { display: grid; grid-template-columns: minmax(200px, 340px) minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); align-items: center; }
+.lp-person figure { margin: 0; }
+.lp-person figure img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 24px; }
+.lp-person figcaption { margin-top: 10px; font-family: var(--schrift-meta); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--farbe-gedaempft); }
+.lp-zitat { margin: 32px 0 0; padding: 24px 0 0; border-top: 1.5px solid var(--farbe-dunkel); max-width: 56ch; }
+.lp-zitat p { font-size: clamp(20px, 2vw, 26px); line-height: 1.4; margin: 0 0 12px; }
+.lp-zitat footer { font-size: 15px; color: var(--farbe-gedaempft); }
+.lp-zitat footer strong { color: var(--farbe-dunkel); }
+.lp-kennzahlen { display: flex; flex-wrap: wrap; gap: 24px 48px; margin: 24px 0 0; padding: 0; list-style: none; }
+.lp-kennzahlen b { display: block; font-family: var(--schrift-ueberschrift); font-size: clamp(40px, 4vw, 56px); line-height: 1.1; color: var(--farbe-primaer); }
+.lp-kennzahlen span { font-size: 15px; color: var(--farbe-gedaempft); }
+/* Anfrage-Abschnitt unten */
+.lp-anfrage { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(32px, 6vw, 96px); align-items: start; }
+.lp-anfrage .lp-form-karte { max-width: none; }
+.lp .preis-schluss .schluss-karte { text-align: center; }
+.lp .preis-schluss .schluss-karte .meta { justify-content: center; }
+.lp .faq { margin-top: clamp(96px, 12vw, 168px); }
+@media (max-width: 1024px) {
+  .lp-hero, .lp-zwei, .lp-preis, .lp-anfrage { grid-template-columns: minmax(0, 1fr); }
+  .lp-karten { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lp-buehne { max-width: 640px; }
+}
+@media (max-width: 767.98px) {
+  .lp-hero { padding-top: 12px; gap: 16px; }
+  .lp-hero .rv-intro { font-size: 17px; margin-bottom: 16px; }
+  .lp-form-karte { padding: 18px; }
+  .lp-form-karte h2 { font-size: 20px; margin-bottom: 8px; }
+  .lp-form-karte .wc-haekchen { margin-top: 12px; }
+  .lp-form-karte .wc-haekchen label { font-size: 15px; }
+  .lp-form-karte .wc-berechtigung { font-size: 12px; margin-top: 8px; }
+  .lp-form-karte .anfrage-knoepfe { margin-top: 12px; }
+  .lp-form-karte .anfrage-felder { grid-template-columns: minmax(0, 1fr); }
+  .lp-zahl-band { grid-template-columns: minmax(0, 1fr); align-items: start; }
+  .lp-karten { grid-template-columns: minmax(0, 1fr); }
+  .lp-person { grid-template-columns: minmax(0, 1fr); }
+  .lp-person figure { max-width: 260px; }
+  .lp-zeilen li { grid-template-columns: 40px minmax(0, 1fr); gap: 12px; }
+  .lp-zeilen li img { width: 36px; height: 36px; }
+  .lp-bericht li { grid-template-columns: minmax(0, 1fr); }
+}
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
 
 /* ---------- Landingpage Marken-Regelwerk (/marken-regelwerk/, 07.11.2026) ----------
    Fotos von Unsplash, als Verlaufsumsetzung (gradient map) in Schwarz und Markenblau – so wirken unterschiedliche Fotos wie eine Serie.

@@ -577,8 +577,24 @@
       "Analyse Ihrer Abläufe",
       "Empfehlungsbericht"
      ],
-     "gefragt": true,
+     "gefragt": false,
      "ab": true
+    },
+    {
+     "id": "ki-setup",
+     "name": "KI-Arbeits-Setup",
+     "preis": 990,
+     "wer": "Für Selbstständige und kleine Büros: Claude eingerichtet, mit Projekt-Cockpit.",
+     "plus": "Festpreis, enthalten:",
+     "items": [
+      "3 Online-Termine",
+      "Start-Datei & 3 Arbeitsabläufe",
+      "Projekt-Cockpit & Handbuch"
+     ],
+     "badge": "Neu",
+     "gefragt": true,
+     "ab": false,
+     "link": "ki-arbeits-setup/"
     },
     {
      "id": "ki-1",
