@@ -130,6 +130,7 @@
 - Nichts erfinden; Unsicheres als „Unsicher“ kennzeichnen.
 - Vor jedem Schritt mit Wirkung nach außen fragen: Hochladen (Push) auf `main` – jeder Push auf `main` geht sofort live –, Installationen, Änderungen bei IONOS. In Cloud-Sitzungen auf einem eigenen Zweig arbeiten; Anna führt ihn über GitHub Desktop zusammen.
 - Kleine Commits mit deutscher Beschreibung.
+- Vor jedem Push `git fetch` und `git log origin/main..main` ansehen: Mehrere Sitzungen arbeiten im selben Ordner auf `main`. Commits, die nicht aus der eigenen Sitzung stammen, Anna vorher nennen – sonst gehen sie ungefragt live (Anlass: 09.11.2026, Website-Check-Texte einer anderen Sitzung mit hochgeladen).
 - Nicht öffentlich nennen, wie und wo studio-aah.de gebaut und gehostet ist (Anna, 13.10.2026).
 - Vor dem Melden prüfen: Seite im Browser ansehen (Desktop und Handy-Breite), Links und Bilder laden, Kopf und Fuß auf allen Seiten gleich.
 - Nach jeder Änderung den aktuellen Stand selbst in der Vorschau öffnen (Browser-Bereich der Desktop-App, `.claude/launch.json` → `website`, Port 8123) und die Adresse nennen, z. B. `http://localhost:8123/referenzen/bauer/` (Anna, 14.10.2026). GitHub Desktop zeigt nur Code, die Live-Seite erst nach dem Hochladen.
