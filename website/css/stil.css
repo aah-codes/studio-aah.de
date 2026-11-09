@@ -2780,10 +2780,10 @@ body:has(.sticky-check) .sticky-rechner:not(.sticky-check) { display: none; }
   .wc-hero { padding-top: 0; }
   .wc-hero-oben { min-height: calc(100svh - var(--kopf-hoehe) - var(--leiste-hoehe, 44px)); display: flex; flex-direction: column; justify-content: center; }
 }
-/* Navigation auf der Website-Check-Seite mittig (Anna 26.10.2026) */
+/* Navigation mittig auf allen Seiten (Anna 26.10.2026 Website-Check, seit 10.11.2026 überall) */
 @media (min-width: 1024.02px) {
   body:has(main.wc) .kopf { position: sticky; }
-  body:has(main.wc) .kopf-nav > ul { position: absolute; left: 50%; transform: translateX(-50%); }
+  .kopf-nav > ul { position: absolute; left: 50%; transform: translateX(-50%); }
 }
 /* Abschlussbox der Website-Check-Seite zentriert */
 .wc .preis-schluss .schluss-karte { text-align: center; }
