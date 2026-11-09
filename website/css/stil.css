@@ -2136,7 +2136,7 @@ section[hidden] { display: none !important; }
 .intro-neu .om-linien line { stroke: var(--farbe-dunkel); stroke-width: 1.5; stroke-dasharray: none; }
 .intro-neu .om-seite { border-width: 2px; box-shadow: 0 14px 0 -4px rgba(14, 16, 17, .08); }
 .intro-neu .om-balken { background: var(--farbe-grau-hell); }
-.intro-neu .om-chip { gap: 8px; padding: 6px 16px 6px 8px; border: 1.5px solid var(--farbe-dunkel); box-shadow: none; font-size: clamp(14px, 1.2vw, 17px); font-weight: 600; }
+.intro-neu .om-chip { gap: 8px; padding: 6px 16px 6px 8px; border: 1.5px solid var(--farbe-dunkel); box-shadow: none; font-size: clamp(15px, 1.2vw, 17px); font-weight: 600; }
 .intro-neu .om-chip img { width: 36px; height: 36px; }
 /* Größere Chips rücken auf ihrer Linie etwas zur Mitte, damit sie in der Fläche bleiben */
 .intro-neu .om-chip { left: calc(50% + (var(--x) - 50%) * .8); top: calc(50% + (var(--y) - 50%) * .84); }
