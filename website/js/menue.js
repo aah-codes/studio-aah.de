@@ -34,7 +34,7 @@
       laeuft = true;
       const c = document.createElement('canvas');
       c.setAttribute('aria-hidden', 'true');
-      c.style.cssText = 'position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:2147483000';
+      c.style.cssText = 'position:fixed;inset:0;width:100vw;height:100vh;height:100dvh;pointer-events:none;z-index:2147483000';
       document.body.appendChild(c);
       const B = window.innerWidth, H = window.innerHeight, dpr = Math.min(window.devicePixelRatio || 1, 2);
       c.width = B * dpr; c.height = H * dpr;
