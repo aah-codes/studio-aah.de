@@ -3224,3 +3224,43 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
   .bb-fakten .fakten > div { padding: 12px 8px; }
   .bb-fakten .fakten dd { font-size: 12px; }
 }
+
+/* Startseite: Schmerzpunkte, Ergebnisse, Ablauf quer, Ehrliche Antworten (Anna, 09.11.2026) */
+.haken-unter { font-size: clamp(18px, 1.4vw, 22px); line-height: 1.45; max-width: 46ch; margin: 20px 0 0; }
+.haken { padding-bottom: 96px; }
+.haken .sektionskopf .gr-h2, .ergebnisse .gr-h2, .ablauf-start .gr-h2, .ehrlich .gr-h2 { margin-top: 12px; line-height: 1.15; }
+.haken-karten { list-style: none; margin: 0; padding: 0 var(--rand-seite); display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+.haken-karte { position: relative; display: flex; flex-direction: column; align-items: flex-start; padding: 28px; border: 1.5px solid var(--farbe-dunkel); border-radius: 20px; background: var(--farbe-weiss); }
+.haken-nr { position: absolute; top: 24px; right: 28px; font-family: var(--schrift-meta); font-size: 14px; color: var(--farbe-grau); }
+.haken-karte h3 { font-size: clamp(20px, 1.5vw, 24px); line-height: 1.25; margin: 0 0 10px; }
+.haken-karte p { margin: 0 0 16px; line-height: 1.55; }
+.haken-nutzen { padding-top: 16px; border-top: 1.5px solid var(--farbe-grau-hell); font-weight: 600; }
+.haken-nutzen .meta { display: block; margin-bottom: 6px; font-weight: 400; }
+.haken-karte .textlink { margin-top: auto; }
+.intro-frei { display: flex; align-items: center; gap: 10px; margin: 0 0 16px; font-weight: 600; }
+.intro-frei-punkt { width: 10px; height: 10px; border-radius: 50%; background: var(--farbe-primaer); flex: none; }
+.ergebnisse { padding-bottom: 96px; }
+.erg-zahlen { margin: 0; padding: 0 var(--rand-seite); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.erg-zahlen > div { border-top: 1.5px solid var(--farbe-dunkel); padding-top: 20px; }
+.erg-zahlen dt { font-family: var(--schrift-ueberschrift); font-size: clamp(56px, 7vw, 112px); line-height: 1; }
+.erg-zahlen dd { margin: 12px 0 0; line-height: 1.5; max-width: 32ch; }
+.ergebnisse > p { padding: 32px var(--rand-seite) 0; margin: 0; }
+.ablauf-start { padding-bottom: 96px; background: var(--farbe-hellgrau); }
+.zl-quer { list-style: none; margin: 0; padding: 0 var(--rand-seite); display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; position: relative; }
+.zl-quer::before { content: ""; position: absolute; left: var(--rand-seite); right: var(--rand-seite); top: 28px; height: 1.5px; background: var(--farbe-dunkel); }
+.zl-quer li { position: relative; }
+.zlq-nr { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 50%; background: var(--farbe-dunkel); color: var(--farbe-weiss); font-weight: 700; margin-bottom: 20px; }
+.zl-quer li:first-child .zlq-nr { background: var(--farbe-primaer); }
+.zl-quer h3 { font-size: clamp(20px, 1.5vw, 24px); line-height: 1.25; margin: 8px 0 10px; }
+.zl-quer p.gedaempft { margin: 0; line-height: 1.55; }
+.ehrlich-mehr { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; max-width: 1200px; margin: 40px auto 0; }
+.ehrlich > .meta, .ehrlich > .gr-h2 { max-width: 1200px; margin-left: auto; margin-right: auto; }
+.ehrlich > .gr-h2 { margin-bottom: 40px; }
+@media (max-width: 1200px) { .haken-karten { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 900px) {
+  .erg-zahlen { grid-template-columns: minmax(0, 1fr); }
+  .zl-quer { grid-template-columns: minmax(0, 1fr); gap: 28px; padding-left: calc(var(--rand-seite) + 72px); }
+  .zl-quer::before { left: calc(var(--rand-seite) + 27px); right: auto; top: 0; bottom: 0; width: 1.5px; height: auto; }
+  .zl-quer li .zlq-nr { position: absolute; left: -72px; top: 0; margin: 0; }
+}
+@media (max-width: 767.98px) { .haken-karten { grid-template-columns: minmax(0, 1fr); gap: 16px; } .haken-karte { padding: 22px; } }

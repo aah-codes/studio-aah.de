@@ -62,12 +62,20 @@ def start_leistungen():
 
 # --- Startseite, Hero: Leistungen als Kategorie-Leiste wie bei Dribbble (Anna 13.10.2026) ---
 # Jede Karte führt zur Leistungsseite. Wo es ein echtes Beispiel gibt, steht es als Mockup in der Karte, sonst das Kartenbild der Leistung.
+def _mass(pfad):
+    """Bildmaße für das ruhende Laufband; Bilder daraus wurden am 09.11.2026 aus website/ entfernt (im Verlauf ab 4c0ab804)."""
+    try:
+        return mass_attr(pfad)
+    except FileNotFoundError:
+        return ''
+
+
 BEISPIELE = {
     # Mobil (Anna 13.10.2026, Vorbild Dribbble „Mobile“): zwei Handys nebeneinander, führt zu UI/UX
     # Mobil wie bei Dribbble: zwei Handys mit dünnem schwarzem Rahmen, heller Grund mit Lichtkante, eine große Form dahinter (Anna 13.10.2026)
     # Bildschirme zeigen kleine Fassungen der Seitenaufnahmen (höchstens 58 px breit angezeigt; werkzeuge/grafiken/bild/varianten.sh)
     'mobil': ('<span class="kb-mobil"><i class="kb-form-gross"></i>'
-              + ''.join(f'<span class="kb-phone"><span class="kb-phone-screen"><img src="bilder/referenzen/{n}"{mass_attr("bilder/referenzen/" + n)} alt="" decoding="async"></span></span>'
+              + ''.join(f'<span class="kb-phone"><span class="kb-phone-screen"><img src="bilder/referenzen/{n}"{_mass("bilder/referenzen/" + n)} alt="" decoding="async"></span></span>'
                         for n in ['deinetwegen-handy-180.webp', 'studio-aah-handy-180.webp']) + '</span>'),
     # Webdesign: Foto-Mockup Laptop auf Podest (Vorlage von Anna, Mockuptree, 13.10.2026); die Website sitzt per matrix3d
     # genau im Bildschirm (Ecken im 2000 × 1500 px großen Foto: 530|440, 1248|401, 1334|926, 615|1012) und scrollt wie bisher
