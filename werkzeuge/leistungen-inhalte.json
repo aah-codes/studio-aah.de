@@ -812,7 +812,9 @@
   ],
   "paket_extra": {
    "anfrage": false,
-   "stunde": 65
+   "stunde": 50,
+   "stundeBis": 85,
+   "ohneZusatz": true
   },
   "termine": "Alle zwei Wochen bis einmal im Monat einen Abstimmungstermin, online über Google Meet oder Teams, je nachdem, was Sie brauchen.",
   "loesung_text": "Mit dem Retainer entwickle ich Ihre Website nach dem Start weiter. Abgerechnet wird nach Aufwand, 50–85 € netto pro Stunde, je nach Unternehmensgröße. Der Retainer ist keine Wartung: Die Wartung ist die rein technische Pflege.",

@@ -134,7 +134,9 @@ def preis(e):
     if e.get('anfrage'): return 'auf Anfrage'
     if e.get('anteil'): return f"+{int(e['anteil'] * 100)}&nbsp;% {NETTO}"
     if e.get('monat'): return f"ab {euro(e['monat'])} {NETTO} / Monat"
-    if e.get('stunde') and e.get('stundeBis'): return f"{e['stunde']}–{euro(e['stundeBis'])} {NETTO} / Stunde, je nach Unternehmensgröße"
+    if e.get('stunde') and e.get('stundeBis'):
+        # ohneZusatz: Karte, deren Text die Unternehmensgröße schon nennt (Retainer-Seite)
+        return f"{e['stunde']}–{euro(e['stundeBis'])} {NETTO} / Stunde" + ('' if e.get('ohneZusatz') else ', je nach Unternehmensgröße')
     if e.get('stunde'): return f"ab {euro(e['stunde'])} {NETTO} / Stunde"
     return ('ab ' if e.get('ab', True) else '') + euro(e['preis']) + ' ' + NETTO
 
