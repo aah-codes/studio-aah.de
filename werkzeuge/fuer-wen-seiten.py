@@ -54,10 +54,15 @@ def beleg(b, pre):
 
 
 def faq(liste, titel='Ehrliche Antworten'):
+    # Zwei unabhängige Spalten (Anna 10.11.2026: Aufklappen links soll rechts keine Lücke reißen), spaltenweise gelesen
     h = ['  <section class="faq ehrlich" aria-labelledby="faq-titel">', '    <p class="meta">Häufige Fragen</p>',
-         f'    <h2 class="gr-h2" id="faq-titel">{esc(titel)}</h2>', '    <div class="faq-liste">']
-    for q, a in liste:
-        h.append(f'      <details class="faq-eintrag">\n        <summary>{esc(q)}</summary>\n        <div class="faq-antwort"><p>{esc(a)}</p></div>\n      </details>')
+         f'    <h2 class="gr-h2" id="faq-titel">{esc(titel)}</h2>', '    <div class="faq-liste faq-spalten">']
+    mitte = (len(liste) + 1) // 2
+    for spalte in (liste[:mitte], liste[mitte:]):
+        h.append('      <div class="faq-spalte">')
+        for q, a in spalte:
+            h.append(f'        <details class="faq-eintrag">\n          <summary>{esc(q)}</summary>\n          <div class="faq-antwort"><p>{esc(a)}</p></div>\n        </details>')
+        h.append('      </div>')
     h += ['    </div>', '  </section>']
     return '\n'.join(h)
 
@@ -98,7 +103,7 @@ def problemseite(p):
              '  <section class="ablauf-start" aria-labelledby="loesung-titel">\n    <div class="sektionskopf"><p class="meta">So gehe ich vor</p>'
              '<h2 class="gr-h2" id="loesung-titel">Drei Schritte.</h2></div>\n' + schritte(p['schritte']) + '\n  </section>',
              '  <section class="haken fw-nutzen" aria-labelledby="nutzen-titel">\n    <div class="sektionskopf"><p class="meta">Was Sie davon haben</p>'
-             '<h2 class="gr-h2" id="nutzen-titel">Ihr Gewinn.</h2></div>\n'
+             '<h2 class="gr-h2" id="nutzen-titel">Was sich für Sie ändert.</h2></div>\n'
              + karten([{'titel': t, 'text': x} for t, x in p['nutzen']], pre, 'haken-karten fw-drei') + '\n  </section>',
              beleg(p['beleg'], pre),
              faq(p['faq']),

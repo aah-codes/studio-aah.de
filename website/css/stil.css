@@ -3228,7 +3228,7 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 /* Startseite: Schmerzpunkte, Ergebnisse, Ablauf quer, Ehrliche Antworten (Anna, 09.11.2026) */
 .haken-unter { font-size: clamp(18px, 1.4vw, 22px); line-height: 1.45; max-width: 46ch; margin: 20px 0 0; }
 .haken { padding-bottom: 96px; }
-.haken .sektionskopf .gr-h2, .ergebnisse .gr-h2, .ablauf-start .gr-h2, .ehrlich .gr-h2 { margin-top: 12px; line-height: 1.15; }
+.haken .sektionskopf .gr-h2, .ablauf-start .gr-h2, .ehrlich .gr-h2 { margin-top: 12px; line-height: 1.15; }
 .haken-karten { list-style: none; margin: 0; padding: 0 var(--rand-seite); display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
 .haken-karte { position: relative; display: flex; flex-direction: column; align-items: flex-start; padding: 28px; border: 1.5px solid var(--farbe-dunkel); border-radius: 20px; background: var(--farbe-weiss); }
 .haken-nr { position: absolute; top: 24px; right: 28px; font-family: var(--schrift-meta); font-size: 14px; color: var(--farbe-grau); }
@@ -3258,7 +3258,7 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 .ehrlich > .gr-h2 { margin-bottom: 40px; }
 @media (max-width: 1200px) { .haken-karten { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 900px) {
-  .erg-zahlen { grid-template-columns: minmax(0, 1fr); }
+
   .zl-quer { grid-template-columns: minmax(0, 1fr); gap: 28px; padding-left: calc(var(--rand-seite) + 72px); }
   .zl-quer::before { left: calc(var(--rand-seite) + 27px); right: auto; top: 0; bottom: 0; width: 1.5px; height: auto; }
   .zl-quer li .zlq-nr { position: absolute; left: -72px; top: 0; margin: 0; }
@@ -3297,3 +3297,22 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 .prozess-kompakt .zl-quer { padding: 0; margin-top: 32px; }
 .prozess-kompakt .zl-quer::before { left: 0; right: 0; }
 @media (max-width: 900px) { .prozess-kompakt .zl-quer { padding-left: 72px; } .prozess-kompakt .zl-quer::before { left: 27px; } }
+
+/* Korrekturen Anna 10.11.2026: Karten wie ein Kartenspiel (Bube, Dame, König, Ass), Zeilen bündig, FAQ in zwei unabhängigen Spalten */
+.haken .sektionskopf .haken-unter { max-width: none; }
+.haken-start { grid-auto-rows: auto; }
+.haken-start .haken-karte { display: grid; grid-row: span 5; grid-template-rows: subgrid; row-gap: 0; align-items: start; padding-bottom: 44px; }
+.haken-start .haken-karte .ik-icon { margin-bottom: 20px; }
+.haken-start .haken-karte .textlink { margin-top: 8px; align-self: end; justify-self: start; }
+.haken-rang { position: absolute; top: 18px; right: 22px; font-family: var(--schrift-ueberschrift); font-size: 34px; line-height: 1; color: var(--farbe-dunkel); }
+.haken-rang-unten { top: auto; bottom: 14px; transform: rotate(180deg); color: var(--farbe-primaer); }
+.haken-karte:nth-child(odd) .haken-rang-unten { color: var(--farbe-dunkel); }
+.faq-spalten { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px 24px; align-items: start; }
+.faq-spalte { display: grid; gap: 16px; align-content: start; }
+@media (max-width: 767.98px) { .faq-spalten { grid-template-columns: minmax(0, 1fr); } }
+.ehrlich + .dk { margin-top: 112px; }
+.haken-rang { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.haken-rang::after { content: ""; width: 14px; height: 14px; background: currentColor; }
+.haken-karte:nth-child(1) .haken-rang::after { border-radius: 50%; }
+.haken-karte:nth-child(3) .haken-rang::after { clip-path: polygon(50% 0, 100% 100%, 0 100%); }
+.haken-karte:nth-child(4) .haken-rang::after { height: 7px; border-radius: 14px 14px 0 0; }
