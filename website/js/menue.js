@@ -7,6 +7,77 @@
   // Bewegung reduzieren (Systemeinstellung): einmal abfragen, alle Teile richten sich danach
   const ruhig = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // Konfetti (Anna 09.11.2026): nach jeder Anmeldung und jedem abgeschickten Formular Konfetti über den ganzen Bildschirm –
+  // Schnipsel aus den Bauhaus-Grundformen (Kreis, Halbkreis, Quadrat, Dreieck, Balken) in den Markenfarben (Farbtafel „modernes Bauhaus“).
+  // Auslöser: Ereignis „konfetti“ am document (Newsletter, Formular ohne Seitenwechsel) oder data-konfetti auf einer Danke-Seite.
+  // Zwei Kanonen unten links und rechts plus Regen von oben; nach 4,5 s ist alles weg (Bewegung höchstens 5 s).
+  // Bei „Bewegung reduzieren“ kein Konfetti. Rein dekorativ: aria-hidden, keine Klicks abgefangen.
+  (() => {
+    if (ruhig) return;
+    const FARBEN = ['#2a5fe6', '#0e1011', '#ff4fa3', '#ff3b2f', '#ffe600', '#ff8fc8'];
+    const FORMEN = ['kreis', 'halbkreis', 'quadrat', 'dreieck', 'balken'];
+    const DAUER = 4500, SCHWERE = 0.32;
+    let laeuft = false;
+    const zufall = (a, b) => a + Math.random() * (b - a);
+    function zeichne(ctx, t) {
+      const g = t.g, h = g / 2;
+      ctx.beginPath();
+      if (t.form === 'kreis') ctx.arc(0, 0, h, 0, Math.PI * 2);
+      else if (t.form === 'halbkreis') { ctx.arc(0, h / 2, h, Math.PI, 0); ctx.closePath(); }
+      else if (t.form === 'quadrat') ctx.rect(-h * .85, -h * .85, g * .85, g * .85);
+      else if (t.form === 'dreieck') { ctx.moveTo(-h, h); ctx.lineTo(h, h); ctx.lineTo(-h, -h); ctx.closePath(); }
+      else ctx.rect(-g * .75, -g * .18, g * 1.5, g * .36);
+      ctx.fill();
+    }
+    function starten() {
+      if (laeuft) return;
+      laeuft = true;
+      const c = document.createElement('canvas');
+      c.setAttribute('aria-hidden', 'true');
+      c.style.cssText = 'position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:2147483000';
+      document.body.appendChild(c);
+      const B = window.innerWidth, H = window.innerHeight, dpr = Math.min(window.devicePixelRatio || 1, 2);
+      c.width = B * dpr; c.height = H * dpr;
+      const ctx = c.getContext('2d');
+      ctx.scale(dpr, dpr);
+      const anzahl = Math.round(Math.min(240, Math.max(130, B / 6)));
+      const teile = [];
+      for (let i = 0; i < anzahl; i++) {
+        const kanone = i < anzahl * .5, links = i % 2 === 0;
+        const w = (kanone ? (links ? zufall(-85, -40) : zufall(-140, -95)) : zufall(70, 110)) * Math.PI / 180;
+        const v = kanone ? Math.sqrt(2 * SCHWERE * H * zufall(.35, 1.15)) : zufall(1, 3);
+        teile.push({
+          x: kanone ? (links ? zufall(-10, 30) : zufall(B - 30, B + 10)) : zufall(0, B), y: kanone ? H + 10 : zufall(-H * .25, -20),
+          vx: Math.cos(w) * v, vy: Math.sin(w) * v, g: zufall(12, 22), farbe: FARBEN[Math.floor(Math.random() * FARBEN.length)], form: FORMEN[Math.floor(Math.random() * FORMEN.length)],
+          dreh: zufall(0, 6.3), drehung: zufall(-.18, .18), kipp: zufall(0, 6.3), kippen: zufall(.06, .16), ab: kanone ? zufall(0, 250) : zufall(0, 1200),
+        });
+      }
+      const start = performance.now();
+      let vorher = start;
+      function bild(jetzt) {
+        const zeit = jetzt - start, f = Math.min((jetzt - vorher) / 16.7, 3);
+        vorher = jetzt;
+        ctx.clearRect(0, 0, B, H);
+        ctx.globalAlpha = zeit > DAUER - 700 ? Math.max(0, (DAUER - zeit) / 700) : 1;
+        for (const t of teile) {
+          if (zeit < t.ab) continue;
+          t.vx *= Math.pow(.985, f);
+          t.vy = Math.min(t.vy * Math.pow(.985, f) + SCHWERE * f, 4.5);
+          t.x += (t.vx + Math.sin(t.kipp) * .6) * f; t.y += t.vy * f;
+          t.dreh += t.drehung * f; t.kipp += t.kippen * f;
+          if (t.y > H + 40) continue;
+          ctx.save(); ctx.translate(t.x, t.y); ctx.rotate(t.dreh); ctx.scale(1, Math.cos(t.kipp)); ctx.fillStyle = t.farbe;
+          zeichne(ctx, t); ctx.restore();
+        }
+        if (zeit < DAUER) requestAnimationFrame(bild);
+        else { c.remove(); laeuft = false; }
+      }
+      requestAnimationFrame(bild);
+    }
+    document.addEventListener('konfetti', starten);
+    if (document.querySelector('[data-konfetti]')) setTimeout(starten, 250);
+  })();
+
   // Mega-Menü „Service“: öffnet per Klick, schließt mit Esc oder Klick daneben.
   // Ohne JavaScript führt „Service“ einfach auf /service/.
   (() => {
@@ -66,7 +137,7 @@
       const knopf = f.querySelector('button');
       knopf.disabled = true;
       fetch(f.action, { method: 'POST', body: new FormData(f), mode: 'no-cors' })
-        .then(() => { meldung.textContent = 'Fast geschafft: Bitte bestätigen Sie Ihre Anmeldung über den Link in der E-Mail, die ich Ihnen gerade geschickt habe.'; f.reset(); })
+        .then(() => { document.dispatchEvent(new Event('konfetti')); meldung.textContent = 'Fast geschafft: Bitte bestätigen Sie Ihre Anmeldung über den Link in der E-Mail, die ich Ihnen gerade geschickt habe.'; f.reset(); })
         .catch(() => { meldung.textContent = 'Das hat leider nicht geklappt. Bitte versuchen Sie es später noch einmal oder schreiben Sie an info@studio-aah.de.'; })
         .finally(() => { meldung.hidden = false; knopf.disabled = false; });
     });

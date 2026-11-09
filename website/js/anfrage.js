@@ -53,7 +53,7 @@ window.Anfrage = (() => {
       const antwort = await fetch(ENDPUNKT, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(daten) });
       if (!antwort.ok) throw new Error(String(antwort.status));
       if (knopf) { knopf.disabled = false; knopf.innerHTML = alt; }
-      if (opt.fertig) { opt.fertig(); return; }
+      if (opt.fertig) { document.dispatchEvent(new Event('konfetti')); opt.fertig(); return; } // sonst kommt das Konfetti auf der Danke-Seite (data-konfetti)
       window.location.href = opt.weiter || '../danke/';
     } catch {
       if (knopf) { knopf.disabled = false; knopf.innerHTML = alt; }
