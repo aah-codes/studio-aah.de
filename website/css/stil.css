@@ -3264,3 +3264,36 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
   .zl-quer li .zlq-nr { position: absolute; left: -72px; top: 0; margin: 0; }
 }
 @media (max-width: 767.98px) { .haken-karten { grid-template-columns: minmax(0, 1fr); gap: 16px; } .haken-karte { padding: 22px; } }
+
+/* Problem- und Branchenseiten (werkzeuge/fuer-wen-seiten.py, Anna 10.11.2026) */
+.fw-kopf { padding: 120px var(--rand-seite) 80px; }
+.fw-h1 { margin: 16px 0 0; max-width: 18ch; line-height: 1.15; hyphens: manual; }
+.fw-knoepfe { display: flex; flex-wrap: wrap; gap: 12px 16px; margin: 36px 0 0; }
+.fw-zwei { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px 80px; padding: 0 var(--rand-seite) 96px; align-items: start; }
+.fw-zwei .gr-h3 { margin: 12px 0 20px; }
+.fw-liste { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.fw-liste li { position: relative; padding-left: 32px; line-height: 1.5; }
+.fw-liste li::before { content: ""; position: absolute; left: 0; top: .35em; width: 14px; height: 14px; border-radius: 50%; background: var(--farbe-dunkel); }
+.fw-kosten { font-size: clamp(20px, 1.8vw, 28px); line-height: 1.4; margin: 12px 0 0; font-weight: 600; }
+.zl-quer.zl-drei { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.haken-karten.fw-drei { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.haken-karten.fw-zwei-k { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.fw-nutzen { padding-top: 0; }
+.fw-beleg { padding: 0 var(--rand-seite) 96px; }
+.fw-beleg-box { background: var(--farbe-dunkel); color: var(--farbe-weiss); border-radius: 24px; padding: clamp(28px, 4vw, 56px); max-width: 900px; }
+.fw-beleg-box .gr-h3 { margin: 12px 0 16px; }
+.fw-beleg-box p { line-height: 1.55; max-width: 60ch; }
+.fw-beleg-box .textlink, .fw-beleg-box .meta { color: var(--farbe-weiss); }
+.fw-leistungen { padding: 96px var(--rand-seite) 0; }
+.fw-leistungen .gr-h3 { margin: 12px 0 24px; }
+.fw-chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 12px; }
+.fw-chips a { display: inline-block; padding: 10px 18px; border: 1.5px solid var(--farbe-dunkel); border-radius: 999px; text-decoration: none; color: var(--farbe-dunkel); font-weight: 600; }
+.fw-chips a:hover, .fw-chips a:focus-visible { background: var(--farbe-dunkel); color: var(--farbe-weiss); }
+.fw-quelle { padding: 20px var(--rand-seite) 0; margin: 0; font-size: 14px; color: var(--farbe-gedaempft); }
+@media (max-width: 1024px) { .haken-karten.fw-drei { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 900px) { .fw-zwei { grid-template-columns: minmax(0, 1fr); } .zl-quer.zl-drei { grid-template-columns: minmax(0, 1fr); } .fw-kopf { padding-top: 72px; } }
+@media (max-width: 767.98px) { .haken-karten.fw-zwei-k { grid-template-columns: minmax(0, 1fr); } }
+.ehrlich > .meta { text-align: center; }
+.prozess-kompakt .zl-quer { padding: 0; margin-top: 32px; }
+.prozess-kompakt .zl-quer::before { left: 0; right: 0; }
+@media (max-width: 900px) { .prozess-kompakt .zl-quer { padding-left: 72px; } .prozess-kompakt .zl-quer::before { left: 27px; } }

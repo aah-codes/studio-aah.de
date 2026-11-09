@@ -1,0 +1,493 @@
+{
+  "_hinweis": "Problem- und Branchenseiten (Anna, 09./10.11.2026: Schmerzpunkte 1–4 des Mittelstands, Konzept Betrieb Studio AAH/Website/2026-11-09_konzept_website-als-werkzeug.md). Erzeugt von werkzeuge/fuer-wen-seiten.py. Keine erfundenen Zahlen; jede Zahl mit Quelle.",
+  "uebersicht": {
+    "pfad": "fuer-wen/",
+    "seitentitel": "Für wen: Webdesign und KI für den Mittelstand in Leipzig | STUDIO AAH!",
+    "beschreibung": "Für mittelständische B2B-Unternehmen: neue Kunden gewinnen, Fachkräfte finden, KI im Team einführen, Geschäftsführung entlasten. Mit Branchenseiten für Bau, Elektro und Software.",
+    "meta": "Für wen ich arbeite",
+    "h1": "Mittelstand im B2B: Ich sehe, wo es bei Ihnen hakt.",
+    "unter": "Wählen Sie, was Sie gerade am meisten bremst – oder Ihre Branche.",
+    "weitere": [
+      [
+        "Selbstständige",
+        "Eine Website, die alles auf den Punkt bringt – als Onepager.",
+        "service/webdesign/"
+      ],
+      [
+        "Vereine & Kultur",
+        "Websites für Demokratie, Kunst und Kultur: Sie zahlen, was Sie können.",
+        "demokratie-braucht-sichtbarkeit/"
+      ]
+    ]
+  },
+  "probleme": [
+    {
+      "id": "neue-kunden",
+      "pfad": "neue-kunden/",
+      "nr": 1,
+      "karte": "Empfehlungen reichen nicht mehr.",
+      "kurz": "Ihre Website bringt Anfragen von Firmen, die Sie noch nicht kennen.",
+      "seitentitel": "Neue Kunden gewinnen, wenn Empfehlungen nicht reichen | STUDIO AAH!",
+      "beschreibung": "Wenn Empfehlungen allein nicht mehr reichen: Websites für den Mittelstand, die neue Kundschaft überzeugen und Anfragen bringen. Webdesign aus Leipzig.",
+      "meta": "Neue Kunden gewinnen",
+      "h1": "Wenn Empfehlungen nicht mehr reichen: Ihre Website verkauft mit.",
+      "unter": "Oft prüft neue Kundschaft Sie zuerst im Netz – bevor sie anruft. Ich gestalte Websites, die aus diesem ersten Blick eine Anfrage machen sollen.",
+      "symptome": [
+        "Neue Aufträge kommen fast nur über Empfehlungen und bekannte Kunden.",
+        "Messen und persönliche Kontakte bringen weniger als früher.",
+        "Ihre Website ist eher Visitenkarte als Vertrieb – Anfragen kommen kaum darüber.",
+        "Bis ein Auftrag kommt, müssen auf Kundenseite mehrere Personen überzeugt werden."
+      ],
+      "kosten": "Wer Sie nicht kennt, vergleicht. Findet eine Einkäuferin bei Ihnen nicht schnell, was Sie können, für wen und mit welchen Ergebnissen, geht die Anfrage an den Mitbewerber – und Sie erfahren nie davon.",
+      "schritte": [
+        [
+          "Verstehen",
+          "Wer kauft bei Ihnen – und warum?",
+          "Website-Check, Gespräche mit Vertrieb und Geschäftsführung, Blick auf Mitbewerber."
+        ],
+        [
+          "Ideation",
+          "Eine Struktur, die überzeugt.",
+          "Leistungs-, Branchen- und Referenzseiten, die jede Person im Entscheidungsprozess abholen."
+        ],
+        [
+          "Umsetzung",
+          "Ein klarer Weg zur Anfrage.",
+          "Kontakt und Formular an den richtigen Stellen, aufbereitet für Google und die KI-Suche."
+        ]
+      ],
+      "nutzen": [
+        [
+          "Anfragen von Unbekannten",
+          "Ziel ist eine Website, die auch für Firmen arbeitet, die Sie noch nicht kennen."
+        ],
+        [
+          "Belege, die überzeugen",
+          "Leistungen und Referenzen so aufbereitet, dass alle Beteiligten schnell sehen, was Sie können."
+        ],
+        [
+          "Klarer nächster Schritt",
+          "Jede Seite zeigt, wie man Sie erreicht – für alle, die mitentscheiden."
+        ]
+      ],
+      "beleg": {
+        "titel": "Zum Beispiel: Wolfgang Bauer Ingenieurbau",
+        "text": "Auf der neuen Website des Bauunternehmens hat jedes der 69 Referenzprojekte eine eigene Seite – damit Auftraggeber auf einen Blick sehen, was Bauer gebaut hat.",
+        "link": [
+          "referenzen/bauer/",
+          "Projekt ansehen"
+        ]
+      },
+      "faq": [
+        [
+          "Wie schnell bringt eine neue Website Anfragen?",
+          "Das kann niemand seriös versprechen – es hängt von Ihrem Markt, Ihrer Bekanntheit und davon ab, wie die Website gefunden wird. Was ich zusage: eine Website, die Besucher:innen klar zum nächsten Schritt führt, und einen kostenlosen Website-Check vorab, der zeigt, wo es heute hakt."
+        ],
+        [
+          "Reicht nicht eine Anzeige bei Google?",
+          "Anzeigen bringen Besucher:innen. Ob daraus Anfragen werden, entscheidet die Website. Deshalb lohnt es sich, zuerst die Website zu prüfen."
+        ],
+        [
+          "Wir verkaufen erklärungsbedürftige Leistungen. Geht das online?",
+          "Gerade dann. Leistungs- und Referenzseiten erklären in Ruhe, was im Gespräch oft zu kurz kommt – und Ihre Ansprechperson beim Kunden kann sie an alle weiterleiten, die mitentscheiden."
+        ]
+      ],
+      "leistungen": [
+        [
+          "website-check/",
+          "Kostenloser Website-Check"
+        ],
+        [
+          "service/webdesign/",
+          "Webdesign"
+        ],
+        [
+          "service/marketing-vertrieb/",
+          "Marketing & Vertrieb"
+        ],
+        [
+          "service/retainer/",
+          "Retainer"
+        ]
+      ]
+    },
+    {
+      "id": "fachkraefte",
+      "pfad": "fachkraefte/",
+      "nr": 2,
+      "karte": "Gute Leute finden Sie nicht.",
+      "kurz": "Ihr Karrierebereich zeigt, warum es sich lohnt, bei Ihnen zu arbeiten.",
+      "seitentitel": "Fachkräfte finden mit Karriereseite und Arbeitgebermarke | STUDIO AAH!",
+      "beschreibung": "Fachkräfte finden im Mittelstand: Karrierebereiche, die Ihr Team zeigen und Bewerben am Handy leicht machen. Webdesign und Employer Branding aus Leipzig.",
+      "meta": "Fachkräfte finden",
+      "h1": "Fachkräfte finden: Zeigen Sie, warum es sich lohnt, bei Ihnen zu arbeiten.",
+      "unter": "Bewerber:innen vergleichen Sie mit großen Arbeitgebern – auf Ihrer Website. Ich gestalte Karrierebereiche, die Ihr Team zeigen und das Bewerben leicht machen.",
+      "symptome": [
+        "Stellen bleiben lange offen, Bewerbungen kommen kaum.",
+        "Ihre Karriereseite ist eine Liste mit PDF-Anzeigen.",
+        "Bewerben geht nur per E-Mail oder Post.",
+        "Wer Sie nicht kennt, erfährt online wenig über Ihr Team und Ihre Projekte."
+      ],
+      "kosten": "Jede offene Stelle bedeutet Mehrarbeit für Ihr Team und Aufträge, die Sie nicht annehmen können. Und wer sich bewerben will, sucht online nach Antworten – oft auch am Handy.",
+      "schritte": [
+        [
+          "Verstehen",
+          "Was macht Sie als Arbeitgeber aus?",
+          "Gespräche mit Ihnen und Ihrem Team, Blick auf die Mitbewerber um dieselben Fachkräfte."
+        ],
+        [
+          "Ideation",
+          "Ein Karrierebereich mit Gesicht.",
+          "Echte Einblicke, klare Stellenanzeigen und Antworten auf die Fragen von Bewerber:innen."
+        ],
+        [
+          "Umsetzung",
+          "Bewerben in wenigen Klicks.",
+          "Ein kurzes Bewerbungsformular, das am Handy funktioniert."
+        ]
+      ],
+      "nutzen": [
+        [
+          "Ein ehrliches Bild",
+          "Wer sich ein Bild von Ihnen machen kann, weiß, worauf er sich einlässt."
+        ],
+        [
+          "Ein kurzer Weg",
+          "Ein einfaches Bewerbungsformular macht den ersten Schritt leichter."
+        ],
+        [
+          "Eine sichtbare Arbeitgebermarke",
+          "Ihr Team, Ihre Projekte und Ihre Werte werden sichtbar – auch für Ihre Kundschaft."
+        ]
+      ],
+      "beleg": {
+        "titel": "Zum Beispiel: Wolfgang Bauer Ingenieurbau",
+        "text": "Neuer Karrierebereich mit Stellenanzeigen und Bewerbungsformular. Seit dem Launch der neuen Website kamen darüber 13 Bewerbungen (Stand: 15.10.2026).",
+        "link": [
+          "referenzen/bauer/",
+          "Projekt ansehen"
+        ]
+      },
+      "faq": [
+        [
+          "Brauchen wir dafür eine ganz neue Website?",
+          "Nicht unbedingt. Oft reicht ein neuer Karrierebereich auf der bestehenden Website. Der kostenlose Website-Check zeigt, ob die Basis trägt."
+        ],
+        [
+          "Wer pflegt die Stellenanzeigen?",
+          "Das klären wir am Anfang: Entweder legen Sie neue Stellen selbst im Redaktionssystem an, oder ich übernehme das für Sie im Retainer."
+        ]
+      ],
+      "leistungen": [
+        [
+          "service/webdesign/",
+          "Webdesign"
+        ],
+        [
+          "service/markenbildung/",
+          "Markenbildung"
+        ],
+        [
+          "service/retainer/",
+          "Retainer"
+        ],
+        [
+          "website-check/",
+          "Kostenloser Website-Check"
+        ]
+      ]
+    },
+    {
+      "id": "ki-im-team",
+      "pfad": "ki-im-team/",
+      "nr": 3,
+      "karte": "Neue Werkzeuge – und kaum jemand nutzt sie.",
+      "kurz": "KI-Werkzeuge, die zu Ihren Abläufen passen, und ein Team, das sie einsetzt.",
+      "seitentitel": "KI im Team einführen – pragmatisch und ohne IT-Großprojekt | STUDIO AAH!",
+      "beschreibung": "Welche KI-Tools lohnen sich, und wie nutzt Ihr Team sie wirklich? KI-Check, KI-Einführung mit Team-Schulung und KI-Arbeits-Setup für den Mittelstand in Leipzig.",
+      "meta": "KI im Team",
+      "h1": "KI im Team: Werkzeuge, die passen – und die Ihr Team auch nutzt.",
+      "unter": "Welche Tools lohnen sich wirklich? Und wie bringen Sie Ihre Mitarbeitenden dazu, sie zu nutzen? Ich helfe pragmatisch – ohne IT-Großprojekt.",
+      "symptome": [
+        "Es gibt Lizenzen für neue Tools, aber kaum jemand arbeitet damit.",
+        "Jede:r nutzt KI anders – oder mit privaten Konten.",
+        "Sie wissen nicht, wo Sie anfangen sollen, ohne ein großes IT-Projekt zu starten.",
+        "Daten liegen verstreut in Tabellen, Ordnern und Postfächern."
+      ],
+      "kosten": "Ein Werkzeug, das niemand nutzt, kostet nur Geld. Und ohne gemeinsame Regeln landen Firmendaten in Diensten, die niemand geprüft hat.",
+      "schritte": [
+        [
+          "Verstehen",
+          "Wo geht Zeit verloren?",
+          "Ich sehe mir Ihre Abläufe an und spreche mit den Menschen, die sie täglich erledigen."
+        ],
+        [
+          "Ideation",
+          "Wenige Werkzeuge, klar eingerichtet.",
+          "Auswahl passender KI-Werkzeuge mit Blick auf den Datenschutz, eingerichtet für Ihre Aufgaben."
+        ],
+        [
+          "Umsetzung",
+          "Eine Schulung, die im Alltag ankommt.",
+          "Praxisnah an Ihren eigenen Aufgaben – damit Ihr Team weiß, wie es KI sicher und sinnvoll einsetzt."
+        ]
+      ],
+      "nutzen": [
+        [
+          "Werkzeuge, die genutzt werden",
+          "Weil sie zu Ihren Aufgaben passen und Ihr Team weiß, wie."
+        ],
+        [
+          "Klare Regeln",
+          "Was mit KI geht, was nicht – und welche Daten wohin dürfen."
+        ],
+        [
+          "Klein anfangen",
+          "Ein bis zwei Abläufe zuerst, dann weiter, wenn es wirkt."
+        ]
+      ],
+      "beleg": {
+        "titel": "Aus meiner eigenen Praxis",
+        "text": "Mein Studio läuft mit KI-Arbeitsabläufen, einem Projekt-Cockpit und einem Handbuch. Was ich Ihrem Team zeige, nutze ich selbst jeden Tag.",
+        "link": [
+          "ki-arbeits-setup/",
+          "Zum KI-Arbeits-Setup"
+        ]
+      },
+      "faq": [
+        [
+          "Welche KI empfehlen Sie?",
+          "Das hängt von Ihren Aufgaben und Ihren Daten ab. Ich arbeite selbst täglich mit KI und empfehle nur, was ich kenne und was zu Ihrem Datenschutz passt. Das KI-Arbeits-Setup richte ich mit Claude ein."
+        ],
+        [
+          "Bauen Sie auch Schnittstellen zu unserem ERP?",
+          "Nein. Schnittstellen zu ERP- oder Warenwirtschaftssystemen programmiere ich nicht, und IT-Sicherheit ist nicht mein Fach. Wenn Sie das brauchen, sage ich es Ihnen offen."
+        ],
+        [
+          "Was kostet das?",
+          "Der KI-Check beginnt bei 900 € netto, die KI-Einführung mit Team-Schulung bei 2.000 € netto. Für kleine Büros gibt es das KI-Arbeits-Setup zum Festpreis von 990 € netto."
+        ]
+      ],
+      "leistungen": [
+        [
+          "service/ki-digitalisierung/",
+          "KI & Digitalisierung"
+        ],
+        [
+          "ki-arbeits-setup/",
+          "KI-Arbeits-Setup"
+        ]
+      ]
+    },
+    {
+      "id": "entlastung",
+      "pfad": "entlastung/",
+      "nr": 4,
+      "karte": "Alles läuft über Sie.",
+      "kurz": "Abläufe sind aufgeschrieben, Wiederkehrendes kann KI übernehmen.",
+      "seitentitel": "Geschäftsführung entlasten mit klaren Abläufen und KI | STUDIO AAH!",
+      "beschreibung": "Wenn jede Entscheidung über die Chefin oder den Chef läuft: Abläufe aufschreiben, Routine an KI abgeben, Zeit für die Arbeit am Unternehmen gewinnen.",
+      "meta": "Entlastung",
+      "h1": "Entlastung: Wenn nicht mehr alles über Sie läuft.",
+      "unter": "In vielen mittelständischen Firmen landet jede kleine Frage auf dem Tisch der Geschäftsführung. Ich helfe, die wichtigsten Abläufe aufzuschreiben und Wiederkehrendes an KI abzugeben.",
+      "symptome": [
+        "Sie arbeiten im Unternehmen statt am Unternehmen.",
+        "Angebote, Nachfassen und Ablage kosten jede Woche Stunden.",
+        "Abläufe stehen nur in Köpfen – „Das haben wir schon immer so gemacht“.",
+        "Wenn eine erfahrene Person fehlt, stockt die Arbeit."
+      ],
+      "kosten": "Jede Stunde Routine fehlt für Kundschaft, Team und Strategie. Und wenn eine erfahrene Person geht, geht ihr Wissen mit.",
+      "schritte": [
+        [
+          "Verstehen",
+          "Was kostet Sie Zeit?",
+          "Wir sammeln die Aufgaben, die immer wiederkommen – vom Angebot bis zur Ablage."
+        ],
+        [
+          "Ideation",
+          "Die wichtigsten Abläufe aufschreiben.",
+          "Wir fangen mit wenigen Abläufen an – klar beschrieben für Ihr Team und für die KI."
+        ],
+        [
+          "Umsetzung",
+          "Routine an KI abgeben.",
+          "Ich richte KI-Arbeitsabläufe ein, die Entwürfe vorbereiten. Sie prüfen und geben frei."
+        ]
+      ],
+      "nutzen": [
+        [
+          "Zeit für das Wesentliche",
+          "Ziel: weniger Routine auf Ihrem Tisch, mehr Zeit für Kundschaft und Strategie."
+        ],
+        [
+          "Wissen, das bleibt",
+          "Aufgeschriebene Abläufe helfen auch neuen Mitarbeitenden beim Einstieg."
+        ],
+        [
+          "Einheitliche Abläufe",
+          "Jede:r macht es gleich – egal, wer gerade da ist."
+        ]
+      ],
+      "beleg": {
+        "titel": "Ich arbeite selbst so",
+        "text": "Mein Studio läuft mit KI-Arbeitsabläufen, einem Projekt-Cockpit und einem Handbuch. Für Geschäftsführung und kleine Büros richte ich das im KI-Arbeits-Setup ein; für größere Teams planen wir es im KI-Check.",
+        "link": [
+          "ki-arbeits-setup/",
+          "Zum KI-Arbeits-Setup"
+        ]
+      },
+      "faq": [
+        [
+          "Brauchen wir dafür neue Software?",
+          "Meist nicht. Wir starten mit dem, was Sie haben, und einem KI-Werkzeug. Wichtiger als neue Software sind klare Abläufe."
+        ],
+        [
+          "Wie lange dauert das?",
+          "Das KI-Arbeits-Setup dauert etwa drei Wochen, mit drei Online-Terminen. Für größere Teams planen wir im KI-Check, was sinnvoll ist."
+        ]
+      ],
+      "leistungen": [
+        [
+          "ki-arbeits-setup/",
+          "KI-Arbeits-Setup"
+        ],
+        [
+          "service/ki-digitalisierung/",
+          "KI & Digitalisierung"
+        ],
+        [
+          "service/retainer/",
+          "Retainer"
+        ]
+      ]
+    }
+  ],
+  "branchen": [
+    {
+      "id": "bau",
+      "pfad": "branchen/bau-ingenieurwesen-architektur/",
+      "name": "Bau, Ingenieurwesen & Architektur",
+      "kurz": "Projekte zeigen, Fachkräfte finden.",
+      "seitentitel": "Webdesign für Bau, Ingenieurbüros und Architektur in Leipzig | STUDIO AAH!",
+      "beschreibung": "Websites für Bauunternehmen, Ingenieur- und Architekturbüros: Referenzprojekte zeigen, Fachkräfte finden, Abläufe entlasten. Webdesign aus Leipzig.",
+      "h1": "Webdesign für Bau, Ingenieurwesen und Architektur.",
+      "unter": "Ihre Projekte stehen draußen – auf Ihrer Website oft nicht. Ich zeige, was Sie gebaut haben, und helfe Ihnen, Fachkräfte zu finden.",
+      "schmerz": [
+        [
+          "fachkraefte",
+          "Facharbeiter:innen, Poliere und Bauleitungen sind gesucht. Ein Karrierebereich mit echten Einblicken und kurzem Bewerbungsformular macht den ersten Schritt leicht."
+        ],
+        [
+          "neue-kunden",
+          "Auftraggeber prüfen Referenzen. Jedes Projekt mit eigener Seite zeigt, was Sie können."
+        ],
+        [
+          "entlastung",
+          "Angebote und Dokumentation kosten Zeit. KI kann Entwürfe vorbereiten – Sie prüfen und geben frei."
+        ]
+      ],
+      "beleg": {
+        "titel": "Referenz: Wolfgang Bauer Ingenieurbau",
+        "text": "Strategie, Rebranding und neue Website: 83 Seiten online, 69 Referenzprojekte mit eigener Seite, 13 Bewerbungen seit dem Launch (Stand: 15.10.2026).",
+        "link": [
+          "referenzen/bauer/",
+          "Projekt ansehen"
+        ]
+      },
+      "faq": [
+        [
+          "Haben Sie Erfahrung mit Bauunternehmen?",
+          "Ja. Für Wolfgang Bauer Ingenieurbau habe ich Strategie, Rebranding und die neue Website gestaltet."
+        ],
+        [
+          "Können wir die Referenzprojekte selbst pflegen?",
+          "Ja, wenn die Website mit einem Redaktionssystem gebaut wird. Bei Bauer werden neue Referenzen als eigene Einträge angelegt."
+        ]
+      ]
+    },
+    {
+      "id": "elektro",
+      "pfad": "branchen/elektro-anlagenbau-gebaeudetechnik/",
+      "name": "Elektro, Anlagenbau & Gebäudetechnik",
+      "kurz": "Fachkräfte überzeugen, Routine abgeben.",
+      "seitentitel": "Webdesign für Elektro, Anlagenbau und Gebäudetechnik in Leipzig | STUDIO AAH!",
+      "beschreibung": "Websites für Elektrobetriebe, Anlagenbau und Gebäudetechnik: Karrierebereiche, die Fachkräfte überzeugen, und KI-Abläufe, die das Büro entlasten. Aus Leipzig.",
+      "h1": "Webdesign für Elektro, Anlagenbau und Gebäudetechnik.",
+      "unter": "Fehlen Ihnen Leute? Ich gestalte Websites, die Fachkräfte überzeugen sollen, und helfe, das Büro zu entlasten.",
+      "schmerz": [
+        [
+          "fachkraefte",
+          "Elektro- und Gebäudetechnik-Fachkräfte sind gefragt. Ihre Karriereseite ist oft der erste Eindruck für Bewerber:innen."
+        ],
+        [
+          "entlastung",
+          "Anfragen, Angebote und Dokumentation laufen über wenige Köpfe. KI-Arbeitsabläufe nehmen Routine ab."
+        ],
+        [
+          "neue-kunden",
+          "Gewerbekunden und Planungsbüros suchen Partner auch online. Zeigen Sie Leistungen und Referenzen klar."
+        ]
+      ],
+      "beleg": {
+        "titel": "Zum Beispiel: Wolfgang Bauer Ingenieurbau",
+        "text": "Neuer Karrierebereich mit Stellenanzeigen und Bewerbungsformular: 13 Bewerbungen seit dem Launch der neuen Website (Stand: 15.10.2026).",
+        "link": [
+          "referenzen/bauer/",
+          "Projekt ansehen"
+        ]
+      },
+      "faq": [
+        [
+          "Wir haben genug Aufträge. Brauchen wir eine bessere Website?",
+          "Wenn Ihnen vor allem Leute fehlen, ist die Website in erster Linie Ihr Recruiting. Dort setze ich an: Karrierebereich zuerst, der Rest folgt bei Bedarf."
+        ],
+        [
+          "Was kostet ein neuer Karrierebereich?",
+          "Das hängt vom Umfang ab. Einen ersten Rahmen sehen Sie im Kostenrechner; den festen Preis bekommen Sie nach dem Erstgespräch."
+        ]
+      ]
+    },
+    {
+      "id": "software",
+      "pfad": "branchen/software-it/",
+      "name": "Software & IT",
+      "kurz": "Erklärungsbedürftiges verständlich machen.",
+      "seitentitel": "UX/UI und Webdesign für Software- und IT-Unternehmen | STUDIO AAH!",
+      "beschreibung": "UX/UI und Websites für B2B-Software, SaaS und IT-Dienstleister – auch für Software in Bildung und Gesundheit. Verständlich machen, was Ihr Produkt kann. Aus Leipzig.",
+      "h1": "UX/UI und Webdesign für Software- und IT-Unternehmen.",
+      "unter": "Ihr Produkt ist erklärungsbedürftig, Ihre Kundschaft entscheidet im Team. Ich gestalte Websites und Oberflächen, die zeigen, was Ihre Software kann – auch für Software in Bildung und Gesundheit.",
+      "schmerz": [
+        [
+          "neue-kunden",
+          "Lange Kaufentscheidungen mit vielen Beteiligten: Ihre Website muss Fachabteilung, Einkauf und Geschäftsführung gleichermaßen überzeugen."
+        ],
+        [
+          "ki-im-team",
+          "Sie bauen Software – ich helfe Ihrem Team, KI auch im eigenen Alltag sinnvoll einzusetzen."
+        ],
+        [
+          "fachkraefte",
+          "Auch Entwickler:innen schauen sich an, wie ein Arbeitgeber sich zeigt."
+        ]
+      ],
+      "beleg": {
+        "titel": "Mein Kern: UI/UX für digitale Produkte",
+        "text": "Seit 2023 gestalte ich zusätzlich in einer Digitalagentur digitale Produkte für Mittelstand und Startups – von der Konzeption bis zum Launch.",
+        "link": [
+          "service/ui-ux/",
+          "Zu UI/UX"
+        ]
+      },
+      "faq": [
+        [
+          "Gestalten Sie auch die Oberfläche unserer Software?",
+          "Ja. UI/UX für Webanwendungen und SaaS ist mein Kern – vom UX-Audit bis zum Designsystem."
+        ],
+        [
+          "Können Sie Referenzen aus der Software-Branche zeigen?",
+          "Arbeiten aus meiner Agenturtätigkeit darf ich nicht zeigen. Im Gespräch erzähle ich Ihnen gern, wie ich vorgehe, und zeige Arbeiten von STUDIO AAH!."
+        ]
+      ]
+    }
+  ]
+}
