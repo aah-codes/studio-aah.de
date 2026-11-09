@@ -37,6 +37,7 @@
 - Farben: Schwarz `#0e1011`, Weiß, Creme `#eeece7` (Flächen, Plakatgrund), Blau `#2a5fe6` (`--farbe-primaer`) als einziger Akzent (bis 16.10.2026 auch `#2f6bff`, auf Annas Wunsch vereinheitlicht), Grau `#d6d8d9` / `#9a9d9e`. Kein Rot, Gelb, Grün.
 - Ausnahme Projektseiten (Anna, 14.10.2026): Auf Projektseiten (`/referenzen/…`) gelten die Farben der Kund:innen; dort darf die Farbregel gebrochen werden (z. B. Bauer-Blau `#003466`, Bauer-Gelb `#FBD52A`). Kopf, Fuß und Navigation bleiben in Studio-Farben.
 - Ausnahme Farbband (Anna, 13.10.2026): 12 px hohes Regenbogen-Band mit rotem Block am unteren Rand des Fußes (`.fuss::after`, Variable `--farbband` in `stil.css`). Nur dort; sonst gilt die Farbregel.
+- Ausnahme Illustrationen (Anna, 10.11.2026): Die Hero-Illustrationen der Für-wen-, Problem-, Branchen- und Produktseiten (`werkzeuge/grafiken/fuer-wen-hero.py`) nutzen die Farbtafel „modernes Bauhaus“ des Startseiten-Hero (`--bb-rot`, `--bb-pink`, `--bb-rosa`, `--bb-gelb`), damit Hero und Fußband aufgegriffen werden. Blau berührt weiter nie Schwarz.
 - Dachzeilen müssen auf ihrem Grund lesbar sein (Anna, 15.10.2026): Gelb nur auf Blau oder Schwarz, auf hellen Karten Blau oder Schwarz.
 - Kein Blau auf Schwarz (Kontrast). Kein blaues Herz; Herzen nur als Grundform-Herz (siehe Erweiterte Formen).
 - Ausnahme (Anna, 15.10.2026): Anfrage-Knopf in der schwarzen Abschlussbox der Projektseiten ist blau (`--farbe-primaer`, Knopf zur Fläche 3,4 : 1, Schrift 5,4 : 1).
