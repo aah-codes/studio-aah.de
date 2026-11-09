@@ -679,7 +679,11 @@ main.mit-faden { position: relative; }
 .faden-linie { fill: none; stroke: var(--farbe-dunkel); stroke-width: 2.5; stroke-linecap: round; }
 .faden-punkt { fill: var(--farbe-dunkel); transition: r .3s; }
 .weg-ziel { text-align: center; padding: 160px var(--rand-seite) 176px; }
-.weg-ziel .gr-h2 { font-size: clamp(2.6rem, 6vw, 5.5rem); line-height: 1; max-width: 14ch; margin: 12px auto 24px; }
+.weg-ziel .gr-h2 { font-size: clamp(3rem, 9.4vw, 9.5rem); line-height: 1.15; max-width: 14ch; margin: 12px auto 28px; }
+/* „Für“ in Versalien: Umlaut-Punkte brauchen Zeilenabstand 1,2 (CLAUDE.md) */
+.weg-ziel h2.gr-h2 { line-height: 1.2; }
+/* Unterzeile deutlich kleiner als die H2 (Anna 09.11.2026): etwa 1 : 6,9 = Goldener Schnitt hoch 4 */
+.weg-ziel .alt-klein { font-size: clamp(18px, 1.45vw, 22px); line-height: 1.45; max-width: 46ch; margin: 0 auto 36px; }
 .weg-ziel-knopf { font-size: 1.15rem; padding: 1.1rem 2rem; transition: transform .3s, box-shadow .3s; }
 .roter-faden.angekommen ~ .weg-ziel .weg-ziel-knopf { transform: scale(1.06); box-shadow: 0 0 0 8px rgba(14, 16, 17, .08); }
 @media (prefers-reduced-motion: reduce) { .weg-ziel-knopf, .faden-punkt { transition: none; } }
@@ -2125,6 +2129,19 @@ section[hidden] { display: none !important; }
 .om-knopf { align-self: flex-end; margin-top: 4px; font: 600 12px var(--schrift-text); color: var(--farbe-weiss); background: var(--farbe-primaer); border-radius: 99px; padding: 5px 12px; }
 .om-chip { position: absolute; left: var(--x); top: var(--y); translate: -50% -50%; display: flex; align-items: center; gap: 6px; padding: 4px 12px 4px 6px; background: var(--farbe-weiss); border: 1px solid var(--farbe-rahmen); border-radius: 99px; box-shadow: 0 8px 20px rgba(14, 16, 17, .06); font-size: 14px; font-weight: 500; white-space: nowrap; }
 .om-chip img { width: 30px; height: 30px; }
+/* Kräftiger statt skizziert (Anna 09.11.2026: „zu zart, die Chips liest keiner“): Creme als Plakatgrund, durchgezogene schwarze Linien,
+   große Chips mit schwarzem Rand; Grafik etwas kleiner */
+.intro-neu .intro-oeko { width: 100%; max-width: 600px; justify-self: end; }
+.intro-neu .om-flaeche { background: var(--farbe-creme); background-image: none; }
+.intro-neu .om-linien line { stroke: var(--farbe-dunkel); stroke-width: 1.5; stroke-dasharray: none; }
+.intro-neu .om-seite { border-width: 2px; box-shadow: 0 14px 0 -4px rgba(14, 16, 17, .08); }
+.intro-neu .om-balken { background: var(--farbe-grau-hell); }
+.intro-neu .om-chip { gap: 8px; padding: 6px 16px 6px 8px; border: 1.5px solid var(--farbe-dunkel); box-shadow: none; font-size: clamp(14px, 1.2vw, 17px); font-weight: 600; }
+.intro-neu .om-chip img { width: 36px; height: 36px; }
+/* Größere Chips rücken auf ihrer Linie etwas zur Mitte, damit sie in der Fläche bleiben */
+.intro-neu .om-chip { left: calc(50% + (var(--x) - 50%) * .8); top: calc(50% + (var(--y) - 50%) * .84); }
+.intro-neu .om-chip { width: max-content; }
+.intro-neu .om-linien { scale: .8 .84; } /* Linien gleich stark gekürzt: sie enden an den Chips */
 .intro-oeko figcaption { margin-top: 18px; }
 /* ganze Grafik klickbar, Fokusrahmen am Link */
 .om-link::after { content: ""; position: absolute; inset: 0; border-radius: 20px; }
@@ -2148,6 +2165,8 @@ section[hidden] { display: none !important; }
   .om-browser b { display: none; }
   .om-knopf { padding: 4px 9px; }
   .om-chip { flex-direction: column; gap: 0; padding: 2px 5px 3px; background: var(--farbe-hellgrau); border: 0; border-radius: 8px; box-shadow: none; font-size: 12px; }
+  .intro-neu .om-chip { padding: 3px 7px 4px; background: var(--farbe-weiss); border: 1.5px solid var(--farbe-dunkel); font-size: 13px; }
+  .intro-neu .om-chip img { width: 32px; height: 32px; }
   .om-chip img { width: 34px; height: 34px; }
   .intro-karte { padding: 22px; }
 }

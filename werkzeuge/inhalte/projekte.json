@@ -2462,7 +2462,7 @@
    "visitenkarte": "bilder/hero/goldhammer-visitenkarte.webp"
   },
   "mockup_print": {
-   "karte": "bilder/referenzen/goldhammer-flyer.webp",
+   "karte": "bilder/mockups/druck-schreibtisch.webp",
    "visitenkarte": "bilder/hero/goldhammer-visitenkarte.webp",
    "ohne_film": true
   },
@@ -2472,12 +2472,13 @@
   "cover": {
    "farbe": "#fce300",
    "ton": "hell",
-   "bild": "bilder/referenzen/goldhammer-flyer.webp"
+   "desktop": "bilder/referenzen/goldhammer-website.jpg",
+   "handy": "bilder/referenzen/goldhammer/lang-handy.jpg"
   },
   "cover_print": {
    "farbe": "#fce300",
    "ton": "hell",
-   "bild": "bilder/referenzen/goldhammer-flyer.webp"
+   "bild": "bilder/mockups/druck-schreibtisch.webp"
   },
   "slug": "goldhammer",
   "case": true,
@@ -2812,7 +2813,7 @@
     {
      "typ": "kapitel",
      "anker": "g-druck",
-     "meta": "Flyer und Visitenkarten",
+     "meta": "Visitenkarten",
      "titel": "Druck",
      "band": {
       "von": "#ffffff",
@@ -2826,11 +2827,6 @@
      "typ": "galerie",
      "id": "druck",
      "bilder": [
-      {
-       "bild": "bilder/referenzen/goldhammer-flyer.webp",
-       "alt": "Praxis-Flyer von Dr. Simone Goldhammer, aufgeklappt",
-       "titel": "Flyer"
-      },
       {
        "bild": "bilder/mockups/druck-schreibtisch.webp",
        "alt": "Visitenkarten von Dr. Simone Goldhammer auf einem Schreibtisch",

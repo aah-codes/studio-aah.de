@@ -34,6 +34,9 @@ erzeuge_jpg bauer-website.jpg 720
 erzeuge deinetwegen-website.jpg 480
 erzeuge_jpg deinetwegen-website.jpg 720
 erzeuge jana-website.jpg 480 720 960
+# Goldhammer-Karte zeigt seit 09.11.2026 die Website statt des Flyers (Anna)
+erzeuge goldhammer-website.jpg 480 720
+erzeuge goldhammer/lang-handy.jpg 240
 # Handy-Aufnahmen (780–860 px): Hero-Leiste 180 (dort höchstens 58 px breit), Karte am Handy 240, am Desktop 480
 erzeuge bauer-handy.jpg 240 480
 erzeuge deinetwegen-handy.jpg 180 240 480

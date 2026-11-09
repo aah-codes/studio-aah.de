@@ -1,7 +1,7 @@
 # Erzeugt die Bilder für den Abschnitt „Für wen“ der Startseite (Entwurf 16.10.2026):
 #   werkzeuge/grafiken/fuer-wen-mittelstand.svg   – Team aus drei Bauhaus-Figuren vor einer Website mit vielen Unterseiten
 #   werkzeuge/grafiken/fuer-wen-selbststaendige.svg – eine Figur winkt neben einem Onepager
-# Vereine & Kultur nutzen das bekannte Foto website/bilder/programm-haende.webp.
+# Vereine & Kultur: seit 09.11.2026 eigene Illustration werkzeuge/grafiken/fuer-wen-vereine.svg (vorher Foto programm-haende.webp, Anna: „wirkt wie Party“).
 # Bildidee: eine Figur (Selbstständige) – ein Team (Mittelstand) – viele Hände (Vereine).
 # Figur wie in werkzeuge/grafiken/blog/geld-und-zeit-titel.py (Konstruktion nach Anna, 13.10.2026). Blau berührt nie Schwarz.
 # Aufruf vom Repository-Ordner: python3 werkzeuge/grafiken/fuer-wen-bilder.py
@@ -113,3 +113,35 @@ s.append(f'<g transform="translate(900 840) scale(1.5)">{figur(34, -150, 14, -12
 s.append('</svg>')
 schreiben('fuer-wen-selbststaendige.svg', '\n'.join(s))
 
+
+# --- Vereine & Kultur (Anna 09.11.2026: das Hände-Foto wirkt wie Party): vier Figuren, zwei halten eine Vereinswebsite
+#     mit Herz hoch wie ein Transparent, eine ruft mit dem Megafon, eine winkt. Herz als Grundform-Herz, schwarz (nie blau).
+def herz(cx, cy, g):
+    # gedrehtes Quadrat + zwei Halbkreise (CLAUDE.md, Erweiterte Formen)
+    h = g / 2
+    return (f'<g transform="translate({cx} {cy}) rotate(45)"><rect x="{-h}" y="{-h}" width="{g}" height="{g}" fill="{SCH}"/>'
+            f'<circle cx="0" cy="{-h}" r="{h}" fill="{SCH}"/><circle cx="{-h}" cy="0" r="{h}" fill="{SCH}"/></g>')
+
+
+s = [grund()]
+s.append(f'<line x1="150" y1="840" x2="1060" y2="840" stroke="{SCH}" stroke-width="2"/>')
+k = 0.66
+leute = [(230, figur(34, -150, 12, -10, blick=1)),          # Megafon: rechter Arm schräg nach oben
+         (500, figur(34, -172, 8, -8, blick=1)),           # hält das Transparent rechts
+         (720, figur(172, -34, 8, -8, blick=-1)),          # hält das Transparent links
+         (950, figur(34, -155, 12, -12, blick=-1))]        # winkt
+for fx, f in leute:
+    s.append(f'<g transform="translate({fx} 840) scale({k})">{f}</g>')
+# Transparent = Vereinswebsite im Browserfenster, oben auf den Händen der beiden mittleren Figuren
+hx1, hy1 = ende(SCHULTER_X, SCHULTER_Y, -172); hx2, hy2 = ende(-SCHULTER_X, SCHULTER_Y, 172)
+links, rechts, unten = 500 + hx1 * k - 70, 720 + hx2 * k + 70, 840 + hy1 * k - 6
+s.append(fenster(links, unten - 300, rechts - links, 300))
+s.append(herz((links + rechts) / 2, unten - 175, 64))
+s.append(textzeilen(links + 40, unten - 60, [rechts - links - 80, rechts - links - 140]))
+# Megafon (Dreieck + Balken) an der rechten Hand der ersten Figur, Rufzeichen als drei Balken
+mx, my = ende(SCHULTER_X, SCHULTER_Y, -150); mx, my = 230 + mx * k, 840 + my * k
+s.append(f'<g transform="translate({mx} {my}) rotate(-62)"><rect x="-8" y="-14" width="26" height="28" fill="{SCH}"/>'
+         f'<path d="M18 -14 L78 -44 L78 44 L18 14 Z" fill="{SCH}"/></g>')
+s.append(''.join(f'<g transform="translate({mx} {my}) rotate({w})"><rect x="104" y="-6" width="46" height="12" rx="6" fill="{SCH}"/></g>' for w in (-92, -62, -32)))
+s.append('</svg>')
+schreiben('fuer-wen-vereine.svg', '\n'.join(s))

@@ -1,6 +1,6 @@
 # Erzeugt die Leistungsunterseiten (service/…/index.html) aus werkzeuge/leistungen-inhalte.json (Texte, FAQ)
 # und werkzeuge/preise-daten.json (Pakete, Preise, Zusatzleistungen). Kopf und Fuß bleiben aus der bestehenden Seite erhalten,
-# der Prozess kommt von der Startseite.
+# der Prozess kommt aus werkzeuge/inhalte/prozess.html (bis 09.11.2026 von der Startseite).
 # Aufruf im Repository-Ordner:  python3 werkzeuge/leistungsseiten.py [id …]   (ohne id: alle)
 import json, re, sys
 
@@ -107,6 +107,8 @@ def extras(g):
 
 
 START = (WEBSITE / 'index.html').read_text(encoding='utf-8')
+# Prozess der Website-Projekte: eigene Quelle, seit er nicht mehr auf der Startseite steht (Anna, 09.11.2026)
+PROZESS = (WEBSITE.parent / 'werkzeuge' / 'inhalte' / 'prozess.html').read_text(encoding='utf-8')
 
 
 def dachzeile(m, h):
@@ -128,8 +130,8 @@ def ablauf_eigen(pre, schritte):
 
 
 def ablauf(pre):
-    m = re.search(r'<section class="prozess-kompakt".*?</section>', START, re.S)
-    if not m: raise SystemExit('Prozess (section.prozess-kompakt) fehlt in website/index.html')
+    m = re.search(r'<section class="prozess-kompakt".*?</section>', PROZESS, re.S)
+    if not m: raise SystemExit('Prozess (section.prozess-kompakt) fehlt in werkzeuge/inhalte/prozess.html')
     s = re.sub(r'href="(kontakt/|website-check/)"', lambda h: f'href="{pre}{h.group(1)}"', m.group(0))
     return '  ' + s.replace('<section class="prozess-kompakt"', '<section class="prozess-kompakt" id="ablauf"', 1)
 
