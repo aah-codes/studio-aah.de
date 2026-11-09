@@ -126,6 +126,6 @@ def schreibe(datei, aendern):
 if __name__ == '__main__':
     (WEBSITE / 'js' / 'pakete-daten.js').write_text(rechner_daten(), encoding='utf-8')
     schreibe('preise/index.html', preisseite)
-    # Hero „Bauhaus-Bühne“ seit 09.11.2026 ohne Laufband; heroband() bleibt für die Leistungsübersicht /service/ (geplant)
+    # Hero „Bauhaus-Bühne“ seit 09.11.2026 ohne Laufband; heroband() bleibt für eine spätere Verwendung (Anna 09.11.2026: erstmal nirgends)
     schreibe('index.html', lambda t: einsetzen(t, 'LEISTUNGEN', start_leistungen()))
     print('Rechner-Daten, Leiste, Glossar und Startseite geschrieben')
