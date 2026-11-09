@@ -9,6 +9,16 @@
     "unter": "Wählen Sie Ihr größtes Problem oder Ihre Branche.",
     "weitere": [
       [
+        "Selbsttest: Wo hakt es?",
+        "Acht Aussagen, zwei Minuten, Ergebnis sofort. Ohne Anmeldung.",
+        "selbsttest/"
+      ],
+      [
+        "KI-Zeitrechner",
+        "Wie viel Zeit kann KI Ihrem Team sparen? Rechnen Sie mit Ihren Zahlen.",
+        "ki-zeitrechner/"
+      ],
+      [
         "Selbstständige",
         "Eine Website, die alles auf den Punkt bringt – als Onepager.",
         "service/webdesign/"
@@ -296,6 +306,10 @@
         [
           "ki-arbeits-setup/",
           "KI-Arbeits-Setup"
+        ],
+        [
+          "ki-zeitrechner/",
+          "KI-Zeitrechner"
         ]
       ]
     },
@@ -386,6 +400,10 @@
         [
           "service/retainer/",
           "Retainer"
+        ],
+        [
+          "ki-zeitrechner/",
+          "KI-Zeitrechner"
         ]
       ]
     }
@@ -610,5 +628,55 @@
         "Projekt ansehen"
       ]
     }
+  },
+  "selbsttest": {
+    "pfad": "selbsttest/",
+    "seitentitel": "Selbsttest für den Mittelstand: Wo hakt es bei Ihnen? | STUDIO AAH!",
+    "beschreibung": "Acht Aussagen, zwei Minuten, Ergebnis sofort: Wo hakt es in Ihrem Unternehmen am meisten? Neue Kunden, Fachkräfte, KI im Team oder Entlastung. Kostenlos, ohne Anmeldung.",
+    "meta": "Selbsttest",
+    "h1": "Wo hakt es bei Ihnen am meisten?",
+    "unter": "Acht Aussagen, zwei Minuten. Ihr Ergebnis sehen Sie sofort hier. Es wird nichts gespeichert und nichts gesendet.",
+    "aussagen": [
+      [
+        "neue-kunden",
+        "Neue Aufträge kommen fast nur über Empfehlungen."
+      ],
+      [
+        "fachkraefte",
+        "Offene Stellen bleiben bei uns lange unbesetzt."
+      ],
+      [
+        "ki-im-team",
+        "Wir zahlen für Software, die kaum jemand nutzt."
+      ],
+      [
+        "entlastung",
+        "Viele kleine Entscheidungen landen bei der Geschäftsführung."
+      ],
+      [
+        "neue-kunden",
+        "Über unsere Website kommen kaum Anfragen."
+      ],
+      [
+        "fachkraefte",
+        "Online sieht man kaum, warum man gern bei uns arbeitet."
+      ],
+      [
+        "ki-im-team",
+        "Im Team nutzt jede:r KI anders oder gar nicht."
+      ],
+      [
+        "entlastung",
+        "Wichtige Abläufe stehen nur in den Köpfen einzelner Leute."
+      ]
+    ]
+  },
+  "ki_rechner": {
+    "pfad": "ki-zeitrechner/",
+    "seitentitel": "KI-Zeitrechner: Wie viel Zeit kann KI Ihrem Team sparen? | STUDIO AAH!",
+    "beschreibung": "Rechnen Sie mit Ihren eigenen Zahlen aus, wie viele Stunden Routine KI Ihrem Team im Monat abnehmen könnte. Kostenlos, ohne Anmeldung, nichts wird gesendet.",
+    "meta": "KI-Zeitrechner",
+    "h1": "Wie viel Zeit kann KI Ihrem Team sparen?",
+    "unter": "Rechnen Sie mit Ihren eigenen Zahlen. Das Ergebnis ist eine Schätzung, keine Zusage. Es wird nichts gespeichert und nichts gesendet."
   }
 }

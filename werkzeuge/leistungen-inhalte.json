@@ -109,7 +109,16 @@
    "Klare Botschaft gleich zu Beginn und eindeutige nächste Schritte für mehr Conversion",
    "WordPress (Kadence) oder Claude Code, Schulung zur Selbstpflege und auf Wunsch Wartung"
   ],
-  "herz": true
+  "herz": true,
+  "gewinn": [
+   "Darauf ausgelegt, dass mehr Anfragen über die Website kommen: Besucher:innen finden schnell, was Sie anbieten, und den Weg zu Ihnen.",
+   "Aufbereitet für Google und die KI-Suche.",
+   "Planbar: fester Preis und festgelegte Korrekturrunden."
+  ],
+  "fuer_sie": [
+   "neue-kunden",
+   "fachkraefte"
+  ]
  },
  "brand": {
   "pfad": "service/markenbildung/",
@@ -242,6 +251,15 @@
    "Brand Experience: Analyse aller digitalen und analogen Touchpoints",
    "Buyer-Personas und User-Personas für Ihre Zielgruppe",
    "Markt-, Zielgruppen- und Trendanalyse"
+  ],
+  "gewinn": [
+   "Wiedererkennbar: ein Auftritt, der überall gleich wirkt, vom Angebot bis zum Firmenwagen.",
+   "Klar positioniert: Kundschaft und Bewerber:innen verstehen sofort, wofür Sie stehen.",
+   "Feste Regeln und Vorlagen, mit denen Ihr Team einheitlich arbeitet."
+  ],
+  "fuer_sie": [
+   "neue-kunden",
+   "fachkraefte"
   ]
  },
  "ui-ux": {
@@ -329,6 +347,15 @@
    "Website-Check: Ich versetze mich in Ihre Zielgruppe, nutze Ihre Website oder Anwendung und zeige, was sich verbessern lässt",
    "Personas: greifbare Abbilder Ihrer Zielgruppe für Entscheidungen, die nicht aus dem Bauch kommen",
    "Neue Nutzerführung und UI-Kit, für Plattformen ein vollständiges Designsystem"
+  ],
+  "gewinn": [
+   "Software, die Ihre Kundschaft versteht, damit weniger Rückfragen entstehen.",
+   "Entscheidungen auf Grundlage echter Nutzung statt Bauchgefühl.",
+   "Ein Designsystem, mit dem Ihr Team schneller weiterbaut."
+  ],
+  "fuer_sie": [
+   "neue-kunden",
+   "ki-im-team"
   ]
  },
  "marketing": {
@@ -417,7 +444,16 @@
    "Fachartikel mit 1.000 bis 1.500 Wörtern, recherchiert und verständlich",
    "Webinar aufsetzen: Konzept, Anmeldeseite und Folien als PowerPoint oder PDF"
   ],
-  "herz": true
+  "herz": true,
+  "gewinn": [
+   "Sichtbar auf LinkedIn, mit Fachartikeln und Webinaren.",
+   "Inhalte, die zu Ihnen passen, mit Vorlagen zum Weitermachen.",
+   "Ein klarer Plan statt Aktionismus."
+  ],
+  "fuer_sie": [
+   "neue-kunden",
+   "fachkraefte"
+  ]
  },
  "ki": {
   "artikel": false,
@@ -505,6 +541,15 @@
    "KI-Check: Analyse Ihrer Abläufe und ein Empfehlungsbericht",
    "Auswahl und Einrichtung passender KI-Werkzeuge, mit Blick auf den Datenschutz",
    "Team-Schulung: praxisnah, verständlich und auf Ihre Aufgaben zugeschnitten"
+  ],
+  "gewinn": [
+   "KI-Werkzeuge, die zu Ihren Abläufen passen.",
+   "Ein Team, das weiß, wie es KI sicher und sinnvoll einsetzt.",
+   "Ziel: weniger Routine, mehr Zeit für Kundschaft und Strategie."
+  ],
+  "fuer_sie": [
+   "ki-im-team",
+   "entlastung"
   ]
  },
  "print": {
@@ -592,7 +637,15 @@
     "broschuere"
    ]
   ],
-  "artikel": false
+  "artikel": false,
+  "gewinn": [
+   "Gedrucktes, das zu Ihrer Marke passt.",
+   "Druckfertige Dateien für Ihre Druckerei.",
+   "Ein Auftritt, der auch auf Messen und im Gespräch überzeugt."
+  ],
+  "fuer_sie": [
+   "neue-kunden"
+  ]
  },
  "illustration": {
   "artikel": false,
@@ -667,7 +720,15 @@
     "Ich habe an der Bauhaus-Universität Weimar Freie Kunst studiert und 2015 für ein großformatiges Aquarell den Preis der Stiftung Ulla und Eberhard Jung erhalten; die Arbeit gehört heute zur Sammlung des Neuen Museums Weimar. Ich habe viel illustriert und bringe diesen Hintergrund in jede Illustration und Infografik mit."
    ],
    "link": true
-  }
+  },
+  "gewinn": [
+   "Komplexes auf einen Blick verständlich.",
+   "Bilder, die nur Sie haben, statt Stockfotos.",
+   "Erklärungen, die Kundschaft und Team schneller verstehen."
+  ],
+  "fuer_sie": [
+   "neue-kunden"
+  ]
  },
  "motion": {
   "artikel": false,
@@ -745,7 +806,16 @@
     "Beispiele zeige ich hier bald."
    ],
    "link": true
-  }
+  },
+  "gewinn": [
+   "Aufmerksamkeit auf Social Media und auf der Website.",
+   "Erklärungen in Sekunden statt langer Texte.",
+   "Bewegung im Stil Ihrer Marke."
+  ],
+  "fuer_sie": [
+   "neue-kunden",
+   "fachkraefte"
+  ]
  },
  "retainer": {
   "artikel": false,
@@ -823,6 +893,15 @@
    "Neue Unterseiten erstellen",
    "Abschnitte bearbeiten"
   ],
-  "herz": true
+  "herz": true,
+  "gewinn": [
+   "Ihre Website bleibt aktuell, ohne dass Sie sich darum kümmern müssen.",
+   "Eine feste Ansprechpartnerin für alle Änderungen.",
+   "Abrechnung nach Aufwand, 50 bis 85 € netto je Stunde, je nach Unternehmensgröße."
+  ],
+  "fuer_sie": [
+   "entlastung",
+   "fachkraefte"
+  ]
  }
 }

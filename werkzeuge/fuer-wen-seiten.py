@@ -89,13 +89,18 @@ def ld(titel, beschreibung, url, fragen):
     return {'@context': 'https://schema.org', '@graph': graph}
 
 
-def schreibe(pfad, main, titel, beschreibung, fragen):
+def schreibe(pfad, main, titel, beschreibung, fragen, skript=None):
     tiefe = pfad.count('/')
     vorlage = (WEBSITE / VORLAGE[tiefe]).read_text(encoding='utf-8')
     url = BASIS_URL + pfad
     ziel = WEBSITE / pfad / 'index.html'
     ziel.parent.mkdir(parents=True, exist_ok=True)
-    ziel.write_text(seitenrahmen(vorlage, f'<main id="inhalt">\n{main}\n</main>', titel, beschreibung, url, ld(titel, beschreibung, url, fragen)), encoding='utf-8')
+    text = seitenrahmen(vorlage, f'<main id="inhalt">\n{main}\n</main>', titel, beschreibung, url, ld(titel, beschreibung, url, fragen))
+    if skript:  # seitenbezogenes Skript nach menue.js, gleiche Cache-Version
+        import re as _re
+        m = _re.search(r'js/menue\.js\?v=([^"]+)"', text)
+        text = text.replace('</body>', f'<script src="../js/{skript}.js?v={m.group(1) if m else "1"}" defer></script>\n</body>', 1)
+    ziel.write_text(text, encoding='utf-8')
     print('geschrieben:', pfad)
 
 
@@ -143,14 +148,14 @@ def uebersicht():
     pre = '../'
     probleme = [{'icon': ICON[p['nr']], 'titel': p['karte'], 'text': p['kurz'], 'href': p['pfad'], 'linktext': p['meta']} for p in D['probleme']]
     branchen = [{'titel': b['name'], 'text': b['kurz'], 'href': b['pfad'], 'linktext': 'Zur Branche'} for b in D['branchen']]
-    weitere = [{'titel': t, 'text': x, 'href': z, 'linktext': 'Mehr erfahren'} for t, x, z in u['weitere']]
+    weitere = [{'titel': t, 'text': x, 'href': z, 'linktext': 'Zum Test' if z in ('selbsttest/', 'ki-zeitrechner/') else 'Mehr erfahren'} for t, x, z in u['weitere']]
     teile = [kopfbereich(u['meta'], u['h1'], u['unter'], pre, bild='fuer-wen'),
              '  <section class="haken" aria-labelledby="haken-titel">\n    <div class="sektionskopf"><p class="meta">Wo es gerade hakt</p>'
              '<h2 class="gr-h2" id="haken-titel">Vier Fragen aus dem Mittelstand.</h2></div>\n' + karten(probleme, pre) + '\n  </section>',
              '  <section class="haken" aria-labelledby="branchen-titel">\n    <div class="sektionskopf"><p class="meta">Branchen</p>'
              '<h2 class="gr-h2" id="branchen-titel">Ihre Branche.</h2></div>\n' + karten(branchen, pre, 'haken-karten fw-drei') + '\n  </section>',
              '  <section class="haken fw-weitere" aria-labelledby="weitere-titel">\n    <div class="sektionskopf"><p class="meta">Außerdem</p>'
-             '<h2 class="gr-h3" id="weitere-titel">Auch für Selbstständige und Vereine.</h2></div>\n' + karten(weitere, pre, 'haken-karten fw-zwei-k') + '\n  </section>',
+             '<h2 class="gr-h3" id="weitere-titel">Selbsttests und weitere Zielgruppen.</h2></div>\n' + karten(weitere, pre, 'haken-karten fw-zwei-k') + '\n  </section>',
              abschluss(pre)]
     schreibe(u['pfad'], '\n\n'.join(teile), u['seitentitel'], u['beschreibung'], [])
 
@@ -180,6 +185,57 @@ def produktseite(q):
     schreibe(q['pfad'], '\n\n'.join(teile), q['seitentitel'], q['beschreibung'], q['faq'])
 
 
+def selbsttest(q):
+    """Selbsttest „Wo hakt es?“ (Phase 4, Anna 10.11.2026): Auswertung im Browser (js/selbsttest.js), nichts wird gesendet."""
+    pre = '../'
+    zeilen = []
+    for n, (ziel, text) in enumerate(q['aussagen'], 1):
+        wahl = ''.join(f'<label><input type="radio" name="a{n}" value="{w}"> {t}</label>' for w, t in ((0, 'Stimmt nicht'), (1, 'Teils'), (2, 'Stimmt')))
+        zeilen.append(f'      <fieldset class="st-frage" data-ziel="{ziel}"><legend><span class="st-nr">{n:02d}</span> {esc(text)}</legend><div class="st-wahl">{wahl}</div></fieldset>')
+    ergebnis = ''.join(f'<li data-ergebnis="{p["id"]}"><a href="{pre}{p["pfad"]}"><span class="st-titel">{esc(p["karte"])}</span>'
+                       f'<span class="st-balken"><i></i></span><span class="st-link">{esc(p["meta"])} <span aria-hidden="true">→</span></span></a></li>'
+                       for p in D['probleme'])
+    teile = [kopfbereich(q['meta'], q['h1'], q['unter'], pre, bild='fuer-wen'),
+             '  <section class="st" aria-labelledby="st-titel">\n    <h2 class="unsichtbar" id="st-titel">Ihre Antworten</h2>\n'
+             '    <form class="st-form" method="dialog" data-selbsttest novalidate>\n' + '\n'.join(zeilen) +
+             f'\n      <p class="st-hinweis" role="alert" data-hinweis></p>\n      <p><button class="button" type="submit">Ergebnis zeigen{PFEIL}</button></p>\n'
+             '      <noscript><p>Für die Auswertung braucht der Selbsttest JavaScript.</p></noscript>\n    </form>\n'
+             '    <div class="st-ergebnis" data-ergebnis-box hidden tabindex="-1">\n      <p class="meta">Ihr Ergebnis</p>\n'
+             '      <h2 class="gr-h3" data-ergebnis-titel>Hier hakt es am meisten</h2>\n'
+             f'      <ol class="st-liste">{ergebnis}</ol>\n'
+             f'      <p class="st-weiter"><a class="button" href="{pre}kontakt/">Darüber sprechen{PFEIL}</a> <a class="button button-zweit" href="{pre}website-check/">Kostenloser Website-Check{PFEIL}</a></p>\n'
+             '    </div>\n  </section>',
+             abschluss(pre)]
+    schreibe(q['pfad'], '\n\n'.join(teile), q['seitentitel'], q['beschreibung'], [], skript='selbsttest')
+
+
+def ki_rechner(q):
+    """KI-Zeitrechner (Phase 4, Anna 10.11.2026): Schätzung mit den eigenen Zahlen, Rechnung im Browser."""
+    pre = '../'
+    teile = [kopfbereich(q['meta'], q['h1'], q['unter'], pre, bild='entlastung'),
+             f'''  <section class="st kr" aria-labelledby="kr-titel">
+    <h2 class="unsichtbar" id="kr-titel">Ihre Zahlen</h2>
+    <form class="kr-form" method="dialog" data-ki-rechner>
+      <label>Wie viele Menschen erledigen bei Ihnen Büroarbeit?<input type="number" name="personen" min="1" max="500" value="5" inputmode="numeric"></label>
+      <label for="kr-stunden">Wie viele Stunden Routine hat jede Person pro Woche?</label><p class="kr-wert"><output name="stunden_aus" for="kr-stunden">6 Stunden</output></p><input id="kr-stunden" type="range" name="stunden" min="1" max="20" value="6" aria-valuetext="6 Stunden">
+      <fieldset><legend>Wie viel davon könnte KI vorbereiten? <span class="gedaempft">(Annahmen, keine Messwerte)</span></legend>
+        <label><input type="radio" name="anteil" value="0.15"> Wenig (15 %)</label>
+        <label><input type="radio" name="anteil" value="0.25" checked> Mittel (25 %)</label>
+        <label><input type="radio" name="anteil" value="0.4"> Viel (40 %)</label></fieldset>
+      <label>Was kostet eine Arbeitsstunde bei Ihnen intern (in Euro)?<input type="number" name="satz" min="10" max="300" value="45" inputmode="numeric"></label>
+    </form>
+    <div class="kr-ergebnis">
+      <p class="meta">Ihre Schätzung</p>
+      <div aria-live="polite" aria-atomic="true"><p class="kr-zahl"><span data-kr-stunden>0</span> <small>Stunden pro Monat</small></p>
+      <p class="kr-zahl kr-zahl-klein"><span data-kr-euro>0</span> <small>Euro: Wert der gesparten Arbeitszeit pro Jahr (Schätzung)</small></p></div>
+      <p class="gedaempft">Gerechnet mit 4,3 Wochen pro Monat und 12 Monaten. Wie viel KI wirklich abnimmt, zeigt der KI-Check an Ihren Abläufen.</p>
+      <p class="st-weiter"><a class="button" href="{pre}ki-arbeits-setup/">Zum KI-Arbeits-Setup{PFEIL}</a> <a class="button button-zweit" href="{pre}service/ki-digitalisierung/">KI-Check und Einführung{PFEIL}</a></p>
+    </div>
+  </section>''',
+             abschluss(pre)]
+    schreibe(q['pfad'], '\n\n'.join(teile), q['seitentitel'], q['beschreibung'], [], skript='selbsttest')
+
+
 if __name__ == '__main__':
     uebersicht()
     for p in D['probleme']:
@@ -187,3 +243,5 @@ if __name__ == '__main__':
     for b in D['branchen']:
         branchenseite(b)
     produktseite(D['produkt'])
+    selbsttest(D['selbsttest'])
+    ki_rechner(D['ki_rechner'])

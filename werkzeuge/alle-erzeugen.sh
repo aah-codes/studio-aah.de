@@ -16,3 +16,4 @@ python3 werkzeuge/marken-regelwerk.py
 python3 werkzeuge/ki-arbeits-setup.py
 python3 werkzeuge/referenzen.py
 python3 werkzeuge/fuer-wen-seiten.py
+python3 werkzeuge/brotkrumen.py

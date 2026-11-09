@@ -214,6 +214,24 @@ def sprungleiste(c, g, mit_vergleich, mit_ablauf, link, link_text):
     return f'  <nav class="preis-leiste lsx-chips" aria-label="Auf dieser Seite">{links}<a href="{link}">{link_text} →</a></nav>'
 
 
+# „Was Sie davon haben“ und „Für Sie, wenn“ oben auf jeder Leistungsseite (Anna, 09./10.11.2026: Schmerzpunkte 1–4 überall, immer den Nutzen)
+PROBLEME = {x['id']: x for x in lade_json('inhalte/fuer-wen-seiten.json')['probleme']}
+
+
+def gewinn(c, pre):
+    if not c.get('gewinn'):
+        return ''
+    punkte = ''.join(f'<li>{esc(x)}</li>' for x in c['gewinn'])
+    fuer = ''.join(f'<li><a href="{pre}{PROBLEME[i]["pfad"]}"><span>{esc(PROBLEME[i]["karte"])}</span> <span aria-hidden="true">→</span></a></li>'
+                   for i in c.get('fuer_sie', []))
+    return f'''  <section class="lsx-gewinn" id="gewinn" aria-labelledby="gewinn-titel">
+    <div class="lsx-gewinn-raster">
+      <div><p class="meta">Was Sie davon haben</p><h2 class="gr-h3" id="gewinn-titel">Mit mir an Ihrer Seite</h2><ol class="lsx-gewinn-liste">{punkte}</ol></div>
+      <div class="lsx-fuer"><p class="meta">Für Sie, wenn</p><ul>{fuer}</ul></div>
+    </div>
+  </section>'''
+
+
 def problem_loesung(c, g, pre, link):
     probleme = ''.join(f'<li>{esc(x)}</li>' for x in c['probleme'])
     punkte = ''.join(f'<li>{esc(x)}</li>' for x in c['loesung_punkte'][:3])
@@ -337,6 +355,8 @@ def seite(key, c):
 {seitenkopf(c, pre, intro, termine)}
 
 {sprungleiste(c, g, bool(vergleich_html), mit_ablauf, link, link_text)}
+
+{gewinn(c, pre)}
 
 {problem_loesung(c, g, pre, link)}
 

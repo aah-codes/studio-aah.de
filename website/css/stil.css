@@ -3348,3 +3348,60 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 .haken-start .haken-karte { background: var(--farbe-creme); border: 0; }
 .hk-bild { display: block; width: 120px; height: 72px; margin-bottom: 20px; }
 .haken-start .haken-nutzen .hk-loesung { margin-bottom: 18px; }
+/* Leistungsseiten: „Was Sie davon haben“ und „Für Sie, wenn“ (Anna 10.11.2026) */
+.lsx-gewinn { padding: 64px var(--rand-seite) 0; }
+.lsx-gewinn-raster { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 32px 64px; align-items: start; }
+.lsx-gewinn .gr-h3 { margin: 12px 0 24px; }
+.lsx-gewinn-liste { list-style: none; counter-reset: g; margin: 0; padding: 0; display: grid; gap: 16px; }
+.lsx-gewinn-liste li { counter-increment: g; position: relative; padding: 0 0 16px 56px; border-bottom: 1.5px solid var(--farbe-grau-hell); font-size: clamp(18px, 1.4vw, 22px); line-height: 1.45; }
+.lsx-gewinn-liste li::before { content: counter(g, decimal-leading-zero); position: absolute; left: 0; top: 2px; font-family: var(--schrift-meta); font-size: 15px; color: var(--farbe-primaer); }
+.lsx-fuer { background: var(--farbe-creme); border-radius: 24px; padding: 28px; }
+.lsx-fuer ul { list-style: none; margin: 16px 0 0; padding: 0; display: grid; gap: 10px; }
+.lsx-fuer a { display: flex; justify-content: space-between; gap: 12px; padding: 14px 18px; background: var(--farbe-weiss); border-radius: 14px; color: var(--farbe-dunkel); text-decoration: none; font-weight: 600; }
+.lsx-fuer a:hover, .lsx-fuer a:focus-visible { background: var(--farbe-dunkel); color: var(--farbe-weiss); }
+@media (max-width: 900px) { .lsx-gewinn-raster { grid-template-columns: minmax(0, 1fr); } }
+/* Selbsttest und KI-Zeitrechner (Anna 10.11.2026) */
+.st { padding: 0 var(--rand-seite) 96px; }
+.st-form { display: grid; gap: 14px; max-width: 900px; }
+.st-frage { margin: 0; padding: 20px 24px; border: 1.5px solid var(--farbe-grau-hell); border-radius: 18px; }
+.st-frage.st-fehlt { border-color: var(--farbe-dunkel); }
+.st-frage legend { padding: 0 8px; margin-left: -8px; font-weight: 600; font-size: clamp(17px, 1.3vw, 20px); line-height: 1.4; }
+.st-nr { font-family: var(--schrift-meta); font-size: 14px; color: var(--farbe-primaer); margin-right: 6px; }
+.st-wahl { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.st-wahl label { position: relative; }
+.st-wahl input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.st-wahl label { display: inline-flex; padding: 8px 16px; border: 1.5px solid var(--farbe-dunkel); border-radius: 999px; font-weight: 600; cursor: pointer; }
+.st-wahl label:has(input:checked) { background: var(--farbe-dunkel); color: var(--farbe-weiss); }
+.st-wahl label:has(input:focus-visible) { outline: 3px solid var(--farbe-primaer); outline-offset: 2px; }
+.st-ergebnis { max-width: 900px; margin-top: 48px; padding: clamp(24px, 4vw, 48px); background: var(--farbe-creme); border-radius: 24px; }
+.st-ergebnis:focus { outline: none; }
+.st-ergebnis .gr-h3 { margin: 12px 0 24px; }
+.st-liste { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.st-liste a { display: grid; grid-template-columns: minmax(0, 1fr) minmax(80px, 30%) auto; gap: 16px; align-items: center; padding: 14px 18px; background: var(--farbe-weiss); border-radius: 14px; color: var(--farbe-dunkel); text-decoration: none; font-weight: 600; }
+.st-oben a { outline: 2px solid var(--farbe-primaer); }
+.st-balken { height: 10px; border-radius: 5px; background: var(--farbe-grau-hell); overflow: hidden; }
+.st-balken i { display: block; height: 100%; width: var(--wert, 0); background: var(--farbe-primaer); transition: width .6s; }
+.st-link { font-size: 15px; white-space: nowrap; }
+.st-weiter { display: flex; flex-wrap: wrap; gap: 12px 16px; margin: 28px 0 0; }
+@media (max-width: 767.98px) { .st-liste a { grid-template-columns: minmax(0, 1fr); gap: 8px; } }
+.kr { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px 64px; align-items: start; }
+.kr-form { display: grid; gap: 22px; }
+.kr-form label, .kr-form legend { display: grid; gap: 8px; font-weight: 600; }
+.kr-form input[type="number"] { font: inherit; padding: 12px 16px; border: 1.5px solid var(--farbe-dunkel); border-radius: 12px; max-width: 200px; }
+.kr-form input[type="range"] { accent-color: var(--farbe-primaer); width: 100%; }
+.kr-form fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: 8px; }
+.kr-form fieldset label { display: flex; gap: 10px; align-items: center; font-weight: 500; }
+.kr-form output { font-weight: 400; color: var(--farbe-gedaempft); }
+.kr-ergebnis { padding: clamp(24px, 4vw, 48px); background: var(--farbe-creme); border-radius: 24px; }
+.kr-zahl { margin: 12px 0 0; font-family: var(--schrift-ueberschrift); font-size: clamp(56px, 7vw, 112px); line-height: 1; }
+.kr-zahl small { display: block; font-family: var(--schrift-text); font-size: 18px; font-weight: 600; margin-top: 8px; }
+.kr-zahl-klein { font-size: clamp(36px, 4vw, 56px); margin-top: 24px; }
+@media (max-width: 900px) { .kr { grid-template-columns: minmax(0, 1fr); } }
+.haken-test { margin: 16px 0 0; }
+/* Brotkrumen auf Unterseiten (werkzeuge/brotkrumen.py, Anna 10.11.2026) */
+.bk-nav { padding: 32px var(--rand-seite) 0; }
+.bk-nav .brotkrumen { margin: 0; }
+.bk-nav + .fw-kopf { padding-top: 48px; }
+.st-hinweis { margin: 0; font-weight: 600; min-height: 1em; }
+.kr-wert { margin: -14px 0 0; color: var(--farbe-gedaempft); }
+.kr-form > label[for] { margin-bottom: -14px; }
