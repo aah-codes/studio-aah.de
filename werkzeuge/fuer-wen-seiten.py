@@ -149,9 +149,35 @@ def uebersicht():
     schreibe(u['pfad'], '\n\n'.join(teile), u['seitentitel'], u['beschreibung'], [])
 
 
+def produktseite(q):
+    """Produktseite Employer Branding (Anna, 10.11.2026: ab 2.850 € netto, festes Angebot nach dem Karriere-Check)."""
+    pre = '../'
+    teile = [kopfbereich(q['meta'], q['h1'], q['unter'], pre, ('kontakt/', 'Projekt anfragen')).replace(
+                 f'<a class="button button-zweit" href="{pre}kontakt/">Projekt anfragen{PFEIL}</a>',
+                 f'<a class="button button-zweit" href="{pre}website-check/">Kostenloser Website-Check{PFEIL}</a>'),
+             '  <section class="fw-zwei" aria-labelledby="was-titel">\n    <div>\n      <p class="meta">Kurz erklärt</p>\n'
+             '      <h2 class="gr-h3" id="was-titel">Was ist Employer Branding?</h2>\n'
+             f'      <p class="fw-kosten">{esc(q["erklaerung"])}</p>\n    </div>\n'
+             '    <div>\n      <p class="meta">Für Sie, wenn</p>\n      <h2 class="gr-h3">Woran Sie es merken</h2>\n      <ul class="fw-liste">\n'
+             + '\n'.join(f'        <li>{esc(x)}</li>' for x in q['fuer']) + '\n      </ul>\n    </div>\n  </section>',
+             '  <section class="ablauf-start" aria-labelledby="stufen-titel">\n    <div class="sektionskopf"><p class="meta">So gehe ich vor</p>'
+             '<h2 class="gr-h2" id="stufen-titel">Drei Stufen.</h2></div>\n' + schritte(q['stufen']) + '\n  </section>',
+             '  <section class="fw-paket" aria-labelledby="paket-titel">\n    <div class="fw-paket-box">\n      <p class="meta">Das Paket</p>\n'
+             '      <h2 class="gr-h3" id="paket-titel">Das ist enthalten</h2>\n      <ul class="fw-liste">\n'
+             + '\n'.join(f'        <li>{esc(x)}</li>' for x in q['enthalten']) + '\n      </ul>\n'
+             f'      <p class="fw-preis"><span class="fw-preis-zahl">{esc(q["preis"])}</span> <small class="lsx-netto">netto</small></p>\n'
+             f'      <p class="gedaempft">{esc(q["preis_hinweis"])}</p>\n'
+             f'      <p><a class="button" href="{pre}kontakt/">Projekt anfragen{PFEIL}</a></p>\n    </div>\n  </section>',
+             beleg(q['beleg'], pre),
+             faq(q['faq']),
+             abschluss(pre)]
+    schreibe(q['pfad'], '\n\n'.join(teile), q['seitentitel'], q['beschreibung'], q['faq'])
+
+
 if __name__ == '__main__':
     uebersicht()
     for p in D['probleme']:
         problemseite(p)
     for b in D['branchen']:
         branchenseite(b)
+    produktseite(D['produkt'])

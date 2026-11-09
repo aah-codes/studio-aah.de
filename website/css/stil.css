@@ -3316,3 +3316,9 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 .haken-karte:nth-child(1) .haken-rang::after { border-radius: 50%; }
 .haken-karte:nth-child(3) .haken-rang::after { clip-path: polygon(50% 0, 100% 100%, 0 100%); }
 .haken-karte:nth-child(4) .haken-rang::after { height: 7px; border-radius: 14px 14px 0 0; }
+.fw-paket { padding: 0 var(--rand-seite) 96px; }
+.fw-paket-box { border: 1.5px solid var(--farbe-dunkel); border-radius: 24px; padding: clamp(28px, 4vw, 56px); max-width: 900px; }
+.fw-paket-box .gr-h3 { margin: 12px 0 24px; }
+.fw-preis { margin: 32px 0 8px; }
+.fw-preis-zahl { font-family: var(--schrift-ueberschrift); font-size: clamp(40px, 5vw, 72px); line-height: 1; }
+.fw-preis .lsx-netto { font-size: 18px; }

@@ -180,6 +180,10 @@
       ],
       "leistungen": [
         [
+          "employer-branding/",
+          "Employer Branding"
+        ],
+        [
           "service/webdesign/",
           "Webdesign"
         ],
@@ -489,5 +493,74 @@
         ]
       ]
     }
-  ]
+  ],
+  "produkt": {
+    "pfad": "employer-branding/",
+    "seitentitel": "Employer Branding für den Mittelstand in Leipzig: Ihre Arbeitgebermarke | STUDIO AAH!",
+    "beschreibung": "Employer Branding für mittelständische Firmen: Karriere-Check, Workshop und neue Karriereseite, damit die richtigen Fachkräfte sich bewerben. Ab 2.850 € netto, aus Leipzig.",
+    "meta": "Employer Branding",
+    "h1": "Employer Branding: Damit die richtigen Leute sich bei Ihnen bewerben.",
+    "unter": "Ihre Arbeitgebermarke, klar und ehrlich gezeigt. Auf der Website, in Stellenanzeigen, auf Social Media und im Auftritt nach außen.",
+    "erklaerung": "Employer Branding heißt: Sie zeigen Ihre Firma als Arbeitgeber so, dass die richtigen Leute sich bewerben. Ehrlich, wiedererkennbar und überall gleich: auf der Website, in Stellenanzeigen, auf Social Media, am Firmenwagen und im Bewerbungsgespräch. Auf Deutsch sagt man auch Arbeitgebermarke.",
+    "fuer": [
+      "Ihre Stellen bleiben monatelang offen.",
+      "Auf Ihre Anzeigen melden sich die Falschen oder gar niemand.",
+      "Ihre Karriereseite ist eine Liste mit PDF-Anzeigen.",
+      "Online sieht niemand, warum man gern bei Ihnen arbeitet."
+    ],
+    "stufen": [
+      [
+        "Karriere-Check",
+        "Ich sehe Sie mit den Augen von Bewerber:innen.",
+        "Ich prüfe Karrierebereich, Stellenanzeigen auf Portalen, Arbeitgeberbewertungen, Social Media und Ihre analogen Touchpoints wie Firmenwagen und Aushänge (anhand Ihrer Fotos). Sie bekommen einen Bericht mit den drei wichtigsten Maßnahmen."
+      ],
+      [
+        "Workshop",
+        "Eine Stunde, die alles klärt.",
+        "Vorab beantworten Sie und drei bis fünf Mitarbeitende einen kurzen Fragebogen. Im Workshop (60 Minuten online) klären wir: Wen suchen Sie? Warum arbeitet man gern bei Ihnen? Wo erreichen wir diese Menschen? Daraus schreibe ich Ihr Arbeitgeberprofil."
+      ],
+      [
+        "Umsetzung",
+        "Sichtbar, wo Bewerber:innen suchen.",
+        "Neue Karriereseite mit Ihrem Arbeitgeberversprechen und einer Vorlage für Stellenanzeigen, ein kurzes Bewerbungsformular fürs Handy und fünf Social-Media-Vorlagen in Canva, die Sie selbst füllen können."
+      ]
+    ],
+    "enthalten": [
+      "Karriere-Check mit Bericht (volle Analyse)",
+      "Fragebogen und Workshop (60 Minuten online)",
+      "Arbeitgeberprofil auf einer Seite",
+      "Neue Karriereseite mit Vorlage für Stellenanzeigen",
+      "Bewerbungsformular für das Handy",
+      "5 Social-Media-Vorlagen in Canva",
+      "2 Korrekturschleifen"
+    ],
+    "preis": "ab 2.850 €",
+    "preis_hinweis": "Zuerst prüfe ich kostenlos Ihren Karrierebereich im Website-Check und wir sprechen über Ihre Ziele. Danach bekommen Sie ein Angebot mit festem Preis. Der Umfang bestimmt den Preis.",
+    "faq": [
+      [
+        "Was ist der Unterschied zu einer neuen Website?",
+        "Employer Branding setzt auf Ihrer bestehenden Website auf. Sie bekommen eine neue Karriereseite und alles, was Bewerber:innen sehen. Eine komplette neue Website ist ein eigenes Projekt."
+      ],
+      [
+        "Wie viel Zeit kostet uns das?",
+        "Der Workshop dauert eine Stunde. Dazu kommen ein kurzer Fragebogen, Fotos und Infos zu Ihren Stellen und Feedback in zwei Runden."
+      ],
+      [
+        "Wer pflegt später die Stellenanzeigen?",
+        "Sie selbst, mit der Vorlage. Auf Wunsch übernehme ich das im Retainer."
+      ],
+      [
+        "Bekommen wir damit garantiert mehr Bewerbungen?",
+        "Das kann niemand garantieren. Was ich zusage: Bewerber:innen sehen klar, warum es sich lohnt, bei Ihnen zu arbeiten, und können sich in wenigen Klicks bewerben."
+      ]
+    ],
+    "beleg": {
+      "titel": "Zum Beispiel: Wolfgang Bauer Ingenieurbau",
+      "text": "Neuer Karrierebereich mit Stellenanzeigen und Bewerbungsformular. Über das neue Formular kamen 13 Bewerbungen (Stand: 15.10.2026). Ein Ergebnis aus einem Projekt, kein Garantiewert.",
+      "link": [
+        "referenzen/bauer/",
+        "Projekt ansehen"
+      ]
+    }
+  }
 }
