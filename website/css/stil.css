@@ -3344,3 +3344,7 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 .haken-start .haken-nutzen .textlink { margin-top: auto; color: var(--farbe-weiss); border-color: var(--farbe-weiss); align-self: flex-start; }
 .haken-start .haken-karte .textlink:focus-visible { outline-color: var(--farbe-weiss); }
 .fw-kopf-bild .fw-h1 { max-width: none; font-size: clamp(40px, 4.6vw, 84px); }
+/* Karten zweifarbig wie Fragekarten (Vorlagen Anna 10.11.2026): oben Problem auf Creme, unten Lösung auf Blau, je eine kleine Illustration */
+.haken-start .haken-karte { background: var(--farbe-creme); border: 0; }
+.hk-bild { display: block; width: 120px; height: 72px; margin-bottom: 20px; }
+.haken-start .haken-nutzen .hk-loesung { margin-bottom: 18px; }
