@@ -103,7 +103,7 @@ def problemseite(p):
              '  <section class="ablauf-start" aria-labelledby="loesung-titel">\n    <div class="sektionskopf"><p class="meta">So gehe ich vor</p>'
              '<h2 class="gr-h2" id="loesung-titel">Drei Schritte.</h2></div>\n' + schritte(p['schritte']) + '\n  </section>',
              '  <section class="haken fw-nutzen" aria-labelledby="nutzen-titel">\n    <div class="sektionskopf"><p class="meta">Was Sie davon haben</p>'
-             '<h2 class="gr-h2" id="nutzen-titel">Was sich für Sie ändert.</h2></div>\n'
+             '<h2 class="gr-h2" id="nutzen-titel">Mit mir an Ihrer Seite.</h2></div>\n'
              + karten([{'titel': t, 'text': x} for t, x in p['nutzen']], pre, 'haken-karten fw-drei') + '\n  </section>',
              beleg(p['beleg'], pre),
              faq(p['faq']),
