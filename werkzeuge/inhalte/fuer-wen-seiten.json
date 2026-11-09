@@ -6,7 +6,7 @@
     "beschreibung": "Für mittelständische B2B-Unternehmen: neue Kunden gewinnen, Fachkräfte finden, KI im Team einführen, Geschäftsführung entlasten. Mit Branchenseiten für Bau, Elektro und Software.",
     "meta": "Für wen ich arbeite",
     "h1": "Mittelstand im B2B: Ich sehe, wo es bei Ihnen hakt.",
-    "unter": "Wählen Sie, was Sie gerade am meisten bremst – oder Ihre Branche.",
+    "unter": "Wählen Sie Ihr größtes Problem oder Ihre Branche.",
     "weitere": [
       [
         "Selbstständige",
@@ -90,6 +90,10 @@
         [
           "Wir verkaufen erklärungsbedürftige Leistungen. Geht das online?",
           "Gerade dann. Leistungs- und Referenzseiten erklären in Ruhe, was im Gespräch oft zu kurz kommt – und Ihre Ansprechperson beim Kunden kann sie an alle weiterleiten, die mitentscheiden."
+        ],
+        [
+          "Was kostet eine neue Website?",
+          "Ein Redesign einer bestehenden Website beginnt bei 2.850 € netto. Den festen Preis bekommen Sie nach einem kostenlosen Erstgespräch. Einen ersten Rahmen sehen Sie im Kostenrechner."
         ]
       ],
       "leistungen": [
@@ -176,6 +180,14 @@
         [
           "Wer pflegt die Stellenanzeigen?",
           "Das klären wir am Anfang: Entweder legen Sie neue Stellen selbst im Redaktionssystem an, oder ich übernehme das für Sie im Retainer."
+        ],
+        [
+          "Was ist Employer Branding?",
+          "Employer Branding heißt: Sie zeigen Ihre Firma als Arbeitgeber so, dass die richtigen Leute sich bewerben. Ehrlich, wiedererkennbar und überall gleich. Ich biete es als Paket ab 2.850 € netto an."
+        ],
+        [
+          "Wie schnell finden wir damit neue Leute?",
+          "Das kann niemand versprechen, es hängt auch vom Arbeitsmarkt ab. Was ich zusage: Bewerber:innen sehen klar, warum es sich lohnt, bei Ihnen zu arbeiten, und können sich in wenigen Klicks bewerben."
         ]
       ],
       "leistungen": [
@@ -270,6 +282,10 @@
         [
           "Was kostet das?",
           "Der KI-Check beginnt bei 900 € netto, die KI-Einführung mit Team-Schulung bei 2.000 € netto. Für kleine Büros gibt es das KI-Arbeits-Setup zum Festpreis von 990 € netto."
+        ],
+        [
+          "Ist das mit dem Datenschutz vereinbar?",
+          "Das prüfen wir gleich am Anfang. Ich wähle Werkzeuge mit Blick auf den Datenschutz aus, und Sie legen mit Ihrem Team fest, welche Daten in die KI dürfen und welche nicht. Eine Rechtsberatung ersetzt das nicht."
         ]
       ],
       "leistungen": [
@@ -348,6 +364,14 @@
         [
           "Wie lange dauert das?",
           "Das KI-Arbeits-Setup dauert etwa drei Wochen, mit drei Online-Terminen. Für größere Teams planen wir im KI-Check, was sinnvoll ist."
+        ],
+        [
+          "Welche Aufgaben eignen sich für KI?",
+          "Aufgaben, die immer wiederkommen und nach Regeln laufen: Entwürfe für Angebote und E-Mails, Protokolle, Zusammenfassungen, Ablage. Entscheidungen und Freigaben bleiben bei Ihnen."
+        ],
+        [
+          "Was kostet das?",
+          "Das KI-Arbeits-Setup kostet 990 € netto zum Festpreis. Für größere Teams beginnt der KI-Check bei 900 € netto."
         ]
       ],
       "leistungen": [
@@ -406,6 +430,14 @@
         [
           "Können wir die Referenzprojekte selbst pflegen?",
           "Ja, wenn die Website mit einem Redaktionssystem gebaut wird. Bei Bauer werden neue Referenzen als eigene Einträge angelegt."
+        ],
+        [
+          "Brauchen wir auch eine Karriereseite?",
+          "Wenn Sie Fachkräfte suchen, ja. Ein Karrierebereich mit echten Einblicken und kurzem Bewerbungsformular gehört für Bauunternehmen heute dazu. Bei Bauer kamen darüber 13 Bewerbungen (Stand: 15.10.2026)."
+        ],
+        [
+          "Was kostet eine neue Website für ein Bauunternehmen?",
+          "Ein Redesign beginnt bei 2.850 € netto. Wie viel es wird, hängt vor allem von der Zahl der Seiten und Referenzprojekte ab. Den festen Preis bekommen Sie nach dem Erstgespräch."
         ]
       ]
     },
@@ -448,6 +480,14 @@
         [
           "Was kostet ein neuer Karrierebereich?",
           "Das hängt vom Umfang ab. Einen ersten Rahmen sehen Sie im Kostenrechner; den festen Preis bekommen Sie nach dem Erstgespräch."
+        ],
+        [
+          "Was gehört auf eine gute Karriereseite?",
+          "Echte Einblicke in Ihr Team und Ihre Baustellen, klare Stellenanzeigen mit Gehaltsrahmen, wenn möglich, und ein Bewerbungsformular, das am Handy in wenigen Minuten ausgefüllt ist."
+        ],
+        [
+          "Können Sie auch unsere Social-Media-Posts für Stellen gestalten?",
+          "Ja. Im Paket Employer Branding sind fünf Vorlagen in Canva enthalten, die Sie selbst mit neuen Stellen füllen können."
         ]
       ]
     },
@@ -490,6 +530,14 @@
         [
           "Können Sie Referenzen aus der Software-Branche zeigen?",
           "Arbeiten aus meiner Agenturtätigkeit darf ich nicht zeigen. Im Gespräch erzähle ich Ihnen gern, wie ich vorgehe, und zeige Arbeiten von STUDIO AAH!."
+        ],
+        [
+          "Arbeiten Sie mit unseren Entwickler:innen zusammen?",
+          "Ja. Ich liefere Entwürfe und ein Designsystem in Figma, die Ihr Team umsetzen kann, und stimme mich direkt mit ihm ab."
+        ],
+        [
+          "Wie starten wir?",
+          "Mit einem kostenlosen Website-Check oder einem Gespräch über Ihr Produkt. Für die Oberfläche Ihrer Software ist ein UX-Audit ein guter erster Schritt."
         ]
       ]
     }

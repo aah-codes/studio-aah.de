@@ -2,7 +2,11 @@
 # /branchen/<slug>/ aus werkzeuge/inhalte/fuer-wen-seiten.json. Kopf und Fuß kommen aus einer Vorlage gleicher Ordnertiefe
 # (profil/ bzw. service/webdesign/); danach setzt kopf-fuss.py sie ohnehin neu.
 # Aufruf im Repository-Ordner:  python3 werkzeuge/fuer-wen-seiten.py
-from gemeinsam import PFEIL, STUDIO_ID, WEBSITE, esc, lade_json, seitenrahmen
+import runpy
+from gemeinsam import PFEIL, STUDIO_ID, WEBSITE, WERKZEUGE, esc, lade_json, seitenrahmen
+
+# Hero-Illustrationen (werkzeuge/grafiken/fuer-wen-hero.py, Anna 10.11.2026); Titel dienen als Alternativtext
+BILD_ALT = {k: v[0] for k, v in runpy.run_path(str(WERKZEUGE / 'grafiken' / 'fuer-wen-hero.py'))['BILDER'].items()}
 
 D = lade_json('inhalte/fuer-wen-seiten.json')
 BASIS_URL = 'https://studio-aah.de/'
@@ -20,11 +24,13 @@ def link(pre, ziel):
     return ziel if ziel.startswith('http') else pre + ziel
 
 
-def kopfbereich(meta, h1, unter, pre, knopf=('website-check/', 'Kostenloser Website-Check')):
-    return (f'  <section class="fw-kopf">\n    <p class="meta">{esc(meta)}</p>\n    <h1 class="gr-h2 fw-h1">{esc(h1)}</h1>\n'
+def kopfbereich(meta, h1, unter, pre, knopf=('website-check/', 'Kostenloser Website-Check'), bild=None):
+    figur = (f'\n    <figure class="fw-bild"><img src="{pre}bilder/fuer-wen/{bild}.svg" alt="{esc(BILD_ALT[bild])}" width="800" height="640"></figure>'
+             if bild else '')
+    return (f'  <section class="fw-kopf{" fw-kopf-bild" if bild else ""}">\n    <div class="fw-kopf-text">\n    <p class="meta">{esc(meta)}</p>\n    <h1 class="gr-h2 fw-h1">{esc(h1)}</h1>\n'
             f'    <p class="haken-unter">{esc(unter)}</p>\n'
             f'    <p class="fw-knoepfe"><a class="button" href="{pre}{knopf[0]}">{esc(knopf[1])}{PFEIL}</a> '
-            f'<a class="button button-zweit" href="{pre}kontakt/">Projekt anfragen{PFEIL}</a></p>\n  </section>')
+            f'<a class="button button-zweit" href="{pre}kontakt/">Projekt anfragen{PFEIL}</a></p>\n    </div>{figur}\n  </section>')
 
 
 def karten(eintraege, pre, klasse='haken-karten'):
@@ -95,7 +101,7 @@ def schreibe(pfad, main, titel, beschreibung, fragen):
 
 def problemseite(p):
     pre = '../'
-    teile = [kopfbereich(p['meta'], p['h1'], p['unter'], pre),
+    teile = [kopfbereich(p['meta'], p['h1'], p['unter'], pre, bild=p['id']),
              '  <section class="fw-zwei" aria-labelledby="kennen-titel">\n    <div>\n      <p class="meta">Kennen Sie das?</p>\n'
              '      <h2 class="gr-h3" id="kennen-titel">Woran Sie es merken</h2>\n      <ul class="fw-liste">\n'
              + '\n'.join(f'        <li>{esc(s)}</li>' for s in p['symptome']) + '\n      </ul>\n    </div>\n'
@@ -122,7 +128,7 @@ def branchenseite(b):
     if b.get('quelle'):
         quelle = (f'\n    <p class="fw-quelle">Quelle: <a href="{b["quelle"][0]}" target="_blank" rel="noopener">{esc(b["quelle"][1])} '
                   '<span aria-hidden="true">↗</span></a></p>')
-    teile = [kopfbereich('Branche: ' + b['name'], b['h1'], b['unter'], pre),
+    teile = [kopfbereich('Branche: ' + b['name'], b['h1'], b['unter'], pre, bild=b['id']),
              '  <section class="haken" aria-labelledby="haken-titel">\n    <div class="sektionskopf"><p class="meta">Wo es in Ihrer Branche hakt</p>'
              '<h2 class="gr-h2" id="haken-titel">Das höre ich am häufigsten.</h2></div>\n'
              + karten(eintraege, pre, 'haken-karten fw-drei') + quelle + '\n  </section>',
@@ -138,7 +144,7 @@ def uebersicht():
     probleme = [{'icon': ICON[p['nr']], 'titel': p['karte'], 'text': p['kurz'], 'href': p['pfad'], 'linktext': p['meta']} for p in D['probleme']]
     branchen = [{'titel': b['name'], 'text': b['kurz'], 'href': b['pfad'], 'linktext': 'Zur Branche'} for b in D['branchen']]
     weitere = [{'titel': t, 'text': x, 'href': z, 'linktext': 'Mehr erfahren'} for t, x, z in u['weitere']]
-    teile = [kopfbereich(u['meta'], u['h1'], u['unter'], pre),
+    teile = [kopfbereich(u['meta'], u['h1'], u['unter'], pre, bild='fuer-wen'),
              '  <section class="haken" aria-labelledby="haken-titel">\n    <div class="sektionskopf"><p class="meta">Wo es gerade hakt</p>'
              '<h2 class="gr-h2" id="haken-titel">Vier Fragen aus dem Mittelstand.</h2></div>\n' + karten(probleme, pre) + '\n  </section>',
              '  <section class="haken" aria-labelledby="branchen-titel">\n    <div class="sektionskopf"><p class="meta">Branchen</p>'
@@ -152,7 +158,7 @@ def uebersicht():
 def produktseite(q):
     """Produktseite Employer Branding (Anna, 10.11.2026: ab 2.850 € netto, festes Angebot nach dem Karriere-Check)."""
     pre = '../'
-    teile = [kopfbereich(q['meta'], q['h1'], q['unter'], pre, ('kontakt/', 'Projekt anfragen')).replace(
+    teile = [kopfbereich(q['meta'], q['h1'], q['unter'], pre, ('kontakt/', 'Projekt anfragen'), bild='employer-branding').replace(
                  f'<a class="button button-zweit" href="{pre}kontakt/">Projekt anfragen{PFEIL}</a>',
                  f'<a class="button button-zweit" href="{pre}website-check/">Kostenloser Website-Check{PFEIL}</a>'),
              '  <section class="fw-zwei" aria-labelledby="was-titel">\n    <div>\n      <p class="meta">Kurz erklärt</p>\n'

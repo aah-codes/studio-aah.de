@@ -3322,3 +3322,25 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 .fw-preis { margin: 32px 0 8px; }
 .fw-preis-zahl { font-family: var(--schrift-ueberschrift); font-size: clamp(40px, 5vw, 72px); line-height: 1; }
 .fw-preis .lsx-netto { font-size: 18px; }
+/* Karten abstrakter (Anna 10.11.2026: Bube, Dame, König, Ass zu plakativ): nur die Bauhaus-Form in zwei Ecken */
+.haken-rang { gap: 0; font-size: 0; top: 24px; }
+.haken-rang::after { width: 20px; height: 20px; }
+.haken-karte:nth-child(4) .haken-rang::after { height: 10px; border-radius: 20px 20px 0 0; }
+.haken-rang-unten { top: auto; bottom: 20px; }
+.ehrlich + .dk { margin-top: 160px; }
+@media (max-width: 767.98px) { .ehrlich + .dk { margin-top: 96px; } }
+/* Hero der Für-wen-Seiten mit Illustration rechts (Anna 10.11.2026) */
+.fw-kopf-bild { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: 40px 64px; align-items: center; }
+.fw-kopf-bild .fw-h1 { max-width: 16ch; }
+.fw-bild { margin: 0; }
+.fw-bild img { display: block; width: 100%; height: auto; }
+@media (max-width: 900px) { .fw-kopf-bild { grid-template-columns: minmax(0, 1fr); } .fw-bild { max-width: 520px; } }
+/* Karten wie Fragekarten eines Kartenspiels (Vorlagen Anna 10.11.2026): oben das Problem auf Weiß, unten die Lösung auf Blau */
+.haken-start .haken-karte { grid-row: span 4; padding: 28px 28px 0; overflow: hidden; border-radius: 24px; border-width: 2px; }
+.haken-start .haken-nutzen { display: flex; flex-direction: column; align-self: stretch; margin: 20px -28px 0; padding: 24px 28px 28px; border-top: 0; background: var(--farbe-primaer); color: var(--farbe-weiss); }
+.haken-start .haken-nutzen p { margin: 0 0 20px; font-weight: 600; }
+.haken-start .haken-nutzen .meta { color: var(--farbe-weiss); }
+.haken-start .haken-nutzen .meta::before { background: var(--farbe-weiss); }
+.haken-start .haken-nutzen .textlink { margin-top: auto; color: var(--farbe-weiss); border-color: var(--farbe-weiss); align-self: flex-start; }
+.haken-start .haken-karte .textlink:focus-visible { outline-color: var(--farbe-weiss); }
+.fw-kopf-bild .fw-h1 { max-width: none; font-size: clamp(40px, 4.6vw, 84px); }
