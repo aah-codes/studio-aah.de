@@ -6,7 +6,7 @@
        Funkstille → neue Kunden · Unsichtbar (Auge zu) → Auge geht auf, Reichweite · Tool-Chaos → Zeit
        Zeitfresser → Zeit · Ebbe in der Kasse → Geld. Seitlich dagegen kostet ein Leben (drei Leben).
    – Die Fachkraft läuft weg; gefangen: ein Mitarbeiter mehr, die Figur wächst und hält einen Treffer aus.
-   – Schwarze Blöcke von unten anstoßen: Leistung fliegt heraus bis in die Schrift. Alle fünf gesammelt: nächstes Level.
+   – Schwarze Blöcke von unten anstoßen: Leistung fliegt heraus bis in die Schrift. Alle fünf gefunden: nächstes Level.
    – Das Spiel läuft weiter, bis die Leben weg sind; dann zeigt es die Bilanz mit „Projekt anfragen“.
    – Kurze Demo (höchstens 5 s) vorab. Ton aus, bis man ihn einschaltet. Pause jederzeit. */
 (function () {
@@ -16,9 +16,10 @@
   var cv = wurzel.querySelector('canvas'), c = cv.getContext('2d');
   var W = 960, H = 260, BODEN = 236;
   var F = { sch: '#0e1011', ws: '#ffffff', bl: '#2a5fe6', rot: '#ff3b2f', pink: '#ff4fa3', rosa: '#ff8fc8', gelb: '#ffe600', gr: '#9a9d9e', grh: '#d6d8d9' };
+  // Die fünf Lösungen in der Reihenfolge eines Projekts (Anna 10.11.2026); jedes Level beginnt wieder vorn, wie beim iterativen Arbeiten
   var LEISTUNGEN = [
-    { name: 'Webdesign', form: 'kreis', farbe: F.bl }, { name: 'Markenbildung', form: 'quadrat', farbe: F.rot },
-    { name: 'UI/UX', form: 'halbkreis', farbe: F.pink }, { name: 'Marketing & Vertrieb', form: 'halbkreis', farbe: F.sch },
+    { name: 'Markenbildung', form: 'quadrat', farbe: F.rot }, { name: 'UI/UX', form: 'halbkreis', farbe: F.pink },
+    { name: 'Webdesign', form: 'kreis', farbe: F.bl }, { name: 'Marketing & Vertrieb', form: 'halbkreis', farbe: F.sch },
     { name: 'KI & Digitalisierung', form: 'dreieck', farbe: F.gelb }];
   // Die fünf Probleme und was aus ihnen wird
   var PROBLEME = [
@@ -106,15 +107,23 @@
   function leipzig() {   // Zentrum von Leipzig als ruhige Silhouetten, nacheinander wie auf einem Weg durch die Stadt
     var L = W * 3;
     c.fillStyle = F.grh;
-    // Weisheitszahn (City-Hochhaus) gleich zu Beginn: hoch, mit schräg gerundeter Spitze
-    var x = wiederhole(560, L, .12);
-    c.beginPath(); c.moveTo(x, BODEN); c.lineTo(x, BODEN - 180); c.quadraticCurveTo(x + 24, BODEN - 226, x + 54, BODEN - 206); c.lineTo(x + 54, BODEN); c.fill();
+    // Augustusplatz gleich zu Beginn: Gewandhaus, Mendebrunnen, Weisheitszahn (City-Hochhaus), Oper
+    var x = wiederhole(140, L, .12);
+    c.fillRect(x, BODEN - 70, 150, 70); c.beginPath(); c.moveTo(x - 6, BODEN - 70); c.lineTo(x + 156, BODEN - 92); c.lineTo(x + 156, BODEN - 70); c.fill();   // Gewandhaus mit schrägem Dach
+    c.fillStyle = F.ws; for (var gw = 0; gw < 6; gw++) c.fillRect(x + 10 + gw * 23, BODEN - 58, 3, 50); c.fillStyle = F.grh;                                  // Glasfront
+    x = wiederhole(330, L, .12);                                                                                                                            // Mendebrunnen
+    c.fillRect(x - 30, BODEN - 10, 60, 10); c.fillRect(x - 5, BODEN - 70, 10, 60); c.beginPath(); c.moveTo(x - 9, BODEN - 70); c.lineTo(x, BODEN - 92); c.lineTo(x + 9, BODEN - 70); c.fill();
+    x = wiederhole(430, L, .12);                                                                                                                            // Weisheitszahn: senkrecht hoch zur Spitze, dann gerundet hinab
+    c.beginPath(); c.moveTo(x, BODEN); c.lineTo(x, BODEN - 236); c.quadraticCurveTo(x + 50, BODEN - 214, x + 58, BODEN - 176); c.lineTo(x + 58, BODEN); c.closePath(); c.fill();
+    x = wiederhole(540, L, .12);                                                                                                                            // Oper: breiter Block mit Attika
+    c.fillRect(x, BODEN - 62, 200, 62); c.fillRect(x + 20, BODEN - 74, 160, 12);
+    c.fillStyle = F.ws; for (var op = 0; op < 8; op++) c.fillRect(x + 14 + op * 24, BODEN - 52, 8, 30); c.fillStyle = F.grh;
     // Thomaskirche: Schiff mit steilem Dach, schlanker Turm mit Spitze
-    x = wiederhole(1150, L, .12);
+    x = wiederhole(1300, L, .12);
     c.fillRect(x, BODEN - 60, 150, 60); c.beginPath(); c.moveTo(x - 6, BODEN - 60); c.lineTo(x + 75, BODEN - 110); c.lineTo(x + 156, BODEN - 60); c.fill();
     c.fillRect(x + 150, BODEN - 130, 34, 130); c.beginPath(); c.moveTo(x + 146, BODEN - 130); c.lineTo(x + 167, BODEN - 176); c.lineTo(x + 188, BODEN - 130); c.fill();
     // Hauptbahnhof: lange Halle mit Bögen
-    x = wiederhole(1700, L, .12);
+    x = wiederhole(1800, L, .12);
     c.fillRect(x, BODEN - 40, 230, 40); for (var k = 0; k < 4; k++) { c.beginPath(); c.arc(x + 30 + k * 57, BODEN - 40, 28, Math.PI, 0); c.fill(); }
     // Völkerschlachtdenkmal: erst später, Stufensockel und Kuppel
     x = wiederhole(2450, L, .12);
@@ -268,13 +277,7 @@
     if (s.leben > 0) { ton(TON.autsch); blase('OHO!', s.f.x, s.f.y - 110); return; }
     s.aus = true; ton(TON.ende); blase('OHO!', s.f.x, s.f.y - 110); bilanz();
   }
-  function bilanz() {
-    var p = s.punkte, rekord = 0;
-    try { rekord = Number(localStorage.getItem('spiel-rekord')) || 0; if (p.euro > rekord) { localStorage.setItem('spiel-rekord', p.euro); } } catch (e) {}
-    var neu = p.euro > rekord;
-    var rekordEl = wurzel.querySelector('[data-rekord]'); if (rekordEl) rekordEl.textContent = neu && p.euro > 0 ? 'Neuer Rekord!' : rekord ? 'Rekord: ' + zahl.format(rekord) + ' €' : '';
-    var geldEl = wurzel.querySelector('[data-endgeld]'); if (geldEl) geldEl.textContent = zahl.format(p.euro) + ' €';
-    bilanzText.textContent = 'Level ' + s.level + ' · ' + (p.kunden + p.stammkunden) + (p.kunden + p.stammkunden === 1 ? ' Kunde' : ' Kunden') + ' · ' + p.fachkraefte + (p.fachkraefte === 1 ? ' Fachkraft' : ' Fachkräfte') + ' · ' + zahl.format(p.reichweite) + ' Reichweite';
+  function bilanz() {   // Ende: nur Botschaft und Play again; die Zahlen stehen oben rechts im Spiel
     bilanzBox.hidden = false; pauseAnzeige();
   }
   function belohnen(g) {
@@ -301,7 +304,7 @@
     s.level++; s.gesammelt = []; s.punkte.euro += 1000;
     chips.forEach(function (ch) { ch.classList.remove('ist-gesammelt'); });
     ton(TON.level); funken(s.f.x, s.f.y - 80, 30);
-    s.banner = { bis: s.t + 170, titel: 'Level ' + s.level + '!', zeile: 'Alle fünf Leistungen gesammelt: +1.000 €', regel: REGELN[(s.level - 2) % REGELN.length] };
+    s.banner = { bis: s.t + 170, titel: 'Level ' + s.level + '!', zeile: 'Alle fünf Lösungen gefunden: +1.000 €', regel: REGELN[(s.level - 2) % REGELN.length] };
     s.naechstG = Math.max(s.naechstG, 190); s.gegner = s.gegner.filter(function (g) { return g.x < s.f.x; });
     if (!s.demo) document.dispatchEvent(new Event('konfetti'));
   }
@@ -318,7 +321,7 @@
     // Leistungs-Blöcke
     if (--s.naechstB <= 0) {
       var offen = LEISTUNGEN.map(function (l, i) { return i; }).filter(function (i) { return s.gesammelt.indexOf(i) < 0 && !s.bloecke.some(function (b) { return b.i === i && !b.leer; }); });
-      if (offen.length) { var i = offen[Math.floor(Math.random() * offen.length)]; s.bloecke.push({ x: W + 20, y: BODEN - 170, l: LEISTUNGEN[i], i: i, stoss: 0 }); }
+      if (offen.length) { var i = offen[0]; s.bloecke.push({ x: W + 20, y: BODEN - 170, l: LEISTUNGEN[i], i: i, stoss: 0 }); }
       s.naechstB = 170 + Math.floor(Math.random() * 90);
     }
     s.bloecke.forEach(function (b) {
@@ -392,7 +395,7 @@
 
   // ---------- Demo: höchstens 5 Sekunden ----------
   // Erst ein paar Sekunden zuschauen, dann drei kurze Hinweise (insgesamt etwa 10 s, Pause-Taste vorhanden)
-  var DEMO = [[170, 'Leertaste oder Tippen: springen'], [320, 'Auf die Probleme springen: Sie werden zu Kunden, Zeit und Geld'], [480, 'Schwarze Blöcke von unten anstoßen: Leistungen sammeln']];
+  var DEMO = [[170, 'Leertaste oder Tippen: springen'], [320, 'Auf die Probleme springen: Sie werden zu Kunden, Zeit und Geld'], [480, 'Schwarze Blöcke von unten anstoßen: Chancen ergreifen']];
   function demoSchritt() {
     DEMO.forEach(function (d) { if (s.t === d[0] + 1) meldung(d[1]); });
     var nah = s.gegner.find(function (g) { return !g.platt && g.x - s.f.x < 70 && g.x - s.f.x > 20; });
@@ -438,7 +441,7 @@
 
   if (location.hash === '#test') window.spielTest = { zustand: function () { return s; }, schritt: schritt, springen: springen, demoEnde: demoEnde };   // nur zum Testen
   groesse();
-  if (ruhig) { neu(false); meldung('Springen mit Leertaste oder Tippen. Probleme platt machen, Leistungen sammeln.'); if (startKnopf) startKnopf.hidden = false; }
+  if (ruhig) { neu(false); meldung('Springen mit Leertaste oder Tippen. Probleme platt machen, Chancen ergreifen.'); if (startKnopf) startKnopf.hidden = false; }
   else neu(true);
   requestAnimationFrame(schleife);
 })();

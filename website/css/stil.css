@@ -3482,3 +3482,5 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 .spiel-endgeld .spiel-rekord { font-family: var(--schrift-text); font-size: 15px; font-weight: 600; vertical-align: middle; margin-left: 10px; }
 .spiel-nochmal { margin-top: 0; }
 @media (max-width: 767.98px) { .spiel-sieg { flex-direction: column; } .spiel-ende-text { text-align: center; } .spiel-ende-text .meta { justify-content: center; } }
+/* Ende lässt die Anzeige oben frei, damit man das Ergebnis oben rechts lesen kann */
+@media (min-width: 768px) { .spiel-sieg { inset: 16% 0 0 0; background: rgba(255, 255, 255, .9); } }
