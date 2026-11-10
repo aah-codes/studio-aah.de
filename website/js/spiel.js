@@ -349,9 +349,9 @@
     s.muenzen = s.muenzen.filter(function (mz) { return !mz.weg && mz.x > -30; });
     // Probleme laufen herum
     if (--s.naechstG <= 0) {
-      var v = PROBLEME[Math.floor(Math.random() * PROBLEME.length)];
+      var v = s.demo ? PROBLEME[(s.demoNr = (s.demoNr || 0) + 1) % PROBLEME.length] : PROBLEME[Math.floor(Math.random() * PROBLEME.length)];   // in der Demo jedes Problem einmal
       var g = Object.assign({ x: W + 30, platt: 0, phase: Math.random() * 6 }, v); g.zeigName = !s.bekannt[g.art]; s.bekannt[g.art] = true;
-      s.gegner.push(g); s.naechstG = Math.max(70, 120 - s.level * 8) + Math.floor(Math.random() * 80);
+      s.gegner.push(g); s.naechstG = s.demo ? 95 : Math.max(70, 120 - s.level * 8) + Math.floor(Math.random() * 80);
     }
     s.gegner.forEach(function (g) {
       var eigen = g.art === 'konkurrenz' ? 2.6 : g.art === 'toolchaos' ? 1.8 : g.art === 'zeitfresser' ? 1.2 : g.art === 'funkstille' ? Math.sin((s.t + g.phase * 30) / 20) * 2.2 : g.art === 'unsichtbar' ? Math.sin((s.t + g.phase * 30) / 14) * 1.6 : .4;
@@ -391,14 +391,15 @@
   }
 
   // ---------- Demo: höchstens 5 Sekunden ----------
-  var DEMO = [[0, 'Play the game! Springen: Leertaste oder Tippen'], [120, 'Auf Probleme springen, Leistungen sammeln']];
+  // Erst ein paar Sekunden zuschauen, dann drei kurze Hinweise (insgesamt etwa 10 s, Pause-Taste vorhanden)
+  var DEMO = [[170, 'Leertaste oder Tippen: springen'], [320, 'Auf die Probleme springen: Sie werden zu Kunden, Zeit und Geld'], [480, 'Schwarze Blöcke von unten anstoßen: Leistungen sammeln']];
   function demoSchritt() {
     DEMO.forEach(function (d) { if (s.t === d[0] + 1) meldung(d[1]); });
     var nah = s.gegner.find(function (g) { return !g.platt && g.x - s.f.x < 70 && g.x - s.f.x > 20; });
     var blockNah = s.bloecke.find(function (b) { return !b.leer && b.x - s.f.x < 40 && b.x - s.f.x > -10; });
     if ((nah || blockNah) && s.f.amBoden) { s.f.vy = -15.5; s.f.amBoden = false; }
     if (s.t === 30) s.kraft = { x: W - 120, sprung: 0, vsy: 0 };
-    if (s.t >= 240) demoEnde();
+    if (s.t >= 650) demoEnde();
   }
   function demoEnde() { if (!s || !s.demo) return; neu(false); meldung(''); if (startKnopf) startKnopf.hidden = false; }
 
