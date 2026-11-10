@@ -3461,3 +3461,24 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 .spiel-leistungen a { color: var(--farbe-dunkel); }
 .spiel-leistungen i { opacity: 1; }
 .spiel-leistungen .ist-gesammelt a { background: var(--farbe-creme); transform: none; }
+/* Ende des Spiels (Anna 10.11.2026): Game over, Ergebnis groß, Rekord, Play again als runder schwarzer Play-Button */
+.spiel-sieg { gap: 6px; }
+.spiel-ende-meta { justify-content: center; }
+.spiel-endgeld { font-family: var(--schrift-ueberschrift); font-size: clamp(40px, 5vw, 72px) !important; line-height: 1; margin: 6px 0 !important; }
+.spiel-rekord { color: var(--farbe-gedaempft); font-size: 15px; min-height: 1em; }
+.spiel-nochmal { display: inline-flex; flex-direction: column; align-items: center; gap: 8px; margin-top: 10px; padding: 0; border: 0; background: none; font: inherit; font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-size: 18px; letter-spacing: .04em; color: var(--farbe-dunkel); cursor: pointer; }
+.spiel-nochmal-kreis { display: grid; place-items: center; width: 72px; height: 72px; border-radius: 50%; background: var(--farbe-dunkel); color: var(--farbe-weiss); transition: transform .2s; }
+.spiel-nochmal-kreis svg { width: 30px; height: 30px; margin-left: 4px; }
+.spiel-nochmal:hover .spiel-nochmal-kreis, .spiel-nochmal:focus-visible .spiel-nochmal-kreis { transform: scale(1.08); }
+.spiel-nochmal:focus-visible { outline: 3px solid var(--farbe-primaer); outline-offset: 4px; border-radius: 12px; }
+@media (max-width: 767.98px) { .spiel-endgeld { font-size: 34px !important; } .spiel-nochmal-kreis { width: 56px; height: 56px; } }
+@media (max-width: 767.98px) { .spiel-sieg { position: relative; inset: auto; padding: 16px 0; background: var(--farbe-weiss); } }
+/* Ende kompakt neben dem Play-again-Button, damit alles im Spielfeld Platz hat */
+.spiel-sieg { flex-direction: row; gap: 24px 48px; flex-wrap: wrap; }
+.spiel-ende-text { display: grid; gap: 4px; text-align: left; }
+.spiel-ende-text .meta { justify-content: flex-start; }
+.spiel-sieg .gross { font-size: clamp(26px, 3vw, 48px); }
+.spiel-endgeld { font-size: clamp(28px, 3.2vw, 52px) !important; margin: 4px 0 !important; }
+.spiel-endgeld .spiel-rekord { font-family: var(--schrift-text); font-size: 15px; font-weight: 600; vertical-align: middle; margin-left: 10px; }
+.spiel-nochmal { margin-top: 0; }
+@media (max-width: 767.98px) { .spiel-sieg { flex-direction: column; } .spiel-ende-text { text-align: center; } .spiel-ende-text .meta { justify-content: center; } }

@@ -72,7 +72,7 @@
   // ---------- Zustand ----------
   var s;
   function neu(demo) {
-    s = { demo: !!demo, lauf: !!demo, aus: false, pause: false, t: 0, tempo: 3.8, weg: 0, gross: false, level: 1, leben: 3,
+    s = { demo: !!demo, lauf: !!demo, aus: false, pause: false, t: 0, tempo: 3.5, weg: 0, gross: false, level: 1, leben: 3,
           punkte: { euro: 0, reichweite: 0, kunden: 0, stammkunden: 0, fachkraefte: 0, zeit: 0 },
           f: { x: 110, y: BODEN, vy: 0, amBoden: true, blink: 0 }, gegner: [], bloecke: [], gaben: [], muenzen: [], kraft: null,
           funken: [], blasen: [], lohn: [], naechstG: demo ? 20 : 70, naechstB: demo ? 45 : 70, naechstK: demo ? 9999 : 360, naechstM: 120,
@@ -237,6 +237,15 @@
       c.save(); c.translate(b.x, b.y); c.rotate(-.06); c.fillStyle = F.sch; c.fillRect(-bw / 2, -30, bw, 40); c.fillStyle = F.ws; c.fillText(b.text, -bw / 2 + 10, 2); c.restore();
     });
     anzeige();
+    if (s.banner) {   // Level-Wechsel: großes Schild in der Mitte
+      var a = Math.min(1, (s.banner.bis - s.t) / 20); c.globalAlpha = a;
+      c.font = '64px Anton, Impact, sans-serif'; c.textAlign = 'center';
+      var bw = Math.max(c.measureText(s.banner.titel).width + 60, 460);
+      c.fillStyle = F.sch; c.fillRect(W / 2 - bw / 2, 52, bw, 132);
+      c.fillStyle = F.ws; c.fillText(s.banner.titel, W / 2, 118);
+      c.font = '600 16px Manrope, system-ui, sans-serif'; c.fillStyle = F.gelb; c.fillText(s.banner.zeile, W / 2, 146);
+      c.fillStyle = F.ws; c.fillText(s.banner.regel, W / 2, 170); c.textAlign = 'left'; c.globalAlpha = 1;
+    }
   }
 
   // ---------- Spiel ----------
@@ -260,8 +269,12 @@
     s.aus = true; ton(TON.ende); blase('OHO!', s.f.x, s.f.y - 110); bilanz();
   }
   function bilanz() {
-    var p = s.punkte;
-    bilanzText.textContent = 'Level ' + s.level + ' · ' + zahl.format(p.euro) + ' € · ' + (p.kunden + p.stammkunden) + (p.kunden + p.stammkunden === 1 ? ' Kunde' : ' Kunden') + ' · ' + p.fachkraefte + (p.fachkraefte === 1 ? ' Fachkraft' : ' Fachkräfte') + ' · ' + zahl.format(p.reichweite) + ' Reichweite';
+    var p = s.punkte, rekord = 0;
+    try { rekord = Number(localStorage.getItem('spiel-rekord')) || 0; if (p.euro > rekord) { localStorage.setItem('spiel-rekord', p.euro); } } catch (e) {}
+    var neu = p.euro > rekord;
+    var rekordEl = wurzel.querySelector('[data-rekord]'); if (rekordEl) rekordEl.textContent = neu && p.euro > 0 ? 'Neuer Rekord!' : rekord ? 'Rekord: ' + zahl.format(rekord) + ' €' : '';
+    var geldEl = wurzel.querySelector('[data-endgeld]'); if (geldEl) geldEl.textContent = zahl.format(p.euro) + ' €';
+    bilanzText.textContent = 'Level ' + s.level + ' · ' + (p.kunden + p.stammkunden) + (p.kunden + p.stammkunden === 1 ? ' Kunde' : ' Kunden') + ' · ' + p.fachkraefte + (p.fachkraefte === 1 ? ' Fachkraft' : ' Fachkräfte') + ' · ' + zahl.format(p.reichweite) + ' Reichweite';
     bilanzBox.hidden = false; pauseAnzeige();
   }
   function belohnen(g) {
@@ -287,15 +300,17 @@
   function naechstesLevel() {
     s.level++; s.gesammelt = []; s.punkte.euro += 1000;
     chips.forEach(function (ch) { ch.classList.remove('ist-gesammelt'); });
-    ton(TON.level); blase('AAH! Level ' + s.level, W / 2, 110); if (!s.demo) { meldung(REGELN[(s.level - 2) % REGELN.length]); s.regelBis = s.t + 200; } lohn('Alle Leistungen: +1.000 €', W / 2, 150, F.gelb); funken(s.f.x, s.f.y - 80, 30);
+    ton(TON.level); funken(s.f.x, s.f.y - 80, 30);
+    s.banner = { bis: s.t + 170, titel: 'Level ' + s.level + '!', zeile: 'Alle fünf Leistungen gesammelt: +1.000 €', regel: REGELN[(s.level - 2) % REGELN.length] };
+    s.naechstG = Math.max(s.naechstG, 190); s.gegner = s.gegner.filter(function (g) { return g.x < s.f.x; });
     if (!s.demo) document.dispatchEvent(new Event('konfetti'));
   }
   function schritt() {
     if (!s.lauf || s.pause || s.aus) return;
-    s.t++; s.tempo = Math.min(7.2, 3.8 + s.t / 2000 + (s.level - 1) * .4); s.weg += s.tempo;
+    s.t++; s.tempo = Math.min(6.2, 3.5 + s.t / 3000 + (s.level - 1) * .3); s.weg += s.tempo;
     var k = s.gross ? 1.35 : 1, fh = 98 * k, fb = 30 * k;
     if (s.demo) demoSchritt();
-    if (s.regelBis && s.t > s.regelBis) { s.regelBis = 0; meldung(''); }
+    if (s.banner && s.t > s.banner.bis) s.banner = null;
     var mitte = W * .42; s.f.x += (mitte - s.f.x) * .06;                       // schnell zur Mitte
     s.f.vy += .8; s.f.y += s.f.vy; if (s.f.blink > 0) s.f.blink--;
     if (s.f.y >= BODEN) { s.f.y = BODEN; s.f.vy = 0; s.f.amBoden = true; }
@@ -304,7 +319,7 @@
     if (--s.naechstB <= 0) {
       var offen = LEISTUNGEN.map(function (l, i) { return i; }).filter(function (i) { return s.gesammelt.indexOf(i) < 0 && !s.bloecke.some(function (b) { return b.i === i && !b.leer; }); });
       if (offen.length) { var i = offen[Math.floor(Math.random() * offen.length)]; s.bloecke.push({ x: W + 20, y: BODEN - 170, l: LEISTUNGEN[i], i: i, stoss: 0 }); }
-      s.naechstB = 120 + Math.floor(Math.random() * 70);
+      s.naechstB = 170 + Math.floor(Math.random() * 90);
     }
     s.bloecke.forEach(function (b) {
       b.x -= s.tempo; if (b.stoss > 0) b.stoss -= 2;
@@ -326,7 +341,7 @@
     });
     s.gaben = s.gaben.filter(function (g) { return !g.weg && g.x > -40; });
     // Münzen in der Luft
-    if (--s.naechstM <= 0) { var hy = BODEN - 90 - Math.random() * 60; for (var m = 0; m < 3; m++) s.muenzen.push({ x: W + 20 + m * 34, y: hy - Math.sin(m / 2 * Math.PI) * 24, wert: 50 }); s.naechstM = 160 + Math.floor(Math.random() * 120); }
+    if (--s.naechstM <= 0) { var hy = BODEN - 90 - Math.random() * 60; for (var m = 0; m < 3; m++) s.muenzen.push({ x: W + 20 + m * 34, y: hy - Math.sin(m / 2 * Math.PI) * 24, wert: 50 }); s.naechstM = 240 + Math.floor(Math.random() * 160); }
     s.muenzen.forEach(function (mz) {
       mz.x -= s.tempo;
       if (!mz.weg && Math.abs(mz.x - s.f.x) < 24 && mz.y > fo - 12 && mz.y < s.f.y) { mz.weg = true; s.punkte.euro += mz.wert; ton(TON.muenze); }
@@ -336,7 +351,7 @@
     if (--s.naechstG <= 0) {
       var v = PROBLEME[Math.floor(Math.random() * PROBLEME.length)];
       var g = Object.assign({ x: W + 30, platt: 0, phase: Math.random() * 6 }, v); g.zeigName = !s.bekannt[g.art]; s.bekannt[g.art] = true;
-      s.gegner.push(g); s.naechstG = Math.max(40, 80 - s.level * 6) + Math.floor(Math.random() * 60);
+      s.gegner.push(g); s.naechstG = Math.max(70, 120 - s.level * 8) + Math.floor(Math.random() * 80);
     }
     s.gegner.forEach(function (g) {
       var eigen = g.art === 'konkurrenz' ? 2.6 : g.art === 'toolchaos' ? 1.8 : g.art === 'zeitfresser' ? 1.2 : g.art === 'funkstille' ? Math.sin((s.t + g.phase * 30) / 20) * 2.2 : g.art === 'unsichtbar' ? Math.sin((s.t + g.phase * 30) / 14) * 1.6 : .4;
@@ -365,7 +380,7 @@
       if (Math.abs(kr.x - s.f.x) < 130 && kr.sprung === 0 && Math.random() < .04) kr.vsy = 9;
       kr.sprung = Math.max(0, kr.sprung + kr.vsy); kr.vsy = kr.sprung > 0 ? kr.vsy - .6 : 0;
       if (Math.abs(kr.x - s.f.x) < 28 && Math.abs((BODEN - kr.sprung) - s.f.y) < 60) {
-        s.kraft = null; s.bekannt.kraft = true; s.naechstK = 700; s.punkte.fachkraefte++;
+        s.kraft = null; s.bekannt.kraft = true; s.naechstK = 900; s.punkte.fachkraefte++;
         if (!s.gross) { s.gross = true; ton(TON.wachsen); } else ton(TON.sammeln);
         blase('AAH! Fachkraft gefunden', s.f.x + 80, s.f.y - 150); lohn('+1 Fachkraft', s.f.x, s.f.y - 190, F.gelb); funken(s.f.x, s.f.y - 60, 20);
       } else if (kr.x < -40) { s.kraft = null; s.naechstK = 450; }
@@ -376,14 +391,14 @@
   }
 
   // ---------- Demo: höchstens 5 Sekunden ----------
-  var DEMO = [[0, 'Play the game! Springen mit Leertaste oder Tippen'], [150, 'Auf Probleme springen: Sie werden zu Kunden, Reichweite, Zeit und Geld'], [300, 'Schwarze Blöcke von unten anstoßen: Leistung!'], [450, 'Den Wettbewerb überholen: draufspringen! Drei Leben.']];
+  var DEMO = [[0, 'Play the game! Springen: Leertaste oder Tippen'], [120, 'Auf Probleme springen, Leistungen sammeln']];
   function demoSchritt() {
     DEMO.forEach(function (d) { if (s.t === d[0] + 1) meldung(d[1]); });
     var nah = s.gegner.find(function (g) { return !g.platt && g.x - s.f.x < 70 && g.x - s.f.x > 20; });
     var blockNah = s.bloecke.find(function (b) { return !b.leer && b.x - s.f.x < 40 && b.x - s.f.x > -10; });
     if ((nah || blockNah) && s.f.amBoden) { s.f.vy = -15.5; s.f.amBoden = false; }
     if (s.t === 30) s.kraft = { x: W - 120, sprung: 0, vsy: 0 };
-    if (s.t >= 600) demoEnde();
+    if (s.t >= 240) demoEnde();
   }
   function demoEnde() { if (!s || !s.demo) return; neu(false); meldung(''); if (startKnopf) startKnopf.hidden = false; }
 
