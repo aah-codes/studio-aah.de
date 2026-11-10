@@ -26,7 +26,9 @@
     { art: 'unsichtbar', name: 'Unsichtbar', b: 44, h: 40, lohn: 'reichweite', menge: 250, text: '+250 Reichweite' },
     { art: 'toolchaos', name: 'Tool-Chaos', b: 40, h: 40, lohn: 'zeit', menge: 2, text: '+2 Stunden' },
     { art: 'zeitfresser', name: 'Zeitfresser', b: 48, h: 44, lohn: 'zeit', menge: 3, text: '+3 Stunden' },
-    { art: 'ebbe', name: 'Ebbe in der Kasse', b: 44, h: 38, lohn: 'euro', menge: 500, text: '+500 €' }];
+    { art: 'ebbe', name: 'Ebbe in der Kasse', b: 44, h: 38, lohn: 'euro', menge: 500, text: '+500 €' },
+    // Die Konkurrenz rennt Ihnen entgegen: draufspringen hält den Kunden (Stammkunde), drüberspringen lässt sie einen Kunden wegschnappen
+    { art: 'konkurrenz', name: 'Konkurrenz', b: 34, h: 62, lohn: 'stammkunden', menge: 1, text: '+1 Stammkunde' }];
   var chips = wurzel.querySelectorAll('[data-leistung]');
   var meldungEl = wurzel.querySelector('[data-meldung]'), startKnopf = wurzel.querySelector('[data-start]');
   var knopfTon = wurzel.querySelector('[data-ton]'), knopfPause = wurzel.querySelector('[data-pause]');
@@ -71,7 +73,7 @@
   var s;
   function neu(demo) {
     s = { demo: !!demo, lauf: !!demo, aus: false, pause: false, t: 0, tempo: 3.8, weg: 0, gross: false, level: 1, leben: 3,
-          punkte: { euro: 0, reichweite: 0, kunden: 0, fachkraefte: 0, zeit: 0 },
+          punkte: { euro: 0, reichweite: 0, kunden: 0, stammkunden: 0, fachkraefte: 0, zeit: 0 },
           f: { x: 110, y: BODEN, vy: 0, amBoden: true, blink: 0 }, gegner: [], bloecke: [], gaben: [], muenzen: [], kraft: null,
           funken: [], blasen: [], lohn: [], naechstG: demo ? 20 : 70, naechstB: demo ? 45 : 70, naechstK: demo ? 9999 : 360, naechstM: 120,
           gesammelt: [], bekannt: {} };
@@ -177,6 +179,9 @@
       augen(x + 28, y - 32);
       c.fillStyle = F.ws; c.strokeStyle = F.sch; c.lineWidth = 2; c.beginPath(); c.arc(x - 4, y - 22, 8, 0, 7); c.fill(); c.stroke();
       c.beginPath(); c.moveTo(x - 4, y - 22); c.lineTo(x - 4, y - 27); c.moveTo(x - 4, y - 22); c.lineTo(x, y - 22); c.stroke();
+    } else if (g.art === 'konkurrenz') {   // Konkurrenz: graue Figur mit Aktenkoffer, rennt
+      figur(x + 17, y, .62, F.gr, true, false);
+      c.fillStyle = F.sch; c.fillRect(x + 26, y - 30, 14, 10); c.fillRect(x + 30, y - 33, 6, 3);
     } else {                                // Ebbe in der Kasse: leerer Geldsack mit Motte
       c.fillStyle = F.gr; c.beginPath(); c.ellipse(x + 22, y - 15, 22, 15, 0, 0, 7); c.fill(); c.fillRect(x + 14, y - 36, 16, 8);
       augen(x + 22, y - 18); c.fillStyle = F.sch; c.font = '700 11px Manrope, system-ui, sans-serif'; c.fillText('0 €', x + 13, y - 4);
@@ -200,7 +205,7 @@
       if (s.gesammelt.indexOf(i) < 0) { c.strokeStyle = F.grh; c.lineWidth = 2; c.strokeRect(lx - 12, ly - 12, 24, 24); } else form(l.form, lx, ly, 22, l.farbe); });
     c.fillStyle = F.sch; c.font = '700 14px Manrope, system-ui, sans-serif'; c.fillText('Level ' + s.level, 200, 25);
     for (var n = 0; n < 3; n++) { if (n < s.leben) herz(278 + n * 22, 22, 9, F.rot); else { c.globalAlpha = .25; herz(278 + n * 22, 22, 9, F.gr); c.globalAlpha = 1; } }
-    var werte = [['euro', zahl.format(s.punkte.euro) + ' €'], ['reichweite', zahl.format(s.punkte.reichweite)], ['kunden', s.punkte.kunden], ['fachkraefte', s.punkte.fachkraefte], ['zeit', s.punkte.zeit + ' h']];
+    var werte = [['euro', zahl.format(s.punkte.euro) + ' €'], ['reichweite', zahl.format(s.punkte.reichweite)], ['kunden', s.punkte.kunden], ['stammkunden', s.punkte.stammkunden], ['fachkraefte', s.punkte.fachkraefte], ['zeit', s.punkte.zeit + ' h']];
     c.font = '700 15px Manrope, system-ui, sans-serif';
     var x = W - 14;
     werte.reverse().forEach(function (w) {
@@ -208,6 +213,7 @@
       if (w[0] === 'euro') muenze(x + 9, y - 5, 9);
       else if (w[0] === 'reichweite') { c.fillStyle = F.bl; c.beginPath(); c.ellipse(x + 9, y - 5, 10, 6, 0, 0, 7); c.fill(); c.fillStyle = F.ws; c.beginPath(); c.arc(x + 9, y - 5, 3, 0, 7); c.fill(); }
       else if (w[0] === 'kunden') { c.fillStyle = F.pink; c.beginPath(); c.arc(x + 5, y - 5, 6, 0, 7); c.fill(); c.fillStyle = F.rot; c.beginPath(); c.arc(x + 13, y - 5, 6, 0, 7); c.fill(); }
+      else if (w[0] === 'stammkunden') herz(x + 9, y - 3, 7, F.pink);
       else if (w[0] === 'fachkraefte') { c.fillStyle = F.sch; c.beginPath(); c.arc(x + 9, y - 10, 4, 0, 7); c.fill(); c.fillStyle = F.gelb; c.beginPath(); c.arc(x + 9, y + 1, 7, Math.PI, 0); c.fill(); }
       else { c.strokeStyle = F.sch; c.lineWidth = 2; c.beginPath(); c.arc(x + 9, y - 5, 7, 0, 7); c.moveTo(x + 9, y - 5); c.lineTo(x + 9, y - 10); c.moveTo(x + 9, y - 5); c.lineTo(x + 13, y - 5); c.stroke(); }
       x -= 20;
@@ -256,13 +262,13 @@
   }
   function bilanz() {
     var p = s.punkte;
-    bilanzText.textContent = 'Level ' + s.level + ' erreicht. Ihre Bilanz steht oben rechts.';
+    bilanzText.textContent = 'Ihr Unternehmer-Spiel: Level ' + s.level + ' erreicht. Die Bilanz steht oben rechts.';
     bilanzBox.hidden = false; pauseAnzeige();
   }
   function belohnen(g) {
     var p = PROBLEME.filter(function (x) { return x.art === g.art; })[0];
     s.punkte[p.lohn] += p.menge;
-    var farbe = p.lohn === 'euro' ? F.gelb : p.lohn === 'reichweite' ? F.bl : p.lohn === 'kunden' ? F.pink : F.sch;
+    var farbe = p.lohn === 'euro' ? F.gelb : p.lohn === 'reichweite' ? F.bl : p.lohn === 'kunden' || p.lohn === 'stammkunden' ? F.pink : F.sch;
     lohn(p.text, g.x + g.b / 2, BODEN - g.h - 50, farbe);
     if (p.lohn === 'euro') for (var i = 0; i < 3; i++) s.muenzen.push({ x: g.x + 20 + i * 30, y: BODEN - 110 - i * 18, wert: 50 });
   }
@@ -276,10 +282,13 @@
     el.setAttribute('aria-hidden', 'true'); el.textContent = b.l.name;
     document.body.appendChild(el); setTimeout(function () { el.remove(); }, 1600);
   }
+  // Die Spielregeln des Unternehmer-Spiels, eine je Level
+  var REGELN = ['Regel 1: Wer nicht gesehen wird, verliert.', 'Regel 2: Wer alles allein macht, verliert Zeit.',
+    'Regel 3: Wer gute Leute hält, gewinnt auf Dauer.', 'Regel 4: Die Konkurrenz schläft nicht.', 'Regel 5: Treue Kunden sind mehr wert als neue.'];
   function naechstesLevel() {
     s.level++; s.gesammelt = []; s.punkte.euro += 1000;
     chips.forEach(function (ch) { ch.classList.remove('ist-gesammelt'); });
-    ton(TON.level); blase('AAH! Level ' + s.level, W / 2, 110); lohn('Alle Leistungen: +1.000 €', W / 2, 150, F.gelb); funken(s.f.x, s.f.y - 80, 30);
+    ton(TON.level); blase('AAH! Level ' + s.level, W / 2, 110); if (!s.demo) { meldung(REGELN[(s.level - 2) % REGELN.length]); s.regelBis = s.t + 200; } lohn('Alle Leistungen: +1.000 €', W / 2, 150, F.gelb); funken(s.f.x, s.f.y - 80, 30);
     if (!s.demo) document.dispatchEvent(new Event('konfetti'));
   }
   function schritt() {
@@ -287,6 +296,7 @@
     s.t++; s.tempo = Math.min(7.2, 3.8 + s.t / 2000 + (s.level - 1) * .4); s.weg += s.tempo;
     var k = s.gross ? 1.35 : 1, fh = 98 * k, fb = 30 * k;
     if (s.demo) demoSchritt();
+    if (s.regelBis && s.t > s.regelBis) { s.regelBis = 0; meldung(''); }
     var mitte = W * .42; s.f.x += (mitte - s.f.x) * .06;                       // schnell zur Mitte
     s.f.vy += .8; s.f.y += s.f.vy; if (s.f.blink > 0) s.f.blink--;
     if (s.f.y >= BODEN) { s.f.y = BODEN; s.f.vy = 0; s.f.amBoden = true; }
@@ -330,7 +340,7 @@
       s.gegner.push(g); s.naechstG = Math.max(40, 80 - s.level * 6) + Math.floor(Math.random() * 60);
     }
     s.gegner.forEach(function (g) {
-      var eigen = g.art === 'toolchaos' ? 1.8 : g.art === 'zeitfresser' ? 1.2 : g.art === 'funkstille' ? Math.sin((s.t + g.phase * 30) / 20) * 2.2 : g.art === 'unsichtbar' ? Math.sin((s.t + g.phase * 30) / 14) * 1.6 : .4;
+      var eigen = g.art === 'konkurrenz' ? 2.6 : g.art === 'toolchaos' ? 1.8 : g.art === 'zeitfresser' ? 1.2 : g.art === 'funkstille' ? Math.sin((s.t + g.phase * 30) / 20) * 2.2 : g.art === 'unsichtbar' ? Math.sin((s.t + g.phase * 30) / 14) * 1.6 : .4;
       g.x -= s.tempo + eigen;
       if (g.art === 'ebbe') { g.hoehe = Math.max(0, Math.sin((s.t + g.phase * 40) / 12) * 18); }   // Geldsack hüpft
       if (g.platt) { g.platt += .05; return; }
@@ -340,6 +350,12 @@
           g.platt = .01; s.f.vy = -11; s.f.amBoden = false; ton(TON.platt); funken(g.x + g.b / 2, gy - g.h, 8);
           blase(['WOW!', 'AAH!'][Math.floor(Math.random() * 2)], g.x + g.b / 2, gy - g.h - 80); belohnen(g);
         } else if (!s.demo) treffer();
+      }
+    });
+    s.gegner.forEach(function (g) {   // Konkurrenz ist vorbei, ohne dass man sie gestoppt hat: ein Kunde ist weg
+      if (g.art === 'konkurrenz' && !g.platt && !g.vorbei && g.x + g.b < s.f.x - 40) {
+        g.vorbei = true;
+        if (s.punkte.kunden > 0 && !s.demo) { s.punkte.kunden--; lohn('Kunde weg!', s.f.x - 60, BODEN - 120, F.gr); ton(TON.schrumpfen); }
       }
     });
     s.gegner = s.gegner.filter(function (g) { return g.x > -70 && g.platt < 1.4; });
@@ -361,7 +377,7 @@
   }
 
   // ---------- Demo: höchstens 5 Sekunden ----------
-  var DEMO = [[0, 'So geht’s: Springen mit Leertaste oder Tippen'], [75, 'Auf Probleme springen: Sie werden zu Kunden, Reichweite, Zeit und Geld'], [150, 'Schwarze Blöcke von unten anstoßen: Leistung!'], [225, 'Drei Leben. Wie weit kommen Sie?']];
+  var DEMO = [[0, 'Das Unternehmer-Spiel. Springen mit Leertaste oder Tippen'], [75, 'Auf Probleme springen: Sie werden zu Kunden, Reichweite, Zeit und Geld'], [150, 'Schwarze Blöcke von unten anstoßen: Leistung!'], [225, 'Achtung, die Konkurrenz schläft nicht. Drei Leben.']];
   function demoSchritt() {
     DEMO.forEach(function (d) { if (s.t === d[0] + 1) meldung(d[1]); });
     var nah = s.gegner.find(function (g) { return !g.platt && g.x - s.f.x < 70 && g.x - s.f.x > 20; });
