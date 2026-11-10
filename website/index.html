@@ -16,7 +16,7 @@
   <meta property="og:description" content="Strategie und Webdesign in Leipzig für neue Websites und Relaunch im Mittelstand: Anna Härtelt begleitet Unternehmen von der Analyse bis zum Launch.">
   <meta property="og:url" content="https://studio-aah.de/">
   <meta property="og:image" content="https://studio-aah.de/bilder/vorschaubild.jpg">
-  <link rel="stylesheet" href="css/stil.css?v=20261110h">
+  <link rel="stylesheet" href="css/stil.css?v=20261110i">
   <link rel="preload" href="schriften/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="schriften/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
   <script type="application/ld+json">
@@ -171,19 +171,46 @@
   </details>
 </header>
 <div class="mm-schleier" hidden></div>
-<script src="js/menue.js?v=20261110h" defer></script>
+<script src="js/menue.js?v=20261110i" defer></script>
 <!-- /KOPF -->
 
 <main id="inhalt" class="mit-faden">
   <svg class="roter-faden" aria-hidden="true" focusable="false" width="0" height="0" style="position:absolute;left:0;top:0;overflow:visible"><path class="faden-linie" d=""/><circle class="faden-punkt" r="7" cx="-20" cy="-20"/></svg>
 
-<section class="hero bb-hero" aria-labelledby="bb-h1">
-  <div class="bb-text">
-    <p class="meta bb-meta">Design Studio aus Leipzig</p>
-    <p class="hero-titel bb-titel"><span><span>Hier werden</span></span> <span><span>Sie gesehen.</span></span></p>
-    <h1 class="alt-h2 bb-h1" id="bb-h1">Strategie und Webdesign in Leipzig – für neue Websites und Relaunch im Mittelstand.</h1>
-    <p class="hero-knoepfe bb-knoepfe"><a class="button" href="website-check/">Kostenloser <span class="ohne-umbruch">Website-Check&nbsp;<span aria-hidden="true">→</span></span></a> <a class="button button-zweit" href="kontakt/">Projekt anfragen <span aria-hidden="true">→</span></a></p>
-    <div class="bb-fakten">
+<!-- Hero zentriert mit Spiel „AAH! Durch Leipzig“ (Anna 10.11.2026: „Ja, einbauen“; vorher Bauhaus-Bühne, im Verlauf ab 54c4421d) -->
+<section class="hero sp-hero" aria-labelledby="sp-h1">
+  <p class="meta">Design Studio aus Leipzig</p>
+  <p class="sp-titel">Hier werden Sie gesehen.</p>
+  <h1 id="sp-h1">Strategie und Webdesign in Leipzig für neue Websites und Relaunch im Mittelstand.</h1>
+  <p class="hero-knoepfe"><a class="button" href="website-check/">Kostenloser <span class="ohne-umbruch">Website-Check&nbsp;<span aria-hidden="true">→</span></span></a> <a class="button button-zweit" href="kontakt/">Projekt anfragen <span aria-hidden="true">→</span></a></p>
+
+  <div class="spiel" data-spiel>
+    <div class="spiel-buehne">
+      <canvas tabindex="0" role="img" aria-label="Spiel: Die Bauhaus-Figur läuft durch Leipzig, springt auf die Probleme des Mittelstands, fängt eine Fachkraft und sammelt die fünf Leistungen. Springen mit Leertaste, Pfeil nach oben oder Tippen."></canvas>
+      <p class="spiel-meldung" data-meldung aria-live="polite" hidden></p>
+      <button class="button spiel-start" type="button" data-start hidden>Spielen <span aria-hidden="true">▶</span></button>
+      <div class="spiel-sieg" data-sieg hidden>
+        <p class="gross">AAH! Alle Leistungen gesammelt.</p>
+        <p>So geht es auch mit Ihrem Unternehmen: Probleme aus dem Weg, alles aus einer Hand.</p>
+        <p class="knoepfe"><a class="button" href="kontakt/">Projekt anfragen <span aria-hidden="true">→</span></a> <button class="button button-zweit" type="button" data-nochmal>Nochmal spielen</button></p>
+      </div>
+    </div>
+    <div class="spiel-leiste">
+      <ul class="spiel-leistungen" aria-label="Leistungen">
+        <li data-leistung><a href="service/webdesign/"><i class="sl-kreis" style="--f:#2a5fe6"></i>Webdesign</a></li>
+        <li data-leistung><a href="service/markenbildung/"><i style="--f:#ff3b2f"></i>Markenbildung</a></li>
+        <li data-leistung><a href="service/ui-ux/"><i class="sl-halb" style="--f:#ff4fa3"></i>UI/UX</a></li>
+        <li data-leistung><a href="service/marketing-vertrieb/"><i class="sl-halb" style="--f:#0e1011"></i>Marketing &amp; Vertrieb</a></li>
+        <li data-leistung><a href="service/ki-digitalisierung/"><i class="sl-dreieck" style="--f:#ffe600"></i>KI &amp; Digitalisierung</a></li>
+      </ul>
+      <div class="spiel-knoepfe">
+        <button type="button" data-ton aria-pressed="false"><span>Ton an</span></button>
+        <button type="button" data-pause aria-pressed="false"><span>Pause</span></button>
+      </div>
+    </div>
+    <p class="spiel-hilfe">Springen: Leertaste, Pfeil nach oben oder Tippen. Auf die Probleme springen, schwarze Blöcke von unten anstoßen, die gelbe Fachkraft fangen und alle fünf Leistungen sammeln.</p>
+  </div>
+  <div class="sp-fakten">
 <!-- KENNZAHLEN:START -->
     <dl class="fakten hero-fakten">
       <div><dt><span data-zaehlen="40">40</span><span class="fakt-plus">+</span></dt><dd>Projekte</dd></div>
@@ -191,24 +218,9 @@
       <div><dt><svg class="fakt-ort" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.4 12.5h13.2L12 23z" fill="currentColor"/><circle cx="12" cy="9" r="7" fill="currentColor"/><circle cx="12" cy="9" r="3" fill="#fff"/></svg></dt><dd><span class="mit-liebe">Made with Love in Leipzig</span></dd></div>
     </dl>
 <!-- KENNZAHLEN:ENDE -->
-    </div>
-  </div>
-  <!-- Bauhaus-Bühne (Entwurf 09.11.2026): Figur nach Schlemmers Triadischem Ballett, fünf Leistungen als Formen in den Farben der Farbtafel -->
-  <div class="bb-buehne">
-    <p class="bb-rand" aria-hidden="true">Leistungen</p>
-    <i class="bb-boden" aria-hidden="true"></i>
-    <ul class="bb-formen" aria-label="Leistungen">
-      <li class="bb-f bb-kreis bb-n-unten bb-n-mitte" style="--x:18%;--y:24%;--i:0"><a href="service/webdesign/"><span class="bb-form" aria-hidden="true"></span><span class="bb-name">Webdesign&nbsp;<span aria-hidden="true">→</span></span></a></li>
-      <li class="bb-f bb-quadrat bb-n-unten bb-n-rechts" style="--x:81%;--y:21%;--i:1"><a href="service/markenbildung/"><span class="bb-form" aria-hidden="true"></span><span class="bb-name">Marken&shy;bildung&nbsp;<span aria-hidden="true">→</span></span></a></li>
-      <li class="bb-f bb-halbkreis bb-n-boden bb-n-links" style="--x:17%;--y:79.5%;--i:2"><a href="service/ui-ux/"><span class="bb-form" aria-hidden="true"></span><span class="bb-name">UI/UX&nbsp;<span aria-hidden="true">→</span></span></a></li>
-      <li class="bb-f bb-halbkreis-rosa bb-n-unten bb-n-rechts" style="--x:90%;--y:46%;--i:3"><a href="service/marketing-vertrieb/"><span class="bb-form" aria-hidden="true"></span><span class="bb-name">Marketing &amp; Vertrieb&nbsp;<span aria-hidden="true">→</span></span></a></li>
-      <li class="bb-f bb-dreieck bb-n-boden bb-n-rechts" style="--x:82%;--y:76.5%;--i:4"><a href="service/ki-digitalisierung/"><span class="bb-form" aria-hidden="true"></span><span class="bb-name">KI &amp; Digitalisierung&nbsp;<span aria-hidden="true">→</span></span></a></li>
-    </ul>
-    <button class="bb-figur" type="button" aria-label="Figur tanzen lassen"><svg class="bb-svg" viewBox="-190 -446 380 450" aria-hidden="true" focusable="false"><g fill="#0e1011"><g class="bb-teil bb-t1"><g transform="translate(-22 -150)"><g class="bb-glied bb-bein-l"><rect x="-9.0" y="0" width="18" height="150" rx="4"/></g></g><g transform="translate(22 -150)"><g class="bb-glied bb-bein-r"><rect x="-9.0" y="0" width="18" height="150" rx="4"/></g></g></g><g class="bb-teil bb-t3"><rect x="-42" y="-302" width="84" height="96"/></g><g class="bb-teil bb-t5"><g transform="translate(-30 -290)"><g class="bb-glied bb-arm-l"><rect x="-8.0" y="0" width="16" height="132"/><circle cx="0" cy="136" r="11"/></g></g><g transform="translate(30 -290)"><g class="bb-glied bb-arm-r"><rect x="-8.0" y="0" width="16" height="132"/><circle cx="0" cy="136" r="11"/></g></g></g><g class="bb-teil bb-t2"><path d="M-80 -150 A80 80 0 0 1 80 -150 Z" fill="#2a5fe6" stroke="#fff" stroke-width="14" paint-order="stroke"/></g><g class="bb-teil bb-t4"><circle cx="0" cy="-352" r="34"/><circle class="bb-auge" cx="0" cy="-356" r="7" fill="#fff"/></g></g></svg></button>
-    <p class="bb-ausruf" aria-hidden="true"><span>AAH!</span></p>
   </div>
   <script src="js/faden.js?v=20261016s" defer></script>
-  <script src="js/hero.js?v=20261110h" defer></script>
+  <script src="js/spiel.js?v=20261110i" defer></script>
 </section>
 
   <!-- Schmerzpunkte 1–4 der Zielgruppe Mittelstand (Anna, 09.11.2026; Konzept Betrieb Studio AAH/Website/2026-11-09_konzept_website-als-werkzeug.md) -->
@@ -606,6 +618,6 @@
   <a class="sticky-rechner" href="website-check/"><span class="sticky-rechner-icon"><img src="bilder/icons/target.webp" alt="" width="400" height="400" loading="lazy"></span>Kostenloser Website-Check&nbsp;<span aria-hidden="true">→</span></a>
   <!-- /FUSS -->
 
-  <script src="js/zaehlen.js?v=20261110h" defer></script>
+  <script src="js/zaehlen.js?v=20261110i" defer></script>
 </body>
 </html>

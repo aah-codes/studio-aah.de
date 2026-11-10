@@ -3405,3 +3405,43 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 .st-hinweis { margin: 0; font-weight: 600; min-height: 1em; }
 .kr-wert { margin: -14px 0 0; color: var(--farbe-gedaempft); }
 .kr-form > label[for] { margin-bottom: -14px; }
+
+
+/* Startseiten-Hero mit Spiel (Anna 10.11.2026): Hero zentriert, darunter das Spiel freistehend wie beim Dino-Spiel (nur Bodenlinie, kein Rahmen),
+   Figur läuft durch Leipzig (Baustellen, Autos, Bäume), kurze Demo vorab, dann Start-Button. */
+.sp-hero { text-align: center; padding: 72px var(--rand-seite) 48px; }
+.sp-titel { font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-size: clamp(48px, 8.4vw, 150px); line-height: 1.05; margin: 12px 0 20px; }
+.sp-hero h1 { font-family: var(--schrift-text); text-transform: none; letter-spacing: 0; font-size: clamp(20px, 2vw, 30px); line-height: 1.35; font-weight: 500; max-width: 34ch; margin: 0 auto 28px; }
+.sp-hero .hero-knoepfe { display: flex; flex-wrap: wrap; gap: 12px 16px; justify-content: center; margin: 0 0 24px; }
+.spiel { max-width: 1400px; margin: 0 auto; }
+.spiel-buehne { position: relative; }
+.spiel canvas { display: block; width: 100%; height: auto; aspect-ratio: 960 / 260; cursor: pointer; touch-action: manipulation; }
+.spiel canvas:focus-visible { outline: 3px solid var(--farbe-primaer); outline-offset: 4px; border-radius: 8px; }
+.spiel-meldung { position: absolute; left: 50%; top: 18%; transform: translateX(-50%); margin: 0; padding: 10px 20px; background: var(--farbe-dunkel); color: #fff; border-radius: 999px; font-weight: 600; font-size: clamp(15px, 1.3vw, 20px); pointer-events: none; white-space: nowrap; }
+.spiel-meldung[hidden] { display: none; }
+.spiel-start { position: absolute; left: 50%; top: 45%; transform: translate(-50%, -50%); font-size: clamp(18px, 1.6vw, 24px); padding: 1rem 2rem; }
+.spiel-start[hidden] { display: none; }
+.spiel-leiste { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-top: 14px; }
+.spiel-leistungen { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+.spiel-leistungen a { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px 6px 8px; border: 1.5px solid var(--farbe-grau-hell); border-radius: 999px; color: var(--farbe-gedaempft); text-decoration: none; font-weight: 600; font-size: 15px; transition: border-color .3s, color .3s, transform .3s; }
+.spiel-leistungen i { width: 18px; height: 18px; background: var(--f); opacity: .4; transition: opacity .3s; }
+.spiel-leistungen .ist-gesammelt a { border-color: var(--farbe-dunkel); color: var(--farbe-dunkel); transform: scale(1.06); }
+.spiel-leistungen .ist-gesammelt i { opacity: 1; }
+.sl-kreis { border-radius: 50%; } .sl-halb { border-radius: 18px 18px 0 0; height: 9px !important; } .sl-dreieck { clip-path: polygon(100% 0, 100% 100%, 0 100%); }
+.spiel-knoepfe { display: flex; gap: 8px; }
+.spiel-knoepfe button { font: inherit; font-weight: 600; font-size: 15px; padding: 6px 14px; border: 1.5px solid var(--farbe-dunkel); border-radius: 999px; background: #fff; cursor: pointer; }
+.spiel-knoepfe button[aria-pressed="true"] { background: var(--farbe-dunkel); color: #fff; }
+.spiel-sieg { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; background: rgba(255,255,255,.94); text-align: center; padding: 12px; }
+.spiel-sieg[hidden] { display: none; }
+.spiel-sieg p { margin: 0; font-weight: 600; }
+.spiel-sieg .gross { font-family: var(--schrift-ueberschrift); font-size: clamp(32px, 4vw, 64px); line-height: 1.1; }
+.spiel-sieg .knoepfe { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+.spiel-hilfe { margin: 10px 0 0; font-size: 15px; color: var(--farbe-gedaempft); text-align: left; }
+/* herausfliegende Leistung: steigt aus dem Block bis in die Schrift */
+.spiel-flug { position: absolute; z-index: 50; pointer-events: none; transform: translate(-50%, 0); padding: 6px 12px 6px 34px; background: #fff; border: 2px solid var(--farbe-dunkel); border-radius: 999px; font-weight: 700; font-size: 16px; white-space: nowrap; animation: spiel-flug 1.5s cubic-bezier(.2,.7,.3,1) forwards; }
+.spiel-flug::before { content: ""; position: absolute; left: 8px; top: 50%; width: 18px; height: 18px; margin-top: -9px; background: var(--f); }
+.spiel-flug-kreis::before { border-radius: 50%; } .spiel-flug-halbkreis::before { height: 9px; margin-top: -4px; border-radius: 18px 18px 0 0; } .spiel-flug-dreieck::before { clip-path: polygon(100% 0, 100% 100%, 0 100%); }
+@keyframes spiel-flug { 0% { opacity: 0; transform: translate(-50%, 0) scale(.6); } 15% { opacity: 1; transform: translate(-50%, -40px) scale(1.1); } 70% { opacity: 1; } 100% { opacity: 0; transform: translate(-50%, -260px) rotate(-6deg) scale(1); } }
+@media (prefers-reduced-motion: reduce) { .spiel-flug { animation-duration: .01s; } }
+@media (max-width: 767.98px) { .spiel canvas { aspect-ratio: 960 / 360; } .spiel-sieg .gross { font-size: 28px; } .spiel-meldung { white-space: normal; width: 86%; text-align: center; } }
+  .sp-fakten { max-width: 980px; margin: 40px auto 0; text-align: left; }
