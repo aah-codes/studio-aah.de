@@ -3454,3 +3454,6 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 .spiel-icon:hover, .spiel-icon:focus-visible { border-color: var(--farbe-dunkel) !important; }
 .spiel-icon[data-ton][aria-pressed="false"] .ton-an, .spiel-icon[data-ton][aria-pressed="true"] .ton-aus { display: none; }
 .spiel-icon[data-pause][aria-pressed="false"] .icon-play, .spiel-icon[data-pause][aria-pressed="true"] .icon-pause { display: none; }
+.spiel-leistungen a, .spiel-leistungen .ist-gesammelt a { border: 1px solid var(--farbe-hellgrau-2); }
+.spiel-icon { border: 1px solid var(--farbe-hellgrau-2) !important; }
+.spiel-sieg { background: rgba(255, 255, 255, .96); }

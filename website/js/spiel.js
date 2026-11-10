@@ -70,7 +70,7 @@
   // ---------- Zustand ----------
   var s;
   function neu(demo) {
-    s = { demo: !!demo, lauf: !!demo, aus: false, pause: false, t: 0, tempo: 4.4, weg: 0, gross: false, level: 1, leben: 3,
+    s = { demo: !!demo, lauf: !!demo, aus: false, pause: false, t: 0, tempo: 3.8, weg: 0, gross: false, level: 1, leben: 3,
           punkte: { euro: 0, reichweite: 0, kunden: 0, fachkraefte: 0, zeit: 0 },
           f: { x: 110, y: BODEN, vy: 0, amBoden: true, blink: 0 }, gegner: [], bloecke: [], gaben: [], muenzen: [], kraft: null,
           funken: [], blasen: [], lohn: [], naechstG: demo ? 20 : 70, naechstB: demo ? 45 : 70, naechstK: demo ? 9999 : 360, naechstM: 120,
@@ -101,37 +101,34 @@
   function beschriftung(t, x, y) { c.fillStyle = F.gr; c.font = '600 12px Manrope, system-ui, sans-serif'; c.textAlign = 'center'; c.fillText(t, x, y); c.textAlign = 'left'; }
 
   // ---------- Leipzig ----------
-  function leipzig() {
-    var L = W + 560;
+  function leipzig() {   // Zentrum von Leipzig als ruhige Silhouetten, nacheinander wie auf einem Weg durch die Stadt
+    var L = W * 3;
     c.fillStyle = F.grh;
-    // Weisheitszahn (City-Hochhaus): schmaler Turm mit schräg gerundeter Spitze
-    var x = wiederhole(80, L, .12);
-    c.beginPath(); c.moveTo(x, BODEN); c.lineTo(x, BODEN - 170); c.quadraticCurveTo(x + 22, BODEN - 214, x + 50, BODEN - 196); c.lineTo(x + 50, BODEN); c.fill();
-    beschriftung('Weisheitszahn', x + 25, BODEN - 222);
-    // Völkerschlachtdenkmal: Stufensockel, Kuppel, Krone aus Figuren
-    x = wiederhole(520, L, .12);
+    // Weisheitszahn (City-Hochhaus) gleich zu Beginn: hoch, mit schräg gerundeter Spitze
+    var x = wiederhole(560, L, .12);
+    c.beginPath(); c.moveTo(x, BODEN); c.lineTo(x, BODEN - 180); c.quadraticCurveTo(x + 24, BODEN - 226, x + 54, BODEN - 206); c.lineTo(x + 54, BODEN); c.fill();
+    // Thomaskirche: Schiff mit steilem Dach, schlanker Turm mit Spitze
+    x = wiederhole(1150, L, .12);
+    c.fillRect(x, BODEN - 60, 150, 60); c.beginPath(); c.moveTo(x - 6, BODEN - 60); c.lineTo(x + 75, BODEN - 110); c.lineTo(x + 156, BODEN - 60); c.fill();
+    c.fillRect(x + 150, BODEN - 130, 34, 130); c.beginPath(); c.moveTo(x + 146, BODEN - 130); c.lineTo(x + 167, BODEN - 176); c.lineTo(x + 188, BODEN - 130); c.fill();
+    // Hauptbahnhof: lange Halle mit Bögen
+    x = wiederhole(1700, L, .12);
+    c.fillRect(x, BODEN - 40, 230, 40); for (var k = 0; k < 4; k++) { c.beginPath(); c.arc(x + 30 + k * 57, BODEN - 40, 28, Math.PI, 0); c.fill(); }
+    // Völkerschlachtdenkmal: erst später, Stufensockel und Kuppel
+    x = wiederhole(2450, L, .12);
     c.fillRect(x - 20, BODEN - 20, 200, 20); c.fillRect(x, BODEN - 44, 160, 24); c.fillRect(x + 30, BODEN - 92, 100, 48);
     c.beginPath(); c.arc(x + 80, BODEN - 92, 46, Math.PI, 0); c.fill();
-    for (var i = 0; i < 7; i++) c.fillRect(x + 44 + i * 11, BODEN - 152, 6, 18);
-    c.fillRect(x + 40, BODEN - 136, 80, 6);
-    beschriftung('Völkerschlachtdenkmal', x + 80, BODEN - 162);
-    // Hauptbahnhof: lange Halle mit Bögen
-    x = wiederhole(1000, L, .12);
-    c.fillRect(x, BODEN - 40, 230, 40); for (var k = 0; k < 4; k++) { c.beginPath(); c.arc(x + 30 + k * 57, BODEN - 40, 28, Math.PI, 0); c.fill(); }
-    beschriftung('Hauptbahnhof', x + 115, BODEN - 76);
-    // Baustelle: Kran, Absperrung
-    x = wiederhole(330, L, .3);
+    // eine Baustelle: Kran und Absperrung
+    x = wiederhole(900, W + 900, .3);
     c.fillStyle = F.sch; c.fillRect(x, BODEN - 160, 6, 160); c.fillRect(x - 40, BODEN - 160, 150, 6); c.fillRect(x + 90, BODEN - 154, 2, 40);
     c.fillStyle = F.gelb; c.fillRect(x + 84, BODEN - 114, 16, 16);
     for (var b = 0; b < 5; b++) { c.fillStyle = b % 2 ? F.ws : F.rot; c.fillRect(x + 20 + b * 14, BODEN - 28, 14, 10); }
     c.fillStyle = F.sch; c.fillRect(x + 22, BODEN - 18, 3, 18); c.fillRect(x + 84, BODEN - 18, 3, 18);
-    // Bäume
-    [[40, F.pink, 22], [250, F.gelb, 18], [760, F.rosa, 26], [1250, F.bl, 18]].forEach(function (t) {
-      var bx = wiederhole(t[0], L, .45); c.fillStyle = F.sch; c.fillRect(bx - 2, BODEN - t[2] * 2, 4, t[2] * 2); c.fillStyle = t[1]; c.beginPath(); c.arc(bx, BODEN - t[2] * 2.6, t[2], 0, 7); c.fill(); });
-    // Autos
-    [[0, F.rot], [560, F.bl], [1100, F.gelb]].forEach(function (a) {
-      var ax = wiederhole(a[0], L, .75); c.fillStyle = a[1]; c.fillRect(ax, BODEN - 26, 58, 16); c.beginPath(); c.arc(ax + 26, BODEN - 26, 16, Math.PI, 0); c.fill();
-      c.fillStyle = F.ws; c.fillRect(ax + 18, BODEN - 36, 16, 8); c.fillStyle = F.sch; c.beginPath(); c.arc(ax + 14, BODEN - 8, 7, 0, 7); c.arc(ax + 46, BODEN - 8, 7, 0, 7); c.fill(); });
+    // zwei Bäume, ein Auto
+    [[200, F.pink, 22], [1100, F.gelb, 18]].forEach(function (t) {
+      var bx = wiederhole(t[0], W + 700, .45); c.fillStyle = F.sch; c.fillRect(bx - 2, BODEN - t[2] * 2, 4, t[2] * 2); c.fillStyle = t[1]; c.beginPath(); c.arc(bx, BODEN - t[2] * 2.6, t[2], 0, 7); c.fill(); });
+    var ax = wiederhole(400, W + 1400, .75); c.fillStyle = F.bl; c.fillRect(ax, BODEN - 26, 58, 16); c.beginPath(); c.arc(ax + 26, BODEN - 26, 16, Math.PI, 0); c.fill();
+    c.fillStyle = F.ws; c.fillRect(ax + 18, BODEN - 36, 16, 8); c.fillStyle = F.sch; c.beginPath(); c.arc(ax + 14, BODEN - 8, 7, 0, 7); c.arc(ax + 46, BODEN - 8, 7, 0, 7); c.fill();
   }
 
   // ---------- Figuren ----------
@@ -198,23 +195,23 @@
     c.fillStyle = F.sch; c.fillRect(b.x, y, 42, 42);
     form(b.l.form, b.x + 21, y + 21, 22, b.l.farbe === F.sch ? F.ws : b.l.farbe);
   }
-  function anzeige() {   // links: was man gewonnen hat; rechts: Leistungen im Level und Leben
+  function anzeige() {   // links: Leistungen im Level, Level, Leben; rechts: die laufende Bilanz (wie in Spielen üblich)
+    LEISTUNGEN.forEach(function (l, i) { var lx = 26 + i * 34, ly = 20;
+      if (s.gesammelt.indexOf(i) < 0) { c.strokeStyle = F.grh; c.lineWidth = 2; c.strokeRect(lx - 12, ly - 12, 24, 24); } else form(l.form, lx, ly, 22, l.farbe); });
+    c.fillStyle = F.sch; c.font = '700 14px Manrope, system-ui, sans-serif'; c.fillText('Level ' + s.level, 200, 25);
+    for (var n = 0; n < 3; n++) { if (n < s.leben) herz(278 + n * 22, 22, 9, F.rot); else { c.globalAlpha = .25; herz(278 + n * 22, 22, 9, F.gr); c.globalAlpha = 1; } }
     var werte = [['euro', zahl.format(s.punkte.euro) + ' €'], ['reichweite', zahl.format(s.punkte.reichweite)], ['kunden', s.punkte.kunden], ['fachkraefte', s.punkte.fachkraefte], ['zeit', s.punkte.zeit + ' h']];
     c.font = '700 15px Manrope, system-ui, sans-serif';
-    var x = 14;
-    werte.forEach(function (w) {
-      var y = 24;
+    var x = W - 14;
+    werte.reverse().forEach(function (w) {
+      var y = 24, tw = c.measureText(String(w[1])).width; x -= tw; c.fillStyle = F.sch; c.fillText(String(w[1]), x, y); x -= 24;
       if (w[0] === 'euro') muenze(x + 9, y - 5, 9);
       else if (w[0] === 'reichweite') { c.fillStyle = F.bl; c.beginPath(); c.ellipse(x + 9, y - 5, 10, 6, 0, 0, 7); c.fill(); c.fillStyle = F.ws; c.beginPath(); c.arc(x + 9, y - 5, 3, 0, 7); c.fill(); }
       else if (w[0] === 'kunden') { c.fillStyle = F.pink; c.beginPath(); c.arc(x + 5, y - 5, 6, 0, 7); c.fill(); c.fillStyle = F.rot; c.beginPath(); c.arc(x + 13, y - 5, 6, 0, 7); c.fill(); }
       else if (w[0] === 'fachkraefte') { c.fillStyle = F.sch; c.beginPath(); c.arc(x + 9, y - 10, 4, 0, 7); c.fill(); c.fillStyle = F.gelb; c.beginPath(); c.arc(x + 9, y + 1, 7, Math.PI, 0); c.fill(); }
       else { c.strokeStyle = F.sch; c.lineWidth = 2; c.beginPath(); c.arc(x + 9, y - 5, 7, 0, 7); c.moveTo(x + 9, y - 5); c.lineTo(x + 9, y - 10); c.moveTo(x + 9, y - 5); c.lineTo(x + 13, y - 5); c.stroke(); }
-      c.fillStyle = F.sch; c.fillText(String(w[1]), x + 24, y); x += 24 + c.measureText(String(w[1])).width + 22;
+      x -= 20;
     });
-    LEISTUNGEN.forEach(function (l, i) { var lx = W - 318 + i * 34, ly = 20;
-      if (s.gesammelt.indexOf(i) < 0) { c.strokeStyle = F.grh; c.lineWidth = 2; c.strokeRect(lx - 12, ly - 12, 24, 24); } else form(l.form, lx, ly, 22, l.farbe); });
-    c.fillStyle = F.sch; c.font = '700 14px Manrope, system-ui, sans-serif'; c.fillText('Level ' + s.level, W - 150, 25);
-    for (var n = 0; n < 3; n++) { if (n < s.leben) herz(W - 64 + n * 22, 22, 9, F.rot); else { c.globalAlpha = .25; herz(W - 64 + n * 22, 22, 9, F.gr); c.globalAlpha = 1; } }
   }
   function zeichne() {
     c.setTransform(cv.width / W, 0, 0, cv.height / H, 0, 0);
@@ -259,7 +256,7 @@
   }
   function bilanz() {
     var p = s.punkte;
-    bilanzText.textContent = 'Level ' + s.level + ' · ' + zahl.format(p.euro) + ' € · ' + zahl.format(p.reichweite) + ' Reichweite · ' + p.kunden + (p.kunden === 1 ? ' neuer Kunde' : ' neue Kunden') + ' · ' + p.fachkraefte + (p.fachkraefte === 1 ? ' Fachkraft' : ' Fachkräfte') + ' · ' + p.zeit + ' Stunden gewonnen';
+    bilanzText.textContent = 'Level ' + s.level + ' erreicht. Ihre Bilanz steht oben rechts.';
     bilanzBox.hidden = false; pauseAnzeige();
   }
   function belohnen(g) {
@@ -287,7 +284,7 @@
   }
   function schritt() {
     if (!s.lauf || s.pause || s.aus) return;
-    s.t++; s.tempo = Math.min(8.5, 4.4 + s.t / 1600 + (s.level - 1) * .5); s.weg += s.tempo;
+    s.t++; s.tempo = Math.min(7.2, 3.8 + s.t / 2000 + (s.level - 1) * .4); s.weg += s.tempo;
     var k = s.gross ? 1.35 : 1, fh = 98 * k, fb = 30 * k;
     if (s.demo) demoSchritt();
     var mitte = W * .42; s.f.x += (mitte - s.f.x) * .06;                       // schnell zur Mitte
