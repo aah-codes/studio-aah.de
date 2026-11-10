@@ -3445,3 +3445,12 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 @media (prefers-reduced-motion: reduce) { .spiel-flug { animation-duration: .01s; } }
 @media (max-width: 767.98px) { .spiel canvas { aspect-ratio: 960 / 360; } .spiel-sieg .gross { font-size: 28px; } .spiel-meldung { white-space: normal; width: 86%; text-align: center; } }
   .sp-fakten { max-width: 980px; margin: 40px auto 0; text-align: left; }
+/* Spiel Fassung 3 (Anna 10.11.2026): Chips mit Abstand und hellgrauer Linie, Icon-Buttons, kleinere Hilfe */
+.spiel-leistungen { gap: 10px 14px; }
+.spiel-leistungen a, .spiel-leistungen .ist-gesammelt a { border-color: var(--farbe-grau-hell); }
+.spiel-hilfe { font-size: 13px; line-height: 1.5; }
+.spiel-icon { display: inline-grid; place-items: center; width: 44px; height: 44px; padding: 0 !important; border: 1.5px solid var(--farbe-grau-hell) !important; border-radius: 50% !important; background: var(--farbe-weiss) !important; color: var(--farbe-dunkel) !important; cursor: pointer; }
+.spiel-icon svg { width: 22px; height: 22px; }
+.spiel-icon:hover, .spiel-icon:focus-visible { border-color: var(--farbe-dunkel) !important; }
+.spiel-icon[data-ton][aria-pressed="false"] .ton-an, .spiel-icon[data-ton][aria-pressed="true"] .ton-aus { display: none; }
+.spiel-icon[data-pause][aria-pressed="false"] .icon-play, .spiel-icon[data-pause][aria-pressed="true"] .icon-pause { display: none; }

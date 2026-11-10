@@ -1,36 +1,42 @@
-/* Hero-Spiel „AAH! Durch Leipzig“ (Anna 10.11.2026, Startseite; Entwurfsordner website/entwurf-hero-spiel/ nur lokal)
-   Eigenes Lauf-und-Spring-Spiel in Annas Bildsprache (kein Nachbau eines bestehenden Spiels):
-   – Freistehend wie das Dino-Spiel: nur eine Bodenlinie, kein Rahmen. Scharf gezeichnet (Gerätepixel), kräftige Farben.
-   – Die Bauhaus-Figur läuft durch Leipzig: Uni-Riese, Völkerschlachtdenkmal, Baustellen mit Kran und Baken, Autos, Bäume.
-   – Probleme als Störenfriede: Funkstille-Gespenst (keine neuen Kunden), Tool-Virus (Software, die keiner nutzt),
-     Zeitfresser (alle rennen, nichts wird fertig) und ein Haufen Mist. Draufspringen: platt. Seitlich dagegen: OHO!
-   – Die Fachkraft (gelber Rock) läuft hin und her und hüpft weg. Gefangen: Die Figur wächst und hält einen Treffer aus.
-   – Schwarze Blöcke in der Luft: von unten anstoßen, eine Leistung fliegt heraus und steigt bis in die Schrift.
-   – Alle fünf Leistungen gesammelt: gewonnen, Konfetti, Button „Projekt anfragen“.
-   – Erst eine kurze Demo (höchstens 5 Sekunden, mit Pause-Taste), die das Spiel erklärt; dann „Spielen“.
-   Ton aus, bis man ihn einschaltet. Eigene Klänge (Web Audio), keine fremden Tonaufnahmen. */
+/* Hero-Spiel „Play the game“ durch Leipzig (Anna 10.11.2026, Fassung 3; Entwurfsordner website/entwurf-hero-spiel/ nur lokal)
+   Eigenes Lauf-und-Spring-Spiel in Annas Bildsprache (kein Nachbau eines bestehenden Spiels, keine fremden Töne oder Figuren).
+   – Freistehend, nur Bodenlinie. Die Bauhaus-Figur läuft schnell zur Bildmitte und dann durch Leipzig
+     (Völkerschlachtdenkmal, Weisheitszahn, Hauptbahnhof, Baustelle, Autos, Bäume).
+   – Fünf Probleme laufen herum. Draufspringen verwandelt sie in das, was Unternehmen wollen:
+       Funkstille → neue Kunden · Unsichtbar (Auge zu) → Auge geht auf, Reichweite · Tool-Chaos → Zeit
+       Zeitfresser → Zeit · Ebbe in der Kasse → Geld. Seitlich dagegen kostet ein Leben (drei Leben).
+   – Die Fachkraft läuft weg; gefangen: ein Mitarbeiter mehr, die Figur wächst und hält einen Treffer aus.
+   – Schwarze Blöcke von unten anstoßen: Leistung fliegt heraus bis in die Schrift. Alle fünf gesammelt: nächstes Level.
+   – Das Spiel läuft weiter, bis die Leben weg sind; dann zeigt es die Bilanz mit „Projekt anfragen“.
+   – Kurze Demo (höchstens 5 s) vorab. Ton aus, bis man ihn einschaltet. Pause jederzeit. */
 (function () {
   'use strict';
   var wurzel = document.querySelector('[data-spiel]');
   if (!wurzel) return;
   var cv = wurzel.querySelector('canvas'), c = cv.getContext('2d');
   var W = 960, H = 260, BODEN = 236;
-  var F = { sch: '#0e1011', ws: '#ffffff', bl: '#2a5fe6', rot: '#ff3b2f', pink: '#ff4fa3', rosa: '#ff8fc8', gelb: '#ffe600', gr: '#9a9d9e', grh: '#d6d8d9', creme: '#eeece7' };
-  var LEISTUNGEN = [   // Marketing & Vertrieb in Schwarz, damit sich die Farben klar unterscheiden (Anna: zwei Rosatöne zu ähnlich)
+  var F = { sch: '#0e1011', ws: '#ffffff', bl: '#2a5fe6', rot: '#ff3b2f', pink: '#ff4fa3', rosa: '#ff8fc8', gelb: '#ffe600', gr: '#9a9d9e', grh: '#d6d8d9' };
+  var LEISTUNGEN = [
     { name: 'Webdesign', form: 'kreis', farbe: F.bl }, { name: 'Markenbildung', form: 'quadrat', farbe: F.rot },
     { name: 'UI/UX', form: 'halbkreis', farbe: F.pink }, { name: 'Marketing & Vertrieb', form: 'halbkreis', farbe: F.sch },
     { name: 'KI & Digitalisierung', form: 'dreieck', farbe: F.gelb }];
-  var GEGNER = [
-    { art: 'gespenst', name: 'Funkstille', b: 40, h: 46 }, { art: 'virus', name: 'Tool-Chaos', b: 40, h: 40 },
-    { art: 'fresser', name: 'Zeitfresser', b: 48, h: 44 }, { art: 'mist', name: 'Mist', b: 42, h: 30 }];
+  // Die fünf Probleme und was aus ihnen wird
+  var PROBLEME = [
+    { art: 'funkstille', name: 'Funkstille', b: 40, h: 46, lohn: 'kunden', menge: 1, text: '+1 Kunde' },
+    { art: 'unsichtbar', name: 'Unsichtbar', b: 44, h: 40, lohn: 'reichweite', menge: 250, text: '+250 Reichweite' },
+    { art: 'toolchaos', name: 'Tool-Chaos', b: 40, h: 40, lohn: 'zeit', menge: 2, text: '+2 Stunden' },
+    { art: 'zeitfresser', name: 'Zeitfresser', b: 48, h: 44, lohn: 'zeit', menge: 3, text: '+3 Stunden' },
+    { art: 'ebbe', name: 'Ebbe in der Kasse', b: 44, h: 38, lohn: 'euro', menge: 500, text: '+500 €' }];
   var chips = wurzel.querySelectorAll('[data-leistung]');
   var meldungEl = wurzel.querySelector('[data-meldung]'), startKnopf = wurzel.querySelector('[data-start]');
-  var knopfTon = wurzel.querySelector('[data-ton]'), knopfPause = wurzel.querySelector('[data-pause]'), sieg = wurzel.querySelector('[data-sieg]');
+  var knopfTon = wurzel.querySelector('[data-ton]'), knopfPause = wurzel.querySelector('[data-pause]');
+  var bilanzBox = wurzel.querySelector('[data-sieg]'), bilanzText = wurzel.querySelector('[data-bilanz]');
   var ruhig = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var zahl = new Intl.NumberFormat('de-DE');
 
   function groesse() {
-    var r = cv.getBoundingClientRect(), schmal = r.width < 600;
-    H = schmal ? 360 : 260; BODEN = H - 24;
+    var r = cv.getBoundingClientRect();
+    H = r.width < 600 ? 360 : 260; BODEN = H - 24;
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
     cv.width = Math.round(r.width * dpr); cv.height = Math.round(r.width * H / W * dpr);
   }
@@ -38,11 +44,11 @@
   // ---------- Ton ----------
   var tonAn = false, ac = null;
   try { tonAn = localStorage.getItem('spiel-ton') === 'an'; } catch (e) {}
-  function tonKnopf() { knopfTon.setAttribute('aria-pressed', tonAn ? 'true' : 'false'); knopfTon.querySelector('span').textContent = tonAn ? 'Ton aus' : 'Ton an'; }
+  function tonKnopf() { knopfTon.setAttribute('aria-pressed', tonAn ? 'true' : 'false'); knopfTon.setAttribute('aria-label', tonAn ? 'Ton ausschalten' : 'Ton einschalten'); }
   tonKnopf();
   knopfTon.addEventListener('click', function () { tonAn = !tonAn; tonKnopf(); try { localStorage.setItem('spiel-ton', tonAn ? 'an' : 'aus'); } catch (e) {} });
   function ton(folge) {
-    if (!tonAn || s.demo) return;
+    if (!tonAn || !s || s.demo) return;
     try {
       ac = ac || new (window.AudioContext || window.webkitAudioContext)();
       var t = ac.currentTime;
@@ -55,22 +61,26 @@
       });
     } catch (e) {}
   }
-  var TON = { sprung: [[380, .13, 'square', 820]], platt: [[260, .07, 'square', 80], [120, .12, 'triangle', 60]],
-    block: [[200, .05], [700, .08, 'square', 1400]], sammeln: [[988, .06], [1318, .14]],
+  var TON = { sprung: [[380, .13, 'square', 820]], platt: [[260, .07, 'square', 80], [520, .1, 'square', 1040]],
+    block: [[200, .05], [700, .08, 'square', 1400]], muenze: [[1318, .05], [1760, .1]], sammeln: [[988, .06], [1318, .14]],
     wachsen: [[330, .06], [392, .06], [494, .06], [659, .06], [784, .06], [988, .14]], schrumpfen: [[600, .1, 'sawtooth', 200]],
-    oho: [[520, .15, 'sawtooth', 280], [280, .3, 'sawtooth', 110]], sieg: [[523, .1], [659, .1], [784, .1], [1046, .12], [784, .08], [1046, .35]] };
+    autsch: [[520, .12, 'sawtooth', 260]], ende: [[520, .15, 'sawtooth', 280], [280, .3, 'sawtooth', 110]],
+    level: [[523, .1], [659, .1], [784, .1], [1046, .12], [784, .08], [1046, .35]] };
 
   // ---------- Zustand ----------
   var s;
   function neu(demo) {
-    s = { demo: !!demo, lauf: !!demo, aus: false, gewonnen: false, pause: false, t: 0, tempo: 4.2, weg: 0, gross: false,
-          f: { x: 120, y: BODEN, vy: 0, amBoden: true, blink: 0 }, gegner: [], bloecke: [], gaben: [], kraft: null, funken: [], blasen: [],
-          naechstG: demo ? 25 : 90, naechstB: demo ? 50 : 60, naechstK: demo ? 9999 : 420, gesammelt: [], bekannt: {} };
+    s = { demo: !!demo, lauf: !!demo, aus: false, pause: false, t: 0, tempo: 4.4, weg: 0, gross: false, level: 1, leben: 3,
+          punkte: { euro: 0, reichweite: 0, kunden: 0, fachkraefte: 0, zeit: 0 },
+          f: { x: 110, y: BODEN, vy: 0, amBoden: true, blink: 0 }, gegner: [], bloecke: [], gaben: [], muenzen: [], kraft: null,
+          funken: [], blasen: [], lohn: [], naechstG: demo ? 20 : 70, naechstB: demo ? 45 : 70, naechstK: demo ? 9999 : 360, naechstM: 120,
+          gesammelt: [], bekannt: {} };
     chips.forEach(function (ch) { ch.classList.remove('ist-gesammelt'); });
-    if (sieg) sieg.hidden = true;
+    if (bilanzBox) bilanzBox.hidden = true;
+    pauseAnzeige();
   }
 
-  // ---------- Zeichnen ----------
+  // ---------- Zeichnen: Grundformen ----------
   function form(art, x, y, g, farbe) {
     c.fillStyle = farbe; c.beginPath();
     if (art === 'kreis') c.arc(x, y, g / 2, 0, Math.PI * 2);
@@ -79,28 +89,52 @@
     else { c.moveTo(x + g / 2, y - g / 2); c.lineTo(x + g / 2, y + g / 2); c.lineTo(x - g / 2, y + g / 2); }
     c.fill();
   }
-  function wiederhole(x, laenge, tempo) { return ((x - s.weg * tempo) % laenge + laenge) % laenge - 80; }
+  function herz(x, y, g, farbe) {   // Grundform-Herz: gedrehtes Quadrat und zwei Halbkreise
+    c.save(); c.translate(x, y); c.fillStyle = farbe; c.rotate(Math.PI / 4); c.fillRect(-g / 2, -g / 2, g, g); c.rotate(-Math.PI / 4);
+    c.beginPath(); c.arc(-g * .35, -g * .35, g * .5, 0, 7); c.arc(g * .35, -g * .35, g * .5, 0, 7); c.fill(); c.restore();
+  }
+  function muenze(x, y, r) {
+    c.fillStyle = F.gelb; c.beginPath(); c.arc(x, y, r, 0, 7); c.fill();
+    c.fillStyle = F.sch; c.font = '700 ' + Math.round(r * 1.2) + 'px Manrope, system-ui, sans-serif'; c.textAlign = 'center'; c.fillText('€', x, y + r * .42); c.textAlign = 'left';
+  }
+  function wiederhole(x, laenge, tempo) { return ((x - s.weg * tempo) % laenge + laenge) % laenge - 120; }
+  function beschriftung(t, x, y) { c.fillStyle = F.gr; c.font = '600 12px Manrope, system-ui, sans-serif'; c.textAlign = 'center'; c.fillText(t, x, y); c.textAlign = 'left'; }
+
+  // ---------- Leipzig ----------
   function leipzig() {
-    var L = W + 400;
-    // Skyline in Hellgrau: Uni-Riese, Völkerschlachtdenkmal, Hauptbahnhof
+    var L = W + 560;
     c.fillStyle = F.grh;
-    var x = wiederhole(140, L, .12); c.fillRect(x, BODEN - 170, 36, 170); c.beginPath(); c.arc(x + 18, BODEN - 170, 18, Math.PI, 0); c.fill(); c.fillRect(x + 16, BODEN - 200, 4, 16);
-    x = wiederhole(560, L, .12); c.fillRect(x, BODEN - 40, 120, 40); c.fillRect(x + 20, BODEN - 70, 80, 30); c.beginPath(); c.arc(x + 60, BODEN - 70, 34, Math.PI, 0); c.fill();
-    x = wiederhole(900, L, .12); for (var i = 0; i < 4; i++) { c.beginPath(); c.arc(x + 30 + i * 52, BODEN - 40, 26, Math.PI, 0); c.fill(); } c.fillRect(x, BODEN - 40, 210, 40);
-    // Baustelle: Kran, Absperrung, Baken
-    x = wiederhole(380, L, .3);
+    // Weisheitszahn (City-Hochhaus): schmaler Turm mit schräg gerundeter Spitze
+    var x = wiederhole(80, L, .12);
+    c.beginPath(); c.moveTo(x, BODEN); c.lineTo(x, BODEN - 170); c.quadraticCurveTo(x + 22, BODEN - 214, x + 50, BODEN - 196); c.lineTo(x + 50, BODEN); c.fill();
+    beschriftung('Weisheitszahn', x + 25, BODEN - 222);
+    // Völkerschlachtdenkmal: Stufensockel, Kuppel, Krone aus Figuren
+    x = wiederhole(520, L, .12);
+    c.fillRect(x - 20, BODEN - 20, 200, 20); c.fillRect(x, BODEN - 44, 160, 24); c.fillRect(x + 30, BODEN - 92, 100, 48);
+    c.beginPath(); c.arc(x + 80, BODEN - 92, 46, Math.PI, 0); c.fill();
+    for (var i = 0; i < 7; i++) c.fillRect(x + 44 + i * 11, BODEN - 152, 6, 18);
+    c.fillRect(x + 40, BODEN - 136, 80, 6);
+    beschriftung('Völkerschlachtdenkmal', x + 80, BODEN - 162);
+    // Hauptbahnhof: lange Halle mit Bögen
+    x = wiederhole(1000, L, .12);
+    c.fillRect(x, BODEN - 40, 230, 40); for (var k = 0; k < 4; k++) { c.beginPath(); c.arc(x + 30 + k * 57, BODEN - 40, 28, Math.PI, 0); c.fill(); }
+    beschriftung('Hauptbahnhof', x + 115, BODEN - 76);
+    // Baustelle: Kran, Absperrung
+    x = wiederhole(330, L, .3);
     c.fillStyle = F.sch; c.fillRect(x, BODEN - 160, 6, 160); c.fillRect(x - 40, BODEN - 160, 150, 6); c.fillRect(x + 90, BODEN - 154, 2, 40);
     c.fillStyle = F.gelb; c.fillRect(x + 84, BODEN - 114, 16, 16);
-    for (var k = 0; k < 5; k++) { c.fillStyle = k % 2 ? F.ws : F.rot; c.fillRect(x + 20 + k * 14, BODEN - 28, 14, 10); }
+    for (var b = 0; b < 5; b++) { c.fillStyle = b % 2 ? F.ws : F.rot; c.fillRect(x + 20 + b * 14, BODEN - 28, 14, 10); }
     c.fillStyle = F.sch; c.fillRect(x + 22, BODEN - 18, 3, 18); c.fillRect(x + 84, BODEN - 18, 3, 18);
-    // Bäume als Bauhaus-Formen
-    [[60, F.pink, 22], [260, F.gelb, 18], [720, F.rosa, 26], [1180, F.bl, 18]].forEach(function (b) {
-      var bx = wiederhole(b[0], L, .45); c.fillStyle = F.sch; c.fillRect(bx - 2, BODEN - b[2] * 2, 4, b[2] * 2); c.fillStyle = b[1]; c.beginPath(); c.arc(bx, BODEN - b[2] * 2 - b[2] * .6, b[2], 0, 7); c.fill(); });
-    // Autos auf der hinteren Spur
-    [[0, F.rot], [520, F.bl], [980, F.gelb]].forEach(function (a) {
+    // Bäume
+    [[40, F.pink, 22], [250, F.gelb, 18], [760, F.rosa, 26], [1250, F.bl, 18]].forEach(function (t) {
+      var bx = wiederhole(t[0], L, .45); c.fillStyle = F.sch; c.fillRect(bx - 2, BODEN - t[2] * 2, 4, t[2] * 2); c.fillStyle = t[1]; c.beginPath(); c.arc(bx, BODEN - t[2] * 2.6, t[2], 0, 7); c.fill(); });
+    // Autos
+    [[0, F.rot], [560, F.bl], [1100, F.gelb]].forEach(function (a) {
       var ax = wiederhole(a[0], L, .75); c.fillStyle = a[1]; c.fillRect(ax, BODEN - 26, 58, 16); c.beginPath(); c.arc(ax + 26, BODEN - 26, 16, Math.PI, 0); c.fill();
       c.fillStyle = F.ws; c.fillRect(ax + 18, BODEN - 36, 16, 8); c.fillStyle = F.sch; c.beginPath(); c.arc(ax + 14, BODEN - 8, 7, 0, 7); c.arc(ax + 46, BODEN - 8, 7, 0, 7); c.fill(); });
   }
+
+  // ---------- Figuren ----------
   function figur(x, y, k, rock, laeuft, hoch) {
     c.save(); c.translate(x, y); c.scale(k, k);
     var sch = laeuft ? Math.sin(s.t / 3) * 12 : 0;
@@ -117,36 +151,42 @@
     c.fillStyle = F.ws; c.beginPath(); c.arc(4, -88, 3, 0, 7); c.fill();
     c.restore();
   }
-  function augen(x, y) {
+  function augen(x, y, zu) {
+    if (zu) { c.fillStyle = F.sch; c.fillRect(x - 13, y - 1, 10, 3); c.fillRect(x + 3, y - 1, 10, 3); return; }
     c.fillStyle = F.ws; c.beginPath(); c.arc(x - 7, y, 6, 0, 7); c.arc(x + 7, y, 6, 0, 7); c.fill();
     c.fillStyle = F.sch; c.beginPath(); c.arc(x - 9, y + 1, 3, 0, 7); c.arc(x + 5, y + 1, 3, 0, 7); c.fill();
   }
   function gegner(g) {
-    var x = g.x, y = BODEN, w = Math.sin((s.t + g.x) / 6);
+    var x = g.x, y = BODEN - (g.hoehe || 0), w = Math.sin((s.t + g.x) / 6);
     c.save();
-    if (g.platt) { c.translate(x + g.b / 2, y); c.scale(1 + g.platt * .6, Math.max(.12, 1 - g.platt)); c.translate(-(x + g.b / 2), -y); c.globalAlpha = Math.max(0, 1 - g.platt * .5); }
-    if (g.art === 'gespenst') {
+    if (g.platt && g.art !== 'unsichtbar') { c.translate(x + g.b / 2, y); c.scale(1 + g.platt * .6, Math.max(.12, 1 - g.platt)); c.translate(-(x + g.b / 2), -y); c.globalAlpha = Math.max(0, 1 - g.platt * .5); }
+    if (g.platt && g.art === 'unsichtbar') c.globalAlpha = Math.max(0, 1 - g.platt * .6);
+    if (g.art === 'funkstille') {          // Gespenst, schwebt, stummer Mund
       var gy = y - 10 + w * 6;
       c.fillStyle = F.gr; c.beginPath(); c.arc(x + 20, gy - 26, 20, Math.PI, 0); c.lineTo(x + 40, gy);
       for (var i = 0; i < 4; i++) { c.lineTo(x + 35 - i * 10, gy - (i % 2 ? 0 : 7)); c.lineTo(x + 30 - i * 10, gy); }
       c.closePath(); c.fill(); augen(x + 20, gy - 28); c.fillStyle = F.sch; c.fillRect(x + 14, gy - 16, 12, 3);
-    } else if (g.art === 'virus') {
+    } else if (g.art === 'unsichtbar') {   // Auge zu; draufspringen öffnet es
+      c.fillStyle = F.gr; c.beginPath(); c.ellipse(x + 22, y - 20, 22, 20, 0, 0, 7); c.fill();
+      if (g.platt) { c.fillStyle = F.ws; c.beginPath(); c.ellipse(x + 22, y - 22, 16, 11, 0, 0, 7); c.fill(); c.fillStyle = F.bl; c.beginPath(); c.arc(x + 22, y - 22, 7, 0, 7); c.fill(); c.fillStyle = F.sch; c.beginPath(); c.arc(x + 22, y - 22, 3, 0, 7); c.fill(); }
+      else { c.strokeStyle = F.sch; c.lineWidth = 3; c.beginPath(); c.arc(x + 22, y - 24, 12, .2, Math.PI - .2); c.stroke(); for (var l = 0; l < 4; l++) c.fillRect(x + 12 + l * 6, y - 12, 2, 5); }
+    } else if (g.art === 'toolchaos') {    // Virus mit Stacheln, rollt
       c.translate(x + 20, y - 20); c.rotate(-s.t / 8); c.fillStyle = F.gr;
       for (var k = 0; k < 8; k++) { c.rotate(Math.PI / 4); c.fillRect(-3, -22, 6, 10); c.beginPath(); c.arc(0, -22, 4, 0, 7); c.fill(); }
       c.beginPath(); c.arc(0, 0, 15, 0, 7); c.fill(); c.rotate(s.t / 8); augen(0, -2);
-    } else if (g.art === 'fresser') {
+    } else if (g.art === 'zeitfresser') {  // frisst Uhren
       var maul = Math.abs(Math.sin(s.t / 5)) * .7;
       c.fillStyle = F.gr; c.beginPath(); c.moveTo(x + 24, y - 22); c.arc(x + 24, y - 22, 22, Math.PI + maul, Math.PI * 3 - maul); c.closePath(); c.fill();
       augen(x + 28, y - 32);
       c.fillStyle = F.ws; c.strokeStyle = F.sch; c.lineWidth = 2; c.beginPath(); c.arc(x - 4, y - 22, 8, 0, 7); c.fill(); c.stroke();
       c.beginPath(); c.moveTo(x - 4, y - 22); c.lineTo(x - 4, y - 27); c.moveTo(x - 4, y - 22); c.lineTo(x, y - 22); c.stroke();
-    } else {
-      c.fillStyle = F.gr; c.beginPath(); c.ellipse(x + 21, y - 6, 21, 7, 0, 0, 7); c.ellipse(x + 21, y - 15, 15, 6, 0, 0, 7); c.ellipse(x + 21, y - 23, 9, 5, 0, 0, 7); c.fill();
-      augen(x + 21, y - 15); c.fillStyle = F.sch;
-      for (var m = 0; m < 2; m++) { var a = s.t / 6 + m * 3; c.fillRect(x + 21 + Math.cos(a) * 18, y - 40 + Math.sin(a * 1.3) * 6, 3, 3); }
+    } else {                                // Ebbe in der Kasse: leerer Geldsack mit Motte
+      c.fillStyle = F.gr; c.beginPath(); c.ellipse(x + 22, y - 15, 22, 15, 0, 0, 7); c.fill(); c.fillRect(x + 14, y - 36, 16, 8);
+      augen(x + 22, y - 18); c.fillStyle = F.sch; c.font = '700 11px Manrope, system-ui, sans-serif'; c.fillText('0 €', x + 13, y - 4);
+      var a = s.t / 6; c.fillStyle = F.sch; c.fillRect(x + 22 + Math.cos(a) * 20, y - 44 + Math.sin(a * 1.3) * 6, 4, 3);
     }
     c.restore();
-    if (!g.platt && g.zeigName) etikett(g.name, x + g.b / 2, y - g.h - 18, F.sch, F.ws);
+    if (!g.platt && g.zeigName) etikett(g.name, x + g.b / 2, BODEN - g.h - 18, F.sch, F.ws);
   }
   function etikett(t, x, y, grund, schrift) {
     c.font = '600 15px Manrope, system-ui, sans-serif'; var tw = c.measureText(t).width;
@@ -158,42 +198,76 @@
     c.fillStyle = F.sch; c.fillRect(b.x, y, 42, 42);
     form(b.l.form, b.x + 21, y + 21, 22, b.l.farbe === F.sch ? F.ws : b.l.farbe);
   }
+  function anzeige() {   // links: was man gewonnen hat; rechts: Leistungen im Level und Leben
+    var werte = [['euro', zahl.format(s.punkte.euro) + ' €'], ['reichweite', zahl.format(s.punkte.reichweite)], ['kunden', s.punkte.kunden], ['fachkraefte', s.punkte.fachkraefte], ['zeit', s.punkte.zeit + ' h']];
+    c.font = '700 15px Manrope, system-ui, sans-serif';
+    var x = 14;
+    werte.forEach(function (w) {
+      var y = 24;
+      if (w[0] === 'euro') muenze(x + 9, y - 5, 9);
+      else if (w[0] === 'reichweite') { c.fillStyle = F.bl; c.beginPath(); c.ellipse(x + 9, y - 5, 10, 6, 0, 0, 7); c.fill(); c.fillStyle = F.ws; c.beginPath(); c.arc(x + 9, y - 5, 3, 0, 7); c.fill(); }
+      else if (w[0] === 'kunden') { c.fillStyle = F.pink; c.beginPath(); c.arc(x + 5, y - 5, 6, 0, 7); c.fill(); c.fillStyle = F.rot; c.beginPath(); c.arc(x + 13, y - 5, 6, 0, 7); c.fill(); }
+      else if (w[0] === 'fachkraefte') { c.fillStyle = F.sch; c.beginPath(); c.arc(x + 9, y - 10, 4, 0, 7); c.fill(); c.fillStyle = F.gelb; c.beginPath(); c.arc(x + 9, y + 1, 7, Math.PI, 0); c.fill(); }
+      else { c.strokeStyle = F.sch; c.lineWidth = 2; c.beginPath(); c.arc(x + 9, y - 5, 7, 0, 7); c.moveTo(x + 9, y - 5); c.lineTo(x + 9, y - 10); c.moveTo(x + 9, y - 5); c.lineTo(x + 13, y - 5); c.stroke(); }
+      c.fillStyle = F.sch; c.fillText(String(w[1]), x + 24, y); x += 24 + c.measureText(String(w[1])).width + 22;
+    });
+    LEISTUNGEN.forEach(function (l, i) { var lx = W - 318 + i * 34, ly = 20;
+      if (s.gesammelt.indexOf(i) < 0) { c.strokeStyle = F.grh; c.lineWidth = 2; c.strokeRect(lx - 12, ly - 12, 24, 24); } else form(l.form, lx, ly, 22, l.farbe); });
+    c.fillStyle = F.sch; c.font = '700 14px Manrope, system-ui, sans-serif'; c.fillText('Level ' + s.level, W - 150, 25);
+    for (var n = 0; n < 3; n++) { if (n < s.leben) herz(W - 64 + n * 22, 22, 9, F.rot); else { c.globalAlpha = .25; herz(W - 64 + n * 22, 22, 9, F.gr); c.globalAlpha = 1; } }
+  }
   function zeichne() {
     c.setTransform(cv.width / W, 0, 0, cv.height / H, 0, 0);
     c.clearRect(0, 0, W, H);
     leipzig();
     c.fillStyle = F.sch; c.fillRect(0, BODEN, W, 3);
-    for (var i = 0; i < 14; i++) c.fillRect(wiederhole(i * 79, W + 160, 1), BODEN + 10 + (i % 3) * 4, 8 + (i % 2) * 6, 2);
+    for (var i = 0; i < 14; i++) c.fillRect(wiederhole(i * 79, W + 240, 1), BODEN + 10 + (i % 3) * 4, 8 + (i % 2) * 6, 2);
     s.bloecke.forEach(block);
+    s.muenzen.forEach(function (m) { muenze(m.x, m.y + Math.sin((s.t + m.x) / 8) * 3, 11); });
     s.gaben.forEach(function (g) { form(g.l.form, g.x, g.y, 34, g.l.farbe); });
     s.gegner.forEach(gegner);
     if (s.kraft) { var k = s.kraft; figur(k.x, BODEN - k.sprung, .62, F.gelb, true, k.sprung > 0); if (!s.bekannt.kraft) etikett('Fachkraft: Fang mich!', k.x, BODEN - 92 - k.sprung, F.gelb, F.sch); }
     if (!(s.f.blink > 0 && Math.floor(s.t / 4) % 2)) figur(s.f.x, s.f.y, s.gross ? 1.35 : 1, F.bl, s.f.amBoden && s.lauf && !s.aus, !s.f.amBoden);
     s.funken.forEach(function (p) { c.globalAlpha = Math.max(0, p.l / 30); form(p.form, p.x, p.y, p.g, p.farbe); }); c.globalAlpha = 1;
+    s.lohn.forEach(function (p) { c.globalAlpha = Math.min(1, p.l / 20); etikett(p.text, p.x, p.y, p.farbe, p.farbe === F.gelb ? F.sch : F.ws); }); c.globalAlpha = 1;
     s.blasen.forEach(function (b) {
       c.font = '30px Anton, Impact, sans-serif'; var bw = c.measureText(b.text).width + 20;
       c.save(); c.translate(b.x, b.y); c.rotate(-.06); c.fillStyle = F.sch; c.fillRect(-bw / 2, -30, bw, 40); c.fillStyle = F.ws; c.fillText(b.text, -bw / 2 + 10, 2); c.restore();
     });
-    LEISTUNGEN.forEach(function (l, i) { var x = W - 190 + i * 38, y = 24;
-      if (s.gesammelt.indexOf(i) < 0) { c.strokeStyle = F.grh; c.lineWidth = 2; c.strokeRect(x - 13, y - 13, 26, 26); } else form(l.form, x, y, 24, l.farbe); });
+    anzeige();
   }
 
   // ---------- Spiel ----------
   function blase(text, x, y) { s.blasen.push({ text: text, x: x, y: y, l: 45 }); }
+  function lohn(text, x, y, farbe) { s.lohn.push({ text: text, x: x, y: y, l: 55, farbe: farbe }); }
   function funken(x, y, n) { for (var i = 0; i < n; i++) { var l = LEISTUNGEN[i % 5]; s.funken.push({ x: x, y: y, vx: (Math.random() - .5) * 9, vy: -Math.random() * 8 - 2, l: 30, g: 8 + Math.random() * 9, form: l.form, farbe: l.farbe }); } }
   function springen() {
-    if (s.demo) { demoEnde(); }
-    if (s.aus || s.gewonnen) { neu(); starten(); return; }
+    if (s.demo) demoEnde();
+    if (s.aus) { neu(false); starten(); return; }
     if (!s.lauf) starten();
     if (s.pause) { pauseUm(false); return; }
     if (s.f.amBoden) { s.f.vy = -15.5; s.f.amBoden = false; ton(TON.sprung); }
   }
-  function starten() { s.lauf = true; meldung(''); if (startKnopf) startKnopf.hidden = true; }
+  function starten() { s.lauf = true; meldung(''); if (startKnopf) startKnopf.hidden = true; pauseAnzeige(); }
   function meldung(t) { meldungEl.textContent = t; meldungEl.hidden = !t; }
   function treffer() {
     if (s.f.blink > 0) return;
     if (s.gross) { s.gross = false; s.f.blink = 90; ton(TON.schrumpfen); blase('OHO!', s.f.x, s.f.y - 140); return; }
-    s.aus = true; ton(TON.oho); blase('OHO!', s.f.x, s.f.y - 110); meldung('OHO! Nochmal: Leertaste oder Tippen.');
+    s.leben--; s.f.blink = 100;
+    if (s.leben > 0) { ton(TON.autsch); blase('OHO!', s.f.x, s.f.y - 110); return; }
+    s.aus = true; ton(TON.ende); blase('OHO!', s.f.x, s.f.y - 110); bilanz();
+  }
+  function bilanz() {
+    var p = s.punkte;
+    bilanzText.textContent = 'Level ' + s.level + ' · ' + zahl.format(p.euro) + ' € · ' + zahl.format(p.reichweite) + ' Reichweite · ' + p.kunden + (p.kunden === 1 ? ' neuer Kunde' : ' neue Kunden') + ' · ' + p.fachkraefte + (p.fachkraefte === 1 ? ' Fachkraft' : ' Fachkräfte') + ' · ' + p.zeit + ' Stunden gewonnen';
+    bilanzBox.hidden = false; pauseAnzeige();
+  }
+  function belohnen(g) {
+    var p = PROBLEME.filter(function (x) { return x.art === g.art; })[0];
+    s.punkte[p.lohn] += p.menge;
+    var farbe = p.lohn === 'euro' ? F.gelb : p.lohn === 'reichweite' ? F.bl : p.lohn === 'kunden' ? F.pink : F.sch;
+    lohn(p.text, g.x + g.b / 2, BODEN - g.h - 50, farbe);
+    if (p.lohn === 'euro') for (var i = 0; i < 3; i++) s.muenzen.push({ x: g.x + 20 + i * 30, y: BODEN - 110 - i * 18, wert: 50 });
   }
   function leistungHoch(b) {
     s.gaben.push({ l: b.l, i: b.i, x: b.x + 21, y: b.y - 24, vy: -6 });
@@ -205,18 +279,26 @@
     el.setAttribute('aria-hidden', 'true'); el.textContent = b.l.name;
     document.body.appendChild(el); setTimeout(function () { el.remove(); }, 1600);
   }
+  function naechstesLevel() {
+    s.level++; s.gesammelt = []; s.punkte.euro += 1000;
+    chips.forEach(function (ch) { ch.classList.remove('ist-gesammelt'); });
+    ton(TON.level); blase('AAH! Level ' + s.level, W / 2, 110); lohn('Alle Leistungen: +1.000 €', W / 2, 150, F.gelb); funken(s.f.x, s.f.y - 80, 30);
+    if (!s.demo) document.dispatchEvent(new Event('konfetti'));
+  }
   function schritt() {
-    if (!s.lauf || s.pause || s.aus || s.gewonnen) return;
-    s.t++; s.tempo = Math.min(7.5, 4.2 + s.t / 1400); s.weg += s.tempo;
+    if (!s.lauf || s.pause || s.aus) return;
+    s.t++; s.tempo = Math.min(8.5, 4.4 + s.t / 1600 + (s.level - 1) * .5); s.weg += s.tempo;
     var k = s.gross ? 1.35 : 1, fh = 98 * k, fb = 30 * k;
     if (s.demo) demoSchritt();
+    var mitte = W * .42; s.f.x += (mitte - s.f.x) * .06;                       // schnell zur Mitte
     s.f.vy += .8; s.f.y += s.f.vy; if (s.f.blink > 0) s.f.blink--;
     if (s.f.y >= BODEN) { s.f.y = BODEN; s.f.vy = 0; s.f.amBoden = true; }
     var fl = s.f.x - fb / 2, fr = s.f.x + fb / 2, fo = s.f.y - fh;
+    // Leistungs-Blöcke
     if (--s.naechstB <= 0) {
       var offen = LEISTUNGEN.map(function (l, i) { return i; }).filter(function (i) { return s.gesammelt.indexOf(i) < 0 && !s.bloecke.some(function (b) { return b.i === i && !b.leer; }); });
       if (offen.length) { var i = offen[Math.floor(Math.random() * offen.length)]; s.bloecke.push({ x: W + 20, y: BODEN - 170, l: LEISTUNGEN[i], i: i, stoss: 0 }); }
-      s.naechstB = 110 + Math.floor(Math.random() * 60);
+      s.naechstB = 120 + Math.floor(Math.random() * 70);
     }
     s.bloecke.forEach(function (b) {
       b.x -= s.tempo; if (b.stoss > 0) b.stoss -= 2;
@@ -225,53 +307,64 @@
     s.bloecke = s.bloecke.filter(function (b) { return b.x > -60; });
     s.gaben.forEach(function (g) {
       g.alter = (g.alter || 0) + 1;
-      if (g.alter < 14) { g.x -= s.tempo * .3; g.vy += .4; g.y += g.vy; }        // springt aus dem Block hoch
-      else { g.x += (s.f.x - g.x) * .18; g.y += (s.f.y - 60 * (s.gross ? 1.35 : 1) - g.y) * .18; }   // dann fliegt sie zur Figur
+      if (g.alter < 14) { g.x -= s.tempo * .3; g.vy += .4; g.y += g.vy; }
+      else { g.x += (s.f.x - g.x) * .18; g.y += (s.f.y - 60 * k - g.y) * .18; }
       if (!g.weg && Math.abs(g.x - s.f.x) < 32 && g.y > fo - 24 && g.y < s.f.y) {
         g.weg = true;
         if (s.gesammelt.indexOf(g.i) < 0) {
           s.gesammelt.push(g.i); ton(TON.sammeln); blase('WOW!', g.x, g.y - 30); funken(g.x, g.y, 14);
           if (!s.demo && chips[g.i]) chips[g.i].classList.add('ist-gesammelt');
-          if (s.gesammelt.length === LEISTUNGEN.length && !s.demo) gewinnen();
+          if (s.gesammelt.length === LEISTUNGEN.length) naechstesLevel();
         }
       }
     });
     s.gaben = s.gaben.filter(function (g) { return !g.weg && g.x > -40; });
+    // Münzen in der Luft
+    if (--s.naechstM <= 0) { var hy = BODEN - 90 - Math.random() * 60; for (var m = 0; m < 3; m++) s.muenzen.push({ x: W + 20 + m * 34, y: hy - Math.sin(m / 2 * Math.PI) * 24, wert: 50 }); s.naechstM = 160 + Math.floor(Math.random() * 120); }
+    s.muenzen.forEach(function (mz) {
+      mz.x -= s.tempo;
+      if (!mz.weg && Math.abs(mz.x - s.f.x) < 24 && mz.y > fo - 12 && mz.y < s.f.y) { mz.weg = true; s.punkte.euro += mz.wert; ton(TON.muenze); }
+    });
+    s.muenzen = s.muenzen.filter(function (mz) { return !mz.weg && mz.x > -30; });
+    // Probleme laufen herum
     if (--s.naechstG <= 0) {
-      var v = GEGNER[Math.floor(Math.random() * GEGNER.length)];
-      var g = Object.assign({ x: W + 30, platt: 0 }, v); g.zeigName = !s.bekannt[g.art]; s.bekannt[g.art] = true;
-      s.gegner.push(g); s.naechstG = 70 + Math.floor(Math.random() * 80);
+      var v = PROBLEME[Math.floor(Math.random() * PROBLEME.length)];
+      var g = Object.assign({ x: W + 30, platt: 0, phase: Math.random() * 6 }, v); g.zeigName = !s.bekannt[g.art]; s.bekannt[g.art] = true;
+      s.gegner.push(g); s.naechstG = Math.max(40, 80 - s.level * 6) + Math.floor(Math.random() * 60);
     }
     s.gegner.forEach(function (g) {
-      g.x -= s.tempo + (g.art === 'virus' ? 1.5 : g.art === 'fresser' ? .8 : 0);
-      if (g.platt) { g.platt += .06; return; }
-      if (fr > g.x + 6 && fl < g.x + g.b - 6 && s.f.y > BODEN - g.h) {
-        if (s.f.vy > 0 && s.f.y - s.f.vy <= BODEN - g.h + 8) {
-          g.platt = .01; s.f.vy = -11; s.f.amBoden = false; ton(TON.platt); funken(g.x + g.b / 2, BODEN - g.h, 8);
-          blase(['WOW!', 'AAH!', 'PLATT!'][Math.floor(Math.random() * 3)], g.x + g.b / 2, BODEN - g.h - 44);
+      var eigen = g.art === 'toolchaos' ? 1.8 : g.art === 'zeitfresser' ? 1.2 : g.art === 'funkstille' ? Math.sin((s.t + g.phase * 30) / 20) * 2.2 : g.art === 'unsichtbar' ? Math.sin((s.t + g.phase * 30) / 14) * 1.6 : .4;
+      g.x -= s.tempo + eigen;
+      if (g.art === 'ebbe') { g.hoehe = Math.max(0, Math.sin((s.t + g.phase * 40) / 12) * 18); }   // Geldsack hüpft
+      if (g.platt) { g.platt += .05; return; }
+      var gy = BODEN - (g.hoehe || 0);
+      if (fr > g.x + 6 && fl < g.x + g.b - 6 && s.f.y > gy - g.h && fo < gy) {
+        if (s.f.vy > 0 && s.f.y - s.f.vy <= gy - g.h + 10) {
+          g.platt = .01; s.f.vy = -11; s.f.amBoden = false; ton(TON.platt); funken(g.x + g.b / 2, gy - g.h, 8);
+          blase(['WOW!', 'AAH!'][Math.floor(Math.random() * 2)], g.x + g.b / 2, gy - g.h - 80); belohnen(g);
         } else if (!s.demo) treffer();
       }
     });
-    s.gegner = s.gegner.filter(function (g) { return g.x > -60 && g.platt < 1.2; });
-    if (!s.kraft && !s.gross && --s.naechstK <= 0) s.kraft = { x: W + 30, sprung: 0, vsy: 0 };
+    s.gegner = s.gegner.filter(function (g) { return g.x > -70 && g.platt < 1.4; });
+    // Fachkraft: läuft hin und her, hüpft weg
+    if (!s.kraft && --s.naechstK <= 0) s.kraft = { x: W + 30, sprung: 0, vsy: 0 };
     if (s.kraft) {
       var kr = s.kraft; kr.x -= s.tempo * .35; kr.x += Math.sin(s.t / 18) * 3.5;
       if (Math.abs(kr.x - s.f.x) < 130 && kr.sprung === 0 && Math.random() < .04) kr.vsy = 9;
       kr.sprung = Math.max(0, kr.sprung + kr.vsy); kr.vsy = kr.sprung > 0 ? kr.vsy - .6 : 0;
       if (Math.abs(kr.x - s.f.x) < 28 && Math.abs((BODEN - kr.sprung) - s.f.y) < 60) {
-        s.kraft = null; s.gross = true; s.bekannt.kraft = true; s.naechstK = 900; ton(TON.wachsen); blase('AAH! Fachkraft gefunden', s.f.x + 80, s.f.y - 150); funken(s.f.x, s.f.y - 60, 20);
-      } else if (kr.x < -40) { s.kraft = null; s.naechstK = 500; }
+        s.kraft = null; s.bekannt.kraft = true; s.naechstK = 700; s.punkte.fachkraefte++;
+        if (!s.gross) { s.gross = true; ton(TON.wachsen); } else ton(TON.sammeln);
+        blase('AAH! Fachkraft gefunden', s.f.x + 80, s.f.y - 150); lohn('+1 Fachkraft', s.f.x, s.f.y - 190, F.gelb); funken(s.f.x, s.f.y - 60, 20);
+      } else if (kr.x < -40) { s.kraft = null; s.naechstK = 450; }
     }
     s.funken.forEach(function (p) { p.x += p.vx; p.y += p.vy; p.vy += .35; p.l--; }); s.funken = s.funken.filter(function (p) { return p.l > 0; });
     s.blasen.forEach(function (b) { b.l--; b.y -= .6; }); s.blasen = s.blasen.filter(function (b) { return b.l > 0; });
-  }
-  function gewinnen() {
-    s.gewonnen = true; ton(TON.sieg); blase('AAH!', s.f.x + 40, s.f.y - 140); funken(s.f.x, s.f.y - 80, 30);
-    meldung(''); if (sieg) sieg.hidden = false; document.dispatchEvent(new Event('konfetti'));
+    s.lohn.forEach(function (p) { p.l--; p.y -= .9; }); s.lohn = s.lohn.filter(function (p) { return p.l > 0; });
   }
 
-  // ---------- Demo: höchstens 5 Sekunden, erklärt das Spiel, dann „Spielen“ ----------
-  var DEMO = [[0, 'So geht’s: Springen mit Leertaste oder Tippen'], [75, 'Auf die Probleme springen: platt!'], [150, 'Schwarze Blöcke von unten anstoßen: Leistung!'], [225, 'Alle fünf Leistungen sammeln. Bereit?']];
+  // ---------- Demo: höchstens 5 Sekunden ----------
+  var DEMO = [[0, 'So geht’s: Springen mit Leertaste oder Tippen'], [75, 'Auf Probleme springen: Sie werden zu Kunden, Reichweite, Zeit und Geld'], [150, 'Schwarze Blöcke von unten anstoßen: Leistung!'], [225, 'Drei Leben. Wie weit kommen Sie?']];
   function demoSchritt() {
     DEMO.forEach(function (d) { if (s.t === d[0] + 1) meldung(d[1]); });
     var nah = s.gegner.find(function (g) { return !g.platt && g.x - s.f.x < 70 && g.x - s.f.x > 20; });
@@ -280,10 +373,7 @@
     if (s.t === 30) s.kraft = { x: W - 120, sprung: 0, vsy: 0 };
     if (s.t >= 300) demoEnde();
   }
-  function demoEnde() {
-    if (!s || !s.demo) return;
-    neu(false); meldung(''); if (startKnopf) startKnopf.hidden = false;
-  }
+  function demoEnde() { if (!s || !s.demo) return; neu(false); meldung(''); if (startKnopf) startKnopf.hidden = false; }
 
   var letzte = 0;
   function schleife(zeit) { if (zeit - letzte >= 15) { schritt(); zeichne(); letzte = zeit; } requestAnimationFrame(schleife); }
@@ -298,17 +388,27 @@
     if (!imBild()) return;
     e.preventDefault(); springen();
   });
-  function pauseUm(an) {
-    s.pause = an === undefined ? !s.pause : an; knopfPause.setAttribute('aria-pressed', s.pause ? 'true' : 'false');
-    knopfPause.querySelector('span').textContent = s.pause ? 'Weiter' : 'Pause';
-    if (!s.demo) meldung(s.pause ? 'Pause. Leertaste oder Tippen: weiter.' : '');
+  function pauseAnzeige() {   // Play/Pause-Icon: spielt es gerade, zeigt der Button „Pause“, sonst „Spielen“
+    var spielt = s.lauf && !s.pause && !s.aus && !s.demo;
+    knopfPause.setAttribute('aria-pressed', spielt ? 'false' : 'true');
+    knopfPause.setAttribute('aria-label', spielt ? 'Spiel anhalten' : 'Spiel starten');
   }
-  knopfPause.addEventListener('click', function () { if (s.lauf && !s.aus && !s.gewonnen) pauseUm(); });
-  var nochmal = wurzel.querySelector('[data-nochmal]'); if (nochmal) nochmal.addEventListener('click', function () { neu(); starten(); cv.focus(); });
-  if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { if (!e[0].isIntersecting && s.lauf && !s.demo && !s.pause && !s.aus && !s.gewonnen) pauseUm(true); }).observe(cv);
-  document.addEventListener('visibilitychange', function () { if (document.hidden && s.lauf && !s.demo && !s.pause && !s.aus && !s.gewonnen) pauseUm(true); });
-  window.addEventListener('resize', function () { groesse(); });
+  function pauseUm(an) {
+    s.pause = an === undefined ? !s.pause : an;
+    if (!s.demo) meldung(s.pause ? 'Pause. Leertaste oder Tippen: weiter.' : '');
+    pauseAnzeige();
+  }
+  knopfPause.addEventListener('click', function () {
+    if (s.demo) { demoEnde(); starten(); return; }
+    if (!s.lauf || s.aus) { if (s.aus) neu(false); starten(); return; }
+    pauseUm();
+  });
+  var nochmal = wurzel.querySelector('[data-nochmal]'); if (nochmal) nochmal.addEventListener('click', function () { neu(false); starten(); cv.focus(); });
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { if (!e[0].isIntersecting && s.lauf && !s.demo && !s.pause && !s.aus) pauseUm(true); }).observe(cv);
+  document.addEventListener('visibilitychange', function () { if (document.hidden && s.lauf && !s.demo && !s.pause && !s.aus) pauseUm(true); });
+  window.addEventListener('resize', groesse);
 
+  if (location.hash === '#test') window.spielTest = { zustand: function () { return s; }, schritt: schritt, springen: springen, demoEnde: demoEnde };   // nur zum Testen
   groesse();
   if (ruhig) { neu(false); meldung('Springen mit Leertaste oder Tippen. Probleme platt machen, Leistungen sammeln.'); if (startKnopf) startKnopf.hidden = false; }
   else neu(true);
