@@ -27,8 +27,8 @@
     { art: 'toolchaos', name: 'Tool-Chaos', b: 40, h: 40, lohn: 'zeit', menge: 2, text: '+2 Stunden' },
     { art: 'zeitfresser', name: 'Zeitfresser', b: 48, h: 44, lohn: 'zeit', menge: 3, text: '+3 Stunden' },
     { art: 'ebbe', name: 'Ebbe in der Kasse', b: 44, h: 38, lohn: 'euro', menge: 500, text: '+500 €' },
-    // Die Konkurrenz rennt Ihnen entgegen: draufspringen hält den Kunden (Stammkunde), drüberspringen lässt sie einen Kunden wegschnappen
-    { art: 'konkurrenz', name: 'Konkurrenz', b: 34, h: 62, lohn: 'stammkunden', menge: 1, text: '+1 Stammkunde' }];
+    // Der Wettbewerb rennt Ihnen entgegen: draufspringen hält den Kunden (Stammkunde), drüberspringen lässt ihn einen Kunden wegschnappen
+    { art: 'konkurrenz', name: 'Wettbewerb', b: 34, h: 62, lohn: 'stammkunden', menge: 1, text: '+1 Stammkunde' }];
   var chips = wurzel.querySelectorAll('[data-leistung]');
   var meldungEl = wurzel.querySelector('[data-meldung]'), startKnopf = wurzel.querySelector('[data-start]');
   var knopfTon = wurzel.querySelector('[data-ton]'), knopfPause = wurzel.querySelector('[data-pause]');
@@ -122,8 +122,17 @@
     c.beginPath(); c.arc(x + 80, BODEN - 92, 46, Math.PI, 0); c.fill();
     // eine Baustelle: Kran und Absperrung
     x = wiederhole(900, W + 900, .3);
-    c.fillStyle = F.sch; c.fillRect(x, BODEN - 160, 6, 160); c.fillRect(x - 40, BODEN - 160, 150, 6); c.fillRect(x + 90, BODEN - 154, 2, 40);
-    c.fillStyle = F.gelb; c.fillRect(x + 84, BODEN - 114, 16, 16);
+    c.strokeStyle = F.sch; c.lineWidth = 2;                                         // Gittermast
+    c.strokeRect(x, BODEN - 170, 14, 170); c.beginPath();
+    for (var z = 0; z < 8; z++) { c.moveTo(x, BODEN - z * 21); c.lineTo(x + 14, BODEN - (z + 1) * 21); }
+    c.moveTo(x - 50, BODEN - 170); c.lineTo(x + 140, BODEN - 170); c.moveTo(x - 50, BODEN - 162); c.lineTo(x + 140, BODEN - 162);   // Ausleger
+    for (var a2 = 0; a2 < 9; a2++) { c.moveTo(x - 50 + a2 * 21, BODEN - 162); c.lineTo(x - 40 + a2 * 21, BODEN - 170); }
+    c.moveTo(x + 7, BODEN - 196); c.lineTo(x - 50, BODEN - 170); c.moveTo(x + 7, BODEN - 196); c.lineTo(x + 140, BODEN - 170);   // Abspannung
+    c.moveTo(x + 7, BODEN - 196); c.lineTo(x + 7, BODEN - 170); c.moveTo(x + 112, BODEN - 162); c.lineTo(x + 112, BODEN - 110); c.stroke();
+    c.fillStyle = F.gr; c.fillRect(x - 50, BODEN - 162, 20, 16);                   // Gegengewicht
+    c.fillStyle = F.gelb; c.fillRect(x + 14, BODEN - 158, 16, 14);                 // Kabine
+    c.fillStyle = F.sch; c.fillRect(x + 108, BODEN - 112, 8, 4);                   // Haken
+    c.fillStyle = F.gelb; c.fillRect(x + 100, BODEN - 106, 24, 18);                // Last
     for (var b = 0; b < 5; b++) { c.fillStyle = b % 2 ? F.ws : F.rot; c.fillRect(x + 20 + b * 14, BODEN - 28, 14, 10); }
     c.fillStyle = F.sch; c.fillRect(x + 22, BODEN - 18, 3, 18); c.fillRect(x + 84, BODEN - 18, 3, 18);
     // zwei Bäume, ein Auto
@@ -179,7 +188,7 @@
       augen(x + 28, y - 32);
       c.fillStyle = F.ws; c.strokeStyle = F.sch; c.lineWidth = 2; c.beginPath(); c.arc(x - 4, y - 22, 8, 0, 7); c.fill(); c.stroke();
       c.beginPath(); c.moveTo(x - 4, y - 22); c.lineTo(x - 4, y - 27); c.moveTo(x - 4, y - 22); c.lineTo(x, y - 22); c.stroke();
-    } else if (g.art === 'konkurrenz') {   // Konkurrenz: graue Figur mit Aktenkoffer, rennt
+    } else if (g.art === 'konkurrenz') {   // Wettbewerb: graue Figur mit Aktenkoffer, rennt
       figur(x + 17, y, .62, F.gr, true, false);
       c.fillStyle = F.sch; c.fillRect(x + 26, y - 30, 14, 10); c.fillRect(x + 30, y - 33, 6, 3);
     } else {                                // Ebbe in der Kasse: leerer Geldsack mit Motte
@@ -200,24 +209,14 @@
     c.fillStyle = F.sch; c.fillRect(b.x, y, 42, 42);
     form(b.l.form, b.x + 21, y + 21, 22, b.l.farbe === F.sch ? F.ws : b.l.farbe);
   }
-  function anzeige() {   // links: Leistungen im Level, Level, Leben; rechts: die laufende Bilanz (wie in Spielen üblich)
-    LEISTUNGEN.forEach(function (l, i) { var lx = 26 + i * 34, ly = 20;
-      if (s.gesammelt.indexOf(i) < 0) { c.strokeStyle = F.grh; c.lineWidth = 2; c.strokeRect(lx - 12, ly - 12, 24, 24); } else form(l.form, lx, ly, 22, l.farbe); });
-    c.fillStyle = F.sch; c.font = '700 14px Manrope, system-ui, sans-serif'; c.fillText('Level ' + s.level, 200, 25);
-    for (var n = 0; n < 3; n++) { if (n < s.leben) herz(278 + n * 22, 22, 9, F.rot); else { c.globalAlpha = .25; herz(278 + n * 22, 22, 9, F.gr); c.globalAlpha = 1; } }
-    var werte = [['euro', zahl.format(s.punkte.euro) + ' €'], ['reichweite', zahl.format(s.punkte.reichweite)], ['kunden', s.punkte.kunden], ['stammkunden', s.punkte.stammkunden], ['fachkraefte', s.punkte.fachkraefte], ['zeit', s.punkte.zeit + ' h']];
-    c.font = '700 15px Manrope, system-ui, sans-serif';
-    var x = W - 14;
-    werte.reverse().forEach(function (w) {
-      var y = 24, tw = c.measureText(String(w[1])).width; x -= tw; c.fillStyle = F.sch; c.fillText(String(w[1]), x, y); x -= 24;
-      if (w[0] === 'euro') muenze(x + 9, y - 5, 9);
-      else if (w[0] === 'reichweite') { c.fillStyle = F.bl; c.beginPath(); c.ellipse(x + 9, y - 5, 10, 6, 0, 0, 7); c.fill(); c.fillStyle = F.ws; c.beginPath(); c.arc(x + 9, y - 5, 3, 0, 7); c.fill(); }
-      else if (w[0] === 'kunden') { c.fillStyle = F.pink; c.beginPath(); c.arc(x + 5, y - 5, 6, 0, 7); c.fill(); c.fillStyle = F.rot; c.beginPath(); c.arc(x + 13, y - 5, 6, 0, 7); c.fill(); }
-      else if (w[0] === 'stammkunden') herz(x + 9, y - 3, 7, F.pink);
-      else if (w[0] === 'fachkraefte') { c.fillStyle = F.sch; c.beginPath(); c.arc(x + 9, y - 10, 4, 0, 7); c.fill(); c.fillStyle = F.gelb; c.beginPath(); c.arc(x + 9, y + 1, 7, Math.PI, 0); c.fill(); }
-      else { c.strokeStyle = F.sch; c.lineWidth = 2; c.beginPath(); c.arc(x + 9, y - 5, 7, 0, 7); c.moveTo(x + 9, y - 5); c.lineTo(x + 9, y - 10); c.moveTo(x + 9, y - 5); c.lineTo(x + 13, y - 5); c.stroke(); }
-      x -= 20;
-    });
+  function anzeige() {   // nur das Wichtigste: links die drei Leben, rechts die fünf Leistungen als Formen und das Geld
+    for (var n = 0; n < 3; n++) { if (n < s.leben) herz(26 + n * 26, 22, 10, F.rot); else { c.globalAlpha = .2; herz(26 + n * 26, 22, 10, F.gr); c.globalAlpha = 1; } }
+    if (s.level > 1) { c.fillStyle = F.sch; c.font = '700 14px Manrope, system-ui, sans-serif'; c.fillText('Level ' + s.level, 104, 27); }
+    c.font = '700 16px Manrope, system-ui, sans-serif';
+    var geld = zahl.format(s.punkte.euro) + ' €', tw = c.measureText(geld).width;
+    c.fillStyle = F.sch; c.fillText(geld, W - 14 - tw, 27); muenze(W - 34 - tw, 21, 10);
+    LEISTUNGEN.forEach(function (l, i) { var lx = W - 230 - tw + i * 32;
+      if (s.gesammelt.indexOf(i) < 0) { c.globalAlpha = .18; form(l.form, lx, 21, 20, F.sch); c.globalAlpha = 1; } else form(l.form, lx, 21, 20, l.farbe); });
   }
   function zeichne() {
     c.setTransform(cv.width / W, 0, 0, cv.height / H, 0, 0);
@@ -262,7 +261,7 @@
   }
   function bilanz() {
     var p = s.punkte;
-    bilanzText.textContent = 'Ihr Unternehmer-Spiel: Level ' + s.level + ' erreicht. Die Bilanz steht oben rechts.';
+    bilanzText.textContent = 'Level ' + s.level + ' · ' + zahl.format(p.euro) + ' € · ' + (p.kunden + p.stammkunden) + (p.kunden + p.stammkunden === 1 ? ' Kunde' : ' Kunden') + ' · ' + p.fachkraefte + (p.fachkraefte === 1 ? ' Fachkraft' : ' Fachkräfte') + ' · ' + zahl.format(p.reichweite) + ' Reichweite';
     bilanzBox.hidden = false; pauseAnzeige();
   }
   function belohnen(g) {
@@ -282,9 +281,9 @@
     el.setAttribute('aria-hidden', 'true'); el.textContent = b.l.name;
     document.body.appendChild(el); setTimeout(function () { el.remove(); }, 1600);
   }
-  // Die Spielregeln des Unternehmer-Spiels, eine je Level
+  // Die Spielregeln, eine je Level
   var REGELN = ['Regel 1: Wer nicht gesehen wird, verliert.', 'Regel 2: Wer alles allein macht, verliert Zeit.',
-    'Regel 3: Wer gute Leute hält, gewinnt auf Dauer.', 'Regel 4: Die Konkurrenz schläft nicht.', 'Regel 5: Treue Kunden sind mehr wert als neue.'];
+    'Regel 3: Wer gute Leute hält, gewinnt auf Dauer.', 'Regel 4: Der Wettbewerb schläft nicht.', 'Regel 5: Treue Kunden sind mehr wert als neue.'];
   function naechstesLevel() {
     s.level++; s.gesammelt = []; s.punkte.euro += 1000;
     chips.forEach(function (ch) { ch.classList.remove('ist-gesammelt'); });
@@ -352,7 +351,7 @@
         } else if (!s.demo) treffer();
       }
     });
-    s.gegner.forEach(function (g) {   // Konkurrenz ist vorbei, ohne dass man sie gestoppt hat: ein Kunde ist weg
+    s.gegner.forEach(function (g) {   // Wettbewerb ist vorbei, ohne dass man ihn überholt hat: ein Kunde ist weg
       if (g.art === 'konkurrenz' && !g.platt && !g.vorbei && g.x + g.b < s.f.x - 40) {
         g.vorbei = true;
         if (s.punkte.kunden > 0 && !s.demo) { s.punkte.kunden--; lohn('Kunde weg!', s.f.x - 60, BODEN - 120, F.gr); ton(TON.schrumpfen); }
@@ -377,14 +376,14 @@
   }
 
   // ---------- Demo: höchstens 5 Sekunden ----------
-  var DEMO = [[0, 'Das Unternehmer-Spiel. Springen mit Leertaste oder Tippen'], [75, 'Auf Probleme springen: Sie werden zu Kunden, Reichweite, Zeit und Geld'], [150, 'Schwarze Blöcke von unten anstoßen: Leistung!'], [225, 'Achtung, die Konkurrenz schläft nicht. Drei Leben.']];
+  var DEMO = [[0, 'Play the game! Springen mit Leertaste oder Tippen'], [150, 'Auf Probleme springen: Sie werden zu Kunden, Reichweite, Zeit und Geld'], [300, 'Schwarze Blöcke von unten anstoßen: Leistung!'], [450, 'Den Wettbewerb überholen: draufspringen! Drei Leben.']];
   function demoSchritt() {
     DEMO.forEach(function (d) { if (s.t === d[0] + 1) meldung(d[1]); });
     var nah = s.gegner.find(function (g) { return !g.platt && g.x - s.f.x < 70 && g.x - s.f.x > 20; });
     var blockNah = s.bloecke.find(function (b) { return !b.leer && b.x - s.f.x < 40 && b.x - s.f.x > -10; });
     if ((nah || blockNah) && s.f.amBoden) { s.f.vy = -15.5; s.f.amBoden = false; }
     if (s.t === 30) s.kraft = { x: W - 120, sprung: 0, vsy: 0 };
-    if (s.t >= 300) demoEnde();
+    if (s.t >= 600) demoEnde();
   }
   function demoEnde() { if (!s || !s.demo) return; neu(false); meldung(''); if (startKnopf) startKnopf.hidden = false; }
 

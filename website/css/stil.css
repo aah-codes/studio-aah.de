@@ -3457,3 +3457,7 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 .spiel-leistungen a, .spiel-leistungen .ist-gesammelt a { border: 1px solid var(--farbe-hellgrau-2); }
 .spiel-icon { border: 1px solid var(--farbe-hellgrau-2) !important; }
 .spiel-sieg { background: rgba(255, 255, 255, .96); }
+/* Leistungs-Chips gut lesbar (Anna 10.11.2026); gesammelt: Creme-Fläche */
+.spiel-leistungen a { color: var(--farbe-dunkel); }
+.spiel-leistungen i { opacity: 1; }
+.spiel-leistungen .ist-gesammelt a { background: var(--farbe-creme); transform: none; }
