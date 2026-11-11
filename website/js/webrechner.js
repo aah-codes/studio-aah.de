@@ -114,7 +114,7 @@
 
   /* ---------- Schritte ---------- */
   // Formularfelder überleben das Neuzeichnen
-  const F = { name: '', email: '', website: '', nachricht: '' };
+  const F = { name: '', email: '', website: '', nachricht: '', newsletter: false };
   const felder = (p) => `<div class="anfrage-felder">
       <label for="${p}-name">Name<input id="${p}-name" name="name" autocomplete="name" required value="${esc(F.name)}"></label>
       <label for="${p}-email">E-Mail<input id="${p}-email" name="email" type="email" autocomplete="email" required value="${esc(F.email)}"></label>
@@ -193,6 +193,7 @@
         <h4 class="wr-box-titel">Das geht mit Ihrer Anfrage an STUDIO AAH!</h4>
         <ul class="wr-uebersicht">${a.map(([t, v]) => `<li><span>${t}</span><span>${esc(v)}</span></li>`).join('')}</ul>
         ${felder('wr')}
+        ${window.Anfrage.NEWSLETTER(false, F.newsletter, 'wr-newsletter')}
         <p class="anfrage-knoepfe"><button type="submit" class="button">Projekt anfragen ${PFEIL}</button><button type="button" class="button button-zweit" data-pdf>Als PDF speichern <span aria-hidden="true">↓</span></button></p>
         <p class="hinweis-klein">Alle Angaben aus dem Rechner gehen mit Ihrer Anfrage an mich und sind die Grundlage für unser Erstgespräch. Unverbindlich und kostenlos. <span class="anfrage-hinweis">${window.Anfrage.HINWEIS}</span></p>
         <div class="anfrage-danach" role="status" hidden></div>
@@ -320,7 +321,7 @@
   schritt.addEventListener('input', (e) => {
     const id = e.target.dataset.name;
     if (id) { finde(id).k.name = e.target.value; bonZeichnen(); return; }
-    if (e.target.form && e.target.form.id === 'wr-anfrage' && e.target.name in F) F[e.target.name] = e.target.value;
+    if (e.target.form && e.target.form.id === 'wr-anfrage' && e.target.name in F) F[e.target.name] = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
   });
   // Nach dem Umbenennen neu zeichnen (Vorschläge, Bon), aber erst, wenn der Fokus die Sitemap verlässt
   schritt.addEventListener('focusout', (e) => {

@@ -996,6 +996,11 @@ main.mit-faden { position: relative; }
 .kontakt-anfrage { margin: 0 0 1.5rem; }
 /* Honeypot gegen Spam: unsichtbares Feld, das nur Bots ausfüllen */
 .anfrage-falle { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+/* Newsletter-Häkchen in den Anfrageformularen (Anna 11.11.2026; kommt per js/anfrage.js) */
+.anfrage-nl { margin: 16px 0 0; }
+.anfrage-nl label { display: flex; align-items: flex-start; gap: 10px; font-size: 16px; font-weight: 600; line-height: 1.4; cursor: pointer; }
+.anfrage-nl input { flex: none; width: 22px; height: 22px; margin: 0; accent-color: var(--farbe-primaer); }
+.anfrage-nl .hinweis-klein { margin: 4px 0 0 32px; }
 /* Preislisten der übrigen Leistungen (ohne Rechner) */
 .preisliste { padding: 64px var(--rand-seite) 0; }
 .preisliste-kopf { max-width: 760px; margin-bottom: 24px; }

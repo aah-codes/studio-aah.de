@@ -126,6 +126,9 @@
     });
   })();
 
+  // Danke-Seiten: Hinweis zur Newsletter-Bestätigung, wenn im Anfrageformular das Newsletter-Häkchen gesetzt war (js/anfrage.js hängt ?newsletter=1 an)
+  if (/[?&]newsletter=1/.test(location.search)) document.querySelectorAll('.danke-nl').forEach((p) => { p.hidden = false; });
+
   // Newsletter im Fuß: sendet an Brevo ohne Seitenwechsel und zeigt danach einen Hinweis (ohne JavaScript öffnet Brevo eine eigene Seite)
   (() => {
     const f = document.querySelector('.fuss-newsletter');
