@@ -2952,6 +2952,22 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
   .lp-zeilen li img { width: 36px; height: 36px; }
   .lp-bericht li { grid-template-columns: minmax(0, 1fr); }
 }
+/* KI-Arbeits-Setup (Anna 12.11.2026): Inhalt bündig mit Logo und Menü, Überschriften über die ganze Breite,
+   Ablauf als Zeitleiste quer wie auf der Profilseite, Preiskarte mit mehr Luft um den Pilotpreis */
+.lp-breit .lp-hero, .lp-breit .lp-abschnitt { max-width: none; }
+.lp-breit .preis-h2 { max-width: none; }
+.lp-breit .lp-zeilen li img { width: 56px; height: 56px; mix-blend-mode: normal; margin: -2px 0 0 -6px; }
+.lp-breit .lp-karten img { width: 96px; height: 96px; mix-blend-mode: normal; margin: -12px 0 0 -14px; }
+.lp-breit .lp-abschnitt .zl-quer { padding: 0; margin-top: 40px; }
+.lp-breit .lp-abschnitt .zl-quer::before { left: 0; right: 0; }
+.lp-breit .lp-preis-betrag { margin-bottom: 0; }
+.lp-breit .lp-pilot { margin: 28px 0 32px; }
+.lp-breit .lp-preis-karte .hinweis-klein { font-size: 14px; line-height: 1.5; margin-top: 20px; }
+@media (max-width: 900px) {
+  .lp-breit .lp-abschnitt .zl-quer { padding-left: 72px; }
+  .lp-breit .lp-abschnitt .zl-quer::before { left: 27px; right: auto; }
+}
+@media (max-width: 767.98px) { .lp-breit .lp-zeilen li img { width: 44px; height: 44px; margin: -4px 0 0 -4px; } }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
 
