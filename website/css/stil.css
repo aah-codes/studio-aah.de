@@ -2958,6 +2958,15 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 .lp-breit .preis-h2 { max-width: none; }
 .lp-hoffnung .lp-kern { max-width: 30ch; }
 .lp-breit > .lp-abschnitt:last-child { padding-bottom: clamp(96px, 12vw, 168px); }
+/* „Lieber direkt?“ unter dem Formular (Anna 12.11.2026, nach Vorbild pappelbaum-design.de) */
+.lp-breit .lp-direkt { padding-top: clamp(64px, 8vw, 112px); }
+.lp-direkt-karten { list-style: none; margin: 24px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 16px; }
+.lp-direkt-karten li { background: var(--farbe-hellgrau); border-radius: 24px; padding: 28px; }
+.lp-direkt-karten img { display: block; width: 48px; height: 48px; margin: 0 0 20px; }
+.lp-direkt-karten h3 { margin: 0 0 8px; font-family: var(--schrift-text); text-transform: none; font-size: 1.25rem; line-height: 1.3; }
+.lp-direkt-karten h3 a { color: var(--farbe-dunkel); }
+.lp-direkt-karten p { margin: 0; color: var(--farbe-gedaempft); }
+@media (max-width: 900px) { .lp-direkt-karten { grid-template-columns: minmax(0, 1fr); } }
 .lp-breit .lp-karten img { width: 64px; height: 64px; mix-blend-mode: normal; margin: 0 0 16px; }
 .lp-breit .lp-abschnitt .zl-quer { padding: 0; margin-top: 40px; }
 .lp-breit .lp-abschnitt .zl-quer::before { left: 0; right: 0; }
