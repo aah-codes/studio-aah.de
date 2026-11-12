@@ -3420,7 +3420,7 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 .sp-hero .hero-knoepfe { display: flex; flex-wrap: wrap; gap: 12px 16px; justify-content: center; margin: 0 0 24px; }
 .spiel { max-width: 1400px; margin: 0 auto; }
 .spiel-buehne { position: relative; }
-.spiel canvas { display: block; width: 100%; height: auto; aspect-ratio: 960 / 260; cursor: pointer; touch-action: manipulation; }
+.spiel canvas { display: block; width: 100%; height: auto; aspect-ratio: 960 / 290; cursor: pointer; touch-action: manipulation; }
 .spiel canvas:focus-visible { outline: 3px solid var(--farbe-primaer); outline-offset: 4px; border-radius: 8px; }
 .spiel-meldung { position: absolute; left: 50%; top: 18%; transform: translateX(-50%); margin: 0; padding: 10px 20px; background: var(--farbe-dunkel); color: #fff; border-radius: 999px; font-weight: 600; font-size: clamp(15px, 1.3vw, 20px); pointer-events: none; white-space: nowrap; }
 .spiel-meldung[hidden] { display: none; }
@@ -3489,3 +3489,10 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 @media (max-width: 767.98px) { .spiel-sieg { flex-direction: column; } .spiel-ende-text { text-align: center; } .spiel-ende-text .meta { justify-content: center; } }
 /* Ende lässt die Anzeige oben frei, damit man das Ergebnis oben rechts lesen kann */
 @media (min-width: 768px) { .spiel-sieg { inset: 16% 0 0 0; background: rgba(255, 255, 255, .9); } }
+/* Zähler in den Lösungs-Chips (Anna 12.11.2026): wie oft die Lösung im Spiel ergriffen wurde; ersetzt die Formen oben rechts im Spiel */
+.spiel-leistungen .sl-zahl { display: inline-grid; place-items: center; min-width: 22px; height: 22px; margin: 0 -6px 0 2px; padding: 0 6px; border-radius: 999px; background: var(--farbe-dunkel); color: var(--farbe-weiss); font-size: 13px; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; }
+.spiel-leistungen .sl-zahl[hidden] { display: none; }
+/* Spielen-Button rechts neben der Figur, damit die Demo dahinter sichtbar bleibt (Anna 12.11.2026) */
+.spiel-start { left: 74%; top: 40%; }
+.spiel-meldung { top: 2%; }
+@media (max-width: 767.98px) { .spiel-start { left: 76%; top: 64%; padding: .55rem 1rem; font-size: 15px; white-space: nowrap; } .spiel-meldung { font-size: 13px; padding: 6px 12px; } }

@@ -8,13 +8,13 @@
    – Die Fachkraft läuft weg; gefangen: ein Mitarbeiter mehr, die Figur wächst und hält einen Treffer aus.
    – Schwarze Blöcke von unten anstoßen: Leistung fliegt heraus bis in die Schrift. Alle fünf gefunden: nächstes Level.
    – Das Spiel läuft weiter, bis die Leben weg sind; dann zeigt es die Bilanz mit „Projekt anfragen“.
-   – Kurze Demo (höchstens 5 s) vorab. Ton aus, bis man ihn einschaltet. Pause jederzeit. */
+   – Demo läuft mit Spielen-Button, bis man startet (Anna 12.11.2026). Ton aus, bis man ihn einschaltet. Pause jederzeit. */
 (function () {
   'use strict';
   var wurzel = document.querySelector('[data-spiel]');
   if (!wurzel) return;
   var cv = wurzel.querySelector('canvas'), c = cv.getContext('2d');
-  var W = 960, H = 260, BODEN = 236;
+  var W = 960, H = 290, BODEN = 266;   // Desktop 290 hoch (Anna 12.11.2026: Platz über dem Kopf, damit man die Arme beim Sprung sieht)
   var F = { sch: '#0e1011', ws: '#ffffff', bl: '#2a5fe6', rot: '#ff3b2f', pink: '#ff4fa3', rosa: '#ff8fc8', gelb: '#ffe600', gr: '#9a9d9e', grh: '#d6d8d9' };
   // Die fünf Lösungen in der Reihenfolge eines Projekts (Anna 10.11.2026); jedes Level beginnt wieder vorn, wie beim iterativen Arbeiten
   var LEISTUNGEN = [
@@ -31,6 +31,11 @@
     // Der Wettbewerb rennt Ihnen entgegen: draufspringen hält den Kunden (Stammkunde), drüberspringen lässt ihn einen Kunden wegschnappen
     { art: 'konkurrenz', name: 'Wettbewerb', b: 34, h: 62, lohn: 'stammkunden', menge: 1, text: '+1 Stammkunde' }];
   var chips = wurzel.querySelectorAll('[data-leistung]');
+  // Zähler je Chip: wie oft die Lösung in diesem Spiel schon ergriffen wurde
+  var zahlen = Array.prototype.map.call(chips, function (ch) {
+    var z = document.createElement('b'); z.className = 'sl-zahl'; z.setAttribute('aria-hidden', 'true'); z.hidden = true;
+    (ch.querySelector('a') || ch).appendChild(z); return z; });
+  function chipZahl(i, n) { if (!zahlen[i]) return; zahlen[i].textContent = n; zahlen[i].hidden = !n; }
   var meldungEl = wurzel.querySelector('[data-meldung]'), startKnopf = wurzel.querySelector('[data-start]');
   var knopfTon = wurzel.querySelector('[data-ton]'), knopfPause = wurzel.querySelector('[data-pause]');
   var bilanzBox = wurzel.querySelector('[data-sieg]'), bilanzText = wurzel.querySelector('[data-bilanz]');
@@ -39,7 +44,7 @@
 
   function groesse() {
     var r = cv.getBoundingClientRect();
-    H = r.width < 600 ? 360 : 260; BODEN = H - 24;
+    H = r.width < 600 ? 360 : 290; BODEN = H - 24;
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
     cv.width = Math.round(r.width * dpr); cv.height = Math.round(r.width * H / W * dpr);
   }
@@ -77,8 +82,8 @@
           punkte: { euro: 0, reichweite: 0, kunden: 0, stammkunden: 0, fachkraefte: 0, zeit: 0 },
           f: { x: 110, y: BODEN, vy: 0, amBoden: true, blink: 0 }, gegner: [], bloecke: [], gaben: [], muenzen: [], kraft: null,
           funken: [], blasen: [], lohn: [], naechstG: demo ? 20 : 70, naechstB: demo ? 45 : 70, naechstK: demo ? 9999 : 360, naechstM: 120,
-          gesammelt: [], bekannt: {} };
-    chips.forEach(function (ch) { ch.classList.remove('ist-gesammelt'); });
+          gesammelt: [], bekannt: {}, zaehler: [0, 0, 0, 0, 0] };
+    chips.forEach(function (ch, i) { ch.classList.remove('ist-gesammelt'); chipZahl(i, 0); });
     if (bilanzBox) bilanzBox.hidden = true;
     pauseAnzeige();
   }
@@ -104,33 +109,89 @@
   function beschriftung(t, x, y) { c.fillStyle = F.gr; c.font = '600 12px Manrope, system-ui, sans-serif'; c.textAlign = 'center'; c.fillText(t, x, y); c.textAlign = 'left'; }
 
   // ---------- Leipzig ----------
-  function leipzig() {   // Zentrum von Leipzig als ruhige Silhouetten, nacheinander wie auf einem Weg durch die Stadt
-    var L = W * 3;
-    c.fillStyle = F.grh;
-    // Augustusplatz gleich zu Beginn: Gewandhaus, Mendebrunnen, Weisheitszahn (City-Hochhaus), Oper
-    var x = wiederhole(140, L, .12);
-    c.fillRect(x, BODEN - 70, 150, 70); c.beginPath(); c.moveTo(x - 6, BODEN - 70); c.lineTo(x + 156, BODEN - 92); c.lineTo(x + 156, BODEN - 70); c.fill();   // Gewandhaus mit schrägem Dach
-    c.fillStyle = F.ws; for (var gw = 0; gw < 6; gw++) c.fillRect(x + 10 + gw * 23, BODEN - 58, 3, 50); c.fillStyle = F.grh;                                  // Glasfront
-    x = wiederhole(330, L, .12);                                                                                                                            // Mendebrunnen
-    c.fillRect(x - 30, BODEN - 10, 60, 10); c.fillRect(x - 5, BODEN - 70, 10, 60); c.beginPath(); c.moveTo(x - 9, BODEN - 70); c.lineTo(x, BODEN - 92); c.lineTo(x + 9, BODEN - 70); c.fill();
-    x = wiederhole(430, L, .12);                                                                                                                            // Weisheitszahn: senkrecht hoch zur Spitze, dann gerundet hinab
-    c.beginPath(); c.moveTo(x, BODEN); c.lineTo(x, BODEN - 236); c.quadraticCurveTo(x + 50, BODEN - 214, x + 58, BODEN - 176); c.lineTo(x + 58, BODEN); c.closePath(); c.fill();
-    x = wiederhole(540, L, .12);                                                                                                                            // Oper: breiter Block mit Attika
-    c.fillRect(x, BODEN - 62, 200, 62); c.fillRect(x + 20, BODEN - 74, 160, 12);
-    c.fillStyle = F.ws; for (var op = 0; op < 8; op++) c.fillRect(x + 14 + op * 24, BODEN - 52, 8, 30); c.fillStyle = F.grh;
-    // Thomaskirche: Schiff mit steilem Dach, schlanker Turm mit Spitze
-    x = wiederhole(1300, L, .12);
-    c.fillRect(x, BODEN - 60, 150, 60); c.beginPath(); c.moveTo(x - 6, BODEN - 60); c.lineTo(x + 75, BODEN - 110); c.lineTo(x + 156, BODEN - 60); c.fill();
-    c.fillRect(x + 150, BODEN - 130, 34, 130); c.beginPath(); c.moveTo(x + 146, BODEN - 130); c.lineTo(x + 167, BODEN - 176); c.lineTo(x + 188, BODEN - 130); c.fill();
-    // Hauptbahnhof: lange Halle mit Bögen
-    x = wiederhole(1800, L, .12);
-    c.fillRect(x, BODEN - 40, 230, 40); for (var k = 0; k < 4; k++) { c.beginPath(); c.arc(x + 30 + k * 57, BODEN - 40, 28, Math.PI, 0); c.fill(); }
-    // Völkerschlachtdenkmal: erst später, Stufensockel und Kuppel
-    x = wiederhole(2450, L, .12);
-    c.fillRect(x - 20, BODEN - 20, 200, 20); c.fillRect(x, BODEN - 44, 160, 24); c.fillRect(x + 30, BODEN - 92, 100, 48);
-    c.beginPath(); c.arc(x + 80, BODEN - 92, 46, Math.PI, 0); c.fill();
+  // Skyline aus Grundformen (Anna 12.11.2026): vorn die Wahrzeichen in Hellgrau mit Häuserreihen dazwischen,
+  // hinten eine ruhigere Dachlandschaft in Creme. Eigene Zeichnung, nur Silhouetten ohne Beschriftung.
+  function zufall(z) { return function () { z = (z * 16807) % 2147483647; return z / 2147483647; }; }
+  function umlauf(x, laenge, tempo, rand) { var sx = ((x - s.weg * tempo) % laenge + laenge) % laenge; return sx > W + (rand || 0) ? sx - laenge : sx; }
+  function vieleck(p) { c.beginPath(); c.moveTo(p[0], p[1]); for (var i = 2; i < p.length; i += 2) c.lineTo(p[i], p[i + 1]); c.closePath(); c.fill(); }
+  function kuppel(x, y, r) { c.beginPath(); c.arc(x, y, r, Math.PI, 0); c.fill(); }
+  function spitze(x, y, b, h) { vieleck([x - b / 2, y, x, y - h, x + b / 2, y]); }
+  function weiss(f) { c.fillStyle = F.ws; f(); c.fillStyle = F.grh; }
+  var B;   // Bodenlinie beim Zeichnen
+  var WAHRZEICHEN = [
+    { x: 70, b: 162, z: function (x) {                       // Gewandhaus: Glasfront, schräges Dach
+      c.fillRect(x, B - 70, 150, 70); vieleck([x - 6, B - 70, x + 156, B - 94, x + 156, B - 70]);
+      weiss(function () { for (var i = 0; i < 6; i++) c.fillRect(x + 12 + i * 23, B - 58, 3, 50); }); } },
+    { x: 262, b: 44, z: function (x) {                       // Mendebrunnen: Becken und Obelisk
+      c.fillRect(x, B - 10, 44, 10); c.fillRect(x + 8, B - 18, 28, 8); c.fillRect(x + 17, B - 66, 10, 48); spitze(x + 22, B - 66, 12, 18); } },
+    { x: 336, b: 64, z: function (x) {                       // Weisheitszahn (City-Hochhaus): hohe Scheibe mit gerundeter Krone und Antenne
+      c.beginPath(); c.moveTo(x, B); c.lineTo(x, B - 196); c.quadraticCurveTo(x + 54, B - 180, x + 64, B - 146); c.lineTo(x + 64, B); c.closePath(); c.fill();
+      c.fillRect(x + 4, B - 218, 3, 22);
+      weiss(function () { for (var i = 0; i < 4; i++) c.fillRect(x + 12 + i * 13, B - 140, 2, 132); }); } },
+    { x: 418, b: 84, z: function (x) {                       // Paulinum: steiler Giebel mit hohem Spitzbogenfenster
+      c.fillRect(x, B - 66, 84, 66); vieleck([x, B - 66, x + 42, B - 132, x + 84, B - 66]);
+      c.fillRect(x - 2, B - 82, 5, 82); c.fillRect(x + 81, B - 82, 5, 82);
+      weiss(function () { c.fillRect(x + 36, B - 92, 12, 70); spitze(x + 42, B - 92, 12, 14); }); } },
+    { x: 524, b: 200, z: function (x) {                      // Oper: breiter Block mit Attika
+      c.fillRect(x, B - 62, 200, 62); c.fillRect(x + 20, B - 76, 160, 14);
+      weiss(function () { for (var i = 0; i < 8; i++) c.fillRect(x + 14 + i * 24, B - 52, 8, 30); }); } },
+    { x: 900, b: 170, z: function (x) {                      // Neues Rathaus: Block mit hohem Turm, Uhr und Kuppel
+      c.fillRect(x, B - 72, 170, 72); vieleck([x, B - 72, x + 10, B - 88, x + 160, B - 88, x + 170, B - 72]);
+      c.fillRect(x + 6, B - 104, 14, 32); spitze(x + 13, B - 104, 16, 16);
+      c.fillRect(x + 70, B - 166, 32, 94); c.fillRect(x + 66, B - 172, 40, 6); kuppel(x + 86, B - 172, 15);
+      c.fillRect(x + 83, B - 198, 6, 14); spitze(x + 86, B - 198, 8, 14);
+      weiss(function () { c.beginPath(); c.arc(x + 86, B - 146, 7, 0, 7); c.fill(); for (var i = 0; i < 5; i++) c.fillRect(x + 16 + i * 32, B - 56, 8, 22); }); } },
+    { x: 1250, b: 190, z: function (x) {                     // Thomaskirche: Schiff mit steilem Dach, Turm mit Haube
+      c.fillRect(x, B - 60, 144, 60); vieleck([x - 4, B - 60, x + 72, B - 114, x + 148, B - 60]);
+      c.fillRect(x + 144, B - 136, 34, 136); c.fillRect(x + 140, B - 140, 42, 6); kuppel(x + 161, B - 140, 14);
+      c.fillRect(x + 158, B - 166, 6, 14); spitze(x + 161, B - 166, 8, 18);
+      weiss(function () { for (var i = 0; i < 4; i++) { c.fillRect(x + 20 + i * 30, B - 46, 8, 30); spitze(x + 24 + i * 30, B - 46, 8, 8); } }); } },
+    { x: 1580, b: 196, z: function (x) {                     // Altes Rathaus: langes Haus, Giebel im Dach, schlanker Turm
+      c.fillRect(x, B - 54, 196, 54); vieleck([x, B - 54, x + 12, B - 84, x + 184, B - 84, x + 196, B - 54]);
+      for (var i = 0; i < 4; i++) spitze(x + 32 + i * 44, B - 84, 22, 16);
+      c.fillRect(x + 112, B - 124, 16, 70); kuppel(x + 120, B - 124, 10); c.fillRect(x + 117, B - 144, 6, 12); spitze(x + 120, B - 144, 6, 12);
+      weiss(function () { for (var i = 0; i < 9; i++) { c.fillRect(x + 8 + i * 21, B - 20, 10, 20); kuppel(x + 13 + i * 21, B - 20, 5); } }); } },
+    { x: 1900, b: 260, z: function (x) {                     // Hauptbahnhof: zwei Eckbauten, Halle mit Bögen
+      c.fillRect(x, B - 74, 44, 74); c.fillRect(x + 216, B - 74, 44, 74); spitze(x + 22, B - 74, 44, 12); spitze(x + 238, B - 74, 44, 12);
+      c.fillRect(x + 44, B - 44, 172, 44); for (var i = 0; i < 4; i++) kuppel(x + 65 + i * 43, B - 44, 21);
+      weiss(function () { [x + 22, x + 238].forEach(function (m) { c.fillRect(m - 8, B - 48, 16, 30); kuppel(m, B - 48, 8); }); }); } },
+    { x: 2250, b: 200, z: function (x) {                     // Reichsgericht: Eckpavillons, Säulen, große Kuppel
+      c.fillRect(x, B - 60, 200, 60); c.fillRect(x, B - 72, 30, 12); c.fillRect(x + 170, B - 72, 30, 12);
+      c.fillRect(x + 66, B - 84, 68, 24); c.fillRect(x + 78, B - 106, 44, 22); kuppel(x + 100, B - 106, 26);
+      c.fillRect(x + 96, B - 144, 8, 14); spitze(x + 100, B - 144, 8, 12);
+      weiss(function () { for (var i = 0; i < 6; i++) c.fillRect(x + 72 + i * 11, B - 56, 3, 46); }); } },
+    { x: 2560, b: 200, z: function (x) {                     // Völkerschlachtdenkmal: Stufen, wuchtiger Körper, Wächterkranz, Kuppel
+      c.fillRect(x, B - 12, 200, 12); c.fillRect(x + 22, B - 26, 156, 14);
+      vieleck([x + 42, B - 26, x + 62, B - 112, x + 138, B - 112, x + 158, B - 26]);
+      c.fillRect(x + 54, B - 120, 92, 8); for (var i = 0; i < 8; i++) c.fillRect(x + 57 + i * 11.5, B - 136, 8, 16);
+      kuppel(x + 100, B - 134, 32);
+      weiss(function () { c.fillRect(x + 92, B - 72, 16, 46); kuppel(x + 100, B - 72, 8); }); } }];
+  var STADT_L = W * 3, HINTEN_L = W * 2, HAEUSER = [], DAECHER = [];
+  (function () {   // Häuserreihen zwischen den Wahrzeichen und eine Dachlandschaft dahinter, immer gleich (fester Startwert)
+    var r = zufall(11), frei = 0;
+    WAHRZEICHEN.concat([{ x: STADT_L, b: 0 }]).forEach(function (w) {
+      var x = frei + 4;
+      while (w.x - x > 30) { var hb = Math.min(w.x - 4 - x, 26 + Math.floor(r() * 34)); HAEUSER.push({ x: x, b: hb, h: 24 + Math.floor(r() * 30), dach: Math.floor(r() * 3) }); x += hb + 2; }
+      frei = w.x + w.b;
+    });
+    var r2 = zufall(5), x2 = 0;
+    while (x2 < HINTEN_L) { var db = 36 + Math.floor(r2() * 70); DAECHER.push({ x: x2, b: db, h: 40 + Math.floor(r2() * 64), dach: Math.floor(r2() * 4) }); x2 += db; }
+  })();
+  function haus(x, b, h, dach) {
+    c.fillRect(x, B - h, b, h);
+    if (dach === 1) vieleck([x, B - h, x + b / 2, B - h - Math.min(22, b * .45), x + b, B - h]);
+    else if (dach === 2) c.fillRect(x + b * .25, B - h - 8, b * .5, 8);
+    else if (dach === 3) kuppel(x + b / 2, B - h, Math.min(14, b / 3));
+  }
+  function leipzig() {
+    B = BODEN;
+    c.fillStyle = '#eeece7';                                            // hinten: Dachlandschaft in Creme, langsamer
+    DAECHER.forEach(function (d) { var x = umlauf(d.x, HINTEN_L, .06); if (x + d.b > 0) haus(x, d.b, d.h, d.dach); });
+    c.fillStyle = F.grh;                                                // vorn: Häuser und Wahrzeichen
+    HAEUSER.forEach(function (d) { var x = umlauf(d.x, STADT_L, .12); if (x + d.b > 0) haus(x, d.b, d.h, d.dach); });
+    WAHRZEICHEN.forEach(function (w) { var x = umlauf(w.x, STADT_L, .12); if (x + w.b + 10 > 0) w.z(x); });
     // eine Baustelle: Kran und Absperrung
-    x = wiederhole(900, W + 900, .3);
+    var x = umlauf(900, W + 900, .3, 60);
     c.strokeStyle = F.sch; c.lineWidth = 2;                                         // Gittermast
     c.strokeRect(x, BODEN - 170, 14, 170); c.beginPath();
     for (var z = 0; z < 8; z++) { c.moveTo(x, BODEN - z * 21); c.lineTo(x + 14, BODEN - (z + 1) * 21); }
@@ -146,8 +207,8 @@
     c.fillStyle = F.sch; c.fillRect(x + 22, BODEN - 18, 3, 18); c.fillRect(x + 84, BODEN - 18, 3, 18);
     // zwei Bäume, ein Auto
     [[200, F.pink, 22], [1100, F.gelb, 18]].forEach(function (t) {
-      var bx = wiederhole(t[0], W + 700, .45); c.fillStyle = F.sch; c.fillRect(bx - 2, BODEN - t[2] * 2, 4, t[2] * 2); c.fillStyle = t[1]; c.beginPath(); c.arc(bx, BODEN - t[2] * 2.6, t[2], 0, 7); c.fill(); });
-    var ax = wiederhole(400, W + 1400, .75); c.fillStyle = F.bl; c.fillRect(ax, BODEN - 26, 58, 16); c.beginPath(); c.arc(ax + 26, BODEN - 26, 16, Math.PI, 0); c.fill();
+      var bx = umlauf(t[0], W + 700, .45, 30); c.fillStyle = F.sch; c.fillRect(bx - 2, BODEN - t[2] * 2, 4, t[2] * 2); c.fillStyle = t[1]; c.beginPath(); c.arc(bx, BODEN - t[2] * 2.6, t[2], 0, 7); c.fill(); });
+    var ax = umlauf(400, W + 1400, .75); c.fillStyle = F.bl; c.fillRect(ax, BODEN - 26, 58, 16); c.beginPath(); c.arc(ax + 26, BODEN - 26, 16, Math.PI, 0); c.fill();
     c.fillStyle = F.ws; c.fillRect(ax + 18, BODEN - 36, 16, 8); c.fillStyle = F.sch; c.beginPath(); c.arc(ax + 14, BODEN - 8, 7, 0, 7); c.arc(ax + 46, BODEN - 8, 7, 0, 7); c.fill();
   }
 
@@ -159,7 +220,7 @@
     c.save(); c.translate(-8, -34); c.rotate(sch * Math.PI / 180); c.fillRect(-3, 0, 6, 34); c.restore();
     c.save(); c.translate(8, -34); c.rotate(-sch * Math.PI / 180); c.fillRect(-3, 0, 6, 34); c.restore();
     c.fillRect(-15, -70, 30, 30);
-    var arm = hoch ? -150 : 25;
+    var arm = hoch ? 155 : 25;   // springt: beide Arme hoch und nach außen (Anna 12.11.2026)
     c.save(); c.translate(-11, -66); c.rotate(arm * Math.PI / 180); c.fillRect(-3, 0, 6, 30); c.beginPath(); c.arc(0, 32, 4, 0, 7); c.fill(); c.restore();
     c.save(); c.translate(11, -66); c.rotate(-arm * Math.PI / 180); c.fillRect(-3, 0, 6, 30); c.beginPath(); c.arc(0, 32, 4, 0, 7); c.fill(); c.restore();
     c.fillStyle = F.ws; c.beginPath(); c.arc(0, -34, 25, Math.PI, 0); c.fill();
@@ -218,14 +279,12 @@
     c.fillStyle = F.sch; c.fillRect(b.x, y, 42, 42);
     form(b.l.form, b.x + 21, y + 21, 22, b.l.farbe === F.sch ? F.ws : b.l.farbe);
   }
-  function anzeige() {   // nur das Wichtigste: links die drei Leben, rechts die fünf Leistungen als Formen und das Geld
+  function anzeige() {   // nur das Wichtigste: links die drei Leben, rechts das Geld; die Lösungen zählen die Chips unter dem Spiel (Anna 12.11.2026)
     for (var n = 0; n < 3; n++) { if (n < s.leben) herz(26 + n * 26, 22, 10, F.rot); else { c.globalAlpha = .2; herz(26 + n * 26, 22, 10, F.gr); c.globalAlpha = 1; } }
     if (s.level > 1) { c.fillStyle = F.sch; c.font = '700 14px Manrope, system-ui, sans-serif'; c.fillText('Level ' + s.level, 104, 27); }
     c.font = '700 16px Manrope, system-ui, sans-serif';
     var geld = zahl.format(s.punkte.euro) + ' €', tw = c.measureText(geld).width;
     c.fillStyle = F.sch; c.fillText(geld, W - 14 - tw, 27); muenze(W - 34 - tw, 21, 10);
-    LEISTUNGEN.forEach(function (l, i) { var lx = W - 230 - tw + i * 32;
-      if (s.gesammelt.indexOf(i) < 0) { c.globalAlpha = .18; form(l.form, lx, 21, 20, F.sch); c.globalAlpha = 1; } else form(l.form, lx, 21, 20, l.farbe); });
   }
   function zeichne() {
     c.setTransform(cv.width / W, 0, 0, cv.height / H, 0, 0);
@@ -266,7 +325,7 @@
     if (s.aus) { neu(false); starten(); return; }
     if (!s.lauf) starten();
     if (s.pause) { pauseUm(false); return; }
-    if (s.f.amBoden) { s.f.vy = -15.5; s.f.amBoden = false; ton(TON.sprung); }
+    if (s.f.amBoden) { s.f.vy = -14; s.f.amBoden = false; ton(TON.sprung); }
   }
   function starten() { s.lauf = true; meldung(''); if (startKnopf) startKnopf.hidden = true; pauseAnzeige(); }
   function meldung(t) { meldungEl.textContent = t; meldungEl.hidden = !t; }
@@ -337,8 +396,8 @@
         g.weg = true;
         if (s.gesammelt.indexOf(g.i) < 0) {
           s.gesammelt.push(g.i); ton(TON.sammeln); blase('WOW!', g.x, g.y - 30); funken(g.x, g.y, 14);
-          if (!s.demo && chips[g.i]) chips[g.i].classList.add('ist-gesammelt');
-          if (s.gesammelt.length === LEISTUNGEN.length) naechstesLevel();
+          if (!s.demo && chips[g.i]) { chips[g.i].classList.add('ist-gesammelt'); s.zaehler[g.i]++; chipZahl(g.i, s.zaehler[g.i]); }
+          if (s.gesammelt.length === LEISTUNGEN.length) { if (s.demo) s.gesammelt = []; else naechstesLevel(); }
         }
       }
     });
@@ -393,21 +452,23 @@
     s.lohn.forEach(function (p) { p.l--; p.y -= .9; }); s.lohn = s.lohn.filter(function (p) { return p.l > 0; });
   }
 
-  // ---------- Demo: höchstens 5 Sekunden ----------
-  // Erst ein paar Sekunden zuschauen, dann drei kurze Hinweise (insgesamt etwa 10 s, Pause-Taste vorhanden)
-  var DEMO = [[170, 'Leertaste oder Tippen: springen'], [320, 'Auf die Probleme springen: Sie werden zu Kunden, Zeit und Geld'], [480, 'Schwarze Blöcke von unten anstoßen: Chancen ergreifen']];
+  // ---------- Demo ----------
+  // Läuft weiter, bis man spielt (Anna 12.11.2026: kein Standbild); erst zuschauen, dann drei kurze Hinweise, dann von vorn.
+  // Pause-Taste hält die Demo an (Regel: Bewegung, die von selbst startet, hat eine Pause-Taste).
+  var DEMO = [[170, 'Leertaste oder Tippen: springen'], [320, 'Auf die Probleme springen: Sie werden zu Kunden, Zeit und Geld'], [480, 'Schwarze Blöcke von unten anstoßen: Chancen ergreifen'], [640, '']], DEMO_RUNDE = 1100;
   function demoSchritt() {
-    DEMO.forEach(function (d) { if (s.t === d[0] + 1) meldung(d[1]); });
+    var ph = s.t % DEMO_RUNDE;
+    DEMO.forEach(function (d) { if (ph === d[0] + 1) meldung(d[1]); });
     var nah = s.gegner.find(function (g) { return !g.platt && g.x - s.f.x < 70 && g.x - s.f.x > 20; });
     var blockNah = s.bloecke.find(function (b) { return !b.leer && b.x - s.f.x < 40 && b.x - s.f.x > -10; });
-    if ((nah || blockNah) && s.f.amBoden) { s.f.vy = -15.5; s.f.amBoden = false; }
-    if (s.t === 30) s.kraft = { x: W - 120, sprung: 0, vsy: 0 };
-    if (s.t >= 650) demoEnde();
+    if ((nah || blockNah) && s.f.amBoden) { s.f.vy = -14; s.f.amBoden = false; }
+    if (ph === 30 && !s.kraft) s.kraft = { x: W - 120, sprung: 0, vsy: 0 };
   }
   function demoEnde() { if (!s || !s.demo) return; neu(false); meldung(''); if (startKnopf) startKnopf.hidden = false; }
 
   var letzte = 0;
-  function schleife(zeit) { if (zeit - letzte >= 15) { schritt(); zeichne(); letzte = zeit; } requestAnimationFrame(schleife); }
+  var sichtbar = true;
+  function schleife(zeit) { if (sichtbar && zeit - letzte >= 15) { schritt(); zeichne(); letzte = zeit; } requestAnimationFrame(schleife); }
 
   // ---------- Bedienung ----------
   cv.addEventListener('pointerdown', function (e) { e.preventDefault(); springen(); });
@@ -420,9 +481,9 @@
     e.preventDefault(); springen();
   });
   function pauseAnzeige() {   // Play/Pause-Icon: spielt es gerade, zeigt der Button „Pause“, sonst „Spielen“
-    var spielt = s.lauf && !s.pause && !s.aus && !s.demo;
+    var spielt = s.lauf && !s.pause && !s.aus;
     knopfPause.setAttribute('aria-pressed', spielt ? 'false' : 'true');
-    knopfPause.setAttribute('aria-label', spielt ? 'Spiel anhalten' : 'Spiel starten');
+    knopfPause.setAttribute('aria-label', s.demo ? (spielt ? 'Vorschau anhalten' : 'Vorschau fortsetzen') : spielt ? 'Spiel anhalten' : 'Spiel starten');
   }
   function pauseUm(an) {
     s.pause = an === undefined ? !s.pause : an;
@@ -430,18 +491,18 @@
     pauseAnzeige();
   }
   knopfPause.addEventListener('click', function () {
-    if (s.demo) { demoEnde(); starten(); return; }
+    if (s.demo) { s.pause = !s.pause; pauseAnzeige(); return; }
     if (!s.lauf || s.aus) { if (s.aus) neu(false); starten(); return; }
     pauseUm();
   });
   var nochmal = wurzel.querySelector('[data-nochmal]'); if (nochmal) nochmal.addEventListener('click', function () { neu(false); starten(); cv.focus(); });
-  if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { if (!e[0].isIntersecting && s.lauf && !s.demo && !s.pause && !s.aus) pauseUm(true); }).observe(cv);
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { sichtbar = e[0].isIntersecting; if (!sichtbar && s.lauf && !s.demo && !s.pause && !s.aus) pauseUm(true); }).observe(cv);
   document.addEventListener('visibilitychange', function () { if (document.hidden && s.lauf && !s.demo && !s.pause && !s.aus) pauseUm(true); });
   window.addEventListener('resize', groesse);
 
-  if (location.hash === '#test') window.spielTest = { zustand: function () { return s; }, schritt: schritt, springen: springen, demoEnde: demoEnde };   // nur zum Testen
+  if (location.hash === '#test') window.spielTest = { zustand: function () { return s; }, schritt: schritt, zeichne: zeichne, springen: springen, demoEnde: demoEnde };   // nur zum Testen
   groesse();
   if (ruhig) { neu(false); meldung('Springen mit Leertaste oder Tippen. Probleme platt machen, Chancen ergreifen.'); if (startKnopf) startKnopf.hidden = false; }
-  else neu(true);
+  else { neu(true); if (startKnopf) startKnopf.hidden = false; }
   requestAnimationFrame(schleife);
 })();
