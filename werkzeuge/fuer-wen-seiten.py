@@ -209,10 +209,10 @@ VORGEHEN = [('Verstehen', 'Erst zuhören, dann gestalten.', 'Website-Check, Gesp
 
 
 def vorgehen_schritte():
-    """Vier Schritte; nach Schritt 02 ist Ausstieg möglich (Anna 13.11.2026, nach Vorbild Pappelbaum „kündbar“: nimmt Druck raus)."""
+    """Vier Schritte der Zeitleiste."""
     h = []
     for n, (m, t, x) in enumerate(VORGEHEN, 1):
-        marke = '<span class="zl-ausstieg">Hier können Sie aussteigen</span>' if n == 2 else ''
+        marke = ''   # Marke „Hier können Sie aussteigen“ wieder raus (Anna 13.11.2026); der Satz steht im Text von Schritt 02
         h.append(f'      <li><span class="zlq-nr">{n:02d}</span><p class="meta">{esc(m)}</p><h3>{esc(t)}</h3><p class="gedaempft">{esc(x)}</p>{marke}</li>\n')
     return ''.join(h)
 
