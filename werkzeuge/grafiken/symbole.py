@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Icon-Set für die ganze Website (Anna 12.11.2026: „ein Icon-Set zur kompletten Website … vereinheitlichen, nicht jedes
 Mal was Neues erfinden … maximal 50 Icons … maximal 3 Farben: Schwarz, Weiß und eine Farbe … 60 % aller Icons blau,
-vor allem die, die Seriosität und Vertrauen ausstrahlen sollen; die anderen dürfen farbiger sein als Eyecatcher“).
+vor allem die, die Seriosität und Vertrauen ausstrahlen sollen“). Seit 13.11.2026: Schwarz, Weiß und Blau, Gelb nur als Akzent
+(Anna: „Ja, umstellen“); Rot, Pink und Rosa nur noch im Spiel, im Farbband und beim Konfetti.
 
 Regeln für jedes Icon:
 - Fläche 320 × 320, die Form reicht bis an den Rand (kein Innenabstand) → steht in Karten genau linksbündig.
@@ -69,17 +70,17 @@ SET = {
     'uhr': (BLAU, 'Zeit, Dauer, Termin', f'<circle cx="160" cy="160" r="160" fill="{BLAU}"/><rect x="148" y="52" width="24" height="120" fill="{WS}"/><rect x="148" y="148" width="100" height="24" fill="{WS}"/><circle cx="160" cy="160" r="20" fill="{SCH}"/>'),
     'person': (BLAU, 'Ansprechpartnerin, Kund:in, Team', f'<circle cx="160" cy="64" r="64" fill="{SCH}"/><path d="M0 320 A160 160 0 0 1 320 320 Z" fill="{BLAU}"/>'),
     'ort': (BLAU, 'Standort, Leipzig, Einzugsgebiet', f'<path d="M160 320 L44 168 A136 136 0 1 1 276 168 Z" fill="{BLAU}"/><circle cx="160" cy="116" r="52" fill="{WS}"/><circle cx="160" cy="116" r="24" fill="{SCH}"/>'),
-    # ---------- Eyecatcher: Gelb, Pink, Rosa, Rot ----------
+    # ---------- Akzent Gelb (Anna 13.11.2026: nur noch Schwarz, Weiß, Blau und Gelb als Akzent) ----------
     'skills': (BLAU, 'Skills, feste Abläufe, Automatik', f'<path d="M44.1 304.1 L15.9 275.9 L137.5 154.3 L165.8 182.6 Z" fill="{SCH}"/><path d="M147.1 144.7 L175.9 115.9 L204.1 144.1 L175.4 172.9 Z" fill="{BLAU}"/>'
                + funkeln(244, 76, 76) + funkeln(116, 52, 30) + funkeln(286, 214, 26)),
     'stern': (GELB, 'Highlight, Empfehlung, Neu', f'<path d="{stern(160, 160, 160, 58)}" fill="{GELB}"/><circle cx="160" cy="160" r="26" fill="{SCH}"/>'),
     'idee': (GELB, 'Idee, Lernen, Regel', f'<circle cx="160" cy="124" r="124" fill="{GELB}"/><rect x="100" y="260" width="120" height="24" fill="{SCH}"/><rect x="124" y="296" width="72" height="24" fill="{SCH}"/>'),
     'warnung': (GELB, 'Achtung, Tarif, Grenzen', f'<path d="M160 0 L320 300 L0 300 Z" fill="{GELB}"/><rect x="146" y="96" width="28" height="112" fill="{SCH}"/><circle cx="160" cy="250" r="18" fill="{SCH}"/>'),
     'geld': (GELB, 'Preis, Kosten, Festpreis', f'<rect x="20" y="248" width="280" height="32" fill="{SCH}"/><rect x="40" y="200" width="240" height="32" fill="{SCH}"/><rect x="20" y="152" width="280" height="32" fill="{SCH}"/><circle cx="160" cy="68" r="68" fill="{GELB}"/><rect x="0" y="296" width="320" height="24" fill="{SCH}"/>'),
-    'megafon': (PINK, 'Marketing, Kontakt, Ankündigung', f'<rect x="0" y="112" width="64" height="96" fill="{SCH}"/><path d="M80 112 L320 0 L320 320 L80 208 Z" fill="{PINK}"/>'),
-    'herz': (ROSA, 'Herzensprojekt, Initiative, Dank', herz(160, 186, 150, ROSA)),
-    'palette': (ROSA, 'Gestaltung, Farben, Marke', f'<circle cx="160" cy="160" r="160" fill="{ROSA}"/>' + ''.join(f'<circle cx="{x}" cy="{y}" r="28" fill="{WS}"/>' for x, y in [(96, 92), (176, 72), (244, 132)]) + f'<circle cx="112" cy="212" r="40" fill="{SCH}"/>'),
-    'geschenk': (ROT, 'Gratis, Bonus, Geschenk', f'<rect x="0" y="96" width="320" height="224" fill="{ROT}"/><rect x="144" y="96" width="32" height="224" fill="{WS}"/><rect x="0" y="176" width="320" height="28" fill="{WS}"/><circle cx="116" cy="52" r="44" fill="{SCH}"/><circle cx="204" cy="52" r="44" fill="{SCH}"/>'),
+    'megafon': (BLAU, 'Marketing, Kontakt, Ankündigung', f'<rect x="0" y="112" width="64" height="96" fill="{SCH}"/><path d="M80 112 L320 0 L320 320 L80 208 Z" fill="{BLAU}"/>'),
+    'herz': (SCH, 'Herzensprojekt, Initiative, Dank (Herzen nie blau)', herz(160, 186, 150, SCH)),
+    'palette': (BLAU, 'Gestaltung, Farben, Marke', f'<circle cx="160" cy="160" r="160" fill="{BLAU}"/>' + ''.join(f'<circle cx="{x}" cy="{y}" r="28" fill="{WS}"/>' for x, y in [(96, 92), (176, 72), (244, 132)]) + f'<circle cx="112" cy="212" r="52" fill="{WS}"/><circle cx="112" cy="212" r="38" fill="{SCH}"/>'),
+    'geschenk': (BLAU, 'Gratis, Bonus, Geschenk', f'<rect x="0" y="96" width="320" height="224" fill="{BLAU}"/><rect x="144" y="96" width="32" height="224" fill="{WS}"/><rect x="0" y="176" width="320" height="28" fill="{WS}"/><circle cx="116" cy="44" r="40" fill="{SCH}"/><circle cx="204" cy="44" r="40" fill="{SCH}"/>'),
 }
 
 
@@ -87,7 +88,7 @@ SET = {
 # Die Datei bekommt genau diesen Ausschnitt als viewBox und xMinYMin: Das Icon hat keinen Innenabstand und steht
 # wirklich bündig mit dem Text (Anna 12.11.2026: „dass die Icons kein Padding haben“). Neues Icon: hier eintragen.
 RAND = {
-    'anleitung': (20, 0, 300, 320), 'bildschirm': (0, 0, 320, 304), 'geschenk': (0, 8, 320, 320), 'handy': (60, 0, 260, 320),
+    'anleitung': (20, 0, 300, 320), 'bildschirm': (0, 0, 320, 304), 'geschenk': (0, 4, 320, 320), 'handy': (60, 0, 260, 320),
     'herz': (32, 58, 288, 292), 'idee': (36, 0, 284, 320), 'mail': (0, 0, 320, 288), 'ordner': (0, 24, 320, 296),
     'ort': (24, -39, 296, 320), 'schloss': (24, 0, 296, 320), 'skills': (15, 0, 320, 305), 'telefon': (10, 50, 310, 320),
     'warnung': (0, 0, 320, 300),

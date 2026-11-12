@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Leistungs-Icons aus Bauhaus-Grundformen (Anna 12.11.2026: „die Icons müssen wir jetzt überall ersetzen“).
+"""Leistungs-Icons aus Bauhaus-Grundformen. Seit 13.11.2026 alle in Schwarz, Weiß und Blau (Anna: „Ja, umstellen“, nur noch Akzente mit Farbe); die Spiel-Farben bleiben im Spiel.
+ (Anna 12.11.2026: „die Icons müssen wir jetzt überall ersetzen“).
 
 Jede Leistung hat ihre Form und Farbe wie im Hero-Spiel (Markenbildung rotes Quadrat, UI/UX pinker Halbkreis,
 Webdesign blauer Kreis, Marketing & Vertrieb schwarzer Halbkreis, KI & Digitalisierung gelbes Dreieck), dazu für
@@ -21,34 +22,34 @@ def zacken(cx, cy, r, n=16, rk=None):
 
 
 FORMEN = {
-    # Markenbildung: rotes Quadrat, schwarzer Balken darunter
-    'brand': f'<rect x="110" y="90" width="180" height="180" fill="{ROT}"/><rect x="110" y="290" width="180" height="22" fill="{SCH}"/>',
-    # UI/UX: pinker Halbkreis auf schwarzem Balken
-    'ui-ux': f'<path d="M100 250 A100 100 0 0 1 300 250 Z" fill="{PINK}"/><rect x="100" y="250" width="200" height="22" fill="{SCH}"/>',
+    # Markenbildung: blaues Quadrat, schwarzer Balken mit Abstand darunter
+    'brand': f'<rect x="110" y="90" width="180" height="180" fill="{BLAU}"/><rect x="110" y="290" width="180" height="22" fill="{SCH}"/>',
+    # UI/UX: blauer Halbkreis über schwarzem Balken (mit Abstand)
+    'ui-ux': f'<path d="M100 236 A100 100 0 0 1 300 236 Z" fill="{BLAU}"/><rect x="100" y="250" width="200" height="22" fill="{SCH}"/>',
     # Webdesign: blauer Kreis, schwarzer Balken mit Abstand (Blau berührt kein Schwarz)
     'website': f'<circle cx="200" cy="180" r="100" fill="{BLAU}"/><rect x="100" y="300" width="200" height="22" fill="{SCH}"/>',
-    # Marketing & Vertrieb: schwarzer Halbkreis, rosa Kreis darüber
-    'marketing': f'<circle cx="200" cy="120" r="34" fill="{ROSA}"/><path d="M100 300 A100 100 0 0 1 300 300 Z" fill="{SCH}"/>',
-    # KI & Digitalisierung: gelbes rechtwinkliges Dreieck, schwarzer Kreis
-    'ki': f'<path d="M290 90 L290 300 L80 300 Z" fill="{GELB}"/><circle cx="130" cy="140" r="30" fill="{SCH}"/>',
+    # Marketing & Vertrieb: schwarzer Halbkreis, blauer Kreis darüber
+    'marketing': f'<circle cx="200" cy="120" r="34" fill="{BLAU}"/><path d="M100 300 A100 100 0 0 1 300 300 Z" fill="{SCH}"/>',
+    # KI-Beratung: blaues rechtwinkliges Dreieck, schwarzer Kreis
+    'ki': f'<path d="M290 90 L290 300 L80 300 Z" fill="{BLAU}"/><circle cx="130" cy="140" r="30" fill="{SCH}"/>',
     # Retainer (neu 13.11.2026, Anna: „gefällt mir noch nicht“): blauer Kreislauf mit Pfeilspitze, schwarzer Kern mit Abstand –
     # die Betreuung läuft nach dem Launch weiter
     'retainer': (f'<path d="M200 80 A120 120 0 1 1 80 200 L124 200 A76 76 0 1 0 200 124 Z" fill="{BLAU}"/>'
                  f'<path d="M58 206 L146 206 L102 140 Z" fill="{BLAU}"/><circle cx="200" cy="200" r="30" fill="{SCH}"/>'),
-    # Druck: Stapel aus Balken, oben rot
-    'print': f'<rect x="100" y="110" width="200" height="40" fill="{ROT}"/><rect x="100" y="170" width="200" height="40" fill="{SCH}"/><rect x="100" y="230" width="200" height="40" fill="{SCH}"/><rect x="100" y="290" width="140" height="22" fill="{SCH}"/>',
-    # Illustration & Infografik: Grundform-Herz in Rosa (nie blau), schwarzer Balken
-    'illustration': (f'<g transform="translate(200 175)"><rect x="-70" y="-70" width="140" height="140" transform="rotate(45)" fill="{ROSA}"/>'
-                     f'<circle cx="-49.5" cy="-49.5" r="70" fill="{ROSA}"/><circle cx="49.5" cy="-49.5" r="70" fill="{ROSA}"/></g>'
-                     f'<rect x="110" y="300" width="180" height="22" fill="{SCH}"/>'),
-    # Animation: gelber Zackenkreis mit schwarzem Kern
-    'motion': f'<g fill="{GELB}"><circle cx="200" cy="200" r="96"/>{zacken(200, 200, 100, 16, 18)}</g><circle cx="200" cy="200" r="34" fill="{SCH}"/>',
+    # Druck: Stapel aus Balken, oben blau
+    'print': f'<rect x="100" y="110" width="200" height="40" fill="{BLAU}"/><rect x="100" y="170" width="200" height="40" fill="{SCH}"/><rect x="100" y="230" width="200" height="40" fill="{SCH}"/><rect x="100" y="290" width="140" height="22" fill="{SCH}"/>',
+    # Illustration & Infografik: schwarzes Grundform-Herz (Herzen nie blau), blauer Balken mit Abstand
+    'illustration': (f'<g transform="translate(200 175)"><rect x="-70" y="-70" width="140" height="140" transform="rotate(45)" fill="{SCH}"/>'
+                     f'<circle cx="-49.5" cy="-49.5" r="70" fill="{SCH}"/><circle cx="49.5" cy="-49.5" r="70" fill="{SCH}"/></g>'
+                     f'<rect x="110" y="300" width="180" height="22" fill="{BLAU}"/>'),
+    # Animation: blauer Zackenkreis, weißer Ring, schwarzer Kern
+    'motion': f'<g fill="{BLAU}"><circle cx="200" cy="200" r="96"/>{zacken(200, 200, 100, 16, 18)}</g><circle cx="200" cy="200" r="50" fill="#ffffff"/><circle cx="200" cy="200" r="34" fill="{SCH}"/>',
 }
 
 # Tatsächlicher Rand jeder Form (x, y, Breite, Höhe), im Browser gemessen (12.11.2026): viewBox ohne Innenabstand,
 # damit das Icon bündig mit dem Text steht (Anna 12.11.2026). Neue Form: hier eintragen.
 RAND = {'brand': (110, 90, 180, 222), 'illustration': (81, 56, 239, 267), 'ki': (80, 90, 210, 210), 'marketing': (100, 86, 200, 214),
-        'motion': (82, 82, 236, 236), 'print': (100, 110, 200, 202), 'retainer': (58, 80, 262, 240), 'ui-ux': (100, 150, 200, 122),
+        'motion': (82, 82, 236, 236), 'print': (100, 110, 200, 202), 'retainer': (58, 80, 262, 240), 'ui-ux': (100, 136, 200, 136),
         'website': (100, 80, 200, 242)}
 
 if __name__ == '__main__':
