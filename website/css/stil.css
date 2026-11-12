@@ -3730,23 +3730,24 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 @media (min-width: 768px) and (max-width: 1024px) { .fuss-spalten { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 
 /* Flipcards „Wo es gerade hakt“ (Anna 12.11.2026, nach Vorbild pappelbaum-design.de): vorne das Problem, hinten die Lösung.
-   Drehen per Button (Tastatur, Bildschirmleser: aria-expanded). Ohne JavaScript stehen beide Seiten untereinander. */
+   Dreht sich beim Drüberfahren, mit Tastatur (Fokus auf dem Link der Rückseite) und per Tippen am Handy; keine Beschriftung
+   („zu didaktisch“, Anna). Rückseite ruhig: Hinweis oben, Aussage groß, Link unten über feiner Linie, kleines Bild oben rechts.
+   Ohne JavaScript und bei „Bewegung reduzieren“ ohne Drehung. */
 .haken-start .hk-flip { display: block; grid-row: auto; padding: 0; overflow: visible; background: var(--farbe-weiss); }
 .hk-innen { position: relative; height: 100%; }
-.hk-vorne { position: relative; display: flex; flex-direction: column; gap: 12px; padding: 28px; background: var(--farbe-creme); border-radius: 12px; min-height: 280px; }
-.hk-nr { font-family: var(--schrift-meta); font-size: 14px; color: var(--farbe-grau); }
+.hk-vorne { position: relative; display: flex; flex-direction: column; gap: 16px; padding: 32px; background: var(--farbe-creme); border-radius: 12px; min-height: 300px; }
+.hk-nr { font-family: var(--schrift-meta); font-size: 13px; letter-spacing: .08em; color: var(--farbe-grau); }
 .haken-start .hk-flip h3 { margin: 0; font-size: clamp(26px, 2.4vw, 36px); line-height: 1.15; }
-.hk-dreh { margin-top: auto; align-self: flex-start; display: inline-flex; gap: 8px; align-items: center; padding: 0 0 2px; background: none; border: 0; border-bottom: 1.5px solid currentColor; color: var(--farbe-dunkel); font: inherit; font-weight: 600; cursor: pointer; }
-.hk-vorne .hk-dreh::after { content: ""; position: absolute; inset: 0; }
-.haken-start .hk-flip .hk-hinten { margin: 0; border-radius: 12px; }
-.hk-hinten .hk-zurueck { display: none; }
+.hk-zeichen { position: absolute; right: 24px; bottom: 24px; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(14, 16, 17, .18); color: var(--farbe-dunkel); font-size: 17px; line-height: 1; }
+.haken-start .hk-flip .hk-hinten { position: relative; display: flex; flex-direction: column; margin: 0; padding: 32px; border-radius: 12px; min-height: 300px; }
+.haken-start .hk-flip .hk-hinten .hk-bild { position: absolute; top: 28px; right: 28px; width: 56px; height: 34px; margin: 0; }
+.haken-start .hk-flip .hk-hinten .meta { margin: 0 0 20px; padding-right: 72px; font-size: 12px; opacity: .85; }
+.haken-start .hk-flip .hk-hinten p { margin: 0 0 28px; font-size: clamp(18px, 1.35vw, 21px); line-height: 1.4; font-weight: 500; }
+.haken-start .hk-flip .hk-hinten .textlink { margin-top: auto; align-self: stretch; padding-top: 16px; border: 0; border-top: 1px solid rgba(255, 255, 255, .4); font-weight: 600; text-decoration: none; }
 :where(.js) .hk-innen { display: grid; transform-style: preserve-3d; transition: transform .6s cubic-bezier(.2,.7,.3,1); }
 :where(.js) .hk-vorne, :where(.js) .hk-hinten { grid-area: 1 / 1; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
 :where(.js) .hk-hinten { transform: rotateY(180deg); }
-:where(.js) .hk-hinten .hk-zurueck { display: inline-flex; margin-top: 16px; color: var(--farbe-weiss); }
-:where(.js) .hk-hinten .textlink { margin-top: 0; }
-:where(.js) .hk-flip.gedreht .hk-innen { transform: rotateY(180deg); }
-.hk-dreh:focus-visible { outline: 3px solid var(--farbe-primaer); outline-offset: 4px; }
-.hk-hinten .hk-dreh:focus-visible { outline-color: var(--farbe-weiss); }
-html:not(.js) .hk-vorne .hk-dreh { display: none; }
+:where(.js) .hk-flip.gedreht .hk-innen, :where(.js) .hk-flip:focus-within .hk-innen { transform: rotateY(180deg); }
+@media (hover: hover) { :where(.js) .hk-flip:hover .hk-innen { transform: rotateY(180deg); } }
+html:not(.js) .hk-zeichen { display: none; }
 @media (prefers-reduced-motion: reduce) { :where(.js) .hk-innen { transition: none; } }

@@ -34,6 +34,13 @@ def stern(cx, cy, r_aussen, r_innen, zacken=8, drehung=-90):
     return 'M' + ' L'.join(punkte) + ' Z'
 
 
+def funkeln(cx, cy, r, farbe=BLAU):
+    """Funkelnder Stern mit vier Spitzen und eingezogenen Seiten (wie ein Glitzern)."""
+    k = r * .2
+    return (f'<path d="M{cx} {cy-r} C{cx+k} {cy-k} {cx+k} {cy-k} {cx+r} {cy} C{cx+k} {cy+k} {cx+k} {cy+k} {cx} {cy+r} '
+            f'C{cx-k} {cy+k} {cx-k} {cy+k} {cx-r} {cy} C{cx-k} {cy-k} {cx-k} {cy-k} {cx} {cy-r} Z" fill="{farbe}"/>')
+
+
 def herz(cx, cy, a, farbe):
     """Grundform-Herz: gedrehtes Quadrat mit Kantenlänge a und zwei Halbkreisen."""
     d = a / math.sqrt(2)
@@ -63,7 +70,8 @@ SET = {
     'person': (BLAU, 'Ansprechpartnerin, Kund:in, Team', f'<circle cx="160" cy="64" r="64" fill="{SCH}"/><path d="M0 320 A160 160 0 0 1 320 320 Z" fill="{BLAU}"/>'),
     'ort': (BLAU, 'Standort, Leipzig, Einzugsgebiet', f'<path d="M160 320 L44 168 A136 136 0 1 1 276 168 Z" fill="{BLAU}"/><circle cx="160" cy="116" r="52" fill="{WS}"/><circle cx="160" cy="116" r="24" fill="{SCH}"/>'),
     # ---------- Eyecatcher: Gelb, Pink, Rosa, Rot ----------
-    'skills': (GELB, 'Skills, feste Abläufe, Automatik', f'<rect x="-30" y="196" width="230" height="40" transform="rotate(-45 85 216)" fill="{SCH}"/><path d="{stern(216, 104, 104, 36)}" fill="{GELB}"/>'),
+    'skills': (BLAU, 'Skills, feste Abläufe, Automatik', f'<path d="M44.1 304.1 L15.9 275.9 L137.5 154.3 L165.8 182.6 Z" fill="{SCH}"/><path d="M147.1 144.7 L175.9 115.9 L204.1 144.1 L175.4 172.9 Z" fill="{BLAU}"/>'
+               + funkeln(244, 76, 76) + funkeln(116, 52, 30) + funkeln(286, 214, 26)),
     'stern': (GELB, 'Highlight, Empfehlung, Neu', f'<path d="{stern(160, 160, 160, 58)}" fill="{GELB}"/><circle cx="160" cy="160" r="26" fill="{SCH}"/>'),
     'idee': (GELB, 'Idee, Lernen, Regel', f'<circle cx="160" cy="124" r="124" fill="{GELB}"/><rect x="100" y="260" width="120" height="24" fill="{SCH}"/><rect x="124" y="296" width="72" height="24" fill="{SCH}"/>'),
     'warnung': (GELB, 'Achtung, Tarif, Grenzen', f'<path d="M160 0 L320 300 L0 300 Z" fill="{GELB}"/><rect x="146" y="96" width="28" height="112" fill="{SCH}"/><circle cx="160" cy="250" r="18" fill="{SCH}"/>'),
@@ -81,7 +89,7 @@ SET = {
 RAND = {
     'anleitung': (20, 0, 300, 320), 'bildschirm': (0, 0, 320, 304), 'geschenk': (0, 8, 320, 320), 'handy': (60, 0, 260, 320),
     'herz': (32, 58, 288, 292), 'idee': (36, 0, 284, 320), 'mail': (0, 0, 320, 288), 'ordner': (0, 24, 320, 296),
-    'ort': (24, -39, 296, 320), 'schloss': (24, 0, 296, 320), 'skills': (-10, 0, 320, 311), 'telefon': (10, 50, 310, 320),
+    'ort': (24, -39, 296, 320), 'schloss': (24, 0, 296, 320), 'skills': (15, 0, 320, 305), 'telefon': (10, 50, 310, 320),
     'warnung': (0, 0, 320, 300),
 }
 

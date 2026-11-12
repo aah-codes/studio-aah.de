@@ -426,17 +426,8 @@
     });
     if (location.hash === '#anfordern') oeffnen();
   })();
-  // Flipcards „Wo es gerade hakt“ (Anna 12.11.2026): Button dreht die Karte; die verdeckte Seite ist inert (kein Fokus, kein Vorlesen)
+  // Flipcards „Wo es gerade hakt“ (Anna 12.11.2026): am Handy dreht Tippen die Karte (am Desktop dreht sie beim Drüberfahren per CSS)
   document.querySelectorAll('.hk-flip').forEach(function (karte) {
-    var vorne = karte.querySelector('.hk-vorne'), hinten = karte.querySelector('.hk-hinten'), knopf = vorne.querySelector('.hk-dreh');
-    function setze(gedreht, fokus) {
-      karte.classList.toggle('gedreht', gedreht);
-      knopf.setAttribute('aria-expanded', gedreht ? 'true' : 'false');
-      vorne.inert = gedreht; hinten.inert = !gedreht;
-      if (fokus) (gedreht ? hinten.querySelector('a, button') : knopf).focus({ preventScroll: true });
-    }
-    setze(false, false);
-    knopf.addEventListener('click', function () { setze(true, true); });
-    hinten.querySelector('.hk-zurueck').addEventListener('click', function () { setze(false, true); });
+    karte.addEventListener('click', function (e) { if (!e.target.closest('a')) karte.classList.toggle('gedreht'); });
   });
 })();
