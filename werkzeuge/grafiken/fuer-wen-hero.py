@@ -124,7 +124,7 @@ BILDER['entlastung'] = ('Links trägt eine Figur einen wackligen Stapel Aufgaben
 # 5 Bau: Kran und Gebäude aus Quadraten; daneben die Website mit dem Referenzprojekt; Figur mit Bauhelm zeigt darauf.
 t = boden()
 t += f'<rect x="70" y="80" width="16" height="520" fill="{SCH}"/><rect x="70" y="80" width="330" height="16" fill="{SCH}"/><line x1="320" y1="96" x2="320" y2="210" stroke="{SCH}" stroke-width="3"/><rect x="295" y="210" width="50" height="50" fill="{BL}" stroke="{WS}" stroke-width="10" paint-order="stroke"/>'
-t += ''.join(f'<rect x="{150+c*62}" y="{360+r*62}" width="56" height="56" fill="{SCH if (c+r)%3 else [GELB, ROT, PINK, ROSA][(c+2*r) % 4]}"/>' for c in range(4) for r in range(4) if not (r == 0 and c == 3))
+t += ''.join(f'<rect x="{150+c*62}" y="{352+r*62}" width="56" height="56" fill="{SCH if (c+r)%3 else [GELB, ROT, PINK, ROSA][(c+2*r) % 4]}"/>' for c in range(4) for r in range(4) if not (r == 0 and c == 3))
 t += browser(470, 130, 300, 260, f'<rect x="490" y="190" width="120" height="120" fill="{SCH}"/><rect x="510" y="210" width="34" height="34" fill="{WS}"/><rect x="556" y="210" width="34" height="34" fill="{WS}"/>'
              + zeilen(630, 200, [120, 100, 80]) + knopf(490, 330, 140, 38))
 t += figur(640, BODEN, .42, 30, -145, blick=-1, helm=True)

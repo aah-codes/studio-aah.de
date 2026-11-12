@@ -157,7 +157,7 @@ def flipkarten(eintraege, pre):
     ersatz = list(bilder.values())[-1] if bilder else ''
     h = ['    <ol class="haken-karten haken-start haken-gelegt">']
     for n, e in enumerate(eintraege, 1):
-        h.append(f'      <li class="haken-karte hk-flip"><div class="hk-innen"><div class="hk-vorne"><span class="hk-nr">{n:02d}</span><h3>{esc(e["titel"])}</h3>'
+        h.append(f'      <li class="haken-karte hk-flip"><div class="hk-innen"><div class="hk-vorne"><span class="hk-nr">{n:02d}</span><h3>{esc(e["titel"].rstrip("."))}</h3>'
                  f'<span class="hk-zeichen" aria-hidden="true">↻</span></div><div class="haken-nutzen hk-hinten">{bilder.get(e["href"], ersatz)}'
                  f'<span class="meta">Mit mir an Ihrer Seite</span><p>{esc(e["text"])}</p>'
                  f'<a class="textlink" href="{link(pre, e["href"])}">{esc(e["linktext"])}{PFEIL}</a></div></div></li>')
@@ -213,7 +213,7 @@ def vorgehen_schritte():
     h = []
     for n, (m, t, x) in enumerate(VORGEHEN, 1):
         marke = ''   # Marke „Hier können Sie aussteigen“ wieder raus (Anna 13.11.2026); der Satz steht im Text von Schritt 02
-        h.append(f'      <li><span class="zlq-nr">{n:02d}</span><p class="meta">{esc(m)}</p><h3>{esc(t)}</h3><p class="gedaempft">{esc(x)}</p>{marke}</li>\n')
+        h.append(f'      <li><span class="zlq-nr">{n:02d}</span><p class="meta">{esc(m)}</p><h3>{esc(t.rstrip("."))}</h3><p class="gedaempft">{esc(x)}</p>{marke}</li>\n')
     return ''.join(h)
 
 
