@@ -3694,7 +3694,7 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 .intro-gruss-text .intro-mehr { margin-top: 20px; }
 /* Branchen-Mosaik: Kopf und zwei Kacheln, dann drei, dann der Rest aufgeteilt; Bild links */
 .br-raster > li:nth-child(2), .br-raster > li:nth-child(6), .br-raster > li:nth-child(4):last-child { grid-column: auto; }
-.br-raster > li:nth-child(7):nth-last-child(2) { grid-column: span 2; }
+@media (min-width: 1024.02px) { .br-raster > li:nth-child(7):nth-last-child(2) { grid-column: span 2; } } /* nur mehrspaltig: sonst entsteht am Handy eine zweite, schmale Spalte (Anna 13.11.2026) */
 .br-kachel img { object-position: 0 30%; }
 .br-raster-schlicht > li:nth-child(n) { grid-column: auto; }
 .br-weitere-branchen { padding: 0 var(--rand-seite) 120px; }
@@ -3704,6 +3704,7 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 .faq-spalten .faq-spalte { display: contents; }
 .faq-eintrag { background: transparent; border: 0; border-bottom: 1.5px solid var(--farbe-dunkel); border-radius: 0; }
 .faq-liste .faq-eintrag:first-child { border-top: 1.5px solid var(--farbe-dunkel); }
+.faq-spalten .faq-spalte + .faq-spalte .faq-eintrag:first-child { border-top: 0; } /* sonst doppelte Linie in der Mitte (Anna 13.11.2026) */
 .faq-eintrag summary { padding: 24px 4px; text-align: left; }
 .faq-eintrag summary::after { content: "+"; width: auto; height: auto; border: 0; font-size: 34px; font-weight: 300; line-height: 1; transform: rotate(0); transition: transform .3s cubic-bezier(.2,.7,.3,1); }
 .faq-eintrag[open] summary::after { transform: rotate(45deg); }

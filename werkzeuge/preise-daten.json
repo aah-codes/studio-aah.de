@@ -562,7 +562,7 @@
   {
    "id": "ki",
    "kurz": "KI",
-   "name": "KI & Digitalisierung",
+   "name": "KI-Beratung",
    "link": "../service/ki-digitalisierung/",
    "wahl": "eins",
    "pakete": [
@@ -764,7 +764,7 @@
   },
   {
    "id": "ki",
-   "titel": "KI & Digitalisierung",
+   "titel": "KI-Beratung",
    "bild": "bilder/leistung-ki.webp",
    "link": "service/ki-digitalisierung/",
    "text": "KI-Check und Beratung: welche KI Ihrem Unternehmen im Alltag wirklich hilft."

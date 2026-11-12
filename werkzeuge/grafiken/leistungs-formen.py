@@ -31,10 +31,10 @@ FORMEN = {
     'marketing': f'<circle cx="200" cy="120" r="34" fill="{ROSA}"/><path d="M100 300 A100 100 0 0 1 300 300 Z" fill="{SCH}"/>',
     # KI & Digitalisierung: gelbes rechtwinkliges Dreieck, schwarzer Kreis
     'ki': f'<path d="M290 90 L290 300 L80 300 Z" fill="{GELB}"/><circle cx="130" cy="140" r="30" fill="{SCH}"/>',
-    # Retainer: Kreis in Klammern (rosa Kreis zwischen zwei schwarzen Sicheln) – langfristige Begleitung
-    'retainer': (f'<circle cx="200" cy="200" r="70" fill="{ROSA}"/>'
-                 f'<path d="M110 90 A130 130 0 0 0 110 310 A110 110 0 0 1 110 90 Z" fill="{SCH}"/>'
-                 f'<path d="M290 90 A130 130 0 0 1 290 310 A110 110 0 0 0 290 90 Z" fill="{SCH}"/>'),
+    # Retainer (neu 13.11.2026, Anna: „gefällt mir noch nicht“): blauer Kreislauf mit Pfeilspitze, schwarzer Kern mit Abstand –
+    # die Betreuung läuft nach dem Launch weiter
+    'retainer': (f'<path d="M200 80 A120 120 0 1 1 80 200 L124 200 A76 76 0 1 0 200 124 Z" fill="{BLAU}"/>'
+                 f'<path d="M58 206 L146 206 L102 140 Z" fill="{BLAU}"/><circle cx="200" cy="200" r="30" fill="{SCH}"/>'),
     # Druck: Stapel aus Balken, oben rot
     'print': f'<rect x="100" y="110" width="200" height="40" fill="{ROT}"/><rect x="100" y="170" width="200" height="40" fill="{SCH}"/><rect x="100" y="230" width="200" height="40" fill="{SCH}"/><rect x="100" y="290" width="140" height="22" fill="{SCH}"/>',
     # Illustration & Infografik: Grundform-Herz in Rosa (nie blau), schwarzer Balken
@@ -48,7 +48,7 @@ FORMEN = {
 # Tatsächlicher Rand jeder Form (x, y, Breite, Höhe), im Browser gemessen (12.11.2026): viewBox ohne Innenabstand,
 # damit das Icon bündig mit dem Text steht (Anna 12.11.2026). Neue Form: hier eintragen.
 RAND = {'brand': (110, 90, 180, 222), 'illustration': (81, 56, 239, 267), 'ki': (80, 90, 210, 210), 'marketing': (100, 86, 200, 214),
-        'motion': (82, 82, 236, 236), 'print': (100, 110, 200, 202), 'retainer': (49, 90, 302, 220), 'ui-ux': (100, 150, 200, 122),
+        'motion': (82, 82, 236, 236), 'print': (100, 110, 200, 202), 'retainer': (58, 80, 262, 240), 'ui-ux': (100, 150, 200, 122),
         'website': (100, 80, 200, 242)}
 
 if __name__ == '__main__':

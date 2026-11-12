@@ -26,7 +26,7 @@
   var LEISTUNGEN = [
     { name: 'Markenbildung', form: 'quadrat', farbe: F.rot }, { name: 'UI/UX', form: 'halbkreis', farbe: F.pink },
     { name: 'Webdesign', form: 'kreis', farbe: F.bl }, { name: 'Marketing & Vertrieb', form: 'halbkreis', farbe: F.sch },
-    { name: 'KI & Digitalisierung', form: 'dreieck', farbe: F.gelb }];
+    { name: 'KI-Beratung', form: 'dreieck', farbe: F.gelb }];
   // Die fünf Probleme und was aus ihnen wird
   var PROBLEME = [
     { art: 'funkstille', name: 'Funkstille', b: 40, h: 46, lohn: 'kunden', menge: 1, text: '+1 Kunde', sag: ['Funkstille geknackt. Ein neuer Kunde ruft an.', 'Ring, ring. Da ist ein neuer Kunde.'] },
