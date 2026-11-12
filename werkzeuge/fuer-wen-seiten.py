@@ -12,12 +12,7 @@ D = lade_json('inhalte/fuer-wen-seiten.json')
 BASIS_URL = 'https://studio-aah.de/'
 PROBLEME = {p['id']: p for p in D['probleme']}
 VORLAGE = {1: 'profil/index.html', 2: 'service/webdesign/index.html'}
-ICON = {
-    1: '<svg class="ik-icon" viewBox="0 0 48 48" aria-hidden="true"><rect x="2" y="30" width="12" height="16" fill="#0e1011"/><rect x="18" y="20" width="12" height="26" fill="#0e1011"/><circle cx="40" cy="14" r="7" fill="#2a5fe6"/><rect x="34" y="26" width="12" height="20" fill="#9a9d9e"/></svg>',
-    2: '<svg class="ik-icon" viewBox="0 0 48 48" aria-hidden="true"><circle cx="12" cy="10" r="8" fill="#0e1011"/><rect x="4" y="22" width="16" height="24" fill="#0e1011"/><circle cx="36" cy="10" r="8" fill="#2a5fe6"/><rect x="28" y="22" width="16" height="24" fill="#9a9d9e"/></svg>',
-    3: '<svg class="ik-icon" viewBox="0 0 48 48" aria-hidden="true"><rect x="2" y="2" width="20" height="20" fill="#0e1011"/><circle cx="36" cy="12" r="10" fill="#2a5fe6"/><path d="M2 46 L12 26 L22 46 Z" fill="#9a9d9e"/><path d="M26 46 A10 10 0 0 1 46 46 Z" fill="#0e1011"/></svg>',
-    4: '<svg class="ik-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M4 22 L18 2 L32 22 Z" fill="#0e1011"/><rect x="12" y="26" width="12" height="20" fill="#0e1011"/><circle cx="39" cy="39" r="7" fill="#2a5fe6"/></svg>',
-}
+# Keine Icons auf den Problem-Karten (Anna 12.11.2026: „Grafiken raus“)
 
 
 def link(pre, ziel):
@@ -127,7 +122,7 @@ def problemseite(p):
 
 def branchenseite(b):
     pre = '../../'
-    eintraege = [{'icon': ICON[PROBLEME[i]['nr']], 'titel': PROBLEME[i]['karte'], 'text': t, 'href': PROBLEME[i]['pfad'],
+    eintraege = [{'titel': PROBLEME[i]['karte'], 'text': t, 'href': PROBLEME[i]['pfad'],
                   'linktext': PROBLEME[i]['meta']} for i, t in b['schmerz']]
     quelle = ''
     if b.get('quelle'):
@@ -146,7 +141,7 @@ def branchenseite(b):
 def uebersicht():
     u = D['uebersicht']
     pre = '../'
-    probleme = [{'icon': ICON[p['nr']], 'titel': p['karte'], 'text': p['kurz'], 'href': p['pfad'], 'linktext': p['meta']} for p in D['probleme']]
+    probleme = [{'titel': p['karte'], 'text': p['kurz'], 'href': p['pfad'], 'linktext': p['meta']} for p in D['probleme']]
     branchen = [{'titel': b['name'], 'text': b['kurz'], 'href': b['pfad'], 'linktext': 'Zur Branche'} for b in D['branchen']]
     weitere = [{'titel': t, 'text': x, 'href': z, 'linktext': 'Zum Test' if z in ('selbsttest/', 'ki-zeitrechner/') else 'Mehr erfahren'} for t, x, z in u['weitere']]
     teile = [kopfbereich(u['meta'], u['h1'], u['unter'], pre, bild='fuer-wen'),
