@@ -16,7 +16,7 @@
   <meta property="og:description" content="Anna Härtelt, Gründerin von STUDIO AAH! in Leipzig: UX/UI-Designerin, Strategin und Webentwicklerin, Studium Freie Kunst an der Bauhaus-Universität Weimar.">
   <meta property="og:url" content="https://studio-aah.de/profil/">
   <meta property="og:image" content="https://studio-aah.de/bilder/vorschaubild.jpg">
-  <link rel="stylesheet" href="../css/stil.css?v=20261112g">
+  <link rel="stylesheet" href="../css/stil.css?v=20261112i">
   <link rel="preload" href="../schriften/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../schriften/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
 </head>
@@ -36,7 +36,7 @@
   <nav class="kopf-nav" aria-label="Hauptmenü">
     <ul>
       <li><a href="../#leistungen" class="mm-toggle" aria-expanded="false" aria-controls="mm">Leistungen <svg class="mm-pfeil" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-      <li><a href="../fuer-wen/">Branchen</a></li><li><a href="../referenzen/">Projekte</a></li>
+      <li><a href="../fuer-wen/" class="mm-toggle" aria-expanded="false" aria-controls="mm-branchen">Branchen <svg class="mm-pfeil" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li><li><a href="../referenzen/">Projekte</a></li>
       <li><a href="../profil/">Über mich</a></li>
       <li><a href="../blog/">Blog</a></li>
     </ul>
@@ -82,6 +82,27 @@
         </a>
       </div>
     </div>
+    <div class="mm mm-branchen" id="mm-branchen" hidden>
+      <div class="mm-innen">
+        <div class="mm-bereiche">
+          <div>
+            <p class="meta mm-label">Branchen</p>
+            <ul class="mm-liste mm-liste-haupt">
+            <li><a href="../branchen/bau-ingenieurwesen-architektur/"><span class="mm-name">Bau, Ingenieurwesen &amp; Architektur</span><span class="mm-text">Projekte zeigen, Fachkräfte finden.</span></a></li>
+            <li><a href="../branchen/elektro-anlagenbau-gebaeudetechnik/"><span class="mm-name">Elektro, Anlagenbau &amp; Gebäudetechnik</span><span class="mm-text">Fachkräfte überzeugen, Routine abgeben.</span></a></li>
+            <li><a href="../branchen/software-it/"><span class="mm-name">Software &amp; IT</span><span class="mm-text">Erklärungsbedürftiges verständlich machen.</span></a></li>
+            </ul>
+          </div>
+        </div>
+        <a class="mm-karte mm-karte-dunkel" href="../ki-arbeits-setup/">
+          <img class="mm-karte-icon" src="../bilder/formen/ki.svg" alt="" width="400" height="400" loading="lazy">
+          <span class="meta">Angebot</span>
+          <span class="mm-karte-titel">KI-Arbeits-Setup</span>
+          <span>Ich richte Claude für Ihr Büro ein: Arbeitsordner, Ihre Regeln, drei Skills, Projekt-Cockpit. Festpreis 990&nbsp;€ netto.</span>
+          <span class="button button-zweit">Zum KI-Arbeits-Setup →</span>
+        </a>
+      </div>
+    </div>
   </nav>
   <details class="kopf-mobil">
     <summary><span class="kopf-mobil-icon" aria-hidden="true"></span><span class="unsichtbar">Menü</span></summary>
@@ -109,7 +130,17 @@
             </ul>
           </details>
         </li>
-        <li><a href="../fuer-wen/">Branchen</a></li>
+        <li>
+          <details class="mobil-unter">
+            <summary>Branchen</summary>
+            <ul class="mobil-unterliste">
+              <li><a href="../branchen/bau-ingenieurwesen-architektur/">Bau, Ingenieurwesen &amp; Architektur</a></li>
+              <li><a href="../branchen/elektro-anlagenbau-gebaeudetechnik/">Elektro, Anlagenbau &amp; Gebäudetechnik</a></li>
+              <li><a href="../branchen/software-it/">Software &amp; IT</a></li>
+              <li><a href="../ki-arbeits-setup/">KI-Arbeits-Setup</a></li>
+            </ul>
+          </details>
+        </li>
         <li><a href="../referenzen/">Projekte</a></li>
         <li><a href="../profil/">Über mich</a></li>
         <li><a href="../blog/">Blog</a></li>
@@ -121,7 +152,7 @@
   </details>
 </header>
 <div class="mm-schleier" hidden></div>
-<script src="../js/menue.js?v=20261112g" defer></script>
+<script src="../js/menue.js?v=20261112i" defer></script>
 <!-- /KOPF -->
 
 <main id="inhalt">
@@ -150,10 +181,10 @@
   </section>
 
   <section class="profil-wer" aria-labelledby="wer-titel">
-    <div class="profil-wer-kopf"><p class="meta">Über mich</p>
-      <h2 class="gr-h3" id="wer-titel">Ich bin Anna Härtelt.</h2></div>
     <div class="profil-zweispaltig">
       <div>
+        <div class="profil-wer-kopf"><p class="meta">Über mich</p>
+        <h2 class="gr-h3" id="wer-titel">Ich bin Anna Härtelt.</h2></div>
         <p class="alt-h3">UX/UI- &amp; Product-Designerin für B2B-Software, SaaS und Mittelstand – mit einem Faible für klare Konzepte, digitale Gestaltung und Kommunikation, die auf den Punkt kommt.</p>
       </div>
       <div>
@@ -219,7 +250,7 @@
 
   <section class="profil-ansatz" aria-labelledby="ansatz-titel">
     <div class="sektionskopf ansatz-kopf">
-      <div><p class="meta">Mein Ansatz</p><h2 class="gr-h2" id="ansatz-titel">Design, das funktioniert. Und Ergebnisse, die bewegen.</h2></div>
+      <div><p class="meta">Mein Ansatz</p><h2 class="gr-h2" id="ansatz-titel">Design, das funktioniert.<br>Und Ergebnisse, die bewegen.</h2></div>
     </div>
     <div class="ansatz-zeile">
     <div class="profil-ansatz-text">
@@ -278,21 +309,6 @@
       <li><span class="zlq-nr">03</span><p class="meta">Umsetzung</p><h3>Design und Entwicklung.</h3><p class="gedaempft">Alle Seiten, Texte und Bilder, Feedback an festen Punkten – so wenig Aufwand für Sie wie möglich.</p></li>
       <li><span class="zlq-nr">04</span><p class="meta">Launch &amp; Begleitung</p><h3>Live – und es geht weiter.</h3><p class="gedaempft">Ihre Website geht online. Auf Wunsch betreue ich sie danach als Retainer.</p></li>
     </ol>
-  </section>
-
-  <section class="faq ehrlich" aria-labelledby="ehrlich-titel">
-    <p class="meta">Ehrliche Antworten</p>
-    <h2 class="gr-h2" id="ehrlich-titel">Erfahrung und KI.</h2>
-    <div class="faq-liste">
-        <details class="faq-eintrag">
-          <summary>Haben Sie genug Erfahrung?</summary>
-          <div class="faq-antwort"><p>Seit 2020 bin ich selbstständig, mit über 40 Projekten. In der Agentur bin ich stellvertretende Teamleiterin, an der Hochschule Macromedia Leipzig habe ich Web- und Screendesign unterrichtet. Mein Handwerk habe ich von Grund auf gelernt: als gestaltungstechnische Assistentin, im Studium der Freien Kunst an der Bauhaus-Universität Weimar und in einer Weiterbildung zur UX/UI-Designerin. Daher kommt mein Blick für Gestaltung, die funktioniert – nicht aus der Vorlage.</p></div>
-        </details>
-        <details class="faq-eintrag">
-          <summary>Wie setzen Sie KI ein?</summary>
-          <div class="faq-antwort"><p>Seit über zwei Jahren arbeite ich täglich mit KI. Mein Studio läuft mit einem eigenen KI-Arbeits-Setup: feste Regeln, Qualitätsstandards wie Barrierefreiheit und eine unabhängige Prüfung vor jeder Abgabe. Für Sie heißt das: schnellere Entwürfe und gleichbleibende Qualität. Gestaltung und Entscheidungen bleiben bei mir.</p></div>
-        </details>
-    </div>
   </section>
 
   <section class="profil-stimmen" aria-labelledby="empfehlungen">
@@ -503,6 +519,6 @@
   <a class="sticky-rechner" href="../website-check/"><span class="sticky-rechner-icon"><img src="../bilder/icons/target.webp" alt="" width="400" height="400" loading="lazy"></span>Kostenloser Website-Check&nbsp;<span aria-hidden="true">→</span></a>
   <!-- /FUSS -->
 
-  <script src="../js/zaehlen.js?v=20261112g" defer></script>
+  <script src="../js/zaehlen.js?v=20261112i" defer></script>
 </body>
 </html>

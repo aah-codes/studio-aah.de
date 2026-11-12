@@ -3601,3 +3601,50 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 .wz-person p { margin: 0; line-height: 1.6; }
 @media (max-width: 1024px) { .br-galerie { grid-template-columns: minmax(0, 1fr); max-width: 560px; } .br-start { padding: 64px var(--rand-seite); } }
 @media (max-width: 767.98px) { .wz-person { flex-direction: column; text-align: center; } .ls-weitere { margin-top: -8px; } }
+/* Korrekturen Anna 12.11.2026 (2): Card links, Spielregel hervorgehoben; Problem-Karten auf Schwarz mit doppelt dicker weißer Kante */
+@media (min-width: 1024.02px) { .spiel-karte { right: auto; left: 2%; } }
+.spiel-karte-regel { margin: 4px 0 0 !important; padding: 10px 14px; border-radius: 12px; background: var(--farbe-creme); font-weight: 700; font-size: 17px; line-height: 1.45; }
+.spiel-karte-regel[hidden] { display: none; }
+.haken-schwarz { background: var(--farbe-dunkel); color: var(--farbe-weiss); padding-top: 96px; padding-bottom: 96px; }
+.haken-schwarz > .sektionskopf .gr-h2, .haken-schwarz > .sektionskopf .meta { color: var(--farbe-weiss); }
+.haken-schwarz .haken-test .textlink { color: var(--farbe-weiss); border-color: var(--farbe-weiss); }
+.haken-gelegt .haken-karte { border-width: 12px; box-shadow: none; }
+@media (max-width: 767.98px) { .haken-gelegt .haken-karte { border-width: 8px; } }
+.haken-schwarz > .sektionskopf .meta::before { background: var(--farbe-weiss); }
+@media (min-width: 900.02px) { .weg-ziel .gr-h2 { max-width: none; font-size: clamp(3rem, 7.4vw, 9rem); } .wz-zeile { display: block; white-space: nowrap; } }
+@media (min-width: 900.02px) { .weg-ziel .gr-h2.wz-eine { max-width: none; white-space: nowrap; font-size: clamp(3rem, 7.4vw, 9rem); } }
+/* Über mich (Anna 12.11.2026): Überschrift in der linken Spalte, rechte Spalte beginnt oben auf derselben Höhe; Abstand vor „So arbeite ich“ */
+.profil-zweispaltig .profil-wer-kopf { padding: 0 0 32px; }
+#so-arbeite-ich { margin-top: 96px; padding-top: 96px; }
+/* Leistungen der Startseite: Bauhaus-Formen statt Clay-Icons, kleiner, vier nebeneinander (Anna 12.11.2026) */
+.ls-kern { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 48px 32px; }
+.ls-kern .ls-bild { aspect-ratio: 3 / 2; }
+.ls-kern .ls-karte .ls-bild img { width: 34%; mix-blend-mode: normal; }
+.ls-kern .ls-karte-titel { font-size: clamp(24px, 1.9vw, 32px); }
+@media (max-width: 1024px) { .ls-kern { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 599.98px) { .ls-kern { grid-template-columns: minmax(0, 1fr); } }
+/* Mega-Menü Branchen (Anna 12.11.2026): wie Leistungen, rechts das KI-Arbeits-Setup als Angebot */
+.mm-branchen .mm-bereiche { grid-template-columns: minmax(0, 1fr); }
+.mm-branchen .mm-liste { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 40px; }
+/* Branchen-Raster nach dem Muster von IT Sonix (Anna 12.11.2026): oben links Text, daneben große Kachel, darunter Kacheln;
+   bei sechs Branchen: 1 groß, 3 klein, 1 groß, 1 klein */
+.br-raster { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.br-raster > li { min-width: 0; }
+.br-raster > li:nth-child(2), .br-raster > li:nth-child(6) { grid-column: span 2; }
+.br-raster > li:nth-child(4):last-child { grid-column: span 2; }
+.br-kopf { align-self: start; padding: 8px 24px 0 0; }
+.br-kopf .gr-h2 { font-size: clamp(36px, 3.4vw, 56px); line-height: 1.12; margin: 12px 0 16px; }
+.br-kopf p { margin: 0 0 16px; font-size: 18px; line-height: 1.5; }
+.br-kachel { position: relative; display: block; height: 100%; min-height: 300px; overflow: hidden; border-radius: 24px; background: var(--farbe-creme); color: var(--farbe-dunkel); text-decoration: none; isolation: isolate; }
+.br-kachel img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: 50% 30%; padding: 16px 16px 72px; transition: transform .4s; }
+.br-kachel:hover img { transform: scale(1.03); }
+.br-name { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; display: block; padding: 48px 88px 24px 28px; font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-size: clamp(22px, 1.8vw, 30px); line-height: 1.15; background: linear-gradient(to top, var(--farbe-creme) 55%, transparent); }
+.br-pfeil { position: absolute; right: 24px; bottom: 22px; z-index: 3; display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; background: var(--farbe-dunkel); color: var(--farbe-weiss); font-size: 22px; transition: transform .3s; }
+.br-kachel:hover .br-pfeil { transform: translateX(4px); }
+.br-kachel:focus-visible { outline: 3px solid var(--farbe-primaer); outline-offset: 4px; }
+@media (min-width: 1024.02px) { .br-kopf .gr-h2 { white-space: nowrap; } }
+@media (max-width: 1024px) { .br-raster { grid-template-columns: minmax(0, 1fr); } .br-raster > li:nth-child(n) { grid-column: auto; } .br-kopf { padding: 0; } .br-kachel { min-height: 0; aspect-ratio: 5 / 4; } }
+@media (prefers-reduced-motion: reduce) { .br-kachel img, .br-pfeil { transition: none; } }
+.br-raster .br-kopf { max-width: none; margin: 0; }
+.haken-schwarz .haken-karte h3 { color: var(--farbe-dunkel); }
+.intro-gruss-text p { margin: 0; } .intro-gruss-text .intro-frei { margin-top: 12px; }

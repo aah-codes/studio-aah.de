@@ -7,7 +7,7 @@
        Zeitfresser → Zeit · Ebbe in der Kasse → Geld. Seitlich dagegen kostet ein Leben (drei Leben).
    – Die Fachkraft läuft weg; gefangen: ein Mitarbeiter mehr, die Figur wächst und hält einen Treffer aus.
    – Schwarze Blöcke von unten anstoßen: Leistung fliegt heraus. Alle fünf gefunden: das nächste Geschäftsjahr beginnt (Anna 12.11.2026:
-     „anpassen an die Realität“ statt Level; Start 2027). Das Spiel hält an, die Card zeigt das neue Jahr und eine Spielregel.
+     „anpassen an die Realität“ statt Level; Start ist immer das laufende Kalenderjahr, wechselt am 1. Januar von selbst). Das Spiel hält an, die Card zeigt das neue Jahr und eine Spielregel.
    – Im Bild nur kurze Ausrufe (WOW!, AAH!, OHO!); was man gewonnen oder verloren hat, sagt bei eingeschaltetem Ton eine Stimme
      (Sprachausgabe des Geräts, nur lokale Stimmen, nichts wird gesendet). Anna 12.11.2026: „zu schnell, kann ich nicht lesen“.
    – Das Spiel läuft weiter, bis die Leben weg sind; dann „Game over“ mit Play again.
@@ -61,12 +61,13 @@
     (ch.querySelector('a') || ch).appendChild(z); return z; });
   function chipZahl(i, n) { if (!zahlen[i]) return; zahlen[i].textContent = n; zahlen[i].hidden = false; zahlen[i].classList.toggle('sl-null', !n); }
   var startKnopf = wurzel.querySelector('[data-start]'), kartenEl = wurzel.querySelector('[data-karte]');
-  var kSchritt = wurzel.querySelector('[data-karte-schritt]'), kTitel = wurzel.querySelector('[data-karte-titel]'), kText = wurzel.querySelector('[data-karte-text]');
+  var kSchritt = wurzel.querySelector('[data-karte-schritt]'), kTitel = wurzel.querySelector('[data-karte-titel]'), kText = wurzel.querySelector('[data-karte-text]'), kRegel = wurzel.querySelector('[data-karte-regel]');
   var modus = 'still';   // still → intro → bereit → spiel
   // Card: Schrittzeile, Überschrift, Text und Button-Beschriftung; ohne Titel verschwindet die Card
-  function karte(titel, text, schritt, knopf) {
+  function karte(titel, text, schritt, knopf, regel) {
     kartenEl.hidden = !titel; if (!titel) return;
-    kTitel.textContent = titel; kText.textContent = text || ''; kText.hidden = !text;
+    kRegel.textContent = regel || ''; kRegel.hidden = !regel;
+    kTitel.textContent = titel; kText.textContent = text || ''; kText.hidden = !text; if (/^Let/.test(text || '')) kText.lang = 'en'; else kText.removeAttribute('lang');
     kSchritt.textContent = schritt || ''; kSchritt.hidden = !schritt;
     startKnopf.firstChild.nodeValue = (knopf || 'Spielen') + ' ';
   }
@@ -75,9 +76,12 @@
   var ruhig = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   var zahl = new Intl.NumberFormat('de-DE');
 
+  var START_JAHR = new Date().getFullYear();   // Geschäftsjahr = laufendes Jahr (Anna 12.11.2026: am 1.1. automatisch umschalten)
   function groesse() {
-    var r = cv.getBoundingClientRect();
+    var r = cv.getBoundingClientRect(), alt = BODEN;
     H = r.width < 600 ? 360 : 290; BODEN = H - 24;
+    // Höhe hat sich geändert (Handy ↔ Desktop): alles, was auf dem Boden steht, mitnehmen, sonst steht die Figur unter der Straße
+    if (s && alt !== BODEN) { var d = BODEN - alt; s.f.y += d; s.bloecke.forEach(function (b) { b.y += d; }); s.gaben.forEach(function (g) { g.y += d; }); }
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
     cv.width = Math.round(r.width * dpr); cv.height = Math.round(r.width * H / W * dpr);
   }
@@ -312,9 +316,9 @@
     c.fillStyle = F.sch; c.fillRect(b.x, y, 42, 42);
     form(b.l.form, b.x + 21, y + 21, 22, b.l.farbe === F.sch ? F.ws : b.l.farbe);
   }
-  function anzeige() {   // oben nur die drei Leben (Anna 12.11.2026: Geld raus); die Lösungen zählen die Chips unter dem Spiel
+  function anzeige() {   // links die drei Leben, rechts das Geschäftsjahr (Anna 12.11.2026); die Lösungen zählen die Chips unter dem Spiel
     for (var n = 0; n < 3; n++) { if (n < s.leben) herz(26 + n * 26, 22, 10, F.rot); else { c.globalAlpha = .2; herz(26 + n * 26, 22, 10, F.gr); c.globalAlpha = 1; } }
-    c.fillStyle = F.sch; c.font = '700 14px Manrope, system-ui, sans-serif'; c.fillText('Geschäftsjahr ' + (2026 + s.level), 104, 27);
+    c.fillStyle = F.sch; c.font = '700 16px Manrope, system-ui, sans-serif'; c.textAlign = 'right'; c.fillText('Geschäftsjahr ' + (START_JAHR - 1 + s.level), W - 14, 27); c.textAlign = 'left';
   }
   function zeichne() {
     c.setTransform(cv.width / W, 0, 0, cv.height / H, 0, 0);
@@ -372,6 +376,8 @@
     if (s.demo) return;
     sprich(eins(['Chance ergriffen: ', 'Zugegriffen: ', 'Rein damit: ']) + b.l.name.replace('&', 'und').replace('UI/UX', 'U I und U X') + '.');
   }
+  // Eine Zeile Lob je neuem Jahr (Anna 12.11.2026), darunter hervorgehoben die Spielregel
+  var LOB = ['Sie haben Ihre Chancen ergriffen.', 'Sie haben alles gegeben.', 'Sie bleiben dran.', 'Läuft bei Ihnen.', 'Sie wachsen weiter.'];
   // Die Spielregeln, eine je Geschäftsjahr
   var REGELN = ['Regel 1: Wer nicht gesehen wird, verliert.', 'Regel 2: Wer alles allein macht, verliert Zeit.',
     'Regel 3: Wer gute Leute hält, gewinnt auf Dauer.', 'Regel 4: Der Wettbewerb schläft nicht.', 'Regel 5: Treue Kunden sind mehr wert als neue.'];
@@ -379,9 +385,9 @@
     s.level++; s.gesammelt = []; s.punkte.euro += 1000;
     chips.forEach(function (ch) { ch.classList.remove('ist-gesammelt'); });
     ton(TON.level); funken(s.f.x, s.f.y - 80, 30);
-    var jahr = 2026 + s.level, regel = REGELN[(s.level - 2) % REGELN.length];
+    var jahr = START_JAHR - 1 + s.level, regel = REGELN[(s.level - 2) % REGELN.length], lob = LOB[(s.level - 2) % LOB.length];
     s.pause = true; pauseAnzeige();
-    karte('Willkommen in ' + jahr + '!', 'Alle fünf Lösungen angepackt, mit Partnerin an Ihrer Seite. ' + regel, 'Geschäftsjahr ' + (jahr - 1) + ' geschafft', 'Weiter');
+    karte('Willkommen in ' + jahr + '!', lob, 'Geschäftsjahr ' + (jahr - 1) + ' geschafft', 'Weiter', regel);
     sprich(eins(['Stark!', 'Sauber!', 'Na bitte!']) + ' Sie haben Marke, U X, Website, Vertrieb und KI angepackt und sich eine Partnerin dazugeholt. Willkommen im Geschäftsjahr ' + jahr + '. ' + regel, true);
     s.naechstG = Math.max(s.naechstG, 190); s.gegner = s.gegner.filter(function (g) { return g.x < s.f.x; });
     if (!s.demo) document.dispatchEvent(new Event('konfetti'));
@@ -391,7 +397,7 @@
     s.t++; s.tempo = Math.min(6.2, 3.5 + s.t / 3000 + (s.level - 1) * .3); s.weg += s.tempo;
     var k = s.gross ? 1.35 : 1, fh = 98 * k, fb = 30 * k;
     if (s.demo) demoSchritt();
-    var mitte = W * .42; s.f.x += (mitte - s.f.x) * .06;                       // schnell zur Mitte
+    var mitte = W * .5; s.f.x += (mitte - s.f.x) * .06;                       // schnell zur Mitte
     s.f.vy += .8; s.f.y += s.f.vy; if (s.f.blink > 0) s.f.blink--;
     if (s.f.y >= BODEN) { s.f.y = BODEN; s.f.vy = 0; s.f.amBoden = true; }
     var fl = s.f.x - fb / 2, fr = s.f.x + fb / 2, fo = s.f.y - fh;
@@ -483,7 +489,7 @@
     var g = Object.assign({ x: W + 30, platt: 0, phase: 1 }, v); g.zeigName = true; s.gegner.push(g);
   }
   function demoSchritt() {
-    SCHRITTE.forEach(function (d, i) { if (s.t === d[0] + 1) { karte(d[1], i === SCHRITTE.length - 1 ? d[2] : '', 'So geht’s · ' + (i + 1) + ' von ' + SCHRITTE.length, 'Spielen'); sprich(d[1] + '. ' + d[2], true); } });
+    SCHRITTE.forEach(function (d, i) { if (s.t === d[0] + 1) { karte(d[1], '', 'So geht’s · ' + (i + 1) + ' von ' + SCHRITTE.length, 'Spielen'); sprich(d[1] + '. ' + d[2], true); } });
     if (s.t === 40) problem('toolchaos');
     if (s.t === 250) problem('funkstille');
     if (s.t === 330) problem('konkurrenz');
@@ -493,16 +499,16 @@
     var nah = s.gegner.find(function (g) { return !g.platt && g.v > 0 && Math.abs((g.x + g.b / 2 - s.f.x) / g.v - 26) < 1; });
     var blockNah = s.bloecke.find(function (b) { return !b.leer && b.x - s.f.x < 26 && b.x - s.f.x > -12; });   // knapp vor dem Block abspringen, damit der Kopf ihn trifft
     if ((nah || blockNah) && s.f.amBoden) { s.f.vy = -14; s.f.amBoden = false; }
-    if (s.t >= INTRO_ENDE && s.f.amBoden) { s.lauf = false; modus = 'bereit'; karte('Alles klar?', 'Dann sind Sie dran.', '', 'Spielen'); pauseAnzeige(); }
+    if (s.t >= INTRO_ENDE && s.f.amBoden) { s.lauf = false; modus = 'bereit'; karte('Alles klar?', 'Let’s play.', '', 'Spielen'); pauseAnzeige(); }
   }
   function intro() { neu(true); s.lauf = true; modus = 'intro'; karte(SCHRITTE[0][1], '', 'So geht’s · 1 von ' + SCHRITTE.length, 'Spielen'); sprich(SCHRITTE[0][1] + '. ' + SCHRITTE[0][2], true); pauseAnzeige(); }
   function spielStart() { neu(false); starten(); cv.focus(); }
-  // Standbild beim Ankommen: Figur in der Mitte, links ein Block und ein Problem, nichts bewegt sich
+  // Standbild beim Ankommen: Figur in der Mitte, rechts ein Block und ein Problem, links die Card, nichts bewegt sich
   function standbild() {
-    neu(true); s.lauf = false; modus = 'still'; s.f.x = W * .42; s.weg = 600;   // Stadt etwas weiter, damit das Auto nicht vor der Figur steht
-    s.bloecke.push({ x: W * .16, y: BODEN - 170, l: LEISTUNGEN[0], i: 0, stoss: 0 });
-    problem('unsichtbar'); s.gegner[0].x = W * .27; s.gegner[0].zeigName = false;
-    karte('Schaffen Sie es durch Leipzig?', '', '', 'Spielen');
+    neu(true); s.lauf = false; modus = 'still'; s.f.x = W * .5; s.weg = 600;   // Stadt etwas weiter, damit das Auto nicht vor der Figur steht
+    s.bloecke.push({ x: W * .64, y: BODEN - 170, l: LEISTUNGEN[0], i: 0, stoss: 0 });
+    problem('unsichtbar'); s.gegner[0].x = W * .78; s.gegner[0].zeigName = false;
+    karte('Wie weit kommt Ihr Unternehmen?', '', '', 'Spielen');
   }
 
   var letzte = 0;

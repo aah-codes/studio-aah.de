@@ -78,7 +78,7 @@
     "Sie stellen sich mit dem Kostenrechner einen unverbindlichen Kostenvoranschlag zusammen. Im kostenlosen Erstgespräch klären wir Ist-Stand, Ziele, Bedarf und Zielgruppe. Danach erhalten Sie ein Angebot mit Festpreis und schließlich den Vertrag. Im Festpreis sind zwei Korrekturrunden enthalten."
    ]
   ],
-  "icon": "bilder/icons/computer.webp",
+  "icon": "bilder/formen/website.svg",
   "problem_titel": "Eine schöne Website allein bringt noch keine Anfragen.",
   "probleme": [
    "Besucher finden nicht schnell, was Sie anbieten",
@@ -129,7 +129,7 @@
   "beschreibung": "Markenbildung bei STUDIO AAH! in Leipzig: Basic ab 850 €, Medium mit Logo ab 2.500 €, Premium ab 4.500 € (netto). Festpreis nach kostenlosem Erstgespräch.",
   "bild": "bilder/leistung-brand.webp",
   "bildalt": "Bildschirm mit Farben, Schriften und Gestaltungselementen eines Designsystems",
-  "icon": "bilder/icons/color-palette.webp",
+  "icon": "bilder/formen/brand.svg",
   "problem_titel": "Eine Marke wirkt nur, wenn sie zusammenhält.",
   "probleme": [
    "Branding gilt als Kosmetik: nur Farben, Schriften und Logo",
@@ -271,7 +271,7 @@
   "beschreibung": "UI/UX Design bei STUDIO AAH! in Leipzig: Audit Pro ab 2.900 €, Redesign ab 4.500 € (netto). Festpreis nach kostenlosem Erstgespräch.",
   "bild": "bilder/leistung-uiux.webp",
   "bildalt": "Frau am Tisch mit Smartphone in der Hand, daneben ein Laptop",
-  "icon": "bilder/icons/mobile.webp",
+  "icon": "bilder/formen/ui-ux.svg",
   "problem_titel": "Wo Nutzer:innen hängen bleiben, fehlen Klarheit und Struktur.",
   "probleme": [
    "Nutzer:innen bleiben hängen und finden nicht weiter",
@@ -367,7 +367,7 @@
   "beschreibung": "Marketing & Vertrieb bei STUDIO AAH! in Leipzig: LinkedIn ab 500 €, Post-Vorlagen ab 400 €, Fachartikel ab 300 €, Webinar ab 850 € (netto). Einzeln buchbar.",
   "bild": "bilder/leistung-marketing.webp",
   "bildalt": "Smartphone mit geöffneter Social-Media-App neben einem Laptop",
-  "icon": "bilder/icons/megaphone.webp",
+  "icon": "bilder/formen/marketing.svg",
   "problem_titel": "Sichtbar werden, wo Ihre Kund:innen sind.",
   "probleme": [
    "Die richtigen Menschen finden Sie nicht oder verstehen nicht sofort, was Sie anbieten",
@@ -465,7 +465,7 @@
   "beschreibung": "KI-Beratung bei STUDIO AAH! in Leipzig für KMU und Solo-Selbstständige: KI-Check ab 900 € netto, KI-Einführung ab 2.000 € netto. Festpreis nach Erstgespräch.",
   "bild": "bilder/leistung-ki.webp",
   "bildalt": "Hände tippen auf einer Laptop-Tastatur, im Hintergrund ein Monitor",
-  "icon": "bilder/icons/magic-trick.webp",
+  "icon": "bilder/formen/ki.svg",
   "problem_titel": "KI ist kein Selbstzweck.",
   "probleme": [
    "Im Alltag geht Zeit verloren: bei Texten, Recherche, Angeboten oder internen Abläufen",
@@ -561,7 +561,7 @@
   "beschreibung": "Druck und Printdesign bei STUDIO AAH! in Leipzig: Visitenkarte ab 195 €, Flyer oder Postkarte ab 290 €, Präsentation ab 1.200 € (netto).",
   "bild": "bilder/leistung-print.webp",
   "bildalt": "Gefalteter Flyer in Gelb und Weiß für eine Arztpraxis, innen und außen gezeigt",
-  "icon": "bilder/icons/notebook.webp",
+  "icon": "bilder/formen/print.svg",
   "problem_titel": "Gedrucktes braucht professionelles Design.",
   "probleme": [
    "Die Daten für die Druckerei sind nicht druckfertig",
@@ -661,7 +661,7 @@
   "intro": "Illustrationen, Icons und Infografiken, die komplexe Inhalte auf einen Blick verständlich machen.",
   "bild": "bilder/leistung-illustration.webp",
   "bildalt": "Ausschnitt einer Infografik: Gebäude als Linienzeichnung mit nummerierten gelben Markierungen",
-  "icon": "bilder/icons/bulb.webp",
+  "icon": "bilder/formen/illustration.svg",
   "problem_titel": "Komplexe Inhalte sind auf den ersten Blick schwer zu verstehen.",
   "probleme": [
    "Komplexe Inhalte lassen sich nicht auf einen Blick erfassen",
@@ -744,7 +744,7 @@
   "intro": "Bewegte Grafiken und Animationen für Website, Social Media und Präsentationen.",
   "bild": "bilder/leistung-motion.jpg",
   "bildalt": "Bildschirm mit der Zeitleiste einer Animations-Software",
-  "icon": "bilder/icons/gift.webp",
+  "icon": "bilder/formen/motion.svg",
   "problem_titel": "Ihre Inhalte sollen sich bewegen?",
   "probleme": [
    "Auf der Website fehlen bewegte Grafiken und Animationen",
@@ -831,7 +831,7 @@
   "intro": "Betreute Weiterentwicklung Ihrer Website: neue Texte und Bilder, Unterseiten und Abschnitte, 50–85 € netto pro Stunde, je nach Unternehmensgröße.",
   "bild": "bilder/leistung-retainer.webp",
   "bildalt": "Arbeitsplatz mit zwei Bildschirmen, auf denen Seitenentwürfe zu sehen sind",
-  "icon": "bilder/icons/target.webp",
+  "icon": "bilder/formen/retainer.svg",
   "problem_titel": "Nach dem Start soll Ihre Website weiterwachsen.",
   "probleme": [
    "Spätere Text- und Inhaltsänderungen sind in keinem Website-Paket enthalten",

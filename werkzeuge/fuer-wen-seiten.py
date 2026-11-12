@@ -69,8 +69,8 @@ def faq(liste, titel='Ehrliche Antworten'):
 
 
 def abschluss(pre):
-    return ('  <section class="weg-ziel" aria-labelledby="weg-ziel-titel">\n  <p class="meta">Nächster Schritt</p>\n'
-            '  <h2 class="gr-h2" id="weg-ziel-titel">Fangen wir klein an.</h2>\n'
+    return ('  <section class="weg-ziel" aria-labelledby="weg-ziel-titel">\n  <p class="meta">Erster Schritt</p>\n'
+            '  <h2 class="gr-h2 wz-eine" id="weg-ziel-titel">Fangen wir klein an.</h2>\n'
             '  <p class="alt-klein">Mit dem kostenlosen <span class="ohne-umbruch">Website-Check</span> – oder einem Gespräch, in dem Sie mir erzählen, wo es hakt.</p>\n'
             f'  <p><a class="button weg-ziel-knopf" href="{pre}website-check/">Kostenloser <span class="ohne-umbruch">Website-Check&nbsp;<span aria-hidden="true">→</span></span></a></p>\n</section>')
 

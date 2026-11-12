@@ -78,16 +78,18 @@
     if (document.querySelector('[data-konfetti]')) setTimeout(starten, 250);
   })();
 
-  // Mega-Menü „Service“: öffnet per Klick, schließt mit Esc oder Klick daneben.
-  // Ohne JavaScript führt „Service“ einfach auf /service/.
+  // Mega-Menüs „Leistungen“ und „Branchen“ (Anna 12.11.2026): öffnen per Klick, schließen mit Esc oder Klick daneben;
+  // immer nur eins offen. Ohne JavaScript führen die Menüpunkte auf ihre Seite (#leistungen bzw. /fuer-wen/).
   (() => {
-    const schalter = document.querySelector('.mm-toggle');
-    const menue = document.getElementById('mm');
     const schleier = document.querySelector('.mm-schleier');
-    if (!schalter || !menue || !schleier) return;
-
+    const paare = [...document.querySelectorAll('.mm-toggle')].map((s) => [s, document.getElementById(s.getAttribute('aria-controls'))]).filter((p) => p[1]);
+    if (!schleier || !paare.length) return;
+    let offen = null;
     // Fokus nur bei Bedienung mit der Tastatur in das Menü setzen – sonst erscheint beim Klick ein Fokusrahmen
-    function oeffnen(perTastatur) {
+    function oeffnen(paar, perTastatur) {
+      if (offen && offen !== paar) schliessen(false, true);
+      const [schalter, menue] = paar;
+      offen = paar;
       menue.hidden = false;
       schleier.hidden = false;
       requestAnimationFrame(() => { menue.classList.add('offen'); schleier.classList.add('offen'); });
@@ -95,24 +97,31 @@
       const erster = menue.querySelector('a');
       if (erster && perTastatur) erster.focus({ preventScroll: true });
     }
-    function schliessen(zurueck) {
-      if (schalter.getAttribute('aria-expanded') !== 'true') return;
+    function schliessen(zurueck, sofort) {
+      if (!offen) return;
+      const [schalter, menue] = offen;
+      offen = null;
       menue.classList.remove('offen');
-      schleier.classList.remove('offen');
       schalter.setAttribute('aria-expanded', 'false');
-      setTimeout(() => { if (!menue.classList.contains('offen')) { menue.hidden = true; schleier.hidden = true; } }, 450);
+      if (sofort) { menue.hidden = true; } else {
+        schleier.classList.remove('offen');
+        setTimeout(() => { if (!menue.classList.contains('offen')) menue.hidden = true; if (!offen) schleier.hidden = true; }, 450);
+      }
       if (zurueck) schalter.focus();
     }
-    schalter.addEventListener('click', (e) => {
-      e.preventDefault();
-      if (schalter.getAttribute('aria-expanded') === 'true') schliessen(false);
-      else oeffnen(e.detail === 0);
+    paare.forEach((paar) => {
+      const [schalter, menue] = paar;
+      schalter.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (offen === paar) schliessen(false);
+        else oeffnen(paar, e.detail === 0);
+      });
+      menue.addEventListener('focusout', (e) => {
+        if (offen === paar && !menue.contains(e.relatedTarget) && e.relatedTarget !== schalter) schliessen(false);
+      });
     });
     schleier.addEventListener('click', () => schliessen(false));
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') schliessen(true); });
-    menue.addEventListener('focusout', (e) => {
-      if (!menue.contains(e.relatedTarget) && e.relatedTarget !== schalter) schliessen(false);
-    });
   })();
 
   // Mobilmenü (<details>, funktioniert ohne JavaScript): Escape schließt es, der Fokus geht zurück auf „Menü“

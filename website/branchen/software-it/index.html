@@ -16,7 +16,7 @@
   <meta property="og:description" content="UX/UI und Websites für B2B-Software, SaaS und IT-Dienstleister – auch für Software in Bildung und Gesundheit. Verständlich machen, was Ihr Produkt kann. Aus Leipzig.">
   <meta property="og:url" content="https://studio-aah.de/branchen/software-it/">
   <meta property="og:image" content="https://studio-aah.de/bilder/vorschaubild.jpg">
-  <link rel="stylesheet" href="../../css/stil.css?v=20261112g">
+  <link rel="stylesheet" href="../../css/stil.css?v=20261112i">
   <link rel="preload" href="../../schriften/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../../schriften/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
   <script type="application/ld+json">
@@ -92,7 +92,7 @@
   <nav class="kopf-nav" aria-label="Hauptmenü">
     <ul>
       <li><a href="../../#leistungen" class="mm-toggle" aria-expanded="false" aria-controls="mm">Leistungen <svg class="mm-pfeil" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-      <li><a href="../../fuer-wen/">Branchen</a></li><li><a href="../../referenzen/">Projekte</a></li>
+      <li><a href="../../fuer-wen/" class="mm-toggle" aria-expanded="false" aria-controls="mm-branchen">Branchen <svg class="mm-pfeil" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li><li><a href="../../referenzen/">Projekte</a></li>
       <li><a href="../../profil/">Über mich</a></li>
       <li><a href="../../blog/">Blog</a></li>
     </ul>
@@ -138,6 +138,27 @@
         </a>
       </div>
     </div>
+    <div class="mm mm-branchen" id="mm-branchen" hidden>
+      <div class="mm-innen">
+        <div class="mm-bereiche">
+          <div>
+            <p class="meta mm-label">Branchen</p>
+            <ul class="mm-liste mm-liste-haupt">
+            <li><a href="../../branchen/bau-ingenieurwesen-architektur/"><span class="mm-name">Bau, Ingenieurwesen &amp; Architektur</span><span class="mm-text">Projekte zeigen, Fachkräfte finden.</span></a></li>
+            <li><a href="../../branchen/elektro-anlagenbau-gebaeudetechnik/"><span class="mm-name">Elektro, Anlagenbau &amp; Gebäudetechnik</span><span class="mm-text">Fachkräfte überzeugen, Routine abgeben.</span></a></li>
+            <li><a href="../../branchen/software-it/"><span class="mm-name">Software &amp; IT</span><span class="mm-text">Erklärungsbedürftiges verständlich machen.</span></a></li>
+            </ul>
+          </div>
+        </div>
+        <a class="mm-karte mm-karte-dunkel" href="../../ki-arbeits-setup/">
+          <img class="mm-karte-icon" src="../../bilder/formen/ki.svg" alt="" width="400" height="400" loading="lazy">
+          <span class="meta">Angebot</span>
+          <span class="mm-karte-titel">KI-Arbeits-Setup</span>
+          <span>Ich richte Claude für Ihr Büro ein: Arbeitsordner, Ihre Regeln, drei Skills, Projekt-Cockpit. Festpreis 990&nbsp;€ netto.</span>
+          <span class="button button-zweit">Zum KI-Arbeits-Setup →</span>
+        </a>
+      </div>
+    </div>
   </nav>
   <details class="kopf-mobil">
     <summary><span class="kopf-mobil-icon" aria-hidden="true"></span><span class="unsichtbar">Menü</span></summary>
@@ -165,7 +186,17 @@
             </ul>
           </details>
         </li>
-        <li><a href="../../fuer-wen/">Branchen</a></li>
+        <li>
+          <details class="mobil-unter">
+            <summary>Branchen</summary>
+            <ul class="mobil-unterliste">
+              <li><a href="../../branchen/bau-ingenieurwesen-architektur/">Bau, Ingenieurwesen &amp; Architektur</a></li>
+              <li><a href="../../branchen/elektro-anlagenbau-gebaeudetechnik/">Elektro, Anlagenbau &amp; Gebäudetechnik</a></li>
+              <li><a href="../../branchen/software-it/">Software &amp; IT</a></li>
+              <li><a href="../../ki-arbeits-setup/">KI-Arbeits-Setup</a></li>
+            </ul>
+          </details>
+        </li>
         <li><a href="../../referenzen/">Projekte</a></li>
         <li><a href="../../profil/">Über mich</a></li>
         <li><a href="../../blog/">Blog</a></li>
@@ -177,7 +208,7 @@
   </details>
 </header>
 <div class="mm-schleier" hidden></div>
-<script src="../../js/menue.js?v=20261112g" defer></script>
+<script src="../../js/menue.js?v=20261112i" defer></script>
 <!-- /KOPF -->
 
 <main id="inhalt">
@@ -241,8 +272,8 @@
   </section>
 
   <section class="weg-ziel" aria-labelledby="weg-ziel-titel">
-  <p class="meta">Nächster Schritt</p>
-  <h2 class="gr-h2" id="weg-ziel-titel">Fangen wir klein an.</h2>
+  <p class="meta">Erster Schritt</p>
+  <h2 class="gr-h2 wz-eine" id="weg-ziel-titel">Fangen wir klein an.</h2>
   <p class="alt-klein">Mit dem kostenlosen <span class="ohne-umbruch">Website-Check</span> – oder einem Gespräch, in dem Sie mir erzählen, wo es hakt.</p>
   <p><a class="button weg-ziel-knopf" href="../../website-check/">Kostenloser <span class="ohne-umbruch">Website-Check&nbsp;<span aria-hidden="true">→</span></span></a></p>
 </section>
@@ -320,6 +351,6 @@
   <a class="sticky-rechner" href="../../website-check/"><span class="sticky-rechner-icon"><img src="../../bilder/icons/target.webp" alt="" width="400" height="400" loading="lazy"></span>Kostenloser Website-Check&nbsp;<span aria-hidden="true">→</span></a>
   <!-- /FUSS -->
 
-  <script src="../../js/zaehlen.js?v=20261112g" defer></script>
+  <script src="../../js/zaehlen.js?v=20261112i" defer></script>
 </body>
 </html>

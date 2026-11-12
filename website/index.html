@@ -16,7 +16,7 @@
   <meta property="og:description" content="Strategie und Webdesign in Leipzig für neue Websites und Relaunch im Mittelstand: Anna Härtelt begleitet Unternehmen von der Analyse bis zum Launch.">
   <meta property="og:url" content="https://studio-aah.de/">
   <meta property="og:image" content="https://studio-aah.de/bilder/vorschaubild.jpg">
-  <link rel="stylesheet" href="css/stil.css?v=20261112g">
+  <link rel="stylesheet" href="css/stil.css?v=20261112i">
   <link rel="preload" href="schriften/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="schriften/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
   <script type="application/ld+json">
@@ -92,7 +92,7 @@
   <nav class="kopf-nav" aria-label="Hauptmenü">
     <ul>
       <li><a href="#leistungen" class="mm-toggle" aria-expanded="false" aria-controls="mm">Leistungen <svg class="mm-pfeil" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
-      <li><a href="fuer-wen/">Branchen</a></li><li><a href="referenzen/">Projekte</a></li>
+      <li><a href="fuer-wen/" class="mm-toggle" aria-expanded="false" aria-controls="mm-branchen">Branchen <svg class="mm-pfeil" viewBox="0 0 12 12" width="11" height="11" aria-hidden="true"><path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li><li><a href="referenzen/">Projekte</a></li>
       <li><a href="profil/">Über mich</a></li>
       <li><a href="blog/">Blog</a></li>
     </ul>
@@ -138,6 +138,27 @@
         </a>
       </div>
     </div>
+    <div class="mm mm-branchen" id="mm-branchen" hidden>
+      <div class="mm-innen">
+        <div class="mm-bereiche">
+          <div>
+            <p class="meta mm-label">Branchen</p>
+            <ul class="mm-liste mm-liste-haupt">
+            <li><a href="branchen/bau-ingenieurwesen-architektur/"><span class="mm-name">Bau, Ingenieurwesen &amp; Architektur</span><span class="mm-text">Projekte zeigen, Fachkräfte finden.</span></a></li>
+            <li><a href="branchen/elektro-anlagenbau-gebaeudetechnik/"><span class="mm-name">Elektro, Anlagenbau &amp; Gebäudetechnik</span><span class="mm-text">Fachkräfte überzeugen, Routine abgeben.</span></a></li>
+            <li><a href="branchen/software-it/"><span class="mm-name">Software &amp; IT</span><span class="mm-text">Erklärungsbedürftiges verständlich machen.</span></a></li>
+            </ul>
+          </div>
+        </div>
+        <a class="mm-karte mm-karte-dunkel" href="ki-arbeits-setup/">
+          <img class="mm-karte-icon" src="bilder/formen/ki.svg" alt="" width="400" height="400" loading="lazy">
+          <span class="meta">Angebot</span>
+          <span class="mm-karte-titel">KI-Arbeits-Setup</span>
+          <span>Ich richte Claude für Ihr Büro ein: Arbeitsordner, Ihre Regeln, drei Skills, Projekt-Cockpit. Festpreis 990&nbsp;€ netto.</span>
+          <span class="button button-zweit">Zum KI-Arbeits-Setup →</span>
+        </a>
+      </div>
+    </div>
   </nav>
   <details class="kopf-mobil">
     <summary><span class="kopf-mobil-icon" aria-hidden="true"></span><span class="unsichtbar">Menü</span></summary>
@@ -165,7 +186,17 @@
             </ul>
           </details>
         </li>
-        <li><a href="fuer-wen/">Branchen</a></li>
+        <li>
+          <details class="mobil-unter">
+            <summary>Branchen</summary>
+            <ul class="mobil-unterliste">
+              <li><a href="branchen/bau-ingenieurwesen-architektur/">Bau, Ingenieurwesen &amp; Architektur</a></li>
+              <li><a href="branchen/elektro-anlagenbau-gebaeudetechnik/">Elektro, Anlagenbau &amp; Gebäudetechnik</a></li>
+              <li><a href="branchen/software-it/">Software &amp; IT</a></li>
+              <li><a href="ki-arbeits-setup/">KI-Arbeits-Setup</a></li>
+            </ul>
+          </details>
+        </li>
         <li><a href="referenzen/">Projekte</a></li>
         <li><a href="profil/">Über mich</a></li>
         <li><a href="blog/">Blog</a></li>
@@ -177,7 +208,7 @@
   </details>
 </header>
 <div class="mm-schleier" hidden></div>
-<script src="js/menue.js?v=20261112g" defer></script>
+<script src="js/menue.js?v=20261112i" defer></script>
 <!-- /KOPF -->
 
 <main id="inhalt" class="mit-faden">
@@ -195,8 +226,9 @@
       <canvas tabindex="0" role="img" aria-label="Play the game: Die Bauhaus-Figur läuft durch Leipzig, springt auf fünf Probleme des Mittelstands und verwandelt sie in Kunden, Reichweite, Zeit und Geld, fängt Fachkräfte und ergreift die Chancen der fünf Lösungen. Springen mit Leertaste, Pfeil nach oben oder Tippen."></canvas>
       <div class="spiel-karte" data-karte>
         <p class="meta spiel-karte-schritt" data-karte-schritt hidden></p>
-        <p class="spiel-karte-titel" data-karte-titel>Schaffen Sie es durch Leipzig?</p>
+        <p class="spiel-karte-titel" data-karte-titel>Wie weit kommt Ihr Unternehmen?</p>
         <p class="spiel-karte-text" data-karte-text aria-live="polite" hidden></p>
+        <p class="spiel-karte-regel" data-karte-regel hidden></p>
         <button class="button spiel-start" type="button" data-start>Spielen <span aria-hidden="true">▶</span></button>
       </div>
       <div class="spiel-sieg" data-sieg hidden>
@@ -220,23 +252,14 @@
         <button type="button" class="spiel-icon" data-pause aria-pressed="true" aria-label="Spiel starten"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="icon-play" d="M8 5l11 7-11 7z" fill="currentColor"/><g class="icon-pause" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></g></svg></button>
       </div>
     </div>
-    <p class="spiel-hilfe">Springen: Leertaste, Pfeil nach oben oder Tippen. Auf die Probleme springen, dann werden sie zu Kunden, Reichweite, Zeit und Geld. Auf den Wettbewerb springen, sonst schnappt er Ihnen Kunden weg. Schwarze Blöcke von unten anstoßen, die gelbe Fachkraft fangen, alle fünf Lösungen finden: nächstes Level. Drei Leben.</p>
-  </div>
-  <div class="sp-fakten">
-<!-- KENNZAHLEN:START -->
-    <dl class="fakten hero-fakten">
-      <div><dt><span data-zaehlen="40">40</span><span class="fakt-plus">+</span></dt><dd>Projekte</dd></div>
-      <div><dt><span data-zaehlen="6">6</span></dt><dd>Jahre selbstständig, seit 2020</dd></div>
-      <div><dt><svg class="fakt-ort" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.4 12.5h13.2L12 23z" fill="currentColor"/><circle cx="12" cy="9" r="7" fill="currentColor"/><circle cx="12" cy="9" r="3" fill="#fff"/></svg></dt><dd><span class="mit-liebe">Made with Love in Leipzig</span></dd></div>
-    </dl>
-<!-- KENNZAHLEN:ENDE -->
+    <p class="spiel-hilfe">Springen: Leertaste, Pfeil nach oben oder Tippen. Auf die Probleme springen, dann werden sie zu Kunden, Reichweite, Zeit und Geld. Auf den Wettbewerb springen, sonst schnappt er Ihnen Kunden weg. Schwarze Blöcke von unten anstoßen, die gelbe Fachkraft fangen, alle fünf Lösungen finden: ein neues Geschäftsjahr beginnt. Drei Leben.</p>
   </div>
   <script src="js/faden.js?v=20261016s" defer></script>
-  <script src="js/spiel.js?v=20261112g" defer></script>
+  <script src="js/spiel.js?v=20261112i" defer></script>
 </section>
 
   <!-- Schmerzpunkte 1–4 der Zielgruppe Mittelstand (Anna, 09.11.2026; Konzept Betrieb Studio AAH/Website/2026-11-09_konzept_website-als-werkzeug.md) -->
-  <section class="haken" aria-labelledby="haken-titel">
+  <section class="haken haken-schwarz" aria-labelledby="haken-titel">
     <div class="sektionskopf sk-mitte"><p class="meta">Wo es gerade hakt</p><h2 class="gr-h2" id="haken-titel">Hier werden Sie gesehen.</h2></div>
     <ol class="haken-karten haken-start haken-gelegt">
       <li class="haken-karte"><h3>Woher kommen die nächsten Kunden?</h3><div class="haken-nutzen"><svg class="hk-bild hk-loesung" viewBox="0 0 120 72" aria-hidden="true"><rect x="4" y="6" width="74" height="58" rx="6" fill="none" stroke="#fff" stroke-width="3"/><line x1="4" y1="18" x2="78" y2="18" stroke="#fff" stroke-width="3"/><rect x="14" y="42" width="40" height="12" rx="6" fill="#fff"/><circle cx="108" cy="16" r="6" fill="#fff"/><circle cx="108" cy="52" r="6" fill="#fff"/><path d="M100 18 C 90 28, 80 40, 62 46" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="3 5"/><path d="M100 50 C 90 50, 80 50, 62 49" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="3 5"/></svg><span class="meta">Mit mir an Ihrer Seite</span><p>Ihre Website bringt Anfragen von Firmen, die Sie noch nicht kennen.</p><a class="textlink" href="neue-kunden/">Neukundengewinnung <span aria-hidden="true">→</span></a></div></li>
@@ -249,7 +272,7 @@
 <!-- LEISTUNGEN:START -->
   <section class="start-leistungen" aria-labelledby="leistungen">
     <div class="sektionskopf"><p class="meta">Kernkompetenzen</p><h2 class="gr-xxl" id="leistungen">Leistungen</h2></div>
-    <div class="ls-raster ls-kern"><a class="ls-karte" href="service/markenbildung/" id="k-brand"><span class="ls-bild"><img src="bilder/icons/color-palette.webp" alt="" width="400" height="400" loading="lazy"></span><span class="ls-karte-titel">Markenbildung</span><span class="ls-karte-text">Eine unverwechselbare Markenidentität, die bei Ihrer Zielgruppe wirklich ankommt – klar, glaubwürdig und zukunftsorientiert.</span></a><a class="ls-karte" href="service/ui-ux/" id="k-ui-ux"><span class="ls-bild"><img src="bilder/icons/mobile.webp" alt="" width="400" height="400" loading="lazy"></span><span class="ls-karte-titel">UI/UX</span><span class="ls-karte-text">Digitale Erlebnisse, die Nutzer:innen verstehen – vom UX-Audit bis zum Designsystem für Webanwendungen, SaaS und Apps.</span></a><a class="ls-karte" href="service/webdesign/" id="k-website"><span class="ls-bild"><img src="bilder/icons/computer.webp" alt="" width="400" height="400" loading="lazy"></span><span class="ls-karte-titel">Webdesign</span><span class="ls-karte-text">Klares Design mit technischer Präzision – individuell, responsiv und auf Ihre Ziele ausgerichtet.</span></a><a class="ls-karte" href="service/marketing-vertrieb/" id="k-marketing"><span class="ls-bild"><img src="bilder/icons/megaphone.webp" alt="" width="400" height="400" loading="lazy"></span><span class="ls-karte-titel">Marketing &amp; Vertrieb</span><span class="ls-karte-text">Sichtbar werden, wo Ihre Kund:innen sind – mit klarer Positionierung und Inhalten, die zu Ihnen passen.</span></a><a class="ls-karte" href="service/ki-digitalisierung/" id="k-ki"><span class="ls-bild"><img src="bilder/icons/magic-trick.webp" alt="" width="400" height="400" loading="lazy"></span><span class="ls-karte-titel">KI &amp; Digitalisierung</span><span class="ls-karte-text">KI-Check und Beratung: welche KI Ihrem Unternehmen im Alltag wirklich hilft.</span></a><a class="ls-karte ls-hervor" href="service/retainer/" id="k-retainer"><span class="ls-bild"><img src="bilder/icons/target.webp" alt="" width="400" height="400" loading="lazy"></span><span class="meta">Nach dem Launch</span><span class="ls-karte-titel">Retainer</span><span class="ls-karte-text">Betreute Weiterentwicklung Ihrer Website: neue Texte und Bilder, Unterseiten und Abschnitte, 50–85 € netto pro Stunde, je nach Unternehmensgröße.</span></a></div>
+    <div class="ls-raster ls-kern"><a class="ls-karte" href="service/markenbildung/" id="k-brand"><span class="ls-bild"><img src="bilder/formen/brand.svg" alt="" width="400" height="400" loading="lazy"></span><span class="ls-karte-titel">Markenbildung</span><span class="ls-karte-text">Eine unverwechselbare Markenidentität, die bei Ihrer Zielgruppe wirklich ankommt – klar, glaubwürdig und zukunftsorientiert.</span></a><a class="ls-karte" href="service/ui-ux/" id="k-ui-ux"><span class="ls-bild"><img src="bilder/formen/ui-ux.svg" alt="" width="400" height="400" loading="lazy"></span><span class="ls-karte-titel">UI/UX</span><span class="ls-karte-text">Digitale Erlebnisse, die Nutzer:innen verstehen – vom UX-Audit bis zum Designsystem für Webanwendungen, SaaS und Apps.</span></a><a class="ls-karte" href="service/webdesign/" id="k-website"><span class="ls-bild"><img src="bilder/formen/website.svg" alt="" width="400" height="400" loading="lazy"></span><span class="ls-karte-titel">Webdesign</span><span class="ls-karte-text">Klares Design mit technischer Präzision – individuell, responsiv und auf Ihre Ziele ausgerichtet.</span></a><a class="ls-karte" href="service/marketing-vertrieb/" id="k-marketing"><span class="ls-bild"><img src="bilder/formen/marketing.svg" alt="" width="400" height="400" loading="lazy"></span><span class="ls-karte-titel">Marketing &amp; Vertrieb</span><span class="ls-karte-text">Sichtbar werden, wo Ihre Kund:innen sind – mit klarer Positionierung und Inhalten, die zu Ihnen passen.</span></a><a class="ls-karte" href="service/ki-digitalisierung/" id="k-ki"><span class="ls-bild"><img src="bilder/formen/ki.svg" alt="" width="400" height="400" loading="lazy"></span><span class="ls-karte-titel">KI &amp; Digitalisierung</span><span class="ls-karte-text">KI-Check und Beratung: welche KI Ihrem Unternehmen im Alltag wirklich hilft.</span></a><a class="ls-karte ls-hervor" href="service/retainer/" id="k-retainer"><span class="ls-bild"><img src="bilder/formen/retainer.svg" alt="" width="400" height="400" loading="lazy"></span><span class="meta">Nach dem Launch</span><span class="ls-karte-titel">Retainer</span><span class="ls-karte-text">Betreute Weiterentwicklung Ihrer Website: neue Texte und Bilder, Unterseiten und Abschnitte, 50–85 € netto pro Stunde, je nach Unternehmensgröße.</span></a></div>
     <p class="ls-weitere">Außerdem: <a class="textlink" href="service/druck/">Druck <span aria-hidden="true">→</span></a> <a class="textlink" href="service/illustration-infografik/">Illustration &amp; Infografik <span aria-hidden="true">→</span></a> <a class="textlink" href="service/animation/">Animation <span aria-hidden="true">→</span></a> <a class="textlink" href="preise/#rechner">Kostenrechner <span aria-hidden="true">→</span></a></p>
     <p class="ls-grundsatz"><a class="textlink" href="service/markenbildung/#corporate-identity">Grundlage für alles, was ich gestalte: die Corporate Identity <span aria-hidden="true">→</span></a></p>
   </section>
@@ -265,10 +288,9 @@
         <p>Ihre Website ist ein Vertriebsinstrument: Sie entscheidet mit, ob aus Besuchern und Besucherinnen Kundinnen und Kunden werden. Ich gestalte Websites, die intuitiv führen und messbar wirken, von der Strategie bis zur Umsetzung aus einer Hand.</p>
       </div>
       <div class="intro-gruss">
-        <img class="intro-avatar" src="bilder/anna-haertelt-studio-blau-rund.jpg" alt="Anna Härtelt" width="240" height="240" loading="lazy"><p><strong>Anna Härtelt</strong><br><span class="gedaempft">UX/UI-Designerin, Strategin und Webentwicklerin. Seit 2020 für B2B-Unternehmen aus Deutschland und der Schweiz – bei mir arbeiten Sie direkt mit der Chefin.</span></p>
+        <img class="intro-avatar" src="bilder/anna-haertelt-studio-blau-rund.jpg" alt="Anna Härtelt" width="240" height="240" loading="lazy"><div class="intro-gruss-text"><p><strong>Anna Härtelt</strong><br><span class="gedaempft">UX/UI-Designerin, Strategin und Webentwicklerin. Seit 2020 für <span class="ohne-umbruch">B2B-Unternehmen</span> aus Deutschland und der Schweiz – bei mir arbeiten Sie direkt mit der Chefin.</span></p>
+        <p class="intro-frei"><span class="intro-frei-punkt" aria-hidden="true"></span>Ab Dezember 2026 nehme ich zwei neue Projekte an.</p></div>
       </div>
-      <p class="intro-ablauf">Vier Schritte mit festem Preis und einer Abnahme nach jeder Phase. Nach Schritt 02 entscheiden Sie, ob es weitergeht. <a class="textlink" href="profil/#so-arbeite-ich">So arbeite ich <span aria-hidden="true">→</span></a></p>
-      <p class="intro-frei"><span class="intro-frei-punkt" aria-hidden="true"></span>Ab Dezember 2026 nehme ich zwei neue Projekte an.</p>
       <p class="intro-mehr"><a class="textlink" href="profil/">Mehr über mich <span aria-hidden="true">→</span></a></p>
     </div>
     <figure class="intro-oeko ci-film">
@@ -291,14 +313,14 @@
 
   <!-- Branchen nach dem Muster von IT Sonix (Anna 12.11.2026): Text oben links, darunter Galerie; ersetzt „Für wen“ mit Reitern -->
   <section class="br-start" aria-labelledby="branchen-titel">
-    <div class="br-kopf"><p class="meta">Branchen</p><h2 class="gr-h2" id="branchen-titel">Für wen ich arbeite</h2>
-    <p>Mittelständische B2B-Unternehmen. Wählen Sie Ihre Branche.</p></div>
-    <ul class="br-galerie">
-      <li><a class="br-kachel" href="branchen/bau-ingenieurwesen-architektur/"><span class="br-bild"><img src="bilder/fuer-wen/bau.svg" alt="" width="640" height="400" loading="lazy"></span><span class="br-name">Bau, Ingenieurwesen &amp; Architektur</span><span class="br-text">Projekte zeigen, Fachkräfte finden.</span></a></li>
-      <li><a class="br-kachel" href="branchen/elektro-anlagenbau-gebaeudetechnik/"><span class="br-bild"><img src="bilder/fuer-wen/elektro.svg" alt="" width="640" height="400" loading="lazy"></span><span class="br-name">Elektro, Anlagenbau &amp; Gebäudetechnik</span><span class="br-text">Fachkräfte überzeugen, Routine abgeben.</span></a></li>
-      <li><a class="br-kachel" href="branchen/software-it/"><span class="br-bild"><img src="bilder/fuer-wen/software.svg" alt="" width="640" height="400" loading="lazy"></span><span class="br-name">Software &amp; IT</span><span class="br-text">Erklärungsbedürftiges verständlich machen.</span></a></li>
+    <ul class="br-raster">
+      <li class="br-kopf"><p class="meta">Branchen</p><h2 class="gr-h2" id="branchen-titel">Für wen ich arbeite</h2>
+        <p>Mittelständische B2B-Unternehmen. Wählen Sie Ihre Branche.</p>
+        <p class="br-weitere">Außerdem: <a class="textlink" href="service/webdesign/">Selbstständige <span aria-hidden="true">→</span></a> <a class="textlink" href="demokratie-braucht-sichtbarkeit/">Vereine &amp; Kultur <span aria-hidden="true">→</span></a></p></li>
+      <li><a class="br-kachel" href="branchen/bau-ingenieurwesen-architektur/"><img src="bilder/fuer-wen/bau.svg" alt="" width="800" height="640" loading="lazy"><span class="br-name">Bau, Ingenieurwesen &amp; Architektur</span><span class="br-pfeil" aria-hidden="true">→</span></a></li>
+      <li><a class="br-kachel" href="branchen/elektro-anlagenbau-gebaeudetechnik/"><img src="bilder/fuer-wen/elektro.svg" alt="" width="800" height="640" loading="lazy"><span class="br-name">Elektro, Anlagenbau &amp; Gebäudetechnik</span><span class="br-pfeil" aria-hidden="true">→</span></a></li>
+      <li><a class="br-kachel" href="branchen/software-it/"><img src="bilder/fuer-wen/software.svg" alt="" width="800" height="640" loading="lazy"><span class="br-name">Software &amp; IT</span><span class="br-pfeil" aria-hidden="true">→</span></a></li>
     </ul>
-    <p class="br-weitere">Außerdem: <a class="textlink" href="service/webdesign/">Selbstständige <span aria-hidden="true">→</span></a> <a class="textlink" href="demokratie-braucht-sichtbarkeit/">Vereine &amp; Kultur <span aria-hidden="true">→</span></a></p>
   </section>
 
   <section class="start-projekte" aria-labelledby="referenzen-titel" id="referenzen">
@@ -446,11 +468,19 @@
           <summary>Verstehen Sie unser Geschäft?</summary>
           <div class="faq-antwort"><p>Ja. Seit 2023 betreue ich in einer Digitalagentur vor allem mittelständische B2B-Unternehmen – als direkte Ansprechpartnerin, mit bis zu sechs Projekten gleichzeitig. Lange Entscheidungswege, mehrere Ansprechpersonen und erklärungsbedürftige Leistungen kenne ich von dort und weiß, wie man sie auf einer Website verständlich macht. Und jedes Projekt beginnt mit Verstehen: Ich spreche mit Ihnen und Ihrem Team, prüfe Ihre Website und sehe mir Ihre Mitbewerber an.</p></div>
         </details>
+        <details class="faq-eintrag">
+          <summary>Haben Sie genug Erfahrung?</summary>
+          <div class="faq-antwort"><p>Seit 2020 bin ich selbstständig, mit über 40 Projekten. In der Agentur bin ich stellvertretende Teamleiterin, an der Hochschule Macromedia Leipzig habe ich Web- und Screendesign unterrichtet. Mein Handwerk habe ich von Grund auf gelernt: als gestaltungstechnische Assistentin, im Studium der Freien Kunst an der Bauhaus-Universität Weimar und in einer Weiterbildung zur UX/UI-Designerin. Daher kommt mein Blick für Gestaltung, die funktioniert – nicht aus der Vorlage.</p></div>
+        </details>
       </div>
       <div class="faq-spalte">
         <details class="faq-eintrag">
           <summary>Ist ein Studio nicht zu klein für uns?</summary>
           <div class="faq-antwort"><p>Sie haben eine feste Ansprechpartnerin: mich. Ich leite und gestalte Ihr Projekt selbst. Für Spezialaufgaben hole ich Freelancer:innen dazu, die ich kenne – so bekommen Sie für jede Aufgabe die passende Person.</p></div>
+        </details>
+        <details class="faq-eintrag">
+          <summary>Wie setzen Sie KI ein?</summary>
+          <div class="faq-antwort"><p>Seit über zwei Jahren arbeite ich täglich mit KI. Mein Studio läuft mit einem eigenen KI-Arbeits-Setup: feste Regeln, Qualitätsstandards wie Barrierefreiheit und eine unabhängige Prüfung vor jeder Abgabe. Für Sie heißt das: schnellere Entwürfe und gleichbleibende Qualität. Gestaltung und Entscheidungen bleiben bei mir.</p></div>
         </details>
         <details class="faq-eintrag">
           <summary>Wie viel Zeit kostet uns das?</summary>
@@ -463,8 +493,8 @@
 
   <section class="weg-ziel" aria-labelledby="weg-ziel-titel">
   <p class="meta">Nächster Schritt</p>
-  <h2 class="gr-h2" id="weg-ziel-titel">Fit für 2027? Finden wir es heraus.</h2>
-  <p class="alt-klein">Kostenloser <span class="ohne-umbruch">Website-Check</span> – kurzer Bericht per <span class="ohne-umbruch">E-Mail.</span></p>
+  <h2 class="gr-h2" id="weg-ziel-titel">Fit für 2027? <span class="wz-zeile">Finden wir es heraus.</span></h2>
+  <p class="alt-klein">Kostenloser <span class="ohne-umbruch">Website-Check</span> – Bericht per <span class="ohne-umbruch">E-Mail.</span></p>
   <div class="wz-person"><img src="bilder/anna-haertelt-studio-blau-rund.jpg" alt="Anna Härtelt" width="240" height="240" loading="lazy"><p><strong>Anna Härtelt</strong><br>Lieber direkt sprechen? Rufen Sie mich an oder schreiben Sie mir.<br><a class="mit-symbol" href="tel:+4917683089879">0176 830 898 79</a> · <a class="mit-symbol" href="mailto:info@studio-aah.de">info@studio-aah.de</a></p></div>
   <p><a class="button weg-ziel-knopf" href="website-check/">Kostenloser <span class="ohne-umbruch">Website-Check&nbsp;<span aria-hidden="true">→</span></span></a></p>
 </section>
@@ -543,6 +573,6 @@
   <a class="sticky-rechner" href="website-check/"><span class="sticky-rechner-icon"><img src="bilder/icons/target.webp" alt="" width="400" height="400" loading="lazy"></span>Kostenloser Website-Check&nbsp;<span aria-hidden="true">→</span></a>
   <!-- /FUSS -->
 
-  <script src="js/zaehlen.js?v=20261112g" defer></script>
+  <script src="js/zaehlen.js?v=20261112i" defer></script>
 </body>
 </html>
