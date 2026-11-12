@@ -45,9 +45,16 @@ FORMEN = {
     'motion': f'<g fill="{GELB}"><circle cx="200" cy="200" r="96"/>{zacken(200, 200, 100, 16, 18)}</g><circle cx="200" cy="200" r="34" fill="{SCH}"/>',
 }
 
+# Tatsächlicher Rand jeder Form (x, y, Breite, Höhe), im Browser gemessen (12.11.2026): viewBox ohne Innenabstand,
+# damit das Icon bündig mit dem Text steht (Anna 12.11.2026). Neue Form: hier eintragen.
+RAND = {'brand': (110, 90, 180, 222), 'illustration': (81, 56, 239, 267), 'ki': (80, 90, 210, 210), 'marketing': (100, 86, 200, 214),
+        'motion': (82, 82, 236, 236), 'print': (100, 110, 200, 202), 'retainer': (49, 90, 302, 220), 'ui-ux': (100, 150, 200, 122),
+        'website': (100, 80, 200, 242)}
+
 if __name__ == '__main__':
     os.makedirs(ZIEL, exist_ok=True)
     for name, inhalt in FORMEN.items():
         with open(os.path.join(ZIEL, name + '.svg'), 'w', encoding='utf-8') as f:
-            f.write(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" aria-hidden="true">{inhalt}</svg>\n')
+            x, y, w, h = RAND[name]
+            f.write(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{x} {y} {w} {h}" width="{w}" height="{h}" preserveAspectRatio="xMinYMin meet" aria-hidden="true">{inhalt}</svg>\n')
         print('geschrieben:', name)

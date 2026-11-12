@@ -3728,3 +3728,25 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 /* Fuß mit allen wichtigen Links (Anna 12.11.2026): Kontakt, Leistungen, Branchen, Studio */
 @media (min-width: 1024.02px) { .fuss-spalten { grid-template-columns: minmax(0, 1.2fr) repeat(3, minmax(0, 1fr)); } }
 @media (min-width: 768px) and (max-width: 1024px) { .fuss-spalten { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+/* Flipcards „Wo es gerade hakt“ (Anna 12.11.2026, nach Vorbild pappelbaum-design.de): vorne das Problem, hinten die Lösung.
+   Drehen per Button (Tastatur, Bildschirmleser: aria-expanded). Ohne JavaScript stehen beide Seiten untereinander. */
+.haken-start .hk-flip { display: block; grid-row: auto; padding: 0; overflow: visible; background: var(--farbe-weiss); }
+.hk-innen { position: relative; height: 100%; }
+.hk-vorne { position: relative; display: flex; flex-direction: column; gap: 12px; padding: 28px; background: var(--farbe-creme); border-radius: 12px; min-height: 280px; }
+.hk-nr { font-family: var(--schrift-meta); font-size: 14px; color: var(--farbe-grau); }
+.haken-start .hk-flip h3 { margin: 0; font-size: clamp(26px, 2.4vw, 36px); line-height: 1.15; }
+.hk-dreh { margin-top: auto; align-self: flex-start; display: inline-flex; gap: 8px; align-items: center; padding: 0 0 2px; background: none; border: 0; border-bottom: 1.5px solid currentColor; color: var(--farbe-dunkel); font: inherit; font-weight: 600; cursor: pointer; }
+.hk-vorne .hk-dreh::after { content: ""; position: absolute; inset: 0; }
+.haken-start .hk-flip .hk-hinten { margin: 0; border-radius: 12px; }
+.hk-hinten .hk-zurueck { display: none; }
+:where(.js) .hk-innen { display: grid; transform-style: preserve-3d; transition: transform .6s cubic-bezier(.2,.7,.3,1); }
+:where(.js) .hk-vorne, :where(.js) .hk-hinten { grid-area: 1 / 1; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+:where(.js) .hk-hinten { transform: rotateY(180deg); }
+:where(.js) .hk-hinten .hk-zurueck { display: inline-flex; margin-top: 16px; color: var(--farbe-weiss); }
+:where(.js) .hk-hinten .textlink { margin-top: 0; }
+:where(.js) .hk-flip.gedreht .hk-innen { transform: rotateY(180deg); }
+.hk-dreh:focus-visible { outline: 3px solid var(--farbe-primaer); outline-offset: 4px; }
+.hk-hinten .hk-dreh:focus-visible { outline-color: var(--farbe-weiss); }
+html:not(.js) .hk-vorne .hk-dreh { display: none; }
+@media (prefers-reduced-motion: reduce) { :where(.js) .hk-innen { transition: none; } }

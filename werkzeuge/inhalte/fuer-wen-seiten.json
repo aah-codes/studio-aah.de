@@ -80,14 +80,6 @@
      "Jede Seite zeigt, wie man Sie erreicht – für alle, die mitentscheiden."
     ]
    ],
-   "beleg": {
-    "titel": "Zum Beispiel: Wolfgang Bauer Ingenieurbau",
-    "text": "Auf der neuen Website des Bauunternehmens hat jedes der 69 Referenzprojekte eine eigene Seite – damit Auftraggeber auf einen Blick sehen, was Bauer gebaut hat.",
-    "link": [
-     "referenzen/bauer/",
-     "Projekt ansehen"
-    ]
-   },
    "faq": [
     [
      "Wie schnell bringt eine neue Website Anfragen?",
@@ -174,14 +166,6 @@
      "Ihr Team, Ihre Projekte und Ihre Werte werden sichtbar – auch für Ihre Kundschaft."
     ]
    ],
-   "beleg": {
-    "titel": "Zum Beispiel: Wolfgang Bauer Ingenieurbau",
-    "text": "Neuer Karrierebereich mit Stellenanzeigen und Bewerbungsformular. Seit dem Launch der neuen Website kamen darüber 13 Bewerbungen (Stand: 15.10.2026).",
-    "link": [
-     "referenzen/bauer/",
-     "Projekt ansehen"
-    ]
-   },
    "faq": [
     [
      "Brauchen wir dafür eine ganz neue Website?",
@@ -499,14 +483,6 @@
      "Gewerbekunden und Planungsbüros suchen Partner auch online. Zeigen Sie Leistungen und Referenzen klar."
     ]
    ],
-   "beleg": {
-    "titel": "Zum Beispiel: Wolfgang Bauer Ingenieurbau",
-    "text": "Neuer Karrierebereich mit Stellenanzeigen und Bewerbungsformular: 13 Bewerbungen seit dem Launch der neuen Website (Stand: 15.10.2026).",
-    "link": [
-     "referenzen/bauer/",
-     "Projekt ansehen"
-    ]
-   },
    "faq": [
     [
      "Wir haben genug Aufträge. Brauchen wir eine bessere Website?",
@@ -578,18 +554,10 @@
     "Unsere Kunden kennen uns doch. Wozu Marketing?",
     "Ihre Bestandskunden ja. Neue Einkäufer:innen und die nächste Generation von Fachkräften lernen Sie zuerst über Ihre Website kennen. Sie entscheidet mit, ob es zum ersten Gespräch kommt."
    ],
-   "beleg": {
-    "titel": "Verwandtes Projekt: Wolfgang Bauer Ingenieurbau",
-    "text": "Technische B2B-Leistungen verständlich gemacht: Strategie, Rebranding und neue Website mit Referenzprojekten und Karrierebereich.",
-    "link": [
-     "referenzen/bauer/",
-     "Projekt ansehen"
-    ]
-   },
    "faq": [
     [
      "Haben Sie schon für Industrieunternehmen gearbeitet?",
-     "Am nächsten dran ist Wolfgang Bauer Ingenieurbau: technische B2B-Leistungen für öffentliche und private Auftraggeber. In der Agentur arbeite ich seit 2023 vor allem mit mittelständischen B2B-Unternehmen."
+     "In der Agentur arbeite ich seit 2023 vor allem mit mittelständischen B2B-Unternehmen."
     ],
     [
      "Können Sie Produktdaten und Datenblätter einbinden?",
@@ -645,18 +613,10 @@
     "Unsere Kund:innen kommen über Portale. Brauchen wir eine eigene Website?",
     "Portale bringen Kontakte, aber auch den Vergleich über den Preis. Auf Ihrer eigenen Website zeigen Sie, was Sie besser machen, und die Anfrage gehört Ihnen."
    ],
-   "beleg": {
-    "titel": "Verwandtes Projekt: Wolfgang Bauer Ingenieurbau",
-    "text": "Technische B2B-Leistungen verständlich gemacht: Strategie, Rebranding und neue Website mit Referenzprojekten und Karrierebereich.",
-    "link": [
-     "referenzen/bauer/",
-     "Projekt ansehen"
-    ]
-   },
    "faq": [
     [
      "Haben Sie Erfahrung in der Energiebranche?",
-     "Ein eigenes Projekt in der Energiebranche habe ich noch nicht. Ich bringe Websites für technische B2B-Leistungen mit, etwa für Wolfgang Bauer Ingenieurbau, und den Blick einer UX-Designerin für erklärungsbedürftige Angebote."
+     "Ein eigenes Projekt in der Energiebranche habe ich noch nicht. Ich bringe Websites für technische B2B-Leistungen mit und den Blick einer UX-Designerin für erklärungsbedürftige Angebote."
     ],
     [
      "Können Sie Förderung und Technik verständlich erklären?",
@@ -847,12 +807,26 @@
     "Empfohlene Kund:innen schauen trotzdem auf Ihre Website, bevor sie anrufen. Passt sie nicht zu dem, was man über Sie erzählt, verlieren Sie die Empfehlung."
    ],
    "beleg": {
-    "titel": "Referenz: Deinetwegen",
-    "text": "Website für eine HR-Beratung: Angebot, Haltung und der Weg zum Gespräch auf einer Seite.",
+    "titel": "Referenzen: Deinetwegen und Down to Earth",
+    "text": "Deinetwegen: Branding, Onepager und Blog für eine frisch gegründete HR-Beratung.",
     "link": [
      "referenzen/deinetwegen/",
      "Projekt ansehen"
-    ]
+    ],
+    "weitere": [
+     {
+      "text": "Down to Earth – Kerstin Hack: Visual Design, neue Icons und laufende Betreuung für Coaching, Seminare und Verlag.",
+      "link": [
+       "https://kerstinhack.de",
+       "kerstinhack.de"
+      ]
+     }
+    ],
+    "zitat": {
+     "text": "Ich durfte mit Anna meine neue Website realisieren – und was soll ich sagen: absolute Herzensempfehlung!",
+     "name": "Franziska Weihmann",
+     "rolle": "Gründerin von Deinetwegen HR"
+    }
    },
    "faq": [
     [
@@ -939,15 +913,7 @@
     "Bekommen wir damit garantiert mehr Bewerbungen?",
     "Das kann niemand garantieren. Was ich zusage: Bewerber:innen sehen klar, warum es sich lohnt, bei Ihnen zu arbeiten, und können sich in wenigen Klicks bewerben."
    ]
-  ],
-  "beleg": {
-   "titel": "Zum Beispiel: Wolfgang Bauer Ingenieurbau",
-   "text": "Neuer Karrierebereich mit Stellenanzeigen und Bewerbungsformular. Über das neue Formular kamen 13 Bewerbungen (Stand: 15.10.2026). Ein Ergebnis aus einem Projekt, kein Garantiewert.",
-   "link": [
-    "referenzen/bauer/",
-    "Projekt ansehen"
-   ]
-  }
+  ]
  },
  "selbsttest": {
   "pfad": "selbsttest/",

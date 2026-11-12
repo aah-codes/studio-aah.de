@@ -75,14 +75,28 @@ SET = {
 }
 
 
-def svg(inhalt):
-    return f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" width="320" height="320" aria-hidden="true">{inhalt}</svg>\n'
+# Tatsächlicher Rand jeder Form (x, y, rechts, unten), im Browser mit getBBox() gemessen (12.11.2026).
+# Die Datei bekommt genau diesen Ausschnitt als viewBox und xMinYMin: Das Icon hat keinen Innenabstand und steht
+# wirklich bündig mit dem Text (Anna 12.11.2026: „dass die Icons kein Padding haben“). Neues Icon: hier eintragen.
+RAND = {
+    'anleitung': (20, 0, 300, 320), 'bildschirm': (0, 0, 320, 304), 'geschenk': (0, 8, 320, 320), 'handy': (60, 0, 260, 320),
+    'herz': (32, 58, 288, 292), 'idee': (36, 0, 284, 320), 'mail': (0, 0, 320, 288), 'ordner': (0, 24, 320, 296),
+    'ort': (24, -39, 296, 320), 'schloss': (24, 0, 296, 320), 'skills': (-10, 0, 320, 311), 'telefon': (10, 50, 310, 320),
+    'warnung': (0, 0, 320, 300),
+}
+
+
+def svg(inhalt, name=''):
+    x, y, r, u = RAND.get(name, (0, 0, 320, 320))
+    w, h = r - x, u - y
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{x} {y} {w} {h}" width="{w}" height="{h}" '
+            f'preserveAspectRatio="xMinYMin meet" aria-hidden="true">{inhalt}</svg>\n')
 
 
 def main():
     ZIEL.mkdir(parents=True, exist_ok=True)
     for name, (_, _, inhalt) in SET.items():
-        (ZIEL / f'{name}.svg').write_text(svg(inhalt), encoding='utf-8')
+        (ZIEL / f'{name}.svg').write_text(svg(inhalt, name), encoding='utf-8')
     blau = sum(1 for f, _, _ in SET.values() if f == BLAU)
     kacheln = ''.join(f'<figure><img src="../bilder/symbole/{n}.svg" alt="" width="96" height="96"><figcaption><b>{n}</b><br>{z}</figcaption></figure>'
                       for n, (_, z, _) in SET.items())
@@ -92,7 +106,7 @@ def main():
     UEBERSICHT.write_text(f'''<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
 <title>Icon-Set STUDIO AAH!</title><style>body{{font:15px/1.4 system-ui,sans-serif;margin:40px;color:#0e1011}}h1{{font-size:28px}}
 .raster{{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:24px;margin:24px 0 48px}}figure{{margin:0;padding:20px;background:#f4f4f2;border-radius:16px}}
-img{{display:block;width:72px;height:72px;margin-bottom:12px}}figcaption{{font-size:13px;color:#555}}figcaption b{{color:#0e1011}}</style></head><body>
+img{{display:block;width:72px;height:72px;object-fit:contain;object-position:left top;margin-bottom:12px;outline:1px dashed #ccc}}figcaption{{font-size:13px;color:#555}}figcaption b{{color:#0e1011}}</style></head><body>
 <h1>Icon-Set STUDIO AAH! ({len(SET)} + 9 Leistungen)</h1><p>Blau: {blau} von {len(SET)} ({round(100*blau/len(SET))} %). Schwarz, Weiß und eine Farbe; Form bis an den Rand, steht linksbündig.</p>
 <div class="raster">{kacheln}</div><h2>Leistungen (bleiben in Spiel-Farben)</h2><div class="raster">{leistungen}</div></body></html>
 ''', encoding='utf-8')

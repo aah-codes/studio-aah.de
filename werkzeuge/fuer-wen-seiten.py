@@ -46,12 +46,19 @@ def schritte(liste):
 
 
 def beleg(b, pre):
-    extern = b['link'][0].startswith('http')
-    pfeil = ' <span aria-hidden="true">↗</span><span class="unsichtbar"> (öffnet in neuem Tab)</span>' if extern else PFEIL
-    ziel = ' target="_blank" rel="noopener"' if extern else ''
+    if not b:  # Anna 12.11.2026: lieber keine Referenz als überall Bauer
+        return ''
+    def verweis(l):
+        extern = l[0].startswith('http')
+        pfeil = ' <span aria-hidden="true">↗</span><span class="unsichtbar"> (öffnet in neuem Tab)</span>' if extern else PFEIL
+        ziel = ' target="_blank" rel="noopener"' if extern else ''
+        return f'      <p><a class="textlink" href="{link(pre, l[0])}"{ziel}>{esc(l[1])}{pfeil}</a></p>\n'
+    weitere = ''.join(f'      <p>{esc(w["text"])}</p>\n' + verweis(w['link']) for w in b.get('weitere', []))
+    z = b.get('zitat')
+    zitat = (f'      <blockquote class="fw-zitat"><p>„{esc(z["text"])}“</p><footer>{esc(z["name"])}, {esc(z["rolle"])}</footer></blockquote>\n' if z else '')
     return (f'  <section class="fw-beleg" aria-labelledby="beleg-titel">\n    <div class="fw-beleg-box">\n      <p class="meta">Beleg</p>\n'
             f'      <h2 class="gr-h3" id="beleg-titel">{esc(b["titel"])}</h2>\n      <p>{esc(b["text"])}</p>\n'
-            f'      <p><a class="textlink" href="{link(pre, b["link"][0])}"{ziel}>{esc(b["link"][1])}{pfeil}</a></p>\n    </div>\n  </section>')
+            + verweis(b['link']) + weitere + zitat + '    </div>\n  </section>')
 
 
 def faq(liste, titel='Ehrliche Antworten'):
@@ -113,7 +120,7 @@ def problemseite(p):
              '  <section class="haken fw-nutzen" aria-labelledby="nutzen-titel">\n    <div class="sektionskopf"><p class="meta">Was Sie davon haben</p>'
              '<h2 class="gr-h2" id="nutzen-titel">Mit mir an Ihrer Seite.</h2></div>\n'
              + karten([{'titel': t, 'text': x} for t, x in p['nutzen']], pre, 'haken-karten fw-drei') + '\n  </section>',
-             beleg(p['beleg'], pre),
+             beleg(p.get('beleg'), pre),
              faq(p['faq']),   # „Passende Leistungen – Damit arbeite ich“ entfernt (Anna 12.11.2026)
              abschluss(pre)]
     schreibe(p['pfad'], '\n\n'.join(teile), p['seitentitel'], p['beschreibung'], p['faq'])
@@ -144,7 +151,7 @@ def branchenseite(b):
     pre = '../../'
     eintraege = [{'titel': PROBLEME[i]['karte'], 'text': t, 'href': PROBLEME[i]['pfad'],
                   'linktext': PROBLEME[i]['meta']} for i, t in b['schmerz']]
-    sprung = [('herausforderungen', 'Herausforderungen'), ('website', 'Was Ihre Website können muss'), ('referenz', 'Referenz'),
+    sprung = [('herausforderungen', 'Herausforderungen'), ('website', 'Was Ihre Website können muss'), ] + ([('referenz', 'Referenz')] if b.get('beleg') else []) + [
               ('vorgehen', 'Vorgehen'), ('fragen', 'Häufige Fragen')]
     vorgehen = ''.join(f'      <li><span class="zlq-nr">{n:02d}</span><p class="meta">{esc(m)}</p><h3>{esc(h)}</h3><p class="gedaempft">{esc(x)}</p></li>\n'
                        for n, (m, h, x) in enumerate(VORGEHEN, 1))
@@ -166,7 +173,7 @@ def branchenseite(b):
              + '\n'.join(f'        <li>{esc(x)}</li>' for x in b['muss']) + '\n      </ul>\n    </div>\n'
              f'    <div class="br-einwand">\n      <p class="meta">Ehrlich gefragt</p>\n      <h2 class="gr-h3">{esc(b["einwand"][0])}</h2>\n'
              f'      <p class="fw-kosten">{esc(b["einwand"][1])}</p>\n    </div>\n  </section>',
-             beleg(b['beleg'], pre).replace('<section class="fw-beleg"', '<section class="fw-beleg" id="referenz"', 1),
+             beleg(b.get('beleg'), pre).replace('<section class="fw-beleg"', '<section class="fw-beleg" id="referenz"', 1),
              '  <section class="ablauf-start" id="vorgehen" aria-labelledby="vorgehen-titel">\n    <div class="sektionskopf"><p class="meta">Vorgehen</p>'
              '<h2 class="gr-h2" id="vorgehen-titel">Vier Schritte. Planbar von Anfang&nbsp;an.</h2></div>\n    <ol class="zl-quer">\n' + vorgehen + '    </ol>\n  </section>',
              faq(b['faq']).replace('<section class="faq ehrlich"', '<section class="faq ehrlich" id="fragen"', 1),
@@ -232,7 +239,7 @@ def produktseite(q):
              f'      <p class="fw-preis"><span class="fw-preis-zahl">{esc(q["preis"])}</span> <small class="lsx-netto">netto</small></p>\n'
              f'      <p class="gedaempft">{esc(q["preis_hinweis"])}</p>\n'
              f'      <p><a class="button" href="{pre}kontakt/">Projekt anfragen{PFEIL}</a></p>\n    </div>\n  </section>',
-             beleg(q['beleg'], pre),
+             beleg(q.get('beleg'), pre),
              faq(q['faq']),
              abschluss(pre)]
     schreibe(q['pfad'], '\n\n'.join(teile), q['seitentitel'], q['beschreibung'], q['faq'])

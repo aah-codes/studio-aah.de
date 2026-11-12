@@ -148,8 +148,13 @@ def nicht_enthalten(c):
     return f'<div class="lsx-nicht"><p class="meta">Nicht enthalten</p><ul>{li}</ul></div>'
 
 
+def ohne_bauer(liste, tag):
+    # Anna 12.11.2026: Bauer nur bei Webdesign, Branche Bau und auf der Startseite
+    return liste if tag == 'website' else [p for p in liste if p.get('slug') != 'bauer']
+
+
 def referenzen(tag, pre):
-    liste = I.mit_tag(I.PROJEKTE, [tag])
+    liste = ohne_bauer(I.mit_tag(I.PROJEKTE, [tag]), tag)
     if not liste: return ''
     return '  <section class="lsx-referenzen" id="referenzen" aria-labelledby="referenzen-titel">\n    <p class="meta">Referenzen</p>\n    <h2 class="gr-h3" id="referenzen-titel">Projekte aus diesem Bereich</h2>\n    <div class="referenz-rahmen">\n' + I.referenz_karten(liste, pre, 'lsx', tag) + '\n    </div>\n  </section>'
 
@@ -208,7 +213,7 @@ def seitenkopf(c, pre, intro, termine):
 def sprungleiste(c, g, mit_vergleich, mit_ablauf, link, link_text):
     ziele = [('loesung', 'Problem &amp; Lösung', True), ('pakete', 'Pakete', True), ('vergleich', 'Vergleich', mit_vergleich),
              ('extras', 'Zusatzleistungen', bool(g.get('extras'))), ('ablauf', 'Ablauf', mit_ablauf),
-             ('referenzen', 'Referenzen', bool(I.mit_tag(I.PROJEKTE, [c['tag']]))),
+             ('referenzen', 'Referenzen', bool(ohne_bauer(I.mit_tag(I.PROJEKTE, [c['tag']]), c['tag']))),
              ('faq', 'Fragen', True), ('artikel', 'Artikel', bool(c.get('artikel', True) and I.mit_tag(I.BLOG, [c['tag']])))]
     links = ''.join(f'<a href="#{anker}">{text}</a>' for anker, text, an in ziele if an)
     return f'  <nav class="preis-leiste lsx-chips" aria-label="Auf dieser Seite">{links}<a href="{link}">{link_text} →</a></nav>'
