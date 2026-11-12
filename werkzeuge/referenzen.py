@@ -90,7 +90,7 @@ def buehne(p, pre):
     if f:  # Film mit Steuerung, startet nicht von selbst
         return (f'  <figure class="cs-buehne cs-film">\n    <video controls preload="none" playsinline poster="{pre}{f["vorschau"]}" src="{pre}{f["datei"]}"></video>\n'
                 f'    <figcaption class="unsichtbar">{esc(f["titel"])}</figcaption>\n  </figure>')
-    return f'  <div class="cs-buehne">{I.cover(p, pre)}</div>'
+    return f'  <div class="cs-buehne">{I.cover(p, pre, hausfarbe=True)}</div>'
 
 
 def eingabe(e):

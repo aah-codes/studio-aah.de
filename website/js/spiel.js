@@ -7,8 +7,11 @@
        Zeitfresser → Zeit · Ebbe in der Kasse → Geld. Seitlich dagegen kostet ein Leben (drei Leben).
    – Die Fachkraft läuft weg; gefangen: ein Mitarbeiter mehr, die Figur wächst und hält einen Treffer aus.
    – Schwarze Blöcke von unten anstoßen: Leistung fliegt heraus bis in die Schrift. Alle fünf gefunden: nächstes Level.
-   – Das Spiel läuft weiter, bis die Leben weg sind; dann zeigt es die Bilanz mit „Projekt anfragen“.
-   – Demo läuft mit Spielen-Button, bis man startet (Anna 12.11.2026). Ton aus, bis man ihn einschaltet. Pause jederzeit. */
+   – Das Spiel läuft weiter, bis die Leben weg sind; dann „Game over“ mit Play again.
+   – Beim Ankommen steht alles still (Anna 12.11.2026, ersetzt die laufende Demo): Standbild und rechts eine Card mit Überschrift
+     und Spielen-Button. „Spielen“ startet zuerst ein Intro, das in der Card Schritt für Schritt erklärt, was man tun kann
+     (auch einmal einen Block von unten anstoßen). Der Button in der Card startet dann das Spiel.
+   – Oben nur die drei Leben, kein Geld; die Chips unter dem Spiel zählen die ergriffenen Lösungen. Ton aus, bis man ihn einschaltet. */
 (function () {
   'use strict';
   var wurzel = document.querySelector('[data-spiel]');
@@ -35,8 +38,17 @@
   var zahlen = Array.prototype.map.call(chips, function (ch) {
     var z = document.createElement('b'); z.className = 'sl-zahl'; z.setAttribute('aria-hidden', 'true'); z.hidden = true;
     (ch.querySelector('a') || ch).appendChild(z); return z; });
-  function chipZahl(i, n) { if (!zahlen[i]) return; zahlen[i].textContent = n; zahlen[i].hidden = !n; }
-  var meldungEl = wurzel.querySelector('[data-meldung]'), startKnopf = wurzel.querySelector('[data-start]');
+  function chipZahl(i, n) { if (!zahlen[i]) return; zahlen[i].textContent = n; zahlen[i].hidden = false; zahlen[i].classList.toggle('sl-null', !n); }
+  var startKnopf = wurzel.querySelector('[data-start]'), kartenEl = wurzel.querySelector('[data-karte]');
+  var kSchritt = wurzel.querySelector('[data-karte-schritt]'), kTitel = wurzel.querySelector('[data-karte-titel]'), kText = wurzel.querySelector('[data-karte-text]');
+  var modus = 'still';   // still → intro → bereit → spiel
+  // Card: Schrittzeile, Überschrift, Text und Button-Beschriftung; ohne Titel verschwindet die Card
+  function karte(titel, text, schritt, knopf) {
+    kartenEl.hidden = !titel; if (!titel) return;
+    kTitel.textContent = titel; kText.textContent = text || ''; kText.hidden = !text;
+    kSchritt.textContent = schritt || ''; kSchritt.hidden = !schritt;
+    startKnopf.firstChild.nodeValue = (knopf || 'Spielen') + ' ';
+  }
   var knopfTon = wurzel.querySelector('[data-ton]'), knopfPause = wurzel.querySelector('[data-pause]');
   var bilanzBox = wurzel.querySelector('[data-sieg]'), bilanzText = wurzel.querySelector('[data-bilanz]');
   var ruhig = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -81,7 +93,7 @@
     s = { demo: !!demo, lauf: !!demo, aus: false, pause: false, t: 0, tempo: 3.5, weg: 0, gross: false, level: 1, leben: 3,
           punkte: { euro: 0, reichweite: 0, kunden: 0, stammkunden: 0, fachkraefte: 0, zeit: 0 },
           f: { x: 110, y: BODEN, vy: 0, amBoden: true, blink: 0 }, gegner: [], bloecke: [], gaben: [], muenzen: [], kraft: null,
-          funken: [], blasen: [], lohn: [], naechstG: demo ? 20 : 70, naechstB: demo ? 45 : 70, naechstK: demo ? 9999 : 360, naechstM: 120,
+          funken: [], blasen: [], lohn: [], naechstG: demo ? 1e9 : 70, naechstB: demo ? 1e9 : 70, naechstK: demo ? 1e9 : 360, naechstM: 1e9,
           gesammelt: [], bekannt: {}, zaehler: [0, 0, 0, 0, 0] };
     chips.forEach(function (ch, i) { ch.classList.remove('ist-gesammelt'); chipZahl(i, 0); });
     if (bilanzBox) bilanzBox.hidden = true;
@@ -279,12 +291,9 @@
     c.fillStyle = F.sch; c.fillRect(b.x, y, 42, 42);
     form(b.l.form, b.x + 21, y + 21, 22, b.l.farbe === F.sch ? F.ws : b.l.farbe);
   }
-  function anzeige() {   // nur das Wichtigste: links die drei Leben, rechts das Geld; die Lösungen zählen die Chips unter dem Spiel (Anna 12.11.2026)
+  function anzeige() {   // oben nur die drei Leben (Anna 12.11.2026: Geld raus); die Lösungen zählen die Chips unter dem Spiel
     for (var n = 0; n < 3; n++) { if (n < s.leben) herz(26 + n * 26, 22, 10, F.rot); else { c.globalAlpha = .2; herz(26 + n * 26, 22, 10, F.gr); c.globalAlpha = 1; } }
     if (s.level > 1) { c.fillStyle = F.sch; c.font = '700 14px Manrope, system-ui, sans-serif'; c.fillText('Level ' + s.level, 104, 27); }
-    c.font = '700 16px Manrope, system-ui, sans-serif';
-    var geld = zahl.format(s.punkte.euro) + ' €', tw = c.measureText(geld).width;
-    c.fillStyle = F.sch; c.fillText(geld, W - 14 - tw, 27); muenze(W - 34 - tw, 21, 10);
   }
   function zeichne() {
     c.setTransform(cv.width / W, 0, 0, cv.height / H, 0, 0);
@@ -321,14 +330,14 @@
   function lohn(text, x, y, farbe) { s.lohn.push({ text: text, x: x, y: y, l: 55, farbe: farbe }); }
   function funken(x, y, n) { for (var i = 0; i < n; i++) { var l = LEISTUNGEN[i % 5]; s.funken.push({ x: x, y: y, vx: (Math.random() - .5) * 9, vy: -Math.random() * 8 - 2, l: 30, g: 8 + Math.random() * 9, form: l.form, farbe: l.farbe }); } }
   function springen() {
-    if (s.demo) demoEnde();
+    if (modus === 'still') { intro(); return; }
+    if (s.demo) { spielStart(); return; }
     if (s.aus) { neu(false); starten(); return; }
     if (!s.lauf) starten();
     if (s.pause) { pauseUm(false); return; }
     if (s.f.amBoden) { s.f.vy = -14; s.f.amBoden = false; ton(TON.sprung); }
   }
-  function starten() { s.lauf = true; meldung(''); if (startKnopf) startKnopf.hidden = true; pauseAnzeige(); }
-  function meldung(t) { meldungEl.textContent = t; meldungEl.hidden = !t; }
+  function starten() { s.lauf = true; modus = 'spiel'; karte(''); pauseAnzeige(); }
   function treffer() {
     if (s.f.blink > 0) return;
     if (s.gross) { s.gross = false; s.f.blink = 90; ton(TON.schrumpfen); blase('OHO!', s.f.x, s.f.y - 140); return; }
@@ -344,7 +353,6 @@
     s.punkte[p.lohn] += p.menge;
     var farbe = p.lohn === 'euro' ? F.gelb : p.lohn === 'reichweite' ? F.bl : p.lohn === 'kunden' || p.lohn === 'stammkunden' ? F.pink : F.sch;
     lohn(p.text, g.x + g.b / 2, BODEN - g.h - 50, farbe);
-    if (p.lohn === 'euro') for (var i = 0; i < 3; i++) s.muenzen.push({ x: g.x + 20 + i * 30, y: BODEN - 110 - i * 18, wert: 50 });
   }
   function leistungHoch(b) {
     s.gaben.push({ l: b.l, i: b.i, x: b.x + 21, y: b.y - 24, vy: -6 });
@@ -363,7 +371,7 @@
     s.level++; s.gesammelt = []; s.punkte.euro += 1000;
     chips.forEach(function (ch) { ch.classList.remove('ist-gesammelt'); });
     ton(TON.level); funken(s.f.x, s.f.y - 80, 30);
-    s.banner = { bis: s.t + 170, titel: 'Level ' + s.level + '!', zeile: 'Alle fünf Lösungen gefunden: +1.000 €', regel: REGELN[(s.level - 2) % REGELN.length] };
+    s.banner = { bis: s.t + 170, titel: 'Level ' + s.level + '!', zeile: 'Alle fünf Lösungen gefunden.', regel: REGELN[(s.level - 2) % REGELN.length] };
     s.naechstG = Math.max(s.naechstG, 190); s.gegner = s.gegner.filter(function (g) { return g.x < s.f.x; });
     if (!s.demo) document.dispatchEvent(new Event('konfetti'));
   }
@@ -402,7 +410,7 @@
       }
     });
     s.gaben = s.gaben.filter(function (g) { return !g.weg && g.x > -40; });
-    // Münzen in der Luft
+    // Münzen in der Luft: seit 12.11.2026 ohne Geldanzeige nicht mehr im Spiel (naechstM bleibt sehr groß)
     if (--s.naechstM <= 0) { var hy = BODEN - 90 - Math.random() * 60; for (var m = 0; m < 3; m++) s.muenzen.push({ x: W + 20 + m * 34, y: hy - Math.sin(m / 2 * Math.PI) * 24, wert: 50 }); s.naechstM = 240 + Math.floor(Math.random() * 160); }
     s.muenzen.forEach(function (mz) {
       mz.x -= s.tempo;
@@ -417,7 +425,7 @@
     }
     s.gegner.forEach(function (g) {
       var eigen = g.art === 'konkurrenz' ? 2.6 : g.art === 'toolchaos' ? 1.8 : g.art === 'zeitfresser' ? 1.2 : g.art === 'funkstille' ? Math.sin((s.t + g.phase * 30) / 20) * 2.2 : g.art === 'unsichtbar' ? Math.sin((s.t + g.phase * 30) / 14) * 1.6 : .4;
-      g.x -= s.tempo + eigen;
+      g.x -= s.tempo + eigen; g.v = s.tempo + eigen;
       if (g.art === 'ebbe') { g.hoehe = Math.max(0, Math.sin((s.t + g.phase * 40) / 12) * 18); }   // Geldsack hüpft
       if (g.platt) { g.platt += .05; return; }
       var gy = BODEN - (g.hoehe || 0);
@@ -452,19 +460,40 @@
     s.lohn.forEach(function (p) { p.l--; p.y -= .9; }); s.lohn = s.lohn.filter(function (p) { return p.l > 0; });
   }
 
-  // ---------- Demo ----------
-  // Läuft weiter, bis man spielt (Anna 12.11.2026: kein Standbild); erst zuschauen, dann drei kurze Hinweise, dann von vorn.
-  // Pause-Taste hält die Demo an (Regel: Bewegung, die von selbst startet, hat eine Pause-Taste).
-  var DEMO = [[170, 'Leertaste oder Tippen: springen'], [320, 'Auf die Probleme springen: Sie werden zu Kunden, Zeit und Geld'], [480, 'Schwarze Blöcke von unten anstoßen: Chancen ergreifen'], [640, '']], DEMO_RUNDE = 1100;
-  function demoSchritt() {
-    var ph = s.t % DEMO_RUNDE;
-    DEMO.forEach(function (d) { if (ph === d[0] + 1) meldung(d[1]); });
-    var nah = s.gegner.find(function (g) { return !g.platt && g.x - s.f.x < 70 && g.x - s.f.x > 20; });
-    var blockNah = s.bloecke.find(function (b) { return !b.leer && b.x - s.f.x < 40 && b.x - s.f.x > -10; });
-    if ((nah || blockNah) && s.f.amBoden) { s.f.vy = -14; s.f.amBoden = false; }
-    if (ph === 30 && !s.kraft) s.kraft = { x: W - 120, sprung: 0, vsy: 0 };
+  // ---------- Intro ----------
+  // Startet erst auf „Spielen“ (Anna 12.11.2026). Feste Abfolge: jedes Element erscheint zu seinem Schritt in der Card,
+  // die Figur springt allein, auch einmal von unten gegen einen schwarzen Block. Danach steht alles still, bis man spielt.
+  var SCHRITTE = [[0, 'Springen', 'Mit der Leertaste, dem Pfeil nach oben oder per Tippen.'],
+    [220, 'Probleme platt machen', 'Springen Sie auf die Probleme und den Wettbewerb. Dann werden sie zu Kunden, Reichweite, Zeit und Geld.'],
+    [470, 'Chancen ergreifen', 'Stoßen Sie die schwarzen Blöcke von unten an. Darin stecken die fünf Lösungen.'],
+    [720, 'Fachkraft fangen', 'Die gelbe Fachkraft macht Ihr Team stärker. Alle fünf Lösungen gefunden: nächstes Level. Sie haben drei Leben.']];
+  var INTRO_ENDE = 960;
+  function problem(art) {
+    var v = PROBLEME.filter(function (x) { return x.art === art; })[0];
+    var g = Object.assign({ x: W + 30, platt: 0, phase: 1 }, v); g.zeigName = true; s.gegner.push(g);
   }
-  function demoEnde() { if (!s || !s.demo) return; neu(false); meldung(''); if (startKnopf) startKnopf.hidden = false; }
+  function demoSchritt() {
+    SCHRITTE.forEach(function (d, i) { if (s.t === d[0] + 1) karte(d[1], d[2], 'So geht’s · ' + (i + 1) + ' von ' + SCHRITTE.length, 'Spielen'); });
+    if (s.t === 40) problem('toolchaos');
+    if (s.t === 250) problem('funkstille');
+    if (s.t === 330) problem('konkurrenz');
+    if (s.t === 380) s.bloecke.push({ x: W + 20, y: BODEN - 170, l: LEISTUNGEN[0], i: 0, stoss: 0 });
+    if (s.t === 690) s.kraft = { x: s.f.x + 170, sprung: 0, vsy: 0 };
+    // so abspringen, dass die Figur nach etwa 26 Bildern von oben auf dem Problem landet
+    var nah = s.gegner.find(function (g) { return !g.platt && g.v > 0 && Math.abs((g.x + g.b / 2 - s.f.x) / g.v - 26) < 1; });
+    var blockNah = s.bloecke.find(function (b) { return !b.leer && b.x - s.f.x < 26 && b.x - s.f.x > -12; });   // knapp vor dem Block abspringen, damit der Kopf ihn trifft
+    if ((nah || blockNah) && s.f.amBoden) { s.f.vy = -14; s.f.amBoden = false; }
+    if (s.t >= INTRO_ENDE && s.f.amBoden) { s.lauf = false; modus = 'bereit'; karte('Alles klar?', 'Dann sind Sie dran.', '', 'Spielen'); pauseAnzeige(); }
+  }
+  function intro() { neu(true); s.lauf = true; modus = 'intro'; karte(SCHRITTE[0][1], SCHRITTE[0][2], 'So geht’s · 1 von ' + SCHRITTE.length, 'Spielen'); pauseAnzeige(); }
+  function spielStart() { neu(false); starten(); cv.focus(); }
+  // Standbild beim Ankommen: Figur in der Mitte, links ein Block und ein Problem, nichts bewegt sich
+  function standbild() {
+    neu(true); s.lauf = false; modus = 'still'; s.f.x = W * .42; s.weg = 600;   // Stadt etwas weiter, damit das Auto nicht vor der Figur steht
+    s.bloecke.push({ x: W * .16, y: BODEN - 170, l: LEISTUNGEN[0], i: 0, stoss: 0 });
+    problem('unsichtbar'); s.gegner[0].x = W * .27; s.gegner[0].zeigName = false;
+    karte('Schaffen Sie es durch Leipzig?', '', '', 'Spielen');
+  }
 
   var letzte = 0;
   var sichtbar = true;
@@ -472,7 +501,7 @@
 
   // ---------- Bedienung ----------
   cv.addEventListener('pointerdown', function (e) { e.preventDefault(); springen(); });
-  if (startKnopf) startKnopf.addEventListener('click', function () { if (s.demo) demoEnde(); starten(); cv.focus(); });
+  startKnopf.addEventListener('click', function () { if (modus === 'still') intro(); else if (modus === 'spiel' && s.pause) { pauseUm(false); cv.focus(); } else spielStart(); });
   function imBild() { var r = cv.getBoundingClientRect(); return r.bottom > 0 && r.top < window.innerHeight; }
   document.addEventListener('keydown', function (e) {
     if (!(e.code === 'Space' || e.code === 'ArrowUp' || e.code === 'KeyW')) return;
@@ -483,14 +512,16 @@
   function pauseAnzeige() {   // Play/Pause-Icon: spielt es gerade, zeigt der Button „Pause“, sonst „Spielen“
     var spielt = s.lauf && !s.pause && !s.aus;
     knopfPause.setAttribute('aria-pressed', spielt ? 'false' : 'true');
-    knopfPause.setAttribute('aria-label', s.demo ? (spielt ? 'Vorschau anhalten' : 'Vorschau fortsetzen') : spielt ? 'Spiel anhalten' : 'Spiel starten');
+    knopfPause.setAttribute('aria-label', modus === 'intro' ? (spielt ? 'Intro anhalten' : 'Intro fortsetzen') : spielt ? 'Spiel anhalten' : 'Spiel starten');
   }
   function pauseUm(an) {
     s.pause = an === undefined ? !s.pause : an;
-    if (!s.demo) meldung(s.pause ? 'Pause. Leertaste oder Tippen: weiter.' : '');
+    if (!s.demo) karte(s.pause ? 'Pause' : '', 'Leertaste oder Tippen: weiter.', '', 'Weiter');
     pauseAnzeige();
   }
   knopfPause.addEventListener('click', function () {
+    if (modus === 'still') { intro(); return; }
+    if (modus === 'bereit') { spielStart(); return; }
     if (s.demo) { s.pause = !s.pause; pauseAnzeige(); return; }
     if (!s.lauf || s.aus) { if (s.aus) neu(false); starten(); return; }
     pauseUm();
@@ -500,9 +531,8 @@
   document.addEventListener('visibilitychange', function () { if (document.hidden && s.lauf && !s.demo && !s.pause && !s.aus) pauseUm(true); });
   window.addEventListener('resize', groesse);
 
-  if (location.hash === '#test') window.spielTest = { zustand: function () { return s; }, schritt: schritt, zeichne: zeichne, springen: springen, demoEnde: demoEnde };   // nur zum Testen
+  if (location.hash === '#test') window.spielTest = { zustand: function () { return s; }, modus: function () { return modus; }, schritt: schritt, zeichne: zeichne, springen: springen, intro: intro };   // nur zum Testen
   groesse();
-  if (ruhig) { neu(false); meldung('Springen mit Leertaste oder Tippen. Probleme platt machen, Chancen ergreifen.'); if (startKnopf) startKnopf.hidden = false; }
-  else { neu(true); if (startKnopf) startKnopf.hidden = false; }
+  standbild();
   requestAnimationFrame(schleife);
 })();

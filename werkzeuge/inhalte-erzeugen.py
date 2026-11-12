@@ -26,8 +26,15 @@ GROESSE_HANDY = '(max-width: 767.98px) 15vw, min(15vw, 210px)'
 # --- Projekt-Titelbild (Cover) wie bei Behance (Anna 14.10.2026): Fläche in der Hausfarbe des Kunden, oben eine Kopfzeile
 #     „Kunde · Leistung · Jahr“ (redaktioneller Rahmen), Geräte gerade gestellt, bei allen Projekten gleiche Machart.
 #     Beim Überfahren scrollt der Bildschirm langsam nach unten (nur ohne „Bewegung reduzieren“).
-def cover(p, pre, c=None, kopfzeile=True):
+# Kacheln und Karten mit Projekten haben überall schwarzen Grund wie Jana Voigtmann (Anna 12.11.2026); die Hausfarbe
+# des Kunden bleibt nur auf der Projektseite selbst (cs-buehne, hausfarbe=True).
+KACHEL_GRUND = '#0e1011'
+
+
+def cover(p, pre, c=None, kopfzeile=True, hausfarbe=False):
     c, h = c or p['cover'], []
+    if not hausfarbe:
+        c = dict(c, farbe=KACHEL_GRUND, ton='dunkel')
     if kopfzeile:
         h.append(f'<p class="pc-zeile" aria-hidden="true"><span>{esc(p["kurzname"])}</span><span>{esc(p["kopf"])}</span><span>{esc(p["jahr"])}</span></p>')
     if c.get('desktop'):
@@ -71,15 +78,14 @@ def referenz_karten(liste, pre, kennung='ref', ansicht=None):
             '      </div>\n    </div>')
 
 
-# --- Startseite: Projekte als große Kacheln (Anna 12.11.2026, Vorlage zwetschke.de/arbeiten): Titelbild in der Hausfarbe
+# --- Startseite: Projekte als große Kacheln (Anna 12.11.2026, Vorlage zwetschke.de/arbeiten): Titelbild auf Schwarz (seit 12.11.2026, vorher Hausfarbe)
 #     füllt die ganze Kachel, unten Kunde klein und eine kurze Schlagzeile groß in Versalien (Feld „schlagzeile“ in projekte.json,
 #     gekürzt aus der freigegebenen Überblick-Aussage). Die ganze Kachel ist ein Link.
 def projekt_raster(liste, pre):
     k = []
     for p in liste:
         url, _, ziel = projekt_link(p, pre)
-        hell = ' pg-hell' if p['cover'].get('ton') == 'hell' else ''
-        k.append(f'      <li><a class="pg-karte{hell}" href="{url}"{ziel} style="--pc-farbe: {p["cover"]["farbe"]}"><span class="pg-bild">{cover(p, pre, kopfzeile=False)}</span>'
+        k.append(f'      <li><a class="pg-karte" href="{url}"{ziel} style="--pc-farbe: {KACHEL_GRUND}"><span class="pg-bild">{cover(p, pre, kopfzeile=False)}</span>'
                  f'<span class="pg-text"><span class="pg-kunde">{esc(p["kurzname"])}</span>'
                  f'<h3 class="pg-titel">{esc(p.get("schlagzeile") or p["kopf"])}</h3></span>'
                  f'<span class="pg-pfeil" aria-hidden="true">→</span></a></li>')
