@@ -3810,3 +3810,16 @@ html:not(.js) .hk-zeichen { display: none; }
 .br-zahl small { font-size: .38em; letter-spacing: .02em; }
 @media (max-width: 1024px) { .br-ref { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 599.98px) { .br-zahlen { padding: 28px 24px; gap: 0 20px; } .br-zahl strong { font-size: clamp(48px, 16vw, 72px); } }
+/* Mega-Menü (Anna 13.11.2026): Inhaltsbreite wie die Seite, „Weitere Leistungen“ als Zeile unten, Karten ruhig wie bei Apple */
+.mm-innen { max-width: none; grid-template-columns: minmax(0, 2.2fr) minmax(0, 1fr); gap: 56px; }
+.mm-bereiche-leistungen { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto auto; gap: 0 56px; }
+.mm-weitere-zeile { grid-column: 1 / -1; align-self: end; margin-top: 24px; }
+.kopf-nav .mm-weitere-zeile .mm-weitere { display: flex; flex-wrap: wrap; gap: 0 40px; border-top: var(--rahmen) solid var(--farbe-rahmen); }
+.kopf-nav .mm-weitere-zeile .mm-weitere a { border-top: 0; padding: 14px 0 0; }
+.mm-karte.mm-karte-dunkel { gap: 0; padding: 36px; justify-content: flex-start; }
+.mm-karte-icon { width: 80px; height: 80px; border-radius: 20px; background: var(--farbe-creme); padding: 12px; margin-bottom: 40px; }
+.mm-karte-dunkel .meta { margin: auto 0 10px; }
+.mm-karte-dunkel .mm-karte-titel { margin: 0 0 16px; }
+.mm-karte-dunkel > span:not([class]) { line-height: 1.55; margin: 0 0 28px; }
+.mm-karte-dunkel .button { margin-top: 0; }
+@media (min-width: 1024.02px) and (max-width: 1200px) { .mm-innen { gap: 32px; } .mm-bereiche-leistungen { gap: 0 32px; } }
