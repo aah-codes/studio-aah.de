@@ -173,6 +173,46 @@ t += figur(140, BODEN, .44, 30, -140, blick=1)
 BILDER['fuer-wen'] = ('Vier Karten wie ein aufgefächertes Kartenblatt, jede mit dem Symbol eines Problems; eine Figur zeigt darauf', t)
 
 
+# 10 Industrie & Maschinenbau (12.11.2026): Fabrikhalle mit Sheddach und Schornstein, ein Zahnrad (Zackenkreis);
+#    daneben die Website mit Produktkacheln; eine Figur zeigt darauf.
+t = boden()
+t += f'<rect x="60" y="360" width="330" height="240" fill="{SCH}"/>' + ''.join(f'<path d="M{60+i*82} 360 L{60+i*82} 290 L{142+i*82} 360 Z" fill="{SCH}"/>' for i in range(4))
+t += f'<rect x="320" y="170" width="34" height="190" fill="{SCH}"/>' + ''.join(f'<rect x="{90+i*72}" y="420" width="44" height="44" fill="{[GELB, WS, ROT, WS][i]}"/>' for i in range(4))
+t += f'<g fill="{ROT}"><circle cx="180" cy="200" r="58"/>' + ''.join(f'<circle cx="{180+66*math.cos(2*math.pi*i/12):.1f}" cy="{200+66*math.sin(2*math.pi*i/12):.1f}" r="13"/>' for i in range(12)) + f'</g><circle cx="180" cy="200" r="22" fill="{WS}"/>'
+t += browser(450, 110, 320, 280, zeilen(475, 170, [200, 160]) + ''.join(f'<rect x="{475+i*94}" y="225" width="80" height="80" rx="8" fill="{[GELB, PINK, ROSA][i]}"/>' for i in range(3)) + knopf(475, 325, 150, 40))
+t += figur(640, BODEN, .4, 30, -145, blick=-1)
+BILDER['industrie'] = ('Eine Fabrikhalle mit Sheddach, Schornstein und rotem Zahnrad, daneben die Website mit Produktkacheln; eine Figur zeigt darauf', t)
+
+# 11 Energie & Umwelttechnik: Windrad aus Balken, gelbe Sonne, Solarmodul aus schwarzen Quadraten; die Website erklärt und führt zur Anfrage.
+t = boden()
+t += f'<circle cx="300" cy="120" r="52" fill="{GELB}"/>'
+t += f'<rect x="132" y="230" width="16" height="370" fill="{SCH}"/>' + ''.join(f'<g transform="translate(140 230) rotate({w})"><rect x="-9" y="-150" width="18" height="150" rx="9" fill="{SCH}"/></g>' for w in (0, 120, 240)) + f'<circle cx="140" cy="230" r="16" fill="{WS}" stroke="{SCH}" stroke-width="6"/>'
+t += f'<g transform="translate(250 470) skewX(-18)">' + ''.join(f'<rect x="{c*52}" y="{r*44}" width="46" height="38" fill="{SCH}"/>' for c in range(3) for r in range(2)) + '</g>'
+t += f'<rect x="300" y="558" width="12" height="42" fill="{SCH}"/><rect x="380" y="558" width="12" height="42" fill="{SCH}"/>'
+t += browser(470, 140, 300, 260, zeilen(495, 200, [180, 140]) + f'<rect x="495" y="250" width="110" height="70" rx="8" fill="{ROSA}"/><rect x="620" y="250" width="125" height="70" rx="8" fill="{GELB}"/>' + knopf(495, 340, 150, 40))
+t += figur(690, BODEN, .36, 30, -30, blick=-1, rock=ROT)
+BILDER['energie'] = ('Ein Windrad, eine gelbe Sonne und ein Solarmodul, daneben eine Website, die das Angebot erklärt und zur Anfrage führt', t)
+
+# 12 Gesundheit & Praxen: Ein Haus mit Herz als Praxis, ein Handy mit Terminkalender (ein Feld gewählt); eine Figur hält das Handy.
+t = boden()
+t += f'<rect x="60" y="320" width="270" height="280" fill="{SCH}"/><path d="M40 330 L195 200 L350 330 Z" fill="{SCH}"/>'
+t += f'<g transform="translate(195 400) scale(.9)"><rect x="-34" y="-34" width="68" height="68" transform="rotate(45)" fill="{ROSA}"/><circle cx="-24" cy="-24" r="34" fill="{ROSA}"/><circle cx="24" cy="-24" r="34" fill="{ROSA}"/></g>'
+t += f'<rect x="160" y="500" width="70" height="100" fill="{WS}"/>'
+t += f'<rect x="470" y="110" width="200" height="340" rx="26" fill="{WS}" stroke="{SCH}" stroke-width="4"/>' + zeilen(495, 150, [120, 90])
+t += ''.join(f'<rect x="{495+c*38}" y="{210+r*38}" width="30" height="30" rx="5" fill="{GELB if (c, r) == (2, 1) else GR}"/>' for c in range(4) for r in range(4)) + knopf(495, 380, 150, 40)
+t += figur(390, BODEN, .4, 30, -140, blick=1) + figur(720, BODEN, .32, 30, -30, blick=-1, rock=PINK)
+BILDER['gesundheit'] = ('Eine Praxis als Haus mit Herz, daneben ein Handy mit Terminkalender und gewähltem Termin; zwei Figuren', t)
+
+# 13 Beratung & Dienstleistung: Zwei Figuren im Gespräch mit Sprechblasen; dahinter die Website mit Angebot und Termin-Button.
+t = boden()
+t += browser(400, 80, 360, 280, zeilen(425, 140, [240, 200, 260]) + f'<rect x="425" y="220" width="150" height="70" rx="8" fill="{PINK}"/><rect x="590" y="220" width="145" height="70" rx="8" fill="{GELB}"/>' + knopf(425, 305, 150, 40))
+t += f'<rect x="150" y="470" width="300" height="14" rx="7" fill="{SCH}"/><rect x="200" y="484" width="12" height="116" fill="{SCH}"/><rect x="388" y="484" width="12" height="116" fill="{SCH}"/>'
+t += f'<rect x="70" y="200" width="170" height="80" rx="20" fill="{ROSA}"/><path d="M120 280 L110 312 L150 280 Z" fill="{ROSA}"/>'
+t += f'<rect x="300" y="390" width="120" height="60" rx="18" fill="{GELB}"/>'
+t += figur(120, BODEN, .4, 30, -60, blick=1) + figur(520, BODEN, .4, 60, -30, blick=-1, rock=ROT)
+BILDER['beratung'] = ('Zwei Figuren im Gespräch am Tisch mit Sprechblasen, dahinter eine Website mit Angebot und Termin-Button', t)
+
+
 if __name__ == '__main__':
     ZIEL.mkdir(parents=True, exist_ok=True)
     for name, (titel, inhalt) in BILDER.items():

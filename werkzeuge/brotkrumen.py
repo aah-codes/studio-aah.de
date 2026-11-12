@@ -19,7 +19,7 @@ def ziele():
     for p in FW['probleme']:
         yield p['pfad'], [FUER_WEN], p['meta']
     for b in FW['branchen']:
-        yield b['pfad'], [FUER_WEN], b['name']
+        yield b['pfad'], [('Branchen', 'fuer-wen/')], b['name']   # Menüpunkt heißt seit 12.11.2026 „Branchen“
     yield FW['selbsttest']['pfad'], [FUER_WEN], 'Selbsttest'
     yield FW['ki_rechner']['pfad'], [FUER_WEN], 'KI-Zeitrechner'
     yield FW['produkt']['pfad'], [LEISTUNGEN], 'Employer Branding'

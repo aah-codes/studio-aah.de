@@ -46,23 +46,23 @@ def preisseite(t):
     return einsetzen(einsetzen(t, 'GLOSSAR', glossar()), 'PREISLISTEN', preislisten)
 
 
+# Eine Zeile je Kernkompetenz (Anna 12.11.2026: „immer nur eine Zeile unter die Überschrift“), gekürzt aus den Kartentexten
+KURZ = {'brand': 'Eine Marke, die bei Ihrer Zielgruppe ankommt.', 'ui-ux': 'Digitale Produkte, die Nutzer:innen verstehen.',
+        'website': 'Klares Design, individuell und responsiv.', 'marketing': 'Sichtbar werden, wo Ihre Kund:innen sind.',
+        'ki': 'Welche KI Ihrem Unternehmen wirklich hilft.', 'retainer': 'Ihre Website wächst nach dem Launch weiter.'}
+
+
 def start_leistungen():
-    """Startseite: fünf Kernkompetenzen in der Reihenfolge des Spiels, dazu Retainer hervorgehoben (Anna 12.11.2026:
-    Retainer ist Kernkompetenz, langfristige Betreuung); die übrigen Leistungen als eine Zeile darunter.
-    Ohne Kundenbilder (Anna 13.10.2026): nur das Clay-Icon."""
+    """Startseite: fünf Kernkompetenzen in der Reihenfolge des Spiels und Retainer, je Form-Icon, Name und eine Zeile;
+    drei nebeneinander (Anna 12.11.2026)."""
     icons = {k: v['icon'] for k, v in lade_json('leistungen-inhalte.json').items() if isinstance(v, dict) and 'icon' in v}
     nach_id = {k['id']: k for k in daten['startseite']}
-    def karte(k, extra=''):
-        return (f'<a class="ls-karte{extra}" href="{k["link"]}" id="k-{k["id"]}"><span class="ls-bild"><img src="{icons[k["id"]]}" alt="" width="400" height="400" loading="lazy"></span>'
-                f'<span class="ls-karte-titel">{esc(k["titel"])}</span><span class="ls-karte-text">{esc(k["text"])}</span></a>')
-    kern = ''.join(karte(nach_id[i]) for i in ('brand', 'ui-ux', 'website', 'marketing', 'ki'))
-    kern += karte(nach_id['retainer'], ' ls-hervor').replace('<span class="ls-karte-titel">', '<span class="meta">Nach dem Launch</span><span class="ls-karte-titel">', 1)
-    weitere = ' '.join(f'<a class="textlink" href="{nach_id[i]["link"]}">{esc(nach_id[i]["titel"])}{PFEIL}</a>' for i in ('print', 'illustration', 'motion'))
+    karten = ''.join(f'<a class="ls-karte" href="{nach_id[i]["link"]}" id="k-{i}"><span class="ls-bild"><img src="{icons[i]}" alt="" width="400" height="400" loading="lazy"></span>'
+                     f'<span class="ls-karte-titel">{esc(nach_id[i]["titel"])}</span><span class="ls-karte-text">{esc(KURZ[i])}</span></a>'
+                     for i in ('brand', 'ui-ux', 'website', 'marketing', 'ki', 'retainer'))
     return ('  <section class="start-leistungen" aria-labelledby="leistungen">\n    <div class="sektionskopf"><p class="meta">Kernkompetenzen</p>'
             '<h2 class="gr-xxl" id="leistungen">Leistungen</h2></div>\n'
-            f'    <div class="ls-raster ls-kern">{kern}</div>\n'
-            f'    <p class="ls-weitere">Außerdem: {weitere} <a class="textlink" href="preise/#rechner">Kostenrechner{PFEIL}</a></p>\n'
-            f'    <p class="ls-grundsatz"><a class="textlink" href="service/markenbildung/#corporate-identity">Grundlage für alles, was ich gestalte: die Corporate Identity{PFEIL}</a></p>\n  </section>')
+            f'    <div class="ls-raster ls-kern">{karten}</div>\n  </section>')
 
 
 # --- Startseite, Hero: Leistungen als Kategorie-Leiste wie bei Dribbble (Anna 13.10.2026) ---
