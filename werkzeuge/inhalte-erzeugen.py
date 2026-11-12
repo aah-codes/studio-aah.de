@@ -253,8 +253,8 @@ def kennzahlen(klasse='fakten hero-fakten', einrueck='    '):
 
 if __name__ == '__main__':
     seiten = {
-        'index.html': [('PROJEKTE', lambda: projekt_raster([x for x in PROJEKTE if x.get('case')], '')), ('LINKEDIN', lambda: linkedin_leiste('')), ('FUERWEN', lambda: fuer_wen('')), ('STIMMEN', lambda: stimmen(STIMMEN, '')),
-                       ('BLOG', lambda: blog(BLOG[:4], '', 'blog/')), ('KENNZAHLEN', lambda: kennzahlen())],
+        'index.html': [('PROJEKTE', lambda: projekt_raster([x for x in PROJEKTE if x.get('case')], '')), ('LINKEDIN', lambda: linkedin_leiste('')), ('STIMMEN', lambda: stimmen(STIMMEN, '')),
+                       ('KENNZAHLEN', lambda: kennzahlen())],   # „Für wen“ und Blog-Karten seit 12.11.2026 nicht mehr auf der Startseite
         'profil/index.html': [('STIMMEN', lambda: stimmen(STIMMEN, '../')), ('BLOG', lambda: blog(BLOG[:4], '../', '../blog/')),
                               ('KENNZAHLEN', lambda: kennzahlen('fakten', '      '))],
         'blog/index.html': [('BLOG', lambda: blog_themen())],

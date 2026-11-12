@@ -47,16 +47,21 @@ def preisseite(t):
 
 
 def start_leistungen():
-    """Startseite: Leistungen als Karten (9 Stück) mit Chips darüber.
-    Ohne Kundenbilder (Anna 13.10.2026: Kunden stehen in den Success Stories): nur das Clay-Icon, ohne Formen."""
+    """Startseite: fünf Kernkompetenzen in der Reihenfolge des Spiels, dazu Retainer hervorgehoben (Anna 12.11.2026:
+    Retainer ist Kernkompetenz, langfristige Betreuung); die übrigen Leistungen als eine Zeile darunter.
+    Ohne Kundenbilder (Anna 13.10.2026): nur das Clay-Icon."""
     icons = {k: v['icon'] for k, v in lade_json('leistungen-inhalte.json').items() if isinstance(v, dict) and 'icon' in v}
-    chips = ''.join(f'<a href="#k-{k["id"]}">{esc(k["titel"])}</a>' for k in daten['startseite'])
-    karten = ''.join(f'<a class="ls-karte" href="{k["link"]}" id="k-{k["id"]}"><span class="ls-bild"><img src="{icons[k["id"]]}" alt="" width="400" height="400" loading="lazy"></span>'
-                     f'<span class="ls-karte-titel">{esc(k["titel"])}</span><span class="ls-karte-text">{esc(k["text"])}</span></a>' for k in daten['startseite'])
-    return ('  <section class="start-leistungen" aria-labelledby="leistungen">\n    <div class="sektionskopf"><p class="meta">Was ich mache</p>'
+    nach_id = {k['id']: k for k in daten['startseite']}
+    def karte(k, extra=''):
+        return (f'<a class="ls-karte{extra}" href="{k["link"]}" id="k-{k["id"]}"><span class="ls-bild"><img src="{icons[k["id"]]}" alt="" width="400" height="400" loading="lazy"></span>'
+                f'<span class="ls-karte-titel">{esc(k["titel"])}</span><span class="ls-karte-text">{esc(k["text"])}</span></a>')
+    kern = ''.join(karte(nach_id[i]) for i in ('brand', 'ui-ux', 'website', 'marketing', 'ki'))
+    kern += karte(nach_id['retainer'], ' ls-hervor').replace('<span class="ls-karte-titel">', '<span class="meta">Nach dem Launch</span><span class="ls-karte-titel">', 1)
+    weitere = ' '.join(f'<a class="textlink" href="{nach_id[i]["link"]}">{esc(nach_id[i]["titel"])}{PFEIL}</a>' for i in ('print', 'illustration', 'motion'))
+    return ('  <section class="start-leistungen" aria-labelledby="leistungen">\n    <div class="sektionskopf"><p class="meta">Kernkompetenzen</p>'
             '<h2 class="gr-xxl" id="leistungen">Leistungen</h2></div>\n'
-            f'    <nav class="leistungs-chips" aria-label="Leistungen">{chips}<a href="preise/#rechner">Kostenrechner →</a></nav>\n'
-            f'    <div class="ls-raster">{karten}</div>\n'
+            f'    <div class="ls-raster ls-kern">{kern}</div>\n'
+            f'    <p class="ls-weitere">Außerdem: {weitere} <a class="textlink" href="preise/#rechner">Kostenrechner{PFEIL}</a></p>\n'
             f'    <p class="ls-grundsatz"><a class="textlink" href="service/markenbildung/#corporate-identity">Grundlage für alles, was ich gestalte: die Corporate Identity{PFEIL}</a></p>\n  </section>')
 
 

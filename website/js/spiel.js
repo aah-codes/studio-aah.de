@@ -6,7 +6,10 @@
        Funkstille → neue Kunden · Unsichtbar (Auge zu) → Auge geht auf, Reichweite · Tool-Chaos → Zeit
        Zeitfresser → Zeit · Ebbe in der Kasse → Geld. Seitlich dagegen kostet ein Leben (drei Leben).
    – Die Fachkraft läuft weg; gefangen: ein Mitarbeiter mehr, die Figur wächst und hält einen Treffer aus.
-   – Schwarze Blöcke von unten anstoßen: Leistung fliegt heraus bis in die Schrift. Alle fünf gefunden: nächstes Level.
+   – Schwarze Blöcke von unten anstoßen: Leistung fliegt heraus. Alle fünf gefunden: das nächste Geschäftsjahr beginnt (Anna 12.11.2026:
+     „anpassen an die Realität“ statt Level; Start 2027). Das Spiel hält an, die Card zeigt das neue Jahr und eine Spielregel.
+   – Im Bild nur kurze Ausrufe (WOW!, AAH!, OHO!); was man gewonnen oder verloren hat, sagt bei eingeschaltetem Ton eine Stimme
+     (Sprachausgabe des Geräts, nur lokale Stimmen, nichts wird gesendet). Anna 12.11.2026: „zu schnell, kann ich nicht lesen“.
    – Das Spiel läuft weiter, bis die Leben weg sind; dann „Game over“ mit Play again.
    – Beim Ankommen steht alles still (Anna 12.11.2026, ersetzt die laufende Demo): Standbild und rechts eine Card mit Überschrift
      und Spielen-Button. „Spielen“ startet zuerst ein Intro, das in der Card Schritt für Schritt erklärt, was man tun kann
@@ -26,13 +29,31 @@
     { name: 'KI & Digitalisierung', form: 'dreieck', farbe: F.gelb }];
   // Die fünf Probleme und was aus ihnen wird
   var PROBLEME = [
-    { art: 'funkstille', name: 'Funkstille', b: 40, h: 46, lohn: 'kunden', menge: 1, text: '+1 Kunde' },
-    { art: 'unsichtbar', name: 'Unsichtbar', b: 44, h: 40, lohn: 'reichweite', menge: 250, text: '+250 Reichweite' },
-    { art: 'toolchaos', name: 'Tool-Chaos', b: 40, h: 40, lohn: 'zeit', menge: 2, text: '+2 Stunden' },
-    { art: 'zeitfresser', name: 'Zeitfresser', b: 48, h: 44, lohn: 'zeit', menge: 3, text: '+3 Stunden' },
-    { art: 'ebbe', name: 'Ebbe in der Kasse', b: 44, h: 38, lohn: 'euro', menge: 500, text: '+500 €' },
+    { art: 'funkstille', name: 'Funkstille', b: 40, h: 46, lohn: 'kunden', menge: 1, text: '+1 Kunde', sag: ['Funkstille geknackt. Ein neuer Kunde ruft an.', 'Ring, ring. Da ist ein neuer Kunde.'] },
+    { art: 'unsichtbar', name: 'Unsichtbar', b: 44, h: 40, lohn: 'reichweite', menge: 250, text: '+250 Reichweite', sag: ['Augen auf. Plötzlich schauen zweihundertfünfzig Leute hin.', 'Sichtbar! Mehr Reichweite.'] },
+    { art: 'toolchaos', name: 'Tool-Chaos', b: 40, h: 40, lohn: 'zeit', menge: 2, text: '+2 Stunden', sag: ['Tool-Chaos aufgeräumt. Zwei Stunden gespart.', 'Ordnung im Werkzeugkasten. Zwei Stunden mehr.'] },
+    { art: 'zeitfresser', name: 'Zeitfresser', b: 48, h: 44, lohn: 'zeit', menge: 3, text: '+3 Stunden', sag: ['Zeitfresser satt. Drei Stunden zurück.', 'Erwischt! Der frisst Ihnen keine Zeit mehr.'] },
+    { art: 'ebbe', name: 'Ebbe in der Kasse', b: 44, h: 38, lohn: 'euro', menge: 500, text: '+500 €', sag: ['Ebbe vorbei. Fünfhundert Euro in der Kasse.', 'Kling, kling. Die Kasse füllt sich.'] },
     // Der Wettbewerb rennt Ihnen entgegen: draufspringen hält den Kunden (Stammkunde), drüberspringen lässt ihn einen Kunden wegschnappen
-    { art: 'konkurrenz', name: 'Wettbewerb', b: 34, h: 62, lohn: 'stammkunden', menge: 1, text: '+1 Stammkunde' }];
+    { art: 'konkurrenz', name: 'Wettbewerb', b: 34, h: 62, lohn: 'stammkunden', menge: 1, text: '+1 Stammkunde', sag: ['Wettbewerb abgehängt. Ihr Kunde bleibt Ihnen treu.', 'Vorbeigezogen. Ein Stammkunde mehr.'] }];
+  // ---------- Stimme ----------
+  // Spricht nur bei eingeschaltetem Ton und nur mit einer Stimme, die auf dem Gerät liegt (localService), damit kein Text an fremde Server geht
+  var stimme = null;
+  function stimmeSuchen() {
+    if (!window.speechSynthesis) return;
+    var v = speechSynthesis.getVoices().filter(function (x) { return /^de/i.test(x.lang) && x.localService; });
+    stimme = v.filter(function (x) { return x.default; })[0] || v[0] || null;
+  }
+  if (window.speechSynthesis) { stimmeSuchen(); speechSynthesis.addEventListener && speechSynthesis.addEventListener('voiceschanged', stimmeSuchen); }
+  function eins(liste) { return liste[Math.floor(Math.random() * liste.length)]; }
+  function sprich(text, wichtig) {
+    if (!tonAn || !stimme || !text) return;
+    try {
+      if (speechSynthesis.speaking) { if (!wichtig) return; speechSynthesis.cancel(); }
+      var u = new SpeechSynthesisUtterance(text); u.voice = stimme; u.lang = stimme.lang; u.rate = 1.08; speechSynthesis.speak(u);
+    } catch (e) {}
+  }
+  var LEBEN_WORT = ['keine Leben', 'ein Leben', 'zwei Leben'];
   var chips = wurzel.querySelectorAll('[data-leistung]');
   // Zähler je Chip: wie oft die Lösung in diesem Spiel schon ergriffen wurde
   var zahlen = Array.prototype.map.call(chips, function (ch) {
@@ -66,7 +87,7 @@
   try { tonAn = localStorage.getItem('spiel-ton') === 'an'; } catch (e) {}
   function tonKnopf() { knopfTon.setAttribute('aria-pressed', tonAn ? 'true' : 'false'); knopfTon.setAttribute('aria-label', tonAn ? 'Ton ausschalten' : 'Ton einschalten'); }
   tonKnopf();
-  knopfTon.addEventListener('click', function () { tonAn = !tonAn; tonKnopf(); try { localStorage.setItem('spiel-ton', tonAn ? 'an' : 'aus'); } catch (e) {} });
+  knopfTon.addEventListener('click', function () { tonAn = !tonAn; tonKnopf(); if (!tonAn && window.speechSynthesis) speechSynthesis.cancel(); try { localStorage.setItem('spiel-ton', tonAn ? 'an' : 'aus'); } catch (e) {} });
   function ton(folge) {
     if (!tonAn || !s || s.demo) return;
     try {
@@ -293,7 +314,7 @@
   }
   function anzeige() {   // oben nur die drei Leben (Anna 12.11.2026: Geld raus); die Lösungen zählen die Chips unter dem Spiel
     for (var n = 0; n < 3; n++) { if (n < s.leben) herz(26 + n * 26, 22, 10, F.rot); else { c.globalAlpha = .2; herz(26 + n * 26, 22, 10, F.gr); c.globalAlpha = 1; } }
-    if (s.level > 1) { c.fillStyle = F.sch; c.font = '700 14px Manrope, system-ui, sans-serif'; c.fillText('Level ' + s.level, 104, 27); }
+    c.fillStyle = F.sch; c.font = '700 14px Manrope, system-ui, sans-serif'; c.fillText('Geschäftsjahr ' + (2026 + s.level), 104, 27);
   }
   function zeichne() {
     c.setTransform(cv.width / W, 0, 0, cv.height / H, 0, 0);
@@ -314,15 +335,6 @@
       c.save(); c.translate(b.x, b.y); c.rotate(-.06); c.fillStyle = F.sch; c.fillRect(-bw / 2, -30, bw, 40); c.fillStyle = F.ws; c.fillText(b.text, -bw / 2 + 10, 2); c.restore();
     });
     anzeige();
-    if (s.banner) {   // Level-Wechsel: großes Schild in der Mitte
-      var a = Math.min(1, (s.banner.bis - s.t) / 20); c.globalAlpha = a;
-      c.font = '64px Anton, Impact, sans-serif'; c.textAlign = 'center';
-      var bw = Math.max(c.measureText(s.banner.titel).width + 60, 460);
-      c.fillStyle = F.sch; c.fillRect(W / 2 - bw / 2, 52, bw, 132);
-      c.fillStyle = F.ws; c.fillText(s.banner.titel, W / 2, 118);
-      c.font = '600 16px Manrope, system-ui, sans-serif'; c.fillStyle = F.gelb; c.fillText(s.banner.zeile, W / 2, 146);
-      c.fillStyle = F.ws; c.fillText(s.banner.regel, W / 2, 170); c.textAlign = 'left'; c.globalAlpha = 1;
-    }
   }
 
   // ---------- Spiel ----------
@@ -340,10 +352,10 @@
   function starten() { s.lauf = true; modus = 'spiel'; karte(''); pauseAnzeige(); }
   function treffer() {
     if (s.f.blink > 0) return;
-    if (s.gross) { s.gross = false; s.f.blink = 90; ton(TON.schrumpfen); blase('OHO!', s.f.x, s.f.y - 140); return; }
+    if (s.gross) { s.gross = false; s.f.blink = 90; ton(TON.schrumpfen); blase('OHO!', s.f.x, s.f.y - 140); sprich(eins(['Puh. Die Fachkraft hat das abgefangen.', 'Glück gehabt: Ihr Team hat den Treffer weggesteckt.']), true); return; }
     s.leben--; s.f.blink = 100;
-    if (s.leben > 0) { ton(TON.autsch); blase('OHO!', s.f.x, s.f.y - 110); return; }
-    s.aus = true; ton(TON.ende); blase('OHO!', s.f.x, s.f.y - 110); bilanz();
+    if (s.leben > 0) { ton(TON.autsch); blase('OHO!', s.f.x, s.f.y - 110); sprich(eins(['Autsch, erwischt.', 'Uff, das tat weh.', 'Oha, voll reingelaufen.']) + ' Noch ' + LEBEN_WORT[s.leben] + '.', true); return; }
+    s.aus = true; ton(TON.ende); blase('OHO!', s.f.x, s.f.y - 110); sprich('Game over. Aber in Ihnen steckt noch mehr.', true); bilanz();
   }
   function bilanz() {   // Ende: nur Botschaft und Play again; die Zahlen stehen oben rechts im Spiel
     bilanzBox.hidden = false; pauseAnzeige();
@@ -352,26 +364,25 @@
     var p = PROBLEME.filter(function (x) { return x.art === g.art; })[0];
     s.punkte[p.lohn] += p.menge;
     var farbe = p.lohn === 'euro' ? F.gelb : p.lohn === 'reichweite' ? F.bl : p.lohn === 'kunden' || p.lohn === 'stammkunden' ? F.pink : F.sch;
-    lohn(p.text, g.x + g.b / 2, BODEN - g.h - 50, farbe);
+    sprich(eins(p.sag));
   }
   function leistungHoch(b) {
     s.gaben.push({ l: b.l, i: b.i, x: b.x + 21, y: b.y - 24, vy: -6 });
     ton(TON.block); funken(b.x + 21, b.y, 10);
     if (s.demo) return;
-    var r = cv.getBoundingClientRect(), sx = r.width / W, sy = r.height / H;
-    var el = document.createElement('span'); el.className = 'spiel-flug spiel-flug-' + b.l.form; el.style.setProperty('--f', b.l.farbe);
-    el.style.left = (r.left + window.scrollX + (b.x + 21) * sx) + 'px'; el.style.top = (r.top + window.scrollY + b.y * sy) + 'px';
-    el.setAttribute('aria-hidden', 'true'); el.textContent = b.l.name;
-    document.body.appendChild(el); setTimeout(function () { el.remove(); }, 1600);
+    sprich(eins(['Chance ergriffen: ', 'Zugegriffen: ', 'Rein damit: ']) + b.l.name.replace('&', 'und').replace('UI/UX', 'U I und U X') + '.');
   }
-  // Die Spielregeln, eine je Level
+  // Die Spielregeln, eine je Geschäftsjahr
   var REGELN = ['Regel 1: Wer nicht gesehen wird, verliert.', 'Regel 2: Wer alles allein macht, verliert Zeit.',
     'Regel 3: Wer gute Leute hält, gewinnt auf Dauer.', 'Regel 4: Der Wettbewerb schläft nicht.', 'Regel 5: Treue Kunden sind mehr wert als neue.'];
-  function naechstesLevel() {
+  function naechstesLevel() {   // Geschäftsjahr geschafft: Spiel hält an, die Card zeigt das neue Jahr, Weiter geht es mit dem Button
     s.level++; s.gesammelt = []; s.punkte.euro += 1000;
     chips.forEach(function (ch) { ch.classList.remove('ist-gesammelt'); });
     ton(TON.level); funken(s.f.x, s.f.y - 80, 30);
-    s.banner = { bis: s.t + 170, titel: 'Level ' + s.level + '!', zeile: 'Alle fünf Lösungen gefunden.', regel: REGELN[(s.level - 2) % REGELN.length] };
+    var jahr = 2026 + s.level, regel = REGELN[(s.level - 2) % REGELN.length];
+    s.pause = true; pauseAnzeige();
+    karte('Willkommen in ' + jahr + '!', 'Alle fünf Lösungen angepackt, mit Partnerin an Ihrer Seite. ' + regel, 'Geschäftsjahr ' + (jahr - 1) + ' geschafft', 'Weiter');
+    sprich(eins(['Stark!', 'Sauber!', 'Na bitte!']) + ' Sie haben Marke, U X, Website, Vertrieb und KI angepackt und sich eine Partnerin dazugeholt. Willkommen im Geschäftsjahr ' + jahr + '. ' + regel, true);
     s.naechstG = Math.max(s.naechstG, 190); s.gegner = s.gegner.filter(function (g) { return g.x < s.f.x; });
     if (!s.demo) document.dispatchEvent(new Event('konfetti'));
   }
@@ -380,7 +391,6 @@
     s.t++; s.tempo = Math.min(6.2, 3.5 + s.t / 3000 + (s.level - 1) * .3); s.weg += s.tempo;
     var k = s.gross ? 1.35 : 1, fh = 98 * k, fb = 30 * k;
     if (s.demo) demoSchritt();
-    if (s.banner && s.t > s.banner.bis) s.banner = null;
     var mitte = W * .42; s.f.x += (mitte - s.f.x) * .06;                       // schnell zur Mitte
     s.f.vy += .8; s.f.y += s.f.vy; if (s.f.blink > 0) s.f.blink--;
     if (s.f.y >= BODEN) { s.f.y = BODEN; s.f.vy = 0; s.f.amBoden = true; }
@@ -439,7 +449,7 @@
     s.gegner.forEach(function (g) {   // Wettbewerb ist vorbei, ohne dass man ihn überholt hat: ein Kunde ist weg
       if (g.art === 'konkurrenz' && !g.platt && !g.vorbei && g.x + g.b < s.f.x - 40) {
         g.vorbei = true;
-        if (s.punkte.kunden > 0 && !s.demo) { s.punkte.kunden--; lohn('Kunde weg!', s.f.x - 60, BODEN - 120, F.gr); ton(TON.schrumpfen); }
+        if (s.punkte.kunden > 0 && !s.demo) { s.punkte.kunden--; blase('OHO!', s.f.x - 60, BODEN - 120); ton(TON.schrumpfen); sprich(eins(['Mist. Der Wettbewerb hat Ihnen einen Kunden geschnappt.', 'Zu langsam. Ein Kunde ist zum Wettbewerb gewechselt.'])); }
       }
     });
     s.gegner = s.gegner.filter(function (g) { return g.x > -70 && g.platt < 1.4; });
@@ -452,7 +462,7 @@
       if (Math.abs(kr.x - s.f.x) < 28 && Math.abs((BODEN - kr.sprung) - s.f.y) < 60) {
         s.kraft = null; s.bekannt.kraft = true; s.naechstK = 900; s.punkte.fachkraefte++;
         if (!s.gross) { s.gross = true; ton(TON.wachsen); } else ton(TON.sammeln);
-        blase('AAH! Fachkraft gefunden', s.f.x + 80, s.f.y - 150); lohn('+1 Fachkraft', s.f.x, s.f.y - 190, F.gelb); funken(s.f.x, s.f.y - 60, 20);
+        blase('AAH!', s.f.x + 60, s.f.y - 150); funken(s.f.x, s.f.y - 60, 20); sprich(eins(['Fachkraft an Bord. Ihr Team wird stärker.', 'Gute Leute gefunden. Die bleiben.']), true);
       } else if (kr.x < -40) { s.kraft = null; s.naechstK = 450; }
     }
     s.funken.forEach(function (p) { p.x += p.vx; p.y += p.vy; p.vy += .35; p.l--; }); s.funken = s.funken.filter(function (p) { return p.l > 0; });
@@ -466,14 +476,14 @@
   var SCHRITTE = [[0, 'Springen', 'Mit der Leertaste, dem Pfeil nach oben oder per Tippen.'],
     [220, 'Probleme platt machen', 'Springen Sie auf die Probleme und den Wettbewerb. Dann werden sie zu Kunden, Reichweite, Zeit und Geld.'],
     [470, 'Chancen ergreifen', 'Stoßen Sie die schwarzen Blöcke von unten an. Darin stecken die fünf Lösungen.'],
-    [720, 'Fachkraft fangen', 'Die gelbe Fachkraft macht Ihr Team stärker. Alle fünf Lösungen gefunden: nächstes Level. Sie haben drei Leben.']];
+    [720, 'Fachkraft fangen', 'Die gelbe Fachkraft macht Ihr Team stärker. Alle fünf Lösungen gefunden: ein neues Geschäftsjahr beginnt. Sie haben drei Leben.']];
   var INTRO_ENDE = 960;
   function problem(art) {
     var v = PROBLEME.filter(function (x) { return x.art === art; })[0];
     var g = Object.assign({ x: W + 30, platt: 0, phase: 1 }, v); g.zeigName = true; s.gegner.push(g);
   }
   function demoSchritt() {
-    SCHRITTE.forEach(function (d, i) { if (s.t === d[0] + 1) karte(d[1], d[2], 'So geht’s · ' + (i + 1) + ' von ' + SCHRITTE.length, 'Spielen'); });
+    SCHRITTE.forEach(function (d, i) { if (s.t === d[0] + 1) { karte(d[1], i === SCHRITTE.length - 1 ? d[2] : '', 'So geht’s · ' + (i + 1) + ' von ' + SCHRITTE.length, 'Spielen'); sprich(d[1] + '. ' + d[2], true); } });
     if (s.t === 40) problem('toolchaos');
     if (s.t === 250) problem('funkstille');
     if (s.t === 330) problem('konkurrenz');
@@ -485,7 +495,7 @@
     if ((nah || blockNah) && s.f.amBoden) { s.f.vy = -14; s.f.amBoden = false; }
     if (s.t >= INTRO_ENDE && s.f.amBoden) { s.lauf = false; modus = 'bereit'; karte('Alles klar?', 'Dann sind Sie dran.', '', 'Spielen'); pauseAnzeige(); }
   }
-  function intro() { neu(true); s.lauf = true; modus = 'intro'; karte(SCHRITTE[0][1], SCHRITTE[0][2], 'So geht’s · 1 von ' + SCHRITTE.length, 'Spielen'); pauseAnzeige(); }
+  function intro() { neu(true); s.lauf = true; modus = 'intro'; karte(SCHRITTE[0][1], '', 'So geht’s · 1 von ' + SCHRITTE.length, 'Spielen'); sprich(SCHRITTE[0][1] + '. ' + SCHRITTE[0][2], true); pauseAnzeige(); }
   function spielStart() { neu(false); starten(); cv.focus(); }
   // Standbild beim Ankommen: Figur in der Mitte, links ein Block und ein Problem, nichts bewegt sich
   function standbild() {
