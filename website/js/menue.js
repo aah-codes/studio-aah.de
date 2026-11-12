@@ -156,9 +156,9 @@
   })();
 
   // Bereichsleiste (Leistungsseiten, Blog, Preisseite): markiert den Abschnitt, in dem man gerade ist (schiebt nur die Leiste, nie die Seite)
-  (() => {
-    const leiste = document.querySelector('.preis-leiste');
-    if (!leiste || !('IntersectionObserver' in window)) return;
+  // Auch das Inhaltsverzeichnis „Leistung im Überblick“ (.anker-spur, Anna 12.11.2026)
+  document.querySelectorAll('.preis-leiste, .anker-spur').forEach((leiste) => {
+    if (!('IntersectionObserver' in window)) return;
     const links = [...leiste.querySelectorAll('a[href^="#"]')];
     const ziele = links.map((a) => document.querySelector(a.getAttribute('href'))).filter(Boolean);
     const beob = new IntersectionObserver((eintraege) => {
@@ -170,7 +170,7 @@
       });
     }, { rootMargin: '-35% 0px -60% 0px' });
     ziele.forEach((z) => beob.observe(z));
-  })();
+  });
 
   // Erklärfilm Corporate Identity (Brand-Seite): startet, wenn er ins Bild kommt; „Noch einmal ansehen“ startet neu.
   // Bei „Bewegung reduzieren“ steht sofort das fertige Bild.

@@ -3,12 +3,13 @@
 # (profil/ bzw. service/webdesign/); danach setzt kopf-fuss.py sie ohnehin neu.
 # Aufruf im Repository-Ordner:  python3 werkzeuge/fuer-wen-seiten.py
 import runpy
-from gemeinsam import PFEIL, STUDIO_ID, WEBSITE, WERKZEUGE, esc, lade_json, seitenrahmen
+from gemeinsam import ankerleiste, lade_skript, PFEIL, STUDIO_ID, WEBSITE, WERKZEUGE, esc, lade_json, seitenrahmen
 
 # Hero-Illustrationen (werkzeuge/grafiken/fuer-wen-hero.py, Anna 10.11.2026); Titel dienen als Alternativtext
 BILD_ALT = {k: v[0] for k, v in runpy.run_path(str(WERKZEUGE / 'grafiken' / 'fuer-wen-hero.py'))['BILDER'].items()}
 
 D = lade_json('inhalte/fuer-wen-seiten.json')
+I = lade_skript('inhalte-erzeugen.py')   # Projekt-Cards und Stimmen wie auf der Startseite
 BASIS_URL = 'https://studio-aah.de/'
 PROBLEME = {p['id']: p for p in D['probleme']}
 VORLAGE = {1: 'profil/index.html', 2: 'service/webdesign/index.html'}
@@ -139,6 +140,53 @@ def startseite_branchen():
     return '    <ul class="br-raster">\n' + kopf + branchen_kacheln(D['branchen'], '') + '    </ul>'
 
 
+def flip_bilder():
+    """Bildchen der Flipcard-Rückseiten von der Startseite (Ziel-Adresse → SVG), damit sie überall gleich sind."""
+    import re
+    t = (WEBSITE / 'index.html').read_text(encoding='utf-8')
+    bilder = {}
+    for li in re.findall(r'<li class="haken-karte hk-flip">.*?</li>', t, re.S):
+        svg = re.search(r'<svg class="hk-bild.*?</svg>', li, re.S)
+        ziel = re.search(r'href="([^"]+)"', li)
+        if svg and ziel: bilder[ziel.group(1)] = svg.group(0)
+    return bilder
+
+
+def flipkarten(eintraege, pre):
+    """Drei Problem-Karten als Flipcards wie auf der Startseite (Anna 12.11.2026)."""
+    bilder = flip_bilder()
+    ersatz = list(bilder.values())[-1] if bilder else ''
+    h = ['    <ol class="haken-karten haken-start haken-gelegt">']
+    for n, e in enumerate(eintraege, 1):
+        h.append(f'      <li class="haken-karte hk-flip"><div class="hk-innen"><div class="hk-vorne"><span class="hk-nr">{n:02d}</span><h3>{esc(e["titel"])}</h3>'
+                 f'<span class="hk-zeichen" aria-hidden="true">↻</span></div><div class="haken-nutzen hk-hinten">{bilder.get(e["href"], ersatz)}'
+                 f'<span class="meta">Mit mir an Ihrer Seite</span><p>{esc(e["text"])}</p>'
+                 f'<a class="textlink" href="{link(pre, e["href"])}">{esc(e["linktext"])}{PFEIL}</a></div></div></li>')
+    h.append('    </ol>')
+    return '\n'.join(h)
+
+
+def projekte_abschnitt(b, pre):
+    """Referenzen wie auf der Startseite: Projekt-Cards, darunter Stimmen (Anna 12.11.2026: statt Beleg-Box).
+    Bauer nur bei Bau (Anna 12.11.2026); Branchen ohne eigenes Projekt zeigen keine Referenz."""
+    namen = b.get('projekte', [])
+    liste = [p for n in namen for p in I.PROJEKTE if n in (p.get('slug'), p.get('kurzname'))]
+    if not liste: return ''
+    stimmen = [x for n in b.get('stimmen', []) for x in I.STIMMEN if x['name'] == n]
+    st = f'\n    <div class="stimmen br-stimmen">\n{I.stimmen(stimmen, pre)}\n    </div>' if stimmen else ''
+    return ('  <section class="start-projekte br-projekte" id="referenz" aria-labelledby="referenzen-titel">\n'
+            '    <div class="sektionskopf sk-mitte"><p class="meta">Referenzen</p><h2 class="gr-xxl" id="referenzen-titel">Projekte</h2></div>\n'
+            f'    <div class="referenz-rahmen">\n{I.projekt_raster(liste, pre)}\n    </div>{st}\n  </section>')
+
+
+def weitere_branchen(andere, pre):
+    """„Weitere Branchen“ als Mosaik mit Kopf-Kachel an erster Stelle wie auf der Startseite (Anna 12.11.2026)."""
+    return ('  <section class="br-weitere-branchen" aria-labelledby="weitere-titel">\n    <ul class="br-raster br-mosaik">\n'
+            '      <li class="br-kopf"><p class="meta">Branchen</p><h2 class="gr-h2" id="weitere-titel">Weitere Branchen</h2>\n'
+            '        <p>Mittelständische B2B-Unternehmen. Wählen Sie Ihre Branche.</p></li>\n'
+            + branchen_kacheln(andere, pre) + '    </ul>\n  </section>')
+
+
 VORGEHEN = [('Verstehen', 'Erst zuhören, dann gestalten.', 'Website-Check, Gespräche mit Ihnen und Ihrem Team, Blick auf Mitbewerber und Zielgruppe.'),
             ('Ideation', 'Struktur und erster Entwurf.', 'Sitemap, Inhalte und der Entwurf der Startseite. Danach entscheiden Sie: weiter oder Schluss. Sie zahlen nur, was abgeschlossen ist.'),
             ('Umsetzung', 'Design und Entwicklung.', 'Alle Seiten, Texte und Bilder, Feedback an festen Punkten. So wenig Aufwand für Sie wie möglich.'),
@@ -151,36 +199,34 @@ def branchenseite(b):
     pre = '../../'
     eintraege = [{'titel': PROBLEME[i]['karte'], 'text': t, 'href': PROBLEME[i]['pfad'],
                   'linktext': PROBLEME[i]['meta']} for i, t in b['schmerz']]
-    sprung = [('herausforderungen', 'Herausforderungen'), ('website', 'Was Ihre Website können muss'), ] + ([('referenz', 'Referenz')] if b.get('beleg') else []) + [
-              ('vorgehen', 'Vorgehen'), ('fragen', 'Häufige Fragen')]
     vorgehen = ''.join(f'      <li><span class="zlq-nr">{n:02d}</span><p class="meta">{esc(m)}</p><h3>{esc(h)}</h3><p class="gedaempft">{esc(x)}</p></li>\n'
                        for n, (m, h, x) in enumerate(VORGEHEN, 1))
     andere = [x for x in D['branchen'] if x['id'] != b['id']]
     kurz = (f'STUDIO AAH! aus Leipzig gestaltet Websites für {b["name"].replace("&", "und")} im Mittelstand. '
             f'Wichtig in dieser Branche: {b["muss"][0]}; {b["muss"][2]}. '
             'Der Einstieg ist ein kostenloser Website-Check, danach gibt es ein Angebot mit festem Preis.')
+    bedarf = (f'\n      <p class="br-bedarf"><span class="meta">Bei Bedarf</span> {esc(" · ".join(b["bei_bedarf"]))}</p>' if b.get('bei_bedarf') else '')
+    foto = (f'    <figure class="br-foto br-foto-spalte"><img src="{pre}{b["foto"]["datei"]}" alt="{esc(b["foto"]["alt"])}" width="2400" height="1000" loading="lazy"></figure>\n'
+            if b.get('foto') else '')   # Bildnachweis nur im Impressum (Anna 12.11.2026)
+    projekte = projekte_abschnitt(b, pre)
+    sprung = [('herausforderungen', 'Herausforderungen'), ('website', 'Was Ihre Website können muss')] + ([('referenz', 'Referenzen')] if projekte else []) + [
+              ('vorgehen', 'Vorgehen'), ('fragen', 'Häufige Fragen')]
     teile = [kopfbereich('Branche: ' + b['name'], b['h1'], b['unter'], pre, bild=b['id']),
              f'  <section class="br-kurz" aria-label="Kurz gesagt">\n    <p class="meta">Kurz gesagt</p>\n    <p>{esc(kurz)}</p>\n  </section>',
-             f'  <figure class="br-foto"><img src="{pre}{b["foto"]["datei"]}" alt="{esc(b["foto"]["alt"])}" width="2400" height="1000" loading="lazy">'
-             f'<figcaption>Foto: {esc(b["foto"]["von"])}, Unsplash</figcaption></figure>',
-             '  <nav class="br-sprung" aria-label="Themen auf dieser Seite">\n    <p class="meta">Themen und Lösungen</p>\n    <ul>'
-             + ''.join(f'<li><a href="#{a}">{esc(n)}</a></li>' for a, n in sprung) + '</ul>\n  </nav>',
-             '  <section class="haken br-herausforderung" id="herausforderungen" aria-labelledby="haken-titel">\n    <div class="sektionskopf"><p class="meta">Ihre Branche</p>'
+             ankerleiste([(a, esc(n)) for a, n in sprung]),
+             '  <section class="haken haken-schwarz br-herausforderung" id="herausforderungen" aria-labelledby="haken-titel">\n    <div class="sektionskopf sk-mitte"><p class="meta">Ihre Branche</p>'
              '<h2 class="gr-h2" id="haken-titel">Wo es in Ihrer Branche hakt.</h2>\n'
-             f'    <p class="br-einleitung">{esc(b["einleitung"])}</p></div>\n' + karten(eintraege, pre, 'haken-karten fw-drei') + '\n  </section>',
+             f'    <p class="br-einleitung">{esc(b["einleitung"])}</p></div>\n' + flipkarten(eintraege, pre) + '\n  </section>',
              '  <section class="fw-zwei br-website" id="website" aria-labelledby="website-titel">\n    <div>\n      <p class="meta">Ihre Website</p>\n'
              '      <h2 class="gr-h3" id="website-titel">Was Ihre Website können muss</h2>\n      <ul class="fw-liste">\n'
-             + '\n'.join(f'        <li>{esc(x)}</li>' for x in b['muss']) + '\n      </ul>\n    </div>\n'
-             f'    <div class="br-einwand">\n      <p class="meta">Ehrlich gefragt</p>\n      <h2 class="gr-h3">{esc(b["einwand"][0])}</h2>\n'
-             f'      <p class="fw-kosten">{esc(b["einwand"][1])}</p>\n    </div>\n  </section>',
-             beleg(b.get('beleg'), pre).replace('<section class="fw-beleg"', '<section class="fw-beleg" id="referenz"', 1),
+             + '\n'.join(f'        <li>{esc(x)}</li>' for x in b['muss']) + '\n      </ul>' + bedarf + '\n    </div>\n' + foto + '  </section>',
+             projekte,
              '  <section class="ablauf-start" id="vorgehen" aria-labelledby="vorgehen-titel">\n    <div class="sektionskopf"><p class="meta">Vorgehen</p>'
              '<h2 class="gr-h2" id="vorgehen-titel">Vier Schritte. Planbar von Anfang&nbsp;an.</h2></div>\n    <ol class="zl-quer">\n' + vorgehen + '    </ol>\n  </section>',
              faq(b['faq']).replace('<section class="faq ehrlich"', '<section class="faq ehrlich" id="fragen"', 1),
              abschluss(pre),
-             '  <section class="br-weitere-branchen" aria-labelledby="weitere-titel">\n    <p class="meta">Branchen</p>\n'
-             '    <h2 class="gr-h3" id="weitere-titel">Weitere Branchen</h2>\n    <ul class="br-raster br-raster-schlicht">\n'
-             + branchen_kacheln(andere, pre) + '    </ul>\n  </section>']
+             weitere_branchen(andere, pre)]
+    teile = [t for t in teile if t]
     schreibe(b['pfad'], '\n\n'.join(teile), b['seitentitel'], b['beschreibung'], b['faq'], branche=b)
     if b.get('alt_pfad'):   # alte Adresse leitet weiter (wie service/brand/)
         ziel = WEBSITE / b['alt_pfad'] / 'index.html'

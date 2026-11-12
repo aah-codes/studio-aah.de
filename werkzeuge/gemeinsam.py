@@ -157,3 +157,14 @@ def paket_karte(e, woerter, pre=''):
             f'        <p class="lsx-karte-dauer">{dauer}</p>\n'
             f'        <p class="lsx-karte-plus">{esc(e.get("plus") or "")}</p><ul class="lsx-karte-liste">{liste}</ul>\n'
             '      </article>')
+
+
+def ankerleiste(ziele, titel='Leistung im Überblick'):
+    """Inhaltsverzeichnis mit Ankerlinks nach dem Vorbild IT Sonix (Anna 12.11.2026): graue Spur, eine aktive weiße Pille.
+    ziele: Liste aus (anker, text_html). menue.js markiert beim Scrollen den Abschnitt, in dem man gerade ist."""
+    lis = []
+    for i, (anker, text) in enumerate(ziele):
+        aktiv = ' class="aktiv"' if i == 0 else ''
+        lis.append(f'<li><a href="#{anker}"{aktiv}>{text}</a></li>')
+    return (f'  <nav class="anker" aria-labelledby="anker-titel">\n    <h2 class="anker-titel" id="anker-titel">{titel}</h2>\n'
+            f'    <ul class="anker-spur">{"".join(lis)}</ul>\n  </nav>')

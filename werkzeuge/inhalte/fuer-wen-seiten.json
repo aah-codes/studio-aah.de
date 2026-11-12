@@ -416,14 +416,6 @@
      "Angebote und Dokumentation kosten Zeit. KI kann Entwürfe vorbereiten – Sie prüfen und geben frei."
     ]
    ],
-   "beleg": {
-    "titel": "Referenz: Wolfgang Bauer Ingenieurbau",
-    "text": "Strategie, Rebranding und neue Website: 83 Seiten online, 69 Referenzprojekte mit eigener Seite, 13 Bewerbungen seit dem Launch (Stand: 15.10.2026).",
-    "link": [
-     "referenzen/bauer/",
-     "Projekt ansehen"
-    ]
-   },
    "faq": [
     [
      "Haben Sie Erfahrung mit Bauunternehmen?",
@@ -458,7 +450,10 @@
     "alt": "Ein Kran hebt ein Bauteil",
     "von": "Adesh Bankar",
     "link": "https://unsplash.com/de/fotos/YNm1fhRIMa8"
-   }
+   },
+   "projekte": [
+    "bauer"
+   ]
   },
   {
    "id": "elektro",
@@ -661,14 +656,6 @@
      "Auch Entwickler:innen schauen sich an, wie ein Arbeitgeber sich zeigt."
     ]
    ],
-   "beleg": {
-    "titel": "Mein Kern: UI/UX für digitale Produkte",
-    "text": "Seit 2023 gestalte ich zusätzlich in einer Digitalagentur digitale Produkte für Mittelstand und Startups – von der Konzeption bis zum Launch.",
-    "link": [
-     "service/ui-ux/",
-     "Zu UI/UX"
-    ]
-   },
    "faq": [
     [
      "Gestalten Sie auch die Oberfläche unserer Software?",
@@ -739,14 +726,6 @@
     "Wir sind voll. Brauchen wir überhaupt eine neue Website?",
     "Eine gute Website bringt nicht nur neue Patient:innen. Sie beantwortet Fragen, die sonst am Telefon landen, und hilft Ihnen, Personal zu finden."
    ],
-   "beleg": {
-    "titel": "Referenz: Dr. Simone Goldhammer",
-    "text": "Website, Logo und Visitenkarten für eine Praxis für Naturheilkunde in Leipzig.",
-    "link": [
-     "referenzen/goldhammer/",
-     "Projekt ansehen"
-    ]
-   },
    "faq": [
     [
      "Haben Sie schon für Praxen gearbeitet?",
@@ -770,7 +749,10 @@
     "alt": "Stethoskop auf hellem Grund",
     "von": "Hush Naidoo Jade Photography",
     "link": "https://unsplash.com/de/fotos/yo01Z-9HQAw"
-   }
+   },
+   "projekte": [
+    "goldhammer"
+   ]
   },
   {
    "id": "beratung",
@@ -806,28 +788,6 @@
     "Unser Geschäft läuft über Empfehlungen. Reicht das nicht?",
     "Empfohlene Kund:innen schauen trotzdem auf Ihre Website, bevor sie anrufen. Passt sie nicht zu dem, was man über Sie erzählt, verlieren Sie die Empfehlung."
    ],
-   "beleg": {
-    "titel": "Referenzen: Deinetwegen und Down to Earth",
-    "text": "Deinetwegen: Branding, Onepager und Blog für eine frisch gegründete HR-Beratung.",
-    "link": [
-     "referenzen/deinetwegen/",
-     "Projekt ansehen"
-    ],
-    "weitere": [
-     {
-      "text": "Down to Earth – Kerstin Hack: Visual Design, neue Icons und laufende Betreuung für Coaching, Seminare und Verlag.",
-      "link": [
-       "https://kerstinhack.de",
-       "kerstinhack.de"
-      ]
-     }
-    ],
-    "zitat": {
-     "text": "Ich durfte mit Anna meine neue Website realisieren – und was soll ich sagen: absolute Herzensempfehlung!",
-     "name": "Franziska Weihmann",
-     "rolle": "Gründerin von Deinetwegen HR"
-    }
-   },
    "faq": [
     [
      "Haben Sie schon für Beratungen gearbeitet?",
@@ -851,7 +811,20 @@
     "alt": "Besprechungsraum mit Glaswänden",
     "von": "Rodeo Project Management Software",
     "link": "https://unsplash.com/de/fotos/ONe-snuCaqQ"
-   }
+   },
+   "projekte": [
+    "deinetwegen",
+    "Down to Earth"
+   ],
+   "stimmen": [
+    "Franziska Weihmann"
+   ],
+   "bei_bedarf": [
+    "Shop",
+    "Webinare",
+    "Leadmagneten",
+    "Blog"
+   ]
   }
  ],
  "produkt": {

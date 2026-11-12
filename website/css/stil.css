@@ -3752,3 +3752,35 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 @media (hover: hover) { :where(.js) .hk-flip:hover .hk-innen { transform: rotateY(180deg); } }
 html:not(.js) .hk-zeichen { display: none; }
 @media (prefers-reduced-motion: reduce) { :where(.js) .hk-innen { transition: none; } }
+/* Inhaltsverzeichnis „Leistung im Überblick“ nach dem Vorbild IT Sonix (Anna 12.11.2026): graue Spur, eine aktive weiße Pille */
+.anker { padding: 0 var(--rand-seite) 72px; }
+.anker-titel { margin: 0 0 24px; font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-size: clamp(26px, 2.4vw, 36px); line-height: 1.15; }
+.anker-spur { list-style: none; margin: 0; padding: 8px; display: flex; gap: 4px; width: max-content; max-width: 100%; overflow-x: auto; scrollbar-width: none; background: var(--farbe-hellgrau-2); border-radius: 999px; box-shadow: 0 22px 36px -28px rgba(14, 16, 17, .45); }
+.anker-spur::-webkit-scrollbar { display: none; }
+.anker-spur a { display: block; padding: 14px 28px; border-radius: 999px; color: var(--farbe-dunkel); text-decoration: none; font-weight: 500; letter-spacing: .02em; white-space: nowrap; transition: background .25s, box-shadow .25s; }
+.anker-spur a:hover { background: rgba(255, 255, 255, .6); }
+.anker-spur a.aktiv { background: var(--farbe-weiss); box-shadow: 0 4px 14px rgba(14, 16, 17, .12); }
+.anker-spur a:focus-visible { outline: 3px solid var(--farbe-primaer); outline-offset: -3px; }
+@media (max-width: 767.98px) { .anker { padding-bottom: 48px; } .anker-spur a { padding: 10px 18px; font-size: 15px; } }
+@media (prefers-reduced-motion: reduce) { .anker-spur a { transition: none; } }
+/* Branchen-Kacheln (Anna 12.11.2026): Bild und Text berühren sich nie, kein Verlauf */
+.br-kachel { display: flex; flex-direction: column; }
+.br-kachel img { position: static; inset: auto; flex: 1 1 auto; min-height: 0; width: 100%; height: auto; aspect-ratio: 5 / 3; padding: 24px 24px 0; object-position: 0 100%; }
+.br-name { position: static; padding: 20px 88px 28px 28px; background: none; }
+@media (max-width: 1024px) { .br-kachel { aspect-ratio: auto; } }
+/* „Weitere Branchen“ als Mosaik: Kopf an erster Stelle, Größen wechseln (Anna 12.11.2026) */
+.br-weitere-branchen { padding-top: 24px; }
+@media (min-width: 1024.02px) {
+  .br-raster.br-mosaik > li:nth-child(n) { grid-column: auto; }
+  .br-raster.br-mosaik > li:nth-child(2), .br-raster.br-mosaik > li:nth-child(6), .br-raster.br-mosaik > li:nth-child(9) { grid-column: span 2; }
+}
+/* Branchenseiten: Foto neben der Liste, „Bei Bedarf“, Projekte wie auf der Startseite */
+.br-website { align-items: center; }
+.br-foto-spalte { margin: 0; aspect-ratio: 4 / 3; }
+.br-bedarf { margin: 24px 0 0; font-size: 18px; line-height: 1.5; }
+.br-bedarf .meta { display: block; margin-bottom: 6px; }
+.br-herausforderung .br-einleitung { margin-left: auto; margin-right: auto; text-align: center; }
+.br-stimmen { margin-top: 48px; }
+.br-kachel img { aspect-ratio: auto; height: clamp(200px, 20vw, 280px); flex: none; }
+.br-herausforderung + .br-website { padding-top: 112px; }
+@media (max-width: 767.98px) { .br-herausforderung + .br-website { padding-top: 64px; } }

@@ -8,7 +8,8 @@ import math, pathlib
 
 SCH, BL, WS, GR, MG = '#0e1011', '#2a5fe6', '#fff', '#d6d8d9', '#9a9d9e'
 # Farbtafel „modernes Bauhaus“ wie im Hero der Startseite und im Farbband des Fußes (Anna 10.11.2026: Illustrationen farbig)
-ROT, PINK, ROSA, GELB = '#ff3b2f', '#ff4fa3', '#ff8fc8', '#ffe600'
+# Seit 12.11.2026 nur Schwarz, Weiß und Blau (Anna: „komplett zu bunt … alle einfach schwarz-weiß-blau“); die Namen bleiben als Rollen
+ROT, PINK, ROSA, GELB = SCH, BL, GR, BL
 FUGE = 14
 ZIEL = pathlib.Path(__file__).resolve().parent.parent.parent / 'website' / 'bilder' / 'fuer-wen'
 B, H, BODEN = 800, 640, 600

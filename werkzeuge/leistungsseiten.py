@@ -4,7 +4,7 @@
 # Aufruf im Repository-Ordner:  python3 werkzeuge/leistungsseiten.py [id …]   (ohne id: alle)
 import json, re, sys
 
-from gemeinsam import (LINKEDIN, NETTO_SATZ, STUDIO_ID, TRENNEN_LEISTUNGEN, WEBSITE, WERKZEUGE, esc, lade_json, lade_skript,
+from gemeinsam import (ankerleiste, LINKEDIN, NETTO_SATZ, STUDIO_ID, TRENNEN_LEISTUNGEN, WEBSITE, WERKZEUGE, esc, lade_json, lade_skript,
                        paket_karte, preis, seitenrahmen, trennen as trennen_mit)
 
 preise = lade_json('preise-daten.json')
@@ -215,8 +215,7 @@ def sprungleiste(c, g, mit_vergleich, mit_ablauf, link, link_text):
              ('extras', 'Zusatzleistungen', bool(g.get('extras'))), ('ablauf', 'Ablauf', mit_ablauf),
              ('referenzen', 'Referenzen', bool(ohne_bauer(I.mit_tag(I.PROJEKTE, [c['tag']]), c['tag']))),
              ('faq', 'Fragen', True), ('artikel', 'Artikel', bool(c.get('artikel', True) and I.mit_tag(I.BLOG, [c['tag']])))]
-    links = ''.join(f'<a href="#{anker}">{text}</a>' for anker, text, an in ziele if an)
-    return f'  <nav class="preis-leiste lsx-chips" aria-label="Auf dieser Seite">{links}<a href="{link}">{link_text} →</a></nav>'
+    return ankerleiste([(anker, text) for anker, text, an in ziele if an])
 
 
 # „Was Sie davon haben“ und „Für Sie, wenn“ oben auf jeder Leistungsseite (Anna, 09./10.11.2026: Schmerzpunkte 1–4 überall, immer den Nutzen)
