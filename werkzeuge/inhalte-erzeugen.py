@@ -71,6 +71,45 @@ def referenz_karten(liste, pre, kennung='ref', ansicht=None):
             '      </div>\n    </div>')
 
 
+# --- Startseite: Projekte als große Kacheln (Anna 12.11.2026, Vorlage zwetschke.de/arbeiten): Titelbild in der Hausfarbe
+#     füllt die ganze Kachel, unten Kunde klein und eine kurze Schlagzeile groß in Versalien (Feld „schlagzeile“ in projekte.json,
+#     gekürzt aus der freigegebenen Überblick-Aussage). Die ganze Kachel ist ein Link.
+def projekt_raster(liste, pre):
+    k = []
+    for p in liste:
+        url, _, ziel = projekt_link(p, pre)
+        hell = ' pg-hell' if p['cover'].get('ton') == 'hell' else ''
+        k.append(f'      <li><a class="pg-karte{hell}" href="{url}"{ziel} style="--pc-farbe: {p["cover"]["farbe"]}"><span class="pg-bild">{cover(p, pre, kopfzeile=False)}</span>'
+                 f'<span class="pg-text"><span class="pg-kunde">{esc(p["kurzname"])}</span>'
+                 f'<h3 class="pg-titel">{esc(p.get("schlagzeile") or p["kopf"])}</h3></span>'
+                 f'<span class="pg-pfeil" aria-hidden="true">→</span></a></li>')
+    return '    <ul class="pg">\n' + '\n'.join(k) + '\n    </ul>'
+
+
+# --- Startseite: eigene LinkedIn-Beiträge als Leiste (Anna 12.11.2026, Vorlage Instagram-Leiste von zwetschke.de).
+#     Bilder liegen lokal (bilder/linkedin/li-<id>.webp), nichts wird von LinkedIn geladen; Daten in inhalte/linkedin.json.
+UHR = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>'
+LI_ZEICHEN = ('<svg class="li-zeichen" viewBox="0 0 24 24" aria-hidden="true"><rect x="1.5" y="1.5" width="21" height="21" rx="4" fill="currentColor"/>'
+              '<rect x="5.5" y="9.5" width="2.8" height="8.5" fill="#fff"/><circle cx="6.9" cy="6.6" r="1.7" fill="#fff"/>'
+              '<path d="M10.6 9.5h2.7v1.2c.5-.8 1.5-1.5 3-1.5 2.4 0 3.2 1.5 3.2 4V18h-2.8v-4.3c0-1.2-.3-2-1.4-2s-1.9.8-1.9 2.1V18h-2.8z" fill="#fff"/></svg>')
+
+
+def linkedin_leiste(pre):
+    k = []
+    for b in sorted(lade_json('inhalte/linkedin.json'), key=lambda x: x['datum'], reverse=True):
+        j, m, t = b['datum'].split('-')
+        datum = f'{t}.{m}.{j}'
+        k.append(f'        <a class="li-karte" href="https://www.linkedin.com/feed/update/urn:li:activity:{b["id"]}/" target="_blank" rel="noopener">'
+                 f'<img src="{pre}bilder/linkedin/li-{b["id"]}.webp" alt="{esc(b["alt"])}" width="640" height="800" loading="lazy">'
+                 f'<span class="li-fuss"><span class="li-datum">{UHR}<time datetime="{b["datum"]}">{datum}</time> <span aria-hidden="true">↗</span></span>'
+                 f'{LI_ZEICHEN}<span class="unsichtbar">Beitrag auf LinkedIn, öffnet in neuem Fenster</span></span></a>')
+    return ('    <div class="ks li-ks" data-karussell id="linkedin-karussell">\n      <div class="ks-spur" aria-live="polite">\n' + '\n'.join(k) + '\n      </div>\n'
+            '      <div class="ks-steuerung">\n        <div class="ks-pfeile"><button type="button" class="ks-knopf" data-zurueck aria-label="Vorheriger Beitrag">←</button>'
+            '<button type="button" class="ks-knopf" data-weiter aria-label="Nächster Beitrag">→</button></div>\n'
+            '        <div class="ks-rechts"><button type="button" class="ks-knopf" data-pause aria-label="Automatisches Weiterblättern anhalten">❚❚</button><div class="ks-punkte" aria-hidden="true"></div></div>\n'
+            '      </div>\n    </div>')
+
+
 # --- Für wen: dunkler Abschnitt mit Umschalter; zeigt je Zielgruppe, was STUDIO AAH! vor allem verkauft (Texte in inhalte/fuer-wen.json) ---
 def fuer_wen(pre=''):
     paket = {e['id']: e for g in lade_json('preise-daten.json')['gruppen'] for e in g['pakete']}
@@ -208,7 +247,7 @@ def kennzahlen(klasse='fakten hero-fakten', einrueck='    '):
 
 if __name__ == '__main__':
     seiten = {
-        'index.html': [('PROJEKTE', lambda: referenz_karten([x for x in PROJEKTE if x.get('case')], '', 'start')), ('FUERWEN', lambda: fuer_wen('')), ('STIMMEN', lambda: stimmen(STIMMEN, '')),
+        'index.html': [('PROJEKTE', lambda: projekt_raster([x for x in PROJEKTE if x.get('case')], '')), ('LINKEDIN', lambda: linkedin_leiste('')), ('FUERWEN', lambda: fuer_wen('')), ('STIMMEN', lambda: stimmen(STIMMEN, '')),
                        ('BLOG', lambda: blog(BLOG[:4], '', 'blog/')), ('KENNZAHLEN', lambda: kennzahlen())],
         'profil/index.html': [('STIMMEN', lambda: stimmen(STIMMEN, '../')), ('BLOG', lambda: blog(BLOG[:4], '../', '../blog/')),
                               ('KENNZAHLEN', lambda: kennzahlen('fakten', '      '))],

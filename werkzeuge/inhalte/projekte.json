@@ -2442,7 +2442,8 @@
     }
    }
   },
-  "hauptvariante": "b"
+  "hauptvariante": "b",
+  "schlagzeile": "Eine Website, zwei Wege."
  },
  {
   "name": "Dr. Simone Goldhammer",
@@ -2885,7 +2886,8 @@
      }
     }
    ]
-  }
+  },
+  "schlagzeile": "Naturheilkunde in Leipzig."
  },
  {
   "name": "Deinetwegen – Franziska Weihmann",
@@ -3239,7 +3241,8 @@
      "stimme": true
     }
    ]
-  }
+  },
+  "schlagzeile": "Wie halte ich meine Mitarbeiter?"
  },
  {
   "name": "Down to Earth – Kerstin Hack",
@@ -3707,6 +3710,7 @@
     }
    ]
   },
-  "hauptvariante": "b"
+  "hauptvariante": "b",
+  "schlagzeile": "Drei Genres, eine Website."
  }
 ]
