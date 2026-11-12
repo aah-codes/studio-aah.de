@@ -45,12 +45,6 @@ FORMEN = {
     'motion': f'<g fill="{GELB}"><circle cx="200" cy="200" r="96"/>{zacken(200, 200, 100, 16, 18)}</g><circle cx="200" cy="200" r="34" fill="{SCH}"/>',
 
     # Seite KI-Arbeits-Setup (Anna 12.11.2026: Clay-Icons durch die kleinen Illustrationen ersetzen)
-    # Chat: rosa Sprechblase mit schwarzem Dreieck als Zipfel
-    'ki-chat': f'<path d="M110 250 L110 330 L190 270 Z" fill="{SCH}"/><circle cx="210" cy="180" r="110" fill="{ROSA}"/>',
-    # Was steht heute an: Kalenderblatt, schwarze Kopfleiste, gelbes Blatt, roter Kreis als Tag
-    'ki-heute': f'<rect x="90" y="100" width="220" height="44" fill="{SCH}"/><rect x="90" y="144" width="220" height="166" fill="{GELB}"/><circle cx="250" cy="250" r="34" fill="{ROT}"/>',
-    # Gelernt: gelbe Glühbirne aus Kreis und zwei schwarzen Balken
-    'ki-regel': f'<circle cx="200" cy="170" r="100" fill="{GELB}"/><rect x="155" y="272" width="90" height="24" fill="{SCH}"/><rect x="170" y="306" width="60" height="20" fill="{SCH}"/>',
     # Arbeitsordner: schwarzer Reiter, roter Ordner
     'ki-ordner': f'<rect x="90" y="100" width="100" height="40" fill="{SCH}"/><rect x="90" y="140" width="220" height="170" fill="{ROT}"/>',
     # Arbeitsanleitung: rosa Heft mit schwarzem Rücken und Lesebändchen
@@ -63,8 +57,15 @@ FORMEN = {
     'ki-verbinden': f'<rect x="70" y="190" width="260" height="20" fill="{SCH}"/><rect x="70" y="150" width="80" height="80" fill="{ROT}"/><circle cx="200" cy="200" r="44" fill="{GELB}"/><path d="M290 150 L330 230 L250 230 Z" fill="{ROSA}"/>',
     # Rundgang: blauer Kreis mit weißer Kompassnadel, schwarzer Balken mit Abstand
     'ki-rundgang': f'<circle cx="200" cy="180" r="100" fill="{BLAU}"/><path d="M200 100 L228 180 L200 260 L172 180 Z" fill="#ffffff"/><rect x="100" y="300" width="200" height="22" fill="{SCH}"/>',
-    # Ich richte es ein: schwarzer Bildschirm mit gelber Fläche, Fuß aus Balken
-    'ki-einrichten': f'<rect x="80" y="90" width="240" height="170" fill="{SCH}"/><rect x="104" y="114" width="192" height="122" fill="{GELB}"/><rect x="180" y="260" width="40" height="34" fill="{SCH}"/><rect x="130" y="294" width="140" height="22" fill="{SCH}"/>',
+    # Wir richten es gemeinsam ein: Bildschirm wie auf der Branchenseite Software & IT (schwarze Seitenleiste, farbige Kacheln, Mauszeiger)
+    'ki-bildschirm': (f'<rect x="40" y="70" width="320" height="210" rx="12" fill="#ffffff" stroke="{SCH}" stroke-width="6"/>'
+                      f'<path d="M52 73 H112 V277 H52 A9 9 0 0 1 43 268 V82 A9 9 0 0 1 52 73 Z" fill="{SCH}"/>'
+                      f'<rect x="60" y="100" width="34" height="9" rx="4.5" fill="#9a9d9e"/><rect x="60" y="126" width="34" height="9" rx="4.5" fill="#9a9d9e"/><rect x="60" y="152" width="34" height="9" rx="4.5" fill="#9a9d9e"/>'
+                      f'<rect x="130" y="92" width="210" height="22" rx="6" fill="#d6d8d9"/>'
+                      f'<rect x="130" y="128" width="62" height="62" rx="8" fill="{GELB}"/><rect x="204" y="128" width="62" height="62" rx="8" fill="{BLAU}"/><rect x="278" y="128" width="62" height="62" rx="8" fill="{PINK}"/>'
+                      f'<rect x="130" y="204" width="210" height="58" rx="8" fill="{ROSA}"/>'
+                      f'<path d="M248 168 L248 206 L257 198 L264 214 L271 211 L264 195 L276 195 Z" fill="{SCH}" stroke="#ffffff" stroke-width="3"/>'
+                      f'<rect x="178" y="280" width="44" height="34" fill="{SCH}"/><rect x="140" y="314" width="120" height="16" rx="8" fill="{SCH}"/>'),
     # Erst fragen: rosa Umschlag mit schwarzer Klappe
     'ki-mail': f'<rect x="80" y="120" width="240" height="170" fill="{ROSA}"/><path d="M80 120 L320 120 L200 220 Z" fill="{SCH}"/>',
     # Passender Tarif: gelbes Dreieck mit schwarzem Ausrufezeichen

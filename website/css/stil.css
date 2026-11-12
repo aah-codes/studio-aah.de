@@ -2968,6 +2968,19 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
   .lp-breit .lp-abschnitt .zl-quer::before { left: 27px; right: auto; }
 }
 @media (max-width: 767.98px) { .lp-breit .lp-zeilen li img { width: 44px; height: 44px; margin: -4px 0 0 -4px; } }
+/* „Montag, 8:12 Uhr“ mit Bildern: 20 zu 80, am Handy Bild über dem Text (Anna 12.11.2026) */
+.lp-breit .lp-bildzeilen { max-width: none; }
+.lp-breit .lp-bildzeilen li { grid-template-columns: minmax(0, 1fr) minmax(0, 4fr); gap: clamp(24px, 4vw, 56px); padding: 32px 0; }
+.lp-bz-bild { min-width: 0; }
+.lp-breit .lp-bildzeilen li .lp-bz-form { display: block; width: 112px; height: 112px; margin: -16px 0 0 -16px; }
+.lp-breit .lp-bildzeilen li .lp-bz-foto { display: block; width: 100%; height: auto; margin: 0; border: 1.5px solid var(--farbe-rahmen); border-radius: 12px; box-shadow: 0 10px 28px rgba(14, 16, 17, .08); }
+.lp-eingabe { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0; padding: 12px 12px 12px 18px; background: var(--farbe-weiss); border: 1.5px solid var(--farbe-dunkel); border-radius: 20px; box-shadow: 0 10px 28px rgba(14, 16, 17, .08); font-size: 16px; line-height: 1.3; font-weight: 400; color: var(--farbe-dunkel); }
+.lp-eingabe-senden { flex: none; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--farbe-dunkel); color: var(--farbe-weiss); font-size: 18px; font-weight: 700; }
+@media (max-width: 767.98px) {
+  .lp-breit .lp-bildzeilen li { grid-template-columns: minmax(0, 1fr); gap: 16px; padding: 24px 0; }
+  .lp-breit .lp-bildzeilen li .lp-bz-form { width: 80px; height: 80px; margin: -10px 0 -8px -10px; }
+  .lp-breit .lp-bildzeilen li .lp-bz-foto, .lp-eingabe { max-width: 360px; }
+}
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
 
