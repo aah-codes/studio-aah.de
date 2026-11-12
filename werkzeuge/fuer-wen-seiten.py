@@ -25,8 +25,7 @@ def kopfbereich(meta, h1, unter, pre, knopf=('website-check/', 'Kostenloser Webs
              if bild else '')
     return (f'  <section class="fw-kopf{" fw-kopf-bild" if bild else ""}">\n    <div class="fw-kopf-text">\n    <p class="meta">{esc(meta)}</p>\n    <h1 class="gr-h2 fw-h1">{esc(h1)}</h1>\n'
             f'    <p class="haken-unter">{esc(unter)}</p>\n'
-            f'    <p class="fw-knoepfe"><a class="button" href="{pre}{knopf[0]}">{esc(knopf[1])}{PFEIL}</a> '
-            f'<a class="button button-zweit" href="{pre}kontakt/">Projekt anfragen{PFEIL}</a></p>\n    </div>{figur}\n  </section>')
+            f'    <p class="fw-knoepfe"><a class="button" href="{pre}{knopf[0]}">{esc(knopf[1])}{PFEIL}</a></p>\n    </div>{figur}\n  </section>')  # immer nur ein Button im Hero (Anna 13.11.2026)
 
 
 def karten(eintraege, pre, klasse='haken-karten'):
@@ -173,10 +172,26 @@ def projekte_abschnitt(b, pre):
     liste = [p for n in namen for p in I.PROJEKTE if n in (p.get('slug'), p.get('kurzname'))]
     if not liste: return ''
     stimmen = [x for n in b.get('stimmen', []) for x in I.STIMMEN if x['name'] == n]
-    st = f'\n    <div class="stimmen br-stimmen">\n{I.stimmen(stimmen, pre)}\n    </div>' if stimmen else ''
+    eine = ' br-stimmen-eine' if len(stimmen) == 1 else ''   # eine Stimme: mittig, doppelt so breit (Anna 13.11.2026: kein leerer Weißraum)
+    st = f'\n    <div class="stimmen br-stimmen{eine}">\n{I.stimmen(stimmen, pre)}\n    </div>' if stimmen else ''
     return ('  <section class="start-projekte br-projekte" id="referenz" aria-labelledby="referenzen-titel">\n'
             '    <div class="sektionskopf sk-mitte"><p class="meta">Referenzen</p><h2 class="gr-xxl" id="referenzen-titel">Projekte</h2></div>\n'
-            f'    <div class="referenz-rahmen">\n{I.projekt_raster(liste, pre)}\n    </div>{st}\n  </section>')
+            f'{referenz_mit_zahlen(b, liste, pre)}{st}\n  </section>')
+
+
+def zahlen_kasten(titel, zahlen):
+    """Kennzahlen neben einer einzelnen Referenz (Anna 13.11.2026): groß, zählen beim Einblenden hoch (menue.js, data-zaehlen)."""
+    return (f'      <div class="br-zahlen" aria-label="{esc(titel)}">\n        <p class="br-zahlen-titel">{esc(titel)}</p>\n'
+            + ''.join(f'        <p class="br-zahl"><strong><span data-zaehlen="{z}">{z}</span>{(" <small>" + esc(e) + "</small>") if e else ""}</strong>{esc(t)}</p>\n'
+                      for z, e, t in zahlen) + '      </div>\n')
+
+
+def referenz_mit_zahlen(b, liste, pre):
+    """Ein Projekt: Card und Kennzahlen nebeneinander (kein leerer Weißraum); mehrere Projekte: Raster wie auf der Startseite."""
+    if len(liste) == 1 and b.get('zahlen'):
+        return ('    <div class="br-ref">\n      <div class="referenz-rahmen">\n' + I.projekt_raster(liste, pre) + '\n      </div>\n'
+                + zahlen_kasten(b['zahlen_titel'], b['zahlen']) + '    </div>')
+    return f'    <div class="referenz-rahmen">\n{I.projekt_raster(liste, pre)}\n    </div>'
 
 
 def weitere_branchen(andere, pre):
@@ -193,14 +208,24 @@ VORGEHEN = [('Verstehen', 'Erst zuhören, dann gestalten.', 'Website-Check, Gesp
             ('Launch & Begleitung', 'Live, und es geht weiter.', 'Ihre Website geht online. Auf Wunsch betreue ich sie danach als Retainer.')]
 
 
+def vorgehen_schritte():
+    """Vier Schritte; nach Schritt 02 ist Ausstieg möglich (Anna 13.11.2026, nach Vorbild Pappelbaum „kündbar“: nimmt Druck raus)."""
+    h = []
+    for n, (m, t, x) in enumerate(VORGEHEN, 1):
+        marke = '<span class="zl-ausstieg">Hier können Sie aussteigen</span>' if n == 2 else ''
+        h.append(f'      <li><span class="zlq-nr">{n:02d}</span><p class="meta">{esc(m)}</p><h3>{esc(t)}</h3><p class="gedaempft">{esc(x)}</p>{marke}</li>\n')
+    return ''.join(h)
+
+
 def branchenseite(b):
     """Branchenseite nach dem Muster der IT-Sonix-Seite „Energiesektor“ (Anna 12.11.2026): Sprungmarken, Herausforderungen,
     was die Website können muss, Einwand, Referenz, Vorgehen, Fragen, erster Schritt, weitere Branchen."""
     pre = '../../'
     eintraege = [{'titel': PROBLEME[i]['karte'], 'text': t, 'href': PROBLEME[i]['pfad'],
                   'linktext': PROBLEME[i]['meta']} for i, t in b['schmerz']]
-    vorgehen = ''.join(f'      <li><span class="zlq-nr">{n:02d}</span><p class="meta">{esc(m)}</p><h3>{esc(h)}</h3><p class="gedaempft">{esc(x)}</p></li>\n'
-                       for n, (m, h, x) in enumerate(VORGEHEN, 1))
+    if b.get('karten'):   # eigene Schmerzpunkte der Branche (Anna 13.11.2026, Bau)
+        eintraege = [{'titel': t, 'text': x, 'href': h, 'linktext': l} for t, x, h, l in b['karten']]
+    vorgehen = vorgehen_schritte()
     andere = [x for x in D['branchen'] if x['id'] != b['id']]
     kurz = (f'STUDIO AAH! aus Leipzig gestaltet Websites für {b["name"].replace("&", "und")} im Mittelstand. '
             f'Wichtig in dieser Branche: {b["muss"][0]}; {b["muss"][2]}. '

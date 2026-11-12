@@ -453,6 +453,49 @@
    },
    "projekte": [
     "bauer"
+   ],
+   "karten": [
+    [
+     "Wie zeigen wir unsere Referenzen?",
+     "Auftraggeber prüfen Ihre Eignung über Referenzen. Jedes Projekt mit eigener Seite, Bildern und Eckdaten zeigt, was Sie können.",
+     "neue-kunden/",
+     "Neukundengewinnung"
+    ],
+    [
+     "Gute Leute finden nicht zu uns.",
+     "Facharbeiter:innen, Poliere und Bauleitungen sind gesucht. Ein Karrierebereich mit echten Einblicken und kurzer Bewerbung macht den ersten Schritt leicht.",
+     "fachkraefte/",
+     "Fachkräfte finden"
+    ],
+    [
+     "Vergabestellen brauchen Nachweise sofort.",
+     "Spezialisierung, Eignungsnachweise wie PQ-VOB und Zertifikate stehen gesammelt an einem Ort. So finden Vergabestellen in kürzester Zeit, was sie prüfen.",
+     "referenzen/bauer/",
+     "Projekt ansehen"
+    ]
+   ],
+   "zahlen_titel": "Ergebnisse bei Wolfgang Bauer Ingenieurbau",
+   "zahlen": [
+    [
+     "4",
+     "Monate",
+     "von der Strategie bis zur neuen Website"
+    ],
+    [
+     "83",
+     "",
+     "Seiten online"
+    ],
+    [
+     "69",
+     "",
+     "Referenzprojekte mit eigener Seite"
+    ],
+    [
+     "13",
+     "",
+     "Bewerbungen seit dem Launch (Stand 15.10.2026)"
+    ]
    ]
   },
   {
@@ -773,8 +816,8 @@
      "Vieles läuft über Sie persönlich. KI-Abläufe nehmen Routine wie Angebote und Protokolle ab."
     ],
     [
-     "ki-im-team",
-     "Ihr Team soll KI nutzen, sicher und mit klaren Regeln. Ich richte das mit Ihnen ein."
+     "fachkraefte",
+     "Gute Beraterinnen und Berater haben die Wahl. Ihre Website zeigt, wie Sie arbeiten und warum es sich lohnt, bei Ihnen einzusteigen."
     ]
    ],
    "einleitung": "Beratung ist Vertrauenssache. Wer Sie noch nicht kennt, prüft online, ob Sie passen: Haltung, Erfahrung, Arbeitsweise. Eine Website für Beratung und Dienstleistung macht unsichtbare Leistungen greifbar.",

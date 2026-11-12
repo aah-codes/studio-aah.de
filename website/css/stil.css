@@ -3784,3 +3784,29 @@ html:not(.js) .hk-zeichen { display: none; }
 .br-kachel img { aspect-ratio: auto; height: clamp(200px, 20vw, 280px); flex: none; }
 .br-herausforderung + .br-website { padding-top: 112px; }
 @media (max-width: 767.98px) { .br-herausforderung + .br-website { padding-top: 64px; } }
+/* Korrekturen Anna 13.11.2026 */
+.anker-spur { position: relative; } /* Bezug für offsetLeft: sonst schiebt die Leiste das erste Wort aus dem Bild */
+.br-stimmen-eine { display: block; max-width: 880px; margin-left: auto; margin-right: auto; }
+.br-stimmen-eine .stimme { width: 100%; }
+.zl-ausstieg { display: inline-block; margin-top: 16px; padding: 6px 14px; border-radius: 999px; background: var(--farbe-primaer); color: var(--farbe-weiss); font-size: 14px; font-weight: 600; }
+/* Projekt-Cards (Anna 13.11.2026): Mockup frei oben, Text darunter im schwarzen Bereich, kein Verlauf über dem Bild */
+.pg-karte { background: var(--pc-farbe); display: flex; flex-direction: column; }
+.pg-bild .pc { aspect-ratio: 16 / 10; }
+.pg .pc-desktop { top: 9%; bottom: 4%; }
+.pg .pc-handy { top: 15%; bottom: 0; }
+.pg-text { position: static; padding: 8px 112px 36px 40px; background: none; }
+@media (max-width: 1024px) { .pg-text { padding: 6px 88px 26px 26px; } }
+@media (max-width: 767.98px) { .pg-bild .pc { aspect-ratio: 16 / 11; } .pg-text { padding: 4px 76px 22px 22px; } }
+.br-stimmen-eine { columns: auto; }
+/* Eine Referenz mit Kennzahlen daneben (Anna 13.11.2026): gleiche Höhe, große Zahlen, die hochzählen */
+.br-ref { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 24px; align-items: stretch; padding: 0 var(--rand-seite); }
+.br-ref .referenz-rahmen { padding: 0; margin: 0; min-width: 0; }
+.br-ref .pg { grid-template-columns: minmax(0, 1fr); height: 100%; }
+.br-ref .pg > li, .br-ref .pg-karte { height: 100%; }
+.br-zahlen { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto 1fr 1fr; gap: 0 32px; padding: 36px 40px; border-radius: 28px; background: var(--farbe-creme); min-width: 0; }
+.br-zahlen-titel { grid-column: 1 / -1; margin: 0 0 8px; font-family: var(--schrift-meta); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--farbe-grau); }
+.br-zahl { display: flex; flex-direction: column; justify-content: flex-end; margin: 0; padding: 20px 0; border-top: 1.5px solid var(--farbe-dunkel); font-size: 16px; line-height: 1.4; }
+.br-zahl strong { display: block; margin-bottom: 8px; font-family: var(--schrift-ueberschrift); font-weight: 400; font-size: clamp(64px, 7.5vw, 128px); line-height: .95; font-variant-numeric: tabular-nums; }
+.br-zahl small { font-size: .38em; letter-spacing: .02em; }
+@media (max-width: 1024px) { .br-ref { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 599.98px) { .br-zahlen { padding: 28px 24px; gap: 0 20px; } .br-zahl strong { font-size: clamp(48px, 16vw, 72px); } }

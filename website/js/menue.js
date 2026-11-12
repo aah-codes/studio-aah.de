@@ -426,6 +426,21 @@
     });
     if (location.hash === '#anfordern') oeffnen();
   })();
+  // Kennzahlen zählen beim Einblenden einmal hoch (Anna 13.11.2026); ohne JavaScript oder bei „Bewegung reduzieren“ steht die Zahl fest
+  (() => {
+    const zahlen = document.querySelectorAll('[data-zaehlen]');
+    if (!zahlen.length || !('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const beob = new IntersectionObserver((eintraege) => {
+      eintraege.forEach((e) => {
+        if (!e.isIntersecting) return;
+        beob.unobserve(e.target);
+        const ziel = parseInt(e.target.dataset.zaehlen, 10), start = performance.now(), dauer = 1400;
+        const schritt = (jetzt) => { const t = Math.min(1, (jetzt - start) / dauer); e.target.textContent = Math.round(ziel * (1 - Math.pow(1 - t, 3))); if (t < 1) requestAnimationFrame(schritt); };
+        e.target.textContent = '0'; requestAnimationFrame(schritt);
+      });
+    }, { threshold: 0.5 });
+    zahlen.forEach((z) => beob.observe(z));
+  })();
   // Flipcards „Wo es gerade hakt“ (Anna 12.11.2026): am Handy dreht Tippen die Karte (am Desktop dreht sie beim Drüberfahren per CSS)
   document.querySelectorAll('.hk-flip').forEach(function (karte) {
     karte.addEventListener('click', function (e) { if (!e.target.closest('a')) karte.classList.toggle('gedreht'); });
