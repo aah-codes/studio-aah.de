@@ -2957,7 +2957,7 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 .lp-breit .lp-hero, .lp-breit .lp-abschnitt { max-width: none; }
 .lp-breit .preis-h2 { max-width: none; }
 .lp-breit .lp-zeilen li img { width: 56px; height: 56px; mix-blend-mode: normal; margin: -2px 0 0 -6px; }
-.lp-breit .lp-karten img { width: 96px; height: 96px; mix-blend-mode: normal; margin: -12px 0 0 -14px; }
+.lp-breit .lp-karten img { width: 64px; height: 64px; mix-blend-mode: normal; margin: 0 0 16px; }
 .lp-breit .lp-abschnitt .zl-quer { padding: 0; margin-top: 40px; }
 .lp-breit .lp-abschnitt .zl-quer::before { left: 0; right: 0; }
 .lp-breit .lp-preis-betrag { margin-bottom: 0; }
@@ -2968,17 +2968,27 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
   .lp-breit .lp-abschnitt .zl-quer::before { left: 27px; right: auto; }
 }
 @media (max-width: 767.98px) { .lp-breit .lp-zeilen li img { width: 44px; height: 44px; margin: -4px 0 0 -4px; } }
+/* Einstieg „Hoffnung ist keine Strategie.“ (Anna 12.11.2026, aus dem LinkedIn-Post) */
+.lp-breit .lp-hoffnung .preis-h2 { font-size: clamp(44px, 7.4vw, 120px); line-height: 1.12; margin-bottom: 32px; }
+.lp-hoffnung-text { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 4vw, 64px); border-top: 1.5px solid var(--farbe-dunkel); padding-top: 24px; }
+.lp-hoffnung-text p { margin: 0; font-size: clamp(18px, 1.6vw, 22px); line-height: 1.5; }
+/* Preiskarte quer: links Preis und Button, rechts was enthalten ist; darunter „Nicht enthalten“ */
+.lp-breit .lp-preis-quer { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: clamp(32px, 5vw, 72px); margin-top: 32px; }
+.lp-preis-rechts .lp-liste { margin: 0; }
+.lp-preis-ohne { margin-top: 40px; max-width: 760px; }
+@media (max-width: 1024px) { .lp-breit .lp-preis-quer { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 767.98px) { .lp-hoffnung-text { grid-template-columns: minmax(0, 1fr); } }
 /* „Montag, 8:12 Uhr“ mit Bildern: 20 zu 80, am Handy Bild über dem Text (Anna 12.11.2026) */
 .lp-breit .lp-bildzeilen { max-width: none; }
 .lp-breit .lp-bildzeilen li { grid-template-columns: minmax(0, 1fr) minmax(0, 4fr); gap: clamp(24px, 4vw, 56px); padding: 32px 0; }
 .lp-bz-bild { min-width: 0; }
-.lp-breit .lp-bildzeilen li .lp-bz-form { display: block; width: 112px; height: 112px; margin: -16px 0 0 -16px; }
+.lp-breit .lp-bildzeilen li .lp-bz-form { display: block; width: 72px; height: 72px; margin: 4px 0 0; }
 .lp-breit .lp-bildzeilen li .lp-bz-foto { display: block; width: 100%; height: auto; margin: 0; border: 1.5px solid var(--farbe-rahmen); border-radius: 12px; box-shadow: 0 10px 28px rgba(14, 16, 17, .08); }
 .lp-eingabe { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0; padding: 12px 12px 12px 18px; background: var(--farbe-weiss); border: 1.5px solid var(--farbe-dunkel); border-radius: 20px; box-shadow: 0 10px 28px rgba(14, 16, 17, .08); font-size: 16px; line-height: 1.3; font-weight: 400; color: var(--farbe-dunkel); }
 .lp-eingabe-senden { flex: none; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--farbe-dunkel); color: var(--farbe-weiss); font-size: 18px; font-weight: 700; }
 @media (max-width: 767.98px) {
   .lp-breit .lp-bildzeilen li { grid-template-columns: minmax(0, 1fr); gap: 16px; padding: 24px 0; }
-  .lp-breit .lp-bildzeilen li .lp-bz-form { width: 80px; height: 80px; margin: -10px 0 -8px -10px; }
+  .lp-breit .lp-bildzeilen li .lp-bz-form { width: 56px; height: 56px; margin: 0; }
   .lp-breit .lp-bildzeilen li .lp-bz-foto, .lp-eingabe { max-width: 360px; }
 }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
