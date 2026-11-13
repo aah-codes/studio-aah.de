@@ -100,6 +100,7 @@
 - Mockup-Nachweise (Mockuptree, Bendito Mockup) stehen im Impressum unter „Bildnachweise“.
 
 ## Referenzseiten (Case Studies)
+- Inhalt, Kennzahlen und Ergebnis auf allen Projektseiten wie auf Branchenseiten (Anna, 13.11.2026): Inhalt als Ankerleiste (graue Spur, eine weiße Pille), alles linksbündig zum Kopf; Ergebnis-Spalten mit Überschriften und Texten auf einer Höhe. Nur zeigen, was Anna selbst gemacht hat (Down to Earth: keine Lebenselemente-Icons).
 - **Vor jeder neuen Referenzseite lesen:** `werkzeuge/anleitung-referenzseite.md` (Ablauf, Storyline-Schablone, Bausteine, Prüfliste, Recherche-Erkenntnisse). Vollständige Fassung mit Briefing der nächsten Referenz in `Betrieb` (Studio AAH/Website/2026-10-15_anleitung-referenzseite.md).
 - Bildwerkzeuge (Zusammensetzen, Ausschnitt, Kontaktbogen, Retusche) in `werkzeuge/grafiken/bild/`.
 

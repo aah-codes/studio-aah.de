@@ -3241,7 +3241,7 @@
  {
   "name": "Down to Earth – Kerstin Hack",
   "branche": "Coaching, Seminare, Verlag",
-  "zeitraum": "seit 2023 · Retainer",
+  "zeitraum": "seit 2026 · Retainer",
   "leistungen": "Branding, Visual Design, UI/UX Design, neue Icons, Umsetzung in Kadence, jeden Monat neue Aufgaben",
   "tags": [
    "brand",
@@ -3277,11 +3277,10 @@
     "bilder/referenzen/kh/pfau-7.svg",
     "bilder/referenzen/kh/pfau-8.svg"
    ],
-   "icons_bunt": "bilder/referenzen/kh/lebenselemente.webp",
-   "icons_titel": "Swing-Pfau und Lebenselemente"
+   "icons_titel": "Swing-Pfau"
   },
   "kopf": "Visual Design & Icons",
-  "jahr": "seit 2023",
+  "jahr": "seit 2026",
   "satz": "Visual Design, neue Icons und laufende Betreuung für Coaching, Seminare und Verlag.",
   "cover": {
    "farbe": "#00915f",
@@ -3298,7 +3297,7 @@
       "kurzname": "Down to Earth",
       "klasse": "cs-kerstin",
       "links": [],
-      "stil": ";--pc-dunkel:#2D3B42;--pc-akzent:#3F9961;--pc-zweit:#F3BF00;--pc-hell:#F7F5F1;--pc-meta-dunkel:#F3BF00;--pc-marke:#3F9961",
+      "stil": ";--pc-dunkel:#2D3B42;--pc-akzent:#3F9961;--pc-zweit:#F3BF00;--pc-hell:#F7F5F1;--pc-meta-dunkel:#F3BF00;--pc-marke:#3F9961;--pc-titel:#0e1011",
       "buehne_laptop": {
        "bild": "bilder/referenzen/kerstin/laptop-leben.webp",
        "mockup": "bilder/referenzen/kerstin/laptop-leben.webp",
@@ -3320,7 +3319,7 @@
       "Programmkarten für die drei Tage",
       "Sprecher-Sektion mit Filter nach Tagen",
       "Zeitplan „Wann spricht wer“",
-      "Swing-Pfau und Icons der Lebenselemente",
+      "Swing-Pfau, in Gold und in Bunt",
       "Umsetzung in Kadence"
      ],
      "band": {
@@ -3409,55 +3408,73 @@
     },
     {
      "typ": "marke",
-     "meta": "Icons",
-     "titel": "Swing-Pfau und Lebenselemente",
-     "text": "Der Swing-Pfau ist das Zeichen des Swing-Konzepts. Dazu gehören neun Lebenselemente, jedes mit eigenem Icon und eigener Farbe aus dem Swing-Rad.",
+     "id": "mk-entwuerfe",
+     "meta": "Swing-Pfau",
+     "titel": "Vier Entwürfe",
+     "text": "Am Anfang standen vier Entwürfe für den Swing-Pfau: Rad, Federn, Schwung und eine organische Form.",
      "logos": [
       [
-       "bilder/referenzen/kh/pfau-1.svg",
-       "Swing-Pfau in Gold, goldener Kreis auf Weiß",
+       "bilder/referenzen/kerstin/pfau-entwurf-a.svg",
+       "Entwurf A, Rad: Federn als Linien mit Punkten im Halbkreis",
        "#ffffff"
       ],
       [
-       "bilder/referenzen/kh/pfau-4.svg",
-       "Swing-Pfau als weiße Linien in goldenem Kreis auf dunklem Grund",
-       "#2D3B42"
-      ],
-      [
-       "bilder/referenzen/kh/pfau-2.svg",
-       "Swing-Pfau in Gold auf Weiß",
+       "bilder/referenzen/kerstin/pfau-entwurf-b.svg",
+       "Entwurf B, Federn: spitze Federn im Halbkreis",
        "#ffffff"
       ],
       [
-       "bilder/referenzen/kh/pfau-7.svg",
-       "Swing-Pfau in Gold in weißem Kreis auf dunklem Grund",
-       "#2D3B42"
+       "bilder/referenzen/kerstin/pfau-entwurf-c.svg",
+       "Entwurf C, Schwung: geschwungene Federn mit Punkten",
+       "#ffffff"
+      ],
+      [
+       "bilder/referenzen/kerstin/pfau-entwurf-d.svg",
+       "Entwurf D, organisch: Pfau mit großen Federbögen",
+       "#ffffff"
       ]
      ],
      "band": {
       "von": "#F7F5F1",
       "bis": "#F7F5F1",
       "art": []
-     }
+     },
+     "gleich": true
     },
     {
-     "typ": "galerie",
-     "id": "elemente",
-     "meta": "Lebenselemente",
-     "titel": "Neun Icons, neun Farben",
-     "bilder": [
-      {
-       "bild": "bilder/referenzen/kh/lebenselemente.webp",
-       "alt": "Neun runde Icons der Lebenselemente, von Vision & Kreativität bis Glaube & Vertrauen, jedes in seiner Farbe",
-       "titel": "Icons der Lebenselemente",
-       "breit": true
-      }
+     "typ": "marke",
+     "id": "mk-pfau",
+     "meta": "Swing-Pfau",
+     "titel": "Der Swing-Pfau",
+     "text": "Daraus entstand der Swing-Pfau: in Gold und in Bunt, mit den Farben des Swing-Rads.",
+     "logos": [
+      [
+       "bilder/referenzen/kerstin/pfau-final.svg",
+       "Swing-Pfau in Gold",
+       "#ffffff"
+      ],
+      [
+       "bilder/referenzen/kerstin/pfau-final.svg",
+       "Swing-Pfau in Gold auf dunklem Grund",
+       "#2D3B42"
+      ],
+      [
+       "bilder/referenzen/kerstin/pfau-bunt-hell.svg",
+       "Swing-Pfau in den Farben des Swing-Rads auf Weiß",
+       "#ffffff"
+      ],
+      [
+       "bilder/referenzen/kerstin/pfau-bunt-dunkel.svg",
+       "Swing-Pfau in den Farben des Swing-Rads im dunklen Kreis",
+       "#ffffff"
+      ]
      ],
      "band": {
       "von": "#F7F5F1",
       "bis": "#F7F5F1",
       "art": []
-     }
+     },
+     "gleich": true
     },
     {
      "typ": "designsystem",
@@ -3495,10 +3512,10 @@
        "Flächen"
       ]
      ],
-     "farben_text": "Grün von Down to Earth, dazu je Tag eine Farbe aus dem Swing-Rad",
+     "farben_text": "Farben von Down to Earth, dazu je Tag eine Farbe aus dem Swing-Rad",
      "schrift": "Raleway und Inter",
      "schrift_css": "\"Raleway Kerstin\", Raleway, system-ui, sans-serif",
-     "warum": "Raleway für Überschriften, Inter für Fließtext, Dachzeilen und Buttons.",
+     "warum": "Aus dem Design von Down to Earth: Raleway für Überschriften, Inter für Fließtext, Dachzeilen und Buttons.",
      "stufen": [
       [
        "Titel",
@@ -3591,6 +3608,28 @@
      }
     },
     {
+     "typ": "kennzahlen",
+     "zahlen": [
+      [
+       "250",
+       "sind schon dabei (Stand 13.11.2026)"
+      ],
+      [
+       "3",
+       "Tage Online-Kongress"
+      ],
+      [
+       "9",
+       "Lebenselemente im Programm"
+      ]
+     ],
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": []
+     }
+    },
+    {
      "typ": "ergebnis",
      "ziele": [
       [
@@ -3606,7 +3645,7 @@
        "Die Themen-Chips tragen die Farben des Swing-Rads und sind gut lesbar (Kontrast ab 4,6 : 1)."
       ]
      ],
-     "credits": "Gestaltung der ganzen Seite, Icons und Umsetzung in Kadence: Anna Härtelt",
+     "credits": "Gestaltung der ganzen Seite, Swing-Pfau und Umsetzung in Kadence: Anna Härtelt",
      "abschluss": {
       "frage": "Sie wünschen sich jemanden, der Ihre Website laufend betreut?",
       "knopf": "Projekt anfragen",

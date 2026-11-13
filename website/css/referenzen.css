@@ -1367,3 +1367,15 @@
 .cs-kerstin .bl-mit-mockup .bl-mockup::before { display: none; }
 .cs-kerstin .bl-mit-mockup .bl-kopf .meta { color: #1d3b5c; }
 @media (max-width: 767.98px) { .cs-kerstin .bl-mit-mockup .bl-kopf { display: none; } }
+/* Anna 13.11.2026: Inhalt, Kennzahlen und Ergebnis linksbündig zum Kopf (wie die Kapitelüberschriften), Überschriften und Texte der Ergebnis-Spalten auf einer Höhe */
+.cs-nahtlos .cs-inhalt { max-width: none; margin: 0; }
+.cs-inhalt .anker { padding-left: 0; padding-right: 0; padding-bottom: 0; }
+.cs-nahtlos .cs-ergebnis { max-width: none; }
+.cs-nahtlos .cs-kennzahlen.cs-block { max-width: none; margin-left: 0; margin-right: 0; }
+.eg-karten:not(.eg-mit-stimme .eg-karten) { grid-template-rows: auto auto; }
+.eg-karten:not(.eg-mit-stimme .eg-karten) li { display: grid; grid-row: span 2; grid-template-rows: subgrid; align-content: start; }
+/* Icons (Down to Earth, Anna 13.11.2026): vier gleich große Felder, Icon gleich groß */
+.mk-logos.mk-gleich { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: auto; }
+.mk-logos.mk-gleich .mk-logo { grid-column: auto; aspect-ratio: 1; display: grid; place-items: center; }
+.mk-logos.mk-gleich .mk-logo img { width: 86%; height: auto; max-width: none; max-height: none; }
+@media (max-width: 767.98px) { .mk-logos.mk-gleich { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

@@ -5,7 +5,7 @@
 # Aufruf im Repository-Ordner:  python3 werkzeuge/referenzen.py
 import copy, hashlib, json, re
 
-from gemeinsam import LINKEDIN, STUDIO_ID, WEBSITE, bildmass, ersetze_einmal, esc, lade_skript, mass_attr, seitenrahmen, trennen as trennen_mit
+from gemeinsam import LINKEDIN, ankerleiste, STUDIO_ID, WEBSITE, bildmass, ersetze_einmal, esc, lade_skript, mass_attr, seitenrahmen, trennen as trennen_mit
 
 I = lade_skript('inhalte-erzeugen.py')
 ALLE = I.PROJEKTE
@@ -343,9 +343,9 @@ def _galerie(b, pre):
 
 
 def _inhalt(b, pre):
-    # Inhaltsverzeichnis mit Sprungmarken (Recherche 15.10.2026: Überblick in den ersten Sekunden, wie IKEA bei Work & Co)
-    li = ''.join(f'<li><a href="#{a}">{esc(x)} <span aria-hidden="true">↓</span></a></li>' for x, a in b['punkte'])
-    return f'  <nav class="cs-block cs-inhalt" aria-label="{esc(b.get("titel", "Inhalt"))}"><p class="meta">{esc(b.get("titel", "Inhalt"))}</p><ol>{li}</ol></nav>'
+    # Inhaltsverzeichnis mit Sprungmarken (Recherche 15.10.2026); seit 13.11.2026 überall gleich wie auf Branchen- und Leistungsseiten (Anna):
+    # graue Spur mit einer aktiven weißen Pille, linksbündig zum Kopf
+    return '  <div class="cs-block cs-inhalt">' + ankerleiste([(a, x) for x, a in b['punkte']], b.get('titel', 'Inhalt')) + '</div>'
 
 
 def _ergebnis(b, pre):
@@ -555,9 +555,10 @@ def _marke(b, pre):
         return .2126 * k[0] + .7152 * k[1] + .0722 * k[2]
     hell = lambda c: 1.05 / (lum(c) + .05) < 4.5  # dunkle Schrift, wenn Weiß zu wenig Kontrast hat
     farben = ''.join(f'<li class="mk-farbe{" mk-hell" if hell(c) else ""}" style="--f:{c}"><b>{esc(n)}</b><span>{esc(c.upper())}</span><small>{esc(r)}</small></li>' for c, n, r in b.get('farben', []))
-    return (f'  <section class="cs-block cs-cd" aria-labelledby="mk-titel"><div class="mk-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3" id="mk-titel">{esc(b["titel"])}</h2>'
+    mid = b.get('id', 'mk-titel')  # eigene ID, wenn eine Seite zwei Marken-Blöcke hat (Down to Earth, 13.11.2026)
+    return (f'  <section class="cs-block cs-cd" aria-labelledby="{mid}"><div class="mk-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3" id="{mid}">{esc(b["titel"])}</h2>'
             + (f'<p class="weg-einleitung">{esc(b["text"])}</p>' if b.get('text') else '') + f'</div>'
-            f'<div class="mk-logos">{logos}</div>' + (f'<ul class="mk-farben">{farben}</ul>' if farben else '')
+            f'<div class="mk-logos{" mk-gleich" if b.get("gleich") else ""}">{logos}</div>' + (f'<ul class="mk-farben">{farben}</ul>' if farben else '')
             + (f'<figure class="mk-schrift"><img src="{pre}{b["schrift_bild"]}" alt="{esc(b["schrift_alt"])}" width="1600" height="900" loading="lazy"><figcaption class="meta">{esc(b["schrift_text"])}</figcaption></figure>' if b.get('schrift_bild') else '')
             + '</section>')  # Farben und Schrift optional: bei Goldhammer zeigt sie das Designsystem wie bei Bauer (Anna 16.10.2026)
 
