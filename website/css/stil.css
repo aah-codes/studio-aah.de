@@ -3824,3 +3824,11 @@ html:not(.js) .hk-zeichen { display: none; }
 .mm-karte-dunkel > span:not([class]) { line-height: 1.55; margin: 0 0 28px; }
 .mm-karte-dunkel .button { margin-top: 0; }
 @media (min-width: 1024.02px) and (max-width: 1200px) { .mm-innen { gap: 32px; } .mm-bereiche-leistungen { gap: 0 32px; } }
+
+/* Anna 13.11.2026: CTA unter den Fragen der Startseite mittig, nur „Beratung anfragen“ */
+.ehrlich-mehr { justify-content: center; }
+/* Anna 13.11.2026: Projekt-Cards nebeneinander gleich hoch; Dachzeile (unter gleich hohem Bild) und Kreis-Button (unten) liegen damit auf einer Linie */
+.pg > li { display: flex; }
+.pg > li > .pg-karte { flex: 1 1 auto; }
+/* Anna 13.11.2026: Icon am Titel der Leistungsseiten kleiner, mit mehr Abstand und auf der Grundlinie der Schrift (Höhe = Versalhöhe Anton), ohne Schweben */
+.lsx-titel .icon-3d { height: .78em; margin-left: .16em; vertical-align: baseline; animation: icon-plopp .45s cubic-bezier(.3, 1.6, .6, 1) .5s both; }
