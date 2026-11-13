@@ -2361,6 +2361,7 @@ section[hidden] { display: none !important; }
 /* Projektseite, Runde 3 (Anna 14.10.2026): Zahlenleiste, Designsystem, Vorher/Nachher-Film, Karriere-Schwerpunkt */
 @font-face { font-family: "Montserrat Goldhammer"; src: url("../schriften/montserrat-latin-600.woff2") format("woff2"); font-weight: 600; font-display: swap; }
 @font-face { font-family: "Montserrat Goldhammer"; src: url("../schriften/montserrat-latin-700.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "Raleway Kerstin"; src: url("../schriften/raleway-latin-800.woff2") format("woff2"); font-weight: 600 900; font-display: swap; }
 @font-face { font-family: "Inter Bauer"; src: url("../schriften/inter-latin.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
 
  

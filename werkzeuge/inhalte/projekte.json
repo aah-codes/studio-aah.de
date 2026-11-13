@@ -3287,6 +3287,336 @@
    "farbe": "#00915f",
    "ton": "hell",
    "desktop": "bilder/referenzen/leben-website.webp?v=2"
+  },
+  "slug": "down-to-earth",
+  "case": true,
+  "hauptvariante": "b",
+  "varianten": {
+   "b": [
+    {
+     "projekt": {
+      "kurzname": "Down to Earth",
+      "klasse": "cs-kerstin",
+      "links": [],
+      "stil": ";--pc-dunkel:#2D3B42;--pc-akzent:#3F9961;--pc-zweit:#F3BF00;--pc-hell:#F7F5F1;--pc-meta-dunkel:#F3BF00;--pc-marke:#3F9961",
+      "buehne_laptop": {
+       "bild": "bilder/referenzen/kerstin/laptop-leben.webp",
+       "mockup": "bilder/referenzen/kerstin/laptop-leben.webp",
+       "alt": "Seite „Swing Leben ’27“ auf einem Laptop vor blauem Himmel: Heißluftballons und die Zeile „Dein Leben in Balance – in 3 Tagen!“",
+       "logo": "bilder/referenzen/kerstin/logo.svg",
+       "logo_mockup": "bilder/referenzen/kerstin/logo.svg",
+       "meta": "Visual Design · Laufende Betreuung",
+       "grund": "#BFD8F2"
+      }
+     }
+    },
+    {
+     "typ": "ueberblick",
+     "meta": "Überblick",
+     "aussage": "Drei Tage, neun Lebenselemente, ein Online-Kongress: Die Seite zu Swing Leben ’27 zeigt Kerstin Hacks Swing-Konzept auf einen Blick.",
+     "leistungen_titel": "Leistungen",
+     "leistungen": [
+      "Sprecher-Sektion mit Filter nach Tagen",
+      "Zeitplan „Wann spricht wer“",
+      "Swing-Pfau und Icons der Lebenselemente",
+      "Umsetzung in Kadence"
+     ],
+     "band": {
+      "von": "#ECECEC",
+      "bis": "#ffffff",
+      "art": []
+     }
+    },
+    {
+     "typ": "inhalt",
+     "titel": "Inhalt",
+     "punkte": [
+      [
+       "Ausgangslage",
+       "k-ausgangslage"
+      ],
+      [
+       "Gestaltung",
+       "k-gestaltung"
+      ],
+      [
+       "Die Seite",
+       "k-seite"
+      ],
+      [
+       "Ergebnis",
+       "k-ergebnis"
+      ]
+     ],
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": []
+     }
+    },
+    {
+     "typ": "kapitel",
+     "anker": "k-ausgangslage",
+     "meta": "Online-Kongress · Dezember 2026",
+     "titel": "Ausgangslage",
+     "band": {
+      "von": "#ffffff",
+      "bis": "#F7F5F1",
+      "art": [
+       "eng"
+      ]
+     }
+    },
+    {
+     "typ": "hl-karten",
+     "karten": [
+      {
+       "etikett": "Herausforderung",
+       "text": "Ein Online-Kongress mit vielen Sprecherinnen und Sprechern an drei Tagen braucht eine Seite, auf der man schnell sieht, was wann passiert."
+      },
+      {
+       "etikett": "Lösung",
+       "text": "Klare Bausteine im Swing-Design: Sprecher nach Tagen, ein Zeitplan auf einen Blick.",
+       "dunkel": true
+      }
+     ],
+     "ziele_titel": "Ziele",
+     "ziele": [
+      "Das Programm der drei Tage auf einen Blick zeigen.",
+      "Sprecherinnen und Sprecher nach Tagen und Themen finden lassen.",
+      "Die Seite einheitlich im Swing-Design halten."
+     ],
+     "band": {
+      "von": "#F7F5F1",
+      "bis": "#F7F5F1",
+      "art": []
+     }
+    },
+    {
+     "typ": "kapitel",
+     "anker": "k-gestaltung",
+     "meta": "Swing-Konzept",
+     "titel": "Gestaltung",
+     "band": {
+      "von": "#F7F5F1",
+      "bis": "#F7F5F1",
+      "art": [
+       "eng"
+      ]
+     }
+    },
+    {
+     "typ": "marke",
+     "meta": "Icons",
+     "titel": "Swing-Pfau und Lebenselemente",
+     "text": "Der Swing-Pfau ist das Zeichen des Swing-Konzepts. Dazu gehören neun Lebenselemente, jedes mit eigenem Icon und eigener Farbe aus dem Swing-Rad.",
+     "logos": [
+      [
+       "bilder/referenzen/kh/pfau-1.svg",
+       "Swing-Pfau in Gold, goldener Kreis auf Weiß",
+       "#ffffff"
+      ],
+      [
+       "bilder/referenzen/kh/pfau-4.svg",
+       "Swing-Pfau als weiße Linien in goldenem Kreis auf dunklem Grund",
+       "#2D3B42"
+      ],
+      [
+       "bilder/referenzen/kh/pfau-2.svg",
+       "Swing-Pfau in Gold auf Weiß",
+       "#ffffff"
+      ],
+      [
+       "bilder/referenzen/kh/pfau-7.svg",
+       "Swing-Pfau in Gold in weißem Kreis auf dunklem Grund",
+       "#2D3B42"
+      ]
+     ],
+     "band": {
+      "von": "#F7F5F1",
+      "bis": "#F7F5F1",
+      "art": []
+     }
+    },
+    {
+     "typ": "galerie",
+     "id": "elemente",
+     "meta": "Lebenselemente",
+     "titel": "Neun Icons, neun Farben",
+     "bilder": [
+      {
+       "bild": "bilder/referenzen/kh/lebenselemente.webp",
+       "alt": "Neun runde Icons der Lebenselemente, von Vision & Kreativität bis Glaube & Vertrauen, jedes in seiner Farbe",
+       "titel": "Icons der Lebenselemente",
+       "breit": true
+      }
+     ],
+     "band": {
+      "von": "#F7F5F1",
+      "bis": "#F7F5F1",
+      "art": []
+     }
+    },
+    {
+     "typ": "designsystem",
+     "meta": "Design-System",
+     "titel": "Farben und Schrift",
+     "farben": [
+      [
+       "#3F9961",
+       "Grün",
+       "Buttons, Dachzeilen"
+      ],
+      [
+       "#2D3B42",
+       "Schiefer",
+       "Überschriften"
+      ],
+      [
+       "#F3BF00",
+       "Gelb",
+       "Tag 1"
+      ],
+      [
+       "#DD7245",
+       "Orange",
+       "Tag 2"
+      ],
+      [
+       "#7F95CC",
+       "Blau",
+       "Tag 3"
+      ],
+      [
+       "#F7F5F1",
+       "Creme",
+       "Flächen"
+      ]
+     ],
+     "farben_text": "Grün von Down to Earth, dazu je Tag eine Farbe aus dem Swing-Rad",
+     "schrift": "Raleway und Inter",
+     "schrift_css": "\"Raleway Kerstin\", Raleway, system-ui, sans-serif",
+     "warum": "Raleway für Überschriften, Inter für Fließtext, Dachzeilen und Buttons.",
+     "stufen": [
+      [
+       "Titel",
+       "Inter · 72 / 92 · 400",
+       "clamp(34px, 5vw, 72px)",
+       400,
+       1.25,
+       " font-family: 'Inter Bauer', Inter, sans-serif; color: #3F9961;",
+       "Swing Leben ´27"
+      ],
+      [
+       "H2",
+       "40 / 46 · 700",
+       "clamp(26px, 2.8vw, 40px)",
+       700,
+       1.2,
+       " color: #2D3B42;",
+       "Drei intensive Tage"
+      ],
+      [
+       "H3",
+       "23 / 27 · 700",
+       "23px",
+       700,
+       1.2,
+       " color: #2D3B42;",
+       "Klarheit über das Wichtige"
+      ],
+      [
+       "Dachzeile",
+       "Inter · 14 / 28 · 600",
+       "14px",
+       600,
+       2,
+       " font-family: 'Inter Bauer', Inter, sans-serif; color: #3F9961; text-transform: uppercase; letter-spacing: .06em;",
+       "Das Programm"
+      ],
+      [
+       "Fließtext",
+       "Inter · 18 / 28 · 400",
+       "18px",
+       400,
+       1.55,
+       " font-family: 'Inter Bauer', Inter, sans-serif; color: #797979;",
+       "Jeder Tag widmet sich drei Lebensbereichen des Swing-Konzepts."
+      ],
+      [
+       "Button",
+       "Inter · 16 · 400",
+       "16px",
+       400,
+       1.6,
+       " font-family: 'Inter Bauer', Inter, sans-serif; justify-self: start; display: inline-block; background: #3F9961; color: #ffffff; padding: 12px 26px; border-radius: 999px; text-transform: uppercase;",
+       "Jetzt Platz sichern"
+      ]
+     ],
+     "band": {
+      "von": "#F7F5F1",
+      "bis": "#F7F5F1",
+      "art": []
+     }
+    },
+    {
+     "typ": "langaufnahmen",
+     "anker": "k-seite",
+     "meta": "Website · Kadence",
+     "titel": "Die Seite Leben ’27",
+     "text": "Eine Seite, ein Weg: was man gewinnt, das Programm der drei Tage, wer wann spricht, das Swing-Konzept und die Teilnahme. Am Rechner und am Handy.",
+     "desktop": "bilder/referenzen/kerstin/lang-desktop.jpg",
+     "desktop_alt": "Seite Swing Leben ’27 am Rechner, von oben bis unten",
+     "handy": "bilder/referenzen/kerstin/lang-handy.jpg",
+     "handy_alt": "Seite Swing Leben ’27 am Handy, von oben bis unten",
+     "band": {
+      "von": "#F7F5F1",
+      "bis": "#F7F5F1",
+      "art": []
+     }
+    },
+    {
+     "typ": "kapitel",
+     "anker": "k-ergebnis",
+     "meta": "Ziele und Wirkung",
+     "titel": "Ergebnis",
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": [
+       "eng"
+      ]
+     }
+    },
+    {
+     "typ": "ergebnis",
+     "ziele": [
+      [
+       "Das Programm auf einen Blick",
+       "Drei farbige Karten zeigen jeden Tag mit Thema, Datum und seinen drei Lebenselementen."
+      ],
+      [
+       "Sprecher finden",
+       "Ein Filter zeigt die Sprecher je Tag; der Zeitplan ordnet jedem Lebenselement seine Gäste zu."
+      ],
+      [
+       "Einheitlich im Swing-Design",
+       "Die Themen-Chips tragen die Farben des Swing-Rads und sind gut lesbar (Kontrast ab 4,6 : 1)."
+      ]
+     ],
+     "credits": "Sprecher-Sektion, Zeitplan, Icons und Umsetzung in Kadence: Anna Härtelt",
+     "abschluss": {
+      "frage": "Sie wünschen sich jemanden, der Ihre Website laufend betreut?",
+      "knopf": "Projekt anfragen",
+      "link": "../../kontakt/"
+     },
+     "band": {
+      "von": "#ffffff",
+      "bis": "#ffffff",
+      "art": []
+     }
+    }
+   ]
   }
  },
  {
