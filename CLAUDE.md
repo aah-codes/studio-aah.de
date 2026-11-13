@@ -117,7 +117,7 @@
 ## Projektseite Deinetwegen (Stand 15.10.2026)
 - `/referenzen/deinetwegen/` aus `varianten.b` (`hauptvariante: "b"`); alte Fassung verworfen. **Vorlage für Onepager-Referenzen** (nächste: Jana Voigtmann); Bauer ist die Vorlage für KMU-Websiteprojekte (Anna, 15.10.2026).
 - Kein Kapitel „Vorgehen / Vier Schritte“ (Anna, 15.10.2026, gestrichen).
-- Nicht erwähnen: Folgeauftrag „People First“ (nie online), Gründungsumstände, Absage/Plattform. Live-Link nur mit „Stand 10/2026“; entfernen, sobald Franziskas neue Seite online ist.
+- Nicht erwähnen: Folgeauftrag „People First“ (nie online), Gründungsumstände, Absage/Plattform. Kein Link zur Live-Seite (Anna, 13.11.2026: „link zur seite raus“).
 - Schrift Satoshi (ITF, keine OFL) nie als Datei ins Repository; nur als Bild (`werkzeuge/grafiken/schriftmuster.swift`).
 
 ## Projektseite Jana Voigtmann (Stand 16.10.2026)
