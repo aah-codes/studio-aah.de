@@ -3316,6 +3316,8 @@
      "aussage": "Drei Tage, neun Lebenselemente, ein Online-Kongress: Die Seite zu Swing Leben ’27 zeigt Kerstin Hacks Swing-Konzept auf einen Blick.",
      "leistungen_titel": "Leistungen",
      "leistungen": [
+      "Gestaltung der ganzen Seite",
+      "Programmkarten für die drei Tage",
       "Sprecher-Sektion mit Filter nach Tagen",
       "Zeitplan „Wann spricht wer“",
       "Swing-Pfau und Icons der Lebenselemente",
@@ -3376,7 +3378,7 @@
       },
       {
        "etikett": "Lösung",
-       "text": "Klare Bausteine im Swing-Design: Sprecher nach Tagen, ein Zeitplan auf einen Blick.",
+       "text": "Klare Bausteine im Swing-Design: Programmkarten je Tag, Sprecher nach Tagen, ein Zeitplan auf einen Blick.",
        "dunkel": true
       }
      ],
@@ -3604,7 +3606,7 @@
        "Die Themen-Chips tragen die Farben des Swing-Rads und sind gut lesbar (Kontrast ab 4,6 : 1)."
       ]
      ],
-     "credits": "Sprecher-Sektion, Zeitplan, Icons und Umsetzung in Kadence: Anna Härtelt",
+     "credits": "Gestaltung der ganzen Seite, Icons und Umsetzung in Kadence: Anna Härtelt",
      "abschluss": {
       "frage": "Sie wünschen sich jemanden, der Ihre Website laufend betreut?",
       "knopf": "Projekt anfragen",
