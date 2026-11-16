@@ -3978,3 +3978,5 @@ html:not(.js) .hk-zeichen { display: none; }
 /* Startseite Leistungen (Anna 17.11.2026): Icon größer und im Verhältnis zur Fläche und Überschrift, Fläche immer im hellen Creme der Marke */
 .ls-kern .ls-bild { background: var(--farbe-creme); padding: 8%; }
 .ls-kern .ls-karte .ls-bild img { width: auto; height: 58%; max-width: 50%; object-fit: contain; object-position: left bottom; }
+/* Corporate-Identity-Grafik (Anna 17.11.2026): steht sofort fertig, nur die Punkte laufen */
+.ci-film[data-dauerhaft] .z { animation: none !important; opacity: 1; }

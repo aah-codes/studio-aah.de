@@ -217,6 +217,31 @@
       });
       const knopf = film.querySelector('.ci-nochmal-knopf');
       if (knopf) knopf.addEventListener('click', start);
+      // data-dauerhaft (Anna 17.11.2026, Corporate Identity): Bild steht sofort fertig, nur die Punkte laufen, ohne Ende;
+      // „Anhalten“ bleibt sichtbar (WCAG 2.2.2), „Noch einmal ansehen“ entfällt
+      if (film.hasAttribute('data-dauerhaft')) {
+        if (knopf) knopf.hidden = true;
+        const los = () => {
+          film.classList.remove('wartet');
+          svgs.forEach((s) => s.setCurrentTime && s.setCurrentTime(14));
+          film.classList.remove('angehalten');
+          svgs.forEach((s) => s.unpauseAnimations && s.unpauseAnimations());
+          const pp = film.querySelector('.ci-pause-knopf');
+          if (pp) pp.hidden = false;
+        };
+        if (pause) { pause.replaceWith(pause.cloneNode(true)); }
+        const p2 = film.querySelector('.ci-pause-knopf');
+        if (p2) p2.addEventListener('click', () => {
+          const an = !film.classList.contains('angehalten');
+          film.classList.toggle('angehalten', an);
+          svgs.forEach((s) => { if (!s.pauseAnimations) return; if (an) s.pauseAnimations(); else s.unpauseAnimations(); });
+          p2.innerHTML = an ? 'Weiter <span aria-hidden="true">▶</span>' : 'Anhalten <span aria-hidden="true">❚❚</span>';
+        });
+        if (!('IntersectionObserver' in window)) { los(); return; }
+        const b2 = new IntersectionObserver((e) => { if (e[0].isIntersecting) { los(); b2.disconnect(); } }, { threshold: 0.12 });
+        b2.observe(film);
+        return;
+      }
       if (!('IntersectionObserver' in window)) { start(); return; }
       // data-wiederholen: kurzer Film (unter 5 s) startet bei jedem Hineinscrollen neu (Bauhaus-Formen, Anna 11.10.2026)
       const wieder = film.hasAttribute('data-wiederholen');
