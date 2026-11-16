@@ -3975,3 +3975,6 @@ html:not(.js) .hk-zeichen { display: none; }
 .lsx-anw-extra p { margin: 0 0 8px; max-width: 72ch; line-height: 1.5; }
 @media (max-width: 1024px) { .lsx-selbst-liste { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 767.98px) { .lsx-selbst { padding: 64px var(--rand-seite-mobil) 0; } .lsx-selbst-liste { grid-template-columns: minmax(0, 1fr); } }
+/* Startseite Leistungen (Anna 17.11.2026): Icon größer und im Verhältnis zur Fläche und Überschrift, Fläche immer im hellen Creme der Marke */
+.ls-kern .ls-bild { background: var(--farbe-creme); padding: 8%; }
+.ls-kern .ls-karte .ls-bild img { width: auto; height: 58%; max-width: 50%; object-fit: contain; object-position: left bottom; }
