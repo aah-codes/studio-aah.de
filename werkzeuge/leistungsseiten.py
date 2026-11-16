@@ -116,9 +116,10 @@ def dachzeile(m, h):
     return '' if m.rstrip('.').lower() == h.rstrip('.').lower() else f'<p class="meta">{esc(m)}</p>'
 
 
-def ablauf_eigen(pre, schritte):
+def ablauf_eigen(pre, schritte, hinweis=''):
     li = ''.join(f'<li><span class="zl-marke"><small>Schritt</small><b>{i:02d}</b></span><div class="zl-text">{dachzeile(m, h)}<h3>{trennen(esc(h))}</h3><p class="gedaempft">{trennen(esc(x))}</p></div></li>' for i, (m, h, x) in enumerate(schritte, 1))
     return (f'  <section class="prozess-kompakt" id="ablauf" aria-labelledby="prozess">\n    <p class="meta">Wie ich arbeite</p>\n    <h2 class="preis-h2" id="prozess">Prozess</h2>\n'
+            + (f'    <p class="lsx-ablauf-hinweis">{esc(hinweis)}</p>\n' if hinweis else '') +
             f'    <ol class="zeitleiste">{li}</ol>\n    <p><a class="button" href="{pre}kontakt/">Beratung anfragen <span aria-hidden="true">→</span></a></p>\n  </section>')
 
 
@@ -158,7 +159,7 @@ def artikel(pre, tag):
     return '  <section class="lsx-artikel blog-neu" id="artikel" aria-labelledby="artikel-titel">\n    <div class="lsx-artikel-kopf"><p class="meta">Blog</p><h2 class="gr-h3" id="artikel-titel">Passende Artikel</h2></div>\n    <ul class="blog-liste">\n' + I.blog(liste, pre, pre + 'blog/') + '\n    </ul>\n  </section>'
 
 
-def kontakt(g, pre, link, link_text, termine, anfrage):
+def kontakt(g, pre, link, link_text, termine, anfrage, satz='Bei STUDIO AAH! arbeiten Sie direkt mit mir, von der ersten Idee bis zum Launch.'):
     check = (f'<a class="textlink" href="{pre}website-check/">Kostenloser Website-Check <span aria-hidden="true">→</span></a>' if MIT_CHECK and g['id'] == 'website' else '')
     return f'''  <section class="lsx-ansprech" id="kontakt" aria-labelledby="kontakt-titel">
     <img src="{pre}bilder/anna-haertelt-studio-blau.webp" alt="Anna Härtelt, Gründerin von STUDIO AAH!" width="1200" height="1600" loading="lazy">
@@ -166,7 +167,7 @@ def kontakt(g, pre, link, link_text, termine, anfrage):
       <p class="meta">Ihre Ansprechpartnerin</p>
       <h2 class="gr-h2" id="kontakt-titel">Starten Sie Ihr Projekt</h2>
       <p class="lsx-ansprech-name"><strong>Anna Härtelt</strong> · UX/UI-Designerin, Strategin und Webentwicklerin</p>
-      <p>Bei STUDIO AAH! arbeiten Sie direkt mit mir, von der ersten Idee bis zum Launch.</p>
+      <p>{esc(satz)}</p>
       <ul class="lsx-ansprech-wege">
         <li><span class="meta">Telefon</span><a href="tel:+4917683089879">0176 830 898 79</a></li>
         <li><span class="meta">E-Mail</span><a href="mailto:info@studio-aah.de">info@studio-aah.de</a></li>
@@ -196,7 +197,7 @@ def fragen_fuer(c, termine):
     """FAQ der Seite: eigene Fragen, Frage zu den Abstimmungsterminen, gemeinsame Fragen aller Leistungsseiten."""
     satz = termine if termine.startswith('Termine') else termine[0].lower() + termine[1:]  # Substantiv bleibt groß
     zusatz = '' if 'nach Absprache' in termine else ' Weitere Termine vereinbaren wir nach Absprache.'
-    return c['faq'] + [['Wie oft gibt es bei STUDIO AAH! Abstimmungstermine?', 'Bei STUDIO AAH! gibt es ' + satz + zusatz]] + GEMEINSAM
+    return c['faq'] + [['Wie oft gibt es bei STUDIO AAH! Abstimmungstermine?', 'Bei STUDIO AAH! gibt es ' + satz + zusatz]] + ([] if c.get('ohne_gemeinsame_fragen') else GEMEINSAM)
 
 
 def seitenkopf(c, pre, intro, termine):
@@ -213,7 +214,7 @@ def seitenkopf(c, pre, intro, termine):
 def sprungleiste(c, g, mit_vergleich, mit_ablauf, link, link_text):
     # Content-First (Anna 16.11.2026): eine Frage je Abschnitt, Preise unter einem Anker, Artikel nicht in der Leiste
     ziele = [('loesung', 'Ausgangslage' if c.get('gegenueber') else 'Warum', True), ('anwendungen', 'Anwendungsfälle', bool(c.get('anwendungen'))),
-             ('wege', 'Welcher Weg', bool(c.get('wege'))), ('leistungen', 'Leistungen', bool(c.get('loesungen')) and not c.get('ohne_detail')), ('ablauf', 'Ablauf', mit_ablauf),
+             ('wege', 'Welcher Weg', bool(c.get('wege'))), ('praxis', 'Beispiel', bool(c.get('praxis'))), ('recht', 'KI-Verordnung', bool(c.get('recht'))), ('leistungen', 'Leistungen', bool(c.get('loesungen')) and not c.get('ohne_detail')), ('ablauf', 'Ablauf', mit_ablauf),
              ('referenzen', 'Referenzen', bool(ohne_bauer(I.mit_tag(I.PROJEKTE, [c['tag']]), c['tag']))),
              ('pakete', 'Preise', True), ('faq', 'Häufige Fragen', True)]
     return ankerleiste([(anker, text) for anker, text, an in ziele if an])
@@ -278,6 +279,34 @@ def wege(c, pre):
     <p class="meta">Lösung</p>
     <h2 class="gr-h2" id="wege-titel">{esc(x['titel'])}</h2>
     <ol class="lsx-wege-liste">{karten}</ol>
+  </section>'''
+
+
+def praxis(c, pre):
+    """Beispiel aus einem echten Projekt, anonym (Feld „praxis“, KI-Beratung: KI-Arbeits-Setup, Anna 16.11.2026)."""
+    if not c.get('praxis'): return ''
+    x = c['praxis']
+    spalten = ''.join(f'<div><h3>{esc(t)}</h3><ul>' + ''.join(f'<li>{esc(i)}</li>' for i in liste) + '</ul></div>' for t, liste in x['gruppen'])
+    return f'''  <section class="lsx-praxis" id="praxis" aria-labelledby="praxis-titel">
+    <p class="meta">Aus der Praxis</p>
+    <h2 class="gr-h2" id="praxis-titel">{esc(x['titel'])}</h2>
+    <p class="lsx-praxis-einleitung">{esc(x['einleitung'])}</p>
+    <div class="lsx-praxis-raster">{spalten}</div>
+    <p class="lsx-praxis-grenze">{esc(x['grenze'])} <a class="textlink" href="{pre}ki-arbeits-setup/">Zum KI-Arbeits-Setup <span aria-hidden="true">→</span></a></p>
+  </section>'''
+
+
+def recht(c):
+    """Rechtlicher Rahmen kurz erklärt (Feld „recht“, KI-Verordnung); Stand im Text, keine Rechtsberatung."""
+    if not c.get('recht'): return ''
+    x = c['recht']
+    punkte = ''.join(f'<li><p class="lsx-recht-datum">{esc(d)}</p><h3>{esc(t)}</h3><p>{esc(b)}</p></li>' for d, t, b in x['punkte'])
+    return f'''  <section class="lsx-recht" id="recht" aria-labelledby="recht-titel">
+    <p class="meta">Recht</p>
+    <h2 class="gr-h2" id="recht-titel">{esc(x['titel'])}</h2>
+    <p class="lsx-recht-einleitung">{esc(x['einleitung'])}</p>
+    <ol class="lsx-recht-liste">{punkte}</ol>
+    <p class="lsx-recht-bei-mir">{esc(x['bei_mir'])} <span class="lsx-recht-stand">{esc(x['stand'])}</span></p>
   </section>'''
 
 
@@ -392,7 +421,7 @@ def seite(key, c):
     vorlage = (pfad if pfad.exists() else WEBSITE / 'service' / 'webdesign' / 'index.html').read_text(encoding='utf-8')
     url = 'https://studio-aah.de/' + c['pfad']
     vergleich_html = vergleich(g)
-    prozess = (ablauf_eigen(pre, c['ablauf_schritte']) if c.get('ablauf_schritte') else ablauf(pre)) if mit_ablauf else ''
+    prozess = (ablauf_eigen(pre, c['ablauf_schritte'], c.get('ablauf_hinweis', '')) if c.get('ablauf_schritte') else ablauf(pre)) if mit_ablauf else ''
     main = f'''<main id="inhalt">
 
 {seitenkopf(c, pre, intro, termine)}
@@ -413,6 +442,10 @@ def seite(key, c):
 
 {wege(c, pre)}
 
+{praxis(c, pre)}
+
+{recht(c)}
+
 {prozess}
 
 {retainer_hinweis(g, pre) if mit_ablauf else ''}
@@ -429,7 +462,7 @@ def seite(key, c):
 
 {faq(fragen, pre)}
 
-{kontakt(g, pre, link, link_text, termine, c.get('anfrage', 'Beratung anfragen'))}
+{kontakt(g, pre, link, link_text, termine, c.get('anfrage', 'Beratung anfragen'), **({'satz': c['ansprech_satz']} if c.get('ansprech_satz') else {}))}
 
 {artikel(pre, c['tag']) if c.get('artikel', True) else ''}
 

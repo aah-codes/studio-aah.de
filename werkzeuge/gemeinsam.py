@@ -64,8 +64,21 @@ def einsetzen(text, name, inhalt):
                           lambda m: f'<!-- {name}:START -->\n{inhalt}\n<!-- {name}:ENDE -->', text, f'Marker {name}', re.S)
 
 
+KURZWORT = re.compile(r'(?<![\w&;/-])([A-ZÄÖÜ]{1,3}-[A-Za-zÄÖÜäöüß]+)')
+
+
+def kurzwoerter_schuetzen(main):
+    """Kein Zeilenumbruch nach kurzem Vorderglied (Anna 16.11.2026: „IT-Projekt ist ein zusammenhängendes Wort“):
+    IT-Projekt, KI-Check, E-Mail bleiben zusammen. Nur im sichtbaren Text, nicht in Tags, Attributen, Skripten."""
+    # Fragen (summary) sind Flexboxen: Text in einen Span legen, sonst wird jedes Teilstück ein eigenes, nicht umbrechendes Element
+    main = re.sub(r'<summary>([^<]+)</summary>', r'<summary><span>\1</span></summary>', main)
+    teile = re.split(r'(<script.*?</script>|<style.*?</style>|<[^>]+>)', main, flags=re.S)
+    return ''.join(t if i % 2 else KURZWORT.sub(r'<span class="ohne-umbruch">\1</span>', t) for i, t in enumerate(teile))
+
+
 def seitenrahmen(vorlage, main, titel, beschreibung, url, ld):
     """Seite aus einer bestehenden Seite (Kopf, Fuß) bauen: <main>, Titel, Beschreibung, Adresse und strukturierte Daten ersetzen."""
+    main = kurzwoerter_schuetzen(main)
     t = ersetze_einmal(r'<main id="inhalt">.*?</main>', lambda m: main, vorlage, '<main>', re.S)
     t = ersetze_einmal(r'<title>.*?</title>', f'<title>{esc(titel)}</title>', t, '<title>')
     for name in ('name="description"', 'property="og:description"'):

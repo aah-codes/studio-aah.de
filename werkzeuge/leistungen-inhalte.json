@@ -482,7 +482,8 @@
   ],
   "zusammenfassung": [
    "KI und digitale Abläufe, die im Alltag wirklich entlasten: für kleine und mittlere Unternehmen (KMU) und Solo-Selbstständige. Im KI-Check schaue ich mir an, wo in Ihrem Alltag Zeit verloren geht und wo KI-Werkzeuge wirklich entlasten.",
-   "In der KI-Einführung setzen wir die Empfehlungen um: Wir wählen passende Werkzeuge aus, richten digitale Arbeitsabläufe ein, und ich schule Ihr Team, damit es KI sicher und sinnvoll einsetzt."
+   "In der KI-Einführung setzen wir die Empfehlungen um: Wir wählen passende Werkzeuge aus, richten digitale Arbeitsabläufe ein, und ich schule Ihr Team, damit es KI sicher und sinnvoll einsetzt.",
+   "Für Selbstständige und kleine Büros gibt es das KI-Arbeits-Setup: Ich richte Claude für Sie ein, mit Ihren Projekten, Ihren Abläufen und drei Skills, dazu ein Projekt-Cockpit, das zeigt, was heute ansteht. In drei Terminen, zum Festpreis."
   ],
   "nicht_enthalten": [
    "Lizenzkosten der KI-Werkzeuge: zahlen Sie direkt an den Anbieter",
@@ -493,47 +494,43 @@
   "faq": [
    [
     "Was kostet eine KI-Beratung bei STUDIO AAH! in Leipzig?",
-    "Bei STUDIO AAH! in Leipzig beginnt der KI-Check bei 900 € und die KI-Einführung bei 2.000 €. Die KI-Einführung baut auf dem KI-Check auf; zusammen beginnen beide Schritte bei 2.900 €. Alle Preise sind Einstiegspreise, netto ohne Umsatzsteuer; den Festpreis erhalten Sie nach einem kostenlosen Erstgespräch."
+    "Das KI-Arbeits-Setup kostet 990 € netto zum Festpreis. Der KI-Check beginnt bei 900 € netto, die KI-Einführung bei 2.000 € netto; den Festpreis dafür erhalten Sie nach einem kostenlosen Erstgespräch. Lizenzkosten der KI-Werkzeuge zahlen Sie direkt an den Anbieter. Was jeweils enthalten ist, steht oben unter Preise."
    ],
    [
-    "Für wen ist die KI-Beratung von STUDIO AAH! gedacht?",
-    "Die KI-Beratung von STUDIO AAH! ist für kleine und mittlere Unternehmen (KMU) und Solo-Selbstständige gedacht, die wissen wollen, wo KI im Alltag wirklich Zeit spart. Die KI-Einführung richtet sich an Teams, die die Empfehlungen aus dem Check umsetzen wollen."
+    "Was ist der Unterschied zwischen KI-Arbeits-Setup, KI-Check und KI-Einführung?",
+    "Das KI-Arbeits-Setup richtet Claude für Selbstständige und kleine Büros mit bis zu fünf Personen ein: Arbeitsordner, Arbeitsanleitung, drei Skills und ein Projekt-Cockpit, in drei Online-Terminen über etwa drei Wochen. Der KI-Check zeigt, wo KI in Ihrem Alltag Zeit spart; für größere Teams ist er der Einstieg. Ich sehe mir Ihre Abläufe an und spreche mit den Menschen, die sie täglich erledigen, und Sie bekommen einen Empfehlungsbericht. Die KI-Einführung setzt diese Empfehlungen um: passende Werkzeuge, digitale Arbeitsabläufe und eine Schulung an Ihren eigenen Aufgaben."
    ],
    [
-    "Wobei kann KI im Arbeitsalltag entlasten?",
-    "STUDIO AAH! schaut sich an, wo in Ihrem Alltag Zeit verloren geht und wo KI-Werkzeuge wirklich entlasten, zum Beispiel bei Texten, Recherche, Angeboten oder internen Abläufen."
+    "Welche Aufgaben eignen sich für KI?",
+    "Aufgaben, die immer wiederkommen und nach Regeln laufen: Entwürfe für Angebote und E-Mails, Protokolle, Zusammenfassungen, Ablage, Nachfassen und der Projektstand je Kunde. Entscheidungen und Freigaben bleiben bei Ihnen."
    ],
    [
-    "Was passiert beim KI-Check?",
-    "Beim KI-Check von STUDIO AAH! beginnen wir mit einem Fragebogen. Danach analysiere ich Ihre Abläufe, und Sie erhalten einen Empfehlungsbericht, wo KI-Werkzeuge wirklich entlasten. Der KI-Check beginnt bei 900 € netto."
+    "Was ist ein Skill?",
+    "Ein Skill ist ein fester Arbeitsablauf, den Claude immer gleich ausführt. Zum Beispiel ein Prüfer, der jede Arbeit kontrolliert, bevor sie an Kund:innen geht, ein Vertriebsablauf für Leads und Angebote oder ein Text-Skill in Ihrem Ton. Im KI-Arbeits-Setup wählen wir die drei Skills, die Sie zuerst entlasten."
    ],
    [
-    "Was gehört zur KI-Einführung?",
-    "Zur KI-Einführung von STUDIO AAH! gehören die Auswahl und Einrichtung passender KI-Werkzeuge, digitale Arbeitsabläufe und eine Team-Schulung. Die KI-Einführung beginnt bei 2.000 € netto."
+    "Welche KI empfehlen Sie?",
+    "Das hängt von Ihren Aufgaben und Ihren Daten ab. Ich arbeite selbst täglich mit KI und empfehle nur, was ich kenne und was zu Ihrem Datenschutz passt. Das KI-Arbeits-Setup richte ich mit Claude von Anthropic ein. Ob es sich auf ChatGPT oder Microsoft Copilot übertragen lässt, klären wir im Erstgespräch; passt es nicht, sage ich Ihnen das ehrlich."
    ],
    [
-    "Kann ich die KI-Einführung ohne KI-Check buchen?",
-    "Nein. Bei STUDIO AAH! setzt die KI-Einführung den KI-Check voraus, denn sie setzt dessen Empfehlungen um."
+    "Verschickt die KI etwas ohne mich?",
+    "Nein. Ich richte die KI so ein, dass sie Entwürfe vorbereitet und vor jeder Aktion nachfragt. Gesendet wird nur mit Ihrem Klick. Auch geplante Aufgaben, die zum Beispiel jeden Morgen den Tagesüberblick schreiben, senden, löschen und veröffentlichen nichts."
    ],
    [
-    "Gehört eine Schulung zur KI-Einführung?",
-    "Ja. Zur KI-Einführung von STUDIO AAH! gehört eine Team-Schulung: praxisnah, verständlich und auf Ihre Aufgaben zugeschnitten. Sie zeigt Ihnen und Ihrem Team, wie Sie KI sicher und sinnvoll einsetzen."
+    "Welche Daten dürfen in die KI?",
+    "Das legen wir gleich am Anfang fest. Ich wähle Werkzeuge mit Blick auf den Datenschutz aus, und Sie bekommen eine Checkliste „Was darf in die KI?“. Wir prüfen gemeinsam die Einstellungen Ihres Kontos, zum Beispiel dass Ihre Chats nicht zum Training genutzt werden. Für die Datenschutzpflichten Ihres Unternehmens bleiben Sie verantwortlich; eine Rechtsberatung ersetzt das nicht."
    ],
    [
-    "Braucht man für die Digitalisierung eine eigene IT-Abteilung?",
-    "Nein. STUDIO AAH! hilft Ihnen, wiederkehrende Aufgaben Schritt für Schritt zu digitalisieren und sinnvoll zu verknüpfen, auch ohne eigene IT-Abteilung."
+    "Was müssen wir nach der KI-Verordnung (EU AI Act) tun?",
+    "Für die meisten Büros heißt das vor allem: Das Unternehmen muss Maßnahmen treffen, die die KI-Kompetenz der Mitarbeitenden unterstützen (Artikel 4, seit Februar 2025, neu gefasst im Juli 2026). Dazu kommen Kennzeichnungspflichten, etwa für Deepfakes (seit August 2026). Strenge Pflichten für Hochrisiko-KI, zum Beispiel bei der Auswahl von Bewerbungen, gelten ab Dezember 2027. Zum KI-Arbeits-Setup gehört eine Einweisung mit Teilnahmebestätigung. Stand: November 2026, keine Rechtsberatung."
    ],
    [
-    "Wie achtet STUDIO AAH! beim KI-Einsatz auf den Datenschutz?",
-    "STUDIO AAH! wählt KI-Werkzeuge gemeinsam mit Ihnen aus und führt sie mit Blick auf den Datenschutz ein. Eine Rechtsberatung ist nicht enthalten."
+    "Brauchen wir dafür eine eigene IT-Abteilung oder neue Software?",
+    "Nein. Wir starten mit dem, was Sie haben, und einem KI-Werkzeug. Wichtiger als neue Software sind klare Abläufe: Wir schreiben die wichtigsten auf, für Ihr Team und für die KI. Schnittstellen zu ERP- oder Warenwirtschaftssystemen programmiere ich nicht, und IT-Sicherheit ist nicht mein Fach; brauchen Sie das, sage ich es Ihnen offen."
    ],
    [
-    "Wer zahlt die Lizenzen der KI-Werkzeuge?",
-    "Die Lizenzkosten der KI-Werkzeuge zahlen Sie direkt an den jeweiligen Anbieter. Sie sind nicht im Preis von STUDIO AAH! enthalten."
-   ],
-   [
-    "Programmiert STUDIO AAH! eigene KI-Lösungen?",
-    "Nein. Programmierung gehört bei STUDIO AAH! nicht zur KI-Beratung. Ich wähle passende, vorhandene KI-Werkzeuge mit Ihnen aus und richte sie ein."
+    "Wie viel Zeit kostet uns das?",
+    "Beim KI-Arbeits-Setup: etwa 15 Minuten für einen Fragebogen und drei Online-Termine von 90, 60 und 60 Minuten, verteilt auf etwa drei Wochen. Danach beantworte ich 14 Tage lang Fragen per E-Mail oder im Online-Meeting. Beim KI-Check und der KI-Einführung hängt die Zeit von der Größe Ihres Teams ab; das klären wir im Erstgespräch."
    ]
   ],
   "loesung_text": "Im KI-Check schaue ich mir an, wo in Ihrem Alltag Zeit verloren geht und wo KI-Werkzeuge wirklich entlasten. In der KI-Einführung setzen wir die Empfehlungen um.",
@@ -578,7 +575,7 @@
      "Ihre Kund:innen, Ihr Ton, Ihre Regeln stehen in einer Arbeitsanleitung. Sie müssen nichts mehr erklären."
     ],
     [
-     "Abläufe stehen nur in Köpfen: „Das haben wir schon immer so gemacht.“",
+     "Abläufe sind nirgends aufgeschrieben: „Das haben wir schon immer so gemacht.“",
      "Wissen, das bleibt",
      "Aufgeschriebene Abläufe helfen auch neuen Mitarbeitenden beim Einstieg."
     ],
@@ -630,6 +627,13 @@
    "titel": "Welcher Weg passt zu Ihnen?",
    "karten": [
     [
+     "KI-Arbeits-Setup",
+     "Für Selbstständige und kleine Büros mit bis zu fünf Personen.",
+     "Claude eingerichtet, mit Projekt-Cockpit. In drei Online-Terminen, zum Festpreis.",
+     "ki-arbeits-setup/",
+     "Zum KI-Arbeits-Setup"
+    ],
+    [
      "KI-Check",
      "Für alle, die wissen wollen, wo KI im Alltag wirklich Zeit spart.",
      "Fragebogen, Analyse Ihrer Abläufe und ein Empfehlungsbericht.",
@@ -642,13 +646,6 @@
      "Passende KI-Werkzeuge, digitale Arbeitsabläufe und eine Team-Schulung.",
      "#pakete",
      "Zum Preis"
-    ],
-    [
-     "KI-Arbeits-Setup",
-     "Für Selbstständige und kleine Büros mit bis zu fünf Personen.",
-     "Claude eingerichtet, mit Projekt-Cockpit. In drei Online-Terminen, zum Festpreis.",
-     "ki-arbeits-setup/",
-     "Zum KI-Arbeits-Setup"
     ]
    ]
   },
@@ -668,7 +665,73 @@
     "Eine Schulung, die im Alltag ankommt.",
     "Praxisnah an Ihren eigenen Aufgaben, damit Ihr Team weiß, wie es KI sicher und sinnvoll einsetzt."
    ]
-  ]
+  ],
+  "praxis": {
+   "_quelle": "Kundenordner Setup-Kunde (Pilot), Setup-Paket 16.11.2026; anonym. FREIGABE ANNA UND KUNDE OFFEN – vor dem Hochladen klären",
+   "titel": "So sieht ein KI-Arbeits-Setup aus",
+   "einleitung": "Seit November 2026 richte ich das Setup für einen selbstständigen Webdesigner ein. Ausgangspunkt: Feedback einholen und Akquise kosteten ihn zusammen rund zwölf Stunden pro Woche. Das gehört dazu:",
+   "gruppen": [
+    [
+     "Arbeitsordner und Anleitung",
+     [
+      "Ein Ordner je Projekt, sortiert nach Phasen, mit einer Statusdatei: beschlossen, fertig, offen",
+      "Eine Arbeitsanleitung mit Regeln, Ton und Kund:innen, die Claude bei jeder Aufgabe mitliest",
+      "Glossar, Checkliste „Was darf in die KI?“ und ein Handout für die erste Woche"
+     ]
+    ],
+    [
+     "Drei Skills",
+     [
+      "Prüfer: prüft jede Arbeit unabhängig, bevor Claude „fertig“ meldet, vor allem, was an Kund:innen geht",
+      "Vertrieb: Empfehlungen, Leads, Angebote und Pipeline",
+      "Agententraining: aus jeder Korrektur wird eine feste Regel, der Lernstand wird gemessen"
+     ]
+    ],
+    [
+     "Vier geplante Aufgaben",
+     [
+      "Morgenstart werktags: Projekt-Cockpit und Tagesüberblick",
+      "Feedback einholen zweimal pro Woche: Erinnerungen an Kund:innen als Entwurf",
+      "Vertrieb jeden Montag: Nachfassen, Leads, Inhalte",
+      "Agententraining jede Woche: Regeln prüfen, Muster finden"
+     ]
+    ]
+   ],
+   "grenze": "Keine Aufgabe sendet, löscht oder veröffentlicht etwas. Claude schreibt Entwürfe; gesendet wird nur, wenn er selbst klickt."
+  },
+  "recht": {
+   "_quelle": "VO (EU) 2024/1689; Omnibus-VO (EU) 2026/1744 (ABl. 24.07.2026, gilt seit 27.07.2026, Art. 1 Nr. 5 = neuer Art. 4); eur-lex.europa.eu; geprüft vom Prüfer-Agenten 16.11.2026",
+   "titel": "KI-Verordnung: Was gilt für Ihr Unternehmen?",
+   "einleitung": "Die KI-Verordnung der EU (EU AI Act) regelt, wie Unternehmen KI einsetzen. Für die meisten Büros im Mittelstand zählen vier Punkte.",
+   "punkte": [
+    [
+     "Seit Februar 2025, neu gefasst im Juli 2026",
+     "KI-Kompetenz im Team",
+     "Wer KI im Unternehmen einsetzt, muss Maßnahmen treffen, die die KI-Kompetenz der Mitarbeitenden unterstützen (Artikel 4). Ein Zertifikat ist nicht vorgeschrieben; eine dokumentierte Einweisung kann als Nachweis dienen."
+    ],
+    [
+     "Seit 2. Februar 2025",
+     "Verbotene Anwendungen",
+     "Einige Anwendungen sind ganz verboten, zum Beispiel KI, die Gefühle von Mitarbeitenden am Arbeitsplatz erkennen soll (Artikel 5). Im Büroalltag mit Texten, Angeboten und Ablage kommt das kaum vor."
+    ],
+    [
+     "Seit 2. August 2026",
+     "Kennzeichnen",
+     "Deepfakes müssen gekennzeichnet sein. Das gilt auch für KI-Texte, die veröffentlicht werden, um die Öffentlichkeit über Themen von öffentlichem Interesse zu informieren. Ausnahme: Menschen haben sie geprüft oder redaktionell kontrolliert, und eine Person oder Ihr Unternehmen trägt die redaktionelle Verantwortung (Artikel 50)."
+    ],
+    [
+     "Ab 2. Dezember 2027",
+     "Hochrisiko-KI",
+     "Strenge Pflichten gelten für KI in sensiblen Bereichen, zum Beispiel wenn sie Bewerbungen sichtet, filtert oder bewertet (Anhang III). Die Omnibus-Verordnung vom Juli 2026 hat die Frist von August 2026 auf Dezember 2027 verschoben."
+    ]
+   ],
+   "bei_mir": "Im KI-Arbeits-Setup gibt es eine Einweisung ins sichere Arbeiten mit KI mit Teilnahmebestätigung, dazu die Checkliste „Was darf in die KI?“. Das ist keine Rechtsberatung; im Zweifel hilft eine Fachperson für Datenschutz oder IT-Recht.",
+   "stand": "Stand: November 2026"
+  },
+  "termine": "Termine nach Absprache, online über Google Meet oder Teams. Im KI-Arbeits-Setup sind es drei Online-Termine von 90, 60 und 60 Minuten.",
+  "ohne_gemeinsame_fragen": true,
+  "ansprech_satz": "Bei STUDIO AAH! arbeiten Sie direkt mit mir, vom Erstgespräch bis zur Schulung.",
+  "ablauf_hinweis": "So laufen KI-Check und KI-Einführung. Das KI-Arbeits-Setup läuft in einem Erstgespräch und drei Online-Terminen."
  },
  "print": {
   "pfad": "service/druck/",

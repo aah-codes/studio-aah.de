@@ -3871,3 +3871,27 @@ html:not(.js) .hk-zeichen { display: none; }
   .lsx-anw-liste, .lsx-wege-liste { grid-template-columns: minmax(0, 1fr); }
   .lsx-gg-kosten { padding: 24px; }
 }
+/* Anna 16.11.2026 (2): Karten im Mega-Menü dehnen sich nicht mit der Liste, Text 20 px unter dem Icon, beide Menüs */
+.mm-innen > .mm-karte-beige { align-self: start; }
+.mm-karte-beige .mm-karte-icon { margin-bottom: 20px; }
+.mm-karte-beige .button { margin-top: 8px; }
+/* KI-Beratung (2): Praxisbeispiel und KI-Verordnung (Anna 16.11.2026) */
+.lsx-praxis, .lsx-recht { padding: 96px var(--rand-seite) 0; }
+.lsx-praxis .gr-h2, .lsx-recht .gr-h2 { margin: 12px 0 20px; max-width: 20ch; }
+.lsx-praxis-einleitung, .lsx-recht-einleitung { max-width: 64ch; margin: 0 0 32px; font-size: clamp(18px, 1.4vw, 22px); line-height: 1.5; }
+.lsx-praxis-raster { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; padding: 32px; background: var(--farbe-dunkel); color: var(--farbe-weiss); border-radius: 28px; }
+.lsx-praxis-raster h3 { margin: 0 0 14px; color: var(--farbe-weiss); font-size: 1.5rem; line-height: 1.15; }
+.lsx-praxis-raster ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.lsx-praxis-raster li { position: relative; padding-left: 22px; line-height: 1.45; color: rgba(255, 255, 255, .85); }
+.lsx-praxis-raster li::before { content: ""; position: absolute; left: 0; top: .55em; width: 8px; height: 8px; border-radius: 50%; background: var(--farbe-weiss); }
+.lsx-praxis-grenze { margin: 24px 0 0; max-width: 72ch; line-height: 1.5; }
+.lsx-recht-liste { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 24px; border-top: var(--rahmen) solid var(--farbe-dunkel); }
+.lsx-recht-liste li { padding: 20px 0 0; }
+.lsx-recht-datum { margin: 0 0 8px; font-family: var(--schrift-meta); font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--farbe-primaer); }
+.lsx-recht-liste h3 { margin: 0 0 10px; font-size: 1.5rem; line-height: 1.15; }
+.lsx-recht-liste p:not(.lsx-recht-datum) { margin: 0; line-height: 1.5; }
+.lsx-recht-bei-mir { margin: 32px 0 0; padding: 24px 28px; background: var(--farbe-creme); border-radius: 20px; max-width: none; line-height: 1.5; }
+.lsx-recht-stand { display: block; margin-top: 8px; font-family: var(--schrift-meta); font-size: 13px; color: var(--farbe-gedaempft); }
+@media (max-width: 1024px) { .lsx-praxis-raster { grid-template-columns: minmax(0, 1fr); } .lsx-recht-liste { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; } .lsx-wege-liste { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 767.98px) { .lsx-praxis, .lsx-recht { padding: 64px var(--rand-seite-mobil) 0; } .lsx-recht-liste { grid-template-columns: minmax(0, 1fr); } .lsx-praxis-raster { padding: 24px; } }
+.lsx-ablauf-hinweis { max-width: 64ch; margin: 0 0 24px; }
