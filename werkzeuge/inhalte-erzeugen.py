@@ -106,7 +106,7 @@ def linkedin_leiste(pre):
         j, m, t = b['datum'].split('-')
         datum = f'{t}.{m}.{j}'
         k.append(f'        <a class="li-karte" href="https://www.linkedin.com/feed/update/urn:li:activity:{b["id"]}/" target="_blank" rel="noopener">'
-                 f'<img src="{pre}bilder/linkedin/li-{b["id"]}.webp" alt="{esc(b["alt"])}" width="640" height="800" loading="lazy">'
+                 f'<img src="{pre}bilder/linkedin/li-{b["id"]}.{b.get("datei", "webp")}" alt="{esc(b["alt"])}" width="640" height="800" loading="lazy"{" data-gif" if b.get("datei") == "gif" else ""}>'
                  f'<span class="li-fuss"><span class="li-datum">{UHR}<time datetime="{b["datum"]}">{datum}</time> <span aria-hidden="true">↗</span></span>'
                  f'{LI_ZEICHEN}<span class="unsichtbar">Beitrag auf LinkedIn, öffnet in neuem Fenster</span></span></a>')
     return ('    <div class="ks li-ks" data-karussell id="linkedin-karussell">\n      <div class="ks-spur" aria-live="polite">\n' + '\n'.join(k) + '\n      </div>\n'

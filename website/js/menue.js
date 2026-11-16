@@ -172,6 +172,17 @@
     ziele.forEach((z) => beob.observe(z));
   });
 
+  // GIFs (z. B. LinkedIn-Beitrag, Anna 17.11.2026) spielen einmal ab, sobald sie ins Bild kommen, und beim nächsten Hineinscrollen wieder
+  // (Bewegung von selbst höchstens 5 s: das GIF hat keinen Schleifen-Block und läuft 2,6 s); bei „Bewegung reduzieren“ kein Neustart
+  (() => {
+    const gifs = document.querySelectorAll('img[data-gif]');
+    if (!gifs.length || !('IntersectionObserver' in window) || ruhig) return;
+    const beob = new IntersectionObserver((e) => e.forEach((x) => {
+      if (x.isIntersecting) { const q = x.target.getAttribute('src').split('#')[0]; x.target.src = q + '#' + Date.now(); }
+    }), { threshold: 0.5 });
+    gifs.forEach((g) => beob.observe(g));
+  })();
+
   // Erklärfilm Corporate Identity (Brand-Seite): startet, wenn er ins Bild kommt; „Noch einmal ansehen“ startet neu.
   // Bei „Bewegung reduzieren“ steht sofort das fertige Bild.
   (() => {
