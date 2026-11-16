@@ -116,13 +116,6 @@ def dachzeile(m, h):
     return '' if m.rstrip('.').lower() == h.rstrip('.').lower() else f'<p class="meta">{esc(m)}</p>'
 
 
-# Hinweiskarte neben „Direkt anfragen“: Webdesign führt zum Kostenrechner, alle anderen zur Preisliste
-DUO_WEB = ('<p class="meta">Kostenrechner</p>\n      <h2 class="gr-h3" id="rechner-hinweis">Was kostet Ihre Website?</h2>\n'
-           '      <p>In fünf Schritten zum unverbindlichen Kostenvoranschlag: Marke, neu oder Redesign, Seitenstruktur und Extras. Der Kassenbon rechnet mit, als PDF oder per E-Mail.</p>')
-DUO_PREISE = ('<p class="meta">Preise</p>\n      <h2 class="gr-h3" id="rechner-hinweis">Was kostet Ihr Projekt?</h2>\n'
-              '      <p>Alle Pakete und Einstiegspreise im Überblick – und für Websites der Kostenrechner mit unverbindlichem Kostenvoranschlag.</p>')
-
-
 def ablauf_eigen(pre, schritte):
     li = ''.join(f'<li><span class="zl-marke"><small>Schritt</small><b>{i:02d}</b></span><div class="zl-text">{dachzeile(m, h)}<h3>{trennen(esc(h))}</h3><p class="gedaempft">{trennen(esc(x))}</p></div></li>' for i, (m, h, x) in enumerate(schritte, 1))
     return (f'  <section class="prozess-kompakt" id="ablauf" aria-labelledby="prozess">\n    <p class="meta">Wie ich arbeite</p>\n    <h2 class="preis-h2" id="prozess">Prozess</h2>\n'
@@ -156,7 +149,7 @@ def ohne_bauer(liste, tag):
 def referenzen(tag, pre):
     liste = ohne_bauer(I.mit_tag(I.PROJEKTE, [tag]), tag)
     if not liste: return ''
-    return '  <section class="lsx-referenzen" id="referenzen" aria-labelledby="referenzen-titel">\n    <p class="meta">Referenzen</p>\n    <h2 class="gr-h3" id="referenzen-titel">Projekte aus diesem Bereich</h2>\n    <div class="referenz-rahmen">\n' + I.referenz_karten(liste, pre, 'lsx', tag) + '\n    </div>\n  </section>'
+    return '  <section class="lsx-referenzen" id="referenzen" aria-labelledby="referenzen-titel">\n    <p class="meta">Referenzen</p>\n    <h2 class="gr-h2" id="referenzen-titel">Projekte aus diesem Bereich</h2>\n    <div class="referenz-rahmen">\n' + I.referenz_karten(liste, pre, 'lsx', tag) + '\n    </div>\n  </section>'
 
 
 def artikel(pre, tag):
@@ -165,16 +158,24 @@ def artikel(pre, tag):
     return '  <section class="lsx-artikel blog-neu" id="artikel" aria-labelledby="artikel-titel">\n    <div class="lsx-artikel-kopf"><p class="meta">Blog</p><h2 class="gr-h3" id="artikel-titel">Passende Artikel</h2></div>\n    <ul class="blog-liste">\n' + I.blog(liste, pre, pre + 'blog/') + '\n    </ul>\n  </section>'
 
 
-def direkt(pre):
-    return f'''    <div class="lsx-duo-karte lsx-direkt">
+def kontakt(g, pre, link, link_text, termine):
+    check = (f'<a class="textlink" href="{pre}website-check/">Kostenloser Website-Check <span aria-hidden="true">→</span></a>' if MIT_CHECK and g['id'] == 'website' else '')
+    return f'''  <section class="lsx-ansprech" id="kontakt" aria-labelledby="kontakt-titel">
     <img src="{pre}bilder/anna-haertelt-studio-blau.webp" alt="Anna Härtelt, Gründerin von STUDIO AAH!" width="1200" height="1600" loading="lazy">
     <div>
       <p class="meta">Ihre Ansprechpartnerin</p>
-      <h2 class="gr-h3" id="direkt-titel">Sie arbeiten direkt mit mir.</h2>
-      <p>Bei STUDIO AAH! arbeiten Sie direkt mit mir, von der ersten Idee bis zum Launch. Ich bin Anna Härtelt, UX/UI-Designerin, Strategin und Webentwicklerin.</p>
-      <p><a class="textlink" href="{pre}profil/">Mehr über mich <span aria-hidden="true">→</span></a></p>
+      <h2 class="gr-h2" id="kontakt-titel">Starten Sie Ihr Projekt</h2>
+      <p class="lsx-ansprech-name"><strong>Anna Härtelt</strong> · UX/UI-Designerin, Strategin und Webentwicklerin</p>
+      <p>Bei STUDIO AAH! arbeiten Sie direkt mit mir, von der ersten Idee bis zum Launch.</p>
+      <ul class="lsx-ansprech-wege">
+        <li><span class="meta">Telefon</span><a href="tel:+4917683089879">0176 830 898 79</a></li>
+        <li><span class="meta">E-Mail</span><a href="mailto:info@studio-aah.de">info@studio-aah.de</a></li>
+      </ul>
+      <p class="lsx-termine"><span class="meta">Abstimmung</span> {esc(termine)}</p>
+      <p class="lsx-knoepfe"><a class="button" href="{pre}kontakt/">Projekt anfragen <span aria-hidden="true">→</span></a> {check} <a class="textlink" href="{link}">{link_text} <span aria-hidden="true">→</span></a> <a class="textlink" href="{pre}profil/">Mehr über mich <span aria-hidden="true">→</span></a></p>
     </div>
-    </div>'''
+{I.kennzahlen('fakten lsx-fakten', '    ')}
+  </section>'''
 
 
 def grafik(name):
@@ -205,16 +206,15 @@ def seitenkopf(c, pre, intro, termine):
     <p class="meta brotkrumen"><a href="{pre}#leistungen">Leistungen</a> / <span aria-current="page">{esc(c['titel'])}</span></p>
     <h1 class="gr-xxl lsx-titel" style="--n:{max(len(w) for w in woerter)}">{titel_vorne}<span class="wort-mit-icon">{esc(woerter[-1])}<img class="icon-3d" src="{pre}{c['icon']}" alt="" width="400" height="400"></span></h1>
     <p class="alt-klein">{trennen(esc(intro))}</p>
-    <p class="lsx-termine"><span class="meta">So arbeite ich</span> {esc(termine)}</p>
-    {I.kennzahlen('fakten lsx-fakten', '    ')}
+    <p class="lsx-hero-knopf"><a class="button" href="#ueberblick">Kurz erklärt <span aria-hidden="true">→</span></a></p>
   </section>'''
 
 
 def sprungleiste(c, g, mit_vergleich, mit_ablauf, link, link_text):
-    ziele = [('loesung', 'Problem &amp; Lösung', True), ('pakete', 'Pakete', True), ('vergleich', 'Vergleich', mit_vergleich),
-             ('extras', 'Zusatzleistungen', bool(g.get('extras'))), ('ablauf', 'Ablauf', mit_ablauf),
+    # Content-First (Anna 16.11.2026): eine Frage je Abschnitt, Preise unter einem Anker, Artikel nicht in der Leiste
+    ziele = [('loesung', 'Warum', True), ('leistungen', 'Leistungen', bool(c.get('loesungen')) and not c.get('ohne_detail')), ('ablauf', 'Ablauf', mit_ablauf),
              ('referenzen', 'Referenzen', bool(ohne_bauer(I.mit_tag(I.PROJEKTE, [c['tag']]), c['tag']))),
-             ('faq', 'Fragen', True), ('artikel', 'Artikel', bool(c.get('artikel', True) and I.mit_tag(I.BLOG, [c['tag']])))]
+             ('pakete', 'Preise', True), ('faq', 'Häufige Fragen', True)]
     return ankerleiste([(anker, text) for anker, text, an in ziele if an])
 
 
@@ -222,36 +222,56 @@ def sprungleiste(c, g, mit_vergleich, mit_ablauf, link, link_text):
 PROBLEME = {x['id']: x for x in lade_json('inhalte/fuer-wen-seiten.json')['probleme']}
 
 
-def gewinn(c, pre):
-    if not c.get('gewinn'):
-        return ''
-    punkte = ''.join(f'<li>{esc(x)}</li>' for x in c['gewinn'])
+def was_ist(c, pre):
+    """Abschnitt 1 nach dem Hero (IT Sonix „Individuelle Software: Was ist das?“): Definition aus „zusammenfassung“,
+    daneben der Nutzen („gewinn“) und die Anliegen („fuer_sie“). Überschrift überschreibbar mit „frage“."""
+    frage = c.get('frage') or f"{c['titel']}: Was ist das?"
+    text = ''.join(f'<p>{trennen(esc(x))}</p>' for x in c.get('zusammenfassung', []))
+    punkte = ''.join(f'<li>{esc(x)}</li>' for x in c.get('gewinn', []))
     fuer = ''.join(f'<li><a href="{pre}{PROBLEME[i]["pfad"]}"><span>{esc(PROBLEME[i]["karte"])}</span> <span aria-hidden="true">→</span></a></li>'
                    for i in c.get('fuer_sie', []))
-    return f'''  <section class="lsx-gewinn" id="gewinn" aria-labelledby="gewinn-titel">
-    <div class="lsx-gewinn-raster">
-      <div><p class="meta">Was Sie davon haben</p><h2 class="gr-h3" id="gewinn-titel">Mit mir an Ihrer Seite</h2><ol class="lsx-gewinn-liste">{punkte}</ol></div>
-      <div class="lsx-fuer"><p class="meta">Für Sie, wenn</p><ul>{fuer}</ul></div>
-    </div>
+    rechts = ((f'<div class="lsx-was-nutzen"><p class="meta">Was Sie davon haben</p><ol class="lsx-gewinn-liste">{punkte}</ol></div>' if punkte else '')
+              + (f'<div class="lsx-fuer"><p class="meta">Für Sie, wenn</p><ul>{fuer}</ul></div>' if fuer else ''))
+    return f'''  <section class="lsx-was" id="ueberblick" aria-labelledby="was-titel">
+    <div class="lsx-was-text"><p class="meta">Kurz erklärt</p><h2 class="gr-h2" id="was-titel">{trennen(esc(frage))}</h2>{text}</div>
+    <div class="lsx-was-seite">{rechts}</div>
+  </section>'''
+
+
+def kompetenzen(c):
+    """Was genau dazugehört, nummeriert wie die Kernkompetenzen bei IT Sonix (Daten: „loesungen“)."""
+    if not c.get('loesungen') or c.get('ohne_detail'): return ''
+    li = ''.join(f'<li><span class="lsx-nr" aria-hidden="true">{i:02d}</span><p>{trennen(esc(x))}</p></li>' for i, x in enumerate(c['loesungen'], 1))
+    return f'''  <section class="lsx-kompetenz" id="leistungen" aria-labelledby="leistungen-titel">
+    <p class="meta">Leistung im Detail</p>
+    <h2 class="gr-h2" id="leistungen-titel">Was dazugehört</h2>
+    <ol class="lsx-kompetenz-liste">{li}</ol>
   </section>'''
 
 
 def problem_loesung(c, g, pre, link):
     probleme = ''.join(f'<li>{esc(x)}</li>' for x in c['probleme'])
-    punkte = ''.join(f'<li>{esc(x)}</li>' for x in c['loesung_punkte'][:3])
-    grundsatz = '' if c.get('grafik') == 'corporate-identity' else (
+    punkte = '' if c.get('loesungen') else ''.join(f'<li>{esc(x)}</li>' for x in c['loesung_punkte'][:3])
+    grundsatz = '' if c.get('grafik') == 'corporate-identity' or any('Form follows' in x for x in c.get('loesungen', [])) else (
         f'<p class="lsx-grundsatz"><a class="textlink" href="{pre}service/markenbildung/#corporate-identity">Form follows function, die Form folgt der Funktion. '
         'Grundlage für alles, was ich gestalte, ist die Corporate Identity <span aria-hidden="true">→</span></a></p>')
     # Webdesign: Website-Check als zweiter Knopf (Anna 25.10.2026: niedrigschwelligster Einstieg)
     check = (f'<a class="button button-zweit" href="{pre}website-check/">Kostenloser <span class="ohne-umbruch">Website-Check&nbsp;<span aria-hidden="true">→</span></span></a> '
              if g['id'] == 'website' and MIT_CHECK else '')
-    return f'''  <section class="lsx-loesung lsx-pl" id="loesung" aria-labelledby="loesung-titel">
-    <p class="meta">Problem &amp; Lösung</p>
-    <h2 class="gr-h3" id="loesung-titel">{esc(c['problem_titel'])}</h2>
+    # Content-First: keine Dopplung. Wiederholt „loesung_text“ den Einstieg (Was ist das?), entfällt die Lösungskarte
+    doppelt = any(c['loesung_text'][:30] == z[:30] for z in c.get('zusammenfassung', []))
+    loesung = '' if doppelt else f'''<div class="lsx-pl-loesung"><p class="meta">So mache ich es</p><p class="lsx-pl-text">{esc(c['loesung_text'])}</p>{f'<ul>{punkte}</ul>' if punkte else ''}
+        {grundsatz}</div>'''
+    if doppelt and grundsatz:
+        probleme_extra = grundsatz.replace('lsx-grundsatz', 'lsx-grundsatz lsx-grundsatz-hell')
+    else:
+        probleme_extra = ''
+    return f'''  <section class="lsx-loesung lsx-pl{' lsx-pl-allein' if doppelt else ''}" id="loesung" aria-labelledby="loesung-titel">
+    <p class="meta">Warum</p>
+    <h2 class="gr-h2" id="loesung-titel">{esc(c['problem_titel'])}</h2>
     <div class="lsx-pl-raster">
-      <div class="lsx-pl-problem"><p class="meta">Woran es oft hakt</p><ul>{probleme}</ul></div>
-      <div class="lsx-pl-loesung"><p class="meta">So mache ich es</p><p class="lsx-pl-text">{esc(c['loesung_text'])}</p><ul>{punkte}</ul>
-        {grundsatz}</div>
+      <div class="lsx-pl-problem"><p class="meta">Woran es oft hakt</p><ul>{probleme}</ul>{probleme_extra}</div>
+      {loesung}
       <p class="lsx-knoepfe"><a class="button" href="{pre}kontakt/">Projekt anfragen <span aria-hidden="true">→</span></a> {check}<a class="textlink" href="{link}">{'Kosten berechnen' if g['id'] == 'website' else 'Alle Preise'} <span aria-hidden="true">→</span></a></p>
     </div>
   </section>'''
@@ -260,36 +280,12 @@ def problem_loesung(c, g, pre, link):
 def pakete(c, g, pre):
     hinweis = f'<p class="lsx-hinweis">{esc(g["hinweis"])}</p>' if g.get('hinweis') else ''
     return f'''  <section class="lsx-pakete" id="pakete" aria-labelledby="pakete-titel">
-    <p class="meta">Pakete</p>
-    <h2 class="gr-h3" id="pakete-titel">Pakete im Überblick</h2>
+    <p class="meta">Preise</p>
+    <h2 class="gr-h2" id="pakete-titel">Was es kostet</h2>
     {hinweis}
 {paket_reihen(g, c, pre)}
     {NETTO_HINWEIS}
     {'' if len(g['pakete']) == 1 and not c.get('hintergrund') else nicht_enthalten(c)}
-  </section>'''
-
-
-def karte_check(pre):
-    # Website-Check als dritter Einstieg neben Ansprechpartnerin und Preisen (Anna 25.10.2026)
-    return f'''    <div class="lsx-duo-karte lsx-duo-check">
-      <img class="lsx-duo-icon" src="{pre}bilder/icons/target.webp" alt="" width="400" height="400" loading="lazy">
-      <p class="meta">Website-Check</p>
-      <h2 class="gr-h3" id="check-hinweis">Ist Ihre Website fit für 2027?</h2>
-      <p>Ich sehe mir Ihre Website mit Prüfwerkzeugen an. Sie bekommen einen kurzen Bericht per E-Mail – kostenlos und unverbindlich.</p>
-      <p><a class="button" href="{pre}website-check/">Kostenloser <span class="ohne-umbruch">Website-Check&nbsp;<span aria-hidden="true">→</span></span></a></p>
-    </div>'''
-
-
-def duo(g, pre, link):
-    web = g['id'] == 'website'
-    return f'''  <section class="lsx-duo{' lsx-trio' if MIT_CHECK else ''}" aria-label="{'Ansprechpartnerin, Website-Check und Preise' if MIT_CHECK else 'Ansprechpartnerin und Preise'}">
-{direkt(pre)}
-{karte_check(pre) if MIT_CHECK else ''}
-    <div class="lsx-duo-karte lsx-duo-rechner">
-      <img class="lsx-duo-icon" src="{pre}bilder/icons/money-bag.webp" alt="" width="400" height="400" loading="lazy">
-      {DUO_WEB if web else DUO_PREISE}
-      <p><a class="button button-zweit button-hell" href="{link}">{'Zum Kostenrechner' if web else 'Zu den Preisen'} <span aria-hidden="true">→</span></a></p>
-    </div>
   </section>'''
 
 
@@ -316,7 +312,6 @@ def faq(fragen, pre):
     <h2 class="gr-h2" id="faq-titel">Häufige Fragen</h2>
     <div class="faq-liste">
 {eintraege}    </div>
-    <p class="faq-mehr">Noch Fragen? Ich freue mich auf Ihre Nachricht. <a class="textlink" href="{pre}kontakt/">Kontakt</a></p>
   </section>'''
 
 
@@ -358,9 +353,9 @@ def seite(key, c):
 
 {seitenkopf(c, pre, intro, termine)}
 
-{sprungleiste(c, g, bool(vergleich_html), mit_ablauf, link, link_text)}
+{was_ist(c, pre)}
 
-{gewinn(c, pre)}
+{sprungleiste(c, g, bool(vergleich_html), mit_ablauf, link, link_text)}
 
 {problem_loesung(c, g, pre, link)}
 
@@ -368,11 +363,7 @@ def seite(key, c):
 {grafik(c['grafik']) if c.get('grafik') else ''}
 {grafik(c['nutzen']) if c.get('nutzen') else ''}
 
-{pakete(c, g, pre)}
-
-{vergleich_html}
-
-{extras(g)}
+{kompetenzen(c)}
 
 {prozess}
 
@@ -382,9 +373,15 @@ def seite(key, c):
 
 {referenzen(c['tag'], pre)}
 
+{pakete(c, g, pre)}
+
+{vergleich_html}
+
+{extras(g)}
+
 {faq(fragen, pre)}
 
-{duo(g, pre, link)}
+{kontakt(g, pre, link, link_text, termine)}
 
 {artikel(pre, c['tag']) if c.get('artikel', True) else ''}
 

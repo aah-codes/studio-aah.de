@@ -902,6 +902,7 @@
   "fuer_sie": [
    "entlastung",
    "fachkraefte"
-  ]
+  ],
+  "ohne_detail": true
  }
 }
