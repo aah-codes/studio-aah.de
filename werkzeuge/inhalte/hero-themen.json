@@ -2,6 +2,43 @@
   "_hinweis": "Themen für das Frag-Feld im Hero (Anna 17.11.2026). Je Thema Stichwort-Gruppen: aus jeder Gruppe muss ein Wort(anfang) in der Frage stehen. Antwort = die genannte häufige Frage der Website (Wortlaut der Frage exakt), gekürzt auf ein bis zwei Sätze. Speziellere Themen stehen oben, bei Gleichstand gewinnt das obere. Ohne Treffer: keine Antwort, sondern Telefon und Beratung. Erzeugen: python3 werkzeuge/fragen-index.py",
   "themen": [
     {
+      "_quelle": "Zielgruppe „baut selbst“ (Anna 17.11.2026): neue Formulierungen, Fakten aus Webdesign, Website-Check, Retainer, Preisen. Freigabe Anna offen.",
+      "g": [
+        [
+          "prüf",
+          "check",
+          "drüber",
+          "anschau",
+          "okay",
+          "fertig",
+          "live"
+        ],
+        [
+          "selbst",
+          "selber",
+          "gebaut",
+          "vibe",
+          "baukasten"
+        ]
+      ],
+      "antwort": "Bevor Ihre selbst gebaute Website live geht, sehe ich sie mir im kostenlosen Website-Check an.",
+      "punkte": [
+        "Erster Eindruck, Weg zur Anfrage, Handy und Tempo",
+        "Auffindbarkeit bei Google und in KI-Antworten",
+        "Barrierefreiheit sowie Technik und Sicherheit"
+      ],
+      "links": [
+        [
+          "Website-Check",
+          "website-check/"
+        ],
+        [
+          "Selbst bauen mit Unterstützung",
+          "service/webdesign/#selbst"
+        ]
+      ]
+    },
+    {
       "g": [
         [
           "ausbildung",
@@ -88,6 +125,264 @@
           "https://www.linkedin.com/in/anna-h%C3%A4rtelt-8513b8213/"
         ]
       ]
+    },
+    {
+      "_quelle": "Zielgruppe „baut selbst“ (Anna 17.11.2026): neue Formulierungen, Fakten aus Webdesign, Website-Check, Retainer, Preisen. Freigabe Anna offen.",
+      "g": [
+        [
+          "vibe"
+        ],
+        [
+          "was",
+          "heißt",
+          "bedeutet",
+          "ist",
+          "erklär"
+        ]
+      ],
+      "antwort": "Vibe-Coding heißt: Sie beschreiben, was Sie wollen, und die KI schreibt den Code. So entstehen Websites heute schneller denn je.",
+      "punkte": [
+        "Was dabei oft fehlt, ist der Blick einer Fachkraft",
+        "Ich helfe vorher, mittendrin, vor dem Livegang und danach"
+      ],
+      "links": [
+        [
+          "Selbst bauen mit Unterstützung",
+          "service/webdesign/#selbst"
+        ]
+      ]
+    },
+    {
+      "_quelle": "Zielgruppe „baut selbst“ (Anna 17.11.2026): neue Formulierungen, Fakten aus Webdesign, Website-Check, Retainer, Preisen. Freigabe Anna offen.",
+      "g": [
+        [
+          "fehler",
+          "bug",
+          "funktioniert",
+          "kaputt",
+          "hänge",
+          "hängt",
+          "festgefahren",
+          "klappt"
+        ],
+        [
+          "code",
+          "website",
+          "seite",
+          "ki",
+          "claude",
+          "lovable",
+          "cursor",
+          "bolt",
+          "coding"
+        ]
+      ],
+      "antwort": "Wenn Ihr selbst gebautes Projekt hakt, helfe ich stundenweise weiter.",
+      "punkte": [
+        "Bei Struktur, KI-Design und Technik",
+        "Nach Aufwand, 50–85 € netto pro Stunde",
+        "Schreiben Sie mir kurz, was nicht klappt"
+      ],
+      "links": [
+        [
+          "Beratung anfragen",
+          "kontakt/"
+        ],
+        [
+          "Selbst bauen mit Unterstützung",
+          "service/webdesign/#selbst"
+        ]
+      ]
+    },
+    {
+      "_quelle": "Zielgruppe „baut selbst“ (Anna 17.11.2026): neue Formulierungen, Fakten aus Webdesign, Website-Check, Retainer, Preisen. Freigabe Anna offen.",
+      "g": [
+        [
+          "lovable",
+          "cursor",
+          "bolt",
+          "replit",
+          "framer",
+          "webflow",
+          "werkzeug",
+          "tool",
+          "programm"
+        ],
+        [
+          "vibe",
+          "baue",
+          "bauen",
+          "coding",
+          "website",
+          "selbst"
+        ]
+      ],
+      "antwort": "Ich baue selbst mit Claude Code und richte im KI-Arbeits-Setup Claude so ein, dass es Ihre Marke, Inhalte und Regeln kennt.",
+      "punkte": [
+        "So entsteht Code, der zu Ihrem Unternehmen passt",
+        "Für Selbstständige und kleine Büros, zum Festpreis"
+      ],
+      "links": [
+        [
+          "KI-Arbeits-Setup",
+          "service/ki-digitalisierung/"
+        ],
+        [
+          "Selbst bauen mit Unterstützung",
+          "service/webdesign/#selbst"
+        ]
+      ]
+    },
+    {
+      "_quelle": "Zielgruppe „baut selbst“ (Anna 17.11.2026): neue Formulierungen, Fakten aus Webdesign, Website-Check, Retainer, Preisen. Freigabe Anna offen.",
+      "g": [
+        [
+          "selbst",
+          "selber"
+        ],
+        [
+          "lohnt",
+          "beauftrag",
+          "besser",
+          "sparen",
+          "günstig"
+        ]
+      ],
+      "antwort": "Selbst bauen spart Geld, kostet aber Zeit, und Fehler fallen oft erst nach dem Livegang auf.",
+      "punkte": [
+        "Website-Check vor dem Livegang: kostenlos",
+        "Hilfe beim Selbstbauen: 50–85 € netto pro Stunde",
+        "Website von mir: ab 2.450 € netto, auch als Onepager"
+      ],
+      "links": [
+        [
+          "Webdesign",
+          "service/webdesign/"
+        ],
+        [
+          "Selbst bauen mit Unterstützung",
+          "service/webdesign/#selbst"
+        ]
+      ]
+    },
+    {
+      "_quelle": "Zielgruppe „baut selbst“ (Anna 17.11.2026): neue Formulierungen, Fakten aus Webdesign, Website-Check, Retainer, Preisen. Freigabe Anna offen.",
+      "g": [
+        [
+          "unprofessionell",
+          "hässlich",
+          "design",
+          "gestaltung",
+          "aussieht",
+          "sieht"
+        ],
+        [
+          "selbst",
+          "selber",
+          "gebaut",
+          "ki",
+          "vibe",
+          "baukasten"
+        ]
+      ],
+      "antwort": "Ich gebe selbst gebauten Websites den Feinschliff: Struktur, Gestaltung und Texte.",
+      "punkte": [
+        "Vorher zeigt der kostenlose Website-Check, wo es hakt",
+        "Danach nach Aufwand im Retainer, 50–85 € netto pro Stunde"
+      ],
+      "links": [
+        [
+          "Retainer",
+          "service/retainer/"
+        ],
+        [
+          "Website-Check",
+          "website-check/"
+        ]
+      ]
+    },
+    {
+      "_quelle": "Zielgruppe „baut selbst“ (Anna 17.11.2026): neue Formulierungen, Fakten aus Webdesign, Website-Check, Retainer, Preisen. Freigabe Anna offen.",
+      "g": [
+        [
+          "anfrage",
+          "kunden",
+          "leads",
+          "aufträge"
+        ],
+        [
+          "keine",
+          "kommen",
+          "bringt",
+          "wenig",
+          "nichts"
+        ]
+      ],
+      "antwort": "Ob Besucher:innen den Weg zur Anfrage finden, prüft der kostenlose Website-Check als einen von acht Punkten.",
+      "punkte": [
+        "Klare Botschaft gleich zu Beginn",
+        "Eindeutige nächste Schritte für mehr Conversion"
+      ],
+      "links": [
+        [
+          "Website-Check",
+          "website-check/"
+        ],
+        [
+          "Webdesign",
+          "service/webdesign/"
+        ]
+      ]
+    },
+    {
+      "g": [
+        [
+          "vibe",
+          "baukasten",
+          "selbst",
+          "selber",
+          "eigene"
+        ],
+        [
+          "baue",
+          "bauen",
+          "gebaut",
+          "erstell",
+          "programmier",
+          "code",
+          "coding"
+        ]
+      ],
+      "antwort": "Ja, ich unterstütze auch, wenn Sie Ihre Website selbst bauen, zum Beispiel per Vibe-Coding mit KI.",
+      "punkte": [
+        "Vorher: KI richtig einrichten mit dem KI-Arbeits-Setup",
+        "Mittendrin: Hilfe bei Struktur, KI-Design und Technik nach Aufwand",
+        "Vor dem Livegang: kostenloser Website-Check, danach Betreuung im Retainer"
+      ],
+      "links": [
+        [
+          "Selbst bauen mit Unterstützung",
+          "service/webdesign/#selbst"
+        ],
+        [
+          "Website-Check",
+          "website-check/"
+        ]
+      ]
+    },
+    {
+      "g": [
+        [
+          "online",
+          "veröffentlich",
+          "domain",
+          "hosting",
+          "hochlad",
+          "livegang",
+          "launch"
+        ]
+      ],
+      "frage": "Was passiert beim Launch?"
     },
     {
       "g": [

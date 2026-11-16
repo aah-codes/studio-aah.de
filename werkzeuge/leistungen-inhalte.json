@@ -118,7 +118,38 @@
   "fuer_sie": [
    "neue-kunden",
    "fachkraefte"
-  ]
+  ],
+  "selbstbau": {
+   "_quelle": "Anna 17.11.2026 (Chat): Zielgruppe, die ihre Website selbst baut (Vibe-Coding, Baukasten). Texte als Entwurf, Freigabe Anna offen. Preise aus preise-daten.json (Retainer 50–85 €/h)",
+   "titel": "Sie bauen Ihre Website selbst?",
+   "einleitung": "Mit KI geht das heute schneller denn je. Vibe-Coding heißt das: Sie beschreiben, was Sie wollen, und die KI schreibt den Code. Was dabei oft fehlt, ist der Blick einer Fachkraft. Ich steige dort ein, wo Sie mich brauchen.",
+   "schritte": [
+    [
+     "Bevor Sie anfangen",
+     "Richten Sie die KI richtig ein: mit Struktur, Inhalten und den Regeln Ihrer Marke. Das KI-Arbeits-Setup erspart viele Umwege.",
+     "service/ki-digitalisierung/",
+     "Zum KI-Arbeits-Setup"
+    ],
+    [
+     "Sie kommen nicht weiter",
+     "Ich helfe bei Struktur, KI-Design und Technik, stundenweise nach Aufwand, 50–85 € netto pro Stunde.",
+     "kontakt/",
+     "Beratung anfragen"
+    ],
+    [
+     "Vor dem Livegang",
+     "Gibt es strukturierte Daten und Alternativtexte, lädt die Seite schnell, ist sie barrierefrei? Der kostenlose Website-Check zeigt es.",
+     "website-check/",
+     "Zum Website-Check"
+    ],
+    [
+     "Nach dem Livegang",
+     "Ich betreue auch selbst gebaute Websites: Texte, Bilder, neue Seiten und laufende Optimierung im Retainer.",
+     "service/retainer/",
+     "Zum Retainer"
+    ]
+   ]
+  }
  },
  "brand": {
   "pfad": "service/markenbildung/",
@@ -595,6 +626,12 @@
    "beleg": [
     "Aus meiner eigenen Praxis",
     "Was ich Ihnen einrichte, nutze ich selbst jeden Tag: für Projektstand, Wochenplanung, Website-Prüfungen, Angebote und Akquise."
+   ],
+   "extra": [
+    "Sie wollen Ihre Website selbst mit KI bauen?",
+    "Dann richten Sie vorher Claude richtig ein: Mit dem Setup kennt die KI Ihre Marke, Ihre Inhalte und Ihre Regeln, bevor die erste Zeile Code entsteht. So wird aus Vibe-Coding eine Website, die trägt.",
+    "service/webdesign/#selbst",
+    "Selbst bauen mit Unterstützung"
    ]
   },
   "wege": {
@@ -999,6 +1036,10 @@
    [
     "Was kostet ein Retainer bei STUDIO AAH!?",
     "Der Retainer bei STUDIO AAH! in Leipzig kostet 50–85 € netto pro Stunde (ohne Umsatzsteuer), je nach Unternehmensgröße. Abgerechnet wird nach Aufwand, nicht als fester Monatsbetrag."
+   ],
+   [
+    "Betreuen Sie auch selbst gebaute Websites?",
+    "Ja. Auch Websites, die Sie selbst gebaut haben, zum Beispiel per Vibe-Coding mit KI oder im Baukasten, betreue ich im Retainer weiter: Texte und Bilder austauschen, neue Unterseiten, laufende Optimierung. Vorher sehe ich mir die Website im kostenlosen Website-Check an."
    ],
    [
     "Was ist ein Retainer?",

@@ -220,7 +220,7 @@ def sprungleiste(c, g, mit_vergleich, mit_ablauf, link, link_text):
     ziele = [('loesung', 'Ausgangslage' if c.get('gegenueber') else 'Warum', True), ('anwendungen', 'Anwendungsfälle', bool(c.get('anwendungen'))),
              ('wege', 'Lösung', bool(c.get('wege'))), ('praxis', 'Beispiel', bool(c.get('praxis'))), ('recht', 'KI-Verordnung', bool(c.get('recht'))), ('leistungen', 'Leistungen', bool(c.get('loesungen')) and not c.get('ohne_detail')), ('ablauf', 'Ablauf', mit_ablauf),
              ('referenzen', 'Referenzen', bool(ohne_bauer(I.mit_tag(I.PROJEKTE, [c['tag']]), c['tag']))),
-             ('pakete', 'Preise', True), ('faq', 'Häufige Fragen', True)]
+             ('selbst', 'Selbst bauen', bool(c.get('selbstbau'))), ('pakete', 'Preise', True), ('faq', 'Häufige Fragen', True)]
     return ankerleiste([(anker, text) for anker, text, an in ziele if an])
 
 
@@ -265,12 +265,18 @@ def anwendungen(c, pre):
     x = c['anwendungen']
     karten = ''.join(f'<li><span class="lsx-nr" aria-hidden="true">{i:02d}</span><h3>{esc(t)}</h3><p>{esc(b)}</p></li>' for i, (t, b) in enumerate(x['karten'], 1))
     titel, text = x['beleg']
+    extra = ''
+    if x.get('extra'):
+        et, eb, eh, el = x['extra']
+        extra = (f'    <div class="lsx-anw-extra"><h3>{esc(et)}</h3><p>{esc(eb)}</p>'
+                 f'<p><a class="textlink" href="{pre}{eh}">{esc(el)} <span aria-hidden="true">→</span></a></p></div>')
     return f'''  <section class="lsx-anw" id="anwendungen" aria-labelledby="anwendungen-titel">
     <p class="meta">Anwendungsfälle</p>
     <h2 class="gr-h2" id="anwendungen-titel">{esc(x['titel'])}</h2>
     <ul class="lsx-anw-liste">{karten}</ul>
 {f'    <p class="lsx-anw-hinweis">{esc(x["hinweis"])}</p>' if x.get('hinweis') else ''}
     <div class="lsx-anw-beleg"><p class="meta">{esc(titel)}</p><p>{esc(text)}</p></div>
+{extra}
   </section>'''
 
 
@@ -314,6 +320,21 @@ def recht(c):
     <p class="lsx-recht-einleitung">{esc(x['einleitung'])}</p>
     <ol class="lsx-recht-liste">{punkte}</ol>
     <p class="lsx-recht-bei-mir">{esc(x['bei_mir'])} <span class="lsx-recht-stand">{esc(x['stand'])}</span></p>
+  </section>'''
+
+
+def selbstbau(c, pre):
+    """Für alle, die ihre Website selbst bauen (Vibe-Coding, Baukasten; Anna 17.11.2026): vier Einstiege von vorher bis nachher."""
+    if not c.get('selbstbau'): return ''
+    x = c['selbstbau']
+    karten = ''.join(f'<li><span class="lsx-nr" aria-hidden="true">{i:02d}</span><h3>{esc(t)}</h3><p>{esc(b)}</p>'
+                     f'<p class="lsx-sb-link"><a class="textlink" href="{pre}{h}">{esc(l)} <span aria-hidden="true">→</span></a></p></li>'
+                     for i, (t, b, h, l) in enumerate(x['schritte'], 1))
+    return f'''  <section class="lsx-selbst" id="selbst" aria-labelledby="selbst-titel">
+    <p class="meta">Selbst bauen</p>
+    <h2 class="gr-h2" id="selbst-titel">{esc(x['titel'])}</h2>
+    <p class="lsx-wege-einleitung">{esc(x['einleitung'])}</p>
+    <ol class="lsx-selbst-liste">{karten}</ol>
   </section>'''
 
 
@@ -456,6 +477,8 @@ def seite(key, c):
 {prozess}
 
 {retainer_hinweis(g, pre) if mit_ablauf else ''}
+
+{selbstbau(c, pre)}
 
 {stimmen(pre, c['tag'])}
 

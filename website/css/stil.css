@@ -3962,3 +3962,16 @@ html:not(.js) .hk-zeichen { display: none; }
 .fh-quellen { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 0 !important; }
 .fh-quelle { display: inline-flex; gap: 6px; align-items: center; padding: 5px 12px; background: var(--farbe-weiss); border: 1px solid var(--farbe-grau-hell); border-radius: 999px; font-size: .9rem; color: var(--farbe-dunkel); text-decoration: none; }
 .fh-quelle:hover, .fh-quelle:focus-visible { border-color: var(--farbe-dunkel); }
+/* Sie bauen selbst? (Anna 17.11.2026): vier Einstiege für Vibe-Coding und Baukasten */
+.lsx-selbst { padding: 96px var(--rand-seite) 0; }
+.lsx-selbst .gr-h2 { margin: 12px 0 20px; max-width: 20ch; }
+.lsx-selbst-liste { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+.lsx-selbst-liste li { display: flex; flex-direction: column; gap: 10px; padding: 28px; border: var(--rahmen) solid var(--farbe-dunkel); border-radius: 24px; }
+.lsx-selbst-liste h3 { margin: 0; font-size: 1.5rem; line-height: 1.15; }
+.lsx-selbst-liste p { margin: 0; line-height: 1.5; }
+.lsx-sb-link { margin-top: auto !important; padding-top: 8px; }
+.lsx-anw-extra { margin-top: 24px; padding: 28px 32px; background: var(--farbe-creme); border-radius: 24px; }
+.lsx-anw-extra h3 { margin: 0 0 10px; font-size: 1.5rem; }
+.lsx-anw-extra p { margin: 0 0 8px; max-width: 72ch; line-height: 1.5; }
+@media (max-width: 1024px) { .lsx-selbst-liste { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 767.98px) { .lsx-selbst { padding: 64px var(--rand-seite-mobil) 0; } .lsx-selbst-liste { grid-template-columns: minmax(0, 1fr); } }
