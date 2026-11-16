@@ -119,7 +119,7 @@ def dachzeile(m, h):
 def ablauf_eigen(pre, schritte):
     li = ''.join(f'<li><span class="zl-marke"><small>Schritt</small><b>{i:02d}</b></span><div class="zl-text">{dachzeile(m, h)}<h3>{trennen(esc(h))}</h3><p class="gedaempft">{trennen(esc(x))}</p></div></li>' for i, (m, h, x) in enumerate(schritte, 1))
     return (f'  <section class="prozess-kompakt" id="ablauf" aria-labelledby="prozess">\n    <p class="meta">Wie ich arbeite</p>\n    <h2 class="preis-h2" id="prozess">Prozess</h2>\n'
-            f'    <ol class="zeitleiste">{li}</ol>\n    <p><a class="button" href="{pre}kontakt/">Projekt anfragen <span aria-hidden="true">→</span></a></p>\n  </section>')
+            f'    <ol class="zeitleiste">{li}</ol>\n    <p><a class="button" href="{pre}kontakt/">Beratung anfragen <span aria-hidden="true">→</span></a></p>\n  </section>')
 
 
 def ablauf(pre):
@@ -250,7 +250,7 @@ def kompetenzen(c):
 
 
 def problem_loesung(c, g, pre, link):
-    anfrage = c.get('anfrage', 'Projekt anfragen')  # Retainer: „Beratung anfragen“ (Anna 16.11.2026)
+    anfrage = c.get('anfrage', 'Beratung anfragen')  # Retainer: „Beratung anfragen“ (Anna 16.11.2026)
     probleme = ''.join(f'<li>{esc(x)}</li>' for x in c['probleme'])
     punkte = '' if c.get('loesungen') else ''.join(f'<li>{esc(x)}</li>' for x in c['loesung_punkte'][:3])
     grundsatz = '' if c.get('grafik') == 'corporate-identity' or any('Form follows' in x for x in c.get('loesungen', [])) else (
@@ -382,7 +382,7 @@ def seite(key, c):
 
 {faq(fragen, pre)}
 
-{kontakt(g, pre, link, link_text, termine, c.get('anfrage', 'Projekt anfragen'))}
+{kontakt(g, pre, link, link_text, termine, c.get('anfrage', 'Beratung anfragen'))}
 
 {artikel(pre, c['tag']) if c.get('artikel', True) else ''}
 

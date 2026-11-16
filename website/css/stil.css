@@ -18,7 +18,7 @@
   --farbe-creme: #eeece7;            /* Flächen, Plakatgrund */
   --farbe-grau-hell: #d6d8d9;
   --farbe-grau: #9a9d9e;
-  /* Button-Hierarchie (Anna 11.10.2026): Primär = blau gefüllt (Hauptaktion, v. a. „Projekt anfragen“),
+  /* Button-Hierarchie (Anna 11.10.2026): Primär = blau gefüllt (Hauptaktion, v. a. „Beratung anfragen“),
      Sekundär = schwarze Outline, Tertiär = unterstrichener Textlink, alle mit Pfeil.
      Blau #2a5fe6 ist der einzige Akzent (Anna 16.10.2026: vorher auch #2f6bff); Kontrast zu Weiß 5,4 : 1 (WCAG AA). */
   --farbe-primaer: #2a5fe6;
@@ -246,7 +246,7 @@ h1, h2, h3 {
 }
 .kopf-nav a:hover { opacity: .6; }
 
-/* „Projekt anfragen“: unterstrichen wie in der Vorlage */
+/* „Beratung anfragen“: unterstrichen wie in der Vorlage */
 .kopf-button {
   text-decoration: underline;
   text-decoration-thickness: 2px;
@@ -679,7 +679,7 @@ h1, h2, h3 {
 .hinweis-klein + .alt-h3 { margin-top: 2.5rem; }
 
 
-/* ---------- 19. Startseite: „Roter Faden“ und Ziel „Projekt anfragen“ ---------- */
+/* ---------- 19. Startseite: „Roter Faden“ und Ziel „Beratung anfragen“ ---------- */
 main.mit-faden { position: relative; }
 .roter-faden { position: absolute; left: 0; top: 0; z-index: 3; pointer-events: none; overflow: visible; }
 .faden-linie { fill: none; stroke: var(--farbe-dunkel); stroke-width: 2.5; stroke-linecap: round; }
@@ -980,7 +980,7 @@ main.mit-faden { position: relative; }
 .wr-review { margin-top: 24px; padding: 22px; background: var(--farbe-creme); border-radius: 14px; }
 .wr-review p { max-width: 62ch; }
 .wr-review .meta { margin-bottom: 6px; }
-/* Anfrageformular (Kostenrechner und Projekt anfragen): baut eine E-Mail, js/anfrage.js */
+/* Anfrageformular (Kostenrechner und Beratung anfragen): baut eine E-Mail, js/anfrage.js */
 .anfrage-felder { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .anfrage-felder label { display: flex; flex-direction: column; gap: 4px; font-size: 15px; font-weight: 600; }
 .anfrage-ganz { grid-column: 1 / -1; }
@@ -1521,7 +1521,7 @@ main section[id] { scroll-margin-top: 0; } /* Abstand kommt schon aus html { scr
 .kopf-nav .mm-weitere a { text-decoration: none; font-weight: 600; }
 .kopf-nav .mm-weitere a:hover, .kopf-nav .mm-weitere a:focus-visible { text-decoration: underline; opacity: 1; }
 .kopf-nav .mm-weitere a[aria-current] { color: var(--farbe-primaer); }
-/* Menüleiste (Anna 11.10.2026): Leistungen · Preise · Über mich · Blog · [Projekt anfragen] – ein einziger Button */
+/* Menüleiste (Anna 11.10.2026): Leistungen · Preise · Über mich · Blog · [Beratung anfragen] – ein einziger Button */
 .kopf-nav .kopf-button { text-decoration: none !important; padding: 8px 18px; border-radius: 999px; color: var(--farbe-weiss); }
 .mm-toggle { display: inline-flex; align-items: center; gap: 6px; }
 .mm-pfeil { width: 11px; height: 11px; }

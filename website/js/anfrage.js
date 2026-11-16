@@ -1,4 +1,4 @@
-// Anfrageformular (Projekt anfragen und Kostenrechner): schickt die Felder an den Formulardienst Formspark (Anna 16.10.2026),
+// Anfrageformular (Beratung anfragen und Kostenrechner): schickt die Felder an den Formulardienst Formspark (Anna 16.10.2026),
 // der sie per E-Mail an info@studio-aah.de weiterleitet; danach geht es auf die Danke-Seite. Kein fremdes Skript, keine Cookies.
 // Klappt das Senden nicht, steht die Nachricht zum Kopieren bereit.
 // Die Formulare liegen auf Seiten eine Ebene tief (kontakt/, preise/), daher die Pfade mit ../
@@ -88,7 +88,7 @@ window.Anfrage = (() => {
   // Hinweis unter dem Formular zum Versandweg (Datenschutz)
   const HINWEIS = 'Ihre Angaben gehen über den Formulardienst Formspark (Belgien, Speicherung in der EU) per E-Mail an mich. Mehr in der <a href="../datenschutz/#kontakt">Datenschutzerklärung</a>.';
 
-  // Projekt anfragen: Formulare mit data-anfrage (= Betreff, data-weiter = eigene Danke-Seite) selbst verbinden; Pflichtfelder prüft der Browser vor dem Absenden
+  // Beratung anfragen: Formulare mit data-anfrage (= Betreff, data-weiter = eigene Danke-Seite) selbst verbinden; Pflichtfelder prüft der Browser vor dem Absenden
   document.querySelectorAll('form[data-anfrage]').forEach((form) => form.addEventListener('submit', (e) => {
     e.preventDefault();
     senden(form, { betreff: form.dataset.anfrage, weiter: form.dataset.weiter });

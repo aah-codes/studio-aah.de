@@ -396,7 +396,7 @@
     addEventListener('scroll', pruefen, { passive: true });
     addEventListener('resize', pruefen);
     addEventListener('load', pruefen);
-    // erste Prüfung ohne Überblendung, sonst blitzt der Knopf beim Laden über „Projekt anfragen“ auf
+    // erste Prüfung ohne Überblendung, sonst blitzt der Knopf beim Laden über „Beratung anfragen“ auf
     knopf.style.transition = 'none';
     pruefen();
     knopf.getBoundingClientRect(); // Stil jetzt anwenden, bevor die Überblendung zurückkommt

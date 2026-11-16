@@ -294,8 +294,8 @@ def uebersicht():
 def produktseite(q):
     """Produktseite Employer Branding (Anna, 10.11.2026: ab 2.850 € netto, festes Angebot nach dem Karriere-Check)."""
     pre = '../'
-    teile = [kopfbereich(q['meta'], q['h1'], q['unter'], pre, ('kontakt/', 'Projekt anfragen'), bild='employer-branding').replace(
-                 f'<a class="button button-zweit" href="{pre}kontakt/">Projekt anfragen{PFEIL}</a>',
+    teile = [kopfbereich(q['meta'], q['h1'], q['unter'], pre, ('kontakt/', 'Beratung anfragen'), bild='employer-branding').replace(
+                 f'<a class="button button-zweit" href="{pre}kontakt/">Beratung anfragen{PFEIL}</a>',
                  f'<a class="button button-zweit" href="{pre}website-check/">Kostenloser Website-Check{PFEIL}</a>'),
              '  <section class="fw-zwei" aria-labelledby="was-titel">\n    <div>\n      <p class="meta">Kurz erklärt</p>\n'
              '      <h2 class="gr-h3" id="was-titel">Was ist Employer Branding?</h2>\n'
@@ -309,7 +309,7 @@ def produktseite(q):
              + '\n'.join(f'        <li>{esc(x)}</li>' for x in q['enthalten']) + '\n      </ul>\n'
              f'      <p class="fw-preis"><span class="fw-preis-zahl">{esc(q["preis"])}</span> <small class="lsx-netto">netto</small></p>\n'
              f'      <p class="gedaempft">{esc(q["preis_hinweis"])}</p>\n'
-             f'      <p><a class="button" href="{pre}kontakt/">Projekt anfragen{PFEIL}</a></p>\n    </div>\n  </section>',
+             f'      <p><a class="button" href="{pre}kontakt/">Beratung anfragen{PFEIL}</a></p>\n    </div>\n  </section>',
              beleg(q.get('beleg'), pre),
              faq(q['faq']),
              abschluss(pre)]

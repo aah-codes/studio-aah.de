@@ -19,7 +19,7 @@ Die Schreibregeln (Ton, Antwort zuerst, Belege, Wortwahl) stehen im Skill `texte
 8. Hauptteil: `h2` je Kapitel, `h3`/`h4` darunter, **jede Zwischenüberschrift mit `id`** (Agenten und Links zeigen direkt auf Abschnitte). Keine Sprünge in der Überschriften-Reihenfolge. Tabellen mit `caption` oder `aria-label`, am Handy ohne seitliches Scrollen lesbar. Grafiken aus vorhandenen Bausteinen.
 9. Fazit (wenn der Text eins hat)
 10. **„Häufige Fragen“** (`h2#faq`, Pflicht): 6–10 Fragen in `bauen(faq=...)`. Fragen so, wie Menschen sie in eine Suche oder einen KI-Chat tippen. Antworten 2–4 Sätze, eigenständig verständlich, der erste Satz beantwortet die Frage direkt, keine Links. Mindestens eine Brückenfrage zum Angebot von STUDIO AAH!. Nur belegte Aussagen (aus dem Artikel, aus Teil 1 oder neu belegt). Wird als `FAQPage` ausgegeben.
-11. **„Ihr nächster Schritt“** (`section.artikel-schluss`, Pflicht): Frage als Überschrift, 1–2 Sätze, Knöpfe „Projekt anfragen →“ (bzw. „Erstgespräch vereinbaren →“) und „Zum Kostenrechner →“
+11. **„Ihr nächster Schritt“** (`section.artikel-schluss`, Pflicht): Frage als Überschrift, 1–2 Sätze, Knöpfe „Beratung anfragen →“ (bzw. „Erstgespräch vereinbaren →“) und „Zum Kostenrechner →“
 12. Reihen-Kasten (`aside.reihe`) bei Reihen, aktueller Teil mit `aria-current="page"`
 13. Über die Autorin (`section.autorin`, Pflicht)
 14. **Quellen** (`h2#quellen` + `ul.quellen`, Pflicht bei Zahlen): je Quelle Herausgeber, verlinkter Titel mit ↗, Datum. Erreichbarkeit vor dem Hochladen prüfen (Weiterleitungen auf allgemeine Seiten zählen als kaputt). Die Links werden als `citation` übernommen.

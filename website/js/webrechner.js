@@ -194,7 +194,7 @@
         <ul class="wr-uebersicht">${a.map(([t, v]) => `<li><span>${t}</span><span>${esc(v)}</span></li>`).join('')}</ul>
         ${felder('wr')}
         ${window.Anfrage.NEWSLETTER(false, F.newsletter, 'wr-newsletter')}
-        <p class="anfrage-knoepfe"><button type="submit" class="button">Projekt anfragen ${PFEIL}</button><button type="button" class="button button-zweit" data-pdf>Als PDF speichern <span aria-hidden="true">↓</span></button></p>
+        <p class="anfrage-knoepfe"><button type="submit" class="button">Beratung anfragen ${PFEIL}</button><button type="button" class="button button-zweit" data-pdf>Als PDF speichern <span aria-hidden="true">↓</span></button></p>
         <p class="hinweis-klein">Alle Angaben aus dem Rechner gehen mit Ihrer Anfrage an mich und sind die Grundlage für unser Erstgespräch. Unverbindlich und kostenlos. <span class="anfrage-hinweis">${window.Anfrage.HINWEIS}</span></p>
         <div class="anfrage-danach" role="status" hidden></div>
       </form>

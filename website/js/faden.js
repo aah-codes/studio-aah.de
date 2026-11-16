@@ -1,4 +1,4 @@
-// „Roter Faden“: Eine Linie zeichnet sich beim Scrollen vom Hero bis zum Knopf „Projekt anfragen“.
+// „Roter Faden“: Eine Linie zeichnet sich beim Scrollen vom Hero bis zum Knopf „Beratung anfragen“.
 // Sie erzählt die Überschrift „Ihr Weg zu digitaler Sichtbarkeit“. Rein dekorativ (aria-hidden).
 // Bei „Bewegung reduzieren“ steht die Linie vollständig da; ohne JavaScript gibt es keine Linie.
 (() => {
@@ -11,7 +11,7 @@
   let laenge = 0, tabelle = [], gezeichnet = false, zielY = 0;
 
 // Punkte: die Linie bleibt immer am rechten Rand (in der Hälfte des Seitenabstands, damit sie keine Inhalte kreuzt)
-// und biegt erst am Ende waagerecht in den Knopf „Projekt anfragen“ – sie endet knapp innerhalb des Knopfes.
+// und biegt erst am Ende waagerecht in den Knopf „Beratung anfragen“ – sie endet knapp innerhalb des Knopfes.
 function punkte() {
   const m = main.getBoundingClientRect();
   const y = (el, wo = 'top') => el.getBoundingClientRect()[wo] - m.top;
