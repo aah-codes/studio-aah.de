@@ -4,7 +4,7 @@
 # Aufruf im Repository-Ordner (läuft in alle-erzeugen.sh nach den Seiten-Generatoren):  python3 werkzeuge/fragen-index.py
 import html, json, re
 
-from gemeinsam import WEBSITE
+from gemeinsam import WEBSITE, WERKZEUGE
 
 # Reihenfolge: speziellere Seiten zuerst; bei gleicher Frage gewinnt die erste
 VORRANG = ['service/', 'ki-arbeits-setup/', 'website-check/', 'employer-branding/', 'marken-regelwerk/', 'branchen/', 'preise/', 'profil/', '']
@@ -35,10 +35,21 @@ def main():
                 continue
             gesehen.add(frage.lower())
             eintraege.append({'f': frage, 'a': antwort, 'u': url, 's': titel})
+    # Themen (kuratiert, Anna 17.11.2026: freie Suche über alle Fragen war zu ungenau): Antwort aus der genannten Frage
+    nach_frage = {e['f']: e for e in eintraege}
+    themen = []
+    for t in json.loads((WERKZEUGE / 'inhalte' / 'hero-themen.json').read_text(encoding='utf-8'))['themen']:
+        if 'antwort' in t:
+            themen.append({'g': t['g'], 'a': t['antwort'], 'u': t['url'], 's': t['seite']})
+            continue
+        e = nach_frage.get(t['frage'])
+        if not e:
+            raise SystemExit(f'Frage nicht auf der Website gefunden: {t["frage"]}')
+        themen.append({'g': t['g'], 'a': e['a'], 'u': e['u'], 's': e['s']})
     ziel = WEBSITE / 'daten' / 'fragen.json'
     ziel.parent.mkdir(exist_ok=True)
-    ziel.write_text(json.dumps(eintraege, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
-    print(f'Fragen-Index: {len(eintraege)} Fragen aus {len(seiten)} Seiten')
+    ziel.write_text(json.dumps(themen, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
+    print(f'Frag-Feld: {len(themen)} Themen (aus {len(eintraege)} Fragen auf {len(seiten)} Seiten)')
 
 
 if __name__ == '__main__':

@@ -18,36 +18,22 @@
   var feld = form.querySelector('input');
   var daten = null;
 
-  // Füllwörter, die keine Bedeutung tragen
-  var STOPP = ('aber alle als also am an auch auf aus bei bin bis bitte da dann das dass dem den der des die dies doch du ein eine einem einen einer es für gibt habe hat ich ihr ihre im in ist ja kann man mein meine mich mir mit muss nach nicht noch nur ob oder sie sind so über um und uns von vor was welche welcher welches wenn wer wie wird wir wo zu zum zur sich mehr gut').split(' ');
-  // Gleiche Bedeutung, andere Wörter
-  var GLEICH = { webseite: 'website', homepage: 'website', internetseite: 'website', seite: 'website', preis: 'kosten', preise: 'kosten', kostet: 'kosten', teuer: 'kosten', budget: 'kosten',
-    dauert: 'dauer', lange: 'dauer', wochen: 'dauer', relaunch: 'redesign', ai: 'ki', logo: 'marke', branding: 'marke', bewerber: 'fachkräfte', mitarbeiter: 'fachkräfte' };
-
-  function norm(t) {
-    return t.toLowerCase().replace(/studio aah!?/g, ' ').replace(/[^a-zäöüß0-9]+/g, ' ').trim();
-  }
+  // Themen (daten/fragen.json aus werkzeuge/inhalte/hero-themen.json, Anna 17.11.2026): aus jeder Stichwort-Gruppe eines Themas
+  // muss ein Wort(anfang) in der Frage stehen; das Thema mit den meisten Gruppen gewinnt, bei Gleichstand das obere
   function woerter(t) {
-    return norm(t).split(' ').filter(function (w) { return w.length > 1 && STOPP.indexOf(w) < 0; }).map(function (w) { return GLEICH[w] || w; });
+    return t.toLowerCase().replace(/studio aah!?/g, ' ').replace(/[^a-zäöüß0-9]+/g, ' ').trim().split(' ');
   }
-  function treffer(wort, liste) {
-    // ganzes Wort zählt voll, Wortanfang (ab 4 Buchstaben) halb: „website“ findet „website-check“, „kosten“ findet „kostenlos“ schwächer
-    var p = 0;
-    for (var i = 0; i < liste.length; i++) {
-      if (liste[i] === wort) { p = Math.max(p, 1); }
-      else if (wort.length > 3 && (liste[i].indexOf(wort) === 0 || wort.indexOf(liste[i]) === 0 && liste[i].length > 3)) { p = Math.max(p, 0.5); }
-    }
-    return p;
+  function passt(gruppe, w) {
+    return gruppe.some(function (s) {
+      return w.some(function (x) { return s.length <= 3 ? x === s || x === s + 's' : x.indexOf(s) === 0 || (x.length > 4 && x.indexOf(s) > 0 && s.length > 4); });
+    });
   }
   function bewerten(frage) {
-    var w = woerter(frage);
-    if (!w.length) return [];
-    return daten.map(function (e) {
-      if (!e._f) { e._f = woerter(e.f); e._a = woerter(e.a + ' ' + e.s); }
-      var punkte = 0;
-      w.forEach(function (x) { punkte += 3 * treffer(x, e._f) + treffer(x, e._a); });
-      return { e: e, p: punkte / w.length };
-    }).filter(function (x) { return x.p >= 1; }).sort(function (a, b) { return b.p - a.p; }).slice(0, 3);
+    var w = woerter(frage), best = null;
+    daten.forEach(function (t) {
+      if (t.g.every(function (g) { return passt(g, w); }) && (!best || t.g.length > best.g.length)) best = t;
+    });
+    return best ? [{ e: best }] : [];
   }
   function kurz(t) {
     if (t.length <= 260) return t;
@@ -63,8 +49,8 @@
   // Antwort wie im Chat (Anna 17.11.2026: „ganz simpel wie Google“, „wie mit einem Chatbot“): Frage als Blase rechts,
   // eine kurze Antwort links (ein bis zwei Sätze) mit Link; Folgefragen hängen sich an, höchstens drei Runden sichtbar
   function saetze(t) {
-    // nur nach Satzzeichen mit Leerzeichen und Großbuchstaben trennen; „STUDIO AAH!“ und „2.450 €“ bleiben ganz
-    var teile = t.replace(/STUDIO AAH!/g, 'STUDIO AAH\u00a7').split(/(?<=[.?!])\s+(?=[A-ZÄÖÜ„])/).map(function (x) { return x.replace(/STUDIO AAH\u00a7/g, 'STUDIO AAH!') + ' '; });
+    // nur nach Satzzeichen mit Leerzeichen und Großbuchstaben trennen; „STUDIO AAH!“, „2.450 €“ und Abkürzungen wie „Dr.“ (Wortverbinder) bleiben ganz
+    var teile = t.replace(/STUDIO AAH!/g, 'STUDIO AAH\u00a7').replace(/\b(Dr|Nr|ca|bzw|inkl|z\. B|u\. a|vgl)\. /g, '$1.\u2060 ').split(/(?<=[.?!])\s+(?=[A-ZÄÖÜ„])/).map(function (x) { return x.replace(/STUDIO AAH\u00a7/g, 'STUDIO AAH!').replace(/\u2060/g, '') + ' '; });
     var aus = teile[0];
     if (aus.length < 120 && teile[1]) aus += teile[1];
     return aus.trim().length > 280 ? kurz(aus.trim()) : aus.trim();

@@ -3954,3 +3954,4 @@ html:not(.js) .hk-zeichen { display: none; }
 .fh-ich { justify-self: end; max-width: 80%; margin: 0; padding: 10px 16px; background: var(--farbe-dunkel); color: var(--farbe-weiss); border-radius: 18px 18px 4px 18px; line-height: 1.45; }
 .fh-sie { justify-self: start; max-width: 85%; padding: 12px 16px; background: var(--farbe-creme); border-radius: 18px 18px 18px 4px; text-align: left; }
 .fh-sie p { margin: 0 0 6px; line-height: 1.5; }
+.fh-hinweis { margin: 10px 0 0; font-size: 13px; color: var(--farbe-gedaempft); }

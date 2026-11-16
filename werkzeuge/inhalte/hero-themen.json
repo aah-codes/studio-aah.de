@@ -1,0 +1,428 @@
+{
+  "_hinweis": "Themen für das Frag-Feld im Hero (Anna 17.11.2026). Je Thema Stichwort-Gruppen: aus jeder Gruppe muss ein Wort(anfang) in der Frage stehen. Antwort = die genannte häufige Frage der Website (Wortlaut der Frage exakt), gekürzt auf ein bis zwei Sätze. Speziellere Themen stehen oben, bei Gleichstand gewinnt das obere. Ohne Treffer: keine Antwort, sondern Telefon und Beratung. Erzeugen: python3 werkzeuge/fragen-index.py",
+  "themen": [
+    {
+      "g": [
+        [
+          "check",
+          "prüf",
+          "analys"
+        ],
+        [
+          "kost",
+          "gratis",
+          "umsonst",
+          "preis"
+        ]
+      ],
+      "frage": "Ist der Website-Check von STUDIO AAH! wirklich kostenlos?"
+    },
+    {
+      "g": [
+        [
+          "check",
+          "prüf",
+          "analys"
+        ]
+      ],
+      "frage": "Was prüft der Website-Check?"
+    },
+    {
+      "g": [
+        [
+          "chatgpt",
+          "copilot",
+          "openai",
+          "gemini"
+        ]
+      ],
+      "frage": "Geht das auch mit ChatGPT?"
+    },
+    {
+      "g": [
+        [
+          "ki",
+          "chatgpt",
+          "künstlich"
+        ],
+        [
+          "such",
+          "gefunden",
+          "agent",
+          "antwort"
+        ]
+      ],
+      "frage": "Wie bereite ich meine Website auf KI-Suchen und KI-Agenten vor?"
+    },
+    {
+      "g": [
+        [
+          "skill"
+        ]
+      ],
+      "frage": "Was ist ein Skill?"
+    },
+    {
+      "g": [
+        [
+          "ki",
+          "claude",
+          "künstlich",
+          "setup"
+        ],
+        [
+          "kost",
+          "preis",
+          "teuer",
+          "budget"
+        ]
+      ],
+      "frage": "Was kostet das KI-Arbeits-Setup?"
+    },
+    {
+      "g": [
+        [
+          "ki",
+          "claude",
+          "künstlich",
+          "setup",
+          "automatis"
+        ]
+      ],
+      "frage": "Was ist das KI-Arbeits-Setup von STUDIO AAH!?"
+    },
+    {
+      "g": [
+        [
+          "logo"
+        ]
+      ],
+      "frage": "Kann ich bei STUDIO AAH! nur ein Logo entwickeln lassen?"
+    },
+    {
+      "g": [
+        [
+          "marke",
+          "branding",
+          "corporate",
+          "erscheinungsbild"
+        ],
+        [
+          "kost",
+          "preis",
+          "teuer",
+          "budget"
+        ]
+      ],
+      "frage": "Was kostet es, eine Marke bei STUDIO AAH! in Leipzig entwickeln zu lassen?"
+    },
+    {
+      "g": [
+        [
+          "marke",
+          "branding",
+          "corporate",
+          "erscheinungsbild"
+        ]
+      ],
+      "frage": "Wie läuft eine Markenentwicklung bei STUDIO AAH! ab?"
+    },
+    {
+      "g": [
+        [
+          "barriere",
+          "bfsg"
+        ]
+      ],
+      "frage": "Ist Barrierefreiheit für meine Website Pflicht?"
+    },
+    {
+      "g": [
+        [
+          "seo",
+          "google",
+          "gefunden",
+          "suchmaschin",
+          "ranking"
+        ]
+      ],
+      "frage": "Ist SEO und LLM-Zitierfähigkeit im Preis enthalten?"
+    },
+    {
+      "g": [
+        [
+          "arzt",
+          "ärzt",
+          "praxis",
+          "praxen",
+          "zahnarzt",
+          "gesundheit",
+          "therap"
+        ]
+      ],
+      "frage": "Haben Sie schon für Praxen gearbeitet?"
+    },
+    {
+      "g": [
+        [
+          "bau",
+          "ingenieur",
+          "architekt"
+        ]
+      ],
+      "frage": "Haben Sie Erfahrung mit Bauunternehmen?"
+    },
+    {
+      "g": [
+        [
+          "fachkräft",
+          "bewerb",
+          "karriere",
+          "recruiting",
+          "personal",
+          "stellen"
+        ]
+      ],
+      "frage": "Was gehört auf eine gute Karriereseite?"
+    },
+    {
+      "g": [
+        [
+          "retainer",
+          "betreuung",
+          "weiterentwickl"
+        ]
+      ],
+      "frage": "Was ist ein Retainer?"
+    },
+    {
+      "g": [
+        [
+          "visitenkarte",
+          "flyer",
+          "druck",
+          "broschüre",
+          "print",
+          "postkarte"
+        ]
+      ],
+      "frage": "Was kostet Printdesign in Leipzig bei STUDIO AAH!?"
+    },
+    {
+      "g": [
+        [
+          "linkedin",
+          "social",
+          "instagram",
+          "marketing",
+          "webinar",
+          "fachartikel"
+        ]
+      ],
+      "frage": "Was kosten LinkedIn, Post-Vorlagen, Fachartikel und Webinare bei STUDIO AAH! in Leipzig?"
+    },
+    {
+      "g": [
+        [
+          "animation",
+          "video",
+          "motion",
+          "film"
+        ]
+      ],
+      "frage": "Was kostet Motion Design bei STUDIO AAH!?"
+    },
+    {
+      "g": [
+        [
+          "illustration",
+          "infografik",
+          "icon",
+          "zeichn"
+        ]
+      ],
+      "frage": "Was kostet eine Illustration oder Infografik bei STUDIO AAH!?"
+    },
+    {
+      "g": [
+        [
+          "ux",
+          "ui",
+          "app",
+          "software",
+          "usability",
+          "nutzerfreundlich",
+          "benutzerfreundlich"
+        ]
+      ],
+      "frage": "Was kostet UI/UX Design bei STUDIO AAH! in Leipzig?"
+    },
+    {
+      "g": [
+        [
+          "wordpress",
+          "wix",
+          "baukasten",
+          "jimdo",
+          "squarespace",
+          "cms",
+          "system"
+        ]
+      ],
+      "frage": "Mit welchem System baut STUDIO AAH! Websites?"
+    },
+    {
+      "g": [
+        [
+          "wartung",
+          "update",
+          "technik",
+          "hosting",
+          "sicherheit"
+        ]
+      ],
+      "frage": "Wer kümmert sich nach dem Start um die Technik?"
+    },
+    {
+      "g": [
+        [
+          "selbst",
+          "pflegen",
+          "ändern",
+          "bearbeiten"
+        ]
+      ],
+      "frage": "Kann ich meine Website danach selbst pflegen?"
+    },
+    {
+      "g": [
+        [
+          "relaunch",
+          "redesign",
+          "überarbeit",
+          "modernisier",
+          "veraltet",
+          "alte"
+        ]
+      ],
+      "frage": "Was ist der Unterschied zwischen einer neuen Website und einem Redesign?"
+    },
+    {
+      "g": [
+        [
+          "dauer",
+          "lange",
+          "schnell",
+          "wochen",
+          "monate",
+          "zeit"
+        ]
+      ],
+      "frage": "Wie lange dauert es, eine Website erstellen zu lassen?"
+    },
+    {
+      "g": [
+        [
+          "kost",
+          "preis",
+          "teuer",
+          "budget",
+          "angebot",
+          "euro"
+        ]
+      ],
+      "frage": "Was kostet eine Website in Leipzig bei STUDIO AAH!?"
+    },
+    {
+      "g": [
+        [
+          "ablauf",
+          "läuft",
+          "vorgehen",
+          "prozess",
+          "schritt"
+        ]
+      ],
+      "frage": "Wie läuft ein Website-Projekt bei STUDIO AAH! ab?"
+    },
+    {
+      "g": [
+        [
+          "datenschutz",
+          "dsgvo",
+          "daten"
+        ]
+      ],
+      "frage": "Ist das mit dem Datenschutz vereinbar?"
+    },
+    {
+      "g": [
+        [
+          "erfahrung",
+          "referenz",
+          "projekte",
+          "kunden",
+          "beispiel"
+        ]
+      ],
+      "frage": "Haben Sie genug Erfahrung?"
+    },
+    {
+      "g": [
+        [
+          "klein",
+          "allein",
+          "einzel",
+          "freelanc",
+          "agentur"
+        ]
+      ],
+      "frage": "Ist ein Studio nicht zu klein für uns?"
+    },
+    {
+      "g": [
+        [
+          "lohnt",
+          "rentiert",
+          "nutzen",
+          "bringt",
+          "sinn"
+        ]
+      ],
+      "frage": "Lohnt sich das für uns?"
+    },
+    {
+      "g": [
+        [
+          "kontakt",
+          "erreich",
+          "telefon",
+          "anruf",
+          "termin",
+          "gespräch",
+          "büro",
+          "adresse",
+          "mail"
+        ]
+      ],
+      "antwort": "Rufen Sie mich an: 0176 830 898 79, oder schreiben Sie an info@studio-aah.de. Das Erstgespräch ist kostenlos und unverbindlich.",
+      "url": "kontakt/",
+      "seite": "Kontakt"
+    },
+    {
+      "g": [
+        [
+          "hallo",
+          "hi",
+          "moin",
+          "guten",
+          "hey",
+          "servus"
+        ]
+      ],
+      "antwort": "Hallo! Fragen Sie mich zu Website, Marke oder KI im Arbeitsalltag, zum Beispiel: Was kostet eine Website?",
+      "url": "kontakt/",
+      "seite": "Kontakt"
+    }
+  ]
+}
