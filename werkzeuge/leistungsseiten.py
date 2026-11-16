@@ -158,7 +158,7 @@ def artikel(pre, tag):
     return '  <section class="lsx-artikel blog-neu" id="artikel" aria-labelledby="artikel-titel">\n    <div class="lsx-artikel-kopf"><p class="meta">Blog</p><h2 class="gr-h3" id="artikel-titel">Passende Artikel</h2></div>\n    <ul class="blog-liste">\n' + I.blog(liste, pre, pre + 'blog/') + '\n    </ul>\n  </section>'
 
 
-def kontakt(g, pre, link, link_text, termine):
+def kontakt(g, pre, link, link_text, termine, anfrage):
     check = (f'<a class="textlink" href="{pre}website-check/">Kostenloser Website-Check <span aria-hidden="true">→</span></a>' if MIT_CHECK and g['id'] == 'website' else '')
     return f'''  <section class="lsx-ansprech" id="kontakt" aria-labelledby="kontakt-titel">
     <img src="{pre}bilder/anna-haertelt-studio-blau.webp" alt="Anna Härtelt, Gründerin von STUDIO AAH!" width="1200" height="1600" loading="lazy">
@@ -172,7 +172,7 @@ def kontakt(g, pre, link, link_text, termine):
         <li><span class="meta">E-Mail</span><a href="mailto:info@studio-aah.de">info@studio-aah.de</a></li>
       </ul>
       <p class="lsx-termine"><span class="meta">Abstimmung</span> {esc(termine)}</p>
-      <p class="lsx-knoepfe"><a class="button" href="{pre}kontakt/">Projekt anfragen <span aria-hidden="true">→</span></a> {check} <a class="textlink" href="{link}">{link_text} <span aria-hidden="true">→</span></a> <a class="textlink" href="{pre}profil/">Mehr über mich <span aria-hidden="true">→</span></a></p>
+      <p class="lsx-knoepfe"><a class="button" href="{pre}kontakt/">{anfrage} <span aria-hidden="true">→</span></a> {check} <a class="textlink" href="{link}">{link_text} <span aria-hidden="true">→</span></a> <a class="textlink" href="{pre}profil/">Mehr über mich <span aria-hidden="true">→</span></a></p>
     </div>
 {I.kennzahlen('fakten lsx-fakten', '    ')}
   </section>'''
@@ -250,6 +250,7 @@ def kompetenzen(c):
 
 
 def problem_loesung(c, g, pre, link):
+    anfrage = c.get('anfrage', 'Projekt anfragen')  # Retainer: „Beratung anfragen“ (Anna 16.11.2026)
     probleme = ''.join(f'<li>{esc(x)}</li>' for x in c['probleme'])
     punkte = '' if c.get('loesungen') else ''.join(f'<li>{esc(x)}</li>' for x in c['loesung_punkte'][:3])
     grundsatz = '' if c.get('grafik') == 'corporate-identity' or any('Form follows' in x for x in c.get('loesungen', [])) else (
@@ -272,7 +273,7 @@ def problem_loesung(c, g, pre, link):
     <div class="lsx-pl-raster">
       <div class="lsx-pl-problem"><p class="meta">Woran es oft hakt</p><ul>{probleme}</ul>{probleme_extra}</div>
       {loesung}
-      <p class="lsx-knoepfe"><a class="button" href="{pre}kontakt/">Projekt anfragen <span aria-hidden="true">→</span></a> {check}<a class="textlink" href="{link}">{'Kosten berechnen' if g['id'] == 'website' else 'Alle Preise'} <span aria-hidden="true">→</span></a></p>
+      <p class="lsx-knoepfe"><a class="button" href="{pre}kontakt/">{anfrage} <span aria-hidden="true">→</span></a> {check}<a class="textlink" href="{link}">{'Kosten berechnen' if g['id'] == 'website' else 'Alle Preise'} <span aria-hidden="true">→</span></a></p>
     </div>
   </section>'''
 
@@ -381,7 +382,7 @@ def seite(key, c):
 
 {faq(fragen, pre)}
 
-{kontakt(g, pre, link, link_text, termine)}
+{kontakt(g, pre, link, link_text, termine, c.get('anfrage', 'Projekt anfragen'))}
 
 {artikel(pre, c['tag']) if c.get('artikel', True) else ''}
 

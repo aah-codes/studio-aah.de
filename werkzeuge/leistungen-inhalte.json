@@ -903,6 +903,7 @@
    "entlastung",
    "fachkraefte"
   ],
-  "ohne_detail": true
+  "ohne_detail": true,
+  "anfrage": "Beratung anfragen"
  }
 }

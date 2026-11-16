@@ -53,13 +53,13 @@ KURZ = {'brand': 'Eine Marke, die bei Ihrer Zielgruppe ankommt.', 'ui-ux': 'Digi
 
 
 def start_leistungen():
-    """Startseite: fünf Kernkompetenzen in der Reihenfolge des Spiels und Retainer, je Form-Icon, Name und eine Zeile;
+    """Startseite: drei Kernkompetenzen (Markenbildung, Webdesign, KI-Beratung, Anna 16.11.2026), je Form-Icon, Name und eine Zeile;
     drei nebeneinander (Anna 12.11.2026)."""
     icons = {k: v['icon'] for k, v in lade_json('leistungen-inhalte.json').items() if isinstance(v, dict) and 'icon' in v}
     nach_id = {k['id']: k for k in daten['startseite']}
     karten = ''.join(f'<a class="ls-karte" href="{nach_id[i]["link"]}" id="k-{i}"><span class="ls-bild"><img src="{icons[i]}" alt="" width="400" height="400" loading="lazy"></span>'
                      f'<span class="ls-karte-titel">{esc(nach_id[i]["titel"])}</span><span class="ls-karte-text">{esc(KURZ[i])}</span></a>'
-                     for i in ('brand', 'ui-ux', 'website', 'marketing', 'ki', 'retainer'))
+                     for i in ('brand', 'website', 'ki'))  # Anna 16.11.2026: drei Kernkompetenzen wie im Mega-Menü
     return ('  <section class="start-leistungen" aria-labelledby="leistungen">\n    <div class="sektionskopf"><p class="meta">Kernkompetenzen</p>'
             '<h2 class="gr-xxl" id="leistungen">Leistungen</h2></div>\n'
             f'    <div class="ls-raster ls-kern">{karten}</div>\n  </section>')
