@@ -1,6 +1,17 @@
 // Frag-Feld im Hero der Startseite (Anna 16.11.2026): sucht nur in den häufigen Fragen der Website (daten/fragen.json,
 // erzeugt von werkzeuge/fragen-index.py) und zeigt die passendsten Antworten mit Link. Alles läuft im Browser, nichts wird gesendet.
 (function () {
+  // Punkteraster im Hero: rund um die Maus deutlicher (Anna 17.11.2026, wie früher die hellgrauen Punkte)
+  var buehne = document.querySelector('[data-raster]');
+  if (buehne && window.matchMedia('(hover: hover)').matches) {
+    buehne.addEventListener('pointermove', function (ev) {
+      var r = buehne.getBoundingClientRect();
+      buehne.style.setProperty('--mx', ((ev.clientX - r.left) / r.width * 100).toFixed(1) + '%');
+      buehne.style.setProperty('--my', ((ev.clientY - r.top) / r.height * 100).toFixed(1) + '%');
+    });
+  }
+})();
+(function () {
   var form = document.querySelector('[data-frag]');
   var ziel = document.querySelector('[data-frag-antworten]');
   if (!form || !ziel) return;
@@ -49,34 +60,39 @@
     if (text) e.textContent = text;
     return e;
   }
+  // Antwort wie im Chat (Anna 17.11.2026: „ganz simpel wie Google“, „wie mit einem Chatbot“): Frage als Blase rechts,
+  // eine kurze Antwort links (ein bis zwei Sätze) mit Link; Folgefragen hängen sich an, höchstens drei Runden sichtbar
+  function saetze(t) {
+    // nur nach Satzzeichen mit Leerzeichen und Großbuchstaben trennen; „STUDIO AAH!“ und „2.450 €“ bleiben ganz
+    var teile = t.replace(/STUDIO AAH!/g, 'STUDIO AAH\u00a7').split(/(?<=[.?!])\s+(?=[A-ZÄÖÜ„])/).map(function (x) { return x.replace(/STUDIO AAH\u00a7/g, 'STUDIO AAH!') + ' '; });
+    var aus = teile[0];
+    if (aus.length < 120 && teile[1]) aus += teile[1];
+    return aus.trim().length > 280 ? kurz(aus.trim()) : aus.trim();
+  }
+  function link(text, href) {
+    var a = el('a', 'textlink', text + ' ');
+    a.href = href;
+    var pfeil = el('span', null, '→'); pfeil.setAttribute('aria-hidden', 'true'); a.appendChild(pfeil);
+    return a;
+  }
   function zeigen(frage) {
-    var liste = bewerten(frage);
-    ziel.textContent = '';
-    if (!liste.length) {
-      var leer = el('div', 'fh-leer');
-      leer.appendChild(el('p', null, 'Dazu habe ich hier noch keine Antwort. Fragen Sie mich direkt:'));
-      var wege = el('p', 'fh-leer-wege');
-      var tel = el('a', 'textlink', '0176 830 898 79'); tel.href = 'tel:+4917683089879';
-      var mail = el('a', 'textlink', 'info@studio-aah.de'); mail.href = 'mailto:info@studio-aah.de';
-      var anfrage = el('a', 'textlink', 'Beratung anfragen '); anfrage.href = 'kontakt/';
-      var pfeil = el('span', null, '→'); pfeil.setAttribute('aria-hidden', 'true'); anfrage.appendChild(pfeil);
-      wege.appendChild(tel); wege.appendChild(document.createTextNode(' · ')); wege.appendChild(mail); wege.appendChild(document.createTextNode(' · ')); wege.appendChild(anfrage);
-      leer.appendChild(wege);
-      ziel.appendChild(leer);
-      return;
+    var treffer = bewerten(frage)[0];
+    var verlauf = ziel.querySelector('.fh-chat') || ziel.appendChild(el('ol', 'fh-chat'));
+    var runde = el('li', 'fh-runde');
+    runde.appendChild(el('p', 'fh-ich', frage));
+    var antwort = el('div', 'fh-sie');
+    if (treffer) {
+      antwort.appendChild(el('p', null, saetze(treffer.e.a)));
+      antwort.appendChild(link('Mehr dazu', treffer.e.u || './'));
+    } else {
+      antwort.appendChild(el('p', null, 'Dazu habe ich hier noch keine Antwort. Rufen Sie mich an: 0176 830 898 79, oder schreiben Sie mir.'));
+      antwort.appendChild(link('Beratung anfragen', 'kontakt/'));
     }
-    var ul = el('ul', 'fh-liste');
-    liste.forEach(function (x) {
-      var li = el('li');
-      li.appendChild(el('h2', 'fh-frage', x.e.f));
-      li.appendChild(el('p', null, kurz(x.e.a)));
-      var a = el('a', 'textlink', 'Mehr dazu: ' + x.e.s + ' ');
-      a.href = x.e.u || './';
-      var pfeil = el('span', null, '→'); pfeil.setAttribute('aria-hidden', 'true'); a.appendChild(pfeil);
-      li.appendChild(a);
-      ul.appendChild(li);
-    });
-    ziel.appendChild(ul);
+    runde.appendChild(antwort);
+    verlauf.appendChild(runde);
+    while (verlauf.children.length > 3) verlauf.removeChild(verlauf.firstChild);
+    feld.value = '';
+    feld.placeholder = 'Noch eine Frage?';
   }
   function laden() {
     if (daten) return Promise.resolve();
