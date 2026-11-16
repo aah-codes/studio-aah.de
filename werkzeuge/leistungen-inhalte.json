@@ -481,9 +481,9 @@
    "Team-Schulung: praxisnah, verständlich und auf Ihre Aufgaben zugeschnitten"
   ],
   "zusammenfassung": [
-   "KI und digitale Abläufe, die im Alltag wirklich entlasten: für kleine und mittlere Unternehmen (KMU) und Solo-Selbstständige. Im KI-Check schaue ich mir an, wo in Ihrem Alltag Zeit verloren geht und wo KI-Werkzeuge wirklich entlasten.",
-   "In der KI-Einführung setzen wir die Empfehlungen um: Wir wählen passende Werkzeuge aus, richten digitale Arbeitsabläufe ein, und ich schule Ihr Team, damit es KI sicher und sinnvoll einsetzt.",
-   "Für Selbstständige und kleine Büros gibt es das KI-Arbeits-Setup: Ich richte Claude für Sie ein, mit Ihren Projekten, Ihren Abläufen und drei Skills, dazu ein Projekt-Cockpit, das zeigt, was heute ansteht. In drei Terminen, zum Festpreis."
+   "Ich arbeite ausschließlich mit Claude von Anthropic, nicht mit ChatGPT oder anderen KIs. Darauf richte ich Ihr Büro ein: mit Ihren Projekten, Ihren Abläufen und Ihren Regeln.",
+   "Claude lernt dabei mit: Über einen festen Arbeitsablauf (Skill) wird jede Korrektur zur Regel. Regeln und Wissen gelten in jedem Chat, Sie müssen nichts zweimal erklären.",
+   "Für Selbstständige und kleine Büros gibt es das KI-Arbeits-Setup zum Festpreis. Für größere Teams beginnt es mit dem KI-Check; die KI-Einführung setzt die Empfehlungen um und schult Ihr Team."
   ],
   "nicht_enthalten": [
    "Lizenzkosten der KI-Werkzeuge: zahlen Sie direkt an den Anbieter",
@@ -509,8 +509,8 @@
     "Ein Skill ist ein fester Arbeitsablauf, den Claude immer gleich ausführt. Zum Beispiel ein Prüfer, der jede Arbeit kontrolliert, bevor sie an Kund:innen geht, ein Vertriebsablauf für Leads und Angebote oder ein Text-Skill in Ihrem Ton. Im KI-Arbeits-Setup wählen wir die drei Skills, die Sie zuerst entlasten."
    ],
    [
-    "Welche KI empfehlen Sie?",
-    "Das hängt von Ihren Aufgaben und Ihren Daten ab. Ich arbeite selbst täglich mit KI und empfehle nur, was ich kenne und was zu Ihrem Datenschutz passt. Das KI-Arbeits-Setup richte ich mit Claude von Anthropic ein. Ob es sich auf ChatGPT oder Microsoft Copilot übertragen lässt, klären wir im Erstgespräch; passt es nicht, sage ich Ihnen das ehrlich."
+    "Arbeiten Sie auch mit ChatGPT oder Microsoft Copilot?",
+    "Nein. Ich arbeite ausschließlich mit Claude von Anthropic, weil ich selbst jeden Tag damit arbeite und genau weiß, was es kann. Arbeitsanleitung, Skills, Projekt-Cockpit und geplante Aufgaben richte ich in Claude ein. Setzt Ihr Unternehmen fest auf ein anderes Werkzeug, bin ich nicht die Richtige, und das sage ich Ihnen offen."
    ],
    [
     "Verschickt die KI etwas ohne mich?",
@@ -540,9 +540,11 @@
    "Team-Schulung: praxisnah, verständlich und auf Ihre Aufgaben zugeschnitten"
   ],
   "gewinn": [
-   "KI-Werkzeuge, die zu Ihren Abläufen passen.",
-   "Ein Team, das weiß, wie es KI sicher und sinnvoll einsetzt.",
-   "Ziel: weniger Routine, mehr Zeit für Kundschaft und Strategie."
+   "Weniger Büroarbeit, mehr Zeit für Kundschaft und Strategie: Angebote, Nachfassen, Protokolle und Ablage bereitet Claude als Entwurf vor.",
+   "Claude lernt mit: Aus jeder Korrektur wird eine Regel, die ab dann in jedem Chat gilt.",
+   "Ihr Wissen an einem Ort: Projektstand, Regeln und Vorlagen liegen in einem Arbeitsordner, den Claude bei jeder Aufgabe liest.",
+   "Zahlen, die etwas sagen: Claude wertet Tracking und Conversion Ihrer Website aus und fasst zusammen, wo Anfragen verloren gehen.",
+   "Sicher eingesetzt: klare Regeln, welche Daten in die KI dürfen, und eine Einweisung nach der KI-Verordnung."
   ],
   "fuer_sie": [
    "ki-im-team",
@@ -555,34 +557,34 @@
    "rechts": "Mit KI-Beratung",
    "zeilen": [
     [
-     "Es gibt Lizenzen für neue Tools, aber kaum jemand arbeitet damit.",
-     "Werkzeuge, die genutzt werden",
-     "Weil sie zu Ihren Aufgaben passen und Ihr Team weiß, wie."
+     "Jede:r nutzt eine andere KI, oft mit privaten Konten. Niemand weiß, welche Firmendaten wo landen.",
+     "Ein Werkzeug, klare Regeln",
+     "Ihr Team arbeitet mit Claude. Eine Checkliste legt fest, welche Daten hinein dürfen und welche nicht."
     ],
     [
-     "Jede:r nutzt KI anders oder mit privaten Konten.",
-     "Klare Regeln",
-     "Was mit KI geht, was nicht, und welche Daten wohin dürfen."
+     "In jedem neuen Chat erklären Sie von vorn: Wer ist die Kundin? Wie ist der Stand? Welcher Ton passt?",
+     "Claude kennt Ihr Büro",
+     "Arbeitsanleitung und Arbeitsordner mit einer Statusdatei je Projekt. Claude liest sie bei jeder Aufgabe mit."
     ],
     [
-     "Angebote, Nachfassen und Ablage kosten jede Woche Stunden.",
-     "Routine an KI abgeben",
-     "KI-Arbeitsabläufe bereiten Entwürfe vor. Sie prüfen und geben frei."
+     "Sie korrigieren dieselben Fehler immer wieder.",
+     "Claude lernt mit",
+     "Über einen Skill wird jede Korrektur zur festen Regel. Sie gilt ab dann in jedem Chat."
     ],
     [
-     "In jedem neuen Chat geht alles von vorn los: Wer ist die Kundin? Wie ist der Stand? Welcher Ton passt?",
-     "Eine KI, die Ihre Arbeitsweise kennt",
-     "Ihre Kund:innen, Ihr Ton, Ihre Regeln stehen in einer Arbeitsanleitung. Sie müssen nichts mehr erklären."
+     "Angebote, Nachfassen, Protokolle und Ablage kosten jede Woche Stunden.",
+     "Weniger Büroarbeit",
+     "Claude bereitet Entwürfe vor, geplante Aufgaben schreiben jeden Morgen den Tagesüberblick. Sie prüfen und geben frei."
     ],
     [
-     "Abläufe sind nirgends aufgeschrieben: „Das haben wir schon immer so gemacht.“",
-     "Wissen, das bleibt",
-     "Aufgeschriebene Abläufe helfen auch neuen Mitarbeitenden beim Einstieg."
+     "Die Zahlen Ihrer Website liegen im Tracking, aber niemand hat Zeit, sie auszuwerten.",
+     "Zahlen, die etwas sagen",
+     "Claude wertet Besuche und Conversion aus und fasst zusammen, wo Anfragen verloren gehen."
     ],
     [
-     "Sie wissen nicht, wo Sie anfangen sollen, ohne ein großes IT-Projekt zu starten.",
-     "Klein anfangen, ohne IT-Abteilung",
-     "Wiederkehrende Aufgaben Schritt für Schritt digitalisieren und sinnvoll verknüpfen."
+     "Lizenzen sind bezahlt, aber kaum jemand arbeitet damit.",
+     "Ein Team, das Claude nutzt",
+     "Eine Schulung an Ihren eigenen Aufgaben, damit jede:r weiß, wie es geht."
     ]
    ],
    "kosten": "Ein Werkzeug, das niemand nutzt, kostet nur Geld. Und ohne gemeinsame Regeln landen Firmendaten in Diensten, die niemand geprüft hat."
@@ -731,7 +733,12 @@
   "termine": "Termine nach Absprache, online über Google Meet oder Teams. Im KI-Arbeits-Setup sind es drei Online-Termine von 90, 60 und 60 Minuten.",
   "ohne_gemeinsame_fragen": true,
   "ansprech_satz": "Bei STUDIO AAH! arbeiten Sie direkt mit mir, vom Erstgespräch bis zur Schulung.",
-  "ablauf_hinweis": "So laufen KI-Check und KI-Einführung. Das KI-Arbeits-Setup läuft in einem Erstgespräch und drei Online-Terminen."
+  "ablauf_hinweis": "So laufen KI-Check und KI-Einführung. Das KI-Arbeits-Setup läuft in einem Erstgespräch und drei Online-Terminen.",
+  "frage": "KI-Beratung: Was ist das?",
+  "fuer_sie_text": {
+   "ki-im-team": "Ihr Team soll KI nutzen, weiß aber nicht wie",
+   "entlastung": "Alles läuft über Sie, die Verwaltung frisst Ihre Zeit"
+  }
  },
  "print": {
   "pfad": "service/druck/",

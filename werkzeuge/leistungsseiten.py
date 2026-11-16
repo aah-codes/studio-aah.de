@@ -230,7 +230,8 @@ def was_ist(c, pre):
     frage = c.get('frage') or f"{c['titel']}: Was ist das?"
     text = ''.join(f'<p>{trennen(esc(x))}</p>' for x in c.get('zusammenfassung', []))
     punkte = ''.join(f'<li>{esc(x)}</li>' for x in c.get('gewinn', []))
-    fuer = ''.join(f'<li><a href="{pre}{PROBLEME[i]["pfad"]}"><span>{esc(PROBLEME[i]["karte"])}</span> <span aria-hidden="true">→</span></a></li>'
+    texte = c.get('fuer_sie_text', {})  # eigene Linktexte je Seite (Anna 16.11.2026: Kartentitel allein zu unklar)
+    fuer = ''.join(f'<li><a href="{pre}{PROBLEME[i]["pfad"]}"><span>{esc(texte.get(i, PROBLEME[i]["karte"]))}</span> <span aria-hidden="true">→</span></a></li>'
                    for i in c.get('fuer_sie', []))
     rechts = ((f'<div class="lsx-was-nutzen"><p class="meta">Was Sie davon haben</p><ol class="lsx-gewinn-liste">{punkte}</ol></div>' if punkte else '')
               + (f'<div class="lsx-fuer"><p class="meta">Für Sie, wenn</p><ul>{fuer}</ul></div>' if fuer else ''))
