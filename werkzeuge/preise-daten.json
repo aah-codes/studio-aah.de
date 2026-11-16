@@ -603,7 +603,7 @@
      "wer": "Für Teams, die die Empfehlungen aus dem Check umsetzen wollen.",
      "plus": "Nach dem KI-Check:",
      "items": [
-      "Auswahl & Einrichtung passender KI-Werkzeuge",
+      "Claude für Ihr Team einrichten",
       "Digitale Arbeitsabläufe",
       "Team-Schulung"
      ],
@@ -767,7 +767,7 @@
    "titel": "KI-Beratung",
    "bild": "bilder/leistung-ki.webp",
    "link": "service/ki-digitalisierung/",
-   "text": "KI-Check und Beratung: welche KI Ihrem Unternehmen im Alltag wirklich hilft."
+   "text": "KI-Beratung mit Claude: eingerichtet für Ihre Abläufe."
   }
  ],
  "webrechner": {

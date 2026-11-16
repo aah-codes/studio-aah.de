@@ -3895,3 +3895,14 @@ html:not(.js) .hk-zeichen { display: none; }
 @media (max-width: 1024px) { .lsx-praxis-raster { grid-template-columns: minmax(0, 1fr); } .lsx-recht-liste { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; } .lsx-wege-liste { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 767.98px) { .lsx-praxis, .lsx-recht { padding: 64px var(--rand-seite-mobil) 0; } .lsx-recht-liste { grid-template-columns: minmax(0, 1fr); } .lsx-praxis-raster { padding: 24px; } }
 .lsx-ablauf-hinweis { max-width: 64ch; margin: 0 0 24px; }
+/* KI-Beratung (3), Anna 16.11.2026: kein großer schwarzer Grund; Lösung als Karten; Zeitleiste mit drei Schritten */
+.lsx-gg-kosten { background: transparent; color: var(--farbe-dunkel); border: var(--rahmen) solid var(--farbe-dunkel); }
+.lsx-wege-einleitung { max-width: 64ch; margin: 0 0 32px; font-size: clamp(18px, 1.4vw, 22px); line-height: 1.5; }
+.lsx-wege-liste { counter-reset: none; }
+.lsx-wege-liste li { border-top: 0; background: var(--farbe-creme); border-radius: 24px; padding: 28px; }
+.lsx-wege-liste li:last-child { border-top-color: transparent; }
+.lsx-wege-liste .lsx-nr { display: block; margin-bottom: 12px; }
+.lsx-wege-liste h3 { font-size: 1.5rem; }
+.lsx-wege-mehr { margin: 32px 0 0; }
+.zl-quer.zlq-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (min-width: 768px) and (max-width: 1024px) { .lsx-wege-liste { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

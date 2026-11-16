@@ -212,7 +212,7 @@
    "pfad": "ki-im-team/",
    "nr": 3,
    "karte": "Neue Tools, die keiner nutzt.",
-   "kurz": "KI-Werkzeuge, die zu Ihren Abläufen passen, und ein Team, das sie gern nutzt.",
+   "kurz": "Claude, eingerichtet für Ihre Abläufe, und ein Team, das es gern nutzt.",
    "seitentitel": "KI im Team einführen – pragmatisch und ohne IT-Großprojekt | STUDIO AAH!",
    "beschreibung": "Welche KI-Tools lohnen sich, und wie nutzt Ihr Team sie wirklich? KI-Check, KI-Einführung mit Team-Schulung und KI-Arbeits-Setup für den Mittelstand in Leipzig.",
    "meta": "KI im Team",
@@ -233,8 +233,8 @@
     ],
     [
      "Ideation",
-     "Wenige Werkzeuge, klar eingerichtet.",
-     "Auswahl passender KI-Werkzeuge mit Blick auf den Datenschutz, eingerichtet für Ihre Aufgaben."
+     "Ein Werkzeug, klar eingerichtet.",
+     "Claude eingerichtet für Ihre Aufgaben, mit Blick auf den Datenschutz."
     ],
     [
      "Umsetzung",
@@ -267,7 +267,7 @@
    "faq": [
     [
      "Welche KI empfehlen Sie?",
-     "Das hängt von Ihren Aufgaben und Ihren Daten ab. Ich arbeite selbst täglich mit KI und empfehle nur, was ich kenne und was zu Ihrem Datenschutz passt. Das KI-Arbeits-Setup richte ich mit Claude ein."
+     "Claude von Anthropic. Ich arbeite ausschließlich damit und richte es für Ihre Aufgaben ein. Das Prinzip lässt sich auf ChatGPT übertragen; auch dort gibt es Projekte, eigene Anweisungen und Skills."
     ],
     [
      "Bauen Sie auch Schnittstellen zu unserem ERP?",
@@ -357,7 +357,7 @@
    "faq": [
     [
      "Brauchen wir dafür neue Software?",
-     "Meist nicht. Wir starten mit dem, was Sie haben, und einem KI-Werkzeug. Wichtiger als neue Software sind klare Abläufe."
+     "Meist nicht. Wir starten mit dem, was Sie haben, und Claude. Wichtiger als neue Software sind klare Abläufe."
     ],
     [
      "Wie lange dauert das?",

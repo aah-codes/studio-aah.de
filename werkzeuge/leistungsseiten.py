@@ -117,10 +117,11 @@ def dachzeile(m, h):
 
 
 def ablauf_eigen(pre, schritte, hinweis=''):
-    li = ''.join(f'<li><span class="zl-marke"><small>Schritt</small><b>{i:02d}</b></span><div class="zl-text">{dachzeile(m, h)}<h3>{trennen(esc(h))}</h3><p class="gedaempft">{trennen(esc(x))}</p></div></li>' for i, (m, h, x) in enumerate(schritte, 1))
+    """Eigene Schritte einer Leistung als horizontale Zeitleiste mit Punkten (zl-quer, wie Startseite und Profil; Anna 16.11.2026)."""
+    li = ''.join(f'<li><span class="zlq-nr">{i:02d}</span><div class="zl-text">{dachzeile(m, h)}<h3>{trennen(esc(h))}</h3><p class="gedaempft">{trennen(esc(x))}</p></div></li>' for i, (m, h, x) in enumerate(schritte, 1))
     return (f'  <section class="prozess-kompakt" id="ablauf" aria-labelledby="prozess">\n    <p class="meta">Wie ich arbeite</p>\n    <h2 class="preis-h2" id="prozess">Prozess</h2>\n'
             + (f'    <p class="lsx-ablauf-hinweis">{esc(hinweis)}</p>\n' if hinweis else '') +
-            f'    <ol class="zeitleiste">{li}</ol>\n    <p><a class="button" href="{pre}kontakt/">Beratung anfragen <span aria-hidden="true">→</span></a></p>\n  </section>')
+            f'    <ol class="zl-quer zlq-{len(schritte)}">{li}</ol>\n    <p><a class="button" href="{pre}kontakt/">Beratung anfragen <span aria-hidden="true">→</span></a></p>\n  </section>')
 
 
 def ablauf(pre):
@@ -172,7 +173,7 @@ def kontakt(g, pre, link, link_text, termine, anfrage, satz='Bei STUDIO AAH! arb
         <li><span class="meta">Telefon</span><a href="tel:+4917683089879">0176 830 898 79</a></li>
         <li><span class="meta">E-Mail</span><a href="mailto:info@studio-aah.de">info@studio-aah.de</a></li>
       </ul>
-      <p class="lsx-termine"><span class="meta">Abstimmung</span> {esc(termine)}</p>
+{f'      <p class="lsx-termine"><span class="meta">Abstimmung</span> {esc(termine)}</p>' if termine else ''}
       <p class="lsx-knoepfe"><a class="button" href="{pre}kontakt/">{anfrage} <span aria-hidden="true">→</span></a> {check} <a class="textlink" href="{link}">{link_text} <span aria-hidden="true">→</span></a> <a class="textlink" href="{pre}profil/">Mehr über mich <span aria-hidden="true">→</span></a></p>
     </div>
 {I.kennzahlen('fakten lsx-fakten', '    ')}
@@ -197,7 +198,9 @@ def fragen_fuer(c, termine):
     """FAQ der Seite: eigene Fragen, Frage zu den Abstimmungsterminen, gemeinsame Fragen aller Leistungsseiten."""
     satz = termine if termine.startswith('Termine') else termine[0].lower() + termine[1:]  # Substantiv bleibt groß
     zusatz = '' if 'nach Absprache' in termine else ' Weitere Termine vereinbaren wir nach Absprache.'
-    return c['faq'] + [['Wie oft gibt es bei STUDIO AAH! Abstimmungstermine?', 'Bei STUDIO AAH! gibt es ' + satz + zusatz]] + ([] if c.get('ohne_gemeinsame_fragen') else GEMEINSAM)
+    # Antwort ohne „Bei STUDIO AAH!“ (Anna 16.11.2026: in der Antwort Ich-Form oder allgemein); entfällt, wo der Prozess die Termine zeigt
+    termin_frage = [['Wie oft gibt es bei STUDIO AAH! Abstimmungstermine?', 'Es gibt ' + satz + zusatz]] if c.get('termine_zeigen', True) else []
+    return c['faq'] + termin_frage + ([] if c.get('ohne_gemeinsame_fragen') else GEMEINSAM)
 
 
 def seitenkopf(c, pre, intro, termine):
@@ -214,7 +217,7 @@ def seitenkopf(c, pre, intro, termine):
 def sprungleiste(c, g, mit_vergleich, mit_ablauf, link, link_text):
     # Content-First (Anna 16.11.2026): eine Frage je Abschnitt, Preise unter einem Anker, Artikel nicht in der Leiste
     ziele = [('loesung', 'Ausgangslage' if c.get('gegenueber') else 'Warum', True), ('anwendungen', 'Anwendungsfälle', bool(c.get('anwendungen'))),
-             ('wege', 'Welcher Weg', bool(c.get('wege'))), ('praxis', 'Beispiel', bool(c.get('praxis'))), ('recht', 'KI-Verordnung', bool(c.get('recht'))), ('leistungen', 'Leistungen', bool(c.get('loesungen')) and not c.get('ohne_detail')), ('ablauf', 'Ablauf', mit_ablauf),
+             ('wege', 'Lösung', bool(c.get('wege'))), ('praxis', 'Beispiel', bool(c.get('praxis'))), ('recht', 'KI-Verordnung', bool(c.get('recht'))), ('leistungen', 'Leistungen', bool(c.get('loesungen')) and not c.get('ohne_detail')), ('ablauf', 'Ablauf', mit_ablauf),
              ('referenzen', 'Referenzen', bool(ohne_bauer(I.mit_tag(I.PROJEKTE, [c['tag']]), c['tag']))),
              ('pakete', 'Preise', True), ('faq', 'Häufige Fragen', True)]
     return ankerleiste([(anker, text) for anker, text, an in ziele if an])
@@ -230,8 +233,8 @@ def was_ist(c, pre):
     frage = c.get('frage') or f"{c['titel']}: Was ist das?"
     text = ''.join(f'<p>{trennen(esc(x))}</p>' for x in c.get('zusammenfassung', []))
     punkte = ''.join(f'<li>{esc(x)}</li>' for x in c.get('gewinn', []))
-    texte = c.get('fuer_sie_text', {})  # eigene Linktexte je Seite (Anna 16.11.2026: Kartentitel allein zu unklar)
-    fuer = ''.join(f'<li><a href="{pre}{PROBLEME[i]["pfad"]}"><span>{esc(texte.get(i, PROBLEME[i]["karte"]))}</span> <span aria-hidden="true">→</span></a></li>'
+    # Linktext = Schlagwort der Zielseite (Anna 16.11.2026: „nur jeweils ein Wort, ein Keyword“)
+    fuer = ''.join(f'<li><a href="{pre}{PROBLEME[i]["pfad"]}"><span>{esc(PROBLEME[i]["meta"])}</span> <span aria-hidden="true">→</span></a></li>'
                    for i in c.get('fuer_sie', []))
     rechts = ((f'<div class="lsx-was-nutzen"><p class="meta">Was Sie davon haben</p><ol class="lsx-gewinn-liste">{punkte}</ol></div>' if punkte else '')
               + (f'<div class="lsx-fuer"><p class="meta">Für Sie, wenn</p><ul>{fuer}</ul></div>' if fuer else ''))
@@ -251,7 +254,7 @@ def gegenueber(c, g, pre, link):
     <h2 class="gr-h2" id="loesung-titel">{esc(c['problem_titel'])}</h2>
     <div class="lsx-gg-kopf" aria-hidden="true"><span>{esc(x['links'])}</span><span>{esc(x['rechts'])}</span></div>
     <ol class="lsx-gg-liste">{zeilen}</ol>
-    <p class="lsx-gg-kosten">{esc(x['kosten'])}</p>
+{f'    <p class="lsx-gg-kosten">{esc(x["kosten"])}</p>' if x.get('kosten') else ''}
   </section>'''
 
 
@@ -265,21 +268,23 @@ def anwendungen(c, pre):
     <p class="meta">Anwendungsfälle</p>
     <h2 class="gr-h2" id="anwendungen-titel">{esc(x['titel'])}</h2>
     <ul class="lsx-anw-liste">{karten}</ul>
-    <p class="lsx-anw-hinweis">{esc(x['hinweis'])}</p>
-    <div class="lsx-anw-beleg"><p class="meta">{esc(titel)}</p><p>{esc(text)}</p><p><a class="textlink" href="{pre}ki-arbeits-setup/">Zum KI-Arbeits-Setup <span aria-hidden="true">→</span></a></p></div>
+{f'    <p class="lsx-anw-hinweis">{esc(x["hinweis"])}</p>' if x.get('hinweis') else ''}
+    <div class="lsx-anw-beleg"><p class="meta">{esc(titel)}</p><p>{esc(text)}</p></div>
   </section>'''
 
 
 def wege(c, pre):
-    """Lösungsraum: welches Angebot zu wem passt (Feld „wege“); Preise stehen nur unter „Preise“."""
+    """Lösung (Feld „wege“): ein Angebot mit seinen Bausteinen als Karten und Link zur Angebotsseite (Anna 16.11.2026: nur KI-Arbeits-Setup)."""
     if not c.get('wege'): return ''
     x = c['wege']
-    def ziel(h): return h if h.startswith('#') else pre + h
-    karten = ''.join(f'''<li><h3>{esc(n)}</h3><p class="lsx-wege-wer">{esc(w)}</p><p>{esc(t)}</p><p class="lsx-wege-link"><a class="textlink" href="{ziel(h)}">{esc(l)} <span aria-hidden="true">→</span></a></p></li>''' for n, w, t, h, l in x['karten'])
+    karten = ''.join(f'<li><span class="lsx-nr" aria-hidden="true">{i:02d}</span><h3>{esc(t)}</h3><p>{esc(b)}</p></li>' for i, (t, b) in enumerate(x['karten'], 1))
+    ziel, text = x['link']
     return f'''  <section class="lsx-wege" id="wege" aria-labelledby="wege-titel">
-    <p class="meta">Lösung</p>
+    <p class="meta">{esc(x.get('meta', 'Lösung'))}</p>
     <h2 class="gr-h2" id="wege-titel">{esc(x['titel'])}</h2>
+    <p class="lsx-wege-einleitung">{esc(x['einleitung'])}</p>
     <ol class="lsx-wege-liste">{karten}</ol>
+    <p class="lsx-wege-mehr"><a class="button button-zweit" href="{pre}{ziel}">{esc(text)} <span aria-hidden="true">→</span></a></p>
   </section>'''
 
 
@@ -463,7 +468,7 @@ def seite(key, c):
 
 {faq(fragen, pre)}
 
-{kontakt(g, pre, link, link_text, termine, c.get('anfrage', 'Beratung anfragen'), **({'satz': c['ansprech_satz']} if c.get('ansprech_satz') else {}))}
+{kontakt(g, pre, link, link_text, termine if c.get('termine_zeigen', True) else '', c.get('anfrage', 'Beratung anfragen'), **({'satz': c['ansprech_satz']} if c.get('ansprech_satz') else {}))}
 
 {artikel(pre, c['tag']) if c.get('artikel', True) else ''}
 

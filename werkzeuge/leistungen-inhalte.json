@@ -461,8 +461,8 @@
   "gruppe": "ki",
   "tag": "ki",
   "titel": "KI-Beratung",
-  "seitentitel": "KI-Beratung in Leipzig: KI-Check & KI-Einführung | STUDIO AAH!",
-  "beschreibung": "KI-Beratung bei STUDIO AAH! in Leipzig für KMU und Solo-Selbstständige: KI-Check ab 900 € netto, KI-Einführung ab 2.000 € netto. Festpreis nach Erstgespräch.",
+  "seitentitel": "KI-Beratung in Leipzig: Claude für Ihr Büro einrichten | STUDIO AAH!",
+  "beschreibung": "KI-Beratung aus Leipzig: Ich richte Claude für Ihr Büro ein, mit Arbeitsordner, Arbeitsanleitung, drei Skills und Projekt-Cockpit. KI-Arbeits-Setup in drei Terminen, 990 € netto.",
   "bild": "bilder/leistung-ki.webp",
   "bildalt": "Hände tippen auf einer Laptop-Tastatur, im Hintergrund ein Monitor",
   "icon": "bilder/formen/ki.svg",
@@ -481,56 +481,48 @@
    "Team-Schulung: praxisnah, verständlich und auf Ihre Aufgaben zugeschnitten"
   ],
   "zusammenfassung": [
-   "Ich arbeite ausschließlich mit Claude von Anthropic, nicht mit ChatGPT oder anderen KIs. Darauf richte ich Ihr Büro ein: mit Ihren Projekten, Ihren Abläufen und Ihren Regeln.",
-   "Claude lernt dabei mit: Über einen festen Arbeitsablauf (Skill) wird jede Korrektur zur Regel. Regeln und Wissen gelten in jedem Chat, Sie müssen nichts zweimal erklären.",
-   "Für Selbstständige und kleine Büros gibt es das KI-Arbeits-Setup zum Festpreis. Für größere Teams beginnt es mit dem KI-Check; die KI-Einführung setzt die Empfehlungen um und schult Ihr Team."
+   "Ich arbeite ausschließlich mit Claude von Anthropic. Darauf richte ich Ihr Büro ein: mit Ihren Projekten, Ihren Abläufen und Ihren Regeln.",
+   "Claude lernt dabei mit: Sagen Sie „merk dir“ oder korrigieren Sie Claude, macht ein Skill daraus eine feste Regel. Sie gilt ab dann in jedem Chat.",
+   "Dafür gibt es das KI-Arbeits-Setup, für Selbstständige und kleine Büros mit bis zu fünf Personen."
   ],
   "nicht_enthalten": [
-   "Lizenzkosten der KI-Werkzeuge: zahlen Sie direkt an den Anbieter",
-   "Rechtsberatung",
-   "Programmierung",
-   "Mehr als zwei Korrekturrunden je Bereich: nach Aufwand, 50–85 € netto pro Stunde, je nach Unternehmensgröße"
+   "Ihr KI-Abo: Das buchen und bezahlen Sie direkt beim Anbieter",
+   "Programmierung eigener Software",
+   "Rechts- oder Datenschutzberatung",
+   "Mehr als drei Skills oder eine Team-Schulung: nach Aufwand"
   ],
   "faq": [
    [
-    "Was kostet eine KI-Beratung bei STUDIO AAH! in Leipzig?",
-    "Das KI-Arbeits-Setup kostet 990 € netto zum Festpreis. Der KI-Check beginnt bei 900 € netto, die KI-Einführung bei 2.000 € netto; den Festpreis dafür erhalten Sie nach einem kostenlosen Erstgespräch. Lizenzkosten der KI-Werkzeuge zahlen Sie direkt an den Anbieter. Was jeweils enthalten ist, steht oben unter Preise."
+    "Wie bezahle ich das KI-Arbeits-Setup?",
+    "In zwei Raten: die Hälfte mit Auftrag, die Hälfte nach Termin 1."
    ],
    [
-    "Was ist der Unterschied zwischen KI-Arbeits-Setup, KI-Check und KI-Einführung?",
-    "Das KI-Arbeits-Setup richtet Claude für Selbstständige und kleine Büros mit bis zu fünf Personen ein: Arbeitsordner, Arbeitsanleitung, drei Skills und ein Projekt-Cockpit, in drei Online-Terminen über etwa drei Wochen. Der KI-Check zeigt, wo KI in Ihrem Alltag Zeit spart; für größere Teams ist er der Einstieg. Ich sehe mir Ihre Abläufe an und spreche mit den Menschen, die sie täglich erledigen, und Sie bekommen einen Empfehlungsbericht. Die KI-Einführung setzt diese Empfehlungen um: passende Werkzeuge, digitale Arbeitsabläufe und eine Schulung an Ihren eigenen Aufgaben."
-   ],
-   [
-    "Welche Aufgaben eignen sich für KI?",
-    "Aufgaben, die immer wiederkommen und nach Regeln laufen: Entwürfe für Angebote und E-Mails, Protokolle, Zusammenfassungen, Ablage, Nachfassen und der Projektstand je Kunde. Entscheidungen und Freigaben bleiben bei Ihnen."
+    "Geht das auch mit ChatGPT?",
+    "Ich richte das Setup ausschließlich in Claude von Anthropic ein, weil ich selbst jeden Tag damit arbeite und genau weiß, was es kann. Das Prinzip lässt sich aber auf ChatGPT übertragen: Auch dort gibt es Projekte mit eigenen Anweisungen und Dateien, wiederkehrende Aufgaben und Skills nach demselben Prinzip. Welche Funktionen Ihr Tarif enthält, klären wir im Erstgespräch."
    ],
    [
     "Was ist ein Skill?",
-    "Ein Skill ist ein fester Arbeitsablauf, den Claude immer gleich ausführt. Zum Beispiel ein Prüfer, der jede Arbeit kontrolliert, bevor sie an Kund:innen geht, ein Vertriebsablauf für Leads und Angebote oder ein Text-Skill in Ihrem Ton. Im KI-Arbeits-Setup wählen wir die drei Skills, die Sie zuerst entlasten."
+    "Ein fester Arbeitsablauf, den Claude immer gleich ausführt, sobald die passende Aufgabe kommt. So wird jede Arbeit gleich gut erledigt, egal in welchem Chat."
    ],
    [
-    "Arbeiten Sie auch mit ChatGPT oder Microsoft Copilot?",
-    "Nein. Ich arbeite ausschließlich mit Claude von Anthropic, weil ich selbst jeden Tag damit arbeite und genau weiß, was es kann. Arbeitsanleitung, Skills, Projekt-Cockpit und geplante Aufgaben richte ich in Claude ein. Setzt Ihr Unternehmen fest auf ein anderes Werkzeug, bin ich nicht die Richtige, und das sage ich Ihnen offen."
+    "Welchen Tarif von Claude brauche ich?",
+    "Einen bezahlten Tarif, den Sie direkt bei Anthropic buchen. Arbeiten Sie nur mit eigenen Texten und anonymisierten Daten, reicht der Tarif Pro; das Training mit Ihren Chats schalten wir gemeinsam aus. Soll Claude Ihr Geschäftspostfach oder Kundendaten lesen, empfehle ich Claude Team: Dort gilt ein Vertrag zur Auftragsverarbeitung. Ob Ihre Datenverarbeitung zulässig ist, entscheiden Sie bzw. Ihre Datenschutzberatung."
    ],
    [
-    "Verschickt die KI etwas ohne mich?",
-    "Nein. Ich richte die KI so ein, dass sie Entwürfe vorbereitet und vor jeder Aktion nachfragt. Gesendet wird nur mit Ihrem Klick. Auch geplante Aufgaben, die zum Beispiel jeden Morgen den Tagesüberblick schreiben, senden, löschen und veröffentlichen nichts."
+    "Verschickt Claude etwas ohne mich?",
+    "Nein. Claude fragt vor jeder Aktion nach; gesendet wird nur mit Ihrem Klick. Auch geplante Aufgaben, die zum Beispiel jeden Morgen den Tagesüberblick schreiben, senden, löschen und veröffentlichen nichts."
    ],
    [
-    "Welche Daten dürfen in die KI?",
-    "Das legen wir gleich am Anfang fest. Ich wähle Werkzeuge mit Blick auf den Datenschutz aus, und Sie bekommen eine Checkliste „Was darf in die KI?“. Wir prüfen gemeinsam die Einstellungen Ihres Kontos, zum Beispiel dass Ihre Chats nicht zum Training genutzt werden. Für die Datenschutzpflichten Ihres Unternehmens bleiben Sie verantwortlich; eine Rechtsberatung ersetzt das nicht."
+    "Bekommen Sie Zugriff auf meine Konten und Daten?",
+    "Nur im Termin und nur so weit nötig: Wir richten alles gemeinsam ein. Passwörter tippen Sie selbst ein. Zugangsdaten werden nicht gespeichert, die Termine nicht aufgezeichnet. Auf Wunsch gibt es einen Vertrag zur Auftragsverarbeitung."
    ],
    [
-    "Was müssen wir nach der KI-Verordnung (EU AI Act) tun?",
-    "Für die meisten Büros heißt das vor allem: Das Unternehmen muss Maßnahmen treffen, die die KI-Kompetenz der Mitarbeitenden unterstützen (Artikel 4, seit Februar 2025, neu gefasst im Juli 2026). Dazu kommen Kennzeichnungspflichten, etwa für Deepfakes (seit August 2026). Strenge Pflichten für Hochrisiko-KI, zum Beispiel bei der Auswahl von Bewerbungen, gelten ab Dezember 2027. Zum KI-Arbeits-Setup gehört eine Einweisung mit Teilnahmebestätigung. Stand: November 2026, keine Rechtsberatung."
+    "Passt das Setup, wenn wir mit sensiblen Daten arbeiten?",
+    "Wer mit Gesundheitsdaten oder anderen besonders geschützten Daten arbeitet, klärt im Erstgespräch, ob und wie das Setup passt."
    ],
    [
-    "Brauchen wir dafür eine eigene IT-Abteilung oder neue Software?",
-    "Nein. Wir starten mit dem, was Sie haben, und einem KI-Werkzeug. Wichtiger als neue Software sind klare Abläufe: Wir schreiben die wichtigsten auf, für Ihr Team und für die KI. Schnittstellen zu ERP- oder Warenwirtschaftssystemen programmiere ich nicht, und IT-Sicherheit ist nicht mein Fach; brauchen Sie das, sage ich es Ihnen offen."
-   ],
-   [
-    "Wie viel Zeit kostet uns das?",
-    "Beim KI-Arbeits-Setup: etwa 15 Minuten für einen Fragebogen und drei Online-Termine von 90, 60 und 60 Minuten, verteilt auf etwa drei Wochen. Danach beantworte ich 14 Tage lang Fragen per E-Mail oder im Online-Meeting. Beim KI-Check und der KI-Einführung hängt die Zeit von der Größe Ihres Teams ab; das klären wir im Erstgespräch."
+    "Wie viel Zeit kostet mich das?",
+    "Etwa 15 Minuten für den Fragebogen und die drei Termine aus dem Prozess. Danach beantworte ich 14 Tage lang Ihre Fragen per E-Mail oder im Online-Meeting."
    ]
   ],
   "loesung_text": "Im KI-Check schaue ich mir an, wo in Ihrem Alltag Zeit verloren geht und wo KI-Werkzeuge wirklich entlasten. In der KI-Einführung setzen wir die Empfehlungen um.",
@@ -540,11 +532,9 @@
    "Team-Schulung: praxisnah, verständlich und auf Ihre Aufgaben zugeschnitten"
   ],
   "gewinn": [
-   "Weniger Büroarbeit, mehr Zeit für Kundschaft und Strategie: Angebote, Nachfassen, Protokolle und Ablage bereitet Claude als Entwurf vor.",
-   "Claude lernt mit: Aus jeder Korrektur wird eine Regel, die ab dann in jedem Chat gilt.",
-   "Ihr Wissen an einem Ort: Projektstand, Regeln und Vorlagen liegen in einem Arbeitsordner, den Claude bei jeder Aufgabe liest.",
-   "Zahlen, die etwas sagen: Claude wertet Tracking und Conversion Ihrer Website aus und fasst zusammen, wo Anfragen verloren gehen.",
-   "Sicher eingesetzt: klare Regeln, welche Daten in die KI dürfen, und eine Einweisung nach der KI-Verordnung."
+   "Weniger Büroarbeit, mehr Zeit für Kundschaft und Strategie.",
+   "Zahlen, die etwas sagen: Claude wertet Tracking und Conversion Ihrer Website aus und zeigt, wo Anfragen verloren gehen.",
+   "Wissen, das bleibt: Abläufe und Projektstand sind aufgeschrieben, auch für neue Mitarbeitende."
   ],
   "fuer_sie": [
    "ki-im-team",
@@ -554,40 +544,24 @@
   "gegenueber": {
    "_quelle": "Problemseiten ki-im-team und entlastung (fuer-wen-seiten.json), KI-Arbeits-Setup, FAQ KI-Beratung (Anna 16.11.2026: Problemraum und Lösungsraum gegenüberstellen)",
    "links": "Heute",
-   "rechts": "Mit KI-Beratung",
+   "rechts": "Mit dem KI-Arbeits-Setup",
    "zeilen": [
     [
-     "Jede:r nutzt eine andere KI, oft mit privaten Konten. Niemand weiß, welche Firmendaten wo landen.",
-     "Ein Werkzeug, klare Regeln",
-     "Ihr Team arbeitet mit Claude. Eine Checkliste legt fest, welche Daten hinein dürfen und welche nicht."
+     "Jede:r nutzt eine andere KI, oft mit privaten Konten. Wo Ihre Firmendaten landen, weiß niemand.",
+     "Klare Regeln",
+     "Ein Werkzeug für alle und eine Checkliste, welche Daten hinein dürfen."
     ],
     [
-     "In jedem neuen Chat erklären Sie von vorn: Wer ist die Kundin? Wie ist der Stand? Welcher Ton passt?",
+     "Jeder neue Chat beginnt bei null: Wer ist die Kundin, wie ist der Stand, welcher Ton passt?",
      "Claude kennt Ihr Büro",
-     "Arbeitsanleitung und Arbeitsordner mit einer Statusdatei je Projekt. Claude liest sie bei jeder Aufgabe mit."
+     "Sie erklären Ihre Arbeitsweise einmal, nicht in jedem Chat."
     ],
     [
-     "Sie korrigieren dieselben Fehler immer wieder.",
-     "Claude lernt mit",
-     "Über einen Skill wird jede Korrektur zur festen Regel. Sie gilt ab dann in jedem Chat."
-    ],
-    [
-     "Angebote, Nachfassen, Protokolle und Ablage kosten jede Woche Stunden.",
-     "Weniger Büroarbeit",
-     "Claude bereitet Entwürfe vor, geplante Aufgaben schreiben jeden Morgen den Tagesüberblick. Sie prüfen und geben frei."
-    ],
-    [
-     "Die Zahlen Ihrer Website liegen im Tracking, aber niemand hat Zeit, sie auszuwerten.",
-     "Zahlen, die etwas sagen",
-     "Claude wertet Besuche und Conversion aus und fasst zusammen, wo Anfragen verloren gehen."
-    ],
-    [
-     "Lizenzen sind bezahlt, aber kaum jemand arbeitet damit.",
-     "Ein Team, das Claude nutzt",
-     "Eine Schulung an Ihren eigenen Aufgaben, damit jede:r weiß, wie es geht."
+     "Die KI-Lizenz ist bezahlt, aber kaum jemand nutzt sie.",
+     "Im Alltag angekommen",
+     "Eingerichtet so, dass Sie es wirklich benutzen."
     ]
-   ],
-   "kosten": "Ein Werkzeug, das niemand nutzt, kostet nur Geld. Und ohne gemeinsame Regeln landen Firmendaten in Diensten, die niemand geprüft hat."
+   ]
   },
   "anwendungen": {
    "_quelle": "KI-Arbeits-Setup (Skills, Cockpit, Statusdatei), Problemseite entlastung (FAQ, Schritte)",
@@ -595,7 +569,7 @@
    "karten": [
     [
      "Angebote und E-Mails",
-     "Die KI bereitet Entwürfe vor. Sie prüfen und geben frei; gesendet wird nur mit Ihrem Klick."
+     "Claude schreibt den Entwurf, Sie prüfen und geben frei."
     ],
     [
      "Projektstand je Kunde",
@@ -618,89 +592,69 @@
      "Was immer wiederkommt und nach Regeln läuft, eignet sich für KI: Protokolle, Zusammenfassungen, Ablage."
     ]
    ],
-   "hinweis": "Entscheidungen und Freigaben bleiben bei Ihnen.",
    "beleg": [
     "Aus meiner eigenen Praxis",
-    "Mein Studio läuft mit KI-Arbeitsabläufen, einem Projekt-Cockpit und einem Handbuch. Was ich Ihrem Team zeige, nutze ich selbst jeden Tag."
+    "Was ich Ihnen einrichte, nutze ich selbst jeden Tag: für Projektstand, Wochenplanung, Website-Prüfungen, Angebote und Akquise."
    ]
   },
   "wege": {
-   "_quelle": "preise-daten.json (wer, items), KI-Arbeits-Setup FAQ (bis zu fünf Personen)",
-   "titel": "Welcher Weg passt zu Ihnen?",
+   "_quelle": "Seite KI-Arbeits-Setup, Abschnitt „Sechs Dinge, die bleiben“ (Anna 16.11.2026: Lösung nur KI-Arbeits-Setup)",
+   "meta": "Lösung",
+   "titel": "Das KI-Arbeits-Setup",
+   "einleitung": "Das bleibt nach dem Setup in Ihrem Büro:",
    "karten": [
     [
-     "KI-Arbeits-Setup",
-     "Für Selbstständige und kleine Büros mit bis zu fünf Personen.",
-     "Claude eingerichtet, mit Projekt-Cockpit. In drei Online-Terminen, zum Festpreis.",
-     "ki-arbeits-setup/",
-     "Zum KI-Arbeits-Setup"
+     "Ihr Arbeitsordner",
+     "Ein Unterordner je Kunde, sortiert nach Projektphasen."
     ],
     [
-     "KI-Check",
-     "Für alle, die wissen wollen, wo KI im Alltag wirklich Zeit spart.",
-     "Fragebogen, Analyse Ihrer Abläufe und ein Empfehlungsbericht.",
-     "#pakete",
-     "Zum Preis"
+     "Ihre Arbeitsanleitung",
+     "Ihre Kund:innen, Ihr Ton, Ihre Regeln, an einem Ort."
     ],
     [
-     "KI-Einführung",
-     "Für Teams, die die Empfehlungen aus dem Check umsetzen wollen.",
-     "Passende KI-Werkzeuge, digitale Arbeitsabläufe und eine Team-Schulung.",
-     "#pakete",
-     "Zum Preis"
+     "Drei Skills",
+     "Die drei festen Arbeitsabläufe, die Sie zuerst entlasten."
+    ],
+    [
+     "Ihr Projekt-Cockpit",
+     "Was darin steht und wie es aussieht, bestimmen Sie selbst."
+    ],
+    [
+     "Kalender, Mail und Projekttool",
+     "Wo es passt, verbinde ich Claude damit."
+    ],
+    [
+     "Rundgang und Handbuch",
+     "Chat, Cowork und Claude Code im Überblick, dazu eine Einweisung ins sichere Arbeiten mit KI mit Teilnahmebestätigung."
     ]
+   ],
+   "link": [
+    "ki-arbeits-setup/",
+    "Alles zum KI-Arbeits-Setup"
    ]
   },
   "ablauf_schritte": [
    [
-    "Verstehen",
-    "Wo geht Zeit verloren?",
-    "Ich sehe mir Ihre Abläufe an und spreche mit den Menschen, die sie täglich erledigen."
+    "Kostenlos · 20 Minuten",
+    "Erstgespräch",
+    "Wir lernen uns kennen und schauen auf Ihre Werkzeuge. Danach bekommen Sie einen kurzen Fragebogen."
    ],
    [
-    "Ideation",
-    "Wenige Werkzeuge, klar eingerichtet.",
-    "Auswahl passender KI-Werkzeuge mit Blick auf den Datenschutz, eingerichtet für Ihre Aufgaben."
+    "Termin 1 · 90 Minuten",
+    "Verstehen und Einrichten",
+    "Wir wählen die drei Skills, die Sie zuerst entlasten, und richten so viel wie möglich direkt ein."
    ],
    [
-    "Umsetzung",
-    "Eine Schulung, die im Alltag ankommt.",
-    "Praxisnah an Ihren eigenen Aufgaben, damit Ihr Team weiß, wie es KI sicher und sinnvoll einsetzt."
+    "Termin 2 · 60 Minuten",
+    "Validieren",
+    "Was läuft im Alltag schon, was hakt? Wir prüfen das Setup an Ihren echten Aufgaben und passen es an."
+   ],
+   [
+    "Termin 3 · 60 Minuten",
+    "Feinschliff",
+    "Ein bis zwei Wochen später schärfen wir nach und planen den nächsten Ausbauschritt."
    ]
   ],
-  "praxis": {
-   "_quelle": "Kundenordner Setup-Kunde (Pilot), Setup-Paket 16.11.2026; anonym. FREIGABE ANNA UND KUNDE OFFEN – vor dem Hochladen klären",
-   "titel": "So sieht ein KI-Arbeits-Setup aus",
-   "einleitung": "Seit November 2026 richte ich das Setup für einen selbstständigen Webdesigner ein. Ausgangspunkt: Feedback einholen und Akquise kosteten ihn zusammen rund zwölf Stunden pro Woche. Das gehört dazu:",
-   "gruppen": [
-    [
-     "Arbeitsordner und Anleitung",
-     [
-      "Ein Ordner je Projekt, sortiert nach Phasen, mit einer Statusdatei: beschlossen, fertig, offen",
-      "Eine Arbeitsanleitung mit Regeln, Ton und Kund:innen, die Claude bei jeder Aufgabe mitliest",
-      "Glossar, Checkliste „Was darf in die KI?“ und ein Handout für die erste Woche"
-     ]
-    ],
-    [
-     "Drei Skills",
-     [
-      "Prüfer: prüft jede Arbeit unabhängig, bevor Claude „fertig“ meldet, vor allem, was an Kund:innen geht",
-      "Vertrieb: Empfehlungen, Leads, Angebote und Pipeline",
-      "Agententraining: aus jeder Korrektur wird eine feste Regel, der Lernstand wird gemessen"
-     ]
-    ],
-    [
-     "Vier geplante Aufgaben",
-     [
-      "Morgenstart werktags: Projekt-Cockpit und Tagesüberblick",
-      "Feedback einholen zweimal pro Woche: Erinnerungen an Kund:innen als Entwurf",
-      "Vertrieb jeden Montag: Nachfassen, Leads, Inhalte",
-      "Agententraining jede Woche: Regeln prüfen, Muster finden"
-     ]
-    ]
-   ],
-   "grenze": "Keine Aufgabe sendet, löscht oder veröffentlicht etwas. Claude schreibt Entwürfe; gesendet wird nur, wenn er selbst klickt."
-  },
   "recht": {
    "_quelle": "VO (EU) 2024/1689; Omnibus-VO (EU) 2026/1744 (ABl. 24.07.2026, gilt seit 27.07.2026, Art. 1 Nr. 5 = neuer Art. 4); eur-lex.europa.eu; geprüft vom Prüfer-Agenten 16.11.2026",
    "titel": "KI-Verordnung: Was gilt für Ihr Unternehmen?",
@@ -712,33 +666,32 @@
      "Wer KI im Unternehmen einsetzt, muss Maßnahmen treffen, die die KI-Kompetenz der Mitarbeitenden unterstützen (Artikel 4). Ein Zertifikat ist nicht vorgeschrieben; eine dokumentierte Einweisung kann als Nachweis dienen."
     ],
     [
-     "Seit 2. Februar 2025",
+     "Seit Februar 2025",
      "Verbotene Anwendungen",
-     "Einige Anwendungen sind ganz verboten, zum Beispiel KI, die Gefühle von Mitarbeitenden am Arbeitsplatz erkennen soll (Artikel 5). Im Büroalltag mit Texten, Angeboten und Ablage kommt das kaum vor."
+     "KI, die Gefühle von Mitarbeitenden am Arbeitsplatz erkennen soll, etwa über Kameras, ist verboten (Artikel 5). Ausnahmen gibt es nur aus medizinischen oder Sicherheitsgründen."
     ],
     [
-     "Seit 2. August 2026",
+     "Seit August 2026",
      "Kennzeichnen",
-     "Deepfakes müssen gekennzeichnet sein. Das gilt auch für KI-Texte, die veröffentlicht werden, um die Öffentlichkeit über Themen von öffentlichem Interesse zu informieren. Ausnahme: Menschen haben sie geprüft oder redaktionell kontrolliert, und eine Person oder Ihr Unternehmen trägt die redaktionelle Verantwortung (Artikel 50)."
+     "Deepfakes müssen gekennzeichnet sein: Bilder, Videos oder Tonaufnahmen, die realistisch wirken und so tun, als wären sie echt. Auch KI-Texte, die die Öffentlichkeit über Themen von öffentlichem Interesse informieren, außer ein Mensch hat sie geprüft und trägt die redaktionelle Verantwortung (Artikel 50)."
     ],
     [
-     "Ab 2. Dezember 2027",
+     "Ab Dezember 2027",
      "Hochrisiko-KI",
-     "Strenge Pflichten gelten für KI in sensiblen Bereichen, zum Beispiel wenn sie Bewerbungen sichtet, filtert oder bewertet (Anhang III). Die Omnibus-Verordnung vom Juli 2026 hat die Frist von August 2026 auf Dezember 2027 verschoben."
+     "Sichtet, filtert oder bewertet eine KI Bewerbungen und Lebensläufe, gelten strenge Pflichten (Anhang III). Die Omnibus-Verordnung vom Juli 2026 hat die Frist von August 2026 auf Dezember 2027 verschoben."
     ]
    ],
-   "bei_mir": "Im KI-Arbeits-Setup gibt es eine Einweisung ins sichere Arbeiten mit KI mit Teilnahmebestätigung, dazu die Checkliste „Was darf in die KI?“. Das ist keine Rechtsberatung; im Zweifel hilft eine Fachperson für Datenschutz oder IT-Recht.",
+   "bei_mir": "Das ist keine Rechtsberatung; im Zweifel hilft eine Fachperson für Datenschutz oder IT-Recht.",
    "stand": "Stand: November 2026"
   },
-  "termine": "Termine nach Absprache, online über Google Meet oder Teams. Im KI-Arbeits-Setup sind es drei Online-Termine von 90, 60 und 60 Minuten.",
+  "termine": "Drei Online-Termine von 90, 60 und 60 Minuten, verteilt auf etwa drei Wochen, über Google Meet oder Teams.",
   "ohne_gemeinsame_fragen": true,
   "ansprech_satz": "Bei STUDIO AAH! arbeiten Sie direkt mit mir, vom Erstgespräch bis zur Schulung.",
-  "ablauf_hinweis": "So laufen KI-Check und KI-Einführung. Das KI-Arbeits-Setup läuft in einem Erstgespräch und drei Online-Terminen.",
   "frage": "KI-Beratung: Was ist das?",
-  "fuer_sie_text": {
-   "ki-im-team": "Ihr Team soll KI nutzen, weiß aber nicht wie",
-   "entlastung": "Alles läuft über Sie, die Verwaltung frisst Ihre Zeit"
-  }
+  "pakete": [
+   "ki-setup"
+  ],
+  "termine_zeigen": false
  },
  "print": {
   "pfad": "service/druck/",
