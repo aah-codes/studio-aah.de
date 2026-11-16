@@ -1228,12 +1228,13 @@ h1, h2, h3, .gr-xxl, .gr-xl, .gr-h2, .gr-h3, .artikel h1, .mm-karte-titel, .fuss
 .mm-name { font-size: 1.45rem; }
 .mm-text { font-size: .88rem; }
 /* Mega-Menü-Karte wie die Preise-Karte der Leistungsseiten: schwarz, Icon auf weißer Kachel (Anna 25.10.2026) */
-.mm-karte-dunkel { background: var(--farbe-dunkel); color: var(--farbe-weiss); padding: 32px; }
-.mm-karte-dunkel .meta { color: rgba(255, 255, 255, .6); }
-.mm-karte-dunkel .mm-karte-titel { color: var(--farbe-weiss); }
-.mm-karte-dunkel > span:not([class]) { color: rgba(255, 255, 255, .78); font-weight: 400; }
-.kopf-nav .mm-karte-dunkel .button.button-zweit { background: transparent; color: var(--farbe-weiss); border-color: var(--farbe-weiss); }
-.kopf-nav .mm-karte-dunkel:hover .button.button-zweit { background: var(--farbe-weiss); color: var(--farbe-dunkel); }
+/* Anna 16.11.2026: Karten in beiden Mega-Menüs beige statt schwarz */
+.mm-karte-beige { background: var(--farbe-creme); color: var(--farbe-dunkel); padding: 32px; }
+.mm-karte-beige .meta { color: var(--farbe-gedaempft); }
+.mm-karte-beige .mm-karte-titel { color: var(--farbe-dunkel); }
+.mm-karte-beige > span:not([class]) { color: var(--farbe-dunkel); font-weight: 400; }
+.kopf-nav .mm-karte-beige .button.button-zweit { background: transparent; color: var(--farbe-dunkel); border-color: var(--farbe-dunkel); }
+.kopf-nav .mm-karte-beige:hover .button.button-zweit { background: var(--farbe-dunkel); color: var(--farbe-weiss); }
 .mm-karte-icon { width: 72px; height: 72px; border-radius: 18px; background: var(--farbe-weiss); padding: 6px; }
 .ohne-umbruch { white-space: nowrap; }
 .mm-karte { padding: 20px 20px 28px; }
@@ -3817,12 +3818,12 @@ html:not(.js) .hk-zeichen { display: none; }
 .mm-weitere-zeile { grid-column: 1 / -1; align-self: end; margin-top: 24px; }
 .kopf-nav .mm-weitere-zeile .mm-weitere { display: flex; flex-wrap: wrap; gap: 0 40px; border-top: var(--rahmen) solid var(--farbe-rahmen); }
 .kopf-nav .mm-weitere-zeile .mm-weitere a { border-top: 0; padding: 14px 0 0; }
-.mm-karte.mm-karte-dunkel { gap: 0; padding: 36px; justify-content: flex-start; }
-.mm-karte-icon { width: 80px; height: 80px; border-radius: 20px; background: var(--farbe-creme); padding: 12px; margin-bottom: 40px; }
-.mm-karte-dunkel .meta { margin: auto 0 10px; }
-.mm-karte-dunkel .mm-karte-titel { margin: 0 0 16px; }
-.mm-karte-dunkel > span:not([class]) { line-height: 1.55; margin: 0 0 28px; }
-.mm-karte-dunkel .button { margin-top: 0; }
+.mm-karte.mm-karte-beige { gap: 0; padding: 36px; justify-content: flex-start; }
+.mm-karte-icon { width: 80px; height: 80px; border-radius: 20px; background: var(--farbe-weiss); padding: 12px; margin-bottom: 40px; }
+.mm-karte-beige .meta { margin: auto 0 10px; }
+.mm-karte-beige .mm-karte-titel { margin: 0 0 16px; }
+.mm-karte-beige > span:not([class]) { line-height: 1.55; margin: 0 0 28px; }
+.mm-karte-beige .button { margin-top: 0; }
 @media (min-width: 1024.02px) and (max-width: 1200px) { .mm-innen { gap: 32px; } .mm-bereiche-leistungen { gap: 0 32px; } }
 
 /* Anna 13.11.2026: CTA unter den Fragen der Startseite mittig, nur „Beratung anfragen“ */
