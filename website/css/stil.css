@@ -3826,3 +3826,48 @@ html:not(.js) .hk-zeichen { display: none; }
 @media (max-width: 767.98px) { .lsx-pl-allein .lsx-pl-problem ul { grid-template-columns: minmax(0, 1fr); } }
 .lsx-ansprech .lsx-fakten { grid-column: 1 / -1; max-width: none; margin: 8px 0 0; }
 .lsx-ansprech .lsx-termine { margin-top: 20px; max-width: 56ch; }
+/* Anna 16.11.2026: mehr Luft zwischen Preisen und Fragen; Preiskarte im Mega-Menü: Text rückt ans Icon, Button bleibt unten */
+.lsx-pakete + .faq, .lsx-extras + .faq, .lsx-vergleich + .faq { margin-top: 96px; }
+@media (max-width: 900px) { .lsx-pakete + .faq, .lsx-extras + .faq, .lsx-vergleich + .faq { margin-top: 64px; } }
+.mm-karte-icon { margin-bottom: 24px; }
+.mm-karte-beige .meta { margin: 0 0 10px; }
+.mm-karte-beige .button { margin-top: auto; }
+
+/* KI-Beratung (Anna 16.11.2026): Gegenüberstellung Heute → Mit KI-Beratung, Anwendungsfälle, Welcher Weg passt */
+.lsx-gg, .lsx-anw, .lsx-wege { padding: 96px var(--rand-seite) 0; }
+.lsx-gg .gr-h2, .lsx-anw .gr-h2, .lsx-wege .gr-h2 { margin: 12px 0 40px; max-width: 20ch; }
+.lsx-gg-kopf, .lsx-gg-liste li { display: grid; grid-template-columns: minmax(0, 5fr) 48px minmax(0, 6fr); gap: 0 24px; }
+.lsx-gg-kopf { padding: 0 0 12px; font-family: var(--schrift-meta); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--farbe-gedaempft); }
+.lsx-gg-kopf span:last-child { grid-column: 3; color: var(--farbe-primaer); }
+.lsx-gg-liste { list-style: none; margin: 0; padding: 0; border-top: var(--rahmen) solid var(--farbe-dunkel); }
+.lsx-gg-liste li { align-items: start; padding: 24px 0; border-bottom: var(--rahmen) solid var(--farbe-grau-hell); }
+.lsx-gg-heute { margin: 0; font-size: clamp(17px, 1.3vw, 20px); line-height: 1.45; color: var(--farbe-gedaempft); }
+.lsx-gg-pfeil { font-size: 1.6rem; line-height: 1; color: var(--farbe-primaer); }
+.lsx-gg-dann h3 { margin: 0 0 6px; font-family: var(--schrift-text); font-size: clamp(18px, 1.4vw, 22px); text-transform: none; letter-spacing: 0; line-height: 1.35; font-weight: 700; }
+.lsx-gg-dann p { margin: 0; line-height: 1.5; }
+.lsx-gg-kosten { margin: 32px 0 0; padding: 28px 32px; background: var(--farbe-dunkel); color: var(--farbe-weiss); border-radius: 24px; font-size: clamp(18px, 1.5vw, 24px); line-height: 1.45; max-width: none; }
+.lsx-anw-liste { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.lsx-anw-liste li { background: var(--farbe-creme); border-radius: 24px; padding: 28px; }
+.lsx-anw-liste .lsx-nr { display: block; margin-bottom: 20px; }
+.lsx-anw-liste h3 { margin: 0 0 10px; font-size: 1.5rem; line-height: 1.15; }
+.lsx-anw-liste p { margin: 0; line-height: 1.5; }
+.lsx-anw-hinweis { margin: 24px 0 0; font-weight: 600; }
+.lsx-anw-beleg { margin-top: 32px; padding: 32px; border: var(--rahmen) solid var(--farbe-dunkel); border-radius: 24px; display: grid; gap: 8px; }
+.lsx-anw-beleg p { margin: 0; max-width: 64ch; font-size: clamp(18px, 1.4vw, 22px); line-height: 1.45; }
+.lsx-anw-beleg p.meta { font-size: 13px; }
+.lsx-wege-liste { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; counter-reset: w; }
+.lsx-wege-liste li { display: flex; flex-direction: column; gap: 10px; padding: 28px; border-top: 6px solid var(--farbe-dunkel); background: var(--farbe-hellgrau); border-radius: 0 0 24px 24px; }
+.lsx-wege-liste li:last-child { border-top-color: var(--farbe-primaer); }
+.lsx-wege-liste h3 { margin: 0; font-size: 1.8rem; line-height: 1.1; }
+.lsx-wege-liste p { margin: 0; line-height: 1.5; }
+.lsx-wege-wer { font-weight: 600; }
+.lsx-wege-link { margin-top: auto !important; padding-top: 12px; }
+@media (max-width: 1024px) { .lsx-anw-liste, .lsx-wege-liste { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 767.98px) {
+  .lsx-gg, .lsx-anw, .lsx-wege { padding: 64px var(--rand-seite-mobil) 0; }
+  .lsx-gg-kopf { display: none; }
+  .lsx-gg-liste li { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .lsx-gg-pfeil { transform: rotate(90deg); justify-self: start; }
+  .lsx-anw-liste, .lsx-wege-liste { grid-template-columns: minmax(0, 1fr); }
+  .lsx-gg-kosten { padding: 24px; }
+}

@@ -212,7 +212,8 @@ def seitenkopf(c, pre, intro, termine):
 
 def sprungleiste(c, g, mit_vergleich, mit_ablauf, link, link_text):
     # Content-First (Anna 16.11.2026): eine Frage je Abschnitt, Preise unter einem Anker, Artikel nicht in der Leiste
-    ziele = [('loesung', 'Warum', True), ('leistungen', 'Leistungen', bool(c.get('loesungen')) and not c.get('ohne_detail')), ('ablauf', 'Ablauf', mit_ablauf),
+    ziele = [('loesung', 'Ausgangslage' if c.get('gegenueber') else 'Warum', True), ('anwendungen', 'Anwendungsfälle', bool(c.get('anwendungen'))),
+             ('wege', 'Welcher Weg', bool(c.get('wege'))), ('leistungen', 'Leistungen', bool(c.get('loesungen')) and not c.get('ohne_detail')), ('ablauf', 'Ablauf', mit_ablauf),
              ('referenzen', 'Referenzen', bool(ohne_bauer(I.mit_tag(I.PROJEKTE, [c['tag']]), c['tag']))),
              ('pakete', 'Preise', True), ('faq', 'Häufige Fragen', True)]
     return ankerleiste([(anker, text) for anker, text, an in ziele if an])
@@ -235,6 +236,48 @@ def was_ist(c, pre):
     return f'''  <section class="lsx-was" id="ueberblick" aria-labelledby="was-titel">
     <div class="lsx-was-text"><p class="meta">Kurz erklärt</p><h2 class="gr-h2" id="was-titel">{trennen(esc(frage))}</h2>{text}</div>
     <div class="lsx-was-seite">{rechts}</div>
+  </section>'''
+
+
+def gegenueber(c, g, pre, link):
+    """Problemraum und Lösungsraum als Gegenüberstellung (Anna 16.11.2026, KI-Beratung): je Zeile ein Problem von heute
+    und was sich ändert. Ersetzt „Warum“, wenn das Feld „gegenueber“ gesetzt ist."""
+    x = c['gegenueber']
+    zeilen = ''.join(f'''<li><p class="lsx-gg-heute">{esc(a)}</p><span class="lsx-gg-pfeil" aria-hidden="true">→</span><div class="lsx-gg-dann"><h3>{esc(t)}</h3><p>{esc(b)}</p></div></li>''' for a, t, b in x['zeilen'])
+    return f'''  <section class="lsx-gg" id="loesung" aria-labelledby="loesung-titel">
+    <p class="meta">Ausgangslage</p>
+    <h2 class="gr-h2" id="loesung-titel">{esc(c['problem_titel'])}</h2>
+    <div class="lsx-gg-kopf" aria-hidden="true"><span>{esc(x['links'])}</span><span>{esc(x['rechts'])}</span></div>
+    <ol class="lsx-gg-liste">{zeilen}</ol>
+    <p class="lsx-gg-kosten">{esc(x['kosten'])}</p>
+  </section>'''
+
+
+def anwendungen(c, pre):
+    """Konkrete Anwendungsfälle als Karten, dazu ein Beleg aus der eigenen Praxis (Feld „anwendungen“)."""
+    if not c.get('anwendungen'): return ''
+    x = c['anwendungen']
+    karten = ''.join(f'<li><span class="lsx-nr" aria-hidden="true">{i:02d}</span><h3>{esc(t)}</h3><p>{esc(b)}</p></li>' for i, (t, b) in enumerate(x['karten'], 1))
+    titel, text = x['beleg']
+    return f'''  <section class="lsx-anw" id="anwendungen" aria-labelledby="anwendungen-titel">
+    <p class="meta">Anwendungsfälle</p>
+    <h2 class="gr-h2" id="anwendungen-titel">{esc(x['titel'])}</h2>
+    <ul class="lsx-anw-liste">{karten}</ul>
+    <p class="lsx-anw-hinweis">{esc(x['hinweis'])}</p>
+    <div class="lsx-anw-beleg"><p class="meta">{esc(titel)}</p><p>{esc(text)}</p><p><a class="textlink" href="{pre}ki-arbeits-setup/">Zum KI-Arbeits-Setup <span aria-hidden="true">→</span></a></p></div>
+  </section>'''
+
+
+def wege(c, pre):
+    """Lösungsraum: welches Angebot zu wem passt (Feld „wege“); Preise stehen nur unter „Preise“."""
+    if not c.get('wege'): return ''
+    x = c['wege']
+    def ziel(h): return h if h.startswith('#') else pre + h
+    karten = ''.join(f'''<li><h3>{esc(n)}</h3><p class="lsx-wege-wer">{esc(w)}</p><p>{esc(t)}</p><p class="lsx-wege-link"><a class="textlink" href="{ziel(h)}">{esc(l)} <span aria-hidden="true">→</span></a></p></li>''' for n, w, t, h, l in x['karten'])
+    return f'''  <section class="lsx-wege" id="wege" aria-labelledby="wege-titel">
+    <p class="meta">Lösung</p>
+    <h2 class="gr-h2" id="wege-titel">{esc(x['titel'])}</h2>
+    <ol class="lsx-wege-liste">{karten}</ol>
   </section>'''
 
 
@@ -311,7 +354,7 @@ def faq(fragen, pre):
 ''' for q, a in fragen)
     return f'''  <section class="faq" id="faq" aria-labelledby="faq-titel">
     <h2 class="gr-h2" id="faq-titel">Häufige Fragen</h2>
-    <div class="faq-liste">
+    <div class="faq-liste faq-einspaltig">
 {eintraege}    </div>
   </section>'''
 
@@ -358,13 +401,17 @@ def seite(key, c):
 
 {sprungleiste(c, g, bool(vergleich_html), mit_ablauf, link, link_text)}
 
-{problem_loesung(c, g, pre, link)}
+{gegenueber(c, g, pre, link) if c.get('gegenueber') else problem_loesung(c, g, pre, link)}
+
+{anwendungen(c, pre)}
 
 {grafik('website-oekosystem') if c.get('herz') else ''}
 {grafik(c['grafik']) if c.get('grafik') else ''}
 {grafik(c['nutzen']) if c.get('nutzen') else ''}
 
 {kompetenzen(c)}
+
+{wege(c, pre)}
 
 {prozess}
 

@@ -477,12 +477,12 @@
   "loesungen": [
    "KI-Check: Analyse Ihrer Abläufe und ein Empfehlungsbericht",
    "Auswahl und Einrichtung passender KI-Werkzeuge, mit Blick auf den Datenschutz",
-   "1 bis 2 digitale Arbeitsabläufe einrichten, Schritt für Schritt, auch ohne eigene IT-Abteilung",
+   "Digitale Arbeitsabläufe einrichten, Schritt für Schritt, auch ohne eigene IT-Abteilung",
    "Team-Schulung: praxisnah, verständlich und auf Ihre Aufgaben zugeschnitten"
   ],
   "zusammenfassung": [
    "KI und digitale Abläufe, die im Alltag wirklich entlasten: für kleine und mittlere Unternehmen (KMU) und Solo-Selbstständige. Im KI-Check schaue ich mir an, wo in Ihrem Alltag Zeit verloren geht und wo KI-Werkzeuge wirklich entlasten.",
-   "In der KI-Einführung setzen wir die Empfehlungen um: Wir wählen passende Werkzeuge aus, richten 1 bis 2 digitale Arbeitsabläufe ein, und ich schule Ihr Team, damit es KI sicher und sinnvoll einsetzt."
+   "In der KI-Einführung setzen wir die Empfehlungen um: Wir wählen passende Werkzeuge aus, richten digitale Arbeitsabläufe ein, und ich schule Ihr Team, damit es KI sicher und sinnvoll einsetzt."
   ],
   "nicht_enthalten": [
    "Lizenzkosten der KI-Werkzeuge: zahlen Sie direkt an den Anbieter",
@@ -509,7 +509,7 @@
    ],
    [
     "Was gehört zur KI-Einführung?",
-    "Zur KI-Einführung von STUDIO AAH! gehören die Auswahl und Einrichtung passender KI-Werkzeuge, 1 bis 2 digitale Arbeitsabläufe und eine Team-Schulung. Die KI-Einführung beginnt bei 2.000 € netto."
+    "Zur KI-Einführung von STUDIO AAH! gehören die Auswahl und Einrichtung passender KI-Werkzeuge, digitale Arbeitsabläufe und eine Team-Schulung. Die KI-Einführung beginnt bei 2.000 € netto."
    ],
    [
     "Kann ich die KI-Einführung ohne KI-Check buchen?",
@@ -550,6 +550,124 @@
   "fuer_sie": [
    "ki-im-team",
    "entlastung"
+  ],
+  "ohne_detail": true,
+  "gegenueber": {
+   "_quelle": "Problemseiten ki-im-team und entlastung (fuer-wen-seiten.json), KI-Arbeits-Setup, FAQ KI-Beratung (Anna 16.11.2026: Problemraum und Lösungsraum gegenüberstellen)",
+   "links": "Heute",
+   "rechts": "Mit KI-Beratung",
+   "zeilen": [
+    [
+     "Es gibt Lizenzen für neue Tools, aber kaum jemand arbeitet damit.",
+     "Werkzeuge, die genutzt werden",
+     "Weil sie zu Ihren Aufgaben passen und Ihr Team weiß, wie."
+    ],
+    [
+     "Jede:r nutzt KI anders oder mit privaten Konten.",
+     "Klare Regeln",
+     "Was mit KI geht, was nicht, und welche Daten wohin dürfen."
+    ],
+    [
+     "Angebote, Nachfassen und Ablage kosten jede Woche Stunden.",
+     "Routine an KI abgeben",
+     "KI-Arbeitsabläufe bereiten Entwürfe vor. Sie prüfen und geben frei."
+    ],
+    [
+     "In jedem neuen Chat geht alles von vorn los: Wer ist die Kundin? Wie ist der Stand? Welcher Ton passt?",
+     "Eine KI, die Ihre Arbeitsweise kennt",
+     "Ihre Kund:innen, Ihr Ton, Ihre Regeln stehen in einer Arbeitsanleitung. Sie müssen nichts mehr erklären."
+    ],
+    [
+     "Abläufe stehen nur in Köpfen: „Das haben wir schon immer so gemacht.“",
+     "Wissen, das bleibt",
+     "Aufgeschriebene Abläufe helfen auch neuen Mitarbeitenden beim Einstieg."
+    ],
+    [
+     "Sie wissen nicht, wo Sie anfangen sollen, ohne ein großes IT-Projekt zu starten.",
+     "Klein anfangen, ohne IT-Abteilung",
+     "Wiederkehrende Aufgaben Schritt für Schritt digitalisieren und sinnvoll verknüpfen."
+    ]
+   ],
+   "kosten": "Ein Werkzeug, das niemand nutzt, kostet nur Geld. Und ohne gemeinsame Regeln landen Firmendaten in Diensten, die niemand geprüft hat."
+  },
+  "anwendungen": {
+   "_quelle": "KI-Arbeits-Setup (Skills, Cockpit, Statusdatei), Problemseite entlastung (FAQ, Schritte)",
+   "titel": "Wobei KI konkret entlastet",
+   "karten": [
+    [
+     "Angebote und E-Mails",
+     "Die KI bereitet Entwürfe vor. Sie prüfen und geben frei; gesendet wird nur mit Ihrem Klick."
+    ],
+    [
+     "Projektstand je Kunde",
+     "Eine Statusdatei je Kunde: Was ist beschlossen, was ist fertig, was ist offen. Die KI hält sie nach jeder Arbeit aktuell."
+    ],
+    [
+     "Wochenplan und Fristen",
+     "Ein Projekt-Cockpit zeigt Termine, offene Punkte und wer gerade am Zug ist: Sie oder Ihre Kundin."
+    ],
+    [
+     "Prüfen vor der Abgabe",
+     "Ein fester Arbeitsablauf als Prüfer sieht Ihre Arbeit durch, bevor sie rausgeht."
+    ],
+    [
+     "Texte in Ihrem Ton",
+     "Ein fester Arbeitsablauf für Texte schreibt Entwürfe so, wie Sie schreiben."
+    ],
+    [
+     "Protokolle und Zusammenfassungen",
+     "Was immer wiederkommt und nach Regeln läuft, eignet sich für KI: Protokolle, Zusammenfassungen, Ablage."
+    ]
+   ],
+   "hinweis": "Entscheidungen und Freigaben bleiben bei Ihnen.",
+   "beleg": [
+    "Aus meiner eigenen Praxis",
+    "Mein Studio läuft mit KI-Arbeitsabläufen, einem Projekt-Cockpit und einem Handbuch. Was ich Ihrem Team zeige, nutze ich selbst jeden Tag."
+   ]
+  },
+  "wege": {
+   "_quelle": "preise-daten.json (wer, items), KI-Arbeits-Setup FAQ (bis zu fünf Personen)",
+   "titel": "Welcher Weg passt zu Ihnen?",
+   "karten": [
+    [
+     "KI-Check",
+     "Für alle, die wissen wollen, wo KI im Alltag wirklich Zeit spart.",
+     "Fragebogen, Analyse Ihrer Abläufe und ein Empfehlungsbericht.",
+     "#pakete",
+     "Zum Preis"
+    ],
+    [
+     "KI-Einführung",
+     "Für Teams, die die Empfehlungen aus dem Check umsetzen wollen.",
+     "Passende KI-Werkzeuge, digitale Arbeitsabläufe und eine Team-Schulung.",
+     "#pakete",
+     "Zum Preis"
+    ],
+    [
+     "KI-Arbeits-Setup",
+     "Für Selbstständige und kleine Büros mit bis zu fünf Personen.",
+     "Claude eingerichtet, mit Projekt-Cockpit. In drei Online-Terminen, zum Festpreis.",
+     "ki-arbeits-setup/",
+     "Zum KI-Arbeits-Setup"
+    ]
+   ]
+  },
+  "ablauf_schritte": [
+   [
+    "Verstehen",
+    "Wo geht Zeit verloren?",
+    "Ich sehe mir Ihre Abläufe an und spreche mit den Menschen, die sie täglich erledigen."
+   ],
+   [
+    "Ideation",
+    "Wenige Werkzeuge, klar eingerichtet.",
+    "Auswahl passender KI-Werkzeuge mit Blick auf den Datenschutz, eingerichtet für Ihre Aufgaben."
+   ],
+   [
+    "Umsetzung",
+    "Eine Schulung, die im Alltag ankommt.",
+    "Praxisnah an Ihren eigenen Aufgaben, damit Ihr Team weiß, wie es KI sicher und sinnvoll einsetzt."
+   ]
   ]
  },
  "print": {
