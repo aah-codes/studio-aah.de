@@ -64,6 +64,8 @@ def main():
         # Wie eine KI-Übersicht bei Google (Anna 17.11.2026): Kurzfassung, ein paar Stichpunkte, Link zur Quelle
         satz = saetze(e['a'])
         kurz = satz.pop(0)
+        if kurz == 'Ja.':   # freundlicher (Anna 17.11.2026: „ja klar, motivierender und netter“)
+            kurz = 'Ja, klar!'
         while len(kurz) < 60 and satz:   # „Ja.“ allein ist keine Zusammenfassung
             kurz += ' ' + satz.pop(0)
         themen.append({'g': t['g'], 'a': kurz, 'p': [kuerzen(x) for x in satz[:3]], 'l': [[e['s'].split(':')[0].split(' – ')[0], e['u']]]})   # Linktext = Kern des Seitentitels

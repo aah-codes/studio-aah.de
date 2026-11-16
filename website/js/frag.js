@@ -75,7 +75,7 @@
       }
       t.l.forEach(function (l) { quellen.appendChild(link(l[0], l[1])); });
     } else {
-      antwort.appendChild(el('p', 'fh-kurz', 'Dazu habe ich hier noch keine Antwort. Rufen Sie mich an: 0176 830 898 79, oder schreiben Sie mir.'));
+      antwort.appendChild(el('p', 'fh-kurz', 'Gute Frage! Dazu habe ich hier noch keine fertige Antwort. Rufen Sie mich gern an: 0176 830 898 79, oder schreiben Sie mir.'));
       quellen.appendChild(link('Beratung anfragen', 'kontakt/'));
     }
     antwort.appendChild(quellen);
