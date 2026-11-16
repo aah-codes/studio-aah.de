@@ -16,6 +16,21 @@ def text(s):
     return re.sub(r'\s+', ' ', html.unescape(s)).strip()
 
 
+ABK = re.compile(r'\b(Dr|Nr|ca|bzw|inkl|z\. B|u\. a|vgl|bspw|evtl)\. ')
+
+
+def saetze(t):
+    """In Sätze teilen; „STUDIO AAH!“, Zahlen wie „2.450 €“ und Abkürzungen wie „Dr.“ bleiben ganz."""
+    t = ABK.sub(lambda m: m.group(1) + '.\u2060 ', t.replace('STUDIO AAH!', 'STUDIO AAH\u00a7'))
+    return [x.replace('STUDIO AAH\u00a7', 'STUDIO AAH!').replace('\u2060', '').strip() for x in re.split(r'(?<=[.?!])\s+(?=[A-ZÄÖÜ„])', t) if x.strip()]
+
+
+def kuerzen(x, laenge=160):
+    """Stichpunkt ohne Schlusspunkt, lange Sätze an einer Wortgrenze gekürzt."""
+    x = x.rstrip('.')
+    return x if len(x) <= laenge else x[:laenge].rsplit(' ', 1)[0] + ' …'
+
+
 def rang(pfad):
     return next(i for i, v in enumerate(VORRANG) if pfad.startswith(v))
 
@@ -40,12 +55,18 @@ def main():
     themen = []
     for t in json.loads((WERKZEUGE / 'inhalte' / 'hero-themen.json').read_text(encoding='utf-8'))['themen']:
         if 'antwort' in t:
-            themen.append({'g': t['g'], 'a': t['antwort'], 'u': t['url'], 's': t['seite']})
+            links = t.get('links') or [[t['seite'], t['url']]]
+            themen.append({'g': t['g'], 'a': t['antwort'], 'p': t.get('punkte', []), 'l': links})
             continue
         e = nach_frage.get(t['frage'])
         if not e:
             raise SystemExit(f'Frage nicht auf der Website gefunden: {t["frage"]}')
-        themen.append({'g': t['g'], 'a': e['a'], 'u': e['u'], 's': e['s']})
+        # Wie eine KI-Übersicht bei Google (Anna 17.11.2026): Kurzfassung, ein paar Stichpunkte, Link zur Quelle
+        satz = saetze(e['a'])
+        kurz = satz.pop(0)
+        while len(kurz) < 60 and satz:   # „Ja.“ allein ist keine Zusammenfassung
+            kurz += ' ' + satz.pop(0)
+        themen.append({'g': t['g'], 'a': kurz, 'p': [kuerzen(x) for x in satz[:3]], 'l': [[e['s'].split(':')[0].split(' – ')[0], e['u']]]})   # Linktext = Kern des Seitentitels
     ziel = WEBSITE / 'daten' / 'fragen.json'
     ziel.parent.mkdir(exist_ok=True)
     ziel.write_text(json.dumps(themen, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')

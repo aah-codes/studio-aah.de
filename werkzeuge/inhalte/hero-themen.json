@@ -4,6 +4,94 @@
     {
       "g": [
         [
+          "ausbildung",
+          "gelernt",
+          "studi",
+          "studium",
+          "diplom",
+          "beruf",
+          "qualifik",
+          "werdegang",
+          "lebenslauf"
+        ]
+      ],
+      "antwort": "Anna Härtelt hat ein Diplom in Fine Art von der Bauhaus-Universität Weimar.",
+      "punkte": [
+        "Zuerst gestaltungstechnische Assistentin: Darstellung, Gestaltung, Druck",
+        "Dann Kunststudium in Weimar, wo 1919 das Bauhaus gegründet wurde",
+        "2023 bis 2026 Dozentin für Web- und Screendesign an der Hochschule Macromedia Leipzig"
+      ],
+      "links": [
+        [
+          "Über mich",
+          "profil/#wer-titel"
+        ],
+        [
+          "Lebenslauf auf LinkedIn",
+          "https://www.linkedin.com/in/anna-h%C3%A4rtelt-8513b8213/"
+        ]
+      ]
+    },
+    {
+      "g": [
+        [
+          "arbeitsweise",
+          "zusammenarbeit",
+          "arbeiten"
+        ],
+        [
+          "wie"
+        ]
+      ],
+      "antwort": "Sie arbeiten direkt mit Anna Härtelt, von der ersten Frage bis zum Launch.",
+      "punkte": [
+        "Vier Schritte mit festem Preis und Abnahme nach jeder Phase",
+        "Nach Schritt 02 entscheiden Sie, ob es weitergeht",
+        "Für Spezialaufgaben wie Programmierung kommen Freelancer:innen aus dem Netzwerk dazu"
+      ],
+      "links": [
+        [
+          "So arbeite ich",
+          "profil/#so-arbeite-ich"
+        ],
+        [
+          "Anna Härtelt auf LinkedIn",
+          "https://www.linkedin.com/in/anna-h%C3%A4rtelt-8513b8213/"
+        ]
+      ]
+    },
+    {
+      "g": [
+        [
+          "anna",
+          "härtelt",
+          "hartelt",
+          "haertelt",
+          "inhaberin",
+          "gründerin",
+          "hintergrund"
+        ]
+      ],
+      "antwort": "Anna Härtelt ist UX/UI- und Product-Designerin aus Leipzig und leitet STUDIO AAH!, seit 2020 selbstständig.",
+      "punkte": [
+        "Schwerpunkt: Mittelstand im B2B",
+        "Seit Mai 2023 außerdem UX/UI-Design in der Berliner Digitalagentur Digitalbegleiter GmbH",
+        "Über 40 Projekte, unter anderem für Software, Behörden, Gesundheitswesen sowie Kunst und Kultur"
+      ],
+      "links": [
+        [
+          "Über mich",
+          "profil/"
+        ],
+        [
+          "Anna Härtelt auf LinkedIn",
+          "https://www.linkedin.com/in/anna-h%C3%A4rtelt-8513b8213/"
+        ]
+      ]
+    },
+    {
+      "g": [
+        [
           "check",
           "prüf",
           "analys"

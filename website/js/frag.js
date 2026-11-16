@@ -48,32 +48,37 @@
   }
   // Antwort wie im Chat (Anna 17.11.2026: „ganz simpel wie Google“, „wie mit einem Chatbot“): Frage als Blase rechts,
   // eine kurze Antwort links (ein bis zwei Sätze) mit Link; Folgefragen hängen sich an, höchstens drei Runden sichtbar
-  function saetze(t) {
-    // nur nach Satzzeichen mit Leerzeichen und Großbuchstaben trennen; „STUDIO AAH!“, „2.450 €“ und Abkürzungen wie „Dr.“ (Wortverbinder) bleiben ganz
-    var teile = t.replace(/STUDIO AAH!/g, 'STUDIO AAH\u00a7').replace(/\b(Dr|Nr|ca|bzw|inkl|z\. B|u\. a|vgl)\. /g, '$1.\u2060 ').split(/(?<=[.?!])\s+(?=[A-ZÄÖÜ„])/).map(function (x) { return x.replace(/STUDIO AAH\u00a7/g, 'STUDIO AAH!').replace(/\u2060/g, '') + ' '; });
-    var aus = teile[0];
-    if (aus.length < 120 && teile[1]) aus += teile[1];
-    return aus.trim().length > 280 ? kurz(aus.trim()) : aus.trim();
-  }
   function link(text, href) {
-    var a = el('a', 'textlink', text + ' ');
+    var extern = /^https?:/.test(href);
+    var a = el('a', 'fh-quelle', text + ' ');
     a.href = href;
-    var pfeil = el('span', null, '→'); pfeil.setAttribute('aria-hidden', 'true'); a.appendChild(pfeil);
+    if (extern) { a.target = '_blank'; a.rel = 'noopener'; }   // LinkedIn & Co. immer in neuem Fenster (Anna 17.11.2026)
+    var pfeil = el('span', null, extern ? '↗' : '→'); pfeil.setAttribute('aria-hidden', 'true'); a.appendChild(pfeil);
     return a;
   }
+  // Antwort wie eine KI-Übersicht bei Google (Anna 17.11.2026): Kurzfassung, ein paar Stichpunkte, Links als Quellen.
+  // Frage als Blase rechts, Antwort links; Folgefragen hängen sich an, höchstens drei Runden sichtbar
   function zeigen(frage) {
     var treffer = bewerten(frage)[0];
     var verlauf = ziel.querySelector('.fh-chat') || ziel.appendChild(el('ol', 'fh-chat'));
     var runde = el('li', 'fh-runde');
     runde.appendChild(el('p', 'fh-ich', frage));
     var antwort = el('div', 'fh-sie');
+    var quellen = el('p', 'fh-quellen');
     if (treffer) {
-      antwort.appendChild(el('p', null, saetze(treffer.e.a)));
-      antwort.appendChild(link('Mehr dazu', treffer.e.u || './'));
+      var t = treffer.e;
+      antwort.appendChild(el('p', 'fh-kurz', t.a));
+      if (t.p && t.p.length) {
+        var ul = el('ul', 'fh-punkte');
+        t.p.forEach(function (x) { ul.appendChild(el('li', null, x)); });
+        antwort.appendChild(ul);
+      }
+      t.l.forEach(function (l) { quellen.appendChild(link(l[0], l[1])); });
     } else {
-      antwort.appendChild(el('p', null, 'Dazu habe ich hier noch keine Antwort. Rufen Sie mich an: 0176 830 898 79, oder schreiben Sie mir.'));
-      antwort.appendChild(link('Beratung anfragen', 'kontakt/'));
+      antwort.appendChild(el('p', 'fh-kurz', 'Dazu habe ich hier noch keine Antwort. Rufen Sie mich an: 0176 830 898 79, oder schreiben Sie mir.'));
+      quellen.appendChild(link('Beratung anfragen', 'kontakt/'));
     }
+    antwort.appendChild(quellen);
     runde.appendChild(antwort);
     verlauf.appendChild(runde);
     while (verlauf.children.length > 3) verlauf.removeChild(verlauf.firstChild);
