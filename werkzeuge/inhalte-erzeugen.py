@@ -4,7 +4,7 @@
 # Neuer Eintrag: in die passende Datei schreiben, dann  python3 werkzeuge/inhalte-erzeugen.py  (und danach leistungsseiten.py)
 import datetime, re
 
-from gemeinsam import PFEIL, WEBSITE, bild_attr, einsetzen, esc, euro, lade_json, lesezeit as minuten
+from gemeinsam import PFEIL, WEBSITE, bild_attr, einsetzen, esc, euro, lade_json, lesezeit as minuten, spiel_sektion
 
 PROJEKTE, STIMMEN, BLOG, ZAHLEN = (lade_json(f'inhalte/{n}.json') for n in ('projekte', 'stimmen', 'blog', 'kennzahlen'))
 BLOG = sorted(BLOG, key=lambda b: b['datum'], reverse=True)
@@ -256,7 +256,7 @@ if __name__ == '__main__':
         'index.html': [('PROJEKTE', lambda: projekt_raster([x for x in PROJEKTE if x.get('case')], '')), ('LINKEDIN', lambda: linkedin_leiste('')), ('STIMMEN', lambda: stimmen(STIMMEN, ''))],   # „Für wen“, Blog-Karten und Kennzahlen seit 12.11.2026 nicht mehr auf der Startseite (Kennzahlen nur auf Über mich)
         'profil/index.html': [('STIMMEN', lambda: stimmen(STIMMEN, '../')), ('BLOG', lambda: blog(BLOG[:4], '../', '../blog/')),
                               ('KENNZAHLEN', lambda: kennzahlen('fakten', '      '))],
-        'blog/index.html': [('BLOG', lambda: blog_themen())],
+        'blog/index.html': [('BLOG', lambda: blog_themen()), ('SPIEL', lambda: spiel_sektion('../', re.search(r'menue\.js\?v=(\w+)', (WEBSITE / 'index.html').read_text(encoding='utf-8')).group(1)))],
     }
     for datei, teile in seiten.items():
         p = WEBSITE / datei

@@ -64,6 +64,12 @@ def einsetzen(text, name, inhalt):
                           lambda m: f'<!-- {name}:START -->\n{inhalt}\n<!-- {name}:ENDE -->', text, f'Marker {name}', re.S)
 
 
+def spiel_sektion(pre, version):
+    """Sektion „Play the game.“ mit dem Spiel (Anna 16.11.2026: über dem Fuß von Aktuelles und Webdesign)."""
+    t = (WERKZEUGE / 'inhalte' / 'spiel.html').read_text(encoding='utf-8')
+    return t.replace('{pre}', pre).replace('{version}', version)
+
+
 KURZWORT = re.compile(r'(?<![\w&;/-])([A-ZÄÖÜ]{1,3}-[A-Za-zÄÖÜäöüß]+)')
 
 

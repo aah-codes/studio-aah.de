@@ -118,7 +118,8 @@
   "fuer_sie": [
    "neue-kunden",
    "fachkraefte"
-  ]
+  ],
+  "spiel": true
  },
  "brand": {
   "pfad": "service/markenbildung/",

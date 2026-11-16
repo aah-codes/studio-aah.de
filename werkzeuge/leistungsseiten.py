@@ -4,7 +4,7 @@
 # Aufruf im Repository-Ordner:  python3 werkzeuge/leistungsseiten.py [id …]   (ohne id: alle)
 import json, re, sys
 
-from gemeinsam import (ankerleiste, LINKEDIN, NETTO_SATZ, STUDIO_ID, TRENNEN_LEISTUNGEN, WEBSITE, WERKZEUGE, esc, lade_json, lade_skript,
+from gemeinsam import (ankerleiste, spiel_sektion, LINKEDIN, NETTO_SATZ, STUDIO_ID, TRENNEN_LEISTUNGEN, WEBSITE, WERKZEUGE, esc, lade_json, lade_skript,
                        paket_karte, preis, seitenrahmen, trennen as trennen_mit)
 
 preise = lade_json('preise-daten.json')
@@ -108,6 +108,7 @@ def extras(g):
 
 START = (WEBSITE / 'index.html').read_text(encoding='utf-8')
 # Prozess der Website-Projekte: eigene Quelle, seit er nicht mehr auf der Startseite steht (Anna, 09.11.2026)
+MENUE_VERSION = re.search(r'menue\.js\?v=(\w+)', START).group(1)  # Version für js/spiel.js
 PROZESS = (WEBSITE.parent / 'werkzeuge' / 'inhalte' / 'prozess.html').read_text(encoding='utf-8')
 
 
@@ -471,6 +472,8 @@ def seite(key, c):
 {kontakt(g, pre, link, link_text, termine if c.get('termine_zeigen', True) else '', c.get('anfrage', 'Beratung anfragen'), **({'satz': c['ansprech_satz']} if c.get('ansprech_satz') else {}))}
 
 {artikel(pre, c['tag']) if c.get('artikel', True) else ''}
+
+{spiel_sektion(pre, MENUE_VERSION) if c.get('spiel') else ''}
 
 </main>'''
     t = seitenrahmen(vorlage, main, c['seitentitel'], c['beschreibung'], url, strukturierte_daten(c, g, intro, url, fragen, vorlage))

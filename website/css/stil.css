@@ -3906,3 +3906,33 @@ html:not(.js) .hk-zeichen { display: none; }
 .lsx-wege-mehr { margin: 32px 0 0; }
 .zl-quer.zlq-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 @media (min-width: 768px) and (max-width: 1024px) { .lsx-wege-liste { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* Hero mit Frag-Feld (Anna 16.11.2026, ersetzt das Spiel): eine Zeile wie bei Fratch, darunter Antworten und die zwei Wege */
+.fh-hero { padding-bottom: 96px; }
+.fh-titel { line-height: 1.15; }
+.fh-feld { display: flex; align-items: center; gap: 8px; max-width: 760px; margin: 8px auto 0; padding: 8px 8px 8px 24px; background: var(--farbe-weiss); border: var(--rahmen) solid var(--farbe-dunkel); border-radius: 999px; }
+.fh-feld:focus-within { outline: 3px solid var(--farbe-primaer); outline-offset: 3px; }
+.fh-feld input { flex: 1; min-width: 0; border: 0; background: transparent; font: inherit; font-size: clamp(16px, 1.3vw, 19px); color: var(--farbe-dunkel); padding: 10px 0; }
+.fh-feld input:focus { outline: none; }
+.fh-feld input::placeholder { color: var(--farbe-gedaempft); }
+.fh-feld input::-webkit-search-cancel-button { display: none; }
+.fh-feld .button { flex: none; margin: 0; }
+.fh-antworten { max-width: 760px; margin: 0 auto; text-align: left; }
+.fh-liste { list-style: none; margin: 24px 0 0; padding: 0; display: grid; gap: 12px; }
+.fh-liste li { padding: 20px 24px; background: var(--farbe-creme); border-radius: 20px; }
+.fh-frage { font-family: var(--schrift-text); text-transform: none; letter-spacing: 0; font-size: 1.05rem; font-weight: 700; line-height: 1.35; margin: 0 0 6px; }
+.fh-liste p { margin: 0 0 10px; line-height: 1.5; }
+.fh-leer { margin-top: 24px; padding: 20px 24px; border: var(--rahmen) solid var(--farbe-grau-hell); border-radius: 20px; }
+.fh-leer p { margin: 0 0 6px; }
+.fh-leer-wege { display: flex; flex-wrap: wrap; gap: 4px 8px; }
+.fh-wege { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 32px; margin: 28px 0 0; }
+@media (max-width: 599.98px) {
+  .fh-feld { flex-direction: column; align-items: stretch; border-radius: 24px; padding: 8px; }
+  .fh-feld input { padding: 10px 12px; }
+  .fh-feld .button { justify-content: center; }
+}
+/* Spiel über dem Fuß (Anna 16.11.2026): eigene Sektion mit viel Luft davor und danach */
+.spiel-sektion { text-align: center; padding: clamp(120px, 12vw, 200px) var(--rand-seite) clamp(120px, 12vw, 200px); }
+.spiel-sektion .sp-titel { margin: 0 0 40px; line-height: 1.15; }
+@media (max-width: 767.98px) { .spiel-sektion { padding: 96px var(--rand-seite-mobil); } }
+.fh-hero h1, .fh-titel { hyphens: manual; -webkit-hyphens: manual; }

@@ -1,0 +1,39 @@
+<!-- Spiel „Play the game“ (Anna 16.11.2026: aus dem Hero der Startseite hierher, über dem Fuß von Aktuelles und Webdesign).
+     Vorlage für gemeinsam.spiel_sektion(); {pre} = Pfad zur Wurzel. Ablauf in js/spiel.js, Stile .spiel… in stil.css. -->
+  <section class="spiel-sektion" id="spiel" aria-labelledby="spiel-titel">
+    <h2 class="sp-titel" id="spiel-titel" lang="en">Play the game.</h2>
+  <div class="spiel" data-spiel>
+    <div class="spiel-buehne">
+      <canvas tabindex="0" role="img" aria-label="Play the game: Die Bauhaus-Figur läuft durch Leipzig, springt auf fünf Probleme des Mittelstands und verwandelt sie in Kunden, Reichweite, Zeit und Geld, fängt Fachkräfte und ergreift die Chancen der fünf Lösungen. Springen mit Leertaste, Pfeil nach oben oder Tippen."></canvas>
+      <div class="spiel-karte" data-karte>
+        <p class="meta spiel-karte-schritt" data-karte-schritt hidden></p>
+        <p class="spiel-karte-titel" data-karte-titel>Wie weit kommt Ihr Unternehmen?</p>
+        <p class="spiel-karte-text" data-karte-text aria-live="polite" hidden></p>
+        <p class="spiel-karte-regel" data-karte-regel hidden></p>
+        <button class="button spiel-start" type="button" data-start>Spielen <span aria-hidden="true">▶</span></button>
+      </div>
+      <div class="spiel-sieg" data-sieg hidden>
+        <div class="spiel-ende-text">
+          <p class="meta spiel-ende-meta" lang="en">Game over</p>
+          <p class="gross">In Ihnen steckt noch mehr.</p>
+        </div>
+        <button class="spiel-nochmal" type="button" data-nochmal><span class="spiel-nochmal-kreis" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg></span><span lang="en">Play again</span></button>
+      </div>
+    </div>
+    <div class="spiel-leiste">
+      <ul class="spiel-leistungen" aria-label="Lösungen">
+        <li data-leistung><a href="{pre}service/markenbildung/"><i style="--f:#ff3b2f"></i>Markenbildung</a></li>
+        <li data-leistung><a href="{pre}service/ui-ux/"><i class="sl-halb" style="--f:#ff4fa3"></i>UI/UX</a></li>
+        <li data-leistung><a href="{pre}service/webdesign/"><i class="sl-kreis" style="--f:#2a5fe6"></i>Webdesign</a></li>
+        <li data-leistung><a href="{pre}service/marketing-vertrieb/"><i class="sl-halb" style="--f:#0e1011"></i>Marketing &amp; Vertrieb</a></li>
+        <li data-leistung><a href="{pre}service/ki-digitalisierung/"><i class="sl-dreieck" style="--f:#ffe600"></i>KI-Beratung</a></li>
+      </ul>
+      <div class="spiel-knoepfe">
+        <button type="button" class="spiel-icon" data-ton aria-pressed="false" aria-label="Ton einschalten"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path class="ton-an" d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path class="ton-aus" d="M16.5 9.5l5 5m0-5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+        <button type="button" class="spiel-icon" data-pause aria-pressed="true" aria-label="Spiel starten"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="icon-play" d="M8 5l11 7-11 7z" fill="currentColor"/><g class="icon-pause" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></g></svg></button>
+      </div>
+    </div>
+    <p class="spiel-hilfe">Springen: Leertaste, Pfeil nach oben oder Tippen. Auf die Probleme springen, dann werden sie zu Kunden, Reichweite, Zeit und Geld. Auf den Wettbewerb springen, sonst schnappt er Ihnen Kunden weg. Schwarze Blöcke von unten anstoßen, die gelbe Fachkraft fangen, alle fünf Lösungen finden: ein neues Geschäftsjahr beginnt. Drei Leben.</p>
+  </div>
+    <script src="{pre}js/spiel.js?v={version}" defer></script>
+  </section>
