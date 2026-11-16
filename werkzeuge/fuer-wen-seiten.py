@@ -136,7 +136,10 @@ def startseite_branchen():
     """Branchen-Mosaik der Startseite (Anna 12.11.2026, Muster IT Sonix): Text oben links, dann alle Branchen als Kacheln."""
     kopf = ('      <li class="br-kopf"><p class="meta">Branchen</p><h2 class="gr-h2" id="branchen-titel">Für wen ich arbeite</h2>\n'
             '        <p>Mittelständische B2B-Unternehmen. Wählen Sie Ihre Branche.</p></li>\n')
-    return '    <ul class="br-raster">\n' + kopf + branchen_kacheln(D['branchen'], '') + '    </ul>'
+    # Reihenfolge nach Potenzial (Anna 17.11.2026: Gesundheit nicht prominent); die breite Kachel ist Platz 6 (Beratung)
+    reihenfolge = ['bau', 'software', 'elektro', 'energie', 'industrie', 'beratung', 'gesundheit']
+    liste = sorted(D['branchen'], key=lambda b: reihenfolge.index(b['id']) if b['id'] in reihenfolge else 99)
+    return '    <ul class="br-raster">\n' + kopf + branchen_kacheln(liste, '') + '    </ul>'
 
 
 def flip_bilder():
