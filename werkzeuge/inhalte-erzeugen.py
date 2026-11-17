@@ -55,13 +55,15 @@ def projekt_link(p, pre):
     return l['url'], f'{esc(l["text"])} <span aria-hidden="true">↗</span>', ' target="_blank" rel="noopener"'
 
 
-def projekt_karte(p, pre, ansicht=None, h='h3'):
+def projekt_karte(p, pre, ansicht=None, h='h3', satz=True):
+    # satz=False: ohne Unterzeile unter dem Namen (Projektübersicht, Anna 17.11.2026: „subline unter card titel raus“)
     url, text, ziel = projekt_link(p, pre)
     c = p.get(f'cover_{ansicht}') if ansicht else None
+    zeile = f'          <p class="pk-satz">{esc(p["satz"])}</p>\n' if satz else ''
     return (f'<article class="pk">\n'
             f'          <a class="pk-bild" href="{url}"{ziel} tabindex="-1" aria-hidden="true">{cover(p, pre, c)}</a>\n'
             f'          <{h} class="pk-name"><a href="{url}"{ziel}>{esc(p["kurzname"])}</a></{h}>\n'
-            f'          <p class="pk-satz">{esc(p["satz"])}</p>\n'
+            + zeile +
             f'          <p class="pk-link"><a class="textlink" href="{url}"{ziel}>{text}</a></p>\n'
             f'        </article>')
 
@@ -241,9 +243,10 @@ def blog_themen():
     if fremd: raise SystemExit(f'Unbekannte Blog-Kategorie in blog.json: {fremd}')
     gruppen = {k: [b for b in BLOG if b['kategorie'] == k] for k in BLOG_KATEGORIEN}
     themen = [k for k in BLOG_KATEGORIEN if gruppen[k]]
-    chips = '<a href="#aktuelles">Aktuelles</a>' + ''.join(f'<a href="#{anker(k)}">{esc(k)} <span class="chip-zahl">{len(gruppen[k])}</span></a>' for k in themen)
+    # Ankerleiste wie auf den Leistungsseiten (Anna 17.11.2026: graue Spur, aktive weiße Pille; Anzahl steht am Kopf jeder Kategorie)
+    chips = '<li><a href="#aktuelles" class="aktiv">Aktuelles</a></li>' + ''.join(f'<li><a href="#{anker(k)}">{esc(k)}</a></li>' for k in themen)
     gross = blog(BLOG[:1], '../', '', 'h3', '      ', klasse='blog-karte blog-karte-gross', lazy=False).replace('<li>', '<li class="blog-li-gross">', 1)
-    out = [f'  <nav class="preis-leiste lsx-chips blog-leiste" aria-label="Kategorien im Blog">\n    {chips}\n  </nav>',
+    out = [f'  <nav class="anker blog-anker" aria-label="Kategorien im Blog">\n    <ul class="anker-spur">{chips}</ul>\n  </nav>',
            f'''  <section class="blog-thema blog-aktuell" id="aktuelles" aria-labelledby="aktuelles-titel">
     <div class="blog-thema-kopf"><h2 id="aktuelles-titel">Aktuelles</h2><p class="meta">Die neuesten Beiträge</p></div>
     <ul class="blog-liste">

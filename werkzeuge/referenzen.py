@@ -780,13 +780,13 @@ def projektseite(p, nr):
 
 def uebersicht():
     pre = '../'
-    karten = '\n'.join(f'      <li>{I.projekt_karte(p, pre, h="h2")}</li>' for p in CASES + [x for x in ALLE if not x.get('case')])
+    karten = '\n'.join(f'      <li>{I.projekt_karte(p, pre, h="h2", satz=False)}</li>' for p in CASES + [x for x in ALLE if not x.get('case')])
     main = f'''<main id="inhalt">
 
   <section class="seitenkopf">
     <p class="meta">Referenzen</p>
     <h1 class="gr-xxl">Projekte</h1>
-    <p class="alt-klein">Lösungen, die Unternehmen sichtbar machen.</p>
+    <p class="alt-klein">Lösungen, die Unternehmen<br>sichtbar machen.</p>
   </section>
 
   <section class="ref-uebersicht" aria-label="Alle Projekte">

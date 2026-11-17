@@ -2057,7 +2057,7 @@ section[hidden] { display: none !important; }
 .blog-karte-gross .blog-karte-teaser { font-size: 1.05rem; -webkit-line-clamp: 4; }
 .blog-karte-gross .weiterlesen { margin-top: 8px; }
 /* Chip-Leiste: Anzahl je Thema */
-.blog-leiste { margin-top: 0; }
+.blog-anker { padding-bottom: 0; } /* Blog-Kategorien als Ankerleiste wie auf den Leistungsseiten (Anna 17.11.2026) */
 .chip-zahl { display: inline-grid; place-items: center; min-width: 20px; height: 20px; margin-left: 4px; padding: 0 6px; border-radius: 999px; background: var(--farbe-hellgrau); font-size: 12px; font-weight: 600; }
 .preis-leiste a.aktiv .chip-zahl { background: var(--farbe-weiss); color: var(--farbe-dunkel); }
 /* Themenbereiche: Überschrift mit Linie */
@@ -3982,9 +3982,9 @@ html:not(.js) .hk-zeichen { display: none; }
 .lsx-anw-extra p { margin: 0 0 8px; max-width: 72ch; line-height: 1.5; }
 @media (max-width: 1024px) { .lsx-selbst-liste { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 767.98px) { .lsx-selbst { padding: 64px var(--rand-seite-mobil) 0; } .lsx-selbst-liste { grid-template-columns: minmax(0, 1fr); } }
-/* Startseite Leistungen (Anna 17.11.2026): Icon größer und im Verhältnis zur Fläche und Überschrift, Fläche immer im hellen Creme der Marke */
+/* Startseite Leistungen (Anna 17.11.2026, zweimal): Icon größer und im Verhältnis zur Fläche und Überschrift, Fläche immer im hellen Creme der Marke */
 .ls-kern .ls-bild { background: var(--farbe-creme); padding: 8%; }
-.ls-kern .ls-karte .ls-bild img { width: auto; height: 58%; max-width: 50%; object-fit: contain; object-position: left bottom; }
+.ls-kern .ls-karte .ls-bild img { width: auto; height: 82%; max-width: 70%; object-fit: contain; object-position: left bottom; } /* Anna 17.11.2026: „icons noch größer“ */
 /* Corporate-Identity-Grafik (Anna 17.11.2026): steht sofort fertig, nur die Punkte laufen */
 .ci-film[data-dauerhaft] .z { animation: none !important; opacity: 1; }
 /* Frag-Feld freundlicher (Anna 17.11.2026): mehr Luft in der Antwort-Karte, zwischen Antwort, Liste und Links */
@@ -4148,3 +4148,14 @@ html:not(.js) .hk-zeichen { display: none; }
 .mr-beispiel-aah .mr-b-feld { font-family: var(--schrift-text); }
 .mr-beispiel-aah .mr-b-firma { font-family: var(--schrift-ueberschrift); letter-spacing: .04em; }
 .mr-beispiel-aah .mr-b-liste b { font-weight: 700; }
+/* Mega-Menü mit Icons (Anna 17.11.2026: „leistungen mit icon“): Bauhaus-Form links, Name und Zeile rechts */
+.mm-liste a.mm-mit-icon { display: grid; grid-template-columns: 44px minmax(0, 1fr); column-gap: 18px; align-items: center; }
+.mm-mit-icon .mm-icon { grid-row: 1 / span 2; width: 44px; height: 44px; object-fit: contain; object-position: left center; }
+.mm-mit-icon .mm-name, .mm-mit-icon .mm-text { grid-column: 2; }
+/* Kontaktseite auf voller Breite bündig mit Logo und Button (Anna 17.11.2026) */
+.golden.kontakt-voll { max-width: none; padding-inline: var(--rand-seite); gap: clamp(32px, 4vw, 64px); }
+/* Auswahlfeld im Anfrageformular wie die Eingabefelder (Anna 17.11.2026: „woher sie von mir gehört haben mit dropdown“) */
+.anfrage-felder select { font: inherit; font-weight: 400; border: 1.5px solid var(--farbe-gedaempft); border-radius: 10px; padding: 10px 40px 10px 12px; color: var(--farbe-dunkel); appearance: none; -webkit-appearance: none; cursor: pointer; background-color: var(--farbe-weiss); background-image: linear-gradient(45deg, transparent 50%, var(--farbe-dunkel) 50%), linear-gradient(135deg, var(--farbe-dunkel) 50%, transparent 50%); background-position: calc(100% - 21px) 55%, calc(100% - 15px) 55%; background-size: 6px 6px; background-repeat: no-repeat; }
+.anfrage-felder select:focus-visible { outline: 2px solid var(--farbe-primaer); outline-offset: 1px; border-color: var(--farbe-primaer); }
+/* Mehr Luft zwischen Button und Telefonnummer (Anna 17.11.2026) */
+.anfrage-knoepfe { column-gap: clamp(28px, 3vw, 44px); }

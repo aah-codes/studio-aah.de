@@ -12,6 +12,8 @@ window.Anfrage = (() => {
     const kontakt = [wert(form, 'name') ? `Name: ${wert(form, 'name')}` : '', `E-Mail: ${wert(form, 'email')}`].filter(Boolean);
     if (wert(form, 'organisation')) kontakt.push(`Organisation: ${wert(form, 'organisation')}`);
     if (wert(form, 'website')) kontakt.push(`Website: ${wert(form, 'website')}`);
+    // Auswahlfelder, z. B. „Wie haben Sie von mir gehört?“ (Anna 17.11.2026), nur wenn etwas gewählt ist
+    form.querySelectorAll('select[name]').forEach((a) => { if (a.value) kontakt.push(`${(a.dataset.kurz || a.name).trim()} ${a.value}`); });
     form.querySelectorAll('input[type="checkbox"][name]').forEach((h) => kontakt.push(`${(h.dataset.kurz || h.closest('label')?.textContent || h.name).trim()} ${h.checked ? 'ja' : 'nein'}`));
     return ['Hallo Anna,', einleitung, angaben, nachricht ? `Nachricht:\n${nachricht}` : '', kontakt.join('\n')].filter(Boolean).join('\n\n') + '\n';
   }
@@ -46,6 +48,7 @@ window.Anfrage = (() => {
     if (form.elements.organisation) daten.organisation = wert(form, 'organisation');
     // Häkchen (z. B. Schnell-Check auf website-check/): immer mitschicken, angehakt oder nicht
     form.querySelectorAll('input[type="checkbox"][name]').forEach((h) => { daten[h.name] = h.checked ? 'ja' : 'nein'; });
+    form.querySelectorAll('select[name]').forEach((a) => { if (a.value) daten[a.name] = a.value; }); // z. B. quelle: Wie haben Sie von mir gehört?
     // Betreff und Absendername der Benachrichtigung (Formspark-Felder _email.subject und _email.from; im Namen kein @, < oder >)
     daten['_email.subject'] = `${daten.betreff}: ${daten.name || daten.website}`;
     daten['_email.from'] = daten.name.replace(/[@<>]/g, '') || 'Website studio-aah.de';
