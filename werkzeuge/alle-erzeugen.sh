@@ -9,6 +9,7 @@ python3 werkzeuge/kopf-fuss.py
 python3 werkzeuge/preise-erzeugen.py
 python3 werkzeuge/blog/was-kostet-eine-website.py
 python3 werkzeuge/blog/was-sollte-eine-website-2027-koennen.py
+python3 werkzeuge/blog/website-selbst-bauen-mit-ki.py
 python3 werkzeuge/inhalte-erzeugen.py
 python3 werkzeuge/leistungsseiten.py
 python3 werkzeuge/website-check.py

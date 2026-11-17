@@ -1865,6 +1865,10 @@ section[hidden] { display: none !important; }
 .grafik svg { display: block; width: 100%; height: auto; background: var(--farbe-creme); border-radius: 28px; }
 .grafik figcaption { margin-top: 12px; font-size: 14px; line-height: 1.5; }
 .grafik figcaption strong { color: var(--farbe-dunkel); }
+/* Memes im Blog (Anna 17.11.2026: „mit lustigen Bildern auflockern“): Hochformat, schmal und mittig */
+.grafik-meme { max-width: 400px; margin-left: auto; margin-right: auto; }
+.grafik-meme img { width: 100%; height: auto; display: block; border: 1px solid var(--farbe-rahmen); }
+.grafik-meme figcaption { text-align: center; }
 .praxis { border-left: 6px solid var(--farbe-primaer); padding: 4px 0 4px 24px; margin: 2rem 0; }
 .praxis .meta { margin: 0 0 6px; }
 .praxis p:last-child { margin-bottom: 0; }
