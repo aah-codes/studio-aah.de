@@ -14,6 +14,7 @@ window.Anfrage = (() => {
     if (wert(form, 'website')) kontakt.push(`Website: ${wert(form, 'website')}`);
     // Auswahlfelder, z. B. „Wie haben Sie von mir gehört?“ (Anna 17.11.2026), nur wenn etwas gewählt ist
     form.querySelectorAll('select[name]').forEach((a) => { if (a.value) kontakt.push(`${(a.dataset.kurz || a.name).trim()} ${a.value}`); });
+    if (gekoppelt(form)) kontakt.push('Newsletter: ja (mit dem kostenlosen Angebot, Bestätigung per E-Mail)');
     form.querySelectorAll('input[type="checkbox"][name]').forEach((h) => kontakt.push(`${(h.dataset.kurz || h.closest('label')?.textContent || h.name).trim()} ${h.checked ? 'ja' : 'nein'}`));
     return ['Hallo Anna,', einleitung, angaben, nachricht ? `Nachricht:\n${nachricht}` : '', kontakt.join('\n')].filter(Boolean).join('\n\n') + '\n';
   }
@@ -49,13 +50,14 @@ window.Anfrage = (() => {
     // Häkchen (z. B. Schnell-Check auf website-check/): immer mitschicken, angehakt oder nicht
     form.querySelectorAll('input[type="checkbox"][name]').forEach((h) => { daten[h.name] = h.checked ? 'ja' : 'nein'; });
     form.querySelectorAll('select[name]').forEach((a) => { if (a.value) daten[a.name] = a.value; }); // z. B. quelle: Wie haben Sie von mir gehört?
+    if (gekoppelt(form)) daten.newsletter = 'ja (mit dem kostenlosen Angebot)';
     // Betreff und Absendername der Benachrichtigung (Formspark-Felder _email.subject und _email.from; im Namen kein @, < oder >)
     daten['_email.subject'] = `${daten.betreff}: ${daten.name || daten.website}`;
     daten['_email.from'] = daten.name.replace(/[@<>]/g, '') || 'Website studio-aah.de';
     try {
       const antwort = await fetch(ENDPUNKT, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(daten) });
       if (!antwort.ok) throw new Error(String(antwort.status));
-      const nl = form.elements.newsletter && form.elements.newsletter.checked;
+      const nl = gekoppelt(form) || (form.elements.newsletter && form.elements.newsletter.checked);
       if (nl && !daten._honeypot) await newsletter(daten.email); // Spam-Falle: keine Bestätigungs-Mails an fremde Adressen
       if (knopf) { knopf.disabled = false; knopf.innerHTML = alt; }
       if (opt.fertig) { document.dispatchEvent(new Event('konfetti')); opt.fertig(); return; } // sonst kommt das Konfetti auf der Danke-Seite (data-konfetti)
@@ -76,6 +78,9 @@ window.Anfrage = (() => {
     d.append('EMAIL', email); d.append('email_address_check', ''); d.append('locale', 'de'); d.append('html_type', 'simple');
     try { await Promise.race([fetch(fuss.action, { method: 'POST', body: d, mode: 'no-cors', keepalive: true }), new Promise((ok) => setTimeout(ok, 4000))]); } catch { /* Anfrage ist schon da; Anna sieht „Newsletter: ja“ in der E-Mail */ }
   }
+  // Kostenlose Angebote (Anna 17.11.2026, z. B. Website-Check): kein Häkchen, der Newsletter gehört dazu.
+  // Das Formular trägt data-newsletter-gekoppelt, der Text über dem Button sagt es; Brevo schickt trotzdem die Bestätigungs-E-Mail (Double-Opt-in).
+  const gekoppelt = (form) => 'newsletterGekoppelt' in form.dataset;
   let nr = 0;
   function NEWSLETTER(du = false, an = false, id = '') {
     if (!id) { nr += 1; id = `anfrage-nl-${nr}`; }
@@ -85,7 +90,7 @@ window.Anfrage = (() => {
   }
   document.querySelectorAll('form[data-anfrage]').forEach((form) => {
     const vor = form.querySelector('.anfrage-falle') || form.querySelector('.anfrage-knoepfe');
-    if (vor && !form.elements.newsletter) vor.insertAdjacentHTML('beforebegin', NEWSLETTER('du' in form.dataset));
+    if (vor && !form.elements.newsletter && !gekoppelt(form)) vor.insertAdjacentHTML('beforebegin', NEWSLETTER('du' in form.dataset));
   });
 
   // Hinweis unter dem Formular zum Versandweg (Datenschutz)
