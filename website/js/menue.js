@@ -172,6 +172,23 @@
     ziele.forEach((z) => beob.observe(z));
   });
 
+  // Videos von YouTube erst nach Klick (Zwei-Klick-Lösung, Anna 18.11.2026): vorher keine Verbindung zu YouTube,
+  // danach im erweiterten Datenschutzmodus (youtube-nocookie.com); steht in der Datenschutzerklärung (#youtube)
+  document.querySelectorAll('.video-klick[data-video]').forEach((f) => {
+    const knopf = f.querySelector('.video-klick-knopf');
+    if (!knopf) return;
+    knopf.addEventListener('click', () => {
+      const v = document.createElement('iframe');
+      v.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(f.dataset.video)}?autoplay=1&rel=0`;
+      v.title = f.dataset.titel || 'Video';
+      v.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      v.allowFullscreen = true;
+      v.referrerPolicy = 'strict-origin-when-cross-origin';
+      knopf.replaceWith(v);
+      v.focus();
+    });
+  });
+
   // GIFs (z. B. LinkedIn-Beitrag, Anna 17.11.2026) spielen einmal ab, sobald sie ins Bild kommen, und beim nächsten Hineinscrollen wieder
   // (Bewegung von selbst höchstens 5 s: das GIF hat keinen Schleifen-Block und läuft 2,6 s); bei „Bewegung reduzieren“ kein Neustart
   (() => {

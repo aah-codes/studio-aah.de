@@ -4244,3 +4244,12 @@ html:not(.js) .hk-zeichen { display: none; }
 @media (min-width: 600px) { .artikel-schluss[data-variante="foto"] { grid-template-columns: 140px minmax(0, 1fr); } }
 .artikel-schluss[data-variante="foto"] > img { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; }
 .artikel-schluss[data-variante="foto"] h2 { font-size: clamp(24px, 2.4vw, 32px); }
+/* Video von YouTube erst nach Klick (Anna 18.11.2026): Fläche im Seitenformat 16:9, Wiedergabe-Zeichen aus Bauhaus-Dreieck */
+.video-klick { max-width: var(--lesespalte); margin: 2.5rem auto; }
+.video-klick-knopf, .video-klick iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 20px; }
+.video-klick-knopf { display: grid; place-content: center; justify-items: center; gap: 18px; padding: 24px; background: var(--farbe-dunkel); color: var(--farbe-weiss); font: inherit; font-weight: 600; cursor: pointer; text-align: center; }
+.video-klick-play { width: 0; height: 0; border-style: solid; border-width: 22px 0 22px 38px; border-color: transparent transparent transparent var(--farbe-weiss); transition: transform .25s; }
+.video-klick-knopf:hover .video-klick-play, .video-klick-knopf:focus-visible .video-klick-play { transform: scale(1.12); }
+.video-klick-knopf:focus-visible { outline: 3px solid var(--farbe-primaer); outline-offset: 3px; }
+.video-klick figcaption { margin-top: 10px; font-size: 14px; color: var(--farbe-gedaempft); }
+@media (prefers-reduced-motion: reduce) { .video-klick-play { transition: none; } }
