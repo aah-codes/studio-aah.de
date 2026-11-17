@@ -216,6 +216,16 @@ def weitere_artikel(slug, anzahl=3):
   </section>'''
 
 
+def aehnliche_artikel(slug, anzahl=3):
+    # rechte Leiste im Leselayout (Anna 17.11.2026): dieselbe Auswahl wie „Weitere Artikel zum Thema“, kompakt mit kleinem Bild
+    ich = next(b for b in BLOG if b['slug'] == slug)
+    def punkte(b):
+        return 2 * (b['kategorie'] == ich['kategorie']) + len(set(b.get('tags', [])) & set(ich.get('tags', [])))
+    andere = sorted((b for b in BLOG if b['slug'] != slug), key=lambda b: (punkte(b), b['datum']), reverse=True)[:anzahl]
+    eintraege = '\n'.join(f'          <li><a href="../{b["slug"]}/"><img src="../../bilder/{b["bild"]}" alt="" width="64" height="64" loading="lazy"><span><strong>{b["titel_html"]}</strong><span>{b["datum_text"]}</span></span></a></li>' for b in andere)
+    return f'        <ul class="as-liste">\n{eintraege}\n        </ul>'
+
+
 def anker(name):
     return 'thema-' + re.sub(r'[^a-z0-9]+', '-', name.lower().replace('&', ' ')).strip('-')
 
@@ -277,6 +287,8 @@ if __name__ == '__main__':
     }
     for b in BLOG:
         seiten[f'blog/{b["slug"]}/index.html'] = [('WEITERE', lambda s=b['slug']: weitere_artikel(s))]
+        if 'AEHNLICH:START' in (WEBSITE / 'blog' / b['slug'] / 'index.html').read_text(encoding='utf-8'):
+            seiten[f'blog/{b["slug"]}/index.html'].append(('AEHNLICH', lambda s=b['slug']: aehnliche_artikel(s)))
     for datei, teile in seiten.items():
         p = WEBSITE / datei
         t = p.read_text(encoding='utf-8')

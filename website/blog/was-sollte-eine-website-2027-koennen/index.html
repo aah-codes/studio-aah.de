@@ -358,7 +358,7 @@
  ]
 }
   </script>
-  <link rel="stylesheet" href="../../css/stil.css?v=20261117z">
+  <link rel="stylesheet" href="../../css/stil.css?v=20261118a">
   <link rel="preload" href="../../schriften/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../../schriften/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
 </head>
@@ -502,7 +502,7 @@
   </details>
 </header>
 <div class="mm-schleier" hidden></div>
-<script src="../../js/menue.js?v=20261117z" defer></script>
+<script src="../../js/menue.js?v=20261118a" defer></script>
 <!-- /KOPF -->
 
 <main id="inhalt">
@@ -517,8 +517,26 @@
     <h1>Was sollte eine <span class="kein-trennen">Website</span> 2027 können?</h1>
     <p class="artikel-lead">Eine Website lohnt sich, sobald sie eine Aufgabe hat – und wenn das Fundament darunter stimmt. Darum geht es hier, in drei Teilen: um die Markenidentität, um den Nutzen und um die Frage, wohin sich Websites entwickeln.</p>
     <p class="artikel-meta"><span>Von <a href="../../profil/">Anna Härtelt</a></span><span>Veröffentlicht <time datetime="2026-10-20">20. Oktober 2026</time></span><span>Lesezeit 17 Minuten</span><span>Zahlen: Stand Oktober 2026</span></p>
+    <div class="vorlesen" hidden>
+      <button type="button" class="button button-zweit vl-start" aria-pressed="false"><span class="vl-symbol" aria-hidden="true">▶</span> <span class="vl-text">Artikel vorlesen</span></button>
+      <label class="vl-tempo">Tempo <select><option value="0.75">0,75×</option><option value="1" selected>1×</option><option value="1.25">1,25×</option><option value="1.5">1,5×</option></select></label>
+      <button type="button" class="vl-stopp textlink" hidden>Stopp</button>
+      <span class="vl-hinweis">Stimme Ihres Geräts, nichts wird gesendet.</span>
+    </div>
     <img class="artikel-bild" src="../../bilder/blog-website-2027.webp" alt="Figur aus Bauhaus-Grundformen zeigt auf den Golden Circle: drei Kreise ineinander, innen schwarz das Warum, darum das Wie, außen das Was." width="1200" height="800">
 
+<div class="artikel-raster">
+      <aside class="artikel-leiste" aria-label="Kapitel">
+        <p class="meta">Kapitel</p>
+        <div class="kl-fortschritt" aria-hidden="true"><span></span></div>
+        <ol class="kl-schritte">
+          <li><a href="#fundament"><span class="kl-punkt" aria-hidden="true"></span><span class="kl-text">Teil 1: Das Fundament – die Markenidentität</span></a></li>
+          <li><a href="#nutzen"><span class="kl-punkt" aria-hidden="true"></span><span class="kl-text">Teil 2: Was eine Website heute können muss</span></a></li>
+          <li><a href="#zukunft"><span class="kl-punkt" aria-hidden="true"></span><span class="kl-text">Teil 3: Wohin geht die Website?</span></a></li>
+          <li><a href="#fazit"><span class="kl-punkt" aria-hidden="true"></span><span class="kl-text">Fazit</span></a></li>
+          <li><a href="#faq"><span class="kl-punkt" aria-hidden="true"></span><span class="kl-text">Häufige Fragen</span></a></li>
+        </ol>
+      </aside>
     <div class="artikel-text">
 
       <section class="kurz" aria-labelledby="kurz-titel">
@@ -939,6 +957,19 @@
       </ol>
 
     </div>
+      <aside class="artikel-seite" aria-label="Mehr zum Thema">
+        <p class="meta">Thema</p>
+        <p class="as-thema"><a href="../#thema-webdesign">Webdesign</a></p>
+        <p class="meta">Ähnliche Artikel</p>
+<!-- AEHNLICH:START -->
+        <ul class="as-liste">
+          <li><a href="../website-selbst-bauen-mit-ki/"><img src="../../bilder/blog-website-selbst-bauen.webp" alt="" width="64" height="64" loading="lazy"><span><strong>Website selbst bauen mit KI: Wie geht das, und was brauche ich dafür?</strong><span>17. November 2026</span></span></a></li>
+          <li><a href="../was-kostet-eine-website/"><img src="../../bilder/blog-geld-und-zeit.webp" alt="" width="64" height="64" loading="lazy"><span><strong>Was kostet eine Website – und wie lange dauert sie?</strong><span>13. Oktober 2026</span></span></a></li>
+          <li><a href="../was-ki-an-meiner-arbeit-veraendert-hat/"><img src="../../bilder/blog-ki-arbeitsweise.jpg" alt="" width="64" height="64" loading="lazy"><span><strong>Was KI an meiner Arbeit verändert hat – und was nicht</strong><span>4. Oktober 2026</span></span></a></li>
+        </ul>
+<!-- AEHNLICH:ENDE -->
+      </aside>
+    </div>
     <nav class="artikel-nav" aria-label="Beitragsnavigation">
       <a class="zurueck" href="../was-kostet-eine-website/"><span class="kategorie">← Zurück</span>Was kostet eine Website – und wie lange dauert sie?</a>
       <a class="weiter" href="../website-selbst-bauen-mit-ki/"><span class="kategorie">Weiter →</span>Website selbst bauen mit KI: Wie geht das, und was brauche ich dafür?</a>
@@ -989,6 +1020,8 @@
     </ul>
   </section>
 <!-- WEITERE:ENDE -->
+
+  <script src="../../js/artikel.js?v=20261118a" defer></script>
 
 </main>
 

@@ -83,6 +83,45 @@ def _quellen(main):
     return aus
 
 
+def _raster(main, abschnitt, vorlage):
+    """Leselayout (Anna 17.11.2026): links mitlaufende Kapitel-Leiste wie Schritte an einer Kasse, Mitte Text,
+    rechts Thema und ähnliche Artikel; oben Vorlesen mit Geschwindigkeit (nur lokale Gerätestimmen, js/artikel.js)."""
+    kapitel = [(i, re.sub(r'<[^>]+>', '', t).strip()) for i, t in re.findall(r'<h2 id="([\w-]+)">(.*?)</h2>', main)
+               if i not in ('quellen', 'schluss-titel')]
+    schritte = '\n'.join(f'          <li><a href="#{i}"><span class="kl-punkt" aria-hidden="true"></span><span class="kl-text">{t}</span></a></li>' for i, t in kapitel)
+    leiste = f'''<div class="artikel-raster">
+      <aside class="artikel-leiste" aria-label="Kapitel">
+        <p class="meta">Kapitel</p>
+        <div class="kl-fortschritt" aria-hidden="true"><span></span></div>
+        <ol class="kl-schritte">
+{schritte}
+        </ol>
+      </aside>
+'''
+    seite = f'''      <aside class="artikel-seite" aria-label="Mehr zum Thema">
+        <p class="meta">Thema</p>
+        <p class="as-thema"><a href="../#thema-{_anker(abschnitt)}">{abschnitt}</a></p>
+        <p class="meta">Ähnliche Artikel</p>
+<!-- AEHNLICH:START -->
+<!-- AEHNLICH:ENDE -->
+      </aside>
+    </div>'''
+    vorlesen = '''    <div class="vorlesen" hidden>
+      <button type="button" class="button button-zweit vl-start" aria-pressed="false"><span class="vl-symbol" aria-hidden="true">▶</span> <span class="vl-text">Artikel vorlesen</span></button>
+      <label class="vl-tempo">Tempo <select><option value="0.75">0,75×</option><option value="1" selected>1×</option><option value="1.25">1,25×</option><option value="1.5">1,5×</option></select></label>
+      <button type="button" class="vl-stopp textlink" hidden>Stopp</button>
+      <span class="vl-hinweis">Stimme Ihres Geräts, nichts wird gesendet.</span>
+    </div>
+'''
+    a = main.index('    <div class="artikel-text">')
+    e = main.rindex('\n    </div>\n    <nav class="artikel-nav"') + len('\n    </div>')
+    meta_ende = main.index('</p>', main.index('<p class="artikel-meta">')) + len('</p>\n')
+    version = re.search(r'menue\.js\?v=(\w+)', vorlage).group(1)
+    skript = f'\n  <script src="../../js/artikel.js?v={version}" defer></script>\n'
+    main = (main[:meta_ende] + vorlesen + main[meta_ende:a] + leiste + main[a:e] + '\n' + seite + main[e:])
+    return main + skript
+
+
 def bauen(slug, titel, h1, beschr, datum, geaendert, bild, og_bild, og_alt, keywords, faq, abschnitt='Webdesign',
           reihe=None, teil=None, ersetzen=None, ohne_figuren=False, about=(), mentions=()):
     """Schreibt website/blog/<slug>/index.html.
@@ -138,6 +177,7 @@ def bauen(slug, titel, h1, beschr, datum, geaendert, bild, og_bild, og_alt, keyw
             {"@type": "ListItem", "position": 3, "name": abschnitt, "item": f"{BASIS}/blog/#thema-{_anker(abschnitt)}"},
             {"@type": "ListItem", "position": 4, "name": h1, "item": url}]}
     ]}
+    main = _raster(main, abschnitt, vorlage)
     kopf_ende = vorlage.index('<main id="inhalt">')
     fuss_start = vorlage.index('</main>')
     head = vorlage[:kopf_ende]
