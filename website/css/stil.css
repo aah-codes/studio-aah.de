@@ -4047,7 +4047,7 @@ html:not(.js) .hk-zeichen { display: none; }
 /* ---------- Leselayout Runde 2 (Anna 17.11.2026, Korrekturen mit Bildschirmfotos) ---------- */
 /* Brotkrumen im Blog: klein, ruhig, ohne Unterstreichung, aktueller Artikel etwas dunkler */
 .bk-fein { padding-top: 28px; }
-.bk-fein .brotkrumen { font-family: var(--schrift-text); font-size: 12px; letter-spacing: 0; text-transform: none; color: var(--farbe-gedaempft); max-width: calc(var(--inhalt-breite)); margin: 0 auto; }
+.bk-fein .brotkrumen { font-family: var(--schrift-text); font-size: 12px; letter-spacing: 0; text-transform: none; color: var(--farbe-gedaempft); max-width: none; margin: 0; }
 .bk-fein .brotkrumen::before { display: none; }
 .bk-fein .brotkrumen a, .bk-fein .brotkrumen a:hover, .bk-fein .brotkrumen a:focus-visible { color: var(--farbe-gedaempft); text-decoration: none; }
 .bk-fein .brotkrumen a:hover { color: var(--farbe-dunkel); }
