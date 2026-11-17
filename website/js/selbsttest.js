@@ -4,6 +4,8 @@
   var test = document.querySelector('[data-selbsttest]');
   if (test) {
     var box = document.querySelector('[data-ergebnis-box]');
+    // offene Aussage sichtbar machen und Markierung lösen, sobald sie beantwortet ist (Anna 18.11.2026: „Ergebnis zeigen funktioniert nicht“ – der Hinweis lag außerhalb des Bildschirms)
+    test.addEventListener('change', function (e) { var f = e.target.closest('.st-frage'); if (f) f.classList.remove('st-fehlt'); });
     test.addEventListener('submit', function (e) {
       e.preventDefault();
       var punkte = {}, anzahl = {}, offen = 0;
@@ -15,7 +17,7 @@
         punkte[f.dataset.ziel] = (punkte[f.dataset.ziel] || 0) + Number(w.value);
       });
       var hinweis = test.querySelector('[data-hinweis]');
-      if (offen) { hinweis.textContent = offen === 1 ? 'Bitte beantworten Sie noch eine Aussage.' : 'Bitte beantworten Sie noch ' + offen + ' Aussagen.'; var erste = test.querySelector('.st-fehlt input'); if (erste) erste.focus(); return; }
+      if (offen) { hinweis.textContent = offen === 1 ? 'Bitte beantworten Sie noch eine Aussage.' : 'Bitte beantworten Sie noch ' + offen + ' Aussagen.'; var erste = test.querySelector('.st-fehlt'); if (erste) { erste.scrollIntoView({ block: 'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); erste.querySelector('input').focus({ preventScroll: true }); } return; }
       hinweis.textContent = '';
       // Ergebnis in der Reihenfolge der Fragen, je Thema eine Skala „Handlungsbedarf“ (Anna 17.11.2026)
       var eintraege = Array.prototype.slice.call(box.querySelectorAll('.st-liste li'));
