@@ -402,6 +402,7 @@ def ki_rechner(q):
       <p class="kr-warnung" data-kr-warnung role="status" hidden>Sie haben keine Zeit fürs Lernen eingeplant. Ohne Übung bleiben neue Werkzeuge oft liegen, und die Fleißarbeit bleibt.</p>
       <p class="gedaempft">Gerechnet mit 4,3 Wochen pro Monat. Wie viel KI wirklich vorbereiten kann, zeigt der KI-Check an Ihren Abläufen.</p>
       <p class="st-weiter"><a class="button" href="{pre}ki-arbeits-setup/">Zum KI-Arbeits-Setup{PFEIL}</a> <a class="button button-zweit" href="{pre}service/ki-digitalisierung/">KI-Check und Einführung{PFEIL}</a></p>
+      <p class="st-artikel">Für den Start mit KI im Team: <a class="textlink" href="{pre}downloads/eu-ai-act-checkliste.pdf" download>Checkliste EU AI Act (PDF) <span aria-hidden="true">↓</span></a></p>
     </div>
   </section>''',
              '  <section class="ablauf-start" aria-labelledby="grund-titel">\n    <div class="sektionskopf"><p class="meta">So führe ich KI ein</p>'
