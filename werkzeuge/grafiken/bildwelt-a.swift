@@ -1,5 +1,5 @@
 // Bildwelt A (KI-Themenbilder, voll gebrandet): macht aus einem KI-Rohbild ein Asset-Set in allen Formaten.
-// Bildkonzept: graue Szene, genau ein Gegenstand in Blau, eine große Bauhaus-Form, sichtbare Kennzeichnung „Bild: KI-generiert“.
+// Bildkonzept: graue Szene, genau ein Gegenstand in Blau, eine große Bauhaus-Form; Herkunft maschinenlesbar (C2PA), sichtbarer Stempel nur mit KENNZEICHNUNG=1.
 // Braucht nur macOS (keine Installation). Aufruf vom Repository-Ordner aus:
 //   swift werkzeuge/grafiken/bildwelt-a.swift ROH.png ZIELORDNER NAME FORM [FORMFARBE]
 //   FORM: kreis | halbkreis | dreieck   FORMFARBE: blau (Standard) | creme | weiss
@@ -110,7 +110,9 @@ for (endung, bw, bh) in formate {
     c.restoreGState()
     }
 
-    // Kennzeichnung (EU AI Act Art. 50): kleine Zeile unten rechts
+    // Kennzeichnung im Bild nur auf Wunsch (Umgebungsvariable KENNZEICHNUNG=1). Anna, 18.11.2026: Stempel im Bild „wirkt unprofessionell“;
+    // Hinweis steht stattdessen als Bildunterschrift/Impressum, maschinenlesbar per C2PA (bildwelt-a.sh).
+    if ProcessInfo.processInfo.environment["KENNZEICHNUNG"] == "1" {
     let text = "Bild: KI-generiert"
     let groesse = max(13, kurz * 0.016)
     let schrift = CTFontCreateWithName("HelveticaNeue-Medium" as CFString, groesse, nil)
@@ -125,6 +127,7 @@ for (endung, bw, bh) in formate {
     c.addPath(CGPath(roundedRect: box, cornerWidth: box.height / 2, cornerHeight: box.height / 2, transform: nil)); c.fillPath()
     c.textPosition = CGPoint(x: box.minX + pad, y: box.minY + (box.height - groesse) / 2 + groesse * 0.22)
     CTLineDraw(zeile, c)
+    }
 
     let url = URL(fileURLWithPath: "\(ziel)/\(name)-\(endung).png")
     let dest = CGImageDestinationCreateWithURL(url as CFURL, UTType.png.identifier as CFString, 1, nil)!
