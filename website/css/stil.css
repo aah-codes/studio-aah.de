@@ -4229,12 +4229,11 @@ html:not(.js) .hk-zeichen { display: none; }
 .eu-symbole strong { display: block; }
 .eu-symbole figcaption { margin-top: 12px; font-size: 14px; color: var(--farbe-gedaempft); }
 .artikel-text ol.ai-checkliste { list-style: none; margin: 2rem 0 1.5rem; padding: 0; display: grid; gap: 12px; counter-reset: none; }
-.artikel-text ol.ai-checkliste li { margin: 0; display: grid; grid-template-columns: 30px 44px minmax(0, 1fr); align-items: start; gap: 16px; padding: 20px 24px; border: 1.5px solid var(--farbe-dunkel); border-radius: 20px; background: var(--farbe-weiss); }
+.artikel-text ol.ai-checkliste li { margin: 0; display: grid; grid-template-columns: 44px minmax(0, 1fr); align-items: start; gap: 16px; padding: 20px 24px; border: 1.5px solid var(--farbe-dunkel); border-radius: 20px; background: var(--farbe-weiss); }
 .artikel-text ol.ai-checkliste li::before { content: none; }
-.ai-checkliste .ac-box { width: 28px; height: 28px; border: 2px solid var(--farbe-dunkel); border-radius: 6px; margin-top: 1px; }
 .ai-checkliste .ac-nr { font-family: var(--schrift-meta); font-size: 14px; letter-spacing: .06em; color: var(--farbe-gedaempft); padding-top: 5px; }
 .ai-checkliste p { margin: 0; line-height: 1.55; }
-@media (max-width: 599.98px) { .artikel-text ol.ai-checkliste li { grid-template-columns: 28px minmax(0, 1fr); padding: 18px; } .ai-checkliste .ac-nr { display: none; } }
+@media (max-width: 599.98px) { .artikel-text ol.ai-checkliste li { grid-template-columns: 32px minmax(0, 1fr); gap: 10px; padding: 18px; } }
 .ac-download { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin: 0 0 3rem; }
 .ac-download .button { text-decoration: none; }
 .ac-download .gedaempft { font-size: 14px; }

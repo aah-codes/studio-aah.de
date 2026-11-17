@@ -24,12 +24,12 @@ def schriften():
 
 PUNKTE = [
     ('KI-Werkzeuge aufschreiben', 'Welche KI nutzt Ihr Team, und wofür?'),
-    ('Personal-KI prüfen', 'Bewertet ein Werkzeug Bewerbungen, Leistung oder Gefühle? Dann genau hinsehen.'),
-    ('KI-Regel fürs Team schreiben', 'Welche Werkzeuge, welche Daten nicht hinein, wer prüft Ergebnisse.'),
+    ('KI-Regelwerk fürs Team schreiben', 'Welche KI-Werkzeuge und Konnektoren (E-Mail, Aufgaben, Figma …) erlaubt sind, welche Daten hineindürfen und welche nicht.'),
     ('Team einführen', 'Einführung ansetzen und vermerken, wer teilgenommen hat.'),
-    ('KI-Bilder kennzeichnen', 'Echt wirkende KI-Bilder auf Website und Social Media sichtbar kennzeichnen.'),
+    ('KI-Bilder kennzeichnen', 'Echt wirkende KI-Bilder, die seit dem 2. August 2026 erscheinen, sichtbar kennzeichnen.'),
     ('Chatbot-Hinweis einbauen', '„Sie chatten mit einer KI“ beim eigenen Chatbot auf der Website.'),
-    ('KI-Compliance Kompass nutzen', 'Den Selbsttest der Bundesnetzagentur einmal durchgehen.'),
+    ('KI-Compliance Kompass nutzen', 'Selbsttest der Bundesnetzagentur: bundesnetzagentur.de/ki-ck'),
+    ('Personal-KI prüfen, bis Dezember 2027', 'Bewertet ein Werkzeug Bewerbungen, Leistung oder Gefühle? Dann genau hinsehen.'),
 ]
 
 punkte = ''.join(f'<li><span class="box"></span><div><b>{t}</b><span>{z}</span></div></li>' for t, z in PUNKTE)
