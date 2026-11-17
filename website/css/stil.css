@@ -4092,17 +4092,17 @@ html:not(.js) .hk-zeichen { display: none; }
 .box-wissen .box-kern { font-size: clamp(19px, 1.6vw, 22px); line-height: 1.5; font-weight: 600; margin: 0 0 .75em; }
 
 /* Vergleichstabelle: Kriterien als Zeilen, Werkzeuge als Spalten, erste Spalte bleibt beim Wischen stehen */
-.vergleich { width: 100%; min-width: 620px; border-collapse: separate; border-spacing: 0; font-size: 15px; line-height: 1.45; }
-.vergleich caption { text-align: left; font-family: var(--schrift-meta); font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--farbe-gedaempft); padding: 0 0 14px; }
-.vergleich th, .vergleich td { text-align: left; vertical-align: top; padding: 14px 16px; }
-.vergleich thead th { font-size: 16px; font-weight: 700; border-bottom: 2px solid var(--farbe-dunkel); background: var(--farbe-weiss); }
-.vergleich thead th span { display: block; font-weight: 400; font-size: 13px; color: var(--farbe-gedaempft); margin-top: 2px; }
-.vergleich tbody th { font-weight: 600; width: 22%; }
-.vergleich tbody tr:nth-child(odd) > * { background: var(--farbe-creme); }
-.vergleich tbody tr:nth-child(even) > * { background: var(--farbe-weiss); }
-.vergleich tbody tr > :first-child { border-radius: 10px 0 0 10px; }
-.vergleich tbody tr > :last-child { border-radius: 0 10px 10px 0; }
-.vergleich :is(thead th:first-child, tbody th) { position: sticky; left: 0; z-index: 1; }
+.tab-vergleich { width: 100%; min-width: 620px; border-collapse: separate; border-spacing: 0; font-size: 15px; line-height: 1.45; }
+.tab-vergleich caption { text-align: left; font-family: var(--schrift-meta); font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--farbe-gedaempft); padding: 0 0 14px; }
+.tab-vergleich th, .tab-vergleich td { text-align: left; vertical-align: top; padding: 14px 16px; }
+.tab-vergleich thead th { font-size: 16px; font-weight: 700; border-bottom: 2px solid var(--farbe-dunkel); background: var(--farbe-weiss); }
+.tab-vergleich thead th span { display: block; font-weight: 400; font-size: 13px; color: var(--farbe-gedaempft); margin-top: 2px; }
+.tab-vergleich tbody th { font-weight: 600; width: 22%; }
+.tab-vergleich tbody tr:nth-child(odd) > * { background: var(--farbe-creme); }
+.tab-vergleich tbody tr:nth-child(even) > * { background: var(--farbe-weiss); }
+.tab-vergleich tbody tr > :first-child { border-radius: 10px 0 0 10px; }
+.tab-vergleich tbody tr > :last-child { border-radius: 0 10px 10px 0; }
+.tab-vergleich :is(thead th:first-child, tbody th) { position: sticky; left: 0; z-index: 1; }
 .vergleich-fuss { max-width: var(--lesespalte); margin: -1.5rem auto 3rem; font-size: 14px; color: var(--farbe-gedaempft); }
 
 /* Drei Karten mit Bild (Inhalte vorbereiten) */
@@ -4119,3 +4119,28 @@ html:not(.js) .hk-zeichen { display: none; }
 .grafik-foto figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; }
 .foto-nachweis { font-size: 12px; color: var(--farbe-gedaempft); }
 .foto-nachweis a { color: inherit; }
+
+/* ---------- Leselayout Runde 3 (Anna 17.11.2026) ----------
+   Leisten bündig mit Logo und „Beratung anfragen“, Tabellen und Karten in voller Breite der Mitte ohne Wischen,
+   Achtung-Kasten weiß mit dicker Linie, Fotos ohne Bildunterschrift */
+.artikel-ratgeber { max-width: none; }
+@media (min-width: 1200.02px) {
+  /* Leisten an den Rand (justify), Mitte höchstens 840 px: Text, Tabellen und Karten teilen dieselbe linke Kante */
+  .artikel-raster { grid-template-columns: 220px minmax(0, 840px) 220px; justify-content: space-between; gap: 48px; }
+  .artikel-raster .artikel-text { --lesespalte: 100%; }
+  .artikel-raster .artikel-text .tabelle-scroll { max-width: none; overflow: visible; }
+  .artikel-raster .tab-vergleich { min-width: 0; font-size: 14px; }
+  .artikel-raster .tab-vergleich th, .artikel-raster .tab-vergleich td { padding: 12px 12px; }
+}
+.artikel-text .karten-drei { max-width: none; padding: 0; margin: 2rem 0 3.5rem; }
+.artikel-text .karten-drei li { margin: 0; }
+.karten-drei .kd-text { padding: 24px 26px 28px; }
+.box-achtung { background: var(--farbe-weiss); color: var(--farbe-dunkel); border: 4.5px solid var(--farbe-dunkel); padding: 40px 44px; }
+.box-achtung a, .box-achtung sup a { color: var(--farbe-dunkel); }
+.box-achtung .box-titel::before { background: var(--farbe-dunkel); color: var(--farbe-weiss); }
+@media (max-width: 767.98px) { .box-achtung { padding: 28px 24px; } }
+@media (min-width: 1200.02px) {
+  .artikel-raster .tab-vergleich { table-layout: fixed; }
+  .artikel-raster .tab-vergleich :is(th, td) { hyphens: auto; overflow-wrap: break-word; }
+  .artikel-raster .tab-vergleich thead th:first-child, .artikel-raster .tab-vergleich tbody th { width: 16%; }
+}
