@@ -51,8 +51,9 @@ def favicon(text):
     return FAVICON.sub(lambda m: m.group(0) + f'\n{m.group(1)}<link rel="icon" href="{m.group(2)}bilder/favicon-144.png" sizes="144x144" type="image/png">', text, count=1)
 
 
-# Dachzeile je Seite (Anna 07.11.2026, Plan „Mittelstand erreichen“, Option A): Website-Check überall (Vorlage in website/index.html),
-# das Programm „Demokratie braucht Sichtbarkeit.“ nur auf seinen eigenen Seiten und im Blog, auf Landingpages keine Dachzeile (ein Ziel pro Seite).
+# Dachzeile je Seite: Die Website-Check-Leiste über dem Kopf ist seit 18.11.2026 entfernt (Anna, Feinschliff „weniger ist mehr“,
+# Website-Check bleibt im Hero und als schwebender Button). Das Programm „Demokratie braucht Sichtbarkeit.“ steht weiter
+# auf seinen eigenen Seiten und im Blog (Anna 07.11.2026); auf allen anderen Seiten keine Dachzeile.
 DACHZEILE = re.compile(r'<!-- DACHZEILE:.*?<div class="ankuendigung">.*?</div>\n', re.S)
 PROGRAMM = ('demokratie-braucht-sichtbarkeit', 'eine-website-im-monat', 'blog')
 LANDINGPAGES = ('website-check', 'ki-arbeits-setup')
@@ -68,10 +69,12 @@ DACHZEILE_PROGRAMM = (
 def dachzeile(text, seite, vorne):
     teile = seite.relative_to(website).parts
     bereich = teile[0] if len(teile) > 1 else ''
-    if bereich in LANDINGPAGES:
-        return DACHZEILE.sub('', text, count=1)
-    if bereich in PROGRAMM:
-        return DACHZEILE.sub(lambda _: DACHZEILE_PROGRAMM.format(vorne=vorne), text, count=1)
+    text = DACHZEILE.sub('', text, count=1)
+    if bereich in PROGRAMM and bereich not in LANDINGPAGES:
+        sprung = '<a class="sprunglink" href="#inhalt">Zum Inhalt springen</a>\n'
+        if sprung not in text:
+            raise SystemExit(f'Sprunglink fehlt in {seite.relative_to(website)}')
+        text = text.replace(sprung, sprung + DACHZEILE_PROGRAMM.format(vorne=vorne), 1)
     return text
 
 
