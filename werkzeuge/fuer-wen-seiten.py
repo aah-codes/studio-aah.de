@@ -72,11 +72,14 @@ def faq(liste, titel='Ehrliche Antworten'):
     return '\n'.join(h)
 
 
-def abschluss(pre):
+def abschluss(pre, text=None, knopf=None):
+    """Gemeinsamer Abschluss; text und knopf (Ziel, Beschriftung) nur, wo der Website-Check nicht passt (z. B. KI-Zeitrechner)."""
+    text = text or 'Mit dem kostenlosen <span class="ohne-umbruch">Website-Check</span> – oder einem Gespräch, in dem Sie mir erzählen, wo es hakt.'
+    ziel, aufschrift = knopf or ('website-check/', 'Kostenloser <span class="ohne-umbruch">Website-Check&nbsp;<span aria-hidden="true">→</span></span>')
     return ('  <section class="weg-ziel" aria-labelledby="weg-ziel-titel">\n  <p class="meta">Erster Schritt</p>\n'
             '  <h2 class="gr-h2 wz-eine" id="weg-ziel-titel">Fangen wir klein an.</h2>\n'
-            '  <p class="alt-klein">Mit dem kostenlosen <span class="ohne-umbruch">Website-Check</span> – oder einem Gespräch, in dem Sie mir erzählen, wo es hakt.</p>\n'
-            f'  <p><a class="button weg-ziel-knopf" href="{pre}website-check/">Kostenloser <span class="ohne-umbruch">Website-Check&nbsp;<span aria-hidden="true">→</span></span></a></p>\n</section>')
+            f'  <p class="alt-klein">{text}</p>\n'
+            f'  <p><a class="button weg-ziel-knopf" href="{pre}{ziel}">{aufschrift}</a></p>\n</section>')
 
 
 def ld(titel, beschreibung, url, fragen, branche=None):
@@ -349,10 +352,11 @@ def ki_rechner(q):
     pre = '../'
     kopf = kopfbereich(q['meta'], q['h1'], q['unter'], pre, bild='entlastung').replace(
         f'<a class="button" href="{pre}website-check/">Kostenloser Website-Check{PFEIL}</a>',
-        f'<a class="button" href="#rechner">{esc(q["knopf"])} <span aria-hidden="true">↓</span></a>')
+        f'<a class="button" href="#rechner">{esc(q["knopf"])}{PFEIL}</a>')
+    assert '#rechner' in kopf, 'Hero-Button des Rechners nicht ersetzt'  # kopfbereich() hat den Standard-Button geändert
     regler = '\n'.join(
         f'        <div class="kr-bereich"><label for="kr-{b}">{esc(t)}</label>'
-        f'<output for="kr-{b}" data-kr-aus="{b}">{w} %</output>'
+        f'<output for="kr-{b}" data-kr-aus="{b}" aria-hidden="true">{w} %</output>'
         f'<input id="kr-{b}" type="range" name="b_{b}" min="0" max="100" step="5" value="{w}" aria-valuetext="{w} Prozent"></div>'
         for b, t, w in q['bereiche'])
     farben = ''.join(f'<i data-kr-balken="{b}" class="kr-f{n}"></i>' for n, (b, t, w) in enumerate(q['bereiche'], 1))
@@ -362,34 +366,34 @@ def ki_rechner(q):
              f'''  <section class="st kr" id="rechner" aria-labelledby="kr-titel">
     <h2 class="unsichtbar" id="kr-titel">Ihre Zahlen</h2>
     <form class="kr-form" method="dialog" data-ki-rechner>
-      <h3 class="kr-schritt"><span class="st-nr">01</span> Routine finden</h3>
-      <label>Wie viele Menschen erledigen bei Ihnen Büroarbeit?<input type="number" name="personen" min="1" max="500" value="5" inputmode="numeric"></label>
-      <label for="kr-stunden">Wie viele Stunden Routine hat jede Person pro Woche?</label><p class="kr-wert"><output name="stunden_aus" for="kr-stunden">6 Stunden</output></p><input id="kr-stunden" type="range" name="stunden" min="1" max="20" value="6" aria-valuetext="6 Stunden">
-      <fieldset><legend>Wie viel davon könnte KI vorbereiten? <span class="gedaempft">(Annahmen, keine Messwerte)</span></legend>
+      <h3 class="kr-schritt"><span class="st-nr">01</span> Zeit schätzen</h3>
+      <label>Wie viele Menschen erledigen bei Ihnen Büroarbeit oder Kundenanfragen?<input type="number" name="personen" min="1" max="500" value="5" inputmode="numeric"></label>
+      <div class="kr-bereich"><label for="kr-stunden">Wie viele Stunden Fleißarbeit hat jede Person pro Woche?</label><output name="stunden_aus" for="kr-stunden" aria-hidden="true">6 Std.</output><input id="kr-stunden" type="range" name="stunden" min="1" max="20" value="6" aria-valuetext="6 Stunden" aria-describedby="kr-fleiss"><p class="kr-notiz" id="kr-fleiss">Zum Beispiel Ablage, Formulare, Standardanfragen per Mail oder Telefon.</p></div>
+      <fieldset aria-describedby="kr-annahmen"><legend>Wie viel davon könnte KI vorbereiten?</legend>
         <label><input type="radio" name="anteil" value="0.15"> Wenig (15 %)</label>
         <label><input type="radio" name="anteil" value="0.25" checked> Mittel (25 %)</label>
-        <label><input type="radio" name="anteil" value="0.4"> Viel (40 %)</label></fieldset>
-      <label>Was kostet eine Arbeitsstunde bei Ihnen intern (in Euro)?<input type="number" name="satz" min="10" max="300" value="45" inputmode="numeric"></label>
+        <label><input type="radio" name="anteil" value="0.4"> Viel (40 %)</label>
+        <p class="kr-notiz" id="kr-annahmen">Annahmen, keine Messwerte</p></fieldset>
       <h3 class="kr-schritt"><span class="st-nr">02</span> Zeit neu verteilen</h3>
-      <p class="kr-erklaer">Wofür soll Ihr Team die frei gewordene Zeit nutzen? Gewichten Sie die Bereiche, der Rechner verteilt die Stunden danach.</p>
+      <p class="kr-erklaer">Wofür soll Ihr Team die frei gewordene Zeit nutzen? Gewichten Sie die Bereiche, der Rechner verteilt die Stunden danach. Die Prozente zeigen den Anteil an der frei gewordenen Zeit.</p>
 {regler}
     </form>
     <div class="kr-ergebnis">
       <p class="meta">Ihre Schätzung</p>
-      <div aria-live="polite" aria-atomic="true"><p class="kr-zahl"><span data-kr-stunden>0</span> <small>Stunden pro Monat für Arbeit, die Menschen besser können</small></p>
+      <p class="kr-zahl" aria-live="polite" aria-atomic="true"><span data-kr-stunden>0</span> <small>Stunden pro Monat, die Ihr Team neu einsetzt</small></p>
       <p class="kr-balken" aria-hidden="true">{farben}</p>
       <ul class="kr-liste">
 {liste}
       </ul>
-      <p class="kr-zahl kr-zahl-klein"><span data-kr-euro>0</span> <small>Euro im Jahr: Wert dieser Arbeitszeit, die Ihr Team neu einsetzt</small></p>
-      <p class="kr-warnung" data-kr-warnung hidden>Sie haben keine Zeit fürs Lernen eingeplant. Ohne Übung nutzt ein Team neue Werkzeuge kaum, und die Routine bleibt.</p></div>
-      <p class="gedaempft">Gerechnet mit 4,3 Wochen pro Monat und 12 Monaten. Wie viel KI wirklich vorbereiten kann, zeigt der KI-Check an Ihren Abläufen.</p>
+      <p class="kr-warnung" data-kr-warnung role="status" hidden>Sie haben keine Zeit fürs Lernen eingeplant. Ohne Übung bleiben neue Werkzeuge oft liegen, und die Fleißarbeit bleibt.</p>
+      <p class="gedaempft">Gerechnet mit 4,3 Wochen pro Monat. Wie viel KI wirklich vorbereiten kann, zeigt der KI-Check an Ihren Abläufen.</p>
       <p class="st-weiter"><a class="button" href="{pre}ki-arbeits-setup/">Zum KI-Arbeits-Setup{PFEIL}</a> <a class="button button-zweit" href="{pre}service/ki-digitalisierung/">KI-Check und Einführung{PFEIL}</a></p>
     </div>
   </section>''',
              '  <section class="ablauf-start" aria-labelledby="grund-titel">\n    <div class="sektionskopf"><p class="meta">So führe ich KI ein</p>'
              '<h2 class="gr-h2" id="grund-titel">Aufgaben statt Stellen</h2></div>\n' + schritte(q['grundsaetze']) + '\n  </section>',
-             abschluss(pre)]
+             abschluss(pre, 'Mit einem Gespräch über die Aufgaben Ihres Teams und darüber, wofür Sie mehr Zeit haben möchten.',
+                       ('kontakt/', f'Beratung anfragen{PFEIL}'))]
     schreibe(q['pfad'], '\n\n'.join(teile), q['seitentitel'], q['beschreibung'], [], skript='selbsttest')
 
 

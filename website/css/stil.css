@@ -3394,7 +3394,6 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 .kr-ergebnis { padding: clamp(24px, 4vw, 48px); background: var(--farbe-creme); border-radius: 24px; }
 .kr-zahl { margin: 12px 0 0; font-family: var(--schrift-ueberschrift); font-size: clamp(56px, 7vw, 112px); line-height: 1; }
 .kr-zahl small { display: block; font-family: var(--schrift-text); font-size: 18px; font-weight: 600; margin-top: 8px; }
-.kr-zahl-klein { font-size: clamp(36px, 4vw, 56px); margin-top: 24px; }
 @media (max-width: 900px) { .kr { grid-template-columns: minmax(0, 1fr); } }
 .haken-test { margin: 16px 0 0; }
 /* Brotkrumen auf Unterseiten (werkzeuge/brotkrumen.py, Anna 10.11.2026) */
@@ -3402,8 +3401,6 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 .bk-nav .brotkrumen { margin: 0; }
 .bk-nav + .fw-kopf { padding-top: 48px; }
 .st-hinweis { margin: 0; font-weight: 600; min-height: 1em; }
-.kr-wert { margin: -14px 0 0; color: var(--farbe-gedaempft); }
-.kr-form > label[for] { margin-bottom: -14px; }
 /* KI-Zeitrechner neu (Anna 17.11.2026): Schritt 02 verteilt die frei gewordene Zeit auf Menschenarbeit */
 .kr-schritt { margin: 8px 0 0; font-size: clamp(20px, 1.6vw, 24px); }
 .kr-schritt + label, .kr-erklaer { margin-top: -8px; }
@@ -3423,12 +3420,13 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 .kr-f1 { background: var(--farbe-primaer); }
 .kr-f2 { background: var(--farbe-dunkel); }
 .kr-f3 { background: var(--farbe-grau); }
-.kr-f4 { background: var(--farbe-weiss); box-shadow: inset 0 0 0 1.5px var(--farbe-dunkel); }
-.kr-f5 { background: repeating-linear-gradient(135deg, var(--farbe-dunkel) 0 2px, var(--farbe-weiss) 2px 6px); }
 .kr-warnung { margin: 20px 0 0; padding: 14px 18px; background: var(--farbe-weiss); border-left: 4px solid var(--farbe-dunkel); font-weight: 600; }
 .kr-warnung[hidden] { display: none; }
+.kr-notiz { margin: 0; font-family: var(--schrift-text); font-size: 12px; font-weight: 400; color: var(--farbe-gedaempft); }
+.kr-bereich .kr-notiz { grid-column: 1 / -1; }
+.kr-form fieldset .kr-notiz { margin-top: 4px; }
+.kr-ergebnis .st-weiter { justify-content: flex-start; }
 .kr-ergebnis > .gedaempft { margin-top: 20px; }
-.kr-zahl-klein small { font-size: 16px; }
 @media (max-width: 900px) { .kr-ergebnis { position: static; } }
 @media (prefers-reduced-motion: reduce) { .kr-balken i { transition: none; } }
 

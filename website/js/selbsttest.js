@@ -45,33 +45,34 @@
       var personen = klemme(Number(rechner.personen.value) || 0, 0, 500);
       var stunden = Number(rechner.stunden.value) || 0;
       var anteil = Number((rechner.querySelector('[name="anteil"]:checked') || {}).value || 0.25);
-      var satz = klemme(Number(rechner.satz.value) || 0, 0, 300);
       var monat = personen * stunden * anteil * 4.3;
-      rechner.stunden_aus.value = stunden + (stunden === 1 ? ' Stunde' : ' Stunden');
-      rechner.stunden.setAttribute('aria-valuetext', rechner.stunden_aus.value);
-      document.querySelector('[data-kr-stunden]').textContent = zahl.format(Math.round(monat));
-      document.querySelector('[data-kr-euro]').textContent = zahl.format(Math.round(monat * 12 * satz / 10) * 10);
+      rechner.stunden_aus.value = stunden + ' Std.';
+      rechner.stunden.setAttribute('aria-valuetext', stunden + (stunden === 1 ? ' Stunde' : ' Stunden'));
+      var gesamt = Math.round(monat);
+      document.querySelector('[data-kr-stunden]').textContent = zahl.format(gesamt);
       // Frei gewordene Zeit nach Gewichtung auf Menschenarbeit verteilen (Anna 17.11.2026)
       var regler = Array.prototype.slice.call(rechner.querySelectorAll('[name^="b_"]'));
       var summe = regler.reduce(function (s, r) { return s + Number(r.value); }, 0);
-      var gesamt = Math.round(monat);
-      // Stunden so runden, dass die Teile zusammen die Gesamtzahl ergeben (größter Rest zuerst)
-      var teile = regler.map(function (r, i) { var roh = summe ? gesamt * Number(r.value) / summe : 0; return { r: r, i: i, std: Math.floor(roh), rest: roh - Math.floor(roh) }; });
-      var fehlt = summe ? gesamt - teile.reduce(function (s, x) { return s + x.std; }, 0) : 0;
-      teile.slice().sort(function (a, b) { return b.rest - a.rest || a.i - b.i; }).slice(0, fehlt).forEach(function (x) { x.std++; });
-      teile.forEach(function (x) {
-        var id = x.r.name.slice(2), teil = summe ? Number(x.r.value) / summe : 0;
-        var prozent = Math.round(teil * 100);
-        rechner.querySelector('[data-kr-aus="' + id + '"]').value = prozent + ' %';
-        x.r.setAttribute('aria-valuetext', prozent + ' Prozent der frei gewordenen Zeit');
-        document.querySelector('[data-kr-std="' + id + '"]').textContent = zahl.format(x.std) + ' Std.';
-        document.querySelector('[data-kr-balken="' + id + '"]').style.flexGrow = teil;
+      // Ganze Zahlen so runden, dass die Teile zusammen das Ganze ergeben (größter Rest zuerst)
+      var verteile = function (ganz) {
+        var t = regler.map(function (r, i) { var roh = summe ? ganz * Number(r.value) / summe : 0; return { i: i, n: Math.floor(roh), rest: roh - Math.floor(roh) }; });
+        var fehlt = summe ? ganz - t.reduce(function (s, x) { return s + x.n; }, 0) : 0;
+        t.slice().sort(function (a, b) { return b.rest - a.rest || a.i - b.i; }).slice(0, fehlt).forEach(function (x) { x.n++; });
+        return t.map(function (x) { return x.n; });
+      };
+      var std = verteile(gesamt), prozent = verteile(100), lernStd = null;
+      regler.forEach(function (r, i) {
+        var id = r.name.slice(2);
+        rechner.querySelector('[data-kr-aus="' + id + '"]').value = prozent[i] + ' %';
+        r.setAttribute('aria-valuetext', prozent[i] + ' Prozent der frei gewordenen Zeit');
+        document.querySelector('[data-kr-std="' + id + '"]').textContent = zahl.format(std[i]) + ' Std.';
+        document.querySelector('[data-kr-balken="' + id + '"]').style.flexGrow = summe ? Number(r.value) / summe : 0;
+        if (id === 'lernen') lernStd = std[i];
       });
-      var lernen = rechner.querySelector('[name="b_lernen"]');
       var warnung = document.querySelector('[data-kr-warnung]');
       if (!warnung.dataset.text) warnung.dataset.text = warnung.textContent;
       warnung.textContent = summe ? warnung.dataset.text : 'Verteilen Sie die Zeit auf mindestens einen Bereich.';
-      warnung.hidden = !(monat > 0 && (!summe || (lernen && Number(lernen.value) === 0)));
+      warnung.hidden = !(gesamt > 0 && (!summe || lernStd === 0));
     };
     rechner.addEventListener('input', rechne);
     rechner.addEventListener('submit', function (e) { e.preventDefault(); });
