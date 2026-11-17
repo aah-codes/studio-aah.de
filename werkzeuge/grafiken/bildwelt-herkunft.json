@@ -1,0 +1,30 @@
+{
+  "claim_generator_info": [
+    {
+      "name": "STUDIO AAH! bildwelt-a",
+      "version": "1.0"
+    }
+  ],
+  "title": "Bildwelt A",
+  "assertions": [
+    {
+      "label": "c2pa.actions.v2",
+      "data": {
+        "actions": [
+          {
+            "action": "c2pa.color_adjustments",
+            "description": "Blau auf Markenblau angeglichen"
+          },
+          {
+            "action": "c2pa.cropped",
+            "description": "Zuschnitt auf Website- und Social-Formate"
+          },
+          {
+            "action": "c2pa.edited",
+            "description": "Kennzeichnung „Bild: KI-generiert“ ergänzt"
+          }
+        ]
+      }
+    }
+  ]
+}
