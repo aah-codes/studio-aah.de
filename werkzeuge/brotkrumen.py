@@ -12,6 +12,11 @@ BASIS = 'https://studio-aah.de/'
 FW = lade_json('inhalte/fuer-wen-seiten.json')
 FUER_WEN = ('Für wen', 'fuer-wen/')
 LEISTUNGEN = ('Leistungen', '#leistungen')
+KATEGORIE = {b['slug']: b['kategorie'] for b in lade_json('inhalte/blog.json')}
+
+
+def _anker(name):
+    return re.sub(r'[^a-z0-9]+', '-', name.lower().replace('&', ' ')).strip('-')
 
 
 def ziele():
@@ -32,16 +37,20 @@ def ziele():
         h1 = re.search(r'<h1[^>]*>(.*?)</h1>', text, re.S)
         if h1:
             titel = html.unescape(re.sub(r'<[^>]+>', '', h1.group(1))).replace('­', '').strip()
-            yield f'blog/{seite.parent.name}/', [('Blog', 'blog/')], titel
+            # Blog (Anna 17.11.2026): Start / Aktuelles / Kategorie / Artikel, fein und klein
+            kat = KATEGORIE.get(seite.parent.name)
+            eltern = [('Start', ''), ('Aktuelles', 'blog/')] + ([(kat, f'blog/#thema-{_anker(kat)}')] if kat else [])
+            yield f'blog/{seite.parent.name}/', eltern, titel
 
 
 def block(pfad, eltern, titel):
     pre = '../' * pfad.strip('/').count('/') + '../'
     links = ' / '.join(f'<a href="{pre}{ziel}">{html.escape(name)}</a>' for name, ziel in eltern)
-    sichtbar = (f'<nav class="bk-nav" aria-label="Brotkrumen"><p class="meta brotkrumen">{links} / '
+    fein = ' bk-fein' if pfad.startswith('blog/') else ''
+    sichtbar = (f'<nav class="bk-nav{fein}" aria-label="Brotkrumen"><p class="meta brotkrumen">{links} / '
                 f'<span aria-current="page">{html.escape(titel)}</span></p></nav>')
     liste = [{'@type': 'ListItem', 'position': 1, 'name': 'Startseite', 'item': BASIS}]
-    for i, (name, ziel) in enumerate(eltern, 2):
+    for i, (name, ziel) in enumerate([e for e in eltern if e[1]], 2):
         liste.append({'@type': 'ListItem', 'position': i, 'name': name, 'item': BASIS + ziel})
     liste.append({'@type': 'ListItem', 'position': len(liste) + 1, 'name': titel, 'item': BASIS + pfad})
     daten = json.dumps({'@context': 'https://schema.org', '@type': 'BreadcrumbList', 'itemListElement': liste}, ensure_ascii=False)

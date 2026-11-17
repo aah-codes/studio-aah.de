@@ -103,6 +103,11 @@
 - Leistungsseiten (Anna, 25.10.2026, Reihenfolge überholt durch Content-First 16.11.2026): kein „Aus der Praxis“ mehr (darunter stehen die Referenzen). Reihenfolge unten: Ablauf → (Webdesign: Retainer „Nach dem Launch“) → Stimmen → Referenzen → Häufige Fragen → drei Karten (Ansprechpartnerin, Website-Check, Preise) → Artikel. **Artikel immer zuletzt.** Die Karte „Preise“ (schwarz, „Zu den Preisen“) steht genauso im Mega-Menü.
 - Mockup-Nachweise (Mockuptree, Bendito Mockup) stehen im Impressum unter „Bildnachweise“.
 
+## Blogartikel: Gestaltung (Anna, 17.11.2026)
+- Leselayout in `beitrag.py` (`_raster`) und `stil.css` (Abschnitte „Leselayout“): Kopf zweispaltig (Text links, Bild rechts), ab 1200 px links Kapitel-Leiste mit kleinen Punkten und Fortschritt, rechts Thema und ähnliche Artikel, beide bis an den Rand; Brotkrumen fein (Start / Aktuelles / Kategorie / Artikel, 12 px). „Artikel anhören“ nur als Aufnahme mit echt klingender Stimme (`website/audio/<slug>.mp3`), kein Tempo.
+- Je Abschluss nur **ein** Button. Viel Weißraum. Kernsätze als Kasten, drei Arten durch alle Artikel: `box-tipp` (Creme), `box-achtung` (Schwarz), `box-wissen` (Rahmen). Vergleiche als `table.vergleich` (Kriterien als Zeilen, erste Spalte steht beim Wischen). Nummerierte Listen ohne hervorgehobene erste Zahl.
+- Keine LinkedIn-Meme-Vorlagen auf der Website: nur einzelne Bilder, zwei nebeneinander oder Mosaik. Bildsprache: Entwurf `Betrieb/Studio AAH/2026-11-17_bildkonzept_ki-bildsprache.md` (artifiziell, ein Gegenstand in Blau, Bauhaus-Form).
+
 ## Referenzseiten (Case Studies)
 - Inhalt, Kennzahlen und Ergebnis auf allen Projektseiten wie auf Branchenseiten (Anna, 13.11.2026): Inhalt als Ankerleiste (graue Spur, eine weiße Pille), alles linksbündig zum Kopf; Ergebnis-Spalten mit Überschriften und Texten auf einer Höhe. Nur zeigen, was Anna selbst gemacht hat (Down to Earth: keine Lebenselemente-Icons).
 - **Vor jeder neuen Referenzseite lesen:** `werkzeuge/anleitung-referenzseite.md` (Ablauf, Storyline-Schablone, Bausteine, Prüfliste, Recherche-Erkenntnisse). Vollständige Fassung mit Briefing der nächsten Referenz in `Betrieb` (Studio AAH/Website/2026-10-15_anleitung-referenzseite.md).

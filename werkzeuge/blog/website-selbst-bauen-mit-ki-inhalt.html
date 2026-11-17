@@ -1,6 +1,6 @@
   <article class="artikel artikel-ratgeber">
     <nav class="meta" aria-label="Brotkrumen"><a href="../">Blog</a> / <a href="../#thema-webdesign">Webdesign</a></nav>
-    <p class="meta">Anleitung · Vibe-Coding</p>
+    <p class="meta">Anleitung</p>
     <h1>Website selbst bauen mit KI: Wie geht das, und was brauche ich dafür?</h1>
     <p class="artikel-lead">Mit KI können heute auch Laien eine Website bauen. Diese Anleitung zeigt Ihnen den ganzen Weg: welches Werkzeug zu Ihnen passt, was Sie vorbereiten, wie der Code sauber bleibt, wie die Website online geht und was danach kommt.</p>
     <p class="artikel-meta"><span>Von <a href="../../profil/">Anna Härtelt</a></span><span>Veröffentlicht <time datetime="2026-11-17">17. November 2026</time></span><span>Lesezeit LESEZEIT Minuten</span><span>Preise und Zahlen: Stand November 2026</span></p>
@@ -46,10 +46,6 @@
       <h2 id="staerken-schwaechen">Was die KI gut kann und wo sie schwächelt</h2>
       <p><strong>Gut kann die KI Tempo, Struktur und Text.</strong> Aus ein paar Stichworten entstehen Seitenstruktur und Texte. Ein Beispiel: Für meine eigene Website wollte ich neulich abends ein Feld, in das Besucher:innen ihre Frage tippen und sofort eine passende Antwort aus meinen häufigen Fragen bekommen. Eine halbe Stunde später lief es. Wie sich meine Arbeit dadurch verändert hat, beschreibe ich in <a href="../was-ki-an-meiner-arbeit-veraendert-hat/">Was KI an meiner Arbeit verändert hat – und was nicht</a>.</p>
 
-      <figure class="grafik grafik-meme">
-        <img src="../../bilder/blog-selbstbau-meme-brillant.webp" alt="Meme: Überschrift „Meine KI zu jeder Idee:“, darunter ein begeistert hechelnder Golden Retriever, Bildunterschrift „Brillant!“." width="720" height="900" loading="lazy">
-        <figcaption>Auch das gehört zur Wahrheit: Eine KI findet fast jede Idee gut. Prüfen müssen Sie selbst.</figcaption>
-      </figure>
 
       <p><strong>Schwach ist die KI bei Bildwelt und Marke.</strong> KI-Websites sind oft textlastig und zeigen wenig Bilder. Menschen sind Augentiere: Wer nur Text sieht, wird nicht abgeholt. Bei einer Recherche zu Arztpraxen bin ich neulich auf eine Website gestoßen, die eindeutig mit KI gebaut war. Das erkennt man inzwischen oft auf den ersten Blick, so wie wir mittlerweile auch viele KI-Fotos erkennen. Forschende der University of Washington beschreiben die Ursache: Vibe-Coding verstärkt die üblichen Gestaltungsmuster, Websites werden einander ähnlicher.[[homogenisierung]] Eine eigene Bildwelt und eine klare Markenidentität (Corporate Identity) müssen Sie deshalb selbst mitbringen, mehr dazu unter <a href="#vorbereitung">Vorbereiten</a> und im Artikel <a href="../was-eine-marke-wirklich-stark-macht-haltung-stimme-stil/">Was eine Marke wirklich stark macht</a>. Daran arbeiten die Anbieter bisher sichtbar weniger als an Tempo und Sicherheit: Lovable etwa baut gerade automatische Sicherheitsprüfungen aus.[[lovable-security]]</p>
 
@@ -62,34 +58,33 @@
       <p>Es gibt zwei Arten von Werkzeugen. <strong>Baukästen im Browser</strong> erledigen alles an einem Ort: Sie schreiben, die KI baut, ein Klick veröffentlicht die Website. <strong>KI-Agenten fürs Programmieren (Coding-Agents)</strong> wie Claude Code arbeiten selbstständig auf Ihrem Rechner: Sie lesen und schreiben echte Dateien, führen Befehle aus und prüfen ihr Ergebnis. Anthropic nennt Claude Code ein <span lang="en">„agentic coding tool“</span>.[[claude-overview]] Sie haben dort volle Kontrolle, kümmern sich aber selbst um die Veröffentlichung.</p>
 
       <div class="tabelle-scroll" tabindex="0" role="region" aria-label="Tabelle: Werkzeuge zum Website-Bauen mit KI im Vergleich">
-        <table class="artikel-tabelle">
+        <table class="vergleich">
           <caption>Werkzeuge im Vergleich, Stand 17.11.2026</caption>
-          <thead><tr><th scope="col">Werkzeug</th><th scope="col">Art</th><th scope="col">Für wen</th><th scope="col">Kostenlos testen</th><th scope="col">Bezahlt ab</th><th scope="col">Hosting dabei</th><th scope="col">Code mitnehmen</th><th scope="col">Datenschutz</th></tr></thead>
+          <thead><tr><th scope="col">&nbsp;</th><th scope="col">Lovable<span>Baukasten im Browser</span></th><th scope="col">Base44<span>Baukasten, gehört zu Wix</span></th><th scope="col">Bolt.new<span>Baukasten im Browser</span></th><th scope="col">v0<span>KI für React-Code</span></th><th scope="col">Claude Code<span>KI-Agent auf dem Rechner</span></th></tr></thead>
           <tbody>
-            <tr><th scope="row">Lovable</th><td>Baukasten im Browser</td><td>Einsteiger</td><td>ja, 5 Credits am Tag</td><td>ca. 23 € (25 $) im Monat</td><td>ja</td><td>über GitHub, Download ab Pro</td><td>Vertrag zur Auftragsverarbeitung erst im Business-Tarif</td></tr>
-            <tr><th scope="row">Base44</th><td>Baukasten im Browser, gehört zu Wix</td><td>Einsteiger</td><td>ja, 25 Credits im Monat</td><td>ca. 15 € (16 $) im Monat bei Jahreszahlung</td><td>ja</td><td>über GitHub ab Builder-Tarif</td><td>Daten standardmäßig in den USA</td></tr>
-            <tr><th scope="row">Bolt.new</th><td>Baukasten im Browser</td><td>Einsteiger bis Fortgeschrittene</td><td>ja</td><td>ca. 23 € (25 $) im Monat</td><td>ja</td><td>keine Angabe auf der Preisseite</td><td>keine Angabe gefunden</td></tr>
-            <tr><th scope="row">v0</th><td>KI im Browser für React-Code</td><td>Fortgeschrittene</td><td>ja, 7 Nachrichten am Tag</td><td>ca. 27 € (30 $) im Monat</td><td>ja, bei Vercel (kostenlos nur privat)</td><td>über GitHub</td><td>keine Angabe gefunden</td></tr>
-            <tr><th scope="row">Claude Code</th><td>KI-Agent fürs Programmieren, vor allem auf dem Rechner</td><td>Fortgeschrittene</td><td>nein</td><td>ca. 18 € (20 $) im Monat (Claude Pro)</td><td>nein</td><td>Code liegt bei Ihnen</td><td>siehe <a href="#recht">Recht</a></td></tr>
+            <tr><th scope="row">Für wen</th><td>Einsteiger</td><td>Einsteiger</td><td>Einsteiger bis Fortgeschrittene</td><td>Fortgeschrittene</td><td>Fortgeschrittene</td></tr>
+            <tr><th scope="row">Kostenlos testen</th><td>ja, 5 Credits am Tag</td><td>ja, 25 Credits im Monat</td><td>ja</td><td>ja, 7 Nachrichten am Tag</td><td>nein</td></tr>
+            <tr><th scope="row">Bezahlt ab (Monat)</th><td>ca. 23 € (25 $)</td><td>ca. 15 € (16 $) bei Jahreszahlung</td><td>ca. 23 € (25 $)</td><td>ca. 27 € (30 $)</td><td>ca. 18 € (20 $), Claude Pro</td></tr>
+            <tr><th scope="row">Hosting dabei</th><td>ja</td><td>ja</td><td>ja</td><td>ja, bei Vercel (kostenlos nur privat)</td><td>nein</td></tr>
+            <tr><th scope="row">Code mitnehmen</th><td>über GitHub, Download ab Pro</td><td>über GitHub ab Builder-Tarif</td><td>keine Angabe auf der Preisseite</td><td>über GitHub</td><td>liegt bei Ihnen</td></tr>
+            <tr><th scope="row">Datenschutz</th><td>Vertrag zur Auftragsverarbeitung erst im Business-Tarif</td><td>Daten standardmäßig in den USA</td><td>keine Angabe gefunden</td><td>keine Angabe gefunden</td><td>siehe <a href="#recht">Recht</a></td></tr>
           </tbody>
-          <tfoot><tr><td colspan="8">Preise laut Anbieterseiten, Stand 17.11.2026. Die Anbieter rechnen in US-Dollar, meist zuzüglich Mehrwertsteuer; umgerechnet zum Kurs der Europäischen Zentralbank vom 17.11.2026 (1 Euro = 1,0989 US-Dollar).[[ezb]][[lovable-preise]][[base44-preise]][[bolt-preise]][[v0-preise]][[claude-preise]]</td></tr></tfoot>
         </table>
       </div>
+      <p class="vergleich-fuss">Preise laut Anbieterseiten, Stand 17.11.2026. Die Anbieter rechnen in US-Dollar, meist zuzüglich Mehrwertsteuer; umgerechnet zum Kurs der Europäischen Zentralbank vom 17.11.2026 (1 Euro = 1,0989 US-Dollar).[[ezb]][[lovable-preise]][[base44-preise]][[bolt-preise]][[v0-preise]][[claude-preise]]</p>
 
-      <p><strong>Meine Empfehlung:</strong></p>
+      <aside class="box box-tipp" aria-label="Tipp">
+        <p class="box-titel">Tipp: Meine Empfehlung</p>
       <ul>
         <li><strong>Sie fangen gerade an:</strong> Lovable oder Base44. Sie sehen sofort ein Ergebnis und müssen nichts installieren.</li>
         <li><strong>Sie wollen mehr Kontrolle:</strong> Lovable mit GitHub-Anbindung, damit Ihr Code Ihnen gehört.</li>
         <li><strong>Sie arbeiten gern am Rechner und wollen unabhängig sein:</strong> Claude Code. Die Desktop-App erspart Ihnen das Terminal.</li>
       </ul>
+      </aside>
 
       <h2 id="voraussetzungen">Was Sie mitbringen müssen: Zeit, Technik, Kosten</h2>
       <p><strong>Zeit:</strong> Mindestens eine Woche für eine Website mit mehreren Unterseiten, wenn Sie es zum ersten Mal machen.</p>
 
-      <figure class="grafik grafik-meme">
-        <img src="../../bilder/blog-selbstbau-meme-ki-spart-zeit.webp" alt="Meme: Überschrift „KI spart Zeit, haben sie gesagt.“, oben eine schlafende Katze auf dem Schreibtisch, beschriftet „Vor KI“, unten eine Katze vor dem Bildschirm, beschriftet „Mit KI“." width="720" height="900" loading="lazy">
-        <figcaption>Eine Woche ist realistisch. Mit KI geht vieles schneller, aber nicht von selbst.</figcaption>
-      </figure>
 
       <p><strong>Technik:</strong> Für Baukästen reichen ein aktueller Browser und ein Konto beim Anbieter. Claude Code braucht eine Installation auf macOS 13, Windows 10 (Version 1809) oder Linux, mindestens 4 GB Arbeitsspeicher und einen bezahlten Claude-Tarif.[[claude-setup]]</p>
       <p><strong>Kosten im Jahr, grob, meist zuzüglich Mehrwertsteuer:</strong></p>
@@ -113,10 +108,10 @@
         <li><strong>Markenidentität (Corporate Identity):</strong> Logo, Farben, Schrift und Tonfall sollten stehen, bevor die KI gestaltet. Sonst entscheidet die KI, wie Sie aussehen.</li>
       </ol>
       <h3 id="inhalte">Die Inhalte vorbereiten</h3>
-      <ul>
-        <li><strong>Seitenstruktur (Sitemap):</strong> Welche Seiten braucht es, und was steht wo? Entscheiden Sie zuerst, ob ein One-Pager reicht oder ob Sie eine Website mit Unterseiten brauchen. Ein One-Pager zeigt alles auf einer langen Seite: gut für ein einzelnes Angebot oder einen schnellen Start. Eine Website mit Unterseiten gibt jeder Leistung, jedem Thema und zum Beispiel dem Karrierebereich eine eigene Seite. Das hilft Besucher:innen beim Finden, und jede Unterseite kann bei Google und in KI-Antworten zu ihrem eigenen Thema gefunden werden.</li>
-        <li><strong>Texte:</strong> Ihr Fachwissen, Ihre Beispiele, Ihre Preise. Formulieren kann die KI, wissen kann sie das nicht.</li>
-        <li><strong>Bilder:</strong> Eigene Fotos oder Bilder mit Lizenz für gewerbliche Nutzung.</li>
+      <ul class="karten-drei">
+        <li><svg viewBox="0 0 300 170" role="img" aria-label="Seitenstruktur als Baum: eine Startseite, darunter drei Unterseiten"><rect x="115" y="22" width="70" height="40" rx="4" fill="#fff" stroke="#0e1011" stroke-width="2"/><rect x="125" y="32" width="50" height="6" fill="#0e1011"/><path d="M150 62v18M60 80h180M60 80v18M150 80v18M240 80v18" fill="none" stroke="#0e1011" stroke-width="2"/><rect x="25" y="98" width="70" height="46" rx="4" fill="#fff" stroke="#0e1011" stroke-width="2"/><rect x="115" y="98" width="70" height="46" rx="4" fill="#2a5fe6"/><rect x="205" y="98" width="70" height="46" rx="4" fill="#fff" stroke="#0e1011" stroke-width="2"/><rect x="35" y="108" width="40" height="5" fill="#0e1011"/><rect x="215" y="108" width="40" height="5" fill="#0e1011"/><rect x="125" y="108" width="40" height="5" fill="#fff"/></svg><div class="kd-text"><h4>Seitenstruktur (Sitemap)</h4><p>Welche Seiten braucht es, und was steht wo? Entscheiden Sie zuerst, ob ein One-Pager reicht oder ob Sie eine Website mit Unterseiten brauchen. Ein One-Pager zeigt alles auf einer langen Seite: gut für ein einzelnes Angebot oder einen schnellen Start. Eine Website mit Unterseiten gibt jeder Leistung, jedem Thema und zum Beispiel dem Karrierebereich eine eigene Seite. Das hilft Besucher:innen beim Finden, und jede Unterseite kann bei Google und in KI-Antworten zu ihrem eigenen Thema gefunden werden.</p></div></li>
+        <li><svg viewBox="0 0 300 170" role="img" aria-label="Stilisierter Text: eine Überschrift und mehrere Zeilen, ein Wort blau hervorgehoben"><rect x="40" y="30" width="170" height="14" fill="#0e1011"/><rect x="40" y="62" width="220" height="6" fill="#9a9d9e"/><rect x="40" y="78" width="96" height="6" fill="#9a9d9e"/><rect x="142" y="76" width="56" height="10" rx="5" fill="#2a5fe6"/><rect x="204" y="78" width="56" height="6" fill="#9a9d9e"/><rect x="40" y="94" width="200" height="6" fill="#9a9d9e"/><rect x="40" y="110" width="150" height="6" fill="#9a9d9e"/><rect x="40" y="132" width="70" height="16" rx="8" fill="none" stroke="#0e1011" stroke-width="2"/></svg><div class="kd-text"><h4>Texte</h4><p>Ihr Fachwissen, Ihre Beispiele, Ihre Preise. Formulieren kann die KI, wissen kann sie das nicht.</p></div></li>
+        <li><svg viewBox="0 0 300 170" role="img" aria-label="Bild im Bild: ein Foto-Rahmen mit Sonne und Berg, darin ein kleinerer Rahmen"><rect x="40" y="22" width="220" height="126" rx="6" fill="#fff" stroke="#0e1011" stroke-width="2"/><circle cx="215" cy="55" r="14" fill="#2a5fe6"/><path d="M40 148 L110 72 L160 124 L190 96 L260 148 Z" fill="#0e1011"/><rect x="60" y="40" width="80" height="54" rx="4" fill="#fff" stroke="#0e1011" stroke-width="2"/><circle cx="84" cy="60" r="7" fill="#0e1011"/><path d="M62 92 L95 70 L120 92 Z" fill="#2a5fe6"/></svg><div class="kd-text"><h4>Bilder</h4><p>Eigene Fotos oder Bilder mit Lizenz für gewerbliche Nutzung.</p></div></li>
       </ul>
       <p>Schreiben Sie das in die Projektanweisungen Ihres Werkzeugs. In Lovable heißen sie so (früher <span lang="en">„Knowledge“</span>) und fassen bis zu 10.000 Zeichen, in Claude Code ist es die Datei CLAUDE.md.[[lovable-knowledge]][[anthropic-best]] Die KI liest sie bei jeder Sitzung mit.</p>
 
@@ -132,16 +127,12 @@
         <li><strong>Neu anfangen, wenn es sich verhakt.</strong> Nach zwei erfolglosen Korrekturen starten Sie den Auftrag neu und beschreiben ihn genauer.</li>
       </ul>
 
-      <figure class="grafik grafik-meme">
-        <img src="../../bilder/blog-selbstbau-meme-nur-noch-ein-prompt.webp" alt="Meme: Überschrift „01:48 Uhr. ‚Nur noch ein Prompt.‘“, darunter eine Reihe leuchtender Spielautomaten." width="720" height="900" loading="lazy">
-        <figcaption>Wer nach dem dritten Versuch immer noch denselben Fehler sieht, startet besser neu.</figcaption>
-      </figure>
 
       <h2 id="livegang">Online gehen: Domain und Hosting</h2>
       <p><strong>Die Domain</strong> ist die Adresse Ihrer Website, zum Beispiel mustermann.de. Sie mieten sie jährlich bei einem Domain-Anbieter. <strong>Hosting</strong> heißt, Platz auf einem Server zu mieten, also einem Rechner, der immer online ist und Ihre Website ausliefert. Damit die Domain auf den Server zeigt, tragen Sie beim Domain-Anbieter ein paar Einstellungen ein (DNS-Einträge). Das Sicherheitszertifikat (SSL) sorgt für die verschlüsselte Verbindung, erkennbar am Schloss im Browser; bei den meisten Anbietern ist es inklusive.</p>
 
       <div class="tabelle-scroll" tabindex="0" role="region" aria-label="Tabelle: Wege, eine Website online zu stellen">
-        <table class="artikel-tabelle">
+        <table class="vergleich">
           <caption>Wege zum Hosting</caption>
           <thead><tr><th scope="col">Weg</th><th scope="col">Für wen</th><th scope="col">Kosten im Monat</th><th scope="col">Worauf achten</th></tr></thead>
           <tbody>
@@ -168,7 +159,7 @@
       <p>Das ist keine Rechtsberatung. Bei Fragen hilft eine Kanzlei.</p>
       <ul>
         <li><strong>Impressum und Datenschutzerklärung:</strong> Eine geschäftliche Website braucht ein Impressum[[ddg5]] und eine Datenschutzerklärung, auch wenn sie mit KI gebaut ist. In die Datenschutzerklärung gehört jedes eingebundene Werkzeug, etwa Statistik oder ein KI-Chat.[[erecht24]]</li>
-        <li><strong>Cookies und eingebundene Dienste:</strong> Wer Cookies oder ähnliche Techniken für Statistik oder Werbung einsetzt, braucht die Einwilligung der Besucher:innen. Ausgenommen ist nur, was für die gewünschte Funktion unbedingt nötig ist.[[tdddg]] Ein Fallstrick, den kaum jemand kennt: Daten fließen auch ohne Cookie. Lädt Ihre Website Schriften direkt von Google (Google Fonts), schickt der Browser jeder Besucherin ihre IP-Adresse an Google. Das Landgericht München hat einem Besucher dafür 2022 Schadensersatz zugesprochen.[[lg-muenchen-fonts]] Die Lösung ist einfach: Schriften auf dem eigenen Server ablegen, so empfiehlt es auch die Datenschutzbehörde Niedersachsen.[[lfd-fonts]] KI-Werkzeuge binden Schriften, Karten und Videos gern direkt von fremden Servern ein. Fragen Sie die KI ausdrücklich danach.</li>
+        <li><strong>Cookies und eingebundene Dienste:</strong> Wer Cookies oder ähnliche Techniken für Statistik oder Werbung einsetzt, braucht die Einwilligung der Besucher:innen. Ausgenommen ist nur, was für die gewünschte Funktion unbedingt nötig ist.[[tdddg]]</li>
         <li><strong>Brauche ich ein Cookie-Banner?</strong> Nur, wenn Sie wirklich eine Einwilligung brauchen. Die Datenschutzkonferenz rät sogar ausdrücklich davon ab, Banner ohne Grund einzublenden.[[dsk-digitale-dienste]] Eine Website ohne Statistik-Werkzeug, ohne Werbe-Cookies und mit lokal gespeicherten Schriften kommt ohne Banner aus. Meine eigene Website ist so gebaut.</li>
         <li><strong>Vertrag zur Auftragsverarbeitung:</strong> Verarbeitet ein Dienstleister für Sie personenbezogene Daten, braucht es einen Vertrag nach Art. 28 DSGVO.[[dsgvo28]] Das gilt für eingebundene KI-Chats[[erecht24]] und in der Regel auch für den Hoster. Bei manchen Baukästen gibt es den Vertrag erst im teuren Tarif (siehe Tabelle unter <a href="#werkzeuge">Werkzeuge</a>).</li>
         <li><strong>Brauche ich einen Vertrag zur Auftragsverarbeitung mit dem KI-Werkzeug?</strong> Nur dann nicht, wenn Sie damit ausschließlich Code und Texte bauen und keine Daten anderer Menschen eingeben: keine Namen von Mitarbeitenden, keine Kundenstimmen, keine Fotos von Personen, keine Kundenanfragen. Die Datenschutzkonferenz der deutschen Aufsichtsbehörden schreibt, dass KI-Einsätze ganz ohne personenbezogene Daten nicht unter das Datenschutzrecht fallen. Sie warnt aber, dass Personenbezug schnell entsteht.[[dsk-ki]] Sobald solche Daten in die KI gehen, brauchen Sie einen Tarif mit Vertrag. Bei Claude gibt es den nur in den Firmentarifen (Team, Enterprise und über die Programmierschnittstelle API), nicht in Free, Pro und Max. Wer Daten seiner Kund:innen mit Claude verarbeitet, braucht also mindestens den Team-Tarif.[[anthropic-legal]] Schalten Sie in privaten Tarifen außerdem ab, dass Ihre Chats zum Training genutzt werden (bei Claude: <span lang="en">„Model Improvement“</span> in den Datenschutz-Einstellungen).[[anthropic-training]]</li>
@@ -176,6 +167,11 @@
         <li><strong>EU AI Act:</strong> Seit dem 2. August 2026 gelten Transparenzpflichten. Dazu gehört die Kennzeichnung echt wirkender KI-Bilder (Deepfakes, siehe oben).[[ai-act]] Wer KI beruflich einsetzt, soll außerdem die KI-Kompetenz seiner Mitarbeitenden fördern, unabhängig von der Größe des Unternehmens.[[bnetza]] Was das genau heißt, auch für einen KI-Chat auf der Website, erkläre ich bald in einem eigenen Artikel.</li>
         <li><strong>Barrierefreiheit:</strong> Gesetzlich verpflichtet sind vor allem Websites, über die Verbraucher:innen Verträge abschließen, etwa Shops oder Online-Terminbuchungen. Reine Informationsseiten sind nicht erfasst, Kleinstunternehmen mit Dienstleistungen ausgenommen.[[zdh]] Bei Verstößen drohen dort Bußgelder bis zu 100.000 Euro.[[bfsg37]] Das Gesetz ist aber nur ein Grund. Eine barrierearme Website erreicht mehr Menschen, wird von Suchmaschinen, KI-Suchen und KI-Agenten besser verstanden (siehe <a href="#barrierefreiheit">Barrierefreiheit</a>) und ist schlicht fair gegenüber allen, die schlechter sehen, hören oder sich bewegen.</li>
       </ul>
+
+      <aside class="box box-achtung" aria-label="Achtung">
+        <p class="box-titel">Achtung: Daten fließen auch ohne Cookie</p>
+        <p>Lädt Ihre Website Schriften direkt von Google (Google Fonts), schickt der Browser jeder Besucherin ihre IP-Adresse an Google. Das Landgericht München hat einem Besucher dafür 2022 Schadensersatz zugesprochen.[[lg-muenchen-fonts]] Die Lösung ist einfach: Schriften auf dem eigenen Server ablegen, so empfiehlt es auch die Datenschutzbehörde Niedersachsen.[[lfd-fonts]] KI-Werkzeuge binden Schriften, Karten und Videos gern direkt von fremden Servern ein. Fragen Sie die KI ausdrücklich danach.</p>
+      </aside>
 
       <h2 id="praxis">Aus der Praxis: eine nachgebaute Website</h2>
       <p>Ein mir bekannter Unternehmer hat vor Kurzem eine bestehende Website mit KI nachgebaut. Er hat technisches Interesse, eine Woche daran gearbeitet, eigene Ideen eingebracht und sich von der KI beraten lassen. Die Website lief. Beim genauen Hinsehen fiel aber auf:</p>
@@ -186,10 +182,6 @@
         <li>Das große Menü mit mehreren Spalten war nicht sauber aufgebaut.</li>
       </ul>
 
-      <figure class="grafik grafik-meme">
-        <img src="../../bilder/blog-selbstbau-meme-website-vom-neffen.webp" alt="Meme: Überschrift „Die Website vom Neffen.“, darunter ein Strommast mit einem wilden Knäuel aus Kabeln, Bildunterschrift „Von innen.“" width="720" height="900" loading="lazy">
-        <figcaption>Von außen sieht man es nicht. Von innen schon.</figcaption>
-      </figure>
 
       <p>Meine Faustwerte: Bilder als WebP mit höchstens 250 KB, Videos mit höchstens 5 MB. Welche Bildformate sich wofür eignen, steht in <a href="../bildformate-im-web-welche-wirklich-zaehlen/">Bildformate im Web – welche wirklich zählen</a>. Google nennt keine feste Grenze, sein Prüfwerkzeug Lighthouse warnt aber, wenn eine ganze Seite mehr als etwa 5 MB lädt.[[lighthouse]]</p>
 
@@ -211,12 +203,12 @@
         <li>Ersetzt die neue Website eine alte? Dann braucht jede alte Adresse eine dauerhafte Weiterleitung (301-Weiterleitung, <span lang="en">301 redirect</span>) auf die passende neue Seite. Sonst landen Besucher:innen und Google auf einer Fehlerseite.</li>
       </ul>
 
-      <figure class="grafik grafik-meme">
-        <img src="../../bilder/blog-selbstbau-meme-freitag-1658.webp" alt="Meme: Überschrift „Freitag, 16:58 Uhr: ‚Können wir das noch schnell live stellen?‘“, darunter eine Katze mit weit aufgerissenen Augen." width="720" height="900" loading="lazy">
-        <figcaption>Livegang mit Checkliste, nicht freitags um fünf.</figcaption>
-      </figure>
 
-      <p>Selbst prüfen ist ein guter Anfang. Ob das Ergebnis wirklich trägt, kann aber am verlässlichsten jemand beurteilen, der Websites beruflich baut und prüft: Prüfwerkzeuge liefern Zahlen, eine Fachkraft liest sie und weiß, was davon für Ihre Besucher:innen zählt und was zuerst zu tun ist. Genau das ist der Website-Check: ein fachlicher Blick von außen auf alle acht Punkte, mit den drei wichtigsten Maßnahmen. Ihre Website muss dafür von außen erreichbar sein, zum Beispiel über eine Vorschau-Adresse Ihres Werkzeugs.</p>
+      <aside class="box box-wissen" aria-label="Gut zu wissen">
+        <p class="box-titel">Gut zu wissen</p>
+        <p class="box-kern">Selbst prüfen ist ein guter Anfang.</p>
+        <p>Ob das Ergebnis wirklich trägt, kann aber am verlässlichsten jemand beurteilen, der Websites beruflich baut und prüft: Prüfwerkzeuge liefern Zahlen, eine Fachkraft liest sie und weiß, was davon für Ihre Besucher:innen zählt und was zuerst zu tun ist. Genau das ist der Website-Check: ein fachlicher Blick von außen auf alle acht Punkte, mit den drei wichtigsten Maßnahmen. Ihre Website muss dafür von außen erreichbar sein, zum Beispiel über eine Vorschau-Adresse Ihres Werkzeugs.</p>
+      </aside>
 
       <h2 id="danach">Nach dem Livegang: zuhören, bauen, messen</h2>
       <p>Hier liegt die eigentliche Stärke des Vibe-Codings. Sie hören im Gespräch, woran Ihre Kund:innen hängen, welche Fragen sie haben oder welche Idee ihnen fehlt, und bauen noch am selben Tag etwas dafür. Sie müssen auf niemanden warten.</p>
@@ -238,10 +230,9 @@ FAQ_HTML
 
       <section class="artikel-schluss" aria-labelledby="schluss-titel">
         <p class="meta">Ihr nächster Schritt</p>
-        <h2 id="schluss-titel">Sie wollen selbst bauen? Ich bin an Ihrer Seite.</h2>
+        <h2 id="schluss-titel">Sie wollen selbst bauen?<br>Ich bin an Ihrer Seite.</h2>
         <p>Ich kann alles für Sie übernehmen. Ich kann Sie aber auch begleiten: vor dem Start mit dem <a href="../../ki-arbeits-setup/">KI-Arbeits-Setup</a>, mittendrin als Sparringspartnerin, wenn Sie nicht weiterkommen oder ein Projekt abgeben wollen, und danach im <a href="../../service/retainer/">Retainer</a> für Pflege und Optimierung. Am einfachsten fangen Sie mit dem kostenlosen Website-Check an.</p>
-        <p class="knoepfe"><a class="button" href="../../website-check/">Zum Website-Check <span aria-hidden="true">→</span></a> <a class="button button-zweit" href="../../kontakt/">Beratung anfragen <span aria-hidden="true">→</span></a></p>
-        <p class="artikel-weiter"><a class="textlink" href="../../service/webdesign/#selbst">Selbst bauen mit Unterstützung <span aria-hidden="true">→</span></a></p>
+        <p class="knoepfe"><a class="button" href="../../website-check/">Zum Website-Check <span aria-hidden="true">→</span></a></p>
       </section>
 
       <section class="autorin" aria-labelledby="autorin-titel">

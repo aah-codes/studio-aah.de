@@ -1,7 +1,7 @@
 # Gemeinsamer Baustein für alle Blogbeiträge im Schema „Ratgeber“ (Anna 19.10.2026: „jeder Artikel muss ab jetzt nach einem gleichen Schema aufgebaut sein“).
 # Schema und Prüfliste: werkzeuge/blog/schema-blogbeitrag.md. Kopf/Fuß kommen vom KI-Artikel, der Inhalt aus <slug>-inhalt.html.
 # Ein Beitrag ruft nur bauen(...) mit seinen Daten auf; FAQ, Lesezeit, Metadaten und strukturierte Daten (JSON-LD) entstehen hier für alle gleich.
-import html, json, re
+import hashlib, html, json, re
 
 from gemeinsam import STUDIO_ID, WEBSITE, WERKZEUGE, esc, lesezeit as minuten
 
@@ -83,9 +83,9 @@ def _quellen(main):
     return aus
 
 
-def _raster(main, abschnitt, vorlage):
+def _raster(main, abschnitt, vorlage, slug):
     """Leselayout (Anna 17.11.2026): links mitlaufende Kapitel-Leiste wie Schritte an einer Kasse, Mitte Text,
-    rechts Thema und ähnliche Artikel; oben Vorlesen mit Geschwindigkeit (nur lokale Gerätestimmen, js/artikel.js)."""
+    rechts Thema und ähnliche Artikel; oben „Artikel anhören“, wenn website/audio/<slug>.mp3 existiert (werkzeuge/blog/vorlesen.py)."""
     kapitel = [(i, re.sub(r'<[^>]+>', '', t).strip()) for i, t in re.findall(r'<h2 id="([\w-]+)">(.*?)</h2>', main)
                if i not in ('quellen', 'schluss-titel')]
     schritte = '\n'.join(f'          <li><a href="#{i}"><span class="kl-punkt" aria-hidden="true"></span><span class="kl-text">{t}</span></a></li>' for i, t in kapitel)
@@ -106,19 +106,26 @@ def _raster(main, abschnitt, vorlage):
 <!-- AEHNLICH:ENDE -->
       </aside>
     </div>'''
-    vorlesen = '''    <div class="vorlesen" hidden>
-      <button type="button" class="button button-zweit vl-start" aria-pressed="false"><span class="vl-symbol" aria-hidden="true">▶</span> <span class="vl-text">Artikel vorlesen</span></button>
-      <label class="vl-tempo">Tempo <select><option value="0.75">0,75×</option><option value="1" selected>1×</option><option value="1.25">1,25×</option><option value="1.5">1,5×</option></select></label>
-      <button type="button" class="vl-stopp textlink" hidden>Stopp</button>
-      <span class="vl-hinweis">Stimme Ihres Geräts, nichts wird gesendet.</span>
-    </div>
-'''
+    # doppelte Brotkrumen raus (brotkrumen.py setzt sie fein über dem Artikel), „Stand“-Angabe aus der Meta-Zeile raus (Anna 17.11.2026)
+    main = re.sub(r'\n    <nav class="meta" aria-label="Brotkrumen">.*?</nav>', '', main, count=1)
+    main = re.sub(r'<span>(?:Preise und )?Zahlen: Stand [^<]*</span>', '', main)
     a = main.index('    <div class="artikel-text">')
     e = main.rindex('\n    </div>\n    <nav class="artikel-nav"') + len('\n    </div>')
     meta_ende = main.index('</p>', main.index('<p class="artikel-meta">')) + len('</p>\n')
     version = re.search(r'menue\.js\?v=(\w+)', vorlage).group(1)
     skript = f'\n  <script src="../../js/artikel.js?v={version}" defer></script>\n'
-    main = (main[:meta_ende] + vorlesen + main[meta_ende:a] + leiste + main[a:e] + '\n' + seite + main[e:])
+    audio = WEBSITE / 'audio' / f'{slug}.mp3'
+    anhoeren = (f'''    <div class="anhoeren">
+      <p class="meta">Artikel anhören · KI-Stimme</p>
+      <audio controls preload="none" src="../../audio/{slug}.mp3?v={hashlib.md5(audio.read_bytes()).hexdigest()[:8]}"></audio>
+    </div>
+''' if audio.exists() else '')
+    # Kopf zweispaltig (Anna 17.11.2026): links Dachzeile, H1, Lead, Meta, Anhören; rechts das Titelbild
+    k0 = main.index('\n', main.index('<article class="artikel')) + 1
+    bild_a = main.index('    <img class="artikel-bild"'); bild_e = main.index('>', bild_a) + 1
+    kopf = ('    <header class="artikel-kopf">\n      <div class="ak-text">\n' + main[k0:meta_ende] + anhoeren
+            + '      </div>\n      <div class="ak-bild">\n' + main[bild_a:bild_e] + '\n      </div>\n    </header>\n')
+    main = main[:k0] + kopf + main[bild_e:a] + leiste + main[a:e] + '\n' + seite + main[e:]
     return main + skript
 
 
@@ -177,7 +184,7 @@ def bauen(slug, titel, h1, beschr, datum, geaendert, bild, og_bild, og_alt, keyw
             {"@type": "ListItem", "position": 3, "name": abschnitt, "item": f"{BASIS}/blog/#thema-{_anker(abschnitt)}"},
             {"@type": "ListItem", "position": 4, "name": h1, "item": url}]}
     ]}
-    main = _raster(main, abschnitt, vorlage)
+    main = _raster(main, abschnitt, vorlage, slug)
     kopf_ende = vorlage.index('<main id="inhalt">')
     fuss_start = vorlage.index('</main>')
     head = vorlage[:kopf_ende]

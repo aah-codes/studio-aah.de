@@ -4009,17 +4009,7 @@ html:not(.js) .hk-zeichen { display: none; }
 .artikel-ratgeber .artikel-text .tabelle-scroll { max-width: var(--lesespalte); margin: 2.5rem auto 3rem; }
 .artikel-ratgeber .grafik { margin: 3.5rem auto 4rem; }
 .artikel-ratgeber .kurz, .artikel-ratgeber .inhalt-verzeichnis { margin-bottom: 3.5rem; }
-.vl-aktiv { background: var(--farbe-creme); box-shadow: 0 0 0 8px var(--farbe-creme); border-radius: 2px; }
 
-/* Vorlesen */
-.vorlesen { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; max-width: var(--lesespalte); margin: 0 auto 2rem; }
-.vorlesen[hidden] { display: none; }
-.vorlesen .vl-start { padding: 10px 18px; font-size: 15px; }
-.vl-symbol { display: inline-block; width: 1em; text-align: center; }
-.vl-tempo { font-size: 14px; display: inline-flex; align-items: center; gap: 8px; }
-.vl-tempo select { font: inherit; padding: 6px 8px; border: 1.5px solid var(--farbe-dunkel); border-radius: 8px; background: var(--farbe-weiss); color: var(--farbe-dunkel); }
-.vl-stopp { font: inherit; font-size: 14px; background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; color: var(--farbe-dunkel); }
-.vl-hinweis { flex-basis: 100%; font-size: 13px; color: var(--farbe-gedaempft); }
 
 /* Lesebalken (oben, nur ohne Kapitel-Leiste sichtbar) */
 .lese-balken { position: fixed; left: 0; top: 0; width: 100%; height: 3px; background: var(--farbe-primaer); transform-origin: 0 50%; transform: scaleX(0); z-index: 40; pointer-events: none; }
@@ -4053,3 +4043,72 @@ html:not(.js) .hk-zeichen { display: none; }
   .as-liste span { font-size: 13px; color: var(--farbe-gedaempft); }
 }
 @media (prefers-reduced-motion: reduce) { .lese-balken, .kl-fortschritt span { transition: none; } }
+
+/* ---------- Leselayout Runde 2 (Anna 17.11.2026, Korrekturen mit Bildschirmfotos) ---------- */
+/* Brotkrumen im Blog: klein, ruhig, ohne Unterstreichung, aktueller Artikel etwas dunkler */
+.bk-fein { padding-top: 28px; }
+.bk-fein .brotkrumen { font-family: var(--schrift-text); font-size: 12px; letter-spacing: 0; text-transform: none; color: var(--farbe-gedaempft); max-width: calc(var(--inhalt-breite)); margin: 0 auto; }
+.bk-fein .brotkrumen::before { display: none; }
+.bk-fein .brotkrumen a, .bk-fein .brotkrumen a:hover, .bk-fein .brotkrumen a:focus-visible { color: var(--farbe-gedaempft); text-decoration: none; }
+.bk-fein .brotkrumen a:hover { color: var(--farbe-dunkel); }
+.bk-fein .brotkrumen [aria-current] { color: var(--farbe-dunkel); text-decoration: none; }
+
+/* Artikel über die volle Inhaltsbreite, Kopf zweispaltig: links Text, rechts Bild */
+.artikel-ratgeber { max-width: calc(var(--inhalt-breite) + 2 * var(--rand-seite)); padding-left: var(--rand-seite); padding-right: var(--rand-seite); }
+.artikel-kopf { display: grid; gap: 40px; margin: 0 0 clamp(4rem, 8vw, 6rem); }
+.artikel-kopf .ak-text > * { max-width: none; margin-left: 0; margin-right: 0; }
+.artikel-kopf h1 { font-size: clamp(34px, 4vw, 54px); line-height: 1.12; margin: .3em 0 .5em; }
+.artikel-kopf .artikel-bild { margin: 0; }
+@media (min-width: 900.02px) { .artikel-kopf { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 72px; align-items: center; } }
+.anhoeren { margin-top: 1.75rem; }
+.anhoeren .meta { margin: 0 0 8px; }
+.anhoeren audio { width: 100%; max-width: 440px; display: block; }
+
+/* Seitenleisten bis an den Rand, kleine Punkte ohne Ring */
+@media (min-width: 1200.02px) {
+  .artikel-raster { grid-template-columns: 200px minmax(0, 1fr) 220px; gap: 64px; }
+  .kl-schritte::before { left: 3px; top: 12px; bottom: 12px; width: 1px; }
+  .kl-punkt { width: 7px; height: 7px; margin-top: 7px; border: 0; background: var(--farbe-grau-hell); box-shadow: none; }
+  .kl-schritte li.erledigt .kl-punkt { background: var(--farbe-dunkel); }
+  .kl-schritte li.aktiv .kl-punkt { background: var(--farbe-primaer); box-shadow: none; }
+  .kl-schritte a { gap: 14px; }
+}
+
+/* Nummerierte Listen im Artikel: keine Zahl hervorgehoben */
+.artikel-text .checkliste li:first-child::before { background: transparent; border-color: var(--farbe-dunkel); color: var(--farbe-dunkel); }
+
+/* Drei Kastenarten, gleich in allen Artikeln (Anna 17.11.2026): Tipp · Achtung · Gut zu wissen */
+.box { max-width: var(--lesespalte); margin: 3rem auto 3.5rem; padding: 28px 32px; border-radius: 20px; }
+.box > :last-child { margin-bottom: 0; }
+.box ul { padding-left: 1.2em; }
+.box-titel { display: flex; align-items: center; gap: 10px; margin: 0 0 12px; font-family: var(--schrift-meta); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; }
+.box-titel::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--farbe-primaer); flex: none; }
+.box-tipp { background: var(--farbe-creme); }
+.box-achtung { background: var(--farbe-dunkel); color: var(--farbe-weiss); }
+.box-achtung a { color: var(--farbe-weiss); }
+.box-achtung .box-titel::before { content: "!"; width: 22px; height: 22px; background: var(--farbe-weiss); color: var(--farbe-dunkel); display: grid; place-items: center; font-family: var(--schrift-ueberschrift); font-size: 15px; letter-spacing: 0; }
+.box-achtung sup a { color: var(--farbe-weiss); }
+.box-wissen { border: 1.5px solid var(--farbe-dunkel); background: var(--farbe-weiss); }
+.box-wissen .box-kern { font-size: clamp(19px, 1.6vw, 22px); line-height: 1.5; font-weight: 600; margin: 0 0 .75em; }
+
+/* Vergleichstabelle: Kriterien als Zeilen, Werkzeuge als Spalten, erste Spalte bleibt beim Wischen stehen */
+.vergleich { width: 100%; min-width: 620px; border-collapse: separate; border-spacing: 0; font-size: 15px; line-height: 1.45; }
+.vergleich caption { text-align: left; font-family: var(--schrift-meta); font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--farbe-gedaempft); padding: 0 0 14px; }
+.vergleich th, .vergleich td { text-align: left; vertical-align: top; padding: 14px 16px; }
+.vergleich thead th { font-size: 16px; font-weight: 700; border-bottom: 2px solid var(--farbe-dunkel); background: var(--farbe-weiss); }
+.vergleich thead th span { display: block; font-weight: 400; font-size: 13px; color: var(--farbe-gedaempft); margin-top: 2px; }
+.vergleich tbody th { font-weight: 600; width: 22%; }
+.vergleich tbody tr:nth-child(odd) > * { background: var(--farbe-creme); }
+.vergleich tbody tr:nth-child(even) > * { background: var(--farbe-weiss); }
+.vergleich tbody tr > :first-child { border-radius: 10px 0 0 10px; }
+.vergleich tbody tr > :last-child { border-radius: 0 10px 10px 0; }
+.vergleich :is(thead th:first-child, tbody th) { position: sticky; left: 0; z-index: 1; }
+.vergleich-fuss { max-width: var(--lesespalte); margin: -1.5rem auto 3rem; font-size: 14px; color: var(--farbe-gedaempft); }
+
+/* Drei Karten mit Bild (Inhalte vorbereiten) */
+.karten-drei { display: grid; gap: 24px; max-width: var(--lesespalte); margin: 2rem auto 3rem; padding: 0; list-style: none; }
+@media (min-width: 768px) { .karten-drei { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.karten-drei li { margin: 0; border: 1.5px solid var(--farbe-dunkel); border-radius: 20px; overflow: hidden; background: var(--farbe-weiss); display: flex; flex-direction: column; }
+.karten-drei svg { display: block; width: 100%; height: auto; background: var(--farbe-creme); border-bottom: 1.5px solid var(--farbe-dunkel); }
+.karten-drei .kd-text { padding: 20px 22px 24px; font-size: 16px; line-height: 1.6; }
+.karten-drei h4 { margin: 0 0 8px; font-size: 18px; }
