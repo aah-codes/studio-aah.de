@@ -10,7 +10,7 @@
   "weitere": [
    [
     "Selbsttest: Wo hakt es?",
-    "Zwölf Aussagen in vier Themen, drei Minuten, Ergebnis sofort. Ohne Anmeldung.",
+    "Neun Aussagen in drei Themen, zwei Minuten, Ergebnis sofort. Ohne Anmeldung.",
     "selbsttest/"
    ],
    [
@@ -934,10 +934,10 @@
  "selbsttest": {
   "pfad": "selbsttest/",
   "seitentitel": "Selbsttest für den Mittelstand: Wo hakt es bei Ihnen? | STUDIO AAH!",
-  "beschreibung": "Zwölf Aussagen, drei Minuten, Ergebnis sofort: Wo hakt es in Ihrem Unternehmen am meisten? Neue Kunden, Fachkräfte, KI im Team oder Entlastung. Kostenlos, ohne Anmeldung.",
+  "beschreibung": "Neun Aussagen, zwei Minuten, Ergebnis sofort: Wo besteht in Ihrem Unternehmen der größte Handlungsbedarf? Neukundengewinnung, Fachkräfte oder KI im Team. Kostenlos, ohne Anmeldung.",
   "meta": "Selbsttest",
   "h1": "Wo hakt es bei Ihnen am meisten?",
-  "unter": "Zwölf Aussagen in vier Themen, drei Minuten. Ihr Ergebnis sehen Sie sofort hier. Es wird nichts gespeichert und nichts gesendet.",
+  "unter": "Neun Aussagen in drei Themen, zwei Minuten. Ihr Ergebnis sehen Sie sofort hier. Es wird nichts gespeichert und nichts gesendet.",
   "aussagen": [
    [
     "neue-kunden",
@@ -945,11 +945,11 @@
    ],
    [
     "neue-kunden",
-    "Über unsere Website kommen kaum Anfragen."
+    "Messen und persönliche Kontakte bringen weniger als früher."
    ],
    [
     "neue-kunden",
-    "Messen und persönliche Kontakte bringen weniger als früher."
+    "Über unsere Website kommen kaum Anfragen."
    ],
    [
     "fachkraefte",
@@ -973,19 +973,7 @@
    ],
    [
     "ki-im-team",
-    "Wir zahlen für Software, die kaum jemand nutzt."
-   ],
-   [
-    "entlastung",
     "Abläufe und Regeln stehen nirgends."
-   ],
-   [
-    "entlastung",
-    "Viele kleine Entscheidungen landen bei der Geschäftsführung."
-   ],
-   [
-    "entlastung",
-    "Wenn eine erfahrene Person fehlt, stockt die Arbeit."
    ]
   ]
  },

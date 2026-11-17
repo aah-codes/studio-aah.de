@@ -323,7 +323,8 @@ def produktseite(q):
 
 
 def selbsttest(q):
-    """Selbsttest „Wo hakt es?“ (Phase 4, Anna 10.11.2026): Auswertung im Browser (js/selbsttest.js), nichts wird gesendet."""
+    """Selbsttest „Wo hakt es?“ (Phase 4, Anna 10.11.2026; seit 17.11.2026 drei Themen, KI im Team und Entlastung zusammengelegt):
+    Auswertung im Browser (js/selbsttest.js), nichts wird gesendet."""
     pre = '../'
     # Aussagen nach Themen gruppiert, je Thema eine Teilüberschrift (Anna 17.11.2026); Reihenfolge wie die Problemseiten
     zeilen, n = [], 0
@@ -337,16 +338,19 @@ def selbsttest(q):
             wahl = ''.join(f'<label><input type="radio" name="a{n}" value="{w}"> {t}</label>' for w, t in ((0, 'Stimmt nicht'), (1, 'Teils'), (2, 'Stimmt')))
             zeilen.append(f'      <fieldset class="st-frage" data-ziel="{p["id"]}"><legend><span class="st-nr">{n:02d}</span> {esc(text)}</legend><div class="st-wahl">{wahl}</div></fieldset>')
     assert n == len(q['aussagen']), 'Aussage mit unbekanntem Thema im Selbsttest'
-    ergebnis = ''.join(f'<li data-ergebnis="{p["id"]}"><a href="{pre}{p["pfad"]}"><span class="st-titel">{esc(p["karte"])}</span>'
-                       f'<span class="st-balken"><i></i></span><span class="st-link">{esc(p["meta"])} <span aria-hidden="true">→</span></span></a></li>'
-                       for p in D['probleme'])
+    # Ergebnis (Anna 17.11.2026): je Thema eine Zeile in der Reihenfolge der Fragen, Name des Themas und Skala „Handlungsbedarf“
+    themen = [p for p in D['probleme'] if any(z == p['id'] for z, _ in q['aussagen'])]
+    ergebnis = ''.join(f'<li data-ergebnis="{p["id"]}"><a href="{pre}{p["pfad"]}"><span class="st-titel">{esc(p["meta"])}</span>'
+                       f'<span class="st-balken" aria-hidden="true"><i></i></span><span class="st-stufe" data-stufe></span>'
+                       f'<span class="st-link">Was hilft <span aria-hidden="true">→</span></span></a></li>'
+                       for p in themen)
     teile = [kopfbereich(q['meta'], q['h1'], q['unter'], pre, bild='fuer-wen'),
              '  <section class="st" aria-labelledby="st-titel">\n    <h2 class="unsichtbar" id="st-titel">Ihre Antworten</h2>\n'
              '    <form class="st-form" method="dialog" data-selbsttest novalidate>\n' + '\n'.join(zeilen) +
              f'\n      <p class="st-hinweis" role="alert" data-hinweis></p>\n      <p><button class="button" type="submit">Ergebnis zeigen{PFEIL}</button></p>\n'
              '      <noscript><p>Für die Auswertung braucht der Selbsttest JavaScript.</p></noscript>\n    </form>\n'
              '    <div class="st-ergebnis" data-ergebnis-box hidden tabindex="-1">\n      <p class="meta">Ihr Ergebnis</p>\n'
-             '      <h2 class="gr-h3" data-ergebnis-titel>Hier hakt es am meisten</h2>\n'
+             '      <h2 class="gr-h3" data-ergebnis-titel>Ihr Handlungsbedarf</h2>\n'
              f'      <ol class="st-liste">{ergebnis}</ol>\n'
              f'      <p class="st-weiter"><a class="button" href="{pre}kontakt/">Darüber sprechen{PFEIL}</a> <a class="button button-zweit" href="{pre}website-check/">Kostenloser Website-Check{PFEIL}</a></p>\n'
              '    </div>\n  </section>',

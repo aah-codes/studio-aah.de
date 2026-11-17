@@ -17,22 +17,26 @@
       var hinweis = test.querySelector('[data-hinweis]');
       if (offen) { hinweis.textContent = offen === 1 ? 'Bitte beantworten Sie noch eine Aussage.' : 'Bitte beantworten Sie noch ' + offen + ' Aussagen.'; var erste = test.querySelector('.st-fehlt input'); if (erste) erste.focus(); return; }
       hinweis.textContent = '';
-      var liste = box.querySelector('.st-liste');
-      var eintraege = Array.prototype.slice.call(liste.children);
-      eintraege.sort(function (a, b) { return (punkte[b.dataset.ergebnis] || 0) - (punkte[a.dataset.ergebnis] || 0); });
-      eintraege.forEach(function (li, i) {
-        var p = punkte[li.dataset.ergebnis] || 0;
-        li.style.setProperty('--wert', (p / (2 * (anzahl[li.dataset.ergebnis] || 1)) * 100) + '%');
-        li.classList.toggle('st-oben', i === 0 && p > 0);
-        liste.appendChild(li);
+      // Ergebnis in der Reihenfolge der Fragen, je Thema eine Skala „Handlungsbedarf“ (Anna 17.11.2026)
+      var eintraege = Array.prototype.slice.call(box.querySelectorAll('.st-liste li'));
+      var anteil = function (li) { var id = li.dataset.ergebnis; return (punkte[id] || 0) / (2 * (anzahl[id] || 1)); };
+      var hoechst = Math.max.apply(null, eintraege.map(anteil));
+      eintraege.forEach(function (li) {
+        var a = anteil(li);
+        li.style.setProperty('--wert', (a * 100) + '%');
+        li.querySelector('[data-stufe]').textContent = (a >= 0.6 ? 'Hoher' : a >= 0.3 ? 'Mittlerer' : 'Geringer') + ' Handlungsbedarf';
+        li.classList.toggle('st-oben', hoechst > 0 && a === hoechst);
       });
-      var hoechst = punkte[eintraege[0].dataset.ergebnis] || 0;
-      var gleich = eintraege.filter(function (li) { return (punkte[li.dataset.ergebnis] || 0) === hoechst; });
-      eintraege.forEach(function (li) { li.classList.toggle('st-oben', hoechst > 0 && gleich.indexOf(li) >= 0); });
-      box.querySelector('[data-ergebnis-titel]').textContent = hoechst === 0
-        ? 'Glückwunsch: Bei Ihnen hakt es kaum.'
-        : gleich.length > 1 ? 'Mehrere Themen sind gleich stark. Fangen Sie oben an.'
-        : 'Hier hakt es am meisten: ' + eintraege[0].querySelector('.st-titel').textContent;
+      var oben = eintraege.filter(function (li) { return hoechst > 0 && anteil(li) === hoechst; })
+        .map(function (li) { return li.querySelector('.st-titel').textContent; });
+      var titel = box.querySelector('[data-ergebnis-titel]');
+      if (!oben.length || oben.length === eintraege.length) {
+        titel.textContent = oben.length ? 'Überall gleich viel zu tun' : 'Glückwunsch: kaum Handlungsbedarf';
+      } else { // Umbruch nach dem Doppelpunkt, Themennamen bleiben zusammen
+        titel.textContent = 'Größter Handlungsbedarf:';
+        titel.appendChild(document.createElement('br'));
+        titel.appendChild(document.createTextNode(oben.map(function (n) { return n.replace(/ /g, '\u00a0'); }).join(' und ')));
+      }
       box.hidden = false; box.focus();
       document.dispatchEvent(new Event('konfetti'));
     });
