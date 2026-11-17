@@ -24,3 +24,6 @@ doku/
 
 # Python-Zwischenspeicher
 __pycache__/
+
+# Ausnahme: öffentliche Download-Dateien für Besucher:innen (Anna 17.11.2026, Checkliste EU AI Act)
+!website/downloads/*.pdf

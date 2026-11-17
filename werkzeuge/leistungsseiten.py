@@ -317,12 +317,14 @@ def recht(c):
     if not c.get('recht'): return ''
     x = c['recht']
     punkte = ''.join(f'<li><p class="lsx-recht-datum">{esc(d)}</p><h3>{esc(t)}</h3><p>{esc(b)}</p></li>' for d, t, b in x['punkte'])
+    # optional: weiterführender Blogartikel (Feld „artikel“: [Linktext, Pfad ab Wurzel]), Anna 17.11.2026
+    artikel = f'\n    <p><a class="textlink" href="../../{x["artikel"][1]}">{esc(x["artikel"][0])} <span aria-hidden="true">→</span></a></p>' if x.get('artikel') else ''
     return f'''  <section class="lsx-recht" id="recht" aria-labelledby="recht-titel">
     <p class="meta">Recht</p>
     <h2 class="gr-h2" id="recht-titel">{esc(x['titel'])}</h2>
     <p class="lsx-recht-einleitung">{esc(x['einleitung'])}</p>
     <ol class="lsx-recht-liste">{punkte}</ol>
-    <p class="lsx-recht-bei-mir">{esc(x['bei_mir'])} <span class="lsx-recht-stand">{esc(x['stand'])}</span></p>
+    <p class="lsx-recht-bei-mir">{esc(x['bei_mir'])} <span class="lsx-recht-stand">{esc(x['stand'])}</span></p>{artikel}
   </section>'''
 
 

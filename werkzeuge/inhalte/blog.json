@@ -1,5 +1,21 @@
 [
  {
+  "slug": "eu-ai-act-kleine-unternehmen",
+  "titel": "EU AI Act: Was müssen kleine Unternehmen jetzt tun?",
+  "titel_html": "EU AI Act: Was müssen kleine Unternehmen jetzt tun?",
+  "kategorie": "KI-Beratung",
+  "datum": "2026-11-17",
+  "datum_text": "17. November 2026",
+  "bild": "blog-eu-ai-act.webp",
+  "bild_b": 1200,
+  "bild_h": 800,
+  "teaser_html": "KI-Kompetenz, Kennzeichnung, Verbote, Fristen und Bußgelder: was der EU AI Act von kleinen Unternehmen verlangt, mit Checkliste zum Ausdrucken.",
+  "tags": [
+   "ki",
+   "recht"
+  ]
+ },
+ {
   "slug": "website-selbst-bauen-mit-ki",
   "titel": "Website selbst bauen mit KI: Wie geht das, und was brauche ich dafür?",
   "titel_html": "Website selbst bauen mit KI: Wie geht das, und was brauche ich dafür?",

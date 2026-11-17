@@ -719,7 +719,8 @@
     ]
    ],
    "bei_mir": "Das ist keine Rechtsberatung; im Zweifel hilft eine Fachperson für Datenschutz oder IT-Recht.",
-   "stand": "Stand: November 2026"
+   "stand": "Stand: November 2026",
+   "artikel": ["Alles zum EU AI Act für kleine Unternehmen, mit Checkliste", "blog/eu-ai-act-kleine-unternehmen/"]
   },
   "termine": "Drei Online-Termine von 90, 60 und 60 Minuten, verteilt auf etwa drei Wochen, über Google Meet oder Teams.",
   "ohne_gemeinsame_fragen": true,

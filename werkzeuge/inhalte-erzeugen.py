@@ -233,7 +233,7 @@ def anker(name):
 
 
 # Blog-Kategorien = Leistungen (Anna 13.10.2026), in dieser Reihenfolge; Kategorien ohne Beitrag werden ausgeblendet, bis einer da ist
-BLOG_KATEGORIEN = ['Markenbildung', 'UI/UX', 'Webdesign', 'Marketing & Vertrieb']
+BLOG_KATEGORIEN = ['Markenbildung', 'UI/UX', 'Webdesign', 'KI-Beratung', 'Marketing & Vertrieb']
 
 
 def blog_themen():

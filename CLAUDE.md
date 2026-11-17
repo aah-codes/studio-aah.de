@@ -14,7 +14,7 @@
 - **`bash werkzeuge/alle-erzeugen.sh`** – startet die Seiten-Generatoren in der richtigen Reihenfolge (Kopf und Fuß → Preise → Blogbeitrag → Inhalte → Leistungsseiten → Referenzen). Einzeln nur, wenn man genau weiß, was man tut:
 - `python3 werkzeuge/kopf-fuss.py` – Kopf und Fuß aus `website/index.html` in alle Seiten (Pfade passend zur Ordnertiefe, 404-Seite ab der Wurzel). Kopf und Fuß nur in `website/index.html` ändern.
 - `python3 werkzeuge/preise-erzeugen.py` – Preise, Kostenrechner-Daten, Leiste, Glossar
-- **Blogbeiträge** (Anna, 19.10.2026: jeder Artikel nach demselben Schema): `werkzeuge/blog/<slug>.py` je Beitrag ruft `bauen()` aus `werkzeuge/blog/beitrag.py` auf (Kopf/Fuß des KI-Artikels, Kurz gesagt, FAQ, strukturierte Daten). **Vor jedem neuen Beitrag lesen:** `werkzeuge/blog/schema-blogbeitrag.md`; Schreibregeln im Skill `texte-studio-aah`. Texte nur in `werkzeuge/blog/<slug>-inhalt.html` und der FAQ im Skript ändern. Bisher: `was-kostet-eine-website.py` (Reihe Website-Fragen, Teil 1), `was-sollte-eine-website-2027-koennen.py` (Teil 2)
+- **Blogbeiträge** (Anna, 19.10.2026: jeder Artikel nach demselben Schema): `werkzeuge/blog/<slug>.py` je Beitrag ruft `bauen()` aus `werkzeuge/blog/beitrag.py` auf (Kopf/Fuß des KI-Artikels, Kurz gesagt, FAQ, strukturierte Daten). **Vor jedem neuen Beitrag lesen:** `werkzeuge/blog/schema-blogbeitrag.md`; Schreibregeln im Skill `texte-studio-aah`. Texte nur in `werkzeuge/blog/<slug>-inhalt.html` und der FAQ im Skript ändern. Bisher: `was-kostet-eine-website.py` (Reihe Website-Fragen, Teil 1), `was-sollte-eine-website-2027-koennen.py` (Teil 2), `website-selbst-bauen-mit-ki.py`, `eu-ai-act-kleine-unternehmen.py` (Kategorie KI-Beratung, Titelbild aus `werkzeuge/grafiken/blog/eu-ai-act-titel.py` mit Natural-Earth-Daten, Checkliste als PDF aus `werkzeuge/blog/eu-ai-act-checkliste.py`)
 - `python3 werkzeuge/inhalte-erzeugen.py` – Referenzen, „Für wen“, Stimmen, Blog-Vorschau, Kennzahlen (Marker `<!-- NAME:START -->` … `<!-- NAME:ENDE -->`)
   - Kennzahl „Jahre selbstständig“ wird aus `"seit": 2020` in `werkzeuge/inhalte/kennzahlen.json` berechnet (Anna, 16.10.2026); sie zählt bei jedem Erzeugen weiter – nach dem Jahreswechsel einmal alle Generatoren laufen lassen und hochladen.
   - Liest die Lesezeit aus den fertigen Blogseiten, läuft also nach dem Blog-Skript.
@@ -179,7 +179,7 @@
 - Keine Fremddienste, keine Cookies, kein Analyse-Werkzeug, kein JavaScript-Rahmenwerk. Ausnahmen (Anna, 16.10.2026): Formspark für die Anfrageformulare und Brevo für den Newsletter; beide stehen in der Datenschutzerklärung. Neue Dienste nur nach Annas OK und mit Eintrag in der Datenschutzerklärung. JavaScript nur, wo es ohne nicht geht (z. B. Mobilmenü), und dann wenige Zeilen.
 - Nur relative Pfade – der Benutzername ist auf den beiden Macs verschieden.
 - Zugänglichkeit: sinnvolle Überschriften-Reihenfolge, Alternativtexte, sichtbarer Fokus, ausreichender Kontrast.
-- Nie ins Repository: Zugangsdaten, `.env`, Kundendaten, PDFs (siehe `.gitignore`).
+- Nie ins Repository: Zugangsdaten, `.env`, Kundendaten, PDFs (siehe `.gitignore`). Einzige Ausnahme: öffentliche Downloads für Besucher:innen in `website/downloads/` (Anna 17.11.2026, Checkliste EU AI Act), immer aus einem Skript erzeugt.
 
 ## Bilder
 - Bilder liegen in `website/bilder/`. Für das Web verkleinern; Ziel: ganzer Ordner `website/` klein halten.
