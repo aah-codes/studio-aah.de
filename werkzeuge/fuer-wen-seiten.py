@@ -352,7 +352,9 @@ def selbsttest(q):
              '    <div class="st-ergebnis" data-ergebnis-box hidden tabindex="-1">\n      <p class="meta">Ihr Ergebnis</p>\n'
              '      <h2 class="gr-h3" data-ergebnis-titel>Ihr Handlungsbedarf</h2>\n'
              f'      <ol class="st-liste">{ergebnis}</ol>\n'
-             f'      <p class="st-weiter"><a class="button" href="{pre}kontakt/">Darüber sprechen{PFEIL}</a> <a class="button button-zweit" href="{pre}website-check/">Kostenloser Website-Check{PFEIL}</a></p>\n'
+             # unter dem Ergebnis: EU-AI-Act-Artikel, dann Beratung oder Checkliste als Download (Anna 18.11.2026)
+             f'      <p class="st-artikel">Passend zu KI im Team: <a class="textlink" href="{pre}blog/eu-ai-act-kleine-unternehmen/">EU AI Act: Was müssen kleine Unternehmen jetzt tun?{PFEIL}</a></p>\n'
+             f'      <p class="st-weiter"><a class="button" href="{pre}kontakt/">Beratung anfragen{PFEIL}</a> <a class="button button-zweit" href="{pre}downloads/eu-ai-act-checkliste.pdf" download>Checkliste EU AI Act (PDF) <span aria-hidden="true">↓</span></a></p>\n'
              '    </div>\n  </section>',
              abschluss(pre)]
     schreibe(q['pfad'], '\n\n'.join(teile), q['seitentitel'], q['beschreibung'], [], skript='selbsttest')
