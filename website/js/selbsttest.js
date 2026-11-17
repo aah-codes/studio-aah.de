@@ -1,4 +1,4 @@
-/* Selbsttest „Wo hakt es?“ und KI-Zeitrechner (Anna 10.11.2026). Alles wird im Browser gerechnet, nichts gesendet oder gespeichert. */
+/* Selbsttest „Wo hakt es?“ und KI-Zeitrechner (Anna 10.11.2026, Rechner neu 17.11.2026: Zeit auf Menschenarbeit verteilen). Alles wird im Browser gerechnet, nichts gesendet oder gespeichert. */
 (function () {
   'use strict';
   var test = document.querySelector('[data-selbsttest]');
@@ -51,6 +51,27 @@
       rechner.stunden.setAttribute('aria-valuetext', rechner.stunden_aus.value);
       document.querySelector('[data-kr-stunden]').textContent = zahl.format(Math.round(monat));
       document.querySelector('[data-kr-euro]').textContent = zahl.format(Math.round(monat * 12 * satz / 10) * 10);
+      // Frei gewordene Zeit nach Gewichtung auf Menschenarbeit verteilen (Anna 17.11.2026)
+      var regler = Array.prototype.slice.call(rechner.querySelectorAll('[name^="b_"]'));
+      var summe = regler.reduce(function (s, r) { return s + Number(r.value); }, 0);
+      var gesamt = Math.round(monat);
+      // Stunden so runden, dass die Teile zusammen die Gesamtzahl ergeben (größter Rest zuerst)
+      var teile = regler.map(function (r, i) { var roh = summe ? gesamt * Number(r.value) / summe : 0; return { r: r, i: i, std: Math.floor(roh), rest: roh - Math.floor(roh) }; });
+      var fehlt = summe ? gesamt - teile.reduce(function (s, x) { return s + x.std; }, 0) : 0;
+      teile.slice().sort(function (a, b) { return b.rest - a.rest || a.i - b.i; }).slice(0, fehlt).forEach(function (x) { x.std++; });
+      teile.forEach(function (x) {
+        var id = x.r.name.slice(2), teil = summe ? Number(x.r.value) / summe : 0;
+        var prozent = Math.round(teil * 100);
+        rechner.querySelector('[data-kr-aus="' + id + '"]').value = prozent + ' %';
+        x.r.setAttribute('aria-valuetext', prozent + ' Prozent der frei gewordenen Zeit');
+        document.querySelector('[data-kr-std="' + id + '"]').textContent = zahl.format(x.std) + ' Std.';
+        document.querySelector('[data-kr-balken="' + id + '"]').style.flexGrow = teil;
+      });
+      var lernen = rechner.querySelector('[name="b_lernen"]');
+      var warnung = document.querySelector('[data-kr-warnung]');
+      if (!warnung.dataset.text) warnung.dataset.text = warnung.textContent;
+      warnung.textContent = summe ? warnung.dataset.text : 'Verteilen Sie die Zeit auf mindestens einen Bereich.';
+      warnung.hidden = !(monat > 0 && (!summe || (lernen && Number(lernen.value) === 0)));
     };
     rechner.addEventListener('input', rechne);
     rechner.addEventListener('submit', function (e) { e.preventDefault(); });

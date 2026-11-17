@@ -160,6 +160,32 @@ def preis(e):
     return ('ab ' if e.get('ab', True) else '') + euro(e['preis']) + ' ' + NETTO
 
 
+def zwei_pakete(g):
+    """Höchstens zwei Paketkarten je Leistung (Anna 17.11.2026: „überall zwei Pakete, die, die am meisten gesucht werden“).
+    Feld „karten“ in preise-daten.json nennt die zwei Pakete; alle übrigen kommen als Zeile „Außerdem buchbar“ darunter.
+    Baut ein gezeigtes Paket auf ein ausgeblendetes auf („Alles aus Basic, plus:“), stehen dessen Inhalte mit in der Liste."""
+    ids = g.get('karten')
+    if not ids: return list(g['pakete']), []
+    nach_id = {e['id']: e for e in g['pakete']}
+
+    def voll(e):
+        plus = e.get('plus') or ''
+        if not plus.startswith('Alles aus '): return e
+        name = plus[len('Alles aus '):].split(',')[0].strip()
+        basis = next((x for x in g['pakete'] if name in x['name'] and x is not e), None)
+        if basis is None or basis['id'] in ids: return e
+        b = voll(basis)
+        return {**e, 'plus': 'Enthalten:', 'items': list(b.get('items', [])) + list(e.get('items', []))}
+    return [voll(nach_id[i]) for i in ids], [e for e in g['pakete'] if e['id'] not in ids]
+
+
+def weitere_pakete(rest):
+    """Zeile unter den zwei Karten: übrige Pakete mit Preis (Anna 17.11.2026)."""
+    if not rest: return ''
+    return ('    <p class="lsx-weitere">Außerdem buchbar: '
+            + ' · '.join(f'<strong>{esc(e["name"])}</strong> {preis(e).replace(NETTO, "netto")}' for e in rest) + '</p>\n')
+
+
 def paket_karte(e, woerter, pre=''):
     """Karte eines Pakets (Name, Preis, für wen, Dauer, Inhalt); woerter: Trennliste für den Namen.
     Optional "link" (ab der Website-Wurzel, z. B. "ki-arbeits-setup/"): Textlink zur eigenen Paketseite, pre = Pfad zur Wurzel."""

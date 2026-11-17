@@ -3,7 +3,7 @@
 # Aufruf im Repository-Ordner:  python3 werkzeuge/preise-erzeugen.py
 import json, re
 
-from gemeinsam import NETTO_SATZ, PFEIL, TRENNEN_LEISTUNGEN, WEBSITE, einsetzen, ersetze_einmal, esc, lade_json, mass_attr, paket_karte
+from gemeinsam import NETTO_SATZ, PFEIL, TRENNEN_LEISTUNGEN, WEBSITE, einsetzen, ersetze_einmal, esc, lade_json, mass_attr, weitere_pakete, zwei_pakete, paket_karte
 
 daten = lade_json('preise-daten.json')
 # Preislisten der übrigen Leistungen; Webdesign hat stattdessen den Kostenrechner (Anna 16.10.2026)
@@ -28,7 +28,8 @@ def preisliste(g):
     mehr = f'<p><a class="textlink" href="{g["link"]}">Mehr zu {esc(g["name"])}{PFEIL}</a></p>' if g.get('link') else ''
     return (f'<section class="preisliste" id="r-{g["id"]}" aria-labelledby="r-{g["id"]}-titel">\n  <div class="preisliste-kopf"><p class="meta">Preisliste</p>'
             f'<h2 class="preis-h2" id="r-{g["id"]}-titel">{esc(g["name"])}</h2><p class="gedaempft">{esc(g.get("intro") or "")}</p>{mehr}</div>\n'
-            '    <div class="lsx-karten">\n' + '\n'.join(paket_karte(e, TRENNEN_LEISTUNGEN, '../') for e in g['pakete']) + '\n    </div>\n</section>')
+            '    <div class="lsx-karten">\n' + '\n'.join(paket_karte(e, TRENNEN_LEISTUNGEN, '../') for e in zwei_pakete(g)[0]) + '\n    </div>\n'
+            + weitere_pakete(zwei_pakete(g)[1]) + '</section>')  # höchstens zwei Karten, der Rest als Zeile (Anna 17.11.2026)
 
 
 def glossar():

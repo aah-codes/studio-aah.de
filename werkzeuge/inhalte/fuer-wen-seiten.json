@@ -15,7 +15,7 @@
    ],
    [
     "KI-Zeitrechner",
-    "Wie viel Zeit kann KI Ihrem Team sparen? Rechnen Sie mit Ihren Zahlen.",
+    "Was macht Ihr Team mit der Zeit, die KI frei macht? Rechnen und verteilen Sie mit Ihren Zahlen.",
     "ki-zeitrechner/"
    ],
    [
@@ -974,12 +974,58 @@
   ]
  },
  "ki_rechner": {
+  "_hinweis": "Neu gedacht am 17.11.2026 (Anna: bisher unethisch, weil nur Zeitersparnis; Vorbild IKEA: Aufgaben statt Stellen, Weiterbildung statt Entlassung, frei gewordene Zeit in neue Arbeit). Texte sind Entwürfe von Claude bis zu Annas Freigabe. IKEA wird auf der Seite nicht genannt.",
   "pfad": "ki-zeitrechner/",
-  "seitentitel": "KI-Zeitrechner: Wie viel Zeit kann KI Ihrem Team sparen? | STUDIO AAH!",
-  "beschreibung": "Rechnen Sie mit Ihren eigenen Zahlen aus, wie viele Stunden Routine KI Ihrem Team im Monat abnehmen könnte. Kostenlos, ohne Anmeldung, nichts wird gesendet.",
+  "seitentitel": "KI-Zeitrechner: Mehr Zeit für Kundschaft, Ideen und Lernen | STUDIO AAH!",
+  "beschreibung": "Rechnen Sie mit Ihren eigenen Zahlen aus, wie viel Routine KI Ihrem Team abnehmen könnte, und planen Sie, wofür Ihre Leute die Zeit stattdessen nutzen. Kostenlos, ohne Anmeldung, nichts wird gesendet.",
   "meta": "KI-Zeitrechner",
-  "h1": "Wie viel Zeit kann KI Ihrem Team sparen?",
-  "unter": "Rechnen Sie mit Ihren eigenen Zahlen. Das Ergebnis ist eine Schätzung, keine Zusage. Es wird nichts gespeichert und nichts gesendet."
+  "h1": "Was macht Ihr Team mit der Zeit, die KI frei macht?",
+  "unter": "KI soll Aufgaben übernehmen, nicht Menschen ersetzen. Rechnen Sie aus, wie viel Routine frei wird, und legen Sie fest, wofür Ihr Team die Stunden nutzt. Das Ergebnis ist eine Schätzung. Nichts wird gespeichert oder gesendet.",
+  "knopf": "Jetzt rechnen",
+  "bereiche": [
+   [
+    "kunden",
+    "Kund:innen beraten und betreuen",
+    30
+   ],
+   [
+    "neues",
+    "Neue Angebote und Ideen entwickeln",
+    20
+   ],
+   [
+    "lernen",
+    "Lernen und Weiterbildung",
+    20
+   ],
+   [
+    "einarbeiten",
+    "Neue Leute einarbeiten und ausbilden",
+    10
+   ],
+   [
+    "luft",
+    "Luft für Spitzen, weniger Überstunden",
+    20
+   ]
+  ],
+  "grundsaetze": [
+   [
+    "Erst hinsehen",
+    "Routine finden",
+    "Ich schaue mit Ihnen auf einzelne Aufgaben wie Protokolle, Angebote vorbereiten oder Mails sortieren. KI bereitet vor, Menschen prüfen und entscheiden."
+   ],
+   [
+    "Alle lernen mit",
+    "Team schulen",
+    "Alle bekommen die Grundlagen, nicht nur die Technik-Fans. Wer viel damit arbeitet, lernt tiefer. Fragen sind erwünscht, Fehler auch."
+   ],
+   [
+    "Zeit neu einsetzen",
+    "Neue Rollen schaffen",
+    "Die gewonnene Zeit fließt in Arbeit, die Menschen besser können: beraten, Ideen entwickeln, neue Leute einarbeiten. So wächst Ihr Unternehmen mit seinem Team."
+   ]
+  ]
  },
  "_branchen_hinweis": "Branchen seit 12.11.2026 (Anna): sieben, Reihenfolge = Raster der Startseite; Texte von industrie, energie, gesundheit, beratung sowie einleitung/muss/einwand aller Branchen sind Entwürfe von Claude, noch nicht von Anna freigegeben."
 }

@@ -804,17 +804,6 @@
    "Magazin, Katalog oder Jahresbericht als mehrseitige Publikation mit Druckbegleitung",
    "Visitenkarte, Flyer, Postkarte und Broschüre, druckfertig gestaltet"
   ],
-  "paket_reihen": [
-   [
-    "praesentation",
-    "publikation"
-   ],
-   [
-    "visitenkarte",
-    "flyer",
-    "broschuere"
-   ]
-  ],
   "artikel": false,
   "gewinn": [
    "Gedrucktes, das zu Ihrer Marke passt.",

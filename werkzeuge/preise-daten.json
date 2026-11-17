@@ -6,6 +6,10 @@
    "name": "Markenbildung",
    "link": "../service/markenbildung/",
    "wahl": "eins",
+   "karten": [
+    "brand-1",
+    "brand-2"
+   ],
    "pakete": [
     {
      "id": "brand-0",
@@ -70,6 +74,10 @@
    "kurz": "Marken-Regelwerk",
    "name": "Marken-Regelwerk",
    "link": "../marken-regelwerk/",
+   "karten": [
+    "regelwerk-start",
+    "regelwerk-team"
+   ],
    "pakete": [
     {
      "id": "regelwerk-start",
@@ -127,6 +135,10 @@
    "name": "UI/UX",
    "link": "../service/ui-ux/",
    "wahl": "eins",
+   "karten": [
+    "ui-ux-1",
+    "ui-ux-2"
+   ],
    "pakete": [
     {
      "id": "ui-ux-1",
@@ -426,6 +438,10 @@
    "name": "Marketing & Vertrieb",
    "link": "../service/marketing-vertrieb/",
    "wahl": "mehrere",
+   "karten": [
+    "marketing-0",
+    "vorlagen"
+   ],
    "pakete": [
     {
      "id": "marketing-0",
@@ -491,6 +507,10 @@
    "name": "Druck",
    "link": "../service/druck/",
    "wahl": "mehrere",
+   "karten": [
+    "flyer",
+    "praesentation"
+   ],
    "pakete": [
     {
      "id": "visitenkarte",
@@ -565,6 +585,10 @@
    "name": "KI-Beratung",
    "link": "../service/ki-digitalisierung/",
    "wahl": "eins",
+   "karten": [
+    "ki-0",
+    "ki-setup"
+   ],
    "pakete": [
     {
      "id": "ki-0",

@@ -5,7 +5,7 @@
 import json, re, sys
 
 from gemeinsam import (ankerleiste, spiel_sektion, LINKEDIN, NETTO_SATZ, STUDIO_ID, TRENNEN_LEISTUNGEN, WEBSITE, WERKZEUGE, esc, lade_json, lade_skript,
-                       paket_karte, preis, seitenrahmen, trennen as trennen_mit)
+                       paket_karte, preis, seitenrahmen, trennen as trennen_mit, weitere_pakete, zwei_pakete)
 
 preise = lade_json('preise-daten.json')
 inhalte = lade_json('leistungen-inhalte.json')
@@ -192,6 +192,9 @@ def gruppe_fuer(c):
     g = next(x for x in preise['gruppen'] if x['id'] == c['gruppe'])
     if c.get('pakete'):
         g = {**g, 'pakete': [{**e, **c.get('paket_extra', {})} for e in g['pakete'] if e['id'] in c['pakete']], 'extras': []}
+    else:
+        gezeigt, rest = zwei_pakete(g)  # höchstens zwei Karten, der Rest als Zeile (Anna 17.11.2026)
+        g = {**g, 'pakete': gezeigt, 'weitere': rest}
     return g
 
 
@@ -385,7 +388,7 @@ def pakete(c, g, pre):
     <h2 class="gr-h2" id="pakete-titel">Was es kostet</h2>
     {hinweis}
 {paket_reihen(g, c, pre)}
-    {NETTO_HINWEIS}
+{weitere_pakete(g.get('weitere', []))}    {NETTO_HINWEIS}
     {'' if len(g['pakete']) == 1 and not c.get('hintergrund') else nicht_enthalten(c)}
   </section>'''
 
@@ -421,11 +424,11 @@ def strukturierte_daten(c, g, intro, url, fragen, vorlage):
     studio = re.search(r'\{\s*"@type": "ProfessionalService".*?"areaServed": \[[^\]]*\]\s*\}', vorlage, re.S)
     angebote = [{"@type": "Offer", "name": e['name'], "priceCurrency": "EUR", "price": str(e['preis']),
                  "priceSpecification": {"@type": "PriceSpecification", "minPrice": e['preis'], "priceCurrency": "EUR", "valueAddedTaxIncluded": False}}
-                for e in g['pakete'] if e.get('preis')]
+                for e in g['pakete'] + g.get('weitere', []) if e.get('preis')]
     angebote += [{"@type": "Offer", "name": e['name'], "priceCurrency": "EUR",
                   "priceSpecification": {"@type": "UnitPriceSpecification", "minPrice": e['stunde'], **({"maxPrice": e['stundeBis']} if e.get('stundeBis') else {}),
                                          "priceCurrency": "EUR", "unitText": "Stunde", "valueAddedTaxIncluded": False}}
-                 for e in g['pakete'] if e.get('stunde') and not e.get('preis')]
+                 for e in g['pakete'] + g.get('weitere', []) if e.get('stunde') and not e.get('preis')]
     graph = [json.loads(studio.group(0)) if studio else {"@id": STUDIO_ID},
              {"@type": "Service", "@id": url + '#leistung', "name": c['titel'], "description": intro, "url": url,
               "provider": {"@id": STUDIO_ID}, "areaServed": "Leipzig", "offers": angebote},
