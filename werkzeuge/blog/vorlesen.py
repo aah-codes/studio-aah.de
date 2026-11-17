@@ -47,6 +47,17 @@ text = '\n'.join(leser.teile).replace('­', '')
 for alt, neu in (('KI', 'K I'), ('STUDIO AAH!', 'Studio A A H'), ('z. B.', 'zum Beispiel'), ('ca.', 'circa'), ('€', ' Euro'), ('$', ' Dollar'), ('%', ' Prozent'), (' / ', ', '), ('Vibe-Coding', 'Waib-Koding'), ('Claude', 'Klod'), ('Base44', 'Base vierundvierzig'), ('v0', 'v null'), ('SSL', 'S S L'), ('DNS', 'D N S'), ('DSGVO', 'D S G V O'), ('CLAUDE.md', 'Klod Punkt M D')):
     text = text.replace(alt, neu)
 text = re.sub(r':innen', 'innen', text)
+text = re.sub(r':in\b', 'in', text)
+# weitere Aussprache-Hilfen (Anna 18.11.2026: „Jeden Artikel … mit Voice“), Abkürzungen nur als ganze Wörter
+for alt, neu in ((r'\bEU AI Act\b', 'E U A I Act'), (r'\bAI Act\b', 'A I Act'), (r'\bAVV\b', 'A V V'), (r'\bDPA\b', 'D P A'), (r'\bHGB\b', 'H G B'),
+                 (r'\bAO\b', 'A O'), (r'\bGmbHG\b', 'G m b H Gesetz'), (r'\bGmbH\b', 'G m b H'), (r'\bOHG\b', 'O H G'), (r'\bKG\b', 'K G'),
+                 (r'\bTLS\b', 'T L S'), (r'\bAPI\b', 'A P I'), (r'\bAGB\b', 'A G B'), (r'\bKMU\b', 'K M U'), (r'\bSEO\b', 'S E O'),
+                 (r'§\s*', 'Paragraf '), (r'\bArt\.\s*', 'Artikel '), (r'\bAbs\.\s*', 'Absatz '), (r'\bNr\.\s*', 'Nummer '), (r'\bRn\.\s*', 'Randnummer '),
+                 (r'\bMwSt\.', 'Mehrwertsteuer'), (r'\binkl\.', 'inklusive'), (r'\bu\. a\.', 'unter anderem'), (r'\bMio\.', 'Millionen'),
+                 (r'\bChatGPT\b', 'Tschätt G P T'), (r'\bGmail\b', 'G-Mail'), (r'\biCloud\+?', 'Ei-Klaud'), (r'\bCopilot\b', 'Ko-Pailot'),
+                 (r'\bGemini\b', 'Dschemini'), (r'\bClickUp\b', 'Klick-App'), (r'\bWorkspace\b', 'Wörkspäis'), (r'\bOpenAI\b', 'Open A I'),
+                 (r'\bAnthropic\b', 'Änthropic'), (r'\bLovable\b', 'Lavabel'), (r'\bFigma\b', 'Figma')):
+    text = re.sub(alt, neu, text)
 ziel = REPO / 'website' / 'audio' / f'{slug}.mp3'
 ziel.parent.mkdir(exist_ok=True)
 with tempfile.TemporaryDirectory() as tmp:

@@ -1,5 +1,21 @@
 [
  {
+  "slug": "geschaeftsmail-auftragsverarbeitung",
+  "titel": "Geschäfts-E-Mail und Auftragsverarbeitung: Welcher Tarif ist der richtige?",
+  "titel_html": "Geschäfts-E-Mail und Auftragsverarbeitung: Welcher Tarif ist der richtige?",
+  "kategorie": "KI-Beratung",
+  "datum": "2026-11-18",
+  "datum_text": "18. November 2026",
+  "bild": "blog-geschaeftsmail.webp",
+  "bild_b": 1200,
+  "bild_h": 800,
+  "teaser_html": "Welche E-Mail-Anbieter einen Vertrag zur Auftragsverarbeitung mitbringen, was in jede Geschäfts-E-Mail gehört und ob Sie Ihr Postfach mit Claude oder ChatGPT verbinden dürfen.",
+  "tags": [
+   "ki",
+   "recht"
+  ]
+ },
+ {
   "slug": "was-bringt-ein-corporate-design",
   "titel": "Was bringt ein Corporate Design, und was spart es?",
   "titel_html": "Was bringt ein Corporate Design, und was spart es?",

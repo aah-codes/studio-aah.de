@@ -11,7 +11,9 @@ python3 werkzeuge/blog/was-kostet-eine-website.py
 python3 werkzeuge/blog/was-sollte-eine-website-2027-koennen.py
 python3 werkzeuge/blog/website-selbst-bauen-mit-ki.py
 python3 werkzeuge/blog/eu-ai-act-kleine-unternehmen.py
+python3 werkzeuge/blog/geschaeftsmail-auftragsverarbeitung.py
 python3 werkzeuge/blog/was-bringt-ein-corporate-design.py
+python3 werkzeuge/blog/anhoeren-einsetzen.py
 python3 werkzeuge/inhalte-erzeugen.py
 python3 werkzeuge/leistungsseiten.py
 python3 werkzeuge/website-check.py
