@@ -3,6 +3,7 @@
 // Braucht nur macOS (keine Installation). Aufruf vom Repository-Ordner aus:
 //   swift werkzeuge/grafiken/bildwelt-a.swift ROH.png ZIELORDNER NAME FORM [FORMFARBE]
 //   FORM: kreis | halbkreis | dreieck   FORMFARBE: blau (Standard) | creme | weiss
+//   FORM keine = Branchenbilder (Anna, 17.11.2026, Vorbild ZDF-Kategorien): keine Form, alles außer Blau wird Schwarz-Weiß, Blau soll 40–60 % der Fläche tragen
 // Ergebnis: ZIELORDNER/NAME-titel.png (1200×800), -vorschau.png (1200×630), -quadrat.png (1080×1080), -hoch.png (1080×1350);
 // danach mit cwebp in WebP umwandeln (siehe bildwelt-a.sh). Das Rohbild selbst bleibt unverändert (Herkunftsdaten bleiben dort erhalten).
 import Foundation
@@ -18,6 +19,7 @@ guard a.count >= 5, let src = CGImageSourceCreateWithURL(URL(fileURLWithPath: a[
 }
 let ziel = a[2], name = a[3], form = a[4], formfarbe = a.count > 5 ? a[5] : "blau"
 let sRGB = CGColorSpace(name: CGColorSpace.sRGB)!
+let sw = form == "keine" // Schwarz-Weiß-Modus ohne Form
 
 // Markenfarben
 let BLAU: (CGFloat, CGFloat, CGFloat) = (42 / 255, 95 / 255, 230 / 255)   // #2a5fe6
@@ -38,13 +40,15 @@ for y in 0..<H {
         let i = (y * W + x) * 4
         let r = Double(px[i]) / 255, g = Double(px[i + 1]) / 255, b = Double(px[i + 2]) / 255
         let mx = max(r, g, b), mn = min(r, g, b), d = mx - mn
-        guard mx > 0, d / mx > 0.28, d > 0.12 else { continue }
+        let grau = UInt8(min(255, (0.2126 * r + 0.7152 * g + 0.0722 * b) * 255))
+        func entfaerben() { if sw { px[i] = grau; px[i + 1] = grau; px[i + 2] = grau } }
+        guard mx > 0, d / mx > 0.28, d > 0.12 else { entfaerben(); continue }
         var h: Double
         if mx == r { h = 60 * ((g - b) / d).truncatingRemainder(dividingBy: 6) }
         else if mx == g { h = 60 * ((b - r) / d + 2) }
         else { h = 60 * ((r - g) / d + 4) }
         if h < 0 { h += 360 }
-        guard h > 185, h < 265 else { continue }
+        guard h > 185, h < 265 else { entfaerben(); continue }
         tonSumme += h; sx += Double(x); sy += Double(y); n += 1
         // Farbton ersetzen (HSV), Wert und Sättigung behalten
         let s = d / mx, v = mx, hh = ZIEL_FARBTON / 60
@@ -60,6 +64,7 @@ let fy = n > 0 ? 1 - sy / n / Double(H) : 0.5 // CoreGraphics zählt y von unten
 print(String(format: "%@: Blau-Anteil %.1f %%, mittlerer Farbton vorher %.0f° (Ziel %.0f°), Schwerpunkt x %.2f y %.2f",
              name, anteil * 100, n > 0 ? tonSumme / n : 0, ZIEL_FARBTON, fx, 1 - fy))
 if anteil < 0.004 { print("WARNUNG: kaum Blau gefunden – Motiv prüfen") }
+if sw && (anteil < 0.35 || anteil > 0.65) { print(String(format: "HINWEIS: Blau-Anteil %.0f %% – Ziel für Branchen 40–60 %%", anteil * 100)) }
 let bild = ctx0.makeImage()!
 
 // 3. Formate zuschneiden (Schwerpunkt des Blau-Objekts bleibt im Bild), Form und Kennzeichnung setzen
@@ -69,7 +74,7 @@ for (endung, bw, bh) in formate {
     var cw = Double(W), ch = Double(H)
     if zielQuote < quote { cw = Double(H) * zielQuote } else { ch = Double(W) / zielQuote }
     // Motiv leicht aus der Mitte (Drittel), damit auf der anderen Seite Platz für die Form bleibt
-    let wunschX = fx < 0.5 ? fx - cw / Double(W) * 0.62 : fx - cw / Double(W) * 0.38
+    let wunschX = sw ? fx - cw / Double(W) * 0.5 : (fx < 0.5 ? fx - cw / Double(W) * 0.62 : fx - cw / Double(W) * 0.38)
     let cx = min(max(0, wunschX * Double(W)), Double(W) - cw)
     let wunschY = fy - ch / Double(H) * 0.5
     let cy = min(max(0, wunschY * Double(H)), Double(H) - ch)
@@ -84,6 +89,7 @@ for (endung, bw, bh) in formate {
     let links = mx > 0.5
     let fw = Double(bw), fh = Double(bh), kurz = min(fw, fh)
     let farbe: (CGFloat, CGFloat, CGFloat) = formfarbe == "creme" ? CREME : (formfarbe == "weiss" ? (1, 1, 1) : BLAU)
+    if !sw {
     c.saveGState()
     c.setBlendMode(.normal); c.setFillColor(red: farbe.0, green: farbe.1, blue: farbe.2, alpha: 0.94) // flach wie Bauhaus; multiplizieren wurde auf dunklem Grund schmutzig
     let pfad = CGMutablePath()
@@ -102,6 +108,7 @@ for (endung, bw, bh) in formate {
     }
     c.addPath(pfad); c.fillPath()
     c.restoreGState()
+    }
 
     // Kennzeichnung (EU AI Act Art. 50): kleine Zeile unten rechts
     let text = "Bild: KI-generiert"
