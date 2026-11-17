@@ -4253,3 +4253,24 @@ html:not(.js) .hk-zeichen { display: none; }
 .video-klick-knopf:focus-visible { outline: 3px solid var(--farbe-primaer); outline-offset: 3px; }
 .video-klick figcaption { margin-top: 10px; font-size: 14px; color: var(--farbe-gedaempft); }
 @media (prefers-reduced-motion: reduce) { .video-klick-play { transition: none; } }
+/* Blog Corporate Design (Anna 18.11.2026): Bildzitate, Formen-Grafik und Rechenweg wie im Matheheft */
+.bild-zitat { max-width: var(--lesespalte); margin: 2.5rem auto; }
+.bild-zitat img { display: block; width: 100%; height: auto; border-radius: 20px; }
+.bild-logo { padding: 40px; border: 1.5px solid var(--farbe-rahmen); border-radius: 20px; }
+.bild-logo img { max-width: 380px; margin: 0 auto; border-radius: 0; }
+.bild-website img { border: 1.5px solid var(--farbe-rahmen); }
+.bild-zitat figcaption, .fff-grafik figcaption { margin-top: 10px; font-size: 14px; color: var(--farbe-gedaempft); }
+.fff-grafik { max-width: var(--lesespalte); margin: 2.5rem auto; }
+.fff-grafik svg { display: block; width: 100%; height: auto; }
+.fff-linie { stroke: var(--farbe-dunkel); stroke-width: 1.5; }
+.fff-blau { fill: var(--farbe-primaer); }
+.fff-dunkel { fill: var(--farbe-dunkel); }
+.fff-text { fill: var(--farbe-dunkel); font-family: var(--schrift-ueberschrift); font-size: 46px; letter-spacing: 1px; }
+.rechenweg { max-width: var(--lesespalte); margin: 2rem auto 2.5rem; padding: 28px 32px; border-radius: 20px; border: 1.5px solid var(--farbe-rahmen);
+  background-color: var(--farbe-weiss); background-image: linear-gradient(var(--farbe-rahmen) 1px, transparent 1px), linear-gradient(90deg, var(--farbe-rahmen) 1px, transparent 1px); background-size: 20px 20px; background-position: -1px -1px; }
+.rechenweg p { margin: 0; }
+.rechenweg .rw-titel { font-family: var(--schrift-meta); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 14px; }
+.rw-zeile { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 16px; padding: 6px 0; font-family: var(--schrift-meta); font-size: 16px; line-height: 1.6; }
+.rw-zeile span:last-child { font-weight: 700; }
+.rw-ergebnis span:last-child { text-decoration: underline double; text-underline-offset: 5px; }
+@media (max-width: 599.98px) { .rechenweg { padding: 22px 20px; } .rw-zeile { font-size: 15px; } .bild-logo { padding: 24px; } }
