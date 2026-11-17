@@ -4144,3 +4144,7 @@ html:not(.js) .hk-zeichen { display: none; }
   .artikel-raster .tab-vergleich :is(th, td) { hyphens: auto; overflow-wrap: break-word; }
   .artikel-raster .tab-vergleich thead th:first-child, .artikel-raster .tab-vergleich tbody th { width: 16%; }
 }
+/* Marken-Regelwerk: echtes Beispiel STUDIO AAH! (Anna 17.11.2026: „jeder muss denken, die kann Markenregelwerk“) */
+.mr-beispiel-aah .mr-b-feld { font-family: var(--schrift-text); }
+.mr-beispiel-aah .mr-b-firma { font-family: var(--schrift-ueberschrift); letter-spacing: .04em; }
+.mr-beispiel-aah .mr-b-liste b { font-weight: 700; }
