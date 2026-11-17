@@ -325,10 +325,18 @@ def produktseite(q):
 def selbsttest(q):
     """Selbsttest „Wo hakt es?“ (Phase 4, Anna 10.11.2026): Auswertung im Browser (js/selbsttest.js), nichts wird gesendet."""
     pre = '../'
-    zeilen = []
-    for n, (ziel, text) in enumerate(q['aussagen'], 1):
-        wahl = ''.join(f'<label><input type="radio" name="a{n}" value="{w}"> {t}</label>' for w, t in ((0, 'Stimmt nicht'), (1, 'Teils'), (2, 'Stimmt')))
-        zeilen.append(f'      <fieldset class="st-frage" data-ziel="{ziel}"><legend><span class="st-nr">{n:02d}</span> {esc(text)}</legend><div class="st-wahl">{wahl}</div></fieldset>')
+    # Aussagen nach Themen gruppiert, je Thema eine Teilüberschrift (Anna 17.11.2026); Reihenfolge wie die Problemseiten
+    zeilen, n = [], 0
+    for p in D['probleme']:
+        gruppe = [text for ziel, text in q['aussagen'] if ziel == p['id']]
+        if not gruppe:
+            continue
+        zeilen.append(f'      <h3 class="st-thema">{esc(p["meta"])}</h3>')
+        for text in gruppe:
+            n += 1
+            wahl = ''.join(f'<label><input type="radio" name="a{n}" value="{w}"> {t}</label>' for w, t in ((0, 'Stimmt nicht'), (1, 'Teils'), (2, 'Stimmt')))
+            zeilen.append(f'      <fieldset class="st-frage" data-ziel="{p["id"]}"><legend><span class="st-nr">{n:02d}</span> {esc(text)}</legend><div class="st-wahl">{wahl}</div></fieldset>')
+    assert n == len(q['aussagen']), 'Aussage mit unbekanntem Thema im Selbsttest'
     ergebnis = ''.join(f'<li data-ergebnis="{p["id"]}"><a href="{pre}{p["pfad"]}"><span class="st-titel">{esc(p["karte"])}</span>'
                        f'<span class="st-balken"><i></i></span><span class="st-link">{esc(p["meta"])} <span aria-hidden="true">→</span></span></a></li>'
                        for p in D['probleme'])

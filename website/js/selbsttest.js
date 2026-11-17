@@ -6,9 +6,10 @@
     var box = document.querySelector('[data-ergebnis-box]');
     test.addEventListener('submit', function (e) {
       e.preventDefault();
-      var punkte = {}, offen = 0;
+      var punkte = {}, anzahl = {}, offen = 0;
       test.querySelectorAll('.st-frage').forEach(function (f) {
         var w = f.querySelector('input:checked');
+        anzahl[f.dataset.ziel] = (anzahl[f.dataset.ziel] || 0) + 1;
         f.classList.toggle('st-fehlt', !w);
         if (!w) { offen++; return; }
         punkte[f.dataset.ziel] = (punkte[f.dataset.ziel] || 0) + Number(w.value);
@@ -21,7 +22,7 @@
       eintraege.sort(function (a, b) { return (punkte[b.dataset.ergebnis] || 0) - (punkte[a.dataset.ergebnis] || 0); });
       eintraege.forEach(function (li, i) {
         var p = punkte[li.dataset.ergebnis] || 0;
-        li.style.setProperty('--wert', (p / 4 * 100) + '%');
+        li.style.setProperty('--wert', (p / (2 * (anzahl[li.dataset.ergebnis] || 1)) * 100) + '%');
         li.classList.toggle('st-oben', i === 0 && p > 0);
         liste.appendChild(li);
       });

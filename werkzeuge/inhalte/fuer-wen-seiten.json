@@ -10,7 +10,7 @@
   "weitere": [
    [
     "Selbsttest: Wo hakt es?",
-    "Acht Aussagen, zwei Minuten, Ergebnis sofort. Ohne Anmeldung.",
+    "Zwölf Aussagen in vier Themen, drei Minuten, Ergebnis sofort. Ohne Anmeldung.",
     "selbsttest/"
    ],
    [
@@ -934,18 +934,42 @@
  "selbsttest": {
   "pfad": "selbsttest/",
   "seitentitel": "Selbsttest für den Mittelstand: Wo hakt es bei Ihnen? | STUDIO AAH!",
-  "beschreibung": "Acht Aussagen, zwei Minuten, Ergebnis sofort: Wo hakt es in Ihrem Unternehmen am meisten? Neue Kunden, Fachkräfte, KI im Team oder Entlastung. Kostenlos, ohne Anmeldung.",
+  "beschreibung": "Zwölf Aussagen, drei Minuten, Ergebnis sofort: Wo hakt es in Ihrem Unternehmen am meisten? Neue Kunden, Fachkräfte, KI im Team oder Entlastung. Kostenlos, ohne Anmeldung.",
   "meta": "Selbsttest",
   "h1": "Wo hakt es bei Ihnen am meisten?",
-  "unter": "Acht Aussagen, zwei Minuten. Ihr Ergebnis sehen Sie sofort hier. Es wird nichts gespeichert und nichts gesendet.",
+  "unter": "Zwölf Aussagen in vier Themen, drei Minuten. Ihr Ergebnis sehen Sie sofort hier. Es wird nichts gespeichert und nichts gesendet.",
   "aussagen": [
    [
     "neue-kunden",
     "Neue Aufträge kommen fast nur über Empfehlungen."
    ],
    [
+    "neue-kunden",
+    "Über unsere Website kommen kaum Anfragen."
+   ],
+   [
+    "neue-kunden",
+    "Messen und persönliche Kontakte bringen weniger als früher."
+   ],
+   [
     "fachkraefte",
     "Offene Stellen bleiben bei uns lange unbesetzt."
+   ],
+   [
+    "fachkraefte",
+    "Online sieht man kaum, warum man gern bei uns arbeitet."
+   ],
+   [
+    "fachkraefte",
+    "Bewerben geht nur per E-Mail oder Post."
+   ],
+   [
+    "ki-im-team",
+    "Im Team arbeitet jede:r mit KI, wie er oder sie will, oder gar nicht."
+   ],
+   [
+    "ki-im-team",
+    "Es gibt keine KI für das Unternehmen. Alle nutzen ihre private KI."
    ],
    [
     "ki-im-team",
@@ -953,23 +977,15 @@
    ],
    [
     "entlastung",
-    "Viele kleine Entscheidungen landen bei der Geschäftsführung."
-   ],
-   [
-    "neue-kunden",
-    "Über unsere Website kommen kaum Anfragen."
-   ],
-   [
-    "fachkraefte",
-    "Online sieht man kaum, warum man gern bei uns arbeitet."
-   ],
-   [
-    "ki-im-team",
-    "Im Team nutzt jede:r KI anders oder gar nicht."
+    "Abläufe und Regeln stehen nirgends."
    ],
    [
     "entlastung",
-    "Wichtige Abläufe stehen nur in den Köpfen einzelner Leute."
+    "Viele kleine Entscheidungen landen bei der Geschäftsführung."
+   ],
+   [
+    "entlastung",
+    "Wenn eine erfahrene Person fehlt, stockt die Arbeit."
    ]
   ]
  },

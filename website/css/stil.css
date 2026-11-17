@@ -3363,6 +3363,9 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 .st { padding: 0 var(--rand-seite) 96px; }
 .st-form { display: grid; gap: 14px; max-width: 900px; }
 .st-frage { margin: 0; padding: 20px 24px; border: 1.5px solid var(--farbe-grau-hell); border-radius: 18px; }
+/* Selbsttest: Aussagen nach Themen mit Teilüberschrift (Anna 17.11.2026) */
+.st-thema { margin: 40px 0 4px; font-size: clamp(20px, 1.6vw, 24px); }
+.st-form > .st-thema:first-child { margin-top: 0; }
 .st-frage.st-fehlt { border-color: var(--farbe-dunkel); }
 .st-frage legend { padding: 0 8px; margin-left: -8px; font-weight: 600; font-size: clamp(17px, 1.3vw, 20px); line-height: 1.4; }
 .st-nr { font-family: var(--schrift-meta); font-size: 14px; color: var(--farbe-primaer); margin-right: 6px; }
