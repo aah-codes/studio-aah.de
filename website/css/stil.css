@@ -457,6 +457,8 @@ h1, h2, h3 {
 .blog-karte h2 a { text-decoration: none; }
 .blog-karte h2 a:hover { opacity: .6; }
 .blog-karte .weiterlesen { margin-top: auto; }
+/* „Weitere Artikel zum Thema“ unter jedem Beitrag (Anna 17.11.2026): Kopf bündig mit den Karten */
+.artikel-weitere .sektionskopf { max-width: var(--inhalt-breite); margin: 0 auto; padding-left: 32px; padding-right: 32px; }
 
 .kategorie {
   font-size: .8rem;
@@ -527,6 +529,7 @@ h1, h2, h3 {
   .kachel { padding: 40px 24px; }
 
   .blog-liste { grid-template-columns: 1fr; padding: 0 var(--rand-seite) 64px; }
+  .artikel-weitere .sektionskopf { padding-left: var(--rand-seite); padding-right: var(--rand-seite); }
   .artikel { padding: 32px var(--rand-seite) 64px; }
   .artikel-nav { gap: 16px; }
 }

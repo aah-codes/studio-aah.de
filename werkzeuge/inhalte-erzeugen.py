@@ -199,6 +199,23 @@ def blog(liste, pre, linkpre, h='h3', einrueck='    ', kategorie=True, klasse='b
     return '\n'.join(out)
 
 
+def weitere_artikel(slug, anzahl=3):
+    # „Weitere Artikel zum Thema“ unter jedem Beitrag (Anna 17.11.2026, Vorbild Digital Trends „Related coverage“):
+    # gleiche Kategorie zählt 2, jedes gemeinsame Schlagwort 1; bei Gleichstand der neuere Beitrag zuerst
+    ich = next(b for b in BLOG if b['slug'] == slug)
+    def punkte(b):
+        return 2 * (b['kategorie'] == ich['kategorie']) + len(set(b.get('tags', [])) & set(ich.get('tags', [])))
+    andere = sorted((b for b in BLOG if b['slug'] != slug), key=lambda b: (punkte(b), b['datum']), reverse=True)
+    karten = blog(andere[:anzahl], '../../', '../', 'h3', '      ')
+    return f'''  <section class="blog-neu artikel-weitere" aria-labelledby="weitere-titel">
+    <div class="sektionskopf"><p class="meta">Weiterlesen</p><h2 id="weitere-titel">Weitere Artikel zum Thema</h2>
+      <p class="alt-klein"><a class="textlink" href="../">Alle Artikel →</a></p></div>
+    <ul class="blog-liste">
+{karten}
+    </ul>
+  </section>'''
+
+
 def anker(name):
     return 'thema-' + re.sub(r'[^a-z0-9]+', '-', name.lower().replace('&', ' ')).strip('-')
 
@@ -258,6 +275,8 @@ if __name__ == '__main__':
                               ('KENNZAHLEN', lambda: kennzahlen('fakten', '      '))],
         'blog/index.html': [('BLOG', lambda: blog_themen()), ('SPIEL', lambda: spiel_sektion('../', re.search(r'menue\.js\?v=(\w+)', (WEBSITE / 'index.html').read_text(encoding='utf-8')).group(1)))],
     }
+    for b in BLOG:
+        seiten[f'blog/{b["slug"]}/index.html'] = [('WEITERE', lambda s=b['slug']: weitere_artikel(s))]
     for datei, teile in seiten.items():
         p = WEBSITE / datei
         t = p.read_text(encoding='utf-8')
