@@ -4,7 +4,7 @@
 # Aufruf im Repository-Ordner:  python3 werkzeuge/marken-regelwerk.py
 import json, re
 
-from gemeinsam import NETTO_SATZ, STUDIO_ID, TRENNEN_LEISTUNGEN, WEBSITE, einsetzen, esc, lade_json, paket_karte
+from gemeinsam import NETTO_SATZ, STUDIO_ID, TRENNEN_LEISTUNGEN, WEBSITE, einsetzen, esc, euro, lade_json, paket_karte
 
 URL = 'https://studio-aah.de/marken-regelwerk/'
 SEITE = WEBSITE / 'marken-regelwerk' / 'index.html'
@@ -13,8 +13,14 @@ FAQ = lade_json('inhalte/marken-regelwerk.json')['faq']
 
 
 def pakete():
-    karten = '\n'.join(paket_karte(e, TRENNEN_LEISTUNGEN) for e in GRUPPE['pakete'])
-    return (f'    <div class="lsx-karten mr-karten">\n{karten}\n    </div>\n'
+    # Nur zwei Pakete als Karten (Anna 17.11.2026: „besser immer nur 2 Pakete, ist übersichtlicher und die Entscheidung fällt leichter“);
+    # die monatliche Pflege steht als Zusatz in einer Zeile darunter
+    feste = [e for e in GRUPPE['pakete'] if 'monat' not in e]
+    monatlich = [e for e in GRUPPE['pakete'] if 'monat' in e]
+    karten = '\n'.join(paket_karte(e, TRENNEN_LEISTUNGEN) for e in feste)
+    zusatz = ''.join(f'    <p class="mr-zusatz"><strong>Dazu buchbar: {esc(e["name"])}, {"ab " if e.get("ab") else ""}{euro(e["monat"])} netto im Monat.</strong> '
+                     f'{esc(e["wer"])} {esc(", ".join(e["items"]))}.</p>\n' for e in monatlich)
+    return (f'    <div class="lsx-karten mr-karten mr-karten-zwei">\n{karten}\n    </div>\n{zusatz}'
             f'    <p class="preis-netto gedaempft">{NETTO_SATZ}</p>')
 
 
