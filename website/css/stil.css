@@ -734,21 +734,7 @@ main.mit-faden { position: relative; }
   .fuss-kontakt { grid-column: 1 / -1; padding: 0 0 32px; border-right: 0; border-bottom: 1px solid rgba(255, 255, 255, .18); }
 }
 
-/* ---------- 16. Dachzeile: Programm „Demokratie braucht Sichtbarkeit.“ ---------- */
-/* Schmale Leiste über dem Kopf (Idee: Ankündigungsleiste, proxy.gonka.gg). Ein blauer Punkt pulsiert (Anna, 10.10.2026). */
-.ankuendigung { display: flex; align-items: center; justify-content: center; gap: 14px; padding: 9px var(--rand-seite); background: var(--farbe-dunkel); color: var(--farbe-weiss); font-size: var(--groesse-2); }
-.ank-text { margin: 0; }
-.ank-text strong { font-weight: 700; }
-.ank-punkt { width: 8px; height: 8px; border-radius: 50%; background: var(--farbe-primaer); flex: none; animation: ank-puls 2.4s ease-in-out infinite; }
-@keyframes ank-puls { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
-.ank-zusatz { color: var(--farbe-gedaempft-invers); }
-.ank-link { color: var(--farbe-weiss); font-weight: 600; text-decoration: none; white-space: nowrap; border-bottom: 1px solid transparent; transition: border-color .2s; }
-.ank-link:hover, .ank-link:focus-visible { border-bottom-color: currentColor; }
-@media (max-width: 767.98px) {
-  .ankuendigung { gap: 10px; font-size: var(--groesse-1); padding: 8px var(--rand-seite); justify-content: space-between; }
-  .ank-zusatz { display: none; }
-}
-@media (prefers-reduced-motion: reduce) { .ank-punkt, .ank-link { animation: none; transition: none; } }
+/* ---------- 16. (frei: Leiste über dem Kopf seit 18.11.2026 entfernt, Anna) ---------- */
 
 
 /* ---------- 18. Programmseite als Landingpage ---------- */
