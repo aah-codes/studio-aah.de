@@ -47,7 +47,7 @@
     return e;
   }
   // Antwort wie im Chat (Anna 17.11.2026: „ganz simpel wie Google“, „wie mit einem Chatbot“): Frage als Blase rechts,
-  // eine kurze Antwort links (ein bis zwei Sätze) mit Link; Folgefragen hängen sich an, höchstens drei Runden sichtbar
+  // eine kurze Antwort links (ein bis zwei Sätze) mit Link; neueste Runde oben, höchstens drei Runden sichtbar
   function link(text, href) {
     var extern = /^https?:/.test(href);
     var a = el('a', 'fh-quelle', text + ' ');
@@ -64,6 +64,12 @@
     var runde = el('li', 'fh-runde');
     runde.appendChild(el('p', 'fh-ich', frage));
     var antwort = el('div', 'fh-sie');
+    // Absenderin über jeder Antwort: kleines rundes Foto und Name (Anna 18.11.2026)
+    var autor = el('p', 'fh-autor');
+    var foto = el('img');
+    foto.src = 'bilder/anna-haertelt-studio-blau-rund.jpg'; foto.alt = ''; foto.width = 40; foto.height = 40;
+    autor.appendChild(foto); autor.appendChild(el('span', null, 'Anna Härtelt'));
+    antwort.appendChild(autor);
     var quellen = el('p', 'fh-quellen');
     if (treffer) {
       var t = treffer.e;
@@ -80,8 +86,8 @@
     }
     antwort.appendChild(quellen);
     runde.appendChild(antwort);
-    verlauf.appendChild(runde);
-    while (verlauf.children.length > 3) verlauf.removeChild(verlauf.firstChild);
+    verlauf.insertBefore(runde, verlauf.firstChild);   // neueste Antwort oben (Anna 18.11.2026)
+    while (verlauf.children.length > 3) verlauf.removeChild(verlauf.lastChild);
     feld.value = '';
     feld.placeholder = 'Noch eine Frage?';
   }

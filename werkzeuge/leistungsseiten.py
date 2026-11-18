@@ -210,7 +210,9 @@ def fragen_fuer(c, termine):
 def seitenkopf(c, pre, intro, termine):
     woerter = c['titel'].split()
     titel_vorne = esc(' '.join(woerter[:-1])) + ' ' if len(woerter) > 1 else ''
+    # Icon der Leistung über der Dachzeile (Anna 18.11.2026: „Dieses Icon dann auch oben im Hero über der Dachzeile einfügen“)
     return f'''  <section class="seitenkopf lsx-kopf">
+    <img class="lsx-kopf-icon" src="{pre}{c['icon']}" alt="" width="400" height="400">
     <p class="meta brotkrumen"><a href="{pre}#leistungen">Leistungen</a> / <span aria-current="page">{esc(c['titel'])}</span></p>
     <h1 class="gr-xxl lsx-titel" style="--n:{max(len(w) for w in woerter)}">{titel_vorne}<span class="wort-mit-icon">{esc(woerter[-1])}<img class="icon-3d" src="{pre}{c['icon']}" alt="" width="400" height="400"></span></h1>
     <p class="alt-klein">{trennen(esc(intro))}</p>

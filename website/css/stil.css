@@ -4279,3 +4279,11 @@ html:not(.js) .hk-zeichen { display: none; }
 .br-kachel.br-ki .br-foto-bild img { position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; aspect-ratio: auto; object-fit: cover; object-position: 50% 40%; }
 .ki-label { position: absolute; top: 14px; right: 14px; z-index: 2; padding: 3px 9px; border-radius: 999px; font-family: var(--schrift-meta); font-size: 11px; line-height: 1.4; letter-spacing: .1em; color: var(--farbe-dunkel); background: color-mix(in srgb, var(--farbe-weiss) 88%, transparent); }
 @media (max-width: 1024px) { .br-foto-bild { min-height: 0; aspect-ratio: 3 / 2; } }
+/* Leistungs-Icons (Anna 18.11.2026): mittig in der beigen Fläche der Startseite; auf Leistungsseiten über der Dachzeile */
+.ls-kern .ls-bild { place-items: center; }
+.ls-kern .ls-karte .ls-bild img { height: 72%; max-width: 72%; object-position: center; }
+.lsx-kopf-icon { display: block; width: auto; height: 72px; margin: 0 0 24px; }
+@media (max-width: 767.98px) { .lsx-kopf-icon { height: 56px; margin-bottom: 16px; } }
+/* Frag-Feld: Absenderin über jeder Antwort (Anna 18.11.2026) */
+.fh-autor { display: flex; align-items: center; gap: 10px; margin: 0 0 10px; font-weight: 600; font-size: var(--groesse-2); }
+.fh-autor img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex: none; }
