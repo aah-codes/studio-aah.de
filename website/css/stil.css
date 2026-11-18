@@ -567,7 +567,6 @@ h1, h2, h3 {
 .mm-liste a { display: block; border-top: var(--rahmen) solid var(--farbe-rahmen); text-decoration: none; color: inherit; }
 .mm-name { display: block; font-family: var(--schrift-ueberschrift); text-transform: uppercase; line-height: 1.1; transition: transform .25s; }
 .mm-liste a:hover .mm-name, .mm-liste a:focus-visible .mm-name { transform: translateX(6px); }
-.mm-text { display: block; color: var(--farbe-gedaempft); margin-top: 4px; font-weight: 400; }
 .mm-karte { display: flex; flex-direction: column; gap: 12px; background: var(--farbe-hellgrau); border-radius: var(--radius-karte); text-decoration: none; color: inherit; transition: transform .3s; }
 .mm-karte:hover { transform: translateY(-4px); }
 .mm-karte .meta { margin: 0; }
@@ -1230,7 +1229,6 @@ h1, h2, h3, .gr-xxl, .gr-xl, .gr-h2, .gr-h3, .artikel h1, .mm-karte-titel, .fuss
 /* ---------- 33. Megamenü mit 9 Leistungen und Bild in der Aktions-Karte ---------- */
 .mm-liste a { padding: 14px 0; }
 .mm-name { font-size: var(--groesse-4); }
-.mm-text { font-size: var(--groesse-2); }
 /* Mega-Menü-Karte wie die Preise-Karte der Leistungsseiten: schwarz, Icon auf weißer Kachel (Anna 25.10.2026) */
 /* Anna 16.11.2026: Karten in beiden Mega-Menüs beige statt schwarz */
 .mm-karte-beige { background: var(--farbe-creme); color: var(--farbe-dunkel); padding: 32px; }
@@ -1510,7 +1508,7 @@ main section[id] { scroll-margin-top: 0; } /* Abstand kommt schon aus html { scr
 .mm-bereiche { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 40px; }
 /* Mega-Menü ruhig wie bei Tesla (Anna 25.10.2026): nur zwei Größen – Namen in Anton (eine Stärke, mehr Buchstabenabstand), Text und kleine Leistungen gleich groß */
 .kopf-nav .mm-name { font-size: var(--groesse-4); letter-spacing: .06em; }
-.kopf-nav .mm-text, .kopf-nav .mm-weitere a { font-size: var(--groesse-2); }
+.kopf-nav .mm-weitere a { font-size: var(--groesse-2); }
 .kopf-nav .mm-weitere a { font-weight: 500; }
 /* Fokusrahmen um „Leistungen“ mit mehr Luft (bleibt für die Bedienung mit Tastatur) */
 .kopf-nav .mm-toggle { padding: 6px 12px; margin: -6px -12px; border-radius: var(--radius-karte); }
@@ -4183,10 +4181,10 @@ html:not(.js) .hk-zeichen { display: none; }
 .mr-beispiel-aah .mr-b-feld { font-family: var(--schrift-text); }
 .mr-beispiel-aah .mr-b-firma { font-family: var(--schrift-ueberschrift); letter-spacing: .04em; }
 .mr-beispiel-aah .mr-b-liste b { font-weight: 700; }
-/* Mega-Menü mit Icons (Anna 17.11.2026: „leistungen mit icon“): Bauhaus-Form links, Name und Zeile rechts */
+/* Mega-Menü mit Icons (Anna 17.11.2026: „leistungen mit icon“): Bauhaus-Form links, Name rechts; ohne Unterzeile seit 18.11.2026 (Anna) */
 .mm-liste a.mm-mit-icon { display: grid; grid-template-columns: 44px minmax(0, 1fr); column-gap: 18px; align-items: center; }
-.mm-mit-icon .mm-icon { grid-row: 1 / span 2; width: 44px; height: 44px; object-fit: contain; object-position: left center; }
-.mm-mit-icon .mm-name, .mm-mit-icon .mm-text { grid-column: 2; }
+.mm-mit-icon .mm-icon { width: 44px; height: 44px; object-fit: contain; object-position: left center; }
+.mm-mit-icon .mm-name { grid-column: 2; }
 /* Kontaktseite auf voller Breite bündig mit Logo und Button (Anna 17.11.2026) */
 .golden.kontakt-voll { max-width: none; padding-inline: var(--rand-seite); gap: clamp(32px, 4vw, 64px); }
 /* Auswahlfeld im Anfrageformular wie die Eingabefelder (Anna 17.11.2026: „woher sie von mir gehört haben mit dropdown“) */
