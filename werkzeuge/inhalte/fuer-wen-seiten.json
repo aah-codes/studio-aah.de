@@ -496,7 +496,11 @@
      "",
      "Bewerbungen seit dem Launch (Stand 15.10.2026)"
     ]
-   ]
+   ],
+   "ki_bild": {
+    "datei": "bilder/branchen/ki/bau.webp",
+    "alt": "Eine Hand stellt ein blaues Modell einer Stahlbrücke zwischen zwei Bücherstapel (KI-generiertes Bild)"
+   }
   },
   {
    "id": "elektro",
@@ -556,6 +560,10 @@
     "alt": "Elektriker prüft einen Schaltschrank mit Multimeter",
     "von": "Toolmash Expo",
     "link": "https://unsplash.com/de/fotos/PkHf7BUWbtk"
+   },
+   "ki_bild": {
+    "datei": "bilder/branchen/ki/elektro.webp",
+    "alt": "Eine Miniaturfigur im blauen Blaumann steht auf dem Toilettenrand neben einer riesigen blauen Saugglocke (KI-generiertes Bild)"
    }
   },
   {
@@ -615,6 +623,10 @@
     "alt": "Eine große Maschine in einer Werkhalle",
     "von": "Homa Appliances",
     "link": "https://unsplash.com/de/fotos/pWUyHVJgLhg"
+   },
+   "ki_bild": {
+    "datei": "bilder/branchen/ki/industrie.webp",
+    "alt": "Ein blaues Modellauto auf gebürstetem Stahl, daneben Schrauben und ein Zahnrad (KI-generiertes Bild)"
    }
   },
   {
@@ -674,6 +686,10 @@
     "alt": "Weiße Windkraftanlage",
     "von": "Nicholas Doherty",
     "link": "https://unsplash.com/de/fotos/pONBhDyOFoM"
+   },
+   "ki_bild": {
+    "datei": "bilder/branchen/ki/energie.webp",
+    "alt": "Eine Hand hält einen winzigen Solarpark mit blauen Modulen, dazwischen zwei kleine Figuren (KI-generiertes Bild)"
    }
   },
   {
@@ -733,6 +749,10 @@
     "alt": "Laptop mit Programmcode auf einem Schreibtisch",
     "von": "Christopher Gower",
     "link": "https://unsplash.com/de/fotos/m_HRfLhgABo"
+   },
+   "ki_bild": {
+    "datei": "bilder/branchen/ki/software.webp",
+    "alt": "Ein großer Finger drückt eine Taste eines winzigen Tastenfelds mit blauen Tasten, daneben ein Mini-Computer (KI-generiertes Bild)"
    }
   },
   {
@@ -795,7 +815,11 @@
    },
    "projekte": [
     "goldhammer"
-   ]
+   ],
+   "ki_bild": {
+    "datei": "bilder/branchen/ki/gesundheit.webp",
+    "alt": "Eine Miniatur-Ärztin mit blauem Bob steht auf einem riesigen Stethoskop mit blauem Schlauch (KI-generiertes Bild)"
+   }
   },
   {
    "id": "beratung",
@@ -867,7 +891,11 @@
     "Webinare",
     "Leadmagneten",
     "Blog"
-   ]
+   ],
+   "ki_bild": {
+    "datei": "bilder/branchen/ki/beratung.webp",
+    "alt": "Zwei Miniaturfiguren stehen neben einer riesigen blauen Serviceklingel, auf die ein Finger drückt (KI-generiertes Bild)"
+   }
   }
  ],
  "produkt": {

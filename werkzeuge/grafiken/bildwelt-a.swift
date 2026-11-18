@@ -3,7 +3,8 @@
 // Braucht nur macOS (keine Installation). Aufruf vom Repository-Ordner aus:
 //   swift werkzeuge/grafiken/bildwelt-a.swift ROH.png ZIELORDNER NAME FORM [FORMFARBE]
 //   FORM: kreis | halbkreis | dreieck   FORMFARBE: blau (Standard) | creme | weiss
-//   FORM keine = Branchenbilder (Anna, 17.11.2026, Vorbild ZDF-Kategorien): keine Form, alles außer Blau wird Schwarz-Weiß, Blau soll 40–60 % der Fläche tragen
+//   FORM keine = Branchenbilder (Anna, 17./18.11.2026, Vorbild ZDF-Kategorien): keine Form, Blau soll 40–60 % der Fläche tragen.
+//   Umgebungsvariablen: ENTFAERBEN=1 (alles außer Blau grau), GRUEN_FRISCH=1 (Grün satter), KENNZEICHNUNG=1 (Stempel im Bild)
 // Ergebnis: ZIELORDNER/NAME-titel.png (1200×800), -vorschau.png (1200×630), -quadrat.png (1080×1080), -hoch.png (1080×1350);
 // danach mit cwebp in WebP umwandeln (siehe bildwelt-a.sh). Das Rohbild selbst bleibt unverändert (Herkunftsdaten bleiben dort erhalten).
 import Foundation
@@ -19,7 +20,10 @@ guard a.count >= 5, let src = CGImageSourceCreateWithURL(URL(fileURLWithPath: a[
 }
 let ziel = a[2], name = a[3], form = a[4], formfarbe = a.count > 5 ? a[5] : "blau"
 let sRGB = CGColorSpace(name: CGColorSpace.sRGB)!
-let sw = form == "keine" // Schwarz-Weiß-Modus ohne Form
+let sw = form == "keine" // Branchenbilder: keine Form, Motiv mittig
+let umgebung = ProcessInfo.processInfo.environment
+let entfaerben_an = umgebung["ENTFAERBEN"] == "1" // seit 18.11.2026 aus (Anna: helles Holz, frisches Grün erlaubt)
+let gruen_frisch = umgebung["GRUEN_FRISCH"] == "1" // Grün satter und frischer (Anna 18.11.2026, Libelle der Wasserwaage)
 
 // Markenfarben
 let BLAU: (CGFloat, CGFloat, CGFloat) = (42 / 255, 95 / 255, 230 / 255)   // #2a5fe6
@@ -41,13 +45,20 @@ for y in 0..<H {
         let r = Double(px[i]) / 255, g = Double(px[i + 1]) / 255, b = Double(px[i + 2]) / 255
         let mx = max(r, g, b), mn = min(r, g, b), d = mx - mn
         let grau = UInt8(min(255, (0.2126 * r + 0.7152 * g + 0.0722 * b) * 255))
-        func entfaerben() { if sw { px[i] = grau; px[i + 1] = grau; px[i + 2] = grau } }
+        func entfaerben() { if sw && entfaerben_an { px[i] = grau; px[i + 1] = grau; px[i + 2] = grau } }
         guard mx > 0, d / mx > 0.28, d > 0.12 else { entfaerben(); continue }
         var h: Double
         if mx == r { h = 60 * ((g - b) / d).truncatingRemainder(dividingBy: 6) }
         else if mx == g { h = 60 * ((b - r) / d + 2) }
         else { h = 60 * ((r - g) / d + 4) }
         if h < 0 { h += 360 }
+        if gruen_frisch && h > 65 && h < 165 {
+            // Grün: Sättigung und Helligkeit anheben, Farbton Richtung frisches Gelbgrün (95°)
+            let s2 = min(1, d / mx * 1.6), v2 = min(1, mx * 1.12), hh2 = 95.0 / 60
+            let c2 = v2 * s2, x2 = c2 * (1 - abs(hh2.truncatingRemainder(dividingBy: 2) - 1)), m2 = v2 - c2
+            px[i] = UInt8(min(255, (x2 + m2) * 255)); px[i + 1] = UInt8(min(255, (c2 + m2) * 255)); px[i + 2] = UInt8(min(255, m2 * 255))
+            continue
+        }
         guard h > 185, h < 265 else { entfaerben(); continue }
         tonSumme += h; sx += Double(x); sy += Double(y); n += 1
         // Farbton ersetzen (HSV), Wert und Sättigung behalten

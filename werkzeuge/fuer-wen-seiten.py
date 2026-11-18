@@ -129,10 +129,23 @@ def problemseite(p):
     schreibe(p['pfad'], '\n\n'.join(teile), p['seitentitel'], p['beschreibung'], p['faq'])
 
 
-def branchen_kacheln(liste, pre):
-    """Kacheln der Branchen mit Illustration, Titel und Pfeil (Startseite und „Weitere Branchen“)."""
-    return ''.join(f'      <li><a class="br-kachel" href="{pre}{b["pfad"]}"><img src="{pre}bilder/fuer-wen/{b["id"]}.svg" alt="" width="800" height="640" loading="lazy">'
-                   f'<span class="br-name">{esc(b["name"])}</span><span class="br-pfeil" aria-hidden="true">→</span></a></li>\n' for b in liste)
+def branchen_kacheln(liste, pre, fotos=False):
+    """Kacheln der Branchen mit Bild, Titel und Pfeil (Startseite und „Weitere Branchen“).
+    fotos=True: KI-Bild der Bildwelt „Miniaturwelt“ statt Illustration, mit sichtbarem KI-Label (AI Act Art. 50, Anna 18.11.2026);
+    vorerst nur auf der Startseite (Anna: „erstmal alle zusammen sehen“)."""
+    teile = []
+    for b in liste:
+        ki = b.get('ki_bild') if fotos else None
+        if ki and (WEBSITE / ki['datei']).exists():
+            bild = (f'<span class="br-foto-bild"><img src="{pre}{ki["datei"]}" alt="{esc(ki["alt"])}" width="1080" height="1080" loading="lazy">'
+                    f'<span class="ki-label" aria-hidden="true">KI</span></span>')
+            klasse = 'br-kachel br-ki'
+        else:
+            bild = f'<img src="{pre}bilder/fuer-wen/{b["id"]}.svg" alt="" width="800" height="640" loading="lazy">'
+            klasse = 'br-kachel'
+        teile.append(f'      <li><a class="{klasse}" href="{pre}{b["pfad"]}">{bild}'
+                     f'<span class="br-name">{esc(b["name"])}</span><span class="br-pfeil" aria-hidden="true">→</span></a></li>\n')
+    return ''.join(teile)
 
 
 def startseite_branchen():
@@ -142,7 +155,7 @@ def startseite_branchen():
     # Reihenfolge nach Potenzial (Anna 17.11.2026: Gesundheit nicht prominent); die breite Kachel ist Platz 6 (Beratung)
     reihenfolge = ['bau', 'software', 'elektro', 'energie', 'industrie', 'beratung', 'gesundheit']
     liste = sorted(D['branchen'], key=lambda b: reihenfolge.index(b['id']) if b['id'] in reihenfolge else 99)
-    return '    <ul class="br-raster">\n' + kopf + branchen_kacheln(liste, '') + '    </ul>'
+    return '    <ul class="br-raster">\n' + kopf + branchen_kacheln(liste, '', fotos=True) + '    </ul>'
 
 
 def flip_bilder():
