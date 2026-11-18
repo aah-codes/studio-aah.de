@@ -4479,3 +4479,6 @@ html:not(.js) .hk-zeichen { display: none; }
 .anfrage-felder label:has(> [required])::after { content: "*" / ""; grid-row: 1; grid-column: 2; color: var(--farbe-pflicht); font-weight: 700; }
 /* Vorbereiteter Text im Nachrichtenfeld (Anna 18.11.2026): Hilfesatz darunter */
 .anfrage-hilfe { margin: 6px 0 0; font-size: var(--groesse-1); color: var(--farbe-gedaempft); }
+
+/* Danke-Seite (Anna 18.11.2026): Unterzeile breiter, am Desktop zwei Zeilen */
+.danke-intro { max-width: 62em; font-size: var(--groesse-4); }
