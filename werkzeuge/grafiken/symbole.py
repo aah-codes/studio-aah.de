@@ -64,6 +64,9 @@ SET = {
     'kompass': (BLAU, 'Rundgang, Orientierung, Strategie', f'<circle cx="160" cy="160" r="160" fill="{BLAU}"/><path d="M160 24 L200 160 L160 296 L120 160 Z" fill="{WS}"/><circle cx="160" cy="160" r="18" fill="{SCH}"/>'),
     'ziel': (BLAU, 'Website-Check, Ziel, Treffer', f'<circle cx="160" cy="160" r="160" fill="{BLAU}"/><circle cx="160" cy="160" r="112" fill="{WS}"/><circle cx="160" cy="160" r="72" fill="{BLAU}"/><circle cx="160" cy="160" r="38" fill="{WS}"/><circle cx="160" cy="160" r="22" fill="{SCH}"/>'),
     'sprechblase': (BLAU, 'Chat, Gespräch, Stimmen', f'<rect x="0" y="0" width="320" height="232" rx="40" fill="{BLAU}"/><path d="M48 216 L48 320 L152 216 Z" fill="{BLAU}"/>' + ''.join(f'<circle cx="{88+i*72}" cy="116" r="22" fill="{WS}"/>' for i in range(3))),
+    # Website-Check (Anna, 18.11.2026: „eher so ein Scanner-Symbol … ein Rechteck mit einer horizontalen Linie, die darüber hinausgeht, links und rechts“):
+    # Website als blaue Fläche mit schwarzer Leiste, schwarze Scanlinie mit weißer Fuge (Blau berührt kein Schwarz)
+    'scanner': (BLAU, 'Website-Check, Prüfung, Scan', f'<rect x="40" y="40" width="240" height="40" fill="{SCH}"/><rect x="40" y="96" width="240" height="184" fill="{BLAU}"/><rect x="0" y="164" width="320" height="44" fill="{WS}"/><rect x="0" y="174" width="320" height="24" fill="{SCH}"/>'),
     'checkliste': (BLAU, 'Checkliste, Prüfung, Enthalten', ''.join(f'<rect x="0" y="{y}" width="64" height="64" fill="{SCH}"/><rect x="96" y="{y+16}" width="224" height="32" fill="{BLAU}"/>' for y in (0, 128, 256))),
     'haken': (BLAU, 'Erledigt, Bestätigt, Vorteil', f'<circle cx="160" cy="160" r="160" fill="{BLAU}"/><path d="M84 164 L140 220 L240 112" fill="none" stroke="{WS}" stroke-width="34" stroke-linecap="square"/>'),
     'schloss': (BLAU, 'Sicherheit, Datenschutz, Zugang', f'<path d="M72 128 V88 A88 88 0 0 1 248 88 V128 H212 V88 A52 52 0 0 0 108 88 V128 Z" fill="{SCH}"/><rect x="24" y="148" width="272" height="172" rx="12" fill="{BLAU}"/><circle cx="160" cy="220" r="24" fill="{WS}"/><rect x="148" y="232" width="24" height="48" fill="{WS}"/>'),
@@ -88,6 +91,7 @@ SET = {
 # Die Datei bekommt genau diesen Ausschnitt als viewBox und xMinYMin: Das Icon hat keinen Innenabstand und steht
 # wirklich bündig mit dem Text (Anna 12.11.2026: „dass die Icons kein Padding haben“). Neues Icon: hier eintragen.
 RAND = {
+    'scanner': (0, 40, 320, 240),
     'anleitung': (20, 0, 300, 320), 'bildschirm': (0, 0, 320, 304), 'geschenk': (0, 4, 320, 320), 'handy': (60, 0, 260, 320),
     'herz': (32, 58, 288, 292), 'idee': (36, 0, 284, 320), 'mail': (0, 0, 320, 288), 'ordner': (0, 24, 320, 296),
     'ort': (24, -39, 296, 320), 'schloss': (24, 0, 296, 320), 'skills': (15, 0, 320, 305), 'telefon': (10, 50, 310, 320),

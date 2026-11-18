@@ -1237,7 +1237,6 @@ h1, h2, h3, .gr-xxl, .gr-xl, .gr-h2, .gr-h3, .artikel h1, .mm-karte-titel, .fuss
 .mm-karte-beige > span:not([class]) { color: var(--farbe-dunkel); font-weight: 400; }
 .kopf-nav .mm-karte-beige .button.button-zweit { background: transparent; color: var(--farbe-dunkel); border-color: var(--farbe-dunkel); }
 .kopf-nav .mm-karte-beige:hover .button.button-zweit { background: var(--farbe-dunkel); color: var(--farbe-weiss); }
-.mm-karte-icon { width: 72px; height: 72px; border-radius: var(--radius-karte); background: var(--farbe-weiss); padding: 6px; }
 .ohne-umbruch { white-space: nowrap; }
 .mm-karte { padding: 20px 20px 28px; }
 .mm-karte-titel { font-size: var(--groesse-5); }
@@ -3444,7 +3443,9 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
    Figur läuft durch Leipzig (Baustellen, Autos, Bäume), kurze Demo vorab, dann Start-Button. */
 .sp-hero { text-align: center; padding: 72px var(--rand-seite) 48px; }
 .sp-titel { font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-size: clamp(48px, 8.4vw, 150px); line-height: 1.05; margin: 12px 0 20px; }
-.sp-hero h1 { font-family: var(--schrift-text); text-transform: none; letter-spacing: 0; font-size: clamp(20px, 2vw, 30px); line-height: 1.35; font-weight: 500; max-width: 34ch; margin: 0 auto 28px; }
+.sp-hero h1 { font-family: var(--schrift-text); text-transform: none; letter-spacing: 0; font-size: clamp(20px, 2vw, 30px); line-height: 1.35; font-weight: 500; max-width: 34ch; margin: 0 auto 28px; text-wrap: balance; }
+/* Startseite: Unterzeile am Desktop auf zwei Zeilen (Anna, 18.11.2026) */
+@media (min-width: 1024.02px) { .fh-hero h1 { max-width: 60ch; } }
 .sp-hero .hero-knoepfe { display: flex; flex-wrap: wrap; gap: 12px 16px; justify-content: center; margin: 0 0 24px; }
 .spiel { max-width: 1400px; margin: 0 auto; }
 .spiel-buehne { position: relative; }
@@ -3810,7 +3811,6 @@ html:not(.js) .hk-zeichen { display: none; }
 .kopf-nav .mm-weitere-zeile .mm-weitere { display: flex; flex-wrap: wrap; gap: 0 40px; border-top: var(--rahmen) solid var(--farbe-rahmen); }
 .kopf-nav .mm-weitere-zeile .mm-weitere a { border-top: 0; padding: 14px 0 0; }
 .mm-karte.mm-karte-beige { gap: 0; padding: 36px; justify-content: flex-start; }
-.mm-karte-icon { width: 80px; height: 80px; border-radius: var(--radius-karte); background: var(--farbe-weiss); padding: 12px; margin-bottom: 40px; }
 .mm-karte-beige .meta { margin: auto 0 10px; }
 .mm-karte-beige .mm-karte-titel { margin: 0 0 16px; }
 .mm-karte-beige > span:not([class]) { line-height: 1.55; margin: 0 0 28px; }
@@ -3870,7 +3870,6 @@ html:not(.js) .hk-zeichen { display: none; }
 /* Anna 16.11.2026: mehr Luft zwischen Preisen und Fragen; Preiskarte im Mega-Menü: Text rückt ans Icon, Button bleibt unten */
 .lsx-pakete + .faq, .lsx-extras + .faq, .lsx-vergleich + .faq { margin-top: 96px; }
 @media (max-width: 900px) { .lsx-pakete + .faq, .lsx-extras + .faq, .lsx-vergleich + .faq { margin-top: 64px; } }
-.mm-karte-icon { margin-bottom: 24px; }
 .mm-karte-beige .meta { margin: 0 0 10px; }
 .mm-karte-beige .button { margin-top: auto; }
 
@@ -3914,7 +3913,6 @@ html:not(.js) .hk-zeichen { display: none; }
 }
 /* Anna 16.11.2026 (2): Karten im Mega-Menü dehnen sich nicht mit der Liste, Text 20 px unter dem Icon, beide Menüs */
 .mm-innen > .mm-karte-beige { align-self: start; }
-.mm-karte-beige .mm-karte-icon { margin-bottom: 20px; }
 .mm-karte-beige .button { margin-top: 8px; }
 /* KI-Beratung (2): Praxisbeispiel und KI-Verordnung (Anna 16.11.2026) */
 .lsx-praxis, .lsx-recht { padding: 96px var(--rand-seite) 0; }
@@ -3966,7 +3964,6 @@ html:not(.js) .hk-zeichen { display: none; }
 .fh-leer { margin-top: 24px; padding: 20px 24px; border: var(--rahmen) solid var(--farbe-grau-hell); border-radius: 20px; }
 .fh-leer p { margin: 0 0 6px; }
 .fh-leer-wege { display: flex; flex-wrap: wrap; gap: 4px 8px; }
-.fh-wege { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 32px; margin: 28px 0 0; }
 @media (max-width: 599.98px) {
   .fh-feld { flex-direction: column; align-items: stretch; border-radius: 24px; padding: 8px; }
   .fh-feld input { padding: 10px 12px; }
@@ -4181,9 +4178,9 @@ html:not(.js) .hk-zeichen { display: none; }
 .mr-beispiel-aah .mr-b-feld { font-family: var(--schrift-text); }
 .mr-beispiel-aah .mr-b-firma { font-family: var(--schrift-ueberschrift); letter-spacing: .04em; }
 .mr-beispiel-aah .mr-b-liste b { font-weight: 700; }
-/* Mega-Menü mit Icons (Anna 17.11.2026: „leistungen mit icon“): Bauhaus-Form links, Name rechts; ohne Unterzeile seit 18.11.2026 (Anna) */
-.mm-liste a.mm-mit-icon { display: grid; grid-template-columns: 44px minmax(0, 1fr); column-gap: 18px; align-items: center; }
-.mm-mit-icon .mm-icon { width: 44px; height: 44px; object-fit: contain; object-position: left center; }
+/* Mega-Menü mit Icons (Anna 17.11.2026: „leistungen mit icon“): Bauhaus-Form links, Name rechts; ohne Unterzeile und Icons 30 % kleiner seit 18.11.2026 (Anna) */
+.mm-liste a.mm-mit-icon { display: grid; grid-template-columns: 31px minmax(0, 1fr); column-gap: 18px; align-items: center; }
+.mm-mit-icon .mm-icon { width: 31px; height: 31px; object-fit: contain; object-position: left center; }
 .mm-mit-icon .mm-name { grid-column: 2; }
 /* Kontaktseite auf voller Breite bündig mit Logo und Button (Anna 17.11.2026) */
 .golden.kontakt-voll { max-width: none; padding-inline: var(--rand-seite); gap: clamp(32px, 4vw, 64px); }

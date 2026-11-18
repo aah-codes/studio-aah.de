@@ -22,16 +22,16 @@ def zacken(cx, cy, r, n=16, rk=None):
 
 
 FORMEN = {
-    # Markenbildung: blaues Quadrat, schwarzer Balken mit Abstand darunter
-    'brand': f'<rect x="110" y="90" width="180" height="180" fill="{BLAU}"/><rect x="110" y="290" width="180" height="22" fill="{SCH}"/>',
+    # Markenbildung: blauer Kreis, schwarzer Balken mit Abstand (bis 18.11.2026 Webdesign; Anna: „Icon von Marke und Webdesign tauschen“)
+    'brand': f'<circle cx="200" cy="180" r="100" fill="{BLAU}"/><rect x="100" y="300" width="200" height="22" fill="{SCH}"/>',
     # UI/UX: blauer Halbkreis über schwarzem Balken (mit Abstand)
     'ui-ux': f'<path d="M100 236 A100 100 0 0 1 300 236 Z" fill="{BLAU}"/><rect x="100" y="250" width="200" height="22" fill="{SCH}"/>',
-    # Webdesign: blauer Kreis, schwarzer Balken mit Abstand (Blau berührt kein Schwarz)
-    'website': f'<circle cx="200" cy="180" r="100" fill="{BLAU}"/><rect x="100" y="300" width="200" height="22" fill="{SCH}"/>',
+    # Webdesign: blaues Quadrat, schwarzer Balken mit Abstand darunter (bis 18.11.2026 Markenbildung)
+    'website': f'<rect x="110" y="90" width="180" height="180" fill="{BLAU}"/><rect x="110" y="290" width="180" height="22" fill="{SCH}"/>',
     # Marketing & Vertrieb: schwarzer Halbkreis, blauer Kreis darüber
     'marketing': f'<circle cx="200" cy="120" r="34" fill="{BLAU}"/><path d="M100 300 A100 100 0 0 1 300 300 Z" fill="{SCH}"/>',
-    # KI-Beratung: blaues rechtwinkliges Dreieck, schwarzer Kreis
-    'ki': f'<path d="M290 90 L290 300 L80 300 Z" fill="{BLAU}"/><circle cx="130" cy="140" r="30" fill="{SCH}"/>',
+    # KI-Beratung: blauer Stern mit vier Spitzen über schwarzem Balken (Anna, 18.11.2026: „KI ist ja immer der Stern … einen vereinfachten, Stern mit 4 Spitzen“)
+    'ki': f'<path d="M200 80 L228 152 L300 180 L228 208 L200 280 L172 208 L100 180 L172 152 Z" fill="{BLAU}"/><rect x="100" y="300" width="200" height="22" fill="{SCH}"/>',
     # Retainer (neu 13.11.2026, Anna: „gefällt mir noch nicht“): blauer Kreislauf mit Pfeilspitze, schwarzer Kern mit Abstand –
     # die Betreuung läuft nach dem Launch weiter
     'retainer': (f'<path d="M200 80 A120 120 0 1 1 80 200 L124 200 A76 76 0 1 0 200 124 Z" fill="{BLAU}"/>'
@@ -48,9 +48,9 @@ FORMEN = {
 
 # Tatsächlicher Rand jeder Form (x, y, Breite, Höhe), im Browser gemessen (12.11.2026): viewBox ohne Innenabstand,
 # damit das Icon bündig mit dem Text steht (Anna 12.11.2026). Neue Form: hier eintragen.
-RAND = {'brand': (110, 90, 180, 222), 'illustration': (81, 56, 239, 267), 'ki': (80, 90, 210, 210), 'marketing': (100, 86, 200, 214),
+RAND = {'brand': (100, 80, 200, 242), 'illustration': (81, 56, 239, 267), 'ki': (100, 80, 200, 242), 'marketing': (100, 86, 200, 214),
         'motion': (82, 82, 236, 236), 'print': (100, 110, 200, 202), 'retainer': (58, 80, 262, 240), 'ui-ux': (100, 136, 200, 136),
-        'website': (100, 80, 200, 242)}
+        'website': (110, 90, 180, 222)}
 
 if __name__ == '__main__':
     os.makedirs(ZIEL, exist_ok=True)
