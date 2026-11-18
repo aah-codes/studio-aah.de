@@ -84,9 +84,9 @@ window.Anfrage = (() => {
   let nr = 0;
   function NEWSLETTER(du = false, an = false, id = '') {
     if (!id) { nr += 1; id = `anfrage-nl-${nr}`; }
-    const rest = du ? 'Du bekommst eine E-Mail zur Bestätigung und kannst dich jederzeit abmelden.' : 'Sie bekommen eine E-Mail zur Bestätigung und können sich jederzeit abmelden.';
+    // Ein Satz (Anna 18.11.2026: „Kürz mal den Text für Newsletter auf einen Satz“); Widerruf und Datenschutz bleiben drin
     return `<div class="anfrage-nl"><label for="${id}"><input id="${id}" name="newsletter" type="checkbox" value="ja" data-kurz="Newsletter:"${an ? ' checked' : ''} aria-describedby="${id}-text"> Ja, ich möchte den Newsletter.</label>`
-      + `<p class="hinweis-klein" id="${id}-text">Etwa einmal im Monat: neue Artikel, Trends und Tipps zu Webdesign, KI-Tools und Website-Recht, dazu neue Angebote, Projekte und Neues aus der Initiative „Demokratie braucht Sichtbarkeit.“ ${rest} Mehr in der <a href="../datenschutz/#newsletter">Datenschutzerklärung</a>.</p></div>`;
+      + `<p class="hinweis-klein" id="${id}-text">Etwa einmal im Monat Artikel, Tipps, Angebote und Neues aus dem Studio, jederzeit abbestellbar, mehr in der <a href="../datenschutz/#newsletter">Datenschutzerklärung</a>.</p></div>`;
   }
   document.querySelectorAll('form[data-anfrage]').forEach((form) => {
     const vor = form.querySelector('.anfrage-falle') || form.querySelector('.anfrage-knoepfe');

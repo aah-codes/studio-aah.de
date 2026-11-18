@@ -13,6 +13,7 @@
   --farbe-hellgrau: #f8f8f8;
   --farbe-hellgrau-2: #eee;
   --farbe-rahmen: #e8eded;
+  --farbe-pflicht: #c8102e;           /* nur Pflichtfeld-Sternchen (Anna 18.11.2026), Ausnahme von der Farbregel; 5,9 : 1 auf Weiß */
   --farbe-gedaempft: rgba(14, 16, 17, .6);
   --farbe-gedaempft-invers: rgba(255, 255, 255, .7);
   --farbe-creme: #eeece7;            /* Flächen, Plakatgrund */
@@ -4471,3 +4472,10 @@ html:not(.js) .hk-zeichen { display: none; }
 }
 .mr-formen { background: var(--farbe-creme); }
 .fokus-bild { position: relative; }
+
+/* Pflichtfelder (Anna 18.11.2026: „In jedem Formular muss ein rotes Sternchen an den Labels sein, die Pflicht sind“) */
+.anfrage-felder label:has(> [required]) { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 4px; align-items: baseline; }
+.anfrage-felder label:has(> [required]) > :is(input, textarea, select) { grid-column: 1 / -1; }
+.anfrage-felder label:has(> [required])::after { content: "*" / ""; grid-row: 1; grid-column: 2; color: var(--farbe-pflicht); font-weight: 700; }
+/* Vorbereiteter Text im Nachrichtenfeld (Anna 18.11.2026): Hilfesatz darunter */
+.anfrage-hilfe { margin: 6px 0 0; font-size: var(--groesse-1); color: var(--farbe-gedaempft); }
