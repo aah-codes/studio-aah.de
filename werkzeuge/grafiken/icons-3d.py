@@ -11,6 +11,7 @@ Kamera gerade von vorn und 12° von oben, Icon steht auf dem Boden, Linien (stro
 ein weiches Licht von oben links, Farben exakt aus der Farbtafel (Blau berührt nie Schwarz: die Fugen der SVGs bleiben echte Spalten).
 """
 import math
+import os
 import pathlib
 import sys
 
@@ -22,6 +23,8 @@ FARBEN = {  # sRGB-Werte der Marke (tokens.json)
     'blau': (0x2a, 0x5f, 0xe6), 'schwarz': (0x0e, 0x10, 0x11), 'weiss': (0xff, 0xff, 0xff), 'gelb': (0xff, 0xe6, 0x00),
 }
 TIEFE, FASE, NEIGUNG, AUFLOESUNG, SAMPLES = 0.26, 0.025, 12, 1024, 96  # Tiefe 13 % der Breite (Breite = 2)
+# Ohne Schatten (Anna 18.11.2026: „viel zu dunkel … die fliegen“); nur mit SCHATTEN=1 kommt der Kontaktschatten zurück
+SCHATTEN = os.environ.get('SCHATTEN') == '1'
 # Neigung 12° statt 20° (18.11.2026): bei 20° verdeckte die Oberseite der unteren Form die Fuge, Blau schien Schwarz zu berühren
 
 
@@ -199,10 +202,11 @@ def buehne(mitte_z):
     sc.render.image_settings.file_format = 'PNG'
     sc.render.image_settings.color_mode = 'RGBA'
     sc.view_settings.view_transform = 'Standard'          # Farben wie in der Marke, kein Filmlook
-    # Boden fängt nur den Schatten
-    bpy.ops.mesh.primitive_plane_add(size=40, location=(0, 0, 0))
-    boden = bpy.context.active_object
-    boden.is_shadow_catcher = True
+    # Boden fängt nur den Schatten (abgeschaltet, Icons schweben frei)
+    if SCHATTEN:
+        bpy.ops.mesh.primitive_plane_add(size=40, location=(0, 0, 0))
+        boden = bpy.context.active_object
+        boden.is_shadow_catcher = True
     # Licht: groß und weich von oben links, dazu helle Umgebung
     licht = bpy.data.lights.new('studio', 'AREA')
     licht.energy, licht.size = 900, 2.5                  # kleiner und höher: kurzer Kontaktschatten statt grauer Fläche
@@ -212,7 +216,7 @@ def buehne(mitte_z):
     lo.rotation_euler = (Vector((0, 0, 1)) - lo.location).to_track_quat('-Z', 'Y').to_euler()
     welt = bpy.data.worlds.new('welt')
     welt.use_nodes = True
-    welt.node_tree.nodes['Background'].inputs['Strength'].default_value = 0.35
+    welt.node_tree.nodes['Background'].inputs['Strength'].default_value = 0.35 if SCHATTEN else 0.6  # ohne Boden fehlt dessen Aufhellung: Blau sonst zu dunkel
     welt.node_tree.nodes['Background'].inputs['Color'].default_value = (1, 1, 1, 1)
     sc.world = welt
     # Kamera: gerade von vorn, 12° von oben, leichte Tele-Brennweite gegen Verzerrung
