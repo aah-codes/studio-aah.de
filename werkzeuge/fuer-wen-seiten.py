@@ -158,16 +158,16 @@ def startseite_branchen():
     return '    <ul class="br-raster">\n' + kopf + branchen_kacheln(liste, '', fotos=True) + '    </ul>'
 
 
+FLIP_BILDER = {  # Bildchen der Flipcard-Rückseiten (bis 18.11.2026 von der Startseite gelesen; dort gibt es seitdem keine Flipcards mehr)
+    'neue-kunden/': '<svg class="hk-bild hk-loesung" viewBox="0 0 120 72" aria-hidden="true"><rect x="4" y="6" width="74" height="58" rx="6" fill="none" stroke="#fff" stroke-width="3"/><line x1="4" y1="18" x2="78" y2="18" stroke="#fff" stroke-width="3"/><rect x="14" y="42" width="40" height="12" rx="6" fill="#fff"/><circle cx="108" cy="16" r="6" fill="#fff"/><circle cx="108" cy="52" r="6" fill="#fff"/><path d="M100 18 C 90 28, 80 40, 62 46" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="3 5"/><path d="M100 50 C 90 50, 80 50, 62 49" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="3 5"/></svg>',
+    'employer-branding/': '<svg class="hk-bild hk-loesung" viewBox="0 0 120 72" aria-hidden="true"><rect x="20" y="30" width="52" height="38" fill="#fff"/><path d="M14 32 L46 6 L78 32 Z" fill="#fff"/><rect x="38" y="48" width="16" height="20" fill="#2a5fe6"/><g transform="translate(46 36) scale(.18)"><rect x="-34" y="-34" width="68" height="68" transform="rotate(45)" fill="#2a5fe6"/><circle cx="-24" cy="-24" r="34" fill="#2a5fe6"/><circle cx="24" cy="-24" r="34" fill="#2a5fe6"/></g><circle cx="96" cy="44" r="6" fill="#fff"/><rect x="90" y="52" width="12" height="16" fill="#fff"/><circle cx="114" cy="44" r="5" fill="#fff"/><rect x="109" y="51" width="10" height="17" fill="#fff"/></svg>',
+    'service/ki-digitalisierung/': '<svg class="hk-bild hk-loesung hk-stern" viewBox="0 0 120 72" aria-hidden="true"><path d="M50 4 C53 26 60 33 82 36 C60 39 53 46 50 68 C47 46 40 39 18 36 C40 33 47 26 50 4 Z" fill="#fff"/><path d="M96 6 C97.5 15 101 18.5 110 20 C101 21.5 97.5 25 96 34 C94.5 25 91 21.5 82 20 C91 18.5 94.5 15 96 6 Z" fill="#fff"/><path d="M94 46 C95 52 97 54 103 55 C97 56 95 58 94 64 C93 58 91 56 85 55 C91 54 93 52 94 46 Z" fill="#fff"/></svg>',
+}
+
+
 def flip_bilder():
-    """Bildchen der Flipcard-Rückseiten von der Startseite (Ziel-Adresse → SVG), damit sie überall gleich sind."""
-    import re
-    t = (WEBSITE / 'index.html').read_text(encoding='utf-8')
-    bilder = {}
-    for li in re.findall(r'<li class="haken-karte hk-flip">.*?</li>', t, re.S):
-        svg = re.search(r'<svg class="hk-bild.*?</svg>', li, re.S)
-        ziel = re.search(r'href="([^"]+)"', li)
-        if svg and ziel: bilder[ziel.group(1)] = svg.group(0)
-    return bilder
+    """Bildchen der Flipcard-Rückseiten (Ziel-Adresse → SVG), damit sie überall gleich sind."""
+    return FLIP_BILDER
 
 
 def flipkarten(eintraege, pre):

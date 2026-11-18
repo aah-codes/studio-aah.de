@@ -4289,3 +4289,107 @@ html:not(.js) .hk-zeichen { display: none; }
 .fh-autor { display: flex; align-items: center; gap: 10px; margin: 0 0 10px; font-weight: 600; font-size: var(--groesse-2); }
 .fh-autor img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex: none; }
 @media (max-width: 599.98px) { .ls-kern { grid-template-columns: minmax(0, 1fr); gap: 32px; } .ls-kern .ls-bild { aspect-ratio: 21 / 9; } } /* Handy: untereinander, sonst laufen die Namen ineinander (18.11.2026) */
+
+/* ===== Startseite neu (Anna 18.11.2026): Hero „Leipzig“ mit Frag-Feld als Chat und Diashow, Aufbau wie ein LinkedIn-Profil ===== */
+/* Hero: links blaue Fläche, rechts Diashow; feste Höhe, damit das Bild beim Fragen nicht mitwächst */
+.hl { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 16px; padding: 16px var(--rand-seite) 72px; text-align: left; }
+.hl-panel { background: var(--farbe-primaer); color: var(--farbe-weiss); border-radius: var(--radius-karte); padding: clamp(32px, 4.4vw, 72px); display: flex; flex-direction: column; justify-content: center; min-height: 600px; }
+.hl .hl-meta { color: var(--farbe-gedaempft-invers); margin: 0 0 20px; }
+.hl .hl-meta::before { background: var(--farbe-weiss) !important; }
+.hl-titel { font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-size: var(--groesse-7); line-height: 1.12; letter-spacing: .9px; margin: 0 0 24px; }
+.hl h1 { font-family: var(--schrift-text); text-transform: none; letter-spacing: 0; font-weight: 500; font-size: var(--groesse-4); line-height: 1.4; max-width: 30ch; margin: 0 0 32px; color: var(--farbe-weiss); text-wrap: balance; }
+.hl .hl-feld { margin: 0; max-width: 560px; border-color: var(--farbe-weiss); }
+.hl .hl-los { background: var(--farbe-dunkel); border-color: var(--farbe-dunkel); flex: none; }
+.hl-chips { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 0; padding: 0; max-width: 560px; }
+.hl-chip { font: 600 var(--groesse-2)/1.2 var(--schrift-text); color: var(--farbe-weiss); background: transparent; border: 1.5px solid var(--farbe-weiss); border-radius: var(--radius-pille); padding: 8px 16px; cursor: pointer; transition: background .2s, color .2s; }
+.hl-chip:hover, .hl-chip:focus-visible { background: var(--farbe-weiss); color: var(--farbe-primaer); }
+.hl-antworten { margin: 20px 0 0; max-width: 560px; min-height: 0; flex: 0 1 auto; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: var(--farbe-primaer) transparent; scroll-behavior: smooth; }
+.hl-antworten:not(:empty) { background: var(--farbe-weiss); color: var(--farbe-dunkel); border-radius: var(--radius-karte); padding: 8px 24px; }
+/* Chat-Ansicht wie WhatsApp: Überschrift kleiner, Verlauf in der Mitte, Eingabefeld unten */
+.hl.ist-chat .hl-panel { justify-content: flex-start; padding: clamp(28px, 3vw, 48px); }
+.hl.ist-chat .hl-titel { font-size: var(--groesse-6); margin-bottom: 12px; }
+.hl.ist-chat h1 { font-size: var(--groesse-3); margin-bottom: 16px; }
+.hl.ist-chat .hl-meta { margin-bottom: 12px; }
+.hl.ist-chat .hl-chips { display: none; }
+.hl.ist-chat .hl-antworten { order: 1; flex: 1 1 0; margin: 0 0 16px; width: 100%; }
+.hl.ist-chat [data-frag] { order: 2; }
+/* Diashow: Bilder in Naturfarben, Annas Porträt wie überall; blenden ineinander, langsamer Zoom */
+.hl-bild { position: relative; margin: 0; border-radius: var(--radius-karte); overflow: hidden; background: var(--farbe-creme); isolation: isolate; min-height: 420px; }
+.hl-folien { list-style: none; margin: 0; padding: 0; position: absolute; inset: 0; }
+.hl-folie { position: absolute; inset: 0; opacity: 0; transition: opacity 1.2s ease; }
+.hl-folie.ist-aktiv { opacity: 1; z-index: 1; }
+.hl-folie img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.06); }
+.hl-folie.ist-aktiv img { animation: hl-zoom 6s linear both; }
+.hl.ist-pausiert .hl-folie img { animation-play-state: paused; }
+@keyframes hl-zoom { from { transform: scale(1.08); } to { transform: scale(1); } }
+/* Monitor-Folie: Startseite von Bauer läuft von oben bis zum Fuß durch */
+.hl-folie.ist-monitor { background: var(--farbe-creme); container-type: size; }
+.hl-mon { position: absolute; top: 50%; left: 50%; width: min(max(100cqw, 127.9cqh), 118cqw); aspect-ratio: 1100 / 860; transform: translate(-50%, -50%); }
+.hl-folie .hl-mon-foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; animation: none !important; transform: none; }
+.hl-mon-schirm { position: absolute; left: 9.818%; top: 6.047%; width: 77.909%; height: 66.163%; overflow: hidden; container-type: size; background: var(--farbe-weiss); }
+.hl-folie .hl-mon-seite { position: absolute; left: 0; top: 0; width: 100%; height: auto; transform: translateY(0); animation: none; }
+.hl-folie.ist-monitor.ist-aktiv .hl-mon-seite { animation: hl-scroll 14s .8s ease-in-out both; }
+.hl.ist-pausiert .hl-mon-seite { animation-play-state: paused !important; }
+@keyframes hl-scroll { from { transform: translateY(0); } to { transform: translateY(calc(-100% + 100cqh)); } }
+.hl-pause { position: absolute; right: 24px; bottom: 24px; z-index: 3; width: 48px; height: 48px; border-radius: 50%; border: 0; background: var(--farbe-weiss); color: var(--farbe-dunkel); font-size: var(--groesse-1); cursor: pointer; }
+@media (min-width: 1024.02px) {
+  .hl { height: clamp(620px, calc(100svh - 110px), 780px); }
+  .hl-panel { min-height: 0; overflow: hidden; }
+}
+@media (max-width: 1024px) {
+  .hl { grid-template-columns: minmax(0, 1fr); }
+  .hl-panel, .hl-bild { min-width: 0; }
+  .hl-panel { min-height: 0; }
+  .hl-bild { aspect-ratio: 3 / 2; }
+  .hl-antworten { max-height: 60svh; }
+  .hl.ist-chat .hl-antworten { flex: none; }
+}
+@media (max-width: 767.98px) {
+  .hl .hl-feld { flex-direction: row; flex-wrap: nowrap; align-items: center; padding: 6px 6px 6px 20px; } /* Eingabefeld mind. 16 px (Zoom am iPhone) bleibt aus .fh-feld */
+  .hl .hl-feld input { padding: 10px 0; }
+  .hl .hl-los { padding: 12px 16px; font-size: var(--groesse-2); }
+  .hl-bild { aspect-ratio: 4 / 5; min-height: 0; }
+  .hl-pause { right: 16px; bottom: 16px; }
+  .hl-panel { padding: 28px 24px; }
+  .hl .hl-meta { white-space: normal; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hl-folie img, .hl-folie.ist-aktiv img, .hl-folie.ist-monitor.ist-aktiv .hl-mon-seite { animation: none; transform: none; }
+  .hl-folie { transition: none; }
+  .hl-antworten { scroll-behavior: auto; }
+}
+/* Über mich kurz: „Wo es gerade hakt“ als drei Links statt Karten */
+.hakt-links { margin-top: 40px; padding-top: 24px; border-top: 1.5px solid var(--farbe-dunkel); }
+.hakt-links-liste { list-style: none; margin: 12px 0 0; padding: 0; }
+.hakt-links-liste a { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--farbe-grau-hell); color: var(--farbe-dunkel); text-decoration: none; font: 600 var(--groesse-3)/1.35 var(--schrift-text); }
+.hakt-links-liste a:hover span, .hakt-links-liste a:focus-visible span { text-decoration: underline; text-underline-offset: 4px; }
+.hakt-links-test { margin: 16px 0 0; }
+/* Im Fokus (feste Angebote) und Projekte als Liste wie bei LinkedIn */
+.fokus, .start-projektliste { padding: 0 0 clamp(64px, 6vw, 96px); }
+.fokus-raster { list-style: none; margin: 24px var(--rand-seite) 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.fokus-karte { display: flex; flex-direction: column; height: 100%; border: 1.5px solid var(--farbe-grau-hell); border-radius: var(--radius-karte); overflow: hidden; color: var(--farbe-dunkel); text-decoration: none; background: var(--farbe-weiss); transition: border-color .2s; }
+.fokus-karte:hover, .fokus-karte:focus-visible { border-color: var(--farbe-dunkel); }
+.fokus-bild { aspect-ratio: 4 / 3; background: var(--farbe-creme); overflow: hidden; }
+.fokus-bild img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.fokus-text { display: flex; flex-direction: column; gap: 6px; padding: 20px 22px 24px; }
+.fokus-titel { font: 700 var(--groesse-4)/1.25 var(--schrift-text); }
+.fokus-satz { font: 400 var(--groesse-2)/1.5 var(--schrift-text); color: var(--farbe-gedaempft); }
+.pliste { list-style: none; margin: 24px var(--rand-seite) 0; padding: 0; border-top: 1px solid var(--farbe-grau-hell); }
+.pliste-zeile { display: grid; grid-template-columns: 112px 1fr auto; gap: 24px; align-items: center; padding: 24px 0; border-bottom: 1px solid var(--farbe-grau-hell); color: var(--farbe-dunkel); text-decoration: none; }
+.pliste-bild { width: 112px; height: 112px; border-radius: var(--radius-karte); overflow: hidden; background: var(--farbe-dunkel); }
+.pliste-bild img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+.pliste-text { display: flex; flex-direction: column; gap: 4px; }
+.pliste-kunde { font: 700 var(--groesse-4)/1.25 var(--schrift-text); }
+.pliste-titel { font: 500 var(--groesse-3)/1.4 var(--schrift-text); }
+.pliste-meta, .pliste-leist { font: 400 var(--groesse-2)/1.5 var(--schrift-text); color: var(--farbe-gedaempft); }
+.pliste-pfeil { font-size: var(--groesse-4); transition: transform .2s; }
+.pliste-zeile:hover .pliste-pfeil, .pliste-zeile:focus-visible .pliste-pfeil { transform: translateX(6px); }
+.pliste-zeile:hover .pliste-kunde { text-decoration: underline; text-underline-offset: 4px; }
+.start-projektliste .ref-alle { margin: 32px var(--rand-seite) 0; }
+@media (max-width: 1024px) { .fokus-raster { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 767.98px) {
+  .fokus-raster { grid-template-columns: 1fr; }
+  .pliste-zeile { grid-template-columns: 72px 1fr; gap: 16px; }
+  .pliste-bild { width: 72px; height: 72px; }
+  .pliste-pfeil { display: none; }
+}

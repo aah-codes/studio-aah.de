@@ -94,6 +94,22 @@ def projekt_raster(liste, pre):
     return '    <ul class="pg">\n' + '\n'.join(k) + '\n    </ul>'
 
 
+# --- Startseite seit 18.11.2026 (Anna, Aufbau wie ein LinkedIn-Profil): Projekte als Liste wie „Erfahrung“ –
+#     kleines Vorschaubild, Kunde, Schlagzeile, Branche · Zeitraum, Leistungen (Feld „kurzleistungen“: ohne Plattform-Namen, ohne Flyer).
+def projekt_liste(liste, pre):
+    k = []
+    for p in liste:
+        url, _, ziel = projekt_link(p, pre)
+        branche = p['branche'].replace(' – ', ', ').replace(' / ', ', ')
+        k.append(f'<li><a class="pliste-zeile" href="{url}"{ziel}><span class="pliste-bild"><img{bild_attr(p["cover"]["desktop"], pre, "112px")} alt="" loading="lazy"></span>'
+                 f'<span class="pliste-text"><span class="pliste-kunde">{esc(p["kurzname"])}</span>'
+                 f'<span class="pliste-titel">{esc((p.get("schlagzeile") or p["kopf"]).rstrip("."))}</span>'  # kleine Überschrift ohne Punkt
+                 f'<span class="pliste-meta">{esc(branche)} · {esc(p["zeitraum"])}</span>'
+                 f'<span class="pliste-leist">{esc(p.get("kurzleistungen") or p["leistungen"])}</span></span>'
+                 f'<span class="pliste-pfeil" aria-hidden="true">→</span></a></li>')
+    return '    <ul class="pliste">' + ''.join(k) + '</ul>'
+
+
 # --- Startseite: eigene LinkedIn-Beiträge als Leiste (Anna 12.11.2026, Vorlage Instagram-Leiste von zwetschke.de).
 #     Bilder liegen lokal (bilder/linkedin/li-<id>.webp), nichts wird von LinkedIn geladen; Daten in inhalte/linkedin.json.
 UHR = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>'
@@ -283,7 +299,7 @@ def kennzahlen(klasse='fakten hero-fakten', einrueck='    '):
 
 if __name__ == '__main__':
     seiten = {
-        'index.html': [('PROJEKTE', lambda: projekt_raster([x for x in PROJEKTE if x.get('case')], '')), ('LINKEDIN', lambda: linkedin_leiste('')), ('STIMMEN', lambda: stimmen(STIMMEN, ''))],   # „Für wen“, Blog-Karten und Kennzahlen seit 12.11.2026 nicht mehr auf der Startseite (Kennzahlen nur auf Über mich)
+        'index.html': [('PROJEKTE', lambda: projekt_liste([x for x in PROJEKTE if x.get('case')], '')), ('LINKEDIN', lambda: linkedin_leiste('')), ('STIMMEN', lambda: stimmen(STIMMEN, ''))],   # „Für wen“, Blog-Karten und Kennzahlen seit 12.11.2026 nicht mehr auf der Startseite (Kennzahlen nur auf Über mich)
         'profil/index.html': [('STIMMEN', lambda: stimmen(STIMMEN, '../')), ('BLOG', lambda: blog(BLOG[:4], '../', '../blog/')),
                               ('KENNZAHLEN', lambda: kennzahlen('fakten', '      '))],
         'blog/index.html': [('BLOG', lambda: blog_themen()), ('SPIEL', lambda: spiel_sektion('../', re.search(r'menue\.js\?v=(\w+)', (WEBSITE / 'index.html').read_text(encoding='utf-8')).group(1)))],
