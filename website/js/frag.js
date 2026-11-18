@@ -56,20 +56,49 @@
     var pfeil = el('span', null, extern ? '↗' : '→'); pfeil.setAttribute('aria-hidden', 'true'); a.appendChild(pfeil);
     return a;
   }
-  // Antwort wie eine KI-Übersicht bei Google (Anna 17.11.2026): Kurzfassung, ein paar Stichpunkte, Links als Quellen.
-  // Frage als Blase rechts, Antwort links; Folgefragen hängen sich an, höchstens drei Runden sichtbar
+  // Chat nach Vorbild WhatsApp (Anna 18.11.2026: „nimm whatsapp als inspo für chat“): Frage als blaue Blase rechts mit Uhrzeit
+  // und Haken, kurz „schreibt …“, dann Annas Antwort als weiße Blase links mit Foto und Name; Links als Zeilen unten in der Blase.
+  // Reihenfolge wie im Messenger: neueste Runde unten direkt über dem Feld, höchstens drei Runden
+  var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function uhrzeit() {
+    var d = new Date();
+    return ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2);
+  }
+  function zeit(eigen) {
+    var s = el('span', 'fh-zeit', uhrzeit());
+    if (eigen) { var h = el('span', 'fh-haken', '✓✓'); h.setAttribute('aria-hidden', 'true'); s.appendChild(h); }
+    return s;
+  }
+  function hinscrollen(e) { ziel.scrollTop = Math.max(0, e.offsetTop - 12); }
   function zeigen(frage) {
     var treffer = bewerten(frage)[0];
-    var verlauf = ziel.querySelector('.fh-chat') || ziel.appendChild(el('ol', 'fh-chat'));
+    var verlauf = ziel.querySelector('.fh-chat');
+    if (!verlauf) {
+      verlauf = ziel.appendChild(el('ol', 'fh-chat'));
+      verlauf.appendChild(el('li', 'fh-tag', 'Heute'));
+    }
     var runde = el('li', 'fh-runde');
-    runde.appendChild(el('p', 'fh-ich', frage));
+    var ich = el('p', 'fh-ich', frage);
+    ich.appendChild(zeit(true));
+    runde.appendChild(ich);
+    var tippt = el('p', 'fh-tippt');
+    tippt.setAttribute('aria-label', 'Anna schreibt');
+    tippt.appendChild(el('span')); tippt.appendChild(el('span')); tippt.appendChild(el('span'));
+    runde.appendChild(tippt);
+    verlauf.appendChild(runde);
+    var runden = verlauf.querySelectorAll('.fh-runde');
+    if (runden.length > 3) verlauf.removeChild(runden[0]);
+    hinscrollen(runde);
+    feld.value = '';
+    feld.placeholder = 'Noch eine Frage?';
+
+    var zeile = el('div', 'fh-zeile');
+    var foto = el('img', 'fh-foto');
+    foto.src = 'bilder/anna-haertelt-studio-blau-rund.jpg'; foto.alt = ''; foto.width = 32; foto.height = 32;
+    zeile.appendChild(foto);
     var antwort = el('div', 'fh-sie');
-    // Absenderin über jeder Antwort: kleines rundes Foto und Name (Anna 18.11.2026)
-    var autor = el('p', 'fh-autor');
-    var foto = el('img');
-    foto.src = 'bilder/anna-haertelt-studio-blau-rund.jpg'; foto.alt = ''; foto.width = 40; foto.height = 40;
-    autor.appendChild(foto); autor.appendChild(el('span', null, 'Anna Härtelt'));
-    antwort.appendChild(autor);
+    zeile.appendChild(antwort);
+    antwort.appendChild(el('p', 'fh-name', 'Anna Härtelt'));
     var quellen = el('p', 'fh-quellen');
     if (treffer) {
       var t = treffer.e;
@@ -84,12 +113,12 @@
       antwort.appendChild(el('p', 'fh-kurz', 'Gute Frage! Dazu habe ich hier noch keine fertige Antwort. Rufen Sie mich gern an: 0176 830 898 79, oder schreiben Sie mir.'));
       quellen.appendChild(link('Beratung anfragen', 'kontakt/'));
     }
-    antwort.appendChild(quellen);
-    runde.appendChild(antwort);
-    verlauf.insertBefore(runde, verlauf.firstChild);   // neueste Antwort oben (Anna 18.11.2026)
-    while (verlauf.children.length > 3) verlauf.removeChild(verlauf.lastChild);
-    feld.value = '';
-    feld.placeholder = 'Noch eine Frage?';
+    antwort.appendChild(zeit(false));
+    if (quellen.childNodes.length) antwort.appendChild(quellen);
+    setTimeout(function () {
+      if (tippt.parentNode) runde.replaceChild(zeile, tippt);
+      hinscrollen(runde);
+    }, still ? 0 : 900);
   }
   function laden() {
     if (daten) return Promise.resolve();

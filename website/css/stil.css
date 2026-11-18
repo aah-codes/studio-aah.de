@@ -4285,9 +4285,6 @@ html:not(.js) .hk-zeichen { display: none; }
 .ls-kern .ls-karte-titel { text-align: center; } /* Namen mittig unter den Icons (Anna 18.11.2026) */
 .lsx-kopf-icon { display: block; width: auto; height: 72px; margin: 0 0 24px; }
 @media (max-width: 767.98px) { .lsx-kopf-icon { height: 56px; margin-bottom: 16px; } }
-/* Frag-Feld: Absenderin über jeder Antwort (Anna 18.11.2026) */
-.fh-autor { display: flex; align-items: center; gap: 10px; margin: 0 0 10px; font-weight: 600; font-size: var(--groesse-2); }
-.fh-autor img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex: none; }
 @media (max-width: 599.98px) { .ls-kern { grid-template-columns: minmax(0, 1fr); gap: 32px; } .ls-kern .ls-bild { aspect-ratio: 21 / 9; } } /* Handy: untereinander, sonst laufen die Namen ineinander (18.11.2026) */
 
 /* ===== Startseite neu (Anna 18.11.2026): Hero „Leipzig“ mit Frag-Feld als Chat und Diashow, Aufbau wie ein LinkedIn-Profil ===== */
@@ -4303,16 +4300,56 @@ html:not(.js) .hk-zeichen { display: none; }
 .hl-chips { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 0; padding: 0; max-width: 560px; }
 .hl-chip { font: 600 var(--groesse-2)/1.2 var(--schrift-text); color: var(--farbe-weiss); background: transparent; border: 1.5px solid var(--farbe-weiss); border-radius: var(--radius-pille); padding: 8px 16px; cursor: pointer; transition: background .2s, color .2s; }
 .hl-chip:hover, .hl-chip:focus-visible { background: var(--farbe-weiss); color: var(--farbe-primaer); }
-.hl-antworten { margin: 20px 0 0; max-width: 560px; min-height: 0; flex: 0 1 auto; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: var(--farbe-primaer) transparent; scroll-behavior: smooth; }
-.hl-antworten:not(:empty) { background: var(--farbe-weiss); color: var(--farbe-dunkel); border-radius: var(--radius-karte); padding: 8px 24px; }
-/* Chat-Ansicht wie WhatsApp: Überschrift kleiner, Verlauf in der Mitte, Eingabefeld unten */
-.hl.ist-chat .hl-panel { justify-content: flex-start; padding: clamp(28px, 3vw, 48px); }
-.hl.ist-chat .hl-titel { font-size: var(--groesse-6); margin-bottom: 12px; }
-.hl.ist-chat h1 { font-size: var(--groesse-3); margin-bottom: 16px; }
-.hl.ist-chat .hl-meta { margin-bottom: 12px; }
-.hl.ist-chat .hl-chips { display: none; }
-.hl.ist-chat .hl-antworten { order: 1; flex: 1 1 0; margin: 0 0 16px; width: 100%; }
-.hl.ist-chat [data-frag] { order: 2; }
+.hl-antworten { min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: var(--farbe-grau) transparent; scroll-behavior: smooth; }
+.hl-antworten:empty, .hl-chatkopf { display: none; }
+/* Chat-Ansicht nach Vorbild WhatsApp (Anna 18.11.2026: „nimm whatsapp als inspo für chat“): Überschrift kleiner, Unterzeile nur noch
+   für Vorlese-Programme und Suchmaschinen; darunter ein Chatfenster mit Kopfzeile, gemustertem Grund, Blasen und Eingabe unten */
+.hl.ist-chat .hl-panel { justify-content: flex-start; padding: clamp(24px, 2.6vw, 40px); }
+.hl.ist-chat .hl-meta, .hl.ist-chat .hl-chips { display: none; }
+.hl.ist-chat .hl-titel { font-size: var(--groesse-5); margin-bottom: 16px; }
+.hl.ist-chat .hl-titel br { display: none; }
+.hl.ist-chat h1 { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.hl.ist-chat .hl-chatfenster { position: relative; isolation: isolate; display: flex; flex-direction: column; flex: 1 1 0; min-height: 0; background: var(--farbe-creme); border-radius: var(--radius-karte); overflow: hidden; color: var(--farbe-dunkel); }
+/* Muster wie die Kritzeleien bei WhatsApp, hier aus Bauhaus-Grundformen; Farbe kommt aus der Variable, die Form aus der Maske */
+.hl.ist-chat .hl-chatfenster::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--farbe-grau-hell); opacity: .7; pointer-events: none;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' fill='none' stroke='black' stroke-width='2'%3E%3Ccircle cx='28' cy='30' r='12'/%3E%3Cpath d='M110 22h24v24h-24z'/%3E%3Cpath d='M64 96l14 24H50z'/%3E%3Cpath d='M128 110a16 16 0 0 1 32 0z'/%3E%3Cpath d='M20 150h34'/%3E%3Cpath d='M96 160l4 -9 4 9 9 4 -9 4 -4 9 -4 -9 -9 -4z'/%3E%3Ccircle cx='160' cy='164' r='5'/%3E%3C/svg%3E") 0 0 / 180px 180px repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' fill='none' stroke='black' stroke-width='2'%3E%3Ccircle cx='28' cy='30' r='12'/%3E%3Cpath d='M110 22h24v24h-24z'/%3E%3Cpath d='M64 96l14 24H50z'/%3E%3Cpath d='M128 110a16 16 0 0 1 32 0z'/%3E%3Cpath d='M20 150h34'/%3E%3Cpath d='M96 160l4 -9 4 9 9 4 -9 4 -4 9 -4 -9 -9 -4z'/%3E%3Ccircle cx='160' cy='164' r='5'/%3E%3C/svg%3E") 0 0 / 180px 180px repeat; }
+.hl.ist-chat .hl-chatkopf { display: flex; align-items: center; gap: 12px; margin: 0; padding: 10px 16px; background: var(--farbe-weiss); border-bottom: 1px solid var(--farbe-grau-hell); }
+.hl-chatkopf img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex: none; }
+.hl-chatkopf span { display: flex; flex-direction: column; line-height: 1.25; }
+.hl-chatkopf strong { font-size: var(--groesse-3); font-weight: 600; }
+.hl-chatkopf small { font-size: var(--groesse-1); color: var(--farbe-gedaempft); }
+.hl.ist-chat .hl-antworten { position: relative; flex: 1 1 0; padding: 12px 16px; }
+.hl.ist-chat .hl-feld { max-width: none; margin: 0 12px 12px; border-color: var(--farbe-weiss); }
+/* Verlauf: Datum mittig, eigene Frage rechts in Blau, Annas Antwort links in Weiß mit Foto; Blasen mit kleiner Ecke wie im Messenger */
+.hl .fh-chat { margin: 0; gap: 14px; }
+.hl .fh-tag { justify-self: center; padding: 4px 12px; background: var(--farbe-weiss); border-radius: 8px; font-size: var(--groesse-1); font-weight: 600; }
+.hl .fh-runde { gap: 8px; }
+.hl .fh-ich { position: relative; max-width: 85%; padding: 8px 12px 6px; background: var(--farbe-primaer); color: var(--farbe-weiss); border-radius: 12px 0 12px 12px; line-height: 1.45; }
+.hl .fh-ich::after { content: ""; position: absolute; top: 0; right: -8px; width: 8px; height: 12px; background: inherit; clip-path: polygon(0 0, 100% 0, 0 100%); }
+.hl .fh-zeile { display: flex; align-items: flex-start; gap: 8px; max-width: 92%; }
+.hl .fh-foto { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; flex: none; }
+.hl .fh-sie { position: relative; max-width: none; margin: 0; padding: 8px 12px 6px; background: var(--farbe-weiss); border-radius: 0 12px 12px 12px; }
+.hl .fh-sie::before { content: ""; position: absolute; top: 0; left: -8px; width: 8px; height: 12px; background: inherit; clip-path: polygon(0 0, 100% 0, 100% 100%); }
+.hl .fh-name { margin: 0 0 2px; font-size: var(--groesse-2); font-weight: 600; color: var(--farbe-primaer); }
+.hl .fh-kurz { margin: 0 0 6px !important; font-weight: 400; line-height: 1.45; }
+.hl .fh-punkte { margin: 0 0 6px; padding-left: 1.1em; gap: 4px; line-height: 1.45; }
+.hl .fh-zeit { display: flex; justify-content: flex-end; gap: 4px; margin-top: 2px; font-size: var(--groesse-1); line-height: 1.2; color: var(--farbe-gedaempft); }
+.hl .fh-ich .fh-zeit { color: var(--farbe-weiss); }
+.hl .fh-haken { letter-spacing: -3px; padding-right: 3px; }
+/* Links wie „Termin buchen“ bei WhatsApp: ganze Zeilen unten in der Blase, über feiner Linie */
+.hl .fh-quellen { display: grid; gap: 0; margin: 6px -12px -6px !important; }
+.hl .fh-quelle { justify-content: center; padding: 10px 12px; background: none; border: 0; border-top: 1px solid var(--farbe-grau-hell); border-radius: 0; font-weight: 600; color: var(--farbe-primaer); }
+.hl .fh-quelle:hover, .hl .fh-quelle:focus-visible { background: none; text-decoration: underline; text-underline-offset: 3px; }
+.hl .fh-quelle:last-child { border-radius: 0 0 12px 12px; }
+/* „Anna schreibt …“: drei Punkte, kurz vor jeder Antwort */
+.hl .fh-tippt { justify-self: start; display: flex; gap: 4px; margin: 0 0 0 40px; padding: 12px 14px; background: var(--farbe-weiss); border-radius: 0 12px 12px 12px; }
+.hl .fh-tippt span { width: 7px; height: 7px; border-radius: 50%; background: var(--farbe-gedaempft); animation: fh-tippt 1s infinite ease-in-out; }
+.hl .fh-tippt span:nth-child(2) { animation-delay: .15s; }
+.hl .fh-tippt span:nth-child(3) { animation-delay: .3s; }
+@keyframes fh-tippt { 0%, 60%, 100% { opacity: .35; transform: none; } 30% { opacity: 1; transform: translateY(-3px); } }
+.hl .fh-ich, .hl .fh-zeile { animation: fh-rein .2s ease-out both; }
+@keyframes fh-rein { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 /* Diashow: Bilder in Naturfarben, Annas Porträt wie überall; blenden ineinander, langsamer Zoom */
 .hl-bild { position: relative; margin: 0; border-radius: var(--radius-karte); overflow: hidden; background: var(--farbe-creme); isolation: isolate; min-height: 420px; }
 .hl-folien { list-style: none; margin: 0; padding: 0; position: absolute; inset: 0; }
@@ -4341,8 +4378,8 @@ html:not(.js) .hk-zeichen { display: none; }
   .hl-panel, .hl-bild { min-width: 0; }
   .hl-panel { min-height: 0; }
   .hl-bild { aspect-ratio: 3 / 2; }
-  .hl-antworten { max-height: 60svh; }
-  .hl.ist-chat .hl-antworten { flex: none; }
+  .hl.ist-chat .hl-chatfenster { flex: none; }
+  .hl.ist-chat .hl-antworten { flex: none; max-height: 60svh; }
 }
 @media (max-width: 767.98px) {
   .hl .hl-feld { flex-direction: row; flex-wrap: nowrap; align-items: center; padding: 6px 6px 6px 20px; } /* Eingabefeld mind. 16 px (Zoom am iPhone) bleibt aus .fh-feld */
@@ -4352,11 +4389,21 @@ html:not(.js) .hk-zeichen { display: none; }
   .hl-pause { right: 16px; bottom: 16px; }
   .hl-panel { padding: 28px 24px; }
   .hl .hl-meta { white-space: normal; }
+  /* Chat am Handy: mehr Breite für die Blasen, Feld und Button kompakter (18.11.2026) */
+  .hl.ist-chat .hl-panel { padding: 20px 12px 12px; }
+  .hl.ist-chat .hl-titel { margin: 0 8px 12px; }
+  .hl.ist-chat .hl-antworten { padding: 10px 10px; }
+  .hl .fh-zeile { max-width: 100%; gap: 6px; }
+  .hl .fh-foto { width: 28px; height: 28px; }
+  .hl .fh-tippt { margin-left: 34px; }
+  .hl.ist-chat .hl-feld { margin: 0 8px 8px; padding: 4px 4px 4px 16px; }
+  .hl.ist-chat .hl-los { padding: 10px 14px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hl-folie img, .hl-folie.ist-aktiv img, .hl-folie.ist-monitor.ist-aktiv .hl-mon-seite { animation: none; transform: none; }
   .hl-folie { transition: none; }
   .hl-antworten { scroll-behavior: auto; }
+  .hl .fh-tippt span, .hl .fh-ich, .hl .fh-zeile { animation: none; }
 }
 /* Über mich kurz: „Wo es gerade hakt“ als drei Links statt Karten */
 .hakt-links { margin-top: 40px; padding-top: 24px; border-top: 1.5px solid var(--farbe-dunkel); }
@@ -4393,3 +4440,34 @@ html:not(.js) .hk-zeichen { display: none; }
   .pliste-bild { width: 72px; height: 72px; }
   .pliste-pfeil { display: none; }
 }
+/* Marken-Regelwerk neu (Anna 18.11.2026): Kopf wie die Startseite (blaue Fläche, Bild daneben), Formensprache 2D/3D im eigenen Regelwerk */
+.mr-kopf { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 16px; padding: 16px var(--rand-seite) 0; }
+.mr-kopf-text { background: var(--farbe-primaer); color: var(--farbe-weiss); border-radius: var(--radius-karte); padding: clamp(32px, 4.4vw, 72px); display: flex; flex-direction: column; justify-content: center; }
+.mr-kopf .mr-titel { font-size: var(--groesse-7); }
+.mr-kopf .mr-dach { color: var(--farbe-weiss); margin-bottom: 20px; }
+.mr-kopf-bild { position: relative; margin: 0; border-radius: var(--radius-karte); overflow: hidden; background: var(--farbe-creme); min-height: 420px; }
+.mr-kopf-bild img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.mr-formen .mr-b-regel { margin-bottom: 24px; }
+.mr-ic-paare { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.mr-ic-paare li { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; background: var(--farbe-weiss); border-radius: var(--radius-karte); padding: 16px; }
+.mr-ic-2d, .mr-ic-3d { display: grid; place-items: center; aspect-ratio: 1; }
+.mr-ic-2d img { width: 58%; height: 58%; object-fit: contain; }
+.mr-ic-3d img { width: 100%; height: 100%; object-fit: contain; }
+.mr-ic-name { grid-column: 1 / -1; text-align: center; font-weight: 600; font-size: var(--groesse-2); }
+.mr-ic-set { list-style: none; margin: 16px 0 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; }
+.mr-ic-set li { background: var(--farbe-weiss); border-radius: var(--radius-karte); padding: 8px 8px 12px; text-align: center; font-size: var(--groesse-1); }
+.mr-ic-set img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; }
+@media (max-width: 1024px) {
+  .mr-kopf { grid-template-columns: minmax(0, 1fr); }
+  .mr-kopf-bild { min-height: 0; aspect-ratio: 4 / 3; }
+  .mr-ic-paare { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mr-ic-set { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (max-width: 767.98px) {
+  .mr-kopf-text { padding: 28px 24px; }
+  .mr-kopf .mr-titel { font-size: var(--groesse-7); }
+  .mr-ic-paare { grid-template-columns: minmax(0, 1fr); }
+  .mr-ic-set { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+.mr-formen { background: var(--farbe-creme); }
+.fokus-bild { position: relative; }

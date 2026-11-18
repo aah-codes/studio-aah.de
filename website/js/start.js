@@ -8,10 +8,10 @@
     f.querySelector('input').value = c.dataset.frage;
     if (f.requestSubmit) f.requestSubmit(); else f.dispatchEvent(new Event('submit', { cancelable: true })); }); });
 
-  // Chat-Ansicht: sobald eine Antwort da ist, Überschrift kleiner, Feld unten; neueste Antwort steht oben
+  // Chat-Ansicht wie WhatsApp: sobald eine Frage gestellt ist, Überschrift kleiner, Chatfenster mit Feld unten (Scrollen macht js/frag.js)
   var verlauf = hero.querySelector('.hl-antworten');
   if (verlauf && 'MutationObserver' in window) new MutationObserver(function () {
-    hero.classList.toggle('ist-chat', !!verlauf.textContent.trim()); verlauf.scrollTop = 0;
+    hero.classList.toggle('ist-chat', !!verlauf.textContent.trim());
   }).observe(verlauf, { childList: true, subtree: true });
 
   // Diashow: Bilder blenden ineinander, Pause-Button; Bilder ab Folie 2 laden erst kurz vorher
