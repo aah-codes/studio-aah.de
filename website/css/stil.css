@@ -565,7 +565,7 @@ h1, h2, h3 {
 .mm-label { margin: 0 0 16px; }
 .mm-liste { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); }
 .mm-liste a { display: block; border-top: var(--rahmen) solid var(--farbe-rahmen); text-decoration: none; color: inherit; }
-.mm-name { display: block; font-family: var(--schrift-ueberschrift); text-transform: uppercase; line-height: 1.1; transition: transform .25s; }
+.mm-name { display: block; font-family: var(--schrift-text); font-weight: 600; line-height: 1.3; transition: transform .25s; } /* Manrope statt Anton-Versalien: besser lesbar (Anna, 18.11.2026) */
 .mm-liste a:hover .mm-name, .mm-liste a:focus-visible .mm-name { transform: translateX(6px); }
 .mm-karte { display: flex; flex-direction: column; gap: 12px; background: var(--farbe-hellgrau); border-radius: var(--radius-karte); text-decoration: none; color: inherit; transition: transform .3s; }
 .mm-karte:hover { transform: translateY(-4px); }
@@ -1228,7 +1228,7 @@ h1, h2, h3, .gr-xxl, .gr-xl, .gr-h2, .gr-h3, .artikel h1, .mm-karte-titel, .fuss
 
 /* ---------- 33. Megamenü mit 9 Leistungen und Bild in der Aktions-Karte ---------- */
 .mm-liste a { padding: 14px 0; }
-.mm-name { font-size: var(--groesse-4); }
+.mm-name { font-size: var(--groesse-3); }
 /* Mega-Menü-Karte wie die Preise-Karte der Leistungsseiten: schwarz, Icon auf weißer Kachel (Anna 25.10.2026) */
 /* Anna 16.11.2026: Karten in beiden Mega-Menüs beige statt schwarz */
 .mm-karte-beige { background: var(--farbe-creme); color: var(--farbe-dunkel); padding: 32px; }
@@ -1284,7 +1284,7 @@ h1, h2, h3, .gr-xxl, .gr-xl, .gr-h2, .gr-h3, .artikel h1, .mm-karte-titel, .fuss
 
 /* ---------- 35. Anton: fester Zusatz-Zeichenabstand (Anna, 12.10.2026) ---------- */
 /* Fester Wert in px: bei kleinen Größen deutlich (Buchstaben laufen sonst ineinander), bei großen kaum sichtbar */
-h1, h2, h3, .mm-name, .mm-karte-titel, .hero-titel, .fuss-karte-titel, .fuss-gross, .ls-karte-titel, .fakten dt, .lsx-karte-preis, .gr-xxl, .gr-xl, .gr-h2, .gr-h3 { letter-spacing: .9px; }
+h1, h2, h3, .mm-karte-titel, .hero-titel, .fuss-karte-titel, .fuss-gross, .ls-karte-titel, .fakten dt, .lsx-karte-preis, .gr-xxl, .gr-xl, .gr-h2, .gr-h3 { letter-spacing: .9px; }
 .blog-karte h2 { letter-spacing: normal; }
 .lsx-extra-liste li > span { text-align: left; }
 .lsx-extra-preis { text-align: right !important; }
@@ -1505,8 +1505,8 @@ main section[id] { scroll-margin-top: 0; } /* Abstand kommt schon aus html { scr
 @media (max-width: 900px) { .lsx-retainer { padding: 0 var(--rand-seite-mobil) 64px; } }
 /* Megamenü ab 09.11.2026 (Anna: aufräumen): drei gleich breite Spalten – Kernkompetenzen, Marke und Marketing, Weitere Leistungen (klein, ohne Unterzeile) – daneben die Preiskarte */
 .mm-bereiche { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 40px; }
-/* Mega-Menü ruhig wie bei Tesla (Anna 25.10.2026): nur zwei Größen – Namen in Anton (eine Stärke, mehr Buchstabenabstand), Text und kleine Leistungen gleich groß */
-.kopf-nav .mm-name { font-size: var(--groesse-4); letter-spacing: .06em; }
+/* Mega-Menü ruhig wie bei Tesla (Anna 25.10.2026): nur zwei Größen; Namen seit 18.11.2026 in Manrope 600 statt Anton (Anna: „schlecht leserlich“) */
+.kopf-nav .mm-name { font-size: var(--groesse-3); letter-spacing: 0; }
 .kopf-nav .mm-weitere a { font-size: var(--groesse-2); }
 .kopf-nav .mm-weitere a { font-weight: 500; }
 /* Fokusrahmen um „Leistungen“ mit mehr Luft (bleibt für die Bedienung mit Tastatur) */
@@ -1517,7 +1517,7 @@ main section[id] { scroll-margin-top: 0; } /* Abstand kommt schon aus html { scr
 @media (min-width: 1024.02px) and (max-width: 1200px) {
   .mm-innen { grid-template-columns: 5fr 2fr; gap: 32px; }
   .mm-bereiche { gap: 0 24px; }
-  .kopf-nav .mm-name { font-size: var(--groesse-4); }
+  .kopf-nav .mm-name { font-size: var(--groesse-3); }
 }
 .kopf-nav .mm-weitere a { text-decoration: none; font-weight: 600; }
 .kopf-nav .mm-weitere a:hover, .kopf-nav .mm-weitere a:focus-visible { text-decoration: underline; opacity: 1; }
