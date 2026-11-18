@@ -155,10 +155,12 @@ def referenzen(tag, pre):
     return '  <section class="lsx-referenzen" id="referenzen" aria-labelledby="referenzen-titel">\n    <p class="meta">Referenzen</p>\n    <h2 class="gr-h2" id="referenzen-titel">Projekte aus diesem Bereich</h2>\n    <div class="referenz-rahmen">\n' + I.referenz_karten(liste, pre, 'lsx', tag) + '\n    </div>\n  </section>'
 
 
+# Ersatz-Schlagworte, solange es zu einer Leistung weniger als zwei eigene Artikel gibt (Anna 18.11.2026: „mindestens 2“)
+ARTIKEL_ERSATZ = {'marketing': ['brand', 'website'], 'print': ['brand'], 'illustration': ['ui-ux', 'brand'], 'motion': ['brand', 'website'], 'retainer': ['website']}
+
+
 def artikel(pre, tag):
-    liste = I.mit_tag(I.BLOG, [tag])[:3]
-    if not liste: return ''
-    return '  <section class="lsx-artikel blog-neu" id="artikel" aria-labelledby="artikel-titel">\n    <div class="lsx-artikel-kopf"><p class="meta">Blog</p><h2 class="gr-h3" id="artikel-titel">Passende Artikel</h2></div>\n    <ul class="blog-liste">\n' + I.blog(liste, pre, pre + 'blog/') + '\n    </ul>\n  </section>'
+    return I.passende_artikel([tag], pre, ARTIKEL_ERSATZ.get(tag, ()))
 
 
 def kontakt(g, pre, link, link_text, termine, anfrage, satz='Bei STUDIO AAH! arbeiten Sie direkt mit mir, von der ersten Idee bis zum Launch.'):
@@ -501,7 +503,7 @@ def seite(key, c):
 
 {kontakt(g, pre, link, link_text, termine if c.get('termine_zeigen', True) else '', c.get('anfrage', 'Beratung anfragen'), **({'satz': c['ansprech_satz']} if c.get('ansprech_satz') else {}))}
 
-{artikel(pre, c['tag']) if c.get('artikel', True) else ''}
+{artikel(pre, c['tag'])}
 
 {spiel_sektion(pre, MENUE_VERSION) if c.get('spiel') else ''}
 

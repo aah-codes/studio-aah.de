@@ -297,6 +297,24 @@ def kennzahlen(klasse='fakten hero-fakten', einrueck='    '):
 
 
 
+# Passende Artikel unter Leistungen und festen Angeboten (Anna 18.11.2026: „bei allen Angeboten, allen Leistungen … die passenden Artikel,
+# mindestens 2“). Auswahl über die Schlagworte (tags) in blog.json, neueste zuerst; reichen sie nicht, kommen Artikel mit den Ersatz-Schlagworten dazu.
+# Neue Artikel erscheinen so von selbst, sobald sie ein passendes Schlagwort tragen.
+def passende_artikel(tags, pre, ersatz=(), anzahl=3, mindestens=2):
+    liste = mit_tag(BLOG, list(tags))
+    if len(liste) < mindestens:
+        liste += [x for x in mit_tag(BLOG, list(ersatz)) if x not in liste]
+    liste = liste[:anzahl]
+    if len(liste) < mindestens:
+        raise SystemExit(f'Passende Artikel: weniger als {mindestens} für {tags} (Ersatz {ersatz}), Schlagworte in blog.json ergänzen')
+    return ('  <section class="lsx-artikel blog-neu" id="artikel" aria-labelledby="artikel-titel">\n    <div class="lsx-artikel-kopf"><p class="meta">Blog</p>'
+            '<h2 class="gr-h3" id="artikel-titel">Passende Artikel</h2></div>\n    <ul class="blog-liste">\n' + blog(liste, pre, pre + 'blog/') + '\n    </ul>\n  </section>')
+
+
+# Feste Angebote (eigene Seiten mit Marker ARTIKEL vor </main>): Schlagworte
+ANGEBOT_ARTIKEL = {'marken-regelwerk/index.html': ['brand'], 'website-check/index.html': ['website'], 'ki-arbeits-setup/index.html': ['ki']}
+
+
 if __name__ == '__main__':
     seiten = {
         'index.html': [('PROJEKTE', lambda: projekt_liste([x for x in PROJEKTE if x.get('case')], '')), ('LINKEDIN', lambda: linkedin_leiste('')), ('STIMMEN', lambda: stimmen(STIMMEN, ''))],   # „Für wen“, Blog-Karten und Kennzahlen seit 12.11.2026 nicht mehr auf der Startseite (Kennzahlen nur auf Über mich)
@@ -308,6 +326,8 @@ if __name__ == '__main__':
         seiten[f'blog/{b["slug"]}/index.html'] = [('WEITERE', lambda s=b['slug']: weitere_artikel(s))]
         if 'AEHNLICH:START' in (WEBSITE / 'blog' / b['slug'] / 'index.html').read_text(encoding='utf-8'):
             seiten[f'blog/{b["slug"]}/index.html'].append(('AEHNLICH', lambda s=b['slug']: aehnliche_artikel(s)))
+    for datei, tags in ANGEBOT_ARTIKEL.items():
+        seiten[datei] = [('ARTIKEL', lambda tags=tags: passende_artikel(tags, '../'))]
     for datei, teile in seiten.items():
         p = WEBSITE / datei
         t = p.read_text(encoding='utf-8')
