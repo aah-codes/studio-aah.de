@@ -4131,8 +4131,7 @@ html:not(.js) .hk-zeichen { display: none; }
 .tab-vergleich tbody th { font-weight: 600; width: 22%; }
 .tab-vergleich tbody tr:nth-child(odd) > * { background: var(--farbe-creme); }
 .tab-vergleich tbody tr:nth-child(even) > * { background: var(--farbe-weiss); }
-.tab-vergleich tbody tr > :first-child { border-radius: var(--radius-karte) 0 0 var(--radius-karte); }
-.tab-vergleich tbody tr > :last-child { border-radius: 0 var(--radius-karte) var(--radius-karte) 0; }
+/* Tabellenzeilen ohne abgerundete Ecken (Anna 18.11.2026) */
 .tab-vergleich :is(thead th:first-child, tbody th) { position: sticky; left: 0; z-index: 1; }
 .vergleich-fuss { max-width: var(--lesespalte); margin: -1.5rem auto 3rem; font-size: var(--groesse-2); color: var(--farbe-gedaempft); }
 
