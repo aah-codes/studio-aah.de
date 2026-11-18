@@ -1,0 +1,140 @@
+  <article class="artikel artikel-ratgeber">
+    <nav class="meta" aria-label="Brotkrumen"><a href="../">Blog</a> / <a href="../#thema-markenbildung">Markenbildung</a></nav>
+    <p class="meta">Ratgeber Marke</p>
+    <h1>Agentische Markensysteme:<br> Warum hat das Marken-PDF ausgedient?</h1>
+    <p class="artikel-lead">Mehr als die Hälfte der Unternehmen in Deutschland setzt inzwischen KI ein.[[bitkom]] Ein Markenhandbuch als PDF kann eine KI aber nicht zuverlässig anwenden. Agentische Markensysteme sind die Antwort darauf, und sie sind noch ganz neu: Bei meiner Recherche habe ich in Deutschland kein festes Angebot dafür gefunden, und auch mein eigenes Angebot ist noch in der Entwicklung. Hier steht, was ein agentisches Markensystem ist, was hineingehört und wie ein Unternehmen im Mittelstand damit anfängt.</p>
+    <p class="artikel-meta"><span>Von <a href="../../profil/">Anna Härtelt</a></span><span>Veröffentlicht <time datetime="2026-11-18">18. November 2026</time></span><span>Lesezeit LESEZEIT Minuten</span><span>Stand: November 2026</span></p>
+    <img class="artikel-bild" src="../../bilder/blog-markensysteme/titel.webp" alt="Links ein graues PDF-Dokument mit Fragezeichen, rechts ein Ordner mit Dateien für Ton, Farben und Bilder in Blau, Schwarz und Weiß." width="1200" height="800">
+
+    <div class="artikel-text">
+
+      <section class="kurz" aria-labelledby="kurz-titel">
+        <p class="meta" id="kurz-titel">Kurz gesagt</p>
+        <ul>
+          <li><strong>Ein agentisches Markensystem ist ein Paket aus Dateien</strong>, das Menschen lesen und KI-Agenten auslesen können: Regeln für Ton, Wörter, Farben, Schrift, Bildsprache und Layout, jeweils mit Begründung.[[littleplains]]</li>
+          <li><strong>Ein Marken-PDF zeigt Entscheidungen für Seiten, die schon gestaltet sind.</strong> Was auf einer neuen Seite gilt, sagt es nicht. Genau dort rät eine KI und landet beim Austauschbaren.[[littleplains]]</li>
+          <li><strong>Eine KI braucht genaue, messbare Regeln:</strong> Farbwerte als Hex-Code statt einer Beschreibung, verbotene Wörter, Längen für Überschriften.[[monigle]]</li>
+          <li><strong>57 Prozent der Unternehmen in Deutschland ab 20 Beschäftigten setzen KI ein</strong>, ein Jahr zuvor waren es 36 Prozent.[[bitkom]]</li>
+          <li><strong>Für den Anfang reicht eine einzige Markdown-Datei</strong> mit den wichtigsten Regeln, getestet an echten Aufgaben aus dem Alltag.</li>
+        </ul>
+      </section>
+
+      <nav class="inhalt-verzeichnis" aria-labelledby="iv-titel">
+        <p class="meta" id="iv-titel">Inhalt</p>
+        <ol>
+          <li><a href="#warum">Warum reicht ein Marken-PDF nicht mehr?</a></li>
+          <li><a href="#was-ist-das">Was ist ein agentisches Markensystem?</a></li>
+          <li><a href="#inhalt">Was gehört hinein?</a></li>
+          <li><a href="#zwei-fassungen">Wie klingt eine Regel für Menschen, wie für die KI?</a></li>
+          <li><a href="#pruefen">Wie prüft man, ob das System hält?</a></li>
+          <li><a href="#pflege">Wer pflegt das System?</a></li>
+          <li><a href="#anfangen">Wie fängt ein Unternehmen im Mittelstand an?</a></li>
+          <li><a href="#fazit">Fazit</a></li>
+          <li><a href="#faq">Häufige Fragen</a></li>
+          <li><a href="#quellen">Quellen</a></li>
+        </ol>
+      </nav>
+
+      <h2 id="warum">Warum reicht ein Marken-PDF nicht mehr?</h2>
+      <p>Ein Markenhandbuch (Brand Manual) wurde für Menschen geschrieben. Es zeigt Logo, Farben, Schriften und ein paar fertige Beispielseiten. Wer lange im Unternehmen ist, füllt die Lücken aus Erfahrung.</p>
+      <p>Eine KI hat diese Erfahrung nicht. Little Plains, ein Studio für Marken und digitale Produkte aus New York, das vor allem Start-ups begleitet,[[lpstudio]] beschreibt das an einem Beispiel: Das Handbuch zeigt eine Startseite mit grünem Akzent. Ob Grün auf einen Button, in eine Warnung oder nirgendwohin gehört, sagt es nicht. Ein Mensch kann nachfragen, muss aber oft selbst entscheiden. Eine KI rät deutlich häufiger, und jede geratene Entscheidung rückt das Ergebnis näher an ein austauschbares Produkt.[[littleplains]] Es sieht ordentlich aus, aber nicht nach Ihnen.</p>
+      <p>Dazu kommt das Tempo. Meiner Erfahrung nach entsteht eine Stellenanzeige mit Grafik heute in wenigen Minuten. Little Plains schreibt, dass ein Unternehmen heute in einem Monat mehr kleine Entscheidungen über seine Marke treffen kann als früher in einem Jahr.[[littleplains]] Der Anbieter Frontify schreibt, dass PDF-Handbücher nie dafür gebaut wurden, einer KI ihre Regeln geordnet zu liefern.[[frontify]]</p>
+
+      <h2 id="was-ist-das">Was ist ein agentisches Markensystem?</h2>
+      <p>Ein agentisches Markensystem (Agentic Brand System) ist eine Sammlung aus Text-, Daten- und Codedateien. Menschen können darin blättern, KI-Agenten lesen dieselben Dateien aus.[[littleplains]]</p>
+      <figure class="bild-zitat">
+        <img src="../../bilder/blog-markensysteme/ordner.webp" alt="Grafik: Ein Ordner namens marke enthält vier Dateien: lies-mich.md sagt, welche Datei wofür gilt; ton.md enthält Anrede und Wörter; farben.json die Farbwerte; bilder.md die Regeln für Bilder." width="1200" height="800" loading="lazy">
+        <figcaption>So kann ein agentisches Markensystem aufgebaut sein: ein Ordner, mehrere Dateien, eine Lese-Anleitung.</figcaption>
+      </figure>
+      <p>Der Unterschied zum PDF: Jede Regel nennt ihren Grund und sagt, wo sie gilt und wo nicht. Damit kann auch jemand eine gute Entscheidung treffen, der eine Seite baut, die noch niemand gezeichnet hat.[[littleplains]]</p>
+      <p>Little Plains liefert so ein Paket inzwischen bei jedem Projekt mit.[[littleplains]]</p>
+
+      <h2 id="inhalt">Was gehört hinein?</h2>
+      <div class="tabelle-scroll" tabindex="0" role="region" aria-label="Tabelle: Was in ein agentisches Markensystem gehört">
+        <table class="tab-vergleich">
+          <caption>Die Teile eines agentischen Markensystems mit Beispielen</caption>
+          <thead><tr><th scope="col">Teil</th><th scope="col">Was drinsteht</th><th scope="col">Beispiel</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Lese-Anleitung</th><td>Welche Datei für welche Aufgabe</td><td>„Für Stellenanzeigen: Ton, Wörter, Vorlage Stellenanzeige“</td></tr>
+            <tr><th scope="row">Ton und Wörter</th><td>Anrede, Satzlänge, bevorzugte und verbotene Wörter</td><td>„Wir siezen. Nicht ‚innovativ‘.“</td></tr>
+            <tr><th scope="row">Farben und Schrift</th><td>Genaue Werte und wofür sie da sind</td><td>„Bordeaux #5B1A2B für Flächen, nie für Text“</td></tr>
+            <tr><th scope="row">Bildsprache</th><td>Motive, Ausschnitt, was nie vorkommt</td><td>„Echte Menschen bei der Arbeit, keine Stockfotos mit Headset“</td></tr>
+            <tr><th scope="row">Layout und Vorlagen</th><td>Reihenfolge, Abstände, feste Bausteine</td><td>„Logo unten links, nie zentriert“</td></tr>
+            <tr><th scope="row">Begründungen</th><td>Warum eine Regel gilt</td><td>„Kupfer nur als Akzent, weil es das Material des Betriebs ist“</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Für Farben, Schriftgrößen und Abstände gibt es ein gemeinsames Format: Design Tokens. Design Tokens sind die Werte eines Designs mit festem Namen, zum Beispiel „Hauptfarbe = #5B1A2B“, gespeichert so, dass Website, Präsentation und KI dieselbe Zahl verwenden. Die Design Tokens Community Group beim W3C hat es am 28. Oktober 2025 erstmals in einer stabilen Fassung veröffentlicht; ein offizieller W3C-Standard ist es nicht.[[w3c]] Google stellt mit DESIGN.md eine frei nutzbare Vorlage für solche Dateien bereit, noch in einer frühen Testphase.[[designmd]] Sie verbindet genaue Werte mit Begründungen in normalen Sätzen: Die Werte sagen der KI, welches Blau gemeint ist, die Sätze sagen ihr, wann und warum sie es einsetzt.[[designmd]]</p>
+
+      <h2 id="zwei-fassungen">Wie klingt eine Regel für Menschen, wie für die KI?</h2>
+      <p>Für Menschen darf eine Regel ein Gefühl beschreiben. Für die KI muss sie messbar sein. Die Markenberatung Monigle zeigt den Unterschied an einem Beispiel, hier sinngemäß übersetzt:[[monigle]]</p>
+      <figure class="bild-zitat">
+        <img src="../../bilder/blog-markensysteme/zwei-fassungen.webp" alt="Grafik: Dieselbe Regel in zwei Fassungen. Links für Menschen: Ruhig, sachlich, ohne Übertreibung. Rechts für die KI: Ton ruhig, direkt; verbotene Wörter bahnbrechend, revolutionär; Überschrift höchstens 8 Wörter." width="1200" height="800" loading="lazy">
+        <figcaption>Dieselbe Regel, einmal für Menschen, einmal für die KI.</figcaption>
+      </figure>
+
+      <h2 id="pruefen">Wie prüft man, ob das System hält?</h2>
+      <p>Ich teste jedes Paket, bevor ich es übergebe: Ein frischer KI-Agent ohne Vorwissen baut daraus etwas Neues, zum Beispiel eine Stellenanzeige oder eine Folie. Jede falsche Entscheidung zeigt eine Lücke, die ich ins Paket nachtrage. So arbeitet auch Little Plains.[[littleplains]]</p>
+      <p>Die Agentur Focus Lab geht ähnlich vor. Sie lässt die Dateien gegen echte Anfragen laufen und passt sie je Sprachmodell an, weil Claude, ChatGPT und andere Anweisungen unterschiedlich lesen.[[focuslab]]</p>
+
+      <h2 id="pflege">Wer pflegt das System?</h2>
+      <p>Ein Markensystem veraltet, wenn sich das Unternehmen ändert oder neue Werkzeuge dazukommen. Für Little Plains ist genau das die offene Frage: Wer entscheidet über eine Änderung, wenn das Unternehmen, eine weitere Agentur und ein KI-Agent sie gleichzeitig vorschlagen?[[littleplains]] Focus Lab testet die Dateien deshalb weiter, wenn sich die Sprachmodelle ändern.[[focuslab]]</p>
+      <p>Meine Empfehlung: Eine Person im Unternehmen ist für das System verantwortlich. Jede Änderung steht mit Datum und Grund in der Datei. Auf Wunsch übernehme ich die Pflege: Ich passe die Dateien an, wenn sich Ihr Unternehmen ändert oder ein neues KI-Modell kommt, und teste sie erneut. Bei STUDIO AAH! gibt es dafür die Regelwerk-Pflege ab 140 € netto im Monat.</p>
+
+      <h2 id="anfangen">Wie fängt ein Unternehmen im Mittelstand an?</h2>
+      <p>Ein kleines Unternehmen braucht kein Paket mit React-Komponenten. Meiner Meinung nach reicht für den Anfang eine einzige Datei:</p>
+      <ol>
+        <li><strong>Bestand sichten:</strong> Logo, Farben, Schriften, Vorlagen und zehn Texte, die das Unternehmen gut findet.</li>
+        <li><strong>Eine Markdown-Datei schreiben:</strong> Ton, Wörter, Farben mit Werten, Schrift, Layout für die drei häufigsten Aufgaben.</li>
+        <li><strong>In das KI-Werkzeug des Teams legen</strong> (je nach Tarif): in ChatGPT als Anweisung eines eigenen GPTs oder Projekts, in Claude als Projekt-Anweisung oder Skill, in Gemini als Gem.</li>
+        <li><strong>Mit fünf echten Aufgaben testen</strong>, mit und ohne Datei, und nachschärfen.</li>
+        <li><strong>Eine verantwortliche Person benennen.</strong></li>
+      </ol>
+
+      <h2 id="fazit">Fazit</h2>
+      <p>Das Marken-PDF bleibt für Menschen nützlich. Für die KI reicht es nicht. Wer mit KI gestaltet, braucht seine Marke ein zweites Mal: genau, messbar und mit Begründung. Der Anfang ist eine Datei, kein Großprojekt.</p>
+
+      <h2 id="faq">Häufige Fragen</h2>
+      <div class="artikel-faq">
+FAQ_HTML
+      </div>
+
+      <section class="artikel-schluss" aria-labelledby="schluss-titel">
+        <div>
+          <p class="meta">Ihr nächster Schritt</p>
+          <h2 id="schluss-titel">Soll Ihre KI Ihre Marke kennen?</h2>
+          <p>Im kostenlosen Erstgespräch (30 Minuten, online) sehen wir uns an, was Ihr Team heute mit KI gestaltet und was eine Markendatei dafür leisten kann.</p>
+          <p class="knoepfe"><a class="button" href="../../kontakt/">Beratung anfragen <span aria-hidden="true">→</span></a></p>
+        </div>
+      </section>
+
+      <section class="autorin" aria-labelledby="autorin-titel">
+        <img src="../../bilder/anna-haertelt-studio-blau-rund.jpg" alt="Anna Härtelt" width="240" height="240" loading="lazy">
+        <div>
+          <p class="meta" id="autorin-titel">Über die Autorin</p>
+          <p class="autorin-name">Anna Härtelt</p>
+          <p>Gründerin von STUDIO AAH! in Leipzig. UX/UI-Designerin, Strategin und Webentwicklerin, seit 2020 selbstständig, mehr als 40 Projekte – von der Website für Selbstständige bis zum Redesign für mittelständische Unternehmen.</p>
+          <p><a class="textlink" href="../../profil/">Mehr über mich →</a></p>
+        </div>
+      </section>
+
+      <h2 id="quellen">Quellen</h2>
+      <ul class="quellen">
+        <li data-quelle="bitkom"><a href="https://www.bitkom.org/Presse/Presseinformation/Erstmals-nutzt-Mehrheit-Unternehmen-KI">Bitkom: Erstmals nutzt die Mehrheit der Unternehmen KI, Presseinformation, 14.09.2026 <span aria-hidden="true">↗</span></a></li>
+        <li data-quelle="littleplains"><a href="https://agentic.littleplains.com/">Little Plains: Agentic Systems Are the Future of Brands, abgerufen am 18.11.2026 <span aria-hidden="true">↗</span></a></li>
+        <li data-quelle="lpstudio"><a href="https://littleplains.com/">Little Plains: Website des Studios, abgerufen am 18.11.2026 <span aria-hidden="true">↗</span></a></li>
+        <li data-quelle="monigle"><a href="https://www.monigle.com/blog/converting-brand-guidelines-into-ai-ready-systems/">Monigle: The blueprint for converting brand guidelines into AI-ready systems, abgerufen am 18.11.2026 <span aria-hidden="true">↗</span></a></li>
+        <li data-quelle="frontify"><a href="https://www.frontify.com/en/guide/brand-guidelines-for-ai">Frontify: Machine-readable brand guidelines: From brand.md to an AI-ready brand system (Ratgeber des Anbieters), abgerufen am 18.11.2026 <span aria-hidden="true">↗</span></a></li>
+        <li data-quelle="w3c"><a href="https://www.designtokens.org/tr/2025.10/format/">Design Tokens Community Group (W3C): Design Tokens Format Module 2025.10, 28.10.2025 <span aria-hidden="true">↗</span></a></li>
+        <li data-quelle="designmd"><a href="https://github.com/google-labs-code/design.md">Google Labs: DESIGN.md, abgerufen am 18.11.2026 <span aria-hidden="true">↗</span></a></li>
+        <li data-quelle="focuslab"><a href="https://www.focuslab.agency/services/ai-brand-tools">Focus Lab: AI Activation (Leistungsseite der Agentur), abgerufen am 18.11.2026 <span aria-hidden="true">↗</span></a></li>
+      </ul>
+
+    </div>
+    <nav class="artikel-nav" aria-label="Beitragsnavigation">
+      <a class="zurueck" href="../was-bringt-ein-corporate-design/"><span class="kategorie">← Zurück</span>Was bringt ein Corporate Design, und was spart es?</a>
+    </nav>
+  </article>
+
+<!-- WEITERE:START -->
+<!-- WEITERE:ENDE -->
