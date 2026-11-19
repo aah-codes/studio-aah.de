@@ -18,7 +18,7 @@
   var folien = hero.querySelectorAll('.hl-folie'), p = hero.querySelector('.hl-pause');
   if (!folien.length || !p) return;
   var DAUER = 6000, i = 0, uhr = null, still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function lade(f) { f.querySelectorAll('img[data-src]').forEach(function (b) { b.src = b.dataset.src; b.removeAttribute('data-src'); }); }
+  function lade(f) { f.querySelectorAll('img[data-src]').forEach(function (b) { if (b.dataset.srcset) { b.srcset = b.dataset.srcset; b.removeAttribute('data-srcset'); } b.src = b.dataset.src; b.removeAttribute('data-src'); }); }
   function zeige(n) {
     i = (n + folien.length) % folien.length;
     lade(folien[i]); lade(folien[(i + 1) % folien.length]);

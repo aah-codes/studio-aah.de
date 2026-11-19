@@ -3560,7 +3560,7 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 /* LinkedIn: Leiste mit den eigenen Beiträgen, Bild im Hochformat, unten Datum und LinkedIn-Zeichen */
 .li-abschnitt { padding-bottom: 96px; background: var(--farbe-creme); }
 .li-ks { padding: 0 var(--rand-seite); }
-.li-ks .ks-spur { gap: 20px; padding: 4px; margin: -4px; }
+.li-ks .ks-spur { gap: 20px; padding: 4px; margin: -4px; scroll-padding-inline: 4px; } /* scroll-padding: sonst rastet die Spur beim Laden 4 px ein; Chrome wertet das als Scrollen und misst keinen LCP (PageSpeed NO_LCP, 19.11.2026) */
 .li-ks .ks-spur > .li-karte { flex: 0 0 clamp(250px, 22vw, 320px); scroll-snap-align: start; }
 .li-karte { display: flex; flex-direction: column; overflow: hidden; border: 2px solid transparent; border-radius: var(--radius-karte); background: var(--farbe-weiss); color: var(--farbe-dunkel); text-decoration: none; transition: border-color .2s ease; }
 .li-karte:hover { border-color: var(--farbe-primaer); }

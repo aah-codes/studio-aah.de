@@ -288,7 +288,8 @@
       const pk = ks.querySelector('[data-pause]');
       karten.forEach(() => punkte.appendChild(document.createElement('i')));
       let nr = 0, uhr = null, sichtbar = false, fokus = false;
-      const markiere = () => { [...punkte.children].forEach((p, i) => { p.classList.remove('aktiv'); void p.offsetWidth; p.classList.toggle('aktiv', i === nr); }); };
+      // Lauf-Balken neu starten ohne erzwungenes Layout (PageSpeed 19.11.2026: void offsetWidth kostete 75 ms beim Laden): Klasse weg, zwei Bilder später wieder dran
+      const markiere = () => { [...punkte.children].forEach((p) => p.classList.remove('aktiv')); requestAnimationFrame(() => requestAnimationFrame(() => { const p = punkte.children[nr]; if (p) p.classList.add('aktiv'); })); };
       const zeige = (n) => { nr = (n + karten.length) % karten.length; spur.scrollTo({ left: karten[nr].offsetLeft - spur.offsetLeft }); markiere(); };
       const lauf = () => {
         clearInterval(uhr);

@@ -94,7 +94,7 @@
 
     var zeile = el('div', 'fh-zeile');
     var foto = el('img', 'fh-foto');
-    foto.src = 'bilder/anna-haertelt-studio-blau-rund.jpg'; foto.alt = ''; foto.width = 32; foto.height = 32;
+    foto.src = 'bilder/anna-haertelt-studio-blau-rund-192.jpg'; foto.alt = ''; foto.width = 32; foto.height = 32;
     zeile.appendChild(foto);
     var antwort = el('div', 'fh-sie');
     zeile.appendChild(antwort);
