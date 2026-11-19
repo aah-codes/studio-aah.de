@@ -51,6 +51,26 @@ def favicon(text):
     return FAVICON.sub(lambda m: m.group(0) + f'\n{m.group(1)}<link rel="icon" href="{m.group(2)}bilder/favicon-144.png" sizes="144x144" type="image/png">', text, count=1)
 
 
+# Sicherheit (Anna 19.11.2026, Website-Check von außen: Sicherheit 45/100). Der Server lässt keine eigenen Header zu,
+# deshalb Content-Security-Policy und Referrer-Policy als Meta-Tag direkt nach charset (vor allen geladenen Dateien).
+# Erlaubt nur, was die Seite braucht: eigene Dateien, Formspark (Anfragen), Brevo (Newsletter, auch per fetch), YouTube nach Klick.
+# HSTS, nosniff, X-Frame-Options/frame-ancestors und Permissions-Policy gehen nur als Header, nicht als Meta-Tag.
+# Neuer Fremddienst → hier eintragen, sonst blockiert der Browser ihn.
+CSP = ("default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; "
+       "connect-src 'self' https://submit-form.com https://*.sibforms.com; frame-src https://www.youtube-nocookie.com; "
+       "form-action 'self' https://submit-form.com https://*.sibforms.com; base-uri 'self'; object-src 'none'; "
+       "upgrade-insecure-requests")
+SICHERHEIT = (f'<meta http-equiv="Content-Security-Policy" content="{CSP}">\n'
+              '  <meta name="referrer" content="strict-origin-when-cross-origin">')
+ALT_SICHERHEIT = re.compile(r'\n[ \t]*<meta http-equiv="Content-Security-Policy"[^>]*>\n[ \t]*<meta name="referrer"[^>]*>')
+
+
+def sicherheit(text):
+    """Setzt (oder erneuert) die Sicherheits-Meta-Tags direkt hinter <meta charset>."""
+    text = ALT_SICHERHEIT.sub('', text)
+    return re.sub(r'(<meta charset="utf-8">)', lambda m: m.group(1) + '\n  ' + SICHERHEIT, text, count=1, flags=re.I)
+
+
 # Dachzeile (Leiste über dem Kopf): seit 18.11.2026 auf keiner Seite mehr (Anna, Feinschliff „weniger ist mehr“;
 # erst die Website-Check-Leiste, dann auch die Programm-Leiste „Demokratie braucht Sichtbarkeit.“ im Blog: „Ja, auch weg“).
 # Reste aus älteren Seiten werden hier entfernt.
@@ -63,7 +83,7 @@ def dachzeile(text, seite, vorne):
 
 def main():
     start = (website / 'index.html').read_text(encoding='utf-8')
-    neu_start = favicon(vorladen(start))
+    neu_start = sicherheit(favicon(vorladen(start)))
     if neu_start != start:
         (website / 'index.html').write_text(neu_start, encoding='utf-8')
         start = neu_start
@@ -85,7 +105,7 @@ def main():
         # Landingpages (z. B. website-check/) haben einen eigenen Kopf ohne Hauptnavigation und einen eigenen Fuß
         if 'http-equiv="refresh"' in text:
             continue
-        text_vorher, text = text, favicon(vorladen(text))
+        text_vorher, text = text, sicherheit(favicon(vorladen(text)))
         if text != text_vorher:
             seite.write_text(text, encoding='utf-8')
             geaendert += 1

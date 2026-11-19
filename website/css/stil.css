@@ -694,6 +694,7 @@ h1, h2, h3 {
 .kopier-knopf.ok .symbol-kopieren { display: none; }
 .kopiert { font-size: var(--groesse-1); color: var(--farbe-gedaempft); }
 .hinweis-klein { font-size: var(--groesse-1); color: var(--farbe-gedaempft); margin: 0; }
+.kontakt-buchen + .hinweis-klein { margin: -0.5rem 0 1.75rem; } /* Kontakt: Hinweis unter dem Buchungs-Button, Abstand zum Formular */
 .hinweis-klein + .alt-h3 { margin-top: 2.5rem; }
 
 

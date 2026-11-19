@@ -2,6 +2,8 @@
 <html lang="de">
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://submit-form.com https://*.sibforms.com; frame-src https://www.youtube-nocookie.com; form-action 'self' https://submit-form.com https://*.sibforms.com; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Kontakt und Projektanfrage | STUDIO AAH!</title>
   <meta name="description" content="Beratung anfragen bei STUDIO AAH!: per E-Mail an info@studio-aah.de oder telefonisch. Das Erstgespräch ist kostenlos und unverbindlich.">
@@ -16,7 +18,7 @@
   <meta property="og:description" content="Beratung anfragen bei STUDIO AAH!: per E-Mail an info@studio-aah.de oder telefonisch. Das Erstgespräch ist kostenlos und unverbindlich.">
   <meta property="og:url" content="https://studio-aah.de/kontakt/">
   <meta property="og:image" content="https://studio-aah.de/bilder/vorschaubild.jpg">
-  <link rel="stylesheet" href="../css/stil.css?v=20261119k">
+  <link rel="stylesheet" href="../css/stil.css?v=20261119l">
   <link rel="preload" href="../schriften/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../schriften/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
 </head>
@@ -149,7 +151,7 @@
   </details>
 </header>
 <div class="mm-schleier" hidden></div>
-<script src="../js/menue.js?v=20261119k" defer></script>
+<script src="../js/menue.js?v=20261119l" defer></script>
 <!-- /KOPF -->
 
 <main id="inhalt">
@@ -161,6 +163,9 @@
     <div>
       <h1 class="gr-h2">Erzählen Sie mir, was Sie vorhaben</h1>
       <p class="gedaempft">Ob Marke, Website oder KI im Team: Schreiben Sie mir kurz, worum es geht. Ich melde mich mit einem Terminvorschlag für ein kostenloses Erstgespräch, 30 Minuten, online.</p>
+<!-- Terminbuchung (Anna 19.11.2026): Google-Buchungsseite, öffnet erst beim Klick (Datenschutzerklärung #terminbuchung) -->
+      <p class="kontakt-buchen"><a class="button button-zweit" href="https://calendar.app.google/muK5JmpfbsXsDEq47" target="_blank" rel="noopener">Direkt Beratungstermin buchen <span aria-hidden="true">↗</span></a></p>
+      <p class="hinweis-klein">Die Buchung läuft über Google Kalender. Mehr in der <a href="../datenschutz/#terminbuchung">Datenschutzerklärung</a>.</p>
 <!-- Anfrageformular (Anna 16.10.2026): dieselben Felder wie im Kostenrechner; Versand über Formspark (js/anfrage.js, ohne JavaScript per normalem POST mit Weiterleitung auf /danke/) -->
 <form class="anfrage-form kontakt-anfrage" data-anfrage="Projektanfrage" action="https://submit-form.com/PQ3YFrvCS" method="post">
   <input type="hidden" name="_redirect" value="https://studio-aah.de/danke/"><input type="hidden" name="_append" value="false"><input type="hidden" name="betreff" value="Projektanfrage"><input type="hidden" name="_email.subject" value="Projektanfrage">
@@ -177,7 +182,7 @@ Mit freundlichen Grüßen</textarea></label>
   </div>
   <p class="anfrage-hilfe" id="ka-hilfe">Sie können den vorbereiteten Text direkt abschicken oder mit Ihrem Anliegen ergänzen.</p>
   <p class="anfrage-falle" aria-hidden="true"><label>Bitte leer lassen<input name="_honeypot" tabindex="-1" autocomplete="off"></label></p>
-  <p class="anfrage-knoepfe"><button type="submit" class="button">Beratung anfragen <span aria-hidden="true">→</span></button> <a class="textlink" href="tel:+4917683089879">0176 830 898 79</a></p>
+  <p class="anfrage-knoepfe"><button type="submit" class="button">Nachricht senden <span aria-hidden="true">→</span></button> <a class="textlink" href="tel:+4917683089879">0176 830 898 79</a></p>
   <p class="hinweis-klein anfrage-hinweis">Ihre Angaben gehen über den Formulardienst Formspark (Belgien, Speicherung in der EU) per E-Mail an mich. Mehr in der <a href="../datenschutz/#kontakt">Datenschutzerklärung</a>.</p>
   <div class="anfrage-danach" role="status" hidden></div>
 </form>
@@ -191,7 +196,7 @@ Mit freundlichen Grüßen</textarea></label>
 </p>
 <p class="hinweis-klein">Öffnet sich kein Mailprogramm? Adresse kopieren und aus Ihrem gewohnten Postfach schreiben.</p>
 <script src="../js/kontakt.js?v=20261016w" defer></script>
-<script src="../js/anfrage.js?v=20261119k" defer></script>
+<script src="../js/anfrage.js?v=20261119l" defer></script>
     </div>
   </section>
 
