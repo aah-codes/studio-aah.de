@@ -1,0 +1,30 @@
+---
+paths:
+  - "werkzeuge/fuer-wen-seiten.py"
+  - "werkzeuge/inhalte/fuer-wen-seiten.json"
+  - "werkzeuge/grafiken/fuer-wen-hero.py"
+  - "werkzeuge/brotkrumen.py"
+  - "website/fuer-wen/**"
+  - "website/branchen/**"
+  - "website/neue-kunden/**"
+  - "website/fachkraefte/**"
+  - "website/ki-im-team/**"
+  - "website/entlastung/**"
+  - "website/selbsttest/**"
+  - "website/ki-zeitrechner/**"
+  - "website/ki-arbeits-setup/**"
+  - "website/js/selbsttest.js"
+---
+# Für-wen-, Problem-, Branchen- und Testseiten
+
+- Alles aus `fuer-wen-seiten.py` und `inhalte/fuer-wen-seiten.json`. Keine Zahl ohne geprüfte Quelle.
+- Hero-Illustrationen aus `werkzeuge/grafiken/fuer-wen-hero.py` (`website/bilder/fuer-wen/*.svg`, Bauhaus-Figur erzählt Problem und Lösung, nur Schwarz, Weiß, Blau; Titel = Alternativtext). Nicht verwechseln mit `fuer-wen-bilder.py`.
+- Immer eine gerade Zahl häufiger Fragen, mindestens vier.
+- Problemseiten ohne „Passende Leistungen – Damit arbeite ich“.
+- Branchen (sieben): Bau, Ingenieurwesen & Architektur · Handwerk & Gebäudetechnik (alte Adresse Elektro leitet weiter) · Industrie & Maschinenbau · Energie & Umwelttechnik · Software & IT · Gesundheit & Praxen · Beratung & Dienstleistung. Felder `einleitung`, `muss`, `einwand`, `foto`. Texte der neuen Branchen sind Entwürfe bis zu Annas Freigabe.
+- Branchenseite nach Muster IT-Sonix: Kurz gesagt, Foto, Sprungmarken („Leistung im Überblick“, `ankerleiste()`), Herausforderungen als Flipcards (vorne Problem, hinten Lösung; drehen bei Hover, Fokus und Tippen, ohne Beschriftung; Rückseite ruhig: Hinweis oben, Aussage groß, kleines Bild oben rechts aus `FLIP_BILDER`, Link unten über feiner Linie), Was die Website können muss, Einwand, Referenz als Projekt-Cards (Felder `projekte`, `stimmen`; Mockup frei oben, Text darunter schwarz, kein Verlauf), Vorgehen, Fragen, Erster Schritt, „Weitere Branchen“ als Mosaik mit Kopf-Kachel. Branchen-Kacheln: Bild und Text berühren sich nie, kein Verlauf.
+- Branchenfotos von Unsplash in `website/bilder/branchen/`, per CSS blau eingefärbt, keine Bildquelle am Foto, Nachweis nur im Impressum.
+- SEO/GEO: Service-Daten mit Einzugsgebiet Leipzig, FAQPage.
+- Referenzen je Branche: Beratung/Coaching Deinetwegen und Down to Earth, Gesundheit Goldhammer, Bau Bauer; sonst keine (Beleg in `fuer-wen-seiten.py` optional).
+- Selbsttest `/selbsttest/` und KI-Zeitrechner `/ki-zeitrechner/`: Auswertung nur im Browser (`js/selbsttest.js`), nichts wird gesendet.
+- Brotkrumen überall, wo sinnvoll (Problem-, Branchen-, Produkt-, Test-Seiten, KI-Arbeits-Setup, Marken-Regelwerk, Blogartikel) über `brotkrumen.py`; neue Unterseiten dort eintragen.

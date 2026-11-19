@@ -27,3 +27,7 @@ __pycache__/
 
 # Ausnahme: öffentliche Download-Dateien für Besucher:innen (Anna 17.11.2026, Checkliste EU AI Act)
 !website/downloads/*.pdf
+
+# Claude Code: nur die Regeln gehören ins Repository, Worktrees und lokale Einstellungen nicht
+.claude/worktrees/
+.claude/settings.local.json

@@ -213,3 +213,50 @@ def ankerleiste(ziele, titel='Leistung im Überblick'):
         lis.append(f'<li><a href="#{anker}"{aktiv}>{text}</a></li>')
     return (f'  <nav class="anker" aria-labelledby="anker-titel">\n    <h2 class="anker-titel" id="anker-titel">{titel}</h2>\n'
             f'    <ul class="anker-spur">{"".join(lis)}</ul>\n  </nav>')
+
+
+# Papierriss und Kringel (Anna 18.11.2026, Vorbild Focus Lab: gerissenes Papier und gestische Linien als Zeichen von Handarbeit).
+# Beide selbst gezeichnet, Farbe über currentColor aus dem CSS (keine festen Farben). Zuerst nur im Selbsttest.
+def _welle(n, seed, oktaven):
+    """glatte Zufallskurve aus mehreren Frequenzen, Anfang = Ende"""
+    import math, random
+    r = random.Random(seed)
+    teile = [(max(1, round(f * n)), a, r.uniform(0, 6.283), r.uniform(0, 6.283)) for f, a in oktaven]
+    return [sum(a * (math.sin(6.283185 * k * i / n + p1) + .5 * math.sin(6.283185 * (2 * k + 1) * i / n + p2)) for k, a, p1, p2 in teile)
+            for i in range(n + 1)]
+
+
+def papierriss(seed=3, faser=False):
+    """SVG-Kante für den oberen Rand eines Abschnitts (Fläche unter der Kante); optional heller Faserrand dahinter"""
+    import random
+    breite, hoehe, n = 1440, 56, 480
+
+    def kante(mit_faser):
+        grob = _welle(n, seed, ((0.012, 1.0), (0.05, .45), (0.17, .18), (0.6, .07)))
+        fein = _welle(n, seed + 11, ((0.9, .5), (2.1, .3)))
+        r, mx = random.Random(seed + 99), max(abs(v) for v in grob)
+        pkt = []
+        for i in range(n + 1):
+            y = hoehe * .5 + grob[i] / mx * hoehe * .36 + fein[i] * (3.2 if mit_faser else 1.2)
+            if mit_faser:
+                y += r.uniform(-1.4, 1.4) - 5 - abs(fein[i]) * 4
+            pkt.append('L%.1f %.1f' % (i / n * breite, max(0, min(hoehe, y))))
+        return f'M0 {hoehe} ' + ' '.join(pkt) + f' L{breite} {hoehe} Z'
+    faserpfad = f'<path class="riss-faser" d="{kante(True)}"/>' if faser else ''
+    return (f'<svg class="riss" viewBox="0 0 {breite} {hoehe}" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">'
+            f'{faserpfad}<path d="{kante(False)}" fill="currentColor"/></svg>')
+
+
+def kringel(seed=7):
+    """handgezogener Kringel um ein Wort (Strich zeichnet sich per CSS), Start und Ende überlappen leicht"""
+    import math
+    b, h, n = 400, 130, 160
+    wob, dreh, pkt = _welle(n, seed, ((0.02, 1), (0.05, .4))), math.radians(-4), []
+    for i in range(n + 1):
+        u = i / n
+        t = math.radians(200 + 372 * u)
+        s = 1 + .06 * (u - .5)
+        x, y = math.cos(t) * 190 * s * (1 + wob[i] * .015), math.sin(t) * 53 * s * (1 + wob[i] * .03)
+        pkt.append('%.1f %.1f' % (b / 2 + x * math.cos(dreh) - y * math.sin(dreh), h / 2 + x * math.sin(dreh) + y * math.cos(dreh)))
+    return (f'<svg class="kringel" viewBox="0 0 {b} {h}" preserveAspectRatio="none" aria-hidden="true" focusable="false">'
+            f'<path pathLength="1" d="M{" L".join(pkt)}" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></svg>')

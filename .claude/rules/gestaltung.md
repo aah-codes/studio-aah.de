@@ -1,0 +1,76 @@
+---
+paths:
+  - "website/**"
+  - "werkzeuge/**"
+---
+# Gestaltung und Texte auf studio-aah.de
+
+Kurzfassung der Branding-Richtlinien (Original in Betrieb: `Kunden Studio AAH/Studio AAH/branding-guidelines.md`). Herkunft und Datum jeder Regel: Archiv der alten CLAUDE.md in Betrieb (`Studio AAH/Website/archiv-claude-md/`).
+
+## Farben
+- Schwarz `#0e1011`, Weiß, Creme `#eeece7` (Flächen), Blau `#2a5fe6` (`--farbe-primaer`) als einziger Akzent, Grau `#d6d8d9` / `#9a9d9e`. Kein Rot, Gelb, Grün. Website ruhig: viel Weiß, feine Linien (1,5 px), wenig Creme.
+- Ausnahmen, nur dort:
+  - Projektseiten `/referenzen/…`: Farben der Kund:innen; Kopf, Fuß, Navigation bleiben in Studio-Farben.
+  - Farbband: 12 px Regenbogen mit rotem Block am unteren Rand des Fußes (`.fuss::after`, `--farbband`).
+  - Konfetti und Spiel: Farbtafel „modernes Bauhaus“.
+  - Rotes Sternchen an Pflichtfeldern (`--farbe-pflicht`).
+  - Blauer Anfrage-Button in der schwarzen Abschlussbox der Projektseiten.
+- Kein Blau auf Schwarz (Kontrast). Dachzeilen auf ihrem Grund lesbar: Gelb nur auf Blau oder Schwarz, auf hellen Karten Blau oder Schwarz.
+- Illustrationen der Für-wen-, Problem-, Branchen- und Produktseiten nur Schwarz, Weiß, Blau.
+
+## Typografie
+- Laut ist nur Anton (Plakatzeilen `.gr-*`), alles andere leise.
+- Schriftgrößen nur über `--groesse-1` bis `--groesse-8` im `:root`. Ausnahmen mit Kommentar: Zeilen, die die Breite füllen (`.gr-*`, vw-Formeln), große Kennzahlen, Spiel, gezeichnete Grafiken (`.kb-`, `.pc-`, `.ci-`), Eingabefelder (mindestens 16 px wegen Zoom am iPhone).
+- JetBrains Mono nur in Dachzeilen und Versal-Beschriftungen (`.meta`, Kasten-Titel, Tabellen-Beschriftung); Zahlen, Nummern, Text in Manrope. Ausnahmen: `.wr-bon`, `.mr-b-`, Hex-Codes in `referenzen.css`.
+- Eckenradien nur `--radius-pille`, `--radius-karte` (24 px) und 50 %. Ausgenommen gezeichnete Mini-Grafiken und Bauhaus-Halbkreise der Zeitleiste.
+- Unterzeile deutlich kleiner als ihre Überschrift (etwa Goldener Schnitt). Abschluss-H2 so groß wie möglich. H1 nie breiter als die Seite.
+- Anton-Versalien mit Zeilenabstand mindestens 1,15, bei Umlauten 1,2; Satzzeichen und Umlaut-Punkte berühren nie die Nachbarzeile.
+- Überschriften ohne Schlusspunkt, außer ganze Sätze; kleine Überschriften (Karten, Zeitleiste) nie. Nie nach dem ersten Wort eines Satzes umbrechen; zwei Sätze („Drei Teile. Ein Regelwerk.“) mit `<br>` nach dem ersten.
+- Nie nach kurzem Vorderglied trennen (IT-Projekt, KI-Check, E-Mail): `kurzwoerter_schuetzen()` in `gemeinsam.py`, von Hand `<span class="ohne-umbruch">`. Lange Wörter in Überschriften mit `&shy;`. Jede Seite bei 320 px ohne seitliches Verschieben.
+- Dachzeilen beginnen mit blauem Punkt (per CSS).
+
+## Buttons, Links, Begriffe
+- Primär blau gefüllt, Sekundär schwarze Outline (`button button-zweit`), Tertiär unterstrichener Textlink. Jeder Button und eigenständige Link mit Pfeil (→, extern ↗, Download ↓).
+- Im Hero immer nur ein Button. Alle Anfrage-Buttons und der Header-Button heißen „Beratung anfragen“. Ausnahme: Absende-Button im Formular der Kontaktseite heißt „Nachricht senden“; über dem Formular steht „Direkt Beratungstermin buchen ↗“ zur Google-Buchungsseite (Anna 19.11.2026).
+- Immer „Button“, nie „Knopf“; Handlungsaufforderung „Call-to-Action-Button“ (CTA-Button).
+- Prüfung der bestehenden Website heißt überall „Website-Check“ (auch erster Projektschritt); „Expert Review“ nur auf der Website-Check-Seite als Fachbegriff, im Glossar „Website-Check (Expert Review)“.
+- Abläufe in der Sprache von Design Thinking: erster Schritt „Verstehen“, Entwürfe „Ideation“.
+- „Form follows function“ immer mit „Die Form folgt der Funktion.“
+- E-Mail-Adresse überall info@studio-aah.de.
+
+## Texte
+- Neue Texte nur nach Annas Vorgabe, nichts dazuerfinden. Keine Zahl ohne geprüfte Quelle.
+- Gedankenstriche sparsam, in Überschriften gar nicht. Kartenüberschriften der Startseite höchstens zwei Zeilen.
+- Jede Aussage genau einmal je Seite; was oben beantwortet ist, nicht noch einmal in den häufigen Fragen. Antworten der häufigen Fragen in Ich-Form oder allgemein, nicht „Bei STUDIO AAH!“.
+- Die vier Schmerzpunkte des Mittelstands überall mitdenken: Neugeschäft (Empfehlungen reichen nicht), Fachkräfte (als Arbeitgeber unsichtbar), Digitalisierung/KI (welche Werkzeuge, wie nutzt das Team sie), Effizienz (alles läuft über den Chef). Nicht: Finanzen, Bürokratie. Nutzen herausstellen, Einwände beantworten („zu klein?“, „erfahren genug?“, „lohnt sich das?“). Keine ERP-, Schnittstellen- oder IT-Sicherheitsversprechen. Konzept: Betrieb `Studio AAH/Website/2026-11-09_konzept_website-als-werkzeug.md`.
+- Zielgruppe „baut selbst“ (Vibe-Coding, Baukasten): vorher KI-Arbeits-Setup, mittendrin Hilfe nach Aufwand, vor dem Livegang Website-Check, danach Retainer. Steht auf Webdesign (`#selbst`, Feld `selbstbau`), KI-Beratung, Retainer und im Frag-Feld (`_quelle` „baut selbst“). „Vibe-Coding“ und „KI-Design“ ab und zu als Suchbegriffe.
+- Erstgespräch 30 Minuten, online, kostenlos; wöchentliche Abstimmungstermine in Projekten 45 Minuten.
+
+## Bausteine
+- Häufige Fragen einspaltig, mittig, ohne weiße Fläche, Plus wird beim Öffnen zum X (CSS für jede `.faq-liste`).
+- Abläufe und Zeitpläne immer als Zeitleiste (`ol.zeitleiste`; quer `zl-quer`; in schmalen Spalten `figure.grafik-prozess`). Lesereihenfolge spaltenweise, nie Zickzack (greift per CSS bei vier Schritten).
+- Kartenreihen: Unterzeilen, Listen und Buttons auf einer Linie. Keine Sections mit viel leerem Weißraum: eine einzelne Karte mittig und doppelt so breit, eine einzelne Referenz mit Kennzahlen daneben (`referenz_mit_zahlen()`).
+- Preise: höchstens zwei Paketkarten nebeneinander (die meistgesuchten, Feld `karten` je Gruppe in `preise-daten.json`, `zwei_pakete()` / `weitere_pakete()` in `gemeinsam.py`); übrige in „Außerdem buchbar“. Baut ein gezeigtes Paket auf ein ausgeblendetes auf, übernimmt es dessen Inhalte.
+- Keine Leiste über dem Kopf, auf keiner Seite (`dachzeile()` in `kopf-fuss.py` entfernt Reste).
+- Bewegung, die von selbst startet, hält nach höchstens 5 s an oder hat eine Pause-Taste. Einblend-Animationen verstecken Inhalte nur unter `:where(.js)`.
+
+## Formulare
+- Pflicht nur mit `required`, rotes Sternchen per CSS, kein Hinweis „Pflichtfeld“. Möglichst nur die E-Mail-Adresse Pflicht. Nachrichtenfeld mit vorbereitetem Text („Guten Tag Frau Härtelt, …“) und darunter `p.anfrage-hilfe`: „Sie können den vorbereiteten Text direkt abschicken oder mit Ihrem Anliegen ergänzen.“ Umgesetzt bei Kontakt und Entwurf Markenhandbuch; Annas Vorschlag: bei allen Formularen so, vorher kurz fragen.
+- Newsletter-Häkchen (freiwillig, nicht vorausgewählt) in einem Satz, Text in `NEWSLETTER()` in `js/anfrage.js`. Bei Kontakt- und Angebotsanfragen bleibt es.
+- Kostenlose Angebote mit E-Mail-Feld (Website-Check, künftig Downloads und Tests): kein Häkchen, Absenden meldet zum Newsletter an (`data-newsletter-gekoppelt`, Double-Opt-in bleibt), Hinweis fett direkt über dem Button, Datenschutzerklärung Abschnitt 4 und 5. Rechts-Check dazu liegt in Betrieb.
+- Konfetti bei jedem Absenden: `document.dispatchEvent(new Event('konfetti'))` ohne Seitenwechsel, `data-konfetti` am `<main>` jeder Danke-Seite. Neue Formulare und Danke-Seiten immer anschließen. Höchstens 4,5 s, bei „Bewegung reduzieren“ keins (Code in `js/menue.js`).
+
+## Einzelne Seiten
+- Kontakt: volle Breite, Formular ohne Dachzeile und Titel, freiwillige Auswahl „Wie haben Sie von mir gehört?“ (Feld `quelle`, steht in der Datenschutzerklärung; `anfrage.js` schickt Auswahlfelder mit).
+- Profil (Über mich): Ablauf (`ol.zl-quer`) unter `/profil/#so-arbeite-ich`, dort auch die Fragen zu Erfahrung und KI.
+- Grafik „Website als Herzstück“ (Webdesign, Retainer, Marketing & Vertrieb) ohne Link darunter.
+- Keine Clay-Icons (`website/bilder/icons/`) neben großen Überschriften auf Profil, Blog und Kontakt; sie werden nach Annas Freigabe der Icon-Übersicht ersetzt.
+
+## Formen, Icons, Wiedererkennung
+- Icon-Set: höchstens 50 Icons, immer dieselben; Generator `werkzeuge/grafiken/symbole.py` → `website/bilder/symbole/`, Übersicht lokal `/entwurf-icons/`. Schwarz, Weiß und Blau; Gelb nur als Akzent (Stern, Idee, Warnung, Geld). Gefüllte Bauhaus-Grundformen bis an den Rand, viewBox = Rand der Form (`RAND`), `xMinYMin`. Icons einer Gruppe in einer Farbe. Neues Icon nur, wenn keins passt.
+- Erweiterte Formen aus Grundformen (`werkzeuge/grafiken/formen/`): Herz (gedrehtes Quadrat + zwei Halbkreise, nie blau), Zackenkreis, Kreis in Klammern.
+- Figur nach Schlemmers Triadischem Ballett: Kopf Kreis mit weißem Auge, Rumpf Quadrat, blauer Halbkreis-Rock, Glieder als Balken direkt am Rumpf; herabhängender Arm abgespreizt, Hand neben dem Rock; Beine Eckenradius 4; weiße Fugen statt Blau an Schwarz. Konstruktion in `werkzeuge/grafiken/blog/geld-und-zeit-titel.py`.
+- Ausrufe als Pointe („AAH!“, „OHO!“, „WOW!“) Schwarz-Weiß in Anton. Redaktioneller Rahmen: Linien mit Beschriftung, gedrehte Wörter, Schriftbänder.
+- Logo „STUDIO AAH!“ nur aus `website/bilder/logo-studio-aah.svg` / `-weiss.svg`, nur in Kopf und Fuß.
+- Porträt überall `anna-haertelt-studio-blau.webp` (rund: `…-rund.jpg`). Echte Fotos von Anna statt KI-Bilder.
+- Formensprache 2D; 3D nur als Beispiel im Angebot Marken-Regelwerk.
