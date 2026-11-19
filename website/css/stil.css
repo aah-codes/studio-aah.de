@@ -694,7 +694,8 @@ h1, h2, h3 {
 .kopier-knopf.ok .symbol-kopieren { display: none; }
 .kopiert { font-size: var(--groesse-1); color: var(--farbe-gedaempft); }
 .hinweis-klein { font-size: var(--groesse-1); color: var(--farbe-gedaempft); margin: 0; }
-.kontakt-buchen + .hinweis-klein { margin: -0.5rem 0 1.75rem; } /* Kontakt: Hinweis unter dem Buchungs-Button, Abstand zum Formular */
+.kontakt-buchen { margin-top: 2.5rem; } /* Kontakt: mehr Luft über „Direkt Beratungstermin buchen“ (Anna 19.11.2026) */
+.kontakt-buchen + .hinweis-klein { margin: -0.5rem 0 3.5rem; } /* Kontakt: Hinweis unter dem Buchungs-Button, Abstand zum Formular */
 .hinweis-klein + .alt-h3 { margin-top: 2.5rem; }
 
 
@@ -4184,6 +4185,7 @@ html:not(.js) .hk-zeichen { display: none; }
 .mm-mit-icon .mm-icon { width: 31px; height: 31px; object-fit: contain; object-position: left center; }
 .mm-mit-icon .mm-name { grid-column: 2; }
 /* Kontaktseite auf voller Breite bündig mit Logo und Button (Anna 17.11.2026) */
+.kontakt-voll .kontakt-anfrage { margin-bottom: 3.5rem; } /* Kontakt: mehr Luft nach dem Formular (Anna 19.11.2026) */
 .golden.kontakt-voll { max-width: none; padding-inline: var(--rand-seite); gap: clamp(32px, 4vw, 64px); }
 /* Auswahlfeld im Anfrageformular wie die Eingabefelder (Anna 17.11.2026: „woher sie von mir gehört haben mit dropdown“) */
 .anfrage-felder select { font: inherit; font-weight: 400; border: 1.5px solid var(--farbe-gedaempft); border-radius: var(--radius-karte); padding: 10px 40px 10px 12px; color: var(--farbe-dunkel); appearance: none; -webkit-appearance: none; cursor: pointer; background-color: var(--farbe-weiss); background-image: linear-gradient(45deg, transparent 50%, var(--farbe-dunkel) 50%), linear-gradient(135deg, var(--farbe-dunkel) 50%, transparent 50%); background-position: calc(100% - 21px) 55%, calc(100% - 15px) 55%; background-size: 6px 6px; background-repeat: no-repeat; }
