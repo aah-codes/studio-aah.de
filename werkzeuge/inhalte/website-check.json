@@ -3,35 +3,49 @@
   "pruefpunkte": [
     {
       "titel": "Erster Eindruck",
-      "text": "Versteht man auf der Startseite in wenigen Sekunden, was Sie anbieten und für wen?"
+      "text": "Versteht man auf der Startseite in wenigen Sekunden, was Sie anbieten und für wen?",
+      "icon": "bildschirm",
+      "kurz": "Angebot in Sekunden verstanden"
     },
     {
       "titel": "Weg zur Anfrage",
-      "text": "Wie leicht finden Kundschaft und Bewerber:innen den nächsten Schritt: Kontakt, Formular, Bewerbung?"
+      "text": "Wie leicht finden Kundschaft und Bewerber:innen den nächsten Schritt: Kontakt, Formular, Bewerbung?",
+      "icon": "ziel",
+      "kurz": "Kontakt, Formular, Bewerbung"
     },
     {
       "titel": "Handy und Tempo",
-      "text": "Lässt sich Ihre Website auf dem Smartphone gut lesen und bedienen, und lädt sie schnell?"
+      "text": "Lässt sich Ihre Website auf dem Smartphone gut lesen und bedienen, und lädt sie schnell?",
+      "icon": "handy",
+      "kurz": "Lesbar, bedienbar, schnell"
     },
     {
       "titel": "Gefunden werden bei Google",
-      "text": "Stimmen Titel, Struktur und Inhalte?"
+      "text": "Stimmen Titel, Struktur und Inhalte?",
+      "icon": "kompass",
+      "kurz": "Titel, Struktur, Inhalte"
     },
     {
       "titel": "Gefunden werden in KI-Antworten",
-      "text": "Erscheint Ihr Angebot richtig in der „Übersicht mit KI“ bei Google und in ChatGPT? Dafür braucht es saubere Grundlagen, klare Antworten im Text und strukturierte Daten, die zum Text passen."
+      "text": "Erscheint Ihr Angebot richtig in der „Übersicht mit KI“ bei Google und in ChatGPT? Dafür braucht es saubere Grundlagen, klare Antworten im Text und strukturierte Daten, die zum Text passen.",
+      "icon": "sprechblase",
+      "kurz": "Übersicht mit KI bei Google und ChatGPT"
     },
     {
       "titel": "Bedienbar für KI-Agenten",
-      "text": "Können Programme, die im Auftrag Ihrer Kundschaft suchen und anfragen, Ihre Buttons und Formulare nutzen?"
+      "text": "Können Programme, die im Auftrag Ihrer Kundschaft suchen und anfragen, Ihre Buttons und Formulare nutzen?",
+      "icon": "skills",
+      "kurz": "Buttons und Formulare für KI-Agenten"
     },
     {
       "titel": "Barrierefreiheit (Accessibility)",
-      "text": "Können alle Ihre Website nutzen – auch mit Sehschwäche, nur mit Tastatur oder mit vergrößerter Schrift?"
+      "text": "Nutzbar mit Sehschwäche, nur mit Tastatur oder großer Schrift?",
+      "icon": "person"
     },
     {
       "titel": "Technik und Sicherheit",
-      "text": "Ist Ihre Website technisch aktuell, und gibt es von außen sichtbare Warnzeichen?"
+      "text": "Technisch aktuell? Von außen sichtbare Warnzeichen?",
+      "icon": "schloss"
     }
   ],
   "faq": [
@@ -48,11 +62,11 @@
         ],
         [
           "Wie kann ich meine Website testen lassen?",
-          "Beim kostenlosen Website-Check von STUDIO AAH! tragen Sie die Adresse Ihrer Website und Ihre E-Mail-Adresse ins Formular ein. Anna Härtelt prüft die Website von außen in acht Punkten und schickt Ihnen innerhalb von 48 Stunden einen Prüfbericht als PDF. Auf Wunsch erklärt sie die Ergebnisse in einem 45-minütigen Telefongespräch."
+          "Beim kostenlosen Website-Check von STUDIO AAH! tragen Sie die Adresse Ihrer Website und Ihre E-Mail-Adresse ins Formular ein. Anna Härtelt prüft die Website von außen in acht Bereichen mit 74 Einzelkriterien und schickt Ihnen innerhalb von 48 Stunden einen Prüfbericht als PDF. Auf Wunsch erklärt sie die Ergebnisse in einem 45-minütigen Telefongespräch."
         ],
         [
           "Was prüft der Website-Check?",
-          "Der Website-Check von STUDIO AAH! prüft acht Punkte: ersten Eindruck, Weg zur Anfrage, Handy und Tempo, Auffindbarkeit bei Google, Auffindbarkeit in KI-Antworten, Bedienbarkeit für KI-Agenten, Barrierefreiheit sowie Technik und Sicherheit."
+          "Der Website-Check von STUDIO AAH! prüft acht Bereiche mit 74 Einzelkriterien: ersten Eindruck, Weg zur Anfrage, Handy und Tempo, Auffindbarkeit bei Google, Auffindbarkeit in KI-Antworten, Bedienbarkeit für KI-Agenten, Barrierefreiheit sowie Technik und Sicherheit."
         ],
         {
           "id": "was-der-check-ist",
@@ -68,7 +82,7 @@
         ],
         [
           "Ich habe meine Website selbst gebaut, mit KI oder einem Baukasten. Lohnt sich der Check?",
-          "Ja. Der Website-Check prüft selbst gebaute Websites nach denselben acht Punkten wie jede andere, darunter erster Eindruck, Handy und Tempo, Google, KI-Antworten und Barrierefreiheit. Sie sehen, was schon gut funktioniert und wo es noch hakt – als Stichprobe zum Zeitpunkt der Prüfung."
+          "Ja. Der Website-Check prüft selbst gebaute Websites nach denselben acht Bereichen wie jede andere, darunter erster Eindruck, Handy und Tempo, Google, KI-Antworten und Barrierefreiheit. Sie sehen, was schon gut funktioniert und wo es noch hakt – als Stichprobe zum Zeitpunkt der Prüfung."
         ],
         [
           "Wie oft sollte eine Website geprüft werden?",
@@ -125,5 +139,32 @@
         ]
       ]
     }
-  ]
+  ],
+  "stichprobe": {
+    "_quelle": "Eigene Messung vom 19.11.2026; 15 Websites von Hand nachgemessen, Prozentwerte nachgerechnet. Nur Kennzahlen mit sicherer Erkennung; HSTS bewusst weggelassen. Überschrift und Einleitung stehen in website/website-check/index.html. Methodentext steht nur hier (Anna 19.11.2026: nicht auf der Seite).",
+    "anzahl": 98,
+    "werte": [
+      {
+        "name": "Zusätzliche Schutzschicht im Browser fehlt",
+        "fach": "Content-Security-Policy",
+        "anzahl": 83
+      },
+      {
+        "name": "Keine strukturierten Daten im Format JSON‑LD",
+        "fach": "JSON-LD; andere Formate nicht erfasst",
+        "anzahl": 52
+      },
+      {
+        "name": "Kein Beschreibungstext für Google",
+        "fach": "Meta-Description",
+        "anzahl": 30
+      },
+      {
+        "name": "Handy-Ansicht nicht eingerichtet",
+        "fach": "Viewport-Angabe fehlt",
+        "anzahl": 9
+      }
+    ],
+    "_methode": "Untersucht wurden 98 erreichbare Websites von Firmen aus Suchergebnislisten eines Branchenverzeichnisses (gelbeseiten.de), in der Reihenfolge des Verzeichnisses und ohne Blick auf die Qualität der Website. Die Größe der Firmen ist nicht belegt. Gemessen am 19.11.2026 im Quelltext der Startseite. Nicht repräsentativ, sondern ein regionaler Ausschnitt."
+  }
 }

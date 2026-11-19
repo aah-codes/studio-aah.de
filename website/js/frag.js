@@ -1,17 +1,6 @@
 // Frag-Feld im Hero der Startseite (Anna 16.11.2026): sucht nur in den häufigen Fragen der Website (daten/fragen.json,
 // erzeugt von werkzeuge/fragen-index.py) und zeigt die passendsten Antworten mit Link. Alles läuft im Browser, nichts wird gesendet.
 (function () {
-  // Punkteraster im Hero: rund um die Maus deutlicher (Anna 17.11.2026, wie früher die hellgrauen Punkte)
-  var buehne = document.querySelector('[data-raster]');
-  if (buehne && window.matchMedia('(hover: hover)').matches) {
-    buehne.addEventListener('pointermove', function (ev) {
-      var r = buehne.getBoundingClientRect();
-      buehne.style.setProperty('--mx', ((ev.clientX - r.left) / r.width * 100).toFixed(1) + '%');
-      buehne.style.setProperty('--my', ((ev.clientY - r.top) / r.height * 100).toFixed(1) + '%');
-    });
-  }
-})();
-(function () {
   var form = document.querySelector('[data-frag]');
   var ziel = document.querySelector('[data-frag-antworten]');
   if (!form || !ziel) return;

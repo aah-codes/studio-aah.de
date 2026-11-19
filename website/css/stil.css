@@ -2700,7 +2700,7 @@ ol.quellen li:target { background: var(--farbe-creme); border-radius: 6px; }
 .schluss-karte.schluss-blau .meta::before { background: var(--farbe-weiss); }
 .wc-liste { grid-template-columns: minmax(0, 1fr); margin-top: 8px; }
 .wc-berechtigung { max-width: 68ch; font-size: var(--groesse-2); line-height: 1.5; margin: 16px 0 12px; }
-.wc-faq-gruppe { max-width: 1200px; margin: 48px auto 16px; font-size: var(--groesse-5); line-height: 1.2; }
+.wc-faq-gruppe { max-width: 1200px; margin: clamp(72px, 8vw, 120px) auto 16px; font-size: var(--groesse-5); line-height: 1.2; }
 .wc-faq h2 + .wc-faq-gruppe { margin-top: 0; }
 .sticky-rechner.sticky-check { padding: 14px 22px; }
 /* Landingpage Website-Check: statt des Kostenrechner-Knopfs aus dem Fuß nur der Knopf zum Formular (am Handy) */
@@ -2718,6 +2718,7 @@ body:has(.sticky-check) .sticky-rechner:not(.sticky-check) { display: none; }
 .wc-hero .rv-knopf { justify-content: center; }
 .wc-zeile { font-size: var(--groesse-2); color: var(--farbe-gedaempft); margin: 12px 0 0; }
 /* GMX-Muster (Anna 26.10.2026): Icon über der Dachzeile, Medienfläche 16:9 unter dem Knopf, Häkchen-Reihe darunter */
+@media (min-width: 1200.02px) { .wc .lp-person { grid-template-columns: minmax(180px, 280px) minmax(0, 1fr); } .wc .lp-person .preis-h2 { white-space: nowrap; } }
 .wc-hero-icon { display: block; width: 88px; height: 88px; margin: 0 auto 8px; mix-blend-mode: multiply; }
 .wc-video { max-width: 960px; aspect-ratio: 16 / 9; margin: 48px auto 0; border-radius: var(--radius-karte); background: var(--farbe-creme); display: grid; place-items: center; overflow: hidden; }
 .wc-video .wc-buehne { margin: 0 auto; }
@@ -2944,6 +2945,104 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 @media (max-width: 900px) {
   .lp-breit .lp-abschnitt .zl-quer { padding-left: 72px; }
   .lp-breit .lp-abschnitt .zl-quer::before { left: 27px; right: auto; }
+}
+/* Website-Check: Hero mittig, Formular als eine Zeile wie ein Suchfeld; Ablauf als waagerechte Zeitleiste (Anna 19.11.2026) */
+.lp-hero-mitte { grid-template-columns: minmax(0, 1fr); justify-items: center; text-align: center; padding-bottom: clamp(24px, 4vw, 56px); }
+.lp-hero-mitte .lp-titel { max-width: 32ch; margin-left: auto; margin-right: auto; text-wrap: balance; }
+.lp-hero-mitte .rv-intro, .wc-punkte-reihe .rv-text, .wc-icons p, .wc-icons h3 { text-wrap: balance; }
+.lp-hero-mitte .wc-berechtigung, .wc-newsletter { text-wrap: pretty; }
+.lp-hero-mitte .rv-intro { max-width: 46ch; margin: 16px auto 0; }
+.wc-hero-form { width: 100%; max-width: 900px; }
+.wc-hero-form { margin-top: clamp(8px, 2vw, 24px); }
+.wc-formzeile input { min-height: 56px; font-size: var(--groesse-3); padding: 12px 20px; }
+.wc-formfuss .button { min-height: 56px; padding-left: 28px; padding-right: 28px; font-size: var(--groesse-3); }
+.wc-newsletter { font-size: var(--groesse-2); line-height: 1.45; margin: 16px 0 0; }
+.wc-formzeile { text-align: left; }
+.wc-formzeile .anfrage-felder { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.wc-formfuss { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; margin-top: 8px; text-align: left; }
+.wc-formfuss .anfrage-knoepfe { margin: 0; }
+.wc-formfuss .button { min-height: 48px; }
+.lp-hero-mitte .wc-haekchen { margin: 0; }
+.lp-hero-mitte .lp-haken { justify-content: center; gap: 10px 20px; margin-top: 16px; }
+.lp-hero-mitte .wc-berechtigung { font-size: var(--groesse-1); line-height: 1.45; color: var(--farbe-gedaempft); max-width: 90ch; margin: 16px auto 0; }
+.lp-hero-mitte .wc-berechtigung strong { color: var(--farbe-dunkel); }
+.wc-werbehinweis { font-size: var(--groesse-1); line-height: 1.45; color: var(--farbe-gedaempft); max-width: 90ch; margin: 16px auto 0; text-wrap: pretty; }
+.wc-werbehinweis + .wc-berechtigung { margin-top: 6px; }
+.lp-hero-mitte .rv-intro { max-width: none; }
+@media (min-width: 768px) { .ohne-umbruch-ab-768 { white-space: nowrap; } }
+.lp-hero-mitte .anfrage-hinweis { font-size: var(--groesse-1); max-width: 90ch; margin: 8px auto 0; }
+.wc .preis-h2 { max-width: none; text-wrap: balance; }
+.wc-hero-icon { display: block; width: 56px; height: 56px; margin: 0 auto 12px; }
+.wc .balken-liste li { grid-template-columns: minmax(0, 360px) minmax(0, 1fr); }
+.wc .zl-quer h3 { text-wrap: balance; }
+.wc-punkte-reihe { text-align: center; }
+.wc .preis-h2, .wc .wc-h2-gross, .wc .lp-zahl-text h2 { font-size: clamp(40px, 6vw, 6vw); line-height: 1.05; } /* so groß wie „Häufige Fragen“ (.gr-h2), Anna 20.11.2026 */
+.wc .lp-person .preis-h2 { font-size: clamp(36px, 4vw, 64px); } /* bleibt neben dem Foto auf einer Zeile */
+.wc .lp-person > div { width: fit-content; max-width: 100%; }
+.wc .lp-person .lp-zitat { max-width: none; }
+.wc-spalten-kopf { grid-column: 1 / -1; }
+.wc-spalten-kopf .preis-h2 { margin-bottom: 0; }
+.wc-icons h3 { min-height: 2.5em; display: flex; align-items: flex-end; justify-content: center; } /* Unterzeilen auf einer Höhe */
+.wc .lp-person .lp-zitat { max-width: min(100%, 940px); }
+.wc-zahl-band { grid-template-columns: auto auto minmax(0, 40ch); align-items: end; width: fit-content; max-width: 100%; margin: 0 auto; } /* mittig, Linie so breit wie der Inhalt (Anna 20.11.2026) */
+.wc-zahl-band .lp-zahl-text h2 { margin-bottom: 0; }
+@media (max-width: 900px) { .wc-zahl-band { grid-template-columns: auto minmax(0, 1fr); } .wc-zahl-absatz { grid-column: 1 / -1; } }
+.lp-hero-mitte { position: relative; overflow: hidden; min-height: calc(100svh - var(--kopf-hoehe)); align-content: center; } /* bildschirmhoch, Inhalt mittig (Anna 20.11.2026) */
+.lp-hero-mitte > :not(.fh-raster) { position: relative; z-index: 1; }
+.lp-hero-mitte > .fh-raster { grid-column: 1 / -1; }
+@media (min-width: 768px) { .wc .lp-hero-mitte .lp-titel { font-size: min(150px, calc((100vw - 2 * var(--rand-seite)) / 8.4), 12.5vh); } .wc-titel-z1 { white-space: nowrap; } } /* „mit Designerblick“ bleibt einzeilig: Breite ≈ 8 × Schriftgröße */
+
+.lp-hero-mitte .lp-titel { font-size: clamp(40px, 6.2vw, 102px); max-width: none; } /* 15 % größer (Anna 20.11.2026) */
+.lp-hero-mitte .rv-intro { margin-top: 20px; }
+.lp-hero-mitte .wc-hero-form { margin-top: clamp(20px, 4.5vh, 44px); }
+.lp-hero-mitte .wc-berechtigung { margin-top: clamp(16px, 3vh, 32px); }
+.lp-hero-mitte { padding-top: clamp(16px, 2vw, 32px); }
+.wc-hero-icon { width: 58px; height: auto; margin-bottom: 20px; overflow: hidden; } /* 20 % größer als zuvor (Anna 20.11.2026) */
+/* Scanner-Balken fährt einmal hinunter und wieder hoch (Anna 20.11.2026); bei „Bewegung reduzieren“ steht er still */
+.wc-scan { transform-box: view-box; animation: wc-scan 2.4s ease-in-out .4s 1 both; }
+@keyframes wc-scan { 0% { transform: translateY(0); } 30% { transform: translateY(-64px); } 75% { transform: translateY(64px); } 100% { transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { .wc-scan { animation: none; } }
+.wc-icons { column-gap: clamp(32px, 5vw, 96px); }
+.wc-karten { max-width: none; gap: clamp(20px, 3vw, 40px); margin-top: clamp(64px, 7vw, 112px); }
+.wc-karten + .wc-mehr-titel { margin-top: clamp(64px, 7vw, 112px); }
+@media (min-width: 1200.02px) { .wc-mehr { flex-wrap: nowrap; } .wc-mehr li { white-space: nowrap; } }
+
+.wc-zahlen { list-style: none; margin: 48px 0 0; padding: 0 !important; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 48px clamp(32px, 5vw, 96px); }
+.wc-zahlen li { margin: 0; display: flex; flex-direction: column; gap: 8px; }
+.wc-zahl { font-family: var(--schrift-ueberschrift); font-weight: 400; font-size: clamp(64px, 7vw, 112px); line-height: 1; white-space: nowrap; } /* Ausnahme: große Kennzahl */
+.wc-zahlen li:first-child .wc-zahl { color: var(--farbe-primaer); }
+.wc-zahl-name { font-size: var(--groesse-4); font-weight: 600; line-height: 1.3; }
+.wc-zahlen small { font-size: var(--groesse-2); color: var(--farbe-gedaempft); }
+@media (max-width: 1024px) { .wc-zahlen { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 400px) { .wc-zahlen { grid-template-columns: minmax(0, 1fr); } }
+.wc-mehr-titel { margin: 48px 0 12px; font-weight: 700; }
+.wc-mehr { justify-content: center; }
+.wc-punkte-reihe .rv-text { margin-left: auto; margin-right: auto; }
+.wc-punkte-reihe > .preis-h2 { margin-left: auto; margin-right: auto; }
+.wc-icons h3, .wc-karte h3 { font-family: var(--schrift-text); font-weight: 700; text-transform: none; letter-spacing: 0; }
+.wc-icons { list-style: none; margin: 40px auto 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 56px 20px; max-width: 1100px; } /* drei je Zeile (Anna 20.11.2026) */
+.wc-icons li { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.wc-icons img { width: 72px; height: 72px; margin-bottom: 8px; }
+.wc-icons h3 { font-size: var(--groesse-3); line-height: 1.25; margin: 0; }
+.wc-icons p { font-size: var(--groesse-2); line-height: 1.4; color: var(--farbe-gedaempft); margin: 0; }
+.wc-karten { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; max-width: 1000px; margin: 40px auto 0; text-align: left; }
+.wc-karte { display: flex; gap: 16px; align-items: flex-start; padding: 24px; border: 1.5px solid var(--farbe-rahmen); border-radius: var(--radius-karte); background: var(--farbe-weiss); }
+.wc-karte img { flex: none; width: 64px; height: 64px; }
+.wc-karte h3 { font-size: var(--groesse-3); line-height: 1.25; margin: 0 0 6px; }
+.wc-karte p { font-size: var(--groesse-2); line-height: 1.5; color: var(--farbe-gedaempft); margin: 0; }
+
+@media (max-width: 767.98px) { .wc-karten { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 600px) { .wc-icons { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 16px; } }
+.wc .lp-abschnitt .zl-quer { padding: 0; margin-top: 40px; column-gap: clamp(32px, 5vw, 96px); }
+.wc .lp-abschnitt .zl-quer::before { left: 0; right: 0; }
+@media (max-width: 900px) {
+  .wc .lp-abschnitt .zl-quer { padding-left: 72px; }
+  .wc .lp-abschnitt .zl-quer::before { left: 27px; right: auto; }
+}
+@media (max-width: 767.98px) {
+  .wc-formzeile, .wc-formzeile .anfrage-felder { grid-template-columns: minmax(0, 1fr); }
+  .wc-formfuss .anfrage-knoepfe, .wc-formfuss .button { width: 100%; justify-content: center; }
+  .wc-formfuss .button { font-size: var(--groesse-2); padding-left: 16px; padding-right: 16px; }
 }
 /* Einstieg „Hoffnung ist keine Strategie.“ (Anna 12.11.2026, aus dem LinkedIn-Post) */
 .lp-breit .lp-hoffnung .preis-h2 { font-size: var(--groesse-8); line-height: 1.12; margin-bottom: 32px; }

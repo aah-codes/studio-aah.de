@@ -81,6 +81,8 @@ window.Anfrage = (() => {
   // Kostenlose Angebote (Anna 17.11.2026, z. B. Website-Check): kein Häkchen, der Newsletter gehört dazu.
   // Das Formular trägt data-newsletter-gekoppelt, der Text über dem Button sagt es; Brevo schickt trotzdem die Bestätigungs-E-Mail (Double-Opt-in).
   const gekoppelt = (form) => 'newsletterGekoppelt' in form.dataset;
+  // Website-Check (Anna 20.11.2026): ganz ohne Newsletter und ohne Werbung – kein Häkchen, keine Anmeldung bei Brevo.
+  const ohneNewsletter = (form) => 'ohneNewsletter' in form.dataset;
   let nr = 0;
   function NEWSLETTER(du = false, an = false, id = '') {
     if (!id) { nr += 1; id = `anfrage-nl-${nr}`; }
@@ -90,7 +92,7 @@ window.Anfrage = (() => {
   }
   document.querySelectorAll('form[data-anfrage]').forEach((form) => {
     const vor = form.querySelector('.anfrage-falle') || form.querySelector('.anfrage-knoepfe');
-    if (vor && !form.elements.newsletter && !gekoppelt(form)) vor.insertAdjacentHTML('beforebegin', NEWSLETTER('du' in form.dataset));
+    if (vor && !form.elements.newsletter && !gekoppelt(form) && !ohneNewsletter(form)) vor.insertAdjacentHTML('beforebegin', NEWSLETTER('du' in form.dataset));
   });
 
   // Hinweis unter dem Formular zum Versandweg (Datenschutz)

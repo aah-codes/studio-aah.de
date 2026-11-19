@@ -12,10 +12,29 @@ D = lade_json('inhalte/website-check.json')
 
 
 def punkte():
-    h = ['    <ol class="wc-punkte">']
-    for i, p in enumerate(D['pruefpunkte'], 1):
-        h.append(f'      <li class="wc-punkt"><span class="wc-nr" aria-hidden="true">{i:02d}</span><h3>{esc(p["titel"])}</h3><p>{esc(p["text"])}</p></li>')
-    h.append('    </ol>')
+    """Prüfpunkte mit Icon (Anna 19.11.2026): Punkte mit "kurz" als Icon-Reihe, die übrigen als breite Karten."""
+    reihe = [p for p in D['pruefpunkte'] if p.get('kurz')]
+    karten = [p for p in D['pruefpunkte'] if not p.get('kurz')]
+    h = ['    <ul class="wc-icons">']
+    for p in reihe:
+        h.append(f'      <li><img src="../bilder/symbole/{p["icon"]}.svg" alt="" width="48" height="48" loading="lazy"><h3>{esc(p["titel"])}</h3><p>{esc(p["kurz"])}</p></li>')
+    h += ['    </ul>', '    <div class="wc-karten">']
+    for p in karten:
+        h.append(f'      <div class="wc-karte"><img src="../bilder/symbole/{p["icon"]}.svg" alt="" width="48" height="48" loading="lazy"><div><h3>{esc(p["titel"])}</h3><p>{esc(p["text"])}</p></div></div>')
+    h.append('    </div>')
+    return '\n'.join(h)
+
+
+def zahlen():
+    """Statistik aus der eigenen Stichprobe als große, statische Zahlen (Anna 20.11.2026)."""
+    st = D['stichprobe']
+    n = st['anzahl']
+    h = [f'    <ul class="wc-zahlen" role="list" aria-label="Anteil der {n} untersuchten Websites, bei denen die Angabe fehlt">']
+    for w in st['werte']:
+        prozent = round(100 * w['anzahl'] / n)
+        h.append(f'      <li><b class="wc-zahl">{prozent}&nbsp;%</b>'
+                 f'<span class="wc-zahl-name">{esc(w["name"])}</span><small>{esc(w["fach"])}</small></li>')
+    h.append('    </ul>')
     return '\n'.join(h)
 
 
@@ -65,9 +84,10 @@ def ld(seite):
 def main():
     t = SEITE.read_text(encoding='utf-8')
     neu = einsetzen(einsetzen(einsetzen(t, 'CHECK-PUNKTE', punkte()), 'CHECK-FAQ', faq()), 'CHECK-LD', ld(t))
+    neu = einsetzen(neu, 'CHECK-ZAHLEN', zahlen())
     if neu != t:
         SEITE.write_text(neu, encoding='utf-8')
-    print('Website-Check: Prüfpunkte, Fragen und strukturierte Daten gesetzt')
+    print('Website-Check: Prüfpunkte, Stichprobe, Fragen und strukturierte Daten gesetzt')
 
 
 if __name__ == '__main__':

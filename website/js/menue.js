@@ -499,4 +499,15 @@
   document.querySelectorAll('.hk-flip').forEach(function (karte) {
     karte.addEventListener('click', function (e) { if (!e.target.closest('a')) karte.classList.toggle('gedreht'); });
   });
+
+  // Punkteraster im Hero (Startseite, Website-Check): rund um die Maus deutlicher (Anna 17. und 20.11.2026)
+  if (window.matchMedia('(hover: hover)').matches) {
+    document.querySelectorAll('[data-raster]').forEach(function (buehne) {
+      buehne.addEventListener('pointermove', function (ev) {
+        var r = buehne.getBoundingClientRect();
+        buehne.style.setProperty('--mx', ((ev.clientX - r.left) / r.width * 100).toFixed(1) + '%');
+        buehne.style.setProperty('--my', ((ev.clientY - r.top) / r.height * 100).toFixed(1) + '%');
+      });
+    });
+  }
 })();

@@ -57,7 +57,8 @@ Kurzfassung der Branding-Richtlinien (Original in Betrieb: `Kunden Studio AAH/St
 ## Formulare
 - Pflicht nur mit `required`, rotes Sternchen per CSS, kein Hinweis „Pflichtfeld“. Möglichst nur die E-Mail-Adresse Pflicht. Nachrichtenfeld mit vorbereitetem Text („Guten Tag Frau Härtelt, …“) und darunter `p.anfrage-hilfe`: „Sie können den vorbereiteten Text direkt abschicken oder mit Ihrem Anliegen ergänzen.“ Umgesetzt bei Kontakt und Entwurf Markenhandbuch; Annas Vorschlag: bei allen Formularen so, vorher kurz fragen.
 - Newsletter-Häkchen (freiwillig, nicht vorausgewählt) in einem Satz, Text in `NEWSLETTER()` in `js/anfrage.js`. Bei Kontakt- und Angebotsanfragen bleibt es.
-- Kostenlose Angebote mit E-Mail-Feld (Website-Check, künftig Downloads und Tests): kein Häkchen, Absenden meldet zum Newsletter an (`data-newsletter-gekoppelt`, Double-Opt-in bleibt), Hinweis fett direkt über dem Button, Datenschutzerklärung Abschnitt 4 und 5. Rechts-Check dazu liegt in Betrieb.
+- Kostenlose Angebote mit E-Mail-Feld (künftig Downloads und Tests): kein Häkchen, Absenden meldet zum Newsletter an (`data-newsletter-gekoppelt`, Double-Opt-in bleibt), Hinweis fett direkt über dem Button, Datenschutzerklärung Abschnitt 4 und 5. Rechts-Check dazu liegt in Betrieb.
+- Website-Check (Anna 20.11.2026): ganz ohne Newsletter und ohne Werbung (`data-ohne-newsletter`), kein Häkchen, keine Anmeldung bei Brevo; Datenschutzerklärung `#website-check` sagt das ausdrücklich.
 - Konfetti bei jedem Absenden: `document.dispatchEvent(new Event('konfetti'))` ohne Seitenwechsel, `data-konfetti` am `<main>` jeder Danke-Seite. Neue Formulare und Danke-Seiten immer anschließen. Höchstens 4,5 s, bei „Bewegung reduzieren“ keins (Code in `js/menue.js`).
 
 ## Einzelne Seiten
