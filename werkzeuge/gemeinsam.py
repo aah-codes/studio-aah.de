@@ -77,8 +77,7 @@ def daumen(werkzeug, frage, pre='', selbst=False):
             f'<div class="daumen-knoepfe" role="group" aria-labelledby="daumen-{esc(werkzeug.lower().replace(" ", "-"))}">'
             f'<button type="button" data-wert="gut" aria-pressed="false" aria-label="Gut">{DAUMEN_HOCH}</button>'
             f'<button type="button" data-wert="schlecht" aria-pressed="false" aria-label="Nicht gut">{DAUMEN_RUNTER}</button></div>'
-            '<div class="daumen-danach" role="status" aria-live="polite"></div>'
-            f'<p class="hinweis-klein">Ohne Namen und E-Mail-Adresse; der Formulardienst Formspark erhält dabei Ihre IP-Adresse. Mehr in der <a href="{pre}datenschutz/#rueckmeldung">Datenschutzerklärung</a>.</p></div>')
+            '<div class="daumen-danach" role="status" aria-live="polite"></div></div>')  # ohne Datenschutz-Hinweis, steht in der Datenschutzerklärung #rueckmeldung (Anna 20.11.2026)
 
 
 def spiel_sektion(pre, version):
