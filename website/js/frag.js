@@ -63,13 +63,35 @@
     return s;
   }
   function hinscrollen(e) { ziel.scrollTop = Math.max(0, e.offsetTop - 12); }
+  // Reaktionen wie im Messenger deuten (Anna 20.11.2026: Rakete auf den Preis heißt „passt, finde ich gut“):
+  // nur Emojis oder kurze Zustimmung → passende Antwort mit Kontaktwegen; nachdenkliche Emojis → Einladung zu weiteren Fragen
+  var letzte = null;
+  var JA = ['👍', '🚀', '❤', '😍', '🙌', '✨', '🔥', '✅', '🎉', '🤝', '👏', '💯', '😊', '🥳', '💪', '🙏', '☺', '😀', '😃', '😄', '👌', '😂',
+    'ok', 'okay', 'super', 'top', 'toll', 'klasse', 'perfekt', 'prima', 'passt', 'gut', 'sehr', 'cool', 'genial', 'wunderbar', 'danke', 'ja', 'gern', 'gerne', 'mega', 'klingt', 'prima', 'schön', 'fair'];
+  var HMM = ['🤔', '😅', '👀', '😕', '🤨', '😬', '🙈', 'hm', 'hmm', 'hmmm', 'teuer', 'zu'];
+  var KONTAKT = ['Anrufen: [0176 830 898 79](tel:+4917683089879)', 'Schreiben: [info@studio-aah.de](mailto:info@studio-aah.de)', 'Termin: [Beratung anfragen](kontakt/)'];
+  function reaktion(frage) {
+    var teile = frage.toLowerCase().match(/\p{Extended_Pictographic}|[a-zäöüß]+/gu);
+    if (!teile || teile.length > 4) return null;
+    var alle = function (liste) { return teile.every(function (x) { return liste.indexOf(x) >= 0; }); };
+    if (alle(JA)) {
+      var preis = letzte && /€/.test(letzte.a + ' ' + (letzte.p || []).join(' '));
+      return { a: preis ? 'Wunderbar, dann passt der Preis in Ihr Budget! Lassen Sie uns über Ihre Website sprechen, das Erstgespräch ist kostenlos.'
+                        : 'Das freut mich! Wenn Sie mögen, sprechen wir direkt darüber, das Erstgespräch ist kostenlos.', p: KONTAKT };
+    }
+    if (alle(HMM.concat(JA))) return { a: 'Noch nicht ganz überzeugt? Fragen Sie mich gern weiter, zum Beispiel: Wie läuft ein Projekt ab? Oder wir klären es kurz persönlich.', p: KONTAKT };
+    return null;
+  }
   function zeigen(frage) {
-    var treffer = bewerten(frage)[0];
+    var eigen = reaktion(frage);
+    var treffer = eigen ? { e: eigen } : bewerten(frage)[0];
+    if (treffer && !eigen) letzte = treffer.e;
     var verlauf = ziel.querySelector('.fh-chat');
     if (!verlauf) {
       verlauf = ziel.appendChild(el('ol', 'fh-chat'));
       verlauf.appendChild(el('li', 'fh-tag', 'Heute'));
     }
+    ton('senden');
     var runde = el('li', 'fh-runde');
     var ich = el('p', 'fh-ich', frage);
     ich.appendChild(zeit(true));
@@ -107,7 +129,7 @@
     }
     antwort.appendChild(zeit(false));
     setTimeout(function () {
-      if (tippt.parentNode) runde.replaceChild(zeile, tippt);
+      if (tippt.parentNode) { runde.replaceChild(zeile, tippt); ton('antwort'); }
       hinscrollen(runde);
     }, still ? 0 : 900);
   }
@@ -121,19 +143,159 @@
   var START = feld.placeholder, panel = form.closest('.hl-panel'), zu = document.querySelector('[data-frag-zu]');
   function schliessen() {
     if (!ziel.textContent.trim()) return;
-    ziel.innerHTML = ''; feld.value = ''; feld.placeholder = START;
+    ziel.innerHTML = ''; feld.value = ''; feld.placeholder = START; modus();
   }
   if (zu) zu.addEventListener('click', schliessen);
   if (panel) panel.addEventListener('click', function (ev) { if (ev.target === panel) schliessen(); });
   document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape' && panel && panel.contains(document.activeElement)) schliessen(); });
 
+  // Eingabe wie bei WhatsApp (Anna 20.11.2026): runder Button mit Papierflieger; ist das Feld leer (nach der ersten Frage),
+  // wird er zum Mikrofon und diktiert. Rechts im Feld eine Emoji-Auswahl. Leise Töne beim Senden, bei der Antwort und beim Aufnehmen.
+  var senden = form.querySelector('[data-senden]'), emojiAuf = form.querySelector('[data-emoji-auf]'), emojis = form.querySelector('.hl-emojis');
+  var aufnahme = form.querySelector('.hl-aufnahme'), dauer = form.querySelector('.hl-dauer'), hinweis = form.querySelector('.hl-diktat-hinweis');
+  var SR = window.SpeechRecognition || window.webkitSpeechRecognition, rec = null, diktat = '', uhrDiktat = null, abschicken = false;
+
+  // Töne aus dem Browser selbst (Web Audio), keine Dateien, nur nach einem Klick
+  var klang = null;
+  function ton(art) {
+    try {
+      klang = klang || new (window.AudioContext || window.webkitAudioContext)();
+      var folge = { senden: [[620, 0, .07], [930, .06, .08]], antwort: [[880, 0, .1], [1320, .09, .14]], start: [[520, 0, .06]], stopp: [[420, 0, .08]] }[art];
+      folge.forEach(function (n) {
+        var o = klang.createOscillator(), g = klang.createGain(), t0 = klang.currentTime + n[1];
+        o.type = 'sine'; o.frequency.value = n[0];
+        g.gain.setValueAtTime(0.0001, t0); g.gain.exponentialRampToValueAtTime(0.06, t0 + 0.01); g.gain.exponentialRampToValueAtTime(0.0001, t0 + n[2]);
+        o.connect(g); g.connect(klang.destination); o.start(t0); o.stop(t0 + n[2] + 0.02);
+      });
+    } catch (e) {}
+  }
+
+  function beispiel() { return /\?$/.test(feld.placeholder) && feld.placeholder !== 'Noch eine Frage?' ? feld.placeholder : ''; }
+  function istMikro() { return !!SR && !rec && !feld.value.trim(); }   // Mikrofon von Anfang an (Anna 20.11.2026)
+  function modus() {
+    if (!senden) return;
+    var m = istMikro();
+    form.classList.toggle('ist-mikro', m);
+    senden.setAttribute('aria-label', rec ? 'Diktat senden' : m ? 'Frage diktieren' : 'Frage senden');
+  }
+  feld.addEventListener('input', modus);
+  modus();
+
+  // Emoji-Auswahl: fügt an der Schreibmarke ein, bleibt offen wie bei WhatsApp, schließt mit Esc oder Klick daneben
+  function emojiPanel(auf) {
+    if (!emojis) return;
+    emojis.hidden = !auf; emojiAuf.setAttribute('aria-expanded', auf ? 'true' : 'false');
+  }
+  if (emojiAuf) emojiAuf.addEventListener('click', function () { emojiPanel(emojis.hidden); });
+  if (emojis) emojis.addEventListener('click', function (ev) {
+    var b = ev.target.closest('[data-emoji]'); if (!b) return;
+    var a = feld.selectionStart == null ? feld.value.length : feld.selectionStart, e = feld.selectionEnd == null ? a : feld.selectionEnd;
+    feld.value = (feld.value.slice(0, a) + b.textContent + feld.value.slice(e)).slice(0, 200);
+    var pos = a + b.textContent.length; feld.focus(); try { feld.setSelectionRange(pos, pos); } catch (x) {}
+    modus();
+  });
+  document.addEventListener('click', function (ev) { if (emojis && !emojis.hidden && !form.contains(ev.target)) emojiPanel(false); });
+
+  // Diktieren: vor der ersten Aufnahme ein Hinweis (Spracherkennung des Browsers, Anbieter kann die Aufnahme verarbeiten)
+  function zustimmung() { try { return sessionStorage.getItem('diktat-ok') === '1'; } catch (e) { return false; } }
+  function aufnahmeEnde() {
+    clearInterval(uhrDiktat); rec = null;
+    form.classList.remove('nimmt-auf'); aufnahme.hidden = true; feld.hidden = false;
+    modus();
+  }
+  // Erst auf dem Gerät versuchen (Rechts-Check 20.11.2026): Kann der Browser Deutsch lokal erkennen (Chrome mit processLocally),
+  // verlässt die Aufnahme das Gerät nicht und der Hinweis entfällt. Sonst Spracherkennung des Browsers nur nach dem Hinweis.
+  var lokal = null;
+  function lokalPruefen() {
+    if (lokal !== null) return Promise.resolve(lokal);
+    if (!SR || typeof SR.available !== 'function') return Promise.resolve(lokal = false);
+    var opt = { langs: ['de-DE'], processLocally: true };
+    return SR.available(opt).then(function (s) {
+      if (s === 'available') return true;
+      if (s === 'unavailable' || typeof SR.install !== 'function') return false;
+      return SR.install(opt).then(function (ok) { return !!ok; });
+    }).catch(function () { return false; }).then(function (ok) { return (lokal = ok); });
+  }
+  function aufnehmen() {
+    if (!SR) return;
+    lokalPruefen().then(function (ok) {
+      if (!ok && !zustimmung()) { hinweis.hidden = false; hinweis.querySelector('[data-diktat-ja]').focus({ focusVisible: false }); return; }
+      starten(ok);
+    });
+  }
+  function starten(ok) {
+    diktat = ''; abschicken = false;
+    try { rec = new SR(); } catch (e) { return; }
+    rec.lang = 'de-DE'; rec.interimResults = true; rec.continuous = true;
+    if (ok) rec.processLocally = true;
+    rec.onresult = function (ev) {
+      var s = ''; for (var i = 0; i < ev.results.length; i++) s += ev.results[i][0].transcript;
+      diktat = s.trim();
+    };
+    rec.onerror = function (ev) {
+      if (ev.error === 'service-not-allowed' && rec && rec.processLocally) { lokal = false; feld.placeholder = 'Bitte noch einmal aufs Mikrofon tippen'; }
+      else if (ev.error === 'not-allowed' || ev.error === 'service-not-allowed') { feld.placeholder = 'Mikrofon ist nicht freigegeben'; hilfeZeigen(); }
+      else if (ev.error === 'no-speech') feld.placeholder = 'Nichts gehört. Noch einmal?';
+    };
+    rec.onend = function () {
+      var text = diktat, los = abschicken;
+      aufnahmeEnde(); ton('stopp');
+      if (los && text) { feld.value = text.slice(0, 200); modus(); if (form.requestSubmit) form.requestSubmit(); else form.dispatchEvent(new Event('submit', { cancelable: true })); }
+      else if (los) feld.placeholder = 'Nichts verstanden. Noch einmal?';
+    };
+    var start = Date.now();
+    form.classList.add('nimmt-auf'); aufnahme.hidden = false; feld.hidden = true; emojiPanel(false);
+    dauer.textContent = '0:00';
+    uhrDiktat = setInterval(function () { var s = Math.floor((Date.now() - start) / 1000); dauer.textContent = Math.floor(s / 60) + ':' + ('0' + s % 60).slice(-2); if (s >= 60) { abschicken = true; rec && rec.stop(); } }, 250);
+    modus(); ton('start');
+    try { rec.start(); } catch (e) { aufnahmeEnde(); }
+  }
+  // Hilfe, wenn der Browser das Mikrofon sperrt: Schritte passend zu Browser und Gerät
+  var hilfe = form.querySelector('.hl-diktat-hilfe');
+  function hilfeZeigen() {
+    if (!hilfe) return;
+    var ua = navigator.userAgent, ios = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+    var android = /Android/.test(ua), mac = /Macintosh/.test(ua), safari = /Safari/.test(ua) && !/Chrome|Chromium|Edg|CriOS|FxiOS/.test(ua);
+    var schritte = ios ? ['Tippen Sie in der Adressleiste links auf das Symbol mit dem kleinen „a“ und großen „A“.', 'Wählen Sie „Website-Einstellungen“ und stellen Sie Mikrofon auf „Erlauben“.', 'Hilft das nicht: Einstellungen → Apps → Safari → Mikrofon → „Fragen“ oder „Erlauben“.']
+      : android ? ['Tippen Sie links neben der Adresse auf das Symbol mit den Reglern.', 'Wählen Sie „Berechtigungen“ und stellen Sie Mikrofon auf „Zulassen“.']
+      : safari ? ['Wählen Sie oben in der Menüleiste Safari → „Einstellungen für studio-aah.de …“.', 'Stellen Sie Mikrofon auf „Erlauben“.']
+      : ['Klicken Sie links in der Adressleiste auf das Symbol mit den Reglern.', 'Schalten Sie Mikrofon ein oder stellen Sie es auf „Zulassen“.'].concat(mac ? ['Hilft das nicht: Systemeinstellungen → Datenschutz & Sicherheit → Mikrofon → Ihren Browser einschalten.'] : []);
+    var ol = hilfe.querySelector('[data-hilfe-schritte]'); ol.innerHTML = '';
+    schritte.forEach(function (s) { ol.appendChild(el('li', null, s)); });
+    hilfe.hidden = false; hilfe.querySelector('[data-hilfe-neu]').focus({ focusVisible: false });
+  }
+  if (hilfe) {
+    hilfe.querySelector('[data-hilfe-neu]').addEventListener('click', function () { location.reload(); });
+    hilfe.querySelector('[data-hilfe-zu]').addEventListener('click', function () { hilfe.hidden = true; feld.placeholder = 'Noch eine Frage?'; feld.focus(); });
+  }
+  if (hinweis) {
+    hinweis.querySelector('[data-diktat-ja]').addEventListener('click', function () { try { sessionStorage.setItem('diktat-ok', '1'); } catch (e) {} hinweis.hidden = true; starten(false); });
+    hinweis.querySelector('[data-diktat-nein]').addEventListener('click', function () { hinweis.hidden = true; feld.focus(); });
+  }
+  var weg = form.querySelector('[data-diktat-weg]');
+  if (weg) weg.addEventListener('click', function () { abschicken = false; if (rec) rec.abort(); });
+  document.addEventListener('keydown', function (ev) {
+    if (ev.key !== 'Escape') return;
+    if (emojis && !emojis.hidden) emojiPanel(false);
+    if (hinweis && !hinweis.hidden) hinweis.hidden = true;
+    if (hilfe && !hilfe.hidden) hilfe.hidden = true;
+  });
+
+  var perTaste = false;   // Enter im Feld schickt ab, nimmt aber nie auf
+  feld.addEventListener('keydown', function (ev) { if (ev.key === 'Enter') perTaste = true; });
+  form.addEventListener('click', function (ev) { if (ev.target.closest('[data-senden]')) perTaste = false; }, true);
   feld.addEventListener('focus', function () { laden().catch(function () {}); }, { once: true });
   form.addEventListener('submit', function (ev) {
-    // Leeres Feld: beim ersten Mal die Beispielfrage aus dem Platzhalter beantworten (Anna 20.11.2026: „muss nichts eingeben,
-    // kann einfach nur Antwort klicken und sehe schon die Funktionalität“), danach („Noch eine Frage?“) wie bisher zum Feld
-    var frage = feld.value.trim() || (/\?$/.test(feld.placeholder) && feld.placeholder !== 'Noch eine Frage?' ? feld.placeholder : '');
-    if (!frage) { ev.preventDefault(); feld.focus(); return; }
     ev.preventDefault();
-    laden().then(function () { zeigen(frage); }).catch(function () { form.submit(); });
+    if (rec) { abschicken = true; rec.stop(); return; }          // während der Aufnahme: Diktat senden
+    // leeres Feld: Klick auf den runden Button nimmt auf; Enter beantwortet die Beispielfrage aus dem Platzhalter
+    var taste = perTaste; perTaste = false;
+    if (istMikro() && !taste) { aufnehmen(); return; }
+    // Leeres Feld: beim ersten Mal die Beispielfrage aus dem Platzhalter beantworten (Anna 20.11.2026: „muss nichts eingeben,
+    // kann einfach nur Antwort klicken und sehe schon die Funktionalität“)
+    var frage = feld.value.trim() || beispiel();
+    if (!frage) { feld.focus(); return; }
+    emojiPanel(false);
+    laden().then(function () { zeigen(frage); modus(); }).catch(function () { form.submit(); });
   });
 })();

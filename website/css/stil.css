@@ -4400,7 +4400,48 @@ html:not(.js) .hk-zeichen { display: none; }
 .hl-titel { font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-size: var(--groesse-7); line-height: 1.12; letter-spacing: .9px; margin: 0 0 24px; }
 .hl h1 { font-family: var(--schrift-text); text-transform: none; letter-spacing: 0; font-weight: 500; font-size: var(--groesse-4); line-height: 1.4; max-width: 30ch; margin: 0 0 32px; color: var(--farbe-weiss); text-wrap: balance; }
 .hl .hl-feld { margin: 0; max-width: 560px; border-color: var(--farbe-weiss); }
-.hl .hl-los { background: var(--farbe-dunkel); border-color: var(--farbe-dunkel); flex: none; }
+/* Eingabe wie bei WhatsApp (Anna 20.11.2026): runder Senden-Button mit Papierflieger, bei leerem Feld Mikrofon; Emoji rechts im Feld */
+.hl .hl-feld { gap: 4px; }
+.hl .hl-los { flex: none; display: grid; place-items: center; width: 52px; height: 52px; padding: 0; border: 0; border-radius: 50%; background: var(--farbe-primaer); color: var(--farbe-weiss); cursor: pointer; transition: background .2s, transform .15s; }
+.hl .hl-los:hover { background: var(--farbe-primaer); }
+.hl .hl-los:focus-visible { outline: 3px solid var(--farbe-primaer); outline-offset: 3px; }   /* immer Markenblau, Fokus als blauer Ring (Anna 20.11.2026) */
+.hl .hl-los:active { transform: scale(.94); }
+.hl .hl-los svg { width: 24px; height: 24px; }
+.hl .hl-mikro, .hl .ist-mikro .hl-flieger { display: none; }
+.hl .ist-mikro .hl-mikro { display: block; }
+.hl .hl-emoji { flex: none; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; background: none; color: var(--farbe-dunkel); cursor: pointer; }
+.hl .hl-emoji:hover, .hl .hl-emoji:focus-visible, .hl .hl-emoji[aria-expanded="true"] { background: var(--farbe-creme); }
+.hl .hl-emoji svg { width: 26px; height: 26px; }
+.hl .nimmt-auf .hl-emoji { display: none; }
+.hl .hl-emojis { position: absolute; right: 0; bottom: calc(100% + 8px); z-index: 5; display: grid; grid-template-columns: repeat(8, 40px); gap: 2px; padding: 10px; background: var(--farbe-weiss); border-radius: var(--radius-karte); box-shadow: 0 10px 30px rgba(14, 16, 17, .18); }
+.hl .hl-emojis[hidden], .hl .hl-aufnahme[hidden], .hl .hl-diktat-hinweis[hidden], .hl .hl-diktat-hilfe[hidden] { display: none; }
+.hl .hl-emojis button { width: 40px; height: 40px; padding: 0; border: 0; border-radius: 50%; background: none; font-size: var(--groesse-4); line-height: 1; cursor: pointer; }
+.hl .hl-emojis button:hover, .hl .hl-emojis button:focus-visible { background: var(--farbe-creme); }
+/* Aufnahme: Mülleimer, pulsierender Punkt (Blau statt Rot, Markenfarbe), Dauer, laufende Punktlinie */
+.hl .hl-aufnahme { flex: 1; display: flex; align-items: center; gap: 12px; min-width: 0; margin-left: -12px; }
+.hl .hl-weg { flex: none; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; background: var(--farbe-creme); color: var(--farbe-gedaempft); cursor: pointer; }
+.hl .hl-weg:hover, .hl .hl-weg:focus-visible { color: var(--farbe-dunkel); }
+.hl .hl-weg svg { width: 22px; height: 22px; }
+.hl .hl-aufnahme-zeile { flex: 1; display: flex; align-items: center; gap: 10px; min-width: 0; }
+.hl .hl-punkt { flex: none; width: 12px; height: 12px; border-radius: 50%; background: var(--farbe-primaer); animation: hl-puls 1s ease-in-out infinite; }
+.hl .hl-dauer { flex: none; font-size: var(--groesse-3); font-variant-numeric: tabular-nums; color: var(--farbe-dunkel); }
+.hl .hl-linie { flex: 1; min-width: 20px; height: 3px; background: radial-gradient(circle, var(--farbe-gedaempft) 1.2px, transparent 1.6px) 0 50% / 7px 3px repeat-x; animation: hl-linie 1.2s linear infinite; }
+@keyframes hl-puls { 50% { opacity: .3; } }
+@keyframes hl-linie { to { background-position: -21px 50%; } }
+@media (prefers-reduced-motion: reduce) { .hl .hl-punkt, .hl .hl-linie { animation: none; } }
+/* Hinweis vor dem ersten Diktat */
+.hl .hl-diktat-hinweis, .hl .hl-diktat-hilfe { position: absolute; left: 0; right: 0; bottom: calc(100% + 8px); z-index: 6; padding: 18px 20px; background: var(--farbe-weiss); border-radius: var(--radius-karte); box-shadow: 0 10px 30px rgba(14, 16, 17, .18); font-size: var(--groesse-2); line-height: 1.5; color: var(--farbe-dunkel); }
+.hl .hl-diktat-hinweis p, .hl .hl-diktat-hilfe p { margin: 0 0 20px; }
+.hl .hl-diktat-hinweis a, .hl .hl-diktat-hilfe a { color: var(--farbe-primaer); text-decoration: underline; }
+.hl .hl-diktat-knoepfe { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin: 0 !important; }
+.hl .hl-diktat-knoepfe .textlink { background: none; border: 0; padding: 0; font: inherit; cursor: pointer; }
+.hl .hl-diktat-knoepfe .button, .hl .hl-diktat-knoepfe .button:hover { background: var(--farbe-primaer); border-color: var(--farbe-primaer); color: var(--farbe-weiss); outline: none; }
+.hl .hl-diktat-knoepfe .button:focus-visible { outline: 3px solid var(--farbe-primaer); outline-offset: 3px; }
+/* Hilfe, wenn das Mikrofon gesperrt ist (Anna 20.11.2026) */
+.hl .hl-diktat-hilfe ol { margin: 0 0 16px; padding-left: 1.2em; display: grid; gap: 6px; }
+.hl .hl-diktat-hilfe strong { font-weight: 600; }
+@media (max-width: 600px) { .hl .hl-emojis { grid-template-columns: repeat(6, 40px); } .hl .hl-los { width: 46px; height: 46px; } .hl .hl-emoji { width: 38px; height: 38px; } }
+@media (max-width: 400px) { .hl .hl-emojis { grid-template-columns: repeat(5, 40px); } }
 .hl-chips { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 0; padding: 0; max-width: 560px; }
 .hl-chip { font: 600 var(--groesse-2)/1.2 var(--schrift-text); color: var(--farbe-weiss); background: transparent; border: 1.5px solid var(--farbe-weiss); border-radius: var(--radius-pille); padding: 8px 16px; cursor: pointer; transition: background .2s, color .2s; }
 .hl-chip:hover, .hl-chip:focus-visible { background: var(--farbe-weiss); color: var(--farbe-primaer); }
@@ -4428,7 +4469,7 @@ html:not(.js) .hk-zeichen { display: none; }
 .hl-chatkopf span { display: flex; flex-direction: column; line-height: 1.25; }
 .hl-chatkopf strong { font-size: var(--groesse-3); font-weight: 600; }
 .hl-chatkopf small { font-size: var(--groesse-1); color: var(--farbe-gedaempft); }
-.hl.ist-chat .hl-antworten { position: relative; flex: 1 1 0; padding: 12px 16px; }
+.hl.ist-chat .hl-antworten { position: relative; flex: 1 1 0; padding: 12px 16px 16px; }   /* 16 px bis zum Eingabefeld (Anna 20.11.2026) */
 .hl.ist-chat .hl-feld { max-width: none; margin: 0 12px 12px; border-color: var(--farbe-weiss); }
 /* Verlauf: Datum mittig, eigene Frage rechts in Blau, Annas Antwort links in Weiß mit Foto; Blasen mit kleiner Ecke wie im Messenger */
 .hl .fh-chat { margin: 0; gap: 14px; }
@@ -4497,7 +4538,6 @@ html:not(.js) .hk-zeichen { display: none; }
 @media (max-width: 767.98px) {
   .hl .hl-feld { flex-direction: row; flex-wrap: nowrap; align-items: center; padding: 6px 6px 6px 20px; } /* Eingabefeld mind. 16 px (Zoom am iPhone) bleibt aus .fh-feld */
   .hl .hl-feld input { padding: 10px 0; }
-  .hl .hl-los { padding: 12px 16px; font-size: var(--groesse-2); }
   .hl-bild { aspect-ratio: 4 / 5; min-height: 0; }
   .hl-pause { right: 16px; bottom: 16px; }
   .hl-panel { padding: 28px 24px; }
@@ -4511,7 +4551,6 @@ html:not(.js) .hk-zeichen { display: none; }
   .hl .fh-foto { width: 28px; height: 28px; }
   .hl .fh-tippt { margin-left: 34px; }
   .hl.ist-chat .hl-feld { margin: 0 8px 8px; padding: 4px 4px 4px 16px; }
-  .hl.ist-chat .hl-los { padding: 10px 14px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hl-folie img, .hl-folie.ist-aktiv img, .hl-folie.ist-monitor.ist-aktiv .hl-mon-seite { animation: none; transform: none; }

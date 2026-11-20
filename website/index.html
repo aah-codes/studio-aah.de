@@ -18,7 +18,7 @@
   <meta property="og:description" content="Strategie und Webdesign in Leipzig für neue Websites und Relaunch im Mittelstand: Anna Härtelt begleitet Unternehmen von der Analyse bis zum Launch.">
   <meta property="og:url" content="https://studio-aah.de/">
   <meta property="og:image" content="https://studio-aah.de/bilder/vorschaubild.jpg">
-  <link rel="stylesheet" href="css/stil.css?v=20261121e">
+  <link rel="stylesheet" href="css/stil.css?v=20261121h">
   <link rel="preload" href="schriften/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="schriften/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
   <script type="application/ld+json">
@@ -215,7 +215,7 @@
   </details>
 </header>
 <div class="mm-schleier" hidden></div>
-<script src="js/menue.js?v=20261121e" defer></script>
+<script src="js/menue.js?v=20261121h" defer></script>
 <!-- /KOPF -->
 
 <main id="inhalt" class="mit-faden">
@@ -236,17 +236,22 @@
       <form class="fh-feld hl-feld" action="kontakt/" method="get" role="search" data-frag>
         <label class="unsichtbar" for="fh-frage">Ihre Frage an STUDIO AAH!</label>
         <input id="fh-frage" name="frage" type="search" autocomplete="off" maxlength="200" placeholder="Warum bringt meine Website keine Anfragen?" enterkeyhint="search">
-        <button class="button hl-los" type="submit">Antwort <span aria-hidden="true">→</span></button>
+        <div class="hl-aufnahme" hidden><button type="button" class="hl-weg" aria-label="Aufnahme verwerfen" data-diktat-weg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><span class="hl-aufnahme-zeile"><span class="hl-punkt" aria-hidden="true"></span><span class="hl-dauer" aria-live="off">0:00</span><span class="hl-linie" aria-hidden="true"></span></span></div>
+        <button type="button" class="hl-emoji" aria-label="Emoji einfügen" aria-expanded="false" aria-controls="hl-emojis" data-emoji-auf><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="9" cy="10" r="1.2" fill="currentColor"/><circle cx="15" cy="10" r="1.2" fill="currentColor"/><path d="M7.8 13.6c.9 2 2.4 3 4.2 3s3.3-1 4.2-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+        <button class="hl-los" type="submit" aria-label="Frage senden" data-senden><svg class="hl-flieger" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.4 20.4 21 12 3.4 3.6 3.4 10.2 15 12 3.4 13.8Z" fill="currentColor"/></svg><svg class="hl-mikro" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3" fill="currentColor"/><path d="M5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+        <div class="hl-emojis" id="hl-emojis" role="group" aria-label="Emojis" hidden><button type="button" data-emoji>😊</button><button type="button" data-emoji>😂</button><button type="button" data-emoji>👍</button><button type="button" data-emoji>🙏</button><button type="button" data-emoji>🤔</button><button type="button" data-emoji>😅</button><button type="button" data-emoji>🎉</button><button type="button" data-emoji>❤️</button><button type="button" data-emoji>👋</button><button type="button" data-emoji>🙌</button><button type="button" data-emoji>😍</button><button type="button" data-emoji>🚀</button><button type="button" data-emoji>✨</button><button type="button" data-emoji>💡</button><button type="button" data-emoji>✅</button><button type="button" data-emoji>🔥</button><button type="button" data-emoji>💬</button><button type="button" data-emoji>📱</button><button type="button" data-emoji>💻</button><button type="button" data-emoji>📈</button><button type="button" data-emoji>🤝</button><button type="button" data-emoji>☕</button><button type="button" data-emoji>🌱</button><button type="button" data-emoji>👀</button></div>
+        <div class="hl-diktat-hinweis" role="dialog" aria-label="Hinweis zum Diktieren" hidden><p>Zum Diktieren nutzt Ihr Browser seine eigene Spracherkennung. Dabei kann er die Aufnahme an seinen Anbieter senden, etwa Google (Chrome) oder Apple (Safari), auch in die USA. Ich erhalte weder Aufnahme noch Text. <a href="datenschutz/#diktieren">Datenschutz</a></p><p class="hl-diktat-knoepfe"><button type="button" class="button" data-diktat-ja>Verstanden</button> <button type="button" class="textlink" data-diktat-nein>Lieber tippen</button></p></div>
+        <div class="hl-diktat-hilfe" role="dialog" aria-label="Mikrofon freigeben" hidden><p><strong>Ihr Browser hat das Mikrofon für diese Seite gesperrt.</strong> So geben Sie es frei:</p><ol data-hilfe-schritte></ol><p class="hl-diktat-knoepfe"><button type="button" class="button" data-hilfe-neu>Seite neu laden</button> <button type="button" class="textlink" data-hilfe-zu>Lieber tippen</button></p></div>
       </form>
     </div>
-    <ul class="hl-chips" aria-label="Häufige Fragen"><li><button type="button" class="hl-chip" data-frage="Was kostet eine Website?">Was kostet eine Website?</button></li><li><button type="button" class="hl-chip" data-frage="Wie läuft ein Website-Projekt ab?">Wie läuft ein Projekt ab?</button></li><li><button type="button" class="hl-chip" data-frage="Was prüft der Website-Check?">Website-Check</button></li><li><button type="button" class="hl-chip" data-frage="Was ist das KI-Arbeits-Setup?">KI im Büro</button></li></ul>
+    <ul class="hl-chips" aria-label="Häufige Fragen"><li><button type="button" class="hl-chip" data-frage="Warum bringt meine Website keine Anfragen?">Keine Anfragen?</button></li><li><button type="button" class="hl-chip" data-frage="Was kostet eine Website?">Was kostet eine Website?</button></li><li><button type="button" class="hl-chip" data-frage="Wie läuft ein Website-Projekt ab?">Wie läuft ein Projekt ab?</button></li><li><button type="button" class="hl-chip" data-frage="Was prüft der Website-Check?">Website-Check</button></li><li><button type="button" class="hl-chip" data-frage="Was ist das KI-Arbeits-Setup?">KI im Büro</button></li></ul>
   </div>
   <figure class="hl-bild hl-show" aria-roledescription="Diashow" aria-label="Bilder aus dem Studio und aus Leipzig">
     <ul class="hl-folien"><li class="hl-folie ist-aktiv"><img src="bilder/start/leipzig-zentrum-von-oben.webp" srcset="bilder/start/leipzig-zentrum-von-oben-640.webp 640w, bilder/start/leipzig-zentrum-von-oben-960.webp 960w, bilder/start/leipzig-zentrum-von-oben.webp 1600w" sizes="(max-width: 1024px) calc(100vw - 32px), 48vw" fetchpriority="high" alt="Leipziger Innenstadt von oben mit dem Neuen Rathaus" style="object-position:40% 50%"></li><li class="hl-folie ist-farbig ist-monitor" aria-hidden="true" data-dauer="16000"><div class="hl-mon"><img class="hl-mon-foto" data-src="bilder/referenzen/bauer/monitor-foto.webp" alt="" width="1100" height="860"><div class="hl-mon-schirm"><img class="hl-mon-seite" data-src="bilder/start/bauer-startseite-ganz.jpg" alt="Startseite der Website von Wolfgang Bauer Ingenieurbau auf einem Monitor" width="860" height="5037"></div></div></li><li class="hl-folie ist-farbig" aria-hidden="true"><img data-src="bilder/anna-haertelt-studio-blau.webp" data-srcset="bilder/anna-haertelt-studio-blau-640.webp 640w, bilder/anna-haertelt-studio-blau-960.webp 960w, bilder/anna-haertelt-studio-blau.webp 1200w" sizes="(max-width: 1024px) calc(100vw - 32px), 48vw" alt="Anna Härtelt vor blauer Studiowand" style="object-position:50% 20%"></li></ul>
     <button type="button" class="hl-pause" aria-label="Diashow anhalten">❚❚</button>
   </figure>
   <script src="js/faden.js?v=20261016s" defer></script>
-  <script src="js/frag.js?v=20261121e" defer></script>
+  <script src="js/frag.js?v=20261121h" defer></script>
 </section>
 
   <section class="intro intro-neu" aria-labelledby="intro-titel">
@@ -589,7 +594,7 @@
   <a class="sticky-rechner" href="website-check/"><span class="sticky-rechner-icon"><img src="bilder/icons/target-96.webp" alt="" width="96" height="96" loading="lazy"></span>Kostenloser Website-Check&nbsp;<span aria-hidden="true">→</span></a>
   <!-- /FUSS -->
 
-  <script src="js/zaehlen.js?v=20261121e" defer></script>
-  <script src="js/start.js?v=20261121e" defer></script>
+  <script src="js/zaehlen.js?v=20261121h" defer></script>
+  <script src="js/start.js?v=20261121h" defer></script>
 </body>
 </html>
