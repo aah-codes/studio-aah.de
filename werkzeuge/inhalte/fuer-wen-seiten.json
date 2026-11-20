@@ -564,7 +564,27 @@
    "ki_bild": {
     "datei": "bilder/branchen/ki/elektro.webp",
     "alt": "Eine Miniaturfigur im blauen Blaumann steht auf dem Toilettenrand neben einer riesigen blauen Saugglocke (KI-generiertes Bild)"
-   }
+   },
+   "karten": [
+    [
+     "Kein Azubi hat sich dieses Jahr beworben.",
+     "Ihre Karriereseite zeigt den echten Alltag im Betrieb und auf der Baustelle. Beworben wird per Handy, ohne Anschreiben.",
+     "fachkraefte/",
+     "Fachkräfte finden"
+    ],
+    [
+     "Angebote schreiben wir nach Feierabend.",
+     "Ein KI-Ablauf macht aus Ihren Notizen und dem Aufmaß einen Angebotsentwurf und Antworten an Kund:innen. Sie prüfen nur noch.",
+     "entlastung/",
+     "Entlastung"
+    ],
+    [
+     "Die Anfragen passen nicht zu uns.",
+     "Ihre Website zeigt klar Ihre Schwerpunkte und sortiert Anfragen schon im Formular vor. So kommen die Aufträge, die Sie wollen.",
+     "neue-kunden/",
+     "Neukundengewinnung"
+    ]
+   ]
   },
   {
    "id": "industrie",
@@ -627,7 +647,27 @@
    "ki_bild": {
     "datei": "bilder/branchen/ki/industrie.webp",
     "alt": "Ein blaues Modellauto auf gebürstetem Stahl, daneben Schrauben und ein Zahnrad (KI-generiertes Bild)"
-   }
+   },
+   "karten": [
+    [
+     "Der Auftragseingang reicht nicht mehr.",
+     "Ihre Website zeigt Anwendungsfälle und technische Tiefe, wie Einkäufer:innen sie bei der eigenen Recherche suchen, auch in Antworten von KI-Suchen.",
+     "neue-kunden/",
+     "Neukundengewinnung"
+    ],
+    [
+     "Erfahrene gehen, Junge kommen nicht.",
+     "Ihre Karriereseite zeigt Technik, Team und Wege zur Weiterbildung. So wird der Maschinenbau für junge Leute greifbar.",
+     "fachkraefte/",
+     "Fachkräfte finden"
+    ],
+    [
+     "Der KI-Pilot läuft, im Alltag kommt nichts an.",
+     "Ich richte mit Ihrem Team KI-Abläufe für Angebote, Dokumentation und Anfragen ein und schule alle, die damit arbeiten.",
+     "ki-im-team/",
+     "KI im Team"
+    ]
+   ]
   },
   {
    "id": "energie",
@@ -690,7 +730,27 @@
    "ki_bild": {
     "datei": "bilder/branchen/ki/energie.webp",
     "alt": "Eine Hand hält einen winzigen Solarpark mit blauen Modulen, dazwischen zwei kleine Figuren (KI-generiertes Bild)"
-   }
+   },
+   "karten": [
+    [
+     "Kund:innen vergleichen nur noch den Preis.",
+     "Ihre Marke und Website zeigen Beratung, Planung und Service aus einer Hand. Dann geht es im Verkauf nicht mehr nur um den Preis.",
+     "neue-kunden/",
+     "Neukundengewinnung"
+    ],
+    [
+     "Uns fehlen Leute für die Montage.",
+     "Ihre Karriereseite zeigt, warum die Energiewende bei Ihnen ein guter Arbeitsplatz ist, auch für Quereinsteiger:innen.",
+     "fachkraefte/",
+     "Fachkräfte finden"
+    ],
+    [
+     "Jede Anfrage will erst lange beraten werden.",
+     "Ein Fragebogen auf der Website sammelt Dach, Verbrauch und Heizung schon vorab. Ein KI-Ablauf bereitet daraus Ihre Erstberatung vor.",
+     "entlastung/",
+     "Entlastung"
+    ]
+   ]
   },
   {
    "id": "software",
@@ -753,7 +813,27 @@
    "ki_bild": {
     "datei": "bilder/branchen/ki/software.webp",
     "alt": "Ein großer Finger drückt eine Taste eines winzigen Tastenfelds mit blauen Tasten, daneben ein Mini-Computer (KI-generiertes Bild)"
-   }
+   },
+   "karten": [
+    [
+     "Unser Produkt ist schwer zu erklären.",
+     "Ich schärfe Ihre Positionierung und baue eine Website mit klaren Anwendungsfällen. So verstehen Entscheider:innen schnell, was Sie lösen.",
+     "neue-kunden/",
+     "Neukundengewinnung"
+    ],
+    [
+     "Entwickler:innen wählen den Arbeitgeber.",
+     "Ihre Karriereseite zeigt Technik, Team und echte Projekte statt Floskeln. Damit fallen Sie auch neben Konzernen auf.",
+     "fachkraefte/",
+     "Fachkräfte finden"
+    ],
+    [
+     "Mehr Projekte schaffen ohne mehr Leute?",
+     "Ich richte KI-Abläufe für Angebote, Dokumentation und Antworten im Support ein. So fängt Ihr Team Engpässe ab.",
+     "ki-im-team/",
+     "KI im Team"
+    ]
+   ]
   },
   {
    "id": "gesundheit",
@@ -819,7 +899,27 @@
    "ki_bild": {
     "datei": "bilder/branchen/ki/gesundheit.webp",
     "alt": "Eine Miniatur-Ärztin mit blauem Bob steht auf einem riesigen Stethoskop mit blauem Schlauch (KI-generiertes Bild)"
-   }
+   },
+   "karten": [
+    [
+     "Woher kommen Selbst­zahler:innen?",
+     "Ich stelle Ihre Selbstzahlerleistungen sachlich und verständlich vor. So informieren sich Patient:innen vorab und fragen gezielt danach.",
+     "neue-kunden/",
+     "Neukundengewinnung"
+    ],
+    [
+     "Die Stelle für die MFA bleibt leer.",
+     "Ihre Karriereseite zeigt Ihr Praxisteam, wie es wirklich ist, und die Bewerbung dauert nur wenige Minuten. So melden sich MFA bei Ihnen statt bei der Klinik.",
+     "fachkraefte/",
+     "Fachkräfte finden"
+    ],
+    [
+     "Die Büroarbeit frisst Ihre Zeit.",
+     "Das Telefon klingelt ständig. Klare Antworten auf der Website und KI-Vorlagen für Briefe und Rückfragen nehmen dem Empfang Arbeit ab.",
+     "entlastung/",
+     "Entlastung"
+    ]
+   ]
   },
   {
    "id": "beratung",
@@ -895,7 +995,27 @@
    "ki_bild": {
     "datei": "bilder/branchen/ki/beratung.webp",
     "alt": "Zwei Miniaturfiguren stehen neben einer riesigen blauen Serviceklingel, auf die ein Finger drückt (KI-generiertes Bild)"
-   }
+   },
+   "karten": [
+    [
+     "Fast alles läuft über Empfehlungen.",
+     "Positionierung, Website und Fachbeiträge sorgen dafür, dass man Sie auch ohne Empfehlung findet und Empfohlene Sie vorab prüfen können.",
+     "neue-kunden/",
+     "Neukundengewinnung"
+    ],
+    [
+     "Kann das nicht auch die KI?",
+     "Ich richte KI in Ihrer Beratung ein, damit Recherche, Analyse und Berichte schneller gehen und Ihre Erfahrung den Unterschied macht.",
+     "ki-im-team/",
+     "KI im Team"
+    ],
+    [
+     "Nach dem Termin wartet der Bericht.",
+     "Ein KI-Ablauf erstellt aus Ihren Notizen Protokolle, Berichte und Angebote im Entwurf. Sie prüfen und geben frei.",
+     "entlastung/",
+     "Entlastung"
+    ]
+   ]
   }
  ],
  "produkt": {
@@ -1049,5 +1169,5 @@
    ]
   ]
  },
- "_branchen_hinweis": "Branchen seit 12.11.2026 (Anna): sieben, Reihenfolge = Raster der Startseite; Texte von industrie, energie, gesundheit, beratung sowie einleitung/muss/einwand aller Branchen sind Entwürfe von Claude, noch nicht von Anna freigegeben."
+ "_branchen_hinweis": "Branchen seit 12.11.2026 (Anna): sieben, Reihenfolge = Raster der Startseite; Texte von industrie, energie, gesundheit, beratung sowie einleitung/muss/einwand aller Branchen sind Entwürfe von Claude, noch nicht von Anna freigegeben. Eigene Schmerzpunkt-Karten (Feld karten) aller Branchen außer Bau: Recherche und Entwurf Claude 20.11.2026 auf Annas Wunsch, Freigabe Anna offen; Belege im Projektstatus in Betrieb."
 }

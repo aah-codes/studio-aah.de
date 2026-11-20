@@ -37,13 +37,17 @@
   }
   // Antwort wie im Chat (Anna 17.11.2026: „ganz simpel wie Google“, „wie mit einem Chatbot“): Frage als Blase rechts,
   // eine kurze Antwort links (ein bis zwei Sätze) mit Link; neueste Runde oben, höchstens drei Runden sichtbar
-  function link(text, href) {
-    var extern = /^https?:/.test(href);
-    var a = el('a', 'fh-quelle', text + ' ');
-    a.href = href;
-    if (extern) { a.target = '_blank'; a.rel = 'noopener'; }   // LinkedIn & Co. immer in neuem Fenster (Anna 17.11.2026)
-    var pfeil = el('span', null, extern ? '↗' : '→'); pfeil.setAttribute('aria-hidden', 'true'); a.appendChild(pfeil);
-    return a;
+  // Text mit [Wort](adresse) in Text- und Link-Knoten zerlegen (nie innerHTML)
+  function mitLinks(ziel, text) {
+    var re = /\[([^\]]+)\]\(([^)\s]+)\)/g, pos = 0, m;
+    while ((m = re.exec(text))) {
+      if (m.index > pos) ziel.appendChild(document.createTextNode(text.slice(pos, m.index)));
+      var a = el('a', null, m[1]); a.href = m[2];
+      if (/^https?:/.test(m[2])) { a.target = '_blank'; a.rel = 'noopener'; }   // extern immer in neuem Fenster (Anna 17.11.2026)
+      ziel.appendChild(a); pos = re.lastIndex;
+    }
+    if (pos < text.length) ziel.appendChild(document.createTextNode(text.slice(pos)));
+    return ziel;
   }
   // Chat nach Vorbild WhatsApp (Anna 18.11.2026: „nimm whatsapp als inspo für chat“): Frage als blaue Blase rechts mit Uhrzeit
   // und Haken, kurz „schreibt …“, dann Annas Antwort als weiße Blase links mit Foto und Name; Links als Zeilen unten in der Blase.
@@ -88,22 +92,20 @@
     var antwort = el('div', 'fh-sie');
     zeile.appendChild(antwort);
     antwort.appendChild(el('p', 'fh-name', 'Anna Härtelt'));
-    var quellen = el('p', 'fh-quellen');
+    // Antwort wie ein Wiki oder die KI-Übersicht bei Google (Anna 20.11.2026): kurze Zusammenfassung, bis zu drei Stichpunkte,
+    // Links direkt im Text als [Wort](adresse) aus daten/fragen.json, keine Link-Zeilen mehr unten in der Blase
     if (treffer) {
       var t = treffer.e;
-      antwort.appendChild(el('p', 'fh-kurz', t.a));
+      antwort.appendChild(mitLinks(el('p', 'fh-kurz'), t.a));
       if (t.p && t.p.length) {
         var ul = el('ul', 'fh-punkte');
-        t.p.forEach(function (x) { ul.appendChild(el('li', null, x)); });
+        t.p.forEach(function (x) { ul.appendChild(mitLinks(el('li'), x)); });
         antwort.appendChild(ul);
       }
-      t.l.forEach(function (l) { quellen.appendChild(link(l[0], l[1])); });
     } else {
-      antwort.appendChild(el('p', 'fh-kurz', 'Gute Frage! Dazu habe ich hier noch keine fertige Antwort. Rufen Sie mich gern an: 0176 830 898 79, oder schreiben Sie mir.'));
-      quellen.appendChild(link('Beratung anfragen', 'kontakt/'));
+      antwort.appendChild(mitLinks(el('p', 'fh-kurz'), 'Gute Frage! Dazu habe ich hier noch keine fertige Antwort. Rufen Sie mich gern an: 0176 830 898 79, oder [schreiben Sie mir](kontakt/).'));
     }
     antwort.appendChild(zeit(false));
-    if (quellen.childNodes.length) antwort.appendChild(quellen);
     setTimeout(function () {
       if (tippt.parentNode) runde.replaceChild(zeile, tippt);
       hinscrollen(runde);
@@ -117,7 +119,9 @@
 
   feld.addEventListener('focus', function () { laden().catch(function () {}); }, { once: true });
   form.addEventListener('submit', function (ev) {
-    var frage = feld.value.trim();
+    // Leeres Feld: beim ersten Mal die Beispielfrage aus dem Platzhalter beantworten (Anna 20.11.2026: „muss nichts eingeben,
+    // kann einfach nur Antwort klicken und sehe schon die Funktionalität“), danach („Noch eine Frage?“) wie bisher zum Feld
+    var frage = feld.value.trim() || (/\?$/.test(feld.placeholder) && feld.placeholder !== 'Noch eine Frage?' ? feld.placeholder : '');
     if (!frage) { ev.preventDefault(); feld.focus(); return; }
     ev.preventDefault();
     laden().then(function () { zeigen(frage); }).catch(function () { form.submit(); });

@@ -658,6 +658,8 @@ h1, h2, h3 {
 .icon-3d { display: inline-block; height: .95em; width: auto; vertical-align: -.1em; margin-left: .04em; animation: icon-plopp .45s cubic-bezier(.3, 1.6, .6, 1) .5s both, icon-schweben 4s ease-in-out 1s infinite; transition: rotate .3s; }
 .icon-3d:hover { rotate: -10deg; }
 .wort-mit-icon { white-space: nowrap; }
+/* flache Bauhaus-Icons aus bilder/symbole/ in Überschriften (Anna 20.11.2026: statt 3D-Megafon): etwas kleiner, mit Luft zum Wort */
+.icon-3d.icon-flach { height: .7em; margin-left: .18em; vertical-align: 0; }
 @keyframes icon-plopp { from { scale: 0; } to { scale: 1; } }
 @keyframes icon-schweben { 0%, 100% { translate: 0 0; } 50% { translate: 0 -.06em; } }
 @media (prefers-reduced-motion: reduce) { .icon-3d { animation: none; } }
@@ -4427,20 +4429,23 @@ html:not(.js) .hk-zeichen { display: none; }
 .hl .fh-chat { margin: 0; gap: 14px; }
 .hl .fh-tag { justify-self: center; padding: 4px 12px; background: var(--farbe-weiss); border-radius: 8px; font-size: var(--groesse-1); font-weight: 600; }
 .hl .fh-runde { gap: 8px; }
-.hl .fh-ich { position: relative; max-width: 85%; padding: 8px 12px 6px; background: var(--farbe-primaer); color: var(--farbe-weiss); border-radius: 12px 0 12px 12px; line-height: 1.45; }
+.hl .fh-ich { position: relative; max-width: 85%; padding: 12px 18px 8px; font-size: var(--groesse-2); background: var(--farbe-primaer); color: var(--farbe-weiss); border-radius: 12px 0 12px 12px; line-height: 1.45; }
 .hl .fh-ich::after { content: ""; position: absolute; top: 0; right: -8px; width: 8px; height: 12px; background: inherit; clip-path: polygon(0 0, 100% 0, 0 100%); }
 .hl .fh-zeile { display: flex; align-items: flex-start; gap: 8px; max-width: 92%; }
 .hl .fh-foto { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; flex: none; }
-.hl .fh-sie { position: relative; max-width: none; margin: 0; padding: 8px 12px 6px; background: var(--farbe-weiss); border-radius: 0 12px 12px 12px; }
+.hl .fh-sie { position: relative; max-width: none; margin: 0; padding: 18px 24px 12px; font-size: var(--groesse-2); background: var(--farbe-weiss); border-radius: 0 12px 12px 12px; }
 .hl .fh-sie::before { content: ""; position: absolute; top: 0; left: -8px; width: 8px; height: 12px; background: inherit; clip-path: polygon(0 0, 100% 0, 100% 100%); }
-.hl .fh-name { margin: 0 0 2px; font-size: var(--groesse-2); font-weight: 600; color: var(--farbe-primaer); }
-.hl .fh-kurz { margin: 0 0 6px !important; font-weight: 400; line-height: 1.45; }
-.hl .fh-punkte { margin: 0 0 6px; padding-left: 1.1em; gap: 4px; line-height: 1.45; }
+.hl .fh-name { margin: 0 0 4px; font-size: var(--groesse-2); font-weight: 600; color: var(--farbe-primaer); }
+.hl .fh-kurz { margin: 0 0 10px !important; font-weight: 400; line-height: 1.55; }
+/* Links im Text wie in einem Wiki (Anna 20.11.2026: „im Text verlinken, nicht extra“) */
+.hl .fh-sie a { white-space: nowrap; color: var(--farbe-primaer); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.hl .fh-sie a:hover, .hl .fh-sie a:focus-visible { text-decoration-thickness: 2px; }
+.hl .fh-punkte { margin: 0 0 8px; padding-left: 1.1em; gap: 6px; line-height: 1.5; }
 .hl .fh-zeit { display: flex; justify-content: flex-end; gap: 4px; margin-top: 2px; font-size: var(--groesse-1); line-height: 1.2; color: var(--farbe-gedaempft); }
 .hl .fh-ich .fh-zeit { color: var(--farbe-weiss); }
 .hl .fh-haken { letter-spacing: -3px; padding-right: 3px; }
 /* Links wie „Termin buchen“ bei WhatsApp: ganze Zeilen unten in der Blase, über feiner Linie */
-.hl .fh-quellen { display: grid; gap: 0; margin: 6px -12px -6px !important; }
+.hl .fh-quellen { display: grid; gap: 0; margin: 10px -18px -10px !important; }
 .hl .fh-quelle { justify-content: center; padding: 10px 12px; background: none; border: 0; border-top: 1px solid var(--farbe-grau-hell); border-radius: 0; font-weight: 600; color: var(--farbe-primaer); }
 .hl .fh-quelle:hover, .hl .fh-quelle:focus-visible { background: none; text-decoration: underline; text-underline-offset: 3px; }
 .hl .fh-quelle:last-child { border-radius: 0 0 12px 12px; }
@@ -4472,7 +4477,8 @@ html:not(.js) .hk-zeichen { display: none; }
 @keyframes hl-scroll { from { transform: translateY(0); } to { transform: translateY(calc(-100% + 100cqh)); } }
 .hl-pause { position: absolute; right: 24px; bottom: 24px; z-index: 3; width: 48px; height: 48px; border-radius: 50%; border: 0; background: var(--farbe-weiss); color: var(--farbe-dunkel); font-size: var(--groesse-1); cursor: pointer; }
 @media (min-width: 1024.02px) {
-  .hl { height: clamp(620px, calc(100svh - 110px), 780px); }
+  /* Boxen enden 20 px über dem festen Website-Check-Button (Anna 20.11.2026): Kopf 80 + Button 16 + 48 + 20 Abstand − 72 Innenabstand unten = 92 */
+  .hl { height: clamp(620px, calc(100svh - 92px), 900px); }
   .hl-panel { min-height: 0; overflow: hidden; }
 }
 @media (max-width: 1024px) {
@@ -4496,6 +4502,7 @@ html:not(.js) .hk-zeichen { display: none; }
   .hl.ist-chat .hl-titel { margin: 0 8px 12px; }
   .hl.ist-chat .hl-antworten { padding: 10px 10px; }
   .hl .fh-zeile { max-width: 100%; gap: 6px; }
+  .hl .fh-sie { padding: 14px 16px 10px; }   /* am Handy mehr Breite für den Text */
   .hl .fh-foto { width: 28px; height: 28px; }
   .hl .fh-tippt { margin-left: 34px; }
   .hl.ist-chat .hl-feld { margin: 0 8px 8px; padding: 4px 4px 4px 16px; }
@@ -4583,3 +4590,8 @@ html:not(.js) .hk-zeichen { display: none; }
 
 /* Danke-Seite (Anna 18.11.2026): Unterzeile breiter, am Desktop zwei Zeilen */
 .danke-intro { max-width: 62em; font-size: var(--groesse-4); }
+/* Illustrationen statt Fotos (Initiative, Anna 20.11.2026: Händefoto „sieht zu sehr nach Party aus“): ganz zeigen, nicht beschneiden */
+img.ist-illustration { object-fit: contain !important; background: var(--farbe-weiss); }
+/* Initiative auf der Preisseite: Illustration breiter und ganz sichtbar (Anna 20.11.2026: „angeschnitten“, „Bild breiter machen“) */
+@media (min-width: 900.02px) { .preis-cta-kostenlos:has(.ist-illustration) { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); } }
+.programm-bild img.ist-illustration { height: auto; max-height: none; aspect-ratio: 4 / 3; }

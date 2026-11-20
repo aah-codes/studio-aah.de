@@ -31,6 +31,56 @@ def kuerzen(x, laenge=160):
     return x if len(x) <= laenge else x[:laenge].rsplit(' ', 1)[0] + ' …'
 
 
+LINK = re.compile(r'\[[^\]]+\]\([^)]+\)')
+
+
+# Stichwörter je Ziel, die im Text verlinkt werden dürfen (zuerst der Linktext selbst, dann diese Wörter)
+STICHWORT = {
+    'website-check/': ['Website-Check'],
+    'service/webdesign/': ['neue Website', 'Websites', 'Website'],
+    'ki-arbeits-setup/': ['KI-Arbeits-Setup'],
+    'service/ki-digitalisierung/': ['KI-Arbeits-Setup', 'Claude'],
+    'service/markenbildung/': ['Brand-Paket', 'Logo'],
+    'service/retainer/': ['Retainer'],
+    'service/druck/': ['Visitenkarte'],
+    'service/marketing-vertrieb/': ['LinkedIn aufsetzen'],
+    'service/animation/': ['Motion Design'],
+    'service/illustration-infografik/': ['Illustrationen und Infografiken'],
+    'service/ui-ux/': ['UI/UX Audit Pro'],
+    'kontakt/': ['Erstgespräch'],
+    'branchen/gesundheit-praxen/': ['Dr. Simone Goldhammer'],
+    'branchen/bau-ingenieurwesen-architektur/': ['Wolfgang Bauer Ingenieurbau'],
+}
+
+
+def verlinken(t):
+    """Links in den Text wie in einem Wiki (Anna 20.11.2026: „im Text verlinken, nicht extra“): Steht [Wort](adresse) schon im Text,
+    bleibt es. Sonst wird je Link das erste Vorkommen des Linktexts oder eines Stichworts aus STICHWORT verlinkt; was sich nicht
+    unterbringen lässt, steht am Ende der Kurzfassung als „Mehr dazu: [Linktext](adresse).“ Das Feld l fällt danach weg."""
+    teile = [t['a']] + list(t['p'])
+    rest = []
+    for text, url in t.pop('l'):
+        if not url or any(f']({url})' in x for x in teile):   # Startseite selbst nicht verlinken
+            continue
+        gesetzt = False
+        for k in [text] + STICHWORT.get(url, []):
+            for i, x in enumerate(teile):
+                frei = LINK.sub(lambda m: '#' * len(m.group(0)), x)   # nicht in bestehenden Links suchen
+                m = re.search(r'(?<![\wäöüÄÖÜß-])' + re.escape(k) + r'(?![\wäöüÄÖÜß-])', frei)
+                if m:
+                    teile[i] = x[:m.start()] + f'[{x[m.start():m.end()]}]({url})' + x[m.end():]
+                    gesetzt = True
+                    break
+            if gesetzt:
+                break
+        if not gesetzt:
+            rest.append(f'[{text.replace(" in Leipzig", "")}]({url})')
+    if rest:
+        teile[0] = teile[0].rstrip() + ' Mehr dazu: ' + ' und '.join(rest) + '.'
+    t['a'], t['p'] = teile[0], teile[1:]
+    return t
+
+
 def rang(pfad):
     return next(i for i, v in enumerate(VORRANG) if pfad.startswith(v))
 
@@ -68,7 +118,10 @@ def main():
             kurz = 'Ja, klar!'
         while len(kurz) < 60 and satz:   # „Ja.“ allein ist keine Zusammenfassung
             kurz += ' ' + satz.pop(0)
+        if satz and len(kurz) + len(satz[0]) < 220 and len(satz) > 3:   # Zusammenfassung zwei bis drei Zeilen wie ein Wiki (Anna 20.11.2026)
+            kurz += ' ' + satz.pop(0)
         themen.append({'g': t['g'], 'a': kurz, 'p': [kuerzen(x) for x in satz[:3]], 'l': [[e['s'].split(':')[0].split(' – ')[0], e['u']]]})   # Linktext = Kern des Seitentitels
+    themen = [verlinken(t) for t in themen]
     ziel = WEBSITE / 'daten' / 'fragen.json'
     ziel.parent.mkdir(exist_ok=True)
     ziel.write_text(json.dumps(themen, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')

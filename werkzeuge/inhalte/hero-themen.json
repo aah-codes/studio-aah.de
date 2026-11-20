@@ -302,7 +302,7 @@
       ]
     },
     {
-      "_quelle": "Zielgruppe „baut selbst“ (Anna 17.11.2026): neue Formulierungen, Fakten aus Webdesign, Website-Check, Retainer, Preisen. Freigabe Anna offen.",
+      "_quelle": "Anna 20.11.2026: Antwort beantwortet die Frage direkt, ohne „Conversion“, Links im Text; Inhalte aus den Prüfpunkten des Website-Checks.",
       "g": [
         [
           "anfrage",
@@ -318,19 +318,16 @@
           "nichts"
         ]
       ],
-      "antwort": "Das finden wir heraus! Ob Besucher:innen den Weg zur Anfrage finden, prüft der kostenlose Website-Check als einen von acht Punkten.",
+      "antwort": "Meist liegt es nicht an der Technik, sondern an drei Dingen: Besucher:innen verstehen nicht schnell genug, was Sie anbieten, finden den Weg zur Anfrage nicht oder vertrauen Ihnen noch nicht. Woran es bei Ihnen hakt, zeigt der kostenlose [Website-Check](website-check/).",
       "punkte": [
-        "Klare Botschaft gleich zu Beginn",
-        "Eindeutige nächste Schritte für mehr Conversion"
+        "Klare Botschaft: Gleich oben steht, was Sie anbieten und für wen",
+        "Klarer nächster Schritt: Ein gut sichtbarer Button führt zu Anruf, Termin oder Formular",
+        "Vertrauen: Referenzen, Stimmen und echte Fotos zeigen, wer hinter dem Angebot steht"
       ],
       "links": [
         [
           "Website-Check",
           "website-check/"
-        ],
-        [
-          "Webdesign",
-          "service/webdesign/"
         ]
       ]
     },
@@ -714,7 +711,14 @@
           "euro"
         ]
       ],
-      "frage": "Was kostet eine Website in Leipzig bei STUDIO AAH!?"
+      "_quelle": "Anna 20.11.2026: Text für den Chat gekürzt, ohne Onepager und Redesign; Fakten aus der Frage „Was kostet eine Website in Leipzig bei STUDIO AAH!?“ (Webdesign).",
+      "antwort": "Bei STUDIO AAH! in Leipzig beginnt eine [neue Website](service/webdesign/) bei 2.450 €.",
+      "punkte": [
+        "Darin sind immer Startseite, Impressum, Datenschutz und der Launch enthalten",
+        "Jede weitere Unterseite kostet 190 € mit Texten und Bildern"
+      ],
+      "seite": "Webdesign in Leipzig",
+      "url": "service/webdesign/"
     },
     {
       "g": [
