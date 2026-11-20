@@ -117,6 +117,16 @@
     return fetch('daten/fragen.json' + (v.indexOf('?') > 0 ? v.slice(v.indexOf('?')) : '')).then(function (r) { return r.json(); }).then(function (d) { daten = d; });
   }
 
+  // Chat schließen (Anna 20.11.2026): X oben rechts, Klick auf die blaue Fläche oder Esc führt zurück zum Feld mit Unterzeile
+  var START = feld.placeholder, panel = form.closest('.hl-panel'), zu = document.querySelector('[data-frag-zu]');
+  function schliessen() {
+    if (!ziel.textContent.trim()) return;
+    ziel.innerHTML = ''; feld.value = ''; feld.placeholder = START;
+  }
+  if (zu) zu.addEventListener('click', schliessen);
+  if (panel) panel.addEventListener('click', function (ev) { if (ev.target === panel) schliessen(); });
+  document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape' && panel && panel.contains(document.activeElement)) schliessen(); });
+
   feld.addEventListener('focus', function () { laden().catch(function () {}); }, { once: true });
   form.addEventListener('submit', function (ev) {
     // Leeres Feld: beim ersten Mal die Beispielfrage aus dem Platzhalter beantworten (Anna 20.11.2026: „muss nichts eingeben,

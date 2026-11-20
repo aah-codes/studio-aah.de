@@ -4405,7 +4405,12 @@ html:not(.js) .hk-zeichen { display: none; }
 .hl-chip { font: 600 var(--groesse-2)/1.2 var(--schrift-text); color: var(--farbe-weiss); background: transparent; border: 1.5px solid var(--farbe-weiss); border-radius: var(--radius-pille); padding: 8px 16px; cursor: pointer; transition: background .2s, color .2s; }
 .hl-chip:hover, .hl-chip:focus-visible { background: var(--farbe-weiss); color: var(--farbe-primaer); }
 .hl-antworten { min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: var(--farbe-grau) transparent; scroll-behavior: smooth; }
-.hl-antworten:empty, .hl-chatkopf { display: none; }
+.hl-antworten:empty, .hl-chatkopf, .hl-chatzu { display: none; }
+/* Chat schließen (Anna 20.11.2026): X rechts in der Kopfzeile; die blaue Fläche ist ebenfalls klickbar */
+.hl.ist-chat .hl-chatzu { display: grid; place-items: center; position: absolute; top: 12px; right: 12px; z-index: 2; width: 40px; height: 40px; padding: 0; border: 0; border-radius: 50%; background: var(--farbe-creme); color: var(--farbe-dunkel); font-size: var(--groesse-3); line-height: 1; cursor: pointer; }
+.hl.ist-chat .hl-chatzu:hover, .hl.ist-chat .hl-chatzu:focus-visible { background: var(--farbe-grau-hell); }
+.hl.ist-chat .hl-panel { cursor: pointer; }
+.hl.ist-chat .hl-chatfenster { cursor: auto; }
 /* Chat-Ansicht nach Vorbild WhatsApp (Anna 18.11.2026: „nimm whatsapp als inspo für chat“): Überschrift kleiner, Unterzeile nur noch
    für Vorlese-Programme und Suchmaschinen; darunter ein Chatfenster mit Kopfzeile, gemustertem Grund, Blasen und Eingabe unten */
 .hl.ist-chat .hl-panel { justify-content: flex-start; padding: clamp(24px, 2.6vw, 40px); }
@@ -4433,7 +4438,7 @@ html:not(.js) .hk-zeichen { display: none; }
 .hl .fh-ich::after { content: ""; position: absolute; top: 0; right: -8px; width: 8px; height: 12px; background: inherit; clip-path: polygon(0 0, 100% 0, 0 100%); }
 .hl .fh-zeile { display: flex; align-items: flex-start; gap: 8px; max-width: 92%; }
 .hl .fh-foto { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; flex: none; }
-.hl .fh-sie { position: relative; max-width: none; margin: 0; padding: 18px 24px 12px; font-size: var(--groesse-2); background: var(--farbe-weiss); border-radius: 0 12px 12px 12px; }
+.hl .fh-sie { position: relative; max-width: none; margin: 0; padding: 24px 32px 16px; font-size: var(--groesse-2); background: var(--farbe-weiss); border-radius: 0 12px 12px 12px; }
 .hl .fh-sie::before { content: ""; position: absolute; top: 0; left: -8px; width: 8px; height: 12px; background: inherit; clip-path: polygon(0 0, 100% 0, 100% 100%); }
 .hl .fh-name { margin: 0 0 4px; font-size: var(--groesse-2); font-weight: 600; color: var(--farbe-primaer); }
 .hl .fh-kurz { margin: 0 0 10px !important; font-weight: 400; line-height: 1.55; }
@@ -4502,7 +4507,7 @@ html:not(.js) .hk-zeichen { display: none; }
   .hl.ist-chat .hl-titel { margin: 0 8px 12px; }
   .hl.ist-chat .hl-antworten { padding: 10px 10px; }
   .hl .fh-zeile { max-width: 100%; gap: 6px; }
-  .hl .fh-sie { padding: 14px 16px 10px; }   /* am Handy mehr Breite für den Text */
+  .hl .fh-sie { padding: 18px 20px 12px; }   /* am Handy mehr Breite für den Text */
   .hl .fh-foto { width: 28px; height: 28px; }
   .hl .fh-tippt { margin-left: 34px; }
   .hl.ist-chat .hl-feld { margin: 0 8px 8px; padding: 4px 4px 4px 16px; }
