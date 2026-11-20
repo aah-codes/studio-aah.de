@@ -4639,3 +4639,23 @@ img.ist-illustration { object-fit: contain !important; background: var(--farbe-w
 /* Initiative auf der Preisseite: Illustration breiter und ganz sichtbar (Anna 20.11.2026: „angeschnitten“, „Bild breiter machen“) */
 @media (min-width: 900.02px) { .preis-cta-kostenlos:has(.ist-illustration) { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); } }
 .programm-bild img.ist-illustration { height: auto; max-height: none; aspect-ratio: 4 / 3; }
+
+/* ---------- Daumen-Rückmeldung unter Selbsttest und Rechnern (Anna 20.11.2026, Vorbild Gelbe Seiten) ---------- */
+.daumen { margin: 2.5rem auto 0; padding-top: 1.5rem; border-top: 1px solid var(--farbe-grau-hell); display: grid; justify-items: center; gap: .75rem; max-width: 36rem; text-align: center; }
+.daumen[hidden] { display: none; }
+.daumen-frage { font-weight: 700; font-size: var(--groesse-4); margin: 0; }
+.daumen-knoepfe { display: flex; gap: .75rem; }
+.daumen-knoepfe button { width: 52px; height: 52px; display: grid; place-items: center; border-radius: var(--radius-pille); border: var(--rahmen) solid var(--farbe-dunkel); background: var(--farbe-weiss); color: var(--farbe-dunkel); cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+.daumen-knoepfe svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linejoin: round; stroke-linecap: round; }
+.daumen-knoepfe button:hover:not(:disabled) { border-color: var(--farbe-primaer); color: var(--farbe-primaer); }
+.daumen-knoepfe button[aria-pressed="true"] { background: var(--farbe-primaer); border-color: var(--farbe-primaer); color: var(--farbe-weiss); }
+.daumen-knoepfe button:disabled { cursor: default; }
+.daumen-knoepfe button:disabled:not([aria-pressed="true"]) { opacity: .4; }
+.daumen-danach { width: 100%; }
+.daumen-danach:empty { display: none; }
+.daumen-danach p { margin: 0; }
+.daumen-form { display: grid; gap: .5rem; margin-top: .75rem; width: 100%; text-align: left; }
+.daumen-form p { text-align: center; }
+.daumen-form textarea { font: inherit; border: 1.5px solid var(--farbe-gedaempft); border-radius: var(--radius-karte); padding: 10px 12px; background: var(--farbe-weiss); color: var(--farbe-dunkel); resize: vertical; width: 100%; box-sizing: border-box; }
+.daumen-form textarea:focus-visible { outline: 2px solid var(--farbe-primaer); outline-offset: 1px; border-color: var(--farbe-primaer); }
+@media (prefers-reduced-motion: reduce) { .daumen-knoepfe button { transition: none; } }

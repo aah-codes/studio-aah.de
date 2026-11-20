@@ -510,4 +510,39 @@
       });
     });
   }
+  // Daumen-Rückmeldung unter Selbsttest und Rechnern (Anna 20.11.2026, Vorbild Gelbe Seiten). Ohne Namen und E-Mail-Adresse über Formspark
+  // (dieselbe Adresse wie in js/anfrage.js). Nach Daumen runter freiwillig ein Satz. Ohne JavaScript bleibt der Block verborgen, die Werkzeuge brauchen es ohnehin.
+  document.querySelectorAll('[data-daumen]').forEach((box) => {
+    if (!('daumenSelbst' in box.dataset)) box.hidden = false; // Kostenrechner: js/webrechner.js zeigt den Block erst im letzten Schritt
+    const werkzeug = box.dataset.daumen, danach = box.querySelector('.daumen-danach');
+    const knoepfe = [...box.querySelectorAll('button[data-wert]')];
+    const senden = (daten) => fetch('https://submit-form.com/PQ3YFrvCS', {
+      method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ betreff: 'Rückmeldung', werkzeug, seite: location.pathname, ...daten, '_email.from': 'Website studio-aah.de' }),
+    }).then((a) => { if (!a.ok) throw new Error(String(a.status)); });
+    knoepfe.forEach((k) => k.addEventListener('click', () => {
+      const gut = k.dataset.wert === 'gut', zeichen = gut ? '👍' : '👎';
+      knoepfe.forEach((x) => { x.disabled = true; x.setAttribute('aria-pressed', String(x === k)); });
+      danach.textContent = 'Wird gesendet …';
+      senden({ bewertung: `${zeichen} ${gut ? 'gut' : 'nicht gut'}`, '_email.subject': `Rückmeldung ${werkzeug}: ${zeichen}` }).then(() => {
+        if (gut) { danach.innerHTML = '<p>Danke für Ihre Rückmeldung. Schön, dass es Ihnen gefallen hat.</p>'; return; }
+        const id = `${box.querySelector('.daumen-frage').id}-text`;
+        danach.innerHTML = `<p>Danke für Ihre Rückmeldung.</p><form class="daumen-form"><label for="${id}">Was hat Ihnen gefehlt? <span class="gedaempft">(freiwillig)</span></label>`
+          + `<textarea id="${id}" name="kommentar" rows="3" maxlength="1000"></textarea><p><button class="button button-zweit" type="submit">Absenden</button></p></form>`;
+        const form = danach.querySelector('form');
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const text = form.kommentar.value.trim();
+          if (!text) { form.kommentar.focus(); return; }
+          const b = form.querySelector('button'); b.disabled = true; b.textContent = 'Wird gesendet …';
+          senden({ bewertung: '👎 nicht gut', kommentar: text, '_email.subject': `Rückmeldung ${werkzeug}: 👎 mit Kommentar` })
+            .then(() => { danach.innerHTML = '<p>Danke, das hilft mir weiter.</p>'; })
+            .catch(() => { b.disabled = false; b.textContent = 'Absenden'; form.insertAdjacentHTML('beforeend', '<p class="hinweis-klein">Das hat leider nicht geklappt. Bitte versuchen Sie es noch einmal.</p>'); });
+        });
+      }).catch(() => {
+        knoepfe.forEach((x) => { x.disabled = false; x.setAttribute('aria-pressed', 'false'); });
+        danach.innerHTML = '<p>Das hat leider nicht geklappt. Bitte versuchen Sie es noch einmal.</p>';
+      });
+    }));
+  });
 })();

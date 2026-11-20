@@ -3,7 +3,7 @@
 # (profil/ bzw. service/webdesign/); danach setzt kopf-fuss.py sie ohnehin neu.
 # Aufruf im Repository-Ordner:  python3 werkzeuge/fuer-wen-seiten.py
 import runpy
-from gemeinsam import ankerleiste, lade_skript, PFEIL, STUDIO_ID, WEBSITE, WERKZEUGE, esc, lade_json, seitenrahmen
+from gemeinsam import ankerleiste, daumen, lade_skript, PFEIL, STUDIO_ID, WEBSITE, WERKZEUGE, esc, lade_json, seitenrahmen
 
 # Hero-Illustrationen (werkzeuge/grafiken/fuer-wen-hero.py, Anna 10.11.2026); Titel dienen als Alternativtext
 BILD_ALT = {k: v[0] for k, v in runpy.run_path(str(WERKZEUGE / 'grafiken' / 'fuer-wen-hero.py'))['BILDER'].items()}
@@ -368,6 +368,7 @@ def selbsttest(q):
              # unter dem Ergebnis: EU-AI-Act-Artikel, dann Beratung oder Checkliste als Download (Anna 18.11.2026)
              f'      <p class="st-artikel">Passend zu KI im Team: <a class="textlink" href="{pre}blog/eu-ai-act-kleine-unternehmen/">EU AI Act: Was müssen kleine Unternehmen jetzt tun?{PFEIL}</a></p>\n'
              f'      <p class="st-weiter"><a class="button" href="{pre}kontakt/">Beratung anfragen{PFEIL}</a> <a class="button button-zweit" href="{pre}downloads/eu-ai-act-checkliste.pdf" download>Checkliste EU AI Act (PDF) <span aria-hidden="true">↓</span></a></p>\n'
+             f'      {daumen("Selbsttest", "Wie hat Ihnen der Selbsttest gefallen?", pre)}\n'
              '    </div>\n  </section>',
              abschluss(pre)]
     schreibe(q['pfad'], '\n\n'.join(teile), q['seitentitel'], q['beschreibung'], [], skript='selbsttest')
@@ -416,6 +417,7 @@ def ki_rechner(q):
       <p class="gedaempft">Gerechnet mit 4,3 Wochen pro Monat. Wie viel KI wirklich vorbereiten kann, zeigt der KI-Check an Ihren Abläufen.</p>
       <p class="st-weiter"><a class="button" href="{pre}ki-arbeits-setup/">Zum KI-Arbeits-Setup{PFEIL}</a> <a class="button button-zweit" href="{pre}service/ki-digitalisierung/">KI-Check und Einführung{PFEIL}</a></p>
       <p class="st-artikel">Für den Start mit KI im Team: <a class="textlink" href="{pre}downloads/eu-ai-act-checkliste.pdf" download>Checkliste EU AI Act (PDF) <span aria-hidden="true">↓</span></a></p>
+      {daumen("KI-Zeitrechner", "Wie hat Ihnen der KI-Zeitrechner gefallen?", pre)}
     </div>
   </section>''',
              '  <section class="ablauf-start" aria-labelledby="grund-titel">\n    <div class="sektionskopf"><p class="meta">So führe ich KI ein</p>'

@@ -280,6 +280,8 @@
     el.innerHTML = `<p class="meta wr-dach">${s.dt}</p>` + R[s.id]();
     $('wr-zurueck').hidden = aktiv === 0;
     $('wr-kein-kauf').hidden = aktiv !== 0;
+    const daumen = wurzel.querySelector('[data-daumen]'); // Rückmeldung erst beim Kostenvoranschlag (Anna 20.11.2026)
+    if (daumen) daumen.hidden = aktiv !== SCHRITTE.length - 1;
     const w = $('wr-weiter');
     w.hidden = aktiv === SCHRITTE.length - 1;
     if (!w.hidden) w.innerHTML = `Weiter: ${SCHRITTE[aktiv + 1].nm} ${PFEIL}`;

@@ -64,6 +64,23 @@ def einsetzen(text, name, inhalt):
                           lambda m: f'<!-- {name}:START -->\n{inhalt}\n<!-- {name}:ENDE -->', text, f'Marker {name}', re.S)
 
 
+# Daumen-Rückmeldung unter Selbsttest und Rechnern (Anna 20.11.2026, Vorbild Gelbe Seiten): Daumen hoch oder runter,
+# nach Daumen runter freiwillig ein Satz. Ablauf in js/menue.js, Versand über Formspark ohne Namen und E-Mail-Adresse.
+DAUMEN_HOCH = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 10v11H3V10h4Zm0 0 4.5-7.5c1.4 0 2.5 1.1 2.5 2.5v3.5h5.3c1.3 0 2.2 1.2 1.9 2.4l-2 7.6c-.3 1-1.1 1.5-2 1.5H7"/></svg>'
+DAUMEN_RUNTER = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17 14V3h4v11h-4Zm0 0-4.5 7.5c-1.4 0-2.5-1.1-2.5-2.5v-3.5H4.7c-1.3 0-2.2-1.2-1.9-2.4l2-7.6c.3-1 1.1-1.5 2-1.5H17"/></svg>'
+
+
+def daumen(werkzeug, frage, pre='', selbst=False):
+    """Block „Wie fanden Sie …?“ mit zwei Daumen. selbst=True: das Werkzeug-Skript blendet ihn ein (Kostenrechner, erst im letzten Schritt)."""
+    return (f'<div class="daumen" data-daumen="{esc(werkzeug)}"{" data-daumen-selbst" if selbst else ""} hidden>'
+            f'<p class="daumen-frage" id="daumen-{esc(werkzeug.lower().replace(" ", "-"))}">{esc(frage)}</p>'
+            f'<div class="daumen-knoepfe" role="group" aria-labelledby="daumen-{esc(werkzeug.lower().replace(" ", "-"))}">'
+            f'<button type="button" data-wert="gut" aria-pressed="false" aria-label="Gut">{DAUMEN_HOCH}</button>'
+            f'<button type="button" data-wert="schlecht" aria-pressed="false" aria-label="Nicht gut">{DAUMEN_RUNTER}</button></div>'
+            '<div class="daumen-danach" role="status" aria-live="polite"></div>'
+            f'<p class="hinweis-klein">Ohne Namen und E-Mail-Adresse; der Formulardienst Formspark erhält dabei Ihre IP-Adresse. Mehr in der <a href="{pre}datenschutz/#rueckmeldung">Datenschutzerklärung</a>.</p></div>')
+
+
 def spiel_sektion(pre, version):
     """Sektion „Play the game.“ mit dem Spiel (Anna 16.11.2026: über dem Fuß von Aktuelles und Webdesign)."""
     t = (WERKZEUGE / 'inhalte' / 'spiel.html').read_text(encoding='utf-8')
