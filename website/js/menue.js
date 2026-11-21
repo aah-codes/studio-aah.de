@@ -149,8 +149,8 @@
       const knopf = f.querySelector('button');
       knopf.disabled = true;
       fetch(f.action, { method: 'POST', body: new FormData(f), mode: 'no-cors' })
-        .then(() => { document.dispatchEvent(new Event('konfetti')); meldung.textContent = 'Fast geschafft: Bitte bestätigen Sie Ihre Anmeldung über den Link in der E-Mail, die ich Ihnen gerade geschickt habe.'; f.reset(); })
-        .catch(() => { meldung.textContent = 'Das hat leider nicht geklappt. Bitte versuchen Sie es später noch einmal oder schreiben Sie an info@studio-aah.de.'; })
+        .then(() => { document.dispatchEvent(new Event('konfetti')); meldung.textContent = 'Fast geschafft: Bitte bestätige deine Anmeldung über den Link in der E-Mail, die ich dir gerade geschickt habe.'; f.reset(); })
+        .catch(() => { meldung.textContent = 'Das hat leider nicht geklappt. Bitte versuch es später noch einmal oder schreib an info@studio-aah.de.'; })
         .finally(() => { meldung.hidden = false; knopf.disabled = false; });
     });
   })();
@@ -525,9 +525,9 @@
       knoepfe.forEach((x) => { x.disabled = true; x.setAttribute('aria-pressed', String(x === k)); });
       danach.textContent = 'Wird gesendet …';
       senden({ bewertung: `${zeichen} ${gut ? 'gut' : 'nicht gut'}`, '_email.subject': `Rückmeldung ${werkzeug}: ${zeichen}` }).then(() => {
-        if (gut) { danach.innerHTML = '<p>Danke für Ihre Rückmeldung. Schön, dass es Ihnen gefallen hat.</p>'; return; }
+        if (gut) { danach.innerHTML = '<p>Danke für deine Rückmeldung. Schön, dass es dir gefallen hat.</p>'; return; }
         const id = `${box.querySelector('.daumen-frage').id}-text`;
-        danach.innerHTML = `<p>Danke für Ihre Rückmeldung.</p><form class="daumen-form"><label for="${id}">Was hat Ihnen gefehlt? <span class="gedaempft">(freiwillig)</span></label>`
+        danach.innerHTML = `<p>Danke für deine Rückmeldung.</p><form class="daumen-form"><label for="${id}">Was hat dir gefehlt? <span class="gedaempft">(freiwillig)</span></label>`
           + `<textarea id="${id}" name="kommentar" rows="3" maxlength="1000"></textarea><p><button class="button button-zweit" type="submit">Absenden</button></p></form>`;
         const form = danach.querySelector('form');
         form.addEventListener('submit', (e) => {
@@ -537,11 +537,11 @@
           const b = form.querySelector('button'); b.disabled = true; b.textContent = 'Wird gesendet …';
           senden({ bewertung: '👎 nicht gut', kommentar: text, '_email.subject': `Rückmeldung ${werkzeug}: 👎 mit Kommentar` })
             .then(() => { danach.innerHTML = '<p>Danke, das hilft mir weiter.</p>'; })
-            .catch(() => { b.disabled = false; b.textContent = 'Absenden'; form.insertAdjacentHTML('beforeend', '<p class="hinweis-klein">Das hat leider nicht geklappt. Bitte versuchen Sie es noch einmal.</p>'); });
+            .catch(() => { b.disabled = false; b.textContent = 'Absenden'; form.insertAdjacentHTML('beforeend', '<p class="hinweis-klein">Das hat leider nicht geklappt. Bitte versuch es noch einmal.</p>'); });
         });
       }).catch(() => {
         knoepfe.forEach((x) => { x.disabled = false; x.setAttribute('aria-pressed', 'false'); });
-        danach.innerHTML = '<p>Das hat leider nicht geklappt. Bitte versuchen Sie es noch einmal.</p>';
+        danach.innerHTML = '<p>Das hat leider nicht geklappt. Bitte versuch es noch einmal.</p>';
       });
     }));
   });
