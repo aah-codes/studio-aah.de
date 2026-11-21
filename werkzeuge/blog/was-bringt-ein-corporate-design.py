@@ -18,7 +18,7 @@ faq = [
 ("Ist ein Logo schon ein Corporate Design?",
  "Nein. Ein Logo ist nur ein Teil des Corporate Designs. Zum Corporate Design gehören auch Farben, Schriften, Bildwelt, Gestaltungselemente und die Regeln, wie alles zusammen eingesetzt wird. Erst diese Regeln sorgen dafür, dass alle Dokumente eines Unternehmens zusammenpassen."),
 ("Was kostet ein Corporate Design bei STUDIO AAH!?",
- "Bei STUDIO AAH! in Leipzig beginnt eine Marke mit Positionierung, Logo und Erscheinungsbild im Paket Medium bei 2.500 Euro netto. Das Paket Premium mit Tonalität, ausführlichem Brand Manual und ersten Vorlagen beginnt bei 4.500 Euro netto. Den Festpreis erhalten Sie nach einem kostenlosen Erstgespräch."),
+ "Bei STUDIO AAH! in Leipzig beginnt eine Marke mit Positionierung, Logo und Erscheinungsbild im Paket Medium bei 2.500 Euro netto. Das Paket Premium mit Tonalität, ausführlichem Brand Manual und ersten Vorlagen beginnt bei 4.500 Euro netto. Den Festpreis erhältst du nach einem kostenlosen Erstgespräch."),
 ("Muss nach einem neuen Corporate Design alles neu gedruckt werden?",
  "Nein. Die Stadt Leipzig zum Beispiel verwendet vorhandene Materialien weiter und setzt das neue Design nur bei Neuanschaffungen ein. Auch Unternehmen können ein neues Corporate Design schrittweise einführen und alte Drucksachen erst aufbrauchen."),
 ("Was kostet es, eine Marke anzumelden?",

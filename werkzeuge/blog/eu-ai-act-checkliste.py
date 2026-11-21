@@ -27,7 +27,7 @@ def schriften():
 
 
 PUNKTE = [
-    ('KI-Werkzeuge aufschreiben', 'Welche KI nutzt Ihr Team, und wofür?'),
+    ('KI-Werkzeuge aufschreiben', 'Welche KI nutzt dein Team, und wofür?'),
     ('KI-Regelwerk fürs Team schreiben', 'Welche KI-Werkzeuge und Konnektoren (E-Mail, Aufgaben, Figma …) erlaubt sind, welche Daten hineindürfen und welche nicht.'),
     ('Team einführen', 'Einführung ansetzen und vermerken, wer teilgenommen hat.'),
     ('KI-Inhalte kennzeichnen', 'Echt wirkende KI-Bilder, die seit dem 2. August 2026 erscheinen, sichtbar kennzeichnen. Beim eigenen Chatbot: „Sie chatten mit einer KI“.'),
@@ -63,11 +63,11 @@ li span {{ display: block; font-size: 10.5pt; line-height: 1.4; color: #3a3d3f; 
 <div class="seite">
   <div class="kopf"><img src="{daten(B / 'logo-studio-aah-weiss.svg', 'image/svg+xml')}" alt="STUDIO AAH!"></div>
   <div class="titel"><h1>EU AI Act für Unternehmen</h1></div>
-  <p class="unter">Ihr 5-Punkte-Plan: ausdrucken, aufhängen, abhaken.</p>
+  <p class="unter">Dein 5-Punkte-Plan: ausdrucken, aufhängen, abhaken.</p>
   <ol>{punkte}</ol>
   <div class="fuss">
     <img class="foto" src="{daten(B / 'anna-haertelt-studio-blau-rund.jpg', 'image/jpeg')}" alt="">
-    <p><b>KI-Setup für Profis</b>Ich richte Ihnen ein KI-Setup mit klaren Regeln ein.<span class="kontakt">info@studio-aah.de · 0176 83089879</span></p>
+    <p><b>KI-Setup für Profis</b>Ich richte dir ein KI-Setup mit klaren Regeln ein.<span class="kontakt">info@studio-aah.de · 0176 83089879</span></p>
     <img class="qr" src="{daten(qr_png, 'image/png')}" alt="QR-Code zum KI-Arbeits-Setup">
   </div>
 </div></html>'''

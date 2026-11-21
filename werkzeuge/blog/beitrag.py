@@ -143,7 +143,7 @@ def bauen(slug, titel, h1, beschr, datum, geaendert, bild, og_bild, og_alt, keyw
         main = main.replace(marke, inhalt)
     # Schema-Pflichtteile (werkzeuge/blog/schema-blogbeitrag.md)
     for teil_html, name in (('<section class="kurz"', 'Kurz gesagt'), ('<nav class="inhalt-verzeichnis"', 'Inhalt'), ('FAQ_HTML', 'Häufige Fragen'),
-                            ('<section class="artikel-schluss"', 'Ihr nächster Schritt'), ('<section class="autorin"', 'Über die Autorin'), ('<ul class="quellen">', 'Quellen')):
+                            ('<section class="artikel-schluss"', 'Dein nächster Schritt'), ('<section class="autorin"', 'Über die Autorin'), ('<ul class="quellen">', 'Quellen')):
         if teil_html not in main: raise SystemExit(f'Schema: Teil „{name}“ fehlt in {slug}-inhalt.html')
     if not faq: raise SystemExit('Schema: FAQ fehlt')
     main = main.replace('FAQ_HTML', _faq_html(faq))

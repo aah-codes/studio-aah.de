@@ -31,7 +31,7 @@ faq = [
 bauen('geschaeftsmail-auftragsverarbeitung',
       titel='Geschäfts-E-Mail und Auftragsverarbeitung: Welcher Tarif passt?',
       h1='Geschäfts-E-Mail und Auftragsverarbeitung: Welcher Tarif ist der richtige?',
-      beschr='Brauche ich für mein Firmenpostfach einen Vertrag zur Auftragsverarbeitung? Welche Anbieter ihn mitbringen, was in jede Geschäfts-E-Mail gehört und ob Sie Ihr Postfach mit Claude oder ChatGPT verbinden dürfen.',
+      beschr='Brauche ich für mein Firmenpostfach einen Vertrag zur Auftragsverarbeitung? Welche Anbieter ihn mitbringen, was in jede Geschäfts-E-Mail gehört und ob du dein Postfach mit Claude oder ChatGPT verbinden darfst.',
       datum='2026-11-18', geaendert='2026-11-18',
       bild='blog-geschaeftsmail.webp', og_bild='blog-geschaeftsmail-og.jpg',
       og_alt='Ein Mann sitzt am Laptop und hebt ratlos die Hände.',

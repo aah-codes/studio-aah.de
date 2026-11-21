@@ -21,7 +21,7 @@ faq = [
 ("Ist KI-generierter Code sicher?",
  "Nicht automatisch. In der Untersuchung „GenAI Code Security Report“ von Veracode aus dem Jahr 2025 hatte fast die Hälfte der KI-Lösungen eine bekannte Sicherheitslücke. Vor dem Livegang lohnt deshalb die Sicherheitsprüfung, die viele Werkzeuge mitbringen."),
 ("Was ist der Unterschied zwischen Domain und Hosting?",
- "Die Domain ist die Adresse, unter der man Ihre Website findet. Das Hosting ist der Speicherplatz auf einem Server, von dem aus die Website ausgeliefert wird. Verbunden werden beide über DNS-Einträge."),
+ "Die Domain ist die Adresse, unter der man deine Website findet. Das Hosting ist der Speicherplatz auf einem Server, von dem aus die Website ausgeliefert wird. Verbunden werden beide über DNS-Einträge."),
 ("Darf ich meine Firmenwebsite kostenlos bei GitHub Pages oder Vercel hosten?",
  "Für Vercel nein, für GitHub Pages ist es ein Graubereich. Laut den Nutzungsbedingungen von Vercel ist der kostenlose Tarif nur für private Zwecke erlaubt. GitHub schließt aus, Pages als kostenloses Hosting für ein Online-Geschäft, einen Shop oder Seiten zu nutzen, die vor allem Geschäfte abwickeln; ob eine reine Firmen-Visitenkarte darunter fällt, ist offen."),
 ("Muss ich KI-Bilder auf meiner Website kennzeichnen?",
