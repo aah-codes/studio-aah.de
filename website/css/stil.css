@@ -5149,3 +5149,6 @@ main h2.preis-h2 { font-size: clamp(40px, 6vw, 84px); line-height: 1.05; }
 /* Startseite: Abschluss wie auf der Website-Check-Seite, mittig (Anna 22.11.2026) */
 .start-schluss .schluss-karte { text-align: center; }
 .start-schluss .schluss-karte .meta { justify-content: center; }
+/* Hero „Ich sehe dich. Bald sehen dich alle.“ (Anna 22.11.2026): zwei Zeilen am Desktop, etwas mehr Zeilenabstand; Größe als vw-Formel (Ausnahme wie gr-*) */
+.stil-b.v-raeume .kn-titel { font-size: clamp(40px, 6.6vw, 124px); line-height: 1.02; }
+@media (max-width: 767.98px) { .kn-aah { top: .1em; right: -.85em; width: .6em; } }
