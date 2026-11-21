@@ -5135,3 +5135,12 @@ main h2.preis-h2 { font-size: clamp(40px, 6vw, 84px); line-height: 1.05; }
 @media (max-width: 767.98px) { .korrektur-partner .hand { right: 0; max-width: none; white-space: nowrap; } }
 /* Branchen-Kacheln: Namen in der Fließtext-Schrift halbfett, gut lesbar (Anna 22.11.2026) */
 .br-name, .stil-b.v-raeume .br-name { font-family: var(--schrift-text); font-weight: 600; text-transform: none; letter-spacing: -.01em; font-size: var(--groesse-4); line-height: 1.25; }
+/* Hero Startseite (Anna 22.11.2026): Unterzeile zweizeilig, Pfeil nach unten wackelt dreimal, dann steht er (WCAG 2.2.2); Blitz statt Vogel, Regenbogen statt Blase */
+.kn-h1 { max-width: 40ch; }
+.kn-pfeil { position: relative; z-index: 3; display: block; width: clamp(64px, 6.5vw, 104px); height: auto; margin: 8px auto 0; }
+@media (prefers-reduced-motion: no-preference) { .kn-pfeil { animation: kn-pfeil-wippen 1.2s ease-in-out 3; } }
+@keyframes kn-pfeil-wippen { 0%, 100% { translate: 0 0; } 50% { translate: 0 14px; } }
+.kn-aah { width: .95em; right: -1em; top: -.55em; rotate: 6deg; }
+@media (max-width: 767.98px) { .kn-aah { width: .7em; right: -.6em; } .kn-h1 { max-width: 30ch; } }
+/* Startseite: „Partnerschaften“ links unter „Projekte“ (Anna 22.11.2026) */
+.korrektur-links .hand { right: auto; left: 0; }
