@@ -4996,8 +4996,8 @@ body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp)
 .v-raeume .fuss-pointe { background: var(--farbe-primaer); color: var(--bb-gelb); text-shadow: .03em .025em 0 var(--bb-pink); }
 .v-raeume .sticker { mix-blend-mode: multiply; }
 /* Gezeichnete Sticker (Anna 20.11.2026), freigestellt mit weißem Rand; in „Räume“ statt Herz und Uff-Blase, wackeln leicht */
-.v-raeume .st-stimmen { content: url(../bilder/sticker/fleur-vogel.svg?v=20261122u); mix-blend-mode: normal; animation: st-wackeln 3.2s ease-in-out infinite; }
-.v-raeume .st-faq { content: url(../bilder/sticker/fleur-zaehne.svg?v=20261122u); mix-blend-mode: normal; animation: st-wackeln 2.6s ease-in-out infinite; }
+.v-raeume .st-stimmen { content: url(../bilder/sticker/fleur-vogel.svg?v=20261122x); mix-blend-mode: normal; animation: st-wackeln 3.2s ease-in-out infinite; }
+.v-raeume .st-faq { content: url(../bilder/sticker/fleur-zaehne.svg?v=20261122x); mix-blend-mode: normal; animation: st-wackeln 2.6s ease-in-out infinite; }
 @keyframes st-wackeln { 0%, 100% { rotate: -6deg; } 50% { rotate: 6deg; translate: 0 -6px; } }
 @media (prefers-reduced-motion: reduce) { .v-raeume .st-stimmen, .v-raeume .st-faq { animation: none; } }
 /* =========================================================
@@ -5433,3 +5433,32 @@ body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp)
 .korrektur .notiz-durch::after { left: -1%; right: -1%; }
 .intro-ziel .wz-zeile { display: block; }
 .intro-cta-wege svg { flex: none; color: var(--farbe-dunkel); opacity: 1; stroke-width: 2; }
+
+/* Kontaktseite neu (Anna 21.11.2026): Kopf, drei Wege als Karten im Sticker-Stil, darunter das Formular in einer Karte */
+.kontakt-seite { max-width: 1200px; margin: 0 auto; padding: 72px var(--rand-seite) 120px; }
+.ks-kopf { max-width: 760px; margin: 0 0 48px; }
+.ks-kopf .gr-h2 { margin: 8px 0 20px; }
+.ks-intro { font-size: var(--groesse-4); line-height: 1.5; margin: 0; }
+.ks-wege { list-style: none; margin: 0 0 56px; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.ks-weg { display: flex; flex-direction: column; gap: 10px; padding: 26px 24px 24px; border: 2px solid var(--farbe-dunkel); border-radius: var(--radius-karte); box-shadow: 6px 6px 0 var(--farbe-dunkel); background: var(--farbe-weiss); }
+.ks-termin { background: var(--bb-gelb); rotate: -1deg; } .ks-anruf { background: var(--bb-puder); rotate: .8deg; } .ks-mail { background: var(--bb-mint); rotate: -.6deg; }
+.ks-weg p { margin: 0; }
+.ks-symbol { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; background: var(--farbe-weiss); border: 2px solid var(--farbe-dunkel); }
+.kontakt-seite .ks-weg-titel { font-size: clamp(32px, 3.2vw, 44px); line-height: 1.1; margin: 6px 0 0; }
+.ks-weg > .ks-aktion { margin-top: auto; padding-top: 12px; }
+.ks-weg .hinweis-klein { font-size: var(--groesse-1); color: var(--farbe-dunkel); opacity: .8; }
+.ks-gross { font-size: var(--groesse-5); font-weight: 700; color: var(--farbe-dunkel); text-decoration: none; white-space: nowrap; }
+.ks-gross:hover, .ks-gross:focus-visible { text-decoration: underline; text-underline-offset: 5px; }
+.ks-mail .mail-zeile { margin: 0; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.ks-mail .mail-zeile > a { font-size: var(--groesse-4); font-weight: 700; color: var(--farbe-dunkel); }
+.ks-mail .hinweis-klein { margin-top: 8px; }
+.ks-formular { padding: clamp(24px, 4vw, 48px); border: 2px solid var(--farbe-dunkel); border-radius: var(--radius-karte); background: var(--farbe-weiss); }
+.kontakt-seite .ks-formular-titel { font-size: clamp(30px, 3.2vw, 46px); margin: 0 0 24px; }
+@media (max-width: 900px) {
+  .ks-wege { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .ks-weg { rotate: 0deg; }
+}
+@media (max-width: 767.98px) {
+  .kontakt-seite { padding-top: 40px; padding-bottom: 88px; }
+  .ks-weg { box-shadow: 4px 4px 0 var(--farbe-dunkel); padding: 22px 18px 20px; }
+}
