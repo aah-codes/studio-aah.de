@@ -4994,8 +4994,8 @@ body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp)
 .v-raeume .fuss-pointe { background: var(--farbe-primaer); color: var(--bb-gelb); text-shadow: .03em .025em 0 var(--bb-pink); }
 .v-raeume .sticker { mix-blend-mode: multiply; }
 /* Gezeichnete Sticker (Anna 20.11.2026), freigestellt mit weißem Rand; in „Räume“ statt Herz und Uff-Blase, wackeln leicht */
-.v-raeume .st-stimmen { content: url(../bilder/sticker/fleur-vogel.svg?v=20261121p); mix-blend-mode: normal; animation: st-wackeln 3.2s ease-in-out infinite; }
-.v-raeume .st-faq { content: url(../bilder/sticker/fleur-zaehne.svg?v=20261121p); mix-blend-mode: normal; animation: st-wackeln 2.6s ease-in-out infinite; }
+.v-raeume .st-stimmen { content: url(../bilder/sticker/fleur-vogel.svg?v=20261121q); mix-blend-mode: normal; animation: st-wackeln 3.2s ease-in-out infinite; }
+.v-raeume .st-faq { content: url(../bilder/sticker/fleur-zaehne.svg?v=20261121q); mix-blend-mode: normal; animation: st-wackeln 2.6s ease-in-out infinite; }
 @keyframes st-wackeln { 0%, 100% { rotate: -6deg; } 50% { rotate: 6deg; translate: 0 -6px; } }
 @media (prefers-reduced-motion: reduce) { .v-raeume .st-stimmen, .v-raeume .st-faq { animation: none; } }
 /* =========================================================
@@ -5286,5 +5286,48 @@ body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp)
 
 /* Startseite (Anna 21.11.2026): weiße Flächen mit Papiergrund wie im Stil B; A als Grund, B bei Projekten und Branchen, C bei Häufigen Fragen */
 .start-papier { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp) 0 0 / 256px repeat; }
-.start-papier .start-projektliste, .start-papier .br-start { background: url(../bilder/papier/papier-b.webp) 0 0 / 256px repeat; }
+.start-papier > .start-projektliste { background: url(../bilder/papier/papier-b.webp) 0 0 / 256px repeat; }
 .start-papier .faq.ehrlich { background: url(../bilder/papier/papier-c.webp) 0 0 / 256px repeat; }
+
+/* Kopf und Mega-Menü im Stil B auf allen Seiten (Anna 21.11.2026): Klassen stil-b v-raeume b-kopf am Kopf selbst */
+.b-kopf, .b-teil { font-family: var(--schrift-text); }
+.stil-b.v-raeume.kopf { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp) repeat; background-size: 256px; }
+.stil-b.v-raeume .kopf-nav .kopf-button { background: var(--farbe-dunkel); }
+/* Kopf und Menü im Skizzenbuch-Stil (Anna 20.11.2026: „Header überarbeiten, passt nicht zum Stil“, „Mega-Menü anpassen“), am Kopf (.b-kopf).
+   Papier, Strukturband aus blauen Stricheln unter dem Kopf, Hover als handgezogene Unterstreichung, Menü wie eine Pinnwand mit Klebestreifen. */
+.stil-b.v-raeume.kopf { border-bottom: 0; }
+.stil-b.v-raeume.kopf::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 14px; pointer-events: none;
+  background: url(../bilder/riso/striche.svg) 0 0 / 80px repeat-x; opacity: .9; }
+.stil-b.v-raeume .kopf-nav > ul > li > a { position: relative; font-weight: 600; }
+.stil-b.v-raeume .kopf-nav > ul > li > a:hover { opacity: 1; }
+.stil-b.v-raeume .kopf-nav > ul > li > a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -8px; height: 8px;
+  background: url(../bilder/riso/unterstrich.svg) 0 50% / 100% 100% no-repeat; clip-path: inset(0 100% 0 0); transition: clip-path .35s ease-out; }
+.stil-b.v-raeume .kopf-nav > ul > li > a:hover::after, .stil-b.v-raeume .kopf-nav > ul > li > a:focus-visible::after,
+.stil-b.v-raeume .kopf-nav > ul > li > a[aria-expanded="true"]::after { clip-path: inset(0 0 0 0); }
+.stil-b.v-raeume .kopf-nav .kopf-button { background: var(--farbe-dunkel); rotate: -2deg; transition: rotate .2s, background .2s; }
+.stil-b.v-raeume .kopf-nav .kopf-button:hover { background: var(--bb-pink); color: var(--farbe-dunkel); rotate: 0deg; }
+
+/* Mega-Menü als Pinnwand */
+.stil-b.v-raeume .mm { background: url(../bilder/papier/papier-a.webp) 0 0 / 256px, var(--farbe-weiss); border-top: 0; padding-top: 14px; }
+.stil-b.v-raeume .mm-label { font-family: var(--schrift-meta); text-transform: none; letter-spacing: 0; font-size: 22px; }
+.stil-b.v-raeume .mm-bereiche > div { position: relative; padding: 22px 22px 14px; background: var(--farbe-weiss); box-shadow: 0 8px 22px rgba(14, 16, 17, .1); }
+.stil-b.v-raeume .mm-bereiche > div:nth-child(1) { rotate: -1deg; }
+.stil-b.v-raeume .mm-bereiche > div:nth-child(2) { rotate: .8deg; background: var(--bb-puder); }
+.stil-b.v-raeume .mm-bereiche > div:nth-child(3) { rotate: -.6deg; background: var(--bb-mint); }
+.stil-b.v-raeume .mm-bereiche > div::before { content: ""; position: absolute; left: 50%; top: -12px; width: 84px; height: 24px; margin-left: -42px; background: var(--bb-gelb); opacity: .85; rotate: -4deg; }
+.stil-b.v-raeume .kopf-nav .mm-liste a .mm-name, .stil-b.v-raeume .kopf-nav .mm-weitere a { background: linear-gradient(transparent 58%, transparent 58%) no-repeat; transition: background-color .2s; }
+.stil-b.v-raeume .kopf-nav .mm-liste a:hover .mm-name, .stil-b.v-raeume .kopf-nav .mm-liste a:focus-visible .mm-name,
+.stil-b.v-raeume .kopf-nav .mm-weitere a:hover, .stil-b.v-raeume .kopf-nav .mm-weitere a:focus-visible {
+  background: linear-gradient(transparent 52%, var(--bb-gelb) 52%, var(--bb-gelb) 92%, transparent 92%); text-decoration: none; }   /* Textmarker */
+.stil-b.v-raeume .kopf-nav .mm-weitere a { border-top-color: rgba(14, 16, 17, .25); }
+.stil-b.v-raeume .mm-karte-beige { position: relative; background: var(--bb-gelb); rotate: 2deg; border-radius: 0; box-shadow: 0 10px 26px rgba(14, 16, 17, .15); }   /* Haftnotiz */
+.stil-b.v-raeume .mm-karte-beige::before { content: ""; position: absolute; left: 50%; top: -12px; width: 84px; height: 24px; margin-left: -42px; background: var(--bb-pink); opacity: .85; rotate: 3deg; }
+.stil-b.v-raeume .mm-karte-titel { text-transform: none; font-weight: 800; letter-spacing: -.035em; line-height: 1.05; }
+.stil-b.v-raeume .mm-karte-beige .meta { font-size: 20px; }
+
+/* Handy-Menü: Papier, große Links, Dachzeilen in Serif */
+.stil-b.v-raeume .kopf-mobil ul { background: url(../bilder/papier/papier-a.webp) 0 0 / 256px, var(--farbe-weiss); border-bottom: 0; }
+.stil-b.v-raeume .kopf-mobil > nav > ul > li > a, .stil-b.v-raeume .kopf-mobil summary.mobil-unter, .stil-b.v-raeume .kopf-mobil .mobil-unter > summary {
+  font: 800 26px/1.2 var(--schrift-ueberschrift); letter-spacing: -.03em; }
+.stil-b.v-raeume .kopf-mobil .mobil-weitere { font-family: var(--schrift-meta); text-transform: none; letter-spacing: 0; font-size: 20px; }
+
