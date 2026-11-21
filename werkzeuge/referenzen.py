@@ -784,18 +784,25 @@ def projektseite(p, nr):
 def uebersicht():
     pre = '../'
     karten = '\n'.join(f'      <li>{I.projekt_karte(p, pre, h="h2", satz=False)}</li>' for p in CASES + [x for x in ALLE if not x.get('case')])
+    liste = I.projekt_arbeit_liste(CASES + [x for x in ALLE if not x.get('case')], pre)
     main = f'''<main id="inhalt">
 
   <section class="seitenkopf">
     <p class="meta">Referenzen</p>
-    <h1 class="gr-xxl">Projekte</h1>
+    <h1 class="gr-xxl"><span class="korrektur korrektur-partner korrektur-links"><span class="notiz notiz-durch" aria-hidden="true">Projekte</span><span class="hand">Partnerschaften</span></span></h1>
     <p class="alt-klein">Lösungen, die Unternehmen<br>sichtbar machen.</p>
   </section>
 
   <section class="ref-uebersicht" aria-label="Alle Projekte">
+    <!-- Umschalter Raster | Liste ohne JavaScript (Anna 22.11.2026); Liste wie auf der Startseite mit Bildstreifen -->
+    <fieldset class="ref-ansicht"><legend class="unsichtbar">Ansicht</legend>
+      <input type="radio" name="ref-ansicht" id="ref-raster" checked><label for="ref-raster">Raster</label>
+      <input type="radio" name="ref-ansicht" id="ref-liste"><label for="ref-liste">Liste</label>
+    </fieldset>
     <ul class="ref-raster">
 {karten}
     </ul>
+{liste}
   </section>
 
 </main>'''

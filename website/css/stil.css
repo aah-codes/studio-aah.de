@@ -5165,3 +5165,12 @@ main h2.preis-h2 { font-size: clamp(40px, 6vw, 84px); line-height: 1.05; }
   38% { filter: brightness(1.25) drop-shadow(0 0 18px #ffe600) drop-shadow(0 0 36px #ffe600); scale: 1.12; rotate: 5deg; }
   46% { filter: none; scale: 1; rotate: 0deg; }
 }
+/* Projektübersicht: Umschalter Raster | Liste (Anna 22.11.2026) */
+.ref-ansicht { display: flex; gap: 28px; margin: 0 0 32px; padding: 0; border: 0; }
+.ref-ansicht input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.ref-ansicht label { position: relative; cursor: pointer; font: 600 var(--groesse-4)/1.2 var(--schrift-text); color: var(--farbe-gedaempft); padding-bottom: 8px; }
+.ref-ansicht input:checked + label { color: var(--farbe-dunkel); background: url(../bilder/riso/unterstrich.svg) 0 100% / 100% 8px no-repeat; }
+.ref-ansicht input:focus-visible + label { background: url(../bilder/riso/unterstrich.svg) 0 100% / 100% 8px no-repeat; }
+.ref-uebersicht .pa { display: none; }
+.ref-uebersicht:has(#ref-liste:checked) .pa { display: block; }
+.ref-uebersicht:has(#ref-liste:checked) .ref-raster { display: none; }
