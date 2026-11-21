@@ -4994,8 +4994,8 @@ body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp)
 .v-raeume .fuss-pointe { background: var(--farbe-primaer); color: var(--bb-gelb); text-shadow: .03em .025em 0 var(--bb-pink); }
 .v-raeume .sticker { mix-blend-mode: multiply; }
 /* Gezeichnete Sticker (Anna 20.11.2026), freigestellt mit weißem Rand; in „Räume“ statt Herz und Uff-Blase, wackeln leicht */
-.v-raeume .st-stimmen { content: url(../bilder/sticker/fleur-vogel.svg?v=20261121o); mix-blend-mode: normal; animation: st-wackeln 3.2s ease-in-out infinite; }
-.v-raeume .st-faq { content: url(../bilder/sticker/fleur-zaehne.svg?v=20261121o); mix-blend-mode: normal; animation: st-wackeln 2.6s ease-in-out infinite; }
+.v-raeume .st-stimmen { content: url(../bilder/sticker/fleur-vogel.svg?v=20261121p); mix-blend-mode: normal; animation: st-wackeln 3.2s ease-in-out infinite; }
+.v-raeume .st-faq { content: url(../bilder/sticker/fleur-zaehne.svg?v=20261121p); mix-blend-mode: normal; animation: st-wackeln 2.6s ease-in-out infinite; }
 @keyframes st-wackeln { 0%, 100% { rotate: -6deg; } 50% { rotate: 6deg; translate: 0 -6px; } }
 @media (prefers-reduced-motion: reduce) { .v-raeume .st-stimmen, .v-raeume .st-faq { animation: none; } }
 /* =========================================================
@@ -5283,3 +5283,8 @@ body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp)
 .stil-b.v-raeume .fuss-karte { grid-template-columns: minmax(0, 1fr); }
 .stil-b.v-raeume .fuss-karte-titel { overflow-wrap: break-word; }
 @media (max-width: 399.98px) { .stil-b.v-raeume .fuss-karte-titel { font-size: 26px; /* „Sichtbarkeit“ ganz in einer Zeile bei 320 px */ } }
+
+/* Startseite (Anna 21.11.2026): weiße Flächen mit Papiergrund wie im Stil B; A als Grund, B bei Projekten und Branchen, C bei Häufigen Fragen */
+.start-papier { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp) 0 0 / 256px repeat; }
+.start-papier .start-projektliste, .start-papier .br-start { background: url(../bilder/papier/papier-b.webp) 0 0 / 256px repeat; }
+.start-papier .faq.ehrlich { background: url(../bilder/papier/papier-c.webp) 0 0 / 256px repeat; }
