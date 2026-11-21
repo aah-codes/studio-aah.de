@@ -194,7 +194,7 @@ def projekte_abschnitt(b, pre):
     eine = ' br-stimmen-eine' if len(stimmen) == 1 else ''   # eine Stimme: mittig, doppelt so breit (Anna 13.11.2026: kein leerer Weißraum)
     st = f'\n    <div class="stimmen br-stimmen{eine}">\n{I.stimmen(stimmen, pre)}\n    </div>' if stimmen else ''
     return ('  <section class="start-projekte br-projekte" id="referenz" aria-labelledby="referenzen-titel">\n'
-            '    <div class="sektionskopf sk-mitte"><p class="meta">Referenzen</p><h2 class="gr-xxl" id="referenzen-titel">Projekte</h2></div>\n'
+            '    <div class="sektionskopf sk-mitte"><p class="meta">Referenzen</p><h2 class="gr-xxl" id="referenzen-titel"><span class="korrektur korrektur-partner"><span class="notiz notiz-durch" aria-hidden="true">Projekte</span><span class="hand">Partnerschaften</span></span></h2></div>\n'
             f'{referenz_mit_zahlen(b, liste, pre)}{st}\n  </section>')
 
 
