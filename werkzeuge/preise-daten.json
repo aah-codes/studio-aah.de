@@ -27,6 +27,7 @@
     },
     {
      "id": "brand-1",
+     "dauer": "6–8 Wochen",
      "name": "Medium",
      "preis": 2500,
      "wer": "Für Unternehmen, die eine neue Marke mit Logo und Erscheinungsbild brauchen.",
@@ -43,6 +44,7 @@
     },
     {
      "id": "brand-2",
+     "dauer": "etwa drei Monate",
      "name": "Premium",
      "preis": 4500,
      "wer": "Für Unternehmen, die ihre Marke umfassend aufstellen und im Alltag einheitlich einsetzen wollen.",
