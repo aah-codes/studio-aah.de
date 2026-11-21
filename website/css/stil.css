@@ -4996,8 +4996,8 @@ body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp)
 .v-raeume .fuss-pointe { background: var(--farbe-primaer); color: var(--bb-gelb); text-shadow: .03em .025em 0 var(--bb-pink); }
 .v-raeume .sticker { mix-blend-mode: multiply; }
 /* Gezeichnete Sticker (Anna 20.11.2026), freigestellt mit weißem Rand; in „Räume“ statt Herz und Uff-Blase, wackeln leicht */
-.v-raeume .st-stimmen { content: url(../bilder/sticker/fleur-vogel.svg?v=20261122z); mix-blend-mode: normal; animation: st-wackeln 3.2s ease-in-out infinite; }
-.v-raeume .st-faq { content: url(../bilder/sticker/fleur-zaehne.svg?v=20261122z); mix-blend-mode: normal; animation: st-wackeln 2.6s ease-in-out infinite; }
+.v-raeume .st-stimmen { content: url(../bilder/sticker/fleur-vogel.svg?v=20261123d); mix-blend-mode: normal; animation: st-wackeln 3.2s ease-in-out infinite; }
+.v-raeume .st-faq { content: url(../bilder/sticker/fleur-zaehne.svg?v=20261123d); mix-blend-mode: normal; animation: st-wackeln 2.6s ease-in-out infinite; }
 @keyframes st-wackeln { 0%, 100% { rotate: -6deg; } 50% { rotate: 6deg; translate: 0 -6px; } }
 @media (prefers-reduced-motion: reduce) { .v-raeume .st-stimmen, .v-raeume .st-faq { animation: none; } }
 /* =========================================================
@@ -5489,3 +5489,54 @@ body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp)
 /* Newsletter knapper (Anna 21.11.2026) */
 .fuss-nl-hinweis { font-size: var(--groesse-1); }
 .hl .fh-sie .fh-anrede { margin: 0 0 4px; font-weight: 700; }
+
+/* =========================================================
+   Unterseiten im neuen Stil (Anna 21.11.2026)
+   ========================================================= */
+/* Schriften vereinheitlicht: Annas Schreibschrift nur für große Überschriften (h1, h2) und Dachzeilen;
+   kleine Überschriften (h3 und kleiner, Kartentitel) in der Fließtext-Schrift fett, weil die Schreibschrift klein schlecht lesbar ist */
+main :is(h3, h4, h5):not(.gr-h3):not(.gr-h2), .ls-karte-titel, .mm-karte-titel, .lsx-karte-titel, .ref-karte h3 {
+  font-family: var(--schrift-text); font-weight: 700; letter-spacing: -.01em; text-transform: none; }
+main .gr-h3:is(h2) { font-size: clamp(40px, 6vw, 84px); line-height: 1.05; }   /* alle H2 groß */
+main h2.preis-h2 { font-size: clamp(40px, 6vw, 84px); line-height: 1.05; }
+
+/* Heller Papiergrund auf allen Seiten, Farben zurückhaltend: Schwarz, Weiß, Blau, Rot nur zum Durchstreichen */
+#inhalt { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp) 0 0 / 256px repeat; }
+
+/* Korrektur oberhalb statt unterhalb (Stimmen: „Kundinnen“ → „Partner:innen“) */
+.korrektur-oben .hand { top: auto; bottom: 88%; left: 4%; }
+.lsx-stimmen h2 { margin-top: .9em; }
+
+/* Corporate-Design-Satz als große Überschrift, deutsche Begriffe, keine Versalien */
+.ci-titel-gross { font-size: clamp(34px, 4.4vw, 64px); line-height: 1.1; letter-spacing: 0; text-transform: none; }
+.ci-grafik figcaption.ci-titel { max-width: min(100%, 980px); }
+
+/* Nutzen der Corporate Identity: Nummern statt Icons */
+.ci-nutzen-liste .ci-nr { display: block; margin: 0 0 12px; font: 700 var(--groesse-5)/1 var(--schrift-text); color: var(--farbe-primaer); }
+.ci-nutzen-liste h3 { font-size: var(--groesse-4); }
+
+/* Zeitleiste im neuen Stil: weiße Kreise mit schwarzem Rand und hartem Schatten, erste in Blau, gepunktete Linie */
+.zl-quer::before { background: none; border-top: 3px dotted var(--farbe-dunkel); height: 0; }
+.zlq-nr { background: var(--farbe-weiss); color: var(--farbe-dunkel); border: 2px solid var(--farbe-dunkel); box-shadow: 3px 3px 0 var(--farbe-dunkel); font-weight: 700; }
+.zl-quer li:first-child .zlq-nr { background: var(--farbe-primaer); color: var(--farbe-weiss); }
+.zl-quer h3 { font-size: var(--groesse-4); }
+@media (max-width: 767.98px) { .zl-quer::before { border-top: 0; border-left: 3px dotted var(--farbe-dunkel); width: 0; } }
+
+/* Blog: Hinweise im Hinweis-Rahmen (offener, gekippter blauer Rahmen mit Stufe; Entwurf vom 20.11.2026) */
+.praxis, .box-tipp { position: relative; max-width: var(--lesespalte); margin: 3.5rem auto; padding: 64px 32px 32px; border: 0; border-radius: 0; background: none; rotate: -1.2deg; }
+.praxis::before, .box-tipp::before { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 600' preserveAspectRatio='none'%3E%3Cpath d='M12 70 L600 34 L600 66 L988 12 L988 590 L12 590 Z' fill='none' stroke='%232a5fe6' stroke-width='6' vector-effect='non-scaling-stroke' stroke-linejoin='miter'/%3E%3C/svg%3E") 0 0 / 100% 100% no-repeat; }
+.praxis > *, .box-tipp > * { position: relative; rotate: 1.2deg; }
+.praxis .meta, .box-tipp .box-titel { color: var(--farbe-primaer); }
+.box-tipp .box-titel::before { display: none; }
+@media (max-width: 767.98px) { .praxis, .box-tipp { padding: 52px 18px 22px; } }
+
+/* Kontaktseite zurückhaltender: weiße Karten auf Papier statt bunt */
+.ks-termin, .ks-anruf, .ks-mail { background: var(--farbe-weiss); }
+.ks-symbol { background: var(--farbe-primaer); color: var(--farbe-weiss); border-color: var(--farbe-dunkel); }
+/* Startseite: „Projekte“ etwas größer, dahinter rote Notiz in Klammern (Anna 21.11.2026) */
+.start-projektliste .pa-titel { font-size: clamp(52px, 7.5vw, 104px); line-height: 1; }
+.pa-klammer { display: inline-block; vertical-align: middle; font: 400 clamp(20px, 2.2vw, 32px)/1.1 var(--schrift-hand), "Architects Daughter", cursive; color: var(--bb-rot); rotate: -4deg; margin-left: .3em; }
+@media (max-width: 767.98px) { .pa-klammer { display: block; margin: 8px 0 0; } }
+/* Projektseiten: Überschriften mit mehreren Wörtern in Groß- und Kleinschreibung, einzelne Wörter (Ausgangslage, Ergebnis …) dürfen Versalien bleiben (Anna 21.11.2026) */
+.cs-titel, .ub-aussage, .fk-gross, .bn-titel, .kr-titel, .la-titel, .pk-name { text-transform: none; letter-spacing: 0; }

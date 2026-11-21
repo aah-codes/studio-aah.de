@@ -120,7 +120,7 @@ def dachzeile(m, h):
 def ablauf_eigen(pre, schritte, hinweis=''):
     """Eigene Schritte einer Leistung als horizontale Zeitleiste mit Punkten (zl-quer, wie Startseite und Profil; Anna 16.11.2026)."""
     li = ''.join(f'<li><span class="zlq-nr">{i:02d}</span><div class="zl-text">{dachzeile(m, h)}<h3>{trennen(esc(h))}</h3><p class="gedaempft">{trennen(esc(x))}</p></div></li>' for i, (m, h, x) in enumerate(schritte, 1))
-    return (f'  <section class="prozess-kompakt" id="ablauf" aria-labelledby="prozess">\n    <p class="meta">Wie ich arbeite</p>\n    <h2 class="preis-h2" id="prozess">Prozess</h2>\n'
+    return (f'  <section class="prozess-kompakt" id="ablauf" aria-labelledby="prozess">\n    <p class="meta">Wie ich arbeite</p>\n    <h2 class="gr-h2" id="prozess">Prozess</h2>\n'
             + (f'    <p class="lsx-ablauf-hinweis">{esc(hinweis)}</p>\n' if hinweis else '') +
             f'    <ol class="zl-quer zlq-{len(schritte)}">{li}</ol>\n    <p><a class="button" href="{pre}kontakt/">Beratung anfragen <span aria-hidden="true">→</span></a></p>\n  </section>')
 
@@ -133,9 +133,13 @@ def ablauf(pre):
 
 
 def stimmen(pre, tag):
-    liste = I.mit_tag(I.STIMMEN, [tag])[:3]
+    # Immer genau zwei Stimmen (Anna 21.11.2026); fehlt eine passende, kommt eine allgemeine dazu
+    liste = I.mit_tag(I.STIMMEN, [tag])[:2]
+    for s in I.STIMMEN:
+        if len(liste) >= 2: break
+        if s not in liste: liste.append(s)
     if not liste: return ''
-    return '  <section class="lsx-stimmen" aria-labelledby="stimmen-titel">\n    <p class="meta">Stimmen</p>\n    <h2 class="gr-h3" id="stimmen-titel">Das sagen Kundinnen und Kolleginnen</h2>\n    <div class="stimmen">\n' + I.stimmen(liste, pre) + '\n    </div>\n    <p class="stimmen-quelle"><a class="textlink" href="' + LINKEDIN + '" target="_blank" rel="noopener">Alle Empfehlungen auf LinkedIn <span aria-hidden="true">↗</span></a></p>\n  </section>'
+    return '  <section class="lsx-stimmen" aria-labelledby="stimmen-titel">\n    <p class="meta">Stimmen</p>\n    <h2 class="gr-h2" id="stimmen-titel">Das sagen <span class="korrektur korrektur-oben"><span class="notiz notiz-durch">Kundinnen</span><span class="hand" aria-hidden="true">Partner:innen</span></span></h2>\n    <div class="stimmen">\n' + I.stimmen(liste, pre) + '\n    </div>\n    <p class="stimmen-quelle"><a class="textlink" href="' + LINKEDIN + '" target="_blank" rel="noopener">Alle Empfehlungen auf LinkedIn <span aria-hidden="true">↗</span></a></p>\n  </section>'
 
 
 def nicht_enthalten(c):
@@ -172,15 +176,9 @@ def kontakt(g, pre, link, link_text, termine, anfrage, satz='Bei STUDIO AAH! arb
       <h2 class="gr-h2" id="kontakt-titel">Starte dein Projekt</h2>
       <p class="lsx-ansprech-name"><strong>Anna Härtelt</strong> · UX/UI-Designerin, Strategin und Webentwicklerin</p>
       <p>{esc(satz)}</p>
-      <ul class="lsx-ansprech-wege">
-        <li><span class="meta">Telefon</span><a href="tel:+4917683089879">0176 830 898 79</a></li>
-        <li><span class="meta">E-Mail</span><a href="mailto:info@studio-aah.de">info@studio-aah.de</a></li>
-      </ul>
-{f'      <p class="lsx-termine"><span class="meta">Abstimmung</span> {esc(termine)}</p>' if termine else ''}
-      <p class="lsx-knoepfe"><a class="button" href="{pre}kontakt/">{anfrage} <span aria-hidden="true">→</span></a> {check} <a class="textlink" href="{link}">{link_text} <span aria-hidden="true">→</span></a> <a class="textlink" href="{pre}profil/">Mehr über mich <span aria-hidden="true">→</span></a></p>
+      <p class="lsx-knoepfe"><a class="button" href="{pre}kontakt/">{anfrage} <span aria-hidden="true">→</span></a></p>
     </div>
-{I.kennzahlen('fakten lsx-fakten', '    ')}
-  </section>'''
+  </section>'''   # aufgeräumt (Anna 21.11.2026): nur noch „Beratung anfragen“, ohne Telefon, Mail, Abstimmung, Preise, Kennzahlen
 
 
 def grafik(name):

@@ -324,7 +324,7 @@ def passende_artikel(tags, pre, ersatz=(), anzahl=3, mindestens=2):
     if len(liste) < mindestens:
         raise SystemExit(f'Passende Artikel: weniger als {mindestens} für {tags} (Ersatz {ersatz}), Schlagworte in blog.json ergänzen')
     return ('  <section class="lsx-artikel blog-neu" id="artikel" aria-labelledby="artikel-titel">\n    <div class="lsx-artikel-kopf"><p class="meta">Blog</p>'
-            '<h2 class="gr-h3" id="artikel-titel">Passende Artikel</h2></div>\n    <ul class="blog-liste">\n' + blog(liste, pre, pre + 'blog/') + '\n    </ul>\n  </section>')
+            '<h2 class="gr-h2" id="artikel-titel">Passend dazu</h2></div>\n    <ul class="blog-liste">\n' + blog(liste, pre, pre + 'blog/') + '\n    </ul>\n  </section>')
 
 
 # Feste Angebote (eigene Seiten mit Marker ARTIKEL vor </main>): Schlagworte
