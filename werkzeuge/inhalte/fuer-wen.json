@@ -4,7 +4,7 @@
     {
       "id": "mittelstand",
       "reiter_html": "Mittelstand",
-      "titel": "Ihre ganze Website, neu gedacht.",
+      "titel": "Deine ganze Website, neu gedacht.",
       "dachzeile": "Webdesign",
       "name": "{name:redesign}",
       "text": "Für mittelständische Unternehmen, die ihre ganze Website umbauen: mit Leistungs-, Branchen-, Referenz- und Karriereseiten.",
@@ -21,7 +21,7 @@
       "titel": "Klar auftreten, ohne Umwege.",
       "dachzeile": "Webdesign",
       "name": "Onepager",
-      "text": "Für Selbstständige und kleine Angebote: eine Website, die alles auf den Punkt bringt, und eine Marke, die zu Ihnen passt.",
+      "text": "Für Selbstständige und kleine Angebote: eine Website, die alles auf den Punkt bringt, und eine Marke, die zu dir passt.",
       "punkte_html": ["Alles auf einer Seite, responsiv", "Mit SEO & LLM-Zitierfähigkeit", "Dazu buchbar: Brand Basic mit Fragebogen, Brand Experience und Mitbewerberrecherche, {preis:brand-0}"],
       "preis_html": "{preis:neu}",
       "link": "service/webdesign/#pakete",

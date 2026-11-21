@@ -32,7 +32,7 @@ window.Anfrage = (() => {
   function fehler(form, t) {
     const b = box(form);
     if (!b) return;
-    b.innerHTML = '<p><b>Das Senden hat leider nicht geklappt.</b> Bitte versuchen Sie es gleich noch einmal – oder schreiben Sie mir direkt an '
+    b.innerHTML = '<p><b>Das Senden hat leider nicht geklappt.</b> Bitte versuch es gleich noch einmal – oder schreib mir direkt an '
       + `<a href="mailto:${ADRESSE}">${ADRESSE}</a>.</p><p><button type="button" class="anfrage-kopieren">Nachricht kopieren</button> <span class="anfrage-kopiert" aria-live="polite"></span></p>`;
     b.hidden = false;
     kopierKnopf(b, t);
@@ -96,7 +96,7 @@ window.Anfrage = (() => {
   });
 
   // Hinweis unter dem Formular zum Versandweg (Datenschutz)
-  const HINWEIS = 'Ihre Angaben gehen über den Formulardienst Formspark (Belgien, Speicherung in der EU) per E-Mail an mich. Mehr in der <a href="../datenschutz/#kontakt">Datenschutzerklärung</a>.';
+  const HINWEIS = 'Deine Angaben gehen über den Formulardienst Formspark (Belgien, Speicherung in der EU) per E-Mail an mich. Mehr in der <a href="../datenschutz/#kontakt">Datenschutzerklärung</a>.';
 
   // Beratung anfragen: Formulare mit data-anfrage (= Betreff, data-weiter = eigene Danke-Seite) selbst verbinden; Pflichtfelder prüft der Browser vor dem Absenden
   document.querySelectorAll('form[data-anfrage]').forEach((form) => form.addEventListener('submit', (e) => {

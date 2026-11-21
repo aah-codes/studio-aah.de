@@ -76,10 +76,10 @@
     var alle = function (liste) { return teile.every(function (x) { return liste.indexOf(x) >= 0; }); };
     if (alle(JA)) {
       var preis = letzte && /€/.test(letzte.a + ' ' + (letzte.p || []).join(' '));
-      return { a: preis ? 'Wunderbar, dann passt der Preis in Ihr Budget! Lassen Sie uns über Ihre Website sprechen, das Erstgespräch ist kostenlos.'
-                        : 'Das freut mich! Wenn Sie mögen, sprechen wir direkt darüber, das Erstgespräch ist kostenlos.', p: KONTAKT };
+      return { a: preis ? 'Wunderbar, dann passt der Preis in dein Budget! Lass uns über deine Website sprechen, das Erstgespräch ist kostenlos.'
+                        : 'Das freut mich! Wenn du magst, sprechen wir direkt darüber, das Erstgespräch ist kostenlos.', p: KONTAKT };
     }
-    if (alle(HMM.concat(JA))) return { a: 'Noch nicht ganz überzeugt? Fragen Sie mich gern weiter, zum Beispiel: Wie läuft ein Projekt ab? Oder wir klären es kurz persönlich.', p: KONTAKT };
+    if (alle(HMM.concat(JA))) return { a: 'Noch nicht ganz überzeugt? Frag mich gern weiter, zum Beispiel: Wie läuft ein Projekt ab? Oder wir klären es kurz persönlich.', p: KONTAKT };
     return null;
   }
   function zeigen(frage) {
@@ -125,7 +125,7 @@
         antwort.appendChild(ul);
       }
     } else {
-      antwort.appendChild(mitLinks(el('p', 'fh-kurz'), 'Gute Frage! Dazu habe ich hier noch keine fertige Antwort. Rufen Sie mich gern an: 0176 830 898 79, oder [schreiben Sie mir](kontakt/).'));
+      antwort.appendChild(mitLinks(el('p', 'fh-kurz'), 'Gute Frage! Dazu habe ich hier noch keine fertige Antwort. Ruf mich gern an: 0176 830 898 79, oder [schreib mir](kontakt/).'));
     }
     antwort.appendChild(zeit(false));
     setTimeout(function () {

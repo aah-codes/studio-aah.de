@@ -1,5 +1,5 @@
 // Kostenrechner Webdesign auf der Preisseite: fünf Schritte wie an einer Kasse (Konzept Anna 16.10.2026).
-// Marke → Neu oder Redesign (Basispreis) → Seitenstruktur (Sitemap zum Bauen) → Extras → Ihr Bon. Der Kassenbon rechnet mit.
+// Marke → Neu oder Redesign (Basispreis) → Seitenstruktur (Sitemap zum Bauen) → Extras → Dein Bon. Der Kassenbon rechnet mit.
 // Rechnet nur im Browser, speichert nichts. Anfrage über den Formulardienst (js/anfrage.js), PDF über den Druckdialog.
 // Daten: js/pakete-daten.js (erzeugt aus werkzeuge/preise-daten.json).
 (() => {
@@ -28,7 +28,7 @@
     { id: 'basis', nm: 'Neu oder Redesign', dt: 'Schritt 2 · Verstehen' },
     { id: 'sitemap', nm: 'Seitenstruktur', dt: 'Schritt 3 · Ideen finden' },
     { id: 'extras', nm: 'Extras', dt: 'Schritt 4 · Umsetzung' },
-    { id: 'bon', nm: 'Ihr Bon', dt: 'Schritt 5 · Zusammenfassung' },
+    { id: 'bon', nm: 'Dein Bon', dt: 'Schritt 5 · Zusammenfassung' },
   ];
   let aktiv = 0, maxErreicht = 0;
 
@@ -118,7 +118,7 @@
   const felder = (p) => `<div class="anfrage-felder">
       <label for="${p}-name">Name<input id="${p}-name" name="name" autocomplete="name" required value="${esc(F.name)}"></label>
       <label for="${p}-email">E-Mail<input id="${p}-email" name="email" type="email" autocomplete="email" required value="${esc(F.email)}"></label>
-      <label for="${p}-website" class="anfrage-ganz">Ihre Website (falls vorhanden)<input id="${p}-website" name="website" type="text" inputmode="url" autocomplete="url" placeholder="www.ihre-website.de" value="${esc(F.website)}"></label>
+      <label for="${p}-website" class="anfrage-ganz">Deine Website (falls vorhanden)<input id="${p}-website" name="website" type="text" inputmode="url" autocomplete="url" placeholder="www.deine-website.de" value="${esc(F.website)}"></label>
       <label for="${p}-nachricht" class="anfrage-ganz">Nachricht (freiwillig)<textarea id="${p}-nachricht" name="nachricht" rows="3">${esc(F.nachricht)}</textarea></label>
     </div>
     <p class="anfrage-falle" aria-hidden="true"><label>Bitte leer lassen<input name="_honeypot" tabindex="-1" autocomplete="off"></label></p>`;
@@ -136,7 +136,7 @@
       return `<h3 class="wr-h">Neue Website oder Redesign?</h3><p class="wr-warum">Der Basispreis enthält alles, was jede Website braucht, damit sie gut wird. Das lässt sich nicht abwählen.</p>
       <div class="wr-kacheln">${kachel('bestand', 'neu', !re, 'Neue Website', 'Es gibt noch keine Website.', `ab ${euro(D.basis)} €`)}${kachel('bestand', 'redesign', re, 'Redesign', 'Die bestehende Website wird neu – Inhalte übernehmen, alte Adressen weiterleiten.', `+ ${euro(D.redesign)} €`)}</div>
       <p class="wr-frage">Wer liefert Texte und Bilder?<small>Beides ist im Basispreis.</small></p>
-      <div class="wr-kacheln">${kachel('texte', 'studio', Z.texte === 'studio', 'Ich liefere Texte und Bilder', 'Mit KI erstellt auf Basis der Analyse, von mir geprüft und überarbeitet. Sie können sich Ihrem Tagesgeschäft widmen.')}${kachel('texte', 'selbst', Z.texte === 'selbst', 'Sie liefern Texte und Bilder', 'Schicken Sie mir Ihre Texte und Bilder, wie es Ihnen passt – zum Beispiel als Dokument. Ich übernehme sie in die Website.')}</div>
+      <div class="wr-kacheln">${kachel('texte', 'studio', Z.texte === 'studio', 'Ich liefere Texte und Bilder', 'Mit KI erstellt auf Basis der Analyse, von mir geprüft und überarbeitet. Du kannst dich deinem Tagesgeschäft widmen.')}${kachel('texte', 'selbst', Z.texte === 'selbst', 'Du lieferst Texte und Bilder', 'Schick mir deine Texte und Bilder, wie es dir passt – zum Beispiel als Dokument. Ich übernehme sie in die Website.')}</div>
       <div class="wr-basis"><h4 class="wr-basis-titel">Im Basispreis enthalten <span>ab ${euro(D.basis)} €${re ? ` + ${euro(D.redesign)} € Redesign` : ''}</span></h4>
         ${gruppen}
         <div class="wr-nicht"><h4>Nicht enthalten</h4><ul>${D.nicht_enthalten.map((i) => `<li>${esc(i)}</li>`).join('')}</ul></div>
@@ -151,12 +151,12 @@
       const text = n > D.gross_ab ? `Mehr als ${D.gross_ab} Unterseiten – das ist ein großes Projekt. Den Preis klären wir am besten im Gespräch.`
         : n === 0 ? 'Nur die Startseite – alles steht auf einer Seite (Onepager). Es gilt der Basispreis.'
           : `Unterseiten × ${D.seite} € = <b>${euro(n * D.seite)} €</b>. Je Unterseite mit Texten und Bildern. Startseite, Impressum und Datenschutz sind im Basispreis. Typisch: Selbstständige 1–6, Unternehmen 8–25.`;
-      return `<h3 class="wr-h">Welche Seiten braucht Ihre Website?</h3><p class="wr-warum">Hier sehen Sie den Aufbau einer typischen kleinen Unternehmenswebsite. Entfernen Sie mit ×, was Sie nicht brauchen, fügen Sie mit + Unterseiten hinzu und ziehen Sie Seiten an eine andere Stelle. Seitennamen können Sie direkt überschreiben.</p>
+      return `<h3 class="wr-h">Welche Seiten braucht deine Website?</h3><p class="wr-warum">Hier siehst du den Aufbau einer typischen kleinen Unternehmenswebsite. Entferne mit ×, was du nicht brauchst, füge mit + Unterseiten hinzu und zieh Seiten an eine andere Stelle. Seitennamen kannst du direkt überschreiben.</p>
       <div class="wr-sitemap"><div class="wr-baum">
         <div class="wr-start"><div class="wr-karte wr-fest" data-ziel="start">Startseite<span class="wr-schloss">im Basispreis</span></div></div>
         <div class="wr-ebene">${Z.sitemap.map((k) => `<div class="wr-spalte">${karte(k)}${k.kinder.length ? `<div class="wr-kinder">${k.kinder.map(karte).join('')}</div>` : ''}${k.typ === 'seite' ? `<button type="button" class="wr-plus" data-kind="${k.id}" data-ziel="kind" aria-label="Unterseite zu ${esc(k.name)} hinzufügen">+</button>` : ''}</div>`).join('')}
           <div class="wr-spalte${Z.sitemap.length ? ' wr-leer' : ''}"><button type="button" class="wr-neu" data-neu data-ziel="ende" aria-label="Seite hinzufügen" title="Seite hinzufügen">+</button></div></div>
-        ${funkAktiv.length ? `<div class="wr-funk-reihe"><span>Funktionen auf Ihrer Website:</span>${funkAktiv.map((t) => `<span class="wr-funk-chip">${esc(MODULE[t].name)}<button type="button" data-funk-weg="${t}" aria-label="${esc(MODULE[t].name)} entfernen">×</button></span>`).join('')}</div>` : ''}
+        ${funkAktiv.length ? `<div class="wr-funk-reihe"><span>Funktionen auf deiner Website:</span>${funkAktiv.map((t) => `<span class="wr-funk-chip">${esc(MODULE[t].name)}<button type="button" data-funk-weg="${t}" aria-label="${esc(MODULE[t].name)} entfernen">×</button></span>`).join('')}</div>` : ''}
         <div class="wr-pflicht"><span>Immer dabei, im Basispreis:</span><span class="wr-k">Impressum</span><span class="wr-k">Datenschutz</span></div>
       </div></div>
       <p class="wr-tipp">Tastatur: Seitennamen auswählen, dann Alt + ← → zum Umsortieren, Alt + ↓ macht die Seite zur Unterseite der Seite davor, Alt + ↑ holt sie eine Ebene hoch.</p>
@@ -171,35 +171,35 @@
     extras() {
       const mod = module(), w = X.wartung, r = X['retainer-web'];
       const nein = ['nein', 'Nein'], offen = ['offen', 'Weiß ich noch nicht'];
-      return `<h3 class="wr-h">Was soll Ihre Website noch können?</h3><p class="wr-warum">Ihre Funktionen aus der Seitenstruktur sind schon ausgewählt. Hier können Sie Extras dazunehmen.</p>
-      <p class="wr-frage">Ihre Funktionen<small>Aus Ihrer Seitenstruktur. Haken entfernen nimmt die Funktion auch dort heraus.</small></p>
+      return `<h3 class="wr-h">Was soll deine Website noch können?</h3><p class="wr-warum">Deine Funktionen aus der Seitenstruktur sind schon ausgewählt. Hier kannst du Extras dazunehmen.</p>
+      <p class="wr-frage">Deine Funktionen<small>Aus deiner Seitenstruktur. Haken entfernen nimmt die Funktion auch dort heraus.</small></p>
       ${mod.length ? `<div class="wr-kacheln">${mod.map((t) => kachel('modul', t, true, esc(MODULE[t].name), esc(MODULE[t].kurz), preisText(MODULE[t]), { mehrfach: true })).join('')}</div>` : '<p class="wr-tipp">Noch keine Funktion gewählt.</p>'}
       <p class="wr-mit-abstand"><button type="button" class="button button-zweit" data-geh-zu="2">Funktionen hinzufügen ${PFEIL}</button></p>
       <p class="wr-frage">Extras</p>
       <div class="wr-kacheln">${D.extras_schritt4.map((id) => kachel('extra', id, Z.extras.has(id), esc(X[id].name), esc(X[id].kurz), X[id].anfrage ? 'auf Anfrage' : `${euro(X[id].preis)} €`, { mehrfach: true })).join('')}</div>
-      <p class="wr-frage">In wie vielen weiteren Sprachen?<small>+30 % auf den Website-Preis (Basis und Unterseiten) je Sprache. Die Übersetzung liefern Sie.</small></p>
+      <p class="wr-frage">In wie vielen weiteren Sprachen?<small>+30 % auf den Website-Preis (Basis und Unterseiten) je Sprache. Die Übersetzung lieferst du.</small></p>
       <div class="wr-stepper"><button type="button" data-sprache="-1" aria-label="eine Sprache weniger">−</button><output aria-live="polite">${Z.sprachen}</output><button type="button" data-sprache="1" aria-label="eine Sprache mehr">+</button></div>
-      <div class="wr-hinweis"><b>Cookie-Banner und Tracking</b><br>Ob Sie das brauchen, hängt von Ihrer Website ab. Ich berate Sie dazu, die Kosten stehen dann im Angebot.</div>
+      <div class="wr-hinweis"><b>Cookie-Banner und Tracking</b><br>Ob du das brauchst, hängt von deiner Website ab. Ich berate dich dazu, die Kosten stehen dann im Angebot.</div>
       <p class="wr-frage wr-frage-gross">Nach dem Start</p>
-      ${zeile('schulung', 'Schulung', 'Möchten Sie Inhalte selbst pflegen?', esc(X.schulung.kurz), [...SCHULUNG.map((s) => [s.name, `Ja, ${s.name === 'PDF-Anleitung' ? 'als PDF' : 'online'} · ${euro(s.preis)} €`]), nein, offen])}
+      ${zeile('schulung', 'Schulung', 'Möchtest du Inhalte selbst pflegen?', esc(X.schulung.kurz), [...SCHULUNG.map((s) => [s.name, `Ja, ${s.name === 'PDF-Anleitung' ? 'als PDF' : 'online'} · ${euro(s.preis)} €`]), nein, offen])}
       ${zeile('wartung', 'Wartung', 'Soll sich jemand um Technik und Sicherheit kümmern?', esc(w.wer), [['ja', `Ja · ${euro(w.monat)} € / Monat`], nein, offen], w.items)}
       ${zeile('retainer', 'Retainer', 'Soll die Website nach dem Start weiterentwickelt werden?', `${esc(r.rechner)} Laufende Betreuung über ${esc(r.mindestens)}.`, [['ja', 'Ja · auf Anfrage'], nein, offen])}`;
     },
     bon() {
       const re = Z.bestand === 'redesign', a = angaben();
-      return `<h3 class="wr-h">Ihr Kostenvoranschlag</h3><p class="wr-warum">Das ist ein erster Richtwert. Den genauen Preis klären wir gemeinsam im kostenlosen Erstgespräch.</p>
-      <ol class="wr-ablauf"><li><span class="wr-ablauf-k">01</span><span><b>Kostenvoranschlag</b> – unverbindlich, aus diesem Rechner</span></li><li><span class="wr-ablauf-k">02</span><span><b>Erstgespräch</b> – kostenlos: Wo stehen Sie, was wollen Sie, wen wollen Sie erreichen?</span></li><li><span class="wr-ablauf-k">03</span><span><b>Angebot</b> – auf dieser Grundlage</span></li><li><span class="wr-ablauf-k">04</span><span><b>Vertrag</b> – und los geht’s</span></li></ol>
+      return `<h3 class="wr-h">Dein Kostenvoranschlag</h3><p class="wr-warum">Das ist ein erster Richtwert. Den genauen Preis klären wir gemeinsam im kostenlosen Erstgespräch.</p>
+      <ol class="wr-ablauf"><li><span class="wr-ablauf-k">01</span><span><b>Kostenvoranschlag</b> – unverbindlich, aus diesem Rechner</span></li><li><span class="wr-ablauf-k">02</span><span><b>Erstgespräch</b> – kostenlos: Wo stehst du, was willst du, wen willst du erreichen?</span></li><li><span class="wr-ablauf-k">03</span><span><b>Angebot</b> – auf dieser Grundlage</span></li><li><span class="wr-ablauf-k">04</span><span><b>Vertrag</b> – und los geht’s</span></li></ol>
       <form class="wr-uebergabe anfrage-form" id="wr-anfrage" action="${window.Anfrage.ENDPUNKT}" method="post">
-        <h4 class="wr-box-titel">Das geht mit Ihrer Anfrage an STUDIO AAH!</h4>
+        <h4 class="wr-box-titel">Das geht mit deiner Anfrage an STUDIO AAH!</h4>
         <ul class="wr-uebersicht">${a.map(([t, v]) => `<li><span>${t}</span><span>${esc(v)}</span></li>`).join('')}</ul>
         ${felder('wr')}
         ${window.Anfrage.NEWSLETTER(false, F.newsletter, 'wr-newsletter')}
         <p class="anfrage-knoepfe"><button type="submit" class="button">Beratung anfragen ${PFEIL}</button><button type="button" class="button button-zweit" data-pdf>Als PDF speichern <span aria-hidden="true">↓</span></button></p>
-        <p class="hinweis-klein">Alle Angaben aus dem Rechner gehen mit Ihrer Anfrage an mich und sind die Grundlage für unser Erstgespräch. Unverbindlich und kostenlos. <span class="anfrage-hinweis">${window.Anfrage.HINWEIS}</span></p>
+        <p class="hinweis-klein">Alle Angaben aus dem Rechner gehen mit deiner Anfrage an mich und sind die Grundlage für unser Erstgespräch. Unverbindlich und kostenlos. <span class="anfrage-hinweis">${window.Anfrage.HINWEIS}</span></p>
         <div class="anfrage-danach" role="status" hidden></div>
       </form>
       ${re ? `<div class="wr-review"><p class="meta">Für bestehende Websites</p><h4 class="wr-box-titel">Kostenloser Website-Check</h4>
-        <p>Ich schaue mir Ihre Website mit dem Blick Ihrer Kundschaft und Ihrer Bewerberinnen und Bewerber an und nenne Ihnen konkrete Ansatzpunkte. Kostenlos und unverbindlich.</p>
+        <p>Ich schaue mir deine Website mit dem Blick deiner Kundschaft und deiner Bewerberinnen und Bewerber an und nenne dir konkrete Ansatzpunkte. Kostenlos und unverbindlich.</p>
         <p><a class="button button-zweit" href="../website-check/#anfordern">Website-Check anfordern ${PFEIL}</a></p></div>` : ''}`;
     },
   };
@@ -244,7 +244,7 @@
     $('druck-bereich').innerHTML = `<p class="druck-marke">STUDIO AAH!</p><h1>Kostenvoranschlag Website (unverbindlich)</h1><p>Erstellt am ${datum} mit dem Kostenrechner auf studio-aah.de</p>
       <table>${L.map((p) => `<tr><td>${esc(p.name)}${p.sub ? `<br><small>${esc(p.sub)}</small>` : ''}</td><td>${betrag(p)}</td></tr>`).join('')}
       <tr class="druck-summe"><td>Richtwert einmalig (netto)</td><td>ab ${euro(S.einmalig)} €</td></tr><tr><td>inkl. 19 % USt.</td><td>ab ${euro(S.einmalig * 1.19)} €</td></tr>${S.monat ? `<tr><td>monatlich (netto)</td><td>${euro(S.monat)} €</td></tr>` : ''}</table>
-      <h2>Ihre Angaben</h2><table>${angaben().filter(([t]) => t !== 'Kostenvoranschlag').map(([t, v]) => `<tr><td>${t}</td><td>${esc(v)}</td></tr>`).join('')}</table>
+      <h2>Deine Angaben</h2><table>${angaben().filter(([t]) => t !== 'Kostenvoranschlag').map(([t, v]) => `<tr><td>${t}</td><td>${esc(v)}</td></tr>`).join('')}</table>
       <h2>Seitenstruktur</h2><pre>– Startseite\n${esc(baumText(Z.sitemap))}– Impressum, Datenschutz</pre>
       <p><b>So geht es weiter:</b> 1. Kostenvoranschlag · 2. kostenloses Erstgespräch · 3. Angebot · 4. Vertrag</p>
       <p>Richtwert aus dem Rechner. Hosting und Domain sind nicht enthalten. Den genauen Preis klären wir im kostenlosen Erstgespräch. Kontakt: info@studio-aah.de · studio-aah.de</p>`;

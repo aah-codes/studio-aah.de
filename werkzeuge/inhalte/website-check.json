@@ -3,7 +3,7 @@
   "pruefpunkte": [
     {
       "titel": "Erster Eindruck",
-      "text": "Versteht man auf der Startseite in wenigen Sekunden, was Sie anbieten und für wen?",
+      "text": "Versteht man auf der Startseite in wenigen Sekunden, was du anbietest und für wen?",
       "icon": "bildschirm",
       "kurz": "Angebot in Sekunden verstanden"
     },
@@ -15,7 +15,7 @@
     },
     {
       "titel": "Handy und Tempo",
-      "text": "Lässt sich Ihre Website auf dem Smartphone gut lesen und bedienen, und lädt sie schnell?",
+      "text": "Lässt sich deine Website auf dem Smartphone gut lesen und bedienen, und lädt sie schnell?",
       "icon": "handy",
       "kurz": "Lesbar, bedienbar, schnell"
     },
@@ -27,13 +27,13 @@
     },
     {
       "titel": "Gefunden werden in KI-Antworten",
-      "text": "Erscheint Ihr Angebot richtig in der „Übersicht mit KI“ bei Google und in ChatGPT? Dafür braucht es saubere Grundlagen, klare Antworten im Text und strukturierte Daten, die zum Text passen.",
+      "text": "Erscheint dein Angebot richtig in der „Übersicht mit KI“ bei Google und in ChatGPT? Dafür braucht es saubere Grundlagen, klare Antworten im Text und strukturierte Daten, die zum Text passen.",
       "icon": "sprechblase",
       "kurz": "Übersicht mit KI bei Google und ChatGPT"
     },
     {
       "titel": "Bedienbar für KI-Agenten",
-      "text": "Können Programme, die im Auftrag Ihrer Kundschaft suchen und anfragen, Ihre Buttons und Formulare nutzen?",
+      "text": "Können Programme, die im Auftrag deiner Kundschaft suchen und anfragen, deine Buttons und Formulare nutzen?",
       "icon": "skills",
       "kurz": "Buttons und Formulare für KI-Agenten"
     },
@@ -58,11 +58,11 @@
         ],
         [
           "Was brauche ich für den Website-Check?",
-          "Nur die Adresse Ihrer Website und Ihre E-Mail-Adresse, die Sie ins Formular eintragen. Wenn Sie den Bericht in einem Gespräch besprechen möchten, setzen Sie im Formular das Häkchen. Eine Vorbereitung ist nicht nötig."
+          "Nur die Adresse deiner Website und deine E-Mail-Adresse, die du ins Formular einträgst. Wenn du den Bericht in einem Gespräch besprechen möchtest, setzt du im Formular das Häkchen. Eine Vorbereitung ist nicht nötig."
         ],
         [
           "Wie kann ich meine Website testen lassen?",
-          "Beim kostenlosen Website-Check von STUDIO AAH! tragen Sie die Adresse Ihrer Website und Ihre E-Mail-Adresse ins Formular ein. Anna Härtelt prüft die Website von außen in acht Bereichen mit 74 Einzelkriterien und schickt Ihnen innerhalb von 48 Stunden einen Prüfbericht als PDF. Auf Wunsch erklärt sie die Ergebnisse in einem 45-minütigen Telefongespräch."
+          "Beim kostenlosen Website-Check von STUDIO AAH! trägst du die Adresse deiner Website und deine E-Mail-Adresse ins Formular ein. Anna Härtelt prüft die Website von außen in acht Bereichen mit 74 Einzelkriterien und schickt dir innerhalb von 48 Stunden einen Prüfbericht als PDF. Auf Wunsch erklärt sie die Ergebnisse in einem 45-minütigen Telefongespräch."
         ],
         [
           "Was prüft der Website-Check?",
@@ -82,7 +82,7 @@
         ],
         [
           "Ich habe meine Website selbst gebaut, mit KI oder einem Baukasten. Lohnt sich der Check?",
-          "Ja. Der Website-Check prüft selbst gebaute Websites nach denselben acht Bereichen wie jede andere, darunter erster Eindruck, Handy und Tempo, Google, KI-Antworten und Barrierefreiheit. Sie sehen, was schon gut funktioniert und wo es noch hakt – als Stichprobe zum Zeitpunkt der Prüfung."
+          "Ja. Der Website-Check prüft selbst gebaute Websites nach denselben acht Bereichen wie jede andere, darunter erster Eindruck, Handy und Tempo, Google, KI-Antworten und Barrierefreiheit. Du siehst, was schon gut funktioniert und wo es noch hakt – als Stichprobe zum Zeitpunkt der Prüfung."
         ],
         [
           "Wie oft sollte eine Website geprüft werden?",
@@ -94,7 +94,7 @@
         ],
         [
           "Was passiert nach dem Website-Check?",
-          "Sie entscheiden. Die Maßnahmen aus dem Prüfbericht können Sie selbst umsetzen oder umsetzen lassen; auf Wunsch schickt Anna Härtelt Ihnen ein unverbindliches Angebot mit festem Preis. Ein Redesign bei STUDIO AAH! beginnt bei 2.850 € netto."
+          "Du entscheidest. Die Maßnahmen aus dem Prüfbericht kannst du selbst umsetzen oder umsetzen lassen; auf Wunsch schickt Anna Härtelt dir ein unverbindliches Angebot mit festem Preis. Ein Redesign bei STUDIO AAH! beginnt bei 2.850 € netto."
         ]
       ]
     },
@@ -103,7 +103,7 @@
       "fragen": [
         [
           "Was wird beim ersten Eindruck geprüft?",
-          "Beim ersten Eindruck prüft Anna Härtelt, ob man auf der Startseite in wenigen Sekunden versteht, was Sie anbieten, für wen und warum bei Ihnen. Dazu schaut sie auf den Auftritt Ihrer Marke (Branding), Überschriften und Texte, Bilder und die Ordnung der Seite."
+          "Beim ersten Eindruck prüft Anna Härtelt, ob man auf der Startseite in wenigen Sekunden versteht, was du anbietest, für wen und warum bei dir. Dazu schaut sie auf den Auftritt deiner Marke (Branding), Überschriften und Texte, Bilder und die Ordnung der Seite."
         ],
         [
           "Was bedeutet „Weg zur Anfrage“?",
@@ -119,7 +119,7 @@
         ],
         [
           "Wie kommt meine Website in KI-Antworten?",
-          "Laut Google gibt es für die „Übersicht mit KI“ keine zusätzlichen Anforderungen; es zählen die bekannten Grundlagen: Google darf die Seite durchsuchen, wichtige Inhalte stehen als Text auf der Seite, und strukturierte Daten (Structured Data) passen zum sichtbaren Text. Im Website-Check prüft Anna Härtelt diese Grundlagen – das hilft auch KI-Assistenten wie ChatGPT, Ihr Angebot richtig wiederzugeben."
+          "Laut Google gibt es für die „Übersicht mit KI“ keine zusätzlichen Anforderungen; es zählen die bekannten Grundlagen: Google darf die Seite durchsuchen, wichtige Inhalte stehen als Text auf der Seite, und strukturierte Daten (Structured Data) passen zum sichtbaren Text. Im Website-Check prüft Anna Härtelt diese Grundlagen – das hilft auch KI-Assistenten wie ChatGPT, dein Angebot richtig wiederzugeben."
         ],
         [
           "Was sind KI-Agenten, und warum sollte meine Website für sie bedienbar sein?",
@@ -127,7 +127,7 @@
         ],
         [
           "Ist Barrierefreiheit für meine Website Pflicht?",
-          "Für viele Websites ja: Seit dem 28. Juni 2025 gilt das Barrierefreiheitsstärkungsgesetz (BFSG) für bestimmte Dienstleistungen für Verbraucherinnen und Verbraucher, darunter Dienstleistungen im elektronischen Geschäftsverkehr, etwa Onlineshops. Kleinstunternehmen, die Dienstleistungen erbringen – weniger als zehn Beschäftigte und höchstens 2 Millionen Euro Jahresumsatz –, sind laut Bundesfachstelle Barrierefreiheit ausgenommen. Ob das BFSG für Ihre Website gilt, hängt von Ihrem Angebot ab; der Website-Check ersetzt keine Rechtsberatung."
+          "Für viele Websites ja: Seit dem 28. Juni 2025 gilt das Barrierefreiheitsstärkungsgesetz (BFSG) für bestimmte Dienstleistungen für Verbraucherinnen und Verbraucher, darunter Dienstleistungen im elektronischen Geschäftsverkehr, etwa Onlineshops. Kleinstunternehmen, die Dienstleistungen erbringen – weniger als zehn Beschäftigte und höchstens 2 Millionen Euro Jahresumsatz –, sind laut Bundesfachstelle Barrierefreiheit ausgenommen. Ob das BFSG für deine Website gilt, hängt von deinem Angebot ab; der Website-Check ersetzt keine Rechtsberatung."
         ],
         [
           "Was wird bei der Barrierefreiheit geprüft?",

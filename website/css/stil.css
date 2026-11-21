@@ -4996,8 +4996,8 @@ body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp)
 .v-raeume .fuss-pointe { background: var(--farbe-primaer); color: var(--bb-gelb); text-shadow: .03em .025em 0 var(--bb-pink); }
 .v-raeume .sticker { mix-blend-mode: multiply; }
 /* Gezeichnete Sticker (Anna 20.11.2026), freigestellt mit weißem Rand; in „Räume“ statt Herz und Uff-Blase, wackeln leicht */
-.v-raeume .st-stimmen { content: url(../bilder/sticker/fleur-vogel.svg?v=20261122q); mix-blend-mode: normal; animation: st-wackeln 3.2s ease-in-out infinite; }
-.v-raeume .st-faq { content: url(../bilder/sticker/fleur-zaehne.svg?v=20261122q); mix-blend-mode: normal; animation: st-wackeln 2.6s ease-in-out infinite; }
+.v-raeume .st-stimmen { content: url(../bilder/sticker/fleur-vogel.svg?v=20261122r); mix-blend-mode: normal; animation: st-wackeln 3.2s ease-in-out infinite; }
+.v-raeume .st-faq { content: url(../bilder/sticker/fleur-zaehne.svg?v=20261122r); mix-blend-mode: normal; animation: st-wackeln 2.6s ease-in-out infinite; }
 @keyframes st-wackeln { 0%, 100% { rotate: -6deg; } 50% { rotate: 6deg; translate: 0 -6px; } }
 @media (prefers-reduced-motion: reduce) { .v-raeume .st-stimmen, .v-raeume .st-faq { animation: none; } }
 /* =========================================================

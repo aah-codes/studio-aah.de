@@ -38,7 +38,7 @@ def preise_link(g, pre):
     return (f'{pre}preise/#rechner', 'Kostenrechner') if g['id'] == 'website' else (f'{pre}preise/#r-{g["id"]}', 'Alle Preise')
 
 
-TERMINE = 'Einmal pro Woche einen Termin, 45 Minuten, online über Google Meet oder Teams, je nachdem, was Sie brauchen.'
+TERMINE = 'Einmal pro Woche einen Termin, 45 Minuten, online über Google Meet oder Teams, je nachdem, was du brauchst.'
 # Hinweis im Kleingedruckten unter Karten, Tabelle und Zusatzleistungen (B2B: Nettopreise, Umsatzsteuer kommt dazu)
 NETTO_HINWEIS = f'<p class="lsx-klein">{NETTO_SATZ}</p>'
 TRENNEN = TRENNEN_LEISTUNGEN
@@ -163,13 +163,13 @@ def artikel(pre, tag):
     return I.passende_artikel([tag], pre, ARTIKEL_ERSATZ.get(tag, ()))
 
 
-def kontakt(g, pre, link, link_text, termine, anfrage, satz='Bei STUDIO AAH! arbeiten Sie direkt mit mir, von der ersten Idee bis zum Launch.'):
+def kontakt(g, pre, link, link_text, termine, anfrage, satz='Bei STUDIO AAH! arbeitest du direkt mit mir, von der ersten Idee bis zum Launch.'):
     check = (f'<a class="textlink" href="{pre}website-check/">Kostenloser Website-Check <span aria-hidden="true">→</span></a>' if MIT_CHECK and g['id'] == 'website' else '')
     return f'''  <section class="lsx-ansprech" id="kontakt" aria-labelledby="kontakt-titel">
     <img src="{pre}bilder/anna-haertelt-studio-blau.webp" alt="Anna Härtelt, Gründerin von STUDIO AAH!" width="1200" height="1600" loading="lazy">
     <div>
-      <p class="meta">Ihre Ansprechpartnerin</p>
-      <h2 class="gr-h2" id="kontakt-titel">Starten Sie Ihr Projekt</h2>
+      <p class="meta">Deine Ansprechpartnerin</p>
+      <h2 class="gr-h2" id="kontakt-titel">Starte dein Projekt</h2>
       <p class="lsx-ansprech-name"><strong>Anna Härtelt</strong> · UX/UI-Designerin, Strategin und Webentwicklerin</p>
       <p>{esc(satz)}</p>
       <ul class="lsx-ansprech-wege">
@@ -231,7 +231,7 @@ def sprungleiste(c, g, mit_vergleich, mit_ablauf, link, link_text):
     return ankerleiste([(anker, text) for anker, text, an in ziele if an])
 
 
-# „Was Sie davon haben“ und „Für Sie, wenn“ oben auf jeder Leistungsseite (Anna, 09./10.11.2026: Schmerzpunkte 1–4 überall, immer den Nutzen)
+# „Was du davon hast“ und „Für dich, wenn“ oben auf jeder Leistungsseite (Anna, 09./10.11.2026: Schmerzpunkte 1–4 überall, immer den Nutzen)
 PROBLEME = {x['id']: x for x in lade_json('inhalte/fuer-wen-seiten.json')['probleme']}
 
 
@@ -244,8 +244,8 @@ def was_ist(c, pre):
     # Linktext = Schlagwort der Zielseite (Anna 16.11.2026: „nur jeweils ein Wort, ein Keyword“)
     fuer = ''.join(f'<li><a href="{pre}{PROBLEME[i]["pfad"]}"><span>{esc(PROBLEME[i]["meta"])}</span> <span aria-hidden="true">→</span></a></li>'
                    for i in c.get('fuer_sie', []))
-    rechts = ((f'<div class="lsx-was-nutzen"><p class="meta">Was Sie davon haben</p><ol class="lsx-gewinn-liste">{punkte}</ol></div>' if punkte else '')
-              + (f'<div class="lsx-fuer"><p class="meta">Für Sie, wenn</p><ul>{fuer}</ul></div>' if fuer else ''))
+    rechts = ((f'<div class="lsx-was-nutzen"><p class="meta">Was du davon hast</p><ol class="lsx-gewinn-liste">{punkte}</ol></div>' if punkte else '')
+              + (f'<div class="lsx-fuer"><p class="meta">Für dich, wenn</p><ul>{fuer}</ul></div>' if fuer else ''))
     return f'''  <section class="lsx-was" id="ueberblick" aria-labelledby="was-titel">
     <div class="lsx-was-text"><p class="meta">Kurz erklärt</p><h2 class="gr-h2" id="was-titel">{trennen(esc(frage))}</h2>{text}</div>
     <div class="lsx-was-seite">{rechts}</div>

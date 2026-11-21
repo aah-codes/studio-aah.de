@@ -9,7 +9,7 @@
   "bild": "blog-markensysteme/titel.webp",
   "bild_b": 1200,
   "bild_h": 800,
-  "teaser_html": "Ein Markenhandbuch als PDF kann eine KI nicht zuverlässig anwenden. Was ein agentisches Markensystem ist, was hineingehört und wie Sie mit einer einzigen Markendatei anfangen.",
+  "teaser_html": "Ein Markenhandbuch als PDF kann eine KI nicht zuverlässig anwenden. Was ein agentisches Markensystem ist, was hineingehört und wie du mit einer einzigen Markendatei anfängst.",
   "tags": [
    "brand",
    "ki"
@@ -25,7 +25,7 @@
   "bild": "blog-geschaeftsmail.webp",
   "bild_b": 1200,
   "bild_h": 800,
-  "teaser_html": "Welche E-Mail-Anbieter einen Vertrag zur Auftragsverarbeitung mitbringen, was in jede Geschäfts-E-Mail gehört und ob Sie Ihr Postfach mit Claude oder ChatGPT verbinden dürfen.",
+  "teaser_html": "Welche E-Mail-Anbieter einen Vertrag zur Auftragsverarbeitung mitbringen, was in jede Geschäfts-E-Mail gehört und ob du dein Postfach mit Claude oder ChatGPT verbinden darfst.",
   "tags": [
    "ki",
    "recht"
@@ -72,7 +72,7 @@
   "bild": "blog-website-selbst-bauen.webp",
   "bild_b": 1200,
   "bild_h": 800,
-  "teaser_html": "Vibe-Coding Schritt für Schritt: welches Werkzeug zu Ihnen passt, was es kostet, wie der Code sauber bleibt und wie die Website sicher und rechtlich sauber online geht.",
+  "teaser_html": "Vibe-Coding Schritt für Schritt: welches Werkzeug zu dir passt, was es kostet, wie der Code sauber bleibt und wie die Website sicher und rechtlich sauber online geht.",
   "tags": [
    "website",
    "ki"
@@ -120,7 +120,7 @@
   "bild": "blog-ki-arbeitsweise.jpg",
   "bild_b": 1200,
   "bild_h": 800,
-  "teaser_html": "Ein Jahr mit KI im Designalltag: Was sich an meiner Arbeit als UX/UI-Designerin und Webentwicklerin verändert hat, was gleich geblieben ist – und was das für Sie bedeutet.",
+  "teaser_html": "Ein Jahr mit KI im Designalltag: Was sich an meiner Arbeit als UX/UI-Designerin und Webentwicklerin verändert hat, was gleich geblieben ist – und was das für dich bedeutet.",
   "tags": [
    "ki",
    "website"
@@ -136,7 +136,7 @@
   "bild": "blog-podcast.jpg",
   "bild_b": 1024,
   "bild_h": 538,
-  "teaser_html": "Für Sie, wenn Sie als Freelancer im Design arbeiten.",
+  "teaser_html": "Für dich, wenn du als Freelancer im Design arbeitest.",
   "tags": [
    "allgemein"
   ]
@@ -175,15 +175,15 @@
  },
  {
   "slug": "so-gestalten-sie-eine-benutzerfreundliche-website",
-  "titel": "So gestalten Sie eine benutzerfreundliche Website",
-  "titel_html": "So gestalten Sie eine benutzerfreundliche Website",
+  "titel": "So gestaltest du eine benutzerfreundliche Website",
+  "titel_html": "So gestaltest du eine benutzerfreundliche Website",
   "kategorie": "UI/UX",
   "datum": "2026-09-26",
   "datum_text": "26. September 2026",
   "bild": "blog-benutzerfreundlich.webp",
   "bild_b": 1024,
   "bild_h": 683,
-  "teaser_html": "Praktische Tipps, wie Sie Websites gestalten, die visuell überzeugen und intuitiv zu bedienen sind.",
+  "teaser_html": "Praktische Tipps, wie du Websites gestaltest, die visuell überzeugen und intuitiv zu bedienen sind.",
   "tags": [
    "website",
    "ui-ux"
@@ -199,15 +199,15 @@
   "bild": "blog-responsiv.webp",
   "bild_b": 772,
   "bild_h": 1024,
-  "teaser_html": "Warum responsives Design mehr als nur Technik ist: Erfahren Sie, wie Sie mit einer mobilfreundlichen Website Nutzer:innen überzeugen, Vertrauen aufbauen und Ihre Sichtbarkeit bei Google stärken.",
+  "teaser_html": "Warum responsives Design mehr als nur Technik ist: Erfahre, wie du mit einer mobilfreundlichen Website Nutzer:innen überzeugst, Vertrauen aufbaust und deine Sichtbarkeit bei Google stärkst.",
   "tags": [
    "website"
   ]
  },
  {
   "slug": "webentwicklung-2025-trends-die-sie-kennen-sollten",
-  "titel": "Webentwicklung 2025: Trends, die Sie kennen sollten",
-  "titel_html": "Webentwicklung 2025: Trends, die Sie kennen sollten",
+  "titel": "Webentwicklung 2025: Trends, die du kennen solltest",
+  "titel_html": "Webentwicklung 2025: Trends, die du kennen solltest",
   "kategorie": "Webdesign",
   "datum": "2026-09-24",
   "datum_text": "24. September 2026",

@@ -20,7 +20,7 @@ faq = [
 ("Brauche ich eine Schulung oder ein Zertifikat zur KI-Kompetenz?",
  "Nein. Artikel 4 der KI-Verordnung verlangt Maßnahmen zur Förderung der KI-Kompetenz; seit dem Änderungspaket vom Juli 2026 steht ausdrücklich darin, dass kein bestimmtes Niveau verlangt wird. Die Bundesnetzagentur empfiehlt, die Maßnahmen zu dokumentieren. In Deutschland ist für Artikel 4 kein Bußgeld vorgesehen."),
 ("Muss mein Website-Chatbot sagen, dass er eine KI ist?",
- "Ja. Nach Artikel 50 Absatz 1 der KI-Verordnung müssen Menschen spätestens beim ersten Kontakt erfahren, dass sie mit einer KI sprechen, außer es ist offensichtlich. Die Pflicht trifft den Anbieter des Chatbots; bieten Sie ihn unter Ihrem Namen an, sind das in der Regel Sie. Ein kurzer Satz wie „Sie chatten mit einer KI“ über dem Eingabefeld erfüllt das."),
+ "Ja. Nach Artikel 50 Absatz 1 der KI-Verordnung müssen Menschen spätestens beim ersten Kontakt erfahren, dass sie mit einer KI sprechen, außer es ist offensichtlich. Die Pflicht trifft den Anbieter des Chatbots; bietest du ihn unter deinem Namen an, bist das in der Regel du. Ein kurzer Satz wie „Sie chatten mit einer KI“ über dem Eingabefeld erfüllt das."),
 ("Darf ich KI für Bewerbungen nutzen?",
  "Ja, aber ab dem 2. Dezember 2027 gelten strenge Regeln. KI, die Bewerbungen sichtet, filtert oder bewertet, ist dann nach Anhang III der KI-Verordnung Hochrisiko-KI. Betreiber müssen unter anderem menschliche Aufsicht sicherstellen, Protokolle aufbewahren und Bewerber:innen informieren. Eine Stellenanzeige mit KI zu formulieren, ist dagegen unkritisch."),
 ("Wie hoch sind die Bußgelder für kleine Unternehmen?",

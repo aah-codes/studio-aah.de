@@ -21,7 +21,7 @@
           "baukasten"
         ]
       ],
-      "antwort": "Sehr gern! Bevor Ihre selbst gebaute Website live geht, sehe ich sie mir im kostenlosen Website-Check an.",
+      "antwort": "Sehr gern! Bevor deine selbst gebaute Website live geht, sehe ich sie mir im kostenlosen Website-Check an.",
       "punkte": [
         "Erster Eindruck, Weg zur Anfrage, Handy und Tempo",
         "Auffindbarkeit bei Google und in KI-Antworten",
@@ -80,10 +80,10 @@
           "wie"
         ]
       ],
-      "antwort": "Ganz direkt: Sie arbeiten mit Anna Härtelt, von der ersten Frage bis zum Launch.",
+      "antwort": "Ganz direkt: Du arbeitest mit Anna Härtelt, von der ersten Frage bis zum Launch.",
       "punkte": [
         "Vier Schritte mit festem Preis und Abnahme nach jeder Phase",
-        "Nach Schritt 02 entscheiden Sie, ob es weitergeht",
+        "Nach Schritt 02 entscheidest du, ob es weitergeht",
         "Für Spezialaufgaben wie Programmierung kommen Freelancer:innen aus dem Netzwerk dazu"
       ],
       "links": [
@@ -140,7 +140,7 @@
           "erklär"
         ]
       ],
-      "antwort": "Vibe-Coding heißt: Sie beschreiben, was Sie wollen, und die KI schreibt den Code. So entstehen Websites heute schneller denn je.",
+      "antwort": "Vibe-Coding heißt: Du beschreibst, was du willst, und die KI schreibt den Code. So entstehen Websites heute schneller denn je.",
       "punkte": [
         "Was dabei oft fehlt, ist der Blick einer Fachkraft",
         "Ich helfe vorher, mittendrin, vor dem Livegang und danach"
@@ -181,7 +181,7 @@
       "punkte": [
         "Bei Struktur, KI-Design und Technik",
         "Nach Aufwand, 50–85 € netto pro Stunde",
-        "Schreiben Sie mir kurz, was nicht klappt"
+        "Schreib mir kurz, was nicht klappt"
       ],
       "links": [
         [
@@ -217,9 +217,9 @@
           "selbst"
         ]
       ],
-      "antwort": "Gute Frage! Ich arbeite selbst mit Claude Code und richte Claude im KI-Arbeits-Setup so ein, dass es Ihre Marke, Inhalte und Regeln kennt.",
+      "antwort": "Gute Frage! Ich arbeite selbst mit Claude Code und richte Claude im KI-Arbeits-Setup so ein, dass es deine Marke, Inhalte und Regeln kennt.",
       "punkte": [
-        "So entsteht Code, der zu Ihrem Unternehmen passt",
+        "So entsteht Code, der zu deinem Unternehmen passt",
         "Für Selbstständige und kleine Büros, zum Festpreis"
       ],
       "links": [
@@ -318,9 +318,9 @@
           "nichts"
         ]
       ],
-      "antwort": "Meist liegt es nicht an der Technik, sondern an drei Dingen: Besucher:innen verstehen nicht schnell genug, was Sie anbieten, finden den Weg zur Anfrage nicht oder vertrauen Ihnen noch nicht. Woran es bei Ihnen hakt, zeigt der kostenlose [Website-Check](website-check/).",
+      "antwort": "Meist liegt es nicht an der Technik, sondern an drei Dingen: Besucher:innen verstehen nicht schnell genug, was du anbietest, finden den Weg zur Anfrage nicht oder vertrauen dir noch nicht. Woran es bei dir hakt, zeigt der kostenlose [Website-Check](website-check/).",
       "punkte": [
-        "Klare Botschaft: Gleich oben steht, was Sie anbieten und für wen",
+        "Klare Botschaft: Gleich oben steht, was du anbietest und für wen",
         "Klarer nächster Schritt: Ein gut sichtbarer Button führt zu Anruf, Termin oder Formular",
         "Vertrauen: Referenzen, Stimmen und echte Fotos zeigen, wer hinter dem Angebot steht"
       ],
@@ -350,7 +350,7 @@
           "coding"
         ]
       ],
-      "antwort": "Ja, klar! Ich unterstütze Sie gern, wenn Sie Ihre Website selbst bauen, zum Beispiel per Vibe-Coding mit KI.",
+      "antwort": "Ja, klar! Ich unterstütze dich gern, wenn du deine Website selbst baust, zum Beispiel per Vibe-Coding mit KI.",
       "punkte": [
         "Vorher: KI richtig einrichten mit dem KI-Arbeits-Setup",
         "Mittendrin: Hilfe bei Struktur, KI-Design und Technik nach Aufwand",
@@ -540,7 +540,7 @@
           "therap"
         ]
       ],
-      "frage": "Haben Sie schon für Praxen gearbeitet?"
+      "frage": "Hast du schon für Praxen gearbeitet?"
     },
     {
       "g": [
@@ -550,7 +550,7 @@
           "architekt"
         ]
       ],
-      "frage": "Haben Sie Erfahrung mit Bauunternehmen?"
+      "frage": "Hast du Erfahrung mit Bauunternehmen?"
     },
     {
       "g": [
@@ -752,7 +752,7 @@
           "beispiel"
         ]
       ],
-      "frage": "Haben Sie genug Erfahrung?"
+      "frage": "Hast du genug Erfahrung?"
     },
     {
       "g": [
@@ -792,7 +792,7 @@
           "mail"
         ]
       ],
-      "antwort": "Sehr gern! Rufen Sie mich an: 0176 830 898 79, oder schreiben Sie an info@studio-aah.de. Das Erstgespräch ist kostenlos und unverbindlich.",
+      "antwort": "Sehr gern! Ruf mich an: 0176 830 898 79, oder schreib an info@studio-aah.de. Das Erstgespräch ist kostenlos und unverbindlich.",
       "url": "kontakt/",
       "seite": "Kontakt"
     },
@@ -807,7 +807,7 @@
           "servus"
         ]
       ],
-      "antwort": "Hallo, schön, dass Sie da sind! Fragen Sie mich zu Website, Marke oder KI im Arbeitsalltag, zum Beispiel: Was kostet eine Website?",
+      "antwort": "Hallo, schön, dass du da bist! Frag mich zu Website, Marke oder KI im Arbeitsalltag, zum Beispiel: Was kostet eine Website?",
       "url": "kontakt/",
       "seite": "Kontakt"
     }

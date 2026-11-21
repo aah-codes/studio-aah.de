@@ -9,13 +9,13 @@
   "bild": "bilder/leistung-website.webp",
   "bildalt": "Bildschirm mit einer Website im Entwurf",
   "zusammenfassung": [
-   "Ihre Website ist Vertriebsinstrument. Ich plane Struktur und Inhalte so, dass Besucher und Besucherinnen schnell finden, was sie suchen, und den nächsten Schritt gehen.",
+   "Deine Website ist Vertriebsinstrument. Ich plane Struktur und Inhalte so, dass Besucher und Besucherinnen schnell finden, was sie suchen, und den nächsten Schritt gehen.",
    "Von der Seitenstruktur über Design und Umsetzung in WordPress oder Claude Code bis zum Launch: alles aus einer Hand, responsiv für Handy und Desktop."
   ],
   "faq": [
    [
     "Was kostet eine Website in Leipzig bei STUDIO AAH!?",
-    "Bei STUDIO AAH! in Leipzig beginnt eine neue Website bei 2.450 €, auch als Onepager. Darin sind Startseite, Impressum, Datenschutz und der Launch enthalten. Jede Unterseite kostet 190 € mit Texten und Bildern. Ein Redesign einer bestehenden Website kostet 400 € mehr, also ab 2.850 €. Shop, Mitgliederbereich und weitere Funktionen gibt es auf Anfrage. Alle Preise sind Einstiegspreise ohne Umsatzsteuer; den Festpreis erhalten Sie nach einem kostenlosen Erstgespräch."
+    "Bei STUDIO AAH! in Leipzig beginnt eine neue Website bei 2.450 €, auch als Onepager. Darin sind Startseite, Impressum, Datenschutz und der Launch enthalten. Jede Unterseite kostet 190 € mit Texten und Bildern. Ein Redesign einer bestehenden Website kostet 400 € mehr, also ab 2.850 €. Shop, Mitgliederbereich und weitere Funktionen gibt es auf Anfrage. Alle Preise sind Einstiegspreise ohne Umsatzsteuer; den Festpreis erhältst du nach einem kostenlosen Erstgespräch."
    ],
    [
     "Wie lange dauert es, eine Website erstellen zu lassen?",
@@ -47,11 +47,11 @@
    ],
    [
     "Ist SEO und LLM-Zitierfähigkeit im Preis enthalten?",
-    "Ja, SEO und LLM-Zitierfähigkeit sind immer zusammen enthalten. SEO bedeutet Suchmaschinen-Optimierung, damit Ihre Website bei Google gefunden wird. LLM-Zitierfähigkeit (Fachbegriff: GEO, Generative Engine Optimization) bedeutet, dass KI-Assistenten wie ChatGPT, Claude oder Perplexity Ihre Inhalte verstehen und als Quelle nennen können, zum Beispiel durch eine klare Struktur, Fragen und Antworten und strukturierte Daten. Beides steckt in jedem Website-Paket."
+    "Ja, SEO und LLM-Zitierfähigkeit sind immer zusammen enthalten. SEO bedeutet Suchmaschinen-Optimierung, damit deine Website bei Google gefunden wird. LLM-Zitierfähigkeit (Fachbegriff: GEO, Generative Engine Optimization) bedeutet, dass KI-Assistenten wie ChatGPT, Claude oder Perplexity deine Inhalte verstehen und als Quelle nennen können, zum Beispiel durch eine klare Struktur, Fragen und Antworten und strukturierte Daten. Beides steckt in jedem Website-Paket."
    ],
    [
     "Was passiert beim Launch?",
-    "Beim Launch geht Ihre Website online: Ich verbinde die Domain, setze die technischen Einträge (DNS), ziehe die Website um und begleite den Livegang. Der Launch ist im Basispreis jeder neuen Website enthalten."
+    "Beim Launch geht deine Website online: Ich verbinde die Domain, setze die technischen Einträge (DNS), ziehe die Website um und begleite den Livegang. Der Launch ist im Basispreis jeder neuen Website enthalten."
    ],
    [
     "Mit welchem System baut STUDIO AAH! Websites?",
@@ -67,21 +67,21 @@
    ],
    [
     "Was ist der Unterschied zwischen Wartung und Retainer?",
-    "Die Wartung ist die rein technische Pflege Ihrer WordPress-Website ab 45 € im Monat: Updates von WordPress, Plugins und Themes, technische Überwachung und Sicherheitschecks. Der Retainer ist die betreute Weiterentwicklung Ihrer Website für 50–85 € netto pro Stunde, je nach Unternehmensgröße: Ich tausche Texte und Bilder aus, erstelle neue Unterseiten und bearbeite Abschnitte, damit Ihre Website mit Ihrem Unternehmen wächst."
+    "Die Wartung ist die rein technische Pflege deiner WordPress-Website ab 45 € im Monat: Updates von WordPress, Plugins und Themes, technische Überwachung und Sicherheitschecks. Der Retainer ist die betreute Weiterentwicklung deiner Website für 50–85 € netto pro Stunde, je nach Unternehmensgröße: Ich tausche Texte und Bilder aus, erstelle neue Unterseiten und bearbeite Abschnitte, damit deine Website mit deinem Unternehmen wächst."
    ],
    [
     "Wer zahlt Hosting und Lizenzen?",
-    "Laufende Kosten wie Hosting, Domain oder Lizenzen zahlen Sie direkt an den jeweiligen Anbieter."
+    "Laufende Kosten wie Hosting, Domain oder Lizenzen zahlst du direkt an den jeweiligen Anbieter."
    ],
    [
     "Wie läuft ein Website-Projekt bei STUDIO AAH! ab?",
-    "Sie stellen sich mit dem Kostenrechner einen unverbindlichen Kostenvoranschlag zusammen. Im kostenlosen Erstgespräch klären wir Ist-Stand, Ziele, Bedarf und Zielgruppe. Danach erhalten Sie ein Angebot mit Festpreis und schließlich den Vertrag. Im Festpreis sind zwei Korrekturrunden enthalten."
+    "Du stellst dir mit dem Kostenrechner einen unverbindlichen Kostenvoranschlag zusammen. Im kostenlosen Erstgespräch klären wir Ist-Stand, Ziele, Bedarf und Zielgruppe. Danach erhältst du ein Angebot mit Festpreis und schließlich den Vertrag. Im Festpreis sind zwei Korrekturrunden enthalten."
    ]
   ],
   "icon": "bilder/formen/website.svg",
   "problem_titel": "Eine schöne Website allein bringt noch keine Anfragen.",
   "probleme": [
-   "Besucher finden nicht schnell, was Sie anbieten",
+   "Besucher finden nicht schnell, was du anbietest",
    "Es fehlt eine klare Handlungsaufforderung: Was soll ich jetzt tun?",
    "Auf dem Handy schwer zu lesen und zu bedienen",
    "Viel Gestaltung, aber wenig Nutzen",
@@ -95,15 +95,15 @@
    "WordPress (Kadence) oder Claude Code, Schulung zur Selbstpflege und auf Wunsch Wartung"
   ],
   "nicht_enthalten": [
-   "Hosting, Domain und Lizenzen: zahlen Sie direkt an den jeweiligen Anbieter",
+   "Hosting, Domain und Lizenzen: zahlst du direkt an den jeweiligen Anbieter",
    "Kontaktformular, Shop, Mitgliederbereich und weitere Funktionen: als Zusatzleistung oder auf Anfrage",
-   "Cookie-Banner und Tracking: Ich berate Sie dazu, die Kosten stehen im Angebot",
-   "Übersetzungen für weitere Sprachen: liefern Sie",
-   "Spätere Text- und Inhaltsänderungen: Texte liefere ich einmal für die ganze Website. Änderungen danach setzen Sie am besten selbst in WordPress (Kadence) um; übernehme ich sie, rechne ich nach Aufwand ab, 50–85 € netto pro Stunde, je nach Unternehmensgröße",
+   "Cookie-Banner und Tracking: Ich berate dich dazu, die Kosten stehen im Angebot",
+   "Übersetzungen für weitere Sprachen: lieferst du",
+   "Spätere Text- und Inhaltsänderungen: Texte liefere ich einmal für die ganze Website. Änderungen danach setzt du am besten selbst in WordPress (Kadence) um; übernehme ich sie, rechne ich nach Aufwand ab, 50–85 € netto pro Stunde, je nach Unternehmensgröße",
    "Mehr als zwei Korrekturrunden: nach Aufwand, 50–85 € netto pro Stunde, je nach Unternehmensgröße"
   ],
   "tag": "website",
-  "loesung_text": "Ihre Website ist Vertriebsinstrument. Ich plane Struktur und Inhalte so, dass Besucher und Besucherinnen schnell finden, was sie suchen, und den nächsten Schritt gehen. Alles aus einer Hand, von der Seitenstruktur bis zum Launch.",
+  "loesung_text": "Deine Website ist Vertriebsinstrument. Ich plane Struktur und Inhalte so, dass Besucher und Besucherinnen schnell finden, was sie suchen, und den nächsten Schritt gehen. Alles aus einer Hand, von der Seitenstruktur bis zum Launch.",
   "loesung_punkte": [
    "Zuerst die Seitenstruktur (Sitemap): Wer sucht was, und wo findet er es?",
    "Klare Botschaft gleich zu Beginn und eindeutige nächste Schritte für mehr Conversion",
@@ -111,7 +111,7 @@
   ],
   "herz": true,
   "gewinn": [
-   "Darauf ausgelegt, dass mehr Anfragen über die Website kommen: Besucher:innen finden schnell, was Sie anbieten, und den Weg zu Ihnen.",
+   "Darauf ausgelegt, dass mehr Anfragen über die Website kommen: Besucher:innen finden schnell, was du anbietest, und den Weg zu dir.",
    "Aufbereitet für Google und die KI-Suche.",
    "Planbar: fester Preis und festgelegte Korrekturrunden."
   ],
@@ -121,17 +121,17 @@
   ],
   "selbstbau": {
    "_quelle": "Anna 17.11.2026 (Chat): Zielgruppe, die ihre Website selbst baut (Vibe-Coding, Baukasten). Texte als Entwurf, Freigabe Anna offen. Preise aus preise-daten.json (Retainer 50–85 €/h)",
-   "titel": "Sie bauen Ihre Website selbst?",
-   "einleitung": "Mit KI geht das heute schneller denn je. Vibe-Coding heißt das: Sie beschreiben, was Sie wollen, und die KI schreibt den Code. Was dabei oft fehlt, ist der Blick einer Fachkraft. Ich steige dort ein, wo Sie mich brauchen.",
+   "titel": "Du baust deine Website selbst?",
+   "einleitung": "Mit KI geht das heute schneller denn je. Vibe-Coding heißt das: Du beschreibst, was du willst, und die KI schreibt den Code. Was dabei oft fehlt, ist der Blick einer Fachkraft. Ich steige dort ein, wo du mich brauchst.",
    "schritte": [
     [
-     "Bevor Sie anfangen",
-     "Richten Sie die KI richtig ein: mit Struktur, Inhalten und den Regeln Ihrer Marke. Das KI-Arbeits-Setup erspart viele Umwege.",
+     "Bevor du anfängst",
+     "Richte die KI richtig ein: mit Struktur, Inhalten und den Regeln deiner Marke. Das KI-Arbeits-Setup erspart viele Umwege.",
      "service/ki-digitalisierung/",
      "Zum KI-Arbeits-Setup"
     ],
     [
-     "Sie kommen nicht weiter",
+     "Du kommst nicht weiter",
      "Ich helfe bei Struktur, KI-Design und Technik, stundenweise nach Aufwand, 50–85 € netto pro Stunde.",
      "kontakt/",
      "Beratung anfragen"
@@ -171,29 +171,29 @@
   "loesungen": [
    "Die Corporate Identity im Ganzen im Blick: Culture, Communication, Behaviour und Design",
    "Brand Experience: Analyse aller digitalen und analogen Touchpoints",
-   "Buyer-Personas und User-Personas für Ihre Zielgruppe",
+   "Buyer-Personas und User-Personas für deine Zielgruppe",
    "Markt-, Zielgruppen- und Trendanalyse",
    "Das Corporate Design baut auf dem Fundament auf: Form follows function, die Form folgt der Funktion"
   ],
   "zusammenfassung": [
    "Sichtbar ist bei einer Marke das Corporate Design: Gestaltung, Logo, Farben, Bildwelt und Typografie. Damit es trägt, braucht es ein Fundament aus drei Bereichen: Corporate Culture (Leitbild, Werte, Philosophie), Corporate Communication (Kanäle, Stimme und Tonalität nach innen und außen) und Corporate Behaviour (Service, Verhalten, Beziehungen).",
-   "Das Design baut auf diesem Fundament auf: Form follows function, die Form folgt der Funktion. Zusammen mit der Zielgruppen- und Trendanalyse entsteht so Ihre Corporate Identity. Sie steht in Wechselwirkung mit dem Corporate Image, also dem Bild, das Ihre Zielgruppe von Ihrem Unternehmen hat."
+   "Das Design baut auf diesem Fundament auf: Form follows function, die Form folgt der Funktion. Zusammen mit der Zielgruppen- und Trendanalyse entsteht so deine Corporate Identity. Sie steht in Wechselwirkung mit dem Corporate Image, also dem Bild, das deine Zielgruppe von deinem Unternehmen hat."
   ],
   "nicht_enthalten": [
    "Fotoshooting",
    "Druckkosten",
    "Markenanmeldung",
-   "Lizenzen, zum Beispiel für Schriften: zahlen Sie direkt an den Anbieter",
+   "Lizenzen, zum Beispiel für Schriften: zahlst du direkt an den Anbieter",
    "Mehr als zwei Korrekturrunden je Bereich: nach Aufwand, 50–85 € netto pro Stunde, je nach Unternehmensgröße"
   ],
   "faq": [
    [
     "Was kostet es, eine Marke bei STUDIO AAH! in Leipzig entwickeln zu lassen?",
-    "Bei STUDIO AAH! in Leipzig beginnt das Brand-Paket Basic bei 850 €, Medium mit Logo-Entwicklung bei 2.500 € und Premium bei 4.500 €. Ein Logo einzeln kostet ab 990 €. Alle Preise sind Einstiegspreise, netto ohne Umsatzsteuer; den Festpreis erhalten Sie nach einem kostenlosen Erstgespräch."
+    "Bei STUDIO AAH! in Leipzig beginnt das Brand-Paket Basic bei 850 €, Medium mit Logo-Entwicklung bei 2.500 € und Premium bei 4.500 €. Ein Logo einzeln kostet ab 990 €. Alle Preise sind Einstiegspreise, netto ohne Umsatzsteuer; den Festpreis erhältst du nach einem kostenlosen Erstgespräch."
    ],
    [
     "Welches Brand-Paket passt zu mir?",
-    "Bei STUDIO AAH! passt Basic zu Gründer:innen und Selbstständigen, die erst Klarheit über Positionierung und Stil brauchen. Medium ist für Unternehmen, die eine neue Marke mit Logo und Erscheinungsbild brauchen. Premium ist für Unternehmen, die ihre Marke umfassend aufstellen und im Alltag einheitlich einsetzen wollen. Welches Paket zu Ihnen passt, klären wir im kostenlosen Erstgespräch."
+    "Bei STUDIO AAH! passt Basic zu Gründer:innen und Selbstständigen, die erst Klarheit über Positionierung und Stil brauchen. Medium ist für Unternehmen, die eine neue Marke mit Logo und Erscheinungsbild brauchen. Premium ist für Unternehmen, die ihre Marke umfassend aufstellen und im Alltag einheitlich einsetzen wollen. Welches Paket zu dir passt, klären wir im kostenlosen Erstgespräch."
    ],
    [
     "Was ist eine Corporate Identity?",
@@ -213,7 +213,7 @@
    ],
    [
     "Was ist im Brand-Paket Basic enthalten?",
-    "Das Paket Basic von STUDIO AAH! enthält einen Fragebogen, eine Brand Experience, also die Analyse Ihrer digitalen und analogen Touchpoints, und eine Mitbewerberrecherche. Es beginnt bei 850 € netto."
+    "Das Paket Basic von STUDIO AAH! enthält einen Fragebogen, eine Brand Experience, also die Analyse deiner digitalen und analogen Touchpoints, und eine Mitbewerberrecherche. Es beginnt bei 850 € netto."
    ],
    [
     "Was kommt in den Paketen Medium und Premium dazu?",
@@ -225,11 +225,11 @@
    ],
    [
     "Warum steht die Positionierung vor dem Logo?",
-    "Bei STUDIO AAH! steht am Anfang ein genauer Blick auf Ihr Unternehmen, Ihre Zielgruppe, den Markt und die Mitbewerber: Wer sind Sie, was wollen Sie, wer soll Sie sehen und warum? Erst wenn das klar ist, entsteht ein Logo und Erscheinungsbild, das zu Ihnen passt. Das Corporate Design baut auf diesem Fundament auf: Form follows function, die Form folgt der Funktion."
+    "Bei STUDIO AAH! steht am Anfang ein genauer Blick auf dein Unternehmen, deine Zielgruppe, den Markt und die Mitbewerber: Wer bist du, was willst du, wer soll dich sehen und warum? Erst wenn das klar ist, entsteht ein Logo und Erscheinungsbild, das zu dir passt. Das Corporate Design baut auf diesem Fundament auf: Form follows function, die Form folgt der Funktion."
    ],
    [
     "Was sind Markenrichtlinien (Brand Manual)?",
-    "Markenrichtlinien (englisch: Brand Manual) halten fest, wie Ihre Marke aussieht, klingt und sich anfühlt: Logo, Farben, Schriften, Bilder und Tonfall, alles an einem Ort und für alle verständlich. Bei STUDIO AAH! gibt es sie als kompaktes Basishandbuch im Paket Medium und als ausführliches Brand Manual im Paket Premium."
+    "Markenrichtlinien (englisch: Brand Manual) halten fest, wie deine Marke aussieht, klingt und sich anfühlt: Logo, Farben, Schriften, Bilder und Tonfall, alles an einem Ort und für alle verständlich. Bei STUDIO AAH! gibt es sie als kompaktes Basishandbuch im Paket Medium und als ausführliches Brand Manual im Paket Premium."
    ],
    [
     "Welche Vorlagen sind im Brand-Paket Premium enthalten?",
@@ -237,7 +237,7 @@
    ],
    [
     "Wie läuft eine Markenentwicklung bei STUDIO AAH! ab?",
-    "Bei STUDIO AAH! stellen Sie sich mit dem Kostenrechner einen unverbindlichen Kostenvoranschlag zusammen. Im kostenlosen Erstgespräch klären wir, wo Sie stehen, was Sie wollen, was Sie brauchen und wen Sie erreichen wollen. Danach erhalten Sie ein Angebot mit Festpreis und schließlich den Vertrag. Jedes Brand-Paket beginnt mit einem Fragebogen."
+    "Bei STUDIO AAH! stellst du dir mit dem Kostenrechner einen unverbindlichen Kostenvoranschlag zusammen. Im kostenlosen Erstgespräch klären wir, wo du stehst, was du willst, was du brauchst und wen du erreichen willst. Danach erhältst du ein Angebot mit Festpreis und schließlich den Vertrag. Jedes Brand-Paket beginnt mit einem Fragebogen."
    ],
    [
     "Wie viele Korrekturrunden sind bei STUDIO AAH! im Festpreis enthalten?",
@@ -245,25 +245,25 @@
    ],
    [
     "Wie wird eine Markenentwicklung bei STUDIO AAH! bezahlt?",
-    "Größere Projekte zahlen Sie bei STUDIO AAH! in 3 Raten: bei Start, nach Freigabe des Konzepts und beim Go-live. Lizenzen zahlen Sie direkt an den jeweiligen Anbieter."
+    "Größere Projekte zahlst du bei STUDIO AAH! in 3 Raten: bei Start, nach Freigabe des Konzepts und beim Go-live. Lizenzen zahlst du direkt an den jeweiligen Anbieter."
    ],
    [
     "Was ist bei der Markenentwicklung nicht enthalten?",
     "In den Brand-Paketen von STUDIO AAH! sind Fotoshooting, Druckkosten und die Markenanmeldung nicht enthalten."
    ]
   ],
-  "intro": "Eine unverwechselbare Marken- und Unternehmensidentität, die bei Ihrer Zielgruppe wirklich ankommt.",
+  "intro": "Eine unverwechselbare Marken- und Unternehmensidentität, die bei deiner Zielgruppe wirklich ankommt.",
   "grafik": "corporate-identity",
   "ablauf_schritte": [
    [
     "Verstehen",
-    "Erst verstehen, wo Sie stehen.",
-    "Ist-Analyse mit Brand Experience Ihrer Marke und Ihres Unternehmens, Website-Check sowie Markt- und Mitbewerberrecherche."
+    "Erst verstehen, wo du stehst.",
+    "Ist-Analyse mit Brand Experience deiner Marke und deines Unternehmens, Website-Check sowie Markt- und Mitbewerberrecherche."
    ],
    [
     "Strategie & Konzept",
     "Das Fundament legen.",
-    "Positionierung, Zielgruppe und Personas: die Grundlage Ihrer Corporate Identity."
+    "Positionierung, Zielgruppe und Personas: die Grundlage deiner Corporate Identity."
    ],
    [
     "Ideation",
@@ -273,20 +273,20 @@
    [
     "Abschluss",
     "Brand Guideline.",
-    "Zum Abschluss erhalten Sie Ihr Brand Manual als Guideline. Eine Website können Sie zusätzlich buchen."
+    "Zum Abschluss erhältst du dein Brand Manual als Guideline. Eine Website kannst du zusätzlich buchen."
    ]
   ],
   "nutzen": "ci-nutzen",
   "loesung_text": "Ich behalte die Corporate Identity im Ganzen im Blick: Das Corporate Design baut auf Culture, Communication und Behaviour auf. Form follows function: Die Form folgt der Funktion.",
   "loesung_punkte": [
    "Brand Experience: Analyse aller digitalen und analogen Touchpoints",
-   "Buyer-Personas und User-Personas für Ihre Zielgruppe",
+   "Buyer-Personas und User-Personas für deine Zielgruppe",
    "Markt-, Zielgruppen- und Trendanalyse"
   ],
   "gewinn": [
    "Wiedererkennbar: ein Auftritt, der überall gleich wirkt, vom Angebot bis zum Firmenwagen.",
-   "Klar positioniert: Kundschaft und Bewerber:innen verstehen sofort, wofür Sie stehen.",
-   "Feste Regeln und Vorlagen, mit denen Ihr Team einheitlich arbeitet."
+   "Klar positioniert: Kundschaft und Bewerber:innen verstehen sofort, wofür du stehst.",
+   "Feste Regeln und Vorlagen, mit denen dein Team einheitlich arbeitet."
   ],
   "fuer_sie": [
    "neue-kunden",
@@ -307,30 +307,30 @@
   "probleme": [
    "Nutzer:innen bleiben hängen und finden nicht weiter",
    "Es fehlen Klarheit und Struktur",
-   "Entscheidungen fallen aus dem Bauch, nicht aus dem Wissen über Ihre Nutzer:innen",
+   "Entscheidungen fallen aus dem Bauch, nicht aus dem Wissen über deine Nutzer:innen",
    "Es wird programmiert, bevor die Idee sichtbar und durchdacht ist",
    "Die Anwendung ist schwer zu bedienen"
   ],
   "loesungen": [
-   "Website-Check: Ich versetze mich in Ihre Zielgruppe, nutze Ihre Website oder Anwendung und zeige, was sich verbessern lässt",
-   "Personas: greifbare Abbilder Ihrer Zielgruppe für Entscheidungen, die nicht aus dem Bauch kommen",
+   "Website-Check: Ich versetze mich in deine Zielgruppe, nutze deine Website oder Anwendung und zeige, was sich verbessern lässt",
+   "Personas: greifbare Abbilder deiner Zielgruppe für Entscheidungen, die nicht aus dem Bauch kommen",
    "Erst recherchieren und denken, dann designen: Wireframes und klickbarer Prototyp in Figma, bevor programmiert wird",
    "Neue Nutzerführung und UI-Kit, für Plattformen ein vollständiges Designsystem",
-   "Übergabe an Ihr Entwicklerteam mit Spezifikationen"
+   "Übergabe an dein Entwicklerteam mit Spezifikationen"
   ],
   "zusammenfassung": [
-   "Bei STUDIO AAH! gestalte ich digitale Erlebnisse, die Nutzer:innen verstehen: für Webanwendungen, SaaS und Apps. Bevor gestaltet wird, höre ich zu, werte Daten aus und lerne, wer Ihre Nutzer:innen sind und was sie wirklich brauchen.",
-   "Vom UI/UX Audit Pro bis zum Redesign Ihrer Webanwendung oder einer Plattform mit vollständigem Designsystem: Mit Wireframes und Prototypen in Figma werden Ideen sichtbar, lange bevor programmiert wird. Das spart Zeit und Geld."
+   "Bei STUDIO AAH! gestalte ich digitale Erlebnisse, die Nutzer:innen verstehen: für Webanwendungen, SaaS und Apps. Bevor gestaltet wird, höre ich zu, werte Daten aus und lerne, wer deine Nutzer:innen sind und was sie wirklich brauchen.",
+   "Vom UI/UX Audit Pro bis zum Redesign deiner Webanwendung oder einer Plattform mit vollständigem Designsystem: Mit Wireframes und Prototypen in Figma werden Ideen sichtbar, lange bevor programmiert wird. Das spart Zeit und Geld."
   ],
   "nicht_enthalten": [
    "Usability-Tests mit Nutzer:innen",
-   "Programmierung: Ihr Entwicklerteam erhält Designs und Spezifikationen",
+   "Programmierung: Dein Entwicklerteam erhält Designs und Spezifikationen",
    "Mehr als zwei Korrekturrunden je Bereich: nach Aufwand, 50–85 € netto pro Stunde, je nach Unternehmensgröße"
   ],
   "faq": [
    [
     "Was kostet UI/UX Design bei STUDIO AAH! in Leipzig?",
-    "Bei STUDIO AAH! in Leipzig beginnt das UI/UX Audit Pro bei 2.900 €, das Redesign einer kleinen Webanwendung bei 4.500 € und eine Plattform oder SaaS bei 5.850 €. Alle Preise sind Einstiegspreise, netto ohne Umsatzsteuer; den Festpreis erhalten Sie nach einem kostenlosen Erstgespräch."
+    "Bei STUDIO AAH! in Leipzig beginnt das UI/UX Audit Pro bei 2.900 €, das Redesign einer kleinen Webanwendung bei 4.500 € und eine Plattform oder SaaS bei 5.850 €. Alle Preise sind Einstiegspreise, netto ohne Umsatzsteuer; den Festpreis erhältst du nach einem kostenlosen Erstgespräch."
    ],
    [
     "Für welche digitalen Produkte gestaltet STUDIO AAH! UI/UX?",
@@ -342,7 +342,7 @@
    ],
    [
     "Was sind Personas?",
-    "Personas sind greifbare Abbilder Ihrer Zielgruppe, die aus der Auswertung von Daten entstehen. Sie helfen, Entscheidungen zu treffen, die nicht aus dem Bauch kommen. Bei STUDIO AAH! gehören Personas zum UI/UX Audit Pro und zu allen größeren UI/UX-Paketen."
+    "Personas sind greifbare Abbilder deiner Zielgruppe, die aus der Auswertung von Daten entstehen. Sie helfen, Entscheidungen zu treffen, die nicht aus dem Bauch kommen. Bei STUDIO AAH! gehören Personas zum UI/UX Audit Pro und zu allen größeren UI/UX-Paketen."
    ],
    [
     "Was ist ein Wireframe und was ist ein Prototyp?",
@@ -358,7 +358,7 @@
    ],
    [
     "Was bekommt das Entwicklerteam bei der Übergabe?",
-    "Bei der Übergabe von STUDIO AAH! bekommt Ihr Entwicklerteam die Designs, das UI-Kit bzw. Designsystem und Spezifikationen für die Umsetzung. Die Programmierung selbst gehört nicht zum Angebot."
+    "Bei der Übergabe von STUDIO AAH! bekommt dein Entwicklerteam die Designs, das UI-Kit bzw. Designsystem und Spezifikationen für die Umsetzung. Die Programmierung selbst gehört nicht zum Angebot."
    ],
    [
     "Bietet STUDIO AAH! Usability-Tests an?",
@@ -370,19 +370,19 @@
    ],
    [
     "Wie läuft ein UI/UX-Projekt bei STUDIO AAH! ab?",
-    "Bei STUDIO AAH! stellen Sie sich mit dem Kostenrechner einen unverbindlichen Kostenvoranschlag zusammen. Im kostenlosen Erstgespräch klären wir, wo Sie stehen, was Sie wollen, was Sie brauchen und wen Sie erreichen wollen. Danach erhalten Sie ein Angebot mit Festpreis und schließlich den Vertrag. Größere Projekte zahlen Sie in 3 Raten: bei Start, nach Freigabe des Konzepts und beim Go-live."
+    "Bei STUDIO AAH! stellst du dir mit dem Kostenrechner einen unverbindlichen Kostenvoranschlag zusammen. Im kostenlosen Erstgespräch klären wir, wo du stehst, was du willst, was du brauchst und wen du erreichen willst. Danach erhältst du ein Angebot mit Festpreis und schließlich den Vertrag. Größere Projekte zahlst du in 3 Raten: bei Start, nach Freigabe des Konzepts und beim Go-live."
    ]
   ],
-  "loesung_text": "Bevor gestaltet wird, höre ich zu, werte Daten aus und lerne, wer Ihre Nutzer:innen sind und was sie wirklich brauchen. Mit Wireframes und Prototypen in Figma werden Ideen sichtbar, lange bevor programmiert wird.",
+  "loesung_text": "Bevor gestaltet wird, höre ich zu, werte Daten aus und lerne, wer deine Nutzer:innen sind und was sie wirklich brauchen. Mit Wireframes und Prototypen in Figma werden Ideen sichtbar, lange bevor programmiert wird.",
   "loesung_punkte": [
-   "Website-Check: Ich versetze mich in Ihre Zielgruppe, nutze Ihre Website oder Anwendung und zeige, was sich verbessern lässt",
-   "Personas: greifbare Abbilder Ihrer Zielgruppe für Entscheidungen, die nicht aus dem Bauch kommen",
+   "Website-Check: Ich versetze mich in deine Zielgruppe, nutze deine Website oder Anwendung und zeige, was sich verbessern lässt",
+   "Personas: greifbare Abbilder deiner Zielgruppe für Entscheidungen, die nicht aus dem Bauch kommen",
    "Neue Nutzerführung und UI-Kit, für Plattformen ein vollständiges Designsystem"
   ],
   "gewinn": [
-   "Software, die Ihre Kundschaft versteht, damit weniger Rückfragen entstehen.",
+   "Software, die deine Kundschaft versteht, damit weniger Rückfragen entstehen.",
    "Entscheidungen auf Grundlage echter Nutzung statt Bauchgefühl.",
-   "Ein Designsystem, mit dem Ihr Team schneller weiterbaut."
+   "Ein Designsystem, mit dem dein Team schneller weiterbaut."
   ],
   "fuer_sie": [
    "neue-kunden",
@@ -399,11 +399,11 @@
   "bild": "bilder/leistung-marketing.webp",
   "bildalt": "Smartphone mit geöffneter Social-Media-App neben einem Laptop",
   "icon": "bilder/formen/marketing.svg",
-  "problem_titel": "Sichtbar werden, wo Ihre Kund:innen sind.",
+  "problem_titel": "Sichtbar werden, wo deine Kund:innen sind.",
   "probleme": [
-   "Die richtigen Menschen finden Sie nicht oder verstehen nicht sofort, was Sie anbieten",
+   "Die richtigen Menschen finden dich nicht oder verstehen nicht sofort, was du anbietest",
    "Jeder Beitrag fängt wieder bei null an, regelmäßiges Posten bleibt liegen",
-   "Ihre Expertise steht in Blog, LinkedIn oder Fachmedien nicht im Mittelpunkt",
+   "Deine Expertise steht in Blog, LinkedIn oder Fachmedien nicht im Mittelpunkt",
    "Beim Webinar bleibt neben Konzept, Anmeldeseite und Folien wenig Kopf für den Auftritt"
   ],
   "loesungen": [
@@ -414,27 +414,27 @@
    "Alle Leistungen einzeln buchbar"
   ],
   "zusammenfassung": [
-   "Sichtbar werden, wo Ihre Kund:innen sind: mit klarer Positionierung und Inhalten, die zu Ihnen passen. STUDIO AAH! setzt Ihr LinkedIn-Profil und Ihre Unternehmensseite auf, gestaltet Post-Vorlagen in Ihrem Design und schreibt Fachartikel mit Ihrer Expertise im Mittelpunkt.",
-   "Für Webinare entstehen Konzept, Anmeldeseite und Folien, damit Sie sich ganz auf Ihren Auftritt konzentrieren können. Alle Leistungen sind einzeln buchbar."
+   "Sichtbar werden, wo deine Kund:innen sind: mit klarer Positionierung und Inhalten, die zu dir passen. STUDIO AAH! setzt dein LinkedIn-Profil und deine Unternehmensseite auf, gestaltet Post-Vorlagen in deinem Design und schreibt Fachartikel mit deiner Expertise im Mittelpunkt.",
+   "Für Webinare entstehen Konzept, Anmeldeseite und Folien, damit du dich ganz auf deinen Auftritt konzentrieren kannst. Alle Leistungen sind einzeln buchbar."
   ],
   "nicht_enthalten": [
-   "Durchführung des Webinars: Den Auftritt übernehmen Sie",
+   "Durchführung des Webinars: Den Auftritt übernimmst du",
    "Spätere Textänderungen: Texte liefere ich einmal; übernehme ich Änderungen danach, rechne ich nach Aufwand ab, 50–85 € netto pro Stunde, je nach Unternehmensgröße",
-   "Lizenzen: zahlen Sie direkt an den jeweiligen Anbieter",
+   "Lizenzen: zahlst du direkt an den jeweiligen Anbieter",
    "Mehr als zwei Korrekturrunden je Bereich: nach Aufwand, 50–85 € netto pro Stunde, je nach Unternehmensgröße"
   ],
   "faq": [
    [
     "Was kosten LinkedIn, Post-Vorlagen, Fachartikel und Webinare bei STUDIO AAH! in Leipzig?",
-    "Bei STUDIO AAH! in Leipzig kostet LinkedIn aufsetzen ab 500 €, Social-Media- und Post-Vorlagen ab 400 €, ein Fachartikel ab 300 € pro Artikel und Webinar aufsetzen ab 850 €. Alle Preise sind Einstiegspreise, netto ohne Umsatzsteuer; den Festpreis erhalten Sie nach einem kostenlosen Erstgespräch."
+    "Bei STUDIO AAH! in Leipzig kostet LinkedIn aufsetzen ab 500 €, Social-Media- und Post-Vorlagen ab 400 €, ein Fachartikel ab 300 € pro Artikel und Webinar aufsetzen ab 850 €. Alle Preise sind Einstiegspreise, netto ohne Umsatzsteuer; den Festpreis erhältst du nach einem kostenlosen Erstgespräch."
    ],
    [
     "Was gehört bei STUDIO AAH! zu „LinkedIn aufsetzen“?",
-    "Zu „LinkedIn aufsetzen“ gehören bei STUDIO AAH! Ihr Profil, Ihre Unternehmensseite und eine klare Positionierung, damit die richtigen Menschen Sie finden und sofort verstehen, was Sie anbieten. Die Leistung beginnt bei 500 € netto."
+    "Zu „LinkedIn aufsetzen“ gehören bei STUDIO AAH! dein Profil, deine Unternehmensseite und eine klare Positionierung, damit die richtigen Menschen dich finden und sofort verstehen, was du anbietest. Die Leistung beginnt bei 500 € netto."
    ],
    [
     "In welchem Programm entstehen die Post-Vorlagen?",
-    "Die Post-Vorlagen von STUDIO AAH! entstehen in Canva, im eigenen Design: 5 Vorlagen, damit Sie regelmäßig posten können, ohne jedes Mal bei null anzufangen. Sie beginnen bei 400 € netto."
+    "Die Post-Vorlagen von STUDIO AAH! entstehen in Canva, im eigenen Design: 5 Vorlagen, damit du regelmäßig posten kannst, ohne jedes Mal bei null anzufangen. Sie beginnen bei 400 € netto."
    ],
    [
     "Was ist eine Brand Experience?",
@@ -442,19 +442,19 @@
    ],
    [
     "Wie lang ist ein Fachartikel von STUDIO AAH!?",
-    "Ein Fachartikel von STUDIO AAH! hat 1.000 bis 1.500 Wörter, recherchiert und verständlich. Er eignet sich für Blog, LinkedIn oder Fachmedien und stellt Ihre Expertise in den Mittelpunkt. Ein Fachartikel kostet ab 300 € netto."
+    "Ein Fachartikel von STUDIO AAH! hat 1.000 bis 1.500 Wörter, recherchiert und verständlich. Er eignet sich für Blog, LinkedIn oder Fachmedien und stellt deine Expertise in den Mittelpunkt. Ein Fachartikel kostet ab 300 € netto."
    ],
    [
     "Was gehört bei STUDIO AAH! zu „Webinar aufsetzen“?",
-    "Zu „Webinar aufsetzen“ gehören bei STUDIO AAH! das Konzept, die Anmeldeseite und die Folien als PowerPoint oder PDF, damit Sie sich ganz auf Ihren Auftritt konzentrieren können. Die Leistung beginnt bei 850 € netto."
+    "Zu „Webinar aufsetzen“ gehören bei STUDIO AAH! das Konzept, die Anmeldeseite und die Folien als PowerPoint oder PDF, damit du dich ganz auf deinen Auftritt konzentrieren kannst. Die Leistung beginnt bei 850 € netto."
    ],
    [
     "Führt STUDIO AAH! das Webinar auch durch?",
-    "Nein. STUDIO AAH! setzt das Webinar auf, die Durchführung übernehmen Sie selbst."
+    "Nein. STUDIO AAH! setzt das Webinar auf, die Durchführung übernimmst du selbst."
    ],
    [
     "Kann ich die Marketing-Leistungen einzeln buchen?",
-    "Ja. Bei STUDIO AAH! sind LinkedIn aufsetzen, Post-Vorlagen, Fachartikel und Webinar aufsetzen einzeln buchbar. Im Kostenrechner können Sie auch mehrere davon zusammenstellen."
+    "Ja. Bei STUDIO AAH! sind LinkedIn aufsetzen, Post-Vorlagen, Fachartikel und Webinar aufsetzen einzeln buchbar. Im Kostenrechner kannst du auch mehrere davon zusammenstellen."
    ],
    [
     "Kann ich gelieferte Texte später ändern lassen?",
@@ -466,10 +466,10 @@
    ],
    [
     "Wie läuft ein Marketing-Auftrag bei STUDIO AAH! ab?",
-    "Bei STUDIO AAH! stellen Sie sich mit dem Kostenrechner einen unverbindlichen Kostenvoranschlag zusammen. Im kostenlosen Erstgespräch klären wir, wo Sie stehen, was Sie wollen, was Sie brauchen und wen Sie erreichen wollen. Danach erhalten Sie ein Angebot mit Festpreis und schließlich den Vertrag."
+    "Bei STUDIO AAH! stellst du dir mit dem Kostenrechner einen unverbindlichen Kostenvoranschlag zusammen. Im kostenlosen Erstgespräch klären wir, wo du stehst, was du willst, was du brauchst und wen du erreichen willst. Danach erhältst du ein Angebot mit Festpreis und schließlich den Vertrag."
    ]
   ],
-  "loesung_text": "Sichtbar werden, wo Ihre Kund:innen sind: mit klarer Positionierung und Inhalten, die zu Ihnen passen. Alle Leistungen sind einzeln buchbar.",
+  "loesung_text": "Sichtbar werden, wo deine Kund:innen sind: mit klarer Positionierung und Inhalten, die zu dir passen. Alle Leistungen sind einzeln buchbar.",
   "loesung_punkte": [
    "LinkedIn aufsetzen: Profil, Unternehmensseite und klare Positionierung",
    "Fachartikel mit 1.000 bis 1.500 Wörtern, recherchiert und verständlich",
@@ -478,7 +478,7 @@
   "herz": true,
   "gewinn": [
    "Sichtbar auf LinkedIn, mit Fachartikeln und Webinaren.",
-   "Inhalte, die zu Ihnen passen, mit Vorlagen zum Weitermachen.",
+   "Inhalte, die zu dir passen, mit Vorlagen zum Weitermachen.",
    "Ein klarer Plan statt Aktionismus."
   ],
   "fuer_sie": [
@@ -492,8 +492,8 @@
   "gruppe": "ki",
   "tag": "ki",
   "titel": "KI-Beratung",
-  "seitentitel": "KI-Beratung in Leipzig: Claude für Ihr Büro einrichten | STUDIO AAH!",
-  "beschreibung": "KI-Beratung aus Leipzig: Ich richte Claude für Ihr Büro ein, mit Arbeitsordner, Arbeitsanleitung, drei Skills und Projekt-Cockpit. KI-Arbeits-Setup in drei Terminen, 990 € netto.",
+  "seitentitel": "KI-Beratung in Leipzig: Claude für dein Büro einrichten | STUDIO AAH!",
+  "beschreibung": "KI-Beratung aus Leipzig: Ich richte Claude für dein Büro ein, mit Arbeitsordner, Arbeitsanleitung, drei Skills und Projekt-Cockpit. KI-Arbeits-Setup in drei Terminen, 990 € netto.",
   "bild": "bilder/leistung-ki.webp",
   "bildalt": "Hände tippen auf einer Laptop-Tastatur, im Hintergrund ein Monitor",
   "icon": "bilder/formen/ki.svg",
@@ -506,18 +506,18 @@
    "Das Team weiß nicht, wie es KI sicher und sinnvoll einsetzt"
   ],
   "loesungen": [
-   "KI-Check: Analyse Ihrer Abläufe und ein Empfehlungsbericht",
+   "KI-Check: Analyse deiner Abläufe und ein Empfehlungsbericht",
    "Auswahl und Einrichtung passender KI-Werkzeuge, mit Blick auf den Datenschutz",
    "Digitale Arbeitsabläufe einrichten, Schritt für Schritt, auch ohne eigene IT-Abteilung",
-   "Team-Schulung: praxisnah, verständlich und auf Ihre Aufgaben zugeschnitten"
+   "Team-Schulung: praxisnah, verständlich und auf deine Aufgaben zugeschnitten"
   ],
   "zusammenfassung": [
-   "Ich arbeite ausschließlich mit Claude von Anthropic. Darauf richte ich Ihr Büro ein: mit Ihren Projekten, Ihren Abläufen und Ihren Regeln.",
-   "Claude lernt dabei mit: Sagen Sie „merk dir“ oder korrigieren Sie Claude, macht ein Skill daraus eine feste Regel. Sie gilt ab dann in jedem Chat.",
+   "Ich arbeite ausschließlich mit Claude von Anthropic. Darauf richte ich dein Büro ein: mit deinen Projekten, deinen Abläufen und deinen Regeln.",
+   "Claude lernt dabei mit: Sagst du „merk dir“ oder korrigierst du Claude, macht ein Skill daraus eine feste Regel. Sie gilt ab dann in jedem Chat.",
    "Dafür gibt es das KI-Arbeits-Setup, für Selbstständige und kleine Büros mit bis zu fünf Personen."
   ],
   "nicht_enthalten": [
-   "Ihr KI-Abo: Das buchen und bezahlen Sie direkt beim Anbieter",
+   "Dein KI-Abo: Das buchst und bezahlst du direkt beim Anbieter",
    "Programmierung eigener Software",
    "Rechts- oder Datenschutzberatung",
    "Mehr als drei Skills oder eine Team-Schulung: nach Aufwand"
@@ -529,7 +529,7 @@
    ],
    [
     "Geht das auch mit ChatGPT?",
-    "Ich richte das Setup ausschließlich in Claude von Anthropic ein, weil ich selbst jeden Tag damit arbeite und genau weiß, was es kann. Das Prinzip lässt sich aber auf ChatGPT übertragen: Auch dort gibt es Projekte mit eigenen Anweisungen und Dateien, wiederkehrende Aufgaben und Skills nach demselben Prinzip. Welche Funktionen Ihr Tarif enthält, klären wir im Erstgespräch."
+    "Ich richte das Setup ausschließlich in Claude von Anthropic ein, weil ich selbst jeden Tag damit arbeite und genau weiß, was es kann. Das Prinzip lässt sich aber auf ChatGPT übertragen: Auch dort gibt es Projekte mit eigenen Anweisungen und Dateien, wiederkehrende Aufgaben und Skills nach demselben Prinzip. Welche Funktionen dein Tarif enthält, klären wir im Erstgespräch."
    ],
    [
     "Was ist ein Skill?",
@@ -537,15 +537,15 @@
    ],
    [
     "Welchen Tarif von Claude brauche ich?",
-    "Einen bezahlten Tarif, den Sie direkt bei Anthropic buchen. Arbeiten Sie nur mit eigenen Texten und anonymisierten Daten, reicht der Tarif Pro; das Training mit Ihren Chats schalten wir gemeinsam aus. Soll Claude Ihr Geschäftspostfach oder Kundendaten lesen, empfehle ich Claude Team: Dort gilt ein Vertrag zur Auftragsverarbeitung. Ob Ihre Datenverarbeitung zulässig ist, entscheiden Sie bzw. Ihre Datenschutzberatung."
+    "Einen bezahlten Tarif, den du direkt bei Anthropic buchst. Arbeitest du nur mit eigenen Texten und anonymisierten Daten, reicht der Tarif Pro; das Training mit deinen Chats schalten wir gemeinsam aus. Soll Claude dein Geschäftspostfach oder Kundendaten lesen, empfehle ich Claude Team: Dort gilt ein Vertrag zur Auftragsverarbeitung. Ob deine Datenverarbeitung zulässig ist, entscheidest du bzw. deine Datenschutzberatung."
    ],
    [
     "Verschickt Claude etwas ohne mich?",
-    "Nein. Claude fragt vor jeder Aktion nach; gesendet wird nur mit Ihrem Klick. Auch geplante Aufgaben, die zum Beispiel jeden Morgen den Tagesüberblick schreiben, senden, löschen und veröffentlichen nichts."
+    "Nein. Claude fragt vor jeder Aktion nach; gesendet wird nur mit deinem Klick. Auch geplante Aufgaben, die zum Beispiel jeden Morgen den Tagesüberblick schreiben, senden, löschen und veröffentlichen nichts."
    ],
    [
-    "Bekommen Sie Zugriff auf meine Konten und Daten?",
-    "Nur im Termin und nur so weit nötig: Wir richten alles gemeinsam ein. Passwörter tippen Sie selbst ein. Zugangsdaten werden nicht gespeichert, die Termine nicht aufgezeichnet. Auf Wunsch gibt es einen Vertrag zur Auftragsverarbeitung."
+    "Bekommst du Zugriff auf meine Konten und Daten?",
+    "Nur im Termin und nur so weit nötig: Wir richten alles gemeinsam ein. Passwörter tippst du selbst ein. Zugangsdaten werden nicht gespeichert, die Termine nicht aufgezeichnet. Auf Wunsch gibt es einen Vertrag zur Auftragsverarbeitung."
    ],
    [
     "Passt das Setup, wenn wir mit sensiblen Daten arbeiten?",
@@ -553,18 +553,18 @@
    ],
    [
     "Wie viel Zeit kostet mich das?",
-    "Etwa 15 Minuten für den Fragebogen und die drei Termine aus dem Prozess. Danach beantworte ich 14 Tage lang Ihre Fragen per E-Mail oder im Online-Meeting."
+    "Etwa 15 Minuten für den Fragebogen und die drei Termine aus dem Prozess. Danach beantworte ich 14 Tage lang deine Fragen per E-Mail oder im Online-Meeting."
    ]
   ],
-  "loesung_text": "Im KI-Check schaue ich mir an, wo in Ihrem Alltag Zeit verloren geht und wo KI-Werkzeuge wirklich entlasten. In der KI-Einführung setzen wir die Empfehlungen um.",
+  "loesung_text": "Im KI-Check schaue ich mir an, wo in deinem Alltag Zeit verloren geht und wo KI-Werkzeuge wirklich entlasten. In der KI-Einführung setzen wir die Empfehlungen um.",
   "loesung_punkte": [
-   "KI-Check: Analyse Ihrer Abläufe und ein Empfehlungsbericht",
+   "KI-Check: Analyse deiner Abläufe und ein Empfehlungsbericht",
    "Auswahl und Einrichtung passender KI-Werkzeuge, mit Blick auf den Datenschutz",
-   "Team-Schulung: praxisnah, verständlich und auf Ihre Aufgaben zugeschnitten"
+   "Team-Schulung: praxisnah, verständlich und auf deine Aufgaben zugeschnitten"
   ],
   "gewinn": [
    "Weniger Büroarbeit, mehr Zeit für Kundschaft und Strategie.",
-   "Zahlen, die etwas sagen: Claude wertet Tracking und Conversion Ihrer Website aus und zeigt, wo Anfragen verloren gehen.",
+   "Zahlen, die etwas sagen: Claude wertet Tracking und Conversion deiner Website aus und zeigt, wo Anfragen verloren gehen.",
    "Wissen, das bleibt: Abläufe und Projektstand sind aufgeschrieben, auch für neue Mitarbeitende."
   ],
   "fuer_sie": [
@@ -578,19 +578,19 @@
    "rechts": "Mit dem KI-Arbeits-Setup",
    "zeilen": [
     [
-     "Jede:r nutzt eine andere KI, oft mit privaten Konten. Wo Ihre Firmendaten landen, weiß niemand.",
+     "Jede:r nutzt eine andere KI, oft mit privaten Konten. Wo deine Firmendaten landen, weiß niemand.",
      "Klare Regeln",
      "Ein Werkzeug für alle und eine Checkliste, welche Daten hinein dürfen."
     ],
     [
      "Jeder neue Chat beginnt bei null: Wer ist die Kundin, wie ist der Stand, welcher Ton passt?",
-     "Claude kennt Ihr Büro",
-     "Sie erklären Ihre Arbeitsweise einmal, nicht in jedem Chat."
+     "Claude kennt dein Büro",
+     "Du erklärst deine Arbeitsweise einmal, nicht in jedem Chat."
     ],
     [
      "Die KI-Lizenz ist bezahlt, aber kaum jemand nutzt sie.",
      "Im Alltag angekommen",
-     "Eingerichtet so, dass Sie es wirklich benutzen."
+     "Eingerichtet so, dass du es wirklich benutzt."
     ]
    ]
   },
@@ -600,7 +600,7 @@
    "karten": [
     [
      "Angebote und E-Mails",
-     "Claude schreibt den Entwurf, Sie prüfen und geben frei."
+     "Claude schreibt den Entwurf, du prüfst und gibst frei."
     ],
     [
      "Projektstand je Kunde",
@@ -608,15 +608,15 @@
     ],
     [
      "Wochenplan und Fristen",
-     "Ein Projekt-Cockpit zeigt Termine, offene Punkte und wer gerade am Zug ist: Sie oder Ihre Kundin."
+     "Ein Projekt-Cockpit zeigt Termine, offene Punkte und wer gerade am Zug ist: du oder deine Kundin."
     ],
     [
      "Prüfen vor der Abgabe",
-     "Ein fester Arbeitsablauf als Prüfer sieht Ihre Arbeit durch, bevor sie rausgeht."
+     "Ein fester Arbeitsablauf als Prüfer sieht deine Arbeit durch, bevor sie rausgeht."
     ],
     [
-     "Texte in Ihrem Ton",
-     "Ein fester Arbeitsablauf für Texte schreibt Entwürfe so, wie Sie schreiben."
+     "Texte in deinem Ton",
+     "Ein fester Arbeitsablauf für Texte schreibt Entwürfe so, wie du schreibst."
     ],
     [
      "Protokolle und Zusammenfassungen",
@@ -625,11 +625,11 @@
    ],
    "beleg": [
     "Aus meiner eigenen Praxis",
-    "Was ich Ihnen einrichte, nutze ich selbst jeden Tag: für Projektstand, Wochenplanung, Website-Prüfungen, Angebote und Akquise."
+    "Was ich dir einrichte, nutze ich selbst jeden Tag: für Projektstand, Wochenplanung, Website-Prüfungen, Angebote und Akquise."
    ],
    "extra": [
-    "Sie wollen Ihre Website selbst mit KI bauen?",
-    "Dann richten Sie vorher Claude richtig ein: Mit dem Setup kennt die KI Ihre Marke, Ihre Inhalte und Ihre Regeln, bevor die erste Zeile Code entsteht. So wird aus Vibe-Coding eine Website, die trägt.",
+    "Du willst deine Website selbst mit KI bauen?",
+    "Dann richte vorher Claude richtig ein: Mit dem Setup kennt die KI deine Marke, deine Inhalte und deine Regeln, bevor die erste Zeile Code entsteht. So wird aus Vibe-Coding eine Website, die trägt.",
     "service/webdesign/#selbst",
     "Selbst bauen mit Unterstützung"
    ]
@@ -638,23 +638,23 @@
    "_quelle": "Seite KI-Arbeits-Setup, Abschnitt „Sechs Dinge, die bleiben“ (Anna 16.11.2026: Lösung nur KI-Arbeits-Setup)",
    "meta": "Lösung",
    "titel": "Das KI-Arbeits-Setup",
-   "einleitung": "Das bleibt nach dem Setup in Ihrem Büro:",
+   "einleitung": "Das bleibt nach dem Setup in deinem Büro:",
    "karten": [
     [
-     "Ihr Arbeitsordner",
+     "Dein Arbeitsordner",
      "Ein Unterordner je Kunde, sortiert nach Projektphasen."
     ],
     [
-     "Ihre Arbeitsanleitung",
-     "Ihre Kund:innen, Ihr Ton, Ihre Regeln, an einem Ort."
+     "Deine Arbeitsanleitung",
+     "Deine Kund:innen, dein Ton, deine Regeln, an einem Ort."
     ],
     [
      "Drei Skills",
-     "Die drei festen Arbeitsabläufe, die Sie zuerst entlasten."
+     "Die drei festen Arbeitsabläufe, die dich zuerst entlasten."
     ],
     [
-     "Ihr Projekt-Cockpit",
-     "Was darin steht und wie es aussieht, bestimmen Sie selbst."
+     "Dein Projekt-Cockpit",
+     "Was darin steht und wie es aussieht, bestimmst du selbst."
     ],
     [
      "Kalender, Mail und Projekttool",
@@ -674,17 +674,17 @@
    [
     "Kostenlos · 20 Minuten",
     "Erstgespräch",
-    "Wir lernen uns kennen und schauen auf Ihre Werkzeuge. Danach bekommen Sie einen kurzen Fragebogen."
+    "Wir lernen uns kennen und schauen auf deine Werkzeuge. Danach bekommst du einen kurzen Fragebogen."
    ],
    [
     "Termin 1 · 90 Minuten",
     "Verstehen und Einrichten",
-    "Wir wählen die drei Skills, die Sie zuerst entlasten, und richten so viel wie möglich direkt ein."
+    "Wir wählen die drei Skills, die dich zuerst entlasten, und richten so viel wie möglich direkt ein."
    ],
    [
     "Termin 2 · 60 Minuten",
     "Validieren",
-    "Was läuft im Alltag schon, was hakt? Wir prüfen das Setup an Ihren echten Aufgaben und passen es an."
+    "Was läuft im Alltag schon, was hakt? Wir prüfen das Setup an deinen echten Aufgaben und passen es an."
    ],
    [
     "Termin 3 · 60 Minuten",
@@ -694,7 +694,7 @@
   ],
   "recht": {
    "_quelle": "VO (EU) 2024/1689; Omnibus-VO (EU) 2026/1744 (ABl. 24.07.2026, gilt seit 27.07.2026, Art. 1 Nr. 5 = neuer Art. 4); eur-lex.europa.eu; geprüft vom Prüfer-Agenten 16.11.2026",
-   "titel": "KI-Verordnung: Was gilt für Ihr Unternehmen?",
+   "titel": "KI-Verordnung: Was gilt für dein Unternehmen?",
    "einleitung": "Die KI-Verordnung der EU (EU AI Act) regelt, wie Unternehmen KI einsetzen. Für die meisten Büros im Mittelstand zählen vier Punkte.",
    "punkte": [
     [
@@ -724,7 +724,7 @@
   },
   "termine": "Drei Online-Termine von 90, 60 und 60 Minuten, verteilt auf etwa drei Wochen, über Google Meet oder Teams.",
   "ohne_gemeinsame_fragen": true,
-  "ansprech_satz": "Bei STUDIO AAH! arbeiten Sie direkt mit mir, vom Erstgespräch bis zur Schulung.",
+  "ansprech_satz": "Bei STUDIO AAH! arbeitest du direkt mit mir, vom Erstgespräch bis zur Schulung.",
   "frage": "KI-Beratung: Was ist das?",
   "pakete": [
    "ki-setup"
@@ -757,7 +757,7 @@
   ],
   "zusammenfassung": [
    "Professionelles Design für Gedrucktes: von der Visitenkarte über Flyer, Postkarte und Broschüre bis zur Unternehmenspräsentation und zur mehrseitigen Publikation wie Magazin, Katalog oder Jahresbericht.",
-   "Sie erhalten druckfertige Druckdaten, die Unternehmenspräsentation zusätzlich als PDF für Gespräche, Angebote und Messen. Bei mehrseitigen Publikationen begleite ich auch den Druck."
+   "Du erhältst druckfertige Druckdaten, die Unternehmenspräsentation zusätzlich als PDF für Gespräche, Angebote und Messen. Bei mehrseitigen Publikationen begleite ich auch den Druck."
   ],
   "nicht_enthalten": [
    "Druckkosten",
@@ -767,7 +767,7 @@
   "faq": [
    [
     "Was kostet Printdesign in Leipzig bei STUDIO AAH!?",
-    "Bei STUDIO AAH! in Leipzig beginnt eine Visitenkarte bei 195 €, ein Flyer oder eine Postkarte bei 290 € und eine zweiseitige Broschüre bei 450 €. Eine Unternehmenspräsentation beginnt bei 1.200 €, eine mehrseitige Publikation wie Magazin, Katalog oder Jahresbericht bei 2.600 €. Alle Preise sind Einstiegspreise netto, ohne Umsatzsteuer; den Festpreis erhalten Sie nach einem kostenlosen Erstgespräch."
+    "Bei STUDIO AAH! in Leipzig beginnt eine Visitenkarte bei 195 €, ein Flyer oder eine Postkarte bei 290 € und eine zweiseitige Broschüre bei 450 €. Eine Unternehmenspräsentation beginnt bei 1.200 €, eine mehrseitige Publikation wie Magazin, Katalog oder Jahresbericht bei 2.600 €. Alle Preise sind Einstiegspreise netto, ohne Umsatzsteuer; den Festpreis erhältst du nach einem kostenlosen Erstgespräch."
    ],
    [
     "Was ist bei einer Visitenkarte von STUDIO AAH! enthalten?",
@@ -787,7 +787,7 @@
    ],
    [
     "Kann ich mehrere Print-Leistungen zusammen buchen?",
-    "Ja. Im Kostenrechner von STUDIO AAH! können Sie mehrere Print-Leistungen gleichzeitig auswählen, zum Beispiel Visitenkarte und Flyer, und erhalten so einen unverbindlichen Kostenvoranschlag."
+    "Ja. Im Kostenrechner von STUDIO AAH! kannst du mehrere Print-Leistungen gleichzeitig auswählen, zum Beispiel Visitenkarte und Flyer, und erhältst so einen unverbindlichen Kostenvoranschlag."
    ],
    [
     "Wie viele Korrekturrunden sind bei Print-Projekten enthalten?",
@@ -795,11 +795,11 @@
    ],
    [
     "Wie läuft ein Print-Projekt bei STUDIO AAH! ab?",
-    "Sie stellen sich mit dem Kostenrechner einen unverbindlichen Kostenvoranschlag zusammen. Im kostenlosen Erstgespräch klären wir Ist-Stand, Ziele, Bedarf und Zielgruppe. Danach erhalten Sie von STUDIO AAH! ein Angebot mit Festpreis und schließlich den Vertrag."
+    "Du stellst dir mit dem Kostenrechner einen unverbindlichen Kostenvoranschlag zusammen. Im kostenlosen Erstgespräch klären wir Ist-Stand, Ziele, Bedarf und Zielgruppe. Danach erhältst du von STUDIO AAH! ein Angebot mit Festpreis und schließlich den Vertrag."
    ]
   ],
   "termine": "Termine nach Absprache, online über Google Meet oder Teams.",
-  "loesung_text": "Professionelles Design für Gedrucktes, von der Visitenkarte bis zum Magazin. Sie erhalten druckfertige Druckdaten; bei mehrseitigen Publikationen begleite ich auch den Druck.",
+  "loesung_text": "Professionelles Design für Gedrucktes, von der Visitenkarte bis zum Magazin. Du erhältst druckfertige Druckdaten; bei mehrseitigen Publikationen begleite ich auch den Druck.",
   "loesung_punkte": [
    "Unternehmenspräsentation mit bis zu 20 Folien, als PDF und für den Druck",
    "Magazin, Katalog oder Jahresbericht als mehrseitige Publikation mit Druckbegleitung",
@@ -807,8 +807,8 @@
   ],
   "artikel": false,
   "gewinn": [
-   "Gedrucktes, das zu Ihrer Marke passt.",
-   "Druckfertige Dateien für Ihre Druckerei.",
+   "Gedrucktes, das zu deiner Marke passt.",
+   "Druckfertige Dateien für deine Druckerei.",
    "Ein Auftritt, der auch auf Messen und im Gespräch überzeugt."
   ],
   "fuer_sie": [
@@ -839,12 +839,12 @@
   "loesungen": [
    "Infografiken, die komplexe Inhalte auf einen Blick verständlich machen",
    "Eigene Illustrationen, Icons und Piktogramme",
-   "Für Ihre Website auch als Zusatz zum Website-Paket",
-   "Umfang und Preis klären wir im kostenlosen Erstgespräch, danach erhalten Sie einen Festpreis"
+   "Für deine Website auch als Zusatz zum Website-Paket",
+   "Umfang und Preis klären wir im kostenlosen Erstgespräch, danach erhältst du einen Festpreis"
   ],
   "zusammenfassung": [
    "Illustrationen, Icons, Piktogramme und Infografiken, die komplexe Inhalte auf einen Blick verständlich machen.",
-   "Illustration und Infografik sind sehr individuell. Deshalb klären wir Umfang und Preis im kostenlosen Erstgespräch; danach erhalten Sie ein Angebot mit Festpreis. Für Ihre Website gibt es eigene Illustrationen, Icons und Infografiken auch als Zusatz zum Website-Paket."
+   "Illustration und Infografik sind sehr individuell. Deshalb klären wir Umfang und Preis im kostenlosen Erstgespräch; danach erhältst du ein Angebot mit Festpreis. Für deine Website gibt es eigene Illustrationen, Icons und Infografiken auch als Zusatz zum Website-Paket."
   ],
   "nicht_enthalten": [
    "Offene Original- und Arbeitsdateien: geliefert werden fertige Dateien, außer im Angebot ist etwas anderes vereinbart",
@@ -853,7 +853,7 @@
   "faq": [
    [
     "Was kostet eine Illustration oder Infografik bei STUDIO AAH!?",
-    "Illustrationen und Infografiken gibt es bei STUDIO AAH! auf Anfrage, weil jedes Vorhaben sehr individuell ist. Umfang und Preis klären wir im kostenlosen Erstgespräch. Danach erhalten Sie ein Angebot mit Festpreis, netto ohne Umsatzsteuer."
+    "Illustrationen und Infografiken gibt es bei STUDIO AAH! auf Anfrage, weil jedes Vorhaben sehr individuell ist. Umfang und Preis klären wir im kostenlosen Erstgespräch. Danach erhältst du ein Angebot mit Festpreis, netto ohne Umsatzsteuer."
    ],
    [
     "Was ist eine Infografik?",
@@ -865,7 +865,7 @@
    ],
    [
     "Kann ich Illustrationen und Infografiken für meine Website bestellen?",
-    "Ja. Eigene Illustrationen, Icons und Infografiken für Ihre Website können Sie bei STUDIO AAH! als Zusatz zum Website-Paket wählen. Der Preis ist auf Anfrage."
+    "Ja. Eigene Illustrationen, Icons und Infografiken für deine Website kannst du bei STUDIO AAH! als Zusatz zum Website-Paket wählen. Der Preis ist auf Anfrage."
    ],
    [
     "Wie viele Korrekturrunden sind bei Illustrationen und Infografiken enthalten?",
@@ -873,14 +873,14 @@
    ],
    [
     "Wie läuft ein Auftrag für Illustration oder Infografik bei STUDIO AAH! ab?",
-    "Sie stellen sich mit dem Kostenrechner einen unverbindlichen Kostenvoranschlag zusammen; Illustration & Infografik steht dort als „auf Anfrage“. Im kostenlosen Erstgespräch klären wir Ist-Stand, Ziele, Bedarf und Zielgruppe. Danach erhalten Sie von STUDIO AAH! ein Angebot mit Festpreis und schließlich den Vertrag."
+    "Du stellst dir mit dem Kostenrechner einen unverbindlichen Kostenvoranschlag zusammen; Illustration & Infografik steht dort als „auf Anfrage“. Im kostenlosen Erstgespräch klären wir Ist-Stand, Ziele, Bedarf und Zielgruppe. Danach erhältst du von STUDIO AAH! ein Angebot mit Festpreis und schließlich den Vertrag."
    ]
   ],
   "loesung_text": "Illustrationen, Icons, Piktogramme und Infografiken, die komplexe Inhalte auf einen Blick verständlich machen. Umfang und Preis klären wir im kostenlosen Erstgespräch.",
   "loesung_punkte": [
    "Infografiken, die komplexe Inhalte auf einen Blick verständlich machen",
    "Eigene Illustrationen, Icons und Piktogramme",
-   "Für Ihre Website auch als Zusatz zum Website-Paket"
+   "Für deine Website auch als Zusatz zum Website-Paket"
   ],
   "hintergrund": {
    "titel": "Gestaltung mit künstlerischem Hintergrund.",
@@ -891,7 +891,7 @@
   },
   "gewinn": [
    "Komplexes auf einen Blick verständlich.",
-   "Bilder, die nur Sie haben, statt Stockfotos.",
+   "Bilder, die nur du hast, statt Stockfotos.",
    "Erklärungen, die Kundschaft und Team schneller verstehen."
   ],
   "fuer_sie": [
@@ -913,7 +913,7 @@
   "bild": "bilder/leistung-motion.jpg",
   "bildalt": "Bildschirm mit der Zeitleiste einer Animations-Software",
   "icon": "bilder/formen/motion.svg",
-  "problem_titel": "Ihre Inhalte sollen sich bewegen?",
+  "problem_titel": "Deine Inhalte sollen sich bewegen?",
   "probleme": [
    "Auf der Website fehlen bewegte Grafiken und Animationen",
    "Für Social Media fehlen Animationen",
@@ -921,15 +921,15 @@
    "Jedes Vorhaben ist anders, ein Standardpreis passt nicht"
   ],
   "loesungen": [
-   "Bewegte Grafiken und Animationen für Ihre Website",
+   "Bewegte Grafiken und Animationen für deine Website",
    "Animationen für Social Media",
    "Animationen für Präsentationen",
-   "Für Ihre Website auch als Zusatz zum Website-Paket",
-   "Umfang und Preis klären wir im kostenlosen Erstgespräch, danach erhalten Sie einen Festpreis"
+   "Für deine Website auch als Zusatz zum Website-Paket",
+   "Umfang und Preis klären wir im kostenlosen Erstgespräch, danach erhältst du einen Festpreis"
   ],
   "zusammenfassung": [
-   "Bewegte Grafiken und Animationen für Ihre Website, für Social Media und für Präsentationen.",
-   "Motion Design ist sehr individuell. Deshalb klären wir Umfang und Preis im kostenlosen Erstgespräch; danach erhalten Sie ein Angebot mit Festpreis. Für Ihre Website gibt es Motion Design auch als Zusatz zum Website-Paket."
+   "Bewegte Grafiken und Animationen für deine Website, für Social Media und für Präsentationen.",
+   "Motion Design ist sehr individuell. Deshalb klären wir Umfang und Preis im kostenlosen Erstgespräch; danach erhältst du ein Angebot mit Festpreis. Für deine Website gibt es Motion Design auch als Zusatz zum Website-Paket."
   ],
   "nicht_enthalten": [
    "Offene Original- und Arbeitsdateien: geliefert werden fertige Dateien, außer im Angebot ist etwas anderes vereinbart",
@@ -938,7 +938,7 @@
   "faq": [
    [
     "Was kostet Motion Design bei STUDIO AAH!?",
-    "Motion Design gibt es bei STUDIO AAH! auf Anfrage, weil jedes Vorhaben sehr individuell ist. Umfang und Preis klären wir im kostenlosen Erstgespräch. Danach erhalten Sie ein Angebot mit Festpreis, netto ohne Umsatzsteuer."
+    "Motion Design gibt es bei STUDIO AAH! auf Anfrage, weil jedes Vorhaben sehr individuell ist. Umfang und Preis klären wir im kostenlosen Erstgespräch. Danach erhältst du ein Angebot mit Festpreis, netto ohne Umsatzsteuer."
    ],
    [
     "Was ist Motion Design?",
@@ -946,11 +946,11 @@
    ],
    [
     "Wofür kann ich Motion Design von STUDIO AAH! einsetzen?",
-    "Motion Design von STUDIO AAH! ist für drei Einsatzorte gedacht: Ihre Website, Social Media und Präsentationen."
+    "Motion Design von STUDIO AAH! ist für drei Einsatzorte gedacht: deine Website, Social Media und Präsentationen."
    ],
    [
     "Kann ich Animationen für meine Website bestellen?",
-    "Ja. Bewegte Grafiken und Animationen für Ihre Website können Sie bei STUDIO AAH! als Zusatz zum Website-Paket wählen. Der Preis ist auf Anfrage."
+    "Ja. Bewegte Grafiken und Animationen für deine Website kannst du bei STUDIO AAH! als Zusatz zum Website-Paket wählen. Der Preis ist auf Anfrage."
    ],
    [
     "Wie viele Korrekturrunden sind beim Motion Design enthalten?",
@@ -958,14 +958,14 @@
    ],
    [
     "Wie läuft ein Motion-Design-Auftrag bei STUDIO AAH! ab?",
-    "Sie stellen sich mit dem Kostenrechner einen unverbindlichen Kostenvoranschlag zusammen; Motion Design steht dort als „auf Anfrage“. Im kostenlosen Erstgespräch klären wir Ist-Stand, Ziele, Bedarf und Zielgruppe. Danach erhalten Sie von STUDIO AAH! ein Angebot mit Festpreis und schließlich den Vertrag."
+    "Du stellst dir mit dem Kostenrechner einen unverbindlichen Kostenvoranschlag zusammen; Motion Design steht dort als „auf Anfrage“. Im kostenlosen Erstgespräch klären wir Ist-Stand, Ziele, Bedarf und Zielgruppe. Danach erhältst du von STUDIO AAH! ein Angebot mit Festpreis und schließlich den Vertrag."
    ]
   ],
-  "loesung_text": "Bewegte Grafiken und Animationen für Ihre Website, für Social Media und für Präsentationen. Umfang und Preis klären wir im kostenlosen Erstgespräch.",
+  "loesung_text": "Bewegte Grafiken und Animationen für deine Website, für Social Media und für Präsentationen. Umfang und Preis klären wir im kostenlosen Erstgespräch.",
   "loesung_punkte": [
-   "Bewegte Grafiken und Animationen für Ihre Website",
+   "Bewegte Grafiken und Animationen für deine Website",
    "Animationen für Social Media und Präsentationen",
-   "Für Ihre Website auch als Zusatz zum Website-Paket"
+   "Für deine Website auch als Zusatz zum Website-Paket"
   ],
   "hintergrund": {
    "titel": "Gestaltung mit künstlerischem Hintergrund.",
@@ -978,7 +978,7 @@
   "gewinn": [
    "Aufmerksamkeit auf Social Media und auf der Website.",
    "Erklärungen in Sekunden statt langer Texte.",
-   "Bewegung im Stil Ihrer Marke."
+   "Bewegung im Stil deiner Marke."
   ],
   "fuer_sie": [
    "neue-kunden",
@@ -995,12 +995,12 @@
   "tag": "retainer",
   "titel": "Retainer",
   "seitentitel": "Retainer in Leipzig: Website weiterentwickeln | STUDIO AAH!",
-  "beschreibung": "Retainer bei STUDIO AAH! in Leipzig: betreute Weiterentwicklung Ihrer Website mit neuen Texten, Bildern, Unterseiten und Abschnitten. 50–85 € netto pro Stunde, je nach Unternehmensgröße.",
-  "intro": "Betreute Weiterentwicklung Ihrer Website: neue Texte und Bilder, Unterseiten und Abschnitte, 50–85 € netto pro Stunde, je nach Unternehmensgröße.",
+  "beschreibung": "Retainer bei STUDIO AAH! in Leipzig: betreute Weiterentwicklung deiner Website mit neuen Texten, Bildern, Unterseiten und Abschnitten. 50–85 € netto pro Stunde, je nach Unternehmensgröße.",
+  "intro": "Betreute Weiterentwicklung deiner Website: neue Texte und Bilder, Unterseiten und Abschnitte, 50–85 € netto pro Stunde, je nach Unternehmensgröße.",
   "bild": "bilder/leistung-retainer.webp",
   "bildalt": "Arbeitsplatz mit zwei Bildschirmen, auf denen Seitenentwürfe zu sehen sind",
   "icon": "bilder/formen/retainer.svg",
-  "problem_titel": "Nach dem Start soll Ihre Website weiterwachsen.",
+  "problem_titel": "Nach dem Start soll deine Website weiterwachsen.",
   "probleme": [
    "Spätere Text- und Inhaltsänderungen sind in keinem Website-Paket enthalten",
    "Die Wartung hält die Technik aktuell, ändert aber keine Inhalte",
@@ -1014,12 +1014,12 @@
    "Lieber selbst pflegen? Schulung als PDF-Anleitung für 15 € oder als Online-Termin für 70 € (netto)"
   ],
   "zusammenfassung": [
-   "Mit dem Retainer entwickle ich Ihre Website nach dem Start weiter: Ich tausche Texte und Bilder aus, erstelle neue Unterseiten und bearbeite Abschnitte. Abgerechnet wird nach Aufwand, 50–85 € netto pro Stunde, je nach Unternehmensgröße.",
-   "Der Retainer ist keine Wartung. Die Wartung ab 45 € netto im Monat ist die rein technische Pflege Ihrer WordPress-Website: Updates von WordPress, Plugins und Themes, technische Überwachung und Sicherheitschecks."
+   "Mit dem Retainer entwickle ich deine Website nach dem Start weiter: Ich tausche Texte und Bilder aus, erstelle neue Unterseiten und bearbeite Abschnitte. Abgerechnet wird nach Aufwand, 50–85 € netto pro Stunde, je nach Unternehmensgröße.",
+   "Der Retainer ist keine Wartung. Die Wartung ab 45 € netto im Monat ist die rein technische Pflege deiner WordPress-Website: Updates von WordPress, Plugins und Themes, technische Überwachung und Sicherheitschecks."
   ],
   "nicht_enthalten": [
    "Technische Pflege (Updates, Überwachung, Sicherheitschecks): gehört zur Wartung ab 45 € netto im Monat",
-   "Hosting, Domain und Lizenzen: zahlen Sie direkt an den jeweiligen Anbieter",
+   "Hosting, Domain und Lizenzen: zahlst du direkt an den jeweiligen Anbieter",
    "Fester Monatsbetrag: abgerechnet wird nach Aufwand"
   ],
   "faq": [
@@ -1028,20 +1028,20 @@
     "Der Retainer bei STUDIO AAH! in Leipzig kostet 50–85 € netto pro Stunde (ohne Umsatzsteuer), je nach Unternehmensgröße. Abgerechnet wird nach Aufwand, nicht als fester Monatsbetrag."
    ],
    [
-    "Betreuen Sie auch selbst gebaute Websites?",
-    "Ja. Auch Websites, die Sie selbst gebaut haben, zum Beispiel per Vibe-Coding mit KI oder im Baukasten, betreue ich im Retainer weiter: Texte und Bilder austauschen, neue Unterseiten, laufende Optimierung. Vorher sehe ich mir die Website im kostenlosen Website-Check an."
+    "Betreust du auch selbst gebaute Websites?",
+    "Ja. Auch Websites, die du selbst gebaut hast, zum Beispiel per Vibe-Coding mit KI oder im Baukasten, betreue ich im Retainer weiter: Texte und Bilder austauschen, neue Unterseiten, laufende Optimierung. Vorher sehe ich mir die Website im kostenlosen Website-Check an."
    ],
    [
     "Was ist ein Retainer?",
-    "Ein Retainer ist bei STUDIO AAH! die betreute Weiterentwicklung Ihrer Website: Texte und Bilder austauschen, neue Unterseiten erstellen und Abschnitte bearbeiten, damit Ihre Website mit Ihrem Unternehmen wächst."
+    "Ein Retainer ist bei STUDIO AAH! die betreute Weiterentwicklung deiner Website: Texte und Bilder austauschen, neue Unterseiten erstellen und Abschnitte bearbeiten, damit deine Website mit deinem Unternehmen wächst."
    ],
    [
     "Was ist der Unterschied zwischen Wartung und Retainer?",
-    "Die Wartung bei STUDIO AAH! ist die rein technische Pflege Ihrer WordPress-Website ab 45 € im Monat netto: Updates von WordPress, Plugins und Themes, technische Überwachung und Sicherheitschecks. Der Retainer ist die betreute Weiterentwicklung Ihrer Website für 50–85 € netto pro Stunde, je nach Unternehmensgröße: Texte und Bilder austauschen, neue Unterseiten erstellen, Abschnitte bearbeiten."
+    "Die Wartung bei STUDIO AAH! ist die rein technische Pflege deiner WordPress-Website ab 45 € im Monat netto: Updates von WordPress, Plugins und Themes, technische Überwachung und Sicherheitschecks. Der Retainer ist die betreute Weiterentwicklung deiner Website für 50–85 € netto pro Stunde, je nach Unternehmensgröße: Texte und Bilder austauschen, neue Unterseiten erstellen, Abschnitte bearbeiten."
    ],
    [
     "Sind spätere Textänderungen in meinem Website-Paket enthalten?",
-    "Nein. Bei STUDIO AAH! werden Texte einmal für die ganze Website geliefert. Spätere Text- und Inhaltsänderungen setzen Sie selbst in WordPress (Kadence) um, oder STUDIO AAH! übernimmt sie nach Aufwand mit 50–85 € netto pro Stunde, je nach Unternehmensgröße."
+    "Nein. Bei STUDIO AAH! werden Texte einmal für die ganze Website geliefert. Spätere Text- und Inhaltsänderungen setzt du selbst in WordPress (Kadence) um, oder STUDIO AAH! übernimmt sie nach Aufwand mit 50–85 € netto pro Stunde, je nach Unternehmensgröße."
    ],
    [
     "Kann ich meine Website auch selbst pflegen?",
@@ -1049,7 +1049,7 @@
    ],
    [
     "Wie starte ich einen Retainer mit STUDIO AAH!?",
-    "Sie melden sich über die Kontaktseite von STUDIO AAH! oder per E-Mail. Im kostenlosen Erstgespräch klären wir Ist-Stand, Ziele und Bedarf Ihrer Website."
+    "Du meldest dich über die Kontaktseite von STUDIO AAH! oder per E-Mail. Im kostenlosen Erstgespräch klären wir Ist-Stand, Ziele und Bedarf deiner Website."
    ]
   ],
   "paket_extra": {
@@ -1058,8 +1058,8 @@
    "stundeBis": 85,
    "ohneZusatz": true
   },
-  "termine": "Alle zwei Wochen bis einmal im Monat einen Abstimmungstermin, online über Google Meet oder Teams, je nachdem, was Sie brauchen.",
-  "loesung_text": "Mit dem Retainer entwickle ich Ihre Website nach dem Start weiter. Abgerechnet wird nach Aufwand, 50–85 € netto pro Stunde, je nach Unternehmensgröße. Der Retainer ist keine Wartung: Die Wartung ist die rein technische Pflege.",
+  "termine": "Alle zwei Wochen bis einmal im Monat einen Abstimmungstermin, online über Google Meet oder Teams, je nachdem, was du brauchst.",
+  "loesung_text": "Mit dem Retainer entwickle ich deine Website nach dem Start weiter. Abgerechnet wird nach Aufwand, 50–85 € netto pro Stunde, je nach Unternehmensgröße. Der Retainer ist keine Wartung: Die Wartung ist die rein technische Pflege.",
   "loesung_punkte": [
    "Texte und Bilder austauschen",
    "Neue Unterseiten erstellen",
@@ -1067,7 +1067,7 @@
   ],
   "herz": true,
   "gewinn": [
-   "Ihre Website bleibt aktuell, ohne dass Sie sich darum kümmern müssen.",
+   "Deine Website bleibt aktuell, ohne dass du dich darum kümmern musst.",
    "Eine feste Ansprechpartnerin für alle Änderungen.",
    "Abrechnung nach Aufwand, 50 bis 85 € netto je Stunde, je nach Unternehmensgröße."
   ],
