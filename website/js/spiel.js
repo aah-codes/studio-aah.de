@@ -32,10 +32,10 @@
     { art: 'funkstille', name: 'Funkstille', b: 40, h: 46, lohn: 'kunden', menge: 1, text: '+1 Kunde', sag: ['Funkstille geknackt. Ein neuer Kunde ruft an.', 'Ring, ring. Da ist ein neuer Kunde.'] },
     { art: 'unsichtbar', name: 'Unsichtbar', b: 44, h: 40, lohn: 'reichweite', menge: 250, text: '+250 Reichweite', sag: ['Augen auf. Plötzlich schauen zweihundertfünfzig Leute hin.', 'Sichtbar! Mehr Reichweite.'] },
     { art: 'toolchaos', name: 'Tool-Chaos', b: 40, h: 40, lohn: 'zeit', menge: 2, text: '+2 Stunden', sag: ['Tool-Chaos aufgeräumt. Zwei Stunden gespart.', 'Ordnung im Werkzeugkasten. Zwei Stunden mehr.'] },
-    { art: 'zeitfresser', name: 'Zeitfresser', b: 48, h: 44, lohn: 'zeit', menge: 3, text: '+3 Stunden', sag: ['Zeitfresser satt. Drei Stunden zurück.', 'Erwischt! Der frisst Ihnen keine Zeit mehr.'] },
+    { art: 'zeitfresser', name: 'Zeitfresser', b: 48, h: 44, lohn: 'zeit', menge: 3, text: '+3 Stunden', sag: ['Zeitfresser satt. Drei Stunden zurück.', 'Erwischt! Der frisst dir keine Zeit mehr.'] },
     { art: 'ebbe', name: 'Ebbe in der Kasse', b: 44, h: 38, lohn: 'euro', menge: 500, text: '+500 €', sag: ['Ebbe vorbei. Fünfhundert Euro in der Kasse.', 'Kling, kling. Die Kasse füllt sich.'] },
     // Der Wettbewerb rennt Ihnen entgegen: draufspringen hält den Kunden (Stammkunde), drüberspringen lässt ihn einen Kunden wegschnappen
-    { art: 'konkurrenz', name: 'Wettbewerb', b: 34, h: 62, lohn: 'stammkunden', menge: 1, text: '+1 Stammkunde', sag: ['Wettbewerb abgehängt. Ihr Kunde bleibt Ihnen treu.', 'Vorbeigezogen. Ein Stammkunde mehr.'] }];
+    { art: 'konkurrenz', name: 'Wettbewerb', b: 34, h: 62, lohn: 'stammkunden', menge: 1, text: '+1 Stammkunde', sag: ['Wettbewerb abgehängt. Dein Kunde bleibt dir treu.', 'Vorbeigezogen. Ein Stammkunde mehr.'] }];
   // ---------- Stimme ----------
   // Spricht nur bei eingeschaltetem Ton und nur mit einer Stimme, die auf dem Gerät liegt (localService), damit kein Text an fremde Server geht
   var stimme = null;
@@ -356,10 +356,10 @@
   function starten() { s.lauf = true; modus = 'spiel'; karte(''); pauseAnzeige(); }
   function treffer() {
     if (s.f.blink > 0) return;
-    if (s.gross) { s.gross = false; s.f.blink = 90; ton(TON.schrumpfen); blase('OHO!', s.f.x, s.f.y - 140); sprich(eins(['Puh. Die Fachkraft hat das abgefangen.', 'Glück gehabt: Ihr Team hat den Treffer weggesteckt.']), true); return; }
+    if (s.gross) { s.gross = false; s.f.blink = 90; ton(TON.schrumpfen); blase('OHO!', s.f.x, s.f.y - 140); sprich(eins(['Puh. Die Fachkraft hat das abgefangen.', 'Glück gehabt: dein Team hat den Treffer weggesteckt.']), true); return; }
     s.leben--; s.f.blink = 100;
     if (s.leben > 0) { ton(TON.autsch); blase('OHO!', s.f.x, s.f.y - 110); sprich(eins(['Autsch, erwischt.', 'Uff, das tat weh.', 'Oha, voll reingelaufen.']) + ' Noch ' + LEBEN_WORT[s.leben] + '.', true); return; }
-    s.aus = true; ton(TON.ende); blase('OHO!', s.f.x, s.f.y - 110); sprich('Game over. Aber in Ihnen steckt noch mehr.', true); bilanz();
+    s.aus = true; ton(TON.ende); blase('OHO!', s.f.x, s.f.y - 110); sprich('Game over. Aber in dir steckt noch mehr.', true); bilanz();
   }
   function bilanz() {   // Ende: nur Botschaft und Play again; die Zahlen stehen oben rechts im Spiel
     bilanzBox.hidden = false; pauseAnzeige();
@@ -377,7 +377,7 @@
     sprich(eins(['Chance ergriffen: ', 'Zugegriffen: ', 'Rein damit: ']) + b.l.name.replace('&', 'und').replace('UI/UX', 'U I und U X') + '.');
   }
   // Eine Zeile Lob je neuem Jahr (Anna 12.11.2026), darunter hervorgehoben die Spielregel
-  var LOB = ['Sie haben Ihre Chancen ergriffen.', 'Sie haben alles gegeben.', 'Sie bleiben dran.', 'Läuft bei Ihnen.', 'Sie wachsen weiter.'];
+  var LOB = ['Du hast deine Chancen ergriffen.', 'Du hast alles gegeben.', 'Du bleibst dran.', 'Läuft bei dir.', 'Du wächst weiter.'];
   // Die Spielregeln, eine je Geschäftsjahr
   var REGELN = ['Regel 1: Wer nicht gesehen wird, verliert.', 'Regel 2: Wer alles allein macht, verliert Zeit.',
     'Regel 3: Wer gute Leute hält, gewinnt auf Dauer.', 'Regel 4: Der Wettbewerb schläft nicht.', 'Regel 5: Treue Kunden sind mehr wert als neue.'];
@@ -388,7 +388,7 @@
     var jahr = START_JAHR - 1 + s.level, regel = REGELN[(s.level - 2) % REGELN.length], lob = LOB[(s.level - 2) % LOB.length];
     s.pause = true; pauseAnzeige();
     karte('Willkommen in ' + jahr + '!', lob, 'Geschäftsjahr ' + (jahr - 1) + ' geschafft', 'Weiter', regel);
-    sprich(eins(['Stark!', 'Sauber!', 'Na bitte!']) + ' Sie haben Marke, U X, Website, Vertrieb und KI angepackt und sich eine Partnerin dazugeholt. Willkommen im Geschäftsjahr ' + jahr + '. ' + regel, true);
+    sprich(eins(['Stark!', 'Sauber!', 'Na bitte!']) + ' Du hast Marke, U X, Website, Vertrieb und KI angepackt und dir eine Partnerin dazugeholt. Willkommen im Geschäftsjahr ' + jahr + '. ' + regel, true);
     s.naechstG = Math.max(s.naechstG, 190); s.gegner = s.gegner.filter(function (g) { return g.x < s.f.x; });
     if (!s.demo) document.dispatchEvent(new Event('konfetti'));
   }
@@ -455,7 +455,7 @@
     s.gegner.forEach(function (g) {   // Wettbewerb ist vorbei, ohne dass man ihn überholt hat: ein Kunde ist weg
       if (g.art === 'konkurrenz' && !g.platt && !g.vorbei && g.x + g.b < s.f.x - 40) {
         g.vorbei = true;
-        if (s.punkte.kunden > 0 && !s.demo) { s.punkte.kunden--; blase('OHO!', s.f.x - 60, BODEN - 120); ton(TON.schrumpfen); sprich(eins(['Mist. Der Wettbewerb hat Ihnen einen Kunden geschnappt.', 'Zu langsam. Ein Kunde ist zum Wettbewerb gewechselt.'])); }
+        if (s.punkte.kunden > 0 && !s.demo) { s.punkte.kunden--; blase('OHO!', s.f.x - 60, BODEN - 120); ton(TON.schrumpfen); sprich(eins(['Mist. Der Wettbewerb hat dir einen Kunden geschnappt.', 'Zu langsam. Ein Kunde ist zum Wettbewerb gewechselt.'])); }
       }
     });
     s.gegner = s.gegner.filter(function (g) { return g.x > -70 && g.platt < 1.4; });
@@ -468,7 +468,7 @@
       if (Math.abs(kr.x - s.f.x) < 28 && Math.abs((BODEN - kr.sprung) - s.f.y) < 60) {
         s.kraft = null; s.bekannt.kraft = true; s.naechstK = 900; s.punkte.fachkraefte++;
         if (!s.gross) { s.gross = true; ton(TON.wachsen); } else ton(TON.sammeln);
-        blase('AAH!', s.f.x + 60, s.f.y - 150); funken(s.f.x, s.f.y - 60, 20); sprich(eins(['Fachkraft an Bord. Ihr Team wird stärker.', 'Gute Leute gefunden. Die bleiben.']), true);
+        blase('AAH!', s.f.x + 60, s.f.y - 150); funken(s.f.x, s.f.y - 60, 20); sprich(eins(['Fachkraft an Bord. Dein Team wird stärker.', 'Gute Leute gefunden. Die bleiben.']), true);
       } else if (kr.x < -40) { s.kraft = null; s.naechstK = 450; }
     }
     s.funken.forEach(function (p) { p.x += p.vx; p.y += p.vy; p.vy += .35; p.l--; }); s.funken = s.funken.filter(function (p) { return p.l > 0; });
@@ -480,9 +480,9 @@
   // Startet erst auf „Spielen“ (Anna 12.11.2026). Feste Abfolge: jedes Element erscheint zu seinem Schritt in der Card,
   // die Figur springt allein, auch einmal von unten gegen einen schwarzen Block. Danach steht alles still, bis man spielt.
   var SCHRITTE = [[0, 'Springen', 'Mit der Leertaste, dem Pfeil nach oben oder per Tippen.'],
-    [220, 'Probleme platt machen', 'Springen Sie auf die Probleme und den Wettbewerb. Dann werden sie zu Kunden, Reichweite, Zeit und Geld.'],
-    [470, 'Chancen ergreifen', 'Stoßen Sie die schwarzen Blöcke von unten an. Darin stecken die fünf Lösungen.'],
-    [720, 'Fachkraft fangen', 'Die gelbe Fachkraft macht Ihr Team stärker. Alle fünf Lösungen gefunden: ein neues Geschäftsjahr beginnt. Sie haben drei Leben.']];
+    [220, 'Probleme platt machen', 'Spring auf die Probleme und den Wettbewerb. Dann werden sie zu Kunden, Reichweite, Zeit und Geld.'],
+    [470, 'Chancen ergreifen', 'Stoß die schwarzen Blöcke von unten an. Darin stecken die fünf Lösungen.'],
+    [720, 'Fachkraft fangen', 'Die gelbe Fachkraft macht dein Team stärker. Alle fünf Lösungen gefunden: ein neues Geschäftsjahr beginnt. Du hast drei Leben.']];
   var INTRO_ENDE = 960;
   function problem(art) {
     var v = PROBLEME.filter(function (x) { return x.art === art; })[0];
@@ -508,7 +508,7 @@
     neu(true); s.lauf = false; modus = 'still'; s.f.x = W * .5; s.weg = 600;   // Stadt etwas weiter, damit das Auto nicht vor der Figur steht
     s.bloecke.push({ x: W * .64, y: BODEN - 170, l: LEISTUNGEN[0], i: 0, stoss: 0 });
     problem('unsichtbar'); s.gegner[0].x = W * .78; s.gegner[0].zeigName = false;
-    karte('Wie weit kommt Ihr Unternehmen?', '', '', 'Spielen');
+    karte('Wie weit kommt dein Unternehmen?', '', '', 'Spielen');
   }
 
   var letzte = 0;
