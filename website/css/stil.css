@@ -4996,8 +4996,8 @@ body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp)
 .v-raeume .fuss-pointe { background: var(--farbe-primaer); color: var(--bb-gelb); text-shadow: .03em .025em 0 var(--bb-pink); }
 .v-raeume .sticker { mix-blend-mode: multiply; }
 /* Gezeichnete Sticker (Anna 20.11.2026), freigestellt mit weißem Rand; in „Räume“ statt Herz und Uff-Blase, wackeln leicht */
-.v-raeume .st-stimmen { content: url(../bilder/sticker/fleur-vogel.svg?v=20261122r); mix-blend-mode: normal; animation: st-wackeln 3.2s ease-in-out infinite; }
-.v-raeume .st-faq { content: url(../bilder/sticker/fleur-zaehne.svg?v=20261122r); mix-blend-mode: normal; animation: st-wackeln 2.6s ease-in-out infinite; }
+.v-raeume .st-stimmen { content: url(../bilder/sticker/fleur-vogel.svg?v=20261122u); mix-blend-mode: normal; animation: st-wackeln 3.2s ease-in-out infinite; }
+.v-raeume .st-faq { content: url(../bilder/sticker/fleur-zaehne.svg?v=20261122u); mix-blend-mode: normal; animation: st-wackeln 2.6s ease-in-out infinite; }
 @keyframes st-wackeln { 0%, 100% { rotate: -6deg; } 50% { rotate: 6deg; translate: 0 -6px; } }
 @media (prefers-reduced-motion: reduce) { .v-raeume .st-stimmen, .v-raeume .st-faq { animation: none; } }
 /* =========================================================
@@ -5397,9 +5397,13 @@ body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp)
 }
 /* „Aus Besuch wird Anfrage“ und Call-to-Action als ein Abschnitt am Ende der Startseite (Anna 21.11.2026) */
 .intro-ziel { padding-bottom: 160px; }
-.intro-cta { margin-top: 40px; padding-top: 32px; border-top: 2px solid var(--farbe-dunkel); }
-.intro-cta-satz { font-size: var(--groesse-4); line-height: 1.45; margin: 0 0 20px; }
-.intro-cta > p:last-child { margin: 20px 0 0; line-height: 1.6; }
+.intro-cta { margin-top: 40px; }
+.intro-cta > p { margin: 0; }
+.intro-cta > .intro-cta-satz { margin-top: 14px; font-size: var(--groesse-2); color: var(--farbe-gedaempft); }
+.intro-cta > .intro-cta-notiz { margin-top: 36px; font: 400 clamp(20px, 1.8vw, 24px)/1.2 var(--schrift-hand), "Architects Daughter", cursive; color: var(--bb-rot); rotate: -2deg; width: max-content; }
+.intro-cta-wege { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px 28px; }
+.intro-cta-wege a { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; color: var(--farbe-dunkel); text-decoration: none; }
+.intro-cta-wege a:hover, .intro-cta-wege a:focus-visible { text-decoration: underline; text-underline-offset: 4px; }
 .roter-faden.angekommen ~ .intro-ziel .weg-ziel-knopf { transform: scale(1.06); box-shadow: 0 0 0 8px rgba(14, 16, 17, .08); }
 /* Etiketten ohne Icons (Anna 21.11.2026: „die Icons raus“) */
 .intro-neu .om-chip { padding: 7px 16px; }
@@ -5427,3 +5431,5 @@ body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp)
 .start-leistungen h2 .korrektur { margin-bottom: .45em; }
 @media (max-width: 399.98px) { .start-leistungen h2.gr-xxl { font-size: 58px; } }   /* „Leistungen“ in Annas Schrift passt sonst bei 320 px nicht */
 .korrektur .notiz-durch::after { left: -1%; right: -1%; }
+.intro-ziel .wz-zeile { display: block; }
+.intro-cta-wege svg { flex: none; color: var(--farbe-dunkel); opacity: 1; stroke-width: 2; }
