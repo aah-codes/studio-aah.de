@@ -29,6 +29,18 @@
   --bb-pink: #ff4fa3;   /* UI/UX – Halbkreis */
   --bb-rosa: #ff8fc8;   /* Marketing & Vertrieb – Halbkreis */
   --bb-gelb: #ffe600;   /* KI & Digitalisierung – Dreieck */
+  /* Wandfarben aus Stil B „Räume“, seit 20.11.2026 Teil der Marke (Anna: „Ja, voll in die Marke“). Kontrast: Petrol mit Weiß 8,0 : 1 (Schwarz nur 2,4),
+     Mint 12,2, Puderblau 14,9, Zartrosa 12,8 mit Schwarz (Weiß nie), Orange mit Schwarz 6,2 (Weiß nur 3,1 – nur große Schrift) */
+  --bb-petrol: #145a5a;
+  --bb-mint: #9fdcc0;
+  --bb-puder: #d0e6fd;
+  --bb-orange: #ee6c29;
+  --bb-zartrosa: #f9c6d6;
+  /* Stil B „Uff rein. Aah raus.“ (Anna 20.11.2026, Brutalismus und Maximalismus, zuerst nur Startseite: body.stil-b).
+     Farbtafel vom 06.11. als Flächen; Schrift auf Neon immer Schwarz (Pink 6,3 : 1, Gelb 17 : 1, Rot 5,4 : 1), kein blauer Text, kein Blau auf Schwarz. */
+  --b-kontur: 3px solid var(--farbe-dunkel);
+  --b-schatten: 6px 6px 0 var(--farbe-dunkel);
+  --b-schatten-gross: 10px 10px 0 var(--farbe-dunkel);
   --farbe-primaer-dunkel: #1f4cc4;
   /* Schleier über dunklen, blau eingefärbten Fotos (Landingpage Marken-Regelwerk, 07.11.2026) */
   --schleier-stark: rgba(6, 7, 10, .9);
@@ -78,6 +90,16 @@
    Alle: SIL Open Font License, Version 1.1 – https://openfontlicense.org
    Dateien: Teilmengen latin und latin-ext (Fontsource), unverändert.
    --------------------------------------------------------------------- */
+/* Schriften Stil B „Räume“ (Anna 20.11.2026, alle SIL OFL 1.1, Fontsource 5.1.0): Überschriften Inter Tight, Fließtext Instrument Sans, Dachzeilen Instrument Serif */
+@font-face { font-family: "Architects Daughter"; font-weight: 400; font-display: swap; src: url(../schriften/architects-daughter-latin-400-normal.woff2) format("woff2"); }   /* Platzhalter für Annas eigene Handschrift-Schrift (SIL OFL) */
+@font-face { font-family: "Inter Tight"; font-weight: 100 900; font-display: swap; src: url(../schriften/inter-tight-latin-wght-normal.woff2) format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Inter Tight"; font-weight: 100 900; font-display: swap; src: url(../schriften/inter-tight-latin-ext-wght-normal.woff2) format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Instrument Sans"; font-weight: 400 700; font-display: swap; src: url(../schriften/instrument-sans-latin-wght-normal.woff2) format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Instrument Sans"; font-weight: 400 700; font-display: swap; src: url(../schriften/instrument-sans-latin-ext-wght-normal.woff2) format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Instrument Serif"; font-weight: 400; font-display: swap; src: url(../schriften/instrument-serif-latin-400-normal.woff2) format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Instrument Serif"; font-weight: 400; font-display: swap; src: url(../schriften/instrument-serif-latin-ext-400-normal.woff2) format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Instrument Serif"; font-style: italic; font-weight: 400; font-display: swap; src: url(../schriften/instrument-serif-latin-400-italic.woff2) format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
 @font-face {
   font-family: "Anton";
   font-style: normal;
@@ -4640,6 +4662,166 @@ img.ist-illustration { object-fit: contain !important; background: var(--farbe-w
 @media (min-width: 900.02px) { .preis-cta-kostenlos:has(.ist-illustration) { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); } }
 .programm-bild img.ist-illustration { height: auto; max-height: none; aspect-ratio: 4 / 3; }
 
+
+/* =========================================================
+   Stil B „Uff rein. Aah raus.“ – Startseite (Anna 20.11.2026)
+   Papier A als Grund (Kachel 1 KB), Papier B/C nur als Hintergrund einzelner Sections; alles, was auf dem Papier liegt
+   (Farbflächen, Karten, Buttons, Sticker), ist voll gefüllt ohne Körnung.
+   ========================================================= */
+body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp) repeat; background-size: 256px; }
+.stil-b main > section { position: relative; }
+.stil-b .meta::before { background: var(--farbe-dunkel) !important; }
+.stil-b .textlink { color: var(--farbe-dunkel); }
+.stil-b .button { background: var(--farbe-dunkel); border-color: var(--farbe-dunkel); color: var(--farbe-weiss); box-shadow: 4px 4px 0 var(--bb-pink); }
+.stil-b .button:hover { background: var(--bb-gelb); color: var(--farbe-dunkel); }
+.stil-b .button-zweit { background: var(--farbe-weiss); color: var(--farbe-dunkel); border: var(--b-kontur); box-shadow: var(--b-schatten); }
+.stil-b .button-zweit:hover { background: var(--bb-gelb); }
+.stil-b .button:active, .stil-b .button-zweit:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--farbe-dunkel); }
+
+/* Kopf: blaue Fläche mit harter Kontur und Schatten (Blau nur als Fläche, Text weiß) */
+.stil-b .hl-panel { border: var(--b-kontur); box-shadow: var(--b-schatten-gross); }
+.stil-b .hl-bild { border: var(--b-kontur); border-radius: var(--radius-karte); overflow: hidden; box-shadow: var(--b-schatten-gross); }
+
+/* Sticker: Dekoration, gedreht, ragen über Kanten */
+.sticker { position: absolute; width: clamp(96px, 11vw, 168px); height: auto; pointer-events: none; z-index: 2; }
+.st-intro { right: calc(var(--rand-seite) - 12px); top: -40px; transform: rotate(8deg); }
+.st-fokus { right: var(--rand-seite); top: 8px; transform: rotate(-10deg); }
+.st-projekte { right: var(--rand-seite); top: 0; transform: rotate(12deg); }
+.st-stimmen { position: static; display: block; margin: 0 auto -12px; transform: rotate(-8deg); }
+.st-faq { left: var(--rand-seite); top: -30px; transform: rotate(-12deg); }
+.st-weg { right: 12%; top: 24px; transform: rotate(14deg); }
+@media (max-width: 767.98px) {
+  .sticker { width: 84px; }
+  .st-intro { top: -28px; }
+  .st-fokus, .st-projekte { top: -6px; }
+  .st-weg { right: 4%; top: -20px; }
+}
+
+/* Aah-Band unter dem Kopf: Neongelb, Figur, Uff-Auswahl, roter Button */
+.aah { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr); gap: 32px; align-items: center;
+  margin: 0 var(--rand-seite) 96px; padding: clamp(24px, 4vw, 56px); background: var(--bb-gelb); color: var(--farbe-dunkel);
+  border: var(--b-kontur); border-radius: var(--radius-karte); box-shadow: var(--b-schatten-gross); }
+.aah-figur { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.aah-a { width: min(260px, 100%); height: auto; }
+.aah-hupf { animation: aah-hupf .6s ease-out 1; }
+@keyframes aah-hupf { 0% { transform: scale(1); } 40% { transform: scale(1.12) rotate(-4deg); } 100% { transform: scale(1); } }
+.aah-ton, .aah-uff, .aah-nope { font: inherit; cursor: pointer; color: var(--farbe-dunkel); border: var(--b-kontur); border-radius: var(--radius-pille); }
+.aah-ton { background: var(--farbe-weiss); font-weight: 700; font-size: var(--groesse-2); padding: 10px 18px; box-shadow: 4px 4px 0 var(--farbe-dunkel); }
+.aah-titel { font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-weight: 400; font-size: var(--groesse-7); line-height: 1.2; margin: 0 0 20px; }
+.aah-feld { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin: 0 0 16px; font-weight: 700; }
+.aah-feld[hidden], .aah-nicht[hidden], .aah-ton[hidden] { display: none; }
+.aah-feld input { font: inherit; font-size: 16px; /* mindestens 16 px gegen Zoom am iPhone */ padding: 10px 18px; width: min(280px, 100%);
+  border: var(--b-kontur); border-radius: var(--radius-pille); background: var(--farbe-weiss); color: var(--farbe-dunkel); }
+.aah-gruss { margin: 0 0 12px; font-weight: 600; }
+.aah-uffs { list-style: none; margin: 0 0 16px; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.aah-uffs a { display: inline-block; color: var(--farbe-dunkel); font-weight: 700; }
+.aah-uff { background: var(--farbe-weiss); font-weight: 700; font-size: var(--groesse-2); padding: 10px 18px; text-align: left; box-shadow: 4px 4px 0 var(--farbe-dunkel); }
+.aah-uff:hover, .aah-uff[aria-pressed="true"] { background: var(--bb-pink); }
+.aah-uff:active, .aah-ton:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--farbe-dunkel); }
+.aah-blase { background: var(--farbe-weiss); border: var(--b-kontur); border-radius: var(--radius-karte); padding: 20px 24px; margin: 0 0 16px; }
+.aah-blase p { margin: 0 0 10px; }
+.aah-blase-kurz { font-weight: 800; }
+.aah-blase-links { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin: 6px 0 0 !important; }
+.aah-test { margin: 0; }
+.aah-nicht { display: flex; justify-content: center; }
+.aah-nope { background: var(--bb-rot); font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-size: var(--groesse-4); letter-spacing: .02em;
+  padding: 22px 30px; border-width: 4px; box-shadow: var(--b-schatten); transition: transform .1s, box-shadow .1s; }
+.aah-nope:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--farbe-dunkel); }
+.aah-nope:active { transform: translate(4px, 4px); box-shadow: 2px 2px 0 var(--farbe-dunkel); }
+.aah :focus-visible, .aah-dialog :focus-visible { outline: 4px solid var(--farbe-dunkel); outline-offset: 3px; }
+@media (max-width: 1024px) {
+  .aah { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
+  .aah-nicht { grid-column: 1 / -1; }
+}
+@media (max-width: 767.98px) {
+  .aah { grid-template-columns: minmax(0, 1fr); gap: 24px; margin-bottom: 72px; padding: 24px 20px; }
+  .aah-figur { flex-direction: row; justify-content: flex-start; }
+  .aah-a { width: 140px; }
+}
+
+/* Dialog „Bitte nicht drücken“ (Farbe je Prinzip) */
+.aah-dialog { position: fixed; max-width: 640px; width: calc(100% - 32px); padding: 32px 28px 24px; text-align: center; color: var(--farbe-dunkel);
+  border: 4px solid var(--farbe-dunkel); border-radius: var(--radius-karte); box-shadow: 14px 14px 0 var(--farbe-dunkel); background: var(--bb-rot); }
+.aah-dialog.aah-d-1 { background: var(--bb-gelb); }
+.aah-dialog.aah-d-2 { background: var(--bb-pink); }
+.aah-dialog::backdrop { background: rgba(14, 16, 17, .82); }
+.aah-d-bild { width: 120px; height: auto; display: block; margin: -8px auto 4px; }
+.aah-d-titel { font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-weight: 400; font-size: var(--groesse-5); line-height: 1.2; margin: 0 0 8px; }
+.aah-d-warum { font-family: var(--schrift-ueberschrift); font-size: var(--groesse-5); letter-spacing: .06em; margin: 8px 0; }
+.aah-dialog p { margin: 0 0 12px; }
+.aah-d-mehr a { display: inline-block; background: var(--farbe-dunkel); color: var(--farbe-weiss); font-weight: 700; padding: 14px 24px; border-radius: var(--radius-pille); text-decoration: underline; }
+.aah-d-quelle { font-size: var(--groesse-1); margin-top: 12px !important; }
+.aah-d-zu { position: absolute; right: 14px; top: 12px; width: 44px; height: 44px; border-radius: 50%; border: var(--b-kontur); background: var(--farbe-weiss); color: var(--farbe-dunkel); font-size: 20px; cursor: pointer; }
+
+/* Feste Angebote: Karten mit Kontur und hartem Schatten */
+.stil-b .fokus-karte { border: var(--b-kontur); box-shadow: var(--b-schatten); background: var(--farbe-weiss); }
+.stil-b .fokus-karte:hover { box-shadow: var(--b-schatten-gross); transform: translate(-2px, -2px); }
+
+/* Leistungen als nummerierte Blöcke (Folgerung 17): große schwarze Fläche, Nummern in Gelb, kein Blau */
+.stil-b .start-leistungen { background: var(--farbe-dunkel); color: var(--farbe-weiss); padding-top: 96px; padding-bottom: 96px; }
+.stil-b .start-leistungen .meta { color: var(--farbe-gedaempft-invers); }
+.stil-b .start-leistungen .meta::before { background: var(--bb-gelb) !important; }
+.lb-liste-aussen { list-style: none; margin: 0 var(--rand-seite); padding: 0; }
+.lb { display: grid; grid-template-columns: 120px minmax(0, 1.2fr) minmax(0, 1fr); gap: 8px 40px; align-items: start; padding: 40px 0; border-top: 3px solid var(--farbe-weiss); position: relative; }
+.lb:last-child { border-bottom: 3px solid var(--farbe-weiss); }
+.lb-nr { font-family: var(--schrift-ueberschrift); font-size: var(--groesse-7); line-height: 1; color: var(--bb-gelb); }
+.lb-name { grid-column: 2; margin: 0; font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-weight: 400; font-size: var(--groesse-7); line-height: 1.15; }
+.lb-name a { color: var(--farbe-weiss); text-decoration: none; }
+.lb-name a::after { content: ""; position: absolute; inset: 0; }   /* ganzer Block klickbar */
+.lb:hover .lb-name a, .lb-name a:focus-visible { color: var(--bb-gelb); }
+.lb-name a:focus-visible { outline: 3px solid var(--bb-gelb); outline-offset: 4px; }
+.lb-satz { grid-column: 2; margin: 8px 0 0; font-size: var(--groesse-4); font-weight: 700; max-width: 34ch; }
+.lb-liste { grid-column: 3; grid-row: 1 / span 3; margin: 0; padding-left: 20px; }
+.lb-liste li { margin-bottom: 8px; }
+.lb-mehr { grid-column: 3; margin: 8px 0 0; }
+.lb-link { color: var(--bb-gelb); font-weight: 700; text-decoration: none; }
+.lb-brand .lb-nr { color: var(--bb-pink); }
+.lb-ki .lb-nr { color: var(--bb-rosa); }
+@media (max-width: 900px) {
+  .lb { grid-template-columns: 72px minmax(0, 1fr); }
+  .lb-liste, .lb-mehr { grid-column: 2; grid-row: auto; }
+}
+@media (max-width: 599.98px) {
+  .lb { grid-template-columns: minmax(0, 1fr); padding: 28px 0; }
+  .lb-name, .lb-satz, .lb-liste, .lb-mehr { grid-column: 1; }
+}
+
+/* Projekte als Liste mit einem Satz je Projekt (Folgerung 16), Papier B */
+.stil-b .start-projektliste { background: url(../bilder/papier/papier-b.webp) repeat; background-size: 256px; padding-top: 96px; padding-bottom: 96px; }
+.stil-b .pliste { border-top: var(--b-kontur); }
+.stil-b .pliste-zeile { border-bottom: var(--b-kontur); transition: background .15s; }
+.stil-b .pliste-zeile:hover, .stil-b .pliste-zeile:focus-visible { background: var(--bb-rosa); }
+.stil-b .pliste-kunde { font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-size: var(--groesse-5); line-height: 1.2; color: var(--farbe-dunkel); }
+.stil-b .pliste-titel { font-weight: 700; }
+.stil-b .pliste-bild { border: var(--b-kontur); }
+
+/* Kundenstimmen als Karten (Folgerung 15): Rosa-Fläche, weiße Karten mit Kontur */
+.stil-b section[aria-labelledby="stimmen"] { background: var(--bb-rosa); padding-top: 96px; padding-bottom: 96px; }
+.stil-b section[aria-labelledby="stimmen"] .meta { color: var(--farbe-dunkel); }
+.stil-b .stimme { background: var(--farbe-weiss) !important; border: var(--b-kontur); box-shadow: var(--b-schatten); }
+.stil-b .stimme .gedaempft { color: var(--farbe-dunkel); }
+
+/* LinkedIn und Branchen: Karten mit Kontur */
+.stil-b .li-karte, .stil-b .br-kachel { border: var(--b-kontur); box-shadow: var(--b-schatten); }
+
+/* Häufige Fragen: Papier C (Packpapier, selten) */
+.stil-b .faq.ehrlich { background: url(../bilder/papier/papier-c.webp) repeat; background-size: 256px; padding-top: 112px; padding-bottom: 96px; }
+.stil-b .faq.ehrlich .meta, .stil-b .faq.ehrlich .faq-eintrag { color: var(--farbe-dunkel); }
+
+/* Nächster Schritt: Pink-Fläche */
+.stil-b .weg-ziel { background: var(--bb-pink); border-top: var(--b-kontur); }
+.stil-b .weg-ziel .meta, .stil-b .weg-ziel .alt-klein, .stil-b .weg-ziel a:not(.button) { color: var(--farbe-dunkel); }
+
+/* Fußzeile als Pointe (Folgerung 8): Satz über die ganze Breite, je Seite anders */
+.fuss-pointe { margin: 0; padding: 32px var(--rand-seite) 24px; background: var(--bb-gelb); border-top: var(--b-kontur); color: var(--farbe-dunkel);
+  font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-size: 11.5vw; /* füllt die Breite */ line-height: 1.15; white-space: nowrap; overflow: hidden; }
+@media (max-width: 599.98px) { .fuss-pointe { white-space: normal; font-size: 19vw; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .aah-hupf { animation: none; }
+  .aah-nope, .stil-b .fokus-karte { transition: none; }
+}
+
 /* ---------- Daumen-Rückmeldung unter Selbsttest und Rechnern (Anna 20.11.2026, Vorbild Gelbe Seiten) ---------- */
 .daumen { margin: 2.5rem auto 0; padding-top: 1.5rem; border-top: 1px solid var(--farbe-grau-hell); display: grid; justify-items: center; gap: .75rem; max-width: 36rem; text-align: center; }
 .daumen[hidden] { display: none; }
@@ -4659,3 +4841,445 @@ img.ist-illustration { object-fit: contain !important; background: var(--farbe-w
 .daumen-form textarea { font: inherit; border: 1.5px solid var(--farbe-gedaempft); border-radius: var(--radius-karte); padding: 10px 12px; background: var(--farbe-weiss); color: var(--farbe-dunkel); resize: vertical; width: 100%; box-sizing: border-box; }
 .daumen-form textarea:focus-visible { outline: 2px solid var(--farbe-primaer); outline-offset: 1px; border-color: var(--farbe-primaer); }
 @media (prefers-reduced-motion: reduce) { .daumen-knoepfe button { transition: none; } }
+
+
+/* Projekte der Startseite (Anna 20.11.2026, Vorbild callmelord.com/work): Umschalter Liste/Raster ohne JavaScript (Radio + :has),
+   Liste mit aufklappendem Bildstreifen beim Darüberfahren, Raster mit drei großen Bildern; am Handy nur das Raster */
+.pa { margin: 32px var(--rand-seite) 0; }
+.pa-schalter { display: flex; justify-content: center; gap: 0; width: max-content; margin: 0 auto 40px; padding: 4px; border: 0; border-radius: var(--radius-pille); background: rgba(14, 16, 17, .08); }
+.pa-schalter input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.pa-schalter label { padding: 10px 22px; border-radius: var(--radius-pille); font: 600 var(--groesse-2)/1 var(--schrift-text); cursor: pointer; color: var(--farbe-dunkel); border: 2px solid transparent; }
+.pa-schalter input:checked + label { background: var(--farbe-weiss); border-color: var(--farbe-dunkel); }
+.pa-schalter input:focus-visible + label { outline: 3px solid var(--farbe-dunkel); outline-offset: 2px; }
+.pa-liste, .pa-raster { list-style: none; margin: 0; padding: 0; }
+.pa-raster { display: none; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px 16px; }
+.pa:has(#pa-raster:checked) .pa-raster { display: grid; }
+.pa:has(#pa-raster:checked) .pa-liste { display: none; }
+.pa-zeile { border-bottom: 1px solid var(--farbe-dunkel); }
+.pa-liste { border-top: 1px solid var(--farbe-dunkel); }
+.pa-link { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr); gap: 24px; padding: 26px 0; color: var(--farbe-dunkel); text-decoration: none; }
+.pa-kunde { font: 700 var(--groesse-4)/1.3 var(--schrift-text); }
+.pa-satz, .pa-branche { font: 400 var(--groesse-4)/1.35 var(--schrift-text); }
+.pa-link:hover .pa-kunde, .pa-link:focus-visible .pa-kunde { text-decoration: underline; text-underline-offset: 5px; }
+.pa-streifen { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s ease; }
+.pa-streifen-innen { overflow: hidden; display: flex; gap: 8px; min-height: 0; }
+.pa-streifen img { height: 220px; width: auto; max-width: none; flex: none; object-fit: cover; object-position: top; margin-bottom: 0; }
+.pa-zeile:hover .pa-streifen, .pa-zeile:focus-within .pa-streifen { grid-template-rows: 1fr; }
+.pa-zeile:hover .pa-streifen-innen, .pa-zeile:focus-within .pa-streifen-innen { padding-bottom: 26px; }
+.pa-karte { display: flex; flex-direction: column; gap: 14px; color: var(--farbe-dunkel); text-decoration: none; }
+.pa-kopf { display: flex; flex-direction: column; gap: 2px; }
+.pa-karte .pa-kunde { font-size: var(--groesse-3); }
+.pa-karte .pa-satz { font-size: var(--groesse-3); }
+.pa-bild { display: block; aspect-ratio: 1; overflow: hidden; background: var(--farbe-dunkel); }
+.pa-bild img { width: 100%; height: 100%; object-fit: cover; object-position: left top; display: block; transition: transform .5s ease; }
+.pa-karte:hover .pa-bild img, .pa-karte:focus-visible .pa-bild img { transform: scale(1.04); }
+@media (max-width: 1024px) { .pa-raster { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 767.98px) {
+  .pa-schalter, .pa-liste, .pa:has(#pa-raster:checked) .pa-liste { display: none; }
+  .pa-raster, .pa:has(#pa-raster:checked) .pa-raster { display: grid; grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) { .pa-streifen { transition: none; } .pa-bild img { transition: none; } }
+
+/* ---------- Stil B: drei Varianten zum Vergleichen (Entwurf, Anna 20.11.2026: „zu brav“, „Kopf und Aah-Band“, „Schrift und Formen“).
+   Varianten Plakat, Pop, Zine am 20.11.2026 entfernt; gilt weiter für „Räume“: Kopf und Aah-Band als ein Block. ---------- */
+/* Kopf und Band als ein Plakat: Fläche und Bild stoßen aneinander, das Band hängt direkt darunter */
+.stil-b[class*="v-"] .hl { gap: 0; padding-bottom: 0; }
+.stil-b[class*="v-"] .hl-panel { border-radius: 0; box-shadow: none; border-right-width: 0; }
+.stil-b[class*="v-"] .hl-bild { border-radius: 0; box-shadow: none; }
+.stil-b[class*="v-"] .aah { margin-top: 0; border-top: 0; border-radius: 0; box-shadow: var(--b-schatten-gross); }
+.stil-b[class*="v-"] .aah-titel { font-size: clamp(44px, 5.6vw, 96px); /* zwei Zeilen in der mittleren Spalte */ }
+@media (max-width: 1024px) { .stil-b[class*="v-"] .hl-panel { border-right-width: 3px; border-bottom-width: 0; } }
+/* Schriftband zwischen Kopf und Inhalt, gedreht, ohne Bewegung */
+.v-band { display: none; }
+.stil-b[class*="v-"] main { overflow-x: clip; }   /* gedrehtes Schriftband ragt sonst 1 px über den Rand */
+.stil-b[class*="v-"] .v-band { display: block; overflow: hidden; margin: 56px 0 24px; padding: 14px 0; background: var(--farbe-dunkel); color: var(--bb-gelb);
+  font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-size: var(--groesse-6); line-height: 1.2; white-space: nowrap; transform: rotate(-2deg); border-block: var(--b-kontur); }
+
+/* Variante 4 „Räume“ (Anna 20.11.2026: „jede Sektion wie ein eigenes Interior“, handgemacht ohne Comic-Umrisse; Vorbilder bemalte Wände,
+   Riso-Plakate, Galeriewand). Jede Sektion ist ein Raum mit eigener Wandfarbe und gemaltem Muster (bilder/riso/).
+   Wandfarben Petrol, Mint, Puderblau, Orange, Zartrosa: seit 20.11.2026 Markenfarben im :root (--bb-…). */
+.v-raeume { --r-petrol: var(--bb-petrol); --r-mint: var(--bb-mint); --r-puder: var(--bb-puder); --r-orange: var(--bb-orange); --r-rosa: var(--bb-zartrosa);
+  --b-kontur: 0 solid transparent; --b-schatten: none; --b-schatten-gross: none; }
+.v-raeume .button { background: var(--bb-rot); border-color: var(--bb-rot); color: var(--farbe-dunkel); box-shadow: none; }
+.v-raeume .button:hover { background: var(--bb-gelb); border-color: var(--bb-gelb); }
+.v-raeume .button-zweit { box-shadow: none; }
+.v-raeume .button:active, .v-raeume .button-zweit:active { box-shadow: none; }
+.v-raeume .meta::before { background: currentColor !important; }
+/* Lesbarkeit (Anna 20.11.2026: „wir müssen auf lesbarkeit achten“): auf farbigen Wänden kein Grau, sondern volles Dunkel; kein Versatz unter Fließtext-nahen Überschriften */
+.v-raeume { --farbe-gedaempft: rgba(14, 16, 17, .86); }
+.v-raeume .start-leistungen .lb-nr { color: var(--bb-gelb); }   /* Pink auf Petrol nur 2,6 : 1 */
+.v-raeume .start-leistungen .lb-brand .lb-nr { color: var(--r-rosa); }
+
+/* Raum 1, Kopf: Studiowand in Blau, Fotos im Riso-Druck (Blau auf Papier, Raster), pinke Sonne und gemaltes Funkeln */
+.v-raeume .hl-folie:not(.ist-monitor) { background: var(--farbe-primaer); isolation: isolate; }
+.v-raeume .hl-folie:not(.ist-monitor) img { filter: grayscale(1) contrast(1.7) brightness(.92); mix-blend-mode: screen; }
+.v-raeume .hl-folie:not(.ist-monitor)::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(circle, transparent 1.2px, rgba(246, 241, 230, .22) 1.7px) 0 0 / 5px 5px; }
+.v-raeume .hl-bild::before { content: ""; position: absolute; z-index: 2; right: -10%; bottom: -14%; width: 52%; aspect-ratio: 1; border-radius: 50%;
+  background: var(--bb-pink); mix-blend-mode: multiply; pointer-events: none; }
+.v-raeume .hl-bild::after { content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: url(../bilder/riso/funkeln.svg) center / cover no-repeat; }
+.v-raeume .hl-pause { z-index: 4; }
+.stil-b .hl-meta { color: var(--farbe-weiss); }   /* 70 % Weiß auf Blau nur 3,5 : 1 bei 15 px */
+
+/* Raum 2, Aah-Band: gelbe Tür, daneben die Wand mit blauen Strichen */
+.v-raeume .aah { background: var(--bb-gelb); }
+.v-raeume .aah-figur { background: var(--farbe-weiss) url(../bilder/riso/striche.svg) 0 0 / 120px; border-radius: 999px 999px 24px 24px; padding: 32px 16px 20px; }
+.v-raeume .aah-ton, .v-raeume .aah-uff, .v-raeume .aah-feld input, .v-raeume .aah-blase { background: var(--farbe-weiss); box-shadow: none; }
+.v-raeume .aah-uff[aria-pressed="true"] { background: var(--bb-pink); }
+.v-raeume .aah-nope { box-shadow: none; }
+
+/* Gemalte Streifen statt Schriftband: Übergang wie eine gestreifte Badezimmerwand */
+.stil-b.v-raeume .v-band { margin: 0; padding: 0; height: 140px; transform: none; border: 0; color: transparent; font-size: 0;
+  background: var(--farbe-weiss) url(../bilder/riso/streifen.svg) 0 50% / auto 100% repeat-x; }
+
+/* Raum 3, Intro: rosa Zimmer */
+.v-raeume .intro { background: var(--r-rosa); padding-top: 96px; padding-bottom: 96px; }
+.v-raeume .intro .gedaempft { color: var(--farbe-dunkel); }
+
+/* Raum 4, Fokus: Punktewand als Galerie, jede Karte ein gerahmtes Bild in eigener Druckfarbe */
+.v-raeume .fokus { background: var(--farbe-weiss) url(../bilder/riso/punkte.svg) 0 0 / 200px; padding-top: 96px; }
+.v-raeume .fokus .sektionskopf { background: var(--farbe-weiss); display: inline-block; padding: 12px 20px; margin-left: var(--rand-seite); }
+.v-raeume .fokus-karte { border: 12px solid var(--farbe-weiss); border-radius: 0; }
+/* Galeriewand: Rahmen in verschiedenen Farben, leicht schief aufgehängt */
+.v-raeume .fokus-raster > li:nth-child(2) .fokus-karte { border-color: var(--bb-gelb); transform: rotate(1deg); }
+.v-raeume .fokus-raster > li:nth-child(3) .fokus-karte { border-color: var(--bb-pink); transform: rotate(-1.2deg); }
+.v-raeume .fokus-raster > li:nth-child(4) .fokus-karte { border-color: var(--r-petrol); transform: rotate(.8deg); }
+.v-raeume .fokus-raster > li:nth-child(4) .fokus-text { color: var(--farbe-dunkel); }
+.v-raeume .fokus-bild { background: var(--farbe-primaer); isolation: isolate; }
+.v-raeume .fokus-bild img { filter: grayscale(1) contrast(1.5) brightness(.95); mix-blend-mode: screen; }
+.v-raeume .fokus-raster > li:nth-child(2) .fokus-bild { background: var(--bb-pink); }
+.v-raeume .fokus-raster > li:nth-child(3) .fokus-bild { background: var(--r-orange); }
+.v-raeume .fokus-raster > li:nth-child(4) .fokus-bild { background: var(--r-petrol); }
+.v-raeume .fokus-raster > li:nth-child(1) .fokus-text { background: var(--bb-gelb); }
+.v-raeume .fokus-raster > li:nth-child(2) .fokus-text { background: var(--r-puder); }
+.v-raeume .fokus-raster > li:nth-child(3) .fokus-text { background: var(--r-mint); }
+.v-raeume .fokus-raster > li:nth-child(4) .fokus-text { background: var(--r-rosa); }
+.v-raeume .fokus-satz { color: var(--farbe-dunkel); }
+.v-raeume .fokus-karte:hover { transform: rotate(-1deg); }
+
+/* Raum 5, Leistungen: Petrol statt Schwarz */
+.v-raeume .start-leistungen { background: var(--r-petrol); }
+.v-raeume .start-leistungen .meta { color: var(--farbe-gedaempft-invers); }
+
+/* Raum 6, Projekte: Puderblau, oben gemalte Streifen als Sockelleiste */
+.v-raeume .start-projektliste { background: var(--r-puder); }
+
+/* Raum 7, LinkedIn: blaue Strichwand */
+.v-raeume .li-abschnitt { background: url(../bilder/riso/striche.svg) 0 0 / 120px repeat-x, url(../bilder/riso/striche.svg) 0 100% / 120px repeat-x, var(--farbe-weiss); padding-top: 190px; padding-bottom: 200px; }   /* Strichwand nur oben und unten, Text auf Weiß */
+.v-raeume .li-abschnitt .sektionskopf { background: var(--farbe-weiss); display: inline-block; padding: 12px 20px; margin-left: var(--rand-seite); }
+
+/* Raum 8, Stimmen: Mint */
+/* Wandsockel: oben glatte Wand für Überschriften, unten Muster hinter Karten (Lesbarkeit) */
+.v-raeume section[aria-labelledby="stimmen"], .v-raeume .br-start { isolation: isolate; }
+.v-raeume section[aria-labelledby="stimmen"] { background: var(--r-mint); }
+.v-raeume .stimmen { position: relative; }
+.v-raeume .stimmen::before { content: ""; position: absolute; z-index: -1; inset: -48px -100vw; background: url(../bilder/riso/blumen.svg) 0 0 / 240px;
+  border-block: 14px solid var(--bb-pink); }   /* Tapete genau hinter den Karten, volle Breite */
+
+/* Raum 9, Branchen: gelbes Zimmer */
+.v-raeume .br-start { background: var(--bb-gelb); padding-top: 96px; padding-bottom: 96px; }
+.v-raeume .br-start::before { content: ""; position: absolute; z-index: -1; left: 0; right: 0; top: 340px; bottom: 0;
+  background: url(../bilder/riso/karo.svg) 0 0 / 80px; border-top: 14px solid var(--bb-pink); }
+@media (min-width: 1024.02px) { .v-raeume .br-start::before { top: 46%; } }
+.v-raeume .br-start .meta, .v-raeume .br-start .gedaempft { color: var(--farbe-dunkel); }
+
+/* Raum 10, Häufige Fragen: rosa Wand mit Punkten */
+.v-raeume .faq.ehrlich { background: url(../bilder/riso/markise.svg) 0 0 / auto 110px repeat-x, var(--r-rosa); padding-top: 190px; }   /* Markise oben */
+
+/* Raum 11, Weg zum Ziel: orange, mit gemalter Schlangenlinie */
+.v-raeume .weg-ziel { background: var(--r-orange) url(../bilder/riso/schlange.svg) 50% calc(100% + 40px) / min(1100px, 140%) auto no-repeat; padding-bottom: 220px; }   /* Linie nur unter dem Text */
+
+/* Pointe: Studiowand Blau, Schrift Gelb mit pinkem Versatz */
+.v-raeume .fuss-pointe { background: var(--farbe-primaer); color: var(--bb-gelb); text-shadow: .03em .025em 0 var(--bb-pink); }
+.v-raeume .sticker { mix-blend-mode: multiply; }
+/* Gezeichnete Sticker (Anna 20.11.2026), freigestellt mit weißem Rand; in „Räume“ statt Herz und Uff-Blase, wackeln leicht */
+.v-raeume .st-stimmen { content: url(../bilder/sticker/fleur-vogel.svg?v=20261121o); mix-blend-mode: normal; animation: st-wackeln 3.2s ease-in-out infinite; }
+.v-raeume .st-faq { content: url(../bilder/sticker/fleur-zaehne.svg?v=20261121o); mix-blend-mode: normal; animation: st-wackeln 2.6s ease-in-out infinite; }
+@keyframes st-wackeln { 0%, 100% { rotate: -6deg; } 50% { rotate: 6deg; translate: 0 -6px; } }
+@media (prefers-reduced-motion: reduce) { .v-raeume .st-stimmen, .v-raeume .st-faq { animation: none; } }
+/* =========================================================
+   Stil B „Räume“ – Runde 2 (Anna 20.11.2026): Kopf wie ein Cover, Laufband, Kommunikationszentrale,
+   schräge Überschriften mit Kleinbuchstaben, Papier im Wechsel mit Räumen, Leistungen schwarz, LinkedIn/Branchen/Fragen mit Etiketten,
+   „Fit für 2027“ in Pink, gekreuzte Absperrbänder unten. Steht am Ende und geht vor ältere Räume-Regeln.
+   ========================================================= */
+.v-raeume { --schrift-ueberschrift: "Inter Tight", system-ui, -apple-system, "Segoe UI", sans-serif; --schrift-text: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --schrift-meta: "Instrument Serif", Georgia, "Times New Roman", serif; }
+.stil-b.v-raeume :is(h1, h2, h3, .kn-titel, .aah-titel, .lb-name, .lb-nr, .br-name, .pliste-kunde, .aah-nope, .aah-d-titel, .aah-d-warum, .gr-h2, .gr-xxl) {
+  text-transform: none; font-weight: 800; letter-spacing: -.035em; }
+.stil-b.v-raeume main h2:not(.aah-d-titel) { rotate: -2deg; }
+.stil-b.v-raeume .meta { font-family: var(--schrift-meta); text-transform: none; letter-spacing: 0; font-size: clamp(20px, 1.7vw, 24px); line-height: 1.2; }
+.stil-b.v-raeume .meta::before { display: none; }
+
+/* Kopf */
+.stil-b.v-raeume .kopf { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp) repeat; background-size: 256px; }
+.stil-b.v-raeume .kopf-nav .kopf-button { background: var(--farbe-dunkel); }
+
+/* Cover: zentriert, sehr große Zeile, Unterzeile sagt was und für wen, Namensfeld, zwei Riso-Fotos, Sticker */
+.kn { position: relative; isolation: isolate; text-align: center; padding: clamp(40px, 5vw, 80px) var(--rand-seite) clamp(56px, 6vw, 96px); overflow: hidden; }
+.kn-meta { margin: 0 0 8px; }
+.stil-b.v-raeume .kn-titel { position: relative; z-index: 1; margin: 0 0 24px; font: 800 clamp(46px, 11.2vw, 210px)/.88 var(--schrift-ueberschrift); letter-spacing: -.055em; }
+.kn-h1 { position: relative; z-index: 3; max-width: 30ch; margin: 0 auto 28px; font: 600 clamp(20px, 2vw, 30px)/1.3 var(--schrift-text); letter-spacing: -.01em; }
+.kn-name { position: relative; z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.kn-name label { font: 400 clamp(22px, 1.9vw, 28px)/1.2 var(--schrift-meta); }
+.kn-name-feld { display: flex; gap: 6px; width: min(460px, 100%); padding: 6px; background: var(--farbe-weiss); border: 2px solid var(--farbe-dunkel); border-radius: var(--radius-pille); }
+.kn-name-feld input { flex: 1 1 auto; min-width: 0; border: 0; background: transparent; padding: 10px 16px; font: 500 max(16px, var(--groesse-3)) var(--schrift-text); color: var(--farbe-dunkel); }
+.kn-name-feld input:focus { outline: none; }
+.kn-name-feld:focus-within { outline: 3px solid var(--farbe-dunkel); outline-offset: 3px; }
+.kn-name-feld .button { margin: 0; white-space: nowrap; }
+.kn-foto { position: absolute; z-index: 2; margin: 0; width: clamp(150px, 17vw, 290px); aspect-ratio: 4 / 3; background: var(--farbe-primaer); isolation: isolate; box-shadow: 0 12px 30px rgba(14, 16, 17, .18); }
+.kn-foto img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(1) contrast(1.6) brightness(.95); mix-blend-mode: screen; }
+.kn-foto::after { content: ""; position: absolute; left: 50%; top: -14px; width: 90px; height: 26px; margin-left: -45px; background: var(--bb-gelb); opacity: .85; rotate: -5deg; }
+.kn-foto-1 { left: -1.5%; top: 46%; rotate: -7deg; }
+.kn-foto-2 { right: -1.5%; top: 52%; rotate: 6deg; background: var(--bb-pink); }
+.kn-foto-2 img { object-position: left top; }
+.kn-st { position: absolute; z-index: 4; width: clamp(70px, 8vw, 130px); height: auto; pointer-events: none; animation: st-wackeln 3s ease-in-out infinite;
+  filter: drop-shadow(3px 0 0 #fff) drop-shadow(-3px 0 0 #fff) drop-shadow(0 3px 0 #fff) drop-shadow(0 -3px 0 #fff); }
+.kn-st-1 { left: 13%; top: 7%; } .kn-st-2 { right: 19%; top: 8%; animation-delay: -.8s; } .kn-st-3 { left: 24%; bottom: 6%; animation-delay: -1.6s; } .kn-st-4 { right: 24%; bottom: 7%; animation-delay: -2.2s; }
+@media (max-width: 1024px) { .kn-foto-1 { top: 58%; left: -4%; } .kn-foto-2 { top: 60%; right: -4%; } .kn-st-1, .kn-st-2 { top: 2%; } }
+@media (max-width: 767.98px) {
+  .kn { padding-bottom: 32px; }
+  .kn-foto { position: relative; display: inline-block; width: 44%; left: auto; right: auto; top: auto; margin: 32px 2% 0; }
+  .kn-st { width: 52px; } .kn-st-1 { left: 1%; top: 1%; } .kn-st-2 { right: 1%; top: 1%; } .kn-st-3, .kn-st-4 { display: none; } .kn { padding-top: 64px; }
+  .kn-name-feld { flex-direction: column; border-radius: 22px; } .kn-name-feld .button { justify-content: center; }
+}
+
+/* Laufband oben: worum es geht, schräg, läuft */
+.stil-b.v-raeume .v-band { display: block; height: auto; margin: 0 0 56px; padding: 14px 0; overflow: hidden; white-space: nowrap; transform: none; rotate: -2deg; border: 0;
+  background: var(--farbe-dunkel); color: var(--bb-gelb); font: 800 clamp(22px, 2.6vw, 38px)/1.2 var(--schrift-ueberschrift); letter-spacing: -.02em; text-transform: none; }
+.v-band > span, .fp-band > span { display: inline-block; animation: lauf 50s linear infinite; }
+.fp-band-2 > span { animation-direction: reverse; animation-duration: 60s; }
+@keyframes lauf { to { transform: translateX(-50%); } }
+
+/* Kommunikationszentrale: Uffs und Frag-Feld in einem Band, Mint statt Neongelb */
+.stil-b.v-raeume .aah { grid-template-columns: minmax(0, 1fr) minmax(0, 2.6fr); background: var(--bb-mint); border-radius: 28px; align-items: start; }
+.aah-titel-st { display: inline-block; width: 1.1em; height: auto; vertical-align: -.15em; rotate: 8deg; }
+.aah-oder { margin: 28px 0 10px; font: 400 clamp(22px, 1.9vw, 28px)/1.2 var(--schrift-meta); }
+.aah .hl { display: block; padding: 0; margin: 0; gap: 0; min-height: 0; height: auto; max-height: none; text-align: left; background: none; }
+.stil-b.v-raeume .aah .hl-panel { display: block; min-height: 0; padding: 0; background: transparent; color: var(--farbe-dunkel); border: 0; border-radius: 0; box-shadow: none; overflow: visible; }
+.aah .hl .hl-feld { max-width: 620px; background: var(--farbe-weiss); border: 2px solid var(--farbe-dunkel); }
+.aah .hl-feld input { color: var(--farbe-dunkel); }
+.aah .hl-chips { max-width: 620px; }
+.aah .hl-chip { color: var(--farbe-dunkel); border-color: var(--farbe-dunkel); background: var(--farbe-weiss); }
+.aah .hl-chip:hover, .aah .hl-chip:focus-visible { background: var(--bb-pink); color: var(--farbe-dunkel); }
+.stil-b.v-raeume .aah .hl.ist-chat .hl-panel { display: flex; flex-direction: column; height: min(560px, 72svh); }
+.aah .hl.ist-chat .hl-chatfenster { border: 2px solid var(--farbe-dunkel); }
+@media (max-width: 1024px) { .stil-b.v-raeume .aah { grid-template-columns: minmax(0, 1fr); } .aah-figur { max-width: 260px; } }
+
+/* „Bitte nicht drücken“ springt an eine zufällige Stelle weiter unten */
+.nicht-platz { position: absolute; right: var(--rand-seite); bottom: 28px; z-index: 4; }
+.nicht-platz .aah-nicht { margin: 0; }
+@media (max-width: 767.98px) { .nicht-platz { position: static; margin: 16px var(--rand-seite); } }
+
+/* Intro: weniger Abstand zwischen den Spalten */
+.stil-b.v-raeume .intro-neu { gap: 32px 40px; }
+
+/* Sticker wie aufgeklebt: weißer Rand, kein Durchscheinen; Lupe innen gefüllt */
+.stil-b.v-raeume .sticker { mix-blend-mode: normal; filter: drop-shadow(3px 0 0 #fff) drop-shadow(-3px 0 0 #fff) drop-shadow(0 3px 0 #fff) drop-shadow(0 -3px 0 #fff); }
+.stil-b.v-raeume .st-fokus { background: radial-gradient(circle at 41% 38%, #fff 0 29%, transparent 30%); }
+
+/* Leistungen wie Plakat: Schwarz, schräger Titel, Gelb und Pink */
+.stil-b.v-raeume .start-leistungen { background: var(--farbe-dunkel); }
+.stil-b.v-raeume .start-leistungen .meta { color: var(--bb-gelb); }
+.stil-b.v-raeume .start-leistungen .lb-nr { color: var(--bb-pink); }
+.stil-b.v-raeume .lb-name a { color: var(--bb-gelb); }
+.stil-b.v-raeume .lb:hover .lb-name a { color: var(--farbe-weiss); }
+
+/* Papier im Wechsel mit Räumen; Etiketten-Überschriften wie im Zine */
+.stil-b.v-raeume .li-abschnitt { background: url(../bilder/riso/striche.svg) 0 0 / 120px repeat-x, url(../bilder/papier/papier-a.webp) 0 0 / 256px, var(--farbe-weiss); padding-top: 190px; padding-bottom: 96px; }
+.stil-b.v-raeume .li-abschnitt .sektionskopf { background: transparent; padding: 0; margin-left: 0; display: block; }
+.stil-b.v-raeume .br-start { background: url(../bilder/papier/papier-b.webp) 0 0 / 256px; }
+.stil-b.v-raeume .br-start::before { display: none; }
+.stil-b.v-raeume .faq.ehrlich { background: url(../bilder/papier/papier-c.webp) 0 0 / 256px; padding-top: 112px; }
+.stil-b.v-raeume :is(.li-abschnitt, .br-start, .faq.ehrlich) h2 { display: inline-block; background: var(--farbe-dunkel); color: var(--farbe-weiss); padding: .08em .22em .14em; line-height: 1.08; }
+.stil-b.v-raeume :is(.li-karte, .br-kachel) { border: 3px solid var(--farbe-dunkel); box-shadow: 6px 6px 0 var(--farbe-dunkel); }
+.stil-b.v-raeume section[aria-labelledby="stimmen"] { background: var(--bb-zartrosa); }
+
+/* Nächster Schritt wie Pop: Pink, große Zeile mit Kleinbuchstaben */
+.stil-b.v-raeume .weg-ziel { background: var(--bb-pink); padding-bottom: 160px; }
+.stil-b.v-raeume .weg-ziel h2 { font-size: clamp(40px, 6.4vw, 110px); line-height: 1; letter-spacing: -.05em; }
+.stil-b.v-raeume .weg-ziel .meta { color: var(--farbe-dunkel); }
+
+/* Pointe unten: zwei gekreuzte Absperrbänder */
+.stil-b.v-raeume .fuss-pointe { position: relative; height: clamp(200px, 22vw, 300px); padding: 0; overflow: hidden; background: transparent; border: 0; }
+.fp-band { position: absolute; left: -10%; right: -10%; top: 50%; margin: 0; padding: 12px 0; overflow: hidden; white-space: nowrap;
+  font: 800 clamp(22px, 3vw, 42px)/1.2 var(--schrift-ueberschrift); letter-spacing: -.02em; text-transform: none; border-block: 8px solid transparent; }
+.fp-band-1 { background: var(--bb-gelb); color: var(--farbe-dunkel); translate: 0 -50%; rotate: -5deg; border-image: repeating-linear-gradient(45deg, var(--farbe-dunkel) 0 14px, var(--bb-gelb) 14px 28px) 8; }
+.fp-band-2 { background: var(--farbe-dunkel); color: var(--bb-gelb); translate: 0 -50%; rotate: 4deg; }
+.fp-band span span { display: inline; animation: none; }
+
+/* Projekte: Liste wie Lord (Kunde, Satz in Serif, Branche), kleine Bilder; Raster als Slider mit Coverbildern */
+.stil-b.v-raeume .pa-kunde { font: 600 var(--groesse-4)/1.3 var(--schrift-text); }
+.stil-b.v-raeume .pa-satz { font: 400 clamp(22px, 1.9vw, 28px)/1.2 var(--schrift-meta); }
+.stil-b.v-raeume .pa-branche { font: 400 var(--groesse-4)/1.3 var(--schrift-text); }
+.pa-streifen img { height: 150px; }
+.pa-raster { grid-auto-flow: column; grid-auto-columns: calc((100% - 32px) / 3); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+.pa-raster::-webkit-scrollbar { display: none; }
+.pa:has(#pa-raster:checked) .pa-raster { grid-template-columns: none; }
+.pa-raster > li { scroll-snap-align: start; }
+.pa-raster .pa-kunde, .pa-raster .pa-satz, .stil-b.v-raeume .pa-raster .pa-kunde, .stil-b.v-raeume .pa-raster .pa-satz { font-size: var(--groesse-2); line-height: 1.35; }
+.stil-b.v-raeume .pa-raster .pa-satz { font: 400 18px/1.25 var(--schrift-meta); }
+.pa-bild { position: relative; }
+.pa-marke { position: absolute; left: 50%; top: 50%; width: 30%; aspect-ratio: 1; translate: -50% -50%; display: grid; place-items: center; padding: 6%; background: var(--farbe-weiss); border-radius: 22%; box-shadow: 0 10px 30px rgba(0, 0, 0, .18); }
+.pa-marke img { width: 100%; height: 100%; object-fit: contain; }
+.pa-raster li.kommt .pa-bild { translate: 0 -48px; opacity: 0; transition: translate .9s cubic-bezier(.16, 1, .3, 1), opacity .6s ease-out; }
+.pa-raster li.kommt.ist-da .pa-bild { translate: 0 0; opacity: 1; }
+.pa-pfeile { display: none; justify-content: flex-end; gap: 8px; margin: 16px 0 0; }
+.pa:has(#pa-raster:checked) .pa-pfeile { display: flex; }
+.pa-pfeile button { width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--farbe-dunkel); background: var(--farbe-weiss); font-size: 20px; cursor: pointer; }
+.pa-pfeile button:hover, .pa-pfeile button:focus-visible { background: var(--bb-gelb); }
+@media (max-width: 767.98px) {
+  .pa-raster, .pa:has(#pa-raster:checked) .pa-raster { grid-template-columns: none; grid-auto-columns: 85%; }
+  .pa-pfeile { display: flex; }
+}
+
+/* Begrüßung mit Vornamen auf Unterseiten (js/menue.js) */
+.name-gruss { margin: 0 0 8px; font: 400 clamp(20px, 1.7vw, 24px)/1.2 var(--schrift-meta); }
+
+@media (prefers-reduced-motion: reduce) {
+  .v-band > span, .fp-band > span, .kn-st { animation: none; }
+  .pa-raster li.kommt .pa-bild { translate: none; opacity: 1; transition: none; }
+}
+
+/* Kopf und Menü im Skizzenbuch-Stil (Anna 20.11.2026: „Header überarbeiten, passt nicht zum Stil“, „Mega-Menü anpassen“), nur Startseite (.v-raeume).
+   Papier, Strukturband aus blauen Stricheln unter dem Kopf, Hover als handgezogene Unterstreichung, Menü wie eine Pinnwand mit Klebestreifen. */
+.stil-b.v-raeume .kopf { border-bottom: 0; }
+.stil-b.v-raeume .kopf::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 14px; pointer-events: none;
+  background: url(../bilder/riso/striche.svg) 0 0 / 80px repeat-x; opacity: .9; }
+.stil-b.v-raeume .kopf-nav > ul > li > a { position: relative; font-weight: 600; }
+.stil-b.v-raeume .kopf-nav > ul > li > a:hover { opacity: 1; }
+.stil-b.v-raeume .kopf-nav > ul > li > a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -8px; height: 8px;
+  background: url(../bilder/riso/unterstrich.svg) 0 50% / 100% 100% no-repeat; clip-path: inset(0 100% 0 0); transition: clip-path .35s ease-out; }
+.stil-b.v-raeume .kopf-nav > ul > li > a:hover::after, .stil-b.v-raeume .kopf-nav > ul > li > a:focus-visible::after,
+.stil-b.v-raeume .kopf-nav > ul > li > a[aria-expanded="true"]::after { clip-path: inset(0 0 0 0); }
+.stil-b.v-raeume .kopf-nav .kopf-button { background: var(--farbe-dunkel); rotate: -2deg; transition: rotate .2s, background .2s; }
+.stil-b.v-raeume .kopf-nav .kopf-button:hover { background: var(--bb-pink); color: var(--farbe-dunkel); rotate: 0deg; }
+
+/* Mega-Menü als Pinnwand */
+.stil-b.v-raeume .mm { background: url(../bilder/papier/papier-a.webp) 0 0 / 256px, var(--farbe-weiss); border-top: 0; padding-top: 14px; }
+.stil-b.v-raeume .mm-label { font-family: var(--schrift-meta); text-transform: none; letter-spacing: 0; font-size: 22px; }
+.stil-b.v-raeume .mm-bereiche > div { position: relative; padding: 22px 22px 14px; background: var(--farbe-weiss); box-shadow: 0 8px 22px rgba(14, 16, 17, .1); }
+.stil-b.v-raeume .mm-bereiche > div:nth-child(1) { rotate: -1deg; }
+.stil-b.v-raeume .mm-bereiche > div:nth-child(2) { rotate: .8deg; background: var(--bb-puder); }
+.stil-b.v-raeume .mm-bereiche > div:nth-child(3) { rotate: -.6deg; background: var(--bb-mint); }
+.stil-b.v-raeume .mm-bereiche > div::before { content: ""; position: absolute; left: 50%; top: -12px; width: 84px; height: 24px; margin-left: -42px; background: var(--bb-gelb); opacity: .85; rotate: -4deg; }
+.stil-b.v-raeume .kopf-nav .mm-liste a .mm-name, .stil-b.v-raeume .kopf-nav .mm-weitere a { background: linear-gradient(transparent 58%, transparent 58%) no-repeat; transition: background-color .2s; }
+.stil-b.v-raeume .kopf-nav .mm-liste a:hover .mm-name, .stil-b.v-raeume .kopf-nav .mm-liste a:focus-visible .mm-name,
+.stil-b.v-raeume .kopf-nav .mm-weitere a:hover, .stil-b.v-raeume .kopf-nav .mm-weitere a:focus-visible {
+  background: linear-gradient(transparent 52%, var(--bb-gelb) 52%, var(--bb-gelb) 92%, transparent 92%); text-decoration: none; }   /* Textmarker */
+.stil-b.v-raeume .kopf-nav .mm-weitere a { border-top-color: rgba(14, 16, 17, .25); }
+.stil-b.v-raeume .mm-karte-beige { position: relative; background: var(--bb-gelb); rotate: 2deg; border-radius: 0; box-shadow: 0 10px 26px rgba(14, 16, 17, .15); }   /* Haftnotiz */
+.stil-b.v-raeume .mm-karte-beige::before { content: ""; position: absolute; left: 50%; top: -12px; width: 84px; height: 24px; margin-left: -42px; background: var(--bb-pink); opacity: .85; rotate: 3deg; }
+.stil-b.v-raeume .mm-karte-titel { text-transform: none; font-weight: 800; letter-spacing: -.035em; line-height: 1.05; }
+.stil-b.v-raeume .mm-karte-beige .meta { font-size: 20px; }
+
+/* Handy-Menü: Papier, große Links, Dachzeilen in Serif */
+.stil-b.v-raeume .kopf-mobil ul { background: url(../bilder/papier/papier-a.webp) 0 0 / 256px, var(--farbe-weiss); border-bottom: 0; }
+.stil-b.v-raeume .kopf-mobil > nav > ul > li > a, .stil-b.v-raeume .kopf-mobil summary.mobil-unter, .stil-b.v-raeume .kopf-mobil .mobil-unter > summary {
+  font: 800 26px/1.2 var(--schrift-ueberschrift); letter-spacing: -.03em; }
+.stil-b.v-raeume .kopf-mobil .mobil-weitere { font-family: var(--schrift-meta); text-transform: none; letter-spacing: 0; font-size: 20px; }
+
+/* Skizzenbuch-Notizen (Anna 20.11.2026): rote Kreise und doppelte Unterstreichungen an einzelnen Wörtern, zeichnen sich beim Hineinscrollen (js/aah.js),
+   roter Doppelpfeil zum Namensfeld. Nur Zeichen, keine neuen Texte. */
+.notiz { position: relative; display: inline-block; }
+.notiz::after { content: ""; position: absolute; pointer-events: none; background: 0 0 / 100% 100% no-repeat; clip-path: inset(0 100% 0 0); transition: clip-path .9s cubic-bezier(.45, 0, .2, 1) .15s; }
+.notiz-kreis::after { left: -12%; right: -12%; top: -14%; bottom: -18%; background-image: url(../bilder/riso/notiz-kreis.svg); }
+.notiz-strich::after { left: -2%; right: -4%; bottom: -.16em; height: .22em; background-image: url(../bilder/riso/notiz-strich.svg); }
+.notiz.ist-gezeichnet::after { clip-path: inset(0 0 0 0); }
+.notiz-pfeile { position: absolute; left: calc(50% - 360px); top: 6px; width: 110px; height: 56px; background: url(../bilder/riso/notiz-pfeile.svg) 0 0 / contain no-repeat; rotate: 12deg; }
+.kn-name { position: relative; }
+@media (max-width: 900px) { .notiz-pfeile { display: none; } }
+@media (prefers-reduced-motion: reduce) { .notiz::after { transition: none; } }
+@media print { .notiz::after { clip-path: none; } }
+.weg-ziel .notiz::after { filter: brightness(0); top: -22%; bottom: -26%; }   /* Rot auf Pink geht unter: schwarzer Stift */
+
+/* Runde 3 (Anna 20.11.2026 abends, Korrekturen mit 11 Bildern) */
+.stil-b.v-raeume .kn-titel { margin-bottom: clamp(36px, 4vw, 64px); }
+.kn-aah { position: absolute; right: -.62em; top: -.5em; width: .72em; height: auto; rotate: 10deg; animation: st-wackeln 3.2s ease-in-out infinite;
+  filter: drop-shadow(3px 0 0 #fff) drop-shadow(-3px 0 0 #fff) drop-shadow(0 3px 0 #fff) drop-shadow(0 -3px 0 #fff); }
+@media (max-width: 767.98px) { .kn-aah { right: -.5em; width: .6em; } }
+.stil-b.v-raeume .aah-a { width: min(340px, 100%); }
+.stil-b.v-raeume .aah-figur { padding-bottom: 28px; }
+/* Fokus: jede Karte mit farbigem Rand, auch die erste (Blau); Kartenfläche in Randfarbe, damit unten nichts Weißes blitzt */
+.stil-b.v-raeume .fokus-raster > li:nth-child(1) .fokus-karte { border-color: var(--farbe-primaer); background: var(--farbe-primaer); }
+.stil-b.v-raeume .fokus-raster > li:nth-child(2) .fokus-karte { background: var(--bb-gelb); }
+.stil-b.v-raeume .fokus-raster > li:nth-child(3) .fokus-karte { background: var(--bb-pink); }
+.stil-b.v-raeume .fokus-raster > li:nth-child(4) .fokus-karte { background: var(--r-petrol); }
+.stil-b.v-raeume .fokus-text { flex: 1 1 auto; }
+/* Leistungen: ganze Zeile klickbar, rechts ein Querformat-Bild statt Liste */
+.stil-b.v-raeume .lb { align-items: center; }
+.lb-bild { grid-column: 3; grid-row: 1 / span 2; display: block; aspect-ratio: 16 / 9; overflow: hidden; background: var(--farbe-primaer); }
+.lb-bild img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(1) contrast(1.4); mix-blend-mode: screen; transition: transform .5s ease-out; }
+.lb-brand .lb-bild { background: var(--bb-pink); } .lb-ki .lb-bild { background: var(--bb-gelb); }
+.lb:hover .lb-bild img { transform: scale(1.05); }
+@media (max-width: 900px) { .lb-bild { grid-column: 2; grid-row: auto; margin-top: 16px; } }
+@media (max-width: 599.98px) { .lb-bild { grid-column: 1; } }
+/* Projekte: Überschrift groß, Cover mit Bild- und Wortmarke unten links, Pfeile links und Stopp rechts */
+.stil-b.v-raeume .start-projektliste h2 { font-size: clamp(56px, 10vw, 170px); line-height: .95; }
+.pa-bild::after { content: ""; position: absolute; inset: 45% 0 0; background: linear-gradient(transparent, rgba(0, 0, 0, .55)); pointer-events: none; }
+.pa-marke { left: 16px; top: auto; bottom: 16px; width: auto; aspect-ratio: auto; translate: none; display: flex; align-items: center; gap: 12px; padding: 0; background: none; box-shadow: none; border-radius: 0; z-index: 2; }
+.pa-marke img { width: 52px; height: 52px; padding: 8px; background: var(--farbe-weiss); border-radius: 14px; object-fit: contain; }
+.pa-wort { color: var(--farbe-weiss); font: 400 clamp(26px, 2.4vw, 38px)/1 var(--schrift-meta); text-shadow: 0 1px 12px rgba(0, 0, 0, .35); }
+.pa-schraege { position: absolute; z-index: 1; right: -12%; bottom: 30%; width: 80%; height: 18px; background: var(--bb-gelb); rotate: -14deg; }
+.pa-pfeile { justify-content: space-between; align-items: center; }
+.pa-pfeile > span { display: flex; gap: 8px; }
+.pa-pfeile .pa-stopp { width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--farbe-dunkel); background: var(--farbe-dunkel); color: var(--farbe-weiss); font-size: 15px; cursor: pointer; }
+.pa-pfeile .pa-stopp:hover, .pa-pfeile .pa-stopp:focus-visible { background: var(--bb-pink); color: var(--farbe-dunkel); }
+/* Stimmen: mehr Tapete über den Karten, Link mittig im rosa Bereich darunter */
+.stil-b.v-raeume .stimmen { margin-top: 150px; }
+.stil-b.v-raeume .stimmen::before { top: -150px; }
+.stil-b.v-raeume .stimmen-quelle { text-align: center; margin-top: 110px; }
+/* LinkedIn: mehr Luft zwischen Überschrift und Slider */
+.stil-b.v-raeume .li-abschnitt .sektionskopf { margin-bottom: 64px; }
+/* Bänder unten: ohne Schatten, gut lesbar */
+.stil-b.v-raeume .fuss-pointe, .stil-b.v-raeume .fp-band { text-shadow: none; }
+
+/* Prinzip „durchgestrichen und handschriftlich korrigiert“ (Anna 20.11.2026, Vorbild farbenmeer.de): rotes Durchstreichen, darunter Korrektur in
+   Handschrift-Versalien, schräg. Handschrift vorerst Architects Daughter, später Annas eigene Schrift. */
+.korrektur { position: relative; display: inline-block; }
+.notiz-durch::after { left: -3%; right: -3%; top: 46%; height: .2em; background-image: url(../bilder/riso/notiz-durch.svg); }
+.korrektur .hand { position: absolute; left: 6%; top: 92%; white-space: nowrap; font: 400 clamp(17px, 1.9vw, 28px)/1.1 "Architects Daughter", "Comic Sans MS", cursive;
+  text-transform: uppercase; letter-spacing: .22em; color: var(--bb-rot); rotate: -3deg; opacity: 0; translate: 0 6px; transition: opacity .5s ease-out .9s, translate .5s ease-out .9s; }
+.korrektur:has(.ist-gezeichnet) .hand { opacity: 1; translate: 0 0; }
+.weg-ziel .korrektur .hand, .faq.ehrlich .korrektur .hand { color: var(--farbe-dunkel); }
+.faq.ehrlich h2 .korrektur .hand { color: var(--farbe-dunkel); top: 108%; }
+.stil-b.v-raeume :is(.start-projektliste, .faq.ehrlich, .weg-ziel) h2 { margin-bottom: clamp(40px, 4vw, 64px); }
+.weg-ziel .korrektur .hand { left: 4%; top: auto; bottom: 94%; }   /* über der Zahl, sonst trifft sie die zweite Zeile */
+@media (max-width: 767.98px) { .korrektur .hand { white-space: normal; width: max-content; max-width: 70vw; } }
+@media (prefers-reduced-motion: reduce) { .korrektur .hand { transition: none; } }
+
+/* Fuß: Handskizze mit Adresse, „Einfach schreiben!“ mit Pfeil, E-Mail-Adresse eingekreist (nur Startseite, bis der Stil übertragen ist) */
+.fuss-skizze, .fuss-notiz { display: none; }
+.stil-b.v-raeume .fuss-skizze { display: block; position: relative; width: min(340px, 100%); margin: 8px 0 28px; }
+.stil-b.v-raeume .fuss-skizze img { width: 100%; height: auto; display: block; }
+.fuss-skizze span { position: absolute; font: 400 15px/1 "Architects Daughter", cursive; letter-spacing: .2em; text-transform: uppercase; color: var(--bb-rosa); }
+.fs-strasse { left: 2%; bottom: 2%; rotate: -4deg; } .fs-hier { right: 4%; top: 12%; rotate: 8deg; } .fs-ort { left: 6%; top: 18%; rotate: -6deg; }
+.stil-b.v-raeume .fuss-mail { position: relative; }
+.stil-b.v-raeume .fuss-mail a { position: relative; }
+.stil-b.v-raeume .fuss-mail a::after { content: ""; position: absolute; left: -14%; right: -10%; top: -45%; bottom: -55%; background: url(../bilder/riso/notiz-kreis.svg) 0 0 / 100% 100% no-repeat; filter: hue-rotate(300deg) saturate(1.4); pointer-events: none; }
+.stil-b.v-raeume .fuss-notiz { display: block; position: absolute; left: 230px; top: -30px; width: 140px; text-align: left;
+  font: 400 15px/1.3 "Architects Daughter", cursive; letter-spacing: .2em; text-transform: uppercase; color: var(--bb-rosa); rotate: -6deg; }
+.stil-b.v-raeume .fuss-notiz::after { content: ""; position: absolute; left: -64px; bottom: -14px; width: 54px; height: 28px; background: url(../bilder/riso/notiz-pfeile.svg) 0 0 / contain no-repeat; rotate: 160deg; filter: hue-rotate(300deg) saturate(1.4); }
+@media (max-width: 1024px) { .stil-b.v-raeume .fuss-notiz { position: static; text-align: left; width: auto; margin: 0 0 14px; rotate: -3deg; } .stil-b.v-raeume .fuss-notiz::after { display: none; } }
+.stil-b.v-raeume .weg-ziel h2 { margin-top: 64px; }   /* Platz für die Korrektur über „2027?“ */
+@media (max-width: 767.98px) { .weg-ziel .korrektur .hand { bottom: 108%; font-size: 15px; } .fs-strasse { bottom: 14%; } }
+/* Grafik „Ihre Website“ am Handy (Anna 20.11.2026, Bild: Chips abgeschnitten, Text ragt aus den Kreisen): kleine Pillen mit Symbol links, Fläche höher */
+@media (max-width: 599.98px) {
+  .stil-b.v-raeume .intro-neu .om-flaeche { aspect-ratio: 1 / 1.08; }
+  .stil-b.v-raeume .intro-neu .om-chip { flex-direction: row; gap: 4px; padding: 3px 9px 3px 4px; font-size: 12px; line-height: 1.1; border-radius: 999px; }
+  .stil-b.v-raeume .intro-neu .om-chip img { width: 22px; height: 22px; }
+  .stil-b.v-raeume .intro-neu .om-seite { width: 50%; padding: 8px 10px 10px; }
+  .stil-b.v-raeume .om-titel { font-size: 17px; }
+  .stil-b.v-raeume .om-knopf { font-size: 11px; padding: 4px 9px; }
+}
+.kn-name-feld .button { font: 600 var(--groesse-3)/1 var(--schrift-text); }   /* Button erbte die Systemschrift 13 px (Anna 20.11.2026, markiert) */
+
+/* Übergang (Anna 21.11.2026): Live-Startseite noch im alten Stil, nur „Im Fokus“, „Notizen aus dem Studio“ und Fuß schon im Stil B.
+   Die drei Teile stecken in einer Hülle div.stil-b.v-raeume.b-teil; Regeln, die sonst am body oder an main hängen, hier für die Hülle. */
+.b-teil { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp) repeat; background-size: 256px; }
+.b-teil > section { position: relative; }
+.stil-b.v-raeume.b-teil h2:not(.aah-d-titel) { rotate: -2deg; }
+/* Fuß-Karte im Stil B: Inter Tight ist breiter als Anton; „Sichtbarkeit“ sprengte bei 320 px die Spalte (Prüfer 21.11.2026) */
+.stil-b.v-raeume .fuss-karte { grid-template-columns: minmax(0, 1fr); }
+.stil-b.v-raeume .fuss-karte-titel { overflow-wrap: break-word; }
+@media (max-width: 399.98px) { .stil-b.v-raeume .fuss-karte-titel { font-size: 26px; /* „Sichtbarkeit“ ganz in einer Zeile bei 320 px */ } }
