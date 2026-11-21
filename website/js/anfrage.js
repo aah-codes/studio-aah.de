@@ -95,8 +95,7 @@ window.Anfrage = (() => {
     if (vor && !form.elements.newsletter && !gekoppelt(form) && !ohneNewsletter(form)) vor.insertAdjacentHTML('beforebegin', NEWSLETTER('du' in form.dataset));
   });
 
-  // Hinweis unter dem Formular zum Versandweg (Datenschutz)
-  const HINWEIS = 'Deine Angaben gehen über den Formulardienst Formspark (Belgien, Speicherung in der EU) per E-Mail an mich. Mehr in der <a href="../datenschutz/#kontakt">Datenschutzerklärung</a>.';
+  // Kein Hinweis zum Versandweg unter den Formularen: alles steht in der Datenschutzerklärung #kontakt (Anna 20.11.2026)
 
   // Beratung anfragen: Formulare mit data-anfrage (= Betreff, data-weiter = eigene Danke-Seite) selbst verbinden; Pflichtfelder prüft der Browser vor dem Absenden
   document.querySelectorAll('form[data-anfrage]').forEach((form) => form.addEventListener('submit', (e) => {
@@ -104,5 +103,5 @@ window.Anfrage = (() => {
     senden(form, { betreff: form.dataset.anfrage, weiter: form.dataset.weiter });
   }));
 
-  return { senden, ENDPUNKT, HINWEIS, NEWSLETTER };
+  return { senden, ENDPUNKT, NEWSLETTER };
 })();

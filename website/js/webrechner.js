@@ -195,7 +195,7 @@
         ${felder('wr')}
         ${window.Anfrage.NEWSLETTER(false, F.newsletter, 'wr-newsletter')}
         <p class="anfrage-knoepfe"><button type="submit" class="button">Beratung anfragen ${PFEIL}</button><button type="button" class="button button-zweit" data-pdf>Als PDF speichern <span aria-hidden="true">↓</span></button></p>
-        <p class="hinweis-klein">Alle Angaben aus dem Rechner gehen mit deiner Anfrage an mich und sind die Grundlage für unser Erstgespräch. Unverbindlich und kostenlos. <span class="anfrage-hinweis">${window.Anfrage.HINWEIS}</span></p>
+        <p class="hinweis-klein">Alle Angaben aus dem Rechner gehen mit deiner Anfrage an mich und sind die Grundlage für unser Erstgespräch. Unverbindlich und kostenlos.</p>
         <div class="anfrage-danach" role="status" hidden></div>
       </form>
       ${re ? `<div class="wr-review"><p class="meta">Für bestehende Websites</p><h4 class="wr-box-titel">Kostenloser Website-Check</h4>
