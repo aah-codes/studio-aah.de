@@ -5174,3 +5174,8 @@ main h2.preis-h2 { font-size: clamp(40px, 6vw, 84px); line-height: 1.05; }
 .ref-uebersicht .pa { display: none; }
 .ref-uebersicht:has(#ref-liste:checked) .pa { display: block; }
 .ref-uebersicht:has(#ref-liste:checked) .ref-raster { display: none; }
+/* Buttons im Stil „Räume“ nicht mehr rot (Anna 22.11.2026: „warum rot?“): Blau wie überall; im dunklen Fuß weiß (kein Blau auf Schwarz) */
+.v-raeume .button { background: var(--farbe-primaer); border-color: var(--farbe-primaer); color: var(--farbe-weiss); }
+.v-raeume .button:hover { background: var(--farbe-primaer-dunkel); border-color: var(--farbe-primaer-dunkel); color: var(--farbe-weiss); }
+.v-raeume .fuss .button, .v-raeume.b-teil .fuss .button { background: var(--farbe-weiss); border-color: var(--farbe-weiss); color: var(--farbe-dunkel); }
+.v-raeume .fuss .button:hover { background: var(--bb-gelb); border-color: var(--bb-gelb); color: var(--farbe-dunkel); }
