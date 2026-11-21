@@ -118,6 +118,12 @@
     // Links direkt im Text als [Wort](adresse) aus daten/fragen.json, keine Link-Zeilen mehr unten in der Blase
     if (treffer) {
       var t = treffer.e;
+      // Mit Namen und lockerer (Anna 21.11.2026), nur wenn der Name bekannt ist und die Antwort keine eigene Begrüßung hat
+      var nm = merk('aah-name').slice(0, 28);
+      if (nm && !eigen) {
+        var auf = ['Gute Frage, ', 'Klar, ', 'Kurz gesagt, '][Math.floor(Math.random() * 3)];
+        antwort.appendChild(el('p', 'fh-anrede', auf + nm + ':'));
+      }
       antwort.appendChild(mitLinks(el('p', 'fh-kurz'), t.a));
       if (t.p && t.p.length) {
         var ul = el('ul', 'fh-punkte');

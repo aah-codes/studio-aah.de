@@ -106,7 +106,7 @@ def main():
     for t in json.loads((WERKZEUGE / 'inhalte' / 'hero-themen.json').read_text(encoding='utf-8'))['themen']:
         if 'antwort' in t:
             links = t.get('links') or [[t['seite'], t['url']]]
-            themen.append({'g': t['g'], 'a': t['antwort'], 'p': t.get('punkte', []), 'l': links})
+            themen.append({'g': t['g'], 'a': t['antwort'], 'p': t.get('punkte', [])[:2], 'l': links})
             continue
         e = nach_frage.get(t['frage'])
         if not e:
@@ -118,9 +118,8 @@ def main():
             kurz = 'Ja, klar!'
         while len(kurz) < 60 and satz:   # „Ja.“ allein ist keine Zusammenfassung
             kurz += ' ' + satz.pop(0)
-        if satz and len(kurz) + len(satz[0]) < 220 and len(satz) > 3:   # Zusammenfassung zwei bis drei Zeilen wie ein Wiki (Anna 20.11.2026)
-            kurz += ' ' + satz.pop(0)
-        themen.append({'g': t['g'], 'a': kurz, 'p': [kuerzen(x) for x in satz[:3]], 'l': [[e['s'].split(':')[0].split(' – ')[0], e['u']]]})   # Linktext = Kern des Seitentitels
+        # Kürzer (Anna 21.11.2026: „zu lang“): ein bis zwei Sätze, höchstens zwei Stichpunkte
+        themen.append({'g': t['g'], 'a': kurz, 'p': [kuerzen(x, 110) for x in satz[:2]], 'l': [[e['s'].split(':')[0].split(' – ')[0], e['u']]]})   # Linktext = Kern des Seitentitels
     themen = [verlinken(t) for t in themen]
     ziel = WEBSITE / 'daten' / 'fragen.json'
     ziel.parent.mkdir(exist_ok=True)
