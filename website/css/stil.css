@@ -4996,8 +4996,8 @@ body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp)
 .v-raeume .fuss-pointe { background: var(--farbe-primaer); color: var(--bb-gelb); text-shadow: .03em .025em 0 var(--bb-pink); }
 .v-raeume .sticker { mix-blend-mode: multiply; }
 /* Gezeichnete Sticker (Anna 20.11.2026), freigestellt mit weißem Rand; in „Räume“ statt Herz und Uff-Blase, wackeln leicht */
-.v-raeume .st-stimmen { content: url(../bilder/sticker/fleur-vogel.svg?v=20261122x); mix-blend-mode: normal; animation: st-wackeln 3.2s ease-in-out infinite; }
-.v-raeume .st-faq { content: url(../bilder/sticker/fleur-zaehne.svg?v=20261122x); mix-blend-mode: normal; animation: st-wackeln 2.6s ease-in-out infinite; }
+.v-raeume .st-stimmen { content: url(../bilder/sticker/fleur-vogel.svg?v=20261122y); mix-blend-mode: normal; animation: st-wackeln 3.2s ease-in-out infinite; }
+.v-raeume .st-faq { content: url(../bilder/sticker/fleur-zaehne.svg?v=20261122y); mix-blend-mode: normal; animation: st-wackeln 2.6s ease-in-out infinite; }
 @keyframes st-wackeln { 0%, 100% { rotate: -6deg; } 50% { rotate: 6deg; translate: 0 -6px; } }
 @media (prefers-reduced-motion: reduce) { .v-raeume .st-stimmen, .v-raeume .st-faq { animation: none; } }
 /* =========================================================
@@ -5462,3 +5462,29 @@ body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp)
   .kontakt-seite { padding-top: 40px; padding-bottom: 88px; }
   .ks-weg { box-shadow: 4px 4px 0 var(--farbe-dunkel); padding: 22px 18px 20px; }
 }
+
+/* Frag-Feld im neuen Stil (Anna 21.11.2026: Papier und Sticker): Papier statt grauem Muster, Rahmen mit hartem Schatten,
+   Annas Blasen gelb, Besucher-Blasen hellblau, Name in Annas Schrift */
+.b-frag .hl.ist-chat .hl-chatfenster { background: url(../bilder/papier/papier-b.webp) 0 0 / 256px repeat; box-shadow: 7px 7px 0 var(--farbe-dunkel); }
+.b-frag .hl.ist-chat .hl-chatfenster::before { display: none; }
+.b-frag .hl.ist-chat .hl-chatkopf { background: var(--farbe-weiss); border-bottom: 2px solid var(--farbe-dunkel); }
+.b-frag .hl-chatkopf strong { font: 400 24px/1.1 var(--schrift-hand), "Architects Daughter", cursive; }
+.b-frag .hl .fh-tag { border: 1.5px solid var(--farbe-dunkel); }
+.b-frag .hl .fh-ich { background: var(--bb-puder); color: var(--farbe-dunkel); border: 2px solid var(--farbe-dunkel); box-shadow: 3px 3px 0 var(--farbe-dunkel); border-radius: 14px 4px 14px 14px; }
+.b-frag .hl .fh-ich::after, .b-frag .hl .fh-sie::before { display: none; }
+.b-frag .hl .fh-ich .fh-zeit { color: var(--farbe-dunkel); }
+.b-frag .hl .fh-sie { background: var(--bb-gelb); border: 2px solid var(--farbe-dunkel); box-shadow: 3px 3px 0 var(--farbe-dunkel); border-radius: 4px 14px 14px 14px; }
+.b-frag .hl .fh-name { font: 400 22px/1.1 var(--schrift-hand), "Architects Daughter", cursive; color: var(--farbe-dunkel); }
+.b-frag .hl .fh-sie a { color: var(--farbe-dunkel); text-decoration-thickness: 2px; }
+.b-frag .hl .fh-foto { border: 2px solid var(--farbe-dunkel); }
+.hl .fh-sie .fh-wege { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 4px; }
+.b-frag .hl .fh-wege a { padding: 6px 14px; border: 2px solid var(--farbe-dunkel); border-radius: 999px; background: var(--farbe-weiss); font-weight: 600; text-decoration: none; white-space: nowrap; }
+.b-frag .hl .fh-wege a:hover, .b-frag .hl .fh-wege a:focus-visible { background: var(--farbe-dunkel); color: var(--farbe-weiss); }
+
+/* Sticky-Button Website-Check im neuen Stil (Anna 21.11.2026): ohne Icon, schwarzer Rahmen, harter Schatten, leicht gekippt */
+.sticky-rechner { gap: 6px; padding: 12px 20px; border: 2px solid var(--farbe-dunkel); box-shadow: 4px 4px 0 var(--farbe-dunkel); rotate: -1.5deg; }
+.sticky-rechner:hover { box-shadow: 6px 6px 0 var(--farbe-dunkel); }
+@media (max-width: 767.98px) { .sticky-rechner { padding: 10px 16px; box-shadow: 3px 3px 0 var(--farbe-dunkel); } }
+
+/* Newsletter knapper (Anna 21.11.2026) */
+.fuss-nl-hinweis { font-size: var(--groesse-1); }

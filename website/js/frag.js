@@ -125,7 +125,15 @@
         antwort.appendChild(ul);
       }
     } else {
-      antwort.appendChild(mitLinks(el('p', 'fh-kurz'), 'Gute Frage! Dazu habe ich hier noch keine fertige Antwort. Ruf mich gern an: 0176 830 898 79, oder [schreib mir](kontakt/).'));
+      // Unbekannte Frage (Anna 21.11.2026): drei Wege wie auf der Kontaktseite
+      antwort.appendChild(el('p', 'fh-kurz', 'Gute Frage! Die beantworte ich dir lieber persönlich:'));
+      var wege = el('p', 'fh-wege');
+      [['Termin buchen', 'https://calendar.app.google/muK5JmpfbsXsDEq47', true], ['Anrufen', 'tel:+4917683089879'], ['Schreiben', 'kontakt/']].forEach(function (w) {
+        var a = el('a', null, w[0]); a.href = w[1];
+        if (w[2]) { a.target = '_blank'; a.rel = 'noopener'; }
+        wege.appendChild(a);
+      });
+      antwort.appendChild(wege);
     }
     antwort.appendChild(zeit(false));
     setTimeout(function () {
