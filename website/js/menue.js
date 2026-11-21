@@ -363,8 +363,8 @@
           const x2 = (links ? w.left : w.right) - o.left, y2 = w.top + w.height * (n > 1 ? 0.2 + nr * 0.6 / (n - 1) : 0.5) - o.top;
           const mx = (x1 + x2) / 2, d = `M${x1} ${y1}C${mx} ${y1} ${mx} ${y2} ${x2} ${y2}`;
           const pfad = document.createElementNS(NS, 'path'); pfad.setAttribute('d', d); pfad.setAttribute('class', 'oeko-linie'); svg.appendChild(pfad);
-          const richtung = k.dataset.richtung, rueck = `M${x2} ${y2}C${mx} ${y2} ${mx} ${y1} ${x1} ${y1}`;
-          const wege = richtung === 'rein' ? [d] : richtung === 'raus' ? [rueck] : [d, rueck];
+          // Anna 22.11.2026: ohne wandernde Punkte und ohne „Anhalten / Noch einmal ansehen“; der Aufbau endet nach rund 5 s (WCAG 2.2.2)
+          const wege = [];
           wege.forEach((weg, j) => {
             const c = document.createElementNS(NS, 'circle'); c.setAttribute('r', '4'); c.setAttribute('class', punkt++ % 2 ? 'ci-f oeko-punkt-blau' : 'ci-f'); c.setAttribute('opacity', '0');
             const start = 5.4 + i * 0.35 + j * 1.6;

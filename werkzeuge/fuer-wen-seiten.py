@@ -266,7 +266,7 @@ def branchenseite(b):
              + '\n'.join(f'        <li>{esc(x)}</li>' for x in b['muss']) + '\n      </ul>' + bedarf + '\n    </div>\n' + foto + '  </section>',
              projekte,
              '  <section class="ablauf-start" id="vorgehen" aria-labelledby="vorgehen-titel">\n    <div class="sektionskopf"><p class="meta">Vorgehen</p>'
-             '<h2 class="gr-h2" id="vorgehen-titel">Vier Schritte. Planbar von Anfang&nbsp;an.</h2></div>\n    <ol class="zl-quer">\n' + vorgehen + '    </ol>\n  </section>',
+             '<h2 class="gr-h2" id="vorgehen-titel">Vier Schritte.<br>Planbar von Anfang&nbsp;an.</h2></div>\n    <ol class="zl-quer">\n' + vorgehen + '    </ol>\n  </section>',
              faq(b['faq']).replace('<section class="faq ehrlich"', '<section class="faq ehrlich" id="fragen"', 1),
              abschluss(pre),
              weitere_branchen(andere, pre)]

@@ -34,7 +34,7 @@ Hero `.hl` → Über mich kurz (Intro, darunter „Wo es gerade hakt“ als drei
 - Mega-Menüs „Leistungen“ und „Branchen“ (`js/menue.js`, `aria-controls`), über die Inhaltsbreite, mit Bauhaus-Icons (`mm-mit-icon`, 31 px). Menüpunkte in Manrope 600, 18 px, ohne Unterzeile; Karten rechts beige (`mm-karte-beige`) nur mit Dachzeile, Titel (Anton) und Button.
 - Leistungen: Kernkompetenzen (Markenbildung, Webdesign, KI-Beratung) · Feste Angebote in der Reihenfolge Marken-Regelwerk, Website-Check, KI-Arbeits-Setup, Retainer · Weitere Leistungen (UI/UX, Marketing & Vertrieb, Employer Branding, Druck, Animation, Illustration & Infografik).
 - Branchen-Menü rechts mit dem KI-Arbeits-Setup als Angebot. Mega- und Mobilmenü der Branchen stehen von Hand in `index.html`.
-- Leistungs-Formen im Menü sind dieselben Dateien wie auf den Leistungsseiten (`formen/brand|website|ki.svg`, Beschreibung in `leistungsseiten.md`; KI ist immer der Stern); Website-Check `symbole/scanner.svg`.
+- Leistungs-Formen im Menü sind dieselben Dateien wie auf den Leistungsseiten (`formen/brand|website.svg`, KI seit 22.11.2026 der Zauberstab `symbole/skills.svg`, Anna); Website-Check `symbole/scanner.svg`.
 
 ## Fuß
 - Kontakt · Leistungen (Kernkompetenzen, Feste Angebote, Weitere, Preise) · Branchen (alle sieben, darunter „Wo es hakt“) · Studio (Über mich, Projekte, Blog, Selbst testen, Initiative). Neue Seiten dort eintragen.

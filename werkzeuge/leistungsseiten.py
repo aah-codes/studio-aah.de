@@ -58,7 +58,10 @@ def paket_reihen(g, c, pre=''):
         rechts = (f'<div class="lsx-hintergrund"><p class="meta">Mein Hintergrund</p><h3 class="lsx-hintergrund-titel">{esc(h["titel"])}</h3>'
                   + ''.join(f'<p>{esc(x)}</p>' for x in h['text'])
                   + (f'<p><a class="textlink" href="{pre}profil/#ansatz-titel">Mehr über meinen Hintergrund <span aria-hidden="true">→</span></a></p>' if h.get('link') else '') + '</div>') if h else nicht_enthalten(c)
-        return '    <div class="lsx-einzeln">\n' + karten(g, pre) + '\n      ' + rechts + '\n    </div>'
+        # Nur eine Preiskarte: immer so groß wie bei der KI-Beratung (Anna 22.11.2026)
+        k = karten(g, pre)
+        if 'lsx-gefragt' not in k: k = k.replace('class="lsx-karte"', 'class="lsx-karte lsx-gefragt"', 1)
+        return '    <div class="lsx-einzeln">\n' + k + '\n      ' + rechts + '\n    </div>'
     if not c.get('paket_reihen'):
         return '    <div class="lsx-karten">\n' + karten(g, pre) + '\n    </div>'
     nach_id = {e['id']: e for e in g['pakete']}
@@ -89,7 +92,8 @@ def vergleich(g):
     if any(e.get('dauer') for e in pakete):
         rumpf = '<tr><th scope="row">Dauer</th>' + ''.join('<td>' + esc(e.get('dauer', '–')) + '</td>' for e in pakete) + '</tr>' + rumpf
     return f'''  <section class="lsx-vergleich" id="vergleich" aria-labelledby="vergleich-titel">
-    <h2 class="gr-h3" id="vergleich-titel">Vergleich</h2>
+    <p class="meta">Pakete</p>
+    <h2 class="gr-h2" id="vergleich-titel">Vergleich</h2>
     <div class="lsx-tabelle-rahmen"><table class="lsx-tabelle"><thead><tr><th scope="col">Leistung</th>{kopf}</tr></thead><tbody>{rumpf}</tbody></table></div>
     {NETTO_HINWEIS}
   </section>'''
@@ -139,7 +143,7 @@ def stimmen(pre, tag):
         if len(liste) >= 2: break
         if s not in liste: liste.append(s)
     if not liste: return ''
-    return '  <section class="lsx-stimmen" aria-labelledby="stimmen-titel">\n    <p class="meta">Stimmen</p>\n    <h2 class="gr-h2" id="stimmen-titel">Das sagen <span class="korrektur korrektur-oben"><span class="notiz notiz-durch">Kundinnen</span><span class="hand" aria-hidden="true">Partner:innen</span></span></h2>\n    <div class="stimmen">\n' + I.stimmen(liste, pre) + '\n    </div>\n    <p class="stimmen-quelle"><a class="textlink" href="' + LINKEDIN + '" target="_blank" rel="noopener">Alle Empfehlungen auf LinkedIn <span aria-hidden="true">↗</span></a></p>\n  </section>'
+    return '  <section class="lsx-stimmen" aria-labelledby="stimmen-titel">\n    <p class="meta">Meinungen</p>\n    <h2 class="gr-h2" id="stimmen-titel">Stimmen,<br>die zählen.</h2>\n    <div class="stimmen">\n' + I.stimmen(liste, pre) + '\n    </div>\n    <p class="stimmen-quelle"><a class="textlink" href="' + LINKEDIN + '" target="_blank" rel="noopener">Alle Empfehlungen auf LinkedIn <span aria-hidden="true">↗</span></a></p>\n  </section>'
 
 
 def nicht_enthalten(c):
@@ -245,7 +249,7 @@ def was_ist(c, pre):
     rechts = ((f'<div class="lsx-was-nutzen"><p class="meta">Was du davon hast</p><ol class="lsx-gewinn-liste">{punkte}</ol></div>' if punkte else '')
               + (f'<div class="lsx-fuer"><p class="meta">Für dich, wenn</p><ul>{fuer}</ul></div>' if fuer else ''))
     return f'''  <section class="lsx-was" id="ueberblick" aria-labelledby="was-titel">
-    <div class="lsx-was-text"><p class="meta">Kurz erklärt</p><h2 class="gr-h2" id="was-titel">{trennen(esc(frage))}</h2>{text}</div>
+    <div class="lsx-was-text"><p class="meta">Kurz erklärt</p><h2 class="gr-h2" id="was-titel">{trennen(esc(frage)).replace(': ', ':<br>', 1)}</h2>{text}</div>
     <div class="lsx-was-seite">{rechts}</div>
   </section>'''
 
@@ -384,7 +388,7 @@ def problem_loesung(c, g, pre, link):
     <p class="meta">Warum</p>
     <h2 class="gr-h2" id="loesung-titel">{esc(c['problem_titel'])}</h2>
     <div class="lsx-pl-raster">
-      <div class="lsx-pl-problem"><p class="meta">Woran es oft hakt</p><ul>{probleme}</ul>{probleme_extra}</div>
+      <div class="lsx-pl-problem lsx-pl-zettel"><p class="meta">Woran es oft hakt</p><ul>{probleme}</ul>{probleme_extra}</div>
       {loesung}
       <p class="lsx-knoepfe"><a class="button" href="{pre}kontakt/">{anfrage} <span aria-hidden="true">→</span></a> {check}<a class="textlink" href="{link}">{'Kosten berechnen' if g['id'] == 'website' else 'Alle Preise'} <span aria-hidden="true">→</span></a></p>
     </div>
@@ -423,7 +427,8 @@ def faq(fragen, pre):
       </details>
 ''' for q, a in fragen)
     return f'''  <section class="faq" id="faq" aria-labelledby="faq-titel">
-    <h2 class="gr-h2" id="faq-titel">Häufige Fragen</h2>
+    <p class="meta">Häufige Fragen</p>
+    <h2 class="gr-h2" id="faq-titel">Ehrliche Antworten</h2>
     <div class="faq-liste faq-einspaltig">
 {eintraege}    </div>
   </section>'''

@@ -5092,3 +5092,40 @@ main h2.preis-h2 { font-size: clamp(40px, 6vw, 84px); line-height: 1.05; }
   .ci-nutzen-liste li { display: grid; grid-row: span 3; grid-template-rows: subgrid; row-gap: 0; align-content: start; }
 }
 @media (min-width: 768px) and (max-width: 1024px) { .ci-nutzen-liste { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 40px; } }
+/* Leistungsseiten „Woran es oft hakt“ als Haftnotizen wie im Mega-Menü (Anna 22.11.2026) */
+.lsx-pl-problem.lsx-pl-zettel { background: none; color: var(--farbe-dunkel); padding: 0; border-radius: 0; }
+.lsx-pl-zettel .meta { color: var(--farbe-gedaempft); }
+.lsx-pl-allein .lsx-pl-zettel ul, .lsx-pl-zettel ul { grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr)); gap: 28px 24px; margin-top: 28px; }
+.lsx-pl-zettel li { position: relative; padding: 26px 20px 22px; min-height: 120px; background: var(--farbe-weiss); box-shadow: 0 8px 22px rgba(14, 16, 17, .1); font-weight: 600; line-height: 1.35; rotate: -1deg; }
+.lsx-pl-zettel li:nth-child(4n+2) { background: var(--bb-puder); rotate: .8deg; }
+.lsx-pl-zettel li:nth-child(4n+3) { background: var(--bb-mint); rotate: -.6deg; }
+.lsx-pl-zettel li:nth-child(4n) { background: var(--bb-gelb); rotate: 1.2deg; }
+.lsx-pl-zettel li::before { content: ""; position: absolute; left: 50%; top: -11px; width: 72px; height: 22px; margin-left: -36px; background: var(--bb-gelb); opacity: .85; rotate: -4deg; color: transparent; }
+.lsx-pl-zettel li:nth-child(4n)::before { background: var(--bb-pink); rotate: 3deg; }
+.lsx-pl-zettel .lsx-grundsatz-hell a { color: var(--farbe-dunkel); }
+@media (prefers-reduced-motion: no-preference) { .lsx-pl-zettel li { transition: rotate .2s; } .lsx-pl-zettel li:hover { rotate: 0deg; } }
+/* Retainer und andere lange Warum-Titel: breiter, damit sie in zwei Zeilen passen */
+.lsx-pl .gr-h2 { max-width: 26ch; }
+/* KI-Beratung, EU AI Act (Anna 22.11.2026): Karten zum Überfliegen, Hinweis dezent ohne graue Fläche, mehr Luft */
+.lsx-recht-liste { border-top: 0; gap: 20px; }
+.lsx-recht-liste li { padding: 24px 24px 26px; background: var(--farbe-weiss); border-radius: var(--radius-karte); box-shadow: 0 6px 18px rgba(14, 16, 17, .06); }
+.lsx-recht-datum { display: inline-block; margin: 0 0 14px; padding: 4px 10px; border-radius: var(--radius-pille); background: var(--bb-puder); color: var(--farbe-dunkel); letter-spacing: .04em; }
+.lsx-recht-liste h3 { margin: 0 0 10px; }
+.lsx-recht-liste p:not(.lsx-recht-datum) { font-size: var(--groesse-2); color: var(--farbe-gedaempft); }
+.lsx-recht-bei-mir { margin: 40px 0 24px; padding: 0; background: none; border-radius: 0; font-size: var(--groesse-2); color: var(--farbe-gedaempft); }
+.lsx-recht-bei-mir + p { margin: 0 0 24px; }
+/* Ziele unter der Website-Grafik in Druckschrift, Groß- und Kleinschreibung (Anna 22.11.2026) */
+.oeko-ziel-text { font-family: var(--schrift-text); font-weight: 700; text-transform: none; letter-spacing: -.01em; }
+/* Menü und Ankerleisten (Anna 22.11.2026): kein gerader Unterstrich mehr, nur die gezeichnete Welle; kein Fokusrahmen –
+   mit der Tastatur zeigt die Welle den Fokus (sichtbarer Fokus bleibt, WCAG 2.4.7) */
+.kopf-nav > ul > li > a[aria-current], .kopf-nav .mm-toggle.aktiv, .kopf-mobil nav > ul > li > a[aria-current], .kopf-mobil .mobil-unter > summary.aktiv,
+.kopf-mobil .mobil-unterliste a[aria-current] { text-decoration: none; }
+.stil-b.v-raeume .kopf-nav > ul > li > a[aria-current]::after, .stil-b.v-raeume .kopf-nav .mm-toggle.aktiv::after { clip-path: inset(0 0 0 0); }
+.kopf-mobil nav > ul > li > a[aria-current], .kopf-mobil .mobil-unter > summary.aktiv, .kopf-mobil .mobil-unterliste a[aria-current] {
+  background: url(../bilder/riso/unterstrich.svg) 0 100% / 100% 7px no-repeat; padding-bottom: 6px; }
+.kopf-nav > ul > li > a:focus, .kopf-nav > ul > li > a:focus-visible, .anker-spur a:focus, .anker-spur a:focus-visible { outline: none; box-shadow: none; }
+/* Vergleichstabelle schmaler: Häkchen näher an der Leistung (Anna 22.11.2026) */
+.lsx-tabelle-rahmen { max-width: 960px; }
+.lsx-tabelle td, .lsx-tabelle thead th:not(:first-child) { width: 160px; text-align: center; }
+.lsx-tabelle thead th:not(:first-child) span { text-align: center; }
+.lsx-vergleich .gr-h2 { margin: 12px 0 24px; }
