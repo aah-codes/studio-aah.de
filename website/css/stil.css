@@ -5154,3 +5154,14 @@ main h2.preis-h2 { font-size: clamp(40px, 6vw, 84px); line-height: 1.05; }
 @media (max-width: 767.98px) { .kn-aah { top: .1em; right: -.85em; width: .6em; } }
 /* „Du bist gut genug. Lass es auch die anderen wissen.“ (Anna 22.11.2026): längere zweite Zeile, deshalb etwas kleiner */
 .stil-b.v-raeume .kn-titel { font-size: clamp(38px, 5.4vw, 104px); }
+/* Blitz im Hero blitzt (Anna 22.11.2026): vier kurze Blitze, höchstens zwei pro Sekunde (WCAG 2.3.1), danach steht er (unter 5 s, WCAG 2.2.2) */
+@media (prefers-reduced-motion: no-preference) {
+  .stil-b.v-raeume .kn-st-1 { animation: kn-blitz 2s ease-out .6s 2 both; }
+}
+@keyframes kn-blitz {
+  0%, 30%, 60%, 100% { filter: none; scale: 1; rotate: 0deg; }
+  8% { filter: brightness(1.25) drop-shadow(0 0 18px #ffe600) drop-shadow(0 0 36px #ffe600); scale: 1.18; rotate: -6deg; }
+  16% { filter: none; scale: 1; }
+  38% { filter: brightness(1.25) drop-shadow(0 0 18px #ffe600) drop-shadow(0 0 36px #ffe600); scale: 1.12; rotate: 5deg; }
+  46% { filter: none; scale: 1; rotate: 0deg; }
+}
