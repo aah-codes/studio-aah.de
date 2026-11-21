@@ -216,6 +216,8 @@
     feld.setAttribute('maxlength', '200'); feld.setAttribute('enterkeyhint', 'search');
     var lab = form.querySelector('label'); if (lab) lab.textContent = 'Deine Frage an STUDIO AAH!';
     if (titel) titel.textContent = 'Hi ' + name + '! Wie kann ich dir weiterhelfen?';
+    // Name aus dem Hero auch im letzten Abschnitt aufgreifen (Anna 22.11.2026: „Paul, bist du fit für 2027?“)
+    var nf = document.querySelector('[data-name-frage]'); if (nf) nf.textContent = name + ', bist du fit für 2027?';
     form.removeAttribute('data-frag-name');   // jetzt erscheinen die Frage-Chips
   }
   var gemerkt = nameNoetig ? merk('aah-name').slice(0, 28) : '';

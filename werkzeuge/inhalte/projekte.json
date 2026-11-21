@@ -1109,7 +1109,7 @@
     "id": "karriere",
     "dunkel": true,
     "meta": "Schwerpunkt Karriere",
-    "titel_html": "Fachkräfte&shy;mangel? Karriere als Schwer&shy;punkt.",
+    "titel_html": "Fachkräfte&shy;mangel?<br>Karriere als Schwer&shy;punkt.",
     "text": "Gute Leute zu finden war für Bauer eines der wichtigsten Ziele – wie für viele Betriebe im Baugewerbe. Deshalb bekam Karriere einen eigenen Bereich.",
     "punkte": [
      "Eigene Karriereseite",
@@ -2843,6 +2843,7 @@
     {
      "typ": "galerie",
      "id": "druck",
+     "klasse": "ga-flach",
      "bilder": [
       {
        "bild": "bilder/mockups/druck-schreibtisch.webp",
@@ -3268,13 +3269,7 @@
    ]
   },
   "schlagzeile": "Wie halte ich meine Mitarbeiter?",
-  "streifen": [
-   "bilder/referenzen/deinetwegen/imac-start.webp",
-   "bilder/referenzen/deinetwegen/blog.webp",
-   "bilder/referenzen/deinetwegen/beitrag.webp",
-   "bilder/referenzen/deinetwegen/schriftstufe-1.png",
-   "bilder/referenzen/deinetwegen/beitrag-handy.jpg"
-  ],
+  "streifen": ["bilder/referenzen/deinetwegen/imac-start.webp", "bilder/referenzen/deinetwegen/streifen-1.webp", "bilder/referenzen/deinetwegen/blog.webp", "bilder/referenzen/deinetwegen/streifen-2.webp", "bilder/referenzen/deinetwegen/beitrag.webp", "bilder/referenzen/deinetwegen/streifen-3.webp", "bilder/referenzen/deinetwegen/streifen-4.webp"],
   "titelbild": "bilder/referenzen/cover/deinetwegen.webp",
   "titelmarke": "bilder/referenzen/deinetwegen/marke-orange.svg",
   "titelpos": "50% 40%",
@@ -3324,6 +3319,7 @@
    "icons_titel": "Swing-Pfau"
   },
   "kopf": "Visual Design & Icons",
+  "schlagzeile": "Webdesign & Icons.",
   "jahr": "seit 2026",
   "satz": "Visual Design, neue Icons und laufende Betreuung für Coaching, Seminare und Verlag.",
   "cover": {
@@ -3703,13 +3699,7 @@
     }
    ]
   },
-  "streifen": [
-   "bilder/referenzen/kerstin/laptop-leben.webp",
-   "bilder/referenzen/leben-website.webp?v=2",
-   "bilder/referenzen/kh/pfau-1.svg",
-   "bilder/referenzen/kh/pfau-2.svg",
-   "bilder/referenzen/kh/pfau-3.svg"
-  ],
+  "streifen": ["bilder/referenzen/kerstin/laptop-leben.webp", "bilder/referenzen/kerstin/streifen-1.webp", "bilder/referenzen/kerstin/streifen-2.webp", "bilder/referenzen/leben-website.webp?v=2", "bilder/referenzen/kerstin/streifen-3.webp", "bilder/referenzen/kh/pfau-1.svg", "bilder/referenzen/kh/pfau-2.svg"],
   "titelbild": "bilder/referenzen/cover/down-to-earth.webp",
   "titelmarke": "bilder/referenzen/kh/pfau-1.svg",
   "titelpos": "50% 50%",

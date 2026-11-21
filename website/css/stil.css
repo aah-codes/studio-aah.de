@@ -5072,3 +5072,23 @@ main h2.preis-h2 { font-size: clamp(40px, 6vw, 84px); line-height: 1.05; }
 .ks-formular { border: 1px solid rgba(14, 16, 17, .18); }
 .sticky-rechner { border: 0; box-shadow: 0 8px 24px rgba(14, 16, 17, .18); rotate: 0deg; }
 .sticky-rechner:hover { box-shadow: 0 10px 28px rgba(14, 16, 17, .24); }
+
+/* Startseite „Stimmen, die zählen.“: zwei Zeilen, enger (Anna 22.11.2026); Größe wie die Breite füllende Zeilen (Ausnahme vw-Formel) */
+#stimmen.gr-xxl { font-size: clamp(48px, 11.5vw, 11.5vw); line-height: .98; }
+/* Leistungsseiten „Das bekommst du“: ohne Nummern, zum Überfliegen (Anna 22.11.2026) */
+.lsx-kompetenz-kurz .lsx-kompetenz-liste { border-top: 0; gap: 0 48px; }
+.lsx-kompetenz-kurz .lsx-kompetenz-liste li { display: flex; gap: 14px; padding: 14px 0; border-bottom: 0; }
+.lsx-kompetenz-kurz .lsx-kompetenz-liste li::before { content: ""; flex: none; width: 10px; height: 10px; margin-top: .55em; border-radius: 50%; background: var(--farbe-primaer); }
+.lsx-kompetenz-kurz .lsx-kompetenz-liste p { color: var(--farbe-gedaempft); }
+.lsx-kompetenz-kurz .lsx-kompetenz-liste b { color: var(--farbe-dunkel); font-weight: 700; }
+.lsx-kompetenz-kurz .lsx-kompetenz-liste li { grid-template-columns: none; }
+/* Corporate-Identity-Grafik (Anna 22.11.2026): langer Satz und Kreis-Beschriftungen in der Fließtext-Schrift fett; Handschrift ist bei vielen Wörtern schwer lesbar */
+.ci-titel-gross { font-family: var(--schrift-text); font-weight: 700; font-size: var(--groesse-6); line-height: 1.15; letter-spacing: -.01em; }
+.ci-anim .ci-kern-t { font-family: var(--schrift-text); font-weight: 800; font-size: 30px; letter-spacing: 0; text-transform: uppercase; }
+.ci-anim .ci-kern-t.ci-image-t { font-size: 23px; }
+/* Kartenreihen: Unterzeilen auf einer Höhe, auch wenn ein Titel länger ist (Anna 22.11.2026) */
+@media (min-width: 768px) {
+  .ci-nutzen-liste { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: auto auto auto; row-gap: 0; }
+  .ci-nutzen-liste li { display: grid; grid-row: span 3; grid-template-rows: subgrid; row-gap: 0; align-content: start; }
+}
+@media (min-width: 768px) and (max-width: 1024px) { .ci-nutzen-liste { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 40px; } }

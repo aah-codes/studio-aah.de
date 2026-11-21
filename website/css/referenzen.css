@@ -1377,3 +1377,24 @@
 .hk-paar .hk-liste li:last-child { padding-bottom: 0; }
 /* Alle grauen Striche der Inhaltsleiste raus (Anna 21.11.2026) */
 .cs-inhalt .anker, .cs-inhalt .anker-spur, .cs-inhalt .anker-spur li, .cs-inhalt .anker-spur a { border: 0; box-shadow: none; }
+
+/* Korrekturen Anna 22.11.2026: lange Aussagen in der Fließtext-Schrift fett statt Handschrift (Handschrift nur für kurze Überschriften und Dachzeilen) */
+.vd-text .bn-titel, .cs-nahtlos .vd-text .bn-titel { font-family: var(--schrift-text); font-weight: 700; font-size: var(--groesse-6); line-height: 1.15; letter-spacing: -.01em; }
+.ub-aussage { font-family: var(--schrift-text); font-weight: 700; font-size: clamp(30px, 3.8vw, 58px); line-height: 1.15; letter-spacing: -.015em; }
+.hk-text { font-family: var(--schrift-text); font-weight: 700; font-size: clamp(26px, 2.9vw, 44px); line-height: 1.2; letter-spacing: -.01em; }
+/* Herausforderung/Lösung: halber Leerraum über dem Text, auf allen Projektseiten gleich */
+.hk-paar .hk-karte:not(.hk-mit-liste) { min-height: clamp(260px, 24vw, 380px); }
+/* Überblick: „Leistungen“ beginnt auf Höhe der ersten Zeile der Aussage */
+.cs-ueberblick { align-items: start; }
+.ub-leistungen { padding-top: calc(var(--groesse-1) * 1.6 + 16px + .25em); }
+/* Bauer Visual Design: Bildunterschrift unter der Box, rechtsbündig, 13 px Fließtext-Schrift */
+.vd-icon-figur { margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.vd-icon-figur .vd-icon { flex: 1; }
+.vd-unterschrift { font-family: var(--schrift-text); font-size: var(--groesse-1); line-height: 1.4; text-align: right; color: var(--farbe-gedaempft); }
+/* Bauer Karriere: Text und Stichpunkte oben bündig */
+.cs-nahtlos .fm-mit-text:has(.fm-paar) .fm-text { align-items: start; }
+.cs-nahtlos .fm-mit-text:has(.fm-paar) .fm-text > p:not(.meta), .cs-nahtlos .fm-mit-text:has(.fm-paar) .fm-text > ul { margin-top: 0; }
+/* Goldhammer Druck: Bilder ohne Rahmen und Schatten, näher an der Überschrift */
+.cs-nahtlos .ga-flach .ga-fenster { box-shadow: none; border-radius: var(--radius-karte); }
+.ga-flach .ga-raster { margin-top: 0; }
+.nl-band:has(> .ga-flach) { padding-top: 0; }

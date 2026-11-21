@@ -290,7 +290,9 @@ def _visual_design(b, pre):
     punkte = ''.join(f'<li><b>{esc(a)}</b> {esc(x)}</li>' for a, x in b['entscheidungen'])
     features = ''.join(f'<figure class="vd-feature"><div class="vd-fenster"><img src="{pre}{bild}" alt="{esc(alt)}" loading="lazy"></div><figcaption class="meta">{esc(titel)}</figcaption></figure>' for bild, titel, alt in b.get('features', []))
     return (f'  <section class="cs-block cs-visual" aria-labelledby="vd-titel">\n    <div class="vd-text"><p class="meta">{esc(b["meta"])}</p><h2 class="bn-titel" id="vd-titel">{trennen(esc(b["titel"]))}</h2><ul>{punkte}</ul></div>\n'
-            f'    <div class="vd-icon"><img src="{pre}{b["favicon"]}" alt="Favicon von Wolfgang Bauer Ingenieurbau" width="512" height="512" loading="lazy"><span class="meta">{esc(b["favicon_text"])}</span></div>\n'
+            f'    <figure class="vd-icon-figur"><div class="vd-icon"><img src="{pre}{b["favicon"]}" alt="Favicon von Wolfgang Bauer Ingenieurbau" width="512" height="512" loading="lazy"></div>'
+            # Bildunterschrift unter der Box, rechtsbündig in der Fließtext-Schrift (Anna 22.11.2026: Handschrift passt dort nicht)
+            f'<figcaption class="vd-unterschrift">{esc(b["favicon_text"])}</figcaption></figure>\n'
             + (f'    <figure class="vd-varianten"><img src="{pre}{b["varianten"]}" alt="{esc(b["varianten_alt"])}" loading="lazy"><figcaption class="meta">{esc(b["varianten_text"])}</figcaption></figure>\n' if b.get('varianten') else '')
             + (f'    <div class="vd-features">{features}</div>\n' if features else '') + '  </section>')
 
@@ -338,7 +340,8 @@ def _galerie(b, pre):
     # große, scharfe Bildschirmausschnitte mit Unterschrift (z. B. Mega-Menü und Footer)
     f = ''.join(f'<figure class="ga-bild{" ga-breit" if x.get("breit") else ""}"><div class="ga-fenster"><img src="{pre}{x["bild"]}" alt="{esc(x["alt"])}"{mass_attr(x["bild"])} loading="lazy"></div><figcaption class="meta">{esc(x["titel"])}</figcaption></figure>' for x in b['bilder'])
     kopf = (f'<p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3" id="ga-{b["id"]}">{esc(b["titel"])}</h2>' if b.get('titel') else '')
-    return (f'  <section class="cs-block cs-galerie" ' + (f'aria-labelledby="ga-{b["id"]}"' if b.get('titel') else f'aria-label="{esc(b.get("meta", "Galerie"))}"') + f'>{kopf}'
+    kl = (' ' + b['klasse']) if b.get('klasse') else ''  # z. B. ga-flach: ohne Rahmen und Schatten (Goldhammer Druck, Anna 22.11.2026)
+    return (f'  <section class="cs-block cs-galerie{kl}" ' + (f'aria-labelledby="ga-{b["id"]}"' if b.get('titel') else f'aria-label="{esc(b.get("meta", "Galerie"))}"') + f'>{kopf}'
             + (f'<p class="weg-einleitung">{esc(b["text"])}</p>' if b.get('text') else '') + f'<div class="ga-raster">{f}</div></section>')
 
 

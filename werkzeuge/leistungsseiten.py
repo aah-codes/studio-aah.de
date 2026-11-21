@@ -100,7 +100,7 @@ def extras(g):
     if not ex: return ''
     li = ''.join(f'<li><span class="lsx-extra-name">{esc(e["name"])}</span><span class="lsx-extra-text">{esc(e.get("kurz") or e.get("wer") or "")}</span><span class="lsx-extra-preis">{preis(e)}</span></li>' for e in ex)
     return f'''  <section class="lsx-extras" id="extras" aria-labelledby="extras-titel">
-    <h2 class="gr-h3" id="extras-titel">Zusatzleistungen</h2>
+    <h2 class="gr-h3" id="extras-titel">Zusatz&shy;leistungen</h2>
     <ul class="lsx-extra-liste">{li}</ul>
     {NETTO_HINWEIS}
   </section>'''
@@ -348,10 +348,16 @@ def selbstbau(c, pre):
 def kompetenzen(c):
     """Was genau dazugehört, nummeriert wie die Kernkompetenzen bei IT Sonix (Daten: „loesungen“)."""
     if not c.get('loesungen') or c.get('ohne_detail'): return ''
-    li = ''.join(f'<li><span class="lsx-nr" aria-hidden="true">{i:02d}</span><p>{trennen(esc(x))}</p></li>' for i, x in enumerate(c['loesungen'], 1))
-    return f'''  <section class="lsx-kompetenz" id="leistungen" aria-labelledby="leistungen-titel">
-    <p class="meta">Leistung im Detail</p>
-    <h2 class="gr-h2" id="leistungen-titel">Was dazugehört</h2>
+    # Anna 22.11.2026: „liest sich so keiner durch“ – ohne Nummern als Liste zum Überfliegen; Teil vor dem Doppelpunkt fett
+    def punkt(x):
+        if ': ' in x:
+            a, b = x.split(': ', 1)
+            return f'<b>{trennen(esc(a))}</b> {trennen(esc(b[0].upper() + b[1:]))}'
+        return f'<b>{trennen(esc(x))}</b>'
+    li = ''.join(f'<li><p>{punkt(x)}</p></li>' for x in c['loesungen'])
+    return f'''  <section class="lsx-kompetenz lsx-kompetenz-kurz" id="leistungen" aria-labelledby="leistungen-titel">
+    <p class="meta">Leistung</p>
+    <h2 class="gr-h2" id="leistungen-titel">Das bekommst du</h2>
     <ol class="lsx-kompetenz-liste">{li}</ol>
   </section>'''
 
