@@ -127,24 +127,24 @@ window.WEBRECHNER = {
    "name": "Newsletter-Anbindung",
    "preis": 260,
    "ab": false,
-   "kurz": "Anmeldung auf der Website, verbunden mit Ihrem Dienst",
+   "kurz": "Anmeldung auf der Website, verbunden mit deinem Dienst",
    "wer": "auch für bestehende Websites"
   },
   "illu-web": {
    "name": "Illustrationen & Infografiken",
    "anfrage": true,
-   "kurz": "Eigene Illustrationen, Icons und Infografiken für Ihre Website"
+   "kurz": "Eigene Illustrationen, Icons und Infografiken für deine Website"
   },
   "motion-web": {
    "name": "Animation",
    "anfrage": true,
-   "kurz": "Bewegte Grafiken und Animationen für Ihre Website"
+   "kurz": "Bewegte Grafiken und Animationen für deine Website"
   },
   "sprache": {
    "name": "Weitere Sprache",
    "anteil": 0.3,
    "art": "anzahl",
-   "kurz": "+30 % auf den Website-Preis (Basis und Unterseiten), je Sprache · Übersetzung liefern Sie",
+   "kurz": "+30 % auf den Website-Preis (Basis und Unterseiten), je Sprache · Übersetzung lieferst du",
    "wer": "ohne Website-Paket: auf Anfrage"
   },
   "schulung": {
@@ -161,14 +161,14 @@ window.WEBRECHNER = {
      "preis": 70
     }
    ],
-   "kurz": "PDF-Anleitung 15 € oder Online-Termin 70 € – Sie wählen",
+   "kurz": "PDF-Anleitung 15 € oder Online-Termin 70 € – du wählst",
    "wer": "für alle, die selbst pflegen"
   },
   "wartung": {
    "name": "Wartung",
    "monat": 45,
    "kurz": "",
-   "wer": "Regelmäßige technische Pflege Ihrer WordPress-Website.",
+   "wer": "Regelmäßige technische Pflege deiner WordPress-Website.",
    "items": [
     "Updates von WordPress, Plugins & Themes",
     "Technische Überwachung & Sicherheitschecks",
@@ -180,7 +180,7 @@ window.WEBRECHNER = {
    "name": "Retainer",
    "stunde": 50,
    "stundeBis": 85,
-   "kurz": "Betreute Weiterentwicklung Ihrer Website: Texte und Bilder austauschen, neue Unterseiten erstellen, Abschnitte bearbeiten",
+   "kurz": "Betreute Weiterentwicklung deiner Website: Texte und Bilder austauschen, neue Unterseiten erstellen, Abschnitte bearbeiten",
    "rechner": "Ich werte das Tracking aus und verbessere die Website auf dieser Grundlage weiter. Dazu setze ich Änderungen um: Texte, Bilder, neue Unterseiten.",
    "mindestens": "mindestens 3 Monate"
   }
@@ -189,7 +189,7 @@ window.WEBRECHNER = {
   {
    "id": "",
    "titel": "Ja, Logo und Erscheinungsbild passen",
-   "wer": "Wir arbeiten mit Ihrer bestehenden Marke.",
+   "wer": "Wir arbeiten mit deiner bestehenden Marke.",
    "preis": 0,
    "bon": "Logo und Erscheinungsbild passen"
   },
@@ -199,7 +199,7 @@ window.WEBRECHNER = {
    "titel": "Ja, aber Logo und Erscheinungsbild sollen überarbeitet werden",
    "preis": 300,
    "ab": true,
-   "wer": "Behutsames Redesign: Wir behalten, was Sie ausmacht."
+   "wer": "Behutsames Redesign: Wir behalten, was dich ausmacht."
   },
   {
    "id": "marke-basis",
@@ -268,12 +268,12 @@ window.WEBRECHNER = {
  ],
  "texte": {
   "studio": "Texte und Bilder, mit KI erstellt auf Basis der Analyse, von mir geprüft und überarbeitet",
-  "selbst": "Übernahme Ihrer Texte und Bilder in die Website",
-  "liste": "Texte und Bilder: mit KI erstellt auf Basis der Analyse, von mir geprüft und überarbeitet – oder Sie liefern sie selbst, zum gleichen Preis"
+  "selbst": "Übernahme deiner Texte und Bilder in die Website",
+  "liste": "Texte und Bilder: mit KI erstellt auf Basis der Analyse, von mir geprüft und überarbeitet – oder du lieferst sie selbst, zum gleichen Preis"
  },
  "redesign_inhalt": {
   "Verstehen": [
-   "Website-Check Ihrer Website"
+   "Website-Check deiner Website"
   ],
   "Live gehen": [
    "Sicherung der alten Website",
@@ -283,7 +283,7 @@ window.WEBRECHNER = {
   ]
  },
  "nicht_enthalten": [
-  "Hosting und Domain – buchen und zahlen Sie selbst",
+  "Hosting und Domain – buchst und zahlst du selbst",
   "Kontaktformular und weitere Funktionen – in Schritt 3",
   "Cookie-Banner, Tracking und Schulung – als Extra"
  ],
