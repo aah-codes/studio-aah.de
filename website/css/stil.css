@@ -4994,8 +4994,8 @@ body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp)
 .v-raeume .fuss-pointe { background: var(--farbe-primaer); color: var(--bb-gelb); text-shadow: .03em .025em 0 var(--bb-pink); }
 .v-raeume .sticker { mix-blend-mode: multiply; }
 /* Gezeichnete Sticker (Anna 20.11.2026), freigestellt mit weißem Rand; in „Räume“ statt Herz und Uff-Blase, wackeln leicht */
-.v-raeume .st-stimmen { content: url(../bilder/sticker/fleur-vogel.svg?v=20261121q); mix-blend-mode: normal; animation: st-wackeln 3.2s ease-in-out infinite; }
-.v-raeume .st-faq { content: url(../bilder/sticker/fleur-zaehne.svg?v=20261121q); mix-blend-mode: normal; animation: st-wackeln 2.6s ease-in-out infinite; }
+.v-raeume .st-stimmen { content: url(../bilder/sticker/fleur-vogel.svg?v=20261121r); mix-blend-mode: normal; animation: st-wackeln 3.2s ease-in-out infinite; }
+.v-raeume .st-faq { content: url(../bilder/sticker/fleur-zaehne.svg?v=20261121r); mix-blend-mode: normal; animation: st-wackeln 2.6s ease-in-out infinite; }
 @keyframes st-wackeln { 0%, 100% { rotate: -6deg; } 50% { rotate: 6deg; translate: 0 -6px; } }
 @media (prefers-reduced-motion: reduce) { .v-raeume .st-stimmen, .v-raeume .st-faq { animation: none; } }
 /* =========================================================
@@ -5331,3 +5331,21 @@ body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp)
   font: 800 26px/1.2 var(--schrift-ueberschrift); letter-spacing: -.03em; }
 .stil-b.v-raeume .kopf-mobil .mobil-weitere { font-family: var(--schrift-meta); text-transform: none; letter-spacing: 0; font-size: 20px; }
 
+
+/* Hero im Stil B live (Anna 21.11.2026): ohne Namensfeld und ohne Unterstreichung, Texte waagerecht und senkrecht mittig; Frag-Feld unter dem Laufband */
+.kn-wort { position: relative; display: inline-block; }
+.b-hero .kn { min-height: min(78svh, 820px); display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.b-hero .kn-h1 { margin-bottom: 0; }
+@media (max-width: 767.98px) { .b-hero .kn { display: block; min-height: 0; } }
+.b-frag { padding: 0 var(--rand-seite) 72px; text-align: center; }
+.b-frag-oder { margin: 0 0 16px; font: 400 clamp(22px, 1.9vw, 28px)/1.2 var(--schrift-meta); }
+.b-frag .hl { display: block; max-width: 620px; padding: 0; margin: 0 auto; gap: 0; min-height: 0; height: auto; max-height: none; text-align: left; background: none; }
+.stil-b.v-raeume .b-frag .hl-panel { display: block; min-height: 0; padding: 0; background: transparent; color: var(--farbe-dunkel); border: 0; border-radius: 0; box-shadow: none; overflow: visible; }
+.b-frag .hl .hl-feld { background: var(--farbe-weiss); border: 2px solid var(--farbe-dunkel); }
+.b-frag .hl-feld input { color: var(--farbe-dunkel); }
+.b-frag .hl-chips { justify-content: center; }
+.b-frag .hl-chip { color: var(--farbe-dunkel); border-color: var(--farbe-dunkel); background: var(--farbe-weiss); }
+.b-frag .hl-chip:hover, .b-frag .hl-chip:focus-visible { background: var(--bb-pink); color: var(--farbe-dunkel); }
+.stil-b.v-raeume .b-frag .hl.ist-chat .hl-panel { display: flex; flex-direction: column; height: min(560px, 72svh); }
+.b-frag .hl.ist-chat .hl-chatfenster { border: 2px solid var(--farbe-dunkel); }
+.b-hero { overflow-x: clip; }   /* gedrehtes Laufband ragt sonst 1 px über den Rand */
