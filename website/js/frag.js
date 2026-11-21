@@ -191,8 +191,46 @@
   });
 
   feld.addEventListener('focus', function () { laden().catch(function () {}); }, { once: true });
+  // Erst der Name (Anna 21.11.2026: „Hi, ich bin Anna. Wie heißt du?“, Platzhalter wie im 4. Entwurf). Der Name bleibt nur in diesem
+  // Browser-Tab (sessionStorage), wird nirgends hingeschickt. Danach wird das Feld wieder zum Frag-Feld.
+  var FRAGE = form.getAttribute('data-frag-beispiel') || '';
+  var titel = document.querySelector('[data-frag-titel]');
+  function merk(k, v) { try { if (v === undefined) return sessionStorage.getItem(k) || ''; sessionStorage.setItem(k, v); } catch (e) { return ''; } return v; }
+  var nameNoetig = form.hasAttribute('data-frag-name');
+  function alsFrage(name) {
+    nameNoetig = false; START = FRAGE || START; feld.placeholder = START;
+    feld.setAttribute('maxlength', '200'); feld.setAttribute('enterkeyhint', 'search');
+    var lab = form.querySelector('label'); if (lab) lab.textContent = 'Deine Frage an STUDIO AAH!';
+    if (titel) titel.textContent = 'Hi ' + name + '! Wie kann ich dir weiterhelfen?';
+    form.removeAttribute('data-frag-name');   // jetzt erscheinen die Frage-Chips
+  }
+  var gemerkt = nameNoetig ? merk('aah-name').slice(0, 28) : '';
+  if (gemerkt) alsFrage(gemerkt);
+  function begruessen(name) {
+    merk('aah-name', name);
+    var verlauf = ziel.querySelector('.fh-chat') || ziel.appendChild(el('ol', 'fh-chat'));
+    if (!verlauf.querySelector('.fh-tag')) verlauf.appendChild(el('li', 'fh-tag', 'Heute'));
+    ton('senden');
+    var runde = el('li', 'fh-runde'), ich = el('p', 'fh-ich', name);
+    ich.appendChild(zeit(true)); runde.appendChild(ich);
+    var zeile = el('div', 'fh-zeile'), foto = el('img', 'fh-foto');
+    foto.src = 'bilder/anna-haertelt-studio-blau-rund-192.jpg'; foto.alt = ''; foto.width = 32; foto.height = 32;
+    zeile.appendChild(foto);
+    var antwort = el('div', 'fh-sie');
+    antwort.appendChild(el('p', 'fh-name', 'Anna Härtelt'));
+    antwort.appendChild(el('p', 'fh-kurz', 'Schön, dich kennenzulernen, ' + name + '! Wie kann ich dir weiterhelfen?'));
+    antwort.appendChild(zeit(false));
+    zeile.appendChild(antwort); runde.appendChild(zeile);
+    verlauf.appendChild(runde); hinscrollen(runde);
+    feld.value = ''; alsFrage(name); ton('antwort'); feld.focus();
+  }
   form.addEventListener('submit', function (ev) {
     ev.preventDefault();
+    if (nameNoetig) {
+      var name = feld.value.trim().replace(/[<>]/g, '').slice(0, 28);
+      if (!name) { feld.focus(); return; }
+      emojiPanel(false); begruessen(name); return;
+    }
     // Leeres Feld: beim ersten Mal die Beispielfrage aus dem Platzhalter beantworten (Anna 20.11.2026: „muss nichts eingeben,
     // kann einfach nur Antwort klicken und sehe schon die Funktionalität“)
     var frage = feld.value.trim() || beispiel();

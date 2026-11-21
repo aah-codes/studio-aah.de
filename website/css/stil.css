@@ -51,7 +51,8 @@
   --farbband: linear-gradient(90deg, #d8c4fd 0%, #ee8fea 3%, #fe5fbe 6%, #ff3e3d 9%, #fe5100 12%, #fd9400 15%, #ffd700 18%, #c0ee28 22%, #6cee5e 26%, #18ef94 30%, #04ecb9 35%, #0fe6ef 45%, #19a3f9 55%, #255dfc 65%, #263fe4 70%, #212e85 75%, #1e254c 78%, #1d1d1d 81.5%, #ff2f00 81.5%, #ff2f00 100%);
 
   /* Schriften */
-  --schrift-ueberschrift: "Anton", Impact, "Arial Narrow", sans-serif;
+  --schrift-hand: "Anna Haertelt";            /* Annas Handschrift: Überschriften und Dachzeilen (Anna 21.11.2026) */
+  --schrift-ueberschrift: var(--schrift-hand), "Architects Daughter", "Inter Tight", system-ui, sans-serif;   /* seit 21.11.2026 Annas Handschrift, vorher Anton */
   --schrift-text: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
   --schrift-meta: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace; /* nur Dachzeilen und Versal-Beschriftungen (Anna, 18.11.2026); Zahlen und Text in Manrope */
 
@@ -91,6 +92,7 @@
    Dateien: Teilmengen latin und latin-ext (Fontsource), unverändert.
    --------------------------------------------------------------------- */
 /* Schriften Stil B „Räume“ (Anna 20.11.2026, alle SIL OFL 1.1, Fontsource 5.1.0): Überschriften Inter Tight, Fließtext Instrument Sans, Dachzeilen Instrument Serif */
+@font-face { font-family: "Anna Haertelt"; font-weight: 400; font-display: swap; src: url(../schriften/anna-haertelt-regular.woff2) format("woff2"); }   /* Annas eigene Handschrift-Schrift (21.11.2026); Satzzeichen, 0 und 1 aus ihren eigenen Formen abgeleitet (werkzeuge/schrift-ableiten.py); übrige Ziffern, ? & # © § aus Architects Daughter */
 @font-face { font-family: "Architects Daughter"; font-weight: 400; font-display: swap; src: url(../schriften/architects-daughter-latin-400-normal.woff2) format("woff2"); }   /* Platzhalter für Annas eigene Handschrift-Schrift (SIL OFL) */
 @font-face { font-family: "Inter Tight"; font-weight: 100 900; font-display: swap; src: url(../schriften/inter-tight-latin-wght-normal.woff2) format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
 @font-face { font-family: "Inter Tight"; font-weight: 100 900; font-display: swap; src: url(../schriften/inter-tight-latin-ext-wght-normal.woff2) format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
@@ -4994,8 +4996,8 @@ body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp)
 .v-raeume .fuss-pointe { background: var(--farbe-primaer); color: var(--bb-gelb); text-shadow: .03em .025em 0 var(--bb-pink); }
 .v-raeume .sticker { mix-blend-mode: multiply; }
 /* Gezeichnete Sticker (Anna 20.11.2026), freigestellt mit weißem Rand; in „Räume“ statt Herz und Uff-Blase, wackeln leicht */
-.v-raeume .st-stimmen { content: url(../bilder/sticker/fleur-vogel.svg?v=20261121r); mix-blend-mode: normal; animation: st-wackeln 3.2s ease-in-out infinite; }
-.v-raeume .st-faq { content: url(../bilder/sticker/fleur-zaehne.svg?v=20261121r); mix-blend-mode: normal; animation: st-wackeln 2.6s ease-in-out infinite; }
+.v-raeume .st-stimmen { content: url(../bilder/sticker/fleur-vogel.svg?v=20261122c); mix-blend-mode: normal; animation: st-wackeln 3.2s ease-in-out infinite; }
+.v-raeume .st-faq { content: url(../bilder/sticker/fleur-zaehne.svg?v=20261122c); mix-blend-mode: normal; animation: st-wackeln 2.6s ease-in-out infinite; }
 @keyframes st-wackeln { 0%, 100% { rotate: -6deg; } 50% { rotate: 6deg; translate: 0 -6px; } }
 @media (prefers-reduced-motion: reduce) { .v-raeume .st-stimmen, .v-raeume .st-faq { animation: none; } }
 /* =========================================================
@@ -5004,7 +5006,7 @@ body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp)
    „Fit für 2027“ in Pink, gekreuzte Absperrbänder unten. Steht am Ende und geht vor ältere Räume-Regeln.
    ========================================================= */
 .v-raeume { --schrift-ueberschrift: "Inter Tight", system-ui, -apple-system, "Segoe UI", sans-serif; --schrift-text: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --schrift-meta: "Instrument Serif", Georgia, "Times New Roman", serif; }
+  --schrift-meta: var(--schrift-text); }   /* Instrument Serif seit 21.11.2026 überall raus (Anna), stattdessen Fließtext-Schrift */
 .stil-b.v-raeume :is(h1, h2, h3, .kn-titel, .aah-titel, .lb-name, .lb-nr, .br-name, .pliste-kunde, .aah-nope, .aah-d-titel, .aah-d-warum, .gr-h2, .gr-xxl) {
   text-transform: none; font-weight: 800; letter-spacing: -.035em; }
 .stil-b.v-raeume main h2:not(.aah-d-titel) { rotate: -2deg; }
@@ -5349,3 +5351,30 @@ body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp)
 .stil-b.v-raeume .b-frag .hl.ist-chat .hl-panel { display: flex; flex-direction: column; height: min(560px, 72svh); }
 .b-frag .hl.ist-chat .hl-chatfenster { border: 2px solid var(--farbe-dunkel); }
 .b-hero { overflow-x: clip; }   /* gedrehtes Laufband ragt sonst 1 px über den Rand */
+
+/* Projekte der Startseite nur als Liste (Anna 21.11.2026: „nur die Liste“); Regeln für .pa stehen oben,
+   hier nur: am Handy die Liste statt des Rasters, eine Spalte, ohne Bildstreifen */
+@media (max-width: 767.98px) {
+  .pa-liste { display: block; }
+  .pa-link { grid-template-columns: minmax(0, 1fr); gap: 4px; padding: 20px 0; }
+  .pa-streifen { display: none; }
+}
+
+/* Gekippte Überschrift „Notizen aus dem Studio“ ragt bei 320 px 1 px über den Rand (21.11.2026) */
+.li-abschnitt { overflow-x: clip; }
+
+/* Überschriften global in Annas Handschrift (Anna 21.11.2026: „die Schreibschrift auch in den Überschriften, aber nicht in Versalien“);
+   normale Strichstärke, damit der Browser die Schrift nicht künstlich fett rechnet */
+.v-raeume { --schrift-ueberschrift: var(--schrift-hand), "Architects Daughter", "Inter Tight", system-ui, sans-serif; }
+:is(h1, h2, h3, .gr-h2, .gr-xxl), .stil-b.v-raeume :is(h1, h2, h3, .kn-titel, .aah-titel, .lb-name, .br-name, .gr-h2, .gr-xxl) { text-transform: none; font-weight: 400; letter-spacing: 0; }
+/* Zeile unter dem Namen in den Stimmen wie der Fließtext (Anna 21.11.2026) */
+.person .meta { font: 400 var(--groesse-2)/1.4 var(--schrift-text); letter-spacing: 0; text-transform: none; }
+/* Dachzeilen global in Annas Handschrift, in Versalien (Anna 21.11.2026) */
+.meta, .kn-meta, .stil-b.v-raeume .meta { font-family: var(--schrift-hand), "Architects Daughter", var(--schrift-meta); text-transform: uppercase; letter-spacing: .06em; font-size: clamp(17px, 1.4vw, 20px); line-height: 1.25; }
+/* Bildstreifen der Projektliste darf die Seite nicht verbreitern */
+.pa-streifen { grid-template-columns: minmax(0, 1fr); }
+.pa-streifen-innen { min-width: 0; }
+/* Satz in der Projektliste ohne Serifenschrift gleich groß wie Kunde und Branche (21.11.2026) */
+.stil-b.v-raeume .pa-satz { font: 400 var(--groesse-4)/1.3 var(--schrift-text); }
+/* Frag-Feld: erst der Name, dann die Frage-Chips (sonst würde ein Chip als Name abgeschickt; Anna 21.11.2026) */
+.b-frag:has([data-frag-name]) .hl-chips { display: none; }

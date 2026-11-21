@@ -2444,7 +2444,21 @@
    }
   },
   "hauptvariante": "b",
-  "schlagzeile": "Eine Website, zwei Wege."
+  "schlagzeile": "Eine Website, zwei Wege.",
+  "streifen": [
+   "bilder/referenzen/bauer/wl/startseite.webp",
+   "bilder/referenzen/bauer/wl/kompetenzen.webp",
+   "bilder/referenzen/bauer/wl/bauprojekte.webp",
+   "bilder/referenzen/bauer/wl/weltmeisterlich.webp",
+   "bilder/referenzen/bauer/wl/stellen.webp",
+   "bilder/referenzen/bauer/wl/u6-galerie.webp",
+   "bilder/hero/bauer-praes-01.webp"
+  ],
+  "titelbild": "bilder/referenzen/cover/bauer.webp",
+  "titelmarke": "bilder/referenzen/bauer/vd-favicon.png",
+  "titelpos": "50% 50%",
+  "titelwort": "Bauer",
+  "titelfarbe": "#003466"
  },
  {
   "name": "Dr. Simone Goldhammer",
@@ -2889,7 +2903,21 @@
     }
    ]
   },
-  "schlagzeile": "Naturheilkunde in Leipzig."
+  "schlagzeile": "Naturheilkunde in Leipzig.",
+  "streifen": [
+   "bilder/referenzen/goldhammer/wl/abschnitt-0.jpg",
+   "bilder/referenzen/goldhammer/wl/abschnitt-1.webp",
+   "bilder/referenzen/goldhammer/wl/abschnitt-2.webp",
+   "bilder/hero/goldhammer-visitenkarte.webp",
+   "bilder/referenzen/goldhammer/handy-ueber.jpg",
+   "bilder/referenzen/goldhammer/wl/abschnitt-5.webp",
+   "bilder/referenzen/goldhammer/wl/abschnitt-6.webp"
+  ],
+  "titelbild": "bilder/referenzen/cover/goldhammer.webp",
+  "titelmarke": "bilder/referenzen/goldhammer/bildmarke.png",
+  "titelpos": "50% 50%",
+  "titelwort": "Dr. Goldhammer",
+  "titelfarbe": "#3A3A3A"
  },
  {
   "name": "Deinetwegen – Franziska Weihmann",
@@ -3239,7 +3267,19 @@
     }
    ]
   },
-  "schlagzeile": "Wie halte ich meine Mitarbeiter?"
+  "schlagzeile": "Wie halte ich meine Mitarbeiter?",
+  "streifen": [
+   "bilder/referenzen/deinetwegen/imac-start.webp",
+   "bilder/referenzen/deinetwegen/blog.webp",
+   "bilder/referenzen/deinetwegen/beitrag.webp",
+   "bilder/referenzen/deinetwegen/schriftstufe-1.png",
+   "bilder/referenzen/deinetwegen/beitrag-handy.jpg"
+  ],
+  "titelbild": "bilder/referenzen/cover/deinetwegen.webp",
+  "titelmarke": "bilder/referenzen/deinetwegen/marke-orange.svg",
+  "titelpos": "50% 40%",
+  "titelwort": "Deinetwegen",
+  "titelfarbe": "#2A1E2B"
  },
  {
   "name": "Down to Earth – Kerstin Hack",
@@ -3662,7 +3702,19 @@
      }
     }
    ]
-  }
+  },
+  "streifen": [
+   "bilder/referenzen/kerstin/laptop-leben.webp",
+   "bilder/referenzen/leben-website.webp?v=2",
+   "bilder/referenzen/kh/pfau-1.svg",
+   "bilder/referenzen/kh/pfau-2.svg",
+   "bilder/referenzen/kh/pfau-3.svg"
+  ],
+  "titelbild": "bilder/referenzen/cover/down-to-earth.webp",
+  "titelmarke": "bilder/referenzen/kh/pfau-1.svg",
+  "titelpos": "50% 50%",
+  "titelwort": "Down to Earth",
+  "titelfarbe": "#2D3B42"
  },
  {
   "name": "Jana Voigtmann",
@@ -4081,6 +4133,19 @@
    ]
   },
   "hauptvariante": "b",
-  "schlagzeile": "Drei Genres, eine Website."
+  "schlagzeile": "Drei Genres, eine Website.",
+  "streifen": [
+   "bilder/referenzen/jana/galerie-3.webp",
+   "bilder/referenzen/jana/galerie-1.webp",
+   "bilder/referenzen/jana/galerie-2.webp",
+   "bilder/referenzen/jana/wl/abschnitt-32.webp",
+   "bilder/referenzen/jana/wl/abschnitt-34.webp",
+   "bilder/referenzen/jana/wl/abschnitt-36.webp",
+   "bilder/referenzen/jana/ueber-desktop.webp"
+  ],
+  "titelbild": "bilder/referenzen/jana/galerie-2.webp",
+  "titelpos": "30% 50%",
+  "titelwort": "Jana Voigtmann",
+  "titelfarbe": "#000000"
  }
 ]

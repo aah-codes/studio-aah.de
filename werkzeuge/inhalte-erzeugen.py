@@ -96,6 +96,22 @@ def projekt_raster(liste, pre):
 
 # --- Startseite seit 18.11.2026 (Anna, Aufbau wie ein LinkedIn-Profil): Projekte als Liste wie „Erfahrung“ –
 #     kleines Vorschaubild, Kunde, Schlagzeile, Branche · Zeitraum, Leistungen (Feld „kurzleistungen“: ohne Plattform-Namen, ohne Flyer).
+# --- Startseite seit 21.11.2026 (Anna: „nur die Liste“): Kunde · Satz · Branche je Zeile, beim Darüberfahren klappt ein Bildstreifen auf
+#     (Feld „streifen“ in projekte.json). Ohne Raster und Umschalter.
+def projekt_arbeit_liste(liste, pre):
+    zeilen = []
+    for p in liste:
+        url, _, ziel = projekt_link(p, pre)
+        satz = esc((p.get('schlagzeile') or p['kopf']).rstrip('.'))
+        branche = esc(p['branche'].split(' – ')[0].split(' / ')[0])
+        bilder = p.get('streifen') or [p['cover']['desktop']]
+        streifen = ''.join(f'<img{bild_attr(b, pre)} alt="" loading="lazy">' for b in bilder)
+        zeilen.append(f'      <li class="pa-zeile"><a class="pa-link" href="{url}"{ziel}><span class="pa-kunde">{esc(p["kurzname"])}</span>'
+                      f'<span class="pa-satz">{satz}</span><span class="pa-branche">{branche}</span></a>'
+                      f'<div class="pa-streifen" aria-hidden="true"><div class="pa-streifen-innen">{streifen}</div></div></li>')
+    return '    <div class="pa stil-b v-raeume">\n    <ul class="pa-liste">\n' + '\n'.join(zeilen) + '\n    </ul>\n    </div>'
+
+
 def projekt_liste(liste, pre):
     k = []
     for p in liste:
@@ -317,7 +333,7 @@ ANGEBOT_ARTIKEL = {'marken-regelwerk/index.html': ['brand'], 'website-check/inde
 
 if __name__ == '__main__':
     seiten = {
-        'index.html': [('PROJEKTE', lambda: projekt_liste([x for x in PROJEKTE if x.get('case')], '')), ('LINKEDIN', lambda: linkedin_leiste('')), ('STIMMEN', lambda: stimmen(STIMMEN, ''))],   # „Für wen“, Blog-Karten und Kennzahlen seit 12.11.2026 nicht mehr auf der Startseite (Kennzahlen nur auf Über mich)
+        'index.html': [('PROJEKTE', lambda: projekt_arbeit_liste([x for x in PROJEKTE if x.get('case')], '')), ('LINKEDIN', lambda: linkedin_leiste('')), ('STIMMEN', lambda: stimmen(STIMMEN, ''))],   # „Für wen“, Blog-Karten und Kennzahlen seit 12.11.2026 nicht mehr auf der Startseite (Kennzahlen nur auf Über mich)
         'profil/index.html': [('STIMMEN', lambda: stimmen(STIMMEN, '../')), ('BLOG', lambda: blog(BLOG[:4], '../', '../blog/')),
                               ('KENNZAHLEN', lambda: kennzahlen('fakten', '      '))],
         'blog/index.html': [('BLOG', lambda: blog_themen()), ('SPIEL', lambda: spiel_sektion('../', re.search(r'menue\.js\?v=(\w+)', (WEBSITE / 'index.html').read_text(encoding='utf-8')).group(1)))],
