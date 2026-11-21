@@ -5133,3 +5133,5 @@ main h2.preis-h2 { font-size: clamp(40px, 6vw, 84px); line-height: 1.05; }
 .korrektur-partner { margin-bottom: .5em; }
 .korrektur-partner .hand { left: auto; right: -6%; top: 96%; color: var(--bb-rot); font-size: clamp(34px, 5vw, 84px); }
 @media (max-width: 767.98px) { .korrektur-partner .hand { right: 0; max-width: none; white-space: nowrap; } }
+/* Branchen-Kacheln: Namen in der Fließtext-Schrift halbfett, gut lesbar (Anna 22.11.2026) */
+.br-name, .stil-b.v-raeume .br-name { font-family: var(--schrift-text); font-weight: 600; text-transform: none; letter-spacing: -.01em; font-size: var(--groesse-4); line-height: 1.25; }
