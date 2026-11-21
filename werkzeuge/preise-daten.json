@@ -65,7 +65,7 @@
      "ab": true
     }
    ],
-   "intro": "Eine unverwechselbare Markenidentität, die bei Ihrer Zielgruppe wirklich ankommt – klar, glaubwürdig und zukunftsorientiert.",
+   "intro": "Eine unverwechselbare Markenidentität, die bei deiner Zielgruppe wirklich ankommt – klar, glaubwürdig und zukunftsorientiert.",
    "unterseite": "markenbildung/",
    "karte": "../bilder/leistung-brand.webp"
   },
@@ -106,7 +106,7 @@
      "plus": "Alles aus Start, plus:",
      "items": [
       "10 statt 3 Vorlagen, z. B. Präsentation, Angebot, E-Mail-Signatur",
-      "Workshop mit Ihrem Team (3 Stunden, vor Ort in Leipzig oder online)",
+      "Workshop mit deinem Team (3 Stunden, vor Ort in Leipzig oder online)",
       "30 Tage Rückfragen nach der Übergabe"
      ],
      "gefragt": true,
@@ -117,17 +117,17 @@
      "id": "regelwerk-pflege",
      "name": "Regelwerk-Pflege",
      "monat": 140,
-     "wer": "Damit Regeln und Vorlagen mit Ihrem Unternehmen mitwachsen.",
+     "wer": "Damit Regeln und Vorlagen mit deinem Unternehmen mitwachsen.",
      "plus": "Enthalten:",
      "items": [
       "2 Stunden im Monat für neue Vorlagen oder Anpassungen",
-      "Rückmeldung zu Stichproben aus Ihrem Team",
+      "Rückmeldung zu Stichproben aus deinem Team",
       "Mindestlaufzeit 6 Monate"
      ],
      "ab": true
     }
    ],
-   "intro": "Regeln, Vorlagen und eine KI-Markenanweisung, damit Ihr Team Stellenanzeigen, Posts und Präsentationen selbst einheitlich gestaltet."
+   "intro": "Regeln, Vorlagen und eine KI-Markenanweisung, damit dein Team Stellenanzeigen, Posts und Präsentationen selbst einheitlich gestaltet."
   },
   {
    "id": "ui-ux",
@@ -364,27 +364,27 @@
      "name": "Newsletter-Anbindung",
      "preis": 260,
      "ab": false,
-     "kurz": "Anmeldung auf der Website, verbunden mit Ihrem Dienst",
+     "kurz": "Anmeldung auf der Website, verbunden mit deinem Dienst",
      "wer": "auch für bestehende Websites"
     },
     {
      "id": "illu-web",
      "name": "Illustrationen & Infografiken",
      "anfrage": true,
-     "kurz": "Eigene Illustrationen, Icons und Infografiken für Ihre Website"
+     "kurz": "Eigene Illustrationen, Icons und Infografiken für deine Website"
     },
     {
      "id": "motion-web",
      "name": "Animation",
      "anfrage": true,
-     "kurz": "Bewegte Grafiken und Animationen für Ihre Website"
+     "kurz": "Bewegte Grafiken und Animationen für deine Website"
     },
     {
      "id": "sprache",
      "name": "Weitere Sprache",
      "anteil": 0.3,
      "art": "anzahl",
-     "kurz": "+30 % auf den Website-Preis (Basis und Unterseiten), je Sprache · Übersetzung liefern Sie",
+     "kurz": "+30 % auf den Website-Preis (Basis und Unterseiten), je Sprache · Übersetzung lieferst du",
      "wer": "ohne Website-Paket: auf Anfrage"
     },
     {
@@ -402,7 +402,7 @@
        "preis": 70
       }
      ],
-     "kurz": "PDF-Anleitung 15 € oder Online-Termin 70 € – Sie wählen",
+     "kurz": "PDF-Anleitung 15 € oder Online-Termin 70 € – du wählst",
      "wer": "für alle, die selbst pflegen"
     },
     {
@@ -410,7 +410,7 @@
      "name": "Wartung",
      "monat": 45,
      "kurz": "",
-     "wer": "Regelmäßige technische Pflege Ihrer WordPress-Website.",
+     "wer": "Regelmäßige technische Pflege deiner WordPress-Website.",
      "items": [
       "Updates von WordPress, Plugins & Themes",
       "Technische Überwachung & Sicherheitschecks",
@@ -423,12 +423,12 @@
      "name": "Retainer",
      "stunde": 50,
      "stundeBis": 85,
-     "kurz": "Betreute Weiterentwicklung Ihrer Website: Texte und Bilder austauschen, neue Unterseiten erstellen, Abschnitte bearbeiten",
+     "kurz": "Betreute Weiterentwicklung deiner Website: Texte und Bilder austauschen, neue Unterseiten erstellen, Abschnitte bearbeiten",
      "rechner": "Ich werte das Tracking aus und verbessere die Website auf dieser Grundlage weiter. Dazu setze ich Änderungen um: Texte, Bilder, neue Unterseiten.",
      "mindestens": "mindestens 3 Monate"
     }
    ],
-   "intro": "Klares Design mit technischer Präzision – individuell, responsiv und auf Ihre Ziele ausgerichtet.",
+   "intro": "Klares Design mit technischer Präzision – individuell, responsiv und auf deine Ziele ausgerichtet.",
    "unterseite": "webdesign/",
    "karte": "../bilder/leistung-website.webp"
   },
@@ -447,7 +447,7 @@
      "id": "marketing-0",
      "name": "LinkedIn aufsetzen",
      "preis": 500,
-     "wer": "Damit die richtigen Menschen Sie finden und sofort verstehen, was Sie anbieten.",
+     "wer": "Damit die richtigen Menschen dich finden und sofort verstehen, was du anbietest.",
      "plus": "Enthalten:",
      "items": [
       "Profil",
@@ -461,7 +461,7 @@
      "id": "vorlagen",
      "name": "Social-Media- & Post-Vorlagen",
      "preis": 400,
-     "wer": "Damit Sie regelmäßig posten können, ohne jedes Mal bei null anzufangen.",
+     "wer": "Damit du regelmäßig posten kannst, ohne jedes Mal bei null anzufangen.",
      "plus": "Enthalten:",
      "items": [
       "5 Vorlagen in Canva",
@@ -473,7 +473,7 @@
      "id": "marketing-2",
      "name": "Fachartikel",
      "preis": 300,
-     "wer": "Für Blog, LinkedIn oder Fachmedien – mit Ihrer Expertise im Mittelpunkt.",
+     "wer": "Für Blog, LinkedIn oder Fachmedien – mit deiner Expertise im Mittelpunkt.",
      "plus": "Pro Artikel:",
      "items": [
       "1.000–1.500 Wörter",
@@ -486,7 +486,7 @@
      "id": "marketing-3",
      "name": "Webinar aufsetzen",
      "preis": 850,
-     "wer": "Damit Sie sich ganz auf Ihren Auftritt konzentrieren können.",
+     "wer": "Damit du dich ganz auf deinen Auftritt konzentrieren kannst.",
      "plus": "Enthalten:",
      "items": [
       "Konzept",
@@ -497,7 +497,7 @@
      "ab": true
     }
    ],
-   "intro": "Sichtbar werden, wo Ihre Kund:innen sind – mit klarer Positionierung und Inhalten, die zu Ihnen passen. Einzeln buchbar.",
+   "intro": "Sichtbar werden, wo deine Kund:innen sind – mit klarer Positionierung und Inhalten, die zu dir passen. Einzeln buchbar.",
    "unterseite": "marketing-vertrieb/",
    "karte": "../bilder/leistung-marketing.webp"
   },
@@ -598,7 +598,7 @@
      "plus": "Enthalten:",
      "items": [
       "Fragebogen",
-      "Analyse Ihrer Abläufe",
+      "Analyse deiner Abläufe",
       "Empfehlungsbericht"
      ],
      "gefragt": false,
@@ -627,7 +627,7 @@
      "wer": "Für Teams, die die Empfehlungen aus dem Check umsetzen wollen.",
      "plus": "Nach dem KI-Check:",
      "items": [
-      "Claude für Ihr Team einrichten",
+      "Claude für dein Team einrichten",
       "Digitale Arbeitsabläufe",
       "Team-Schulung"
      ],
@@ -666,7 +666,7 @@
      "id": "retainer",
      "name": "Retainer – laufende Betreuung",
      "anfrage": true,
-     "wer": "Betreute Weiterentwicklung Ihrer Website, 50–85 € netto pro Stunde, je nach Unternehmensgröße: Texte und Bilder austauschen, neue Unterseiten, Abschnitte bearbeiten.",
+     "wer": "Betreute Weiterentwicklung deiner Website, 50–85 € netto pro Stunde, je nach Unternehmensgröße: Texte und Bilder austauschen, neue Unterseiten, Abschnitte bearbeiten.",
      "items": [],
      "ab": true
     }
@@ -678,7 +678,7 @@
  "glossar": [
   [
    "Unterseite",
-   "Jede eigene Seite Ihrer Website, z. B. „Leistungen“, „Über uns“, „Kontakt“ oder eine Seite je Branche."
+   "Jede eigene Seite deiner Website, z. B. „Leistungen“, „Über uns“, „Kontakt“ oder eine Seite je Branche."
   ],
   [
    "Seitenstruktur (Sitemap)",
@@ -698,11 +698,11 @@
   ],
   [
    "Website-Check (Expert Review)",
-   "Ich versetze mich in Ihre Zielgruppe, nutze Ihre Website oder Anwendung und zeige, was sich verbessern lässt."
+   "Ich versetze mich in deine Zielgruppe, nutze deine Website oder Anwendung und zeige, was sich verbessern lässt."
   ],
   [
    "Launch",
-   "Ihre Website geht online: Domain verbinden, technische Einträge (DNS) setzen, Umzug, Livegang."
+   "Deine Website geht online: Domain verbinden, technische Einträge (DNS) setzen, Umzug, Livegang."
   ],
   [
    "Weiterleitungen",
@@ -710,7 +710,7 @@
   ],
   [
    "SEO & LLM-Zitierfähigkeit",
-   "Suchmaschinen-Optimierung und Zitierfähigkeit für KI-Assistenten: damit Ihre Website bei Google gefunden und von ChatGPT, Claude & Co. als Quelle genannt wird."
+   "Suchmaschinen-Optimierung und Zitierfähigkeit für KI-Assistenten: damit deine Website bei Google gefunden und von ChatGPT, Claude & Co. als Quelle genannt wird."
   ],
   [
    "Wireframe, Prototyp",
@@ -718,7 +718,7 @@
   ],
   [
    "Stundensatz",
-   "Für Arbeiten nach Aufwand, etwa spätere Änderungen, weitere Korrekturrunden oder den Retainer. Er richtet sich nach der Größe Ihres Unternehmens: Für Selbstständige und kleine Betriebe liegt er bei 50 bis 65 €, für mittelständische Unternehmen bei bis zu 85 € netto. Den genauen Satz nenne ich Ihnen im Angebot."
+   "Für Arbeiten nach Aufwand, etwa spätere Änderungen, weitere Korrekturrunden oder den Retainer. Er richtet sich nach der Größe deines Unternehmens: Für Selbstständige und kleine Betriebe liegt er bei 50 bis 65 €, für mittelständische Unternehmen bei bis zu 85 € netto. Den genauen Satz nenne ich dir im Angebot."
   ],
   [
    "Marken-Regelwerk (Brand Guidelines)",
@@ -735,7 +735,7 @@
    "titel": "Markenbildung",
    "bild": "bilder/leistung-brand.webp",
    "link": "service/markenbildung/",
-   "text": "Eine unverwechselbare Markenidentität, die bei Ihrer Zielgruppe wirklich ankommt – klar, glaubwürdig und zukunftsorientiert."
+   "text": "Eine unverwechselbare Markenidentität, die bei deiner Zielgruppe wirklich ankommt – klar, glaubwürdig und zukunftsorientiert."
   },
   {
    "id": "ui-ux",
@@ -749,14 +749,14 @@
    "titel": "Webdesign",
    "bild": "bilder/leistung-website.webp",
    "link": "service/webdesign/",
-   "text": "Klares Design mit technischer Präzision – individuell, responsiv und auf Ihre Ziele ausgerichtet."
+   "text": "Klares Design mit technischer Präzision – individuell, responsiv und auf deine Ziele ausgerichtet."
   },
   {
    "id": "marketing",
    "titel": "Marketing & Vertrieb",
    "bild": "bilder/leistung-marketing.webp",
    "link": "service/marketing-vertrieb/",
-   "text": "Sichtbar werden, wo Ihre Kund:innen sind – mit klarer Positionierung und Inhalten, die zu Ihnen passen."
+   "text": "Sichtbar werden, wo deine Kund:innen sind – mit klarer Positionierung und Inhalten, die zu dir passen."
   },
   {
    "id": "print",
@@ -784,14 +784,14 @@
    "titel": "Retainer",
    "bild": "bilder/leistung-retainer.webp",
    "link": "service/retainer/",
-   "text": "Betreute Weiterentwicklung Ihrer Website: neue Texte und Bilder, Unterseiten und Abschnitte, 50–85 € netto pro Stunde, je nach Unternehmensgröße."
+   "text": "Betreute Weiterentwicklung deiner Website: neue Texte und Bilder, Unterseiten und Abschnitte, 50–85 € netto pro Stunde, je nach Unternehmensgröße."
   },
   {
    "id": "ki",
    "titel": "KI-Beratung",
    "bild": "bilder/leistung-ki.webp",
    "link": "service/ki-digitalisierung/",
-   "text": "KI-Beratung mit Claude: eingerichtet für Ihre Abläufe."
+   "text": "KI-Beratung mit Claude: eingerichtet für deine Abläufe."
   }
  ],
  "webrechner": {
@@ -800,7 +800,7 @@
    {
     "id": "",
     "titel": "Ja, Logo und Erscheinungsbild passen",
-    "wer": "Wir arbeiten mit Ihrer bestehenden Marke.",
+    "wer": "Wir arbeiten mit deiner bestehenden Marke.",
     "preis": 0,
     "bon": "Logo und Erscheinungsbild passen"
    },
@@ -810,7 +810,7 @@
     "titel": "Ja, aber Logo und Erscheinungsbild sollen überarbeitet werden",
     "preis": 300,
     "ab": true,
-    "wer": "Behutsames Redesign: Wir behalten, was Sie ausmacht."
+    "wer": "Behutsames Redesign: Wir behalten, was dich ausmacht."
    },
    {
     "id": "marke-basis",
@@ -879,12 +879,12 @@
   ],
   "texte": {
    "studio": "Texte und Bilder, mit KI erstellt auf Basis der Analyse, von mir geprüft und überarbeitet",
-   "selbst": "Übernahme Ihrer Texte und Bilder in die Website",
-   "liste": "Texte und Bilder: mit KI erstellt auf Basis der Analyse, von mir geprüft und überarbeitet – oder Sie liefern sie selbst, zum gleichen Preis"
+   "selbst": "Übernahme deiner Texte und Bilder in die Website",
+   "liste": "Texte und Bilder: mit KI erstellt auf Basis der Analyse, von mir geprüft und überarbeitet – oder du lieferst sie selbst, zum gleichen Preis"
   },
   "redesign_inhalt": {
    "Verstehen": [
-    "Website-Check Ihrer Website"
+    "Website-Check deiner Website"
    ],
    "Live gehen": [
     "Sicherung der alten Website",
@@ -894,7 +894,7 @@
    ]
   },
   "nicht_enthalten": [
-   "Hosting und Domain – buchen und zahlen Sie selbst",
+   "Hosting und Domain – buchst und zahlst du selbst",
    "Kontaktformular und weitere Funktionen – in Schritt 3",
    "Cookie-Banner, Tracking und Schulung – als Extra"
   ],
