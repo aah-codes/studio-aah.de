@@ -27,7 +27,7 @@ Hero `.hl` → Über mich kurz (Intro, darunter „Wo es gerade hakt“ als drei
 - Branchen-Mosaik über Marker `BRANCHEN`, Reihenfolge Bau, Software & IT, Handwerk, Energie, Industrie, Beratung (breite Kachel), Gesundheit (`reihenfolge` in `startseite_branchen()`).
 - Köpfe von „Wo es gerade hakt“, Projekte, LinkedIn und Stimmen mittig (`sk-mitte`). Stimmen ohne Unterzeile.
 - Der alte Leistungs-Slider wird nirgends eingebaut (gesichert in Betrieb `Studio AAH/Website/gestaltung/2026-11-09_hero-slider-leistungen/`); `js/hero.js` ist ungenutzt.
-- **„Ab Dezember 2026 nehme ich zwei neue Projekte an“ (Intro) Ende Dezember anpassen oder entfernen.**
+- Letzter Abschnitt der Startseite: nur der blaue Website-Check-Block „Fit für 2027? Finden wir es heraus.“ mit Namen aus dem Hero (Anna 22.11.2026); „Ab Dezember 2026 …“ ist damit entfallen.
 
 ## Menü
 - Hauptmenü am Desktop mittig zwischen Logo und Button: Leistungen · Branchen · Projekte (Adresse `/referenzen/`) · Über mich · Aktuelles (Adresse `/blog/`).
