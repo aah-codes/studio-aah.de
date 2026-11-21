@@ -5179,3 +5179,9 @@ main h2.preis-h2 { font-size: clamp(40px, 6vw, 84px); line-height: 1.05; }
 .v-raeume .button:hover { background: var(--farbe-primaer-dunkel); border-color: var(--farbe-primaer-dunkel); color: var(--farbe-weiss); }
 .v-raeume .fuss .button, .v-raeume.b-teil .fuss .button { background: var(--farbe-weiss); border-color: var(--farbe-weiss); color: var(--farbe-dunkel); }
 .v-raeume .fuss .button:hover { background: var(--bb-gelb); border-color: var(--bb-gelb); color: var(--farbe-dunkel); }
+/* Hero (Anna 22.11.2026): drei Zeilen, wieder größer; Regenbogen größer; Pfeil gezeichnet und größer */
+.stil-b.v-raeume .kn-titel { font-size: clamp(42px, 7.4vw, 140px); line-height: 1; }
+.kn-aah { width: 1.25em; right: -1.35em; top: -.75em; }
+.kn-pfeil { width: clamp(76px, 7.5vw, 124px); }
+@media (max-width: 767.98px) { .kn-aah { width: .8em; right: -.9em; top: -.1em; } }
+.kn-pfeil { width: clamp(90px, 9vw, 150px); }

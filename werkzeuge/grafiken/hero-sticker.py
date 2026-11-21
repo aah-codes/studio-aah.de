@@ -59,10 +59,12 @@ def regenbogen():
 
 
 def pfeil():
-    schaft = 'M200 40 C186 100, 214 150, 196 210 C186 250, 206 290, 200 330'
-    kopf = 'M140 270 C164 296, 182 318, 200 342 C214 318, 236 292, 262 266'
-    return svg(kontur(schaft, 10) + kontur('M203 44 C190 104, 216 152, 199 212 C190 252, 208 290, 203 328', 4)
-               + kontur(kopf, 10) + kontur('M144 276 C166 298, 184 320, 202 338 C216 316, 236 294, 258 272', 4))
+    # geschwungener Pfeil wie gezeichnet, mit Strich darunter (Anna 22.11.2026)
+    schaft = 'M206 24 C176 70, 238 104, 204 150 C176 190, 236 222, 206 266 C196 282, 190 300, 188 318'
+    kopf = 'M140 270 C160 296, 176 316, 188 330 C212 314, 238 302, 270 296'
+    strich = 'M150 372 C200 368, 246 368, 286 372'
+    return svg(kontur(schaft, 12) + kontur('M209 28 C180 74, 241 108, 207 154 C179 194, 239 226, 209 270 C199 286, 193 302, 191 316', 4)
+               + kontur(kopf, 12) + kontur('M144 276 C162 300, 178 318, 190 328 C214 312, 238 302, 266 298', 4) + kontur(strich, 10))
 
 
 for name, f in (('zeichnung-blitz', blitz), ('zeichnung-regenbogen', regenbogen), ('zeichnung-pfeil', pfeil)):
