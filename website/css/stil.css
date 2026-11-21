@@ -215,13 +215,12 @@ h1, h2, h3 {
 .gr-xxl.lang-wort { font-size: clamp(40px, 12vw, 12vw); }
 .gr-h2    { font-size: clamp(40px, 6vw, 6vw);   line-height: 1; }
 /* Inter-Zwischenzeilen */
-.alt-klein, .alt-h2, .alt-h3, .alt-h5, .alt-h6 {
+.alt-klein, .alt-h3, .alt-h5, .alt-h6 {
   font-family: var(--schrift-text);
   font-weight: 600;
   text-transform: none;
 }
 .alt-klein { font-size: clamp(28px, 5vw, 5vw);      line-height: 1.1; margin: 0 0 .8em; }
-.alt-h2    { font-size: clamp(20px, 3vw, 3vw);      line-height: 1.2; margin: 0 0 .8em; }
 .alt-h3    { font-size: var(--groesse-5);  line-height: 1.2; margin: 0 0 .8em; }
 .alt-h5    { font-size: var(--groesse-4); line-height: 1.4; margin: 0; }
 .alt-h6    { font-size: var(--groesse-3); line-height: 1.2; margin: 0; }
@@ -404,14 +403,6 @@ h1, h2, h3 {
 
 /* Sektionskopf: (Label) … (Nummer), große Überschrift */
 .sektionskopf { padding: 96px var(--rand-seite) 48px; }
-.sektionskopf-zeile {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px;
-}
-
-
-.hg-hellgrau   { background: var(--farbe-hellgrau); }
 .hg-hellgrau-2 { background: var(--farbe-hellgrau-2); }
 
 .liste {
@@ -645,18 +636,9 @@ h1, h2, h3 {
 
 /* ---------- 14. Startseite: Hero mit Bildband, das auf die Maus reagiert ---------- */
 .hero-buehne { position: relative; overflow: hidden; padding: 48px 0 72px; text-align: center; }
-.hero-buehne .hero-text { position: relative; z-index: 2; padding: 0 var(--rand-seite); }
-.hero-buehne .alt-h2 { max-width: 30ch; margin-left: auto; margin-right: auto; }
-.hero-buehne h1.alt-h2 { letter-spacing: normal; }
 /* Punkteraster: dezent hellgrau, nur im Umkreis der Maus sichtbar */
-.hero-raster { position: absolute; inset: 0; z-index: 0; pointer-events: none;
-  background-image: radial-gradient(circle, #dcdfdf 1.3px, transparent 1.5px); background-size: 14px 14px;
-  -webkit-mask-image: radial-gradient(circle at var(--mx, 50%) var(--my, 55%), #000 0, transparent 30%);
-          mask-image: radial-gradient(circle at var(--mx, 50%) var(--my, 55%), #000 0, transparent 30%); }
-.hero-titel { font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-weight: 400; font-size: clamp(52px, 9vw, 9vw); margin: 8px 0 0; }
-.hero-titel > span { display: block; overflow: hidden; white-space: nowrap; } /* bricht auch mit Ersatzschrift nicht um (kein Verrutschen beim Laden) */
-.hero-titel > span > span { display: inline-block; animation: aus-maske .9s cubic-bezier(.2, .8, .2, 1) both; }
-.hero-titel > span:nth-child(2) > span { animation-delay: .12s; }
+ /* bricht auch mit Ersatzschrift nicht um (kein Verrutschen beim Laden) */
+
 @keyframes aus-maske { from { translate: 0 105%; } }
 /* Bildband */
 .hero-band { position: relative; z-index: 1; overflow: hidden; margin: 0 0 8px; touch-action: pan-y; perspective: 1200px; animation: band-rein 1.2s cubic-bezier(.2, .8, .2, 1) .2s both; }
@@ -669,13 +651,12 @@ h1, h2, h3 {
 @keyframes laptop-slide { 0% { opacity: 0; } 4%, 20% { opacity: 1; } 24%, 100% { opacity: 0; } }
 @keyframes website-scroll { 0%, 8% { transform: translateY(0); } 92%, 100% { transform: translateY(calc(-100% + 100cqh)); } }
 /* Visitenkarten aufgefächert, gehen bei Annäherung der Maus weiter auf */
-.hero-unten { position: relative; z-index: 1; }
+
 @media (max-width: 900px) {
-  .hero-titel { font-size: calc((100vw - 2 * var(--rand-seite)) / 5.8); }
   .hero-spur { gap: 26px; }
   }
 @media (prefers-reduced-motion: reduce) {
-  .hero-titel > span > span, .hero-band, .laptop-seite { animation: none !important; }
+   .hero-band, .laptop-seite { animation: none !important; }
   }
 
 /* 3D-Icons in Überschriften (3dicons.co, Clay, CC0): ploppen auf, schweben leicht, kippen beim Darüberfahren */
@@ -719,9 +700,8 @@ h1, h2, h3 {
 .kopier-knopf.ok .symbol-ok { display: block; }
 .kopier-knopf.ok .symbol-kopieren { display: none; }
 .kopiert { font-size: var(--groesse-1); color: var(--farbe-gedaempft); }
-.hinweis-klein { font-size: var(--groesse-1); color: var(--farbe-gedaempft); margin: 0; }
-.kontakt-buchen { margin-top: 2.5rem; } /* Kontakt: mehr Luft über „Direkt Beratungstermin buchen“ (Anna 19.11.2026) */
-.kontakt-buchen + .hinweis-klein { margin: -0.5rem 0 3.5rem; } /* Kontakt: Hinweis unter dem Buchungs-Button, Abstand zum Formular */
+.hinweis-klein { font-size: var(--groesse-1); color: var(--farbe-gedaempft); margin: 0; } /* Kontakt: mehr Luft über „Direkt Beratungstermin buchen“ (Anna 19.11.2026) */
+ /* Kontakt: Hinweis unter dem Buchungs-Button, Abstand zum Formular */
 .hinweis-klein + .alt-h3 { margin-top: 2.5rem; }
 
 
@@ -1044,14 +1024,10 @@ main.mit-faden { position: relative; }
 .sticky-rechner:hover { background: var(--farbe-primaer-dunkel); }
 .sticky-rechner.weg { opacity: 0; visibility: hidden; pointer-events: none; } /* menue.js: liegt ein Knopf oder Kontakt-Link darunter */
 .sticky-rechner:focus-visible { outline: 2px solid var(--farbe-dunkel); outline-offset: 3px; }
-.sticky-rechner-icon { width: 36px; height: 36px; border-radius: 50%; background: var(--farbe-weiss); display: grid; place-items: center; overflow: hidden; }
-.sticky-rechner-icon img { width: 30px; height: 30px; }
 /* nicht auf der Preisseite (dort ist der Rechner), nicht bei offenem Mobilmenü und nicht beim Tippen in Formularen */
 body:has(.wr) .sticky-rechner, body:has(.kopf-mobil[open]) .sticky-rechner, body:has(input:focus, textarea:focus) .sticky-rechner { display: none; }
 @media (max-width: 767.98px) {
   .sticky-rechner { padding: 4px 14px 4px 4px; gap: 8px; font-size: var(--groesse-2); }
-  .sticky-rechner-icon { width: 32px; height: 32px; }
-  .sticky-rechner-icon img { width: 26px; height: 26px; }
 }
 @media (max-width: 1024px) {
   .wr { margin: 24px 12px; padding: 24px 16px 32px; border-radius: var(--radius-karte); }
@@ -1125,7 +1101,6 @@ body:has(.wr) .sticky-rechner, body:has(.kopf-mobil[open]) .sticky-rechner, body
 .ls-karte img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius-karte); transition: transform .4s; }
 .ls-karte:hover img { transform: scale(1.02); }
 .ls-karte-titel { font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-size: var(--groesse-5); line-height: 1; margin-top: 8px; }
-.ls-karte-text { color: var(--farbe-gedaempft); max-width: 48ch; }
 .prozess-kompakt { padding: 72px var(--rand-seite); }
 .glossar { padding-bottom: 120px; }
 @media (max-width: 900px) {
@@ -1147,21 +1122,14 @@ body:has(.wr) .sticky-rechner, body:has(.kopf-mobil[open]) .sticky-rechner, body
 
 /* Leistungen: Chips springen zur Karte */
 .start-leistungen .sektionskopf { padding-bottom: 24px; }
-.leistungs-chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 var(--rand-seite) 24px; }
-.leistungs-chips a { padding: 6px 14px; border-radius: var(--radius-pille); border: 1px solid var(--farbe-rahmen); font-size: var(--groesse-2); font-weight: 600; text-decoration: none; color: inherit; white-space: nowrap; transition: border-color .2s, background .2s, color .2s; }
-.leistungs-chips a:hover { border-color: var(--farbe-dunkel); }
-.leistungs-chips a:last-child { background: var(--farbe-dunkel); border-color: var(--farbe-dunkel); color: var(--farbe-weiss); }
 @media (max-width: 900px) {
   .intro { padding: 72px var(--rand-seite) 64px; }
   .profil-tools .tools { flex-wrap: wrap; }
-  .leistungs-chips { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
-  .leistungs-chips::-webkit-scrollbar { display: none; }
 }
 
 /* ---------- 26. Zeilenabstand der Überschriften (Anna, 11.10.2026) ---------- */
 /* Kompakt, aber Umlaut-Punkte und Akzente dürfen die Zeile darüber nicht berühren (Anton: bei 1,0 stößt „Ä“ an „M“) */
 h1, h2, h3, .gr-xxl, .gr-xl, .gr-h2, .gr-h3, .artikel h1, .mm-karte-titel, .fuss-karte-titel, .ls-karte-titel, .weg-ziel .gr-h2, .preisseite .preis-h2, .preis-cta-kostenlos .gr-h2, .lp-titel { line-height: 1.12; }
-.hero-titel { line-height: 1.04; }
 /* Blog-Vorschaukarten: Titel ohne Unterstrich, etwas mehr Zeilenabstand */
 .blog-karte h3 { line-height: 1.15; margin: 0 0 .5rem; }
 .blog-karte h2 a, .blog-karte h3 a { text-decoration: none; color: inherit; }
@@ -1201,7 +1169,7 @@ h1, h2, h3, .gr-xxl, .gr-xl, .gr-h2, .gr-h3, .artikel h1, .mm-karte-titel, .fuss
   }
 
 /* Hero Startseite: Knöpfe (Anfrage zuerst) und Kennzahlen darunter (Idee: proxy.gonka.gg) */
-.hero-knoepfe { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 16px 32px; margin: 24px 0 0; }
+
 .hero-fakten { max-width: 880px; margin: 48px auto 0; }
 .fakt-ort { width: 1em; height: 1em; vertical-align: -.12em; }
 /* ---------- 30. Profil: Blick ins Studio – Überschrift oben, Querformat-Foto mit Hinweisen (Linie + Etikett in der Meta-Schrift) ---------- */
@@ -1301,7 +1269,6 @@ h1, h2, h3, .gr-xxl, .gr-xl, .gr-h2, .gr-h3, .artikel h1, .mm-karte-titel, .fuss
 .lsx-extra-text { color: var(--farbe-gedaempft); }
 .lsx-extra-preis { white-space: nowrap; font-weight: 600; }
 .lsx-stimmen .stimmen { padding: 0; columns: 2 320px; }
-.faq-mehr { text-align: center; margin: 40px 0 0; }
 @media (max-width: 900px) {
   .lsx-loesung { grid-template-columns: minmax(0, 1fr); gap: 32px; padding-top: 64px; }
   .lsx-pakete, .lsx-vergleich, .lsx-extras, .lsx-stimmen { padding-top: 64px; }
@@ -1313,16 +1280,16 @@ h1, h2, h3, .gr-xxl, .gr-xl, .gr-h2, .gr-h3, .artikel h1, .mm-karte-titel, .fuss
 
 /* ---------- 35. Anton: fester Zusatz-Zeichenabstand (Anna, 12.10.2026) ---------- */
 /* Fester Wert in px: bei kleinen Größen deutlich (Buchstaben laufen sonst ineinander), bei großen kaum sichtbar */
-h1, h2, h3, .mm-karte-titel, .hero-titel, .fuss-karte-titel, .fuss-gross, .ls-karte-titel, .fakten dt, .lsx-karte-preis, .gr-xxl, .gr-xl, .gr-h2, .gr-h3 { letter-spacing: .9px; }
+h1, h2, h3, .mm-karte-titel, .fuss-karte-titel, .fuss-gross, .ls-karte-titel, .fakten dt, .lsx-karte-preis, .gr-xxl, .gr-xl, .gr-h2, .gr-h3 { letter-spacing: .9px; }
 .blog-karte h2 { letter-spacing: normal; }
 .lsx-extra-liste li > span { text-align: left; }
 .lsx-extra-preis { text-align: right !important; }
 /* Ankernavigation der Leistungsseiten: gleiche Leiste wie auf der Preisseite (.preis-leiste) – direkt unter dem Kopf, weiß, feine graue Linie */
-.lsx-chips { margin-top: 32px; }
+
 main section[id] { scroll-margin-top: 0; } /* Abstand kommt schon aus html { scroll-padding-top } – sonst doppelt (Prüfung 13.10.2026) */
 .lsx-karte-dauer { margin: 0 0 8px; } .lsx-karte-dauer .meta { margin-right: 6px; }
 /* Leistungsseiten: Kennzahlen, „Nicht enthalten“, Referenzen, „Sie arbeiten direkt mit mir“ */
-.lsx-fakten { max-width: 880px; margin: 40px 0 0; }
+
 .lsx-nicht { margin-top: 24px; border-radius: var(--radius-karte); background: var(--farbe-hellgrau); }
 .lsx-nicht ul { margin: 12px 0 0; padding-left: 1.1em; display: grid; }
 .lsx-referenzen { padding: 96px var(--rand-seite) 0; }
@@ -1355,8 +1322,6 @@ main section[id] { scroll-margin-top: 0; } /* Abstand kommt schon aus html { scr
 @media (max-width: 767.98px) {
   .ci-grafik { grid-template-columns: 1fr; justify-items: center; }
   }
-.lsx-termine { max-width: 70ch; margin: 16px 0 0; font-size: var(--groesse-2); }
-.lsx-termine .meta { display: inline-block; margin-right: 8px; }
 @media (max-width: 767.98px) {
   .ci-grafik figcaption { padding: 0 4px; }
 }
@@ -1375,7 +1340,6 @@ main section[id] { scroll-margin-top: 0; } /* Abstand kommt schon aus html { scr
 .ci-grafik { margin-top: 96px; }
 @media (max-width: 767.98px) { .ci-grafik { margin-top: 64px; } }
 .lsx-grundsatz { margin-top: 8px; }
-.ls-grundsatz { margin: 32px 0 0; text-align: center; }
 /* Grafik Corporate Identity, Fassung 3: Animation in Schwarz-Weiß (werkzeuge/grafiken/ci-animation.py) */
 .ci-grafik { display: block; max-width: 1000px; margin-left: auto; margin-right: auto; }
 .ci-anim { display: block; width: 100%; height: auto; font-family: var(--schrift-text); }
@@ -1471,8 +1435,7 @@ main section[id] { scroll-margin-top: 0; } /* Abstand kommt schon aus html { scr
   .referenz-rahmen { padding: 0 var(--rand-seite-mobil) 48px; }
   .dk { margin: 24px var(--rand-seite-mobil) 0; padding: 40px 18px 48px; border-radius: var(--radius-karte); }
   }
-@media (prefers-reduced-motion: reduce) {
-}
+
 /* 41. Problem & Lösung (Anna 11.10.2026): Problem schwarz, Lösung hell daneben in gleicher Höhe, Knöpfe unter dem Problem */
 .lsx-pl .gr-h3 { margin: 12px 0 32px; max-width: 22ch; }
 .lsx-pl-raster { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 24px; align-items: stretch; }
@@ -1706,7 +1669,7 @@ img.profil-bildtext-bild, .profil-bildtext-bild img { width: 100%; height: auto;
 }
 .ansatz-herkunft { max-width: 62ch; color: var(--farbe-gedaempft); }
 /* Fußzeile: Leitsatz der Personal Brand (Anna 11.10.2026: Bauhaus-Faden auf der ganzen Website) */
-.fuss-claim { margin: 10px 0 0; font-size: var(--groesse-2); color: var(--farbe-gedaempft-invers); }
+
 /* Startseite Intro (Anna 11.10.2026): Bild kleiner, Studio statt Porträt; Porträt rund neben Name */
 .intro { grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); }
 .intro-gruss { flex-direction: row; align-items: center; gap: 16px; }
@@ -1824,21 +1787,7 @@ section[hidden] { display: none !important; }
 .intro-links > :last-child, .intro-links .intro-brief > p:last-child { margin-bottom: 0; }
 .intro-links .meta { margin-top: 0; }
 /* Prozesse spaltenweise lesen – links 01 und 02, rechts versetzt 03 und 04, nie im Zickzack (Anna 11.10.2026 Startseite; 25.10.2026: für alle Prozesse mit vier Schritten) */
-@media (min-width: 900.02px) {
-  /* gilt für .zl-spalten und jede Zeitleiste mit genau vier Schritten */
-  :is(.zl-spalten, .zeitleiste:has(> li:nth-child(4):last-child)):not(.grafik-prozess .zeitleiste) > li:nth-child(1) { grid-column: 1; grid-row: 1; }
-  :is(.zl-spalten, .zeitleiste:has(> li:nth-child(4):last-child)):not(.grafik-prozess .zeitleiste) > li:nth-child(2) { grid-column: 1; grid-row: 2; flex-direction: row; text-align: left; border-radius: 0 999px 999px 0; padding: 0 56px 0 0; transform: none; }
-  :is(.zl-spalten, .zeitleiste:has(> li:nth-child(4):last-child)):not(.grafik-prozess .zeitleiste) > li:nth-child(2) .zl-marke { margin: 28px 28px 28px -12px; border-radius: 0 56px 56px 0; text-align: left; }
-  :is(.zl-spalten, .zeitleiste:has(> li:nth-child(4):last-child)):not(.grafik-prozess .zeitleiste) > li:nth-child(2) .zl-text p.gedaempft { margin-left: 0; }
-  :is(.zl-spalten, .zeitleiste:has(> li:nth-child(4):last-child)):not(.grafik-prozess .zeitleiste) > li:nth-child(2)::after { left: auto; right: -56px; }
-  :is(.zl-spalten, .zeitleiste:has(> li:nth-child(4):last-child)):not(.grafik-prozess .zeitleiste) > li:nth-child(2)::before { left: auto; right: -63px; }
-  :is(.zl-spalten, .zeitleiste:has(> li:nth-child(4):last-child)):not(.grafik-prozess .zeitleiste) > li:nth-child(3) { grid-column: 2; grid-row: 1; flex-direction: row-reverse; text-align: right; border-radius: var(--radius-pille) 0 0 999px; padding: 0 0 0 56px; transform: translateY(55%); }
-  :is(.zl-spalten, .zeitleiste:has(> li:nth-child(4):last-child)):not(.grafik-prozess .zeitleiste) > li:nth-child(3) .zl-marke { margin: 28px -12px 28px 28px; border-radius: 56px 0 0 56px; text-align: right; }
-  :is(.zl-spalten, .zeitleiste:has(> li:nth-child(4):last-child)):not(.grafik-prozess .zeitleiste) > li:nth-child(3) .zl-text p.gedaempft { margin-left: auto; }
-  :is(.zl-spalten, .zeitleiste:has(> li:nth-child(4):last-child)):not(.grafik-prozess .zeitleiste) > li:nth-child(3)::after { right: auto; left: -56px; }
-  :is(.zl-spalten, .zeitleiste:has(> li:nth-child(4):last-child)):not(.grafik-prozess .zeitleiste) > li:nth-child(3)::before { right: auto; left: -63px; }
-  :is(.zl-spalten, .zeitleiste:has(> li:nth-child(4):last-child)):not(.grafik-prozess .zeitleiste) > li:nth-child(4) { grid-column: 2; grid-row: 2; }
-}
+
 /* Kostenrechner: Frage zu den Unterseiten oben, Eingabefelder darunter linksbündig (Anna 12.10.2026) */
 /* ---------- 37. Blog-Ratgeber: Vorlage für ausführliche Beiträge (13.10.2026) ----------
    Bausteine: Reihe, Vorspann, „Kurz gesagt“, Inhaltsverzeichnis, Tabellen, Grafiken, Kennzahlen,
@@ -1893,9 +1842,7 @@ section[hidden] { display: none !important; }
 .grafik figcaption { margin-top: 12px; font-size: var(--groesse-2); line-height: 1.5; }
 .grafik figcaption strong { color: var(--farbe-dunkel); }
 /* Memes im Blog (Anna 17.11.2026: „mit lustigen Bildern auflockern“): Hochformat, schmal und mittig */
-.grafik-meme { max-width: 400px; margin-left: auto; margin-right: auto; }
-.grafik-meme img { width: 100%; height: auto; display: block; border: 1px solid var(--farbe-rahmen); }
-.grafik-meme figcaption { text-align: center; }
+
 .praxis { border-left: 6px solid var(--farbe-primaer); padding: 4px 0 4px 24px; margin: 2rem 0; }
 .praxis .meta { margin: 0 0 6px; }
 .praxis p:last-child { margin-bottom: 0; }
@@ -2089,8 +2036,7 @@ section[hidden] { display: none !important; }
 .blog-karte-gross .weiterlesen { margin-top: 8px; }
 /* Chip-Leiste: Anzahl je Thema */
 .blog-anker { padding-bottom: 0; } /* Blog-Kategorien als Ankerleiste wie auf den Leistungsseiten (Anna 17.11.2026) */
-.chip-zahl { display: inline-grid; place-items: center; min-width: 20px; height: 20px; margin-left: 4px; padding: 0 6px; border-radius: var(--radius-pille); background: var(--farbe-hellgrau); font-size: var(--groesse-1); font-weight: 600; }
-.preis-leiste a.aktiv .chip-zahl { background: var(--farbe-weiss); color: var(--farbe-dunkel); }
+
 /* Themenbereiche: Überschrift mit Linie */
 .blog-thema { padding: clamp(48px, 6vw, 80px) var(--rand-seite) 0; }
 .blog-thema:last-child { padding-bottom: 120px; }
@@ -2148,20 +2094,13 @@ section[hidden] { display: none !important; }
 .intro-neu .om-linien { scale: .8 .84; } /* Linien gleich stark gekürzt: sie enden an den Chips */
 .intro-oeko figcaption { margin-top: 18px; }
 /* ganze Grafik klickbar, Fokusrahmen am Link */
-.om-link::after { content: ""; position: absolute; inset: 0; border-radius: var(--radius-karte); }
+
 .intro-oeko .om-seite, .intro-oeko .om-chip { transition: transform .4s cubic-bezier(.2, .8, .2, 1); }
 .intro-oeko:hover .om-seite { transform: scale(1.03); }
 .intro-oeko:hover .om-linien line { stroke: var(--farbe-primaer); }
-.intro-karten { grid-column: 1 / -1; list-style: none; margin: 32px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
-.intro-karte { display: flex; flex-direction: column; align-items: flex-start; padding: 28px; border: 1.5px solid var(--farbe-dunkel); border-radius: var(--radius-karte); background: var(--farbe-weiss); }
-.ik-icon { width: 44px; height: 44px; margin-bottom: 20px; }
-.intro-karte h3 { font-size: var(--groesse-3); line-height: 1.3; margin: 0 0 10px; }
-.intro-karte p { margin: 0 0 20px; line-height: 1.55; }
-.intro-karte .textlink { margin-top: auto; }
-@media (max-width: 1024px) { .intro-karten { grid-template-columns: minmax(0, 1fr); } }
+
 @media (max-width: 900px) {
   .intro-neu { grid-template-columns: minmax(0, 1fr); gap: 40px; }
-  .intro-karten { margin-top: 8px; gap: 16px; }
 }
 @media (max-width: 600px) {
   .om-flaeche { aspect-ratio: 1 / 1.1; }
@@ -2172,7 +2111,6 @@ section[hidden] { display: none !important; }
   .intro-neu .om-chip { padding: 3px 7px 4px; background: var(--farbe-weiss); border: 1.5px solid var(--farbe-dunkel); font-size: var(--groesse-1); }
   .intro-neu .om-chip img { width: 32px; height: 32px; }
   .om-chip img { width: 34px; height: 34px; }
-  .intro-karte { padding: 22px; }
 }
 @media (prefers-reduced-motion: reduce) { .intro-oeko .om-seite { transition: none; } .intro-oeko:hover .om-seite { transform: none; } }
 @media (max-width: 600px) {
@@ -2246,10 +2184,7 @@ section[hidden] { display: none !important; }
 @media (max-width: 900px) { .hero-band { padding: 40px 0 52px; } }
 .band-pause { bottom: 12px; }
 /* H1 auf breiten Bildschirmen in einer Zeile */
-@media (min-width: 900.02px) {
-  .hero-titel { font-size: clamp(52px, 6.6vw, 112px); white-space: nowrap; }
-  .hero-titel > span { display: inline-block; }
-}
+
 /* „Für wen“ auf Creme statt Blau (Anna 13.10.2026) */
 .dk { background: var(--farbe-creme); color: var(--farbe-dunkel); }
 .dk > .meta { color: var(--farbe-gedaempft); }
@@ -2336,9 +2271,7 @@ section[hidden] { display: none !important; }
 
 
 
-@media (max-width: 600px) {
-  /* Sitemap auf dem Handy als einspaltiger Baum */
-  }
+
 
 
 
@@ -2475,9 +2408,7 @@ section[hidden] { display: none !important; }
 
 
 
-@media (max-width: 600px) {
-   /* Schnitt in der Lücke nach „Referenzen“, vor dem Foto */
-  }
+
 
 
  
@@ -2616,18 +2547,9 @@ section[hidden] { display: none !important; }
 .rv-kopf .gr-xxl { line-height: 1.15; hyphens: manual; }
 .rv-intro { font-size: clamp(20px, 2vw, 28px); line-height: 1.35; max-width: 40ch; margin: 0 0 24px; }
 .rv-knopf { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin: 0 0 12px; }
-.rv-abschnitt { padding: 64px var(--rand-seite) 0; }
-.rv-abschnitt .preis-h2 { margin: 8px 0 16px; }
 .rv-text { max-width: 62ch; font-size: var(--groesse-3); margin: 0 0 24px; }
-.rv-karten { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
-.rv-karte { background: var(--farbe-hellgrau); border-radius: var(--radius-karte); padding: 24px; }
-.rv-karte img { width: 72px; height: 72px; mix-blend-mode: multiply; margin: 0 0 8px; }
-.rv-karte h3 { margin: 0 0 6px; font-size: var(--groesse-3); }
-.rv-karte p { margin: 0; color: var(--farbe-gedaempft); }
-.rv-bekommen .bedingungen { margin-top: 8px; }
-.schluss-karte .rv-hell { color: var(--farbe-weiss); }
-@media (max-width: 1024px) { .rv-karten { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 600px) { .rv-karten { grid-template-columns: minmax(0, 1fr); } .rv-abschnitt { padding-top: 48px; } }
+
+
 
 /* 60. Blog „Was sollte eine Website 2027 können?“ (Anna 19.10.2026): Golden Circle, Zwischenüberschriften h4, breite Grafiken im Artikel */
 .golden-circle { max-width: 520px; margin: clamp(2rem, 4vw, 2.75rem) auto clamp(2.25rem, 4.5vw, 3rem); }
@@ -2706,16 +2628,9 @@ ol.quellen li:target { background: var(--farbe-creme); border-radius: 6px; }
    Eigener Kopf nur mit Logo und kleiner Fuß (Impressum, Datenschutz); Prüfpunkte und Fragen erzeugt werkzeuge/website-check.py */
 .wc [id] { scroll-margin-top: calc(var(--kopf-hoehe) + 16px); }
 .wc-punkte { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-.wc-punkt { background: var(--farbe-hellgrau); border-radius: var(--radius-karte); padding: 24px; }
-.wc-nr { display: block; font-family: var(--schrift-ueberschrift); font-size: 40px; line-height: 1.15; color: var(--farbe-primaer); margin: 0 0 8px; }
-.wc-punkt h3 { margin: 0 0 6px; font-size: var(--groesse-3); line-height: 1.2; }
-.wc-punkt p { margin: 0; color: var(--farbe-gedaempft); }
 /* Hero: Was, Wie, Warum auf einen Blick (Anna 25.10.2026) */
-.wc-kurz { display: grid; gap: 10px; margin: 0 0 28px; max-width: 62ch; }
-.wc-kurz > div { display: grid; grid-template-columns: 7.5em minmax(0, 1fr); gap: 12px; align-items: baseline; border-top: var(--rahmen) solid var(--farbe-rahmen); padding-top: 10px; }
-.wc-kurz dt { font-family: var(--schrift-meta); font-size: var(--groesse-2); letter-spacing: .08em; text-transform: uppercase; color: var(--farbe-gedaempft); }
-.wc-kurz dd { margin: 0; }
-@media (max-width: 600px) { .wc-kurz > div { grid-template-columns: minmax(0, 1fr); gap: 2px; } }
+
+
 /* Wahl im Formular: Fachgespräch ja/nein (freiwillig, nie vorausgewählt) */
 .wc-haekchen { margin: 16px 0 0; }
 .wc-haekchen label { display: flex; align-items: flex-start; gap: 10px; font-size: var(--groesse-2); line-height: 1.4; cursor: pointer; }
@@ -2735,19 +2650,12 @@ body:has(.sticky-check) .sticky-rechner:not(.sticky-check) { display: none; }
 @media (min-width: 1200.02px) { .wc-punkte { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 /* Website-Check Entwurf 2 (Anna 26.10.2026): Hero zentriert, Bühne mit Laptop und Porträt, drei Anker-Karten,
    Abschnitte mit Bild daneben, drei Wege, Formular als Pop-up, mehr Weißraum zwischen den Abschnitten */
-.wc .rv-abschnitt { padding-top: clamp(96px, 12vw, 160px); }
+
 .wc .wc-faq { margin-top: clamp(96px, 12vw, 160px); }
-.wc-hero { text-align: center; padding: clamp(24px, 3vw, 40px) var(--rand-seite) 0; }
-.wc-hero .meta { justify-content: center; }
 .wc-titel { font-size: var(--groesse-7); line-height: 1.2; hyphens: manual; margin: 0 auto 24px; max-width: 16ch; }
-.wc-hero .rv-intro { max-width: 46ch; margin-left: auto; margin-right: auto; }
-.wc-hero .rv-knopf { justify-content: center; }
-.wc-zeile { font-size: var(--groesse-2); color: var(--farbe-gedaempft); margin: 12px 0 0; }
 /* GMX-Muster (Anna 26.10.2026): Icon über der Dachzeile, Medienfläche 16:9 unter dem Knopf, Häkchen-Reihe darunter */
 @media (min-width: 1200.02px) { .wc .lp-person { grid-template-columns: minmax(180px, 280px) minmax(0, 1fr); } .wc .lp-person .preis-h2 { white-space: nowrap; } }
 .wc-hero-icon { display: block; width: 88px; height: 88px; margin: 0 auto 8px; mix-blend-mode: multiply; }
-.wc-video { max-width: 960px; aspect-ratio: 16 / 9; margin: 48px auto 0; border-radius: var(--radius-karte); background: var(--farbe-creme); display: grid; place-items: center; overflow: hidden; }
-.wc-video .wc-buehne { margin: 0 auto; }
 .wc-haken { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 32px; max-width: 960px; margin: 24px auto 0; padding: 0; font-weight: 600; }
 .wc-haken li { display: flex; align-items: center; gap: 8px; }
 .wc-haken li::before { content: "✓" / ""; display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--farbe-primaer); color: var(--farbe-weiss); font-size: var(--groesse-1); }
@@ -2758,28 +2666,16 @@ body:has(.sticky-check) .sticky-rechner:not(.sticky-check) { display: none; }
 .wc-person img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; border-radius: var(--radius-karte); border: 6px solid var(--farbe-weiss); }
 .wc-person figcaption { margin-top: 8px; font-family: var(--schrift-meta); font-size: var(--groesse-1); letter-spacing: .08em; text-transform: uppercase; color: var(--farbe-gedaempft); }
 .wc-person figcaption strong { display: block; font-family: var(--schrift-text); font-size: var(--groesse-2); letter-spacing: 0; text-transform: none; color: var(--farbe-dunkel); }
-.wc-anker { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; max-width: 1200px; margin: clamp(96px, 10vw, 144px) auto 0; padding: 0 var(--rand-seite); }
-.wc-anker a { display: grid; grid-template-rows: auto auto 1fr auto; gap: 8px; padding: 28px; border-radius: var(--radius-karte); background: var(--farbe-creme); color: var(--farbe-dunkel); text-decoration: none; transition: translate .3s; }
-.wc-anker a:hover { translate: 0 -4px; }
-@media (prefers-reduced-motion: reduce) { .wc-anker a, .wc-anker a:hover { transition: none; translate: none; } }
-.wc-anker img { width: 96px; height: 96px; mix-blend-mode: multiply; }
-.wc-anker-frage { font-family: var(--schrift-ueberschrift); font-size: var(--groesse-4); line-height: 1.2; text-transform: uppercase; }
-.wc-anker-text { color: var(--farbe-gedaempft); }
-.wc-anker-pfeil { font-size: var(--groesse-4); color: var(--farbe-primaer); }
+
 .wc-spalten { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); align-items: center; }
 .wc-bild { margin: 0; }
 .wc-bild img { display: block; width: 100%; height: auto; border-radius: var(--radius-karte); }
-.wc-bild-quadrat { max-width: 560px; justify-self: start; }
-.wc-bild-quadrat img { aspect-ratio: 1; object-fit: cover; }
 /* Golden Circle größer; die Bildunterschrift mit Jahr im Bild wird abgeschnitten und als Text darunter gesetzt (Anna 26.10.2026) */
 .wc-spalten-bild { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); }
 .wc-bild-kreis img { aspect-ratio: 1200 / 730; object-fit: cover; object-position: top; }
 .wc-bild-kreis figcaption { margin-top: 8px; text-align: right; font-family: var(--schrift-meta); font-size: var(--groesse-1); letter-spacing: .12em; text-transform: uppercase; color: var(--farbe-gedaempft); }
 /* Hero: Icon bis Buttons sitzen im ersten Bildschirm mittig (Anna 26.10.2026) */
-@media (min-width: 768px) and (min-height: 640px) {
-  .wc-hero { padding-top: 0; }
-  .wc-hero-oben { min-height: calc(100svh - var(--kopf-hoehe) - var(--leiste-hoehe, 44px)); display: flex; flex-direction: column; justify-content: center; }
-}
+
 /* Navigation mittig auf allen Seiten (Anna 26.10.2026 Website-Check, seit 10.11.2026 überall) */
 @media (min-width: 1024.02px) {
   body:has(main.wc) .kopf { position: sticky; }
@@ -2788,17 +2684,6 @@ body:has(.sticky-check) .sticky-rechner:not(.sticky-check) { display: none; }
 /* Abschlussbox der Website-Check-Seite zentriert */
 .wc .preis-schluss .schluss-karte { text-align: center; }
 .wc .preis-schluss .schluss-karte .meta { justify-content: center; }
-.wc-wege { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; max-width: 1000px; }
-.wc-wege li { border: 1.5px solid var(--farbe-rahmen); border-radius: var(--radius-karte); padding: 28px; display: flex; flex-direction: column; }
-.wc-wege h3 { font-size: var(--groesse-4); line-height: 1.2; margin: 0 0 8px; }
-.wc-wege p:last-child { margin-bottom: 0; margin-top: auto; }
-.wc-wege li > p:not(:last-child), .wc-wege li > p:only-of-type { margin-top: 0; }
-.wc-dialog { width: min(560px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); padding: 0; border: 0; border-radius: var(--radius-karte); background: transparent; }
-.wc-dialog::backdrop { background: rgb(14 16 17 / .6); }
-.wc-schnell-karte { position: relative; background: var(--farbe-creme); border-radius: var(--radius-karte); padding: clamp(24px, 5vw, 44px); }
-.wc-dialog .anfrage-felder { grid-template-columns: minmax(0, 1fr); }
-.wc-zu-form { position: absolute; top: 16px; right: 16px; margin: 0; }
-.wc-zu { width: 44px; height: 44px; border: 0; border-radius: 50%; background: var(--farbe-weiss); font-size: var(--groesse-4); line-height: 1; cursor: pointer; }
 /* Danke-Seite: Text links, Porträt rechts (Anna 26.10.2026) */
 .wc-danke { display: grid; grid-template-columns: minmax(0, 1fr) minmax(200px, 320px); gap: clamp(32px, 6vw, 96px); align-items: center; }
 .wc-danke .wc-titel { margin-left: 0; }
@@ -2808,19 +2693,15 @@ body:has(.sticky-check) .sticky-rechner:not(.sticky-check) { display: none; }
 .wc-danke-bild figcaption strong { display: block; font-family: var(--schrift-text); font-size: var(--groesse-3); letter-spacing: 0; text-transform: none; color: var(--farbe-dunkel); }
 @media (max-width: 767.98px) { .wc-danke { grid-template-columns: minmax(0, 1fr); } .wc-danke-bild { max-width: 220px; } }
 /* ohne JavaScript steht das Formular als Karte in der Seite */
-html:not(.js) .wc-dialog, .ohne-dialog .wc-dialog { display: block; position: static; width: auto; max-width: 640px; margin: 96px auto 0; }
-html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
+
 @media (max-width: 900px) {
-  .wc-video { aspect-ratio: auto; padding: 32px 0 56px; }
   .wc-spalten { grid-template-columns: minmax(0, 1fr); }
-  .wc-anker, .wc-wege { grid-template-columns: minmax(0, 1fr); }
   .wc-buehne { width: 400px; padding-right: 90px; }
   .wc-geraet { width: 400px; }
   .wc-geraet .kb-szene { scale: calc(400 / var(--sb)); }
   .wc-person { width: 150px; }
 }
 @media (max-width: 600px) {
-  .wc-video { aspect-ratio: auto; padding: 24px 0; border-radius: var(--radius-karte); }
   .wc-haken { flex-direction: column; align-items: flex-start; width: fit-content; }
   .wc-punkte { grid-template-columns: minmax(0, 1fr); }
   .wc-buehne { width: 256px; padding-right: 0; padding-bottom: 40px; }
@@ -2845,7 +2726,6 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 .lp-haken { list-style: none; display: flex; flex-wrap: wrap; gap: 10px 24px; margin: 20px 0 0; padding: 0; font-weight: 600; font-size: var(--groesse-2); }
 .lp-haken li { display: flex; align-items: center; gap: 8px; }
 .lp-haken li::before { content: "✓" / ""; display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--farbe-primaer); color: var(--farbe-weiss); font-size: var(--groesse-1); flex: none; }
-.lp-zeile { font-size: var(--groesse-2); color: var(--farbe-gedaempft); margin: 12px 0 0; }
 /* Formular-Karte direkt im ersten Bildschirm */
 .lp-form-karte { background: var(--farbe-weiss); border: 1.5px solid var(--farbe-rahmen); border-radius: var(--radius-karte); padding: clamp(20px, 3vw, 32px); box-shadow: 0 14px 40px rgba(14, 16, 17, .08); max-width: 620px; }
 .lp-form-karte h2 { font-size: var(--groesse-5); line-height: 1.2; margin: 0 0 12px; }
@@ -2862,29 +2742,17 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 .lp-zahl-text h2 { font-size: var(--groesse-7); line-height: 1.15; margin: 0 0 16px; }
 .lp-zahl-text h2 span { color: var(--farbe-primaer); }
 .lp-zahl-text p { font-size: var(--groesse-4); max-width: 40ch; margin: 0 0 12px; }
-.lp-quelle { font-size: var(--groesse-1); color: var(--farbe-gedaempft); margin: 16px 0 0; max-width: 80ch; }
-.lp-quelle a { color: inherit; }
 .lp-zwei.lp-bekommen { align-items: start; }
 .lp-mockup { margin: clamp(40px, 6vw, 80px) 0 0; }
 .lp-mockup img { display: block; width: 100%; height: auto; }
 .lp-mockup figcaption { font-size: var(--groesse-2); color: var(--farbe-gedaempft); margin-top: 16px; text-align: center; }
 .lp-mockup figcaption a { color: var(--farbe-dunkel); }
-.lp-quellen { max-width: var(--inhalt-breite); margin: -64px auto 0; padding: 0 var(--rand-seite) 48px; }
 /* Prüfbericht zeigen */
 .lp-zwei { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); align-items: center; }
 /* Stufen als Bauhaus-Grundformen (keine Ampelfarben: kein Rot, Gelb, Grün) */
-.lp-stufe { display: inline-flex; align-items: center; gap: 8px; font-family: var(--schrift-meta); font-size: var(--groesse-1); letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
-.lp-stufe::before { content: ""; width: 14px; height: 14px; flex: none; box-sizing: border-box; }
-.lp-stufe-ok::before { border: 2px solid var(--farbe-dunkel); border-radius: 50%; }
-.lp-stufe-klein::before { border-radius: 50%; background: linear-gradient(90deg, var(--farbe-primaer) 50%, transparent 50%); border: 2px solid var(--farbe-primaer); }
-.lp-stufe-erheblich::before { border-radius: 50%; background: var(--farbe-dunkel); }
-.lp-stufe-dringend::before { background: var(--farbe-dunkel); }
-.lp-legende { list-style: none; display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 16px 0 0; padding: 0; }
+
 /* Erzählung in großen Zeilen */
-.lp-zeilen { list-style: none; margin: 32px 0 0; padding: 0; max-width: 980px; }
-.lp-zeilen li { font-size: var(--groesse-5); line-height: 1.3; font-weight: 600; padding: 20px 0; border-top: 1.5px solid var(--farbe-rahmen); display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 16px; align-items: start; }
-.lp-zeilen li img { width: 48px; height: 48px; mix-blend-mode: multiply; margin-top: 2px; }
-.lp-zeilen li span { color: var(--farbe-gedaempft); font-weight: 400; }
+
 .lp-kern { font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-size: var(--groesse-6); line-height: 1.15; margin: 48px 0 0; max-width: 22ch; }
 .lp-kern span { color: var(--farbe-primaer); }
 /* Karten mit Clay-Icon */
@@ -2894,7 +2762,7 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 .lp-karten h3 { margin: 0; font-size: var(--groesse-4); line-height: 1.2; }
 .lp-karten p { margin: 0; color: var(--farbe-gedaempft); }
 /* Preis */
-.lp-preis { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(24px, 4vw, 56px); align-items: start; margin-top: 32px; }
+
 .lp-preis-karte { border: var(--rahmen) solid var(--farbe-dunkel); border-radius: var(--radius-karte); padding: clamp(24px, 4vw, 44px); }
 .lp-preis-betrag { font-family: var(--schrift-ueberschrift); font-size: var(--groesse-8); line-height: 1; margin: 8px 0 4px; }
 .lp-preis-betrag small { display: block; font-family: var(--schrift-text); font-size: var(--groesse-2); font-weight: 600; margin-top: 8px; color: var(--farbe-gedaempft); }
@@ -2915,9 +2783,6 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 .lp-zitat p { font-size: var(--groesse-4); line-height: 1.4; margin: 0 0 12px; }
 .lp-zitat footer { font-size: var(--groesse-2); color: var(--farbe-gedaempft); }
 .lp-zitat footer strong { color: var(--farbe-dunkel); }
-.lp-kennzahlen { display: flex; flex-wrap: wrap; gap: 24px 48px; margin: 24px 0 0; padding: 0; list-style: none; }
-.lp-kennzahlen b { display: block; font-family: var(--schrift-ueberschrift); font-size: var(--groesse-6); line-height: 1.1; color: var(--farbe-primaer); }
-.lp-kennzahlen span { font-size: var(--groesse-2); color: var(--farbe-gedaempft); }
 /* Anfrage-Abschnitt unten */
 .lp-anfrage { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(32px, 6vw, 96px); align-items: start; }
 .lp-anfrage .lp-form-karte { max-width: none; }
@@ -2925,7 +2790,7 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 .lp .preis-schluss .schluss-karte .meta { justify-content: center; }
 .lp .faq { margin-top: clamp(96px, 12vw, 168px); }
 @media (max-width: 1024px) {
-  .lp-hero, .lp-zwei, .lp-preis, .lp-anfrage { grid-template-columns: minmax(0, 1fr); }
+  .lp-hero, .lp-zwei, .lp-anfrage { grid-template-columns: minmax(0, 1fr); }
   .lp-karten { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .lp-buehne { max-width: 640px; }
 }
@@ -2943,9 +2808,6 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
   .lp-karten { grid-template-columns: minmax(0, 1fr); }
   .lp-person { grid-template-columns: minmax(0, 1fr); }
   .lp-person figure { max-width: 260px; }
-  .lp-zeilen li { grid-template-columns: 40px minmax(0, 1fr); gap: 12px; }
-  .lp-zeilen li img { width: 36px; height: 36px; }
-  .lp-bericht li { grid-template-columns: minmax(0, 1fr); }
 }
 /* KI-Arbeits-Setup (Anna 12.11.2026): Inhalt bündig mit Logo und Menü, Überschriften über die ganze Breite,
    Ablauf als Zeitleiste quer wie auf der Profilseite, Preiskarte mit mehr Luft um den Pilotpreis */
@@ -2976,13 +2838,12 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 .lp-hero-mitte { grid-template-columns: minmax(0, 1fr); justify-items: center; text-align: center; padding-bottom: clamp(24px, 4vw, 56px); }
 .lp-hero-mitte .lp-titel { max-width: 32ch; margin-left: auto; margin-right: auto; text-wrap: balance; }
 .lp-hero-mitte .rv-intro, .wc-punkte-reihe .rv-text, .wc-icons p, .wc-icons h3 { text-wrap: balance; }
-.lp-hero-mitte .wc-berechtigung, .wc-newsletter { text-wrap: pretty; }
+.lp-hero-mitte .wc-berechtigung { text-wrap: pretty; }
 .lp-hero-mitte .rv-intro { max-width: 46ch; margin: 16px auto 0; }
 .wc-hero-form { width: 100%; max-width: 900px; }
 .wc-hero-form { margin-top: clamp(8px, 2vw, 24px); }
 .wc-formzeile input { min-height: 56px; font-size: var(--groesse-3); padding: 12px 20px; }
 .wc-formfuss .button { min-height: 56px; padding-left: 28px; padding-right: 28px; font-size: var(--groesse-3); }
-.wc-newsletter { font-size: var(--groesse-2); line-height: 1.45; margin: 16px 0 0; }
 .wc-formzeile { text-align: left; }
 .wc-formzeile .anfrage-felder { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
 .wc-formfuss { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; margin-top: 8px; text-align: left; }
@@ -2992,10 +2853,8 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 .lp-hero-mitte .lp-haken { justify-content: center; gap: 10px 20px; margin-top: 16px; }
 .lp-hero-mitte .wc-berechtigung { font-size: var(--groesse-1); line-height: 1.45; color: var(--farbe-gedaempft); max-width: 90ch; margin: 16px auto 0; }
 .lp-hero-mitte .wc-berechtigung strong { color: var(--farbe-dunkel); }
-.wc-werbehinweis { font-size: var(--groesse-1); line-height: 1.45; color: var(--farbe-gedaempft); max-width: 90ch; margin: 16px auto 0; text-wrap: pretty; }
-.wc-werbehinweis + .wc-berechtigung { margin-top: 6px; }
 .lp-hero-mitte .rv-intro { max-width: none; }
-@media (min-width: 768px) { .ohne-umbruch-ab-768 { white-space: nowrap; } }
+
 .lp-hero-mitte .anfrage-hinweis { font-size: var(--groesse-1); max-width: 90ch; margin: 8px auto 0; }
 .wc .preis-h2 { max-width: none; text-wrap: balance; }
 .wc-hero-icon { display: block; width: 56px; height: 56px; margin: 0 auto 12px; }
@@ -3087,13 +2946,9 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
    Fotos von Unsplash, als Verlaufsumsetzung (gradient map) in Schwarz und Markenblau – so wirken unterschiedliche Fotos wie eine Serie.
    Auf dunklem Grund: weiße Buttons und weiße Punkte (kein Blau auf Schwarz). Bewegung: Hero zoomt einmal 5 s, bei „Bewegung reduzieren“ nicht. */
 .mr { overflow-x: clip; }
-.mr-hero { position: relative; display: flex; align-items: flex-end; min-height: min(88vh, 860px); color: var(--farbe-weiss); background: var(--farbe-dunkel); overflow: hidden; }
-.mr-hero-bild, .mr-band-bild { position: absolute; inset: 0; margin: 0; }
-.mr-hero-bild img, .mr-band-bild img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.mr-hero-bild img { object-position: 62% 50%; animation: mr-zoom 5s cubic-bezier(.2, .7, .2, 1) both; }
+ .mr-band-bild { position: absolute; inset: 0; margin: 0; }
+ .mr-band-bild img { width: 100%; height: 100%; object-fit: cover; display: block; }
 @keyframes mr-zoom { from { transform: scale(1.07); } to { transform: scale(1); } }
-.mr-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, var(--schleier-stark) 0%, var(--schleier-mittel) 42%, var(--schleier-leer) 72%), linear-gradient(0deg, var(--schleier-mittel) 0%, var(--schleier-leer) 45%); pointer-events: none; }
-.mr-hero-text { position: relative; z-index: 1; width: 100%; max-width: var(--inhalt-breite); margin: 0 auto; padding: 120px var(--rand-seite) clamp(56px, 9vh, 104px); box-sizing: content-box; }
 .mr-titel { font-family: var(--schrift-ueberschrift); font-weight: 400; text-transform: uppercase; font-size: var(--groesse-8); line-height: 1.15; letter-spacing: .005em; margin: 0; }
 .mr-zeile { display: block; }
 .mr-dach { display: flex; align-items: center; gap: 10px; font-family: var(--schrift-meta); font-size: var(--groesse-2); font-weight: 500; letter-spacing: .1em; line-height: 1.4; text-transform: uppercase; color: var(--farbe-gedaempft-invers); margin: 0 0 20px; }
@@ -3120,9 +2975,6 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 .mr-foto img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .mr-foto-hoch { aspect-ratio: 4 / 5; }
 .mr-foto-hoch img { object-position: 55% 50%; }
-
-.mr-band { position: relative; display: grid; place-items: center; min-height: min(78vh, 760px); margin-top: clamp(96px, 12vw, 168px); padding: 96px var(--rand-seite); color: var(--farbe-weiss); background: var(--farbe-dunkel); overflow: hidden; text-align: center; }
-.mr-band::after { content: ""; position: absolute; inset: 0; background: var(--schleier-mittel); pointer-events: none; }
 .mr-band-text { position: relative; z-index: 1; font-family: var(--schrift-ueberschrift); font-weight: 400; text-transform: uppercase; font-size: var(--groesse-7); line-height: 1.15; max-width: 18ch; margin: 0; }
 .mr-band-text span { display: block; color: var(--farbe-gedaempft-invers); }
 
@@ -3199,9 +3051,8 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 .mr-schluss-karte { background: var(--farbe-weiss); color: var(--farbe-dunkel); border-radius: var(--radius-karte); padding: clamp(24px, 3vw, 40px); }
 .mr-schluss-karte .anfrage-form { margin: 0; }
 
-@media (prefers-reduced-motion: reduce) { .mr-hero-bild img { animation: none; } }
+
 @media (max-width: 1024px) {
-  .mr-hero::after { background: linear-gradient(0deg, var(--schleier-stark) 0%, var(--schleier-mittel) 60%, var(--schleier-leer) 100%), linear-gradient(90deg, var(--schleier-mittel) 0%, var(--schleier-leer) 80%); }
   .mr-drei { grid-template-columns: 1fr; }
   .mr-schluss-innen { grid-template-columns: 1fr; }
 }
@@ -3213,13 +3064,8 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
   .mr-b-farben { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 767.98px) {
-  .mr-hero { min-height: 92svh; }
-  .mr-hero-bild img { object-position: 50% 40%; }
-  .mr-hero::after { background: linear-gradient(0deg, var(--schleier-stark) 0%, var(--schleier-mittel) 55%, var(--schleier-leer) 85%); }
-  .mr-hero-text { padding-top: 96px; }
   .mr-b-vergleich { grid-template-columns: 1fr; }
   .mr-b-post { max-width: 360px; }
-  .mr-band { min-height: 60svh; }
 }
 @media (max-width: 400px) {
   .mr-titel { font-size: var(--groesse-8); }
@@ -3229,17 +3075,8 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 /* Tippflächen mindestens 44 px hoch (WCAG 2.5.8; Prüfer 07.11.2026) */
 .mr-schluss-karte .anfrage-knoepfe .textlink, .mr-grenzen .textlink { display: inline-block; padding: 12px 0; }
 /* Echtes Projekt unter dem erfundenen Beispiel (07.11.2026) */
-.mr-echt { display: grid; grid-template-columns: auto 1fr auto; gap: 24px; align-items: center; margin-top: 20px; padding: 24px 28px; border: 1.5px solid var(--farbe-rahmen); border-radius: var(--radius-karte); color: var(--farbe-dunkel); text-decoration: none; transition: border-color .2s; }
-.mr-echt:hover { border-color: var(--farbe-dunkel); }
-.mr-echt:focus-visible { outline: 2px solid var(--farbe-primaer); outline-offset: 3px; }
-.mr-echt-farben { display: flex; }
-.mr-echt-farben i { width: 44px; height: 44px; border-radius: 50%; background: var(--f); border: 3px solid var(--farbe-weiss); }
-.mr-echt-farben i + i { margin-left: -12px; }
-.mr-echt-text { display: grid; gap: 4px; }
-.mr-echt-text .meta { margin: 0; }
-.mr-echt-titel { font-weight: 700; font-size: var(--groesse-3); }
-.mr-echt-link { font-weight: 600; text-decoration: underline; text-underline-offset: 4px; white-space: nowrap; }
-@media (max-width: 767.98px) { .mr-echt { grid-template-columns: 1fr; } }
+
+
 
 /* ---------- Startseite: Hero „Bauhaus-Bühne“ (Anna, freigegeben 09.11.2026) ---------- */
 
@@ -3249,43 +3086,20 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
   min-height: calc(100svh - var(--kopf-hoehe) - var(--leiste-hoehe, 44px));
   padding: clamp(16px, 3vh, 40px) var(--rand-seite) clamp(32px, 5vh, 64px); text-align: left; }
 .bb-hero .meta { justify-content: flex-start; }
-.bb-hero .bb-titel { font-size: var(--groesse-8); line-height: 1.15; white-space: nowrap; margin: 8px 0 0; }
-.bb-hero .bb-titel > span { display: block; }
-.bb-hero .bb-h1 { max-width: 26ch; margin: 24px 0 0; font-size: var(--groesse-4); line-height: 1.3; }
-.bb-hero .bb-knoepfe { justify-content: flex-start; margin-top: 28px; }
-.bb-fakten .hero-fakten { max-width: none; margin: 36px 0 0; }
-.bb-fakten .fakten > div { padding: 14px 12px; text-align: left; }
-.bb-fakten .fakten > div:first-child { padding-left: 0; }
-.bb-fakten .fakten dt { font-size: var(--groesse-5); }
-.bb-fakten .fakten dd { font-size: var(--groesse-1); }
 
 /* ---------- Bühne: Creme als Plakatgrund, Boden als feine Linie, Wort am Rand ---------- */
-.bb-buehne { position: relative; width: 100%; max-width: 620px; aspect-ratio: 1; justify-self: end; container-type: inline-size;
-  background: var(--farbe-creme); border-radius: 24px; isolation: isolate; max-width: 760px; }
-.bb-boden { position: absolute; left: 5%; right: 5%; top: 86%; border-top: 1.5px solid var(--farbe-dunkel); }
-.bb-rand { position: absolute; left: 2.6%; top: 50%; margin: 0; writing-mode: vertical-rl; rotate: 180deg; translate: 0 -50%;
-  font: 500 11px/1 var(--schrift-meta); letter-spacing: .16em; text-transform: uppercase; color: var(--farbe-gedaempft); }
+
 
 /* ---------- Fünf Leistungen als Formen ---------- */
-.bb-formen { list-style: none; margin: 0; padding: 0; }
+
 .bb-f { position: absolute; left: var(--x); top: var(--y); transform: translate(-50%, -50%); z-index: 2; margin: 0; }
 .bb-f a { display: block; color: var(--farbe-dunkel); text-decoration: none; border-radius: 4px; }
 .bb-form { display: block; transition: translate .3s cubic-bezier(.2, .8, .2, 1); }
-.bb-kreis .bb-form { width: 22cqw; aspect-ratio: 1; border-radius: 50%; background: var(--bb-blau); }
-.bb-quadrat .bb-form { width: 16cqw; aspect-ratio: 1; background: var(--bb-rot); rotate: -8deg; }
-.bb-halbkreis .bb-form { width: 26cqw; aspect-ratio: 2 / 1; border-radius: var(--radius-pille) 999px 0 0; background: var(--bb-pink); }
-.bb-halbkreis-rosa .bb-form { width: 8cqw; aspect-ratio: 1 / 2; border-radius: var(--radius-pille) 0 0 999px; background: var(--bb-rosa); }
-.bb-dreieck .bb-form { width: 19cqw; aspect-ratio: 1; background: var(--bb-gelb); clip-path: polygon(100% 0, 100% 100%, 0 100%); }
 /* Beschriftung als redaktionelle Zeile: Linie + Name, schwarz auf Creme */
-.bb-name { position: absolute; width: max-content; max-width: 34cqw; font: 600 clamp(12px, 2.5cqw, 15px)/1.25 var(--schrift-text); }
-.bb-n-unten .bb-name { top: calc(100% + 10px); padding-top: 5px; border-top: 1.5px solid var(--farbe-dunkel); }
+
 /* Formen auf dem Boden: Name unter der Bodenlinie (die Linie ist schon da) */
-.bb-n-boden .bb-name { top: calc(100% + 12px); }
-.bb-n-mitte .bb-name { left: 50%; translate: -50% 0; text-align: center; }
-.bb-n-links .bb-name { left: 0; }
-.bb-n-rechts .bb-name { right: 0; text-align: right; }
+
 .bb-f a:hover .bb-form, .bb-f a:focus-visible .bb-form { translate: 0 -6px; }
-.bb-f a:hover .bb-name, .bb-f a:focus-visible .bb-name { text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 4px; }
 .bb-f a:focus-visible { outline: 2px solid var(--farbe-dunkel); outline-offset: 6px; }
 
 /* ---------- Figur (Schlemmer, Konstruktion wie im Blog-Titelbild) ---------- */
@@ -3293,13 +3107,6 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
   position: absolute; left: 50%; bottom: 13.4%; height: 64%; aspect-ratio: 380 / 450; translate: -50% 0; z-index: 1;
   margin: 0; padding: 0; border: 0; background: none; cursor: pointer; border-radius: 12px; }
 .bb-figur:focus-visible { outline: 2px solid var(--farbe-dunkel); outline-offset: 4px; }
-.bb-svg { display: block; width: 100%; height: 100%; overflow: visible; }
-.bb-glied { transform-box: view-box; transform-origin: 0 0; transition: transform .5s cubic-bezier(.34, 1.3, .5, 1); }
-.bb-arm-l { transform: rotate(var(--arm-l)); }
-.bb-arm-r { transform: rotate(var(--arm-r)); }
-.bb-bein-l { transform: rotate(var(--bein-l)); }
-.bb-bein-r { transform: rotate(var(--bein-r)); }
-.bb-auge { transform-box: view-box; transform: translate(var(--ax), var(--ay)); transition: transform .12s ease-out; }
 
 /* Ausruf als Pointe: knallhart Schwarz-Weiß in Anton */
 .bb-ausruf { position: absolute; left: 50%; top: 7%; translate: -50% 0; margin: 0; z-index: 3; pointer-events: none; }
@@ -3309,12 +3116,6 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 /* ---------- Auftritt: Formen fallen auf die Bühne, die Figur baut sich zusammen (zusammen unter 3 s, danach Ruhe) ---------- */
 @media (prefers-reduced-motion: no-preference) {
   :where(.js) .bb-f { animation: bb-fallen .9s cubic-bezier(.34, 1.45, .5, 1) calc(.15s + var(--i) * .12s) both; }
-  :where(.js) .bb-teil { animation: bb-bauen .7s cubic-bezier(.34, 1.3, .5, 1) both; }
-  :where(.js) .bb-t1 { animation-delay: .8s; }
-  :where(.js) .bb-t2 { animation-delay: .95s; }
-  :where(.js) .bb-t3 { animation-delay: 1.1s; }
-  :where(.js) .bb-t4 { animation-delay: 1.25s; }
-  :where(.js) .bb-t5 { animation-delay: 1.4s; }
   :where(.js) .bb-ausruf span { animation: bb-pop .5s cubic-bezier(.34, 1.6, .5, 1) 1.9s both; }
   :where(.js) .bb-ausruf span.bb-neu { animation: bb-pop .45s cubic-bezier(.34, 1.6, .5, 1) both; }
 }
@@ -3322,41 +3123,26 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 @keyframes bb-bauen { from { translate: 0 -260px; opacity: 0; } 30% { opacity: 1; } }
 @keyframes bb-pop { from { scale: 0; } }
 @media (prefers-reduced-motion: reduce) {
-  .bb-glied, .bb-auge, .bb-form { transition: none; }
+   .bb-form { transition: none; }
 }
 
 /* Kleine Bühne (Handy bis 400 px): Randwort weg, damit es keine Beschriftung berührt */
-@container (max-width: 380px) { .bb-rand { display: none; } }
+
 /* Kleine Bühne: Namen rechts schmaler (umbrechen), damit sie die Hand der Figur nicht berühren */
-@container (max-width: 420px) { .bb-n-rechts:not(.bb-n-boden) .bb-name { max-width: 26cqw; } }
+
 /* Sehr kleine Bühne (320-px-Handys): Quadrat etwas höher, rosa Halbkreis etwas tiefer, damit die Namen frei stehen */
-@container (max-width: 300px) { .bb-quadrat { --y: 17% !important; } .bb-halbkreis-rosa { --y: 49% !important; } .bb-halbkreis-rosa .bb-form { width: 7cqw; } .bb-n-boden .bb-name { max-width: none; } .bb-dreieck .bb-form { width: 16cqw; } .bb-dreieck { --y: 78% !important; } }
+
 
 /* ---------- Tablet quer bis 1024 px: zwei Spalten bleiben, etwas enger ---------- */
 @media (max-width: 1024px) {
   .bb-hero { gap: 24px 32px; min-height: 0; padding-top: 24px; }
-  .bb-hero .bb-titel { font-size: var(--groesse-7); }
-  .bb-hero .bb-h1 { font-size: var(--groesse-4); }
 }
 
 /* ---------- Handy: Titel, Bühne, H1, Buttons untereinander ---------- */
 @media (max-width: 767.98px) {
   .bb-hero { grid-template-columns: minmax(0, 1fr); gap: 0; min-height: 0; padding-top: 12px; }
-  .bb-text { display: contents; }
-  .bb-meta { order: 1; }
-  .bb-titel { order: 2; }
-  .bb-buehne { order: 3; justify-self: center; margin: 20px 0 4px; width: min(100%, 52svh); }
-  .bb-h1 { order: 4; }
-  .bb-knoepfe { order: 5; }
-  .bb-fakten { order: 6; }
-  .bb-hero .bb-titel { font-size: calc((100vw - 2 * var(--rand-seite)) / 6.4); }
-  .bb-hero .bb-h1 { font-size: var(--groesse-4); }
 }
-@media (max-width: 600px) {
-  .bb-fakten .fakten { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .bb-fakten .fakten > div { padding: 12px 8px; }
-  .bb-fakten .fakten dd { font-size: var(--groesse-1); }
-}
+
 
 /* Startseite: Schmerzpunkte, Ergebnisse, Ablauf quer, Ehrliche Antworten (Anna, 09.11.2026) */
 .haken-unter { font-size: var(--groesse-3); line-height: 1.45; max-width: 46ch; margin: 20px 0 0; }
@@ -3364,7 +3150,6 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 .haken .sektionskopf .gr-h2, .ablauf-start .gr-h2, .ehrlich .gr-h2 { margin-top: 12px; line-height: 1.15; }
 .haken-karten { list-style: none; margin: 0; padding: 0 var(--rand-seite); display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
 .haken-karte { position: relative; display: flex; flex-direction: column; align-items: flex-start; padding: 28px; border: 1.5px solid var(--farbe-dunkel); border-radius: var(--radius-karte); background: var(--farbe-weiss); }
-.haken-nr { position: absolute; top: 24px; right: 28px; font-family: var(--schrift-text); font-size: var(--groesse-2); color: var(--farbe-grau); }
 .haken-karte h3 { font-size: var(--groesse-4); line-height: 1.25; margin: 0 0 10px; }
 .haken-karte p { margin: 0 0 16px; line-height: 1.55; }
 .haken-nutzen { padding-top: 16px; border-top: 1.5px solid var(--farbe-grau-hell); font-weight: 600; }
@@ -3372,12 +3157,6 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 .haken-karte .textlink { margin-top: auto; }
 .intro-frei { display: flex; align-items: center; gap: 10px; margin: 0 0 16px; font-weight: 600; }
 .intro-frei-punkt { width: 10px; height: 10px; border-radius: 50%; background: var(--farbe-primaer); flex: none; }
-.ergebnisse { padding-bottom: 96px; }
-.erg-zahlen { margin: 0; padding: 0 var(--rand-seite); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
-.erg-zahlen > div { border-top: 1.5px solid var(--farbe-dunkel); padding-top: 20px; }
-.erg-zahlen dt { font-family: var(--schrift-ueberschrift); font-size: clamp(56px, 7vw, 112px); line-height: 1; }
-.erg-zahlen dd { margin: 12px 0 0; line-height: 1.5; max-width: 32ch; }
-.ergebnisse > p { padding: 32px var(--rand-seite) 0; margin: 0; }
 .ablauf-start { padding-bottom: 96px; background: var(--farbe-hellgrau); }
 .zl-quer { list-style: none; margin: 0; padding: 0 var(--rand-seite); display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; position: relative; }
 .zl-quer::before { content: ""; position: absolute; left: var(--rand-seite); right: var(--rand-seite); top: 28px; height: 1.5px; background: var(--farbe-dunkel); }
@@ -3435,20 +3214,11 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 .haken .sektionskopf .haken-unter { max-width: none; }
 .haken-start { grid-auto-rows: auto; }
 .haken-start .haken-karte { display: grid; grid-row: span 5; grid-template-rows: subgrid; row-gap: 0; align-items: start; padding-bottom: 44px; }
-.haken-start .haken-karte .ik-icon { margin-bottom: 20px; }
 .haken-start .haken-karte .textlink { margin-top: 8px; align-self: end; justify-self: start; }
-.haken-rang { position: absolute; top: 18px; right: 22px; font-family: var(--schrift-ueberschrift); font-size: var(--groesse-5); line-height: 1; color: var(--farbe-dunkel); }
-.haken-rang-unten { top: auto; bottom: 14px; transform: rotate(180deg); color: var(--farbe-primaer); }
-.haken-karte:nth-child(odd) .haken-rang-unten { color: var(--farbe-dunkel); }
 .faq-spalten { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px 24px; align-items: start; }
 .faq-spalte { display: grid; gap: 16px; align-content: start; }
 @media (max-width: 767.98px) { .faq-spalten { grid-template-columns: minmax(0, 1fr); } }
 .ehrlich + .dk { margin-top: 112px; }
-.haken-rang { display: flex; flex-direction: column; align-items: center; gap: 6px; }
-.haken-rang::after { content: ""; width: 14px; height: 14px; background: currentColor; }
-.haken-karte:nth-child(1) .haken-rang::after { border-radius: 50%; }
-.haken-karte:nth-child(3) .haken-rang::after { clip-path: polygon(50% 0, 100% 100%, 0 100%); }
-.haken-karte:nth-child(4) .haken-rang::after { height: 7px; border-radius: var(--radius-karte) var(--radius-karte) 0 0; }
 .fw-paket { padding: 0 var(--rand-seite) 96px; }
 .fw-paket-box { border: 1.5px solid var(--farbe-dunkel); border-radius: var(--radius-karte); padding: clamp(28px, 4vw, 56px); max-width: 900px; }
 .fw-paket-box .gr-h3 { margin: 12px 0 24px; }
@@ -3456,10 +3226,7 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 .fw-preis-zahl { font-family: var(--schrift-ueberschrift); font-size: var(--groesse-7); line-height: 1; }
 .fw-preis .lsx-netto { font-size: var(--groesse-3); }
 /* Karten abstrakter (Anna 10.11.2026: Bube, Dame, König, Ass zu plakativ): nur die Bauhaus-Form in zwei Ecken */
-.haken-rang { gap: 0; font-size: 0; top: 24px; }
-.haken-rang::after { width: 20px; height: 20px; }
-.haken-karte:nth-child(4) .haken-rang::after { height: 10px; border-radius: var(--radius-karte) var(--radius-karte) 0 0; }
-.haken-rang-unten { top: auto; bottom: 20px; }
+
 .ehrlich + .dk { margin-top: 160px; }
 @media (max-width: 767.98px) { .ehrlich + .dk { margin-top: 96px; } }
 /* Hero der Für-wen-Seiten mit Illustration rechts (Anna 10.11.2026) */
@@ -3531,7 +3298,6 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 .kr-zahl { margin: 12px 0 0; font-family: var(--schrift-ueberschrift); font-size: clamp(56px, 7vw, 112px); line-height: 1; }
 .kr-zahl small { display: block; font-family: var(--schrift-text); font-size: var(--groesse-3); font-weight: 600; margin-top: 8px; }
 @media (max-width: 900px) { .kr { grid-template-columns: minmax(0, 1fr); } }
-.haken-test { margin: 16px 0 0; }
 /* Brotkrumen auf Unterseiten (werkzeuge/brotkrumen.py, Anna 10.11.2026) */
 .bk-nav { padding: 32px var(--rand-seite) 0; }
 .bk-nav .brotkrumen { margin: 0; }
@@ -3573,14 +3339,11 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 .sp-titel { font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-size: clamp(48px, 8.4vw, 150px); line-height: 1.05; margin: 12px 0 20px; }
 .sp-hero h1 { font-family: var(--schrift-text); text-transform: none; letter-spacing: 0; font-size: clamp(20px, 2vw, 30px); line-height: 1.35; font-weight: 500; max-width: 34ch; margin: 0 auto 28px; text-wrap: balance; }
 /* Startseite: Unterzeile am Desktop auf zwei Zeilen (Anna, 18.11.2026) */
-@media (min-width: 1024.02px) { .fh-hero h1 { max-width: 60ch; } }
-.sp-hero .hero-knoepfe { display: flex; flex-wrap: wrap; gap: 12px 16px; justify-content: center; margin: 0 0 24px; }
+
 .spiel { max-width: 1400px; margin: 0 auto; }
 .spiel-buehne { position: relative; }
 .spiel canvas { display: block; width: 100%; height: auto; aspect-ratio: 960 / 290; cursor: pointer; touch-action: manipulation; }
 .spiel canvas:focus-visible { outline: 3px solid var(--farbe-primaer); outline-offset: 4px; border-radius: 8px; }
-.spiel-meldung { position: absolute; left: 50%; top: 18%; transform: translateX(-50%); margin: 0; padding: 10px 20px; background: var(--farbe-dunkel); color: #fff; border-radius: var(--radius-pille); font-weight: 600; font-size: clamp(15px, 1.3vw, 20px); pointer-events: none; white-space: nowrap; }
-.spiel-meldung[hidden] { display: none; }
 .spiel-start { position: absolute; left: 50%; top: 45%; transform: translate(-50%, -50%); font-size: clamp(18px, 1.6vw, 24px); padding: 1rem 2rem; }
 .spiel-start[hidden] { display: none; }
 .spiel-leiste { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-top: 14px; }
@@ -3600,12 +3363,10 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 .spiel-sieg .knoepfe { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
 .spiel-hilfe { margin: 10px 0 0; font-size: 15px; color: var(--farbe-gedaempft); text-align: left; }
 /* herausfliegende Leistung: steigt aus dem Block bis in die Schrift */
-.spiel-flug { position: absolute; z-index: 50; pointer-events: none; transform: translate(-50%, 0); padding: 6px 12px 6px 34px; background: #fff; border: 2px solid var(--farbe-dunkel); border-radius: var(--radius-pille); font-weight: 700; font-size: 16px; white-space: nowrap; animation: spiel-flug 1.5s cubic-bezier(.2,.7,.3,1) forwards; }
-.spiel-flug::before { content: ""; position: absolute; left: 8px; top: 50%; width: 18px; height: 18px; margin-top: -9px; background: var(--f); }
-.spiel-flug-kreis::before { border-radius: 50%; } .spiel-flug-halbkreis::before { height: 9px; margin-top: -4px; border-radius: 18px 18px 0 0; } .spiel-flug-dreieck::before { clip-path: polygon(100% 0, 100% 100%, 0 100%); }
+
 @keyframes spiel-flug { 0% { opacity: 0; transform: translate(-50%, 0) scale(.6); } 15% { opacity: 1; transform: translate(-50%, -40px) scale(1.1); } 70% { opacity: 1; } 100% { opacity: 0; transform: translate(-50%, -260px) rotate(-6deg) scale(1); } }
-@media (prefers-reduced-motion: reduce) { .spiel-flug { animation-duration: .01s; } }
-@media (max-width: 767.98px) { .spiel canvas { aspect-ratio: 960 / 360; } .spiel-sieg .gross { font-size: 28px; } .spiel-meldung { white-space: normal; width: 86%; text-align: center; } }
+
+@media (max-width: 767.98px) { .spiel canvas { aspect-ratio: 960 / 360; } .spiel-sieg .gross { font-size: 28px; } }
   .sp-fakten { max-width: 980px; margin: 40px auto 0; text-align: left; }
 /* Spiel Fassung 3 (Anna 10.11.2026): Chips mit Abstand und hellgrauer Linie, Icon-Buttons, kleinere Hilfe */
 .spiel-leistungen { gap: 10px 14px; }
@@ -3626,22 +3387,18 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 /* Ende des Spiels (Anna 10.11.2026): Game over, Ergebnis groß, Rekord, Play again als runder schwarzer Play-Button */
 .spiel-sieg { gap: 6px; }
 .spiel-ende-meta { justify-content: center; }
-.spiel-endgeld { font-family: var(--schrift-ueberschrift); font-size: clamp(40px, 5vw, 72px) !important; line-height: 1; margin: 6px 0 !important; }
-.spiel-rekord { color: var(--farbe-gedaempft); font-size: 15px; min-height: 1em; }
 .spiel-nochmal { display: inline-flex; flex-direction: column; align-items: center; gap: 8px; margin-top: 10px; padding: 0; border: 0; background: none; font: inherit; font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-size: 18px; letter-spacing: .04em; color: var(--farbe-dunkel); cursor: pointer; }
 .spiel-nochmal-kreis { display: grid; place-items: center; width: 72px; height: 72px; border-radius: 50%; background: var(--farbe-dunkel); color: var(--farbe-weiss); transition: transform .2s; }
 .spiel-nochmal-kreis svg { width: 30px; height: 30px; margin-left: 4px; }
 .spiel-nochmal:hover .spiel-nochmal-kreis, .spiel-nochmal:focus-visible .spiel-nochmal-kreis { transform: scale(1.08); }
 .spiel-nochmal:focus-visible { outline: 3px solid var(--farbe-primaer); outline-offset: 4px; border-radius: 12px; }
-@media (max-width: 767.98px) { .spiel-endgeld { font-size: 34px !important; } .spiel-nochmal-kreis { width: 56px; height: 56px; } }
+@media (max-width: 767.98px) { .spiel-nochmal-kreis { width: 56px; height: 56px; } }
 @media (max-width: 767.98px) { .spiel-sieg { position: relative; inset: auto; padding: 16px 0; background: var(--farbe-weiss); } }
 /* Ende kompakt neben dem Play-again-Button, damit alles im Spielfeld Platz hat */
 .spiel-sieg { flex-direction: row; gap: 24px 48px; flex-wrap: wrap; }
 .spiel-ende-text { display: grid; gap: 4px; text-align: left; }
 .spiel-ende-text .meta { justify-content: flex-start; }
 .spiel-sieg .gross { font-size: clamp(26px, 3vw, 48px); }
-.spiel-endgeld { font-size: clamp(28px, 3.2vw, 52px) !important; margin: 4px 0 !important; }
-.spiel-endgeld .spiel-rekord { font-family: var(--schrift-text); font-size: 15px; font-weight: 600; vertical-align: middle; margin-left: 10px; }
 .spiel-nochmal { margin-top: 0; }
 @media (max-width: 767.98px) { .spiel-sieg { flex-direction: column; } .spiel-ende-text { text-align: center; } .spiel-ende-text .meta { justify-content: center; } }
 /* Ende lässt die Anzeige oben frei, damit man das Ergebnis oben rechts lesen kann */
@@ -3651,8 +3408,7 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 .spiel-leistungen .sl-zahl[hidden] { display: none; }
 /* Spielen-Button rechts neben der Figur, damit die Demo dahinter sichtbar bleibt (Anna 12.11.2026) */
 .spiel-start { left: 74%; top: 40%; }
-.spiel-meldung { top: 2%; }
-@media (max-width: 767.98px) { .spiel-start { left: 76%; top: 64%; padding: .55rem 1rem; font-size: 15px; white-space: nowrap; } .spiel-meldung { font-size: 13px; padding: 6px 12px; } }
+@media (max-width: 767.98px) { .spiel-start { left: 76%; top: 64%; padding: .55rem 1rem; font-size: 15px; white-space: nowrap; } }
 
 /* ===== Startseite 12.11.2026 (Anna): Köpfe mittig, „Wo es gerade hakt“ schlanker, Projekte als Kacheln, LinkedIn-Leiste ===== */
 .sk-mitte { text-align: center; }
@@ -3660,14 +3416,12 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 /* Wo es gerade hakt: nur Titel und blauer Nutzen je Karte; Selbsttest-Link mittig unter den Karten */
 .haken-start .haken-karte { grid-row: span 2; padding-top: 32px; }
 .haken-start .haken-karte h3 { margin-bottom: 0; }
-.haken-test-unten { margin: 40px var(--rand-seite) 0; text-align: center; text-wrap: balance; }
 /* Am Handy bricht der Link um: Unterstreichung nur unter dem Text, nicht über die ganze Breite */
-.haken-test-unten .textlink { display: inline; line-height: 1.6; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+
 /* Projekte: große Kacheln, Titelbild füllt die Fläche, Kunde und Schlagzeile unten auf einem Verlauf in der Hausfarbe */
 .start-projekte .referenz-rahmen { padding-bottom: 40px; }
 .pg { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
 .pg-karte { position: relative; display: block; border-radius: var(--radius-karte); overflow: hidden; color: var(--farbe-weiss); text-decoration: none; isolation: isolate; }
-.pg-karte.pg-hell { color: var(--farbe-dunkel); }
 .pg-karte:focus-visible { outline: 3px solid var(--farbe-primaer); outline-offset: 4px; }
 .pg-bild .pc { aspect-ratio: 4 / 3; border-radius: 0; transition: transform .6s ease; }
 .pg .pc-desktop { top: 7%; bottom: 22%; border-radius: 12px; }
@@ -3676,7 +3430,6 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 .pg-kunde { display: block; margin-bottom: 8px; font-size: var(--groesse-3); }
 .pg-titel { margin: 0; font-family: var(--schrift-ueberschrift); font-weight: 400; font-size: var(--groesse-6); line-height: 1.15; letter-spacing: .5px; text-transform: uppercase; }
 .pg-pfeil { position: absolute; right: 32px; bottom: 36px; z-index: 5; width: 56px; height: 56px; display: grid; place-items: center; border-radius: 50%; background: var(--farbe-weiss); color: var(--farbe-dunkel); font-size: var(--groesse-4); transition: transform .3s ease; }
-.pg-hell .pg-pfeil { background: var(--farbe-dunkel); color: var(--farbe-weiss); }
 .pg-karte:hover .pc { transform: scale(1.03); }
 .pg-karte:hover .pg-pfeil { transform: translateX(4px); }
 .pg-karte:hover .pc-desktop img, .pg-karte:hover .pc-handy img { object-position: 50% 100%; }
@@ -3735,36 +3488,22 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 
 /* Entwurf Startseite nach Content-Strategie (Anna 12.11.2026): Kernkompetenzen mit Retainer hervorgehoben, Branchen-Galerie,
    Ablauf als Satz im Intro, Blog als Zeile unter LinkedIn, Abschluss mit Gesicht */
-.ls-kern .ls-hervor .ls-bild { background: var(--farbe-creme); box-shadow: inset 0 0 0 4px var(--farbe-dunkel); }
-.ls-kern .ls-hervor .meta { margin-top: 8px; }
-.ls-kern .ls-hervor .ls-karte-titel { margin-top: 0; }
-.ls-weitere { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 24px; margin: -24px 0 0; padding: 0 var(--rand-seite); }
-.intro-ablauf { margin: 0 0 16px; max-width: 52ch; }
+
 .br-start { padding: 96px var(--rand-seite); }
 .br-kopf { max-width: 640px; margin-bottom: 40px; }
 .br-kopf p:last-child { margin: 12px 0 0; font-size: var(--groesse-4); }
-.br-galerie { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
 .br-kachel { position: relative; display: flex; flex-direction: column; gap: 8px; height: 100%; padding: 0 0 24px; text-decoration: none; color: inherit; }
-.br-bild { display: block; aspect-ratio: 16 / 10; overflow: hidden; border-radius: var(--radius-karte); background: var(--farbe-creme); }
-.br-bild img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
-.br-kachel:hover .br-bild img { transform: scale(1.03); }
 .br-name { font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-size: var(--groesse-5); line-height: 1.15; margin-top: 12px; padding-right: 56px; }
-.br-text { color: var(--farbe-gedaempft); }
 .br-kachel:focus-visible { outline: 3px solid var(--farbe-primaer); outline-offset: 6px; border-radius: var(--radius-karte); }
-.br-weitere { display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: baseline; margin: 24px 0 0; }
 .li-blog { text-align: center; margin: 32px 0 0; padding: 0 var(--rand-seite); }
-.wz-person { display: flex; align-items: center; justify-content: center; gap: 20px; margin: 0 auto 36px; text-align: left; }
-.wz-person img { width: 88px; height: 88px; border-radius: 50%; }
-.wz-person p { margin: 0; line-height: 1.6; }
-@media (max-width: 1024px) { .br-galerie { grid-template-columns: minmax(0, 1fr); max-width: 560px; } .br-start { padding: 64px var(--rand-seite); } }
-@media (max-width: 767.98px) { .wz-person { flex-direction: column; text-align: center; } .ls-weitere { margin-top: -8px; } }
+@media (max-width: 1024px) { .br-start { padding: 64px var(--rand-seite); } }
+
 /* Korrekturen Anna 12.11.2026 (2): Card links, Spielregel hervorgehoben; Problem-Karten auf Schwarz mit doppelt dicker weißer Kante */
 @media (min-width: 1024.02px) { .spiel-karte { right: auto; left: 2%; } }
 .spiel-karte-regel { margin: 4px 0 0 !important; padding: 10px 14px; border-radius: 12px; background: var(--farbe-creme); font-weight: 700; font-size: 17px; line-height: 1.45; }
 .spiel-karte-regel[hidden] { display: none; }
 .haken-schwarz { background: var(--farbe-dunkel); color: var(--farbe-weiss); padding-top: 96px; padding-bottom: 96px; }
 .haken-schwarz > .sektionskopf .gr-h2, .haken-schwarz > .sektionskopf .meta { color: var(--farbe-weiss); }
-.haken-schwarz .haken-test .textlink { color: var(--farbe-weiss); border-color: var(--farbe-weiss); }
 .haken-gelegt .haken-karte { border-width: 12px; box-shadow: none; }
 @media (max-width: 767.98px) { .haken-gelegt .haken-karte { border-width: 8px; } }
 .haken-schwarz > .sektionskopf .meta::before { background: var(--farbe-weiss); }
@@ -3818,7 +3557,6 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 .br-raster > li:nth-child(2), .br-raster > li:nth-child(6), .br-raster > li:nth-child(4):last-child { grid-column: auto; }
 @media (min-width: 1024.02px) { .br-raster > li:nth-child(7):nth-last-child(2) { grid-column: span 2; } } /* nur mehrspaltig: sonst entsteht am Handy eine zweite, schmale Spalte (Anna 13.11.2026) */
 .br-kachel img { object-position: 0 30%; }
-.br-raster-schlicht > li:nth-child(n) { grid-column: auto; }
 .br-weitere-branchen { padding: 0 var(--rand-seite) 120px; }
 .br-weitere-branchen .gr-h3 { margin: 8px 0 32px; }
 /* Häufige Fragen: einspaltig, mittig, ohne weiße Fläche; Plus wird beim Öffnen zum X */
@@ -3832,12 +3570,8 @@ html:not(.js) .wc-zu-form, .ohne-dialog .wc-zu-form { display: none; }
 .faq-eintrag[open] summary::after { transform: rotate(45deg); }
 .faq-eintrag .faq-antwort { padding: 0 4px 24px; text-align: left; }
 /* Branchenseiten: Sprungmarken, Einleitung, Einwand */
-.br-sprung { padding: 0 var(--rand-seite) 48px; }
-.br-sprung ul { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
-.br-sprung a { display: inline-block; padding: 8px 16px; border: 1.5px solid var(--farbe-dunkel); border-radius: var(--radius-pille); color: inherit; text-decoration: none; font-weight: 600; }
-.br-sprung a:hover, .br-sprung a:focus-visible { background: var(--farbe-dunkel); color: var(--farbe-weiss); }
+
 .br-einleitung { max-width: 62ch; margin: 16px auto 0; font-size: var(--groesse-3); line-height: 1.55; }
-.br-einwand { background: var(--farbe-creme); border-radius: var(--radius-karte); padding: 32px; }
 [id="herausforderungen"], [id="website"], [id="referenz"], [id="vorgehen"], [id="fragen"] { scroll-margin-top: calc(var(--kopf-hoehe) + 24px); }
 .br-kurz { max-width: 880px; margin: 0 auto 48px; padding: 28px 32px; border-left: 4px solid var(--farbe-primaer); background: var(--farbe-hellgrau); border-radius: 0 var(--radius-karte) var(--radius-karte) 0; } .br-kurz p:last-child { margin: 8px 0 0; font-size: var(--groesse-3); line-height: 1.55; }
 /* Branchenseiten: Foto über die volle Breite, blau eingefärbt (Anna 12.11.2026: „mehr Bildwelt“, Inspiration Duoton in Blau) */
@@ -3910,7 +3644,6 @@ html:not(.js) .hk-zeichen { display: none; }
 .anker-spur { position: relative; } /* Bezug für offsetLeft: sonst schiebt die Leiste das erste Wort aus dem Bild */
 .br-stimmen-eine { display: block; max-width: 880px; margin-left: auto; margin-right: auto; }
 .br-stimmen-eine .stimme { width: 100%; }
-.zl-ausstieg { display: inline-block; margin-top: 16px; padding: 6px 14px; border-radius: var(--radius-pille); background: var(--farbe-primaer); color: var(--farbe-weiss); font-size: var(--groesse-2); font-weight: 600; }
 /* Projekt-Cards (Anna 13.11.2026): Mockup frei oben, Text darunter im schwarzen Bereich, kein Verlauf über dem Bild */
 .pg-karte { background: var(--pc-farbe); display: flex; flex-direction: column; }
 .pg-bild .pc { aspect-ratio: 16 / 10; }
@@ -3970,17 +3703,11 @@ html:not(.js) .hk-zeichen { display: none; }
 .lsx-kompetenz-liste p { margin: 0; font-size: var(--groesse-3); line-height: 1.45; }
 .lsx-nr { font-family: var(--schrift-ueberschrift); font-size: 2.2rem; line-height: 1; color: var(--farbe-primaer); }
 .lsx-referenzen .gr-h2, .lsx-pakete .gr-h2 { margin: 12px 0 24px; }
-.lsx-referenzen .lsx-fakten { margin: 0 0 40px; }
-.prozess-kompakt .lsx-termine { margin-top: 24px; }
 .lsx-ansprech { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 56px; align-items: center; margin: 96px var(--rand-seite) 96px; padding: 48px; background: var(--farbe-creme); border-radius: var(--radius-karte); }
 .lsx-ansprech img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: var(--radius-karte); }
 .lsx-ansprech .gr-h2 { margin: 12px 0 20px; }
 .lsx-ansprech-name { margin: 0 0 8px; }
 .lsx-ansprech p { max-width: 56ch; }
-.lsx-ansprech-wege { list-style: none; margin: 24px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 16px 48px; }
-.lsx-ansprech-wege li { display: grid; gap: 4px; }
-.lsx-ansprech-wege a { font-size: var(--groesse-4); font-weight: 600; color: var(--farbe-dunkel); text-decoration: none; }
-.lsx-ansprech-wege a:hover { text-decoration: underline; }
 @media (max-width: 900px) {
   .lsx-was { grid-template-columns: minmax(0, 1fr); padding-top: 64px; }
   .lsx-kompetenz { padding-top: 64px; }
@@ -3993,8 +3720,6 @@ html:not(.js) .hk-zeichen { display: none; }
 .lsx-pl-allein .lsx-pl-problem ul { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 48px; }
 .lsx-pl-problem .lsx-grundsatz-hell a { color: var(--farbe-weiss); }
 @media (max-width: 767.98px) { .lsx-pl-allein .lsx-pl-problem ul { grid-template-columns: minmax(0, 1fr); } }
-.lsx-ansprech .lsx-fakten { grid-column: 1 / -1; max-width: none; margin: 8px 0 0; }
-.lsx-ansprech .lsx-termine { margin-top: 20px; max-width: 56ch; }
 /* Anna 16.11.2026: mehr Luft zwischen Preisen und Fragen; Preiskarte im Mega-Menü: Text rückt ans Icon, Button bleibt unten */
 .lsx-pakete + .faq, .lsx-extras + .faq, .lsx-vergleich + .faq { margin-top: 96px; }
 @media (max-width: 900px) { .lsx-pakete + .faq, .lsx-extras + .faq, .lsx-vergleich + .faq { margin-top: 64px; } }
@@ -4028,8 +3753,6 @@ html:not(.js) .hk-zeichen { display: none; }
 .lsx-wege-liste li:last-child { border-top-color: var(--farbe-primaer); }
 .lsx-wege-liste h3 { margin: 0; font-size: var(--groesse-5); line-height: 1.1; }
 .lsx-wege-liste p { margin: 0; line-height: 1.5; }
-.lsx-wege-wer { font-weight: 600; }
-.lsx-wege-link { margin-top: auto !important; padding-top: 12px; }
 @media (max-width: 1024px) { .lsx-anw-liste, .lsx-wege-liste { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 767.98px) {
   .lsx-gg, .lsx-anw, .lsx-wege { padding: 64px var(--rand-seite-mobil) 0; }
@@ -4075,8 +3798,7 @@ html:not(.js) .hk-zeichen { display: none; }
 @media (min-width: 768px) and (max-width: 1024px) { .lsx-wege-liste { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
 /* Hero mit Frag-Feld (Anna 16.11.2026, ersetzt das Spiel): eine Zeile wie bei Fratch, darunter Antworten und die zwei Wege */
-.fh-hero { padding-bottom: 96px; }
-.fh-titel { line-height: 1.15; }
+
 .fh-feld { display: flex; align-items: center; gap: 8px; max-width: 760px; margin: 8px auto 0; padding: 8px 8px 8px 24px; background: var(--farbe-weiss); border: var(--rahmen) solid var(--farbe-dunkel); border-radius: var(--radius-pille); }
 .fh-feld:focus-within { outline: 3px solid var(--farbe-primaer); outline-offset: 3px; }
 .fh-feld input { flex: 1; min-width: 0; border: 0; background: transparent; font: inherit; font-size: clamp(16px, 1.3vw, 19px); color: var(--farbe-dunkel); padding: 10px 0; }
@@ -4085,13 +3807,7 @@ html:not(.js) .hk-zeichen { display: none; }
 .fh-feld input::-webkit-search-cancel-button { display: none; }
 .fh-feld .button { flex: none; margin: 0; }
 .fh-antworten { max-width: 760px; margin: 0 auto; text-align: left; }
-.fh-liste { list-style: none; margin: 24px 0 0; padding: 0; display: grid; gap: 12px; }
-.fh-liste li { padding: 20px 24px; background: var(--farbe-creme); border-radius: 20px; }
 .fh-frage { font-family: var(--schrift-text); text-transform: none; letter-spacing: 0; font-size: var(--groesse-3); font-weight: 700; line-height: 1.35; margin: 0 0 6px; }
-.fh-liste p { margin: 0 0 10px; line-height: 1.5; }
-.fh-leer { margin-top: 24px; padding: 20px 24px; border: var(--rahmen) solid var(--farbe-grau-hell); border-radius: 20px; }
-.fh-leer p { margin: 0 0 6px; }
-.fh-leer-wege { display: flex; flex-wrap: wrap; gap: 4px 8px; }
 @media (max-width: 599.98px) {
   .fh-feld { flex-direction: column; align-items: stretch; border-radius: 24px; padding: 8px; }
   .fh-feld input { padding: 10px 12px; }
@@ -4101,15 +3817,12 @@ html:not(.js) .hk-zeichen { display: none; }
 .spiel-sektion { text-align: center; padding: clamp(120px, 12vw, 200px) var(--rand-seite) clamp(120px, 12vw, 200px); }
 .spiel-sektion .sp-titel { margin: 0 0 40px; line-height: 1.15; }
 @media (max-width: 767.98px) { .spiel-sektion { padding: 96px var(--rand-seite-mobil); } }
-.fh-hero h1, .fh-titel { hyphens: manual; -webkit-hyphens: manual; }
 /* Hero: Punkteraster wie früher, überall ganz zart, rund um die Maus deutlicher; kleine Webdesign-Form über der Dachzeile (Anna 17.11.2026) */
-.fh-hero { position: relative; overflow: hidden; }
-.fh-hero > :not(.fh-raster) { position: relative; z-index: 1; }
+
 .fh-raster { position: absolute; inset: 0; z-index: 0; pointer-events: none;
   background-image: radial-gradient(circle, var(--farbe-grau-hell) 1.3px, transparent 1.5px); background-size: 14px 14px;
   -webkit-mask-image: radial-gradient(circle at var(--mx, 50%) var(--my, 40%), #000 0, rgba(0, 0, 0, .18) 28%);
           mask-image: radial-gradient(circle at var(--mx, 50%) var(--my, 40%), #000 0, rgba(0, 0, 0, .18) 28%); }
-.fh-icon { display: block; width: 48px; height: auto; margin: 0 auto 16px; }
 .fh-feld { position: relative; }
 .fh-raster { background-image: radial-gradient(circle, var(--farbe-grau) 1.3px, transparent 1.6px);
   -webkit-mask-image: radial-gradient(circle at var(--mx, 50%) var(--my, 40%), rgba(0, 0, 0, .7) 0, rgba(0, 0, 0, .12) 26%);
@@ -4120,14 +3833,10 @@ html:not(.js) .hk-zeichen { display: none; }
 .fh-ich { justify-self: end; max-width: 80%; margin: 0; padding: 10px 16px; background: var(--farbe-dunkel); color: var(--farbe-weiss); border-radius: 18px 18px 4px 18px; line-height: 1.45; }
 .fh-sie { justify-self: start; max-width: 85%; padding: 12px 16px; background: var(--farbe-creme); border-radius: 18px 18px 18px 4px; text-align: left; }
 .fh-sie p { margin: 0 0 6px; line-height: 1.5; }
-.fh-hinweis { margin: 10px 0 0; font-size: var(--groesse-1); color: var(--farbe-gedaempft); }
 /* Antwort wie eine KI-Übersicht (Anna 17.11.2026): Kurzfassung, Stichpunkte, Quellen als kleine Links */
 .fh-sie { max-width: 92%; padding: 16px 20px; }
 .fh-kurz { font-weight: 600; }
 .fh-punkte { margin: 6px 0 10px; padding-left: 1.1em; display: grid; gap: 4px; line-height: 1.45; }
-.fh-quellen { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 0 !important; }
-.fh-quelle { display: inline-flex; gap: 6px; align-items: center; padding: 5px 12px; background: var(--farbe-weiss); border: 1px solid var(--farbe-grau-hell); border-radius: var(--radius-pille); font-size: var(--groesse-2); color: var(--farbe-dunkel); text-decoration: none; }
-.fh-quelle:hover, .fh-quelle:focus-visible { border-color: var(--farbe-dunkel); }
 /* Sie bauen selbst? (Anna 17.11.2026): vier Einstiege für Vibe-Coding und Baukasten */
 .lsx-selbst { padding: 96px var(--rand-seite) 0; }
 .lsx-selbst .gr-h2 { margin: 12px 0 20px; max-width: 20ch; }
@@ -4152,7 +3861,6 @@ html:not(.js) .hk-zeichen { display: none; }
 .fh-sie { padding: 24px 28px; border-radius: 22px 22px 22px 6px; }
 .fh-kurz { margin: 0 0 14px !important; line-height: 1.5; }
 .fh-punkte { margin: 0 0 18px; gap: 8px; line-height: 1.55; }
-.fh-quellen { margin: 18px 0 0 !important; gap: 10px; }
 @media (max-width: 599.98px) { .fh-sie { padding: 20px; } }
 
 /* ---------- Blogartikel: Leselayout (Anna 17.11.2026) ----------
@@ -4310,15 +4018,15 @@ html:not(.js) .hk-zeichen { display: none; }
 .mm-mit-icon .mm-icon { width: 31px; height: 31px; object-fit: contain; object-position: left center; }
 .mm-mit-icon .mm-name { grid-column: 2; }
 /* Kontaktseite auf voller Breite bündig mit Logo und Button (Anna 17.11.2026) */
-.kontakt-voll .kontakt-anfrage { margin-bottom: 3.5rem; } /* Kontakt: mehr Luft nach dem Formular (Anna 19.11.2026) */
-.golden.kontakt-voll { max-width: none; padding-inline: var(--rand-seite); gap: clamp(32px, 4vw, 64px); }
+ /* Kontakt: mehr Luft nach dem Formular (Anna 19.11.2026) */
+
 /* Auswahlfeld im Anfrageformular wie die Eingabefelder (Anna 17.11.2026: „woher sie von mir gehört haben mit dropdown“) */
 .anfrage-felder select { font: inherit; font-weight: 400; border: 1.5px solid var(--farbe-gedaempft); border-radius: var(--radius-karte); padding: 10px 40px 10px 12px; color: var(--farbe-dunkel); appearance: none; -webkit-appearance: none; cursor: pointer; background-color: var(--farbe-weiss); background-image: linear-gradient(45deg, transparent 50%, var(--farbe-dunkel) 50%), linear-gradient(135deg, var(--farbe-dunkel) 50%, transparent 50%); background-position: calc(100% - 21px) 55%, calc(100% - 15px) 55%; background-size: 6px 6px; background-repeat: no-repeat; }
 .anfrage-felder select:focus-visible { outline: 2px solid var(--farbe-primaer); outline-offset: 1px; border-color: var(--farbe-primaer); }
 /* Mehr Luft zwischen Button und Telefonnummer (Anna 17.11.2026) */
 .anfrage-knoepfe { column-gap: clamp(28px, 3vw, 44px); }
 /* Brotkrumen mit Abstand zum dunklen Hero (Anna 17.11.2026) */
-.bk-nav ~ .mr-hero, .bk-nav ~ .lp-hero { margin-top: 24px; }
+ .bk-nav ~ .lp-hero { margin-top: 24px; }
 /* Marken-Regelwerk: zwei Pakete, die Pflege als Zusatz darunter; Ablauf als horizontale Linie (Anna 17.11.2026) */
 .mr-zusatz { margin: 20px 0 0; padding: 22px 28px; background: var(--farbe-creme); border-radius: var(--radius-karte); line-height: 1.55; }
 .mr-ablauf .zl-quer { margin-top: clamp(40px, 5vw, 72px); }
@@ -4419,9 +4127,6 @@ html:not(.js) .hk-zeichen { display: none; }
 /* Hero: links blaue Fläche, rechts Diashow; feste Höhe, damit das Bild beim Fragen nicht mitwächst */
 .hl { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 16px; padding: 16px var(--rand-seite) 72px; text-align: left; }
 .hl-panel { background: var(--farbe-primaer); color: var(--farbe-weiss); border-radius: var(--radius-karte); padding: clamp(32px, 4.4vw, 72px); display: flex; flex-direction: column; justify-content: center; min-height: 600px; }
-.hl .hl-meta { color: var(--farbe-gedaempft-invers); margin: 0 0 20px; }
-.hl .hl-meta::before { background: var(--farbe-weiss) !important; }
-.hl-titel { font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-size: var(--groesse-7); line-height: 1.12; letter-spacing: .9px; margin: 0 0 24px; }
 .hl h1 { font-family: var(--schrift-text); text-transform: none; letter-spacing: 0; font-weight: 500; font-size: var(--groesse-4); line-height: 1.4; max-width: 30ch; margin: 0 0 32px; color: var(--farbe-weiss); text-wrap: balance; }
 .hl .hl-feld { margin: 0; max-width: 560px; border-color: var(--farbe-weiss); }
 /* Eingabe wie bei WhatsApp (Anna 20.11.2026): runder Senden-Button mit Papierflieger, bei leerem Feld Mikrofon; Emoji rechts im Feld */
@@ -4431,39 +4136,22 @@ html:not(.js) .hk-zeichen { display: none; }
 .hl .hl-los:focus-visible { outline: 3px solid var(--farbe-primaer); outline-offset: 3px; }   /* immer Markenblau, Fokus als blauer Ring (Anna 20.11.2026) */
 .hl .hl-los:active { transform: scale(.94); }
 .hl .hl-los svg { width: 24px; height: 24px; }
-.hl .hl-mikro, .hl .ist-mikro .hl-flieger { display: none; }
-.hl .ist-mikro .hl-mikro { display: block; }
 .hl .hl-emoji { flex: none; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; background: none; color: var(--farbe-dunkel); cursor: pointer; }
 .hl .hl-emoji:hover, .hl .hl-emoji:focus-visible, .hl .hl-emoji[aria-expanded="true"] { background: var(--farbe-creme); }
 .hl .hl-emoji svg { width: 26px; height: 26px; }
-.hl .nimmt-auf .hl-emoji { display: none; }
 .hl .hl-emojis { position: absolute; right: 0; bottom: calc(100% + 8px); z-index: 5; display: grid; grid-template-columns: repeat(8, 40px); gap: 2px; padding: 10px; background: var(--farbe-weiss); border-radius: var(--radius-karte); box-shadow: 0 10px 30px rgba(14, 16, 17, .18); }
-.hl .hl-emojis[hidden], .hl .hl-aufnahme[hidden], .hl .hl-diktat-hinweis[hidden], .hl .hl-diktat-hilfe[hidden] { display: none; }
+.hl .hl-emojis[hidden] { display: none; }
 .hl .hl-emojis button { width: 40px; height: 40px; padding: 0; border: 0; border-radius: 50%; background: none; font-size: var(--groesse-4); line-height: 1; cursor: pointer; }
 .hl .hl-emojis button:hover, .hl .hl-emojis button:focus-visible { background: var(--farbe-creme); }
 /* Aufnahme: Mülleimer, pulsierender Punkt (Blau statt Rot, Markenfarbe), Dauer, laufende Punktlinie */
-.hl .hl-aufnahme { flex: 1; display: flex; align-items: center; gap: 12px; min-width: 0; margin-left: -12px; }
-.hl .hl-weg { flex: none; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; background: var(--farbe-creme); color: var(--farbe-gedaempft); cursor: pointer; }
-.hl .hl-weg:hover, .hl .hl-weg:focus-visible { color: var(--farbe-dunkel); }
-.hl .hl-weg svg { width: 22px; height: 22px; }
-.hl .hl-aufnahme-zeile { flex: 1; display: flex; align-items: center; gap: 10px; min-width: 0; }
-.hl .hl-punkt { flex: none; width: 12px; height: 12px; border-radius: 50%; background: var(--farbe-primaer); animation: hl-puls 1s ease-in-out infinite; }
-.hl .hl-dauer { flex: none; font-size: var(--groesse-3); font-variant-numeric: tabular-nums; color: var(--farbe-dunkel); }
-.hl .hl-linie { flex: 1; min-width: 20px; height: 3px; background: radial-gradient(circle, var(--farbe-gedaempft) 1.2px, transparent 1.6px) 0 50% / 7px 3px repeat-x; animation: hl-linie 1.2s linear infinite; }
+
 @keyframes hl-puls { 50% { opacity: .3; } }
 @keyframes hl-linie { to { background-position: -21px 50%; } }
-@media (prefers-reduced-motion: reduce) { .hl .hl-punkt, .hl .hl-linie { animation: none; } }
+
 /* Hinweis vor dem ersten Diktat */
-.hl .hl-diktat-hinweis, .hl .hl-diktat-hilfe { position: absolute; left: 0; right: 0; bottom: calc(100% + 8px); z-index: 6; padding: 18px 20px; background: var(--farbe-weiss); border-radius: var(--radius-karte); box-shadow: 0 10px 30px rgba(14, 16, 17, .18); font-size: var(--groesse-2); line-height: 1.5; color: var(--farbe-dunkel); }
-.hl .hl-diktat-hinweis p, .hl .hl-diktat-hilfe p { margin: 0 0 20px; }
-.hl .hl-diktat-hinweis a, .hl .hl-diktat-hilfe a { color: var(--farbe-primaer); text-decoration: underline; }
-.hl .hl-diktat-knoepfe { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin: 0 !important; }
-.hl .hl-diktat-knoepfe .textlink { background: none; border: 0; padding: 0; font: inherit; cursor: pointer; }
-.hl .hl-diktat-knoepfe .button, .hl .hl-diktat-knoepfe .button:hover { background: var(--farbe-primaer); border-color: var(--farbe-primaer); color: var(--farbe-weiss); outline: none; }
-.hl .hl-diktat-knoepfe .button:focus-visible { outline: 3px solid var(--farbe-primaer); outline-offset: 3px; }
+
 /* Hilfe, wenn das Mikrofon gesperrt ist (Anna 20.11.2026) */
-.hl .hl-diktat-hilfe ol { margin: 0 0 16px; padding-left: 1.2em; display: grid; gap: 6px; }
-.hl .hl-diktat-hilfe strong { font-weight: 600; }
+
 @media (max-width: 600px) { .hl .hl-emojis { grid-template-columns: repeat(6, 40px); } .hl .hl-los { width: 46px; height: 46px; } .hl .hl-emoji { width: 38px; height: 38px; } }
 @media (max-width: 400px) { .hl .hl-emojis { grid-template-columns: repeat(5, 40px); } }
 .hl-chips { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 0; padding: 0; max-width: 560px; }
@@ -4479,9 +4167,7 @@ html:not(.js) .hk-zeichen { display: none; }
 /* Chat-Ansicht nach Vorbild WhatsApp (Anna 18.11.2026: „nimm whatsapp als inspo für chat“): Überschrift kleiner, Unterzeile nur noch
    für Vorlese-Programme und Suchmaschinen; darunter ein Chatfenster mit Kopfzeile, gemustertem Grund, Blasen und Eingabe unten */
 .hl.ist-chat .hl-panel { justify-content: flex-start; padding: clamp(24px, 2.6vw, 40px); }
-.hl.ist-chat .hl-meta, .hl.ist-chat .hl-chips { display: none; }
-.hl.ist-chat .hl-titel { font-size: var(--groesse-5); margin-bottom: 16px; }
-.hl.ist-chat .hl-titel br { display: none; }
+ .hl.ist-chat .hl-chips { display: none; }
 .hl.ist-chat h1 { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .hl.ist-chat .hl-chatfenster { position: relative; isolation: isolate; display: flex; flex-direction: column; flex: 1 1 0; min-height: 0; background: var(--farbe-creme); border-radius: var(--radius-karte); overflow: hidden; color: var(--farbe-dunkel); }
 /* Muster wie die Kritzeleien bei WhatsApp, hier aus Bauhaus-Grundformen; Farbe kommt aus der Variable, die Form aus der Maske */
@@ -4515,10 +4201,7 @@ html:not(.js) .hk-zeichen { display: none; }
 .hl .fh-ich .fh-zeit { color: var(--farbe-weiss); }
 .hl .fh-haken { letter-spacing: -3px; padding-right: 3px; }
 /* Links wie „Termin buchen“ bei WhatsApp: ganze Zeilen unten in der Blase, über feiner Linie */
-.hl .fh-quellen { display: grid; gap: 0; margin: 10px -18px -10px !important; }
-.hl .fh-quelle { justify-content: center; padding: 10px 12px; background: none; border: 0; border-top: 1px solid var(--farbe-grau-hell); border-radius: 0; font-weight: 600; color: var(--farbe-primaer); }
-.hl .fh-quelle:hover, .hl .fh-quelle:focus-visible { background: none; text-decoration: underline; text-underline-offset: 3px; }
-.hl .fh-quelle:last-child { border-radius: 0 0 12px 12px; }
+
 /* „Anna schreibt …“: drei Punkte, kurz vor jeder Antwort */
 .hl .fh-tippt { justify-self: start; display: flex; gap: 4px; margin: 0 0 0 40px; padding: 12px 14px; background: var(--farbe-weiss); border-radius: 0 12px 12px 12px; }
 .hl .fh-tippt span { width: 7px; height: 7px; border-radius: 50%; background: var(--farbe-gedaempft); animation: fh-tippt 1s infinite ease-in-out; }
@@ -4528,8 +4211,7 @@ html:not(.js) .hk-zeichen { display: none; }
 .hl .fh-ich, .hl .fh-zeile { animation: fh-rein .2s ease-out both; }
 @keyframes fh-rein { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 /* Diashow: Bilder in Naturfarben, Annas Porträt wie überall; blenden ineinander, langsamer Zoom */
-.hl-bild { position: relative; margin: 0; border-radius: var(--radius-karte); overflow: hidden; background: var(--farbe-creme); isolation: isolate; min-height: 420px; }
-.hl-folien { list-style: none; margin: 0; padding: 0; position: absolute; inset: 0; }
+
 .hl-folie { position: absolute; inset: 0; opacity: 0; transition: opacity 1.2s ease; }
 .hl-folie.ist-aktiv { opacity: 1; z-index: 1; }
 .hl-folie img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.06); }
@@ -4537,13 +4219,7 @@ html:not(.js) .hk-zeichen { display: none; }
 .hl.ist-pausiert .hl-folie img { animation-play-state: paused; }
 @keyframes hl-zoom { from { transform: scale(1.08); } to { transform: scale(1); } }
 /* Monitor-Folie: Startseite von Bauer läuft von oben bis zum Fuß durch */
-.hl-folie.ist-monitor { background: var(--farbe-creme); container-type: size; }
-.hl-mon { position: absolute; top: 50%; left: 50%; width: min(max(100cqw, 127.9cqh), 118cqw); aspect-ratio: 1100 / 860; transform: translate(-50%, -50%); }
-.hl-folie .hl-mon-foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; animation: none !important; transform: none; }
-.hl-mon-schirm { position: absolute; left: 9.818%; top: 6.047%; width: 77.909%; height: 66.163%; overflow: hidden; container-type: size; background: var(--farbe-weiss); }
-.hl-folie .hl-mon-seite { position: absolute; left: 0; top: 0; width: 100%; height: auto; transform: translateY(0); animation: none; }
-.hl-folie.ist-monitor.ist-aktiv .hl-mon-seite { animation: hl-scroll 14s .8s ease-in-out both; }
-.hl.ist-pausiert .hl-mon-seite { animation-play-state: paused !important; }
+
 @keyframes hl-scroll { from { transform: translateY(0); } to { transform: translateY(calc(-100% + 100cqh)); } }
 .hl-pause { position: absolute; right: 24px; bottom: 24px; z-index: 3; width: 48px; height: 48px; border-radius: 50%; border: 0; background: var(--farbe-weiss); color: var(--farbe-dunkel); font-size: var(--groesse-1); cursor: pointer; }
 @media (min-width: 1024.02px) {
@@ -4553,22 +4229,18 @@ html:not(.js) .hk-zeichen { display: none; }
 }
 @media (max-width: 1024px) {
   .hl { grid-template-columns: minmax(0, 1fr); }
-  .hl-panel, .hl-bild { min-width: 0; }
+  .hl-panel { min-width: 0; }
   .hl-panel { min-height: 0; }
-  .hl-bild { aspect-ratio: 3 / 2; }
   .hl.ist-chat .hl-chatfenster { flex: none; }
   .hl.ist-chat .hl-antworten { flex: none; max-height: 60svh; }
 }
 @media (max-width: 767.98px) {
   .hl .hl-feld { flex-direction: row; flex-wrap: nowrap; align-items: center; padding: 6px 6px 6px 20px; } /* Eingabefeld mind. 16 px (Zoom am iPhone) bleibt aus .fh-feld */
   .hl .hl-feld input { padding: 10px 0; }
-  .hl-bild { aspect-ratio: 4 / 5; min-height: 0; }
   .hl-pause { right: 16px; bottom: 16px; }
   .hl-panel { padding: 28px 24px; }
-  .hl .hl-meta { white-space: normal; }
   /* Chat am Handy: mehr Breite für die Blasen, Feld und Button kompakter (18.11.2026) */
   .hl.ist-chat .hl-panel { padding: 20px 12px 12px; }
-  .hl.ist-chat .hl-titel { margin: 0 8px 12px; }
   .hl.ist-chat .hl-antworten { padding: 10px 10px; }
   .hl .fh-zeile { max-width: 100%; gap: 6px; }
   .hl .fh-sie { padding: 18px 20px 12px; }   /* am Handy mehr Breite für den Text */
@@ -4577,17 +4249,13 @@ html:not(.js) .hk-zeichen { display: none; }
   .hl.ist-chat .hl-feld { margin: 0 8px 8px; padding: 4px 4px 4px 16px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hl-folie img, .hl-folie.ist-aktiv img, .hl-folie.ist-monitor.ist-aktiv .hl-mon-seite { animation: none; transform: none; }
+  .hl-folie img, .hl-folie.ist-aktiv img { animation: none; transform: none; }
   .hl-folie { transition: none; }
   .hl-antworten { scroll-behavior: auto; }
   .hl .fh-tippt span, .hl .fh-ich, .hl .fh-zeile { animation: none; }
 }
 /* Über mich kurz: „Wo es gerade hakt“ als drei Links statt Karten */
-.hakt-links { margin-top: 40px; padding-top: 24px; border-top: 1.5px solid var(--farbe-dunkel); }
-.hakt-links-liste { list-style: none; margin: 12px 0 0; padding: 0; }
-.hakt-links-liste a { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--farbe-grau-hell); color: var(--farbe-dunkel); text-decoration: none; font: 600 var(--groesse-3)/1.35 var(--schrift-text); }
-.hakt-links-liste a:hover span, .hakt-links-liste a:focus-visible span { text-decoration: underline; text-underline-offset: 4px; }
-.hakt-links-test { margin: 16px 0 0; }
+
 /* Im Fokus (feste Angebote) und Projekte als Liste wie bei LinkedIn */
 .fokus, .start-projektliste { padding: 0 0 clamp(64px, 6vw, 96px); }
 .fokus-raster { list-style: none; margin: 24px var(--rand-seite) 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
@@ -4682,78 +4350,30 @@ body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp)
 
 /* Kopf: blaue Fläche mit harter Kontur und Schatten (Blau nur als Fläche, Text weiß) */
 .stil-b .hl-panel { border: var(--b-kontur); box-shadow: var(--b-schatten-gross); }
-.stil-b .hl-bild { border: var(--b-kontur); border-radius: var(--radius-karte); overflow: hidden; box-shadow: var(--b-schatten-gross); }
 
 /* Sticker: Dekoration, gedreht, ragen über Kanten */
 .sticker { position: absolute; width: clamp(96px, 11vw, 168px); height: auto; pointer-events: none; z-index: 2; }
-.st-intro { right: calc(var(--rand-seite) - 12px); top: -40px; transform: rotate(8deg); }
 .st-fokus { right: var(--rand-seite); top: 8px; transform: rotate(-10deg); }
-.st-projekte { right: var(--rand-seite); top: 0; transform: rotate(12deg); }
-.st-stimmen { position: static; display: block; margin: 0 auto -12px; transform: rotate(-8deg); }
-.st-faq { left: var(--rand-seite); top: -30px; transform: rotate(-12deg); }
-.st-weg { right: 12%; top: 24px; transform: rotate(14deg); }
 @media (max-width: 767.98px) {
   .sticker { width: 84px; }
-  .st-intro { top: -28px; }
-  .st-fokus, .st-projekte { top: -6px; }
-  .st-weg { right: 4%; top: -20px; }
+  .st-fokus { top: -6px; }
 }
 
 /* Aah-Band unter dem Kopf: Neongelb, Figur, Uff-Auswahl, roter Button */
 .aah { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr); gap: 32px; align-items: center;
   margin: 0 var(--rand-seite) 96px; padding: clamp(24px, 4vw, 56px); background: var(--bb-gelb); color: var(--farbe-dunkel);
   border: var(--b-kontur); border-radius: var(--radius-karte); box-shadow: var(--b-schatten-gross); }
-.aah-figur { display: flex; flex-direction: column; align-items: center; gap: 12px; }
-.aah-a { width: min(260px, 100%); height: auto; }
-.aah-hupf { animation: aah-hupf .6s ease-out 1; }
 @keyframes aah-hupf { 0% { transform: scale(1); } 40% { transform: scale(1.12) rotate(-4deg); } 100% { transform: scale(1); } }
-.aah-ton, .aah-uff, .aah-nope { font: inherit; cursor: pointer; color: var(--farbe-dunkel); border: var(--b-kontur); border-radius: var(--radius-pille); }
-.aah-ton { background: var(--farbe-weiss); font-weight: 700; font-size: var(--groesse-2); padding: 10px 18px; box-shadow: 4px 4px 0 var(--farbe-dunkel); }
-.aah-titel { font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-weight: 400; font-size: var(--groesse-7); line-height: 1.2; margin: 0 0 20px; }
-.aah-feld { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin: 0 0 16px; font-weight: 700; }
-.aah-feld[hidden], .aah-nicht[hidden], .aah-ton[hidden] { display: none; }
-.aah-feld input { font: inherit; font-size: 16px; /* mindestens 16 px gegen Zoom am iPhone */ padding: 10px 18px; width: min(280px, 100%);
-  border: var(--b-kontur); border-radius: var(--radius-pille); background: var(--farbe-weiss); color: var(--farbe-dunkel); }
-.aah-gruss { margin: 0 0 12px; font-weight: 600; }
-.aah-uffs { list-style: none; margin: 0 0 16px; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
-.aah-uffs a { display: inline-block; color: var(--farbe-dunkel); font-weight: 700; }
-.aah-uff { background: var(--farbe-weiss); font-weight: 700; font-size: var(--groesse-2); padding: 10px 18px; text-align: left; box-shadow: 4px 4px 0 var(--farbe-dunkel); }
-.aah-uff:hover, .aah-uff[aria-pressed="true"] { background: var(--bb-pink); }
-.aah-uff:active, .aah-ton:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--farbe-dunkel); }
-.aah-blase { background: var(--farbe-weiss); border: var(--b-kontur); border-radius: var(--radius-karte); padding: 20px 24px; margin: 0 0 16px; }
-.aah-blase p { margin: 0 0 10px; }
-.aah-blase-kurz { font-weight: 800; }
-.aah-blase-links { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin: 6px 0 0 !important; }
-.aah-test { margin: 0; }
-.aah-nicht { display: flex; justify-content: center; }
-.aah-nope { background: var(--bb-rot); font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-size: var(--groesse-4); letter-spacing: .02em;
-  padding: 22px 30px; border-width: 4px; box-shadow: var(--b-schatten); transition: transform .1s, box-shadow .1s; }
-.aah-nope:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--farbe-dunkel); }
-.aah-nope:active { transform: translate(4px, 4px); box-shadow: 2px 2px 0 var(--farbe-dunkel); }
-.aah :focus-visible, .aah-dialog :focus-visible { outline: 4px solid var(--farbe-dunkel); outline-offset: 3px; }
+.aah :focus-visible { outline: 4px solid var(--farbe-dunkel); outline-offset: 3px; }
 @media (max-width: 1024px) {
   .aah { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
-  .aah-nicht { grid-column: 1 / -1; }
 }
 @media (max-width: 767.98px) {
   .aah { grid-template-columns: minmax(0, 1fr); gap: 24px; margin-bottom: 72px; padding: 24px 20px; }
-  .aah-figur { flex-direction: row; justify-content: flex-start; }
-  .aah-a { width: 140px; }
 }
 
 /* Dialog „Bitte nicht drücken“ (Farbe je Prinzip) */
-.aah-dialog { position: fixed; max-width: 640px; width: calc(100% - 32px); padding: 32px 28px 24px; text-align: center; color: var(--farbe-dunkel);
-  border: 4px solid var(--farbe-dunkel); border-radius: var(--radius-karte); box-shadow: 14px 14px 0 var(--farbe-dunkel); background: var(--bb-rot); }
-.aah-dialog.aah-d-1 { background: var(--bb-gelb); }
-.aah-dialog.aah-d-2 { background: var(--bb-pink); }
-.aah-dialog::backdrop { background: rgba(14, 16, 17, .82); }
-.aah-d-bild { width: 120px; height: auto; display: block; margin: -8px auto 4px; }
-.aah-d-titel { font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-weight: 400; font-size: var(--groesse-5); line-height: 1.2; margin: 0 0 8px; }
-.aah-d-warum { font-family: var(--schrift-ueberschrift); font-size: var(--groesse-5); letter-spacing: .06em; margin: 8px 0; }
-.aah-dialog p { margin: 0 0 12px; }
-.aah-d-mehr a { display: inline-block; background: var(--farbe-dunkel); color: var(--farbe-weiss); font-weight: 700; padding: 14px 24px; border-radius: var(--radius-pille); text-decoration: underline; }
-.aah-d-quelle { font-size: var(--groesse-1); margin-top: 12px !important; }
-.aah-d-zu { position: absolute; right: 14px; top: 12px; width: 44px; height: 44px; border-radius: 50%; border: var(--b-kontur); background: var(--farbe-weiss); color: var(--farbe-dunkel); font-size: 20px; cursor: pointer; }
+
 
 /* Feste Angebote: Karten mit Kontur und hartem Schatten */
 .stil-b .fokus-karte { border: var(--b-kontur); box-shadow: var(--b-schatten); background: var(--farbe-weiss); }
@@ -4762,31 +4382,10 @@ body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp)
 /* Leistungen als nummerierte Blöcke (Folgerung 17): große schwarze Fläche, Nummern in Gelb, kein Blau */
 .stil-b .start-leistungen { background: var(--farbe-dunkel); color: var(--farbe-weiss); padding-top: 96px; padding-bottom: 96px; }
 .stil-b .start-leistungen .meta { color: var(--farbe-gedaempft-invers); }
-.stil-b .start-leistungen .meta::before { background: var(--bb-gelb) !important; }
-.lb-liste-aussen { list-style: none; margin: 0 var(--rand-seite); padding: 0; }
-.lb { display: grid; grid-template-columns: 120px minmax(0, 1.2fr) minmax(0, 1fr); gap: 8px 40px; align-items: start; padding: 40px 0; border-top: 3px solid var(--farbe-weiss); position: relative; }
-.lb:last-child { border-bottom: 3px solid var(--farbe-weiss); }
-.lb-nr { font-family: var(--schrift-ueberschrift); font-size: var(--groesse-7); line-height: 1; color: var(--bb-gelb); }
-.lb-name { grid-column: 2; margin: 0; font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-weight: 400; font-size: var(--groesse-7); line-height: 1.15; }
-.lb-name a { color: var(--farbe-weiss); text-decoration: none; }
-.lb-name a::after { content: ""; position: absolute; inset: 0; }   /* ganzer Block klickbar */
-.lb:hover .lb-name a, .lb-name a:focus-visible { color: var(--bb-gelb); }
-.lb-name a:focus-visible { outline: 3px solid var(--bb-gelb); outline-offset: 4px; }
-.lb-satz { grid-column: 2; margin: 8px 0 0; font-size: var(--groesse-4); font-weight: 700; max-width: 34ch; }
-.lb-liste { grid-column: 3; grid-row: 1 / span 3; margin: 0; padding-left: 20px; }
-.lb-liste li { margin-bottom: 8px; }
-.lb-mehr { grid-column: 3; margin: 8px 0 0; }
-.lb-link { color: var(--bb-gelb); font-weight: 700; text-decoration: none; }
-.lb-brand .lb-nr { color: var(--bb-pink); }
-.lb-ki .lb-nr { color: var(--bb-rosa); }
-@media (max-width: 900px) {
-  .lb { grid-template-columns: 72px minmax(0, 1fr); }
-  .lb-liste, .lb-mehr { grid-column: 2; grid-row: auto; }
-}
-@media (max-width: 599.98px) {
-  .lb { grid-template-columns: minmax(0, 1fr); padding: 28px 0; }
-  .lb-name, .lb-satz, .lb-liste, .lb-mehr { grid-column: 1; }
-}
+.stil-b .start-leistungen .meta::before { background: var(--bb-gelb) !important; }   /* ganzer Block klickbar */
+
+
+
 
 /* Projekte als Liste mit einem Satz je Projekt (Folgerung 16), Papier B */
 .stil-b .start-projektliste { background: url(../bilder/papier/papier-b.webp) repeat; background-size: 256px; padding-top: 96px; padding-bottom: 96px; }
@@ -4815,13 +4414,11 @@ body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp)
 .stil-b .weg-ziel .meta, .stil-b .weg-ziel .alt-klein, .stil-b .weg-ziel a:not(.button) { color: var(--farbe-dunkel); }
 
 /* Fußzeile als Pointe (Folgerung 8): Satz über die ganze Breite, je Seite anders */
-.fuss-pointe { margin: 0; padding: 32px var(--rand-seite) 24px; background: var(--bb-gelb); border-top: var(--b-kontur); color: var(--farbe-dunkel);
-  font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-size: 11.5vw; /* füllt die Breite */ line-height: 1.15; white-space: nowrap; overflow: hidden; }
-@media (max-width: 599.98px) { .fuss-pointe { white-space: normal; font-size: 19vw; } }
+
+
 
 @media (prefers-reduced-motion: reduce) {
-  .aah-hupf { animation: none; }
-  .aah-nope, .stil-b .fokus-karte { transition: none; }
+   .stil-b .fokus-karte { transition: none; }
 }
 
 /* ---------- Daumen-Rückmeldung unter Selbsttest und Rechnern (Anna 20.11.2026, Vorbild Gelbe Seiten) ---------- */
@@ -4848,14 +4445,7 @@ body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp)
 /* Projekte der Startseite (Anna 20.11.2026, Vorbild callmelord.com/work): Umschalter Liste/Raster ohne JavaScript (Radio + :has),
    Liste mit aufklappendem Bildstreifen beim Darüberfahren, Raster mit drei großen Bildern; am Handy nur das Raster */
 .pa { margin: 32px var(--rand-seite) 0; }
-.pa-schalter { display: flex; justify-content: center; gap: 0; width: max-content; margin: 0 auto 40px; padding: 4px; border: 0; border-radius: var(--radius-pille); background: rgba(14, 16, 17, .08); }
-.pa-schalter input { position: absolute; opacity: 0; width: 1px; height: 1px; }
-.pa-schalter label { padding: 10px 22px; border-radius: var(--radius-pille); font: 600 var(--groesse-2)/1 var(--schrift-text); cursor: pointer; color: var(--farbe-dunkel); border: 2px solid transparent; }
-.pa-schalter input:checked + label { background: var(--farbe-weiss); border-color: var(--farbe-dunkel); }
-.pa-schalter input:focus-visible + label { outline: 3px solid var(--farbe-dunkel); outline-offset: 2px; }
-.pa-liste, .pa-raster { list-style: none; margin: 0; padding: 0; }
-.pa-raster { display: none; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px 16px; }
-.pa:has(#pa-raster:checked) .pa-raster { display: grid; }
+.pa-liste { list-style: none; margin: 0; padding: 0; }
 .pa:has(#pa-raster:checked) .pa-liste { display: none; }
 .pa-zeile { border-bottom: 1px solid var(--farbe-dunkel); }
 .pa-liste { border-top: 1px solid var(--farbe-dunkel); }
@@ -4868,28 +4458,18 @@ body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp)
 .pa-streifen img { height: 220px; width: auto; max-width: none; flex: none; object-fit: cover; object-position: top; margin-bottom: 0; }
 .pa-zeile:hover .pa-streifen, .pa-zeile:focus-within .pa-streifen { grid-template-rows: 1fr; }
 .pa-zeile:hover .pa-streifen-innen, .pa-zeile:focus-within .pa-streifen-innen { padding-bottom: 26px; }
-.pa-karte { display: flex; flex-direction: column; gap: 14px; color: var(--farbe-dunkel); text-decoration: none; }
-.pa-kopf { display: flex; flex-direction: column; gap: 2px; }
-.pa-karte .pa-kunde { font-size: var(--groesse-3); }
-.pa-karte .pa-satz { font-size: var(--groesse-3); }
-.pa-bild { display: block; aspect-ratio: 1; overflow: hidden; background: var(--farbe-dunkel); }
-.pa-bild img { width: 100%; height: 100%; object-fit: cover; object-position: left top; display: block; transition: transform .5s ease; }
-.pa-karte:hover .pa-bild img, .pa-karte:focus-visible .pa-bild img { transform: scale(1.04); }
-@media (max-width: 1024px) { .pa-raster { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
 @media (max-width: 767.98px) {
-  .pa-schalter, .pa-liste, .pa:has(#pa-raster:checked) .pa-liste { display: none; }
-  .pa-raster, .pa:has(#pa-raster:checked) .pa-raster { display: grid; grid-template-columns: minmax(0, 1fr); }
+   .pa-liste, .pa:has(#pa-raster:checked) .pa-liste { display: none; }
 }
-@media (prefers-reduced-motion: reduce) { .pa-streifen { transition: none; } .pa-bild img { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .pa-streifen { transition: none; } }
 
 /* ---------- Stil B: drei Varianten zum Vergleichen (Entwurf, Anna 20.11.2026: „zu brav“, „Kopf und Aah-Band“, „Schrift und Formen“).
    Varianten Plakat, Pop, Zine am 20.11.2026 entfernt; gilt weiter für „Räume“: Kopf und Aah-Band als ein Block. ---------- */
 /* Kopf und Band als ein Plakat: Fläche und Bild stoßen aneinander, das Band hängt direkt darunter */
 .stil-b[class*="v-"] .hl { gap: 0; padding-bottom: 0; }
 .stil-b[class*="v-"] .hl-panel { border-radius: 0; box-shadow: none; border-right-width: 0; }
-.stil-b[class*="v-"] .hl-bild { border-radius: 0; box-shadow: none; }
 .stil-b[class*="v-"] .aah { margin-top: 0; border-top: 0; border-radius: 0; box-shadow: var(--b-schatten-gross); }
-.stil-b[class*="v-"] .aah-titel { font-size: clamp(44px, 5.6vw, 96px); /* zwei Zeilen in der mittleren Spalte */ }
 @media (max-width: 1024px) { .stil-b[class*="v-"] .hl-panel { border-right-width: 3px; border-bottom-width: 0; } }
 /* Schriftband zwischen Kopf und Inhalt, gedreht, ohne Bewegung */
 .v-band { display: none; }
@@ -4908,28 +4488,18 @@ body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp)
 .v-raeume .button:active, .v-raeume .button-zweit:active { box-shadow: none; }
 .v-raeume .meta::before { background: currentColor !important; }
 /* Lesbarkeit (Anna 20.11.2026: „wir müssen auf lesbarkeit achten“): auf farbigen Wänden kein Grau, sondern volles Dunkel; kein Versatz unter Fließtext-nahen Überschriften */
-.v-raeume { --farbe-gedaempft: rgba(14, 16, 17, .86); }
-.v-raeume .start-leistungen .lb-nr { color: var(--bb-gelb); }   /* Pink auf Petrol nur 2,6 : 1 */
-.v-raeume .start-leistungen .lb-brand .lb-nr { color: var(--r-rosa); }
+.v-raeume { --farbe-gedaempft: rgba(14, 16, 17, .86); }   /* Pink auf Petrol nur 2,6 : 1 */
+
 
 /* Raum 1, Kopf: Studiowand in Blau, Fotos im Riso-Druck (Blau auf Papier, Raster), pinke Sonne und gemaltes Funkeln */
 .v-raeume .hl-folie:not(.ist-monitor) { background: var(--farbe-primaer); isolation: isolate; }
 .v-raeume .hl-folie:not(.ist-monitor) img { filter: grayscale(1) contrast(1.7) brightness(.92); mix-blend-mode: screen; }
 .v-raeume .hl-folie:not(.ist-monitor)::after { content: ""; position: absolute; inset: 0; pointer-events: none;
   background: radial-gradient(circle, transparent 1.2px, rgba(246, 241, 230, .22) 1.7px) 0 0 / 5px 5px; }
-.v-raeume .hl-bild::before { content: ""; position: absolute; z-index: 2; right: -10%; bottom: -14%; width: 52%; aspect-ratio: 1; border-radius: 50%;
-  background: var(--bb-pink); mix-blend-mode: multiply; pointer-events: none; }
-.v-raeume .hl-bild::after { content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none;
-  background: url(../bilder/riso/funkeln.svg) center / cover no-repeat; }
-.v-raeume .hl-pause { z-index: 4; }
-.stil-b .hl-meta { color: var(--farbe-weiss); }   /* 70 % Weiß auf Blau nur 3,5 : 1 bei 15 px */
+.v-raeume .hl-pause { z-index: 4; }   /* 70 % Weiß auf Blau nur 3,5 : 1 bei 15 px */
 
 /* Raum 2, Aah-Band: gelbe Tür, daneben die Wand mit blauen Strichen */
 .v-raeume .aah { background: var(--bb-gelb); }
-.v-raeume .aah-figur { background: var(--farbe-weiss) url(../bilder/riso/striche.svg) 0 0 / 120px; border-radius: 999px 999px 24px 24px; padding: 32px 16px 20px; }
-.v-raeume .aah-ton, .v-raeume .aah-uff, .v-raeume .aah-feld input, .v-raeume .aah-blase { background: var(--farbe-weiss); box-shadow: none; }
-.v-raeume .aah-uff[aria-pressed="true"] { background: var(--bb-pink); }
-.v-raeume .aah-nope { box-shadow: none; }
 
 /* Gemalte Streifen statt Schriftband: Übergang wie eine gestreifte Badezimmerwand */
 .stil-b.v-raeume .v-band { margin: 0; padding: 0; height: 140px; transform: none; border: 0; color: transparent; font-size: 0;
@@ -4993,13 +4563,12 @@ body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp)
 .v-raeume .weg-ziel { background: var(--r-orange) url(../bilder/riso/schlange.svg) 50% calc(100% + 40px) / min(1100px, 140%) auto no-repeat; padding-bottom: 220px; }   /* Linie nur unter dem Text */
 
 /* Pointe: Studiowand Blau, Schrift Gelb mit pinkem Versatz */
-.v-raeume .fuss-pointe { background: var(--farbe-primaer); color: var(--bb-gelb); text-shadow: .03em .025em 0 var(--bb-pink); }
+
 .v-raeume .sticker { mix-blend-mode: multiply; }
 /* Gezeichnete Sticker (Anna 20.11.2026), freigestellt mit weißem Rand; in „Räume“ statt Herz und Uff-Blase, wackeln leicht */
-.v-raeume .st-stimmen { content: url(../bilder/sticker/fleur-vogel.svg?v=20261123p); mix-blend-mode: normal; animation: st-wackeln 3.2s ease-in-out infinite; }
-.v-raeume .st-faq { content: url(../bilder/sticker/fleur-zaehne.svg?v=20261123p); mix-blend-mode: normal; animation: st-wackeln 2.6s ease-in-out infinite; }
+
 @keyframes st-wackeln { 0%, 100% { rotate: -6deg; } 50% { rotate: 6deg; translate: 0 -6px; } }
-@media (prefers-reduced-motion: reduce) { .v-raeume .st-stimmen, .v-raeume .st-faq { animation: none; } }
+
 /* =========================================================
    Stil B „Räume“ – Runde 2 (Anna 20.11.2026): Kopf wie ein Cover, Laufband, Kommunikationszentrale,
    schräge Überschriften mit Kleinbuchstaben, Papier im Wechsel mit Räumen, Leistungen schwarz, LinkedIn/Branchen/Fragen mit Etiketten,
@@ -5022,13 +4591,6 @@ body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp)
 .kn-meta { margin: 0 0 8px; }
 .stil-b.v-raeume .kn-titel { position: relative; z-index: 1; margin: 0 0 24px; font: 800 clamp(46px, 11.2vw, 210px)/.88 var(--schrift-ueberschrift); letter-spacing: -.055em; }
 .kn-h1 { position: relative; z-index: 3; max-width: 30ch; margin: 0 auto 28px; font: 600 clamp(20px, 2vw, 30px)/1.3 var(--schrift-text); letter-spacing: -.01em; }
-.kn-name { position: relative; z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 10px; }
-.kn-name label { font: 400 clamp(22px, 1.9vw, 28px)/1.2 var(--schrift-meta); }
-.kn-name-feld { display: flex; gap: 6px; width: min(460px, 100%); padding: 6px; background: var(--farbe-weiss); border: 2px solid var(--farbe-dunkel); border-radius: var(--radius-pille); }
-.kn-name-feld input { flex: 1 1 auto; min-width: 0; border: 0; background: transparent; padding: 10px 16px; font: 500 max(16px, var(--groesse-3)) var(--schrift-text); color: var(--farbe-dunkel); }
-.kn-name-feld input:focus { outline: none; }
-.kn-name-feld:focus-within { outline: 3px solid var(--farbe-dunkel); outline-offset: 3px; }
-.kn-name-feld .button { margin: 0; white-space: nowrap; }
 .kn-foto { position: absolute; z-index: 2; margin: 0; width: clamp(150px, 17vw, 290px); aspect-ratio: 4 / 3; background: var(--farbe-primaer); isolation: isolate; box-shadow: 0 12px 30px rgba(14, 16, 17, .18); }
 .kn-foto img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(1) contrast(1.6) brightness(.95); mix-blend-mode: screen; }
 .kn-foto::after { content: ""; position: absolute; left: 50%; top: -14px; width: 90px; height: 26px; margin-left: -45px; background: var(--bb-gelb); opacity: .85; rotate: -5deg; }
@@ -5037,26 +4599,22 @@ body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp)
 .kn-foto-2 img { object-position: left top; }
 .kn-st { position: absolute; z-index: 4; width: clamp(70px, 8vw, 130px); height: auto; pointer-events: none; animation: st-wackeln 3s ease-in-out infinite;
   filter: drop-shadow(3px 0 0 #fff) drop-shadow(-3px 0 0 #fff) drop-shadow(0 3px 0 #fff) drop-shadow(0 -3px 0 #fff); }
-.kn-st-1 { left: 13%; top: 7%; } .kn-st-2 { right: 19%; top: 8%; animation-delay: -.8s; } .kn-st-3 { left: 24%; bottom: 6%; animation-delay: -1.6s; } .kn-st-4 { right: 24%; bottom: 7%; animation-delay: -2.2s; }
-@media (max-width: 1024px) { .kn-foto-1 { top: 58%; left: -4%; } .kn-foto-2 { top: 60%; right: -4%; } .kn-st-1, .kn-st-2 { top: 2%; } }
+.kn-st-1 { left: 13%; top: 7%; } .kn-st-3 { left: 24%; bottom: 6%; animation-delay: -1.6s; } .kn-st-4 { right: 24%; bottom: 7%; animation-delay: -2.2s; }
+@media (max-width: 1024px) { .kn-foto-1 { top: 58%; left: -4%; } .kn-foto-2 { top: 60%; right: -4%; } .kn-st-1 { top: 2%; } }
 @media (max-width: 767.98px) {
   .kn { padding-bottom: 32px; }
   .kn-foto { position: relative; display: inline-block; width: 44%; left: auto; right: auto; top: auto; margin: 32px 2% 0; }
-  .kn-st { width: 52px; } .kn-st-1 { left: 1%; top: 1%; } .kn-st-2 { right: 1%; top: 1%; } .kn-st-3, .kn-st-4 { display: none; } .kn { padding-top: 64px; }
-  .kn-name-feld { flex-direction: column; border-radius: 22px; } .kn-name-feld .button { justify-content: center; }
+  .kn-st { width: 52px; } .kn-st-1 { left: 1%; top: 1%; } .kn-st-3, .kn-st-4 { display: none; } .kn { padding-top: 64px; }
 }
 
 /* Laufband oben: worum es geht, schräg, läuft */
 .stil-b.v-raeume .v-band { display: block; height: auto; margin: 0 0 56px; padding: 14px 0; overflow: hidden; white-space: nowrap; transform: none; rotate: -2deg; border: 0;
   background: var(--farbe-dunkel); color: var(--bb-gelb); font: 800 clamp(22px, 2.6vw, 38px)/1.2 var(--schrift-ueberschrift); letter-spacing: -.02em; text-transform: none; }
-.v-band > span, .fp-band > span { display: inline-block; animation: lauf 50s linear infinite; }
-.fp-band-2 > span { animation-direction: reverse; animation-duration: 60s; }
+.v-band > span { display: inline-block; animation: lauf 50s linear infinite; }
 @keyframes lauf { to { transform: translateX(-50%); } }
 
 /* Kommunikationszentrale: Uffs und Frag-Feld in einem Band, Mint statt Neongelb */
 .stil-b.v-raeume .aah { grid-template-columns: minmax(0, 1fr) minmax(0, 2.6fr); background: var(--bb-mint); border-radius: 28px; align-items: start; }
-.aah-titel-st { display: inline-block; width: 1.1em; height: auto; vertical-align: -.15em; rotate: 8deg; }
-.aah-oder { margin: 28px 0 10px; font: 400 clamp(22px, 1.9vw, 28px)/1.2 var(--schrift-meta); }
 .aah .hl { display: block; padding: 0; margin: 0; gap: 0; min-height: 0; height: auto; max-height: none; text-align: left; background: none; }
 .stil-b.v-raeume .aah .hl-panel { display: block; min-height: 0; padding: 0; background: transparent; color: var(--farbe-dunkel); border: 0; border-radius: 0; box-shadow: none; overflow: visible; }
 .aah .hl .hl-feld { max-width: 620px; background: var(--farbe-weiss); border: 2px solid var(--farbe-dunkel); }
@@ -5066,12 +4624,11 @@ body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp)
 .aah .hl-chip:hover, .aah .hl-chip:focus-visible { background: var(--bb-pink); color: var(--farbe-dunkel); }
 .stil-b.v-raeume .aah .hl.ist-chat .hl-panel { display: flex; flex-direction: column; height: min(560px, 72svh); }
 .aah .hl.ist-chat .hl-chatfenster { border: 2px solid var(--farbe-dunkel); }
-@media (max-width: 1024px) { .stil-b.v-raeume .aah { grid-template-columns: minmax(0, 1fr); } .aah-figur { max-width: 260px; } }
+@media (max-width: 1024px) { .stil-b.v-raeume .aah { grid-template-columns: minmax(0, 1fr); } }
 
 /* „Bitte nicht drücken“ springt an eine zufällige Stelle weiter unten */
-.nicht-platz { position: absolute; right: var(--rand-seite); bottom: 28px; z-index: 4; }
-.nicht-platz .aah-nicht { margin: 0; }
-@media (max-width: 767.98px) { .nicht-platz { position: static; margin: 16px var(--rand-seite); } }
+
+
 
 /* Intro: weniger Abstand zwischen den Spalten */
 .stil-b.v-raeume .intro-neu { gap: 32px 40px; }
@@ -5083,9 +4640,6 @@ body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp)
 /* Leistungen wie Plakat: Schwarz, schräger Titel, Gelb und Pink */
 .stil-b.v-raeume .start-leistungen { background: var(--farbe-dunkel); }
 .stil-b.v-raeume .start-leistungen .meta { color: var(--bb-gelb); }
-.stil-b.v-raeume .start-leistungen .lb-nr { color: var(--bb-pink); }
-.stil-b.v-raeume .lb-name a { color: var(--bb-gelb); }
-.stil-b.v-raeume .lb:hover .lb-name a { color: var(--farbe-weiss); }
 
 /* Papier im Wechsel mit Räumen; Etiketten-Überschriften wie im Zine */
 .stil-b.v-raeume .li-abschnitt { background: url(../bilder/riso/striche.svg) 0 0 / 120px repeat-x, url(../bilder/papier/papier-a.webp) 0 0 / 256px, var(--farbe-weiss); padding-top: 190px; padding-bottom: 96px; }
@@ -5103,44 +4657,20 @@ body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp)
 .stil-b.v-raeume .weg-ziel .meta { color: var(--farbe-dunkel); }
 
 /* Pointe unten: zwei gekreuzte Absperrbänder */
-.stil-b.v-raeume .fuss-pointe { position: relative; height: clamp(200px, 22vw, 300px); padding: 0; overflow: hidden; background: transparent; border: 0; }
-.fp-band { position: absolute; left: -10%; right: -10%; top: 50%; margin: 0; padding: 12px 0; overflow: hidden; white-space: nowrap;
-  font: 800 clamp(22px, 3vw, 42px)/1.2 var(--schrift-ueberschrift); letter-spacing: -.02em; text-transform: none; border-block: 8px solid transparent; }
-.fp-band-1 { background: var(--bb-gelb); color: var(--farbe-dunkel); translate: 0 -50%; rotate: -5deg; border-image: repeating-linear-gradient(45deg, var(--farbe-dunkel) 0 14px, var(--bb-gelb) 14px 28px) 8; }
-.fp-band-2 { background: var(--farbe-dunkel); color: var(--bb-gelb); translate: 0 -50%; rotate: 4deg; }
-.fp-band span span { display: inline; animation: none; }
+
 
 /* Projekte: Liste wie Lord (Kunde, Satz in Serif, Branche), kleine Bilder; Raster als Slider mit Coverbildern */
 .stil-b.v-raeume .pa-kunde { font: 600 var(--groesse-4)/1.3 var(--schrift-text); }
 .stil-b.v-raeume .pa-satz { font: 400 clamp(22px, 1.9vw, 28px)/1.2 var(--schrift-meta); }
 .stil-b.v-raeume .pa-branche { font: 400 var(--groesse-4)/1.3 var(--schrift-text); }
 .pa-streifen img { height: 150px; }
-.pa-raster { grid-auto-flow: column; grid-auto-columns: calc((100% - 32px) / 3); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
-.pa-raster::-webkit-scrollbar { display: none; }
-.pa:has(#pa-raster:checked) .pa-raster { grid-template-columns: none; }
-.pa-raster > li { scroll-snap-align: start; }
-.pa-raster .pa-kunde, .pa-raster .pa-satz, .stil-b.v-raeume .pa-raster .pa-kunde, .stil-b.v-raeume .pa-raster .pa-satz { font-size: var(--groesse-2); line-height: 1.35; }
-.stil-b.v-raeume .pa-raster .pa-satz { font: 400 18px/1.25 var(--schrift-meta); }
-.pa-bild { position: relative; }
-.pa-marke { position: absolute; left: 50%; top: 50%; width: 30%; aspect-ratio: 1; translate: -50% -50%; display: grid; place-items: center; padding: 6%; background: var(--farbe-weiss); border-radius: 22%; box-shadow: 0 10px 30px rgba(0, 0, 0, .18); }
-.pa-marke img { width: 100%; height: 100%; object-fit: contain; }
-.pa-raster li.kommt .pa-bild { translate: 0 -48px; opacity: 0; transition: translate .9s cubic-bezier(.16, 1, .3, 1), opacity .6s ease-out; }
-.pa-raster li.kommt.ist-da .pa-bild { translate: 0 0; opacity: 1; }
-.pa-pfeile { display: none; justify-content: flex-end; gap: 8px; margin: 16px 0 0; }
-.pa:has(#pa-raster:checked) .pa-pfeile { display: flex; }
-.pa-pfeile button { width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--farbe-dunkel); background: var(--farbe-weiss); font-size: 20px; cursor: pointer; }
-.pa-pfeile button:hover, .pa-pfeile button:focus-visible { background: var(--bb-gelb); }
-@media (max-width: 767.98px) {
-  .pa-raster, .pa:has(#pa-raster:checked) .pa-raster { grid-template-columns: none; grid-auto-columns: 85%; }
-  .pa-pfeile { display: flex; }
-}
+
 
 /* Begrüßung mit Vornamen auf Unterseiten (js/menue.js) */
-.name-gruss { margin: 0 0 8px; font: 400 clamp(20px, 1.7vw, 24px)/1.2 var(--schrift-meta); }
+
 
 @media (prefers-reduced-motion: reduce) {
-  .v-band > span, .fp-band > span, .kn-st { animation: none; }
-  .pa-raster li.kommt .pa-bild { translate: none; opacity: 1; transition: none; }
+  .v-band > span, .kn-st { animation: none; }
 }
 
 /* Kopf und Menü im Skizzenbuch-Stil (Anna 20.11.2026: „Header überarbeiten, passt nicht zum Stil“, „Mega-Menü anpassen“), nur Startseite (.v-raeume).
@@ -5185,12 +4715,7 @@ body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp)
    roter Doppelpfeil zum Namensfeld. Nur Zeichen, keine neuen Texte. */
 .notiz { position: relative; display: inline-block; }
 .notiz::after { content: ""; position: absolute; pointer-events: none; background: 0 0 / 100% 100% no-repeat; clip-path: inset(0 100% 0 0); transition: clip-path .9s cubic-bezier(.45, 0, .2, 1) .15s; }
-.notiz-kreis::after { left: -12%; right: -12%; top: -14%; bottom: -18%; background-image: url(../bilder/riso/notiz-kreis.svg); }
-.notiz-strich::after { left: -2%; right: -4%; bottom: -.16em; height: .22em; background-image: url(../bilder/riso/notiz-strich.svg); }
-.notiz.ist-gezeichnet::after { clip-path: inset(0 0 0 0); }
-.notiz-pfeile { position: absolute; left: calc(50% - 360px); top: 6px; width: 110px; height: 56px; background: url(../bilder/riso/notiz-pfeile.svg) 0 0 / contain no-repeat; rotate: 12deg; }
-.kn-name { position: relative; }
-@media (max-width: 900px) { .notiz-pfeile { display: none; } }
+
 @media (prefers-reduced-motion: reduce) { .notiz::after { transition: none; } }
 @media print { .notiz::after { clip-path: none; } }
 .weg-ziel .notiz::after { filter: brightness(0); top: -22%; bottom: -26%; }   /* Rot auf Pink geht unter: schwarzer Stift */
@@ -5200,8 +4725,6 @@ body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp)
 .kn-aah { position: absolute; right: -.62em; top: -.5em; width: .72em; height: auto; rotate: 10deg; animation: st-wackeln 3.2s ease-in-out infinite;
   filter: drop-shadow(3px 0 0 #fff) drop-shadow(-3px 0 0 #fff) drop-shadow(0 3px 0 #fff) drop-shadow(0 -3px 0 #fff); }
 @media (max-width: 767.98px) { .kn-aah { right: -.5em; width: .6em; } }
-.stil-b.v-raeume .aah-a { width: min(340px, 100%); }
-.stil-b.v-raeume .aah-figur { padding-bottom: 28px; }
 /* Fokus: jede Karte mit farbigem Rand, auch die erste (Blau); Kartenfläche in Randfarbe, damit unten nichts Weißes blitzt */
 .stil-b.v-raeume .fokus-raster > li:nth-child(1) .fokus-karte { border-color: var(--farbe-primaer); background: var(--farbe-primaer); }
 .stil-b.v-raeume .fokus-raster > li:nth-child(2) .fokus-karte { background: var(--bb-gelb); }
@@ -5209,24 +4732,11 @@ body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp)
 .stil-b.v-raeume .fokus-raster > li:nth-child(4) .fokus-karte { background: var(--r-petrol); }
 .stil-b.v-raeume .fokus-text { flex: 1 1 auto; }
 /* Leistungen: ganze Zeile klickbar, rechts ein Querformat-Bild statt Liste */
-.stil-b.v-raeume .lb { align-items: center; }
-.lb-bild { grid-column: 3; grid-row: 1 / span 2; display: block; aspect-ratio: 16 / 9; overflow: hidden; background: var(--farbe-primaer); }
-.lb-bild img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(1) contrast(1.4); mix-blend-mode: screen; transition: transform .5s ease-out; }
-.lb-brand .lb-bild { background: var(--bb-pink); } .lb-ki .lb-bild { background: var(--bb-gelb); }
-.lb:hover .lb-bild img { transform: scale(1.05); }
-@media (max-width: 900px) { .lb-bild { grid-column: 2; grid-row: auto; margin-top: 16px; } }
-@media (max-width: 599.98px) { .lb-bild { grid-column: 1; } }
+
+
+
 /* Projekte: Überschrift groß, Cover mit Bild- und Wortmarke unten links, Pfeile links und Stopp rechts */
 .stil-b.v-raeume .start-projektliste h2 { font-size: clamp(56px, 10vw, 170px); line-height: .95; }
-.pa-bild::after { content: ""; position: absolute; inset: 45% 0 0; background: linear-gradient(transparent, rgba(0, 0, 0, .55)); pointer-events: none; }
-.pa-marke { left: 16px; top: auto; bottom: 16px; width: auto; aspect-ratio: auto; translate: none; display: flex; align-items: center; gap: 12px; padding: 0; background: none; box-shadow: none; border-radius: 0; z-index: 2; }
-.pa-marke img { width: 52px; height: 52px; padding: 8px; background: var(--farbe-weiss); border-radius: 14px; object-fit: contain; }
-.pa-wort { color: var(--farbe-weiss); font: 400 clamp(26px, 2.4vw, 38px)/1 var(--schrift-meta); text-shadow: 0 1px 12px rgba(0, 0, 0, .35); }
-.pa-schraege { position: absolute; z-index: 1; right: -12%; bottom: 30%; width: 80%; height: 18px; background: var(--bb-gelb); rotate: -14deg; }
-.pa-pfeile { justify-content: space-between; align-items: center; }
-.pa-pfeile > span { display: flex; gap: 8px; }
-.pa-pfeile .pa-stopp { width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--farbe-dunkel); background: var(--farbe-dunkel); color: var(--farbe-weiss); font-size: 15px; cursor: pointer; }
-.pa-pfeile .pa-stopp:hover, .pa-pfeile .pa-stopp:focus-visible { background: var(--bb-pink); color: var(--farbe-dunkel); }
 /* Stimmen: mehr Tapete über den Karten, Link mittig im rosa Bereich darunter */
 .stil-b.v-raeume .stimmen { margin-top: 150px; }
 .stil-b.v-raeume .stimmen::before { top: -150px; }
@@ -5234,7 +4744,7 @@ body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp)
 /* LinkedIn: mehr Luft zwischen Überschrift und Slider */
 .stil-b.v-raeume .li-abschnitt .sektionskopf { margin-bottom: 64px; }
 /* Bänder unten: ohne Schatten, gut lesbar */
-.stil-b.v-raeume .fuss-pointe, .stil-b.v-raeume .fp-band { text-shadow: none; }
+
 
 /* Prinzip „durchgestrichen und handschriftlich korrigiert“ (Anna 20.11.2026, Vorbild farbenmeer.de): rotes Durchstreichen, darunter Korrektur in
    Handschrift-Versalien, schräg. Handschrift vorerst Architects Daughter, später Annas eigene Schrift. */
@@ -5273,8 +4783,7 @@ body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp)
   .stil-b.v-raeume .intro-neu .om-seite { width: 50%; padding: 8px 10px 10px; }
   .stil-b.v-raeume .om-titel { font-size: 17px; }
   .stil-b.v-raeume .om-knopf { font-size: 11px; padding: 4px 9px; }
-}
-.kn-name-feld .button { font: 600 var(--groesse-3)/1 var(--schrift-text); }   /* Button erbte die Systemschrift 13 px (Anna 20.11.2026, markiert) */
+}   /* Button erbte die Systemschrift 13 px (Anna 20.11.2026, markiert) */
 
 /* Übergang (Anna 21.11.2026): Live-Startseite noch im alten Stil, nur „Im Fokus“, „Notizen aus dem Studio“ und Fuß schon im Stil B.
    Die drei Teile stecken in einer Hülle div.stil-b.v-raeume.b-teil; Regeln, die sonst am body oder an main hängen, hier für die Hülle. */
@@ -5495,7 +5004,7 @@ body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp)
    ========================================================= */
 /* Schriften vereinheitlicht: Annas Schreibschrift nur für große Überschriften (h1, h2) und Dachzeilen;
    kleine Überschriften (h3 und kleiner, Kartentitel) in der Fließtext-Schrift fett, weil die Schreibschrift klein schlecht lesbar ist */
-main :is(h3, h4, h5):not(.gr-h3):not(.gr-h2), .ls-karte-titel, .mm-karte-titel, .lsx-karte-titel, .ref-karte h3 {
+main :is(h3, h4, h5):not(.gr-h3):not(.gr-h2), .ls-karte-titel, .mm-karte-titel {
   font-family: var(--schrift-text); font-weight: 700; letter-spacing: -.01em; text-transform: none; }
 main .gr-h3:is(h2) { font-size: clamp(40px, 6vw, 84px); line-height: 1.05; }   /* alle H2 groß */
 main h2.preis-h2 { font-size: clamp(40px, 6vw, 84px); line-height: 1.05; }

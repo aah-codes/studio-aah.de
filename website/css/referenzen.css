@@ -2,12 +2,6 @@
    Wird nur dort zusätzlich zu stil.css geladen (Anna 16.10.2026: CSS aufteilen); Farben und Abstände aus den Variablen in stil.css. */
 
 .mittig { text-align: center; }
-.portraet {
-  width: 250px; height: 250px;
-  border-radius: 500px;
-  object-fit: cover;
-  object-position: 50% 0;
-}
 /* Leistungen: Bild und Text im Wechsel */
 .leistung {
   display: grid;
@@ -37,10 +31,7 @@
   margin: 0 auto;
   padding: 32px 32px 96px;
 }
-@media (min-width: 768px) {
-  .sticky { position: sticky; top: var(--kopf-hoehe); height: calc(100vh - var(--kopf-hoehe)); align-self: start; }
-  .sticky img { height: calc(100vh - var(--kopf-hoehe)); min-height: 0; }
-}
+
 @media (max-width: 767.98px) {
   .leistung { grid-template-columns: minmax(0, 1fr); }
   .paket { grid-template-columns: 1fr; gap: 16px; padding: 32px var(--rand-seite); }
@@ -48,12 +39,8 @@
 }
 /* ---------- 23. Leistungsseite (service/): synchron mit Kostenrechner, Daten aus werkzeuge/preise-daten.json ---------- */
 /* „ecke“: Linie erst waagerecht nach rechts (--l), dann senkrecht hoch (--h) zum Etikett */
-.studio-punkt.ecke .studio-label { left: calc(100% + var(--l) - 20px); top: auto; bottom: calc(50% + var(--h)); transform: none; }
-.studio-punkt.ecke .studio-label::after { content: ""; position: absolute; left: 19px; top: 100%; width: 2px; height: calc(var(--h) - 7px); background: var(--farbe-weiss); }
-@media (max-width: 900px) {
-  .studio-punkt.ecke .studio-label { left: calc(100% + var(--l) - 14px); }
-  .studio-punkt.ecke .studio-label::after { left: 13px; height: calc(var(--h) - 4px); }
-}
+
+
 /* Referenzen: kein Fokusrahmen beim Aufklappen mit der Maus, mehr Luft zu den Fakten */
 .ci-pfeil { font-size: 2.4rem; color: var(--farbe-primaer); line-height: 1; }
 .ci-image { aspect-ratio: 1; border-radius: 50%; background: var(--farbe-primaer); color: var(--farbe-weiss); display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: var(--schrift-ueberschrift); font-size: clamp(1.4rem, 2.4vw, 2rem); letter-spacing: .9px; text-transform: uppercase; line-height: 1.12; }
@@ -72,11 +59,7 @@
 .ci-pfad { fill: none; stroke: var(--farbe-dunkel); stroke-width: 1.6; }
 .dk-karte { color: var(--farbe-dunkel); text-decoration: none; border-radius: 28px; transition: transform .2s; }
 .dk-karte:hover { transform: translateY(-4px); }
-.eg { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: center; padding: 96px var(--rand-seite) 0; }
-@media (max-width: 900px) {
-  .eg { grid-template-columns: 1fr; gap: 28px; padding: 64px var(--rand-seite-mobil) 0; }
-}
-.bf { position: absolute; display: block; width: var(--s); height: var(--s); }
+
 .dk-karte { background: var(--farbe-weiss); padding: 24px 24px 26px; gap: 8px; min-height: 0; }
 .dk-karte .meta { margin: 0; }
 .dk-bild { display: block; height: 140px; border-radius: 16px; overflow: hidden; background: var(--farbe-hellgrau); border: 1px solid var(--farbe-rahmen); }
