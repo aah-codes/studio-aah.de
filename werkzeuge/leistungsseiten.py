@@ -452,6 +452,94 @@ def strukturierte_daten(c, g, intro, url, fragen, vorlage):
     return {"@context": "https://schema.org", "@graph": graph}
 
 
+# --- Muster-Leistungsseite (Anna 22.11.2026, zuerst Markenbildung): eine Frage je Abschnitt, Antwort zuerst, scanbar.
+#     Konzept: Betrieb „Studio AAH/Website/2026-11-22_leistungsseite-markenbildung_muster.md“. Daten im Feld „muster“.
+def fett_rest(paare):
+    return ''.join(f'<li><b>{esc(a)}</b> {esc(b)}</li>' for a, b in paare)
+
+
+def muster_kopf(c, m, pre):
+    fakten = ''.join(f'<li>{esc(x)}</li>' for x in m.get('fakten', []))
+    return (f'  <section class="seitenkopf lsx-kopf lsx-m-kopf">\n'
+            f'    <img class="lsx-kopf-icon" src="{pre}{c["icon"]}" alt="" width="400" height="400">\n'
+            f'    <p class="meta brotkrumen"><a href="{pre}#leistungen">Leistungen</a> / <span aria-current="page">{esc(c["titel"])}</span></p>\n'
+            f'    <h1 class="gr-xxl lsx-titel" style="--n:{max(len(w) for w in m["h1"].split())}">{esc(m["h1"])}</h1>\n'
+            f'    <p class="alt-klein">{trennen(esc(c.get("intro", "")))}</p>\n'
+            f'    <ul class="lsx-m-fakten">{fakten}</ul>\n'
+            f'    <p class="lsx-hero-knopf"><a class="button" href="{pre}kontakt/">Beratung anfragen <span aria-hidden="true">→</span></a></p>\n'
+            f'  </section>')
+
+
+def muster_kurz(m):
+    return (f'  <section class="lsx-m-kurz" id="ueberblick" aria-labelledby="kurz-titel">\n'
+            f'    <p class="meta">Kurz gesagt</p>\n'
+            f'    <h2 class="gr-h2" id="kurz-titel">Das Wichtigste auf einen Blick</h2>\n'
+            f'    <ul class="lsx-m-kurz-liste">{fett_rest(m["kurz_gesagt"])}</ul>\n'
+            f'  </section>')
+
+
+def muster_anlaesse(m):
+    li = ''.join(f'<li>{esc(x)}</li>' for x in m['anlaesse'])
+    return (f'  <section class="lsx-m-anlaesse" id="anlaesse" aria-labelledby="anlaesse-titel">\n'
+            f'    <p class="meta">Anlässe</p>\n'
+            f'    <h2 class="gr-h2" id="anlaesse-titel">{esc(m.get("anlaesse_titel", "Wann es sich lohnt"))}</h2>\n'
+            f'    <ul class="lsx-m-anlaesse-liste">{li}</ul>\n'
+            f'  </section>')
+
+
+def muster_warum(c, m):
+    return (f'  <section class="lsx-loesung lsx-pl lsx-pl-allein lsx-m-warum" id="loesung" aria-labelledby="loesung-titel">\n'
+            f'    <p class="meta">Warum</p>\n'
+            f'    <h2 class="gr-h2" id="loesung-titel">{esc(c["problem_titel"])}</h2>\n'
+            f'    <div class="lsx-pl-problem lsx-pl-zettel"><p class="meta">Woran es oft hakt</p><ul>{fett_rest(m["probleme_kurz"])}</ul></div>\n'
+            f'  </section>')
+
+
+def muster_so(c, m):
+    return (f'  <section class="lsx-m-so" aria-labelledby="so-titel">\n'
+            f'    <p class="meta">So arbeite ich</p>\n'
+            f'    <h2 class="gr-h2" id="so-titel">{esc(m["so_titel"])}</h2>\n'
+            f'  </section>\n' + (grafik(c['grafik']) if c.get('grafik') else ''))
+
+
+def muster_ergebnisse(m):
+    li = ''.join(f'<li><h3>{esc(a)}</h3><p>{esc(b)}</p></li>' for a, b in m['ergebnisse'])
+    return (f'  <section class="lsx-m-ergebnisse" id="leistungen" aria-labelledby="leistungen-titel">\n'
+            f'    <p class="meta">Leistung</p>\n'
+            f'    <h2 class="gr-h2" id="leistungen-titel">Das bekommst du</h2>\n'
+            f'    <ul class="lsx-m-ergebnis-liste">{li}</ul>\n'
+            f'  </section>')
+
+
+def muster_abschluss(m, pre):
+    a = m['abschluss']
+    return (f'  <section class="preis-schluss start-schluss lsx-m-schluss" aria-labelledby="schluss-titel">\n'
+            f'    <div class="schluss-karte schluss-blau">\n'
+            f'      <p class="meta">{esc(a["meta"])}</p>\n'
+            f'      <h2 class="gr-h2" id="schluss-titel">{esc(a["titel"])}</h2>\n'
+            f'      <p class="lsx-m-schluss-text">{esc(a["text"])}</p>\n'
+            f'      <p><a class="button" href="{pre}kontakt/">{esc(a["knopf"])} <span aria-hidden="true">→</span></a></p>\n'
+            f'    </div>\n'
+            f'  </section>')
+
+
+def muster_leiste(c):
+    ziele = [('anlaesse', 'Anlässe'), ('loesung', 'Warum'), ('leistungen', 'Leistungen'), ('ablauf', 'Ablauf'), ('referenzen', 'Referenzen'), ('pakete', 'Preise'), ('faq', 'Ehrliche Antworten')]
+    if not ohne_bauer(I.mit_tag(I.PROJEKTE, [c['tag']]), c['tag']):
+        ziele = [z for z in ziele if z[0] != 'referenzen']
+    return ankerleiste(ziele)
+
+
+def muster_main(c, g, pre, vergleich_html, prozess, fragen):
+    m = c['muster']
+    if m.get('ablauf_dauer'):
+        prozess = prozess.replace('<ol class="zl-quer', f'<p class="lsx-m-dauer">{esc(m["ablauf_dauer"])}</p>\n    <ol class="zl-quer', 1)
+    teile = [muster_kopf(c, m, pre), muster_kurz(m), muster_leiste(c), muster_anlaesse(m), muster_warum(c, m), muster_so(c, m),
+             muster_ergebnisse(m), prozess, referenzen(c['tag'], pre), stimmen(pre, c['tag']), pakete(c, g, pre), vergleich_html,
+             extras(g), faq(fragen, pre), muster_abschluss(m, pre), artikel(pre, c['tag'])]
+    return '<main id="inhalt" class="lsx-muster">\n\n' + '\n\n'.join(t for t in teile if t) + '\n\n</main>'
+
+
 def seite(key, c):
     g = gruppe_fuer(c)
     intro = c.get('intro') or g['intro']
@@ -468,7 +556,9 @@ def seite(key, c):
     url = 'https://studio-aah.de/' + c['pfad']
     vergleich_html = vergleich(g)
     prozess = (ablauf_eigen(pre, c['ablauf_schritte'], c.get('ablauf_hinweis', '')) if c.get('ablauf_schritte') else ablauf(pre)) if mit_ablauf else ''
-    main = f'''<main id="inhalt">
+    if c.get('muster'):
+        fragen = c['muster']['faq_muster']
+    main = muster_main(c, g, pre, vergleich_html, prozess, fragen) if c.get('muster') else f'''<main id="inhalt">
 
 {seitenkopf(c, pre, intro, termine)}
 

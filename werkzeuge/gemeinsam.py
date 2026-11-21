@@ -101,7 +101,7 @@ def kurzwoerter_schuetzen(main):
 def seitenrahmen(vorlage, main, titel, beschreibung, url, ld):
     """Seite aus einer bestehenden Seite (Kopf, Fuß) bauen: <main>, Titel, Beschreibung, Adresse und strukturierte Daten ersetzen."""
     main = kurzwoerter_schuetzen(main)
-    t = ersetze_einmal(r'<main id="inhalt">.*?</main>', lambda m: main, vorlage, '<main>', re.S)
+    t = ersetze_einmal(r'<main id="inhalt"[^>]*>.*?</main>', lambda m: main, vorlage, '<main>', re.S)
     t = ersetze_einmal(r'<title>.*?</title>', f'<title>{esc(titel)}</title>', t, '<title>')
     for name in ('name="description"', 'property="og:description"'):
         t = ersetze_einmal(rf'<meta {name} content="[^"]*">', f'<meta {name} content="{html.escape(beschreibung)}">', t, name)

@@ -156,7 +156,7 @@
   "gruppe": "brand",
   "tag": "brand",
   "titel": "Markenbildung",
-  "seitentitel": "Markenbildung in Leipzig: Marke, Logo & Design | STUDIO AAH!",
+  "seitentitel": "Markenbildung in Leipzig: Marke, Logo & Corporate Design | STUDIO AAH!",
   "beschreibung": "Markenbildung bei STUDIO AAH! in Leipzig: Basic ab 850 €, Medium mit Logo ab 2.500 €, Premium ab 4.500 € (netto). Festpreis nach kostenlosem Erstgespräch.",
   "bild": "bilder/leistung-brand.webp",
   "bildalt": "Bildschirm mit Farben, Schriften und Gestaltungselementen eines Designsystems",
@@ -290,7 +290,122 @@
   "fuer_sie": [
    "neue-kunden",
    "fachkraefte"
-  ]
+  ],
+  "muster": {
+   "h1": "Markenbildung in Leipzig",
+   "fakten": [
+    "ab 850 € netto",
+    "Festpreis nach kostenlosem Erstgespräch",
+    "Zwei Korrekturrunden je Bereich"
+   ],
+   "kurz_gesagt": [
+    [
+     "Markenbildung bei STUDIO AAH! in Leipzig",
+     "klärt zuerst das Fundament (Werte, Kommunikation, Verhalten) und gestaltet erst danach Logo, Farben, Schriften und Bildwelt."
+    ],
+    [
+     "Für mittelständische Unternehmen,",
+     "die neu auftreten, sich neu aufstellen oder als Arbeitgeber sichtbar werden wollen."
+    ],
+    [
+     "Drei Pakete:",
+     "Basic ab 850 €, Medium mit Logo ab 2.500 €, Premium mit ausführlichem Brand Manual und ersten Vorlagen ab 4.500 € (netto, Festpreis nach Erstgespräch)."
+    ],
+    [
+     "Dauer:",
+     "Medium etwa 6–8 Wochen, Premium etwa drei Monate."
+    ],
+    [
+     "Ergebnis:",
+     "feste Regeln und Vorlagen, mit denen dein Team einheitlich arbeitet."
+    ]
+   ],
+   "anlaesse_titel": "Wann es sich lohnt",
+   "anlaesse": [
+    "Neue Geschäftsführung oder Generationswechsel",
+    "Neuer Standort, Zusammenschluss oder neues Geschäftsfeld",
+    "Angebot, Website und Firmenwagen sehen je anders aus",
+    "Fachkräfte finden euch nicht oder erkennen euch nicht als Arbeitgeber"
+   ],
+   "probleme_kurz": [
+    [
+     "Nur Kosmetik",
+     "Branding gilt als Farben, Schriften und Logo."
+    ],
+    [
+     "Kein Fundament",
+     "Werte, Kommunikation und Verhalten sind nicht geklärt."
+    ],
+    [
+     "Zielgruppe unklar",
+     "Buyer-Personas und User-Personas fehlen."
+    ],
+    [
+     "Markt nicht im Blick",
+     "Mitbewerber und Trends beobachtet niemand."
+    ]
+   ],
+   "so_titel": "Erst das Fundament, dann das Design",
+   "ergebnisse": [
+    [
+     "Analyse",
+     "Fragebogen, Brand Experience (alle digitalen und analogen Touchpoints), Mitbewerberrecherche"
+    ],
+    [
+     "Strategie",
+     "Positionierung und Zielgruppe, Personas"
+    ],
+    [
+     "Gestaltung",
+     "Logo, Farben, Schriften, Bildwelt, Gestaltungselemente"
+    ],
+    [
+     "Anwendung",
+     "Brand Manual (kompakt oder ausführlich), erste Vorlagen für Visitenkarte, Präsentation und Social Media"
+    ]
+   ],
+   "ablauf_dauer": "Medium etwa 6–8 Wochen, Premium etwa drei Monate. Wöchentliche Abstimmung 45 Minuten, Feedback an festen Punkten.",
+   "faq_muster": [
+    [
+     "Was kostet es, eine Marke bei STUDIO AAH! in Leipzig entwickeln zu lassen?",
+     "Bei STUDIO AAH! in Leipzig beginnt das Brand-Paket Basic bei 850 €, Medium mit Logo-Entwicklung bei 2.500 € und Premium bei 4.500 €. Ein Logo einzeln kostet ab 990 €. Alle Preise sind Einstiegspreise, netto ohne Umsatzsteuer; den Festpreis erhältst du nach einem kostenlosen Erstgespräch."
+    ],
+    [
+     "Welches Brand-Paket passt zu mir?",
+     "Bei STUDIO AAH! passt Basic zu Gründer:innen und Selbstständigen, die erst Klarheit über Positionierung und Stil brauchen. Medium ist für Unternehmen, die eine neue Marke mit Logo und Erscheinungsbild brauchen. Premium ist für Unternehmen, die ihre Marke umfassend aufstellen und im Alltag einheitlich einsetzen wollen. Welches Paket zu dir passt, klären wir im kostenlosen Erstgespräch."
+    ],
+    [
+     "Kann ich bei STUDIO AAH! nur ein Logo entwickeln lassen?",
+     "Ja. Bei STUDIO AAH! in Leipzig gibt es das Logo auch einzeln, ab 990 € netto. Logo-Entwicklung mit Positionierung und Erscheinungsbild steckt im Paket Medium ab 2.500 € netto."
+    ],
+    [
+     "Warum steht die Positionierung vor dem Logo?",
+     "Bei STUDIO AAH! steht am Anfang ein genauer Blick auf dein Unternehmen, deine Zielgruppe, den Markt und die Mitbewerber: Wer bist du, was willst du, wer soll dich sehen und warum? Erst wenn das klar ist, entsteht ein Logo und Erscheinungsbild, das zu dir passt. Das Corporate Design baut auf diesem Fundament auf: Form follows function, die Form folgt der Funktion."
+    ],
+    [
+     "Wie lange dauert eine Markenentwicklung bei STUDIO AAH!?",
+     "Bei STUDIO AAH! dauert eine Markenentwicklung im Paket Medium etwa 6–8 Wochen, im Paket Premium etwa drei Monate."
+    ],
+    [
+     "Wie viel Zeit kostet uns das?",
+     "So wenig wie möglich. Du gibst an festen Punkten Feedback, dazu kommen ein Fragebogen und wöchentliche Abstimmungstermine von 45 Minuten."
+    ],
+    [
+     "Wie viele Korrekturrunden sind bei STUDIO AAH! im Festpreis enthalten?",
+     "Bei STUDIO AAH! sind pro Projektbereich zwei Korrekturrunden im Festpreis enthalten. Jede weitere Runde rechne ich nach Aufwand ab, mit 50–85 € netto pro Stunde, je nach Unternehmensgröße."
+    ],
+    [
+     "Was ist bei der Markenentwicklung nicht enthalten?",
+     "In den Brand-Paketen von STUDIO AAH! sind Fotoshooting, Druckkosten und die Markenanmeldung nicht enthalten."
+    ]
+   ],
+   "abschluss": {
+    "meta": "Markenbildung",
+    "titel": "Fangen wir klein an.",
+    "text": "Im kostenlosen Erstgespräch klären wir, wo du stehst und welches Paket passt.",
+    "knopf": "Beratung anfragen"
+   }
+  }
  },
  "ui-ux": {
   "pfad": "service/ui-ux/",
@@ -719,7 +834,10 @@
    ],
    "bei_mir": "Das ist keine Rechtsberatung; im Zweifel hilft eine Fachperson für Datenschutz oder IT-Recht.",
    "stand": "Stand: November 2026",
-   "artikel": ["Alles zum EU AI Act für kleine Unternehmen, mit Checkliste", "blog/eu-ai-act-kleine-unternehmen/"]
+   "artikel": [
+    "Alles zum EU AI Act für kleine Unternehmen, mit Checkliste",
+    "blog/eu-ai-act-kleine-unternehmen/"
+   ]
   },
   "termine": "Drei Online-Termine von 90, 60 und 60 Minuten, verteilt auf etwa drei Wochen, über Google Meet oder Teams.",
   "ohne_gemeinsame_fragen": true,
