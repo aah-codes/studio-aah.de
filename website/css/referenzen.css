@@ -1379,3 +1379,18 @@
 .mk-logos.mk-gleich .mk-logo { grid-column: auto; aspect-ratio: 1; display: grid; place-items: center; }
 .mk-logos.mk-gleich .mk-logo img { width: 86%; height: auto; max-width: none; max-height: none; }
 @media (max-width: 767.98px) { .mk-logos.mk-gleich { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* Überschriften mit mehreren Wörtern in Groß- und Kleinschreibung (Anna 21.11.2026) */
+.cs-titel, .ub-aussage, .fk-gross, .bn-titel, .kr-titel, .la-titel, .pk-name { text-transform: none; letter-spacing: 0; }
+/* Einzelwort-Titel in Annas Schrift passen am Handy sonst nicht in die Zeile („Ausgangsla-ge“) */
+@media (max-width: 767.98px) { .kp-titel.lang-wort { font-size: 9.6vw; overflow-wrap: normal; word-break: normal; hyphens: none; } }
+/* Inhaltsleiste ohne graue Striche unter den Punkten (Anna 21.11.2026) */
+.cs-inhalt .anker-spur li { border: 0; }
+/* Herausforderung und Lösung (Anna 21.11.2026): Lösungstext in Groß- und Kleinschreibung, beide Karten etwas höher,
+   Inhalte unten auf einer Höhe (letzte Zeile links und rechts gleich hoch) */
+.hk-text { text-transform: none; letter-spacing: 0; }
+.hk-paar .hk-karte { min-height: clamp(380px, 38vw, 560px); justify-content: space-between; }
+.hk-paar .hk-karte.hk-mit-liste { gap: 28px; }
+.hk-paar .hk-liste li:last-child { padding-bottom: 0; }
+/* Alle grauen Striche der Inhaltsleiste raus (Anna 21.11.2026) */
+.cs-inhalt .anker, .cs-inhalt .anker-spur, .cs-inhalt .anker-spur li, .cs-inhalt .anker-spur a { border: 0; box-shadow: none; }

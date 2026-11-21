@@ -4996,8 +4996,8 @@ body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp)
 .v-raeume .fuss-pointe { background: var(--farbe-primaer); color: var(--bb-gelb); text-shadow: .03em .025em 0 var(--bb-pink); }
 .v-raeume .sticker { mix-blend-mode: multiply; }
 /* Gezeichnete Sticker (Anna 20.11.2026), freigestellt mit weißem Rand; in „Räume“ statt Herz und Uff-Blase, wackeln leicht */
-.v-raeume .st-stimmen { content: url(../bilder/sticker/fleur-vogel.svg?v=20261123d); mix-blend-mode: normal; animation: st-wackeln 3.2s ease-in-out infinite; }
-.v-raeume .st-faq { content: url(../bilder/sticker/fleur-zaehne.svg?v=20261123d); mix-blend-mode: normal; animation: st-wackeln 2.6s ease-in-out infinite; }
+.v-raeume .st-stimmen { content: url(../bilder/sticker/fleur-vogel.svg?v=20261123k); mix-blend-mode: normal; animation: st-wackeln 3.2s ease-in-out infinite; }
+.v-raeume .st-faq { content: url(../bilder/sticker/fleur-zaehne.svg?v=20261123k); mix-blend-mode: normal; animation: st-wackeln 2.6s ease-in-out infinite; }
 @keyframes st-wackeln { 0%, 100% { rotate: -6deg; } 50% { rotate: 6deg; translate: 0 -6px; } }
 @media (prefers-reduced-motion: reduce) { .v-raeume .st-stimmen, .v-raeume .st-faq { animation: none; } }
 /* =========================================================
@@ -5540,3 +5540,26 @@ main h2.preis-h2 { font-size: clamp(40px, 6vw, 84px); line-height: 1.05; }
 @media (max-width: 767.98px) { .pa-klammer { display: block; margin: 8px 0 0; } }
 /* Projektseiten: Überschriften mit mehreren Wörtern in Groß- und Kleinschreibung, einzelne Wörter (Ausgangslage, Ergebnis …) dürfen Versalien bleiben (Anna 21.11.2026) */
 .cs-titel, .ub-aussage, .fk-gross, .bn-titel, .kr-titel, .la-titel, .pk-name { text-transform: none; letter-spacing: 0; }
+/* Inhaltsleiste dezent (Anna 21.11.2026: „was Dezentes, Edles“): zwischen zwei Haarlinien, „Inhalt“ als Dachzeile davor,
+   Punkte als ruhige Textlinks, der aktuelle dunkel mit feiner Unterstreichung; keine Flächen, Rahmen oder Schatten */
+.anker { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px 32px; margin: 0 var(--rand-seite) 72px; padding: 0; border: 0; }
+.anker-titel { flex: none; font: 400 clamp(17px, 1.4vw, 20px)/1.25 var(--schrift-hand), "Architects Daughter", cursive; text-transform: uppercase; letter-spacing: .06em; color: var(--farbe-gedaempft); margin: 0; }
+.anker-spur { background: none; box-shadow: none; border-radius: 0; padding: 0; gap: 6px 28px; width: auto; flex: 1 1 0; min-width: 0; }
+.anker-spur li { border: 0; }
+.anker-spur a { padding: 2px 0; border: 0; border-radius: 0; background: none; box-shadow: none; color: var(--farbe-gedaempft); font-weight: 500; letter-spacing: 0; transition: color .2s; }
+.anker-spur a:hover { background: none; color: var(--farbe-dunkel); }
+.anker-spur { padding-bottom: 10px; }
+.anker-spur a { position: relative; text-decoration: none; }
+.anker-spur a.aktiv { background: none; box-shadow: none; color: var(--farbe-dunkel); text-decoration: none; }
+/* Unterstreichung wie im Kopf: dieselbe gezeichnete Welle, nur am aktuellen Punkt, beim Darüberfahren gezeichnet */
+.anker-spur a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -8px; height: 8px; background: url(../bilder/riso/unterstrich.svg) 0 50% / 100% 100% no-repeat; clip-path: inset(0 100% 0 0); transition: clip-path .35s ease-out; }
+.anker-spur a.aktiv::after, .anker-spur a:hover::after, .anker-spur a:focus-visible::after { clip-path: inset(0 0 0 0); }
+@media (max-width: 767.98px) { .anker { margin: 0 var(--rand-seite-mobil, 16px) 48px; padding: 14px 0; } .anker-spur { flex-basis: 100%; } .anker-spur a { padding: 2px 0; } }
+
+/* Harte Schatten und dicke Rahmen sind eine Ausnahme der Startseite (Anna 21.11.2026: „zu comic-mäßig“); auf Unterseiten dezent */
+.zlq-nr { box-shadow: none; border-width: 1.5px; }
+.ks-weg { box-shadow: none; border: 1px solid rgba(14, 16, 17, .18); rotate: 0deg; }
+.ks-symbol { border: 0; }
+.ks-formular { border: 1px solid rgba(14, 16, 17, .18); }
+.sticky-rechner { border: 0; box-shadow: 0 8px 24px rgba(14, 16, 17, .18); rotate: 0deg; }
+.sticky-rechner:hover { box-shadow: 0 10px 28px rgba(14, 16, 17, .24); }
