@@ -74,7 +74,7 @@ def faq(liste, titel='Ehrliche Antworten'):
 
 def abschluss(pre, text=None, knopf=None):
     """Gemeinsamer Abschluss; text und knopf (Ziel, Beschriftung) nur, wo der Website-Check nicht passt (z. B. KI-Zeitrechner)."""
-    text = text or 'Mit dem kostenlosen <span class="ohne-umbruch">Website-Check</span> – oder einem Gespräch, in dem Sie mir erzählen, wo es hakt.'
+    text = text or 'Mit dem kostenlosen <span class="ohne-umbruch">Website-Check</span> – oder einem Gespräch, in dem du mir erzählst, wo es hakt.'
     ziel, aufschrift = knopf or ('website-check/', 'Kostenloser <span class="ohne-umbruch">Website-Check&nbsp;<span aria-hidden="true">→</span></span>')
     return ('  <section class="weg-ziel" aria-labelledby="weg-ziel-titel">\n  <p class="meta">Erster Schritt</p>\n'
             '  <h2 class="gr-h2 wz-eine" id="weg-ziel-titel">Fangen wir klein an.</h2>\n'
@@ -114,14 +114,14 @@ def schreibe(pfad, main, titel, beschreibung, fragen, skript=None, branche=None)
 def problemseite(p):
     pre = '../'
     teile = [kopfbereich(p['meta'], p['h1'], p['unter'], pre, bild=p['id']),
-             '  <section class="fw-zwei" aria-labelledby="kennen-titel">\n    <div>\n      <p class="meta">Kennen Sie das?</p>\n'
-             '      <h2 class="gr-h3" id="kennen-titel">Woran Sie es merken</h2>\n      <ul class="fw-liste">\n'
+             '  <section class="fw-zwei" aria-labelledby="kennen-titel">\n    <div>\n      <p class="meta">Kennst du das?</p>\n'
+             '      <h2 class="gr-h3" id="kennen-titel">Woran du es merkst</h2>\n      <ul class="fw-liste">\n'
              + '\n'.join(f'        <li>{esc(s)}</li>' for s in p['symptome']) + '\n      </ul>\n    </div>\n'
-             f'    <div>\n      <p class="meta">Was es Sie kostet</p>\n      <p class="fw-kosten">{esc(p["kosten"])}</p>\n    </div>\n  </section>',
+             f'    <div>\n      <p class="meta">Was es dich kostet</p>\n      <p class="fw-kosten">{esc(p["kosten"])}</p>\n    </div>\n  </section>',
              '  <section class="ablauf-start" aria-labelledby="loesung-titel">\n    <div class="sektionskopf"><p class="meta">So gehe ich vor</p>'
              '<h2 class="gr-h2" id="loesung-titel">Drei Schritte.</h2></div>\n' + schritte(p['schritte']) + '\n  </section>',
-             '  <section class="haken fw-nutzen" aria-labelledby="nutzen-titel">\n    <div class="sektionskopf"><p class="meta">Was Sie davon haben</p>'
-             '<h2 class="gr-h2" id="nutzen-titel">Mit mir an Ihrer Seite.</h2></div>\n'
+             '  <section class="haken fw-nutzen" aria-labelledby="nutzen-titel">\n    <div class="sektionskopf"><p class="meta">Was du davon hast</p>'
+             '<h2 class="gr-h2" id="nutzen-titel">Mit mir an deiner Seite.</h2></div>\n'
              + karten([{'titel': t, 'text': x} for t, x in p['nutzen']], pre, 'haken-karten fw-drei') + '\n  </section>',
              beleg(p.get('beleg'), pre),
              faq(p['faq']),   # „Passende Leistungen – Damit arbeite ich“ entfernt (Anna 12.11.2026)
@@ -151,7 +151,7 @@ def branchen_kacheln(liste, pre, fotos=False):
 def startseite_branchen():
     """Branchen-Mosaik der Startseite (Anna 12.11.2026, Muster IT Sonix): Text oben links, dann alle Branchen als Kacheln."""
     kopf = ('      <li class="br-kopf"><p class="meta">Branchen</p><h2 class="gr-h2" id="branchen-titel">Für wen ich arbeite</h2>\n'
-            '        <p>Mittelständische B2B-Unternehmen. Wählen Sie Ihre Branche.</p></li>\n')
+            '        <p>Mittelständische B2B-Unternehmen. Wähl deine Branche.</p></li>\n')
     # Reihenfolge nach Potenzial (Anna 17.11.2026: Gesundheit nicht prominent); die breite Kachel ist Platz 6 (Beratung)
     reihenfolge = ['bau', 'software', 'elektro', 'energie', 'industrie', 'beratung', 'gesundheit']
     liste = sorted(D['branchen'], key=lambda b: reihenfolge.index(b['id']) if b['id'] in reihenfolge else 99)
@@ -178,7 +178,7 @@ def flipkarten(eintraege, pre):
     for n, e in enumerate(eintraege, 1):
         h.append(f'      <li class="haken-karte hk-flip"><div class="hk-innen"><div class="hk-vorne"><span class="hk-nr">{n:02d}</span><h3>{esc(e["titel"].rstrip("."))}</h3>'
                  f'<span class="hk-zeichen" aria-hidden="true">↻</span></div><div class="haken-nutzen hk-hinten">{bilder.get(e["href"], ersatz)}'
-                 f'<span class="meta">Mit mir an Ihrer Seite</span><p>{esc(e["text"])}</p>'
+                 f'<span class="meta">Mit mir an deiner Seite</span><p>{esc(e["text"])}</p>'
                  f'<a class="textlink" href="{link(pre, e["href"])}">{esc(e["linktext"])}{PFEIL}</a></div></div></li>')
     h.append('    </ol>')
     return '\n'.join(h)
@@ -217,14 +217,14 @@ def weitere_branchen(andere, pre):
     """„Weitere Branchen“ als Mosaik mit Kopf-Kachel an erster Stelle wie auf der Startseite (Anna 12.11.2026)."""
     return ('  <section class="br-weitere-branchen" aria-labelledby="weitere-titel">\n    <ul class="br-raster br-mosaik">\n'
             '      <li class="br-kopf"><p class="meta">Branchen</p><h2 class="gr-h2" id="weitere-titel">Weitere Branchen</h2>\n'
-            '        <p>Mittelständische B2B-Unternehmen. Wählen Sie Ihre Branche.</p></li>\n'
+            '        <p>Mittelständische B2B-Unternehmen. Wähl deine Branche.</p></li>\n'
             + branchen_kacheln(andere, pre) + '    </ul>\n  </section>')
 
 
-VORGEHEN = [('Verstehen', 'Erst zuhören, dann gestalten.', 'Website-Check, Gespräche mit Ihnen und Ihrem Team, Blick auf Mitbewerber und Zielgruppe.'),
-            ('Ideation', 'Struktur und erster Entwurf.', 'Sitemap, Inhalte und der Entwurf der Startseite. Danach entscheiden Sie: weiter oder Schluss. Sie zahlen nur, was abgeschlossen ist.'),
-            ('Umsetzung', 'Design und Entwicklung.', 'Alle Seiten, Texte und Bilder, Feedback an festen Punkten. So wenig Aufwand für Sie wie möglich.'),
-            ('Launch & Begleitung', 'Live, und es geht weiter.', 'Ihre Website geht online. Auf Wunsch betreue ich sie danach als Retainer.')]
+VORGEHEN = [('Verstehen', 'Erst zuhören, dann gestalten.', 'Website-Check, Gespräche mit dir und deinem Team, Blick auf Mitbewerber und Zielgruppe.'),
+            ('Ideation', 'Struktur und erster Entwurf.', 'Sitemap, Inhalte und der Entwurf der Startseite. Danach entscheidest du: weiter oder Schluss. Du zahlst nur, was abgeschlossen ist.'),
+            ('Umsetzung', 'Design und Entwicklung.', 'Alle Seiten, Texte und Bilder, Feedback an festen Punkten. So wenig Aufwand für dich wie möglich.'),
+            ('Launch & Begleitung', 'Live, und es geht weiter.', 'Deine Website geht online. Auf Wunsch betreue ich sie danach als Retainer.')]
 
 
 def vorgehen_schritte():
@@ -253,16 +253,16 @@ def branchenseite(b):
     foto = (f'    <figure class="br-foto br-foto-spalte"><img src="{pre}{b["foto"]["datei"]}" alt="{esc(b["foto"]["alt"])}" width="2400" height="1000" loading="lazy"></figure>\n'
             if b.get('foto') else '')   # Bildnachweis nur im Impressum (Anna 12.11.2026)
     projekte = projekte_abschnitt(b, pre)
-    sprung = [('herausforderungen', 'Herausforderungen'), ('website', 'Was Ihre Website können muss')] + ([('referenz', 'Referenzen')] if projekte else []) + [
+    sprung = [('herausforderungen', 'Herausforderungen'), ('website', 'Was deine Website können muss')] + ([('referenz', 'Referenzen')] if projekte else []) + [
               ('vorgehen', 'Vorgehen'), ('fragen', 'Häufige Fragen')]
     teile = [kopfbereich('Branche: ' + b['name'], b['h1'], b['unter'], pre, bild=b['id']),
              f'  <section class="br-kurz" aria-label="Kurz gesagt">\n    <p class="meta">Kurz gesagt</p>\n    <p>{esc(kurz)}</p>\n  </section>',
              ankerleiste([(a, esc(n)) for a, n in sprung]),
-             '  <section class="haken haken-schwarz br-herausforderung" id="herausforderungen" aria-labelledby="haken-titel">\n    <div class="sektionskopf sk-mitte"><p class="meta">Ihre Branche</p>'
-             '<h2 class="gr-h2" id="haken-titel">Wo es in Ihrer Branche hakt.</h2>\n'
+             '  <section class="haken haken-schwarz br-herausforderung" id="herausforderungen" aria-labelledby="haken-titel">\n    <div class="sektionskopf sk-mitte"><p class="meta">Deine Branche</p>'
+             '<h2 class="gr-h2" id="haken-titel">Wo es in deiner Branche hakt.</h2>\n'
              f'    <p class="br-einleitung">{esc(b["einleitung"])}</p></div>\n' + flipkarten(eintraege, pre) + '\n  </section>',
-             '  <section class="fw-zwei br-website" id="website" aria-labelledby="website-titel">\n    <div>\n      <p class="meta">Ihre Website</p>\n'
-             '      <h2 class="gr-h3" id="website-titel">Was Ihre Website können muss</h2>\n      <ul class="fw-liste">\n'
+             '  <section class="fw-zwei br-website" id="website" aria-labelledby="website-titel">\n    <div>\n      <p class="meta">Deine Website</p>\n'
+             '      <h2 class="gr-h3" id="website-titel">Was deine Website können muss</h2>\n      <ul class="fw-liste">\n'
              + '\n'.join(f'        <li>{esc(x)}</li>' for x in b['muss']) + '\n      </ul>' + bedarf + '\n    </div>\n' + foto + '  </section>',
              projekte,
              '  <section class="ablauf-start" id="vorgehen" aria-labelledby="vorgehen-titel">\n    <div class="sektionskopf"><p class="meta">Vorgehen</p>'
@@ -303,7 +303,7 @@ def uebersicht():
              '  <section class="haken" aria-labelledby="haken-titel">\n    <div class="sektionskopf"><p class="meta">Herausforderungen</p>'
              '<h2 class="gr-h2" id="haken-titel">Vier Fragen aus dem Mittelstand.</h2></div>\n' + karten(probleme, pre) + '\n  </section>',
              '  <section class="haken" aria-labelledby="branchen-titel">\n    <div class="sektionskopf"><p class="meta">Branchen</p>'
-             '<h2 class="gr-h2" id="branchen-titel">Ihre Branche.</h2></div>\n' + karten(branchen, pre, 'haken-karten fw-drei') + '\n  </section>',
+             '<h2 class="gr-h2" id="branchen-titel">Deine Branche.</h2></div>\n' + karten(branchen, pre, 'haken-karten fw-drei') + '\n  </section>',
              '  <section class="haken fw-weitere" aria-labelledby="weitere-titel">\n    <div class="sektionskopf"><p class="meta">Außerdem</p>'
              '<h2 class="gr-h3" id="weitere-titel">Selbsttests und weitere Zielgruppen.</h2></div>\n' + karten(weitere, pre, 'haken-karten fw-zwei-k') + '\n  </section>',
              abschluss(pre)]
@@ -319,7 +319,7 @@ def produktseite(q):
              '  <section class="fw-zwei" aria-labelledby="was-titel">\n    <div>\n      <p class="meta">Kurz erklärt</p>\n'
              '      <h2 class="gr-h3" id="was-titel">Was ist Employer Branding?</h2>\n'
              f'      <p class="fw-kosten">{esc(q["erklaerung"])}</p>\n    </div>\n'
-             '    <div>\n      <p class="meta">Für Sie, wenn</p>\n      <h2 class="gr-h3">Woran Sie es merken</h2>\n      <ul class="fw-liste">\n'
+             '    <div>\n      <p class="meta">Für dich, wenn</p>\n      <h2 class="gr-h3">Woran du es merkst</h2>\n      <ul class="fw-liste">\n'
              + '\n'.join(f'        <li>{esc(x)}</li>' for x in q['fuer']) + '\n      </ul>\n    </div>\n  </section>',
              '  <section class="ablauf-start" aria-labelledby="stufen-titel">\n    <div class="sektionskopf"><p class="meta">So gehe ich vor</p>'
              '<h2 class="gr-h2" id="stufen-titel">Drei Stufen.</h2></div>\n' + schritte(q['stufen']) + '\n  </section>',
@@ -358,17 +358,17 @@ def selbsttest(q):
                        f'<span class="st-link">Was hilft <span aria-hidden="true">→</span></span></a></li>'
                        for p in themen)
     teile = [kopfbereich(q['meta'], q['h1'], q['unter'], pre, bild='fuer-wen'),
-             '  <section class="st" aria-labelledby="st-titel">\n    <h2 class="unsichtbar" id="st-titel">Ihre Antworten</h2>\n'
+             '  <section class="st" aria-labelledby="st-titel">\n    <h2 class="unsichtbar" id="st-titel">Deine Antworten</h2>\n'
              '    <form class="st-form" method="dialog" data-selbsttest novalidate>\n' + '\n'.join(zeilen) +
              f'\n      <p class="st-hinweis" role="alert" data-hinweis></p>\n      <p><button class="button" type="submit">Ergebnis zeigen{PFEIL}</button></p>\n'
              '      <noscript><p>Für die Auswertung braucht der Selbsttest JavaScript.</p></noscript>\n    </form>\n'
-             '    <div class="st-ergebnis" data-ergebnis-box hidden tabindex="-1">\n      <p class="meta">Ihr Ergebnis</p>\n'
-             '      <h2 class="gr-h3" data-ergebnis-titel>Ihr Handlungsbedarf</h2>\n'
+             '    <div class="st-ergebnis" data-ergebnis-box hidden tabindex="-1">\n      <p class="meta">Dein Ergebnis</p>\n'
+             '      <h2 class="gr-h3" data-ergebnis-titel>Dein Handlungsbedarf</h2>\n'
              f'      <ol class="st-liste">{ergebnis}</ol>\n'
              # unter dem Ergebnis: EU-AI-Act-Artikel, dann Beratung oder Checkliste als Download (Anna 18.11.2026)
              f'      <p class="st-artikel">Passend zu KI im Team: <a class="textlink" href="{pre}blog/eu-ai-act-kleine-unternehmen/">EU AI Act: Was müssen kleine Unternehmen jetzt tun?{PFEIL}</a></p>\n'
              f'      <p class="st-weiter"><a class="button" href="{pre}kontakt/">Beratung anfragen{PFEIL}</a> <a class="button button-zweit" href="{pre}downloads/eu-ai-act-checkliste.pdf" download>Checkliste EU AI Act (PDF) <span aria-hidden="true">↓</span></a></p>\n'
-             f'      {daumen("Selbsttest", "Wie hat Ihnen der Selbsttest gefallen?", pre)}\n'
+             f'      {daumen("Selbsttest", "Wie hat dir der Selbsttest gefallen?", pre)}\n'
              '    </div>\n  </section>',
              abschluss(pre)]
     schreibe(q['pfad'], '\n\n'.join(teile), q['seitentitel'], q['beschreibung'], [], skript='selbsttest')
@@ -392,10 +392,10 @@ def ki_rechner(q):
                       for n, (b, t, w) in enumerate(q['bereiche'], 1))
     teile = [kopf,
              f'''  <section class="st kr" id="rechner" aria-labelledby="kr-titel">
-    <h2 class="unsichtbar" id="kr-titel">Ihre Zahlen</h2>
+    <h2 class="unsichtbar" id="kr-titel">Deine Zahlen</h2>
     <form class="kr-form" method="dialog" data-ki-rechner>
       <h3 class="kr-schritt"><span class="st-nr">01</span> Zeit schätzen</h3>
-      <label>Wie viele Menschen erledigen bei Ihnen Büroarbeit oder Kundenanfragen?<input type="number" name="personen" min="1" max="500" value="5" inputmode="numeric"></label>
+      <label>Wie viele Menschen erledigen bei dir Büroarbeit oder Kundenanfragen?<input type="number" name="personen" min="1" max="500" value="5" inputmode="numeric"></label>
       <div class="kr-bereich"><label for="kr-stunden">Wie viele Stunden Fleißarbeit hat jede Person pro Woche?</label><output name="stunden_aus" for="kr-stunden" aria-hidden="true">6 Std.</output><input id="kr-stunden" type="range" name="stunden" min="1" max="20" value="6" aria-valuetext="6 Stunden" aria-describedby="kr-fleiss"><p class="kr-notiz" id="kr-fleiss">Zum Beispiel Ablage, Formulare, Standardanfragen per Mail oder Telefon.</p></div>
       <fieldset aria-describedby="kr-annahmen"><legend>Wie viel davon könnte KI vorbereiten?</legend>
         <label><input type="radio" name="anteil" value="0.15"> Wenig (15 %)</label>
@@ -403,26 +403,26 @@ def ki_rechner(q):
         <label><input type="radio" name="anteil" value="0.4"> Viel (40 %)</label>
         <p class="kr-notiz" id="kr-annahmen">Annahmen, keine Messwerte</p></fieldset>
       <h3 class="kr-schritt"><span class="st-nr">02</span> Zeit neu verteilen</h3>
-      <p class="kr-erklaer">Wofür soll Ihr Team die frei gewordene Zeit nutzen? Gewichten Sie die Bereiche, der Rechner verteilt die Stunden danach. Die Prozente zeigen den Anteil an der frei gewordenen Zeit.</p>
+      <p class="kr-erklaer">Wofür soll dein Team die frei gewordene Zeit nutzen? Gewichte die Bereiche, der Rechner verteilt die Stunden danach. Die Prozente zeigen den Anteil an der frei gewordenen Zeit.</p>
 {regler}
     </form>
     <div class="kr-ergebnis">
-      <p class="meta">Ihre Schätzung</p>
-      <p class="kr-zahl" aria-live="polite" aria-atomic="true"><span data-kr-stunden>0</span> <small>Stunden pro Monat, die Ihr Team neu einsetzt</small></p>
+      <p class="meta">Deine Schätzung</p>
+      <p class="kr-zahl" aria-live="polite" aria-atomic="true"><span data-kr-stunden>0</span> <small>Stunden pro Monat, die dein Team neu einsetzt</small></p>
       <p class="kr-balken" aria-hidden="true">{farben}</p>
       <ul class="kr-liste">
 {liste}
       </ul>
-      <p class="kr-warnung" data-kr-warnung role="status" hidden>Sie haben keine Zeit fürs Lernen eingeplant. Ohne Übung bleiben neue Werkzeuge oft liegen, und die Fleißarbeit bleibt.</p>
-      <p class="gedaempft">Gerechnet mit 4,3 Wochen pro Monat. Wie viel KI wirklich vorbereiten kann, zeigt der KI-Check an Ihren Abläufen.</p>
+      <p class="kr-warnung" data-kr-warnung role="status" hidden>Du hast keine Zeit fürs Lernen eingeplant. Ohne Übung bleiben neue Werkzeuge oft liegen, und die Fleißarbeit bleibt.</p>
+      <p class="gedaempft">Gerechnet mit 4,3 Wochen pro Monat. Wie viel KI wirklich vorbereiten kann, zeigt der KI-Check an deinen Abläufen.</p>
       <p class="st-weiter"><a class="button" href="{pre}ki-arbeits-setup/">Zum KI-Arbeits-Setup{PFEIL}</a> <a class="button button-zweit" href="{pre}service/ki-digitalisierung/">KI-Check und Einführung{PFEIL}</a></p>
       <p class="st-artikel">Für den Start mit KI im Team: <a class="textlink" href="{pre}downloads/eu-ai-act-checkliste.pdf" download>Checkliste EU AI Act (PDF) <span aria-hidden="true">↓</span></a></p>
-      {daumen("KI-Zeitrechner", "Wie hat Ihnen der KI-Zeitrechner gefallen?", pre)}
+      {daumen("KI-Zeitrechner", "Wie hat dir der KI-Zeitrechner gefallen?", pre)}
     </div>
   </section>''',
              '  <section class="ablauf-start" aria-labelledby="grund-titel">\n    <div class="sektionskopf"><p class="meta">So führe ich KI ein</p>'
              '<h2 class="gr-h2" id="grund-titel">Aufgaben statt Stellen</h2></div>\n' + schritte(q['grundsaetze']) + '\n  </section>',
-             abschluss(pre, 'Mit einem Gespräch über die Aufgaben Ihres Teams und darüber, wofür Sie mehr Zeit haben möchten.',
+             abschluss(pre, 'Mit einem Gespräch über die Aufgaben deines Teams und darüber, wofür du mehr Zeit haben möchtest.',
                        ('kontakt/', f'Beratung anfragen{PFEIL}'))]
     schreibe(q['pfad'], '\n\n'.join(teile), q['seitentitel'], q['beschreibung'], [], skript='selbsttest')
 

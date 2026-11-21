@@ -92,7 +92,7 @@ t += browser(600, 120, 170, 150, zeilen(618, 180, [110, 90]) + knopf(618, 222, 1
 t += figur(370, BODEN, .42, 30, -150, blick=1)
 t += figur(270, BODEN, .32, 30, -30, blick=1, rock=ROT)
 t += pfad('M300 470 C 360 430, 440 430, 505 470')
-BILDER['fachkraefte'] = ('Fachkräfte gehen am großen grauen Konzern vorbei zu Ihrem Haus mit offener Tür und Karriereseite', t)
+BILDER['fachkraefte'] = ('Fachkräfte gehen am großen grauen Konzern vorbei zu deinem Haus mit offener Tür und Karriereseite', t)
 
 # 3 KI im Team: Ein großer Bildschirm mit der KI als blauem Kreis in der Mitte, verbunden mit den Aufgaben des Teams;
 #   die Figur erklärt, zwei aus dem Team schauen zu. Links ein grauer, ungenutzter Werkzeugstapel.

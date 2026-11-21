@@ -17,7 +17,7 @@
         punkte[f.dataset.ziel] = (punkte[f.dataset.ziel] || 0) + Number(w.value);
       });
       var hinweis = test.querySelector('[data-hinweis]');
-      if (offen) { hinweis.textContent = offen === 1 ? 'Bitte beantworten Sie noch eine Aussage.' : 'Bitte beantworten Sie noch ' + offen + ' Aussagen.'; var erste = test.querySelector('.st-fehlt'); if (erste) { erste.scrollIntoView({ block: 'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); erste.querySelector('input').focus({ preventScroll: true }); } return; }
+      if (offen) { hinweis.textContent = offen === 1 ? 'Bitte beantworte noch eine Aussage.' : 'Bitte beantworte noch ' + offen + ' Aussagen.'; var erste = test.querySelector('.st-fehlt'); if (erste) { erste.scrollIntoView({ block: 'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); erste.querySelector('input').focus({ preventScroll: true }); } return; }
       hinweis.textContent = '';
       // Ergebnis in der Reihenfolge der Fragen, je Thema eine Skala „Handlungsbedarf“ (Anna 17.11.2026)
       var eintraege = Array.prototype.slice.call(box.querySelectorAll('.st-liste li'));
@@ -78,7 +78,7 @@
       });
       var warnung = document.querySelector('[data-kr-warnung]');
       if (!warnung.dataset.text) warnung.dataset.text = warnung.textContent;
-      warnung.textContent = summe ? warnung.dataset.text : 'Verteilen Sie die Zeit auf mindestens einen Bereich.';
+      warnung.textContent = summe ? warnung.dataset.text : 'Verteile die Zeit auf mindestens einen Bereich.';
       warnung.hidden = !(gesamt > 0 && (!summe || lernStd === 0));
     };
     rechner.addEventListener('input', rechne);
