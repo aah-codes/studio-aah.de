@@ -59,6 +59,10 @@ def projekt_link(p, pre):
 def foto_oder_cover(p, pre, c=None, klasse='pk-foto'):
     """Projektkarte mit echtem Bild statt Geräte-Mockup auf Schwarz (Anna 23.11.2026); ohne passendes Bild bleibt das Mockup.
     Feld „vorschau“ in projekte.json: ausgesuchtes Vorschaubild je Projekt, gilt überall, wo Projekte gezeigt werden (Anna 22.11.2026)."""
+    if p.get('vorschau') and p.get('vorschau_website'):
+        # Wie uicore.pro (Anna 22.11.2026): Vorschaubild als Grund, darüber der obere Teil der Website, unten angeschnitten
+        return (f'<span class="{klasse} pk-collage"><img class="pk-grund"{bild_attr(p["vorschau"], pre)} alt="" loading="lazy">'
+                f'<img class="pk-site"{bild_attr(p["vorschau_website"], pre)} alt="" loading="lazy"></span>')
     if p.get('vorschau'): return f'<img class="{klasse}"{bild_attr(p["vorschau"], pre)} alt="" loading="lazy">'
     foto = next((b for b in p.get('streifen') or [] if not re.search(r'imac|mockup|handy|iphone|laptop|desktop', b)), None)
     if not foto: return cover(p, pre, c)
