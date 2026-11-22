@@ -5259,3 +5259,11 @@ main h2.preis-h2 { font-size: clamp(40px, 6vw, 84px); line-height: 1.05; }
 .lsx-tabelle-rahmen { background: var(--farbe-weiss); }
 .lsx-tabelle thead th { background: var(--farbe-weiss); }
 .lsx-muster > .faq { background: url(../bilder/papier/papier-c.webp) 0 0 / 256px repeat; }
+/* „Das bekommst du“ wie die Pinnwand im Mega-Menü (Anna 22.11.2026): Zettel mit Klebestreifen, leicht gedreht */
+.lsx-m-ergebnis-liste li { position: relative; border-radius: 0; background: var(--farbe-weiss); box-shadow: 0 8px 22px rgba(14, 16, 17, .1); rotate: -1deg; padding-top: 34px; }
+.lsx-m-ergebnis-liste li:nth-child(2) { background: var(--bb-puder); rotate: .8deg; }
+.lsx-m-ergebnis-liste li:nth-child(3) { background: var(--bb-mint); rotate: -.6deg; }
+.lsx-m-ergebnis-liste li:nth-child(4) { background: var(--bb-gelb); rotate: 1.2deg; }
+.lsx-m-ergebnis-liste li::before { content: ""; position: absolute; left: 50%; top: -12px; width: 84px; height: 24px; margin-left: -42px; background: var(--bb-gelb); opacity: .85; rotate: -4deg; }
+.lsx-m-ergebnis-liste li:nth-child(4)::before { background: var(--bb-pink); rotate: 3deg; }
+.lsx-m-ergebnis-liste p { color: var(--farbe-dunkel); }
