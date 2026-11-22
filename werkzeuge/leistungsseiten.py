@@ -143,7 +143,8 @@ def stimmen(pre, tag):
         if len(liste) >= 2: break
         if s not in liste: liste.append(s)
     if not liste: return ''
-    return '  <section class="lsx-stimmen" aria-labelledby="stimmen-titel">\n    <p class="meta">Meinungen</p>\n    <h2 class="gr-h2" id="stimmen-titel">Stimmen,<br>die zählen.</h2>\n    <div class="stimmen">\n' + I.stimmen(liste, pre) + '\n    </div>\n    <p class="stimmen-quelle"><a class="textlink" href="' + LINKEDIN + '" target="_blank" rel="noopener">Alle Empfehlungen auf LinkedIn <span aria-hidden="true">↗</span></a></p>\n  </section>'
+    # Anna 22.11.2026: Gestaltung wie auf der Startseite (Kopf mittig und groß)
+    return '  <section class="lsx-stimmen" aria-labelledby="stimmen-titel">\n    <div class="sektionskopf sk-mitte"><p class="meta">Meinungen</p>\n    <h2 class="gr-xxl" id="stimmen-titel">Stimmen,<br>die zählen.</h2></div>\n    <div class="stimmen">\n' + I.stimmen(liste, pre) + '\n    </div>\n    <p class="stimmen-quelle"><a class="textlink" href="' + LINKEDIN + '" target="_blank" rel="noopener">Alle Empfehlungen auf LinkedIn <span aria-hidden="true">↗</span></a></p>\n  </section>'
 
 
 def nicht_enthalten(c):
