@@ -205,7 +205,7 @@ def fuer_wen(pre=''):
                    f'<p class="dk-beleg">{ref.get("vorsatz", "Zum Beispiel umgesetzt für")} <a href="{pre}{ref["link"]}">{esc(ref["name"])}{PFEIL}</a></p>')
         teile.append(f'      <div class="dk-feld" id="fw-{g["id"]}" role="tabpanel" aria-labelledby="fw-r-{g["id"]}"{"" if i == 0 else " hidden"}>\n        <h3 class="dk-titel">{esc(g["titel"])}</h3>\n'
                      f'        {angebot}\n      </div>')
-    return (f'  <section class="dk" aria-labelledby="fuer-wen-titel">\n    <p class="meta">Für wen</p>\n    <h2 class="unsichtbar" id="fuer-wen-titel">Für wen ich arbeite</h2>\n'
+    return (f'  <section class="dk" aria-labelledby="fuer-wen-titel">\n    <p class="meta">Für wen</p>\n    <h2 class="unsichtbar" id="fuer-wen-titel">Für wen wir arbeiten</h2>\n'
             f'    <div class="dk-umschalter" role="tablist" aria-label="Zielgruppe wählen">{knoepfe}</div>\n' + '\n'.join(teile) + '\n  </section>')
 
 

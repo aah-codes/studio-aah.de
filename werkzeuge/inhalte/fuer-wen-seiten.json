@@ -4,8 +4,8 @@
   "pfad": "fuer-wen/",
   "seitentitel": "Für wen: Webdesign und KI für den Mittelstand in Leipzig | STUDIO AAH!",
   "beschreibung": "Für mittelständische B2B-Unternehmen: neue Kunden gewinnen, Fachkräfte finden, KI im Team einführen, Geschäftsführung entlasten. Mit Branchenseiten für Bau, Elektro und Software.",
-  "meta": "Für wen ich arbeite",
-  "h1": "Mittelstand im B2B: Ich sehe, wo es bei dir hakt.",
+  "meta": "Für wen wir arbeiten",
+  "h1": "Mittelstand im B2B: Wir sehen, wo es bei dir hakt.",
   "unter": "Wähl dein größtes Problem oder deine Branche.",
   "weitere": [
    [
@@ -41,7 +41,7 @@
    "beschreibung": "Wenn Empfehlungen allein nicht mehr reichen: Websites für den Mittelstand, die neue Kundschaft überzeugen und Anfragen bringen. Webdesign aus Leipzig.",
    "meta": "Neukundengewinnung",
    "h1": "Wenn Empfehlungen nicht mehr reichen: Deine Website verkauft mit.",
-   "unter": "Oft prüft neue Kundschaft dich zuerst im Netz – bevor sie anruft. Ich gestalte Websites, die aus diesem ersten Blick eine Anfrage machen sollen.",
+   "unter": "Oft prüft neue Kundschaft dich zuerst im Netz – bevor sie anruft. Wir gestalten Websites, die aus diesem ersten Blick eine Anfrage machen sollen.",
    "symptome": [
     "Neue Aufträge kommen fast nur über Empfehlungen und bekannte Kunden.",
     "Messen und persönliche Kontakte bringen weniger als früher.",
@@ -127,7 +127,7 @@
    "beschreibung": "Fachkräfte finden im Mittelstand: Karrierebereiche, die dein Team zeigen und Bewerben am Handy leicht machen. Webdesign und Employer Branding aus Leipzig.",
    "meta": "Fachkräfte finden",
    "h1": "Fachkräfte finden: Zeig, warum es sich lohnt, bei dir zu arbeiten.",
-   "unter": "Bewerber:innen vergleichen dich mit großen Arbeitgebern – auf deiner Website. Ich gestalte Karrierebereiche, die dein Team zeigen und das Bewerben leicht machen.",
+   "unter": "Bewerber:innen vergleichen dich mit großen Arbeitgebern – auf deiner Website. Wir gestalten Karrierebereiche, die dein Team zeigen und das Bewerben leicht machen.",
    "symptome": [
     "Stellen bleiben lange offen, Bewerbungen kommen kaum.",
     "Deine Karriereseite ist eine Liste mit PDF-Anzeigen.",
@@ -173,11 +173,11 @@
     ],
     [
      "Wer pflegt die Stellenanzeigen?",
-     "Das klären wir am Anfang: Entweder legst du neue Stellen selbst im Redaktionssystem an, oder ich übernehme das für dich im Retainer."
+     "Das klären wir am Anfang: Entweder legst du neue Stellen selbst im Redaktionssystem an, oder wir übernehmen das für dich im Retainer."
     ],
     [
      "Was ist Employer Branding?",
-     "Employer Branding heißt: Du zeigst deine Firma als Arbeitgeber so, dass die richtigen Leute sich bewerben. Ehrlich, wiedererkennbar und überall gleich. Ich biete es als Paket ab 2.850 € netto an."
+     "Employer Branding heißt: Du zeigst deine Firma als Arbeitgeber so, dass die richtigen Leute sich bewerben. Ehrlich, wiedererkennbar und überall gleich. Wir bieten es als Paket ab 2.850 € netto an."
     ],
     [
      "Wie schnell finden wir damit neue Leute?",
@@ -217,7 +217,7 @@
    "beschreibung": "Welche KI-Tools lohnen sich, und wie nutzt dein Team sie wirklich? KI-Check, KI-Einführung mit Team-Schulung und KI-Arbeits-Setup für den Mittelstand in Leipzig.",
    "meta": "KI im Team",
    "h1": "KI im Team: Werkzeuge, die passen – und die dein Team auch nutzt.",
-   "unter": "Welche Tools lohnen sich wirklich? Und wie bringst du deine Mitarbeitenden dazu, sie zu nutzen? Ich helfe pragmatisch – ohne IT-Großprojekt.",
+   "unter": "Welche Tools lohnen sich wirklich? Und wie bringst du deine Mitarbeitenden dazu, sie zu nutzen? Wir helfen pragmatisch – ohne IT-Großprojekt.",
    "symptome": [
     "Es gibt Lizenzen für neue Tools, aber kaum jemand arbeitet damit.",
     "Jede:r nutzt KI anders – oder mit privaten Konten.",
@@ -229,7 +229,7 @@
     [
      "Verstehen",
      "Wo geht Zeit verloren?",
-     "Ich sehe mir deine Abläufe an und spreche mit den Menschen, die sie täglich erledigen."
+     "Wir sehen uns deine Abläufe an und sprechen mit den Menschen, die sie täglich erledigen."
     ],
     [
      "Ideation",
@@ -258,7 +258,7 @@
    ],
    "beleg": {
     "titel": "Aus meiner eigenen Praxis",
-    "text": "Mein Studio läuft mit KI-Arbeitsabläufen, einem Projekt-Cockpit und einem Handbuch. Was ich deinem Team zeige, nutze ich selbst jeden Tag.",
+    "text": "Mein Studio läuft mit KI-Arbeitsabläufen, einem Projekt-Cockpit und einem Handbuch. Was wir deinem Team zeigen, nutze ich selbst jeden Tag.",
     "link": [
      "ki-arbeits-setup/",
      "Zum KI-Arbeits-Setup"
@@ -267,11 +267,11 @@
    "faq": [
     [
      "Welche KI empfiehlst du?",
-     "Claude von Anthropic. Ich arbeite ausschließlich damit und richte es für deine Aufgaben ein. Das Prinzip lässt sich auf ChatGPT übertragen; auch dort gibt es Projekte, eigene Anweisungen und Skills."
+     "Claude von Anthropic. Wir arbeiten ausschließlich damit und richten es für deine Aufgaben ein. Das Prinzip lässt sich auf ChatGPT übertragen; auch dort gibt es Projekte, eigene Anweisungen und Skills."
     ],
     [
      "Baust du auch Schnittstellen zu unserem ERP?",
-     "Nein. Schnittstellen zu ERP- oder Warenwirtschaftssystemen programmiere ich nicht, und IT-Sicherheit ist nicht mein Fach. Wenn du das brauchst, sage ich es dir offen."
+     "Nein. Schnittstellen zu ERP- oder Warenwirtschaftssystemen programmieren wir nicht, und IT-Sicherheit ist nicht unser Fach. Wenn du das brauchst, sagen wir es dir offen."
     ],
     [
      "Was kostet das?",
@@ -279,7 +279,7 @@
     ],
     [
      "Ist das mit dem Datenschutz vereinbar?",
-     "Das prüfen wir gleich am Anfang. Ich wähle Werkzeuge mit Blick auf den Datenschutz aus, und du legst mit deinem Team fest, welche Daten in die KI dürfen und welche nicht. Eine Rechtsberatung ersetzt das nicht."
+     "Das prüfen wir gleich am Anfang. Wir wählen Werkzeuge mit Blick auf den Datenschutz aus, und du legst mit deinem Team fest, welche Daten in die KI dürfen und welche nicht. Eine Rechtsberatung ersetzt das nicht."
     ]
    ],
    "leistungen": [
@@ -307,7 +307,7 @@
    "beschreibung": "Wenn jede Entscheidung über die Chefin oder den Chef läuft: Abläufe aufschreiben, Routine an KI abgeben, Zeit für die Arbeit am Unternehmen gewinnen.",
    "meta": "Entlastung",
    "h1": "Entlastung: Wenn nicht mehr alles über dich läuft.",
-   "unter": "In vielen mittelständischen Firmen landet jede kleine Frage auf dem Tisch der Geschäftsführung. Ich helfe, die wichtigsten Abläufe aufzuschreiben und Wiederkehrendes an KI abzugeben.",
+   "unter": "In vielen mittelständischen Firmen landet jede kleine Frage auf dem Tisch der Geschäftsführung. Wir helfen, die wichtigsten Abläufe aufzuschreiben und Wiederkehrendes an KI abzugeben.",
    "symptome": [
     "Du arbeitest im Unternehmen statt am Unternehmen.",
     "Angebote, Nachfassen und Ablage kosten jede Woche Stunden.",
@@ -329,7 +329,7 @@
     [
      "Umsetzung",
      "Routine an KI abgeben.",
-     "Ich richte KI-Arbeitsabläufe ein, die Entwürfe vorbereiten. Du prüfst und gibst frei."
+     "Wir richten KI-Arbeitsabläufe ein, die Entwürfe vorbereiten. Du prüfst und gibst frei."
     ]
    ],
    "nutzen": [
@@ -348,7 +348,7 @@
    ],
    "beleg": {
     "titel": "Ich arbeite selbst so",
-    "text": "Mein Studio läuft mit KI-Arbeitsabläufen, einem Projekt-Cockpit und einem Handbuch. Für Geschäftsführung und kleine Büros richte ich das im KI-Arbeits-Setup ein; für größere Teams planen wir es im KI-Check.",
+    "text": "Mein Studio läuft mit KI-Arbeitsabläufen, einem Projekt-Cockpit und einem Handbuch. Für Geschäftsführung und kleine Büros richten wir das im KI-Arbeits-Setup ein; für größere Teams planen wir es im KI-Check.",
     "link": [
      "ki-arbeits-setup/",
      "Zum KI-Arbeits-Setup"
@@ -401,7 +401,7 @@
    "seitentitel": "Webdesign für Bau, Ingenieurbüros und Architektur in Leipzig | STUDIO AAH!",
    "beschreibung": "Websites für Bauunternehmen, Ingenieur- und Architekturbüros: Referenzprojekte zeigen, Fachkräfte finden, Abläufe entlasten. Webdesign aus Leipzig.",
    "h1": "Webdesign für Bau, Ingenieurwesen und Architektur in Leipzig.",
-   "unter": "Deine Projekte stehen draußen – auf deiner Website oft nicht. Ich zeige, was du gebaut hast, und helfe dir, Fachkräfte zu finden.",
+   "unter": "Deine Projekte stehen draußen – auf deiner Website oft nicht. Wir zeigen, was du gebaut hast, und helfen dir, Fachkräfte zu finden.",
    "schmerz": [
     [
      "fachkraefte",
@@ -419,7 +419,7 @@
    "faq": [
     [
      "Hast du Erfahrung mit Bauunternehmen?",
-     "Ja. Für Wolfgang Bauer Ingenieurbau habe ich Strategie, Rebranding und die neue Website gestaltet."
+     "Ja. Für Wolfgang Bauer Ingenieurbau haben wir Strategie, Rebranding und die neue Website gestaltet."
     ],
     [
      "Können wir die Referenzprojekte selbst pflegen?",
@@ -510,7 +510,7 @@
    "seitentitel": "Webdesign für Handwerk und Gebäudetechnik in Leipzig | STUDIO AAH!",
    "beschreibung": "Websites für Elektro, SHK, Anlagenbau und Gebäudetechnik: Karrierebereiche, die Fachkräfte überzeugen, und KI-Abläufe, die das Büro entlasten. Aus Leipzig.",
    "h1": "Webdesign für Handwerk und Gebäudetechnik in Leipzig.",
-   "unter": "Fehlen dir Leute? Ich gestalte Websites, die Fachkräfte überzeugen sollen, und helfe, das Büro zu entlasten.",
+   "unter": "Fehlen dir Leute? Wir gestalten Websites, die Fachkräfte überzeugen sollen, und helfe, das Büro zu entlasten.",
    "schmerz": [
     [
      "fachkraefte",
@@ -528,7 +528,7 @@
    "faq": [
     [
      "Wir haben genug Aufträge. Brauchen wir eine bessere Website?",
-     "Wenn dir vor allem Leute fehlen, ist die Website in erster Linie dein Recruiting. Dort setze ich an: Karrierebereich zuerst, der Rest folgt bei Bedarf."
+     "Wenn dir vor allem Leute fehlen, ist die Website in erster Linie dein Recruiting. Dort setzen wir an: Karrierebereich zuerst, der Rest folgt bei Bedarf."
     ],
     [
      "Was kostet ein neuer Karrierebereich?",
@@ -631,7 +631,7 @@
     ],
     [
      "Brauchen wir die Website auf Englisch?",
-     "Wenn du exportierst oder internationale Fachkräfte suchst, meist ja. Ich plane die Struktur von Anfang an mehrsprachig; die Übersetzung kommt von dir oder einem Fachbüro."
+     "Wenn du exportierst oder internationale Fachkräfte suchst, meist ja. Wir planen die Struktur von Anfang an mehrsprachig; die Übersetzung kommt von dir oder einem Fachbüro."
     ],
     [
      "Was kostet eine neue Website?",
@@ -663,7 +663,7 @@
     ],
     [
      "Der KI-Pilot läuft, im Alltag kommt nichts an.",
-     "Ich richte mit deinem Team KI-Abläufe für Angebote, Dokumentation und Anfragen ein und schule alle, die damit arbeiten.",
+     "Wir richten mit deinem Team KI-Abläufe für Angebote, Dokumentation und Anfragen ein und schule alle, die damit arbeiten.",
      "ki-im-team/",
      "KI im Team"
     ]
@@ -677,7 +677,7 @@
    "seitentitel": "Webdesign für Energie und Umwelttechnik in Leipzig | STUDIO AAH!",
    "beschreibung": "Websites für Solar, Speicher, Wärme und Umwelttechnik: komplexe Angebote verständlich erklären, Anfragen gewinnen, Fachkräfte finden. Webdesign aus Leipzig.",
    "h1": "Webdesign für Energie und Umwelttechnik in Leipzig.",
-   "unter": "Solar, Speicher, Wärmepumpe, Umwelttechnik: Deine Kundschaft hat viele Fragen und vergleicht genau. Ich gestalte Websites, die verständlich erklären und Vertrauen schaffen.",
+   "unter": "Solar, Speicher, Wärmepumpe, Umwelttechnik: Deine Kundschaft hat viele Fragen und vergleicht genau. Wir gestalten Websites, die verständlich erklären und Vertrauen schaffen.",
    "schmerz": [
     [
      "neue-kunden",
@@ -706,11 +706,11 @@
    "faq": [
     [
      "Hast du Erfahrung in der Energiebranche?",
-     "Ein eigenes Projekt in der Energiebranche habe ich noch nicht. Ich bringe Websites für technische B2B-Leistungen mit und den Blick einer UX-Designerin für erklärungsbedürftige Angebote."
+     "Ein eigenes Projekt in der Energiebranche haben wir noch nicht. Wir bringen Websites für technische B2B-Leistungen mit und den Blick einer UX-Designerin für erklärungsbedürftige Angebote."
     ],
     [
      "Kannst du Förderung und Technik verständlich erklären?",
-     "Die Fachinhalte kommen von dir. Ich bringe sie in eine klare Struktur, mit Grafiken und häufigen Fragen, damit deine Kundschaft sie versteht."
+     "Die Fachinhalte kommen von dir. Wir bringen sie in eine klare Struktur, mit Grafiken und häufigen Fragen, damit deine Kundschaft sie versteht."
     ],
     [
      "Können wir Referenzen selbst pflegen?",
@@ -760,7 +760,7 @@
    "seitentitel": "UX-Design und Webdesign für Software- und IT-Firmen in Leipzig | STUDIO AAH!",
    "beschreibung": "UX/UI und Websites für B2B-Software, SaaS und IT-Dienstleister – auch für Software in Bildung und Gesundheit. Verständlich machen, was dein Produkt kann. Aus Leipzig.",
    "h1": "UX/UI und Webdesign für Software- und IT-Unternehmen in Leipzig.",
-   "unter": "Dein Produkt ist erklärungsbedürftig, deine Kundschaft entscheidet im Team. Ich gestalte Websites und Oberflächen, die zeigen, was deine Software kann – auch für Software in Bildung und Gesundheit.",
+   "unter": "Dein Produkt ist erklärungsbedürftig, deine Kundschaft entscheidet im Team. Wir gestalten Websites und Oberflächen, die zeigen, was deine Software kann – auch für Software in Bildung und Gesundheit.",
    "schmerz": [
     [
      "neue-kunden",
@@ -768,7 +768,7 @@
     ],
     [
      "ki-im-team",
-     "Du baust Software – ich helfe deinem Team, KI auch im eigenen Alltag sinnvoll einzusetzen."
+     "Du baust Software – wir helfen deinem Team, KI auch im eigenen Alltag sinnvoll einzusetzen."
     ],
     [
      "fachkraefte",
@@ -778,15 +778,15 @@
    "faq": [
     [
      "Gestaltest du auch die Oberfläche unserer Software?",
-     "Ja. UI/UX für Webanwendungen und SaaS ist mein Kern – vom UX-Audit bis zum Designsystem."
+     "Ja. UI/UX für Webanwendungen und SaaS ist unser Kern – vom UX-Audit bis zum Designsystem."
     ],
     [
      "Kannst du Referenzen aus der Software-Branche zeigen?",
-     "Arbeiten aus meiner Agenturtätigkeit darf ich nicht zeigen. Im Gespräch erzähle ich dir gern, wie ich vorgehe, und zeige Arbeiten von STUDIO AAH!."
+     "Arbeiten aus meiner Agenturtätigkeit darf ich nicht zeigen. Im Gespräch erzähle ich dir gern, wie wir vorgehen, und zeige Arbeiten von STUDIO AAH!."
     ],
     [
      "Arbeitest du mit unseren Entwickler:innen zusammen?",
-     "Ja. Ich liefere Entwürfe, je nach Paket ein UI-Kit oder Designsystem und Spezifikationen für die Umsetzung, und stimme mich direkt mit deinem Team ab. Die Programmierung gehört nicht dazu."
+     "Ja. Wir liefern Entwürfe, je nach Paket ein UI-Kit oder Designsystem und Spezifikationen für die Umsetzung, und stimmen uns direkt mit deinem Team ab. Die Programmierung gehört nicht dazu."
     ],
     [
      "Wie starten wir?",
@@ -817,7 +817,7 @@
    "karten": [
     [
      "Unser Produkt ist schwer zu erklären.",
-     "Ich schärfe deine Positionierung und baue eine Website mit klaren Anwendungsfällen. So verstehen Entscheider:innen schnell, was du löst.",
+     "Wir schärfen deine Positionierung und bauen eine Website mit klaren Anwendungsfällen. So verstehen Entscheider:innen schnell, was du löst.",
      "neue-kunden/",
      "Neukundengewinnung"
     ],
@@ -829,7 +829,7 @@
     ],
     [
      "Mehr Projekte schaffen ohne mehr Leute?",
-     "Ich richte KI-Abläufe für Angebote, Dokumentation und Antworten im Support ein. So fängt dein Team Engpässe ab.",
+     "Wir richten KI-Abläufe für Angebote, Dokumentation und Antworten im Support ein. So fängt dein Team Engpässe ab.",
      "ki-im-team/",
      "KI im Team"
     ]
@@ -843,7 +843,7 @@
    "seitentitel": "Webdesign für Arztpraxen und Gesundheit in Leipzig | STUDIO AAH!",
    "beschreibung": "Websites für Arztpraxen, Therapie und Gesundheitsberufe: Vertrauen schaffen, Termine erleichtern, Fachpersonal finden. Webdesign aus Leipzig.",
    "h1": "Webdesign für Arztpraxen und Gesundheit in Leipzig.",
-   "unter": "Deine Patient:innen suchen Vertrauen, bevor sie anrufen. Ich gestalte Websites, die zeigen, wie du arbeitest, und den Weg zum Termin leicht machen.",
+   "unter": "Deine Patient:innen suchen Vertrauen, bevor sie anrufen. Wir gestalten Websites, die zeigen, wie du arbeitest, und den Weg zum Termin leicht machen.",
    "schmerz": [
     [
      "neue-kunden",
@@ -872,15 +872,15 @@
    "faq": [
     [
      "Hast du schon für Praxen gearbeitet?",
-     "Ja. Für Dr. Simone Goldhammer habe ich die Website, das Logo und die Visitenkarten gestaltet."
+     "Ja. Für Dr. Simone Goldhammer haben wir die Website, das Logo und die Visitenkarten gestaltet."
     ],
     [
      "Können wir Online-Termine einbinden?",
-     "Ja, wenn du ein Terminbuchungssystem nutzen oder einführen möchtest. Ich binde es so ein, dass es zur Website passt und am Handy gut bedienbar ist."
+     "Ja, wenn du ein Terminbuchungssystem nutzen oder einführen möchtest. Wir binden es so ein, dass es zur Website passt und am Handy gut bedienbar ist."
     ],
     [
      "Was gilt beim Datenschutz?",
-     "Gesundheitsdaten sind besonders geschützt. Ich plane Formulare und eingebundene Dienste so, dass sie nur das Nötige abfragen. Die rechtliche Prüfung übernimmt deine Datenschutzberatung."
+     "Gesundheitsdaten sind besonders geschützt. Wir planen Formulare und eingebundene Dienste so, dass sie nur das Nötige abfragen. Die rechtliche Prüfung übernimmt deine Datenschutzberatung."
     ],
     [
      "Was kostet eine Praxis-Website?",
@@ -903,7 +903,7 @@
    "karten": [
     [
      "Woher kommen Selbst­zahler:innen?",
-     "Ich stelle deine Selbstzahlerleistungen sachlich und verständlich vor. So informieren sich Patient:innen vorab und fragen gezielt danach.",
+     "Wir stellen deine Selbstzahlerleistungen sachlich und verständlich vor. So informieren sich Patient:innen vorab und fragen gezielt danach.",
      "neue-kunden/",
      "Neukundengewinnung"
     ],
@@ -929,7 +929,7 @@
    "seitentitel": "Webdesign für Beratung und Dienstleistung in Leipzig | STUDIO AAH!",
    "beschreibung": "Websites für Beratungen, Agenturen und Dienstleister: Expertise sichtbar machen, Vertrauen aufbauen, Anfragen gewinnen. Webdesign aus Leipzig.",
    "h1": "Webdesign für Beratung und Dienstleistung in Leipzig.",
-   "unter": "Du verkaufst Wissen und Vertrauen, nichts zum Anfassen. Ich gestalte Websites, die deine Expertise greifbar machen und zur Anfrage führen.",
+   "unter": "Du verkaufst Wissen und Vertrauen, nichts zum Anfassen. Wir gestalten Websites, die deine Expertise greifbar machen und zur Anfrage führen.",
    "schmerz": [
     [
      "neue-kunden",
@@ -958,7 +958,7 @@
    "faq": [
     [
      "Hast du schon für Beratungen gearbeitet?",
-     "Ja. Für Deinetwegen, eine HR-Beratung, habe ich die Website gestaltet. Gründerin Franziska Weihmann nennt sie eine „absolute Herzensempfehlung“."
+     "Ja. Für Deinetwegen, eine HR-Beratung, haben wir die Website gestaltet. Gründerin Franziska Weihmann nennt sie eine „absolute Herzensempfehlung“."
     ],
     [
      "Reicht für uns ein Onepager?",
@@ -966,11 +966,11 @@
     ],
     [
      "Können Kund:innen online einen Termin buchen?",
-     "Ja. Ich binde ein Buchungswerkzeug deiner Wahl so ein, dass es zur Website passt."
+     "Ja. Wir binden ein Buchungswerkzeug deiner Wahl so ein, dass es zur Website passt."
     ],
     [
      "Wie viel Zeit kostet uns das?",
-     "So wenig wie möglich. Du gibst an festen Punkten Feedback. Texte kannst du liefern oder von mir erstellen lassen."
+     "So wenig wie möglich. Du gibst an festen Punkten Feedback. Texte kannst du liefern oder von uns erstellen lassen."
     ]
    ],
    "foto": {
@@ -1005,7 +1005,7 @@
     ],
     [
      "Kann das nicht auch die KI?",
-     "Ich richte KI in deiner Beratung ein, damit Recherche, Analyse und Berichte schneller gehen und deine Erfahrung den Unterschied macht.",
+     "Wir richten KI in deiner Beratung ein, damit Recherche, Analyse und Berichte schneller gehen und deine Erfahrung den Unterschied macht.",
      "ki-im-team/",
      "KI im Team"
     ],
@@ -1035,13 +1035,13 @@
   "stufen": [
    [
     "Karriere-Check",
-    "Ich sehe dich mit den Augen von Bewerber:innen.",
-    "Ich prüfe Karrierebereich, Stellenanzeigen auf Portalen, Arbeitgeberbewertungen, Social Media und deine analogen Touchpoints wie Firmenwagen und Aushänge (anhand deiner Fotos). Du bekommst einen Bericht mit den drei wichtigsten Maßnahmen."
+    "Wir sehen dich mit den Augen von Bewerber:innen.",
+    "Wir prüfen Karrierebereich, Stellenanzeigen auf Portalen, Arbeitgeberbewertungen, Social Media und deine analogen Touchpoints wie Firmenwagen und Aushänge (anhand deiner Fotos). Du bekommst einen Bericht mit den drei wichtigsten Maßnahmen."
    ],
    [
     "Workshop",
     "Eine Stunde, die alles klärt.",
-    "Vorab beantworten du und drei bis fünf Mitarbeitende einen kurzen Fragebogen. Im Workshop (60 Minuten online) klären wir: Wen suchst du? Warum arbeitet man gern bei dir? Wo erreichen wir diese Menschen? Daraus schreibe ich dein Arbeitgeberprofil."
+    "Vorab beantworten du und drei bis fünf Mitarbeitende einen kurzen Fragebogen. Im Workshop (60 Minuten online) klären wir: Wen suchst du? Warum arbeitet man gern bei dir? Wo erreichen wir diese Menschen? Daraus schreiben wir dein Arbeitgeberprofil."
    ],
    [
     "Umsetzung",
@@ -1059,7 +1059,7 @@
    "2 Korrekturschleifen"
   ],
   "preis": "ab 2.850 €",
-  "preis_hinweis": "Zuerst prüfe ich kostenlos deinen Karrierebereich im Website-Check und wir sprechen über deine Ziele. Danach bekommst du ein Angebot mit festem Preis. Der Umfang bestimmt den Preis.",
+  "preis_hinweis": "Zuerst prüfen wir kostenlos deinen Karrierebereich im Website-Check und sprechen über deine Ziele. Danach bekommst du ein Angebot mit festem Preis. Der Umfang bestimmt den Preis.",
   "faq": [
    [
     "Was ist der Unterschied zu einer neuen Website?",
@@ -1071,7 +1071,7 @@
    ],
    [
     "Wer pflegt später die Stellenanzeigen?",
-    "Du selbst, mit der Vorlage. Auf Wunsch übernehme ich das im Retainer."
+    "Du selbst, mit der Vorlage. Auf Wunsch übernehmen wir das im Retainer."
    ],
    [
     "Bekommen wir damit garantiert mehr Bewerbungen?",
@@ -1155,7 +1155,7 @@
    [
     "Erst hinsehen",
     "Fleißarbeit finden",
-    "Ich schaue mit dir auf einzelne Aufgaben wie Protokolle, Angebote vorbereiten oder Mails sortieren. KI bereitet vor, Menschen prüfen und entscheiden."
+    "Wir schauen mit dir auf einzelne Aufgaben wie Protokolle, Angebote vorbereiten oder Mails sortieren. KI bereitet vor, Menschen prüfen und entscheiden."
    ],
    [
     "Alle lernen mit",

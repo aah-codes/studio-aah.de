@@ -426,7 +426,7 @@
      "stunde": 50,
      "stundeBis": 85,
      "kurz": "Betreute Weiterentwicklung deiner Website: Texte und Bilder austauschen, neue Unterseiten erstellen, Abschnitte bearbeiten",
-     "rechner": "Ich werte das Tracking aus und verbessere die Website auf dieser Grundlage weiter. Dazu setze ich Änderungen um: Texte, Bilder, neue Unterseiten.",
+     "rechner": "Wir werten das Tracking aus und verbessern die Website auf dieser Grundlage weiter. Dazu setzen wir Änderungen um: Texte, Bilder, neue Unterseiten.",
      "mindestens": "mindestens 3 Monate"
     }
    ],
@@ -700,7 +700,7 @@
   ],
   [
    "Website-Check (Expert Review)",
-   "Ich versetze mich in deine Zielgruppe, nutze deine Website oder Anwendung und zeige, was sich verbessern lässt."
+   "Wir versetzen uns in deine Zielgruppe, nutze deine Website oder Anwendung und zeige, was sich verbessern lässt."
   ],
   [
    "Launch",
@@ -720,7 +720,7 @@
   ],
   [
    "Stundensatz",
-   "Für Arbeiten nach Aufwand, etwa spätere Änderungen, weitere Korrekturrunden oder den Retainer. Er richtet sich nach der Größe deines Unternehmens: Für Selbstständige und kleine Betriebe liegt er bei 50 bis 65 €, für mittelständische Unternehmen bei bis zu 85 € netto. Den genauen Satz nenne ich dir im Angebot."
+   "Für Arbeiten nach Aufwand, etwa spätere Änderungen, weitere Korrekturrunden oder den Retainer. Er richtet sich nach der Größe deines Unternehmens: Für Selbstständige und kleine Betriebe liegt er bei 50 bis 65 €, für mittelständische Unternehmen bei bis zu 85 € netto. Den genauen Satz nennen wir dir im Angebot."
   ],
   [
    "Marken-Regelwerk (Brand Guidelines)",
@@ -880,9 +880,9 @@
    }
   ],
   "texte": {
-   "studio": "Texte und Bilder, mit KI erstellt auf Basis der Analyse, von mir geprüft und überarbeitet",
+   "studio": "Texte und Bilder, mit KI erstellt auf Basis der Analyse, von uns geprüft und überarbeitet",
    "selbst": "Übernahme deiner Texte und Bilder in die Website",
-   "liste": "Texte und Bilder: mit KI erstellt auf Basis der Analyse, von mir geprüft und überarbeitet – oder du lieferst sie selbst, zum gleichen Preis"
+   "liste": "Texte und Bilder: mit KI erstellt auf Basis der Analyse, von uns geprüft und überarbeitet – oder du lieferst sie selbst, zum gleichen Preis"
   },
   "redesign_inhalt": {
    "Verstehen": [

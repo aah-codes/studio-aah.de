@@ -608,7 +608,7 @@
    {
     "typ": "ablauf",
     "meta": "Workflow · Design Thinking",
-    "titel": "So bin ich vorgegangen",
+    "titel": "So sind wir vorgegangen",
     "schritte": [
      [
       "Analyse · Verstehen · April 2026",
@@ -641,7 +641,7 @@
       "kap-relaunch"
      ]
     ],
-    "text": "Grundlage meiner Arbeit ist der Design-Thinking-Prozess: erst verstehen, dann gestalten."
+    "text": "Grundlage unserer Arbeit ist der Design-Thinking-Prozess: erst verstehen, dann gestalten."
    },
    {
     "typ": "kapitel",
@@ -3074,7 +3074,7 @@
      "typ": "marke",
      "meta": "Corporate Design",
      "titel": "Logo und Bildmarke",
-     "text": "Die Wortmarke hat Franziska als Grundlage mitgebracht. Ich habe Ausrichtung und Farben angepasst und das Corporate Design im Brand Manual festgehalten: Wortmarke mit orangem D und Stern, das D als Bildmarke, Farben und Schrift.",
+     "text": "Die Wortmarke hat Franziska als Grundlage mitgebracht. Wir haben Ausrichtung und Farben angepasst und das Corporate Design im Brand Manual festgehalten: Wortmarke mit orangem D und Stern, das D als Bildmarke, Farben und Schrift.",
      "logos": [
       [
        "bilder/referenzen/deinetwegen/logo-hell.svg",
@@ -4023,7 +4023,7 @@
       "bis": "#F4F4F4",
       "art": []
      },
-     "text": "Kein eigenes Logo: Als Wortmarke dient ihr Instagram-Name. Ich habe die Schriften festgelegt und Layout und Interface gestaltet."
+     "text": "Kein eigenes Logo: Als Wortmarke dient ihr Instagram-Name. Wir haben die Schriften festgelegt und Layout und Interface gestaltet."
     },
     {
      "typ": "designsystem",

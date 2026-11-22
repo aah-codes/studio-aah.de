@@ -9,7 +9,7 @@
   "bild": "bilder/leistung-website.webp",
   "bildalt": "Bildschirm mit einer Website im Entwurf",
   "zusammenfassung": [
-   "Deine Website ist Vertriebsinstrument. Ich plane Struktur und Inhalte so, dass Besucher und Besucherinnen schnell finden, was sie suchen, und den nächsten Schritt gehen.",
+   "Deine Website ist Vertriebsinstrument. Wir planen Struktur und Inhalte so, dass Besucher und Besucherinnen schnell finden, was sie suchen, und den nächsten Schritt gehen.",
    "Von der Seitenstruktur über Design und Umsetzung in WordPress oder Claude Code bis zum Launch: alles aus einer Hand, responsiv für Handy und Desktop."
   ],
   "faq": [
@@ -31,7 +31,7 @@
    ],
    [
     "Was ist der Unterschied zwischen einer neuen Website und einem Redesign?",
-    "Bei einer neuen Website entsteht alles von Grund auf. Bei einem Redesign wird eine bestehende Website neu gestaltet und umgebaut: Ich analysiere die bestehende Seite, übernehme vorhandene Inhalte und richte Weiterleitungen alter Adressen ein, damit Besucher und Google nichts verlieren."
+    "Bei einer neuen Website entsteht alles von Grund auf. Bei einem Redesign wird eine bestehende Website neu gestaltet und umgebaut: Wir analysieren die bestehende Seite, übernehmen vorhandene Inhalte und richten Weiterleitungen alter Adressen ein, damit Besucher und Google nichts verlieren."
    ],
    [
     "Was ist eine Seitenstruktur (Sitemap) und warum brauche ich sie?",
@@ -51,11 +51,11 @@
    ],
    [
     "Was passiert beim Launch?",
-    "Beim Launch geht deine Website online: Ich verbinde die Domain, setze die technischen Einträge (DNS), ziehe die Website um und begleite den Livegang. Der Launch ist im Basispreis jeder neuen Website enthalten."
+    "Beim Launch geht deine Website online: Wir verbinden die Domain, setzen die technischen Einträge (DNS), ziehen die Website um und begleiten den Livegang. Der Launch ist im Basispreis jeder neuen Website enthalten."
    ],
    [
     "Mit welchem System baut STUDIO AAH! Websites?",
-    "Ich baue Websites mit WordPress (Theme Kadence) und mit Claude Code."
+    "Wir bauen Websites mit WordPress (Theme Kadence) und mit Claude Code."
    ],
    [
     "Kann ich meine Website danach selbst pflegen?",
@@ -63,11 +63,11 @@
    ],
    [
     "Wer kümmert sich nach dem Start um die Technik?",
-    "Auf Wunsch übernehme ich die Wartung ab 45 € im Monat: Updates von WordPress, Plugins und Themes, technische Überwachung und Sicherheitschecks, kleine Bildänderungen und der Austausch von PDFs."
+    "Auf Wunsch übernehmen wir die Wartung ab 45 € im Monat: Updates von WordPress, Plugins und Themes, technische Überwachung und Sicherheitschecks, kleine Bildänderungen und der Austausch von PDFs."
    ],
    [
     "Was ist der Unterschied zwischen Wartung und Retainer?",
-    "Die Wartung ist die rein technische Pflege deiner WordPress-Website ab 45 € im Monat: Updates von WordPress, Plugins und Themes, technische Überwachung und Sicherheitschecks. Der Retainer ist die betreute Weiterentwicklung deiner Website für 50–85 € netto pro Stunde, je nach Unternehmensgröße: Ich tausche Texte und Bilder aus, erstelle neue Unterseiten und bearbeite Abschnitte, damit deine Website mit deinem Unternehmen wächst."
+    "Die Wartung ist die rein technische Pflege deiner WordPress-Website ab 45 € im Monat: Updates von WordPress, Plugins und Themes, technische Überwachung und Sicherheitschecks. Der Retainer ist die betreute Weiterentwicklung deiner Website für 50–85 € netto pro Stunde, je nach Unternehmensgröße: Wir tauschen Texte und Bilder aus, erstellen neue Unterseiten und bearbeiten Abschnitte, damit deine Website mit deinem Unternehmen wächst."
    ],
    [
     "Wer zahlt Hosting und Lizenzen?",
@@ -97,13 +97,13 @@
   "nicht_enthalten": [
    "Hosting, Domain und Lizenzen: zahlst du direkt an den jeweiligen Anbieter",
    "Kontaktformular, Shop, Mitgliederbereich und weitere Funktionen: als Zusatzleistung oder auf Anfrage",
-   "Cookie-Banner und Tracking: Ich berate dich dazu, die Kosten stehen im Angebot",
+   "Cookie-Banner und Tracking: Wir beraten dich dazu, die Kosten stehen im Angebot",
    "Übersetzungen für weitere Sprachen: lieferst du",
-   "Spätere Text- und Inhaltsänderungen: Texte liefere ich einmal für die ganze Website. Änderungen danach setzt du am besten selbst in WordPress (Kadence) um; übernehme ich sie, rechne ich nach Aufwand ab, 50–85 € netto pro Stunde, je nach Unternehmensgröße",
+   "Spätere Text- und Inhaltsänderungen: Texte liefern wir einmal für die ganze Website. Änderungen danach setzt du am besten selbst in WordPress (Kadence) um; übernehmen wir sie, rechnen wir nach Aufwand ab, 50–85 € netto pro Stunde, je nach Unternehmensgröße",
    "Mehr als zwei Korrekturrunden: nach Aufwand, 50–85 € netto pro Stunde, je nach Unternehmensgröße"
   ],
   "tag": "website",
-  "loesung_text": "Deine Website ist Vertriebsinstrument. Ich plane Struktur und Inhalte so, dass Besucher und Besucherinnen schnell finden, was sie suchen, und den nächsten Schritt gehen. Alles aus einer Hand, von der Seitenstruktur bis zum Launch.",
+  "loesung_text": "Deine Website ist Vertriebsinstrument. Wir planen Struktur und Inhalte so, dass Besucher und Besucherinnen schnell finden, was sie suchen, und den nächsten Schritt gehen. Alles aus einer Hand, von der Seitenstruktur bis zum Launch.",
   "loesung_punkte": [
    "Zuerst die Seitenstruktur (Sitemap): Wer sucht was, und wo findet er es?",
    "Klare Botschaft gleich zu Beginn und eindeutige nächste Schritte für mehr Conversion",
@@ -122,7 +122,7 @@
   "selbstbau": {
    "_quelle": "Anna 17.11.2026 (Chat): Zielgruppe, die ihre Website selbst baut (Vibe-Coding, Baukasten). Texte als Entwurf, Freigabe Anna offen. Preise aus preise-daten.json (Retainer 50–85 €/h)",
    "titel": "Du baust deine Website selbst?",
-   "einleitung": "Mit KI geht das heute schneller denn je. Vibe-Coding heißt das: Du beschreibst, was du willst, und die KI schreibt den Code. Was dabei oft fehlt, ist der Blick einer Fachkraft. Ich steige dort ein, wo du mich brauchst.",
+   "einleitung": "Mit KI geht das heute schneller denn je. Vibe-Coding heißt das: Du beschreibst, was du willst, und die KI schreibt den Code. Was dabei oft fehlt, ist der Blick einer Fachkraft. Wir steigen dort ein, wo du uns brauchst.",
    "schritte": [
     [
      "Bevor du anfängst",
@@ -132,7 +132,7 @@
     ],
     [
      "Du kommst nicht weiter",
-     "Ich helfe bei Struktur, KI-Design und Technik, stundenweise nach Aufwand, 50–85 € netto pro Stunde.",
+     "Wir helfen bei Struktur, KI-Design und Technik, stundenweise nach Aufwand, 50–85 € netto pro Stunde.",
      "kontakt/",
      "Beratung anfragen"
     ],
@@ -144,7 +144,7 @@
     ],
     [
      "Nach dem Livegang",
-     "Ich betreue auch selbst gebaute Websites: Texte, Bilder, neue Seiten und laufende Optimierung im Retainer.",
+     "Wir betreuen auch selbst gebaute Websites: Texte, Bilder, neue Seiten und laufende Optimierung im Retainer.",
      "service/retainer/",
      "Zum Retainer"
     ]
@@ -240,7 +240,7 @@
    ],
    [
     "Wie viele Korrekturrunden sind bei STUDIO AAH! im Festpreis enthalten?",
-    "Bei STUDIO AAH! sind pro Projektbereich zwei Korrekturrunden im Festpreis enthalten. Jede weitere Runde rechne ich nach Aufwand ab, mit 50–85 € netto pro Stunde, je nach Unternehmensgröße."
+    "Bei STUDIO AAH! sind pro Projektbereich zwei Korrekturrunden im Festpreis enthalten. Jede weitere Runde rechnen wir nach Aufwand ab, mit 50–85 € netto pro Stunde, je nach Unternehmensgröße."
    ],
    [
     "Wie wird eine Markenentwicklung bei STUDIO AAH! bezahlt?",
@@ -276,7 +276,7 @@
    ]
   ],
   "nutzen": "ci-nutzen",
-  "loesung_text": "Ich behalte die Corporate Identity im Ganzen im Blick: Das Corporate Design baut auf Kultur, Kommunikation und Verhalten auf. Form follows function: Die Form folgt der Funktion.",
+  "loesung_text": "Wir behalten die Corporate Identity im Ganzen im Blick: Das Corporate Design baut auf Kultur, Kommunikation und Verhalten auf. Form follows function: Die Form folgt der Funktion.",
   "loesung_punkte": [
    "Brand Experience: Analyse aller digitalen und analogen Touchpoints",
    "Buyer-Personas und User-Personas für deine Zielgruppe",
@@ -392,7 +392,7 @@
     ],
     [
      "Wie viele Korrekturrunden sind bei STUDIO AAH! im Festpreis enthalten?",
-     "Bei STUDIO AAH! sind pro Projektbereich zwei Korrekturrunden im Festpreis enthalten. Jede weitere Runde rechne ich nach Aufwand ab, mit 50–85 € netto pro Stunde, je nach Unternehmensgröße."
+     "Bei STUDIO AAH! sind pro Projektbereich zwei Korrekturrunden im Festpreis enthalten. Jede weitere Runde rechnen wir nach Aufwand ab, mit 50–85 € netto pro Stunde, je nach Unternehmensgröße."
     ],
     [
      "Was ist bei der Markenentwicklung nicht enthalten?",
@@ -426,14 +426,14 @@
    "Die Anwendung ist schwer zu bedienen"
   ],
   "loesungen": [
-   "Website-Check: Ich versetze mich in deine Zielgruppe, nutze deine Website oder Anwendung und zeige, was sich verbessern lässt",
+   "Website-Check: Wir versetzen uns in deine Zielgruppe, nutze deine Website oder Anwendung und zeige, was sich verbessern lässt",
    "Personas: greifbare Abbilder deiner Zielgruppe für Entscheidungen, die nicht aus dem Bauch kommen",
    "Erst recherchieren und denken, dann designen: Wireframes und klickbarer Prototyp in Figma, bevor programmiert wird",
    "Neue Nutzerführung und UI-Kit, für Plattformen ein vollständiges Designsystem",
    "Übergabe an dein Entwicklerteam mit Spezifikationen"
   ],
   "zusammenfassung": [
-   "Bei STUDIO AAH! gestalte ich digitale Erlebnisse, die Nutzer:innen verstehen: für Webanwendungen, SaaS und Apps. Bevor gestaltet wird, höre ich zu, werte Daten aus und lerne, wer deine Nutzer:innen sind und was sie wirklich brauchen.",
+   "Bei STUDIO AAH! gestalten wir digitale Erlebnisse, die Nutzer:innen verstehen: für Webanwendungen, SaaS und Apps. Bevor gestaltet wird, hören wir zu, werten Daten aus und lernen, wer deine Nutzer:innen sind und was sie wirklich brauchen.",
    "Vom UI/UX Audit Pro bis zum Redesign deiner Webanwendung oder einer Plattform mit vollständigem Designsystem: Mit Wireframes und Prototypen in Figma werden Ideen sichtbar, lange bevor programmiert wird. Das spart Zeit und Geld."
   ],
   "nicht_enthalten": [
@@ -480,16 +480,16 @@
    ],
    [
     "Wie viele Korrekturrunden sind bei STUDIO AAH! im Festpreis enthalten?",
-    "Bei STUDIO AAH! sind in jedem Bereich zwei Korrekturrunden im Festpreis enthalten. Jede weitere Runde rechne ich nach Aufwand ab, mit 50–85 € netto pro Stunde, je nach Unternehmensgröße."
+    "Bei STUDIO AAH! sind in jedem Bereich zwei Korrekturrunden im Festpreis enthalten. Jede weitere Runde rechnen wir nach Aufwand ab, mit 50–85 € netto pro Stunde, je nach Unternehmensgröße."
    ],
    [
     "Wie läuft ein UI/UX-Projekt bei STUDIO AAH! ab?",
     "Bei STUDIO AAH! stellst du dir mit dem Kostenrechner einen unverbindlichen Kostenvoranschlag zusammen. Im kostenlosen Erstgespräch klären wir, wo du stehst, was du willst, was du brauchst und wen du erreichen willst. Danach erhältst du ein Angebot mit Festpreis und schließlich den Vertrag. Größere Projekte zahlst du in 3 Raten: bei Start, nach Freigabe des Konzepts und beim Go-live."
    ]
   ],
-  "loesung_text": "Bevor gestaltet wird, höre ich zu, werte Daten aus und lerne, wer deine Nutzer:innen sind und was sie wirklich brauchen. Mit Wireframes und Prototypen in Figma werden Ideen sichtbar, lange bevor programmiert wird.",
+  "loesung_text": "Bevor gestaltet wird, hören wir zu, werten Daten aus und lernen, wer deine Nutzer:innen sind und was sie wirklich brauchen. Mit Wireframes und Prototypen in Figma werden Ideen sichtbar, lange bevor programmiert wird.",
   "loesung_punkte": [
-   "Website-Check: Ich versetze mich in deine Zielgruppe, nutze deine Website oder Anwendung und zeige, was sich verbessern lässt",
+   "Website-Check: Wir versetzen uns in deine Zielgruppe, nutze deine Website oder Anwendung und zeige, was sich verbessern lässt",
    "Personas: greifbare Abbilder deiner Zielgruppe für Entscheidungen, die nicht aus dem Bauch kommen",
    "Neue Nutzerführung und UI-Kit, für Plattformen ein vollständiges Designsystem"
   ],
@@ -533,7 +533,7 @@
   ],
   "nicht_enthalten": [
    "Durchführung des Webinars: Den Auftritt übernimmst du",
-   "Spätere Textänderungen: Texte liefere ich einmal; übernehme ich Änderungen danach, rechne ich nach Aufwand ab, 50–85 € netto pro Stunde, je nach Unternehmensgröße",
+   "Spätere Textänderungen: Texte liefern wir einmal; übernehmen wir Änderungen danach, rechnen wir nach Aufwand ab, 50–85 € netto pro Stunde, je nach Unternehmensgröße",
    "Lizenzen: zahlst du direkt an den jeweiligen Anbieter",
    "Mehr als zwei Korrekturrunden je Bereich: nach Aufwand, 50–85 € netto pro Stunde, je nach Unternehmensgröße"
   ],
@@ -572,11 +572,11 @@
    ],
    [
     "Kann ich gelieferte Texte später ändern lassen?",
-    "Bei STUDIO AAH! liefere ich Texte einmal. Spätere Änderungen sind in keinem Paket enthalten; übernehme ich sie, rechne ich nach Aufwand ab, mit 50–85 € netto pro Stunde, je nach Unternehmensgröße."
+    "Bei STUDIO AAH! liefern wir Texte einmal. Spätere Änderungen sind in keinem Paket enthalten; übernehmen wir sie, rechnen wir nach Aufwand ab, mit 50–85 € netto pro Stunde, je nach Unternehmensgröße."
    ],
    [
     "Wie viele Korrekturrunden sind bei STUDIO AAH! im Festpreis enthalten?",
-    "Bei STUDIO AAH! sind in jedem Bereich zwei Korrekturrunden im Festpreis enthalten. Jede weitere Runde rechne ich nach Aufwand ab, mit 50–85 € netto pro Stunde, je nach Unternehmensgröße."
+    "Bei STUDIO AAH! sind in jedem Bereich zwei Korrekturrunden im Festpreis enthalten. Jede weitere Runde rechnen wir nach Aufwand ab, mit 50–85 € netto pro Stunde, je nach Unternehmensgröße."
    ],
    [
     "Wie läuft ein Marketing-Auftrag bei STUDIO AAH! ab?",
@@ -607,7 +607,7 @@
   "tag": "ki",
   "titel": "KI-Beratung",
   "seitentitel": "KI-Beratung in Leipzig: Claude für dein Büro einrichten | STUDIO AAH!",
-  "beschreibung": "KI-Beratung aus Leipzig: Ich richte Claude für dein Büro ein, mit Arbeitsordner, Arbeitsanleitung, drei Skills und Projekt-Cockpit. KI-Arbeits-Setup in drei Terminen, 990 € netto.",
+  "beschreibung": "KI-Beratung aus Leipzig: Wir richten Claude für dein Büro ein, mit Arbeitsordner, Arbeitsanleitung, drei Skills und Projekt-Cockpit. KI-Arbeits-Setup in drei Terminen, 990 € netto.",
   "bild": "bilder/leistung-ki.webp",
   "bildalt": "Hände tippen auf einer Laptop-Tastatur, im Hintergrund ein Monitor",
   "icon": "bilder/symbole/skills.svg",
@@ -626,7 +626,7 @@
    "Team-Schulung: praxisnah, verständlich und auf deine Aufgaben zugeschnitten"
   ],
   "zusammenfassung": [
-   "Ich arbeite ausschließlich mit Claude von Anthropic. Darauf richte ich dein Büro ein: mit deinen Projekten, deinen Abläufen und deinen Regeln.",
+   "Wir arbeiten ausschließlich mit Claude von Anthropic. Darauf richten wir dein Büro ein: mit deinen Projekten, deinen Abläufen und deinen Regeln.",
    "Claude lernt dabei mit: Sagst du „merk dir“ oder korrigierst du Claude, macht ein Skill daraus eine feste Regel. Sie gilt ab dann in jedem Chat.",
    "Dafür gibt es das KI-Arbeits-Setup, für Selbstständige und kleine Büros mit bis zu fünf Personen."
   ],
@@ -643,7 +643,7 @@
    ],
    [
     "Geht das auch mit ChatGPT?",
-    "Ich richte das Setup ausschließlich in Claude von Anthropic ein, weil ich selbst jeden Tag damit arbeite und genau weiß, was es kann. Das Prinzip lässt sich aber auf ChatGPT übertragen: Auch dort gibt es Projekte mit eigenen Anweisungen und Dateien, wiederkehrende Aufgaben und Skills nach demselben Prinzip. Welche Funktionen dein Tarif enthält, klären wir im Erstgespräch."
+    "Wir richten das Setup ausschließlich in Claude von Anthropic ein, weil ich selbst jeden Tag damit arbeite und genau weiß, was es kann. Das Prinzip lässt sich aber auf ChatGPT übertragen: Auch dort gibt es Projekte mit eigenen Anweisungen und Dateien, wiederkehrende Aufgaben und Skills nach demselben Prinzip. Welche Funktionen dein Tarif enthält, klären wir im Erstgespräch."
    ],
    [
     "Was ist ein Skill?",
@@ -651,14 +651,14 @@
    ],
    [
     "Welchen Tarif von Claude brauche ich?",
-    "Einen bezahlten Tarif, den du direkt bei Anthropic buchst. Arbeitest du nur mit eigenen Texten und anonymisierten Daten, reicht der Tarif Pro; das Training mit deinen Chats schalten wir gemeinsam aus. Soll Claude dein Geschäftspostfach oder Kundendaten lesen, empfehle ich Claude Team: Dort gilt ein Vertrag zur Auftragsverarbeitung. Ob deine Datenverarbeitung zulässig ist, entscheidest du bzw. deine Datenschutzberatung."
+    "Einen bezahlten Tarif, den du direkt bei Anthropic buchst. Arbeitest du nur mit eigenen Texten und anonymisierten Daten, reicht der Tarif Pro; das Training mit deinen Chats schalten wir gemeinsam aus. Soll Claude dein Geschäftspostfach oder Kundendaten lesen, empfehlen wir Claude Team: Dort gilt ein Vertrag zur Auftragsverarbeitung. Ob deine Datenverarbeitung zulässig ist, entscheidest du bzw. deine Datenschutzberatung."
    ],
    [
     "Verschickt Claude etwas ohne mich?",
     "Nein. Claude fragt vor jeder Aktion nach; gesendet wird nur mit deinem Klick. Auch geplante Aufgaben, die zum Beispiel jeden Morgen den Tagesüberblick schreiben, senden, löschen und veröffentlichen nichts."
    ],
    [
-    "Bekommst du Zugriff auf meine Konten und Daten?",
+    "Bekommt STUDIO AAH! Zugriff auf meine Konten und Daten?",
     "Nur im Termin und nur so weit nötig: Wir richten alles gemeinsam ein. Passwörter tippst du selbst ein. Zugangsdaten werden nicht gespeichert, die Termine nicht aufgezeichnet. Auf Wunsch gibt es einen Vertrag zur Auftragsverarbeitung."
    ],
    [
@@ -667,10 +667,10 @@
    ],
    [
     "Wie viel Zeit kostet mich das?",
-    "Etwa 15 Minuten für den Fragebogen und die drei Termine aus dem Prozess. Danach beantworte ich 14 Tage lang deine Fragen per E-Mail oder im Online-Meeting."
+    "Etwa 15 Minuten für den Fragebogen und die drei Termine aus dem Prozess. Danach beantworten wir 14 Tage lang deine Fragen per E-Mail oder im Online-Meeting."
    ]
   ],
-  "loesung_text": "Im KI-Check schaue ich mir an, wo in deinem Alltag Zeit verloren geht und wo KI-Werkzeuge wirklich entlasten. In der KI-Einführung setzen wir die Empfehlungen um.",
+  "loesung_text": "Im KI-Check schauen wir uns an, wo in deinem Alltag Zeit verloren geht und wo KI-Werkzeuge wirklich entlasten. In der KI-Einführung setzen wir die Empfehlungen um.",
   "loesung_punkte": [
    "KI-Check: Analyse deiner Abläufe und ein Empfehlungsbericht",
    "Auswahl und Einrichtung passender KI-Werkzeuge, mit Blick auf den Datenschutz",
@@ -772,7 +772,7 @@
     ],
     [
      "Kalender, Mail und Projekttool",
-     "Wo es passt, verbinde ich Claude damit."
+     "Wo es passt, verbinden wir Claude damit."
     ],
     [
      "Rundgang und Handbuch",
@@ -874,7 +874,7 @@
   ],
   "zusammenfassung": [
    "Professionelles Design für Gedrucktes: von der Visitenkarte über Flyer, Postkarte und Broschüre bis zur Unternehmenspräsentation und zur mehrseitigen Publikation wie Magazin, Katalog oder Jahresbericht.",
-   "Du erhältst druckfertige Druckdaten, die Unternehmenspräsentation zusätzlich als PDF für Gespräche, Angebote und Messen. Bei mehrseitigen Publikationen begleite ich auch den Druck."
+   "Du erhältst druckfertige Druckdaten, die Unternehmenspräsentation zusätzlich als PDF für Gespräche, Angebote und Messen. Bei mehrseitigen Publikationen begleiten wir auch den Druck."
   ],
   "nicht_enthalten": [
    "Druckkosten",
@@ -916,7 +916,7 @@
    ]
   ],
   "termine": "Termine nach Absprache, online über Google Meet oder Teams.",
-  "loesung_text": "Professionelles Design für Gedrucktes, von der Visitenkarte bis zum Magazin. Du erhältst druckfertige Druckdaten; bei mehrseitigen Publikationen begleite ich auch den Druck.",
+  "loesung_text": "Professionelles Design für Gedrucktes, von der Visitenkarte bis zum Magazin. Du erhältst druckfertige Druckdaten; bei mehrseitigen Publikationen begleiten wir auch den Druck.",
   "loesung_punkte": [
    "Unternehmenspräsentation mit bis zu 20 Folien, als PDF und für den Druck",
    "Magazin, Katalog oder Jahresbericht als mehrseitige Publikation mit Druckbegleitung",
@@ -1088,7 +1088,7 @@
    "titel": "Gestaltung mit künstlerischem Hintergrund.",
    "text": [
     "Ich habe an der Bauhaus-Universität Weimar Freie Kunst studiert und 2015 für ein großformatiges Aquarell den Preis der Stiftung Ulla und Eberhard Jung erhalten; die Arbeit gehört heute zur Sammlung des Neuen Museums Weimar. Diesen künstlerischen Hintergrund bringe ich in jedes Motion Design mit.",
-    "Beispiele zeige ich hier bald."
+    "Beispiele zeigen wir hier bald."
    ],
    "link": true
   },
@@ -1131,7 +1131,7 @@
    "Lieber selbst pflegen? Schulung als PDF-Anleitung für 15 € oder als Online-Termin für 70 € (netto)"
   ],
   "zusammenfassung": [
-   "Mit dem Retainer entwickle ich deine Website nach dem Start weiter: Ich tausche Texte und Bilder aus, erstelle neue Unterseiten und bearbeite Abschnitte. Abgerechnet wird nach Aufwand, 50–85 € netto pro Stunde, je nach Unternehmensgröße.",
+   "Mit dem Retainer entwickeln wir deine Website nach dem Start weiter: Wir tauschen Texte und Bilder aus, erstellen neue Unterseiten und bearbeiten Abschnitte. Abgerechnet wird nach Aufwand, 50–85 € netto pro Stunde, je nach Unternehmensgröße.",
    "Der Retainer ist keine Wartung. Die Wartung ab 45 € netto im Monat ist die rein technische Pflege deiner WordPress-Website: Updates von WordPress, Plugins und Themes, technische Überwachung und Sicherheitschecks."
   ],
   "nicht_enthalten": [
@@ -1146,7 +1146,7 @@
    ],
    [
     "Betreust du auch selbst gebaute Websites?",
-    "Ja. Auch Websites, die du selbst gebaut hast, zum Beispiel per Vibe-Coding mit KI oder im Baukasten, betreue ich im Retainer weiter: Texte und Bilder austauschen, neue Unterseiten, laufende Optimierung. Vorher sehe ich mir die Website im kostenlosen Website-Check an."
+    "Ja. Auch Websites, die du selbst gebaut hast, zum Beispiel per Vibe-Coding mit KI oder im Baukasten, betreuen wir im Retainer weiter: Texte und Bilder austauschen, neue Unterseiten, laufende Optimierung. Vorher sehen wir uns die Website im kostenlosen Website-Check an."
    ],
    [
     "Was ist ein Retainer?",
@@ -1176,7 +1176,7 @@
    "ohneZusatz": true
   },
   "termine": "Alle zwei Wochen bis einmal im Monat einen Abstimmungstermin, online über Google Meet oder Teams, je nachdem, was du brauchst.",
-  "loesung_text": "Mit dem Retainer entwickle ich deine Website nach dem Start weiter. Abgerechnet wird nach Aufwand, 50–85 € netto pro Stunde, je nach Unternehmensgröße. Der Retainer ist keine Wartung: Die Wartung ist die rein technische Pflege.",
+  "loesung_text": "Mit dem Retainer entwickeln wir deine Website nach dem Start weiter. Abgerechnet wird nach Aufwand, 50–85 € netto pro Stunde, je nach Unternehmensgröße. Der Retainer ist keine Wartung: Die Wartung ist die rein technische Pflege.",
   "loesung_punkte": [
    "Texte und Bilder austauschen",
    "Neue Unterseiten erstellen",

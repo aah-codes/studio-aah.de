@@ -536,7 +536,7 @@
           if (!text) { form.kommentar.focus(); return; }
           const b = form.querySelector('button'); b.disabled = true; b.textContent = 'Wird gesendet …';
           senden({ bewertung: '👎 nicht gut', kommentar: text, '_email.subject': `Rückmeldung ${werkzeug}: 👎 mit Kommentar` })
-            .then(() => { danach.innerHTML = '<p>Danke, das hilft mir weiter.</p>'; })
+            .then(() => { danach.innerHTML = '<p>Danke, das hilft uns weiter.</p>'; })
             .catch(() => { b.disabled = false; b.textContent = 'Absenden'; form.insertAdjacentHTML('beforeend', '<p class="hinweis-klein">Das hat leider nicht geklappt. Bitte versuch es noch einmal.</p>'); });
         });
       }).catch(() => {

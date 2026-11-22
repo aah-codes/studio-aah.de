@@ -74,7 +74,7 @@ def faq(liste, titel='Ehrliche Antworten'):
 
 def abschluss(pre, text=None, knopf=None):
     """Gemeinsamer Abschluss; text und knopf (Ziel, Beschriftung) nur, wo der Website-Check nicht passt (z. B. KI-Zeitrechner)."""
-    text = text or 'Mit dem kostenlosen <span class="ohne-umbruch">Website-Check</span> – oder einem Gespräch, in dem du mir erzählst, wo es hakt.'
+    text = text or 'Mit dem kostenlosen <span class="ohne-umbruch">Website-Check</span> – oder einem Gespräch, in dem du uns erzählst, wo es hakt.'
     ziel, aufschrift = knopf or ('website-check/', 'Kostenloser <span class="ohne-umbruch">Website-Check&nbsp;<span aria-hidden="true">→</span></span>')
     return ('  <section class="weg-ziel" aria-labelledby="weg-ziel-titel">\n  <p class="meta">Erster Schritt</p>\n'
             '  <h2 class="gr-h2 wz-eine" id="weg-ziel-titel">Fangen wir klein an.</h2>\n'
@@ -128,10 +128,10 @@ def problemseite(p):
              '      <h2 class="gr-h3" id="kennen-titel">Woran du es merkst</h2>\n      <ul class="fw-liste">\n'
              + '\n'.join(f'        <li>{esc(s)}</li>' for s in p['symptome']) + '\n      </ul>\n    </div>\n'
              f'    <div>\n      <p class="meta">Was es dich kostet</p>\n      <p class="fw-kosten">{esc(p["kosten"])}</p>\n    </div>\n  </section>',
-             '  <section class="ablauf-start" aria-labelledby="loesung-titel">\n    <div class="sektionskopf"><p class="meta">So gehe ich vor</p>'
+             '  <section class="ablauf-start" aria-labelledby="loesung-titel">\n    <div class="sektionskopf"><p class="meta">So gehen wir vor</p>'
              '<h2 class="gr-h2" id="loesung-titel">Drei Schritte.</h2></div>\n' + schritte(p['schritte']) + '\n  </section>',
              '  <section class="haken fw-nutzen" aria-labelledby="nutzen-titel">\n    <div class="sektionskopf"><p class="meta">Was du davon hast</p>'
-             '<h2 class="gr-h2" id="nutzen-titel">Mit mir an deiner Seite.</h2></div>\n'
+             '<h2 class="gr-h2" id="nutzen-titel">Mit uns an deiner Seite.</h2></div>\n'
              + karten([{'titel': t, 'text': x} for t, x in p['nutzen']], pre, 'haken-karten fw-drei') + '\n  </section>',
              beleg(p.get('beleg'), pre),
              faq(p['faq']),   # „Passende Leistungen – Damit arbeite ich“ entfernt (Anna 12.11.2026)
@@ -160,7 +160,7 @@ def branchen_kacheln(liste, pre, fotos=False):
 
 def startseite_branchen():
     """Branchen-Mosaik der Startseite (Anna 12.11.2026, Muster IT Sonix): Text oben links, dann alle Branchen als Kacheln."""
-    kopf = ('      <li class="br-kopf"><p class="meta">Branchen</p><h2 class="gr-h2" id="branchen-titel">Für wen ich <span class="korrektur ko-unten"><span class="notiz notiz-durch" aria-hidden="true">arbeite</span><span class="hand">mitdenke</span></span></h2>\n'
+    kopf = ('      <li class="br-kopf"><p class="meta">Branchen</p><h2 class="gr-h2" id="branchen-titel">Für wen wir <span class="korrektur ko-unten"><span class="notiz notiz-durch" aria-hidden="true">arbeiten</span><span class="hand">mitdenken</span></span></h2>\n'
             '        <p>Mittelständische B2B-Unternehmen. Wähl deine Branche.</p></li>\n')
     # Reihenfolge nach Potenzial (Anna 17.11.2026: Gesundheit nicht prominent); die breite Kachel ist Platz 6 (Beratung)
     reihenfolge = ['bau', 'software', 'elektro', 'energie', 'industrie', 'beratung', 'gesundheit']
@@ -188,7 +188,7 @@ def flipkarten(eintraege, pre):
     for n, e in enumerate(eintraege, 1):
         h.append(f'      <li class="haken-karte hk-flip"><div class="hk-innen"><div class="hk-vorne"><span class="hk-nr">{n:02d}</span><h3>{esc(e["titel"].rstrip("."))}</h3>'
                  f'<span class="hk-zeichen" aria-hidden="true">↻</span></div><div class="haken-nutzen hk-hinten">{bilder.get(e["href"], ersatz)}'
-                 f'<span class="meta">Mit mir an deiner Seite</span><p>{esc(e["text"])}</p>'
+                 f'<span class="meta">Mit uns an deiner Seite</span><p>{esc(e["text"])}</p>'
                  f'<a class="textlink" href="{link(pre, e["href"])}">{esc(e["linktext"])}{PFEIL}</a></div></div></li>')
     h.append('    </ol>')
     return '\n'.join(h)
@@ -234,7 +234,7 @@ def weitere_branchen(andere, pre):
 VORGEHEN = [('Verstehen', 'Erst zuhören, dann gestalten.', 'Website-Check, Gespräche mit dir und deinem Team, Blick auf Mitbewerber und Zielgruppe.'),
             ('Ideation', 'Struktur und erster Entwurf.', 'Sitemap, Inhalte und der Entwurf der Startseite. Danach entscheidest du: weiter oder Schluss. Du zahlst nur, was abgeschlossen ist.'),
             ('Umsetzung', 'Design und Entwicklung.', 'Alle Seiten, Texte und Bilder, Feedback an festen Punkten. So wenig Aufwand für dich wie möglich.'),
-            ('Launch & Begleitung', 'Live, und es geht weiter.', 'Deine Website geht online. Auf Wunsch betreue ich sie danach als Retainer.')]
+            ('Launch & Begleitung', 'Live, und es geht weiter.', 'Deine Website geht online. Auf Wunsch betreuen wir sie danach als Retainer.')]
 
 
 def vorgehen_schritte():
@@ -331,7 +331,7 @@ def produktseite(q):
              f'      <p class="fw-kosten">{esc(q["erklaerung"])}</p>\n    </div>\n'
              '    <div>\n      <p class="meta">Für dich, wenn</p>\n      <h2 class="gr-h3">Woran du es merkst</h2>\n      <ul class="fw-liste">\n'
              + '\n'.join(f'        <li>{esc(x)}</li>' for x in q['fuer']) + '\n      </ul>\n    </div>\n  </section>',
-             '  <section class="ablauf-start" aria-labelledby="stufen-titel">\n    <div class="sektionskopf"><p class="meta">So gehe ich vor</p>'
+             '  <section class="ablauf-start" aria-labelledby="stufen-titel">\n    <div class="sektionskopf"><p class="meta">So gehen wir vor</p>'
              '<h2 class="gr-h2" id="stufen-titel">Drei Stufen.</h2></div>\n' + schritte(q['stufen']) + '\n  </section>',
              '  <section class="fw-paket" aria-labelledby="paket-titel">\n    <div class="fw-paket-box">\n      <p class="meta">Das Paket</p>\n'
              '      <h2 class="gr-h3" id="paket-titel">Das ist enthalten</h2>\n      <ul class="fw-liste">\n'
@@ -430,7 +430,7 @@ def ki_rechner(q):
       {daumen("KI-Zeitrechner", "Wie hat dir der KI-Zeitrechner gefallen?", pre)}
     </div>
   </section>''',
-             '  <section class="ablauf-start" aria-labelledby="grund-titel">\n    <div class="sektionskopf"><p class="meta">So führe ich KI ein</p>'
+             '  <section class="ablauf-start" aria-labelledby="grund-titel">\n    <div class="sektionskopf"><p class="meta">So führen wir KI ein</p>'
              '<h2 class="gr-h2" id="grund-titel">Aufgaben statt Stellen</h2></div>\n' + schritte(q['grundsaetze']) + '\n  </section>',
              abschluss(pre, 'Mit einem Gespräch über die Aufgaben deines Teams und darüber, wofür du mehr Zeit haben möchtest.',
                        ('kontakt/', f'Beratung anfragen{PFEIL}'))]

@@ -167,7 +167,7 @@ def dachzeile(m, h):
 def ablauf_eigen(pre, schritte, hinweis=''):
     """Eigene Schritte einer Leistung als horizontale Zeitleiste mit Punkten (zl-quer, wie Startseite und Profil; Anna 16.11.2026)."""
     li = ''.join(f'<li><span class="zlq-nr">{i:02d}</span><div class="zl-text">{dachzeile(m, h)}<h3>{trennen(esc(h))}</h3><p class="gedaempft">{trennen(esc(x))}</p></div></li>' for i, (m, h, x) in enumerate(schritte, 1))
-    return (f'  <section class="prozess-kompakt" id="ablauf" aria-labelledby="prozess">\n    <p class="meta">Wie ich arbeite</p>\n    <h2 class="gr-h2" id="prozess">Prozess</h2>\n'
+    return (f'  <section class="prozess-kompakt" id="ablauf" aria-labelledby="prozess">\n    <p class="meta">Wie wir arbeiten</p>\n    <h2 class="gr-h2" id="prozess">Prozess</h2>\n'
             + (f'    <p class="lsx-ablauf-hinweis">{esc(hinweis)}</p>\n' if hinweis else '') +
             f'    <ol class="zl-quer zlq-{len(schritte)}">{li}</ol>\n    <p><a class="button" href="{pre}kontakt/">Beratung anfragen <span aria-hidden="true">→</span></a></p>\n  </section>')
 
@@ -254,7 +254,7 @@ def fragen_fuer(c, termine):
     """FAQ der Seite: eigene Fragen, Frage zu den Abstimmungsterminen, gemeinsame Fragen aller Leistungsseiten."""
     satz = termine if termine.startswith('Termine') else termine[0].lower() + termine[1:]  # Substantiv bleibt groß
     zusatz = '' if 'nach Absprache' in termine else ' Weitere Termine vereinbaren wir nach Absprache.'
-    # Antwort ohne „Bei STUDIO AAH!“ (Anna 16.11.2026: in der Antwort Ich-Form oder allgemein); entfällt, wo der Prozess die Termine zeigt
+    # Antwort ohne „Bei STUDIO AAH!“ (Anna 16.11.2026; seit 23.11.2026 Wir-Form oder allgemein); entfällt, wo der Prozess die Termine zeigt
     termin_frage = [['Wie oft gibt es bei STUDIO AAH! Abstimmungstermine?', 'Es gibt ' + satz + zusatz]] if c.get('termine_zeigen', True) else []
     return c['faq'] + termin_frage + ([] if c.get('ohne_gemeinsame_fragen') else GEMEINSAM)
 
@@ -420,13 +420,13 @@ def problem_loesung(c, g, pre, link):
     punkte = '' if c.get('loesungen') else ''.join(f'<li>{esc(x)}</li>' for x in c['loesung_punkte'][:3])
     grundsatz = '' if c.get('grafik') == 'corporate-identity' or any('Form follows' in x for x in c.get('loesungen', [])) else (
         f'<p class="lsx-grundsatz"><a class="textlink" href="{pre}service/markenbildung/#corporate-identity">Form follows function, die Form folgt der Funktion. '
-        'Grundlage für alles, was ich gestalte, ist die Corporate Identity <span aria-hidden="true">→</span></a></p>')
+        'Grundlage für alles, was wir gestalten, ist die Corporate Identity <span aria-hidden="true">→</span></a></p>')
     # Webdesign: Website-Check als zweiter Knopf (Anna 25.10.2026: niedrigschwelligster Einstieg)
     check = (f'<a class="button button-zweit" href="{pre}website-check/">Kostenloser <span class="ohne-umbruch">Website-Check&nbsp;<span aria-hidden="true">→</span></span></a> '
              if g['id'] == 'website' and MIT_CHECK else '')
     # Content-First: keine Dopplung. Wiederholt „loesung_text“ den Einstieg (Was ist das?), entfällt die Lösungskarte
     doppelt = any(c['loesung_text'][:30] == z[:30] for z in c.get('zusammenfassung', []))
-    loesung = '' if doppelt else f'''<div class="lsx-pl-loesung"><p class="meta">So mache ich es</p><p class="lsx-pl-text">{esc(c['loesung_text'])}</p>{f'<ul>{punkte}</ul>' if punkte else ''}
+    loesung = '' if doppelt else f'''<div class="lsx-pl-loesung"><p class="meta">So machen wir es</p><p class="lsx-pl-text">{esc(c['loesung_text'])}</p>{f'<ul>{punkte}</ul>' if punkte else ''}
         {grundsatz}</div>'''
     if doppelt and grundsatz:
         probleme_extra = grundsatz.replace('lsx-grundsatz', 'lsx-grundsatz lsx-grundsatz-hell')
@@ -619,7 +619,7 @@ def muster_so(c, m):
     teile = ''
     if m.get('so_titel'):
         teile = (f'  <section class="lsx-m-so" aria-labelledby="so-titel">\n'
-                 f'    <p class="meta">So arbeite ich</p>\n'
+                 f'    <p class="meta">So arbeiten wir</p>\n'
                  f'    <h2 class="gr-h2" id="so-titel">{esc(m["so_titel"]).replace(", ", ",<br>", 1)}</h2>\n'
                  f'  </section>\n')
     if c.get('herz'): teile += grafik('website-oekosystem')
@@ -689,7 +689,6 @@ def muster_main(c, g, pre, vergleich_html, prozess, fragen, link, mit_ablauf):
     m = c['muster']
     if m.get('ablauf_dauer'):
         prozess = prozess.replace('<ol class="zl-quer', f'<p class="lsx-m-dauer">{esc(m["ablauf_dauer"])}</p>\n    <ol class="zl-quer', 1)
-    prozess = prozess.replace('<p class="meta">Wie ich arbeite</p>', '<p class="meta">Wie wir arbeiten</p>', 1)   # Anna 22.11.2026
     warum = gegenueber(c, g, pre, link) if c.get('gegenueber') else muster_warum(c, m)
     teile = [muster_kopf(c, m, pre), muster_kurz(m), muster_leiste(c, m, mit_ablauf), muster_anlaesse(m), warum, anwendungen(c, pre),
              muster_so(c, m), wege(c, pre), praxis(c, pre), recht(c), muster_ergebnisse(m).replace("{PRE}", pre), prozess,
