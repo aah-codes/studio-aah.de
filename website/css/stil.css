@@ -5664,3 +5664,5 @@ main.lsx-farbe > .lsx-m-anlaesse:not(#x) { background: var(--lf-anlass, var(--lf
 main.lsx-farbe > .lsx-m-anlaesse:not(#x) :is(h2, .meta, li, p) { color: inherit; }
 main.lsx-farbe > .lsx-m-anlaesse:not(#x) .meta::before { background: currentColor; }
 main.lsx-farbe > .lsx-m-anlaesse:not(#x) .lsx-m-anlaesse-liste li { border-top-color: currentColor; }
+/* Branchen überall auf Weiß (Anna 22.11.2026: „immer weißer hintergrund für branchen“) */
+main > :is(.br-start, .br-weitere-branchen, section:has(#branchen-titel)):not(#x), .stil-b.v-raeume .br-start:not(#x) { background: var(--farbe-weiss); }
