@@ -5659,3 +5659,8 @@ main > :is(.preis-schluss, .start-schluss, .lp-abschluss):not(#x) { background: 
 main > :is(.lsx-referenzen, .start-projektliste, .ref-uebersicht):not(#x), main > section:has(.referenz-rahmen, .ref-wechsel):not(#x) { background: var(--farbe-weiss); }
 /* Website-Check: Symbol über dem Titel links wie der Titel */
 .lp-hero-mitte .wc-hero-icon { margin-left: 0; margin-right: 0; }
+/* Anlässe je Leistung: eigener Grund und Schrift möglich (Markenbildung Rot tief, weiß; Anna 22.11.2026) */
+main.lsx-farbe > .lsx-m-anlaesse:not(#x) { background: var(--lf-anlass, var(--lf)); color: var(--lf-anlass-text, var(--farbe-dunkel)); }
+main.lsx-farbe > .lsx-m-anlaesse:not(#x) :is(h2, .meta, li, p) { color: inherit; }
+main.lsx-farbe > .lsx-m-anlaesse:not(#x) .meta::before { background: currentColor; }
+main.lsx-farbe > .lsx-m-anlaesse:not(#x) .lsx-m-anlaesse-liste li { border-top-color: currentColor; }
