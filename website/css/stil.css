@@ -5679,3 +5679,15 @@ a:hover > .pk-collage .pk-site, a:focus-visible > .pk-collage .pk-site, .pg-kart
 /* Text unter den Projektkarten so klein wie Name und Funktion bei den Stimmen (Anna 22.11.2026) */
 .pk .pk-name:not(#x) { font-size: 18px; font-weight: 600; line-height: 1.2; margin-top: 14px; }   /* wie .stimme .person .alt-h6 */
 .pk .pk-satz:not(#x), .pk .pk-link:not(#x), .pk .pk-link:not(#x) a { font-size: 15px; line-height: 1.4; }   /* wie .stimme .person .meta */
+/* Website-Ausschnitt reicht immer bis zur Unterkante der Karte (Anna 22.11.2026: „website bis runter, wie in der vorlage“) */
+.pk-collage .pk-site:not(#x) { top: 9%; bottom: auto; height: 91%; object-fit: cover; object-position: top center; }
+/* Startseite Hero: kurz zu Anna unten links mit Bild (Anna 22.11.2026, Vorbild digitalact.webflow.io) */
+.kr-person { margin: 0 0 32px; max-width: 46ch; }
+.kr-person-kopf { display: flex; align-items: center; gap: 16px; }
+.kr-person-bild { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; flex: none; }
+.kr-person figcaption { display: grid; gap: 2px; }
+.kr-person-name { font-weight: 600; font-size: 18px; line-height: 1.2; }   /* wie Name bei den Stimmen */
+.kr-person-rolle { font-size: 15px; line-height: 1.4; color: var(--aah-grau); }
+.kr-person-zitat { margin: 16px 0 0; font-size: var(--groesse-3); line-height: 1.45; }
+@media (max-width: 767.98px) { .kr-person { margin-bottom: 24px; } .kr-person-bild { width: 56px; height: 56px; } }
+@media (min-width: 768px) { .kr-person-zitat .kr-zeile { display: block; } }   /* Umbruch vor „dich ehrlich berät.“ (Anna 22.11.2026) */
