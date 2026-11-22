@@ -213,8 +213,10 @@ def projekte_abschnitt(b, pre):
     eine = ' br-stimmen-eine' if len(stimmen) == 1 else ''   # eine Stimme: mittig, doppelt so breit (Anna 13.11.2026: kein leerer Weißraum)
     st = f'\n    <div class="stimmen br-stimmen{eine}">\n{I.stimmen(stimmen, pre)}\n    </div>' if stimmen else ''
     return ('  <section class="start-projekte br-projekte" id="referenz" aria-labelledby="referenzen-titel">\n'
-            '    <div class="sektionskopf"><p class="meta">Referenzen</p><h2 class="gr-h2 pa-titel" id="referenzen-titel"><span class="korrektur korrektur-partner korrektur-links"><span class="notiz notiz-durch" aria-hidden="true">Projekte</span><span class="hand">Partnerschaften</span></span></h2></div>\n'
-            f'{referenz_mit_zahlen(b, liste, pre)}{st}\n  </section>')
+            + ('    <div class="sektionskopf"><p class="meta">Referenz</p><h2 class="gr-h2 pa-titel" id="referenzen-titel">Ein Beispiel aus der Praxis</h2></div>\n'  # nur ein Projekt (Anna 23.11.2026)
+               if len(liste) == 1 else
+               '    <div class="sektionskopf"><p class="meta">Referenzen</p><h2 class="gr-h2 pa-titel" id="referenzen-titel"><span class="korrektur korrektur-partner korrektur-links"><span class="notiz notiz-durch" aria-hidden="true">Projekte</span><span class="hand">Partnerschaften auf Augenhöhe</span></span></h2></div>\n')
+            + f'{referenz_mit_zahlen(b, liste, pre)}{st}\n  </section>')
 
 
 def zahlen_kasten(titel, zahlen):
