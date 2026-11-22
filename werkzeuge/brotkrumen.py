@@ -43,6 +43,22 @@ def ziele():
             yield f'blog/{seite.parent.name}/', eltern, titel
 
 
+def im_hero(text, pfad, eltern, titel):
+    """Seiten mit Hero wie die Leistungsseiten: Brotkrumen als Dachzeile im Hero statt eigener Leiste (Anna 23.11.2026)."""
+    m = re.search(r'<section class="seitenkopf lsx-kopf[^"]*"[^>]*>\n', text)
+    if not m:
+        return text, False
+    pre = '../' * pfad.strip('/').count('/') + '../'
+    links = ' / '.join(f'<a href="{pre}{ziel}">{html.escape(name)}</a>' for name, ziel in eltern)
+    zeile = f'    <p class="meta brotkrumen">{links} / <span aria-current="page">{html.escape(titel)}</span></p>\n'
+    ende = text.index('</section>', m.end())
+    kopf = text[m.end():ende]
+    kopf = re.sub(r'    <p class="meta[^"]*">.*?</p>\n', '', kopf, count=1)  # alte Dachzeile oder Brotkrumen
+    icon = re.match(r'(    <img class="lsx-kopf-icon"[^>]*>\n)', kopf)
+    kopf = (icon.group(1) + zeile + kopf[icon.end():]) if icon else zeile + kopf
+    return text[:m.end()] + kopf + text[ende:], True
+
+
 def block(pfad, eltern, titel):
     pre = '../' * pfad.strip('/').count('/') + '../'
     links = ' / '.join(f'<a href="{pre}{ziel}">{html.escape(name)}</a>' for name, ziel in eltern)
@@ -66,6 +82,9 @@ def main():
             continue
         text = datei.read_text(encoding='utf-8')
         neu = block(pfad, eltern, titel)
+        text, hero = im_hero(text, pfad, eltern, titel)
+        if hero:  # sichtbar nur im Hero, die strukturierten Daten bleiben
+            neu = re.sub(r'<nav class="bk-nav[^"]*"[^>]*>.*?</nav>\n', '', neu, flags=re.S)
         if '<!-- BROTKRUMEN:START -->' in text:
             text = re.sub(r'<!-- BROTKRUMEN:START -->.*?<!-- BROTKRUMEN:ENDE -->', lambda m: neu, text, flags=re.S)
         else:
