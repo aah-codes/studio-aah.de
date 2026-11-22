@@ -61,6 +61,7 @@
    "ohne_film": true
   },
   "slug": "bauer",
+  "vorschau": "bilder/referenzen/vorschau/bauer.webp",
   "case": true,
   "kopf": "Rebranding & Website",
   "jahr": "2026",
@@ -2498,6 +2499,7 @@
    "bild": "bilder/mockups/druck-schreibtisch.webp"
   },
   "slug": "goldhammer",
+  "vorschau": "bilder/referenzen/vorschau/goldhammer.webp",
   "case": true,
   "hauptvariante": "b",
   "varianten": {
@@ -2937,6 +2939,7 @@
   },
   "stimme": "Franziska Weihmann",
   "slug": "deinetwegen",
+  "vorschau": "bilder/referenzen/vorschau/deinetwegen.webp",
   "case": true,
   "kopf": "Branding & Onepager",
   "jahr": "2024",
@@ -3328,6 +3331,7 @@
    "desktop": "bilder/referenzen/leben-website.webp?v=2"
   },
   "slug": "down-to-earth",
+  "vorschau": "bilder/referenzen/vorschau/down-to-earth.webp",
   "case": true,
   "hauptvariante": "b",
   "varianten": {
@@ -3728,6 +3732,7 @@
    "browser": "bilder/referenzen/jana-website.jpg"
   },
   "slug": "jana-voigtmann",
+  "vorschau": "bilder/referenzen/vorschau/jana-voigtmann.webp",
   "case": true,
   "kopf": "Website",
   "jahr": "2022",

@@ -621,7 +621,9 @@ LEISTUNGSFARBE = {'Markenbildung': (ROT, PINK), 'Webdesign': (HIMMEL, ORCHIDEE),
 def leistungsfarbe(c):
     a, b = next((v for k, v in LEISTUNGSFARBE.items() if c['titel'].startswith(k)), (HIMMEL, ORCHIDEE))
     mix = lambda v, t: '#%02X%02X%02X' % tuple(round(int(v[i:i + 2], 16) * (1 - t) + 255 * t) for i in (1, 3, 5))
-    return f'--lf: {a}; --lf-zart: {mix(a, .55)}; --lf-hauch: {mix(a, .8)}; --lf2: {b}; --lf2-zart: {mix(b, .55)}'
+    # Markenbildung: Warum-Zettel in Pink tief mit weißer Schrift statt Hellrot (Anna 22.11.2026: „hellrot gefällt mir nicht – besser pink … mit weißer schrift“)
+    zettel = '; --lf-zettel: #CB0061; --lf-zettel-text: #FFFFFF' if c['titel'].startswith('Markenbildung') else ''
+    return f'--lf: {a}; --lf-zart: {mix(a, .55)}; --lf-hauch: {mix(a, .8)}; --lf2: {b}; --lf2-zart: {mix(b, .55)}' + zettel
 
 
 def muster_main(c, g, pre, vergleich_html, prozess, fragen, link, mit_ablauf):

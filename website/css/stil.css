@@ -4752,8 +4752,7 @@ body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp)
 .korrektur .hand { position: absolute; left: 6%; top: 92%; white-space: nowrap; font: 400 clamp(17px, 1.9vw, 28px)/1.1 "Architects Daughter", "Comic Sans MS", cursive;
   text-transform: uppercase; letter-spacing: .22em; color: var(--bb-rot); rotate: -3deg; opacity: 0; translate: 0 6px; transition: opacity .5s ease-out .9s, translate .5s ease-out .9s; }
 .korrektur:has(.ist-gezeichnet) .hand { opacity: 1; translate: 0 0; }
-.weg-ziel .korrektur .hand, .faq.ehrlich .korrektur .hand { color: var(--farbe-dunkel); }
-.faq.ehrlich h2 .korrektur .hand { color: var(--farbe-dunkel); top: 108%; }
+.faq.ehrlich h2 .korrektur .hand { top: 108%; }
 .stil-b.v-raeume :is(.start-projektliste, .faq.ehrlich, .weg-ziel) h2 { margin-bottom: clamp(40px, 4vw, 64px); }
 .weg-ziel .korrektur .hand { left: 4%; top: auto; bottom: 94%; }   /* über der Zahl, sonst trifft sie die zweite Zeile */
 @media (max-width: 767.98px) { .korrektur .hand { white-space: normal; width: max-content; max-width: 70vw; } }
@@ -5403,7 +5402,7 @@ button, input, select, textarea { font-family: inherit; }
    ========================================================= */
 :root { --aah-blau: #2a5fe6; --aah-gelb: #fff329; --aah-pink: #ff4fa3; --aah-orchidee: #ef87f9; --aah-mint: #07f0a5; --aah-himmelblau: #5fd2ff; --aah-rot: #ff3b2f;
   --aah-pink-hauch: #ffdced; --aah-orchidee-hauch: #fce7fe; --aah-mint-hauch: #cdfced; --aah-himmelblau-hauch: #dff6ff; --aah-gelb-hauch: #fffdd4;
-  --aah-mint-tief: #047d56; --aah-rot-tief: #bf0000; --aah-grau: #5b5f63; --aah-pink-zart: #ffb0d6; --aah-orchidee-zart: #f8c9fc; }
+  --aah-mint-tief: #047d56; --aah-rot-tief: #c80c00; --aah-pink-tief: #cb0061; --aah-grau: #5b5f63; --aah-pink-zart: #ffb0d6; --aah-orchidee-zart: #f8c9fc; }
 /* Räume der Leistungsseiten: Farbe nach Aufgabe des Abschnitts, Hauch-Stufe, dazwischen Weiß */
 main.lsx-muster > :is(section, nav):not(.seitenkopf) { margin-top: 0; margin-bottom: 0; }
 main.lsx-muster > section:not(.seitenkopf) { padding-top: 96px; padding-bottom: 96px; }
@@ -5559,3 +5558,76 @@ main.lsx-farbe > .lsx-m-warum .lsx-pl-zettel li:nth-child(n) { background: var(-
 main > :is(.lsx-stimmen, .stimmen-abschnitt), main.lsx-farbe > .lsx-stimmen { background: url(../bilder/papier/papier-a.webp) 0 0 / 256px repeat; }
 main > :is(.lsx-referenzen, .start-projektliste, .br-ref-abschnitt), main.lsx-farbe > .lsx-referenzen, main[data-seitenfarbe] > .ref-uebersicht { background: url(../bilder/papier/papier-b.webp) 0 0 / 256px repeat; }
 main.lsx-farbe > .lsx-referenzen + .lsx-stimmen { padding-top: 96px; }
+
+/* Ausgesuchte Vorschaubilder in den großen Projektkacheln (Feld „vorschau“, Anna 22.11.2026) */
+.pg-foto { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; transition: transform .6s ease; }
+.pg-karte:hover .pg-foto { transform: scale(1.03); }
+@media (max-width: 767.98px) { .pg-foto { aspect-ratio: 16 / 11; } }
+@media (prefers-reduced-motion: reduce) { .pg-foto { transition: none; } .pg-karte:hover .pg-foto { transform: none; } }
+
+/* ---------- Demokratie braucht Sichtbarkeit: lauter als die anderen Seiten (Anna 22.11.2026) ----------
+   Vorbild Farbenmeer der Startseite (Anna: „das ist mir zu bunt“): Grund ruhig (Papier A/B, Hauchtöne), kräftige Farbe nur auf
+   Karten und Schildern mit schwarzer Kontur und hartem Schatten; ein Muster je Seite (Strichel-Band über den Kosten). Schrift immer Schwarz. */
+.dm-laut { --dm-kontur: 3px solid var(--farbe-dunkel); --dm-schatten: 6px 6px 0 var(--farbe-dunkel); }
+.dm-laut .lp-held .chips { gap: 12px; }
+.dm-laut .lp-held .chips li { border: var(--dm-kontur); box-shadow: 3px 3px 0 var(--farbe-dunkel); font-weight: 600; padding: 8px 16px; background: var(--aah-gelb); }
+.dm-laut .lp-held .chips li:nth-child(2) { background: var(--aah-pink); rotate: -2deg; }
+.dm-laut .lp-held .chips li:nth-child(3) { background: var(--aah-himmelblau); rotate: 1.5deg; }
+.dm-laut .lp-held .chips li:nth-child(4) { background: var(--aah-mint); rotate: -1deg; }
+.dm-laut .lp-held .chips li:nth-child(5) { background: var(--aah-orchidee); rotate: 2deg; }
+/* Räume über die volle Breite: Grund als ::before hinter dem Inhalt */
+.dm-laut .dm-raum { position: relative; z-index: 0; padding-top: 88px; padding-bottom: 88px; clip-path: inset(0 -100vmax); }
+main.dm-laut { overflow-x: clip; }
+.dm-laut .dm-raum::before { content: ""; position: absolute; top: 0; bottom: 0; left: -100vmax; right: -100vmax; z-index: -1; background: var(--dm-grund); }
+.dm-laut .dm-gelb { --dm-grund: url(../bilder/papier/papier-a.webp) 0 0 / 256px, var(--farbe-weiss); }
+.dm-laut .dm-mint { --dm-grund: url(../bilder/papier/papier-b.webp) 0 0 / 256px; }
+.dm-laut .dm-orchidee { --dm-grund: var(--aah-orchidee-hauch); }
+.dm-laut .dm-pink { --dm-grund: url(../bilder/riso/striche.svg) 0 24px / 112px auto repeat-x, url(../bilder/papier/papier-a.webp) 0 0 / 256px, var(--farbe-weiss); padding-top: 200px; }
+.dm-laut .dm-himmel { --dm-grund: var(--aah-himmelblau-hauch); }
+.dm-laut .dm-raum :is(.meta, .gedaempft, dd, .textlink, .lp-tabelle dd strong) { color: var(--farbe-dunkel); }
+.dm-laut .dm-raum .meta::before { background: var(--farbe-dunkel); }
+.dm-laut .dm-raum .lp-tabelle { border-top: var(--dm-kontur); }
+.dm-laut .dm-raum .lp-tabelle > div { border-bottom: 1.5px solid var(--farbe-dunkel); }
+.dm-laut .dm-raum .lp-tabelle dt { font-size: var(--groesse-4); }
+/* Für wen / Für wen nicht: zwei Schilder auf Papier */
+.dm-laut .dm-gelb .lp-karte { border: var(--dm-kontur); box-shadow: var(--dm-schatten); }
+.dm-laut .dm-gelb .lp-creme { background: var(--aah-gelb); rotate: -1deg; }
+.dm-laut .dm-gelb .lp-rand { background: var(--farbe-weiss); rotate: 1deg; }
+.dm-laut .dm-gelb .alt-h3 { font-size: var(--groesse-6); line-height: 1.1; }
+.dm-laut .dm-nein li::before { content: "×" / ""; color: var(--farbe-dunkel); font-size: 1.2em; top: 6px; }
+/* Warum: Bild als Plakat */
+.dm-laut .dm-mint .lp-warum-foto { border: var(--dm-kontur); box-shadow: var(--dm-schatten); background: var(--farbe-weiss); }
+.dm-laut .dm-mint .lp-zitat { font-size: var(--groesse-6); max-width: 30ch; }
+/* Anfrage: gelbes Schild auf Papier */
+.dm-laut .dm-schild { background: var(--farbe-weiss); border: var(--dm-kontur); box-shadow: var(--dm-schatten); }   /* Formular ruhig (Anna: „zu schrill für ein formular“) */
+.dm-laut .dm-schild :is(.meta, .textlink) { color: var(--farbe-dunkel); }
+.dm-laut .dm-schild .meta::before { background: var(--farbe-dunkel); }
+.dm-laut .dm-schild :is(input, textarea) { background: var(--farbe-weiss); border-color: var(--farbe-dunkel); }
+.dm-laut .lp-klein { padding-top: 48px; }
+@media (max-width: 900px) {
+  .dm-laut .dm-raum { padding-top: 56px; padding-bottom: 56px; }
+  .dm-laut .dm-pink { padding-top: 136px; --dm-grund: url(../bilder/riso/striche.svg) 0 16px / 80px auto repeat-x, url(../bilder/papier/papier-a.webp) 0 0 / 256px, var(--farbe-weiss); }
+  .dm-laut .dm-gelb .lp-paar { gap: 32px; }
+}
+.dm-laut :is(.dm-raum, .dm-schild) .lp-liste li { border-bottom-color: var(--farbe-dunkel); }
+.dm-laut :is(.dm-raum, .dm-schild) .lp-liste li::before { color: var(--farbe-dunkel); }
+.dm-laut .dm-orchidee .gr-h2 { margin-bottom: 64px; }
+.dm-laut .dm-orchidee .korrektur .hand { font-size: clamp(24px, 3vw, 44px); top: 86%; }
+/* Dachzeile auf kräftiger Leistungsfarbe (Anlässe) voll dunkel: 0,6 Deckkraft ergab auf Signalrot nur 3,1 : 1 (Messung 22.11.2026) */
+main.lsx-farbe > .lsx-m-anlaesse .meta { color: var(--farbe-dunkel); }
+/* Abstand Strichel-Band → Dachzeile „Preise“ (Anna 22.11.2026: „abstand über dachzeile“): stärker als main.lsx-muster > section:not(.seitenkopf) */
+main.lsx-farbe.lsx-muster > section.lsx-pakete { padding-top: 192px; }
+@media (max-width: 767.98px) { main.lsx-farbe.lsx-muster > section.lsx-pakete { padding-top: 136px; } }
+/* „So arbeite ich“ und die CI-Grafik gehören zusammen: keine doppelte Leerfläche dazwischen (Anna 22.11.2026) */
+main.lsx-muster > section.lsx-m-so:has(+ figure.ci-grafik) { padding-bottom: 0; }
+main.lsx-muster > section.lsx-m-so + figure.ci-grafik { padding-top: 40px; }
+
+/* Warum-Zettel je Leistung: eigene Farbe möglich (Markenbildung Pink tief, weiße Schrift; Anna 22.11.2026) */
+main.lsx-farbe > .lsx-m-warum .lsx-pl-zettel li:nth-child(n) { background: var(--lf-zettel, var(--lf-zart)); color: var(--lf-zettel-text, var(--farbe-dunkel)); }
+main.lsx-farbe > .lsx-m-warum .lsx-pl-zettel li:nth-child(n) * { color: inherit; }
+/* Korrekturen immer rot, auch auf farbigem Grund (Anna 22.11.2026: „korrekturen immer rot“) */
+.korrektur .hand, .korrektur-partner .hand { color: var(--aah-rot); }
+.korrektur .notiz-durch::after { background: var(--aah-rot); }
+/* Demokratie: CTA allein im Hero, Themen-Schilder mit Abstand darunter (Anna 22.11.2026) */
+.dm-laut .lp-held .chips { margin-top: 72px; }
+@media (max-width: 767.98px) { .dm-laut .lp-held .chips { margin-top: 48px; } }

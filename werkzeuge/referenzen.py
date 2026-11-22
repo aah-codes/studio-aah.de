@@ -750,7 +750,7 @@ def projektseite(p, nr):
 {stimme_unten}
 
   <nav class="cs-weiter" aria-label="Weitere Projekte">
-    <a class="pk-bild" href="../{nxt["slug"]}/" tabindex="-1" aria-hidden="true">{I.cover(nxt, pre)}</a>
+    <a class="pk-bild" href="../{nxt["slug"]}/" tabindex="-1" aria-hidden="true">{I.foto_oder_cover(nxt, pre)}</a>
     <div>
       <p class="meta">Nächstes Projekt</p>
       <p class="cs-weiter-name"><a href="../{nxt["slug"]}/">{esc(nxt["kurzname"])} <span aria-hidden="true">→</span></a></p>

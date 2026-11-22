@@ -56,11 +56,13 @@ def projekt_link(p, pre):
     return l['url'], f'{esc(l["text"])} <span aria-hidden="true">↗</span>', ' target="_blank" rel="noopener"'
 
 
-def foto_oder_cover(p, pre, c=None):
-    """Projektkarte mit echtem Bild statt Geräte-Mockup auf Schwarz (Anna 23.11.2026); ohne passendes Bild bleibt das Mockup."""
+def foto_oder_cover(p, pre, c=None, klasse='pk-foto'):
+    """Projektkarte mit echtem Bild statt Geräte-Mockup auf Schwarz (Anna 23.11.2026); ohne passendes Bild bleibt das Mockup.
+    Feld „vorschau“ in projekte.json: ausgesuchtes Vorschaubild je Projekt, gilt überall, wo Projekte gezeigt werden (Anna 22.11.2026)."""
+    if p.get('vorschau'): return f'<img class="{klasse}"{bild_attr(p["vorschau"], pre)} alt="" loading="lazy">'
     foto = next((b for b in p.get('streifen') or [] if not re.search(r'imac|mockup|handy|iphone|laptop|desktop', b)), None)
     if not foto: return cover(p, pre, c)
-    return f'<img class="pk-foto"{bild_attr(foto, pre)} alt="" loading="lazy">'
+    return f'<img class="{klasse}"{bild_attr(foto, pre)} alt="" loading="lazy">'
 
 
 def projekt_karte(p, pre, ansicht=None, h='h3', satz=True):
@@ -95,7 +97,7 @@ def projekt_raster(liste, pre):
     k = []
     for p in liste:
         url, _, ziel = projekt_link(p, pre)
-        k.append(f'      <li><a class="pg-karte" href="{url}"{ziel} style="--pc-farbe: {KACHEL_GRUND}"><span class="pg-bild">{cover(p, pre, kopfzeile=False)}</span>'
+        k.append(f'      <li><a class="pg-karte" href="{url}"{ziel} style="--pc-farbe: {KACHEL_GRUND}"><span class="pg-bild">{foto_oder_cover(p, pre, klasse="pg-foto") if p.get("vorschau") else cover(p, pre, kopfzeile=False)}</span>'
                  f'<span class="pg-text"><span class="pg-kunde">{esc(p["kurzname"])}</span>'
                  f'<h3 class="pg-titel">{esc(p.get("schlagzeile") or p["kopf"])}</h3></span>'
                  f'<span class="pg-pfeil" aria-hidden="true">→</span></a></li>')
@@ -113,6 +115,7 @@ def projekt_arbeit_liste(liste, pre):
         satz = esc((p.get('schlagzeile') or p['kopf']).rstrip('.'))
         branche = esc(p['branche'].split(' – ')[0].split(' / ')[0])
         bilder = p.get('streifen') or [p['cover']['desktop']]
+        if p.get('vorschau') and p['vorschau'] not in bilder: bilder = [p['vorschau']] + bilder  # Vorschaubild zuerst (Anna 22.11.2026)
         streifen = ''.join(f'<img{bild_attr(b, pre)} alt="" loading="lazy">' for b in bilder)
         zeilen.append(f'      <li class="pa-zeile"><a class="pa-link" href="{url}"{ziel}><span class="pa-kunde">{esc(p["kurzname"])}</span>'
                       f'<span class="pa-satz">{satz}</span><span class="pa-branche">{branche}</span></a>'
