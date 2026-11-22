@@ -21,6 +21,15 @@ MIT_CHECK = (WEBSITE / 'website-check' / 'index.html').exists()
 def _ko(alt, neu):
     return f'<span class="korrektur ko-unten"><span class="notiz notiz-durch" aria-hidden="true">{alt}</span><span class="hand">{neu}</span></span>'
 REDIGAT = {
+    'service/webdesign/': [
+        ('style="--n:9">Webdesign</h1>', 'style="--n:26">Webdesign in Leipzig: Keine ' + _ko('digitale Visitenkarte.', 'Dekoration für die Schublade.') + '<br>Sondern eine Website, die euch Anfragen bringt.</h1>'),
+        ('<p class="alt-klein">Klares Design mit technischer Präzision – individuell, responsiv und auf deine Ziele ausgerichtet.</p>', '<p class="alt-klein">Klares Design, durchdachte Struktur und saubere Technik (inkl. SEO &amp; KI-Suche) – damit Besucher:innen im <span class="ohne-umbruch">B2B-Mittelstand</span> sofort verstehen, warum sie bei euch richtig sind.</p>'),
+        ('id="loesung-titel">Eine schöne Website', 'id="loesung-titel">Eine ' + _ko('schöne', 'teure') + ' Website'),
+        ('<p class="meta">Woran es oft hakt</p>', '<p class="meta">Woran es im Alltag oft hakt</p>'),
+        ('<span class="hand">Partnerschaften</span>', '<span class="hand">Partnerschaften auf Augenhöhe</span>'),
+        ('id="stimmen-titel">Stimmen,<br>die zählen.</h2>', 'id="stimmen-titel">Stimmen,<br>die zählen.<span class="ko-block">Was passiert, wenn man es einfach anpackt</span></h2>'),
+        ('id="faq-titel">Ehrliche Antworten</h2>', 'id="faq-titel">' + _ko('Standard-Antworten', 'Ehrliche Antworten') + '</h2>'),
+    ],
     'service/markenbildung/': [
         ('style="--n:13">Markenbildung<br>in Leipzig</h1>', 'style="--n:26">Markenbildung in Leipzig: Keine ' + _ko('Kosmetik.', 'Dekoration für die Visitenkarte.') + '<br>Sondern Klarheit, die anzieht.</h1>'),
         ('<p class="alt-klein">Eine unverwechselbare Marken- und Unternehmens&shy;identität, die bei deiner Zielgruppe wirklich ankommt.</p>', '<p class="alt-klein">Eine unverwechselbare Marken- und Unternehmens&shy;identität für den <span class="ohne-umbruch">B2B-Mittelstand</span> – damit Kunden und Fachkräfte sofort verstehen, warum ihr die Richtigen seid.</p>'),
