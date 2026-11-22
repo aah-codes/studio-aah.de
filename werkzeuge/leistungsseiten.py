@@ -407,9 +407,17 @@ def pakete(c, g, pre):
     <h2 class="gr-h2" id="pakete-titel">Was es kostet</h2>
     {hinweis}
 {paket_reihen(g, c, pre)}
-{weitere_pakete(g.get('weitere', []))}    {NETTO_HINWEIS}
-    {'' if len(g['pakete']) == 1 and not c.get('hintergrund') else nicht_enthalten(c)}
+{zusatz_block(c, g) if c.get('muster') else weitere_pakete(g.get('weitere', [])) + '    ' + NETTO_HINWEIS + chr(10) + '    ' + ('' if len(g['pakete']) == 1 and not c.get('hintergrund') else nicht_enthalten(c))}
   </section>'''
+
+
+def zusatz_block(c, g):
+    # Muster (Anna 22.11.2026: „anders“): zwei Kästen nebeneinander – Außerdem buchbar (Name und Preis je Zeile) und Nicht enthalten
+    weitere = ''.join(f'<li><b>{esc(e["name"])}</b><span>{preis(e)}</span></li>' for e in g.get('weitere', []))
+    links = f'<div class="lsx-m-kasten"><p class="meta">Außerdem buchbar</p><ul class="lsx-m-weitere">{weitere}</ul></div>' if weitere else ''
+    nicht = ''.join(f'<li>{esc(x)}</li>' for x in c.get('nicht_enthalten', []))
+    rechts = f'<div class="lsx-m-kasten"><p class="meta">Nicht enthalten</p><ul class="lsx-m-nicht">{nicht}</ul></div>' if nicht else ''
+    return f'    <div class="lsx-m-zusatz">{links}{rechts}</div>\n    {NETTO_HINWEIS}'
 
 
 def retainer_hinweis(g, pre):

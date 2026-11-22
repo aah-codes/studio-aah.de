@@ -5273,3 +5273,17 @@ main h2.preis-h2 { font-size: clamp(40px, 6vw, 84px); line-height: 1.05; }
 .lsx-stimmen .sektionskopf .meta { margin-bottom: 4px; }
 .lsx-stimmen #stimmen-titel { margin-top: 0; }
 .lsx-stimmen .sektionskopf { padding-top: 0; padding-bottom: 32px; }
+/* Außerdem buchbar | Nicht enthalten als zwei Kästen (Anna 22.11.2026) */
+.lsx-m-zusatz { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 32px; }
+.lsx-m-kasten { padding: 26px 28px; background: var(--farbe-weiss); border-radius: var(--radius-karte); }
+.lsx-m-kasten .meta { margin: 0 0 14px; }
+.lsx-m-weitere, .lsx-m-nicht { list-style: none; margin: 0; padding: 0; }
+.lsx-m-weitere li { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-top: 1px solid var(--farbe-rahmen); font-size: var(--groesse-3); }
+.lsx-m-weitere li:first-child { border-top: 0; padding-top: 0; }
+.lsx-m-weitere span { white-space: nowrap; }
+.lsx-m-nicht li { position: relative; padding: 6px 0 6px 22px; color: var(--farbe-gedaempft); line-height: 1.45; }
+.lsx-m-nicht li::before { content: "×"; position: absolute; left: 0; color: var(--farbe-dunkel); }
+.lsx-m-zusatz + .lsx-klein { margin-top: 16px; }
+@media (max-width: 767.98px) { .lsx-m-zusatz { grid-template-columns: minmax(0, 1fr); } }
+/* Dachzeile der häufigen Fragen mittig über der Überschrift (Anna 22.11.2026) */
+.faq > .meta { display: flex; justify-content: center; text-align: center; }
