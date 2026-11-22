@@ -5895,3 +5895,4 @@ del.kr-durch { text-decoration: none; font: inherit; }
 @media (max-width: 767.98px) { #referenzen-titel .korrektur-partner .hand { white-space: normal; width: 80vw; font-size: 30px; } #referenzen-titel .korrektur-partner { margin-bottom: 1.6em; } }
 #intro-titel .ko-unten .hand, #linkedin-titel .ko-unten .hand { color: var(--farbe-weiss); }   /* auf Blau und Schwarz lesbar (Kontrast) */
 #intro-titel .ko-unten .hand { font-size: .6em; }
+del.ko-zeilen { text-decoration: none; }
