@@ -19,7 +19,12 @@ def z(d, art='ein'):
 
 
 # Kleine Zeichnungen je Bereich (Mitte 0,0; etwa 64 × 56), mit Startzeit t0
+ICONS = {'culture': 'ziel', 'communication': 'sprechblase', 'behaviour': 'person', 'design': 'palette'}
+
+
 def zeichnung(key, t0):
+    if key in ICONS:  # Anna 22.11.2026: Icons aus bilder/symbole/ statt kleiner Zeichnungen
+        return f'<image href="../../bilder/symbole/{ICONS[key]}.svg" x="-26" y="-26" width="52" height="52"/>'
     # Bauhaus-Grundformen, gefüllt (Anna 11.10.2026): Kreis, Halbkreis, Quadrat, Dreieck in Schwarz, Grau, Blau – kein Herz
     if key == 'culture':   # Werte wachsen von innen, oben die Fahne als Leitbild
         return (f'<g {z(t0)}><circle cy="6" r="21" class="ci-grau"/></g>'
@@ -61,10 +66,10 @@ KANTEN = [('culture', 'behaviour'), ('culture', 'communication'), ('culture', 'k
           ('communication', 'kern'), ('kern', 'design'), ('design', 'image'), ('behaviour', 'image'), ('communication', 'image')]
 LAGEN = {
     'quer': dict(vb='0 0 1000 700', g=1.0, kr=46, fs=13,
-                 pos={'culture': (130, 340), 'behaviour': (330, 120), 'communication': (330, 560), 'kern': (520, 340),
-                      'design': (720, 340), 'image': (895, 340)},
+                 pos={'culture': (80, 340), 'behaviour': (320, 120), 'communication': (320, 560), 'kern': (520, 340),
+                      'design': (740, 340), 'image': (920, 340)},
                  text={'culture': 'unten', 'behaviour': 'links', 'communication': 'links', 'design': 'unten'},
-                 bogen={('behaviour', 'image'): (690, 70), ('communication', 'image'): (690, 610)}),
+                 bogen={('behaviour', 'image'): (700, 70), ('communication', 'image'): (700, 610)}),
     'hoch': dict(vb='0 0 600 1120', g=1.15, kr=50, fs=17,
                  pos={'culture': (300, 90), 'behaviour': (120, 300), 'communication': (480, 300), 'kern': (300, 500),
                       'design': (300, 730), 'image': (300, 960)},
@@ -107,7 +112,7 @@ def bild(art):
         teile.append(f'<g {z(d)} data-kante><path d="{hin}" class="ci-p"/></g>')
         lang = 2.6 if 'image' not in (a, b) else 3.2
         # je Linie nur ein Punkt pro Richtung, der Rückweg in Blau (Anna 11.10.2026: zu viele Punkte)
-        punkte.append(fluss(hin, lang, 1, FLUSS + i * .21) + fluss(zur, lang, 1, FLUSS + 1.6 + i * .17, gr=3, klasse='ci-blau'))
+        # Anna 22.11.2026: ohne wandernde Punkte, ohne Steuerung
     # Knoten der vier Bereiche
     for key, (name, unter, t0) in KNOTEN.items():
         x, y = pos[key]
@@ -127,8 +132,6 @@ def bild(art):
     x, y = pos['kern']
     teile.append(f'<g {z(KERN, "pop")}><circle cx="{x}" cy="{y}" r="{RADIUS["kern"]}" fill="#fff" class="ci-a"/><circle cx="{x}" cy="{y}" r="{RADIUS["kern"] + 8}" class="ci-l"/></g>')
     teile.append(f'<text text-anchor="middle" class="ci-kern-t ci-schwarz-t z z-ein" style="--d:{KERN + .3}s"><tspan x="{x}" y="{y - 4}">CORPORATE</tspan><tspan x="{x}" y="{y + 34}">IDENTITY</tspan></text>')
-    teile.append(f'<circle cx="{x}" cy="{y}" r="{RADIUS["kern"]}" fill="none" class="ci-a" opacity="0"><animate attributeName="r" values="{RADIUS["kern"]};{RADIUS["kern"] + 7};{RADIUS["kern"]}" dur="3s" begin="{FLUSS}s" repeatCount="indefinite"/>'
-                 f'<animate attributeName="opacity" values=".5;0;.5" dur="3s" begin="{FLUSS}s" repeatCount="indefinite"/></circle>')
     # Image: kommt zuletzt, das Auge öffnet sich
     x, y = pos['image']; gr = RADIUS['image']
     teile.append(f'<g {z(BILD, "pop")}><circle cx="{x}" cy="{y}" r="{gr}" fill="#fff" class="ci-l"/><circle cx="{x}" cy="{y}" r="{gr - 12}" class="ci-p"/></g>')
@@ -145,7 +148,6 @@ html = f'''  <figure class="ci-grafik ci-film" id="corporate-identity" aria-desc
     <p class="unsichtbar" id="ci-beschreibung">Erklärfilm Corporate Identity: Nacheinander erscheinen Corporate Culture (Leitbild, Werte, Philosophie), Corporate Communication (Kanäle, Stimme, Tonalität intern und extern), Corporate Behaviour (Service, Verhalten, Beziehungen) und Corporate Design (Gestaltung, Logo, Farben, Bildwelt, Typografie). Zusammen bilden sie die Corporate Identity. Zum Schluss steht das ganze System: Alle Bereiche tauschen Informationen untereinander und mit dem Corporate Image aus.</p>
     {bild('quer')}
     {bild('hoch')}
-    <p class="ci-nochmal"><button type="button" class="textlink ci-pause-knopf" hidden>Anhalten <span aria-hidden="true">❚❚</span></button><button type="button" class="textlink ci-nochmal-knopf">Noch einmal ansehen <span aria-hidden="true">↻</span></button></p>
   </figure>'''
 ZIEL.write_text(html, encoding='utf-8')
 print('geschrieben:', ZIEL.name, len(html), 'Zeichen')

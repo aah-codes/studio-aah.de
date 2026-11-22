@@ -67,6 +67,23 @@ def pfeil():
                + kontur(kopf, 12) + kontur('M144 276 C162 300, 178 318, 190 328 C214 312, 238 302, 266 298', 4) + kontur(strich, 10))
 
 
-for name, f in (('zeichnung-blitz', blitz), ('zeichnung-regenbogen', regenbogen), ('zeichnung-pfeil', pfeil)):
+
+def megafon():
+    # Megafon für die Fußkarte „Demokratie braucht Sichtbarkeit“ (Anna 22.11.2026: Illustration statt 3D-Icon)
+    trichter = [(110, 170), (250, 92), (272, 92), (272, 300), (250, 300), (110, 222)]
+    griff = [(150, 226), (182, 226), (196, 300), (164, 300)]
+    hinten = [(78, 168), (112, 168), (112, 224), (78, 224)]
+    teile = []
+    for form, farbe in ((griff, BLAU), (hinten, SCHWARZ), (trichter, ROT)):
+        teile.append(f'<path d="{linie([(x + 9, y + 8) for x, y in form])}" fill="{ROSA}"/>')
+    for i, (form, farbe) in enumerate(((griff, BLAU), (hinten, SCHWARZ), (trichter, ROT))):
+        teile.append(f'<path d="{linie(form)}" fill="{farbe}"/>' + kontur(linie(zitter(form, 2, 30 + i))))
+    teile.append(f'<ellipse cx="272" cy="196" rx="20" ry="104" fill="{GELB}"/>' + kontur('M272 92 C300 120, 300 272, 272 300 C244 272, 244 120, 272 92 Z'))
+    for d in ('M320 150 L360 126', 'M330 196 L376 196', 'M320 242 L360 266'):   # Schallstriche
+        teile.append(kontur(d, 10))
+    return svg(''.join(teile))
+
+
+for name, f in (('zeichnung-blitz', blitz), ('zeichnung-regenbogen', regenbogen), ('zeichnung-pfeil', pfeil), ('zeichnung-megafon', megafon)):
     (ZIEL / f'{name}.svg').write_text(f(), encoding='utf-8')
     print('geschrieben:', f'bilder/sticker/{name}.svg')

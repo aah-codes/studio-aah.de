@@ -93,7 +93,7 @@ def vergleich(g):
         rumpf = '<tr><th scope="row">Dauer</th>' + ''.join('<td>' + esc(e.get('dauer', '–')) + '</td>' for e in pakete) + '</tr>' + rumpf
     return f'''  <section class="lsx-vergleich" id="vergleich" aria-labelledby="vergleich-titel">
     <p class="meta">Pakete</p>
-    <h2 class="gr-h2" id="vergleich-titel">Vergleich</h2>
+    <h2 class="gr-h2" id="vergleich-titel">Im Vergleich</h2>
     <div class="lsx-tabelle-rahmen"><table class="lsx-tabelle"><thead><tr><th scope="col">Leistung</th>{kopf}</tr></thead><tbody>{rumpf}</tbody></table></div>
     {NETTO_HINWEIS}
   </section>'''
@@ -498,7 +498,7 @@ def muster_warum(c, m):
 def muster_so(c, m):
     return (f'  <section class="lsx-m-so" aria-labelledby="so-titel">\n'
             f'    <p class="meta">So arbeite ich</p>\n'
-            f'    <h2 class="gr-h2" id="so-titel">{esc(m["so_titel"])}</h2>\n'
+            f'    <h2 class="gr-h2" id="so-titel">{esc(m["so_titel"]).replace(", ", ",<br>", 1)}</h2>\n'
             f'  </section>\n' + (grafik(c['grafik']) if c.get('grafik') else ''))
 
 
@@ -534,6 +534,7 @@ def muster_main(c, g, pre, vergleich_html, prozess, fragen):
     m = c['muster']
     if m.get('ablauf_dauer'):
         prozess = prozess.replace('<ol class="zl-quer', f'<p class="lsx-m-dauer">{esc(m["ablauf_dauer"])}</p>\n    <ol class="zl-quer', 1)
+    prozess = prozess.replace('<p class="meta">Wie ich arbeite</p>', '<p class="meta">Wie wir arbeiten</p>', 1)   # Anna 22.11.2026
     teile = [muster_kopf(c, m, pre), muster_kurz(m), muster_leiste(c), muster_anlaesse(m), muster_warum(c, m), muster_so(c, m),
              muster_ergebnisse(m), prozess, referenzen(c['tag'], pre), stimmen(pre, c['tag']), pakete(c, g, pre), vergleich_html,
              extras(g), faq(fragen, pre), muster_abschluss(m, pre), artikel(pre, c['tag'])]
