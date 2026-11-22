@@ -1,0 +1,23 @@
+<!doctype html><meta charset="utf-8"><body><pre id="aus">laeuft</pre><script>
+(async()=>{
+const sm=await (await fetch('/sitemap.xml')).text();
+const pfade=[...sm.matchAll(/<loc>https:\/\/studio-aah\.de([^<]*)/g)].map(m=>m[1]||'/');
+const f=document.createElement('iframe'); f.style.cssText='position:fixed;left:0;top:0;border:0;width:1280px;height:900px'; document.body.appendChild(f);
+const lade=p=>new Promise(r=>{f.onload=()=>setTimeout(r,250); f.src=p;});
+const rgba=s=>{const m=s.match(/[\d.]+/g)||[0,0,0,0];return [+m[0],+m[1],+m[2],m[3]===undefined?1:+m[3]]};
+const lin=v=>{v/=255;return v<=.04045?v/12.92:Math.pow((v+.055)/1.055,2.4)};
+const L=c=>.2126*lin(c[0])+.7152*lin(c[1])+.0722*lin(c[2]);
+const mix=(a,b)=>[0,1,2].map(i=>a[i]*a[3]+b[i]*(1-a[3]));
+const funde={};
+for(const p of pfade){ await lade(p); const d=f.contentDocument,W=f.contentWindow; if(!d||!d.body) continue;
+ const tw=d.createTreeWalker(d.body,NodeFilter.SHOW_TEXT); let n;
+ while(n=tw.nextNode()){ const t=n.textContent.trim(); if(t.length<2) continue; const e=n.parentElement; if(e.closest('script,style,noscript,[hidden],svg,[aria-hidden=true]')) continue;
+  const c=W.getComputedStyle(e); if(c.display==='none'||c.visibility==='hidden'||+c.opacity<.5) continue;
+  let bg=null,x=e,bild=false; while(x){const s=W.getComputedStyle(x); const b=rgba(s.backgroundColor); if(s.backgroundImage!=='none'&&!/papier|riso/.test(s.backgroundImage)) {bild=true;break;} if(b[3]>0.05){bg=bg?mix(bg,b):b; if(b[3]>=.99) break;} x=x.parentElement;}
+  if(bild) continue; if(!bg) bg=[255,255,255,1]; const bgc=bg.length===4&&bg[3]<1?mix(bg,[255,255,255]):bg;
+  const fg=mix(rgba(c.color),bgc); const k=(Math.max(L(fg),L(bgc))+.05)/(Math.min(L(fg),L(bgc))+.05);
+  const gross=parseFloat(c.fontSize)>=24||(parseFloat(c.fontSize)>=18.66&&+c.fontWeight>=700);
+  if(k<(gross?3:4.5)){ const key=(e.className||e.tagName).toString().slice(0,40)+' | '+c.color+' auf rgb('+bgc.map(Math.round)+') | '+k.toFixed(2); (funde[key]=funde[key]||[]).push(p); } } }
+document.getElementById('aus').textContent='ERGEBNIS'+JSON.stringify(Object.entries(funde).map(([k,v])=>[k,v.length,[...new Set(v)].slice(0,3)]))+'ENDE';
+})();
+</script>

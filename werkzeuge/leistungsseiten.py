@@ -102,7 +102,9 @@ def vergleich(g):
 def extras(g):
     ex = [e for e in g.get('extras', []) if not e.get('nurRechner')]  # seltene Funktionen nur im Kostenrechner
     if not ex: return ''
-    li = ''.join(f'<li><span class="lsx-extra-name">{esc(e["name"])}</span><span class="lsx-extra-text">{esc(e.get("kurz") or e.get("wer") or "")}</span><span class="lsx-extra-preis">{preis(e)}</span></li>' for e in ex)
+    # Zusatzleistungen als Akkordeon (Anna 22.11.2026: „zu breit, zu viele Infos, eher verstecken“): Name und Preis sichtbar, Beschreibung aufklappbar
+    li = ''.join(f'<li><details class="lsx-extra"><summary><span class="lsx-extra-name">{esc(e["name"])}</span><span class="lsx-extra-preis">{preis(e)}</span></summary>'
+                 f'<p class="lsx-extra-text">{esc(e.get("kurz") or e.get("wer") or "")}</p></details></li>' for e in ex)
     return f'''  <section class="lsx-extras" id="extras" aria-labelledby="extras-titel">
     <h2 class="gr-h3" id="extras-titel">Zusatz&shy;leistungen</h2>
     <ul class="lsx-extra-liste">{li}</ul>
@@ -165,7 +167,7 @@ def referenzen(tag, pre):
     karten = '\n'.join(f'      <li>{I.projekt_karte(p, pre, h="h3", satz=False)}</li>' for p in liste)
     return ('  <section class="lsx-referenzen" id="referenzen" aria-labelledby="referenzen-titel">\n    <div class="sektionskopf"><p class="meta">Referenzen</p>'
             '<h2 class="gr-h2 pa-titel" id="referenzen-titel"><span class="korrektur korrektur-partner korrektur-links"><span class="notiz notiz-durch" aria-hidden="true">Projekte</span><span class="hand">Partnerschaften</span></span></h2></div>\n'
-            f'    <ul class="ref-raster">\n{karten}\n    </ul>\n  </section>')
+            + (I.projekt_wechsel(liste, pre) if len(liste) > 1 else f'    <ul class="ref-raster">\n{karten}\n    </ul>') + '\n  </section>')
 
 
 # Ersatz-Schlagworte, solange es zu einer Leistung weniger als zwei eigene Artikel gibt (Anna 18.11.2026: „mindestens 2“)
@@ -427,10 +429,13 @@ def retainer_hinweis(g, pre):
     if not r: return ''
     preis = f"{r['stunde']}–{r['stundeBis']} € netto pro Stunde, {r['mindestens']}"
     return f'''  <section class="lsx-retainer" aria-labelledby="retainer-titel">
+    <div class="lsx-retainer-text">
     <p class="meta">Nach dem Launch</p>
     <h2 class="gr-h3" id="retainer-titel">{esc(r['name'])}</h2>
     <p>{esc(r['kurz'])}. {esc(preis)}.</p>
     <p><a class="textlink" href="{pre}service/retainer/">Mehr zum Retainer <span aria-hidden="true">→</span></a></p>
+    </div>
+    <img class="lsx-retainer-bild" src="{pre}bilder/zeichnungen-sw/giesskanne.svg" alt="" width="400" height="400" loading="lazy">
   </section>'''
 
 
@@ -506,6 +511,11 @@ def auto_muster(c, g, intro):
                           'text': 'Im kostenlosen Erstgespräch klären wir, wo du stehst|und was du brauchst.'}}
 
 
+# Zeichnung schwarz-weiß rechts im Hero je Leistung (Anna 22.11.2026: „bei Leistungen immer ein Bild“), Set bilder/zeichnungen-sw/
+ZEICHNUNG = {'Markenbildung': 'stern', 'Webdesign': 'bildschirm', 'UI': 'auge', 'KI & Digitalisierung': 'gluehbirne', 'KI-Beratung': 'gluehbirne',
+             'Marketing & Vertrieb': 'megafon', 'Druck': 'pfeil', 'Illustration & Infografik': 'herz', 'Animation': 'blitz', 'Retainer': 'giesskanne'}
+
+
 def muster_kopf(c, m, pre):
     fakten = ''.join(f'<li>{x}</li>' for x in m.get('fakten', []))   # Fakten aus den Daten, ohne Auszeichnung
     return (f'  <section class="seitenkopf lsx-kopf lsx-m-kopf">\n'
@@ -515,7 +525,8 @@ def muster_kopf(c, m, pre):
             f'    <p class="alt-klein">{trennen(esc(m.get("intro") or c.get("intro", "")))}</p>\n'
             + (f'    <ul class="lsx-m-fakten">{fakten}</ul>\n' if fakten else '') +
             f'    <p class="lsx-hero-knopf"><a class="button" href="{pre}kontakt/">{esc(c.get("anfrage", "Beratung anfragen"))} <span aria-hidden="true">→</span></a></p>\n'
-            f'  </section>')
+            + next((f'    <img class="lsx-kopf-zeichnung" src="{pre}bilder/zeichnungen-sw/{z}.svg" alt="" width="400" height="400">\n' for t, z in ZEICHNUNG.items() if c["titel"].startswith(t)), '')
+            + f'  </section>')
 
 
 def muster_kurz(m):
@@ -560,11 +571,20 @@ def muster_so(c, m):
 
 def muster_ergebnisse(m):
     if not m.get('ergebnisse'): return ''
-    li = ''.join(f'<li><h3>{esc(a)}</h3>' + (f'<p>{esc(b)}</p>' if b else '') + '</li>' for a, b in m['ergebnisse'])
-    return (f'  <section class="lsx-m-ergebnisse" id="leistungen" aria-labelledby="leistungen-titel">\n'
-            f'    <p class="meta">Leistung</p>\n'
+    # Neu gedacht (Anna 22./23.11.2026): oben das Ergebnis danach in Annas Worten, darunter kompakt, was dazugehört
+    # Je Leistung passende Ergebnisse, nur aus Annas fünf Begriffen (Anna 23.11.2026: „je Leistung anpassen“)
+    alle = {'s': ('Sichtbarkeit', 'auge'), 'k': ('Neue Kunden', 'megafon'), 'f': ('Fachkräfte', 'herz'), 'c': ('Mehr Conversion', 'pfeil'), 'v': ('Mehr Verkäufe', 'stern')}
+    wahl = next((w for t, w in (('Markenbildung', 'skfv'), ('Webdesign', 'skcv'), ('UI', 'cv'), ('KI', 'fv'), ('Marketing', 'skcv'), ('Druck', 'sk'),
+                                ('Illustration', 'sc'), ('Animation', 'sc'), ('Retainer', 'scv')) if (m.get('h1') or '').startswith(t)), 'skfcv')
+    ziele = tuple(alle[b] for b in wahl)
+    zl = ''.join(f'<li><img src="{{PRE}}bilder/zeichnungen-sw/{z}.svg" alt="" width="400" height="400" loading="lazy"><span>{esc(t)}</span></li>' for t, z in ziele)
+    li = ''.join(f'<li><b>{esc(a)}</b>' + (f' <span>{esc(b)}</span>' if b else '') + '</li>' for a, b in m['ergebnisse'])
+    return (f'  <section class="lsx-m-ergebnisse lsx-ziel" id="leistungen" aria-labelledby="leistungen-titel">\n'
+            f'    <p class="meta">Ergebnis</p>\n'
             f'    <h2 class="gr-h2" id="leistungen-titel">Das bekommst du</h2>\n'
-            f'    <ul class="lsx-m-ergebnis-liste">{li}</ul>\n'
+            f'    <ul class="lsx-ziel-liste">{zl}</ul>\n'
+            f'    <p class="meta lsx-dazu-titel">Das gehört dazu</p>\n'
+            f'    <ul class="lsx-dazu-liste">{li}</ul>\n'
             f'  </section>')
 
 
@@ -589,6 +609,21 @@ def muster_leiste(c, m, mit_ablauf):
     return ankerleiste([(a, t) for a, t, an in ziele if an])
 
 
+# Eine Leistungsfarbe je Seite, strikt durchgezogen (Anna 23.11.2026, Farb-Richtlinie 1.1 „Leistung und Form“, Vorbild farbenmeer):
+# Voll für Seitenkopf und Ergebnis, Zart für Problem und Fragen, dazwischen Weiß. Schrift auf allen Stufen Dunkel.
+# Je Leistung zwei verwandte Farben (Anna 23.11.2026: „zwei, die sich ähnlich sind, z. B. Rot und Rosa, Blau und Violett“): erste für Kopf und Problem,
+# zweite für Ergebnis und Fragen. Rosa = Pink, Violett = Orchidee, Grün = Mint (Farb-Richtlinie 1.1).
+ROT, PINK, ORCHIDEE, HIMMEL, MINT, GELB, ORANGE = '#FF3B2F', '#FF4FA3', '#EF87F9', '#5FD2FF', '#07F0A5', '#FFF329', '#EE6C29'
+LEISTUNGSFARBE = {'Markenbildung': (ROT, PINK), 'Webdesign': (HIMMEL, ORCHIDEE), 'UI': (PINK, ORCHIDEE), 'KI': (GELB, MINT),
+                  'Marketing': (ORCHIDEE, PINK), 'Druck': (MINT, HIMMEL), 'Illustration': (PINK, ROT), 'Animation': (GELB, ORANGE), 'Retainer': (MINT, GELB)}
+
+
+def leistungsfarbe(c):
+    a, b = next((v for k, v in LEISTUNGSFARBE.items() if c['titel'].startswith(k)), (HIMMEL, ORCHIDEE))
+    mix = lambda v, t: '#%02X%02X%02X' % tuple(round(int(v[i:i + 2], 16) * (1 - t) + 255 * t) for i in (1, 3, 5))
+    return f'--lf: {a}; --lf-zart: {mix(a, .55)}; --lf-hauch: {mix(a, .8)}; --lf2: {b}; --lf2-zart: {mix(b, .55)}'
+
+
 def muster_main(c, g, pre, vergleich_html, prozess, fragen, link, mit_ablauf):
     m = c['muster']
     if m.get('ablauf_dauer'):
@@ -596,11 +631,11 @@ def muster_main(c, g, pre, vergleich_html, prozess, fragen, link, mit_ablauf):
     prozess = prozess.replace('<p class="meta">Wie ich arbeite</p>', '<p class="meta">Wie wir arbeiten</p>', 1)   # Anna 22.11.2026
     warum = gegenueber(c, g, pre, link) if c.get('gegenueber') else muster_warum(c, m)
     teile = [muster_kopf(c, m, pre), muster_kurz(m), muster_leiste(c, m, mit_ablauf), muster_anlaesse(m), warum, anwendungen(c, pre),
-             muster_so(c, m), wege(c, pre), praxis(c, pre), recht(c), muster_ergebnisse(m), prozess,
+             muster_so(c, m), wege(c, pre), praxis(c, pre), recht(c), muster_ergebnisse(m).replace("{PRE}", pre), prozess,
              retainer_hinweis(g, pre) if mit_ablauf else '', selbstbau(c, pre), referenzen(c['tag'], pre), stimmen(pre, c['tag']),
              pakete(c, g, pre), vergleich_html, extras(g), faq(fragen, pre), muster_abschluss(m, pre), artikel(pre, c['tag']),
              spiel_sektion(pre, MENUE_VERSION) if c.get('spiel') else '']
-    return '<main id="inhalt" class="lsx-muster">\n\n' + '\n\n'.join(t for t in teile if t.strip()) + '\n\n</main>'
+    return f'<main id="inhalt" class="lsx-muster lsx-farbe" style="{leistungsfarbe(c)}">\n\n' + '\n\n'.join(t for t in teile if t.strip()) + '\n\n</main>'
 
 
 def seite(key, c):
@@ -617,7 +652,7 @@ def seite(key, c):
     # neue Seite: Kopf und Fuß von der Webdesign-Seite übernehmen (gleiche Ordnertiefe)
     vorlage = (pfad if pfad.exists() else WEBSITE / 'service' / 'webdesign' / 'index.html').read_text(encoding='utf-8')
     url = 'https://studio-aah.de/' + c['pfad']
-    vergleich_html = vergleich(g)
+    vergleich_html = ''   # Vergleichstabellen raus (Anna 23.11.2026); Funktion vergleich() bleibt für später
     prozess = (ablauf_eigen(pre, c['ablauf_schritte'], c.get('ablauf_hinweis', '')) if c.get('ablauf_schritte') else ablauf(pre)) if mit_ablauf else ''
     # Muster für alle Leistungsseiten (Anna 22.11.2026); eigene Daten im Feld „muster“ gehen vor
     c = dict(c, muster=c.get('muster') or auto_muster(c, g, intro))

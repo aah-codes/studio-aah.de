@@ -25,3 +25,4 @@ python3 werkzeuge/fuer-wen-seiten.py
 python3 werkzeuge/brotkrumen.py
 python3 werkzeuge/fragen-index.py
 python3 werkzeuge/llms-txt.py
+python3 werkzeuge/seitenfarben.py

@@ -43,7 +43,7 @@
 
 /* Referenzen: kein Fokusrahmen beim Aufklappen mit der Maus, mehr Luft zu den Fakten */
 .ci-pfeil { font-size: 2.4rem; color: var(--farbe-primaer); line-height: 1; }
-.ci-image { aspect-ratio: 1; border-radius: 50%; background: var(--farbe-primaer); color: var(--farbe-weiss); display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: var(--schrift-ueberschrift); font-size: clamp(1.4rem, 2.4vw, 2rem); letter-spacing: .9px; text-transform: uppercase; line-height: 1.12; }
+.ci-image { aspect-ratio: 1; border-radius: 50%; background: var(--farbe-primaer); color: var(--farbe-weiss); display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: var(--schrift-ueberschrift); font-size: clamp(1.4rem, 2.4vw, 2rem); letter-spacing: -.03em; line-height: 1.12; }
 @media (max-width: 767.98px) {
   .ci-pfeil { transform: rotate(90deg); }
   .ci-image { width: 46%; }
@@ -102,7 +102,7 @@
 .cs-stimme .stimmen { padding: 0; }
 .cs-weiter { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 48px; align-items: center; margin: 0 var(--rand-seite); padding: 64px 0 120px; border-top: 1.5px solid var(--farbe-rahmen); }
 .cs-weiter .pc { aspect-ratio: 4 / 3; }
-.cs-weiter-name { font-family: var(--schrift-ueberschrift); font-size: clamp(32px, 3.4vw, 52px); letter-spacing: .9px; text-transform: uppercase; margin: 0 0 12px; }
+.cs-weiter-name { font-family: var(--schrift-ueberschrift); font-size: clamp(32px, 3.4vw, 52px); letter-spacing: -.03em; margin: 0 0 12px; }
 .cs-weiter-name a { color: inherit; text-decoration: none; }
 @media (max-width: 900px) {
   .cs-fakten { grid-template-columns: 1fr 1fr; }
@@ -114,7 +114,7 @@
   .cs-vergleich, .cs-raster > div { grid-template-columns: 1fr; gap: 16px; }
   .cs-weiter { grid-template-columns: 1fr; gap: 24px; margin: 0 var(--rand-seite-mobil); padding: 48px 0 72px; }
 }
-.cs-titel { font-family: var(--schrift-ueberschrift); font-weight: 400; font-size: clamp(44px, 7vw, 120px); letter-spacing: .9px; text-transform: uppercase; margin: 0 0 24px; hyphens: manual; overflow-wrap: break-word; }
+.cs-titel { font-family: var(--schrift-ueberschrift); font-weight: 500; font-size: clamp(44px, 7vw, 120px); letter-spacing: -.03em; margin: 0 0 24px; hyphens: manual; overflow-wrap: break-word; }
 /* Projektseite im Stil von Behance „Hedwig“ (Anna 14.10.2026, Bildschirmaufnahme): jedes Motiv auf hellgrauer Kachel (Bento) */
 .cs { --kachel: #f3f3f3; }
 .cs-kachel { background: var(--kachel); border-radius: 28px; padding: 40px; }
@@ -157,7 +157,7 @@
 /* Kacheln leicht in der Hausfarbe des Kunden getönt (Behance „CreativMinds“, Anna 14.10.2026) */
 .cs { --kachel: color-mix(in srgb, var(--pc-farbe) 7%, #f5f5f5); }
 .cs-stapel { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); gap: 40px; align-items: center; overflow: hidden; }
-.cs-stapel-zahl { font-family: var(--schrift-ueberschrift); font-size: clamp(40px, 5vw, 80px); line-height: 1; letter-spacing: .9px; text-transform: uppercase; margin: 0 0 16px; }
+.cs-stapel-zahl { font-family: var(--schrift-ueberschrift); font-size: clamp(40px, 5vw, 80px); line-height: 1; letter-spacing: -.03em; margin: 0 0 16px; }
 .cs-stapel-seiten { position: relative; aspect-ratio: 4 / 3; }
 .cs-stapel-seiten img { position: absolute; width: 58%; aspect-ratio: 3 / 4; object-fit: cover; object-position: 50% 0; border-radius: 10px; box-shadow: 0 24px 50px rgba(14, 16, 17, .18); }
 .cs-stapel-seiten img:nth-child(1) { left: 0; top: 8%; }
@@ -221,7 +221,7 @@
 /* Tabelle: Spalte „Umgesetzt“ hervorgehoben */
 .cs-tabelle table { border-collapse: separate; border-spacing: 0; }
 .cs-tabelle th, .cs-tabelle td { padding: 16px 18px; border-top: 1px solid rgba(14, 16, 17, .1); }
-.cs-tabelle tbody th { padding-left: 0; font-family: var(--schrift-ueberschrift); font-weight: 400; font-size: 1.05rem; letter-spacing: .6px; text-transform: uppercase; hyphens: manual; }
+.cs-tabelle tbody th { padding-left: 0; font-family: var(--schrift-ueberschrift); font-weight: 500; font-size: 1.05rem; letter-spacing: -.03em; hyphens: manual; }
 .cs-tabelle td:nth-child(2) { color: var(--farbe-gedaempft); font-size: .92rem; }
 .cs-tabelle .cs-neu { background: var(--pc-farbe); color: var(--farbe-weiss); border-top-color: rgba(255, 255, 255, .15); }
 .cs-tabelle thead .cs-neu { border-radius: 18px 18px 0 0; color: rgba(255, 255, 255, .8); }
@@ -317,14 +317,14 @@
 .vf-zeiger.klick { transform: scale(.6); }
 .vf-blende { position: absolute; inset: 0; z-index: 4; display: grid; place-items: center; background: var(--pc-farbe); transition: transform .7s cubic-bezier(.7, 0, .3, 1); }
 .vf-blende::before { content: ""; position: absolute; top: 0; bottom: 0; width: 80px; background: #fbd52a; transform: skewX(-12deg); right: 0; }
-.vf-blende b { position: relative; font-family: var(--schrift-ueberschrift); font-weight: 400; font-size: clamp(36px, 6vw, 96px); letter-spacing: .02em; text-transform: uppercase; color: var(--farbe-weiss); }
+.vf-blende b { position: relative; font-family: var(--schrift-ueberschrift); font-weight: 500; font-size: clamp(36px, 6vw, 96px); letter-spacing: -.03em; color: var(--farbe-weiss); }
 .vf-blende.an { transform: translateX(0); }
 .vf-steuerung { display: flex; align-items: center; gap: 16px; margin-top: 18px; }
 .vf-texte { font-family: var(--schrift-meta); font-size: .78rem; letter-spacing: 1px; text-transform: uppercase; color: var(--farbe-gedaempft); }
 /* Karriere-Schwerpunkt */
 .cs-karriere { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.6fr); gap: 48px; align-items: center; padding: 56px; background: var(--pc-farbe); color: var(--farbe-weiss); border-radius: 28px; overflow: hidden; }
 .cs-karriere .meta { color: #fbd52a; }
-.kr-titel { font-family: var(--schrift-ueberschrift); font-weight: 400; font-size: clamp(40px, 5vw, 80px); letter-spacing: .9px; text-transform: uppercase; margin: 0 0 20px; hyphens: manual; }
+.kr-titel { font-family: var(--schrift-ueberschrift); font-weight: 500; font-size: clamp(40px, 5vw, 80px); letter-spacing: -.03em; margin: 0 0 20px; hyphens: manual; }
 .cs-karriere p { color: rgba(255, 255, 255, .85); }
 .cs-karriere ul { list-style: none; margin: 24px 0 0; padding: 0; display: grid; gap: 10px; }
 .cs-karriere li { padding-left: 30px; position: relative; }
@@ -367,11 +367,11 @@
 .cs-vollbild img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .cs-vollbild figcaption { position: absolute; left: var(--rand-seite); right: var(--rand-seite); bottom: 0; padding: 120px 0 48px; background: linear-gradient(to top, rgba(0, 20, 45, .75), transparent); color: var(--farbe-weiss); }
 .cs-vollbild .meta { color: #fbd52a; margin: 0 0 6px; }
-.cs-vollbild-titel { font-family: var(--schrift-ueberschrift); font-size: clamp(64px, 12vw, 200px); line-height: .9; letter-spacing: .02em; text-transform: uppercase; margin: 0; }
+.cs-vollbild-titel { font-family: var(--schrift-ueberschrift); font-size: clamp(64px, 12vw, 200px); line-height: .9; letter-spacing: -.03em; margin: 0; }
 .cs-buehne-bild { position: relative; overflow: hidden; border-radius: 28px; padding: 64px 64px 0; color: var(--farbe-weiss); }
 .bn-text { max-width: 640px; position: relative; z-index: 2; }
 .bn-text .meta { color: #fbd52a; }
-.bn-titel { font-family: var(--schrift-ueberschrift); font-weight: 400; font-size: clamp(36px, 4.4vw, 72px); line-height: 1; letter-spacing: .9px; text-transform: uppercase; margin: 0 0 18px; }
+.bn-titel { font-family: var(--schrift-ueberschrift); font-weight: 500; font-size: clamp(36px, 4.4vw, 72px); line-height: 1; letter-spacing: -.03em; margin: 0 0 18px; }
 .bn-text p:not(.meta) { color: rgba(255, 255, 255, .85); font-size: 1.05rem; }
 .bn-muster { display: grid; grid-template-columns: 1.35fr 1fr; gap: 24px; margin-top: 48px; transform: translateY(40px); }
 .bn-muster img { width: 100%; display: block; border-radius: 14px; box-shadow: 0 30px 60px rgba(0, 0, 0, .35); object-fit: cover; object-position: 50% 0; }
@@ -488,7 +488,7 @@
 .zk-karte { padding: 48px; border-radius: 28px; background: var(--kachel); }
 .zk-karte:last-child { background: var(--pc-farbe); color: var(--farbe-weiss); }
 .zk-karte img { width: 120px; height: 120px; object-fit: contain; margin-bottom: 22px; }
-.zk-karte h2 { font-family: var(--schrift-ueberschrift); font-weight: 400; font-size: clamp(32px, 3.4vw, 52px); line-height: 1; letter-spacing: .9px; text-transform: uppercase; margin: 0 0 24px; }
+.zk-karte h2 { font-family: var(--schrift-ueberschrift); font-weight: 500; font-size: clamp(32px, 3.4vw, 52px); line-height: 1; letter-spacing: -.03em; margin: 0 0 24px; }
 .zk-karte ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
 .zk-karte li { position: relative; padding-left: 30px; font-size: 1.1rem; line-height: 1.4; }
 .zk-karte li::before { content: ""; position: absolute; left: 0; top: .32em; width: 14px; height: 14px; border-radius: 50%; background: var(--pc-farbe); }
@@ -497,7 +497,7 @@
 .cs-prozess .grafik-prozess { max-width: 760px; margin: 0; }
 /* Kapitel-Trenner */
 .cs-kapitel { position: relative; grid-template-columns: auto 1fr; column-gap: 32px; align-items: end; }
-.kp-titel { font-family: var(--schrift-ueberschrift); font-weight: 400; font-size: clamp(72px, 13vw, 220px); letter-spacing: .01em; text-transform: uppercase; margin: 0; color: var(--pc-farbe); }
+.kp-titel { font-family: var(--schrift-ueberschrift); font-weight: 500; font-size: clamp(72px, 13vw, 220px); letter-spacing: -.03em; margin: 0; color: var(--pc-farbe); }
 /* Klickstrecke als Treppe */
 .cs-klick { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.25fr); gap: 56px; align-items: start; padding: 64px; border-radius: 28px; background: var(--pc-farbe); color: var(--farbe-weiss); }
 .cs-klick .meta { color: #fbd52a; }
@@ -508,7 +508,7 @@
 .kl-treppe { list-style: none; margin: 0; padding: 0; position: relative; display: grid; }
 .kl-stufe { display: grid; grid-template-columns: 150px 1fr; gap: 18px; align-items: center; }
 .kl-label { display: grid; gap: 4px; justify-items: end; text-align: right; font-weight: 600; line-height: 1.25; }
-.kl-label b { font-family: var(--schrift-ueberschrift); font-weight: 400; font-size: 40px; line-height: 1; color: #fbd52a; }
+.kl-label b { font-family: var(--schrift-ueberschrift); font-weight: 500; font-size: 40px; line-height: 1; color: #fbd52a; }
 .kl-fenster { aspect-ratio: 16 / 10; border-radius: 12px; overflow: hidden; background: var(--farbe-weiss); box-shadow: 0 24px 50px rgba(0, 0, 0, .35); }
 .kl-fenster img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; display: block; }
 .kl-stufe.kl-oder + .kl-stufe.kl-oder .kl-label::before { content: "oder"; justify-self: end; padding: 3px 10px; border-radius: 999px; background: #fbd52a; color: var(--farbe-dunkel); font-family: var(--schrift-meta); font-size: .7rem; text-transform: uppercase; letter-spacing: 1px; }
@@ -749,7 +749,7 @@
 /* Kapitel wie „Leistungen“ auf der Startseite (Anna 14.10.2026): schwarz, ohne Nummer, ohne Linie */
 .cs-kapitel { display: block; padding: 140px 0 8px; border-bottom: 0; }
 .cs-kapitel .meta { color: var(--farbe-gedaempft); margin: 0 0 12px; }
-.cs-kapitel .kp-titel { font-family: var(--schrift-ueberschrift); font-weight: 400; line-height: .95; letter-spacing: .9px; text-transform: uppercase; color: var(--farbe-dunkel); margin: 0; overflow-wrap: break-word; hyphens: manual; }
+.cs-kapitel .kp-titel { font-family: var(--schrift-ueberschrift); font-weight: 500; line-height: .95; letter-spacing: -.03em; color: var(--farbe-dunkel); margin: 0; overflow-wrap: break-word; hyphens: manual; }
 @media (max-width: 900px) {
   .cs-kapitel { padding-top: 80px; }
 }
@@ -766,7 +766,7 @@
 .cs-ziele-grafik { display: grid; grid-template-columns: minmax(0, 1fr) minmax(160px, .7fr) minmax(0, 1fr); column-gap: 0; row-gap: 28px; padding: 56px 48px; border-radius: 28px; background: var(--kachel); font-family: var(--schrift-text); }
 .zg-kopf { display: flex; align-items: center; gap: 18px; }
 .zg-kopf img { width: 76px; height: 76px; border-radius: 20px; background: var(--farbe-weiss); padding: 6px; object-fit: contain; }
-.zg-kopf h2 { margin: 0; font-family: var(--schrift-ueberschrift); font-weight: 400; font-size: clamp(30px, 3vw, 46px); line-height: 1; letter-spacing: .9px; text-transform: uppercase; }
+.zg-kopf h2 { margin: 0; font-family: var(--schrift-ueberschrift); font-weight: 500; font-size: clamp(30px, 3vw, 46px); line-height: 1; letter-spacing: -.03em; }
 .zg-links, .zg-rechts { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
 .zg-links { grid-template-rows: repeat(3, 1fr); }
 .zg-rechts { grid-template-rows: repeat(4, 1fr); }
@@ -874,7 +874,7 @@
 .nl-blau .weg-unter { color: rgba(255, 255, 255, .75); }
 .nl-blau .weg-schritte li:not(:last-child)::after { color: rgba(255, 255, 255, .7); }
 /* B: Funnel-Karte – beide Wege, echte Seiten, die langsam durchscrollen */
-.fk-gross { margin: 8px 0 48px; font-family: var(--schrift-ueberschrift); font-weight: 400; font-size: clamp(36px, 5.2vw, 84px); line-height: .95; letter-spacing: .9px; text-transform: uppercase; }
+.fk-gross { margin: 8px 0 48px; font-family: var(--schrift-ueberschrift); font-weight: 500; font-size: clamp(36px, 5.2vw, 84px); line-height: .95; letter-spacing: -.03em; }
 .fk-kopf { display: flex; align-items: center; gap: 18px; margin: 0 0 28px; }
 .fk-kopf .meta { margin: 0; }
 .fk-stoerer { flex: none; display: grid; place-items: center; width: 88px; height: 88px; border-radius: 50%; font: 800 28px/1 var(--schrift-text); letter-spacing: -.02em; transform: rotate(-10deg); box-shadow: 0 14px 30px rgba(0, 20, 40, .25); }
@@ -926,7 +926,7 @@
 .cs-nahtlos .cs-kennzahlen li { display: flex; flex-direction: column; gap: 10px; padding-top: 16px; border-top: 1.5px solid var(--farbe-dunkel); font-size: 1.05rem; line-height: 1.35; color: var(--farbe-dunkel); }
 .cs-nahtlos .kz-zahl { font-family: var(--schrift-ueberschrift); font-size: clamp(56px, 7vw, 112px); line-height: .9; color: var(--farbe-dunkel); /* Zahlen schwarz (Anna 14.10.2026) */ }
 .cs-nahtlos .cs-ziele-text { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(32px, 6vw, 96px); max-width: 1200px; margin: 0 auto; }
-.cs-nahtlos .zt-titel { margin: 0; padding-bottom: 18px; border-bottom: 1.5px solid var(--farbe-dunkel); font-family: var(--schrift-ueberschrift); font-weight: 400; font-size: clamp(32px, 3.4vw, 52px); line-height: 1; letter-spacing: .02em; text-transform: uppercase; color: var(--farbe-dunkel); }
+.cs-nahtlos .zt-titel { margin: 0; padding-bottom: 18px; border-bottom: 1.5px solid var(--farbe-dunkel); font-family: var(--schrift-ueberschrift); font-weight: 500; font-size: clamp(32px, 3.4vw, 52px); line-height: 1; letter-spacing: -.03em; color: var(--farbe-dunkel); }
 .cs-nahtlos .zt-liste { list-style: none; margin: 0; padding: 0; }
 .cs-nahtlos .zt-liste li { padding: 16px 0; border-bottom: 1.5px solid rgba(14, 16, 17, .15); font-size: clamp(18px, 1.6vw, 24px); line-height: 1.35; }
 @media (max-width: 900px) {
@@ -1109,11 +1109,11 @@
 .eg-karten { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(20px, 2.4vw, 36px); }
 .eg-karten li { padding-top: 18px; border-top: 1.5px solid var(--farbe-dunkel); }
 .eg-karten .meta { margin: 0 0 8px; }
-.eg-karten h3 { margin: 0 0 12px; font: 400 clamp(24px, 2.2vw, 32px)/1.2 var(--schrift-ueberschrift); text-transform: uppercase; color: var(--farbe-dunkel); }
+.eg-karten h3 { margin: 0 0 12px; font: 500 clamp(24px, 2.2vw, 32px)/1.2 var(--schrift-ueberschrift); color: var(--farbe-dunkel); }
 .eg-karten p:not(.meta) { margin: 0; color: var(--farbe-gedaempft); line-height: 1.5; }
 .eg-credits { margin: clamp(40px, 5vw, 72px) 0 0; padding-top: 16px; border-top: 1.5px solid rgba(14, 16, 17, .15); font-size: .95rem; color: var(--farbe-gedaempft); }
 .eg-abschluss { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 32px; margin-top: clamp(40px, 5vw, 72px); padding: clamp(28px, 4vw, 48px); border-radius: 20px; background: var(--farbe-dunkel); color: var(--farbe-weiss); }
-.eg-frage { margin: 0; max-width: 28ch; font: 400 clamp(26px, 3vw, 44px)/1.2 var(--schrift-ueberschrift); text-transform: uppercase; }
+.eg-frage { margin: 0; max-width: 28ch; font: 500 clamp(26px, 3vw, 44px)/1.2 var(--schrift-ueberschrift); }
 @media (max-width: 900px) {
   .eg-karten { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
@@ -1188,7 +1188,7 @@
 .bl-hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: clamp(90px, 14vw, 220px); background: var(--pc-hell); z-index: 1; }
 /* Überblick: große Aussage + Leistungsspalte */
 .cs-ueberblick { display: grid; grid-template-columns: minmax(0, 2.2fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); align-items: end; max-width: 1200px; margin: 0 auto; }
-.ub-aussage { margin: 16px 0 0; font-family: var(--schrift-ueberschrift); font-weight: 400; font-size: clamp(34px, 4.6vw, 68px); line-height: 1.2; letter-spacing: .02em; text-transform: uppercase; color: var(--pc-dunkel); hyphens: manual; }
+.ub-aussage { margin: 16px 0 0; font-family: var(--schrift-ueberschrift); font-weight: 500; font-size: clamp(34px, 4.6vw, 68px); line-height: 1.2; letter-spacing: -.03em; color: var(--pc-dunkel); hyphens: manual; }
 .ub-klein { margin: 0 0 12px; font-family: var(--schrift-meta); font-size: .78rem; font-weight: 400; letter-spacing: .12em; text-transform: uppercase; color: var(--farbe-gedaempft); }
 .ub-leistungen ul { list-style: none; margin: 0; padding: 0; }
 .ub-leistungen li { padding: 10px 0; border-top: 1.5px solid rgba(14, 16, 17, .14); font-size: clamp(17px, 1.4vw, 21px); line-height: 1.35; }
@@ -1199,7 +1199,7 @@
 .hk-karte.hk-dunkel { background: var(--pc-dunkel); color: var(--farbe-weiss); }
 .hk-etikett { margin: 0; font-family: var(--schrift-meta); font-size: .82rem; font-weight: 400; letter-spacing: .12em; text-transform: uppercase; color: inherit; }
 .hk-etikett::before { content: ""; display: inline-block; width: .7em; height: .7em; margin-right: .6em; border-radius: 50%; background: var(--pc-akzent); vertical-align: -.02em; }
-.hk-text { margin: 0; font-family: var(--schrift-ueberschrift); font-size: clamp(26px, 2.7vw, 40px); line-height: 1.2; letter-spacing: .02em; text-transform: uppercase; }
+.hk-text { margin: 0; font-family: var(--schrift-ueberschrift); font-size: clamp(26px, 2.7vw, 40px); line-height: 1.2; letter-spacing: -.03em; }
 .hk-ziele { margin-top: clamp(40px, 5vw, 72px); }
 .hk-ziele ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2.4vw, 40px); }
 .hk-ziele li { display: flex; flex-direction: column; gap: 14px; padding-top: 16px; border-top: 1.5px solid var(--pc-dunkel); font-size: clamp(17px, 1.4vw, 21px); line-height: 1.4; }
@@ -1222,7 +1222,7 @@
 /* ganze Seite am Rechner und am Handy nebeneinander, gleich hoch */
 .cs-lang, .cs-seiten-pillen { max-width: 1200px; margin: 0 auto; }
 .la-kopf, .sp-kopf { max-width: 760px; margin-bottom: clamp(32px, 4vw, 56px); }
-.la-titel { margin: 12px 0 16px; font-family: var(--schrift-ueberschrift); font-weight: 400; font-size: clamp(40px, 6vw, 96px); line-height: 1.2; letter-spacing: .02em; text-transform: uppercase; color: inherit; hyphens: manual; }
+.la-titel { margin: 12px 0 16px; font-family: var(--schrift-ueberschrift); font-weight: 500; font-size: clamp(40px, 6vw, 96px); line-height: 1.2; letter-spacing: -.03em; color: inherit; hyphens: manual; }
 .la-kopf p:not(.meta), .sp-kopf p:not(.meta) { font-size: clamp(18px, 1.5vw, 22px); line-height: 1.45; margin: 0; }
 .la-paar { --spalt: clamp(16px, 3vw, 48px); display: flex; gap: var(--spalt); align-items: flex-start; }
 .la-karte { margin: 0; padding: clamp(8px, 1vw, 14px); border-radius: clamp(14px, 1.8vw, 24px); background: var(--farbe-weiss); box-shadow: 0 24px 60px rgba(14, 16, 17, .12); }
@@ -1398,3 +1398,5 @@
 .cs-nahtlos .ga-flach .ga-fenster { box-shadow: none; border-radius: var(--radius-karte); }
 .ga-flach .ga-raster { margin-top: 0; }
 .nl-band:has(> .ga-flach) { padding-top: 0; }
+/* Typografie-Konzept (Anna 22.11.2026): Überschriften der Projektseiten in der Textschrift, Groß- und Kleinschreibung; Unterlängen brauchen Luft */
+.kp-titel, .cs-kapitel .kp-titel { line-height: 1; }

@@ -202,7 +202,10 @@ def _designsystem(b, pre):
     # Farben und Schrift wie ein Designsystem (Anna 14.10.2026): große Farbfelder, Schriftmuster H1 bis Fließtext in der echten Schrift
     # Farbkarten wie Behance „Skin First“ (Anna 14.10.2026): Name groß, darunter Zeilen mit Linien; RGB aus dem HEX-Wert berechnet
     rgb = lambda c: ' '.join(str(int(c[i:i + 2], 16)) for i in (1, 3, 5))
-    hell = lambda c: sum(int(c[i:i + 2], 16) for i in (1, 3, 5)) > 450
+    def _l(c):
+        f = lambda v: v / 12.92 if v <= .04045 else ((v + .055) / 1.055) ** 2.4
+        r, g, b = (f(int(c[i:i + 2], 16) / 255) for i in (1, 3, 5)); return .2126 * r + .7152 * g + .0722 * b
+    hell = lambda c: 1.05 / (_l(c) + .05) < 4.5   # dunkle Schrift, sobald Weiß unter 4,5 : 1 fällt (Kontrast-Check 22.11.2026)
     farben = ''.join(f'<div class="ds-farbe{" ds-hell" if hell(c) else ""}" style="--f: {c}"><b>{esc(n)}</b><dl><div><dt>Digital HEX</dt><dd>{esc(c.upper())}</dd></div>'
                      f'<div><dt>RGB</dt><dd>{rgb(c)}</dd></div><div><dt>Einsatz</dt><dd>{esc(r)}</dd></div></dl></div>' for c, n, r in b['farben'])
     farben = f'<div class="ds-farben-kopf"><span>Farbpalette</span><span>{esc(b.get("farben_text", ""))}</span></div>' + farben

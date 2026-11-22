@@ -75,3 +75,12 @@ Kurzfassung der Branding-Richtlinien (Original in Betrieb: `Kunden Studio AAH/St
 - Logo „STUDIO AAH!“ nur aus `website/bilder/logo-studio-aah.svg` / `-weiss.svg`, nur in Kopf und Fuß.
 - Porträt überall `anna-haertelt-studio-blau.webp` (rund: `…-rund.jpg`). Echte Fotos von Anna statt KI-Bilder.
 - Formensprache 2D; 3D nur als Beispiel im Angebot Marken-Regelwerk.
+
+## Typografie: zwei Schriften (Anna 22.11.2026, geht vor älteren Zeilen zu Manrope, JetBrains Mono und Handschrift-Überschriften)
+- Instrument Sans für Überschrift und Text (`--schrift-text`, `--schrift-ueberschrift` und `--schrift-meta` zeigen darauf). Überschriften Stärke 500, eng gesetzt (−0,03 em), Groß- und Kleinschreibung, gerade (nicht gekippt). Manrope ist Anna „zu rund“.
+- Annas Handschrift (`--schrift-hand`) nur als Akzent: Korrektur unter einem durchgestrichenen Wort, Dachzeile `.meta`, Randnotiz, Band, Fuß-Notizen. Nie Fließtext, nie eine ganze Überschrift.
+- Durchgestrichenes steht immer in der Textschrift, nie in Handschrift.
+- Alle H2 gleich groß wie die Hero-Zeile der Startseite (`clamp(38px, 4.9vw, 84px)`), Seitentitel H1 eine Stufe darüber, Unterzeile im Seitenkopf `--groesse-5`.
+- Ausnahmen: Schriften der Kund:innen auf Projektseiten (Schriftproben), Anzeigen-Beispiele im Marken-Regelwerk, Logo als Datei.
+- Prüfen nach Schriftänderungen: alle Seiten der `sitemap.xml` bei 320 und 1280 px messen (Überlauf, gerenderte Schriftfamilien, Versalien).
+- Kontrast selbst prüfen, bevor Anna etwas sieht (Anna 22.11.2026: „grau auf hellblau funktioniert nicht, checke selbst solche Kontraste“): nach jeder Farb- oder Hintergrundänderung `werkzeuge/kontrast-check.html` nach `website/_kontrast.html` kopieren, mit Chrome headless `--dump-dom` laden (misst jeden Text gegen seinen echten Hintergrund auf allen Seiten der Sitemap, Grenze 4,5 : 1, groß 3 : 1), danach wieder entfernen. Auf Hauch-Räumen sind Karten weiß, Text Dunkel; Grau nur `--aah-grau`. Ausnahme: Schriftproben in Kundenfarben auf Projektseiten.

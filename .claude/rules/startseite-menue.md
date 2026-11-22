@@ -40,3 +40,9 @@ Hero `.hl` → Über mich kurz (Intro, darunter „Wo es gerade hakt“ als drei
 
 ## Fuß
 - Kontakt · Leistungen (Kernkompetenzen, Feste Angebote, Weitere, Preise) · Branchen (alle sieben, darunter „Wo es hakt“) · Studio (Über mich, Projekte, Blog, Selbst testen, Initiative). Neue Seiten dort eintragen.
+
+## Stand 22.11.2026 (Anna, geht vor älteren Zeilen)
+- Seitentitel „Markenbildung, Webdesign & KI-Beratung in Leipzig | STUDIO AAH!“; H1 kurz „Design Studio aus Leipzig.“; Suchbegriffe stehen in Titel und Beschreibung, nicht im Hero.
+- Auge im Hero zwinkert zweimal nach dem Laden (Animation im SVG, `werkzeuge/grafiken/zeichnungen-sw.py`), bei „Bewegung reduzieren“ offen.
+- Chat: Name „Anna Härtelt“ nur im Chatkopf, nicht in den Antwortblasen; erste eigene Blase „Hallo, ich bin <Name>.“; im Chat kein Platzhalter, sondern blinkende Schreibmarke (`.fh-marke`).
+- Leistungen: Korrekturzeile „Das kann ich für dich machen“.

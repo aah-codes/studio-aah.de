@@ -18,9 +18,53 @@
   <meta property="og:description" content="Anna Härtelt, Gründerin von STUDIO AAH! in Leipzig: UX/UI-Designerin, Strategin und Webentwicklerin, Studium Freie Kunst an der Bauhaus-Universität Weimar.">
   <meta property="og:url" content="https://studio-aah.de/profil/">
   <meta property="og:image" content="https://studio-aah.de/bilder/vorschaubild.jpg">
-  <link rel="stylesheet" href="../css/stil.css?v=20261125x">
+  <link rel="stylesheet" href="../css/stil.css?v=20261126b">
   <link rel="preload" href="../schriften/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../schriften/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+    /* Nur Entwurf Über mich, Fassung 3 (22.11.2026): bei Freigabe nach css/stil.css übernehmen */
+    .um-hero, .um-weiss { background: var(--farbe-weiss); color: var(--farbe-dunkel); }
+    .um-hero { padding: clamp(40px, 5vw, 80px) 0 0; }
+    .um-weiss { padding: clamp(48px, 7vw, 112px) var(--rand-seite); }
+    .um-hero .um-innen { padding: 0 var(--rand-seite); }
+    .um-innen { max-width: var(--inhalt-breite); margin: 0 auto; }
+    .um-licht { font-family: var(--schrift-text); font-weight: 500; letter-spacing: -.03em; text-transform: none; }
+    .um-h1 { margin: 0; width: fit-content; font-size: clamp(34px, 5.4vw, 84px); line-height: 1.14; }   /* große leichte Zeile wie eine Plakatzeile */
+    .um-h3 { margin: 10px 0 0; font-size: clamp(26px, 2.9vw, 44px); line-height: 1.2; }
+    .um-zeile { white-space: nowrap; }
+    .um-durch { position: relative; display: inline-block; }
+    .um-durch::after { content: ""; position: absolute; left: -3%; right: -3%; top: 42%; height: .22em; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 26' preserveAspectRatio='none'%3E%3Cpath d='M2 14 C80 10 180 16 298 9' fill='none' stroke='%23ff3b2f' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M8 18 C110 13 200 19 296 13' fill='none' stroke='%23ff3b2f' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat; }
+    .um-hand { display: block; width: fit-content; margin: .3em 0 0 auto; font: 400 clamp(20px, 2.4vw, 38px)/1.2 var(--schrift-hand), "Architects Daughter", cursive; letter-spacing: .14em; text-transform: uppercase; color: var(--aah-rot); rotate: -3deg; }
+    .um-hand-zeile { margin: .35em 0 .35em 5.5em; font-size: clamp(18px, 1.7vw, 26px); color: var(--aah-rot-tief); }
+    .um-buehne { margin-top: clamp(32px, 4vw, 64px); background: #000; }   /* reines Schwarz, damit das Foto ohne Kante im Grund aufgeht */
+    .um-buehne img { display: block; width: auto; max-width: 100%; height: clamp(300px, 54vw, 760px); margin: 0 auto; object-fit: cover; border-radius: 0; -webkit-mask-image: linear-gradient(90deg, transparent, #000 22%, #000 78%, transparent); mask-image: linear-gradient(90deg, transparent, #000 22%, #000 78%, transparent); }
+    .um-dach { margin: 0; font: 700 var(--groesse-1)/1.3 var(--schrift-text); letter-spacing: .08em; text-transform: uppercase; }
+    .um-block { display: grid; gap: 20px clamp(32px, 6vw, 96px); }
+    .um-block + .um-block { margin-top: clamp(56px, 7vw, 112px); }
+    .um-text p { margin: 0 0 16px; font-size: var(--groesse-3); line-height: 1.55; }
+    .um-text .um-knopf { margin: 28px 0 0; }
+    .um-team { padding-top: 0; }
+    .um-team-titel { max-width: 22em; }
+    .um-kacheln { list-style: none; margin: clamp(28px, 4vw, 56px) 0 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(16px, 2vw, 28px); }
+    .um-kachel { display: flex; flex-direction: column; margin: 0; }
+    .um-kachel-bild { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 0; background: var(--farbe-weiss); }
+    .um-oben { object-position: center 12%; }
+    .um-feld { flex: 1; padding: clamp(16px, 1.8vw, 28px); background: var(--feld); color: var(--farbe-dunkel); }
+    main .um-kacheln .um-kachel h3.um-name { margin: 0; font: 500 var(--groesse-6)/1.2 var(--schrift-text); letter-spacing: -.01em; text-transform: none; }
+    .um-zusatz { margin: 2px 0 0; font-size: var(--groesse-1); line-height: 1.4; }
+    .um-rolle { margin: 14px 0 0; font: 400 var(--groesse-2)/1.35 var(--schrift-hand), "Architects Daughter", cursive; letter-spacing: .14em; text-transform: uppercase; }
+    .um-quelle { margin: 16px 0 0; font-size: var(--groesse-1); color: var(--farbe-gedaempft); }
+    .um-zahlen { padding-top: 0; }
+    .um-fakten { display: block; padding: 0; margin-top: clamp(20px, 3vw, 40px); }
+    @media (min-width: 600px) { .um-kacheln { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (min-width: 900.02px) {
+      .um-block { grid-template-columns: 5fr 6fr; }
+      .um-kacheln { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    @media (max-width: 767.98px) { .um-hand { margin-left: 0; } }
+    @media (max-width: 399.98px) { .um-zeile { white-space: normal; } }
+      .um-kachel .um-rolle, .um-kachel .um-zusatz, .um-kachel h3 { color: var(--farbe-dunkel); }   /* auf Signalfarben immer Dunkel (Farb-Richtlinie 1.1) */
+</style>
 </head>
 <body>
 <a class="sprunglink" href="#inhalt">Zum Inhalt springen</a>
@@ -151,32 +195,112 @@
   </details>
 </header>
 <div class="mm-schleier" hidden></div>
-<script src="../js/menue.js?v=20261125x" defer></script>
+<script src="../js/menue.js?v=20261126b" defer></script>
 <!-- /KOPF -->
 
 <main id="inhalt">
 
-  <section class="golden profil-golden">
-    <div>
-      <img class="profilbild" src="../bilder/anna-haertelt-studio-blau.webp" alt="Anna Härtelt, Gründerin von STUDIO AAH!" width="1200" height="1600">
+  <section class="um-hero" aria-labelledby="um-h1">
+    <div class="um-innen">
+      <h1 class="um-licht um-h1" id="um-h1">Du arbeitest direkt<br>mit <span class="um-zeile"><span class="um-durch">einem Team</span></span> <span class="um-hand">mir, meinem Computer<br>und vier <span class="ohne-umbruch">KI-Agenten</span></span></h1>
     </div>
-    <div>
-      <h1 class="meta profil-h1">Anna Härtelt – Strategie und Webdesign aus Leipzig</h1>
-      <p class="gr-xl profil-aaha">Aaha!</p>
-      <p class="alt-h3"><strong>Strategisches Design für starke Brands mit Haltung und Wirkung.</strong></p>
-      <p><strong>Mein Versprechen</strong><br>Du bekommst keinen Dienstleister, sondern eine <strong>Sparringspartnerin</strong> – die strategisch mitdenkt, dich ehrlich berät und dabei unterstützt, deinen Online-Auftritt oder dein Produkt auf das nächste Level zu bringen.</p>
-      <p>Du bekommst von mir keine Baukasten-Websites, sondern <strong>individuelle Lösungen</strong>, die deine Marke sichtbar machen, Menschen emotional erreichen – und deine Sales unterstützen.</p>
+    <div class="um-buehne"><img src="../bilder/ueber-mich/computer-nachts.webp" srcset="../bilder/ueber-mich/computer-nachts-800.webp 800w, ../bilder/ueber-mich/computer-nachts.webp 1600w" sizes="100vw" alt="Annas Laptop leuchtet nachts auf dem Cordsofa" width="1600" height="1600" fetchpriority="high"></div>
+  </section>
+
+  <section class="um-weiss">
+    <div class="um-innen um-block">
+      <div>
+        <p class="um-dach">Mein Studio</p>
+        <h2 class="um-licht um-h3">Strategisches Design für starke Brands mit Haltung und Wirkung</h2>
+      </div>
+      <div class="um-text">
+        <p>STUDIO AAH! ist mein Studio: Ich leite und gestalte dein Projekt selbst, von der ersten Frage bis zum Launch.</p>
+        <p><strong>Mein Versprechen</strong><br>Du bekommst keinen Dienstleister, sondern eine <strong>Sparringspartnerin</strong> – die strategisch mitdenkt, dich ehrlich berät und dabei unterstützt, deinen Online-Auftritt oder dein Produkt auf das nächste Level zu bringen.</p>
+        <p>Du bekommst von mir keine Baukasten-Websites, sondern <strong>individuelle Lösungen</strong>, die deine Marke sichtbar machen, Menschen emotional erreichen – und deine Sales unterstützen.</p>
+        <p class="um-knopf"><a class="button" href="../kontakt/">Beratung anfragen →</a></p>
+      </div>
+    </div>
+    <div class="um-innen um-block">
+      <div>
+        <p class="um-dach">Arbeiten mit KI</p>
+        <h2 class="um-licht um-h3">Die KI liefert <span class="um-zeile"><span class="um-durch">Ergebnisse</span></span> <span class="um-hand um-hand-zeile">Material</span>Was davon bleibt, entscheide ich.</h2>
+      </div>
+      <div class="um-text">
+        <p>Alles, was an dich geht, lese ich selbst, bevor ich es abschicke. Für Spezialaufgaben wie Programmierung hole ich Freelancer:innen aus meinem Netzwerk dazu.</p>
+        <p><a class="textlink" href="../blog/was-ki-an-meiner-arbeit-veraendert-hat/">Was KI an meiner Arbeit verändert hat →</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="um-weiss um-team" aria-labelledby="um-team">
+    <div class="um-innen">
+      <p class="um-dach">Team</p>
+      <h2 class="um-licht um-h3 um-team-titel" id="um-team">Wer was macht: ich, mein Computer und vier <span class="ohne-umbruch">KI-Agenten</span>.</h2>
+      <ul class="um-kacheln">
+        <li class="um-kachel">
+          <img class="um-kachel-bild um-oben" src="../bilder/anna-haertelt-studio-blau-640.webp" alt="Anna Härtelt, Gründerin von STUDIO AAH!" width="900" height="1222" loading="lazy">
+          <div class="um-feld" style="--feld: var(--aah-orchidee)">
+            <h3 class="um-name">Anna Härtelt</h3>
+            <p class="um-zusatz">(leitet und gestaltet dein Projekt)</p>
+            <p class="um-rolle">Idee, Struktur, Gestaltungslinie</p>
+          </div>
+        </li>
+        <li class="um-kachel">
+          <img class="um-kachel-bild" src="../bilder/ueber-mich/computer-nachts-800.webp" alt="Annas Laptop leuchtet nachts auf dem Cordsofa" width="900" height="1222" loading="lazy">
+          <div class="um-feld" style="--feld: var(--aah-gelb)">
+            <h3 class="um-name">Mein Computer</h3>
+            <p class="um-zusatz">(arbeitet Tag und Nacht)</p>
+            <p class="um-rolle">Konzept, Design, Code</p>
+          </div>
+        </li>
+        <li class="um-kachel">
+          <img class="um-kachel-bild um-oben" src="../bilder/ueber-mich/roboter-recherche.webp" alt="Tuschezeichnung von Anna Härtelt: Roboter mit großem Kamera-Auge" width="900" height="1222" loading="lazy">
+          <div class="um-feld" style="--feld: var(--aah-himmelblau)">
+            <h3 class="um-name">Recherche</h3>
+            <p class="um-zusatz">(KI-Agent)</p>
+            <p class="um-rolle">Recherchiert für dein Projekt</p>
+          </div>
+        </li>
+        <li class="um-kachel">
+          <img class="um-kachel-bild um-oben" src="../bilder/ueber-mich/roboter-entwurf.webp" alt="Tuschezeichnung von Anna Härtelt: Roboter hält ein Tablet in beiden Händen" width="900" height="1222" loading="lazy">
+          <div class="um-feld" style="--feld: var(--aah-mint)">
+            <h3 class="um-name">Entwurf</h3>
+            <p class="um-zusatz">(KI-Agent)</p>
+            <p class="um-rolle">Erstellt erste Entwürfe</p>
+          </div>
+        </li>
+        <li class="um-kachel">
+          <img class="um-kachel-bild um-oben" src="../bilder/ueber-mich/roboter-code.webp" alt="Tuschezeichnung von Anna Härtelt: Roboterkopf mit drei Linsen und Gitter" width="900" height="1222" loading="lazy">
+          <div class="um-feld" style="--feld: var(--aah-pink)">
+            <h3 class="um-name">Code</h3>
+            <p class="um-zusatz">(KI-Agent)</p>
+            <p class="um-rolle">Schreibt Code</p>
+          </div>
+        </li>
+        <li class="um-kachel">
+          <img class="um-kachel-bild um-oben" src="../bilder/ueber-mich/roboter-kontrolle.webp" alt="Tuschezeichnung von Anna Härtelt: Roboter mit weit geöffneten Augen und Mund" width="900" height="1222" loading="lazy">
+          <div class="um-feld" style="--feld: var(--aah-rot)">
+            <h3 class="um-name">Kontrolle</h3>
+            <p class="um-zusatz">(KI-Agent)</p>
+            <p class="um-rolle">Kontrollrunde bei wichtigen Inhalten</p>
+          </div>
+        </li>
+      </ul>
+      <p class="um-quelle">Tuschezeichnungen: Anna Härtelt, 2020</p>
+    </div>
+  </section>
+
+  <section class="um-weiss um-zahlen">
+    <div class="um-innen">
       <p class="profil-linkedin"><span class="meta">Folge mir</span> <a class="textlink mit-symbol" href="https://www.linkedin.com/in/anna-h%C3%A4rtelt-8513b8213/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><rect x="1.5" y="1.5" width="21" height="21" rx="4" fill="currentColor"/><rect x="5.5" y="9.5" width="2.8" height="8.5" fill="var(--farbe-weiss)"/><circle cx="6.9" cy="6.6" r="1.7" fill="var(--farbe-weiss)"/><path d="M10.6 9.5h2.7v1.2c.5-.8 1.5-1.5 3-1.5 2.4 0 3.2 1.5 3.2 4V18h-2.8v-4.3c0-1.2-.3-2-1.4-2s-1.9.8-1.9 2.1V18h-2.8z" fill="var(--farbe-weiss)"/></svg>Anna Härtelt auf LinkedIn <span aria-hidden="true">↗</span></a></p>
-<!-- KENNZAHLEN:START -->
+    </div>
+    <div class="um-innen profil-golden um-fakten"><!-- KENNZAHLEN:START -->
       <dl class="fakten">
         <div><dt><span data-zaehlen="40">40</span><span class="fakt-plus">+</span></dt><dd>Projekte</dd></div>
         <div><dt><span data-zaehlen="6">6</span></dt><dd>Jahre selbstständig, seit 2020</dd></div>
         <div><dt><svg class="fakt-ort" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.4 12.5h13.2L12 23z" fill="currentColor"/><circle cx="12" cy="9" r="7" fill="currentColor"/><circle cx="12" cy="9" r="3" fill="#fff"/></svg></dt><dd><span class="mit-liebe">Made with Love in Leipzig</span></dd></div>
       </dl>
-<!-- KENNZAHLEN:ENDE -->
-      <p><a class="button" href="../kontakt/">Jetzt Beratung anfragen →</a></p>
-      <p class="meta">Kostenfrei und unverbindlich</p>
-    </div>
+<!-- KENNZAHLEN:ENDE --></div>
   </section>
 
   <section class="profil-wer" aria-labelledby="wer-titel">
@@ -191,7 +315,6 @@
         <p>Mein Diplom in Fine Art habe ich an der <strong>Bauhaus-Universität Weimar</strong> gemacht, dort, wo 1919 das Bauhaus gegründet wurde. Seine Leitidee „Form follows function“ ist bis heute mein Maßstab.</p>
         <p>Heute arbeite ich in zwei Rollen, die sich optimal ergänzen: Ich leite <strong>STUDIO AAH!</strong> und entwickle in der Berliner Digitalagentur <strong>Digitalbegleiter GmbH</strong> digitale Produkte für Mittelstand und Startups – von der Konzeption bis zum Launch. Bis 2026 habe ich außerdem Web- und Screendesign an der <strong>Hochschule Macromedia Leipzig</strong> unterrichtet.</p>
         <p><strong>Mittelstand im B2B ist mein Schwerpunkt.</strong> In der Agentur arbeite ich seit 2023 vor allem mit mittelständischen B2B-Unternehmen: lange Entscheidungswege, mehrere Ansprechpersonen, erklärungsbedürftige Leistungen. Dieses Wissen bringe ich in jedes Projekt von STUDIO AAH! mit.</p>
-        <p><strong>Du arbeitest direkt mit mir.</strong> STUDIO AAH! ist mein Studio: Ich leite und gestalte dein Projekt selbst, von der ersten Frage bis zum Launch. Für Spezialaufgaben wie Programmierung hole ich Freelancer:innen aus meinem Netzwerk dazu.</p>
         <p>Mein Handwerk habe ich von Grund auf gelernt: zuerst als gestaltungstechnische Assistentin (Darstellung, Gestaltung, Druck), dann im Kunststudium.</p>
         <!-- Werkzeuge (Anna 13.10.2026, vorher auf der Startseite) -->
         <div class="profil-tools">
@@ -456,7 +579,7 @@
     <span class="fuss-karte-titel">Demokratie braucht Sichtbarkeit.</span>
     <span class="fuss-karte-text">Websites ohne Honorar für Vereine, NGOs, Kunst und Kultur.</span>
     <span class="fuss-karte-link">Mehr erfahren →</span>
-    <img class="fuss-karte-icon" src="../bilder/sticker/zeichnung-megafon.svg?v=20261125x" alt="" width="400" height="400" loading="lazy">
+    <img class="fuss-karte-icon" src="../bilder/zeichnungen-sw/megafon.svg?v=20261126b" alt="" width="400" height="400" loading="lazy">
   </a>
     <nav class="fuss-spalten" aria-label="Fußmenü">
 <div class="fuss-kontakt">
@@ -546,6 +669,6 @@
   </div>
   <!-- /FUSS -->
 
-  <script src="../js/zaehlen.js?v=20261125x" defer></script>
+  <script src="../js/zaehlen.js?v=20261126b" defer></script>
 </body>
 </html>

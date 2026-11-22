@@ -105,7 +105,7 @@
     if (runden.length > 3) verlauf.removeChild(runden[0]);
     hinscrollen(runde);
     feld.value = '';
-    feld.placeholder = 'Noch eine Frage?';
+    feld.placeholder = ''; marke();   // im Chat kein Platzhalter, nur die blinkende Schreibmarke (Anna 22.11.2026)
 
     var zeile = el('div', 'fh-zeile');
     var foto = el('img', 'fh-foto');
@@ -113,7 +113,6 @@
     zeile.appendChild(foto);
     var antwort = el('div', 'fh-sie');
     zeile.appendChild(antwort);
-    antwort.appendChild(el('p', 'fh-name', 'Anna Härtelt'));
     // Antwort wie ein Wiki oder die KI-Übersicht bei Google (Anna 20.11.2026): kurze Zusammenfassung, bis zu drei Stichpunkte,
     // Links direkt im Text als [Wort](adresse) aus daten/fragen.json, keine Link-Zeilen mehr unten in der Blase
     if (treffer) {
@@ -157,7 +156,7 @@
   var START = feld.placeholder, panel = form.closest('.hl-panel'), zu = document.querySelector('[data-frag-zu]');
   function schliessen() {
     if (!ziel.textContent.trim()) return;
-    ziel.innerHTML = ''; feld.value = ''; feld.placeholder = START; modus();
+    ziel.innerHTML = ''; feld.value = ''; feld.placeholder = START; marke(); modus();
   }
   if (zu) zu.addEventListener('click', schliessen);
   if (panel) panel.addEventListener('click', function (ev) { if (ev.target === panel) schliessen(); });
@@ -184,6 +183,9 @@
 
   function beispiel() { return /\?$/.test(feld.placeholder) && feld.placeholder !== 'Noch eine Frage?' ? feld.placeholder : ''; }
   function modus() {}
+  // Blinkende Schreibmarke im leeren Chat-Feld, auch ohne Fokus (Anna 22.11.2026); der Name steht nur im Chatkopf
+  function marke() { form.classList.toggle('fh-marke', !feld.placeholder && !feld.value); }
+  feld.addEventListener('input', marke);
 
   // Emoji-Auswahl: fügt an der Schreibmarke ein, bleibt offen wie bei WhatsApp, schließt mit Esc oder Klick daneben
   function emojiPanel(auf) {
@@ -196,7 +198,7 @@
     var a = feld.selectionStart == null ? feld.value.length : feld.selectionStart, e = feld.selectionEnd == null ? a : feld.selectionEnd;
     feld.value = (feld.value.slice(0, a) + b.textContent + feld.value.slice(e)).slice(0, 200);
     var pos = a + b.textContent.length; feld.focus(); try { feld.setSelectionRange(pos, pos); } catch (x) {}
-    modus();
+    marke(); modus();
   });
   document.addEventListener('click', function (ev) { if (emojis && !emojis.hidden && !form.contains(ev.target)) emojiPanel(false); });
 
@@ -227,18 +229,17 @@
     var verlauf = ziel.querySelector('.fh-chat') || ziel.appendChild(el('ol', 'fh-chat'));
     if (!verlauf.querySelector('.fh-tag')) verlauf.appendChild(el('li', 'fh-tag', 'Heute'));
     ton('senden');
-    var runde = el('li', 'fh-runde'), ich = el('p', 'fh-ich', name);
+    var runde = el('li', 'fh-runde'), ich = el('p', 'fh-ich', 'Hallo, ich bin ' + name + '.');   // Anna 22.11.2026
     ich.appendChild(zeit(true)); runde.appendChild(ich);
     var zeile = el('div', 'fh-zeile'), foto = el('img', 'fh-foto');
     foto.src = 'bilder/anna-haertelt-studio-blau-rund-192.jpg'; foto.alt = ''; foto.width = 32; foto.height = 32;
     zeile.appendChild(foto);
     var antwort = el('div', 'fh-sie');
-    antwort.appendChild(el('p', 'fh-name', 'Anna Härtelt'));
     antwort.appendChild(el('p', 'fh-kurz', 'Schön, dich kennenzulernen, ' + name + '! Wie kann ich dir weiterhelfen?'));
     antwort.appendChild(zeit(false));
     zeile.appendChild(antwort); runde.appendChild(zeile);
     verlauf.appendChild(runde); hinscrollen(runde);
-    feld.value = ''; alsFrage(name); ton('antwort'); feld.focus();
+    feld.value = ''; alsFrage(name); feld.placeholder = ''; marke(); ton('antwort'); feld.focus();
   }
   form.addEventListener('submit', function (ev) {
     ev.preventDefault();

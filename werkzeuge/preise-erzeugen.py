@@ -59,7 +59,7 @@ def start_leistungen():
                      for i in ('brand', 'website', 'ki'))  # Anna 16.11.2026: drei Kernkompetenzen wie im Mega-Menü
     return ('  <section class="start-leistungen" aria-labelledby="leistungen">\n    <div class="sektionskopf"><p class="meta">Kernkompetenzen</p>'
             '<h2 class="gr-xxl" id="leistungen"><span class="korrektur"><span class="notiz notiz-durch">Leistungen</span>'
-            '<span class="hand" aria-hidden="true">Was ich für dich tun kann</span></span></h2></div>\n'   # Anna 21.11.2026
+            '<span class="hand" aria-hidden="true">Das kann ich für dich machen</span></span></h2></div>\n'   # Anna 22.11.2026
             f'    <div class="ls-raster ls-kern">{karten}</div>\n  </section>')
 
 

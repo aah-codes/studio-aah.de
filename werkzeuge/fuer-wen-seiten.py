@@ -86,7 +86,7 @@ def branche_abschluss(pre):
     """Abschluss der Branchenseiten (Anna 22.11.2026, Vorbild Kochstrasse): Name aus dem Frag-Feld der Startseite aufgreifen,
     schräg in Annas Schrift, gezeichnete Sprechblase, Button zum Kontaktformular. Ohne Namen: „Hey, du bist ja noch da.“"""
     return ('  <section class="weg-ziel br-hallo" aria-labelledby="weg-ziel-titel">\n'
-            f'  <img class="br-hallo-sticker" src="{pre}bilder/sticker/zeichnung-sprechblase.svg" alt="" width="400" height="400" loading="lazy">\n'
+            f'  <img class="br-hallo-sticker" src="{pre}bilder/zeichnungen-sw/sprechblase.svg" alt="" width="400" height="400" loading="lazy">\n'
             '  <h2 class="gr-h2 br-hallo-titel" id="weg-ziel-titel"><span data-name-hallo>Hey, du bist ja noch da.</span></h2>\n'
             '  <p class="alt-klein">Wir sollten ins Gespräch kommen.</p>\n'
             f'  <p><a class="button weg-ziel-knopf" href="{pre}kontakt/">Beratung anfragen <span aria-hidden="true">→</span></a></p>\n</section>')
@@ -220,7 +220,7 @@ def referenz_mit_zahlen(b, liste, pre):
     if len(liste) == 1 and b.get('zahlen'):
         return ('    <div class="br-ref">\n      <div class="referenz-rahmen">\n' + I.projekt_raster(liste, pre) + '\n      </div>\n'
                 + zahlen_kasten(b['zahlen_titel'], b['zahlen']) + '    </div>')
-    return f'    <div class="referenz-rahmen">\n{I.projekt_raster(liste, pre)}\n    </div>'
+    return f'    <div class="referenz-rahmen">\n{I.projekt_wechsel(liste, pre) if len(liste) > 1 else I.projekt_raster(liste, pre)}\n    </div>'
 
 
 def weitere_branchen(andere, pre):

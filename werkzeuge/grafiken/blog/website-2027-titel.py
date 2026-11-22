@@ -75,6 +75,11 @@ def seite(inhalt):
 
 def aufnahme(html, b, h, ziel_png, skala=1):
     with tempfile.TemporaryDirectory() as tmp:
+        # Gezeichnete Linie (Anna 22.11.2026: Bauhaus-Illustrationen sollen mehr gezeichnet aussehen): leichte Verschiebung über SVG-Filter
+        hand = ('<svg class="hand-def" width="0" height="0" style="position:absolute"><filter id="hand" x="-2%" y="-2%" width="104%" height="104%">'
+                '<feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7"/><feDisplacementMap in="SourceGraphic" scale="3.2"/></filter></svg>'
+                '<style>svg:not(.hand-def){filter:url(#hand)}</style>')
+        html = html.replace('<body>', '<body>' + hand, 1) if '<body>' in html else hand + html
         datei = pathlib.Path(tmp) / 'seite.html'; datei.write_text(html, encoding='utf-8')
         subprocess.run([CHROME, '--headless=new', '--disable-gpu', '--hide-scrollbars', f'--force-device-scale-factor={skala}',
                         f'--window-size={b},{h}', '--virtual-time-budget=3000', f'--screenshot={ziel_png}', datei.as_uri()],

@@ -34,4 +34,4 @@
 - Zugänglichkeit: sinnvolle Überschriften-Reihenfolge, Alternativtexte, sichtbarer Fokus, ausreichender Kontrast.
 
 ## Gestaltung in einem Satz
-Ruhig und plakativ: viel Weiß, Schwarz, Creme, Blau `#2a5fe6` als einziger Akzent, laut nur Anton; Details in `.claude/rules/gestaltung.md`, Original-Richtlinien in Betrieb `Kunden Studio AAH/Studio AAH/branding-guidelines.md`. E-Mail-Adresse überall info@studio-aah.de; immer „Button“, nie „Knopf“.
+Ruhig und plakativ: viel Weiß, Schwarz, Creme, Blau `#2a5fe6` als einziger Akzent; zwei Schriften: Instrument Sans für Überschrift und Text, Annas Handschrift nur als Akzent (Anton nur im Logo); Details in `.claude/rules/gestaltung.md`, Original-Richtlinien in Betrieb `Kunden Studio AAH/Studio AAH/branding-guidelines.md`. E-Mail-Adresse überall info@studio-aah.de; immer „Button“, nie „Knopf“.

@@ -1,3 +1,4 @@
+import re
 # Erzeugt wiederkehrende Inhalte aus werkzeuge/inhalte/*.json (Projekte, Kundenstimmen, Blogartikel, Kennzahlen)
 # und setzt sie zwischen die Marker <!-- NAME:START --> … <!-- NAME:ENDE --> der Seiten.
 # Jeder Eintrag hat Schlagworte (tags), z. B. "website", "brand", "ui-ux"; die Leistungsseiten wählen danach aus.
@@ -55,13 +56,20 @@ def projekt_link(p, pre):
     return l['url'], f'{esc(l["text"])} <span aria-hidden="true">↗</span>', ' target="_blank" rel="noopener"'
 
 
+def foto_oder_cover(p, pre, c=None):
+    """Projektkarte mit echtem Bild statt Geräte-Mockup auf Schwarz (Anna 23.11.2026); ohne passendes Bild bleibt das Mockup."""
+    foto = next((b for b in p.get('streifen') or [] if not re.search(r'imac|mockup|handy|iphone|laptop|desktop', b)), None)
+    if not foto: return cover(p, pre, c)
+    return f'<img class="pk-foto"{bild_attr(foto, pre)} alt="" loading="lazy">'
+
+
 def projekt_karte(p, pre, ansicht=None, h='h3', satz=True):
     # satz=False: ohne Unterzeile unter dem Namen (Projektübersicht, Anna 17.11.2026: „subline unter card titel raus“)
     url, text, ziel = projekt_link(p, pre)
     c = p.get(f'cover_{ansicht}') if ansicht else None
     zeile = f'          <p class="pk-satz">{esc(p["satz"])}</p>\n' if satz else ''
     return (f'<article class="pk">\n'
-            f'          <a class="pk-bild" href="{url}"{ziel} tabindex="-1" aria-hidden="true">{cover(p, pre, c)}</a>\n'
+            f'          <a class="pk-bild" href="{url}"{ziel} tabindex="-1" aria-hidden="true">{foto_oder_cover(p, pre, c)}</a>\n'
             f'          <{h} class="pk-name"><a href="{url}"{ziel}>{esc(p["kurzname"])}</a></{h}>\n'
             + zeile +
             f'          <p class="pk-link"><a class="textlink" href="{url}"{ziel}>{text}</a></p>\n'
@@ -110,6 +118,15 @@ def projekt_arbeit_liste(liste, pre):
                       f'<span class="pa-satz">{satz}</span><span class="pa-branche">{branche}</span></a>'
                       f'<div class="pa-streifen" aria-hidden="true"><div class="pa-streifen-innen">{streifen}</div></div></li>')
     return '    <div class="pa stil-b v-raeume">\n    <ul class="pa-liste">\n' + '\n'.join(zeilen) + '\n    </ul>\n    </div>'
+
+
+# --- Raster | Liste ohne JavaScript wie auf /referenzen/ (Anna 22.11.2026: „immer grid und liste“). Ein Abschnitt je Seite (feste Kennungen).
+def projekt_wechsel(liste, pre, h='h3'):
+    karten = '\n'.join(f'      <li>{projekt_karte(p, pre, h=h, satz=False)}</li>' for p in liste)
+    return ('    <div class="ref-wechsel">\n    <fieldset class="ref-ansicht"><legend class="unsichtbar">Ansicht</legend>\n'
+            '      <input type="radio" name="ref-ansicht" id="ref-raster" checked><label for="ref-raster">Raster</label>\n'
+            '      <input type="radio" name="ref-ansicht" id="ref-liste"><label for="ref-liste">Liste</label>\n    </fieldset>\n'
+            f'    <ul class="ref-raster">\n{karten}\n    </ul>\n{projekt_arbeit_liste(liste, pre)}\n    </div>')
 
 
 def projekt_liste(liste, pre):
@@ -333,7 +350,7 @@ ANGEBOT_ARTIKEL = {'marken-regelwerk/index.html': ['brand'], 'website-check/inde
 
 if __name__ == '__main__':
     seiten = {
-        'index.html': [('PROJEKTE', lambda: projekt_arbeit_liste([x for x in PROJEKTE if x.get('case')], '')), ('LINKEDIN', lambda: linkedin_leiste('')), ('STIMMEN', lambda: stimmen(STIMMEN, ''))],   # „Für wen“, Blog-Karten und Kennzahlen seit 12.11.2026 nicht mehr auf der Startseite (Kennzahlen nur auf Über mich)
+        'index.html': [('PROJEKTE', lambda: projekt_wechsel([x for x in PROJEKTE if x.get('case')], '')), ('LINKEDIN', lambda: linkedin_leiste('')), ('STIMMEN', lambda: stimmen(STIMMEN, ''))],   # „Für wen“, Blog-Karten und Kennzahlen seit 12.11.2026 nicht mehr auf der Startseite (Kennzahlen nur auf Über mich)
         'profil/index.html': [('STIMMEN', lambda: stimmen(STIMMEN, '../')), ('BLOG', lambda: blog(BLOG[:4], '../', '../blog/')),
                               ('KENNZAHLEN', lambda: kennzahlen('fakten', '      '))],
         'blog/index.html': [('BLOG', lambda: blog_themen()), ('SPIEL', lambda: spiel_sektion('../', re.search(r'menue\.js\?v=(\w+)', (WEBSITE / 'index.html').read_text(encoding='utf-8')).group(1)))],
