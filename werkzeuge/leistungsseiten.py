@@ -463,7 +463,7 @@ def muster_kopf(c, m, pre):
     return (f'  <section class="seitenkopf lsx-kopf lsx-m-kopf">\n'
             f'    <img class="lsx-kopf-icon" src="{pre}{c["icon"]}" alt="" width="400" height="400">\n'
             f'    <p class="meta brotkrumen"><a href="{pre}#leistungen">Leistungen</a> / <span aria-current="page">{esc(c["titel"])}</span></p>\n'
-            f'    <h1 class="gr-xxl lsx-titel" style="--n:{max(len(w) for w in m["h1"].split())}">{esc(m["h1"])}</h1>\n'
+            f'    <h1 class="gr-xxl lsx-titel" style="--n:{max(len(w) for w in m["h1"].split())}">{esc(m["h1"]).replace(" in ", "<br>in ", 1)}</h1>\n'
             f'    <p class="alt-klein">{trennen(esc(c.get("intro", "")))}</p>\n'
             f'    <ul class="lsx-m-fakten">{fakten}</ul>\n'
             f'    <p class="lsx-hero-knopf"><a class="button" href="{pre}kontakt/">Beratung anfragen <span aria-hidden="true">→</span></a></p>\n'
