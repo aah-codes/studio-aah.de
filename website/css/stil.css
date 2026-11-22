@@ -5247,3 +5247,4 @@ main h2.preis-h2 { font-size: clamp(40px, 6vw, 84px); line-height: 1.05; }
 .lsx-muster > .lsx-pakete, .lsx-muster > .lsx-vergleich, .lsx-muster > .lsx-extras { padding-top: 64px; padding-bottom: 32px; }
 @media (max-width: 767.98px) { .lsx-muster > section, .lsx-muster > figure.ci-grafik { padding-top: 64px; padding-bottom: 64px; } }
 .lsx-muster .lsx-titel { line-height: .98; }   /* weniger Abstand zwischen den Zeilen der Überschrift (Anna 22.11.2026) */
+.lsx-pl-zettel li { justify-content: center; align-items: center; text-align: center; padding: 28px 24px; }   /* Text mittig in der Haftnotiz (Anna 22.11.2026) */
