@@ -30,6 +30,8 @@ REDIGAT = {
         ('<span class="hand">Partnerschaften</span>', '<span class="hand">Partnerschaften auf Augenhöhe</span>'),
         ('id="stimmen-titel">Stimmen,<br>die zählen.</h2>', 'id="stimmen-titel">Stimmen,<br>die zählen.<span class="ko-block">Was passiert, wenn man es einfach anpackt</span></h2>'),
         ('id="faq-titel">Ehrliche Antworten</h2>', 'id="faq-titel">' + _ko('Standard-Antworten', 'Ehrliche Antworten') + '</h2>'),
+        ('id="leistungen-titel">Das bekommst du</h2>', 'id="leistungen-titel">Das bekommst du: eine Marke, die im Alltag wirklich arbeitet</h2>'),
+        ('id="pakete-titel">Was es kostet</h2>', 'id="pakete-titel">Was es kostet: klare Pakete statt <del class="kr-durch">Stundensatz-Überraschung</del></h2>'),
         ('id="schluss-titel">Fangen wir klein an.</h2>', 'id="schluss-titel">Fangen wir <span class="ko-zitat-hand">klein</span> an.</h2>'),
     ],
 }
