@@ -5236,3 +5236,13 @@ main h2.preis-h2 { font-size: clamp(40px, 6vw, 84px); line-height: 1.05; }
 .lsx-pl-zettel li::before, .lsx-pl-zettel li:nth-child(4n)::before { background: var(--bb-gelb); opacity: .85; }
 .lsx-pl-zettel li { aspect-ratio: 1 / 1; display: flex; flex-direction: column; min-height: 0; }   /* quadratisch wie echte Haftnotizen (Anna 22.11.2026) */
 @media (max-width: 767.98px) { .lsx-pl-zettel li { aspect-ratio: auto; min-height: 160px; } }
+/* Leistungsseiten-Muster: Hintergründe wechseln (Anna 22.11.2026: „die Sections sind alle sehr gleich“) – Weiß, helles Papier (Grund), mittleres Papier */
+.lsx-muster > section, .lsx-muster > figure.ci-grafik { padding-top: 96px; padding-bottom: 96px; margin-top: 0; margin-bottom: 0; }
+.lsx-muster > .lsx-m-kurz, .lsx-muster > .lsx-m-so, .lsx-muster > .lsx-m-so + .ci-grafik, .lsx-muster > .lsx-referenzen { background: var(--farbe-weiss); }
+.lsx-muster > .lsx-m-anlaesse, .lsx-muster > .lsx-m-ergebnisse, .lsx-muster > .lsx-stimmen, .lsx-muster > .faq { background: url(../bilder/papier/papier-b.webp) 0 0 / 256px repeat; }
+.lsx-muster > .lsx-m-so { padding-bottom: 0; }
+.lsx-muster > .lsx-m-so + .ci-grafik { max-width: none; padding-left: var(--rand-seite); padding-right: var(--rand-seite); }
+.lsx-muster > .lsx-m-so + .ci-grafik > svg { max-width: 1200px; margin-left: auto; margin-right: auto; }
+.lsx-muster > .lsx-m-kurz .lsx-m-kurz-liste { box-shadow: none; border: 1px solid var(--farbe-rahmen); }
+.lsx-muster > .lsx-pakete, .lsx-muster > .lsx-vergleich, .lsx-muster > .lsx-extras { padding-top: 64px; padding-bottom: 32px; }
+@media (max-width: 767.98px) { .lsx-muster > section, .lsx-muster > figure.ci-grafik { padding-top: 64px; padding-bottom: 64px; } }
