@@ -5806,3 +5806,23 @@ main[class] > section.lsx-m-ergebnisse.lsx-ziel { background: var(--aah-orchidee
 /* Text des Blog-Heros als Gruppe mittig zwischen Kopf und Foto, Gesamthöhe wie Profil (Anna 23.11.2026) */
 .blog-hero:not(#x) { padding-top: clamp(60px, 6vw, 88px); }
 .blog-buehne:not(#x) { margin-top: clamp(60px, 6vw, 88px); }
+
+/* Runde 5 (Anna 23.11.2026) */
+/* Annas Schrift als Korrektur oder Zusatz immer Rot, auch auf der Projektübersicht */
+.korrektur .hand:not(#x), .um-hand:not(#x) { color: var(--aah-rot); }
+/* Projektübersicht: Hero auf Weiß */
+main > .seitenkopf:has(.korrektur-partner):not(#x) { background: var(--farbe-weiss); }
+/* Referenzen-Slider: Überschrift und Karten passen in einen Bildschirm */
+.ref-band .pc:not(#x) { aspect-ratio: auto; height: clamp(200px, 44vh, 440px); }
+.ref-band > li:not(#x) { flex-basis: calc(clamp(200px, 44vh, 440px) * 4 / 3); }
+.start-projektliste .sektionskopf:not(#x) { margin-bottom: 16px; }
+.start-projektliste .sektionskopf .gr-h2:not(#x) { margin-bottom: 8px; }
+/* Startseite Branchen wie „Weitere Branchen“: Kacheln ohne schwarze Kontur, H2 ohne schwarzen Grund */
+.stil-b.v-raeume .br-start .br-kachel:not(#x) { border: 0; box-shadow: none; outline: 0; }
+.stil-b.v-raeume .br-start h2:not(#x) { background: none; color: var(--farbe-dunkel); padding: 0; }
+@media (max-width: 767.98px) { .ref-band > li:not(#x) { flex-basis: 80vw; } .ref-band .pc:not(#x) { height: auto; aspect-ratio: 4 / 3; } }
+/* Startseite: Projektkarten (5 : 6) im Slider so hoch, dass Überschrift und Karten in einen Bildschirm passen */
+.ref-band .pk-bild:not(#x), .ref-band .pk-foto:not(#x) { aspect-ratio: auto; height: clamp(220px, 46vh, 460px); }
+.ref-band > li:has(.pk):not(#x) { flex-basis: calc(clamp(220px, 46vh, 460px) * 5 / 6); }
+.start-projektliste .sektionskopf:not(#x) { padding-bottom: 0; }
+@media (max-width: 767.98px) { .ref-band > li:has(.pk):not(#x) { flex-basis: 72vw; } }
