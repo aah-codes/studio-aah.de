@@ -18,13 +18,13 @@ MIT_CHECK = (WEBSITE / 'website-check' / 'index.html').exists()
 
 
 # Handschrift-Redigat je Seite (Anna 22.11.2026): ersetzt fertige Überschriften; durchgestrichen = aria-hidden, Hand = gelesen
-def _ko(alt, neu):
-    return f'<span class="korrektur ko-unten"><span class="notiz notiz-durch" aria-hidden="true">{alt}</span><span class="hand">{neu}</span></span>'
+def _ko(alt, neu, oben=False):
+    return f'<span class="korrektur {"ko-oben" if oben else "ko-unten"}"><span class="notiz notiz-durch" aria-hidden="true">{alt}</span><span class="hand">{neu}</span></span>'
 REDIGAT = {
     'service/webdesign/': [
-        ('style="--n:9">Webdesign</h1>', 'style="--n:26">Webdesign in Leipzig: Keine ' + _ko('digitale Visitenkarte.', 'Dekoration für die Schublade.') + '<br>Sondern eine Website, die euch Anfragen bringt.</h1>'),
+        ('style="--n:9">Webdesign</h1>', 'style="--n:26">Webdesign in Leipzig: Keine digitale Visitenkarte.<br>Sondern eine Website, die euch Anfragen bringt.</h1>'),
         ('<p class="alt-klein">Klares Design mit technischer Präzision – individuell, responsiv und auf deine Ziele ausgerichtet.</p>', '<p class="alt-klein">Klares Design, durchdachte Struktur und saubere Technik (inkl. SEO &amp; KI-Suche) – damit Besucher:innen im <span class="ohne-umbruch">B2B-Mittelstand</span> sofort verstehen, warum sie bei euch richtig sind.</p>'),
-        ('id="loesung-titel">Eine schöne Website', 'id="loesung-titel">Eine ' + _ko('schöne', 'teure') + ' Website'),
+        ('id="loesung-titel">Eine schöne Website', 'id="loesung-titel">Eine ' + _ko('schöne', 'teure', oben=True) + ' Website'),
         ('<p class="meta">Woran es oft hakt</p>', '<p class="meta">Woran es im Alltag oft hakt</p>'),
         ('<span class="hand">Partnerschaften</span>', '<span class="hand">Partnerschaften auf Augenhöhe</span>'),
         ('id="stimmen-titel">Stimmen,<br>die zählen.</h2>', 'id="stimmen-titel">Stimmen,<br>die zählen.<span class="ko-block">Was passiert, wenn man es einfach anpackt</span></h2>'),
