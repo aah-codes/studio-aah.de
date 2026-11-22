@@ -5299,3 +5299,5 @@ main > .faq { background: url(../bilder/papier/papier-c.webp) 0 0 / 256px repeat
 main > .faq .meta, main > .faq .faq-eintrag { color: var(--farbe-dunkel); }
 :is(.br-projekte, .lsx-referenzen) > .sektionskopf { text-align: start; }
 :is(.br-projekte, .lsx-referenzen) > .sektionskopf .pa-titel { margin-bottom: clamp(40px, 4vw, 64px); }
+/* Anna 22.11.2026: „Doppelt so effizient.“ in normaler Groß- und Kleinschreibung (Versalien in der Handschrift schlecht lesbar) */
+.lp-kern { text-transform: none; }
