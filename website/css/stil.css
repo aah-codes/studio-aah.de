@@ -5255,3 +5255,7 @@ main h2.preis-h2 { font-size: clamp(40px, 6vw, 84px); line-height: 1.05; }
 .lsx-stimmen .stimmen-quelle { text-align: center; }
 .lsx-muster > .lsx-stimmen { background: none; }
 .lsx-muster > .lsx-referenzen { background: url(../bilder/papier/papier-b.webp) 0 0 / 256px repeat; }
+/* Vergleichstabelle weiß; Ehrliche Antworten auf dem Papier wie auf der Startseite (Anna 22.11.2026) */
+.lsx-tabelle-rahmen { background: var(--farbe-weiss); }
+.lsx-tabelle thead th { background: var(--farbe-weiss); }
+.lsx-muster > .faq { background: url(../bilder/papier/papier-c.webp) 0 0 / 256px repeat; }
