@@ -5545,3 +5545,17 @@ main[data-seitenfarbe] > .br-kurz { padding-bottom: 72px; }
 .profil-ansatz { padding-bottom: 72px; }
 .lp-abschnitt.wc-spalten { padding-bottom: 72px; }
 .wr.wr-bereit { padding-bottom: 72px; }
+/* Seitenkopf immer helles Papier (Anna 23.11.2026); die Seitenfarben beginnen in den Räumen darunter */
+main:is(.lsx-farbe, [data-seitenfarbe]) > :is(.seitenkopf, .fw-kopf), main[data-seitenfarbe] :is(.fw-kopf, .seitenkopf), main[data-seitenfarbe] > section:first-child:not(.seitenkopf):not(.fw-kopf) { background: url(../bilder/papier/papier-a.webp) 0 0 / 256px repeat; }
+/* Ergebnis nicht in voller Signalfarbe (Anna 23.11.2026: „Rosa passt hier gar nicht“): Zart-Stufe der zweiten Farbe, Fragen im Hauch der ersten */
+main.lsx-farbe > .lsx-m-ergebnisse { background: var(--lf2-zart); }
+main.lsx-farbe > .faq { background: var(--lf-hauch); }
+/* Anna 23.11.2026: „Anlässe“ in der vollen Leistungsfarbe; „Warum“ weiß wie ein Whiteboard, an dem die Zettel hängen (Zettel in Zart der Leistungsfarbe) */
+main.lsx-farbe > .lsx-m-anlaesse { background: var(--lf); }
+main.lsx-farbe > .lsx-m-warum { background: var(--farbe-weiss); }
+main.lsx-farbe > .lsx-m-warum .lsx-pl-zettel li:nth-child(n) { background: var(--lf-zart); }
+/* Feste Hintergründe je Abschnittsart wie auf der Startseite, auf allen Seiten (Anna 23.11.2026):
+   Stimmen (Testimonials) immer helles Papier A, Projekte/Referenzen immer beiges Papier B */
+main > :is(.lsx-stimmen, .stimmen-abschnitt), main.lsx-farbe > .lsx-stimmen { background: url(../bilder/papier/papier-a.webp) 0 0 / 256px repeat; }
+main > :is(.lsx-referenzen, .start-projektliste, .br-ref-abschnitt), main.lsx-farbe > .lsx-referenzen, main[data-seitenfarbe] > .ref-uebersicht { background: url(../bilder/papier/papier-b.webp) 0 0 / 256px repeat; }
+main.lsx-farbe > .lsx-referenzen + .lsx-stimmen { padding-top: 96px; }
