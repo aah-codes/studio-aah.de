@@ -5631,3 +5631,31 @@ main.lsx-farbe > .lsx-m-warum .lsx-pl-zettel li:nth-child(n) * { color: inherit;
 /* Demokratie: CTA allein im Hero, Themen-Schilder mit Abstand darunter (Anna 22.11.2026) */
 .dm-laut .lp-held .chips { margin-top: 72px; }
 @media (max-width: 767.98px) { .dm-laut .lp-held .chips { margin-top: 48px; } }
+/* Demokratie: Inhalt bündig mit dem Logo wie auf den Leistungsseiten (Anna 22.11.2026) */
+.dm-laut :is(.lp-held, .lp-sektion) { max-width: none; }
+/* Korrekturen immer rot, auch Startseite, Kontakt und Über mich (Anna 22.11.2026) */
+.kr-durch::after, .ks-durch::after { background: var(--aah-rot); }
+.kr-hand, .ks-hand { color: var(--aah-rot); }
+/* Hero-Texte immer linksbündig zum Logo, überall (Anna 22.11.2026): kein zentrierter Inhaltsrahmen, Rand wie der Kopf */
+.stil-b .kr { padding-left: var(--rand-seite); padding-right: var(--rand-seite); }
+.kontakt-seite { max-width: none; margin: 0; }
+.rechtstext { max-width: none; margin: 0; padding-left: var(--rand-seite); padding-right: var(--rand-seite); }
+.rechtstext > * { max-width: 80ch; }
+.lp-hero-mitte { justify-items: start; text-align: left; }
+.lp-hero-mitte :is(.lp-titel, .rv-intro, .wc-berechtigung) { margin-left: 0; margin-right: 0; }
+.lp-hero-mitte .lp-haken { justify-content: flex-start; }
+/* Häufige Fragen überall gleich: mintgrüner Grund (Anna 22.11.2026: „fragen immer gleich wie auf startseite“).
+   :not(#x) hebt die Regel über die Seitenfarben (main.lsx-farbe > .faq, [data-seitenfarbe] …) */
+main section:is(.faq, .mr-fragen):not(#x) { background: var(--aah-mint-hauch); }   /* Anna 22.11.2026: „faqs immer mit mintgrünem hintergrund“ */
+main section.mr-fragen:not(#x) > :is(.meta, h2) { text-align: center; }
+main section.mr-fragen:not(#x) .faq-liste { margin-left: auto; margin-right: auto; }
+/* Abschluss: keine Farbe hinter dem blauen CTA (Anna 22.11.2026) */
+main > :is(.preis-schluss, .start-schluss, .lp-abschluss):not(#x) { background: none; }
+/* 320 px ohne seitliches Verschieben (Messung 22.11.2026): große Kennzahl kleiner, Preise im Akkordeon umbrechen */
+@media (max-width: 400px) { .lp-zahl { font-size: clamp(64px, 22vw, 110px); } }   /* Kennzahl, Ausnahme von --groesse-* */
+@media (max-width: 767.98px) { .lsx-extra summary { flex-wrap: wrap; } .lsx-extra .lsx-extra-preis { white-space: normal; } }
+@media (max-width: 600px) { .wc-zahl-band { grid-template-columns: minmax(0, 1fr); } .wc-zahl-band .lp-zahl-text h2 { hyphens: auto; overflow-wrap: anywhere; } }
+/* Referenzen überall auf Weiß (Anna 22.11.2026: „referenzen überall mit weißem hintergrund“) */
+main > :is(.lsx-referenzen, .start-projektliste, .ref-uebersicht):not(#x), main > section:has(.referenz-rahmen, .ref-wechsel):not(#x) { background: var(--farbe-weiss); }
+/* Website-Check: Symbol über dem Titel links wie der Titel */
+.lp-hero-mitte .wc-hero-icon { margin-left: 0; margin-right: 0; }

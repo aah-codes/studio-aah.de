@@ -18,6 +18,9 @@ Kurzfassung der Branding-Richtlinien (Original in Betrieb: `Kunden Studio AAH/St
 - Farbenmeer wie auf der Startseite (Anna 22.11.2026: „das ist mir zu bunt“): Gründe ruhig (Papier A/B, Hauchtöne), kräftige Signalfarben nur auf Karten, Schildern und Chips mit Kontur; nie mehrere gesättigte Vollflächen hintereinander. Auch auf lauten Seiten wie der Demokratie-Seite.
 - Korrekturen (durchgestrichen und handschriftlich) immer rot `--aah-rot`, Strich und Handschrift, auf jedem Grund (Anna 22.11.2026).
 - Abläufe überall als dieselbe Zeitleiste `ol.zl-quer` wie auf den Leistungsseiten, keine eigenen Schritt-Karten (Anna 22.11.2026: „steps überall gleich“).
+- Hero-Texte immer bündig links zum Logo, auf jeder Seite; kein zentrierter Inhaltsrahmen im Hero (Anna 22.11.2026).
+- Häufige Fragen überall auf Mint-Hauch `--aah-mint-hauch`, Referenzen/Projekte überall auf Weiß, Abschluss-CTA ohne farbigen Grund dahinter (Anna 22.11.2026).
+- Handschrift in normaler Groß- und Kleinschreibung, keine Versalien (Anna 22.11.2026).
 - Kein Blau auf Schwarz (Kontrast). Dachzeilen auf ihrem Grund lesbar: Gelb nur auf Blau oder Schwarz, auf hellen Karten Blau oder Schwarz.
 - Illustrationen der Für-wen-, Problem-, Branchen- und Produktseiten nur Schwarz, Weiß, Blau.
 
