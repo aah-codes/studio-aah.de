@@ -20,10 +20,10 @@ def strich(laenge, dicke, winkel, cx, cy):
     return ('period', (xx, xy, yx, yy, dx, dy))
 
 
-# Anna 22.11.2026 (Skizze): oben Schlaufe wie ihr l, rechts eine kleine Schlaufe, dann das Bein nach rechts unten
-teile = [('l', (1, 0, 0, 1, 0, 0)),                    # Stamm mit Schlaufe: ihr eigenes l
-         ('o', (.46, 0, 0, .5, 245, 205)),             # kleine Schlaufe rechts vom Stamm, etwas über der Mitte
-         strich(260, 1.2, -55, 385, 105)]              # Bein setzt an der Schlaufe an, nach rechts unten
+# Anna 22.11.2026 (dritte Skizze): schlicht – gerader Stamm, zwei Arme treffen sich etwa auf halber Höhe am Stamm
+teile = [strich(720, 1.35, 86, 125, 350),     # Stamm, so hoch wie das l
+         strich(260, 1.2, 40, 240, 345),      # oberer Arm, vom Stamm nach rechts oben
+         strich(310, 1.25, -54, 245, 130)]    # unterer Arm, vom Stamm nach rechts unten
 pen = TTGlyphPen(gs)
 for basis, t in teile:
     gs[basis].draw(TransformPen(pen, t))
