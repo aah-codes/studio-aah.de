@@ -5930,3 +5930,6 @@ h3.fokus-titel { margin: 0; }
 .fw-kopf-foto .lsx-repro-druck { aspect-ratio: 800 / 318; }
 .fw-kopf-foto .lsx-repro-druck img { object-position: center; }
 .lsx-hero-knopf { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; }   /* 16 px zwischen Button und Textlink (Anna 23.11.2026) */
+/* Profil (Anna 23.11.2026): Empfehlungen mittig wie auf Startseite und Leistungsseiten, Zeichnungen weniger angeschnitten */
+:has(> #empfehlungen) { text-align: center; }
+.um-roboter { object-fit: contain; object-position: center; background: var(--farbe-weiss); }
