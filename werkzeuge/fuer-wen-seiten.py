@@ -20,7 +20,7 @@ def link(pre, ziel):
     return ziel if ziel.startswith('http') else pre + ziel
 
 
-FW_FOTO = {'employer-branding': 'referenzen/bauer/wl/stellen.webp'}   # Hero wie Webdesign mit Riso-Foto (Anna 23.11.2026)
+FW_FOTO = {'employer-branding': 'referenzen/bauer/wl/bewirb-dich.webp'}   # Hero wie Webdesign mit Riso-Foto (Anna 23.11.2026)
 
 
 def kopfbereich(meta, h1, unter, pre, knopf=('website-check/', 'Kostenloser Website-Check'), bild=None):

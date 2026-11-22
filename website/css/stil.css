@@ -5925,3 +5925,7 @@ h3.fokus-titel { margin: 0; }
 .mr #pakete { padding-bottom: clamp(64px, 8vw, 120px); }   /* mehr Abstand vor den Häufigen Fragen (Anna 23.11.2026) */
 .ks-titel .ks-hand { top: auto; bottom: 82%; }   /* „einfach“ über „kurz“, nicht zwischen den Zeilen (Anna 23.11.2026) */
 @media (max-width: 767.98px) { .ks-titel { line-height: 1.35; } }   /* Platz für „einfach“ über „kurz“ auf dem Handy */
+/* Employer Branding: breites Motiv mit Call-to-Action-Buttons ganz zeigen (Anna 23.11.2026) */
+.fw-kopf-foto .lsx-repro { width: clamp(280px, 34vw, 480px); }
+.fw-kopf-foto .lsx-repro-druck { aspect-ratio: 720 / 286; }
+.fw-kopf-foto .lsx-repro-druck img { object-position: center; }
