@@ -5314,3 +5314,22 @@ main > .faq .meta, main > .faq .faq-eintrag { color: var(--farbe-dunkel); }
 .fuss-kontakt .fuss-tel { margin-top: 24px; }
 .fuss-kontakt .fuss-mail { margin-bottom: 24px; }
 @media (min-width: 1200.02px) { .stil-b.v-raeume .fuss-notiz { position: static; text-align: left; width: auto; margin: 0 0 10px; rotate: -3deg; } .stil-b.v-raeume .fuss-notiz::after { display: none; } }   /* Notiz über der E-Mail wie am Handy, nicht neben dem Telefon (Anna 22.11.2026) */
+
+/* Hero ruhig (Anna 22.11.2026, Vorbild farbenmeer.de): Zeile oben links, Korrektur in Annas Handschrift, unten H1 + ein Link, rechts eine Zeichnung schwarz-weiß */
+.stil-b .kr { position: relative; display: flex; flex-direction: column; justify-content: space-between; gap: 56px; width: 100%; box-sizing: border-box;
+  min-height: calc(100svh - 150px); padding: clamp(56px, 9vh, 120px) clamp(16px, 8vw, 150px) clamp(32px, 5vh, 56px); text-align: left; }
+.stil-b.v-raeume .kr .kr-titel { margin: 0; font: 500 clamp(38px, 4.9vw, 84px)/1.06 var(--schrift-text); letter-spacing: -.035em; color: var(--farbe-dunkel); text-transform: none; }   /* Zeile füllt die Breite: vw-Formel statt --groesse */
+.kr-korr { position: relative; display: inline-block; white-space: nowrap; }
+.kr-durch { position: relative; }
+.kr-durch::after { content: ""; position: absolute; left: -4%; right: -4%; top: 52%; height: .14em; background: var(--farbe-primaer); border-radius: var(--radius-pille); rotate: -2.5deg; }
+.kr-hand { position: absolute; left: 18%; top: 100%; font: 400 .62em/1 var(--schrift-hand); letter-spacing: .02em; color: var(--farbe-dunkel); rotate: -4deg; }
+.kr-unten { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; width: 100%; }
+.stil-b.v-raeume .kr .kr-h1 { max-width: 24ch; margin: 0 0 28px; font: 500 var(--groesse-4)/1.45 var(--schrift-text); letter-spacing: 0; text-transform: none; color: var(--farbe-dunkel); hyphens: manual; }
+.kr-link { white-space: nowrap; font: 700 var(--groesse-2)/1 var(--schrift-meta); letter-spacing: .08em; text-transform: uppercase; color: var(--farbe-dunkel); text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 2px; }
+.kr-link:hover { text-decoration-color: var(--farbe-primaer); }
+.kr-bild { display: block; flex: none; width: clamp(130px, 17vw, 260px); height: auto; rotate: -4deg; }
+@media (max-width: 767.98px) {
+  .stil-b .kr { min-height: 0; gap: 72px; }
+  .kr-unten { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .kr-bild { order: -1; align-self: flex-end; width: 120px; }
+}
