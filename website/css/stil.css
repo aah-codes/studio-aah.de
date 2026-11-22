@@ -5923,3 +5923,5 @@ h3.fokus-titel { margin: 0; }
 .lsx-titel .korrektur .notiz-durch { text-decoration: line-through var(--bb-rot) .07em; }
 .lsx-titel .korrektur .notiz-durch::after { display: none; }
 .mr #pakete { padding-bottom: clamp(64px, 8vw, 120px); }   /* mehr Abstand vor den Häufigen Fragen (Anna 23.11.2026) */
+.ks-titel .ks-hand { top: auto; bottom: 82%; }   /* „einfach“ über „kurz“, nicht zwischen den Zeilen (Anna 23.11.2026) */
+@media (max-width: 767.98px) { .ks-titel { line-height: 1.35; } }   /* Platz für „einfach“ über „kurz“ auf dem Handy */
