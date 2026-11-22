@@ -5929,3 +5929,4 @@ h3.fokus-titel { margin: 0; }
 .fw-kopf-foto .lsx-repro { width: clamp(280px, 34vw, 480px); }
 .fw-kopf-foto .lsx-repro-druck { aspect-ratio: 800 / 318; }
 .fw-kopf-foto .lsx-repro-druck img { object-position: center; }
+.lsx-hero-knopf { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; }   /* 16 px zwischen Button und Textlink (Anna 23.11.2026) */
