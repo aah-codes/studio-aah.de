@@ -20,6 +20,11 @@ MIT_CHECK = (WEBSITE / 'website-check' / 'index.html').exists()
 # Handschrift-Redigat je Seite (Anna 22.11.2026): ersetzt fertige Überschriften; durchgestrichen = aria-hidden, Hand = gelesen
 def _ko(alt, neu, oben=False):
     return f'<span class="korrektur {"ko-oben" if oben else "ko-unten"}"><span class="notiz notiz-durch" aria-hidden="true">{alt}</span><span class="hand">{neu}</span></span>'
+REDIGAT_ALLE = [
+    ('<span class="hand">Partnerschaften</span>', '<span class="hand">Partnerschaften auf Augenhöhe</span>'),
+    ('id="stimmen-titel">Stimmen,<br>die zählen.</h2>', 'id="stimmen-titel">Stimmen,<br>die zählen.<span class="ko-block">Was passiert, wenn man es einfach anpackt</span></h2>'),
+    ('id="faq-titel">Ehrliche Antworten</h2>', 'id="faq-titel">' + _ko('Standard-Antworten', 'Ehrliche Antworten') + '</h2>'),
+]
 REDIGAT = {
     'service/webdesign/': [
         ('style="--n:9">Webdesign</h1>', 'style="--n:26">Webdesign in Leipzig, das euch Anfragen bringt.</h1>'),
@@ -559,7 +564,7 @@ ZEICHNUNG = {'Markenbildung': 'stern', 'Webdesign': 'bildschirm', 'UI': 'auge', 
 
 # Foto im Repro-Look rechts im Hero (Anna 22.11.2026, Vorbild Startseiten-Entwurf: blau gedruckt, gedreht, gelber Klebestreifen),
 # Zeichnung klein als Sticker am Foto. Nur eigene Projektbilder.
-HERO_FOTO = {'Markenbildung': 'start/leipzig-zentrum-von-oben-640.webp', 'Webdesign': 'hero/bauer-startseite-hero.webp', 'UI': 'hero/deinetwegen-handy-ganz.jpg',
+HERO_FOTO = {'Markenbildung': 'start/leipzig-zentrum-von-oben-640.webp', 'Webdesign': 'hero/bauer-startseite-hero.webp', 'UI': 'leistung-ui-ux-formular-640.webp',
              'KI & Digitalisierung': 'ki-arbeits-setup-cockpit-640.webp', 'KI-Beratung': 'ki-arbeits-setup-cockpit-640.webp',
              'Marketing & Vertrieb': 'hero/bauer-praes-01.webp', 'Druck': 'hero/kh-templates.jpg', 'Illustration & Infografik': 'hero/kh-pfau-gold.svg',
              'Animation': 'hero/spiel-animation.webp', 'Retainer': 'leistung-retainer-640.webp'}
@@ -773,6 +778,8 @@ def seite(key, c):
         t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v={version}" defer></script>\n</body>', 1)
     for alt, neu in REDIGAT.get(c['pfad'], []):
         assert alt in t, (c['pfad'], alt[:40])
+        t = t.replace(alt, neu, 1)
+    for alt, neu in REDIGAT_ALLE:  # wie auf der Startseite, auf allen Leistungsseiten (Anna 23.11.2026)
         t = t.replace(alt, neu, 1)
     pfad.parent.mkdir(parents=True, exist_ok=True)
     pfad.write_text(t, encoding='utf-8')

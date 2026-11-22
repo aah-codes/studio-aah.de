@@ -40,8 +40,9 @@ def glossar():
 
 def preisseite(t):
     # Bereichsleiste: Kostenrechner (nur Webdesign), dann die Preislisten der übrigen Leistungen (Anna 16.10.2026)
-    leiste = ''.join(f'<a href="#r-{g["id"]}">{esc(g["kurz"])}</a>' for g in LISTEN)
-    t = ersetze_einmal(r'(<nav class="preis-leiste"[^>]*>\n  <a href="#rechner">Kostenrechner Webdesign</a>).*?(<a href="#glossar">Glossar</a>)',
+    # Ankerleiste wie auf den Leistungsseiten (Anna 23.11.2026)
+    leiste = ''.join(f'<li><a href="#r-{g["id"]}">{esc(g["kurz"])}</a></li>' for g in LISTEN)
+    t = ersetze_einmal(r'(<ul class="anker-spur"><li><a href="#rechner" class="aktiv">Kostenrechner Webdesign</a></li>).*?(<li><a href="#glossar">Glossar</a></li>)',
                        lambda m: m.group(1) + leiste + m.group(2), t, 'Bereichsleiste der Preisseite', re.S)
     preislisten = '\n'.join(preisliste(g) for g in LISTEN) + f'\n<p class="preis-netto gedaempft preisliste-netto">{NETTO_SATZ}</p>'
     return einsetzen(einsetzen(t, 'GLOSSAR', glossar()), 'PREISLISTEN', preislisten)
