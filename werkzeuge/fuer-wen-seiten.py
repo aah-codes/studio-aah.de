@@ -165,7 +165,7 @@ def startseite_branchen():
     # Reihenfolge nach Potenzial (Anna 17.11.2026: Gesundheit nicht prominent); die breite Kachel ist Platz 6 (Beratung)
     reihenfolge = ['bau', 'software', 'elektro', 'energie', 'industrie', 'beratung', 'gesundheit']
     liste = sorted(D['branchen'], key=lambda b: reihenfolge.index(b['id']) if b['id'] in reihenfolge else 99)
-    return '    <ul class="br-raster">\n' + kopf + branchen_kacheln(liste, '', fotos=True) + '    </ul>'
+    return '    <ul class="br-raster br-mosaik">\n' + kopf + branchen_kacheln(liste, '', fotos=True) + '    </ul>'
 
 
 FLIP_BILDER = {  # Bildchen der Flipcard-Rückseiten (bis 18.11.2026 von der Startseite gelesen; dort gibt es seitdem keine Flipcards mehr)

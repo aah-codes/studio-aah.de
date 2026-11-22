@@ -129,11 +129,13 @@ def projekt_arbeit_liste(liste, pre):
 
 # --- Raster | Liste ohne JavaScript wie auf /referenzen/ (Anna 22.11.2026: „immer grid und liste“). Ein Abschnitt je Seite (feste Kennungen).
 def projekt_wechsel(liste, pre, h='h3'):
-    karten = '\n'.join(f'      <li>{projekt_karte(p, pre, h=h, satz=False)}</li>' for p in liste)
-    return ('    <div class="ref-wechsel">\n    <fieldset class="ref-ansicht"><legend class="unsichtbar">Ansicht</legend>\n'
-            '      <input type="radio" name="ref-ansicht" id="ref-raster" checked><label for="ref-raster">Raster</label>\n'
-            '      <input type="radio" name="ref-ansicht" id="ref-liste"><label for="ref-liste">Liste</label>\n    </fieldset>\n'
-            f'    <ul class="ref-raster">\n{karten}\n    </ul>\n{projekt_arbeit_liste(liste, pre)}\n    </div>')
+    # Slider statt Raster/Liste (Anna 22.11.2026): läuft langsam von selbst, hält bei Maus, Fokus und Pause-Button an,
+    # steht bei „Bewegung reduzieren“ still (dann seitlich scrollbar). Zweites Band nur für die Endlos-Schleife, inert.
+    karten = '\n'.join(f'        <li>{projekt_karte(p, pre, h=h, satz=False)}</li>' for p in liste)
+    return ('    <div class="ref-slider" data-ref-slider>\n'
+            '      <button class="ref-pause" type="button" aria-pressed="false">Pause</button>\n'
+            f'      <div class="ref-spur">\n      <ul class="ref-band">\n{karten}\n      </ul>\n'
+            f'      <ul class="ref-band" aria-hidden="true" inert>\n{karten}\n      </ul>\n      </div>\n    </div>')
 
 
 def projekt_liste(liste, pre):
@@ -258,7 +260,7 @@ def blog(liste, pre, linkpre, h='h3', einrueck='    ', kategorie=True, klasse='b
 
 
 def weitere_artikel(slug, anzahl=3):
-    # „Weitere Artikel zum Thema“ unter jedem Beitrag (Anna 17.11.2026, Vorbild Digital Trends „Related coverage“):
+    # „Das könnte dich auch interessieren“ unter jedem Beitrag (Anna 17.11.2026, Vorbild Digital Trends „Related coverage“):
     # gleiche Kategorie zählt 2, jedes gemeinsame Schlagwort 1; bei Gleichstand der neuere Beitrag zuerst
     ich = next(b for b in BLOG if b['slug'] == slug)
     def punkte(b):
@@ -266,7 +268,7 @@ def weitere_artikel(slug, anzahl=3):
     andere = sorted((b for b in BLOG if b['slug'] != slug), key=lambda b: (punkte(b), b['datum']), reverse=True)
     karten = blog(andere[:anzahl], '../../', '../', 'h3', '      ')
     return f'''  <section class="blog-neu artikel-weitere" aria-labelledby="weitere-titel">
-    <div class="sektionskopf"><p class="meta">Weiterlesen</p><h2 id="weitere-titel">Weitere Artikel zum Thema</h2>
+    <div class="sektionskopf"><p class="meta">Weiterlesen</p><h2 id="weitere-titel">Das könnte dich auch interessieren</h2>
       <p class="alt-klein"><a class="textlink" href="../">Alle Artikel →</a></p></div>
     <ul class="blog-liste">
 {karten}
@@ -275,7 +277,7 @@ def weitere_artikel(slug, anzahl=3):
 
 
 def aehnliche_artikel(slug, anzahl=3):
-    # rechte Leiste im Leselayout (Anna 17.11.2026): dieselbe Auswahl wie „Weitere Artikel zum Thema“, kompakt mit kleinem Bild
+    # rechte Leiste im Leselayout (Anna 17.11.2026): dieselbe Auswahl wie „Das könnte dich auch interessieren“, kompakt mit kleinem Bild
     ich = next(b for b in BLOG if b['slug'] == slug)
     def punkte(b):
         return 2 * (b['kategorie'] == ich['kategorie']) + len(set(b.get('tags', [])) & set(ich.get('tags', [])))
@@ -358,7 +360,8 @@ ANGEBOT_ARTIKEL = {'marken-regelwerk/index.html': ['brand'], 'website-check/inde
 if __name__ == '__main__':
     seiten = {
         'index.html': [('PROJEKTE', lambda: projekt_wechsel([x for x in PROJEKTE if x.get('case')], '')), ('LINKEDIN', lambda: linkedin_leiste('')), ('STIMMEN', lambda: stimmen(STIMMEN, ''))],   # „Für wen“, Blog-Karten und Kennzahlen seit 12.11.2026 nicht mehr auf der Startseite (Kennzahlen nur auf Über mich)
-        'profil/index.html': [('STIMMEN', lambda: stimmen(STIMMEN, '../')), ('BLOG', lambda: blog(BLOG[:4], '../', '../blog/')),
+        'profil/index.html': [('STIMMEN', lambda: stimmen(STIMMEN, '../')), ('BLOG', lambda: blog(BLOG[:4], '../', '../blog/')), ('LINKEDIN', lambda: linkedin_leiste('../')),   # Aktivitäten plus LinkedIn-Posts (Anna 22.11.2026)
+                             
                               ('KENNZAHLEN', lambda: kennzahlen('fakten', '      '))],
         'blog/index.html': [('BLOG', lambda: blog_themen()), ('SPIEL', lambda: spiel_sektion('../', re.search(r'menue\.js\?v=(\w+)', (WEBSITE / 'index.html').read_text(encoding='utf-8')).group(1)))],
     }

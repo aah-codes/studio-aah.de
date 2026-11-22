@@ -16,7 +16,8 @@ Kurzfassung der Branding-Richtlinien (Original in Betrieb: `Kunden Studio AAH/St
   - Rotes Sternchen an Pflichtfeldern (`--farbe-pflicht`).
   - Blauer Anfrage-Button in der schwarzen Abschlussbox der Projektseiten.
 - Farbenmeer wie auf der Startseite (Anna 22.11.2026: „das ist mir zu bunt“): Gründe ruhig (Papier A/B, Hauchtöne), kräftige Signalfarben nur auf Karten, Schildern und Chips mit Kontur; nie mehrere gesättigte Vollflächen hintereinander. Auch auf lauten Seiten wie der Demokratie-Seite.
-- Korrekturen (durchgestrichen und handschriftlich) immer rot `--aah-rot`, Strich und Handschrift, auf jedem Grund (Anna 22.11.2026).
+- Genau ein Muster je Seite (Punkte, Karo, Streifen …; das breite Strichel-Band zählt mit), nie hinter Fließtext (Farb-Richtlinie 1.1). Ausnahmen: Startseite und Profil dürfen mehrere Muster haben (Anna 22.11.2026).
+- Korrekturen (durchgestrichen und handschriftlich) und Zusätze in Annas Schrift immer rot `--aah-rot`, Strich und Handschrift, auf jedem Grund (Anna 22.11.2026).
 - Abläufe überall als dieselbe Zeitleiste `ol.zl-quer` wie auf den Leistungsseiten, keine eigenen Schritt-Karten (Anna 22.11.2026: „steps überall gleich“).
 - Hero-Texte immer bündig links zum Logo, auf jeder Seite; kein zentrierter Inhaltsrahmen im Hero (Anna 22.11.2026).
 - Häufige Fragen überall auf Mint-Hauch `--aah-mint-hauch`, Referenzen/Projekte und Branchen überall auf Weiß, Abschluss-CTA ohne farbigen Grund dahinter (Anna 22.11.2026).
@@ -33,7 +34,7 @@ Kurzfassung der Branding-Richtlinien (Original in Betrieb: `Kunden Studio AAH/St
 - Anton-Versalien mit Zeilenabstand mindestens 1,15, bei Umlauten 1,2; Satzzeichen und Umlaut-Punkte berühren nie die Nachbarzeile.
 - Überschriften ohne Schlusspunkt, außer ganze Sätze; kleine Überschriften (Karten, Zeitleiste) nie. Nie nach dem ersten Wort eines Satzes umbrechen; zwei Sätze („Drei Teile. Ein Regelwerk.“) mit `<br>` nach dem ersten.
 - Nie nach kurzem Vorderglied trennen (IT-Projekt, KI-Check, E-Mail): `kurzwoerter_schuetzen()` in `gemeinsam.py`, von Hand `<span class="ohne-umbruch">`. Lange Wörter in Überschriften mit `&shy;`. Jede Seite bei 320 px ohne seitliches Verschieben.
-- Dachzeilen beginnen mit blauem Punkt (per CSS).
+- Dachzeilen überall wie „Mein Studio“ auf dem Profil: Versalien, fett, Schwarz, ohne Punkt (Anna 22.11.2026).
 
 ## Buttons, Links, Begriffe
 - Primär blau gefüllt, Sekundär schwarze Outline (`button button-zweit`), Tertiär unterstrichener Textlink. Jeder Button und eigenständige Link mit Pfeil (→, extern ↗, Download ↓).
@@ -91,3 +92,4 @@ Kurzfassung der Branding-Richtlinien (Original in Betrieb: `Kunden Studio AAH/St
 - Prüfen nach Schriftänderungen: alle Seiten der `sitemap.xml` bei 320 und 1280 px messen (Überlauf, gerenderte Schriftfamilien, Versalien).
 - Kontrast selbst prüfen, bevor Anna etwas sieht (Anna 22.11.2026: „grau auf hellblau funktioniert nicht, checke selbst solche Kontraste“): nach jeder Farb- oder Hintergrundänderung `werkzeuge/kontrast-check.html` nach `website/_kontrast.html` kopieren, mit Chrome headless `--dump-dom` laden (misst jeden Text gegen seinen echten Hintergrund auf allen Seiten der Sitemap, Grenze 4,5 : 1, groß 3 : 1), danach wieder entfernen. Auf Hauch-Räumen sind Karten weiß, Text Dunkel; Grau nur `--aah-grau`. Ausnahme: Schriftproben in Kundenfarben auf Projektseiten.
 - Hintergründe je Abschnittsart überall wie auf der Startseite (Anna 23.11.2026): Stimmen helles Papier A, Projekte/Referenzen beiges Papier B, Seitenkopf helles Papier A; Seitenfarben nur in den Räumen dazwischen (Anlässe voll, Warum weiß mit Zetteln in Zart, Ergebnis Zart der zweiten Farbe, Fragen Hauch, Abschluss Zart).
+- Anmerkungen Anna 22.11.2026: „Das bekommst du“ immer vier Tarotkarten (I–IV) auf Orchidee zart; Referenzen überall als Slider (läuft langsam, hält bei Maus, Fokus und Pause-Button an, bei „Bewegung reduzieren“ still), nur `/referenzen/` behält Raster/Liste; keine Sticker; Artikelvorschau heißt überall „Das könnte dich auch interessieren“; Website-Check-Hero zentriert (Ausnahme zur Hero-Regel).

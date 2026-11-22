@@ -18,6 +18,7 @@
 ## Arbeitsweise
 - Antworten auf Deutsch, in Stichpunkten, Schritt für Schritt; Fachbegriffe mit englischem Begriff in Klammern. Nichts erfinden; Unsicheres als „Unsicher“ kennzeichnen. Neue Texte nur nach Annas Vorgabe.
 - Vor jedem Schritt mit Wirkung nach außen fragen: Push auf `main`, Installationen, Änderungen beim Hosting. In Cloud-Sitzungen auf eigenem Zweig arbeiten; Anna führt ihn über GitHub Desktop zusammen.
+- Hochladen gesammelt: Änderungen nach Anmerkungen lokal sammeln und zeigen, nicht nach jeder Runde nach dem Hochladen fragen; hochladen erst, wenn Anna „jetzt hochladen“ (oder gleichbedeutend) sagt (Anna 22.11.2026).
 - Vor jedem Push `git fetch` und `git log origin/main..main`: Mehrere Sitzungen arbeiten auf `main`. Fremde Commits Anna vorher nennen, sonst gehen sie ungefragt live.
 - Kleine Commits mit deutscher Beschreibung.
 - Nicht öffentlich nennen, wie und wo studio-aah.de gebaut und gehostet ist.

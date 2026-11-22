@@ -516,6 +516,23 @@ ZEICHNUNG = {'Markenbildung': 'stern', 'Webdesign': 'bildschirm', 'UI': 'auge', 
              'Marketing & Vertrieb': 'megafon', 'Druck': 'pfeil', 'Illustration & Infografik': 'herz', 'Animation': 'blitz', 'Retainer': 'giesskanne'}
 
 
+# Foto im Repro-Look rechts im Hero (Anna 22.11.2026, Vorbild Startseiten-Entwurf: blau gedruckt, gedreht, gelber Klebestreifen),
+# Zeichnung klein als Sticker am Foto. Nur eigene Projektbilder.
+HERO_FOTO = {'Markenbildung': 'start/leipzig-zentrum-von-oben-640.webp', 'Webdesign': 'hero/bauer-startseite-hero.webp', 'UI': 'hero/deinetwegen-handy-ganz.jpg',
+             'KI & Digitalisierung': 'ki-arbeits-setup-cockpit-640.webp', 'KI-Beratung': 'ki-arbeits-setup-cockpit-640.webp',
+             'Marketing & Vertrieb': 'hero/bauer-praes-01.webp', 'Druck': 'hero/kh-templates.jpg', 'Illustration & Infografik': 'hero/kh-pfau-gold.svg',
+             'Animation': 'hero/spiel-animation.webp', 'Retainer': 'leistung-retainer-640.webp'}
+
+
+def repro_bild(c, pre):
+    foto = next((f for t, f in HERO_FOTO.items() if c["titel"].startswith(t)), None)
+    z = next((z for t, z in ZEICHNUNG.items() if c["titel"].startswith(t)), None)
+    if not foto:
+        return f'    <img class="lsx-kopf-zeichnung" src="{pre}bilder/zeichnungen-sw/{z}.svg" alt="" width="400" height="400">\n' if z else ''
+    sticker = f'<img class="lsx-repro-sticker" src="{pre}bilder/zeichnungen-sw/{z}.svg" alt="" width="400" height="400">' if z else ''
+    return f'    <span class="lsx-repro" aria-hidden="true"><span class="lsx-repro-druck"><img src="{pre}bilder/{foto}" alt="" loading="eager"></span></span>\n'   # Sticker global raus (Anna 22.11.2026)
+
+
 def muster_kopf(c, m, pre):
     fakten = ''.join(f'<li>{x}</li>' for x in m.get('fakten', []))   # Fakten aus den Daten, ohne Auszeichnung
     return (f'  <section class="seitenkopf lsx-kopf lsx-m-kopf">\n'
@@ -525,7 +542,7 @@ def muster_kopf(c, m, pre):
             f'    <p class="alt-klein">{trennen(esc(m.get("intro") or c.get("intro", "")))}</p>\n'
             + (f'    <ul class="lsx-m-fakten">{fakten}</ul>\n' if fakten else '') +
             f'    <p class="lsx-hero-knopf"><a class="button" href="{pre}kontakt/">{esc(c.get("anfrage", "Beratung anfragen"))} <span aria-hidden="true">→</span></a></p>\n'
-            + next((f'    <img class="lsx-kopf-zeichnung" src="{pre}bilder/zeichnungen-sw/{z}.svg" alt="" width="400" height="400">\n' for t, z in ZEICHNUNG.items() if c["titel"].startswith(t)), '')
+            + repro_bild(c, pre)
             + f'  </section>')
 
 
@@ -574,10 +591,10 @@ def muster_ergebnisse(m):
     # Neu gedacht (Anna 22./23.11.2026): oben das Ergebnis danach in Annas Worten, darunter kompakt, was dazugehört
     # Je Leistung passende Ergebnisse, nur aus Annas fünf Begriffen (Anna 23.11.2026: „je Leistung anpassen“)
     alle = {'s': ('Sichtbarkeit', 'auge'), 'k': ('Neue Kunden', 'megafon'), 'f': ('Fachkräfte', 'herz'), 'c': ('Mehr Conversion', 'pfeil'), 'v': ('Mehr Verkäufe', 'stern')}
-    wahl = next((w for t, w in (('Markenbildung', 'skfv'), ('Webdesign', 'skcv'), ('UI', 'cv'), ('KI', 'fv'), ('Marketing', 'skcv'), ('Druck', 'sk'),
-                                ('Illustration', 'sc'), ('Animation', 'sc'), ('Retainer', 'scv')) if (m.get('h1') or '').startswith(t)), 'skfcv')
+    wahl = next((w for t, w in (('Markenbildung', 'skfv'), ('Webdesign', 'skcv'), ('UI', 'skcv'), ('KI', 'kfcv'), ('Marketing', 'skcv'), ('Druck', 'skfv'),
+                                ('Illustration', 'skcv'), ('Animation', 'skcv'), ('Retainer', 'skcv')) if (m.get('h1') or '').startswith(t)), 'skcv')   # immer vier Karten (Anna 22.11.2026: Tarotkarten)
     ziele = tuple(alle[b] for b in wahl)
-    zl = ''.join(f'<li><img src="{{PRE}}bilder/zeichnungen-sw/{z}.svg" alt="" width="400" height="400" loading="lazy"><span>{esc(t)}</span></li>' for t, z in ziele)
+    zl = ''.join(f'<li><small aria-hidden="true">{r}</small><img src="{{PRE}}bilder/zeichnungen-sw/{z}.svg" alt="" width="400" height="400" loading="lazy"><span>{esc(t)}</span></li>' for r, (t, z) in zip(('I', 'II', 'III', 'IV'), ziele))
     li = ''.join(f'<li><b>{esc(a)}</b>' + (f' <span>{esc(b)}</span>' if b else '') + '</li>' for a, b in m['ergebnisse'])
     return (f'  <section class="lsx-m-ergebnisse lsx-ziel" id="leistungen" aria-labelledby="leistungen-titel">\n'
             f'    <p class="meta">Ergebnis</p>\n'

@@ -5418,6 +5418,13 @@ main.lsx-muster .lsx-karte.lsx-gefragt { background: var(--aah-gelb); }
 .lsx-m-kopf { position: relative; }
 .lsx-kopf-zeichnung { position: absolute; right: var(--rand-seite); top: 50%; width: clamp(180px, 24vw, 340px); height: auto; translate: 0 -50%; rotate: -3deg; }
 @media (max-width: 1024px) { .lsx-kopf-zeichnung { position: static; display: block; translate: none; width: 140px; margin: 8px 0 0 auto; order: -1; } }
+/* Foto im Repro-Look rechts im Hero der Leistungsseiten (Anna 22.11.2026): blau gedruckt auf Papier, leicht gedreht, gelber Klebestreifen, Zeichnung als Sticker */
+.lsx-repro { position: absolute; right: var(--rand-seite); top: 50%; width: clamp(220px, 26vw, 360px); translate: 0 -50%; rotate: 3deg; }
+.lsx-repro-druck { display: block; aspect-ratio: 4 / 3; overflow: hidden; background: var(--farbe-primaer); border: 10px solid var(--farbe-weiss); box-shadow: 0 2px 0 rgba(14, 16, 17, .08); }
+.lsx-repro-druck img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top center; filter: grayscale(1) contrast(1.5) brightness(1.02); mix-blend-mode: screen; }
+.lsx-repro::before { content: ""; position: absolute; z-index: 1; left: 50%; top: -14px; width: 96px; height: 26px; translate: -50% 0; rotate: -4deg; background: var(--bb-gelb); opacity: .85; }
+.lsx-repro-sticker { position: absolute; left: -36px; bottom: -32px; width: 96px; height: auto; rotate: -8deg; }
+@media (max-width: 1024px) { .lsx-repro { position: relative; display: block; translate: none; width: min(300px, 80%); margin: 24px 0 24px auto; right: auto; } .lsx-repro-sticker { width: 72px; left: -24px; bottom: -24px; } }
 /* Kontrast-Check 22.11.2026 (Anna: „grau auf hellblau funktioniert nicht, checke selbst solche Kontraste“) */
 .hk-nr, .br-zahlen-titel { color: var(--aah-grau); }
 main.lsx-muster .stimme, :is(.lsx-stimmen, .stimmen-abschnitt) .stimme { background: var(--farbe-weiss); }
@@ -5691,3 +5698,111 @@ a:hover > .pk-collage .pk-site, a:focus-visible > .pk-collage .pk-site, .pg-kart
 .kr-person-zitat { margin: 16px 0 0; font-size: var(--groesse-3); line-height: 1.45; }
 @media (max-width: 767.98px) { .kr-person { margin-bottom: 24px; } .kr-person-bild { width: 56px; height: 56px; } }
 @media (min-width: 768px) { .kr-person-zitat .kr-zeile { display: block; } }   /* Umbruch vor „dich ehrlich berät.“ (Anna 22.11.2026) */
+
+/* Anmerkungsrunde Anna 22.11.2026 (Liste: Betrieb Studio AAH/Website/2026-11-22_anmerkungen-runde-leistungsseiten.md) */
+/* Nr. 4, 7: „Das bekommst du“ als vier Tarotkarten; Nr. 15, 17: Ergebnis überall dieselbe Hintergrundfarbe */
+main[class] > section.lsx-m-ergebnisse.lsx-ziel { background: var(--aah-orchidee-zart); }
+.lsx-ziel-liste { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; max-width: 1040px; }
+.lsx-ziel-liste li { position: relative; aspect-ratio: 2 / 3; justify-content: space-between; align-items: center; text-align: center; padding: 22px 16px 26px; border-radius: 14px;
+  background: var(--farbe-weiss); outline: 1.5px solid var(--farbe-dunkel); outline-offset: -10px; box-shadow: 0 10px 26px rgba(14, 16, 17, .12); }
+.lsx-ziel-liste li:nth-child(odd) { rotate: -1.2deg; }
+.lsx-ziel-liste li:nth-child(even) { rotate: 1deg; translate: 0 10px; }
+.lsx-ziel-liste small { font: 500 var(--groesse-2)/1 var(--schrift-text); letter-spacing: .18em; }
+.lsx-ziel-liste img { width: 58%; height: auto; }
+.lsx-ziel-liste span { font-size: clamp(16px, 1.5vw, 22px); text-transform: uppercase; letter-spacing: .06em; }
+@media (max-width: 1024px) { .lsx-ziel-liste { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 520px; } }
+@media (max-width: 767.98px) { .lsx-ziel-liste { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  .lsx-ziel-liste li { flex-direction: column; align-items: center; padding: 16px 10px 18px; } .lsx-ziel-liste img { width: 56%; height: auto; } .lsx-ziel-liste span { font-size: 14px; } }
+
+/* Nr. 3: Zettel „Woran es oft hakt“ zufällig gehängt, nicht im Raster */
+.lsx-pl-allein .lsx-pl-zettel ul, .lsx-pl-zettel ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px 28px; }
+.lsx-pl-zettel li { flex: 0 1 230px; }
+.lsx-pl-zettel li:nth-child(5n+1) { rotate: -2.2deg; translate: 0 6px; }
+.lsx-pl-zettel li:nth-child(5n+2) { rotate: 1.6deg; translate: 0 34px; }
+.lsx-pl-zettel li:nth-child(5n+3) { rotate: -.6deg; translate: 0 -8px; }
+.lsx-pl-zettel li:nth-child(5n+4) { rotate: 2.4deg; translate: 0 22px; }
+.lsx-pl-zettel li:nth-child(5n) { rotate: -1.6deg; translate: 0 -14px; }
+@media (max-width: 767.98px) { .lsx-pl-zettel li { flex-basis: 100%; translate: none; } }
+
+/* Nr. 10: keine Linie über leerer Liste in Preiskarten */
+.lsx-karte-liste:empty { display: none; }
+
+/* Nr. 12: Website-Check-Hero bleibt zentriert (Ausnahme zur Regel „Hero bündig zum Logo“) */
+.wc .lp-hero-mitte { justify-items: center; text-align: center; }
+.wc .lp-hero-mitte :is(.lp-titel, .rv-intro, .wc-berechtigung, .wc-hero-icon) { margin-left: auto; margin-right: auto; }
+.wc .lp-hero-mitte .lp-haken { justify-content: center; }
+
+/* Nr. 14: Abstand vor den Häufigen Fragen auf der Website-Check-Seite halbiert */
+.wc .wc-spalten-bild + .wc-faq { margin-top: 41px; }
+
+/* Nr. 9: Referenzen mit weniger Abstand */
+.lsx-referenzen { padding-top: 64px; }
+.lsx-referenzen .sektionskopf h2 { margin-bottom: 20px; }
+
+/* Nr. 18: Referenz mit Kennzahlen: Text unten auf Höhe des Pfeils, Bild runder, Zahlen in Handschrift */
+.br-ref .pg-karte { display: flex; flex-direction: column; }
+.br-ref .pg-text { margin-top: auto; }
+.br-ref .pg-bild, .br-ref .pg-foto { border-radius: var(--radius-karte); overflow: hidden; }
+.br-zahl strong { font-family: var(--schrift-hand); font-weight: 400; }
+
+/* Nr. 20: mehr Abstand über „Weitere Branchen“ */
+.br-weitere-branchen { padding-top: 128px; }
+
+/* Nr. 8: Referenzen als Slider (Anna 22.11.2026): läuft langsam, hält bei Maus, Fokus und Pause an; bei „Bewegung reduzieren“ still und seitlich scrollbar */
+.ref-slider { position: relative; overflow: hidden; padding-top: 44px; }
+.ref-spur { display: flex; width: max-content; animation: ref-lauf 70s linear infinite; }
+.ref-band { display: flex; gap: 24px; margin: 0; padding: 0 12px; list-style: none; }
+.ref-band > li { flex: 0 0 clamp(260px, 42vw, 540px); }
+.ref-band .pc { aspect-ratio: 4 / 3; }
+.ref-slider:hover .ref-spur, .ref-slider:focus-within .ref-spur, .ref-slider.pausiert .ref-spur { animation-play-state: paused; }
+.ref-pause { position: absolute; top: 0; right: 0; font: 500 var(--groesse-2)/1 var(--schrift-text); padding: 8px 14px; border: 1.5px solid var(--farbe-dunkel); border-radius: var(--radius-pille); background: var(--farbe-weiss); color: var(--farbe-dunkel); cursor: pointer; }
+@keyframes ref-lauf { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .ref-spur { animation: none; } .ref-slider { overflow-x: auto; } .ref-pause { display: none; } }
+
+/* Nr. 9 Runde 2: Dachzeilen überall wie „Mein Studio“ auf dem Profil (Anna 22.11.2026): Versalien, fett, Schwarz, ohne Punkt */
+:is(.meta:has(+ :is(h1, h2, h3)), div:has(+ :is(h1, h2)) > .meta:last-child, .sektionskopf > .meta, [class*="-kopf"] > .meta, .br-kopf > .meta):not(#x) {
+  font: 700 var(--groesse-1)/1.3 var(--schrift-text); letter-spacing: .08em; text-transform: uppercase; color: var(--farbe-dunkel); }
+:is(.meta:has(+ :is(h1, h2, h3)), div:has(+ :is(h1, h2)) > .meta:last-child, .sektionskopf > .meta, [class*="-kopf"] > .meta, .br-kopf > .meta):not(#x)::before { content: none !important; display: none !important; }
+/* auf dunklen Flächen bleibt die Dachzeile hell */
+:is(.schluss-blau, .haken-schwarz, .pg-karte, .dk) :is(.meta):not(#x) { color: inherit; }
+/* Profil: Info und Erfahrung, Zahlen im Info-Block */
+.profil-info-zahlen { margin-top: 56px; }
+.profil-erfahrung-teil { padding-top: 0; }
+
+/* Blog-Hero wie Profil-Hero (Anna 22.11.2026) */
+.blog-hero { padding: clamp(40px, 5vw, 80px) 0 0; background: var(--farbe-weiss); }
+.blog-h1 { margin: 0; padding: 0 var(--rand-seite); font: 500 clamp(34px, 5.4vw, 84px)/1.14 var(--schrift-text); letter-spacing: -.03em; }   /* große leichte Zeile wie auf dem Profil */
+.blog-hand { display: inline-block; font: 400 clamp(26px, 3.4vw, 52px)/1.15 var(--schrift-hand), cursive; letter-spacing: .03em; rotate: -2deg; }
+.blog-buehne { margin-top: clamp(32px, 4vw, 64px); background: #000; }
+.blog-buehne img { display: block; width: auto; max-width: 100%; height: clamp(260px, 44vw, 620px); margin: 0 auto; object-fit: cover; -webkit-mask-image: linear-gradient(90deg, transparent, #000 22%, #000 78%, transparent); mask-image: linear-gradient(90deg, transparent, #000 22%, #000 78%, transparent); }
+@media (max-width: 767.98px) { .blog-h1 { padding: 0 var(--rand-seite-mobil); } }
+
+/* Profil Runde 3 (Anna 22.11.2026) */
+.profil-info-zahlen:not(#x) { padding: 0 var(--rand-seite); }   /* „Folge mir“ bündig zum Logo */
+.um-team:not(#x) { padding-top: clamp(64px, 8vw, 120px); padding-bottom: 32px; }   /* mehr Abstand nach oben, kein leerer Raum unter der Bildquelle */
+.um-roboter { object-position: center 40%; }
+.blog-neu .sektionskopf:has(.profil-alle) { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 32px; }
+.profil-alle { margin: 0; }
+.profil-li-titel { margin: 64px var(--rand-seite) 20px; }
+.profil-stimmen:not(#x) { padding-bottom: clamp(72px, 8vw, 120px); }   /* Abstand unter „Alle Empfehlungen auf LinkedIn“ */
+@media (max-width: 767.98px) { .profil-info-zahlen:not(#x) { padding: 0 var(--rand-seite-mobil); } .profil-li-titel { margin: 48px var(--rand-seite-mobil) 16px; } }
+.blog-neu .sektionskopf:has(.profil-alle):not(#x) { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; column-gap: 32px; }
+.blog-neu .sektionskopf:has(.profil-alle) > :not(.profil-alle) { grid-column: 1; }
+.blog-neu .sektionskopf:has(.profil-alle) > .profil-alle { grid-column: 2; grid-row: 2; }
+@media (max-width: 767.98px) { .blog-neu .sektionskopf:has(.profil-alle):not(#x) { grid-template-columns: minmax(0, 1fr); } .blog-neu .sektionskopf:has(.profil-alle) > .profil-alle { grid-column: 1; grid-row: auto; } }
+/* Blog-Hero: Zusatz in Annas Schrift höher, mit Abstand zu „Dives“, immer Rot (Anna 22.11.2026) */
+.blog-hand:not(#x) { margin-left: .35em; vertical-align: .55em; color: var(--aah-rot); }
+.blog-buehne img:not(#x) { width: 100%; max-width: none; -webkit-mask-image: none; mask-image: none; }
+/* Runde 4 (Anna 23.11.2026) */
+.profil-li-titel:not(#x) { margin-top: 32px; font: 700 var(--groesse-1)/1.3 var(--schrift-text); letter-spacing: .08em; text-transform: uppercase; color: var(--farbe-dunkel); }   /* näher an die Artikel, Dachzeile wie überall */
+.profil-li-titel::before { content: none !important; }
+.profil-erfahrung-teil:not(#x) { padding-top: 72px; }   /* Abstand zur LinkedIn-Leiste */
+.blog-hand:not(#x) { font-size: clamp(20px, 2.4vw, 38px); vertical-align: .25em; }   /* kleiner, etwas tiefer */
+.blog-hero:not(#x) { background: var(--farbe-weiss); }
+@media (max-width: 767.98px) { .profil-li-titel:not(#x) { margin-top: 24px; } .profil-erfahrung-teil:not(#x) { padding-top: 56px; } }
+.blog-buehne img:not(#x) { object-position: center bottom; }   /* Fokus unten mittig (Anna 23.11.2026) */
+.blog-hand:not(#x) { display: block; width: fit-content; vertical-align: 0; margin: .15em 0 0 calc(clamp(34px, 5.4vw, 84px) * 2.6); }   /* Zusatz unter „Dives“ (Anna 23.11.2026) */
+.blog-buehne:not(#x) { margin-top: clamp(80px, 7vw, 96px); }   /* Foto beginnt auf derselben Höhe wie auf dem Profil (Anna 23.11.2026) */
+/* Text des Blog-Heros als Gruppe mittig zwischen Kopf und Foto, Gesamthöhe wie Profil (Anna 23.11.2026) */
+.blog-hero:not(#x) { padding-top: clamp(60px, 6vw, 88px); }
+.blog-buehne:not(#x) { margin-top: clamp(60px, 6vw, 88px); }

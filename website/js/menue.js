@@ -551,4 +551,14 @@
     var name = ''; try { name = (sessionStorage.getItem('aah-name') || '').trim().slice(0, 28); } catch (e) {}
     if (name) ziel.textContent = 'Hey ' + name + ', du bist ja noch da.';
   })();
+  // Referenz-Slider: Pause-Button (Anna 22.11.2026, Barrierefreiheit: Bewegung anhalten können)
+  (function () {
+    document.querySelectorAll('[data-ref-slider]').forEach(function (sl) {
+      var b = sl.querySelector('.ref-pause'); if (!b) return;
+      b.addEventListener('click', function () {
+        var an = sl.classList.toggle('pausiert');
+        b.setAttribute('aria-pressed', an ? 'true' : 'false'); b.textContent = an ? 'Weiter' : 'Pause';
+      });
+    });
+  })();
 })();
