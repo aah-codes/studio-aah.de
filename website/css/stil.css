@@ -5896,3 +5896,4 @@ del.kr-durch { text-decoration: none; font: inherit; }
 #intro-titel .ko-unten .hand, #linkedin-titel .ko-unten .hand { color: var(--farbe-weiss); }   /* auf Blau und Schwarz lesbar (Kontrast) */
 #intro-titel .ko-unten .hand { font-size: .6em; }
 del.ko-zeilen { text-decoration: none; }
+h3.fokus-titel { margin: 0; }
