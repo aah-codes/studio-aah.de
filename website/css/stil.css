@@ -5267,3 +5267,9 @@ main h2.preis-h2 { font-size: clamp(40px, 6vw, 84px); line-height: 1.05; }
 .lsx-m-ergebnis-liste li::before { content: ""; position: absolute; left: 50%; top: -12px; width: 84px; height: 24px; margin-left: -42px; background: var(--bb-gelb); opacity: .85; rotate: -4deg; }
 .lsx-m-ergebnis-liste li:nth-child(4)::before { background: var(--bb-pink); rotate: 3deg; }
 .lsx-m-ergebnis-liste p { color: var(--farbe-dunkel); }
+.lsx-referenzen .ref-raster { margin-top: 48px; }
+.lsx-referenzen .korrektur-partner { margin-bottom: .6em; }
+/* Stimmen: weniger Abstand zwischen Dachzeile und Überschrift (Anna 22.11.2026) */
+.lsx-stimmen .sektionskopf .meta { margin-bottom: 4px; }
+.lsx-stimmen #stimmen-titel { margin-top: 0; }
+.lsx-stimmen .sektionskopf { padding-top: 0; padding-bottom: 32px; }

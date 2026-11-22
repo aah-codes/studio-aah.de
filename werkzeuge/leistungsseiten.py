@@ -161,7 +161,11 @@ def ohne_bauer(liste, tag):
 def referenzen(tag, pre):
     liste = ohne_bauer(I.mit_tag(I.PROJEKTE, [tag]), tag)
     if not liste: return ''
-    return '  <section class="lsx-referenzen" id="referenzen" aria-labelledby="referenzen-titel">\n    <p class="meta">Referenzen</p>\n    <h2 class="gr-h2" id="referenzen-titel">Projekte aus diesem Bereich</h2>\n    <div class="referenz-rahmen">\n' + I.referenz_karten(liste, pre, 'lsx', tag) + '\n    </div>\n  </section>'
+    # Anna 22.11.2026: wie die Projektseite – „Projekte“ durchgestrichen zu „Partnerschaften“, Projektkarten im Raster
+    karten = '\n'.join(f'      <li>{I.projekt_karte(p, pre, h="h3", satz=False)}</li>' for p in liste)
+    return ('  <section class="lsx-referenzen" id="referenzen" aria-labelledby="referenzen-titel">\n    <p class="meta">Referenzen</p>\n'
+            '    <h2 class="gr-h2" id="referenzen-titel"><span class="korrektur korrektur-partner korrektur-links"><span class="notiz notiz-durch" aria-hidden="true">Projekte</span><span class="hand">Partnerschaften</span></span></h2>\n'
+            f'    <ul class="ref-raster">\n{karten}\n    </ul>\n  </section>')
 
 
 # Ersatz-Schlagworte, solange es zu einer Leistung weniger als zwei eigene Artikel gibt (Anna 18.11.2026: „mindestens 2“)
