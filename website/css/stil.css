@@ -5922,3 +5922,4 @@ h3.fokus-titel { margin: 0; }
 /* Durchgestrichenes über zwei Zeilen in der H1: Strich je Zeile (Anna 23.11.2026) */
 .lsx-titel .korrektur .notiz-durch { text-decoration: line-through var(--bb-rot) .07em; }
 .lsx-titel .korrektur .notiz-durch::after { display: none; }
+.mr #pakete { padding-bottom: clamp(64px, 8vw, 120px); }   /* mehr Abstand vor den Häufigen Fragen (Anna 23.11.2026) */
