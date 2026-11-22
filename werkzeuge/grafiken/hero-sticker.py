@@ -84,6 +84,16 @@ def megafon():
     return svg(''.join(teile))
 
 
-for name, f in (('zeichnung-blitz', blitz), ('zeichnung-regenbogen', regenbogen), ('zeichnung-pfeil', pfeil), ('zeichnung-megafon', megafon)):
+def sprechblase():
+    # Sprechblase für den Abschluss der Branchenseiten (Anna 22.11.2026: „ein gezeichnetes Icon dazu“, „wir sollten ins Gespräch kommen“)
+    blase = 'M80 96 C80 62, 108 44, 150 44 L276 44 C322 44, 348 66, 348 104 L348 216 C348 256, 322 276, 276 276 L188 276 L118 348 L132 276 L136 276 C100 276, 80 254, 80 216 Z'
+    versatz = blase.replace('M80 96', 'M89 104')
+    teile = [f'<path d="{blase}" transform="translate(9 8)" fill="{ROSA}"/>', f'<path d="{blase}" fill="{GELB}"/>', kontur(blase), kontur(blase, 3).replace('<path', '<path transform="translate(3 -2)"')]
+    for x in (156, 214, 272):   # drei Punkte wie beim Tippen
+        teile.append(f'<circle cx="{x}" cy="162" r="17" fill="{SCHWARZ}"/>')
+    return svg(''.join(teile))
+
+
+for name, f in (('zeichnung-blitz', blitz), ('zeichnung-regenbogen', regenbogen), ('zeichnung-pfeil', pfeil), ('zeichnung-megafon', megafon), ('zeichnung-sprechblase', sprechblase)):
     (ZIEL / f'{name}.svg').write_text(f(), encoding='utf-8')
     print('geschrieben:', f'bilder/sticker/{name}.svg')

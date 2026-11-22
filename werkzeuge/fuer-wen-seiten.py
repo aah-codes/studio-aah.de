@@ -82,6 +82,16 @@ def abschluss(pre, text=None, knopf=None):
             f'  <p><a class="button weg-ziel-knopf" href="{pre}{ziel}">{aufschrift}</a></p>\n</section>')
 
 
+def branche_abschluss(pre):
+    """Abschluss der Branchenseiten (Anna 22.11.2026, Vorbild Kochstrasse): Name aus dem Frag-Feld der Startseite aufgreifen,
+    schräg in Annas Schrift, gezeichnete Sprechblase, Button zum Kontaktformular. Ohne Namen: „Hey, du bist ja noch da.“"""
+    return ('  <section class="weg-ziel br-hallo" aria-labelledby="weg-ziel-titel">\n'
+            f'  <img class="br-hallo-sticker" src="{pre}bilder/sticker/zeichnung-sprechblase.svg" alt="" width="400" height="400" loading="lazy">\n'
+            '  <h2 class="gr-h2 br-hallo-titel" id="weg-ziel-titel"><span data-name-hallo>Hey, du bist ja noch da.</span></h2>\n'
+            '  <p class="alt-klein">Wir sollten ins Gespräch kommen.</p>\n'
+            f'  <p><a class="button weg-ziel-knopf" href="{pre}kontakt/">Beratung anfragen <span aria-hidden="true">→</span></a></p>\n</section>')
+
+
 def ld(titel, beschreibung, url, fragen, branche=None):
     graph = [{'@type': 'WebPage', '@id': url + '#seite', 'url': url, 'name': titel, 'description': beschreibung,
               'inLanguage': 'de-DE', 'publisher': {'@id': STUDIO_ID}}]
@@ -268,7 +278,7 @@ def branchenseite(b):
              '  <section class="ablauf-start" id="vorgehen" aria-labelledby="vorgehen-titel">\n    <div class="sektionskopf"><p class="meta">Vorgehen</p>'
              '<h2 class="gr-h2" id="vorgehen-titel">Vier Schritte.<br>Planbar von Anfang&nbsp;an.</h2></div>\n    <ol class="zl-quer">\n' + vorgehen + '    </ol>\n  </section>',
              faq(b['faq']).replace('<section class="faq ehrlich"', '<section class="faq ehrlich" id="fragen"', 1),
-             abschluss(pre),
+             branche_abschluss(pre),
              weitere_branchen(andere, pre)]
     teile = [t for t in teile if t]
     schreibe(b['pfad'], '\n\n'.join(teile), b['seitentitel'], b['beschreibung'], b['faq'], branche=b)

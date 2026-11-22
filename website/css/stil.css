@@ -5303,3 +5303,9 @@ main > .faq .meta, main > .faq .faq-eintrag { color: var(--farbe-dunkel); }
 .lp-kern { text-transform: none; }
 /* Anna 22.11.2026: Abstand unter „Einmal im Jahr zum Check-up“ halbiert */
 .wc-spalten-bild { row-gap: clamp(16px, 3vw, 48px); }
+
+/* Anna 22.11.2026: Abschluss der Branchenseiten wie Kochstrasse – Name aufgreifen, schräg, gezeichnete Sprechblase */
+.br-hallo { position: relative; }
+.br-hallo-sticker { display: block; width: clamp(88px, 11vw, 140px); height: auto; margin: 0 auto 8px; transform: rotate(-8deg); }
+.weg-ziel .gr-h2.br-hallo-titel { transform: rotate(-3deg); max-width: 16ch; white-space: normal; text-wrap: balance; margin-top: 0; }
+@media (min-width: 900.02px) { .weg-ziel .gr-h2.br-hallo-titel { max-width: 26ch; } }

@@ -545,4 +545,10 @@
       });
     }));
   });
+  // Name aus dem Frag-Feld der Startseite im Abschluss der Branchenseiten (Anna 22.11.2026). Nur aus sessionStorage dieses Tabs, nichts wird gesendet.
+  (function () {
+    var ziel = document.querySelector('[data-name-hallo]'); if (!ziel) return;
+    var name = ''; try { name = (sessionStorage.getItem('aah-name') || '').trim().slice(0, 28); } catch (e) {}
+    if (name) ziel.textContent = 'Hey ' + name + ', du bist ja noch da.';
+  })();
 })();
