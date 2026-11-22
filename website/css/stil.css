@@ -5292,3 +5292,4 @@ main h2.preis-h2 { font-size: clamp(40px, 6vw, 84px); line-height: 1.05; }
 .lsx-muster .lsx-karten .lsx-karte.lsx-gefragt, .lsx-muster .lsx-einzeln .lsx-karte.lsx-gefragt { background: var(--bb-puder); border-color: var(--farbe-dunkel); }
 .lsx-muster .lsx-karte-wer { color: var(--farbe-dunkel); }
 .lsx-muster .lsx-karten .lsx-karte:not(.lsx-gefragt), .lsx-muster .lsx-einzeln .lsx-karte:not(.lsx-gefragt) { background: var(--bb-mint); }   /* Premium grün (Anna 22.11.2026) */
+.lsx-muster .lsx-karten .lsx-karte:not(.lsx-gefragt), .lsx-muster .lsx-einzeln .lsx-karte:not(.lsx-gefragt) { background: var(--farbe-weiss); }   /* Premium weiß (Anna 22.11.2026) */
