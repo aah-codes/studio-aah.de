@@ -17,6 +17,23 @@ GEMEINSAM = lade_json('inhalte/faq-gemeinsam.json')['faq']
 MIT_CHECK = (WEBSITE / 'website-check' / 'index.html').exists()
 
 
+# Handschrift-Redigat je Seite (Anna 22.11.2026): ersetzt fertige Überschriften; durchgestrichen = aria-hidden, Hand = gelesen
+def _ko(alt, neu):
+    return f'<span class="korrektur ko-unten"><span class="notiz notiz-durch" aria-hidden="true">{alt}</span><span class="hand">{neu}</span></span>'
+REDIGAT = {
+    'service/markenbildung/': [
+        ('style="--n:13">Markenbildung<br>in Leipzig</h1>', 'style="--n:26">Markenbildung in Leipzig: Keine ' + _ko('Kosmetik.', 'Dekoration für die Visitenkarte.') + '<br>Sondern Klarheit, die anzieht.</h1>'),
+        ('<p class="alt-klein">Eine unverwechselbare Marken- und Unternehmens&shy;identität, die bei deiner Zielgruppe wirklich ankommt.</p>', '<p class="alt-klein">Eine unverwechselbare Marken- und Unternehmens&shy;identität für den <span class="ohne-umbruch">B2B-Mittelstand</span> – damit Kunden und Fachkräfte sofort verstehen, warum ihr die Richtigen seid.</p>'),
+        ('id="anlaesse-titel">Wann es sich lohnt</h2>', 'id="anlaesse-titel">Wann ein ' + _ko('neues Logo', 'echter Neustart') + ' fällig ist</h2>'),
+        ('id="loesung-titel">Eine Marke wirkt nur, wenn sie zusammenhält.</h2>', 'id="loesung-titel">Eine Marke wirkt nur, wenn sie ' + _ko('zusammenhält.', 'innen und außen zusammenhält.') + '</h2>'),
+        ('id="prozess">Prozess</h2>', 'id="prozess">Vier Schritte statt ' + _ko('Blindflug', 'Agentur-Blackbox') + '</h2>'),
+        ('<span class="hand">Partnerschaften</span>', '<span class="hand">Partnerschaften auf Augenhöhe</span>'),
+        ('id="stimmen-titel">Stimmen,<br>die zählen.</h2>', 'id="stimmen-titel">Stimmen,<br>die zählen.<span class="ko-block">Was passiert, wenn man es einfach anpackt</span></h2>'),
+        ('id="faq-titel">Ehrliche Antworten</h2>', 'id="faq-titel">' + _ko('Standard-Antworten', 'Ehrliche Antworten') + '</h2>'),
+        ('id="schluss-titel">Fangen wir klein an.</h2>', 'id="schluss-titel">Fangen wir <span class="ko-zitat-hand">klein</span> an.</h2>'),
+    ],
+}
+
 def inhaltslisten(preise):
     """Webdesign-Pakete (Neue Website, Redesign) übernehmen ihre Inhaltsliste aus dem Kostenrechner (eine Quelle, Anna 16.10.2026)."""
     w = preise['webrechner']
@@ -731,6 +748,9 @@ def seite(key, c):
     if 'zaehlen.js' not in t:  # Kennzahlen zählen hoch; Version wie auf der Startseite
         version = re.search(r'zaehlen\.js\?v=(\w+)', START).group(1)
         t = t.replace('</body>', f'  <script src="{pre}js/zaehlen.js?v={version}" defer></script>\n</body>', 1)
+    for alt, neu in REDIGAT.get(c['pfad'], []):
+        assert alt in t, (c['pfad'], alt[:40])
+        t = t.replace(alt, neu, 1)
     pfad.parent.mkdir(parents=True, exist_ok=True)
     pfad.write_text(t, encoding='utf-8')
     print('geschrieben:', c['pfad'])

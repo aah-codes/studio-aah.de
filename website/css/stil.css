@@ -5898,3 +5898,8 @@ del.kr-durch { text-decoration: none; font: inherit; }
 del.ko-zeilen { text-decoration: none; }
 h3.fokus-titel { margin: 0; }
 .fokus-karte h3.fokus-titel:not(#x) { font-weight: 700; letter-spacing: normal; }   /* wie vorher als span (Anna 22.11.2026) */
+/* Leistungsseiten mit Handschrift in der H1 (Anna 22.11.2026): kleiner, damit Zeile und Foto Platz haben */
+.lsx-titel:has(.korrektur) { font-size: clamp(30px, 4vw, 60px); line-height: 1.25; }
+.lsx-titel .korrektur .hand { font-size: .5em; }
+@media (min-width: 1024.02px) { .lsx-titel:has(.korrektur) { max-width: 52%; } }
+@media (max-width: 767.98px) { .ko-unten .hand { left: auto; right: 0; text-align: right; max-width: 60vw; } }
