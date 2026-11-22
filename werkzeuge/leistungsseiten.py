@@ -31,7 +31,7 @@ REDIGAT = {
         ('id="faq-titel">Ehrliche Antworten</h2>', 'id="faq-titel">' + _ko('Standard-Antworten', 'Ehrliche Antworten') + '</h2>'),
     ],
     'service/ki-digitalisierung/': [
-        ('style="--n:11"><span class="ohne-umbruch">KI-Beratung</span></h1>', 'style="--n:26"><span class="ohne-umbruch">KI-Beratung</span> in Leipzig: Schluss mit ' + _ko('ein bisschen rumprobieren.', 'leeren Chat-Fenstern.') + '<br>Wir richten Claude so ein, dass es dein Büro wirklich entlastet.</h1>'),
+        ('style="--n:11"><span class="ohne-umbruch">KI-Beratung</span></h1>', 'style="--n:26"><span class="ohne-umbruch">KI-Beratung</span> in Leipzig: Schluss mit ' + _ko('ein bisschen rumprobieren.', 'Chats, die jedes Mal bei null anfangen.') + '<br>Wir richten Claude so ein, dass es dein Büro wirklich entlastet.</h1>'),
         ('<p class="alt-klein">KI und digitale Abläufe, die im Alltag wirklich entlasten – für KMU und Solo-Selbstständige.</p>', '<p class="alt-klein">Keine abstrakten KI-Strategie-Workshops, sondern ein fertiges Arbeits-Setup für KMU und Selbstständige – mit deinen Ordnern, deinen Regeln und festen Abläufen.</p>'),
         ('id="loesung-titel">KI ist kein Selbstzweck.</h2>', 'id="loesung-titel">KI ist kein ' + _ko('Selbstzweck.', 'Zauberstab ohne Anleitung.') + '</h2>'),
         ('id="anwendungen-titel">Wobei KI konkret entlastet</h2>', 'id="anwendungen-titel">Wo Claude im Büro-Alltag ' + _ko('vielleicht helfen könnte', 'sofort Zeit spart') + '</h2>'),
