@@ -32,6 +32,20 @@ hmtx['k.neu'] = (int(g.xMax + 70), g.xMin)
 if 'k.neu' not in f.getGlyphOrder(): f.setGlyphOrder(f.getGlyphOrder() + ['k.neu'])
 for tab in f['cmap'].tables:
     if tab.isUnicode() or tab.platformID == 3: tab.cmap[0x006B] = 'k.neu'
+
+# Kaufmanns-Und nach Annas Skizze (22.11.2026): oben eine kleine Schlaufe, unten eine größere, ein Strich quer nach rechts unten
+und = [('o', (.62, 0, 0, .68, 105, 470)),        # obere Schlaufe, so hoch wie die Großbuchstaben
+       ('o', (1.0, 0, 0, 1.0, 10, 0)),           # untere Schlaufe
+       strich(660, 1.2, -62, 275, 330),          # Strich von oben links nach rechts unten
+       strich(250, 1.1, 58, 400, 200)]           # kurzer Aufstrich rechts
+pen = TTGlyphPen(gs)
+for basis, t in und:
+    gs[basis].draw(TransformPen(pen, t))
+g2 = pen.glyph(); glyf['ampersand.neu'] = g2; g2.recalcBounds(glyf)
+hmtx['ampersand.neu'] = (int(g2.xMax + 60), g2.xMin)
+if 'ampersand.neu' not in f.getGlyphOrder(): f.setGlyphOrder(f.getGlyphOrder() + ['ampersand.neu'])
+for tab in f['cmap'].tables:
+    if tab.isUnicode() or tab.platformID == 3: tab.cmap[0x0026] = 'ampersand.neu'
 f['maxp'].numGlyphs = len(f.getGlyphOrder())
 f.flavor = 'woff2'
 f.save(DATEI)
