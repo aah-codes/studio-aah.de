@@ -5915,3 +5915,10 @@ h3.fokus-titel { margin: 0; }
 .ko-oben .hand { top: auto; bottom: 82%; left: 4%; color: var(--aah-rot); rotate: -3deg; font-size: max(.62em, 22px); }
 .ko-oben { margin-top: .5em; }
 .lsx-titel[style*="--n:26"] { font-size: clamp(30px, 4vw, 60px); line-height: 1.2; hyphens: manual; } @media (min-width: 1024.02px) { .lsx-titel[style*="--n:26"] { max-width: 52%; } }
+.lsx-anw-h3 { margin: 4px 0 8px; font: 700 var(--groesse-4)/1.3 var(--schrift-text); }
+.lsx-wege-sub { margin: 12px 0 0; font-size: var(--groesse-3); }
+:is(.lsx-m-anlaesse, .schluss-blau, .dk) :is(.hand, .ko-zitat-hand, .ko-block, .kr-hand):not(#x) { color: var(--farbe-weiss); }
+:is(.lsx-m-anlaesse, .schluss-blau, .dk) :is(.notiz-durch, .kr-durch):not(#x)::after { background: var(--farbe-weiss); }
+/* Durchgestrichenes über zwei Zeilen in der H1: Strich je Zeile (Anna 23.11.2026) */
+.lsx-titel .korrektur .notiz-durch { text-decoration: line-through var(--bb-rot) .07em; }
+.lsx-titel .korrektur .notiz-durch::after { display: none; }
