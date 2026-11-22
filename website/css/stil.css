@@ -5044,7 +5044,7 @@ main h2.preis-h2 { font-size: clamp(40px, 6vw, 84px); line-height: 1.05; }
 .ks-termin, .ks-anruf, .ks-mail { background: var(--farbe-weiss); }
 .ks-symbol { background: var(--farbe-primaer); color: var(--farbe-weiss); border-color: var(--farbe-dunkel); }
 /* Startseite: „Projekte“ etwas größer, dahinter rote Notiz in Klammern (Anna 21.11.2026) */
-.start-projektliste .pa-titel { font-size: clamp(52px, 7.5vw, 104px); line-height: 1; }
+.pa-titel { font-size: clamp(52px, 7.5vw, 104px); line-height: 1; }
 .pa-klammer { display: inline-block; vertical-align: middle; font: 400 clamp(20px, 2.2vw, 32px)/1.1 var(--schrift-hand), "Architects Daughter", cursive; color: var(--bb-rot); rotate: -4deg; margin-left: .3em; }
 @media (max-width: 767.98px) { .pa-klammer { display: block; margin: 8px 0 0; } }
 /* Projektseiten: Überschriften mit mehreren Wörtern in Groß- und Kleinschreibung, einzelne Wörter (Ausgangslage, Ergebnis …) dürfen Versalien bleiben (Anna 21.11.2026) */
@@ -5293,3 +5293,9 @@ main h2.preis-h2 { font-size: clamp(40px, 6vw, 84px); line-height: 1.05; }
 .lsx-muster .lsx-karte-wer { color: var(--farbe-dunkel); }
 .lsx-muster .lsx-karten .lsx-karte:not(.lsx-gefragt), .lsx-muster .lsx-einzeln .lsx-karte:not(.lsx-gefragt) { background: var(--bb-mint); }   /* Premium grün (Anna 22.11.2026) */
 .lsx-muster .lsx-karten .lsx-karte:not(.lsx-gefragt), .lsx-muster .lsx-einzeln .lsx-karte:not(.lsx-gefragt) { background: var(--farbe-weiss); }   /* Premium weiß (Anna 22.11.2026) */
+
+/* Anna 22.11.2026: Häufige Fragen überall wie auf der Startseite (Papier C); Kopf „Partnerschaften“ überall wie auf der Startseite (links, H2-Größe) */
+main > .faq { background: url(../bilder/papier/papier-c.webp) 0 0 / 256px repeat; padding-top: 112px; padding-bottom: 96px; }
+main > .faq .meta, main > .faq .faq-eintrag { color: var(--farbe-dunkel); }
+:is(.br-projekte, .lsx-referenzen) > .sektionskopf { text-align: start; }
+:is(.br-projekte, .lsx-referenzen) > .sektionskopf .pa-titel { margin-bottom: clamp(40px, 4vw, 64px); }

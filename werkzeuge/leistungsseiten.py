@@ -163,8 +163,8 @@ def referenzen(tag, pre):
     if not liste: return ''
     # Anna 22.11.2026: wie die Projektseite – „Projekte“ durchgestrichen zu „Partnerschaften“, Projektkarten im Raster
     karten = '\n'.join(f'      <li>{I.projekt_karte(p, pre, h="h3", satz=False)}</li>' for p in liste)
-    return ('  <section class="lsx-referenzen" id="referenzen" aria-labelledby="referenzen-titel">\n    <p class="meta">Referenzen</p>\n'
-            '    <h2 class="gr-h2" id="referenzen-titel"><span class="korrektur korrektur-partner korrektur-links"><span class="notiz notiz-durch" aria-hidden="true">Projekte</span><span class="hand">Partnerschaften</span></span></h2>\n'
+    return ('  <section class="lsx-referenzen" id="referenzen" aria-labelledby="referenzen-titel">\n    <div class="sektionskopf"><p class="meta">Referenzen</p>'
+            '<h2 class="gr-h2 pa-titel" id="referenzen-titel"><span class="korrektur korrektur-partner korrektur-links"><span class="notiz notiz-durch" aria-hidden="true">Projekte</span><span class="hand">Partnerschaften</span></span></h2></div>\n'
             f'    <ul class="ref-raster">\n{karten}\n    </ul>\n  </section>')
 
 
@@ -415,7 +415,8 @@ def zusatz_block(c, g):
     # Muster (Anna 22.11.2026: „anders“): zwei Kästen nebeneinander – Außerdem buchbar (Name und Preis je Zeile) und Nicht enthalten
     weitere = ''.join(f'<li><b>{esc(e["name"])}</b><span>{preis(e)}</span></li>' for e in g.get('weitere', []))
     links = f'<div class="lsx-m-kasten"><p class="meta">Außerdem buchbar</p><ul class="lsx-m-weitere">{weitere}</ul></div>' if weitere else ''
-    nicht = ''.join(f'<li>{esc(x)}</li>' for x in c.get('nicht_enthalten', []))
+    # bei nur einer Preiskarte ohne Hintergrund steht „Nicht enthalten“ schon neben der Karte
+    nicht = '' if len(g['pakete']) == 1 and not c.get('hintergrund') else ''.join(f'<li>{esc(x)}</li>' for x in c.get('nicht_enthalten', []))
     rechts = f'<div class="lsx-m-kasten"><p class="meta">Nicht enthalten</p><ul class="lsx-m-nicht">{nicht}</ul></div>' if nicht else ''
     return f'    <div class="lsx-m-zusatz">{links}{rechts}</div>\n    {NETTO_HINWEIS}'
 
@@ -468,22 +469,57 @@ def strukturierte_daten(c, g, intro, url, fragen, vorlage):
 # --- Muster-Leistungsseite (Anna 22.11.2026, zuerst Markenbildung): eine Frage je Abschnitt, Antwort zuerst, scanbar.
 #     Konzept: Betrieb „Studio AAH/Website/2026-11-22_leistungsseite-markenbildung_muster.md“. Daten im Feld „muster“.
 def fett_rest(paare):
-    return ''.join(f'<li><b>{esc(a)}</b> {esc(b)}</li>' for a, b in paare)
+    return ''.join(f'<li><b>{esc(a)}</b>{(" " + esc(b)) if b else ""}</li>' for a, b in paare)
+
+
+def geteilt(x):
+    # „Titel: Rest“ → (Titel, Rest mit großem Anfang); ohne Doppelpunkt nur Titel
+    if ': ' in x:
+        a, b = x.split(': ', 1)
+        return a, b[:1].upper() + b[1:]
+    return x, ''
+
+
+def auto_muster(c, g, intro):
+    """Muster-Aufbau für Leistungsseiten ohne eigenes Feld „muster“ (Anna 22.11.2026: „auf alle Leistungen anwenden“).
+    Nur aus Texten, die schon auf der Seite stehen – keine neuen Aussagen."""
+    pk = g.get('pakete', [])
+    fakten, preiszeile = [], ''
+    if pk and pk[0].get('stunde'):
+        e = pk[0]
+        fakten.append(f"{e['stunde']}–{e['stundeBis']} € netto pro Stunde")
+    elif pk:
+        ab = min((e.get('preis') for e in pk if isinstance(e.get('preis'), (int, float))), default=None)
+        if ab: fakten.append(f"ab {ab:,.0f} € netto".replace(',', '.'))
+        preiszeile = ', '.join(f"{e['name']} ab {e['preis']:,.0f} €".replace(',', '.') for e in pk if isinstance(e.get('preis'), (int, float)))
+    fakten.append('Kostenloses Erstgespräch')
+    kurz = []
+    if c.get('zusammenfassung'):
+        kurz.append([f"{c['titel']} bei STUDIO AAH!:", c['zusammenfassung'][0]])
+    if preiszeile:
+        kurz.append(['Preise:', preiszeile + ' (netto, Festpreis nach Erstgespräch).'])
+    kurz += [['Ergebnis:', x] for x in c.get('gewinn', [])[:2]]
+    return {'h1': c['titel'], 'intro': intro, 'fakten': fakten, 'kurz_gesagt': kurz,
+            'probleme_kurz': [list(geteilt(x)) for x in c.get('probleme', [])],
+            'ergebnisse': [] if c.get('ohne_detail') else [list(geteilt(x)) for x in c.get('loesungen', [])],
+            'abschluss': {'meta': c['titel'], 'titel': 'Fangen wir klein an.', 'knopf': c.get('anfrage', 'Beratung anfragen'),
+                          'text': 'Im kostenlosen Erstgespräch klären wir, wo du stehst|und was du brauchst.'}}
 
 
 def muster_kopf(c, m, pre):
-    fakten = ''.join(f'<li>{esc(x)}</li>' for x in m.get('fakten', []))
+    fakten = ''.join(f'<li>{x}</li>' for x in m.get('fakten', []))   # Fakten aus den Daten, ohne Auszeichnung
     return (f'  <section class="seitenkopf lsx-kopf lsx-m-kopf">\n'
             f'    <img class="lsx-kopf-icon" src="{pre}{c["icon"]}" alt="" width="400" height="400">\n'
             f'    <p class="meta brotkrumen"><a href="{pre}#leistungen">Leistungen</a> / <span aria-current="page">{esc(c["titel"])}</span></p>\n'
             f'    <h1 class="gr-xxl lsx-titel" style="--n:{max(len(w) for w in m["h1"].split())}">{esc(m["h1"]).replace(" in ", "<br>in ", 1)}</h1>\n'
-            f'    <p class="alt-klein">{trennen(esc(c.get("intro", "")))}</p>\n'
-            f'    <ul class="lsx-m-fakten">{fakten}</ul>\n'
-            f'    <p class="lsx-hero-knopf"><a class="button" href="{pre}kontakt/">Beratung anfragen <span aria-hidden="true">→</span></a></p>\n'
+            f'    <p class="alt-klein">{trennen(esc(m.get("intro") or c.get("intro", "")))}</p>\n'
+            + (f'    <ul class="lsx-m-fakten">{fakten}</ul>\n' if fakten else '') +
+            f'    <p class="lsx-hero-knopf"><a class="button" href="{pre}kontakt/">{esc(c.get("anfrage", "Beratung anfragen"))} <span aria-hidden="true">→</span></a></p>\n'
             f'  </section>')
 
 
 def muster_kurz(m):
+    if not m.get('kurz_gesagt'): return ''
     return (f'  <section class="lsx-m-kurz" id="ueberblick" aria-labelledby="kurz-titel">\n'
             f'    <p class="meta">Kurz gesagt</p>\n'
             f'    <h2 class="gr-h2" id="kurz-titel">Das Wichtigste auf einen Blick</h2>\n'
@@ -492,6 +528,7 @@ def muster_kurz(m):
 
 
 def muster_anlaesse(m):
+    if not m.get('anlaesse'): return ''
     li = ''.join(f'<li>{esc(x)}</li>' for x in m['anlaesse'])
     return (f'  <section class="lsx-m-anlaesse" id="anlaesse" aria-labelledby="anlaesse-titel">\n'
             f'    <p class="meta">Anlässe</p>\n'
@@ -501,6 +538,7 @@ def muster_anlaesse(m):
 
 
 def muster_warum(c, m):
+    if not m.get('probleme_kurz'): return ''
     return (f'  <section class="lsx-loesung lsx-pl lsx-pl-allein lsx-m-warum" id="loesung" aria-labelledby="loesung-titel">\n'
             f'    <p class="meta">Warum</p>\n'
             f'    <h2 class="gr-h2" id="loesung-titel">{esc(c["problem_titel"])}</h2>\n'
@@ -509,14 +547,20 @@ def muster_warum(c, m):
 
 
 def muster_so(c, m):
-    return (f'  <section class="lsx-m-so" aria-labelledby="so-titel">\n'
-            f'    <p class="meta">So arbeite ich</p>\n'
-            f'    <h2 class="gr-h2" id="so-titel">{esc(m["so_titel"]).replace(", ", ",<br>", 1)}</h2>\n'
-            f'  </section>\n' + (grafik(c['grafik']) if c.get('grafik') else ''))
+    teile = ''
+    if m.get('so_titel'):
+        teile = (f'  <section class="lsx-m-so" aria-labelledby="so-titel">\n'
+                 f'    <p class="meta">So arbeite ich</p>\n'
+                 f'    <h2 class="gr-h2" id="so-titel">{esc(m["so_titel"]).replace(", ", ",<br>", 1)}</h2>\n'
+                 f'  </section>\n')
+    if c.get('herz'): teile += grafik('website-oekosystem')
+    if c.get('grafik'): teile += grafik(c['grafik'])
+    return teile
 
 
 def muster_ergebnisse(m):
-    li = ''.join(f'<li><h3>{esc(a)}</h3><p>{esc(b)}</p></li>' for a, b in m['ergebnisse'])
+    if not m.get('ergebnisse'): return ''
+    li = ''.join(f'<li><h3>{esc(a)}</h3>' + (f'<p>{esc(b)}</p>' if b else '') + '</li>' for a, b in m['ergebnisse'])
     return (f'  <section class="lsx-m-ergebnisse" id="leistungen" aria-labelledby="leistungen-titel">\n'
             f'    <p class="meta">Leistung</p>\n'
             f'    <h2 class="gr-h2" id="leistungen-titel">Das bekommst du</h2>\n'
@@ -530,28 +574,33 @@ def muster_abschluss(m, pre):
             f'    <div class="schluss-karte schluss-blau">\n'
             f'      <p class="meta">{esc(a["meta"])}</p>\n'
             f'      <h2 class="gr-h2" id="schluss-titel">{esc(a["titel"])}</h2>\n'
-            f'      <p class="lsx-m-schluss-text">{esc(a["text"])}</p>\n'
+            f'      <p class="lsx-m-schluss-text">{esc(a["text"]).replace("|", "<br>")}</p>\n'   # „|“ = Zeilenumbruch (Anna 22.11.2026)
             f'      <p><a class="button" href="{pre}kontakt/">{esc(a["knopf"])} <span aria-hidden="true">→</span></a></p>\n'
             f'    </div>\n'
             f'  </section>')
 
 
-def muster_leiste(c):
-    ziele = [('anlaesse', 'Anlässe'), ('loesung', 'Warum'), ('leistungen', 'Leistungen'), ('ablauf', 'Ablauf'), ('referenzen', 'Referenzen'), ('pakete', 'Preise'), ('faq', 'Ehrliche Antworten')]
-    if not ohne_bauer(I.mit_tag(I.PROJEKTE, [c['tag']]), c['tag']):
-        ziele = [z for z in ziele if z[0] != 'referenzen']
-    return ankerleiste(ziele)
+def muster_leiste(c, m, mit_ablauf):
+    ziele = [('anlaesse', 'Anlässe', bool(m.get('anlaesse'))), ('loesung', 'Ausgangslage' if c.get('gegenueber') else 'Warum', True),
+             ('anwendungen', 'Anwendungsfälle', bool(c.get('anwendungen'))), ('wege', 'Lösung', bool(c.get('wege'))),
+             ('recht', 'KI-Verordnung', bool(c.get('recht'))), ('leistungen', 'Leistungen', bool(m.get('ergebnisse'))),
+             ('ablauf', 'Ablauf', mit_ablauf), ('referenzen', 'Referenzen', bool(ohne_bauer(I.mit_tag(I.PROJEKTE, [c['tag']]), c['tag']))),
+             ('selbst', 'Selbst bauen', bool(c.get('selbstbau'))), ('pakete', 'Preise', True), ('faq', 'Ehrliche Antworten', True)]
+    return ankerleiste([(a, t) for a, t, an in ziele if an])
 
 
-def muster_main(c, g, pre, vergleich_html, prozess, fragen):
+def muster_main(c, g, pre, vergleich_html, prozess, fragen, link, mit_ablauf):
     m = c['muster']
     if m.get('ablauf_dauer'):
         prozess = prozess.replace('<ol class="zl-quer', f'<p class="lsx-m-dauer">{esc(m["ablauf_dauer"])}</p>\n    <ol class="zl-quer', 1)
     prozess = prozess.replace('<p class="meta">Wie ich arbeite</p>', '<p class="meta">Wie wir arbeiten</p>', 1)   # Anna 22.11.2026
-    teile = [muster_kopf(c, m, pre), muster_kurz(m), muster_leiste(c), muster_anlaesse(m), muster_warum(c, m), muster_so(c, m),
-             muster_ergebnisse(m), prozess, referenzen(c['tag'], pre), stimmen(pre, c['tag']), pakete(c, g, pre), vergleich_html,
-             extras(g), faq(fragen, pre), muster_abschluss(m, pre), artikel(pre, c['tag'])]
-    return '<main id="inhalt" class="lsx-muster">\n\n' + '\n\n'.join(t for t in teile if t) + '\n\n</main>'
+    warum = gegenueber(c, g, pre, link) if c.get('gegenueber') else muster_warum(c, m)
+    teile = [muster_kopf(c, m, pre), muster_kurz(m), muster_leiste(c, m, mit_ablauf), muster_anlaesse(m), warum, anwendungen(c, pre),
+             muster_so(c, m), wege(c, pre), praxis(c, pre), recht(c), muster_ergebnisse(m), prozess,
+             retainer_hinweis(g, pre) if mit_ablauf else '', selbstbau(c, pre), referenzen(c['tag'], pre), stimmen(pre, c['tag']),
+             pakete(c, g, pre), vergleich_html, extras(g), faq(fragen, pre), muster_abschluss(m, pre), artikel(pre, c['tag']),
+             spiel_sektion(pre, MENUE_VERSION) if c.get('spiel') else '']
+    return '<main id="inhalt" class="lsx-muster">\n\n' + '\n\n'.join(t for t in teile if t.strip()) + '\n\n</main>'
 
 
 def seite(key, c):
@@ -570,9 +619,11 @@ def seite(key, c):
     url = 'https://studio-aah.de/' + c['pfad']
     vergleich_html = vergleich(g)
     prozess = (ablauf_eigen(pre, c['ablauf_schritte'], c.get('ablauf_hinweis', '')) if c.get('ablauf_schritte') else ablauf(pre)) if mit_ablauf else ''
-    if c.get('muster'):
+    # Muster für alle Leistungsseiten (Anna 22.11.2026); eigene Daten im Feld „muster“ gehen vor
+    c = dict(c, muster=c.get('muster') or auto_muster(c, g, intro))
+    if c['muster'].get('faq_muster'):
         fragen = c['muster']['faq_muster']
-    main = muster_main(c, g, pre, vergleich_html, prozess, fragen) if c.get('muster') else f'''<main id="inhalt">
+    main = muster_main(c, g, pre, vergleich_html, prozess, fragen, link, mit_ablauf) if c.get('muster') else f'''<main id="inhalt">
 
 {seitenkopf(c, pre, intro, termine)}
 

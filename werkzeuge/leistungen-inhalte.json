@@ -402,7 +402,7 @@
    "abschluss": {
     "meta": "Markenbildung",
     "titel": "Fangen wir klein an.",
-    "text": "Im kostenlosen Erstgespräch klären wir, wo du stehst und welches Paket passt.",
+    "text": "Im kostenlosen Erstgespräch klären wir, wo du stehst|und welches Paket passt.",
     "knopf": "Beratung anfragen"
    }
   }
