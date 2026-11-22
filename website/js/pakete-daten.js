@@ -181,7 +181,7 @@ window.WEBRECHNER = {
    "stunde": 50,
    "stundeBis": 85,
    "kurz": "Betreute Weiterentwicklung deiner Website: Texte und Bilder austauschen, neue Unterseiten erstellen, Abschnitte bearbeiten",
-   "rechner": "Ich werte das Tracking aus und verbessere die Website auf dieser Grundlage weiter. Dazu setze ich Änderungen um: Texte, Bilder, neue Unterseiten.",
+   "rechner": "Wir werten das Tracking aus und verbessern die Website auf dieser Grundlage weiter. Dazu setzen wir Änderungen um: Texte, Bilder, neue Unterseiten.",
    "mindestens": "mindestens 3 Monate"
   }
  },
@@ -267,9 +267,9 @@ window.WEBRECHNER = {
   }
  ],
  "texte": {
-  "studio": "Texte und Bilder, mit KI erstellt auf Basis der Analyse, von mir geprüft und überarbeitet",
+  "studio": "Texte und Bilder, mit KI erstellt auf Basis der Analyse, von uns geprüft und überarbeitet",
   "selbst": "Übernahme deiner Texte und Bilder in die Website",
-  "liste": "Texte und Bilder: mit KI erstellt auf Basis der Analyse, von mir geprüft und überarbeitet – oder du lieferst sie selbst, zum gleichen Preis"
+  "liste": "Texte und Bilder: mit KI erstellt auf Basis der Analyse, von uns geprüft und überarbeitet – oder du lieferst sie selbst, zum gleichen Preis"
  },
  "redesign_inhalt": {
   "Verstehen": [

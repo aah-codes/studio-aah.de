@@ -136,7 +136,7 @@
       return `<h3 class="wr-h">Neue Website oder Redesign?</h3><p class="wr-warum">Der Basispreis enthält alles, was jede Website braucht, damit sie gut wird. Das lässt sich nicht abwählen.</p>
       <div class="wr-kacheln">${kachel('bestand', 'neu', !re, 'Neue Website', 'Es gibt noch keine Website.', `ab ${euro(D.basis)} €`)}${kachel('bestand', 'redesign', re, 'Redesign', 'Die bestehende Website wird neu – Inhalte übernehmen, alte Adressen weiterleiten.', `+ ${euro(D.redesign)} €`)}</div>
       <p class="wr-frage">Wer liefert Texte und Bilder?<small>Beides ist im Basispreis.</small></p>
-      <div class="wr-kacheln">${kachel('texte', 'studio', Z.texte === 'studio', 'Ich liefere Texte und Bilder', 'Mit KI erstellt auf Basis der Analyse, von mir geprüft und überarbeitet. Du kannst dich deinem Tagesgeschäft widmen.')}${kachel('texte', 'selbst', Z.texte === 'selbst', 'Du lieferst Texte und Bilder', 'Schick mir deine Texte und Bilder, wie es dir passt – zum Beispiel als Dokument. Ich übernehme sie in die Website.')}</div>
+      <div class="wr-kacheln">${kachel('texte', 'studio', Z.texte === 'studio', 'Wir liefern Texte und Bilder', 'Mit KI erstellt auf Basis der Analyse, von uns geprüft und überarbeitet. Du kannst dich deinem Tagesgeschäft widmen.')}${kachel('texte', 'selbst', Z.texte === 'selbst', 'Du lieferst Texte und Bilder', 'Schick uns deine Texte und Bilder, wie es dir passt – zum Beispiel als Dokument. Wir übernehmen sie in die Website.')}</div>
       <div class="wr-basis"><h4 class="wr-basis-titel">Im Basispreis enthalten <span>ab ${euro(D.basis)} €${re ? ` + ${euro(D.redesign)} € Redesign` : ''}</span></h4>
         ${gruppen}
         <div class="wr-nicht"><h4>Nicht enthalten</h4><ul>${D.nicht_enthalten.map((i) => `<li>${esc(i)}</li>`).join('')}</ul></div>
@@ -195,7 +195,7 @@
         ${felder('wr')}
         ${window.Anfrage.NEWSLETTER(false, F.newsletter, 'wr-newsletter')}
         <p class="anfrage-knoepfe"><button type="submit" class="button">Beratung anfragen ${PFEIL}</button><button type="button" class="button button-zweit" data-pdf>Als PDF speichern <span aria-hidden="true">↓</span></button></p>
-        <p class="hinweis-klein">Alle Angaben aus dem Rechner gehen mit deiner Anfrage an mich und sind die Grundlage für unser Erstgespräch. Unverbindlich und kostenlos.</p>
+        <p class="hinweis-klein">Alle Angaben aus dem Rechner gehen mit deiner Anfrage an uns und sind die Grundlage für unser Erstgespräch. Unverbindlich und kostenlos.</p>
         <div class="anfrage-danach" role="status" hidden></div>
       </form>
       ${re ? `<div class="wr-review"><p class="meta">Für bestehende Websites</p><h4 class="wr-box-titel">Kostenloser Website-Check</h4>
