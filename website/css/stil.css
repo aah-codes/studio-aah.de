@@ -5887,3 +5887,11 @@ del.kr-durch { text-decoration: none; font: inherit; }
 .stil-b.v-raeume .kr-neu .kr-titel { line-height: 1.22; }   /* Platz für die Handschrift zwischen den Zeilen */
 .ko-hero .kr-hand { font-size: .46em; bottom: 80%; }
 .ko-block { rotate: -2deg; transform-origin: center; margin-top: .35em; }
+/* Handschrift-Konzept über die ganze Startseite (Anna 22.11.2026): je Abschnitt eine Korrektur, Hand in Rot unter dem durchgestrichenen Wort */
+.ko-unten { margin-bottom: .7em; }
+.ko-unten .hand { color: var(--aah-rot); rotate: -3deg; }
+.ko-zitat-durch { text-decoration: line-through; text-decoration-color: var(--aah-rot); text-decoration-thickness: 2px; }
+.ko-zitat-hand { font: 400 1.25em/1 var(--schrift-hand); color: var(--aah-rot); display: inline-block; rotate: -3deg; }
+@media (max-width: 767.98px) { #referenzen-titel .korrektur-partner .hand { white-space: normal; width: 80vw; font-size: 30px; } #referenzen-titel .korrektur-partner { margin-bottom: 1.6em; } }
+#intro-titel .ko-unten .hand, #linkedin-titel .ko-unten .hand { color: var(--farbe-weiss); }   /* auf Blau und Schwarz lesbar (Kontrast) */
+#intro-titel .ko-unten .hand { font-size: .6em; }

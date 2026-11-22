@@ -160,7 +160,7 @@ def branchen_kacheln(liste, pre, fotos=False):
 
 def startseite_branchen():
     """Branchen-Mosaik der Startseite (Anna 12.11.2026, Muster IT Sonix): Text oben links, dann alle Branchen als Kacheln."""
-    kopf = ('      <li class="br-kopf"><p class="meta">Branchen</p><h2 class="gr-h2" id="branchen-titel">Für wen ich arbeite</h2>\n'
+    kopf = ('      <li class="br-kopf"><p class="meta">Branchen</p><h2 class="gr-h2" id="branchen-titel">Für wen ich <span class="korrektur ko-unten"><span class="notiz notiz-durch" aria-hidden="true">arbeite</span><span class="hand">mitdenke</span></span></h2>\n'
             '        <p>Mittelständische B2B-Unternehmen. Wähl deine Branche.</p></li>\n')
     # Reihenfolge nach Potenzial (Anna 17.11.2026: Gesundheit nicht prominent); die breite Kachel ist Platz 6 (Beratung)
     reihenfolge = ['bau', 'software', 'elektro', 'energie', 'industrie', 'beratung', 'gesundheit']
