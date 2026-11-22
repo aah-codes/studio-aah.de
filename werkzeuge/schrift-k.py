@@ -22,8 +22,8 @@ def strich(laenge, dicke, winkel, cx, cy):
 
 # Anna 22.11.2026 (Skizze): oben Schlaufe wie ihr l, rechts eine kleine Schlaufe, dann das Bein nach rechts unten
 teile = [('l', (1, 0, 0, 1, 0, 0)),                    # Stamm mit Schlaufe: ihr eigenes l
-         ('o', (.5, 0, 0, .5, 205, 175)),              # kleine Schlaufe rechts auf Höhe der Mitte
-         strich(270, 1.2, -50, 345, 95)]               # Bein nach rechts unten
+         ('o', (.46, 0, 0, .5, 245, 205)),             # kleine Schlaufe rechts vom Stamm, etwas über der Mitte
+         strich(260, 1.2, -55, 385, 105)]              # Bein setzt an der Schlaufe an, nach rechts unten
 pen = TTGlyphPen(gs)
 for basis, t in teile:
     gs[basis].draw(TransformPen(pen, t))
