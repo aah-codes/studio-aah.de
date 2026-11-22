@@ -5309,3 +5309,8 @@ main > .faq .meta, main > .faq .faq-eintrag { color: var(--farbe-dunkel); }
 .br-hallo-sticker { display: block; width: clamp(88px, 11vw, 140px); height: auto; margin: 0 auto 8px; transform: rotate(-8deg); }
 .weg-ziel .gr-h2.br-hallo-titel { transform: rotate(-3deg); max-width: 16ch; white-space: normal; text-wrap: balance; margin-top: 0; }
 @media (min-width: 900.02px) { .weg-ziel .gr-h2.br-hallo-titel { max-width: 26ch; } }
+
+/* Anna 22.11.2026: im Fuß Telefon über der E-Mail-Adresse, Kontaktdaten mit etwas Abstand oben und unten */
+.fuss-kontakt .fuss-tel { margin-top: 24px; }
+.fuss-kontakt .fuss-mail { margin-bottom: 24px; }
+@media (min-width: 1200.02px) { .stil-b.v-raeume .fuss-notiz { position: static; text-align: left; width: auto; margin: 0 0 10px; rotate: -3deg; } .stil-b.v-raeume .fuss-notiz::after { display: none; } }   /* Notiz über der E-Mail wie am Handy, nicht neben dem Telefon (Anna 22.11.2026) */
