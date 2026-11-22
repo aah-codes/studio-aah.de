@@ -20,7 +20,7 @@ def link(pre, ziel):
     return ziel if ziel.startswith('http') else pre + ziel
 
 
-FW_FOTO = {'employer-branding': 'referenzen/bauer/wl/bewirb-dich.webp'}   # Hero wie Webdesign mit Riso-Foto (Anna 23.11.2026)
+FW_FOTO = {'employer-branding': 'employer-branding-bewerben.webp'}   # Hero wie Webdesign mit Riso-Foto (Anna 23.11.2026)
 
 
 def kopfbereich(meta, h1, unter, pre, knopf=('website-check/', 'Kostenloser Website-Check'), bild=None):
@@ -335,6 +335,7 @@ def produktseite(q):
     teile = [kopfbereich(q['meta'], q['h1'], q['unter'], pre, ('kontakt/', 'Beratung anfragen'), bild='employer-branding').replace(
                  f'<a class="button button-zweit" href="{pre}kontakt/">Beratung anfragen{PFEIL}</a>',
                  f'<a class="button button-zweit" href="{pre}website-check/">Kostenloser Website-Check{PFEIL}</a>'),
+             ankerleiste([('was-titel', 'Kurz erklärt'), ('stufen-titel', 'Vorgehen'), ('paket-titel', 'Preise'), ('faq-titel', 'Ehrliche Antworten')]),  # wie Leistungsseiten (Anna 23.11.2026)
              '  <section class="fw-zwei" aria-labelledby="was-titel">\n    <div>\n      <p class="meta">Kurz erklärt</p>\n'
              '      <h2 class="gr-h3" id="was-titel">Was ist Employer Branding?</h2>\n'
              f'      <p class="fw-kosten">{esc(q["erklaerung"])}</p>\n    </div>\n'

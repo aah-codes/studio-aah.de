@@ -5927,5 +5927,5 @@ h3.fokus-titel { margin: 0; }
 @media (max-width: 767.98px) { .ks-titel { line-height: 1.35; } }   /* Platz für „einfach“ über „kurz“ auf dem Handy */
 /* Employer Branding: breites Motiv mit Call-to-Action-Buttons ganz zeigen (Anna 23.11.2026) */
 .fw-kopf-foto .lsx-repro { width: clamp(280px, 34vw, 480px); }
-.fw-kopf-foto .lsx-repro-druck { aspect-ratio: 720 / 286; }
+.fw-kopf-foto .lsx-repro-druck { aspect-ratio: 800 / 318; }
 .fw-kopf-foto .lsx-repro-druck img { object-position: center; }
