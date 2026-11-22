@@ -1,5 +1,11 @@
 # studio-aah.de – Hinweise für Claude Code
 
+## Aktueller Stand = Live-Website (Anna 22.11.2026, gilt in jedem Chat)
+- Maßgeblich ist, was auf https://studio-aah.de/ läuft, also `origin/main`. Stand beim Eintrag: Commit e5053d29, Startseite mit Hero „Du bist gut genug. Lass es die anderen wissen.“, Anna-Karte, Dachzeile „Design Studio aus Leipzig.“, Laufband; Website duzt.
+- Der Checkout `/Users/anna/Code/studio-aah.de` (Zweig `main`) ist veraltet: 73 Commits hinter `origin/main`, dazu der nicht gepushte Stil-B-Versuch b254cdbc („Uff rein. Aah raus.“) und ungesicherte Änderungen. Nie darauf aufbauen, nichts davon pushen.
+- Gearbeitet wird im Worktree `.claude/worktrees/live-stand` oder auf einem neuen Zweig von `origin/main`.
+- Vor jeder Arbeit: `git fetch`, dann `git log --oneline HEAD..origin/main`. Fehlen Commits, zuerst auf `origin/main` aufsetzen (bei eigenen ungesicherten Änderungen Anna fragen). Im Zweifel die Live-Seite ansehen und mit der Vorschau vergleichen.
+
 ## Was dieses Repository ist
 - Statische Website von STUDIO AAH! (Anna Härtelt): reines HTML, CSS, wenig JavaScript; kein Baukasten, kein npm. Veröffentlicht wird nur `website/`; jeder Push auf `main` geht sofort live.
 - Maßgeblich ist die Spezifikation (lokal `doku/spezifikation.md`, nicht im Repository; Original in Betrieb `Kunden Studio AAH/Studio AAH/Website/`). Bei Widerspruch gilt sie; Widerspruch Anna melden.
