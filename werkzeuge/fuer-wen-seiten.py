@@ -20,7 +20,15 @@ def link(pre, ziel):
     return ziel if ziel.startswith('http') else pre + ziel
 
 
+FW_FOTO = {'employer-branding': 'referenzen/bauer/wl/stellen.webp'}   # Hero wie Webdesign mit Riso-Foto (Anna 23.11.2026)
+
+
 def kopfbereich(meta, h1, unter, pre, knopf=('website-check/', 'Kostenloser Website-Check'), bild=None):
+    if bild in FW_FOTO:
+        return (f'  <section class="seitenkopf lsx-kopf lsx-m-kopf fw-kopf-foto">\n    <p class="meta">{esc(meta)}</p>\n'
+                f'    <h1 class="gr-xxl lsx-titel" style="--n:26">{esc(h1)}</h1>\n    <p class="alt-klein">{esc(unter)}</p>\n'
+                f'    <p class="lsx-hero-knopf"><a class="button" href="{pre}{knopf[0]}">{esc(knopf[1])}{PFEIL}</a></p>\n'
+                f'    <span class="lsx-repro" aria-hidden="true"><span class="lsx-repro-druck"><img src="{pre}bilder/{FW_FOTO[bild]}" alt="" loading="eager"></span></span>\n  </section>')
     figur = (f'\n    <figure class="fw-bild"><img src="{pre}bilder/fuer-wen/{bild}.svg" alt="{esc(BILD_ALT[bild])}" width="800" height="640"></figure>'
              if bild else '')
     return (f'  <section class="fw-kopf{" fw-kopf-bild" if bild else ""}">\n    <div class="fw-kopf-text">\n    <p class="meta">{esc(meta)}</p>\n    <h1 class="gr-h2 fw-h1">{esc(h1)}</h1>\n'
@@ -65,7 +73,8 @@ def faq(liste, titel='Ehrliche Antworten'):
     # Zwei unabhängige Spalten (Anna 10.11.2026: Aufklappen links soll rechts keine Lücke reißen), spaltenweise gelesen
     # Seit 12.11.2026 einspaltig und mittig untereinander (Anna: „nicht zweispaltig, sondern untereinander, mittig“)
     h = ['  <section class="faq ehrlich" aria-labelledby="faq-titel">', '    <p class="meta">Häufige Fragen</p>',
-         f'    <h2 class="gr-h2" id="faq-titel">{esc(titel)}</h2>', '    <div class="faq-liste faq-einspaltig">']
+         ('    <h2 class="gr-h2" id="faq-titel"><span class="korrektur ko-unten"><span class="notiz notiz-durch" aria-hidden="true">Standard-Antworten</span><span class="hand">Ehrliche Antworten</span></span></h2>'
+          if titel == 'Ehrliche Antworten' else f'    <h2 class="gr-h2" id="faq-titel">{esc(titel)}</h2>'), '    <div class="faq-liste faq-einspaltig">']  # wie Startseite (Anna 23.11.2026)
     for q, a in liste:
         h.append(f'      <details class="faq-eintrag">\n        <summary>{esc(q)}</summary>\n        <div class="faq-antwort"><p>{esc(a)}</p></div>\n      </details>')
     h += ['    </div>', '  </section>']
@@ -76,10 +85,10 @@ def abschluss(pre, text=None, knopf=None):
     """Gemeinsamer Abschluss; text und knopf (Ziel, Beschriftung) nur, wo der Website-Check nicht passt (z. B. KI-Zeitrechner)."""
     text = text or 'Mit dem kostenlosen <span class="ohne-umbruch">Website-Check</span> – oder einem Gespräch, in dem du uns erzählst, wo es hakt.'
     ziel, aufschrift = knopf or ('website-check/', 'Kostenloser <span class="ohne-umbruch">Website-Check&nbsp;<span aria-hidden="true">→</span></span>')
-    return ('  <section class="weg-ziel" aria-labelledby="weg-ziel-titel">\n  <p class="meta">Erster Schritt</p>\n'
-            '  <h2 class="gr-h2 wz-eine" id="weg-ziel-titel">Fangen wir klein an.</h2>\n'
-            f'  <p class="alt-klein">{text}</p>\n'
-            f'  <p><a class="button weg-ziel-knopf" href="{pre}{ziel}">{aufschrift}</a></p>\n</section>')
+    return ('  <section class="preis-schluss start-schluss lsx-m-schluss" aria-labelledby="weg-ziel-titel">\n  <div class="schluss-karte schluss-blau">\n  <p class="meta">Erster Schritt</p>\n'
+            '  <h2 class="gr-h2" id="weg-ziel-titel">Fangen wir klein an.</h2>\n'
+            f'  <p class="lsx-m-schluss-text">{text}</p>\n'
+            f'  <p><a class="button" href="{pre}{ziel}">{aufschrift}</a></p>\n  </div>\n</section>')  # blaue Box wie Startseite (Anna 23.11.2026)
 
 
 def branche_abschluss(pre):

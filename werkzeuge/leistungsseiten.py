@@ -564,7 +564,7 @@ ZEICHNUNG = {'Markenbildung': 'stern', 'Webdesign': 'bildschirm', 'UI': 'auge', 
 
 # Foto im Repro-Look rechts im Hero (Anna 22.11.2026, Vorbild Startseiten-Entwurf: blau gedruckt, gedreht, gelber Klebestreifen),
 # Zeichnung klein als Sticker am Foto. Nur eigene Projektbilder.
-HERO_FOTO = {'Markenbildung': 'start/leipzig-zentrum-von-oben-640.webp', 'Webdesign': 'hero/bauer-startseite-hero.webp', 'UI': 'leistung-ui-ux-formular-640.webp',
+HERO_FOTO = {'Markenbildung': 'start/leipzig-zentrum-von-oben-640.webp', 'Webdesign': 'hero/bauer-startseite-hero.webp', 'UI': 'leistung-ui-ux-formular-640.webp?v=2',
              'KI & Digitalisierung': 'ki-arbeits-setup-cockpit-640.webp', 'KI-Beratung': 'ki-arbeits-setup-cockpit-640.webp',
              'Marketing & Vertrieb': 'hero/bauer-praes-01.webp', 'Druck': 'hero/kh-templates.jpg', 'Illustration & Infografik': 'hero/kh-pfau-gold.svg',
              'Animation': 'hero/spiel-animation.webp', 'Retainer': 'leistung-retainer-640.webp'}
