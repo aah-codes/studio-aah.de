@@ -14,6 +14,7 @@ Kurzfassung der Branding-Richtlinien (Original in Betrieb: `Kunden Studio AAH/St
   - Farbband: 12 px Regenbogen mit rotem Block am unteren Rand des Fußes (`.fuss::after`, `--farbband`).
   - Konfetti und Spiel: Farbtafel „modernes Bauhaus“.
   - Rotes Sternchen an Pflichtfeldern (`--farbe-pflicht`).
+  - Problemseiten „Wo es hakt“: Flächen Rot, Schwarz, Orchidee und gelbe Sticky Notes (Anna 23.11.2026), Regel `fuer-wen-branchen.md`.
   - Blauer Anfrage-Button in der schwarzen Abschlussbox der Projektseiten.
 - Farbenmeer wie auf der Startseite (Anna 22.11.2026: „das ist mir zu bunt“): Gründe ruhig (Papier A/B, Hauchtöne), kräftige Signalfarben nur auf Karten, Schildern und Chips mit Kontur; nie mehrere gesättigte Vollflächen hintereinander. Auch auf lauten Seiten wie der Demokratie-Seite.
 - Genau ein Muster je Seite (Punkte, Karo, Streifen …; das breite Strichel-Band zählt mit), nie hinter Fließtext (Farb-Richtlinie 1.1). Ausnahmen: Startseite und Profil dürfen mehrere Muster haben (Anna 22.11.2026).
