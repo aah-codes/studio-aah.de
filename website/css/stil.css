@@ -5983,3 +5983,9 @@ main > .fw-flaeche-schwarz .zl-quer li:first-child .zlq-nr { background: var(--f
 @media (prefers-reduced-motion: no-preference) { .fw-flaeche-orchidee .haken-karte { transition: rotate .2s ease; } .fw-flaeche-orchidee .haken-karte:hover { rotate: 0deg; } }
 /* Vier Sticky Notes (KI im Team & Entlastung): am Laptop vier nebeneinander, darunter zwei */
 @media (min-width: 1200.02px) { .fw-flaeche-orchidee .haken-karten:has(> :nth-child(4)) { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+/* Beleg auf den Problemseiten: großes Leipzig-Foto als Hintergrund statt schwarzer Box, so hoch wie die Sticky-Notes-Fläche darüber (Anna 23.11.2026).
+   Dunkle Lasur über dem Foto, damit die weiße Schrift lesbar bleibt (Kontrast). */
+.fw-flaeche-orchidee + .fw-beleg { display: flex; align-items: center; min-height: clamp(560px, 57vw, 900px); padding: 96px var(--rand-seite);
+  background: linear-gradient(90deg, rgba(14, 16, 17, .85) 0%, rgba(14, 16, 17, .7) 55%, rgba(14, 16, 17, .35) 100%), url(../bilder/start/leipzig-zentrum-von-oben.webp) center / cover no-repeat; }
+@media (max-width: 767.98px) { .fw-flaeche-orchidee + .fw-beleg { min-height: 0; padding: 72px var(--rand-seite-mobil); background: linear-gradient(rgba(14, 16, 17, .7), rgba(14, 16, 17, .7)), url(../bilder/start/leipzig-zentrum-von-oben-960.webp) center / cover no-repeat; } }
+.fw-flaeche-orchidee + .fw-beleg .fw-beleg-box { background: none; border-radius: 0; padding: 0; max-width: 760px; }
