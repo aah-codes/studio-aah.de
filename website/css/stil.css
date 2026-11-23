@@ -6007,7 +6007,7 @@ main > .fw-flaeche-orchidee { padding-bottom: clamp(120px, 12vw, 200px); }
 .fw-flaeche-orchidee .haken-karte p { font-size: var(--groesse-4); line-height: 1.4; margin: 0; }
 .fw-teamfoto img[src*="leipzig"] { object-position: center 70%; }   /* Innenstadt statt Himmel */
 /* Website-Check: mehr Luft unter dem Kleingedruckten des Formulars vor der Ankerleiste (Anna 23.11.2026) */
-.wc-formular-abschnitt { padding-bottom: clamp(56px, 6vw, 96px); }
+.wc-formular-abschnitt:not(#x) { padding-top: 16px; padding-bottom: clamp(56px, 6vw, 96px); }   /* Formular direkt unter dem Hero (Anna 24.11.2026, Pfeil im Screenshot) */
 /* Problemseiten: im Hero steht die Handschrift unter dem durchgestrichenen Wort, sonst reißt sie eine Lücke zwischen die H1-Zeilen (Anna 23.11.2026, Pfeil im Screenshot) */
 .fw-kopf-zeichnung .lsx-titel .ko-oben:not(#x) { margin-top: 0; margin-bottom: .9em; }
 .fw-kopf-zeichnung .lsx-titel .ko-oben .hand:not(#x) { bottom: auto; top: calc(100% - .1em); }
