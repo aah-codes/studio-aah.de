@@ -1,4 +1,4 @@
-# Problem- und Branchenseiten (Anna, 09./10.11.2026): /fuer-wen/, /neue-kunden/, /fachkraefte/, /ki-im-team/, /entlastung/,
+# Problem- und Branchenseiten (Anna, 09./10.11.2026): /fuer-wen/, /neue-kunden/, /fachkraefte/, /ki-im-team/ (/entlastung/ leitet dorthin weiter),
 # /branchen/<slug>/ aus werkzeuge/inhalte/fuer-wen-seiten.json. Kopf und Fuß kommen aus einer Vorlage gleicher Ordnertiefe
 # (profil/ bzw. service/webdesign/); danach setzt kopf-fuss.py sie ohnehin neu.
 # Aufruf im Repository-Ordner:  python3 werkzeuge/fuer-wen-seiten.py
@@ -144,6 +144,28 @@ def schreibe(pfad, main, titel, beschreibung, fragen, skript=None, branche=None)
     print('geschrieben:', pfad)
 
 
+def weiterleitung(alt_pfad, pfad, name):
+    """Alte Adresse leitet auf die neue weiter (statische Seite, wie service/brand/)."""
+    ziel = WEBSITE / alt_pfad / 'index.html'
+    ziel.parent.mkdir(parents=True, exist_ok=True)
+    rel = '../' * alt_pfad.strip('/').count('/') + '../' + pfad
+    ziel.write_text(f'''<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Weiterleitung zu {esc(name)} | STUDIO AAH!</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="{BASIS_URL}{pfad}">
+<meta http-equiv="refresh" content="0; url={rel}">
+</head>
+<body>
+<p>Diese Seite ist umgezogen: <a href="{rel}">{esc(name)}</a>.</p>
+</body>
+</html>
+''', encoding='utf-8')
+    print('Weiterleitung:', alt_pfad)
+
+
 def problemseite(p):
     pre = '../'
     teile = [kopfbereich(p['meta'], p['h1'], p['unter'], pre, tuple(p.get('knopf', ('website-check/', 'Kostenloser Website-Check'))), bild=p['id'], zeichnung=True, textlink=p.get('textlink')),
@@ -162,6 +184,8 @@ def problemseite(p):
              faq(p['faq']),   # „Passende Leistungen – Damit arbeite ich“ entfernt (Anna 12.11.2026)
              abschluss(pre, p.get('schluss'), (p['schluss_knopf'][0], esc(p['schluss_knopf'][1]) + '&nbsp;<span aria-hidden="true">→</span>') if p.get('schluss_knopf') else None)]
     schreibe(p['pfad'], '\n\n'.join(teile), p['seitentitel'], p['beschreibung'], p['faq'])
+    if p.get('alt_pfad'):   # Entlastung ist in KI im Team aufgegangen (Anna 23.11.2026)
+        weiterleitung(p['alt_pfad'], p['pfad'], p['meta'])
 
 
 def branchen_kacheln(liste, pre, fotos=False):
@@ -310,24 +334,7 @@ def branchenseite(b):
     teile = [t for t in teile if t]
     schreibe(b['pfad'], '\n\n'.join(teile), b['seitentitel'], b['beschreibung'], b['faq'], branche=b)
     if b.get('alt_pfad'):   # alte Adresse leitet weiter (wie service/brand/)
-        ziel = WEBSITE / b['alt_pfad'] / 'index.html'
-        ziel.parent.mkdir(parents=True, exist_ok=True)
-        rel = '../' + b['pfad'].split('/')[1] + '/'
-        ziel.write_text(f'''<!doctype html>
-<html lang="de">
-<head>
-<meta charset="utf-8">
-<title>Weiterleitung zu {esc(b["name"])} | STUDIO AAH!</title>
-<meta name="robots" content="noindex">
-<link rel="canonical" href="{BASIS_URL}{b["pfad"]}">
-<meta http-equiv="refresh" content="0; url={rel}">
-</head>
-<body>
-<p>Diese Seite ist umgezogen: <a href="{rel}">{esc(b["name"])}</a>.</p>
-</body>
-</html>
-''', encoding='utf-8')
-        print('Weiterleitung:', b['alt_pfad'])
+        weiterleitung(b['alt_pfad'], b['pfad'], b['name'])
 
 
 def uebersicht():

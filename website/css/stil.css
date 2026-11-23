@@ -5967,7 +5967,7 @@ main > .fw-flaeche-schwarz .zl-quer li:first-child .zlq-nr { background: var(--f
 /* Korrekturen der Problemseiten: am Laptop steht die Korrektur meist am Zeilenende, deshalb rechtsbündig über dem durchgestrichenen Wort;
    am Handy beginnt sie meist eine Zeile, deshalb linksbündig. Lange Handschrift bricht zwischen Wörtern um, nie mitten im Wort. */
 :is(.fw-kopf-zeichnung, .fw-flaeche-rot, .fw-flaeche-schwarz, .fw-flaeche-orchidee) .ko-oben { margin-top: .9em; margin-bottom: 0; }
-:is(.fw-kopf-zeichnung, .fw-flaeche-rot, .fw-flaeche-schwarz, .fw-flaeche-orchidee) .ko-oben .hand:not(#x) { top: auto; bottom: 86%; left: auto; right: 0; text-align: right; white-space: normal; width: max-content; max-width: 11em; overflow-wrap: normal; hyphens: none; }
+:is(.fw-kopf-zeichnung, .fw-flaeche-rot, .fw-flaeche-schwarz, .fw-flaeche-orchidee) .ko-oben .hand:not(#x) { top: auto; bottom: calc(100% - .2em); left: auto; right: 0; text-align: right; white-space: normal; width: max-content; max-width: 11em; overflow-wrap: normal; hyphens: none; }
 @media (max-width: 767.98px) {
   :is(.fw-kopf-zeichnung, .fw-flaeche-rot, .fw-flaeche-schwarz, .fw-flaeche-orchidee) .ko-oben { margin-top: 1.9em; margin-bottom: 0; }
   :is(.fw-kopf-zeichnung, .fw-flaeche-rot, .fw-flaeche-schwarz, .fw-flaeche-orchidee) .ko-oben .hand:not(#x) { left: 0; right: auto; text-align: left; max-width: calc(100vw - 2 * var(--rand-seite-mobil)); }
@@ -5981,3 +5981,5 @@ main > .fw-flaeche-schwarz .zl-quer li:first-child .zlq-nr { background: var(--f
 .fw-flaeche-orchidee .haken-karte:nth-child(3) { rotate: -.6deg; }
 .fw-flaeche-orchidee .haken-karte::before { content: ""; position: absolute; left: 50%; top: -14px; width: 110px; height: 30px; translate: -50% 0; rotate: -3deg; background: rgba(255, 255, 255, .6); box-shadow: 0 1px 2px rgba(14, 16, 17, .08); }
 @media (prefers-reduced-motion: no-preference) { .fw-flaeche-orchidee .haken-karte { transition: rotate .2s ease; } .fw-flaeche-orchidee .haken-karte:hover { rotate: 0deg; } }
+/* Vier Sticky Notes (KI im Team & Entlastung): am Laptop vier nebeneinander, darunter zwei */
+@media (min-width: 1200.02px) { .fw-flaeche-orchidee .haken-karten:has(> :nth-child(4)) { grid-template-columns: repeat(4, minmax(0, 1fr)); } }

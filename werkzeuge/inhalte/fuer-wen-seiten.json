@@ -132,11 +132,11 @@
    "meta": "Fachkräfte finden",
    "h1": "Fachkräfte finden: Schluss mit ~~„junges, dynamisches Team“.~~[austauschbaren Stellenanzeigen.]",
    "unter": "Bewerber:innen vergleichen dich online mit großen Arbeitgebern. Wir gestalten Karrierebereiche für den B2B-Mittelstand, die dein Team zeigen und das Bewerben am Handy leicht machen.",
-  "h2_kennen": "Woran du merkst, dass deine Karriereseite ~~online ist~~|[gute Leute abschreckt]",
-  "h2_kosten": "Unbesetzte Stellen bremsen das ganze Team",
-  "h2_loesung": "In drei Schritten vom ~~PDF-Friedhof~~[Stellen-Steckbrief] zur starken Arbeitgeber\u00admarke",
-  "h2_nutzen": "Ein Auftritt, der die Richtigen ~~überzeugt~~[neugierig macht]",
-  "schluss": "Mit dem kostenlosen <span class=\"ohne-umbruch\">Website-Check</span> – oder einem Gespräch, in dem du uns erzählst, welche Stellen bei dir gerade offen sind.",
+   "h2_kennen": "Woran du merkst, dass deine Karriereseite ~~online ist~~|[gute Leute abschreckt]",
+   "h2_kosten": "Unbesetzte Stellen bremsen das ganze Team",
+   "h2_loesung": "In drei Schritten vom ~~PDF-Friedhof~~[Stellen-Steckbrief] zur starken Arbeitgeber\u00admarke",
+   "h2_nutzen": "Ein Auftritt, der die Richtigen ~~überzeugt~~[neugierig macht]",
+   "schluss": "Mit dem kostenlosen <span class=\"ohne-umbruch\">Website-Check</span> – oder einem Gespräch, in dem du uns erzählst, welche Stellen bei dir gerade offen sind.",
    "symptome": [
     "Stellen bleiben lange offen, Bewerbungen kommen kaum.",
     "Deine Karriereseite ist eine Liste mit PDF-Anzeigen.",
@@ -220,133 +220,53 @@
    "id": "ki-im-team",
    "pfad": "ki-im-team/",
    "nr": 3,
-   "karte": "Neue Tools, die keiner nutzt.",
-   "kurz": "Claude, eingerichtet für deine Abläufe, und ein Team, das es gern nutzt.",
-   "seitentitel": "KI im Team einführen – pragmatisch und ohne IT-Großprojekt | STUDIO AAH!",
-   "beschreibung": "Welche KI-Tools lohnen sich, und wie nutzt dein Team sie wirklich? KI-Check, KI-Einführung mit Team-Schulung und KI-Arbeits-Setup für den Mittelstand in Leipzig.",
-   "meta": "KI im Team",
-   "h1": "KI im Team: Schluss mit ~~teuren Lizenzen ohne Plan.~~[Tools, die niemand nutzt.]",
-   "unter": "Welche Werkzeuge lohnen sich, und wie nimmst du dein Team mit? Wir richten Claude für deine Aufgaben ein – ohne monatelanges IT-Großprojekt.",
-   "knopf": ["kontakt/", "Beratung anfragen"],
-   "textlink": ["ki-arbeits-setup/", "Zum KI-Arbeits-Setup"],
-   "h2_kennen": "Woran du merkst, dass KI bei dir ~~eingeführt~~[nur ausprobiert] wurde",
-   "h2_kosten": "Routine frisst Zeit, Wildwuchs birgt Risiken",
+   "karte": "Die Büroarbeit frisst deine Zeit.",
+   "kurz": "Abläufe aufgeschrieben, Routine an Claude abgegeben und ein Team, das es nutzt.",
+   "seitentitel": "KI im Team und Entlastung: Routine abgeben ohne IT-Großprojekt | STUDIO AAH!",
+   "beschreibung": "Wenn alles über die Geschäftsführung läuft: Abläufe aufschreiben, Routine an Claude abgeben und das Team mitnehmen. KI-Arbeits-Setup, KI-Check und Schulung für den Mittelstand in Leipzig.",
+   "meta": "KI im Team & Entlastung",
+   "h1": "KI im Team: Schluss mit ~~teuren Lizenzen ohne Plan.~~[Routine, die auf deinem Tisch landet.]",
+   "unter": "Jede kleine Frage landet bei der Geschäftsführung? Wir schreiben mit dir die wichtigsten Abläufe auf und geben Routine sicher an Claude ab.",
+   "knopf": [
+    "kontakt/",
+    "Beratung anfragen"
+   ],
+   "textlink": [
+    "ki-arbeits-setup/",
+    "Zum KI-Arbeits-Setup"
+   ],
+   "h2_kennen": "Woran du merkst, dass du ~~KI ausprobiert hast~~[im Alltag Zeit verlierst]",
+   "h2_kosten": "Ungeschriebene Abläufe und ungenutzte Tools kosten doppelt",
    "h2_loesung": "In drei Schritten vom ~~Tool-Chaos~~[Zettelchaos] zum laufenden Büro-System",
    "h2_nutzen": "Entlastung, die ~~versprochen wird~~[wirklich ankommt]",
    "schluss": "Mit einem kostenlosen Erstgespräch: 30 Minuten, online.",
-   "schluss_knopf": ["kontakt/", "Beratung anfragen"],
-   "symptome": [
-    "Es gibt Lizenzen für neue Tools, aber kaum jemand arbeitet damit.",
-    "Jede:r nutzt KI anders – oder mit privaten Konten.",
-    "Du weißt nicht, wo du anfangen sollst, ohne ein großes IT-Projekt zu starten.",
-    "Daten liegen verstreut in Tabellen, Ordnern und Postfächern."
+   "schluss_knopf": [
+    "kontakt/",
+    "Beratung anfragen"
    ],
-   "kosten": "Ein Werkzeug, das niemand nutzt, kostet nur monatliche Gebühren. Und ohne gemeinsame Regeln landen Firmendaten in privaten Konten und Diensten, die niemand geprüft hat.",
+   "symptome": [
+    "Du arbeitest ständig im Unternehmen statt am Unternehmen – jede kleine Frage landet auf deinem Tisch.",
+    "Angebote, Nachfassen, Protokolle und Ablage fressen jede Woche Stunden.",
+    "Abläufe stecken nur in Köpfen: Wenn eine erfahrene Person fehlt, stockt die Arbeit.",
+    "Es gibt Lizenzen für neue KI-Tools, aber kaum jemand im Team arbeitet damit.",
+    "Jede:r nutzt KI anders – oder mit privaten Konten ohne gemeinsame Regeln."
+   ],
+   "kosten": "Jede Stunde Routine fehlt für Kundschaft, Team und Strategie. Wenn eine erfahrene Person geht, geht ihr Wissen mit. Und ein KI-Werkzeug, das niemand eingerichtet hat, kostet nur monatliche Gebühren, während Firmendaten im Zweifel ungeschützt in privaten Konten landen.",
    "schritte": [
     [
      "Verstehen",
      "Wo geht Zeit verloren?",
-     "Wir sehen uns deine Abläufe an und sprechen mit den Menschen, die sie täglich erledigen."
+     "Wir schauen uns deine wiederkehrenden Aufgaben an, vom Angebot bis zur Ablage, und sprechen mit den Menschen, die sie täglich erledigen."
     ],
     [
      "Ideation",
-     "Ein Werkzeug, klar eingerichtet.",
-     "Claude eingerichtet für deine Aufgaben, mit Blick auf den Datenschutz."
+     "Abläufe aufschreiben, Claude einrichten",
+     "Wir halten die wichtigsten Abläufe klar fest und richten Claude mit deinen Ordnern und Regeln ein, mit Blick auf den Datenschutz."
     ],
     [
      "Umsetzung",
-     "Eine Schulung, die im Alltag ankommt.",
-     "Praxisnah an deinen eigenen Aufgaben – damit dein Team weiß, wie es KI sicher und sinnvoll einsetzt."
-    ]
-   ],
-   "nutzen": [
-    [
-     "Werkzeuge, die genutzt werden",
-     "Weil sie zu deinen Aufgaben passen und dein Team weiß, wie."
-    ],
-    [
-     "Klare Regeln",
-     "Was mit KI geht, was nicht – und welche Daten wohin dürfen."
-    ],
-    [
-     "Klein anfangen",
-     "Ein bis zwei Abläufe zuerst, dann weiter, wenn es wirkt."
-    ]
-   ],
-   "beleg": {
-    "titel": "Aus meiner eigenen Praxis",
-    "text": "Mein Studio läuft mit KI-Arbeitsabläufen, einem Projekt-Cockpit und einem Handbuch. Was wir deinem Team zeigen, nutze ich selbst jeden Tag.",
-    "link": [
-     "ki-arbeits-setup/",
-     "Zum KI-Arbeits-Setup"
-    ]
-   },
-   "faq": [
-    [
-     "Welche KI empfiehlst du?",
-     "Claude von Anthropic. Wir arbeiten ausschließlich damit und richten es für deine Aufgaben ein. Das Prinzip lässt sich auf ChatGPT übertragen; auch dort gibt es Projekte, eigene Anweisungen und Skills."
-    ],
-    [
-     "Baust du auch Schnittstellen zu unserem ERP?",
-     "Nein. Schnittstellen zu ERP- oder Warenwirtschaftssystemen programmieren wir nicht, und IT-Sicherheit ist nicht unser Fach. Wenn du das brauchst, sagen wir es dir offen."
-    ],
-    [
-     "Was kostet das?",
-     "Der KI-Check beginnt bei 900 € netto, die KI-Einführung mit Team-Schulung bei 2.000 € netto. Für kleine Büros gibt es das KI-Arbeits-Setup zum Festpreis von 990 € netto."
-    ],
-    [
-     "Ist das mit dem Datenschutz vereinbar?",
-     "Das prüfen wir gleich am Anfang. Wir wählen Werkzeuge mit Blick auf den Datenschutz aus, und du legst mit deinem Team fest, welche Daten in die KI dürfen und welche nicht. Eine Rechtsberatung ersetzt das nicht."
-    ]
-   ],
-   "leistungen": [
-    [
-     "service/ki-digitalisierung/",
-     "KI-Beratung"
-    ],
-    [
-     "ki-arbeits-setup/",
-     "KI-Arbeits-Setup"
-    ],
-    [
-     "ki-zeitrechner/",
-     "KI-Zeitrechner"
-    ]
-   ]
-  },
-  {
-   "id": "entlastung",
-   "pfad": "entlastung/",
-   "nr": 4,
-   "karte": "Die Büroarbeit frisst deine Zeit.",
-   "kurz": "Routine kann die KI übernehmen, Abläufe sind aufgeschrieben.",
-   "seitentitel": "Geschäftsführung entlasten mit klaren Abläufen und KI | STUDIO AAH!",
-   "beschreibung": "Wenn jede Entscheidung über die Chefin oder den Chef läuft: Abläufe aufschreiben, Routine an KI abgeben, Zeit für die Arbeit am Unternehmen gewinnen.",
-   "meta": "Entlastung",
-   "h1": "Entlastung: Wenn nicht mehr alles über dich läuft.",
-   "unter": "In vielen mittelständischen Firmen landet jede kleine Frage auf dem Tisch der Geschäftsführung. Wir helfen, die wichtigsten Abläufe aufzuschreiben und Wiederkehrendes an KI abzugeben.",
-   "symptome": [
-    "Du arbeitest im Unternehmen statt am Unternehmen.",
-    "Angebote, Nachfassen und Ablage kosten jede Woche Stunden.",
-    "Abläufe sind nirgends aufgeschrieben: „Das haben wir schon immer so gemacht.“",
-    "Wenn eine erfahrene Person fehlt, stockt die Arbeit."
-   ],
-   "kosten": "Jede Stunde Routine fehlt für Kundschaft, Team und Strategie. Und wenn eine erfahrene Person geht, geht ihr Wissen mit.",
-   "schritte": [
-    [
-     "Verstehen",
-     "Was kostet dich Zeit?",
-     "Wir sammeln die Aufgaben, die immer wiederkommen – vom Angebot bis zur Ablage."
-    ],
-    [
-     "Ideation",
-     "Die wichtigsten Abläufe aufschreiben.",
-     "Wir fangen mit wenigen Abläufen an – klar beschrieben für dein Team und für die KI."
-    ],
-    [
-     "Umsetzung",
-     "Routine an KI abgeben.",
-     "Wir richten KI-Arbeitsabläufe ein, die Entwürfe vorbereiten. Du prüfst und gibst frei."
+     "Eine Schulung, die im Alltag ankommt",
+     "Praxisnah an deinen eigenen Aufgaben: Claude bereitet Entwürfe vor, ihr prüft und gebt frei. Dein Team weiß, was geht und was nicht."
     ]
    ],
    "nutzen": [
@@ -359,12 +279,16 @@
      "Aufgeschriebene Abläufe helfen auch neuen Mitarbeitenden beim Einstieg."
     ],
     [
-     "Einheitliche Abläufe",
-     "Jede:r macht es gleich – egal, wer gerade da ist."
+     "Werkzeuge, die genutzt werden",
+     "Weil sie zu deinen Aufgaben passen und dein Team weiß, wie."
+    ],
+    [
+     "Klare Regeln",
+     "Was mit KI geht, was nicht – und welche Daten wohin dürfen."
     ]
    ],
    "beleg": {
-    "titel": "Ich arbeite selbst so",
+    "titel": "Aus meiner eigenen Praxis",
     "text": "Mein Studio läuft mit KI-Arbeitsabläufen, einem Projekt-Cockpit und einem Handbuch. Für Geschäftsführung und kleine Büros richten wir das im KI-Arbeits-Setup ein; für größere Teams planen wir es im KI-Check.",
     "link": [
      "ki-arbeits-setup/",
@@ -373,20 +297,28 @@
    },
    "faq": [
     [
-     "Brauchen wir dafür neue Software?",
-     "Meist nicht. Wir starten mit dem, was du hast, und Claude. Wichtiger als neue Software sind klare Abläufe."
-    ],
-    [
-     "Wie lange dauert das?",
-     "Das KI-Arbeits-Setup dauert etwa drei Wochen, mit drei Online-Terminen. Für größere Teams planen wir im KI-Check, was sinnvoll ist."
+     "Welche KI empfiehlst du?",
+     "Claude von Anthropic. Wir arbeiten ausschließlich damit und richten es für deine Aufgaben ein. Das Prinzip lässt sich auf ChatGPT übertragen; auch dort gibt es Projekte, eigene Anweisungen und Skills."
     ],
     [
      "Welche Aufgaben eignen sich für KI?",
      "Aufgaben, die immer wiederkommen und nach Regeln laufen: Entwürfe für Angebote und E-Mails, Protokolle, Zusammenfassungen, Ablage. Entscheidungen und Freigaben bleiben bei dir."
     ],
     [
+     "Wie lange dauert das?",
+     "Das KI-Arbeits-Setup dauert etwa drei Wochen, mit drei Online-Terminen. Für größere Teams planen wir im KI-Check, was sinnvoll ist."
+    ],
+    [
+     "Baust du auch Schnittstellen zu unserem ERP?",
+     "Nein. Schnittstellen zu ERP- oder Warenwirtschaftssystemen programmieren wir nicht, und IT-Sicherheit ist nicht unser Fach. Wenn du das brauchst, sagen wir es dir offen."
+    ],
+    [
+     "Ist das mit dem Datenschutz vereinbar?",
+     "Das prüfen wir gleich am Anfang. Wir wählen Werkzeuge mit Blick auf den Datenschutz aus, und du legst mit deinem Team fest, welche Daten in die KI dürfen und welche nicht. Eine Rechtsberatung ersetzt das nicht."
+    ],
+    [
      "Was kostet das?",
-     "Das KI-Arbeits-Setup kostet 990 € netto zum Festpreis. Soll es mehr sein, beginnt der KI-Check bei 900 € netto und die KI-Einführung bei 2.000 € netto."
+     "Das KI-Arbeits-Setup kostet 990 € netto zum Festpreis. Für größere Teams beginnt der KI-Check bei 900 € netto, die KI-Einführung mit Team-Schulung bei 2.000 € netto."
     ]
    ],
    "leistungen": [
@@ -406,7 +338,8 @@
      "ki-zeitrechner/",
      "KI-Zeitrechner"
     ]
-   ]
+   ],
+   "alt_pfad": "entlastung/"
   }
  ],
  "branchen": [
@@ -429,7 +362,7 @@
      "Auftraggeber prüfen Referenzen. Jedes Projekt mit eigener Seite zeigt, was du kannst."
     ],
     [
-     "entlastung",
+     "ki-im-team",
      "Angebote und Dokumentation kosten Zeit. KI kann Entwürfe vorbereiten – du prüfst und gibst frei."
     ]
    ],
@@ -534,7 +467,7 @@
      "Elektro- und Gebäudetechnik-Fachkräfte sind gefragt. Deine Karriereseite ist oft der erste Eindruck für Bewerber:innen."
     ],
     [
-     "entlastung",
+     "ki-im-team",
      "Anfragen, Angebote und Dokumentation laufen über wenige Köpfe. KI-Arbeitsabläufe nehmen Routine ab."
     ],
     [
@@ -592,8 +525,8 @@
     [
      "Angebote schreiben wir nach Feierabend.",
      "Ein KI-Ablauf macht aus deinen Notizen und dem Aufmaß einen Angebotsentwurf und Antworten an Kund:innen. Du prüfst nur noch.",
-     "entlastung/",
-     "Entlastung"
+     "ki-im-team/",
+     "KI im Team & Entlastung"
     ],
     [
      "Die Anfragen passen nicht zu uns.",
@@ -622,7 +555,7 @@
      "Ingenieur:innen und Facharbeiter:innen haben die Wahl. Deine Website zeigt, warum sich der Weg zu dir lohnt."
     ],
     [
-     "entlastung",
+     "ki-im-team",
      "Angebote, Datenblätter und Anfragen laufen über wenige Köpfe. KI kann Entwürfe vorbereiten, du prüfst und gibst frei."
     ]
    ],
@@ -682,7 +615,7 @@
      "Der KI-Pilot läuft, im Alltag kommt nichts an.",
      "Wir richten mit deinem Team KI-Abläufe für Angebote, Dokumentation und Anfragen ein und schule alle, die damit arbeiten.",
      "ki-im-team/",
-     "KI im Team"
+     "KI im Team & Entlastung"
     ]
    ]
   },
@@ -705,7 +638,7 @@
      "Monteur:innen und Planer:innen sind gefragt. Ein Karrierebereich zeigt, warum deine Arbeit Sinn ergibt."
     ],
     [
-     "entlastung",
+     "ki-im-team",
      "Viele Anfragen ähneln sich. Ein gutes Anfrageformular und KI-Vorlagen sparen deinem Büro Zeit."
     ]
    ],
@@ -764,8 +697,8 @@
     [
      "Jede Anfrage will erst lange beraten werden.",
      "Ein Fragebogen auf der Website sammelt Dach, Verbrauch und Heizung schon vorab. Ein KI-Ablauf bereitet daraus deine Erstberatung vor.",
-     "entlastung/",
-     "Entlastung"
+     "ki-im-team/",
+     "KI im Team & Entlastung"
     ]
    ]
   },
@@ -848,7 +781,7 @@
      "Mehr Projekte schaffen ohne mehr Leute?",
      "Wir richten KI-Abläufe für Angebote, Dokumentation und Antworten im Support ein. So fängt dein Team Engpässe ab.",
      "ki-im-team/",
-     "KI im Team"
+     "KI im Team & Entlastung"
     ]
    ]
   },
@@ -871,7 +804,7 @@
      "Medizinische Fachangestellte sind gesucht. Eine Karriereseite zeigt, wie es in deinem Team zugeht."
     ],
     [
-     "entlastung",
+     "ki-im-team",
      "Das Telefon klingelt ständig. Klare Informationen und Online-Termine nehmen dem Empfang Arbeit ab."
     ]
    ],
@@ -919,7 +852,7 @@
    },
    "karten": [
     [
-     "Woher kommen Selbst­zahler:innen?",
+     "Woher kommen Selbst\u00adzahler:innen?",
      "Wir stellen deine Selbstzahlerleistungen sachlich und verständlich vor. So informieren sich Patient:innen vorab und fragen gezielt danach.",
      "neue-kunden/",
      "Neukundengewinnung"
@@ -933,8 +866,8 @@
     [
      "Die Büroarbeit frisst deine Zeit.",
      "Das Telefon klingelt ständig. Klare Antworten auf der Website und KI-Vorlagen für Briefe und Rückfragen nehmen dem Empfang Arbeit ab.",
-     "entlastung/",
-     "Entlastung"
+     "ki-im-team/",
+     "KI im Team & Entlastung"
     ]
    ]
   },
@@ -953,7 +886,7 @@
      "Empfehlungen tragen, aber sie reichen nicht für Wachstum. Deine Website muss Fremden zeigen, warum gerade du."
     ],
     [
-     "entlastung",
+     "ki-im-team",
      "Vieles läuft über dich persönlich. KI-Abläufe nehmen Routine wie Angebote und Protokolle ab."
     ],
     [
@@ -1024,13 +957,13 @@
      "Kann das nicht auch die KI?",
      "Wir richten KI in deiner Beratung ein, damit Recherche, Analyse und Berichte schneller gehen und deine Erfahrung den Unterschied macht.",
      "ki-im-team/",
-     "KI im Team"
+     "KI im Team & Entlastung"
     ],
     [
      "Nach dem Termin wartet der Bericht.",
      "Ein KI-Ablauf erstellt aus deinen Notizen Protokolle, Berichte und Angebote im Entwurf. Du prüfst und gibst frei.",
-     "entlastung/",
-     "Entlastung"
+     "ki-im-team/",
+     "KI im Team & Entlastung"
     ]
    ]
   }

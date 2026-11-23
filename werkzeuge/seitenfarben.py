@@ -8,7 +8,7 @@ GELB, PINK, ORCHIDEE, MINT, HIMMEL, ROT = '#FFF329', '#FF4FA3', '#EF87F9', '#07F
 FARBE = {
     'branchen/bau-ingenieurwesen-architektur': (GELB, MINT), 'branchen/handwerk-gebaeudetechnik': (ROT, PINK), 'branchen/industrie-maschinenbau': (HIMMEL, ORCHIDEE),
     'branchen/energie-umwelttechnik': (MINT, GELB), 'branchen/gesundheit-praxen': (ORCHIDEE, PINK), 'branchen/beratung-dienstleistung': (PINK, ROT), 'branchen/software-it': (HIMMEL, MINT),
-    'fuer-wen': (ORCHIDEE, PINK), 'neue-kunden': (PINK, ROT), 'fachkraefte': (MINT, HIMMEL), 'ki-im-team': (GELB, MINT), 'entlastung': (HIMMEL, ORCHIDEE), 'employer-branding': (MINT, GELB),
+    'fuer-wen': (ORCHIDEE, PINK), 'neue-kunden': (PINK, ROT), 'fachkraefte': (MINT, HIMMEL), 'ki-im-team': (GELB, MINT), 'employer-branding': (MINT, GELB),
     'referenzen': (HIMMEL, ORCHIDEE), 'blog': (GELB, MINT), 'preise': (GELB, MINT), 'website-check': (HIMMEL, ORCHIDEE), 'marken-regelwerk': (ROT, PINK), 'ki-arbeits-setup': (GELB, MINT),
     'kontakt': (MINT, HIMMEL), 'selbsttest': (ORCHIDEE, PINK), 'ki-zeitrechner': (ORCHIDEE, HIMMEL), 'demokratie-braucht-sichtbarkeit': (PINK, ORCHIDEE), 'aah-codes': (GELB, ROT),
 }
