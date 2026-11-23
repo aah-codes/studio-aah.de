@@ -1,4 +1,4 @@
-// Hero der Startseite „Bauhaus-Bühne“ (Anna, freigegeben 09.11.2026)
+// Hero der Startseite „Bauhaus-Bühne“
 // – Das Auge der Figur folgt Maus oder Finger („Hier werden Sie gesehen.“).
 // – Maus oder Tastatur-Fokus auf einer Leistung: Die Figur zeigt mit dem Arm darauf und schaut hin.
 // – Klick auf die Figur: neue Pose und neuer Ausruf (AAH! → OHO! → WOW!).

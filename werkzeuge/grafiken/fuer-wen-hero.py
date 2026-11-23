@@ -1,14 +1,14 @@
-# Hero-Illustrationen der Seiten „Für wen“, Problem-, Branchen- und Produktseite (Anna, 10.11.2026: „im Hero auf der anderen
+# Hero-Illustrationen der Seiten „Für wen“, Problem-, Branchen- und Produktseite („im Hero auf der anderen
 # Seite eine Illustration im Bauhaus-Stil … möglichst genau erzählen, was die Seite will: das Problem oder die Lösung oder beides“).
 # Bauhaus-Grundformen in den CI-Farben, Figur nach Oskar Schlemmer wie in werkzeuge/grafiken/blog/geld-und-zeit-titel.py:
 # Kopf Kreis mit weißem Auge, Rumpf Quadrat, blauer Halbkreis-Rock mit weißer Fuge, Glieder als Balken, Arme direkt am Rumpf,
 # herabhängender Arm abgespreizt, Beine mit Eckenradius 4. Blau berührt nie Schwarz (weiße Fugen).
-# Aufruf vom Repository-Ordner: python3 werkzeuge/grafiken/fuer-wen-hero.py  → website/bilder/fuer-wen/<name>.svg
+# Aufruf vom Repository-Ordner: python3 werkzeuge/grafiken/fuer-wen-hero.py → website/bilder/fuer-wen/<name>.svg
 import math, pathlib
 
 SCH, BL, WS, GR, MG = '#0e1011', '#2a5fe6', '#fff', '#d6d8d9', '#9a9d9e'
-# Farbtafel „modernes Bauhaus“ wie im Hero der Startseite und im Farbband des Fußes (Anna 10.11.2026: Illustrationen farbig)
-# Seit 12.11.2026 nur Schwarz, Weiß und Blau (Anna: „komplett zu bunt … alle einfach schwarz-weiß-blau“); die Namen bleiben als Rollen
+# Farbtafel „modernes Bauhaus“ wie im Hero der Startseite und im Farbband des Fußes
+# nur Schwarz, Weiß und Blau; die Namen bleiben als Rollen
 ROT, PINK, ROSA, GELB = SCH, BL, GR, BL
 FUGE = 14
 ZIEL = pathlib.Path(__file__).resolve().parent.parent.parent / 'website' / 'bilder' / 'fuer-wen'
@@ -95,7 +95,7 @@ t += pfad('M300 470 C 360 430, 440 430, 505 470')
 BILDER['fachkraefte'] = ('Fachkräfte gehen am großen grauen Konzern vorbei zu deinem Haus mit offener Tür und Karriereseite', t)
 
 # 3 KI im Team: Ein großer Bildschirm mit der KI als blauem Kreis in der Mitte, verbunden mit den Aufgaben des Teams;
-#   die Figur erklärt, zwei aus dem Team schauen zu. Links ein grauer, ungenutzter Werkzeugstapel.
+# die Figur erklärt, zwei aus dem Team schauen zu. Links ein grauer, ungenutzter Werkzeugstapel.
 t = boden()
 t += ''.join(f'<rect x="40" y="{470+i*42}" width="{150-i*14}" height="34" rx="6" fill="{GR}"/>' for i in range(3))
 t += f'<rect x="250" y="90" width="480" height="320" rx="16" fill="{WS}" stroke="{SCH}" stroke-width="4"/><rect x="455" y="410" width="70" height="40" fill="{SCH}"/><rect x="400" y="450" width="180" height="14" rx="7" fill="{SCH}"/>'
@@ -108,7 +108,7 @@ t += figur(640, BODEN, .34, 30, -30, blick=-1, rock=GELB) + figur(720, BODEN, .3
 BILDER['ki-im-team'] = ('Eine Figur erklärt ihrem Team die KI als blauen Kreis, der mit den Aufgaben verbunden ist; daneben ungenutzte graue Werkzeuge', t)
 
 # 4 Entlastung: Links trägt die Figur einen wackligen Stapel Aufgaben; in der Mitte nimmt die KI (blauer Kreis) Aufgaben ab;
-#   rechts liegt alles ordentlich als aufgeschriebener Ablauf.
+# rechts liegt alles ordentlich als aufgeschriebener Ablauf.
 t = boden()
 t += figur(130, BODEN, .42, 150, -150, blick=1)
 t += ''.join(f'<rect x="{78+(i%2)*14-7}" y="{400-i*44}" width="90" height="38" rx="4" fill="{SCH if i%2 else MG}"/>' for i in range(7))
@@ -174,8 +174,8 @@ t += figur(140, BODEN, .44, 30, -140, blick=1)
 BILDER['fuer-wen'] = ('Vier Karten wie ein aufgefächertes Kartenblatt, jede mit dem Symbol eines Problems; eine Figur zeigt darauf', t)
 
 
-# 10 Industrie & Maschinenbau (12.11.2026): Fabrikhalle mit Sheddach und Schornstein, ein Zahnrad (Zackenkreis);
-#    daneben die Website mit Produktkacheln; eine Figur zeigt darauf.
+# 10 Industrie & Maschinenbau: Fabrikhalle mit Sheddach und Schornstein, ein Zahnrad (Zackenkreis);
+# daneben die Website mit Produktkacheln; eine Figur zeigt darauf.
 t = boden()
 t += f'<rect x="60" y="360" width="330" height="240" fill="{SCH}"/>' + ''.join(f'<path d="M{60+i*82} 360 L{60+i*82} 290 L{142+i*82} 360 Z" fill="{SCH}"/>' for i in range(4))
 t += f'<rect x="320" y="170" width="34" height="190" fill="{SCH}"/>' + ''.join(f'<rect x="{90+i*72}" y="420" width="44" height="44" fill="{[GELB, WS, ROT, WS][i]}"/>' for i in range(4))

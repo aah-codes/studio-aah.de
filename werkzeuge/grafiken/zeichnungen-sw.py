@@ -1,11 +1,11 @@
-# Icon-Set „Zeichnungen schwarz-weiß“ (Anna 22.11.2026, Vorbild Strichzeichnungen wie bei farbenmeer.de):
+# Icon-Set „Zeichnungen schwarz-weiß“:
 # schwarze Handlinie, weiße Fläche, kein Versatz, keine Farbe. Zitterstrich wie hero-sticker.py.
-# Aufruf im Repository-Ordner:  python3 werkzeuge/grafiken/zeichnungen-sw.py
+# Aufruf im Repository-Ordner: python3 werkzeuge/grafiken/zeichnungen-sw.py
 import math, pathlib, random
 
 ZIEL = pathlib.Path(__file__).resolve().parents[2] / 'website' / 'bilder' / 'zeichnungen-sw'
 SCHWARZ, WEISS, BLAU, GRAU = '#0E1011', '#FFFFFF', '#2A5FE6', '#EEECE7'
-# Stil seit 22.11.2026 (Anna: „in diesen Bauhaus-Stil“ wie die Blog-Illustrationen): klare Linie ohne Zittern, eine Strichstärke,
+# Stil: klare Linie ohne Zittern, eine Strichstärke,
 # Schwarz, Weiß, Grau, genau ein blaues Element je Motiv.
 
 
@@ -25,7 +25,7 @@ FARBE = {}   # Motiv-Seed -> Füllfarbe (blaues Element je Motiv)
 def form(punkte, seed, zu=True, fuellen=True, breite=7, farbe=None):
     """Bauhaus-Stil: eine klare Linie, Fläche weiß (oder farbe)."""
     f = (farbe or WEISS) if (fuellen and zu) else 'none'
-    # Mitte zwischen Zeichnung und Bauhaus (Anna 22.11.2026): klare Form, leicht gezeichnete Linie
+    # Mitte zwischen Zeichnung und Bauhaus: klare Form, leicht gezeichnete Linie
     return (f'<path d="{linie(zitter(punkte, 1.1, seed), zu)}" fill="{f}" stroke="{SCHWARZ}" stroke-width="{breite * .85:.1f}" '
             'stroke-linecap="round" stroke-linejoin="round"/>')
 
@@ -50,7 +50,7 @@ def svg(inhalt):
     return f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">{inhalt}</svg>\n'
 
 
-# Zwinkern (Anna 22.11.2026): läuft im SVG selbst, damit es auch als <img> funktioniert. Zweimal kurz nach dem Laden,
+# Zwinkern: läuft im SVG selbst, damit es auch als <img> funktioniert. Zweimal kurz nach dem Laden,
 # dann Ruhe (unter fünf Sekunden, WCAG 2.2.2); bei „Bewegung reduzieren“ bleibt das Auge offen.
 ZWINKERN = ('<style>.o{animation:o 4.6s steps(1) 1 both}.z{opacity:0;animation:z 4.6s steps(1) 1 both}'
             '@keyframes o{0%,30%,82%,100%{opacity:1}26%,78%{opacity:0}}'
@@ -132,7 +132,7 @@ def sprechblase():
 
 
 def giesskanne():
-    """Retainer (Anna 22.11.2026): betreute Weiterentwicklung – die Gießkanne ist geneigt und gießt die Pflanze."""
+    """Retainer: betreute Weiterentwicklung – die Gießkanne ist geneigt und gießt die Pflanze."""
     koerper = [(96, 170), (236, 170), (252, 318), (80, 318)]
     henkel = [(236 + 62 * math.cos(math.radians(a)), 220 + 70 * math.sin(math.radians(a))) for a in range(-90, 91, 15)]
     tuelle = [(96, 210), (34, 120), (22, 128), (80, 236)]
@@ -143,7 +143,7 @@ def giesskanne():
     return svg(f'<g transform="translate(78 40) rotate(-32 160 240)">{kanne}</g>' + wasser + pflanze + strich(0, 380, 140, 380, 8))
 
 
-# Motive nach Zeichnungen von Annas Tochter (Anna 22.11.2026: „nimm die Zeichnungen von Fleur dazu, die Gesichter und Vogel“), nachgezeichnet, ohne Namen
+# Motive nach Zeichnungen von Annas Tochter, nachgezeichnet, ohne Namen
 def gesicht_grinsen():
     kopf = kreis(200, 205, 150, 1, ry=140)
     mund = [(92, 190), (140, 262), (200, 290), (262, 262), (310, 190), (262, 232), (200, 246), (140, 232)]

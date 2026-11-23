@@ -1,10 +1,10 @@
-# Seitenfarbe je Seite (Anna 23.11.2026: „geh alle Seiten durch und zieh das neue Farbkonzept mutig durch“, Farb-Richtlinie 1.1).
+# Seitenfarbe je Seite.
 # Setzt --lf (Voll), --lf-zart, --lf-hauch am <main id="inhalt">; CSS färbt damit Seitenkopf, Fragen und Abschluss.
 # Läuft als letzter Schritt in alle-erzeugen.sh; idempotent. Leistungsseiten setzen ihre Farbe selbst (leistungsseiten.py).
 import pathlib, re
 W = pathlib.Path(__file__).resolve().parents[1] / 'website'
 GELB, PINK, ORCHIDEE, MINT, HIMMEL, ROT = '#FFF329', '#FF4FA3', '#EF87F9', '#07F0A5', '#5FD2FF', '#FF3B2F'
-# Zwei verwandte Farben je Seite (Anna 23.11.2026: „ja, überall Paare“), wie auf den Leistungsseiten
+# Zwei verwandte Farben je Seite, wie auf den Leistungsseiten
 FARBE = {
     'branchen/bau-ingenieurwesen-architektur': (GELB, MINT), 'branchen/handwerk-gebaeudetechnik': (ROT, PINK), 'branchen/industrie-maschinenbau': (HIMMEL, ORCHIDEE),
     'branchen/energie-umwelttechnik': (MINT, GELB), 'branchen/gesundheit-praxen': (ORCHIDEE, PINK), 'branchen/beratung-dienstleistung': (PINK, ROT), 'branchen/software-it': (HIMMEL, MINT),

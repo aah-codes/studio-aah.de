@@ -1,4 +1,4 @@
-/* Startseite: Hero mit Frag-Feld als Chat und Diashow (Anna 18.11.2026) */
+/* Startseite: Hero mit Frag-Feld als Chat und Diashow */
 (function () {
   var hero = document.querySelector('.hl'); if (!hero) return;
 
@@ -8,7 +8,7 @@
     f.querySelector('input').value = c.dataset.frage;
     if (f.requestSubmit) f.requestSubmit(); else f.dispatchEvent(new Event('submit', { cancelable: true })); }); });
 
-  // Chat-Ansicht wie WhatsApp: sobald eine Frage gestellt ist, Überschrift kleiner, Chatfenster mit Feld unten (Scrollen macht js/frag.js)
+  // Chat-Ansicht: sobald eine Frage gestellt ist, Überschrift kleiner, Chatfenster mit Feld unten (Scrollen macht js/frag.js)
   var verlauf = hero.querySelector('.hl-antworten');
   if (verlauf && 'MutationObserver' in window) new MutationObserver(function () {
     hero.classList.toggle('ist-chat', !!verlauf.textContent.trim());

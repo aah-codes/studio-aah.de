@@ -1,6 +1,6 @@
-// Wortmarke als Bild (PNG, transparent) aus einer Systemschrift, z. B. „@JANA_VOIGTMANN“ in Helvetica (Jana, Anna 15.10.2026: Instagram-Name als Logo)
+// Wortmarke als Bild (PNG, transparent) aus einer Systemschrift, z. B. „@JANA_VOIGTMANN“ in Helvetica
 // Aufruf vom Repository-Ordner aus:
-//   swift werkzeuge/grafiken/wortmarke.swift "TEXT" SCHRIFT.ttc#INDEX AUS.png FARBE_HEX [GRÖSSE]
+// swift werkzeuge/grafiken/wortmarke.swift "TEXT" SCHRIFT.ttc#INDEX AUS.png FARBE_HEX [GRÖSSE]
 import Foundation
 import CoreGraphics
 import CoreText

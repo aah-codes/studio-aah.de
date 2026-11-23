@@ -1,8 +1,8 @@
-// Setzt eine Website-Aufnahme perspektivisch in einen schräg stehenden Bildschirm eines Foto-Mockups (Anna 16.10.2026, Jana:
+// Setzt eine Website-Aufnahme perspektivisch in einen schräg stehenden Bildschirm eines Foto-Mockups (Jana:
 // Atelier-Foto mit Monitor). Ecken in Pixeln des Fotos, von oben links: oben-links, oben-rechts, unten-rechts, unten-links.
 // Die Seite wird leicht an das Foto angeglichen (Helligkeit, minimale Unschärfe) und bekommt einen zarten Glanz.
 // Aufruf vom Repository-Ordner aus:
-//   swift werkzeuge/grafiken/bildschirm-perspektive.swift FOTO.jpg SEITE.jpg AUS.jpg  OLx OLy ORx ORy URx URy ULx ULy [HELLIGKEIT 0–1] [QUALITÄT]
+// swift werkzeuge/grafiken/bildschirm-perspektive.swift FOTO.jpg SEITE.jpg AUS.jpg OLx OLy ORx ORy URx URy ULx ULy [HELLIGKEIT 0–1] [QUALITÄT]
 import Foundation
 import CoreImage
 import ImageIO

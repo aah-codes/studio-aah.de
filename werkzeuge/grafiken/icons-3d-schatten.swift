@@ -1,6 +1,6 @@
 // Nachschritt für icons-3d.sh: sehr schwachen Schattenschleier (graue Fläche) entfernen, Kontaktschatten behalten.
 // Pixel mit geringer Deckkraft (unter SCHWELLE) werden durchsichtig, darüber wird die Deckkraft weich angehoben.
-// Aufruf: swift icons-3d-schatten.swift DATEI.png [weitere.png …]  (überschreibt die Dateien)
+// Aufruf: swift icons-3d-schatten.swift DATEI.png [weitere.png …] (überschreibt die Dateien)
 import Foundation
 import CoreGraphics
 import ImageIO

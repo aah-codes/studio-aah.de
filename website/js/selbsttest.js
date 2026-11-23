@@ -1,10 +1,10 @@
-/* Selbsttest „Wo hakt es?“ und KI-Zeitrechner (Anna 10.11.2026, Rechner neu 17.11.2026: Zeit auf Menschenarbeit verteilen). Alles wird im Browser gerechnet, nichts gesendet oder gespeichert. */
+/* Selbsttest „Wo hakt es?“ und KI-Zeitrechner. Alles wird im Browser gerechnet, nichts gesendet oder gespeichert. */
 (function () {
   'use strict';
   var test = document.querySelector('[data-selbsttest]');
   if (test) {
     var box = document.querySelector('[data-ergebnis-box]');
-    // offene Aussage sichtbar machen und Markierung lösen, sobald sie beantwortet ist (Anna 18.11.2026: „Ergebnis zeigen funktioniert nicht“ – der Hinweis lag außerhalb des Bildschirms)
+    // offene Aussage sichtbar machen und Markierung lösen, sobald sie beantwortet ist
     test.addEventListener('change', function (e) { var f = e.target.closest('.st-frage'); if (f) f.classList.remove('st-fehlt'); });
     test.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -19,7 +19,7 @@
       var hinweis = test.querySelector('[data-hinweis]');
       if (offen) { hinweis.textContent = offen === 1 ? 'Bitte beantworte noch eine Aussage.' : 'Bitte beantworte noch ' + offen + ' Aussagen.'; var erste = test.querySelector('.st-fehlt'); if (erste) { erste.scrollIntoView({ block: 'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); erste.querySelector('input').focus({ preventScroll: true }); } return; }
       hinweis.textContent = '';
-      // Ergebnis in der Reihenfolge der Fragen, je Thema eine Skala „Handlungsbedarf“ (Anna 17.11.2026)
+      // Ergebnis in der Reihenfolge der Fragen, je Thema eine Skala „Handlungsbedarf“
       var eintraege = Array.prototype.slice.call(box.querySelectorAll('.st-liste li'));
       var anteil = function (li) { var id = li.dataset.ergebnis; return (punkte[id] || 0) / (2 * (anzahl[id] || 1)); };
       var hoechst = Math.max.apply(null, eintraege.map(anteil));
@@ -57,7 +57,7 @@
       rechner.stunden.setAttribute('aria-valuetext', stunden + (stunden === 1 ? ' Stunde' : ' Stunden'));
       var gesamt = Math.round(monat);
       document.querySelector('[data-kr-stunden]').textContent = zahl.format(gesamt);
-      // Frei gewordene Zeit nach Gewichtung auf Menschenarbeit verteilen (Anna 17.11.2026)
+      // Frei gewordene Zeit nach Gewichtung auf Menschenarbeit verteilen
       var regler = Array.prototype.slice.call(rechner.querySelectorAll('[name^="b_"]'));
       var summe = regler.reduce(function (s, r) { return s + Number(r.value); }, 0);
       // Ganze Zahlen so runden, dass die Teile zusammen das Ganze ergeben (größter Rest zuerst)

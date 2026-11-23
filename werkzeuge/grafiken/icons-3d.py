@@ -1,11 +1,11 @@
-"""3D-Fassung der Bauhaus-Icons (Formensprache STUDIO AAH!, Anna 18.11.2026: „2D führt, 3D als Akzent“).
+"""3D-Fassung der Bauhaus-Icons.
 
 Läuft in Blender (kostenlos, auf dem MacBook in ~/Applications/Blender.app), nicht mit dem normalen Python.
 Aufruf vom Repository-Ordner aus über das Hilfsskript:
     bash werkzeuge/grafiken/icons-3d.sh ZIELORDNER website/bilder/formen/brand.svg [weitere.svg …]
 Für jedes SVG entsteht ZIELORDNER/<name>-3d.png (1024 × 1024, transparenter Hintergrund mit weichem Kontaktschatten).
 
-Alle Werte sind für jedes Icon gleich, damit das Set wie aus einem Guss wirkt (Regeln: Betrieb Studio AAH/Bildwelten/icon-system/formensprache.md, Abschnitt 5):
+Alle Werte sind für jedes Icon gleich, damit das Set wie aus einem Guss wirkt:
 Tiefe 13 % der Breite, leicht abgerundete Kanten (nach innen, damit die Fugen offen bleiben), mattes Material wie Satin-Kunststoff,
 Kamera gerade von vorn und 12° von oben, Icon steht auf dem Boden, Linien (stroke) werden vorher zu Flächen,
 ein weiches Licht von oben links, Farben exakt aus der Farbtafel (Blau berührt nie Schwarz: die Fugen der SVGs bleiben echte Spalten).
@@ -23,9 +23,9 @@ FARBEN = {  # sRGB-Werte der Marke (tokens.json)
     'blau': (0x2a, 0x5f, 0xe6), 'schwarz': (0x0e, 0x10, 0x11), 'weiss': (0xff, 0xff, 0xff), 'gelb': (0xff, 0xe6, 0x00),
 }
 TIEFE, FASE, NEIGUNG, AUFLOESUNG, SAMPLES = 0.26, 0.025, 12, 1024, 96  # Tiefe 13 % der Breite (Breite = 2)
-# Ohne Schatten (Anna 18.11.2026: „viel zu dunkel … die fliegen“); nur mit SCHATTEN=1 kommt der Kontaktschatten zurück
+# Ohne Schatten; nur mit SCHATTEN=1 kommt der Kontaktschatten zurück
 SCHATTEN = os.environ.get('SCHATTEN') == '1'
-# Neigung 12° statt 20° (18.11.2026): bei 20° verdeckte die Oberseite der unteren Form die Fuge, Blau schien Schwarz zu berühren
+# Neigung 12° statt 20°: bei 20° verdeckte die Oberseite der unteren Form die Fuge, Blau schien Schwarz zu berühren
 
 
 def linear(c):

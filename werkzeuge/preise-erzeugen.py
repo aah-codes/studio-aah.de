@@ -1,12 +1,12 @@
 # Erzeugt aus EINER Datenquelle (preise-daten.json): Daten des Kostenrechners Webdesign js/pakete-daten.js,
 # Bereichsleiste, Preislisten + Glossar der Preisseite und Leistungskarten der Startseite. Preise und Paketinhalte nur in preise-daten.json ändern.
-# Aufruf im Repository-Ordner:  python3 werkzeuge/preise-erzeugen.py
+# Aufruf im Repository-Ordner: python3 werkzeuge/preise-erzeugen.py
 import json, re
 
 from gemeinsam import NETTO_SATZ, PFEIL, TRENNEN_LEISTUNGEN, WEBSITE, einsetzen, ersetze_einmal, esc, lade_json, mass_attr, weitere_pakete, zwei_pakete, paket_karte
 
 daten = lade_json('preise-daten.json')
-# Preislisten der übrigen Leistungen; Webdesign hat stattdessen den Kostenrechner (Anna 16.10.2026)
+# Preislisten der übrigen Leistungen; Webdesign hat stattdessen den Kostenrechner
 LISTEN = [g for g in daten['gruppen'] if g['id'] != 'website']
 
 
@@ -24,12 +24,12 @@ def rechner_daten():
 
 
 def preisliste(g):
-    """Preisliste einer Leistung mit denselben Paketkarten wie auf der Leistungsseite (Anna 16.10.2026)."""
+    """Preisliste einer Leistung mit denselben Paketkarten wie auf der Leistungsseite."""
     mehr = f'<p><a class="textlink" href="{g["link"]}">Mehr zu {esc(g["name"])}{PFEIL}</a></p>' if g.get('link') else ''
     return (f'<section class="preisliste" id="r-{g["id"]}" aria-labelledby="r-{g["id"]}-titel">\n  <div class="preisliste-kopf"><p class="meta">Preisliste</p>'
             f'<h2 class="preis-h2" id="r-{g["id"]}-titel">{esc(g["name"])}</h2><p class="gedaempft">{esc(g.get("intro") or "")}</p>{mehr}</div>\n'
             '    <div class="lsx-karten">\n' + '\n'.join(paket_karte(e, TRENNEN_LEISTUNGEN, '../') for e in zwei_pakete(g)[0]) + '\n    </div>\n'
-            + weitere_pakete(zwei_pakete(g)[1]) + '</section>')  # höchstens zwei Karten, der Rest als Zeile (Anna 17.11.2026)
+            + weitere_pakete(zwei_pakete(g)[1]) + '</section>')  # höchstens zwei Karten, der Rest als Zeile
 
 
 def glossar():
@@ -39,8 +39,8 @@ def glossar():
 
 
 def preisseite(t):
-    # Bereichsleiste: Kostenrechner (nur Webdesign), dann die Preislisten der übrigen Leistungen (Anna 16.10.2026)
-    # Ankerleiste wie auf den Leistungsseiten (Anna 23.11.2026)
+    # Bereichsleiste: Kostenrechner (nur Webdesign), dann die Preislisten der übrigen Leistungen
+    # Ankerleiste wie auf den Leistungsseiten
     leiste = ''.join(f'<li><a href="#r-{g["id"]}">{esc(g["kurz"])}</a></li>' for g in LISTEN)
     t = ersetze_einmal(r'(<ul class="anker-spur"><li><a href="#rechner" class="aktiv">Kostenrechner Webdesign</a></li>).*?(<li><a href="#glossar">Glossar</a></li>)',
                        lambda m: m.group(1) + leiste + m.group(2), t, 'Bereichsleiste der Preisseite', re.S)
@@ -51,23 +51,23 @@ def preisseite(t):
 
 
 def start_leistungen():
-    """Startseite: drei Kernkompetenzen (Markenbildung, Webdesign, KI-Beratung, Anna 16.11.2026), je Form-Icon und Name;
-    drei nebeneinander (Anna 12.11.2026), ohne Unterzeile (Anna 17.11.2026: „subline weg, icons noch größer“)."""
+    """Startseite: drei Kernkompetenzen, je Form-Icon und Name;
+    drei nebeneinander, ohne Unterzeile."""
     icons = {k: v['icon'] for k, v in lade_json('leistungen-inhalte.json').items() if isinstance(v, dict) and 'icon' in v}
     nach_id = {k['id']: k for k in daten['startseite']}
     karten = ''.join(f'<a class="ls-karte" href="{nach_id[i]["link"]}" id="k-{i}"><span class="ls-bild"><img src="{icons[i]}" alt="" width="400" height="400" loading="lazy"></span>'
                      f'<span class="ls-karte-titel">{esc(nach_id[i]["titel"])}</span></a>'
-                     for i in ('brand', 'website', 'ki'))  # Anna 16.11.2026: drei Kernkompetenzen wie im Mega-Menü
+                     for i in ('brand', 'website', 'ki'))  # drei Kernkompetenzen wie im Mega-Menü
     return ('  <section class="start-leistungen" aria-labelledby="leistungen">\n    <div class="sektionskopf"><p class="meta">Kernkompetenzen</p>'
             '<h2 class="gr-xxl" id="leistungen"><span class="korrektur"><span class="notiz notiz-durch">Leistungen</span>'
-            '<span class="hand" aria-hidden="true">Baustellen, die wir für dich aufräumen</span></span></h2></div>\n'   # Anna 22.11.2026
+            '<span class="hand" aria-hidden="true">Baustellen, die wir für dich aufräumen</span></span></h2></div>\n'
             f'    <div class="ls-raster ls-kern">{karten}</div>\n  </section>')
 
 
-# --- Startseite, Hero: Leistungen als Kategorie-Leiste wie bei Dribbble (Anna 13.10.2026) ---
+# --- Startseite, Hero: Leistungen als Kategorie-Leiste ---
 # Jede Karte führt zur Leistungsseite. Wo es ein echtes Beispiel gibt, steht es als Mockup in der Karte, sonst das Kartenbild der Leistung.
 def _mass(pfad):
-    """Bildmaße für das ruhende Laufband; Bilder daraus wurden am 09.11.2026 aus website/ entfernt (im Verlauf ab 4c0ab804)."""
+    """Bildmaße für das ruhende Laufband; Bilder daraus wurden aus website/ entfernt (im Verlauf ab 4c0ab804)."""
     try:
         return mass_attr(pfad)
     except FileNotFoundError:
@@ -75,20 +75,20 @@ def _mass(pfad):
 
 
 BEISPIELE = {
-    # Mobil (Anna 13.10.2026, Vorbild Dribbble „Mobile“): zwei Handys nebeneinander, führt zu UI/UX
-    # Mobil wie bei Dribbble: zwei Handys mit dünnem schwarzem Rahmen, heller Grund mit Lichtkante, eine große Form dahinter (Anna 13.10.2026)
+    # Mobil: zwei Handys nebeneinander, führt zu UI/UX
+    # Mobil: zwei Handys mit dünnem schwarzem Rahmen, heller Grund mit Lichtkante, eine große Form dahinter
     # Bildschirme zeigen kleine Fassungen der Seitenaufnahmen (höchstens 58 px breit angezeigt; werkzeuge/grafiken/bild/varianten.sh)
     'mobil': ('<span class="kb-mobil"><i class="kb-form-gross"></i>'
               + ''.join(f'<span class="kb-phone"><span class="kb-phone-screen"><img src="bilder/referenzen/{n}"{_mass("bilder/referenzen/" + n)} alt="" decoding="async"></span></span>'
                         for n in ['deinetwegen-handy-180.webp', 'studio-aah-handy-180.webp']) + '</span>'),
-    # Webdesign: Foto-Mockup Laptop auf Podest (Vorlage von Anna, Mockuptree, 13.10.2026); die Website sitzt per matrix3d
+    # Webdesign: Foto-Mockup Laptop auf Podest (Mockuptree); die Website sitzt per matrix3d
     # genau im Bildschirm (Ecken im 2000 × 1500 px großen Foto: 530|440, 1248|401, 1334|926, 615|1012) und scrollt wie bisher
     'website': ('<span class="kb-szene" style="--sb:2000;--sh:1500"><img class="kb-szene-bild" src="bilder/mockups/laptop-podest.webp" alt="" width="1000" height="750" loading="lazy">'
                 '<span class="kb-szene-schirm" style="transform:matrix3d(0.5768583309,-0.002993487456,0,6.037555358e-05,0.08645866767,0.6267902485,0,-1.30273683e-05,0,0,1,0,528,438,0,1)">'
                 '<span class="laptop-seite"><img src="bilder/referenzen/bauer-website-320.webp"' + mass_attr('bilder/referenzen/bauer-website-320.webp') + ' alt="" loading="lazy"></span></span></span>'),
     # Druck: Visitenkarten von Dr. Simone Goldhammer auf dem Schreibtisch (werkzeuge/grafiken/druck-mockup.py)
     'print': '<img src="bilder/mockups/druck-schreibtisch.webp" alt="" width="1200" height="900" loading="lazy">',
-    # Markenbildung: STUDIO AAH! als eigenes Beispiel (Anna 13.10.2026: ein Kunde, ein Platz; Bauer steht bei Webdesign):
+    # Markenbildung: STUDIO AAH! als eigenes Beispiel:
     # Logo auf Creme, Markenfarben, Kreis auf Blau, „AAH!“ auf Schwarz
     'brand': ('<span class="kb-raster kb-eigen"><span class="kb-e-logo"><img src="bilder/logo-studio-aah.svg" alt="" width="180" height="33"></span>'
               '<span class="kb-r-farben"><i style="--f:#0e1011"></i><i style="--f:#2a5fe6"></i><i style="--f:#eeece7"></i><i style="--f:#d6d8d9"></i></span>'
@@ -99,7 +99,7 @@ BEISPIELE = {
                '<span class="kb-szene-schirm" style="transform:matrix3d(0.4712927933,-0.01449482037,0,-2.30025695e-05,0.01573352095,0.5063413888,0,1.697912788e-05,0,0,1,0,528,455,0,1)">'
                '<picture><source media="(prefers-reduced-motion: reduce)" srcset="bilder/mockups/ci-animation-still.webp">'
                '<img class="kb-anim" src="bilder/mockups/ci-animation.webp" alt="" width="720" height="450"></picture></span></span>'),
-    # Produktdesign wie bei Dribbble: Website von Down to Earth (Kerstin Hack) und daneben ihre Markenfarben ohne Beschriftung
+    # Produktdesign: Website von Down to Earth (Kerstin Hack) und daneben ihre Markenfarben ohne Beschriftung
     'ui-ux': ('<span class="kb-produkt"><span class="kb-p-buehne"><span class="kb-p-seite"><img src="bilder/referenzen/leben-website-320.webp"' + mass_attr('bilder/referenzen/leben-website-320.webp') + ' alt="" loading="lazy"></span></span>'
               '<span class="kb-p-farben">' + ''.join(f'<i style="--f:{f};--t:{t}">{f.upper()}</i>' for f, t in
                   [('#2d3b42', '#fff'), ('#3f9961', '#fff'), ('#a88b45', '#fff'), ('#f0eadb', '#2d3b42'), ('#ffffff', '#2d3b42')]) + '</span></span>'),
@@ -108,8 +108,8 @@ BEISPIELE = {
     # Typografie: Schriftmuster aus den Hausschriften von STUDIO AAH! (Anton, Manrope, JetBrains Mono)
     'typo': '<span class="kb-typo"><span class="kb-typo-aa">Aa</span><span class="kb-typo-text">Manrope</span><span class="kb-typo-meta">Anton · JetBrains&nbsp;Mono</span></span>',
 }
-# Kategorien oben (Anna 13.10.2026), unabhängig von den Leistungskarten unten; ohne Beispiel steht das Kartenbild der Leistung
-# Reihenfolge wie das Mega-Menü (Anna 25.10.2026, SEO-Schwerpunkt): Webdesign zuerst, dann UI/UX, Marke, weitere Leistungen zuletzt
+# Kategorien oben, unabhängig von den Leistungskarten unten; ohne Beispiel steht das Kartenbild der Leistung
+# Reihenfolge wie das Mega-Menü: Webdesign zuerst, dann UI/UX, Marke, weitere Leistungen zuletzt
 KATEGORIEN = [
     {'id': 'website', 'titel': 'Webdesign', 'link': 'service/webdesign/'},
     {'id': 'mobil', 'titel': 'Mobil', 'link': 'service/ui-ux/'},
@@ -138,6 +138,6 @@ def schreibe(datei, aendern):
 if __name__ == '__main__':
     (WEBSITE / 'js' / 'pakete-daten.js').write_text(rechner_daten(), encoding='utf-8')
     schreibe('preise/index.html', preisseite)
-    # Hero „Bauhaus-Bühne“ seit 09.11.2026 ohne Laufband; heroband() bleibt für eine spätere Verwendung (Anna 09.11.2026: erstmal nirgends)
+    # Hero „Bauhaus-Bühne“ ohne Laufband; heroband bleibt für eine spätere Verwendung
     schreibe('index.html', lambda t: einsetzen(t, 'LEISTUNGEN', start_leistungen()))
     print('Rechner-Daten, Leiste, Glossar und Startseite geschrieben')

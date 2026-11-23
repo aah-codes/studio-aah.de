@@ -1,5 +1,5 @@
 /* Projektseiten (/referenzen/<projekt>/): Bausteine der Case Studies (werkzeuge/referenzen.py).
-   Wird nur dort zusätzlich zu stil.css geladen (Anna 16.10.2026: CSS aufteilen); Farben und Abstände aus den Variablen in stil.css. */
+   Wird nur dort zusätzlich zu stil.css geladen; Farben und Abstände aus den Variablen in stil.css. */
 
 .mittig { text-align: center; }
 /* Leistungen: Bild und Text im Wechsel */
@@ -48,7 +48,7 @@
   .ci-pfeil { transform: rotate(90deg); }
   .ci-image { width: 46%; }
 }
-/* Grafik Corporate Identity, Fassung 2 (Anna, 11.10.2026): Culture und Design schwarz, Behaviour und Communication dunkelgrau, Kern weiß */
+/* Grafik Corporate Identity, Fassung 2: Culture und Design schwarz, Behaviour und Communication dunkelgrau, Kern weiß */
 .ci-schwarz { fill: var(--farbe-dunkel); }
 .ci-kern { fill: var(--farbe-weiss); }
 .ci-pfeil-t { font-family: var(--schrift-meta); letter-spacing: 1px; fill: var(--farbe-gedaempft); }
@@ -115,7 +115,7 @@
   .cs-weiter { grid-template-columns: 1fr; gap: 24px; margin: 0 var(--rand-seite-mobil); padding: 48px 0 72px; }
 }
 .cs-titel { font-family: var(--schrift-ueberschrift); font-weight: 500; font-size: clamp(44px, 7vw, 120px); letter-spacing: -.03em; margin: 0 0 24px; hyphens: manual; overflow-wrap: break-word; }
-/* Projektseite im Stil von Behance „Hedwig“ (Anna 14.10.2026, Bildschirmaufnahme): jedes Motiv auf hellgrauer Kachel (Bento) */
+/* Projektseite: jedes Motiv auf hellgrauer Kachel (Bento) */
 .cs { --kachel: #f3f3f3; }
 .cs-kachel { background: var(--kachel); border-radius: 28px; padding: 40px; }
 .cs-texte { gap: 20px; }
@@ -154,7 +154,7 @@
   .cs-handys .pc-handy { width: 30%; }
   .cs-flaeche-grau { border-radius: 20px; }
 }
-/* Kacheln leicht in der Hausfarbe des Kunden getönt (Behance „CreativMinds“, Anna 14.10.2026) */
+/* Kacheln leicht in der Hausfarbe des Kunden getönt */
 .cs { --kachel: color-mix(in srgb, var(--pc-farbe) 7%, #f5f5f5); }
 .cs-stapel { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); gap: 40px; align-items: center; overflow: hidden; }
 .cs-stapel-zahl { font-family: var(--schrift-ueberschrift); font-size: clamp(40px, 5vw, 80px); line-height: 1; letter-spacing: -.03em; margin: 0 0 16px; }
@@ -171,7 +171,7 @@
 @media (max-width: 900px) {
   .cs-stapel, .cs-split { grid-template-columns: 1fr; }
 }
-/* Projektseite: Kopf über Blöcken, Vergleich hoher Seiten, Tabelle „Vorher → Nachher“, Sitemap (Anna 14.10.2026) */
+/* Projektseite: Kopf über Blöcken, Vergleich hoher Seiten, Tabelle „Vorher → Nachher“, Sitemap */
 .cs-block-kopf { grid-column: 1 / -1; margin: 0 0 4px; }
 .cs-block-kopf .meta { margin: 0 0 6px; }
 .cs-block-kopf h2 { margin: 0; }
@@ -214,7 +214,7 @@
   .sm > ul { border-top: 0; border-left: 1.5px solid var(--farbe-dunkel); }
   .sm > ul::before, .sm > ul > li::before { display: none; }
 }
-/* Projektseite, Runde 2 (Anna 14.10.2026): kein Grau – Kacheln mit Verlauf in der Hausfarbe, weniger Text, Icons, Bewegung */
+/*: kein Grau – Kacheln mit Verlauf in der Hausfarbe, weniger Text, Icons, Bewegung */
 .cs { --kachel: linear-gradient(140deg, color-mix(in srgb, var(--pc-farbe) 4%, var(--farbe-weiss)) 0%, color-mix(in srgb, var(--pc-farbe) 16%, var(--farbe-weiss)) 100%); --pc-marke: var(--farbe-primaer); --pc-dunkel: var(--farbe-dunkel); --pc-akzent: var(--farbe-primaer); --pc-zweit: var(--farbe-grau-hell); --pc-hell: #f3f3f3; --pc-meta-dunkel: var(--farbe-weiss); --pc-titel: var(--pc-dunkel); --pc-pille: var(--pc-akzent); --pc-pille-text: var(--pc-dunkel); --pc-pille-rand: transparent; }
 .cs-etikett { position: absolute; top: 0; left: 24px; z-index: 4; transform: translateY(-50%); background: var(--farbe-dunkel); color: var(--farbe-weiss); font-family: var(--schrift-meta); font-size: .75rem; letter-spacing: 1.2px; text-transform: uppercase; padding: 7px 14px; border-radius: 999px; white-space: nowrap; }
 .cs-etikett-rechts { left: auto; right: 24px; background: var(--farbe-primaer); }
@@ -362,7 +362,7 @@
 @media (max-width: 600px) {
   .sm > ul::before { left: calc((100% - 12px) / 4); right: calc((100% - 12px) / 4); }
 }
-/* Projektseite, Runde 4 (Anna 14.10.2026): Vollbilder, Bühnen mit Hintergrundbild, Wireframe-Weg, räumliche Handys, Visual Design */
+/*: Vollbilder, Bühnen mit Hintergrundbild, Wireframe-Weg, räumliche Handys, Visual Design */
 .cs-vollbild { position: relative; margin: 24px calc(-1 * var(--rand-seite)); height: clamp(380px, 56vw, 820px); overflow: hidden; }
 .cs-vollbild img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .cs-vollbild figcaption { position: absolute; left: var(--rand-seite); right: var(--rand-seite); bottom: 0; padding: 120px 0 48px; background: linear-gradient(to top, rgba(0, 20, 45, .75), transparent); color: var(--farbe-weiss); }
@@ -468,7 +468,7 @@
   .weg-schritte li::after, .weg-schritte li.oder + li.oder::before { display: none; }
   .weg-schritte li.oder + li.oder .weg-nr::after { content: " · oder"; }
 }
-/* Farbpalette wie Behance „Skin First“ (Anna 14.10.2026) */
+/* Farbpalette */
 .ds-farben { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .ds-farben-kopf { grid-column: 1 / -1; display: flex; justify-content: space-between; gap: 16px; padding-bottom: 12px; border-bottom: 1.5px solid var(--farbe-dunkel); font-family: var(--ds-schrift); font-weight: 600; font-size: 1.1rem; }
 .ds-farbe { flex-direction: column; justify-content: flex-end; align-items: stretch; min-height: 340px; padding: 32px; color: var(--farbe-weiss); font-family: var(--ds-schrift); }
@@ -540,7 +540,7 @@
 }
 .kl-treppe { gap: 14px; }
 .kl-stufe { grid-template-columns: 130px minmax(0, 340px); margin-left: calc(var(--n) * 9%); }
-/* Storytelling-Film (Anna 14.10.2026): Szenen im Browserfenster, Zettel, Tippen, Zoom; Seiten in CSS-Pixeln einer 1440 px breiten Seite (cqw) */
+/* Storytelling-Film: Szenen im Browserfenster, Zettel, Tippen, Zoom; Seiten in CSS-Pixeln einer 1440 px breiten Seite (cqw) */
 .cs-story .st-rahmen { position: relative; margin-top: 30px; padding: 44px 5% 24px; background: var(--kachel); border-radius: 28px; }
 .st-rahmen > .st-phase { left: 5%; }
 .st-browser { border-radius: 14px; overflow: hidden; background: var(--farbe-weiss); box-shadow: 0 40px 80px rgba(14, 16, 17, .22); }
@@ -557,7 +557,7 @@
 .st-notiz { position: absolute; z-index: 3; max-width: 34%; padding: .7em 1em; font: 700 clamp(12px, 1.5cqw, 20px) / 1.25 var(--schrift-text); box-shadow: 0 12px 26px rgba(14, 16, 17, .28); opacity: 0; transform: rotate(var(--r)) scale(.6); transition: transform .45s cubic-bezier(.3, 1.6, .5, 1), opacity .25s; }
 .st-notiz.zeigen { opacity: 1; transform: rotate(var(--r)); }
 .st-notiz-alt { background: linear-gradient(175deg, #fff7b0, #ffee80 70%, #fbe36a); color: #1d1f20; border-radius: 2px 2px 16px 2px / 2px 2px 8px 2px; box-shadow: 0 1px 1px rgba(0, 0, 0, .06), 0 14px 22px -10px rgba(0, 0, 0, .45); }
-/* Haftnotiz: umgeknickte Ecke unten rechts (Anna 14.10.2026: „mehr nach Sticky Note“) */
+/* Haftnotiz: umgeknickte Ecke unten rechts */
 .st-notiz-alt::after { content: ""; position: absolute; right: 0; bottom: 0; width: 1.1em; height: 1.1em; background: linear-gradient(315deg, transparent 48%, #e9cf55 50%, #f6e27a 100%); border-radius: 0 0 16px 0 / 0 0 8px 0; box-shadow: -1px -1px 2px rgba(0, 0, 0, .08); }
 .st-notiz-neu { background: var(--farbe-weiss); color: var(--farbe-dunkel); padding-left: 2.4em; border-radius: 10px; }
 .st-notiz-neu::before { content: ""; position: absolute; left: .8em; top: 50%; width: 1em; height: 1em; margin-top: -.5em; border-radius: 50%; background: var(--farbe-primaer) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5.5' fill='none' stroke='white' stroke-width='2'/%3E%3C/svg%3E") center / 80% no-repeat; }
@@ -587,7 +587,7 @@
 }
 /* Clay-Icons wie auf der übrigen Website: weißer Grund mit runden Ecken */
 .zk-karte img { border-radius: 26px; background: var(--farbe-weiss); padding: 8px; }
-/* Projektseite, Runde 6 (Anna 14.10.2026): Foto-Mockups aus Canva, CTA-Strategie, Prozess zweispaltig, Zeilenabstände */
+/*: Foto-Mockups aus Canva, CTA-Strategie, Prozess zweispaltig, Zeilenabstände */
 .st-seite { transform: translateY(calc(var(--y, 0) * -100cqw / var(--basis, 1440))); }
 .st-eingabe { left: calc(var(--x) * 100cqw / var(--basis, 1440)); top: calc(var(--t) * 100cqw / var(--basis, 1440)); max-width: calc(var(--w) * 100cqw / var(--basis, 1440)); font-size: calc(14 * 100cqw / var(--basis, 1440)); }
 .fm { position: relative; width: 100%; aspect-ratio: var(--sb) / var(--sh); overflow: hidden; border-radius: 24px; background: #222; }
@@ -624,7 +624,7 @@
 /* Prozess zweispaltig: nur erster und letzter Schritt blau */
 .cs-prozess-spalten .grafik-prozess:first-child li:last-child .zl-marke, .cs-prozess-spalten .grafik-prozess:last-child li:first-child .zl-marke { background: var(--farbe-dunkel); }
 .cs-prozess-spalten .grafik-prozess:first-child li:last-child::before, .cs-prozess-spalten .grafik-prozess:last-child li:first-child::before { background: var(--farbe-dunkel); }
-/* Personas: zwei Zielgruppen, zwei Sprachen (Anna 14.10.2026) */
+/* Personas: zwei Zielgruppen, zwei Sprachen */
 .cs-personas > .gr-h3 { margin: 0; }
 .pe-zwei { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 32px; }
 .pe-seite { position: relative; border-radius: 28px; padding: 44px 40px 72px; font-family: var(--schrift-text); }
@@ -714,7 +714,7 @@
   .ga-bild { padding: 14px; border-radius: 20px; }
   .hf-flaeche { border-radius: 20px; padding: 10% 4%; }
 }
-/* Runde 8 (Anna 14.10.2026): Schritte im Ablauf als Sprungmarken, Linie endet am letzten Punkt */
+/*: Schritte im Ablauf als Sprungmarken, Linie endet am letzten Punkt */
 .zl-anker { color: inherit; text-decoration: none; }
 .zl-anker::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
 .zl-anker span { display: inline-block; margin-left: 4px; color: var(--farbe-primaer); transition: transform .2s; }
@@ -727,14 +727,14 @@
   .cs-prozess-spalten .grafik-prozess:first-child .zeitleiste::before { bottom: -24px; }
   .cs-prozess-spalten .grafik-prozess:last-child .zeitleiste::before { top: 0; }
 }
-/* Handy überdeckt das Browserfenster deutlich (Anna 14.10.2026: „Überschneidung zu knapp“) */
+/* Handy überdeckt das Browserfenster deutlich */
 .bn-geraete { padding-right: 9%; }
 .bn-geraete .h3d.iph { right: 0; bottom: -32px; }
 @media (max-width: 900px) {
   .bn-geraete { padding-right: 0; }
   .bn-geraete .h3d.iph { right: -2%; }
 }
-/* Heft zu und auf (Anna 14.10.2026): Schatten an den Seiten, geschlossenes Heft rückt in die Mitte */
+/* Heft zu und auf: Schatten an den Seiten, geschlossenes Heft rückt in die Mitte */
 .hf-heft { box-shadow: none; transition: transform .9s cubic-bezier(.45, .05, .3, 1), opacity .45s; }
 .hf-heft > img { box-shadow: 0 40px 70px rgba(0, 0, 0, .45), 0 6px 14px rgba(0, 0, 0, .3); }
 .hf-heft > img.leer { visibility: hidden; }
@@ -746,23 +746,23 @@
 @media (prefers-reduced-motion: reduce) {
   .hf-heft { transition: none; }
 }
-/* Kapitel wie „Leistungen“ auf der Startseite (Anna 14.10.2026): schwarz, ohne Nummer, ohne Linie */
+/* Kapitel wie „Leistungen“ auf der Startseite: schwarz, ohne Nummer, ohne Linie */
 .cs-kapitel { display: block; padding: 140px 0 8px; border-bottom: 0; }
 .cs-kapitel .meta { color: var(--farbe-gedaempft); margin: 0 0 12px; }
 .cs-kapitel .kp-titel { font-family: var(--schrift-ueberschrift); font-weight: 500; line-height: .95; letter-spacing: -.03em; color: var(--farbe-dunkel); margin: 0; overflow-wrap: break-word; hyphens: manual; }
 @media (max-width: 900px) {
   .cs-kapitel { padding-top: 80px; }
 }
-/* Abstand zwischen Einleitung und Bildwand (Anna 14.10.2026: „zu klein“) */
+/* Abstand zwischen Einleitung und Bildwand */
 .cs-cta-wand .cs-block-kopf { margin-bottom: 48px; }
 @media (max-width: 900px) {
   .cs-cta-wand .cs-block-kopf { margin-bottom: 28px; }
 }
-/* Formular im Film komplett ausfüllen (Anna 14.10.2026): Auswahlfeld überdecken, Textfeld mehrzeilig, Häkchen/Punkt in Bauer-Blau */
+/* Formular im Film komplett ausfüllen: Auswahlfeld überdecken, Textfeld mehrzeilig, Häkchen/Punkt in Bauer-Blau */
 .st-eingabe.decke { background: var(--farbe-weiss); width: calc(var(--w) * 100cqw / var(--basis, 1440)); }
 .st-eingabe.mehrzeilig { white-space: normal; }
 .st-eingabe.marke { color: #003466; font-weight: 800; overflow: visible; }
-/* Herausforderung → Website-Relaunch → Ziele als Grafik (Anna 14.10.2026) */
+/* Herausforderung → Website-Relaunch → Ziele als Grafik */
 .cs-ziele-grafik { display: grid; grid-template-columns: minmax(0, 1fr) minmax(160px, .7fr) minmax(0, 1fr); column-gap: 0; row-gap: 28px; padding: 56px 48px; border-radius: 28px; background: var(--kachel); font-family: var(--schrift-text); }
 .zg-kopf { display: flex; align-items: center; gap: 18px; }
 .zg-kopf img { width: 76px; height: 76px; border-radius: 20px; background: var(--farbe-weiss); padding: 6px; object-fit: contain; }
@@ -803,7 +803,7 @@
   .zg-kopf img { width: 52px; height: 52px; border-radius: 14px; }
   .zg-kopf h2 { font-size: 28px; }
 }
-/* Mega-Menü-Film (Anna 14.10.2026): 12 s Schleife – Kompetenzen auf/zu, Jobs & Karriere auf/zu; Ease-in/Ease-out */
+/* Mega-Menü-Film: 12 s Schleife – Kompetenzen auf/zu, Jobs & Karriere auf/zu; Ease-in/Ease-out */
 .cs-mega-film .mf-browser { border-radius: 14px; overflow: hidden; background: var(--farbe-weiss); box-shadow: 0 40px 80px rgba(0, 20, 40, .25); }
 .mf-fenster { position: relative; aspect-ratio: 1440 / 900; overflow: hidden; }
 .mf-basis { display: block; width: 100%; }
@@ -819,7 +819,7 @@
   .mf-menue-0 { clip-path: inset(0 0 0 0); }
   .mf-zeiger { display: none; }
 }
-/* ===== Variante B: Seamless Presentation (Anna 14.10.2026) – nur unter .cs-nahtlos, Variante A bleibt unverändert ===== */
+/* ===== Variante B: Seamless Presentation – nur unter.cs-nahtlos, Variante A bleibt unverändert ===== */
 .cs-nahtlos { overflow-x: clip; }
 .cs-nahtlos .cs-bilder { display: block; padding: 0; }
 .nl-band { position: relative; padding: clamp(56px, 7vw, 112px) var(--rand-seite); background: linear-gradient(180deg, var(--von), var(--bis)); }
@@ -835,7 +835,7 @@
 @media (max-width: 900px) {
   .nl-band { padding-left: var(--rand-seite-mobil); padding-right: var(--rand-seite-mobil); }
 }
-/* B: Bildschirmwand über die volle Breite, taucht an allen Seiten aus Weiß auf (Storyboard 14.10.2026, Abschnitt 2) */
+/* B: Bildschirmwand über die volle Breite, taucht an allen Seiten aus Weiß auf */
 .cs-nahtlos .cs-buehne { margin: 0; }
 .cs-nahtlos .cs-buehne .cs-wand { aspect-ratio: 16 / 8; max-width: 1520px; margin: 0 auto; border-radius: 0; background: transparent;
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent), linear-gradient(180deg, transparent, #000 12%, #000 78%, transparent); -webkit-mask-composite: source-in;
@@ -913,18 +913,18 @@
 .cs-nahtlos .ga-fenster { box-shadow: 0 0 0 1.5px rgba(14, 16, 17, .22), 0 28px 60px rgba(14, 16, 17, .18); }
 .fk-cta .fk-fenster { outline: 0; }
 .fk-sie .fk-cta .fk-label, .fk-du .fk-cta .fk-label { padding: 0; background: none; color: inherit; }
-/* Haftnotiz quadratisch (Anna 14.10.2026: „Sticky Notes sind meistens höher, könnten auch quadratisch sein“) */
+/* Haftnotiz quadratisch */
 .st-notiz-alt { display: flex; align-items: flex-start; width: clamp(92px, 13cqw, 170px); max-width: none; aspect-ratio: 1 / 1; padding: .9em .85em; line-height: 1.22; white-space: normal; }
 @media (max-width: 900px) {
   .st-notiz-alt { width: clamp(72px, 22cqw, 120px); }
 }
-/* B Einstieg „Klartext“ (Recherche + Jury 14.10.2026): ein Screen auf Bauer-Blau mit harter Kante, Zahlen als Text darunter, Herausforderung/Ziele ohne Icons */
+/* B Einstieg „Klartext“: ein Screen auf Bauer-Blau mit harter Kante, Zahlen als Text darunter, Herausforderung/Ziele ohne Icons */
 .cs-nahtlos .nl-band.cs-hero { margin-top: 0; padding-bottom: clamp(40px, 6vw, 96px); }
 .cs-nahtlos .cs-hero-rahmen { max-width: 1200px; margin: 0 auto; aspect-ratio: 2880 / 1540; overflow: hidden; border-radius: 8px; }
 .cs-nahtlos .cs-hero-bild { display: block; width: 100%; max-width: none; height: auto; }
 .cs-nahtlos .cs-kennzahlen { list-style: none; width: min(1200px, 100% - 2 * var(--rand-seite)); margin: clamp(48px, 6vw, 96px) auto 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(24px, 3vw, 48px); }
 .cs-nahtlos .cs-kennzahlen li { display: flex; flex-direction: column; gap: 10px; padding-top: 16px; border-top: 1.5px solid var(--farbe-dunkel); font-size: 1.05rem; line-height: 1.35; color: var(--farbe-dunkel); }
-.cs-nahtlos .kz-zahl { font-family: var(--schrift-ueberschrift); font-size: clamp(56px, 7vw, 112px); line-height: .9; color: var(--farbe-dunkel); /* Zahlen schwarz (Anna 14.10.2026) */ }
+.cs-nahtlos .kz-zahl { font-family: var(--schrift-ueberschrift); font-size: clamp(56px, 7vw, 112px); line-height: .9; color: var(--farbe-dunkel); /* Zahlen schwarz */ }
 .cs-nahtlos .cs-ziele-text { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(32px, 6vw, 96px); max-width: 1200px; margin: 0 auto; }
 .cs-nahtlos .zt-titel { margin: 0; padding-bottom: 18px; border-bottom: 1.5px solid var(--farbe-dunkel); font-family: var(--schrift-ueberschrift); font-weight: 500; font-size: clamp(32px, 3.4vw, 52px); line-height: 1; letter-spacing: -.03em; color: var(--farbe-dunkel); }
 .cs-nahtlos .zt-liste { list-style: none; margin: 0; padding: 0; }
@@ -940,11 +940,11 @@
   .cs-nahtlos .cs-kennzahlen li { display: grid; grid-template-columns: 76px minmax(0, 1fr); align-items: center; gap: 12px; padding: 12px 0; }
   .cs-nahtlos .kz-zahl { font-size: 52px; }
 }
-/* Variante B, Einstieg als laufende Wand (Anna 14.10.2026): 25 Sections in fünf Spalten laufen endlos nach oben,
-   gerade und senkrecht (Anna 14.10.2026; gedreht wie die Schräge wären es -3.86deg); harte Kanten, kein Verblassen.
-   Startseite als Kachel in der mittleren Spalte (schwebender Hero raus, Anna 14.10.2026). Pause-Taste; bei „Bewegung reduzieren“ steht alles still. */
+/* Variante B, Einstieg als laufende Wand: 25 Sections in fünf Spalten laufen endlos nach oben,
+   gerade und senkrecht; harte Kanten, kein Verblassen.
+   Startseite als Kachel in der mittleren Spalte. Pause-Taste; bei „Bewegung reduzieren“ steht alles still. */
 .cs-nahtlos .nl-band.cs-hero-wand { padding: 0; background: var(--farbe-dunkel, var(--farbe-dunkel)); }
-/* Schwarz statt Bauer-Blau: blaue Sections heben sich ab (Anna 14.10.2026) */
+/* Schwarz statt Bauer-Blau: blaue Sections heben sich ab */
 .cs-hero-wand { --hw-winkel: 0deg; --hw-luecke: clamp(12px, 1.4vw, 22px); }
 .hw-buehne { position: relative; height: calc(clamp(520px, 54vw, 800px) + clamp(40px, 6.75vw, 96px)); overflow: hidden; }
 .hw-wand { position: absolute; left: -8%; right: -8%; top: -9%; bottom: -9%; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: minmax(0, 100%); gap: var(--hw-luecke); transform: rotate(var(--hw-winkel)); }
@@ -953,7 +953,7 @@
 .hw-fest { display: flex; flex-direction: column; justify-content: center; align-items: stretch; padding-top: clamp(40px, 6.75vw, 96px); }
 .hw-fest img { display: block; width: 100%; height: auto; max-width: none; margin: 0 0 var(--hw-luecke); border-radius: 6px; box-shadow: 0 0 0 1px rgba(255, 255, 255, .14), 0 12px 32px rgba(0, 0, 0, .5); }
 .hw-fest img:last-child { margin-bottom: 0; }
-/* Muster (Jana, Anna 16.10.2026): fünf gleich breite laufende Spalten, Kacheln gleich groß (oben beschnitten), groß gezoomt, ohne Umriss */
+/* Muster: fünf gleich breite laufende Spalten, Kacheln gleich groß (oben beschnitten), groß gezoomt, ohne Umriss */
 .hw-muster .hw-wand { left: -50%; right: -50%; top: -45%; bottom: -45%; grid-template-columns: repeat(5, minmax(0, 1fr)); }
 .hw-hell.hw-muster .hw-lauf img { aspect-ratio: 16 / 9; object-fit: cover; object-position: top; border-radius: 4px; box-shadow: 0 16px 40px rgba(0, 0, 0, .14); }
 @media (max-width: 900px) {
@@ -962,7 +962,7 @@
 @media (max-width: 600px) {
   .hw-muster .hw-wand { left: -110%; right: -110%; }
 }
-/* ganze Seite in der festen Mitte (Jana, Anna 16.10.2026): Kachel so hoch wie das sichtbare Band, Breite folgt dem Seitenverhältnis */
+/* ganze Seite in der festen Mitte: Kachel so hoch wie das sichtbare Band, Breite folgt dem Seitenverhältnis */
 .hw-fest-ganz { padding-top: 0; align-items: center; }
 .hw-fest-ganz img { width: auto; max-width: 100%; max-height: calc(clamp(520px, 54vw, 800px) + clamp(40px, 6.75vw, 96px) - 2 * var(--hw-luecke)); }
 @media (max-width: 900px) {
@@ -975,7 +975,7 @@
 .hw-lauf img { display: block; width: 100%; height: auto; max-width: none; margin: 0 0 var(--hw-luecke); border-radius: 6px; box-shadow: 0 0 0 1px rgba(255, 255, 255, .14), 0 12px 32px rgba(0, 0, 0, .5); }
 .cs-hero-wand.pause .hw-lauf { animation-play-state: paused; }
 .hw-knopf { position: absolute; z-index: 3; right: clamp(16px, 2.5vw, 32px); bottom: clamp(16px, 2.5vw, 32px); }
-/* über der Wand, sonst unerreichbar (Anna 16.10.2026) */
+/* über der Wand, sonst unerreichbar */
 .hw-knopf:hover { background: #2b2f31; }
 .hw-knopf:focus-visible { outline: 3px solid var(--farbe-weiss); outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) {
@@ -991,9 +991,9 @@
   .hw-wand { left: -48%; right: -48%; }
   .hw-knopf { width: 44px; height: 44px; }
 }
-/* Variante B: aktiver Kapitel-Knopf im Vorher-Film schwarz statt Kundenblau (Anna 14.10.2026) */
+/* Variante B: aktiver Kapitel-Knopf im Vorher-Film schwarz statt Kundenblau */
 .cs-nahtlos .st-kapitel[aria-current="true"] { background: var(--farbe-dunkel); color: var(--farbe-weiss); }
-/* Variante B: Haftnotizen hellblau (Anna 14.10.2026, wie die hellblauen Zettel im Figma-Review), kleiner, damit sie keinen Inhalt verdecken */
+/* Variante B: Haftnotizen hellblau, kleiner, damit sie keinen Inhalt verdecken */
 .cs-nahtlos .st-notiz-alt { width: clamp(84px, 10.5cqw, 136px); background: linear-gradient(175deg, #e4f2ff, #cfe6ff 70%, #bddcfb); color: var(--farbe-dunkel); align-items: center; justify-content: center; text-align: center; }
 .cs-nahtlos .st-notiz-alt::after { background: linear-gradient(315deg, transparent 48%, #a7c9ec 50%, #c6e0fb 100%); }
 @media (max-width: 900px) {
@@ -1001,9 +1001,9 @@
 }
 /* Variante B: Kapitel-Band vor einer Schräge – Platz lassen, damit die Schräge die Überschrift nicht anschneidet */
 .nl-band.nl-eng:has(+ .nl-band.nl-schraege) { padding-bottom: calc(24px + clamp(40px, 6.75vw, 96px)); }
-/* Variante B: Heft ohne blaue Fläche, groß (Storyboard Nr. 17) */
+/* Variante B: Heft ohne blaue Fläche, groß (Storyboard) */
 .cs-nahtlos .hf-flaeche { background: none; padding: 2% 0; max-width: 1100px; margin-inline: auto; }
-/* Variante B: Ergebnis als großer, ruhiger Schlusssatz (Storyboard Nr. 18) */
+/* Variante B: Ergebnis als großer, ruhiger Schlusssatz (Storyboard) */
 .cs-nahtlos .cs-texte-block { display: block; max-width: 1100px; margin: 0 auto; padding: clamp(24px, 4vw, 64px) 0 clamp(48px, 7vw, 112px); }
 .cs-nahtlos .cs-texte-block h2 { font: 500 .8rem/1 var(--schrift-meta); letter-spacing: .12em; text-transform: uppercase; margin: 0 0 20px; }
 .cs-nahtlos .cs-texte-block p { font-size: clamp(24px, 2.7vw, 40px); line-height: 1.28; letter-spacing: -.01em; color: var(--farbe-dunkel); }
@@ -1120,7 +1120,7 @@
 @media (max-width: 600px) {
   .eg-karten { grid-template-columns: 1fr; }
 }
-/* Korrekturen aus der Prüfung 15.10.2026 */
+/* Korrekturen aus der Prüfung */
 .cs-nahtlos .ds-stufen .ds-mass { color: var(--farbe-dunkel); }
 /* war weiß auf Weiß */
 .cs-nahtlos .ds-farbe[style*="#003466"] { box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .35); }
@@ -1140,7 +1140,7 @@
   .cs-nahtlos .fk-stationen { grid-auto-flow: row; grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 40px; }
   .cs-nahtlos .fk-stationen[data-n="4"] { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
-/* Umlaut-Punkte dürfen die Zeile darüber nicht berühren (Anna 15.10.2026) */
+/* Umlaut-Punkte dürfen die Zeile darüber nicht berühren */
 .cs-nahtlos .fk-gross, .cs-nahtlos .kr-titel, .cs-nahtlos .bn-titel { line-height: 1.2; }
 /* Bühne mit Handy: Pause-Taste */
 .bn-steuerung { position: relative; z-index: 2; margin: 20px 0 0; }
@@ -1150,9 +1150,9 @@
   .bn-knopf { display: none; }
 }
 /* Abschluss: kein Blau auf Schwarz (Hausregel) – weißer Knopf */
-/* ===== Referenz-Bausteine für alle Projekte (Anna 15.10.2026: „wie eine Art CMS, wiederkehrende Pattern“) =====
+/* ===== Referenz-Bausteine für alle Projekte =====
    Farben kommen aus dem Projekt (Feld "stil" in projekte.json): --pc-dunkel, --pc-akzent, --pc-zweit, --pc-hell, --pc-meta-dunkel.
-   Erster Einsatz: Deinetwegen (Vorlage Behance „Reslink“, nur Prinzipien). */
+   Erster Einsatz: Deinetwegen. */
 .cs-nahtlos .meta:has(+ :is(h1, h2))::before, .cs-nahtlos div:has(+ :is(h1, h2)) > .meta:last-child::before { background: var(--pc-akzent); }
 /* dunkles Band: weiße Schrift, Dachzeile in einer Farbe mit genug Kontrast (nicht automatisch die Akzentfarbe) */
 .nl-dunkel { color: var(--farbe-weiss); }
@@ -1168,7 +1168,7 @@
 .bl-kopf { display: flex; justify-content: space-between; align-items: center; gap: 24px; max-width: 1200px; margin: 0 auto clamp(32px, 5vw, 72px); position: relative; z-index: 2; }
 .bl-logo { width: clamp(96px, 11vw, 160px); height: auto; }
 .bl-kopf .meta { margin: 0; text-align: right; }
-/* ohne echtes Mockup: flaches Bildschirmbild; mit Mockup: das Foto (Gerät nach Zielgruppe, Anna 15.10.2026) */
+/* ohne echtes Mockup: flaches Bildschirmbild; mit Mockup: das Foto */
 .bl-flach, .bl-mockup { position: relative; z-index: 2; width: min(1000px, 100%); margin: 0 auto; }
 .bl-flach img { display: block; width: 100%; height: auto; border-radius: clamp(8px, 1vw, 14px); box-shadow: 0 30px 70px rgba(0, 0, 0, .35); }
 /* mit echtem Foto-Mockup: Foto über die ganze Breite, Logo und Dachzeile oben darauf */
@@ -1177,7 +1177,7 @@
 .bl-mit-mockup .bl-kopf { position: relative; z-index: 3; width: min(1200px, 100% - 2 * var(--rand-seite)); margin: 0 auto; padding-top: clamp(24px, 3vw, 48px); }
 .bl-mit-mockup .bl-kopf .meta { color: var(--pc-dunkel); }
 .bl-mockup { width: 100%; position: relative; }
-/* Oberkante des Fotos läuft in den weißen Kopf aus (Anna 15.10.2026: Streifen weiß) */
+/* Oberkante des Fotos läuft in den weißen Kopf aus */
 .bl-mit-mockup .bl-mockup::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 16%; background: linear-gradient(180deg, var(--farbe-weiss), rgba(255, 255, 255, 0)); pointer-events: none; }
 .bl-mockup img { display: block; width: 100%; height: auto; }
 @media (max-width: 900px) {
@@ -1258,7 +1258,7 @@
   .sp-reihe { grid-template-columns: 1fr; }
   .sp-seite:nth-child(2) { margin-top: 0; }
 }
-/* Prüfer 15.10.2026: Satzzeichen und Umlaute dürfen sich nie berühren – Überschriften der Projektseiten mit mehr Zeilenabstand */
+/* Prüfer: Satzzeichen und Umlaute dürfen sich nie berühren – Überschriften der Projektseiten mit mehr Zeilenabstand */
 .cs-titel { line-height: 1.15; }
 .cs-nahtlos .gr-h3, .cs-nahtlos .zeitleiste h3 { line-height: 1.2; }
 .cs-ergebnis .eg-karten.eg-anzahl-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -1283,20 +1283,20 @@
 .st-monitor-foto .st-browser { display: flex; flex-direction: column; height: 100%; border: 0; border-radius: 0; box-shadow: none; }
 .st-monitor-foto .st-browser .vf-leiste { border-radius: 0; flex: none; }
 .st-monitor-foto .st-fenster { flex: 1; aspect-ratio: auto; }
-/* Herausforderung und Ziele als Listen in den Karten (Bauer, Anna 15.10.2026: wie Deinetwegen) */
+/* Herausforderung und Ziele als Listen in den Karten */
 .hk-karte.hk-mit-liste { justify-content: flex-start; gap: 28px; min-height: 0; }
 .hk-dunkel .hk-etikett::before { background: var(--pc-akzent-dunkel, var(--pc-akzent)); }
 .hk-liste { list-style: none; margin: 0; padding: 0; }
 .hk-liste li { padding: 16px 0; border-top: 1.5px solid currentColor; border-top-color: rgba(14, 16, 17, .15); font-size: clamp(18px, 1.6vw, 24px); line-height: 1.35; }
 .hk-dunkel .hk-liste li { border-top-color: rgba(255, 255, 255, .25); }
 .cs-nahtlos .cs-kennzahlen.cs-block { margin-top: 0; }
-/* Prüfer 15.10.2026: Kennzahlen bündig mit Überblick und Inhalt; Browser-Leiste im Monitor-Foto am Handy flacher */
+/* Prüfer: Kennzahlen bündig mit Überblick und Inhalt; Browser-Leiste im Monitor-Foto am Handy flacher */
 .cs-nahtlos .cs-kennzahlen.cs-block { width: auto; max-width: 1200px; margin: 0 auto; }
 @media (max-width: 900px) {
   .st-monitor-foto .vf-leiste { height: 20px; padding-left: 40px; background: radial-gradient(circle at 10px 10px, var(--farbe-grau-hell) 3px, transparent 4px), radial-gradient(circle at 19px 10px, var(--farbe-grau-hell) 3px, transparent 4px), radial-gradient(circle at 28px 10px, var(--farbe-grau-hell) 3px, transparent 4px), #f3f4f5; }
   .st-monitor-foto .vf-adresse { padding: 1px 8px; font-size: 9px; }
 }
-/* Anna 15.10.2026: kein weißer Spalt unter der Mockup-Bühne; Überschriften je Projekt (Bauer: schwarz); Ziele-Spalten nach Anzahl */
+/* kein weißer Spalt unter der Mockup-Bühne; Überschriften je Projekt (Bauer: schwarz); Ziele-Spalten nach Anzahl */
 .cs-nahtlos .nl-band.bl-hero.bl-mit-mockup { padding: 0; }
 .ub-aussage, .hk-karte:not(.hk-dunkel) .hk-text, .hk-nr { color: var(--pc-titel); }
 .hk-ziele ol { grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); }
@@ -1305,16 +1305,16 @@
 }
 .hk-karte:not(.hk-dunkel) { color: var(--pc-titel); }
 .cs-nahtlos .vd-text .bn-titel { color: var(--pc-titel); }
-/* Bauer (Anna 15.10.2026): Punkt der Dachzeile gelb; auf hellem Grund mit feinem dunkelblauem Rand, damit er sichtbar bleibt (Gelb auf Weiß zu schwach) */
+/* Bauer: Punkt der Dachzeile gelb; auf hellem Grund mit feinem dunkelblauem Rand, damit er sichtbar bleibt (Gelb auf Weiß zu schwach) */
 .cs-nahtlos .meta:has(+ :is(h1, h2))::before, .cs-nahtlos div:has(+ :is(h1, h2)) > .meta:last-child::before, .hk-karte:not(.hk-dunkel) .hk-etikett::before { box-shadow: 0 0 0 1.5px var(--pc-punkt-rand, transparent); }
 .nl-blau .meta::before, .nl-dunkel .meta::before { box-shadow: none; }
-/* Anna 15.10.2026: Anfrage-Knopf im Abschluss blau (Ausnahme von „kein Blau auf Schwarz“, Knopf 3,4 : 1, Schrift 5,4 : 1);
+/* Anfrage-Knopf im Abschluss blau (Ausnahme von „kein Blau auf Schwarz“, Knopf 3,4: 1, Schrift 5,4: 1);
    „Nächstes Projekt“ ohne Knöpfe, Name mit Pfeil mittig */
 .eg-abschluss .button { background: var(--farbe-primaer); border-color: var(--farbe-primaer); color: var(--farbe-weiss); }
 .eg-abschluss .button:hover { background: var(--farbe-weiss); border-color: var(--farbe-weiss); color: var(--farbe-dunkel); }
 .cs-weiter > div { text-align: center; }
 .cs-weiter > div .gedaempft { margin-inline: auto; }
-/* Raster auf hellem Grund (Jana: Tusche-Striche, Anna 16.10.2026): Kacheln mit feinem dunklem Rand und weichem Schatten */
+/* Raster auf hellem Grund: Kacheln mit feinem dunklem Rand und weichem Schatten */
 .hw-hell .hw-fest img, .hw-hell .hw-lauf img { box-shadow: 0 0 0 1px rgba(0, 0, 0, .14), 0 18px 44px rgba(0, 0, 0, .22); }
 .hw-hell .hw-knopf { background: #000; color: var(--farbe-weiss); }
 /* Seiten nebeneinander in voller Länge (Jana: Werkbereiche) – Etikett im Stil der Kundin über --pc-pille */
@@ -1333,7 +1333,7 @@
 .cs-foto { margin: 0; }
 .cs-foto img { display: block; width: 100%; height: auto; }
 .cs-weiter-name { line-height: 1.15; }
-/* Galerie zum Durchklicken (Referenz Jana, Anna 16.10.2026): Fenster mit Aufnahme, Klick zeigt die nächste; keine eigenen Pfeile (irreführend neben Janas Pfeilen) */
+/* Galerie zum Durchklicken: Fenster mit Aufnahme, Klick zeigt die nächste; keine eigenen Pfeile (irreführend neben Janas Pfeilen) */
 .cs-durchklick { max-width: 1200px; margin: 0 auto; }
 .dk-fenster { border-radius: clamp(10px, 1.2vw, 16px); overflow: hidden; background: var(--farbe-weiss); box-shadow: 0 24px 60px rgba(0, 0, 0, .14); }
 .dk-bilder { display: block; width: 100%; aspect-ratio: 2000 / 1110; padding: 0; border: 0; background: var(--farbe-weiss); cursor: pointer; }
@@ -1341,44 +1341,44 @@
 .dk-bilder img[hidden] { display: none; }
 .dk-bilder:focus-visible { outline: 3px solid var(--farbe-primaer, var(--farbe-primaer)); outline-offset: -3px; }
 
-/* Faktenzeile ohne Website-Link (Anna 13.11.2026): drei Spalten, mehr Luft dazwischen */
+/* Faktenzeile ohne Website-Link: drei Spalten, mehr Luft dazwischen */
 @media (min-width: 900.02px) { .cs-fakten:not(:has(> div:nth-child(4))) { grid-template-columns: 1fr 1.6fr 1fr; } }
 @media (max-width: 900px) { .cs-fakten { column-gap: 32px; } }
-/* Down to Earth (Anna 13.11.2026): Logo und Dachzeile liegen auf dem Himmel des Fotos, ohne Streifen und ohne Verlauf */
+/* Down to Earth: Logo und Dachzeile liegen auf dem Himmel des Fotos, ohne Streifen und ohne Verlauf */
 .cs-kerstin .bl-mit-mockup { position: relative; }
 .cs-kerstin .bl-mit-mockup .bl-kopf { position: absolute; top: 0; left: 0; right: 0; }
 .cs-kerstin .bl-mit-mockup .bl-mockup::before { display: none; }
 .cs-kerstin .bl-mit-mockup .bl-kopf .meta { color: #1d3b5c; }
 @media (max-width: 767.98px) { .cs-kerstin .bl-mit-mockup .bl-kopf { display: none; } }
-/* Anna 13.11.2026: Inhalt, Kennzahlen und Ergebnis linksbündig zum Kopf (wie die Kapitelüberschriften), Überschriften und Texte der Ergebnis-Spalten auf einer Höhe */
+/* Inhalt, Kennzahlen und Ergebnis linksbündig zum Kopf (wie die Kapitelüberschriften), Überschriften und Texte der Ergebnis-Spalten auf einer Höhe */
 .cs-nahtlos .cs-inhalt { max-width: none; margin: 0; }
 .cs-inhalt .anker { padding-left: 0; padding-right: 0; padding-bottom: 0; }
 .cs-nahtlos .cs-ergebnis { max-width: none; }
 .cs-nahtlos .cs-kennzahlen.cs-block { max-width: none; margin-left: 0; margin-right: 0; }
 .eg-karten:not(.eg-mit-stimme .eg-karten) { grid-template-rows: auto auto; }
 .eg-karten:not(.eg-mit-stimme .eg-karten) li { display: grid; grid-row: span 2; grid-template-rows: subgrid; align-content: start; }
-/* Icons (Down to Earth, Anna 13.11.2026): vier gleich große Felder, Icon gleich groß */
+/* Icons: vier gleich große Felder, Icon gleich groß */
 .mk-logos.mk-gleich { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: auto; }
 .mk-logos.mk-gleich .mk-logo { grid-column: auto; aspect-ratio: 1; display: grid; place-items: center; }
 .mk-logos.mk-gleich .mk-logo img { width: 86%; height: auto; max-width: none; max-height: none; }
 @media (max-width: 767.98px) { .mk-logos.mk-gleich { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
-/* Überschriften mit mehreren Wörtern in Groß- und Kleinschreibung (Anna 21.11.2026) */
+/* Überschriften mit mehreren Wörtern in Groß- und Kleinschreibung */
 .cs-titel, .ub-aussage, .fk-gross, .bn-titel, .kr-titel, .la-titel, .pk-name { text-transform: none; letter-spacing: 0; }
 /* Einzelwort-Titel in Annas Schrift passen am Handy sonst nicht in die Zeile („Ausgangsla-ge“) */
 @media (max-width: 767.98px) { .kp-titel.lang-wort { font-size: 9.6vw; overflow-wrap: normal; word-break: normal; hyphens: none; } }
-/* Inhaltsleiste ohne graue Striche unter den Punkten (Anna 21.11.2026) */
+/* Inhaltsleiste ohne graue Striche unter den Punkten */
 .cs-inhalt .anker-spur li { border: 0; }
-/* Herausforderung und Lösung (Anna 21.11.2026): Lösungstext in Groß- und Kleinschreibung, beide Karten etwas höher,
+/* Herausforderung und Lösung: Lösungstext in Groß- und Kleinschreibung, beide Karten etwas höher,
    Inhalte unten auf einer Höhe (letzte Zeile links und rechts gleich hoch) */
 .hk-text { text-transform: none; letter-spacing: 0; }
 .hk-paar .hk-karte { min-height: clamp(380px, 38vw, 560px); justify-content: space-between; }
 .hk-paar .hk-karte.hk-mit-liste { gap: 28px; }
 .hk-paar .hk-liste li:last-child { padding-bottom: 0; }
-/* Alle grauen Striche der Inhaltsleiste raus (Anna 21.11.2026) */
+/* Alle grauen Striche der Inhaltsleiste raus */
 .cs-inhalt .anker, .cs-inhalt .anker-spur, .cs-inhalt .anker-spur li, .cs-inhalt .anker-spur a { border: 0; box-shadow: none; }
 
-/* Korrekturen Anna 22.11.2026: lange Aussagen in der Fließtext-Schrift fett statt Handschrift (Handschrift nur für kurze Überschriften und Dachzeilen) */
+/* Korrekturen lange Aussagen in der Fließtext-Schrift fett statt Handschrift (Handschrift nur für kurze Überschriften und Dachzeilen) */
 .vd-text .bn-titel, .cs-nahtlos .vd-text .bn-titel { font-family: var(--schrift-text); font-weight: 700; font-size: var(--groesse-6); line-height: 1.15; letter-spacing: -.01em; }
 .ub-aussage { font-family: var(--schrift-text); font-weight: 700; font-size: clamp(30px, 3.8vw, 58px); line-height: 1.15; letter-spacing: -.015em; }
 .hk-text { font-family: var(--schrift-text); font-weight: 700; font-size: clamp(26px, 2.9vw, 44px); line-height: 1.2; letter-spacing: -.01em; }
@@ -1398,5 +1398,5 @@
 .cs-nahtlos .ga-flach .ga-fenster { box-shadow: none; border-radius: var(--radius-karte); }
 .ga-flach .ga-raster { margin-top: 0; }
 .nl-band:has(> .ga-flach) { padding-top: 0; }
-/* Typografie-Konzept (Anna 22.11.2026): Überschriften der Projektseiten in der Textschrift, Groß- und Kleinschreibung; Unterlängen brauchen Luft */
+/* Typografie-Konzept: Überschriften der Projektseiten in der Textschrift, Groß- und Kleinschreibung; Unterlängen brauchen Luft */
 .kp-titel, .cs-kapitel .kp-titel { line-height: 1; }

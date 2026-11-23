@@ -2,7 +2,7 @@ import re
 # Erzeugt wiederkehrende Inhalte aus werkzeuge/inhalte/*.json (Projekte, Kundenstimmen, Blogartikel, Kennzahlen)
 # und setzt sie zwischen die Marker <!-- NAME:START --> … <!-- NAME:ENDE --> der Seiten.
 # Jeder Eintrag hat Schlagworte (tags), z. B. "website", "brand", "ui-ux"; die Leistungsseiten wählen danach aus.
-# Neuer Eintrag: in die passende Datei schreiben, dann  python3 werkzeuge/inhalte-erzeugen.py  (und danach leistungsseiten.py)
+# Neuer Eintrag: in die passende Datei schreiben, dann python3 werkzeuge/inhalte-erzeugen.py (und danach leistungsseiten.py)
 import datetime, re
 
 from gemeinsam import PFEIL, WEBSITE, bild_attr, einsetzen, esc, euro, lade_json, lesezeit as minuten, spiel_sektion
@@ -18,16 +18,16 @@ def mit_tag(liste, tags):
 
 
 
-# Angezeigte Breite der Seitenaufnahmen im Cover (gemessen 320–1920 px, 19.10.2026): Desktop-Bild am Handy bis 66 %, am Tablet bis 72 %,
+# Angezeigte Breite der Seitenaufnahmen im Cover: Desktop-Bild am Handy bis 66 %, am Tablet bis 72 %,
 # sonst bis 63 % der Breite, höchstens 900 px; Handy-Bild bis 15 %, höchstens 210 px
 GROESSE_DESKTOP = '(max-width: 600px) 66vw, (max-width: 1024px) 72vw, min(63vw, 900px)'
 GROESSE_HANDY = '(max-width: 767.98px) 15vw, min(15vw, 210px)'
 
 
-# --- Projekt-Titelbild (Cover) wie bei Behance (Anna 14.10.2026): Fläche in der Hausfarbe des Kunden, oben eine Kopfzeile
-#     „Kunde · Leistung · Jahr“ (redaktioneller Rahmen), Geräte gerade gestellt, bei allen Projekten gleiche Machart.
-#     Beim Überfahren scrollt der Bildschirm langsam nach unten (nur ohne „Bewegung reduzieren“).
-# Kacheln und Karten mit Projekten haben überall schwarzen Grund wie Jana Voigtmann (Anna 12.11.2026); die Hausfarbe
+# --- Projekt-Titelbild (Cover): Fläche in der Hausfarbe des Kunden, oben eine Kopfzeile
+# „Kunde · Leistung · Jahr“ (redaktioneller Rahmen), Geräte gerade gestellt, bei allen Projekten gleiche Machart.
+# Beim Überfahren scrollt der Bildschirm langsam nach unten (nur ohne „Bewegung reduzieren“).
+# Kacheln und Karten mit Projekten haben überall schwarzen Grund wie Jana Voigtmann; die Hausfarbe
 # des Kunden bleibt nur auf der Projektseite selbst (cs-buehne, hausfarbe=True).
 KACHEL_GRUND = '#0e1011'
 
@@ -57,10 +57,10 @@ def projekt_link(p, pre):
 
 
 def foto_oder_cover(p, pre, c=None, klasse='pk-foto'):
-    """Projektkarte mit echtem Bild statt Geräte-Mockup auf Schwarz (Anna 23.11.2026); ohne passendes Bild bleibt das Mockup.
-    Feld „vorschau“ in projekte.json: ausgesuchtes Vorschaubild je Projekt, gilt überall, wo Projekte gezeigt werden (Anna 22.11.2026)."""
+    """Projektkarte mit echtem Bild statt Geräte-Mockup auf Schwarz; ohne passendes Bild bleibt das Mockup.
+    Feld „vorschau“ in projekte.json: ausgesuchtes Vorschaubild je Projekt, gilt überall, wo Projekte gezeigt werden."""
     if p.get('vorschau') and p.get('vorschau_website'):
-        # Wie uicore.pro (Anna 22.11.2026): Vorschaubild als Grund, darüber der obere Teil der Website, unten angeschnitten
+        # Vorschaubild als Grund, darüber der obere Teil der Website, unten angeschnitten
         return (f'<span class="{klasse} pk-collage"><img class="pk-grund"{bild_attr(p["vorschau"], pre)} alt="" loading="lazy">'
                 f'<img class="pk-site"{bild_attr(p["vorschau_website"], pre)} alt="" loading="lazy"></span>')
     if p.get('vorschau'): return f'<img class="{klasse}"{bild_attr(p["vorschau"], pre)} alt="" loading="lazy">'
@@ -70,7 +70,7 @@ def foto_oder_cover(p, pre, c=None, klasse='pk-foto'):
 
 
 def projekt_karte(p, pre, ansicht=None, h='h3', satz=True):
-    # satz=False: ohne Unterzeile unter dem Namen (Projektübersicht, Anna 17.11.2026: „subline unter card titel raus“)
+    # satz=False: ohne Unterzeile unter dem Namen
     url, text, ziel = projekt_link(p, pre)
     c = p.get(f'cover_{ansicht}') if ansicht else None
     zeile = f'          <p class="pk-satz">{esc(p["satz"])}</p>\n' if satz else ''
@@ -94,9 +94,9 @@ def referenz_karten(liste, pre, kennung='ref', ansicht=None):
             '      </div>\n    </div>')
 
 
-# --- Startseite: Projekte als große Kacheln (Anna 12.11.2026, Vorlage zwetschke.de/arbeiten): Titelbild auf Schwarz (seit 12.11.2026, vorher Hausfarbe)
-#     füllt die ganze Kachel, unten Kunde klein und eine kurze Schlagzeile groß in Versalien (Feld „schlagzeile“ in projekte.json,
-#     gekürzt aus der freigegebenen Überblick-Aussage). Die ganze Kachel ist ein Link.
+# --- Startseite: Projekte als große Kacheln: Titelbild auf Schwarz
+# füllt die ganze Kachel, unten Kunde klein und eine kurze Schlagzeile groß in Versalien (Feld „schlagzeile“ in projekte.json,
+# gekürzt aus der freigegebenen Überblick-Aussage). Die ganze Kachel ist ein Link.
 def projekt_raster(liste, pre):
     k = []
     for p in liste:
@@ -108,10 +108,10 @@ def projekt_raster(liste, pre):
     return '    <ul class="pg">\n' + '\n'.join(k) + '\n    </ul>'
 
 
-# --- Startseite seit 18.11.2026 (Anna, Aufbau wie ein LinkedIn-Profil): Projekte als Liste wie „Erfahrung“ –
-#     kleines Vorschaubild, Kunde, Schlagzeile, Branche · Zeitraum, Leistungen (Feld „kurzleistungen“: ohne Plattform-Namen, ohne Flyer).
-# --- Startseite seit 21.11.2026 (Anna: „nur die Liste“): Kunde · Satz · Branche je Zeile, beim Darüberfahren klappt ein Bildstreifen auf
-#     (Feld „streifen“ in projekte.json). Ohne Raster und Umschalter.
+# --- Startseite: Projekte als Liste –
+# kleines Vorschaubild, Kunde, Schlagzeile, Branche · Zeitraum, Leistungen (Feld „kurzleistungen“: ohne Plattform-Namen, ohne Flyer).
+# --- Startseite: Kunde · Satz · Branche je Zeile, beim Darüberfahren klappt ein Bildstreifen auf
+# (Feld „streifen“ in projekte.json). Ohne Raster und Umschalter.
 def projekt_arbeit_liste(liste, pre):
     zeilen = []
     for p in liste:
@@ -119,7 +119,7 @@ def projekt_arbeit_liste(liste, pre):
         satz = esc((p.get('schlagzeile') or p['kopf']).rstrip('.'))
         branche = esc(p['branche'].split(' – ')[0].split(' / ')[0])
         bilder = p.get('streifen') or [p['cover']['desktop']]
-        if p.get('vorschau') and p['vorschau'] not in bilder: bilder = [p['vorschau']] + bilder  # Vorschaubild zuerst (Anna 22.11.2026)
+        if p.get('vorschau') and p['vorschau'] not in bilder: bilder = [p['vorschau']] + bilder  # Vorschaubild zuerst
         streifen = ''.join(f'<img{bild_attr(b, pre)} alt="" loading="lazy">' for b in bilder)
         zeilen.append(f'      <li class="pa-zeile"><a class="pa-link" href="{url}"{ziel}><span class="pa-kunde">{esc(p["kurzname"])}</span>'
                       f'<span class="pa-satz">{satz}</span><span class="pa-branche">{branche}</span></a>'
@@ -127,9 +127,9 @@ def projekt_arbeit_liste(liste, pre):
     return '    <div class="pa stil-b v-raeume">\n    <ul class="pa-liste">\n' + '\n'.join(zeilen) + '\n    </ul>\n    </div>'
 
 
-# --- Raster | Liste ohne JavaScript wie auf /referenzen/ (Anna 22.11.2026: „immer grid und liste“). Ein Abschnitt je Seite (feste Kennungen).
+# --- Raster | Liste ohne JavaScript wie auf /referenzen/. Ein Abschnitt je Seite (feste Kennungen).
 def projekt_wechsel(liste, pre, h='h3'):
-    # Slider statt Raster/Liste (Anna 22.11.2026): läuft langsam von selbst, hält bei Maus, Fokus und Pause-Button an,
+    # Slider statt Raster/Liste: läuft langsam von selbst, hält bei Maus, Fokus und Pause-Button an,
     # steht bei „Bewegung reduzieren“ still (dann seitlich scrollbar). Zweites Band nur für die Endlos-Schleife, inert.
     karten = '\n'.join(f'        <li>{projekt_karte(p, pre, h=h, satz=False)}</li>' for p in liste)
     return ('    <div class="ref-slider" data-ref-slider>\n'
@@ -152,8 +152,8 @@ def projekt_liste(liste, pre):
     return '    <ul class="pliste">' + ''.join(k) + '</ul>'
 
 
-# --- Startseite: eigene LinkedIn-Beiträge als Leiste (Anna 12.11.2026, Vorlage Instagram-Leiste von zwetschke.de).
-#     Bilder liegen lokal (bilder/linkedin/li-<id>.webp), nichts wird von LinkedIn geladen; Daten in inhalte/linkedin.json.
+# --- Startseite: eigene LinkedIn-Beiträge als Leiste.
+# Bilder liegen lokal (bilder/linkedin/li-<id>.webp), nichts wird von LinkedIn geladen; Daten in inhalte/linkedin.json.
 UHR = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>'
 LI_ZEICHEN = ('<svg class="li-zeichen" viewBox="0 0 24 24" aria-hidden="true"><rect x="1.5" y="1.5" width="21" height="21" rx="4" fill="currentColor"/>'
               '<rect x="5.5" y="9.5" width="2.8" height="8.5" fill="#fff"/><circle cx="6.9" cy="6.6" r="1.7" fill="#fff"/>'
@@ -191,13 +191,13 @@ def fuer_wen(pre=''):
     teile = []
     for i, g in enumerate(gruppen):
         link, ref = pre + g['link'], g['referenz']
-        # Handlungsaufforderung je Zielgruppe (Anna 16.10.2026): Mittelstand zuerst Website-Check (bis 24.10.2026 Website-Review), Selbstständige zuerst Kostenrechner
+        # Handlungsaufforderung je Zielgruppe: Mittelstand zuerst Website-Check, Selbstständige zuerst Kostenrechner
         ziele = {'review': (f'{pre}website-check/', 'Kostenloser Website-Check'), 'rechner': (f'{pre}preise/#rechner', 'Kosten berechnen'), 'initiative': (link, 'Zur Initiative')}
         reihen = {'review': ['review', 'rechner'], 'rechner': ['rechner', 'review'], 'initiative': ['initiative']}[g['aktion']]
         (haupt_url, haupt_text), *neben = [ziele[r] for r in reihen]
         aktionen = f'<a class="button" href="{haupt_url}">{haupt_text}{PFEIL}</a>' + ''.join(f'<a class="textlink" href="{u}">{x}{PFEIL}</a>' for u, x in neben)
         punkte = ''.join(f'<li>{fuellen(x)}</li>' for x in g['punkte_html'])
-        # Angebot im Mittelpunkt (Anna 16.10.2026): eine Karte mit eigenem Bild je Zielgruppe; Referenz nur als kleiner Link (Referenzen stehen weiter unten)
+        # Angebot im Mittelpunkt: eine Karte mit eigenem Bild je Zielgruppe; Referenz nur als kleiner Link (Referenzen stehen weiter unten)
         angebot = (f'<div class="dk-angebot"><div class="dk-angebot-text"><p class="meta">{g["dachzeile"]}</p><h4 class="dk-karte-titel"><a href="{link}">{esc(fuellen(g["name"]))}</a></h4>'
                    f'<p class="dk-karte-text">{esc(g["text"])}</p><ul class="dk-punkte">{punkte}</ul>'
                    f'<p class="dk-preis">{fuellen(g["preis_html"])}</p><p class="dk-aktionen">{aktionen}</p></div>'
@@ -260,7 +260,7 @@ def blog(liste, pre, linkpre, h='h3', einrueck='    ', kategorie=True, klasse='b
 
 
 def weitere_artikel(slug, anzahl=3):
-    # „Das könnte dich auch interessieren“ unter jedem Beitrag (Anna 17.11.2026, Vorbild Digital Trends „Related coverage“):
+    # „Das könnte dich auch interessieren“ unter jedem Beitrag:
     # gleiche Kategorie zählt 2, jedes gemeinsame Schlagwort 1; bei Gleichstand der neuere Beitrag zuerst
     ich = next(b for b in BLOG if b['slug'] == slug)
     def punkte(b):
@@ -277,7 +277,7 @@ def weitere_artikel(slug, anzahl=3):
 
 
 def aehnliche_artikel(slug, anzahl=3):
-    # rechte Leiste im Leselayout (Anna 17.11.2026): dieselbe Auswahl wie „Das könnte dich auch interessieren“, kompakt mit kleinem Bild
+    # rechte Leiste im Leselayout: dieselbe Auswahl wie „Das könnte dich auch interessieren“, kompakt mit kleinem Bild
     ich = next(b for b in BLOG if b['slug'] == slug)
     def punkte(b):
         return 2 * (b['kategorie'] == ich['kategorie']) + len(set(b.get('tags', [])) & set(ich.get('tags', [])))
@@ -290,18 +290,18 @@ def anker(name):
     return 'thema-' + re.sub(r'[^a-z0-9]+', '-', name.lower().replace('&', ' ')).strip('-')
 
 
-# Blog-Kategorien = Leistungen (Anna 13.10.2026), in dieser Reihenfolge; Kategorien ohne Beitrag werden ausgeblendet, bis einer da ist
+# Blog-Kategorien = Leistungen, in dieser Reihenfolge; Kategorien ohne Beitrag werden ausgeblendet, bis einer da ist
 BLOG_KATEGORIEN = ['Markenbildung', 'UI/UX', 'Webdesign', 'KI-Beratung', 'Marketing & Vertrieb']
 
 
 def blog_themen():
-    # Blog-Übersicht (Anna 13.10.2026): oben „Aktuelles“ mit den 3 neuesten Beiträgen (der neueste groß),
+    # Blog-Übersicht: oben „Aktuelles“ mit den 3 neuesten Beiträgen (der neueste groß),
     # darunter die Kategorien mit Überschrift und Linie; Chip-Leiste mit Anzahl je Kategorie
     fremd = sorted({b['kategorie'] for b in BLOG} - set(BLOG_KATEGORIEN))
     if fremd: raise SystemExit(f'Unbekannte Blog-Kategorie in blog.json: {fremd}')
     gruppen = {k: [b for b in BLOG if b['kategorie'] == k] for k in BLOG_KATEGORIEN}
     themen = [k for k in BLOG_KATEGORIEN if gruppen[k]]
-    # Ankerleiste wie auf den Leistungsseiten (Anna 17.11.2026: graue Spur, aktive weiße Pille; Anzahl steht am Kopf jeder Kategorie)
+    # Ankerleiste wie auf den Leistungsseiten
     chips = '<li><a href="#aktuelles" class="aktiv">Aktuelles</a></li>' + ''.join(f'<li><a href="#{anker(k)}">{esc(k)}</a></li>' for k in themen)
     gross = blog(BLOG[:1], '../', '', 'h3', '      ', klasse='blog-karte blog-karte-gross', lazy=False).replace('<li>', '<li class="blog-li-gross">', 1)
     out = [f'  <nav class="anker blog-anker" aria-label="Kategorien im Blog">\n    <ul class="anker-spur">{chips}</ul>\n  </nav>',
@@ -323,7 +323,7 @@ def blog_themen():
     return '\n'.join(out)
 
 
-# Einordnung je Kategorie und Spiel-Brücke im Blog (Anna 23.11.2026, Storytelling-Redigat)
+# Einordnung je Kategorie und Spiel-Brücke im Blog
 BLOG_UNTER = {
     'Markenbildung': 'Warum ein Logo allein keine Marke macht – und wie euer Auftritt auch für KI-Tools nutzbar wird.',
     'UI/UX': 'Wie gute Nutzerführung dafür sorgt, dass Besucher nicht abspringen, sondern anfragen.',
@@ -342,7 +342,7 @@ def kennzahlen(klasse='fakten hero-fakten', einrueck='    '):
             z.append(f'{einrueck}  <div><dt>{ORT}</dt><dd><span class="mit-liebe">{esc(k["text"])}</span></dd></div>')
         else:
             plus = f'<span class="fakt-plus">{k["zusatz"]}</span>' if k["zusatz"] else ''
-            # "seit": Jahre aus dem Startjahr berechnen (Anna 16.10.2026: selbstständig seit 2020) – zählt bei jedem Erzeugen von selbst weiter
+            # "seit": Jahre aus dem Startjahr berechnen – zählt bei jedem Erzeugen von selbst weiter
             zahl = datetime.date.today().year - k['seit'] if 'seit' in k else k['zahl']
             text = k['text'].replace('{seit}', str(k.get('seit', '')))
             z.append(f'{einrueck}  <div><dt><span data-zaehlen="{zahl}">{zahl}</span>{plus}</dt><dd>{esc(text)}</dd></div>')
@@ -351,7 +351,7 @@ def kennzahlen(klasse='fakten hero-fakten', einrueck='    '):
 
 
 
-# Passende Artikel unter Leistungen und festen Angeboten (Anna 18.11.2026: „bei allen Angeboten, allen Leistungen … die passenden Artikel,
+# Passende Artikel unter Leistungen und festen Angeboten („bei allen Angeboten, allen Leistungen … die passenden Artikel,
 # mindestens 2“). Auswahl über die Schlagworte (tags) in blog.json, neueste zuerst; reichen sie nicht, kommen Artikel mit den Ersatz-Schlagworten dazu.
 # Neue Artikel erscheinen so von selbst, sobald sie ein passendes Schlagwort tragen.
 def passende_artikel(tags, pre, ersatz=(), anzahl=3, mindestens=2):
@@ -371,8 +371,8 @@ ANGEBOT_ARTIKEL = {'marken-regelwerk/index.html': ['brand'], 'website-check/inde
 
 if __name__ == '__main__':
     seiten = {
-        'index.html': [('PROJEKTE', lambda: projekt_wechsel([x for x in PROJEKTE if x.get('case')], '')), ('LINKEDIN', lambda: linkedin_leiste('')), ('STIMMEN', lambda: stimmen(STIMMEN, ''))],   # „Für wen“, Blog-Karten und Kennzahlen seit 12.11.2026 nicht mehr auf der Startseite (Kennzahlen nur auf Über mich)
-        'profil/index.html': [('STIMMEN', lambda: stimmen(STIMMEN, '../')), ('BLOG', lambda: blog(BLOG[:4], '../', '../blog/')), ('LINKEDIN', lambda: linkedin_leiste('../')),   # Aktivitäten plus LinkedIn-Posts (Anna 22.11.2026)
+        'index.html': [('PROJEKTE', lambda: projekt_wechsel([x for x in PROJEKTE if x.get('case')], '')), ('LINKEDIN', lambda: linkedin_leiste('')), ('STIMMEN', lambda: stimmen(STIMMEN, ''))],   # „Für wen“, Blog-Karten und Kennzahlen nicht mehr auf der Startseite (Kennzahlen nur auf Über mich)
+        'profil/index.html': [('STIMMEN', lambda: stimmen(STIMMEN, '../')), ('BLOG', lambda: blog(BLOG[:4], '../', '../blog/')), ('LINKEDIN', lambda: linkedin_leiste('../')),   # Aktivitäten plus LinkedIn-Posts
                              
                               ('KENNZAHLEN', lambda: kennzahlen('fakten', '      '))],
         'blog/index.html': [('BLOG', lambda: blog_themen()), ('SPIEL', lambda: spiel_sektion('../', re.search(r'menue\.js\?v=(\w+)', (WEBSITE / 'index.html').read_text(encoding='utf-8')).group(1)).replace('<h2 class="sp-titel" id="spiel-titel" lang="en">Play the game.</h2>', BLOG_SPIEL_KOPF))],

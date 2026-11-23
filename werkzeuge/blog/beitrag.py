@@ -1,4 +1,4 @@
-# Gemeinsamer Baustein für alle Blogbeiträge im Schema „Ratgeber“ (Anna 19.10.2026: „jeder Artikel muss ab jetzt nach einem gleichen Schema aufgebaut sein“).
+# Gemeinsamer Baustein für alle Blogbeiträge im Schema „Ratgeber“.
 # Schema und Prüfliste: werkzeuge/blog/schema-blogbeitrag.md. Kopf/Fuß kommen vom KI-Artikel, der Inhalt aus <slug>-inhalt.html.
 # Ein Beitrag ruft nur bauen(...) mit seinen Daten auf; FAQ, Lesezeit, Metadaten und strukturierte Daten (JSON-LD) entstehen hier für alle gleich.
 import hashlib, html, json, re
@@ -41,7 +41,7 @@ def _text(t):
 
 
 def _fussnoten(main):
-    """Belege als Fußnoten (Anna: Quellen nicht im Lesefluss, sondern wie in einer wissenschaftlichen Arbeit am Ende).
+    """Belege als Fußnoten.
     Im Text steht [[schlüssel]], in der Quellenliste <li data-quelle="schlüssel">. Nummeriert wird in der Reihenfolge des ersten Vorkommens;
     die Liste wird zur nummerierten Liste (ol) mit Sprungzielen #quelle-n, im Text steht eine hochgestellte, verlinkte Ziffer."""
     reihe = []
@@ -84,7 +84,7 @@ def _quellen(main):
 
 
 def _raster(main, abschnitt, vorlage, slug):
-    """Leselayout (Anna 17.11.2026): links mitlaufende Kapitel-Leiste wie Schritte an einer Kasse, Mitte Text,
+    """Leselayout: links mitlaufende Kapitel-Leiste wie Schritte an einer Kasse, Mitte Text,
     rechts Thema und ähnliche Artikel; oben „Artikel anhören“, wenn website/audio/<slug>.mp3 existiert (werkzeuge/blog/vorlesen.py)."""
     kapitel = [(i, re.sub(r'<[^>]+>', '', t).strip()) for i, t in re.findall(r'<h2 id="([\w-]+)">(.*?)</h2>', main)
                if i not in ('quellen', 'schluss-titel')]
@@ -106,7 +106,7 @@ def _raster(main, abschnitt, vorlage, slug):
 <!-- AEHNLICH:ENDE -->
       </aside>
     </div>'''
-    # doppelte Brotkrumen raus (brotkrumen.py setzt sie fein über dem Artikel), „Stand“-Angabe aus der Meta-Zeile raus (Anna 17.11.2026)
+    # doppelte Brotkrumen raus (brotkrumen.py setzt sie fein über dem Artikel), „Stand“-Angabe aus der Meta-Zeile raus
     main = re.sub(r'\n    <nav class="meta" aria-label="Brotkrumen">.*?</nav>', '', main, count=1)
     main = re.sub(r'<span>(?:Preise und )?Zahlen: Stand [^<]*</span>', '', main)
     a = main.index('    <div class="artikel-text">')
@@ -120,7 +120,7 @@ def _raster(main, abschnitt, vorlage, slug):
       <audio controls preload="none" src="../../audio/{slug}.mp3?v={hashlib.md5(audio.read_bytes()).hexdigest()[:8]}"></audio>
     </div>
 ''' if audio.exists() else '')
-    # Kopf zweispaltig (Anna 17.11.2026): links Dachzeile, H1, Lead, Meta, Anhören; rechts das Titelbild
+    # Kopf zweispaltig: links Dachzeile, H1, Lead, Meta, Anhören; rechts das Titelbild
     k0 = main.index('\n', main.index('<article class="artikel')) + 1
     bild_a = main.index('    <img class="artikel-bild"'); bild_e = main.index('>', bild_a) + 1
     kopf = ('    <header class="artikel-kopf">\n      <div class="ak-text">\n' + main[k0:meta_ende] + anhoeren

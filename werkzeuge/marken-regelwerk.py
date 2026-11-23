@@ -1,7 +1,7 @@
-# Landingpage /marken-regelwerk/ (07.11.2026): setzt die Paketkarten (aus preise-daten.json, Gruppe „regelwerk“),
+# Landingpage /marken-regelwerk/: setzt die Paketkarten (aus preise-daten.json, Gruppe „regelwerk“),
 # die häufigen Fragen (aus inhalte/marken-regelwerk.json) und die strukturierten Daten zwischen die Marker der Seite
 # (REGELWERK-PAKETE, REGELWERK-FAQ, REGELWERK-LD). Der Rest der Seite steht direkt in website/marken-regelwerk/index.html.
-# Aufruf im Repository-Ordner:  python3 werkzeuge/marken-regelwerk.py
+# Aufruf im Repository-Ordner: python3 werkzeuge/marken-regelwerk.py
 import json, re
 
 from gemeinsam import NETTO_SATZ, STUDIO_ID, TRENNEN_LEISTUNGEN, WEBSITE, einsetzen, esc, euro, lade_json, paket_karte
@@ -13,7 +13,7 @@ FAQ = lade_json('inhalte/marken-regelwerk.json')['faq']
 
 
 def pakete():
-    # Nur zwei Pakete als Karten (Anna 17.11.2026: „besser immer nur 2 Pakete, ist übersichtlicher und die Entscheidung fällt leichter“);
+    # Nur zwei Pakete als Karten;
     # die monatliche Pflege steht als Zusatz in einer Zeile darunter
     feste = [e for e in GRUPPE['pakete'] if 'monat' not in e]
     monatlich = [e for e in GRUPPE['pakete'] if 'monat' in e]

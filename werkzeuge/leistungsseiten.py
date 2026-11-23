@@ -1,7 +1,7 @@
 # Erzeugt die Leistungsunterseiten (service/…/index.html) aus werkzeuge/leistungen-inhalte.json (Texte, FAQ)
 # und werkzeuge/preise-daten.json (Pakete, Preise, Zusatzleistungen). Kopf und Fuß bleiben aus der bestehenden Seite erhalten,
-# der Prozess kommt aus werkzeuge/inhalte/prozess.html (bis 09.11.2026 von der Startseite).
-# Aufruf im Repository-Ordner:  python3 werkzeuge/leistungsseiten.py [id …]   (ohne id: alle)
+# der Prozess kommt aus werkzeuge/inhalte/prozess.html.
+# Aufruf im Repository-Ordner: python3 werkzeuge/leistungsseiten.py [id …] (ohne id: alle)
 import json, re, sys
 
 from gemeinsam import (ankerleiste, spiel_sektion, LINKEDIN, NETTO_SATZ, STUDIO_ID, TRENNEN_LEISTUNGEN, WEBSITE, WERKZEUGE, esc, lade_json, lade_skript,
@@ -17,7 +17,7 @@ GEMEINSAM = lade_json('inhalte/faq-gemeinsam.json')['faq']
 MIT_CHECK = (WEBSITE / 'website-check' / 'index.html').exists()
 
 
-# Handschrift-Redigat je Seite (Anna 22.11.2026): ersetzt fertige Überschriften; durchgestrichen = aria-hidden, Hand = gelesen
+# Handschrift-Redigat je Seite: ersetzt fertige Überschriften; durchgestrichen = aria-hidden, Hand = gelesen
 def _ko(alt, neu, oben=False):
     return f'<span class="korrektur {"ko-oben" if oben else "ko-unten"}"><span class="notiz notiz-durch" aria-hidden="true">{alt}</span><span class="hand">{neu}</span></span>'
 REDIGAT_ALLE = [
@@ -64,7 +64,7 @@ REDIGAT = {
 }
 
 def inhaltslisten(preise):
-    """Webdesign-Pakete (Neue Website, Redesign) übernehmen ihre Inhaltsliste aus dem Kostenrechner (eine Quelle, Anna 16.10.2026)."""
+    """Webdesign-Pakete (Neue Website, Redesign) übernehmen ihre Inhaltsliste aus dem Kostenrechner."""
     w = preise['webrechner']
     neu = [w['texte']['liste'] if i == 'TEXTE' else i for g in w['basis_inhalt'] for i in g['items']]
     redesign = [i for v in w['redesign_inhalt'].values() for i in v]
@@ -104,7 +104,7 @@ def paket_reihen(g, c, pre=''):
         rechts = (f'<div class="lsx-hintergrund"><p class="meta">Mein Hintergrund</p><h3 class="lsx-hintergrund-titel">{esc(h["titel"])}</h3>'
                   + ''.join(f'<p>{esc(x)}</p>' for x in h['text'])
                   + (f'<p><a class="textlink" href="{pre}profil/#ansatz-titel">Mehr über meinen Hintergrund <span aria-hidden="true">→</span></a></p>' if h.get('link') else '') + '</div>') if h else nicht_enthalten(c)
-        # Nur eine Preiskarte: immer so groß wie bei der KI-Beratung (Anna 22.11.2026)
+        # Nur eine Preiskarte: immer so groß wie bei der KI-Beratung
         k = karten(g, pre)
         if 'lsx-gefragt' not in k: k = k.replace('class="lsx-karte"', 'class="lsx-karte lsx-gefragt"', 1)
         return '    <div class="lsx-einzeln">\n' + k + '\n      ' + rechts + '\n    </div>'
@@ -148,7 +148,7 @@ def vergleich(g):
 def extras(g):
     ex = [e for e in g.get('extras', []) if not e.get('nurRechner')]  # seltene Funktionen nur im Kostenrechner
     if not ex: return ''
-    # Zusatzleistungen als Akkordeon (Anna 22.11.2026: „zu breit, zu viele Infos, eher verstecken“): Name und Preis sichtbar, Beschreibung aufklappbar
+    # Zusatzleistungen als Akkordeon: Name und Preis sichtbar, Beschreibung aufklappbar
     li = ''.join(f'<li><details class="lsx-extra"><summary><span class="lsx-extra-name">{esc(e["name"])}</span><span class="lsx-extra-preis">{preis(e)}</span></summary>'
                  f'<p class="lsx-extra-text">{esc(e.get("kurz") or e.get("wer") or "")}</p></details></li>' for e in ex)
     return f'''  <section class="lsx-extras" id="extras" aria-labelledby="extras-titel">
@@ -159,18 +159,18 @@ def extras(g):
 
 
 START = (WEBSITE / 'index.html').read_text(encoding='utf-8')
-# Prozess der Website-Projekte: eigene Quelle, seit er nicht mehr auf der Startseite steht (Anna, 09.11.2026)
+# Prozess der Website-Projekte: eigene Quelle, seit er nicht mehr auf der Startseite steht
 MENUE_VERSION = re.search(r'menue\.js\?v=(\w+)', START).group(1)  # Version für js/spiel.js
 PROZESS = (WEBSITE.parent / 'werkzeuge' / 'inhalte' / 'prozess.html').read_text(encoding='utf-8')
 
 
 def dachzeile(m, h):
-    # Dachzeile weglassen, wenn sie die Überschrift nur wiederholt (z. B. „Launch“ über „Launch.“, Anna 12.10.2026)
+    # Dachzeile weglassen, wenn sie die Überschrift nur wiederholt
     return '' if m.rstrip('.').lower() == h.rstrip('.').lower() else f'<p class="meta">{esc(m)}</p>'
 
 
 def ablauf_eigen(pre, schritte, hinweis=''):
-    """Eigene Schritte einer Leistung als horizontale Zeitleiste mit Punkten (zl-quer, wie Startseite und Profil; Anna 16.11.2026)."""
+    """Eigene Schritte einer Leistung als horizontale Zeitleiste mit Punkten."""
     li = ''.join(f'<li><span class="zlq-nr">{i:02d}</span><div class="zl-text">{dachzeile(m, h)}<h3>{trennen(esc(h))}</h3><p class="gedaempft">{trennen(esc(x))}</p></div></li>' for i, (m, h, x) in enumerate(schritte, 1))
     return (f'  <section class="prozess-kompakt" id="ablauf" aria-labelledby="prozess">\n    <p class="meta">Wie wir arbeiten</p>\n    <h2 class="gr-h2" id="prozess">Prozess</h2>\n'
             + (f'    <p class="lsx-ablauf-hinweis">{esc(hinweis)}</p>\n' if hinweis else '') +
@@ -185,13 +185,13 @@ def ablauf(pre):
 
 
 def stimmen(pre, tag):
-    # Immer genau zwei Stimmen (Anna 21.11.2026); fehlt eine passende, kommt eine allgemeine dazu
+    # Immer genau zwei Stimmen; fehlt eine passende, kommt eine allgemeine dazu
     liste = I.mit_tag(I.STIMMEN, [tag])[:2]
     for s in I.STIMMEN:
         if len(liste) >= 2: break
         if s not in liste: liste.append(s)
     if not liste: return ''
-    # Anna 22.11.2026: Gestaltung wie auf der Startseite (Kopf mittig und groß)
+    # Gestaltung wie auf der Startseite (Kopf mittig und groß)
     return '  <section class="lsx-stimmen" aria-labelledby="stimmen-titel">\n    <div class="sektionskopf sk-mitte"><p class="meta">Meinungen</p>\n    <h2 class="gr-xxl" id="stimmen-titel">Stimmen,<br>die zählen.</h2></div>\n    <div class="stimmen">\n' + I.stimmen(liste, pre) + '\n    </div>\n    <p class="stimmen-quelle"><a class="textlink" href="' + LINKEDIN + '" target="_blank" rel="noopener">Alle Empfehlungen auf LinkedIn <span aria-hidden="true">↗</span></a></p>\n  </section>'
 
 
@@ -202,21 +202,21 @@ def nicht_enthalten(c):
 
 
 def ohne_bauer(liste, tag):
-    # Anna 12.11.2026: Bauer nur bei Webdesign, Branche Bau und auf der Startseite
+    # Bauer nur bei Webdesign, Branche Bau und auf der Startseite
     return liste if tag == 'website' else [p for p in liste if p.get('slug') != 'bauer']
 
 
 def referenzen(tag, pre):
     liste = ohne_bauer(I.mit_tag(I.PROJEKTE, [tag]), tag)
     if not liste: return ''
-    # Anna 22.11.2026: wie die Projektseite – „Projekte“ durchgestrichen zu „Partnerschaften“, Projektkarten im Raster
+    # wie die Projektseite – „Projekte“ durchgestrichen zu „Partnerschaften“, Projektkarten im Raster
     karten = '\n'.join(f'      <li>{I.projekt_karte(p, pre, h="h3", satz=False)}</li>' for p in liste)
     return ('  <section class="lsx-referenzen" id="referenzen" aria-labelledby="referenzen-titel">\n    <div class="sektionskopf"><p class="meta">Referenzen</p>'
             '<h2 class="gr-h2 pa-titel" id="referenzen-titel"><span class="korrektur korrektur-partner korrektur-links"><span class="notiz notiz-durch" aria-hidden="true">Projekte</span><span class="hand">Partnerschaften</span></span></h2></div>\n'
             + (I.projekt_wechsel(liste, pre) if len(liste) > 1 else f'    <ul class="ref-raster">\n{karten}\n    </ul>') + '\n  </section>')
 
 
-# Ersatz-Schlagworte, solange es zu einer Leistung weniger als zwei eigene Artikel gibt (Anna 18.11.2026: „mindestens 2“)
+# Ersatz-Schlagworte, solange es zu einer Leistung weniger als zwei eigene Artikel gibt
 ARTIKEL_ERSATZ = {'marketing': ['brand', 'website'], 'print': ['brand'], 'illustration': ['ui-ux', 'brand'], 'motion': ['brand', 'website'], 'retainer': ['website']}
 
 
@@ -235,11 +235,11 @@ def kontakt(g, pre, link, link_text, termine, anfrage, satz='Bei STUDIO AAH! arb
       <p>{esc(satz)}</p>
       <p class="lsx-knoepfe"><a class="button" href="{pre}kontakt/">{anfrage} <span aria-hidden="true">→</span></a></p>
     </div>
-  </section>'''   # aufgeräumt (Anna 21.11.2026): nur noch „Beratung anfragen“, ohne Telefon, Mail, Abstimmung, Preise, Kennzahlen
+  </section>'''   # aufgeräumt: nur noch „Beratung anfragen“, ohne Telefon, Mail, Abstimmung, Preise, Kennzahlen
 
 
 def grafik(name):
-    """Grafik aus werkzeuge/grafiken/<name>.html (für Leistungsseiten mit ../../ geschrieben)."""
+    """Grafik aus werkzeuge/grafiken/<name>.html (für Leistungsseiten mit../../ geschrieben)."""
     return (WERKZEUGE / 'grafiken' / f'{name}.html').read_text(encoding='utf-8')
 
 
@@ -250,7 +250,7 @@ def gruppe_fuer(c):
     if c.get('pakete'):
         g = {**g, 'pakete': [{**e, **c.get('paket_extra', {})} for e in g['pakete'] if e['id'] in c['pakete']], 'extras': []}
     else:
-        gezeigt, rest = zwei_pakete(g)  # höchstens zwei Karten, der Rest als Zeile (Anna 17.11.2026)
+        gezeigt, rest = zwei_pakete(g)  # höchstens zwei Karten, der Rest als Zeile
         g = {**g, 'pakete': gezeigt, 'weitere': rest}
     return g
 
@@ -259,7 +259,7 @@ def fragen_fuer(c, termine):
     """FAQ der Seite: eigene Fragen, Frage zu den Abstimmungsterminen, gemeinsame Fragen aller Leistungsseiten."""
     satz = termine if termine.startswith('Termine') else termine[0].lower() + termine[1:]  # Substantiv bleibt groß
     zusatz = '' if 'nach Absprache' in termine else ' Weitere Termine vereinbaren wir nach Absprache.'
-    # Antwort ohne „Bei STUDIO AAH!“ (Anna 16.11.2026; seit 23.11.2026 Wir-Form oder allgemein); entfällt, wo der Prozess die Termine zeigt
+    # Antwort ohne „Bei STUDIO AAH!“; entfällt, wo der Prozess die Termine zeigt
     termin_frage = [['Wie oft gibt es bei STUDIO AAH! Abstimmungstermine?', 'Es gibt ' + satz + zusatz]] if c.get('termine_zeigen', True) else []
     return c['faq'] + termin_frage + ([] if c.get('ohne_gemeinsame_fragen') else GEMEINSAM)
 
@@ -267,7 +267,7 @@ def fragen_fuer(c, termine):
 def seitenkopf(c, pre, intro, termine):
     woerter = c['titel'].split()
     titel_vorne = esc(' '.join(woerter[:-1])) + ' ' if len(woerter) > 1 else ''
-    # Icon der Leistung über der Dachzeile (Anna 18.11.2026: „Dieses Icon dann auch oben im Hero über der Dachzeile einfügen“)
+    # Icon der Leistung über der Dachzeile
     return f'''  <section class="seitenkopf lsx-kopf">
     <img class="lsx-kopf-icon" src="{pre}{c['icon']}" alt="" width="400" height="400">
     <p class="meta brotkrumen"><a href="{pre}#leistungen">Leistungen</a> / <span aria-current="page">{esc(c['titel'])}</span></p>
@@ -278,7 +278,7 @@ def seitenkopf(c, pre, intro, termine):
 
 
 def sprungleiste(c, g, mit_vergleich, mit_ablauf, link, link_text):
-    # Content-First (Anna 16.11.2026): eine Frage je Abschnitt, Preise unter einem Anker, Artikel nicht in der Leiste
+    # Content-First: eine Frage je Abschnitt, Preise unter einem Anker, Artikel nicht in der Leiste
     ziele = [('loesung', 'Ausgangslage' if c.get('gegenueber') else 'Warum', True), ('anwendungen', 'Anwendungsfälle', bool(c.get('anwendungen'))),
              ('wege', 'Lösung', bool(c.get('wege'))), ('praxis', 'Beispiel', bool(c.get('praxis'))), ('recht', 'KI-Verordnung', bool(c.get('recht'))), ('leistungen', 'Leistungen', bool(c.get('loesungen')) and not c.get('ohne_detail')), ('ablauf', 'Ablauf', mit_ablauf),
              ('referenzen', 'Referenzen', bool(ohne_bauer(I.mit_tag(I.PROJEKTE, [c['tag']]), c['tag']))),
@@ -286,17 +286,17 @@ def sprungleiste(c, g, mit_vergleich, mit_ablauf, link, link_text):
     return ankerleiste([(anker, text) for anker, text, an in ziele if an])
 
 
-# „Was du davon hast“ und „Für dich, wenn“ oben auf jeder Leistungsseite (Anna, 09./10.11.2026: Schmerzpunkte 1–4 überall, immer den Nutzen)
+# „Was du davon hast“ und „Für dich, wenn“ oben auf jeder Leistungsseite
 PROBLEME = {x['id']: x for x in lade_json('inhalte/fuer-wen-seiten.json')['probleme']}
 
 
 def was_ist(c, pre):
-    """Abschnitt 1 nach dem Hero (IT Sonix „Individuelle Software: Was ist das?“): Definition aus „zusammenfassung“,
+    """Abschnitt 1 nach dem Hero: Definition aus „zusammenfassung“,
     daneben der Nutzen („gewinn“) und die Anliegen („fuer_sie“). Überschrift überschreibbar mit „frage“."""
     frage = c.get('frage') or f"{c['titel']}: Was ist das?"
     text = ''.join(f'<p>{trennen(esc(x))}</p>' for x in c.get('zusammenfassung', []))
     punkte = ''.join(f'<li>{esc(x)}</li>' for x in c.get('gewinn', []))
-    # Linktext = Schlagwort der Zielseite (Anna 16.11.2026: „nur jeweils ein Wort, ein Keyword“)
+    # Linktext = Schlagwort der Zielseite
     fuer = ''.join(f'<li><a href="{pre}{PROBLEME[i]["pfad"]}"><span>{esc(PROBLEME[i]["meta"])}</span> <span aria-hidden="true">→</span></a></li>'
                    for i in c.get('fuer_sie', []))
     rechts = ((f'<div class="lsx-was-nutzen"><p class="meta">Was du davon hast</p><ol class="lsx-gewinn-liste">{punkte}</ol></div>' if punkte else '')
@@ -308,7 +308,7 @@ def was_ist(c, pre):
 
 
 def gegenueber(c, g, pre, link):
-    """Problemraum und Lösungsraum als Gegenüberstellung (Anna 16.11.2026, KI-Beratung): je Zeile ein Problem von heute
+    """Problemraum und Lösungsraum als Gegenüberstellung: je Zeile ein Problem von heute
     und was sich ändert. Ersetzt „Warum“, wenn das Feld „gegenueber“ gesetzt ist."""
     x = c['gegenueber']
     zeilen = ''.join(f'''<li><p class="lsx-gg-heute">{esc(a)}</p><span class="lsx-gg-pfeil" aria-hidden="true">→</span><div class="lsx-gg-dann"><h3>{esc(t)}</h3><p>{esc(b)}</p></div></li>''' for a, t, b in x['zeilen'])
@@ -343,7 +343,7 @@ def anwendungen(c, pre):
 
 
 def wege(c, pre):
-    """Lösung (Feld „wege“): ein Angebot mit seinen Bausteinen als Karten und Link zur Angebotsseite (Anna 16.11.2026: nur KI-Arbeits-Setup)."""
+    """Lösung (Feld „wege“): ein Angebot mit seinen Bausteinen als Karten und Link zur Angebotsseite."""
     if not c.get('wege'): return ''
     x = c['wege']
     karten = ''.join(f'<li><span class="lsx-nr" aria-hidden="true">{i:02d}</span><h3>{esc(t)}</h3><p>{esc(b)}</p></li>' for i, (t, b) in enumerate(x['karten'], 1))
@@ -358,7 +358,7 @@ def wege(c, pre):
 
 
 def praxis(c, pre):
-    """Beispiel aus einem echten Projekt, anonym (Feld „praxis“, KI-Beratung: KI-Arbeits-Setup, Anna 16.11.2026)."""
+    """Beispiel aus einem echten Projekt, anonym."""
     if not c.get('praxis'): return ''
     x = c['praxis']
     spalten = ''.join(f'<div><h3>{esc(t)}</h3><ul>' + ''.join(f'<li>{esc(i)}</li>' for i in liste) + '</ul></div>' for t, liste in x['gruppen'])
@@ -376,7 +376,7 @@ def recht(c):
     if not c.get('recht'): return ''
     x = c['recht']
     punkte = ''.join(f'<li><p class="lsx-recht-datum">{esc(d)}</p><h3>{esc(t)}</h3><p>{esc(b)}</p></li>' for d, t, b in x['punkte'])
-    # optional: weiterführender Blogartikel (Feld „artikel“: [Linktext, Pfad ab Wurzel]), Anna 17.11.2026
+    # optional: weiterführender Blogartikel (Feld „artikel“: [Linktext, Pfad ab Wurzel])
     artikel = f'\n    <p><a class="textlink" href="../../{x["artikel"][1]}">{esc(x["artikel"][0])} <span aria-hidden="true">→</span></a></p>' if x.get('artikel') else ''
     return f'''  <section class="lsx-recht" id="recht" aria-labelledby="recht-titel">
     <p class="meta">Recht</p>
@@ -388,7 +388,7 @@ def recht(c):
 
 
 def selbstbau(c, pre):
-    """Für alle, die ihre Website selbst bauen (Vibe-Coding, Baukasten; Anna 17.11.2026): vier Einstiege von vorher bis nachher."""
+    """Für alle, die ihre Website selbst bauen: vier Einstiege von vorher bis nachher."""
     if not c.get('selbstbau'): return ''
     x = c['selbstbau']
     karten = ''.join(f'<li><span class="lsx-nr" aria-hidden="true">{i:02d}</span><h3>{esc(t)}</h3><p>{esc(b)}</p>'
@@ -403,9 +403,9 @@ def selbstbau(c, pre):
 
 
 def kompetenzen(c):
-    """Was genau dazugehört, nummeriert wie die Kernkompetenzen bei IT Sonix (Daten: „loesungen“)."""
+    """Was genau dazugehört, nummeriert (Daten: „loesungen“)."""
     if not c.get('loesungen') or c.get('ohne_detail'): return ''
-    # Anna 22.11.2026: „liest sich so keiner durch“ – ohne Nummern als Liste zum Überfliegen; Teil vor dem Doppelpunkt fett
+    # „liest sich so keiner durch“ – ohne Nummern als Liste zum Überfliegen; Teil vor dem Doppelpunkt fett
     def punkt(x):
         if ': ' in x:
             a, b = x.split(': ', 1)
@@ -420,13 +420,13 @@ def kompetenzen(c):
 
 
 def problem_loesung(c, g, pre, link):
-    anfrage = c.get('anfrage', 'Beratung anfragen')  # Retainer: „Beratung anfragen“ (Anna 16.11.2026)
+    anfrage = c.get('anfrage', 'Beratung anfragen')  # Retainer: „Beratung anfragen“
     probleme = ''.join(f'<li>{esc(x)}</li>' for x in c['probleme'])
     punkte = '' if c.get('loesungen') else ''.join(f'<li>{esc(x)}</li>' for x in c['loesung_punkte'][:3])
     grundsatz = '' if c.get('grafik') == 'corporate-identity' or any('Form follows' in x for x in c.get('loesungen', [])) else (
         f'<p class="lsx-grundsatz"><a class="textlink" href="{pre}service/markenbildung/#corporate-identity">Form follows function, die Form folgt der Funktion. '
         'Grundlage für alles, was wir gestalten, ist die Corporate Identity <span aria-hidden="true">→</span></a></p>')
-    # Webdesign: Website-Check als zweiter Knopf (Anna 25.10.2026: niedrigschwelligster Einstieg)
+    # Webdesign: Website-Check als zweiter Knopf
     check = (f'<a class="button button-zweit" href="{pre}website-check/">Kostenloser <span class="ohne-umbruch">Website-Check&nbsp;<span aria-hidden="true">→</span></span></a> '
              if g['id'] == 'website' and MIT_CHECK else '')
     # Content-First: keine Dopplung. Wiederholt „loesung_text“ den Einstieg (Was ist das?), entfällt die Lösungskarte
@@ -460,7 +460,7 @@ def pakete(c, g, pre):
 
 
 def zusatz_block(c, g):
-    # Muster (Anna 22.11.2026: „anders“): zwei Kästen nebeneinander – Außerdem buchbar (Name und Preis je Zeile) und Nicht enthalten
+    # Muster: zwei Kästen nebeneinander – Außerdem buchbar (Name und Preis je Zeile) und Nicht enthalten
     weitere = ''.join(f'<li><b>{esc(e["name"])}</b><span>{preis(e)}</span></li>' for e in g.get('weitere', []))
     links = f'<div class="lsx-m-kasten"><p class="meta">Außerdem buchbar</p><ul class="lsx-m-weitere">{weitere}</ul></div>' if weitere else ''
     # bei nur einer Preiskarte ohne Hintergrund steht „Nicht enthalten“ schon neben der Karte
@@ -470,7 +470,7 @@ def zusatz_block(c, g):
 
 
 def retainer_hinweis(g, pre):
-    """Nach dem Ablauf: Retainer als nächster Schritt nach dem Launch (Anna 25.10.2026, nur Webdesign). Texte aus den Paketdaten."""
+    """Nach dem Ablauf: Retainer als nächster Schritt nach dem Launch. Texte aus den Paketdaten."""
     r = next((e for e in g['pakete'] + g.get('extras', []) if e['id'] == 'retainer-web'), None)
     if not r: return ''
     preis = f"{r['stunde']}–{r['stundeBis']} € netto pro Stunde, {r['mindestens']}"
@@ -517,8 +517,8 @@ def strukturierte_daten(c, g, intro, url, fragen, vorlage):
     return {"@context": "https://schema.org", "@graph": graph}
 
 
-# --- Muster-Leistungsseite (Anna 22.11.2026, zuerst Markenbildung): eine Frage je Abschnitt, Antwort zuerst, scanbar.
-#     Konzept: Betrieb „Studio AAH/Website/2026-11-22_leistungsseite-markenbildung_muster.md“. Daten im Feld „muster“.
+# --- Muster-Leistungsseite: eine Frage je Abschnitt, Antwort zuerst, scanbar.
+# Daten im Feld „muster“.
 def fett_rest(paare):
     return ''.join(f'<li><b>{esc(a)}</b>{(" " + esc(b)) if b else ""}</li>' for a, b in paare)
 
@@ -532,7 +532,7 @@ def geteilt(x):
 
 
 def auto_muster(c, g, intro):
-    """Muster-Aufbau für Leistungsseiten ohne eigenes Feld „muster“ (Anna 22.11.2026: „auf alle Leistungen anwenden“).
+    """Muster-Aufbau für Leistungsseiten ohne eigenes Feld „muster“.
     Nur aus Texten, die schon auf der Seite stehen – keine neuen Aussagen."""
     pk = g.get('pakete', [])
     fakten, preiszeile = [], ''
@@ -557,12 +557,12 @@ def auto_muster(c, g, intro):
                           'text': 'Im kostenlosen Erstgespräch klären wir, wo du stehst|und was du brauchst.'}}
 
 
-# Zeichnung schwarz-weiß rechts im Hero je Leistung (Anna 22.11.2026: „bei Leistungen immer ein Bild“), Set bilder/zeichnungen-sw/
+# Zeichnung schwarz-weiß rechts im Hero je Leistung, Set bilder/zeichnungen-sw/
 ZEICHNUNG = {'Markenbildung': 'stern', 'Webdesign': 'bildschirm', 'UI': 'auge', 'KI & Digitalisierung': 'gluehbirne', 'KI-Beratung': 'gluehbirne',
              'Marketing & Vertrieb': 'megafon', 'Druck': 'pfeil', 'Illustration & Infografik': 'herz', 'Animation': 'blitz', 'Retainer': 'giesskanne'}
 
 
-# Foto im Repro-Look rechts im Hero (Anna 22.11.2026, Vorbild Startseiten-Entwurf: blau gedruckt, gedreht, gelber Klebestreifen),
+# Foto im Repro-Look rechts im Hero,
 # Zeichnung klein als Sticker am Foto. Nur eigene Projektbilder.
 HERO_FOTO = {'Markenbildung': 'start/leipzig-zentrum-von-oben-640.webp', 'Webdesign': 'hero/bauer-startseite-hero.webp', 'UI': 'leistung-ui-ux-kit-640.webp',
              'KI & Digitalisierung': 'ki-arbeits-setup-cockpit-640.webp', 'KI-Beratung': 'ki-arbeits-setup-cockpit-640.webp',
@@ -576,7 +576,7 @@ def repro_bild(c, pre):
     if not foto:
         return f'    <img class="lsx-kopf-zeichnung" src="{pre}bilder/zeichnungen-sw/{z}.svg" alt="" width="400" height="400">\n' if z else ''
     sticker = f'<img class="lsx-repro-sticker" src="{pre}bilder/zeichnungen-sw/{z}.svg" alt="" width="400" height="400">' if z else ''
-    return f'    <span class="lsx-repro" aria-hidden="true"><span class="lsx-repro-druck"><img src="{pre}bilder/{foto}" alt="" loading="eager"></span></span>\n'   # Sticker global raus (Anna 22.11.2026)
+    return f'    <span class="lsx-repro" aria-hidden="true"><span class="lsx-repro-druck"><img src="{pre}bilder/{foto}" alt="" loading="eager"></span></span>\n'   # Sticker global raus
 
 
 def muster_kopf(c, m, pre):
@@ -634,11 +634,11 @@ def muster_so(c, m):
 
 def muster_ergebnisse(m):
     if not m.get('ergebnisse'): return ''
-    # Neu gedacht (Anna 22./23.11.2026): oben das Ergebnis danach in Annas Worten, darunter kompakt, was dazugehört
-    # Je Leistung passende Ergebnisse, nur aus Annas fünf Begriffen (Anna 23.11.2026: „je Leistung anpassen“)
+    # Neu gedacht: oben das Ergebnis danach in Annas Worten, darunter kompakt, was dazugehört
+    # Je Leistung passende Ergebnisse, nur aus Annas fünf Begriffen
     alle = {'s': ('Sichtbarkeit', 'auge'), 'k': ('Neue Kunden', 'megafon'), 'f': ('Fachkräfte', 'herz'), 'c': ('Mehr Conversion', 'pfeil'), 'v': ('Mehr Verkäufe', 'stern')}
     wahl = next((w for t, w in (('Markenbildung', 'skfv'), ('Webdesign', 'skcv'), ('UI', 'skcv'), ('KI', 'kfcv'), ('Marketing', 'skcv'), ('Druck', 'skfv'),
-                                ('Illustration', 'skcv'), ('Animation', 'skcv'), ('Retainer', 'skcv')) if (m.get('h1') or '').startswith(t)), 'skcv')   # immer vier Karten (Anna 22.11.2026: Tarotkarten)
+                                ('Illustration', 'skcv'), ('Animation', 'skcv'), ('Retainer', 'skcv')) if (m.get('h1') or '').startswith(t)), 'skcv')   # immer vier Karten
     ziele = tuple(alle[b] for b in wahl)
     zl = ''.join(f'<li><small aria-hidden="true">{r}</small><img src="{{PRE}}bilder/zeichnungen-sw/{z}.svg" alt="" width="400" height="400" loading="lazy"><span>{esc(t)}</span></li>' for r, (t, z) in zip(('I', 'II', 'III', 'IV'), ziele))
     li = ''.join(f'<li><b>{esc(a)}</b>' + (f' <span>{esc(b)}</span>' if b else '') + '</li>' for a, b in m['ergebnisse'])
@@ -657,7 +657,7 @@ def muster_abschluss(m, pre):
             f'    <div class="schluss-karte schluss-blau">\n'
             f'      <p class="meta">{esc(a["meta"])}</p>\n'
             f'      <h2 class="gr-h2" id="schluss-titel">{esc(a["titel"])}</h2>\n'
-            f'      <p class="lsx-m-schluss-text">{esc(a["text"]).replace("|", "<br>")}</p>\n'   # „|“ = Zeilenumbruch (Anna 22.11.2026)
+            f'      <p class="lsx-m-schluss-text">{esc(a["text"]).replace("|", "<br>")}</p>\n'   # „|“ = Zeilenumbruch
             f'      <p><a class="button" href="{pre}kontakt/">{esc(a["knopf"])} <span aria-hidden="true">→</span></a></p>\n'
             f'    </div>\n'
             f'  </section>')
@@ -672,9 +672,9 @@ def muster_leiste(c, m, mit_ablauf):
     return ankerleiste([(a, t) for a, t, an in ziele if an])
 
 
-# Eine Leistungsfarbe je Seite, strikt durchgezogen (Anna 23.11.2026, Farb-Richtlinie 1.1 „Leistung und Form“, Vorbild farbenmeer):
+# Eine Leistungsfarbe je Seite, strikt durchgezogen:
 # Voll für Seitenkopf und Ergebnis, Zart für Problem und Fragen, dazwischen Weiß. Schrift auf allen Stufen Dunkel.
-# Je Leistung zwei verwandte Farben (Anna 23.11.2026: „zwei, die sich ähnlich sind, z. B. Rot und Rosa, Blau und Violett“): erste für Kopf und Problem,
+# Je Leistung zwei verwandte Farben: erste für Kopf und Problem,
 # zweite für Ergebnis und Fragen. Rosa = Pink, Violett = Orchidee, Grün = Mint (Farb-Richtlinie 1.1).
 ROT, PINK, ORCHIDEE, HIMMEL, MINT, GELB, ORANGE = '#FF3B2F', '#FF4FA3', '#EF87F9', '#5FD2FF', '#07F0A5', '#FFF329', '#EE6C29'
 LEISTUNGSFARBE = {'Markenbildung': (ROT, PINK), 'Webdesign': (HIMMEL, ORCHIDEE), 'UI': (PINK, ORCHIDEE), 'KI': (GELB, MINT),
@@ -684,8 +684,8 @@ LEISTUNGSFARBE = {'Markenbildung': (ROT, PINK), 'Webdesign': (HIMMEL, ORCHIDEE),
 def leistungsfarbe(c):
     a, b = next((v for k, v in LEISTUNGSFARBE.items() if c['titel'].startswith(k)), (HIMMEL, ORCHIDEE))
     mix = lambda v, t: '#%02X%02X%02X' % tuple(round(int(v[i:i + 2], 16) * (1 - t) + 255 * t) for i in (1, 3, 5))
-    # Markenbildung: Warum-Zettel in Orchidee mit schwarzer Schrift (Anna 22.11.2026: erst „pink mit weißer schrift“, dann „das pink gefällt mir nicht … eher lila“)
-    # Markenbildung: Anlässe auf Rot tief mit weißer Schrift (Anna 22.11.2026: „schrift weiß?“; Weiß auf Signalrot nur 3,6 : 1, auf Rot tief 5,9 : 1)
+    # Markenbildung: Warum-Zettel in Orchidee mit schwarzer Schrift
+    # Markenbildung: Anlässe auf Rot tief mit weißer Schrift
     zettel = '; --lf-zettel: #EF87F9; --lf-zettel-text: #0E1011; --lf-anlass: #C80C00; --lf-anlass-text: #FFFFFF' if c['titel'].startswith('Markenbildung') else ''
     return f'--lf: {a}; --lf-zart: {mix(a, .55)}; --lf-hauch: {mix(a, .8)}; --lf2: {b}; --lf2-zart: {mix(b, .55)}' + zettel
 
@@ -708,7 +708,7 @@ def seite(key, c):
     intro = c.get('intro') or g['intro']
     # Der Prozess der Startseite beschreibt Website-Projekte; andere Leistungen brauchen eigene Schritte
     mit_ablauf = bool(c.get('ablauf_schritte')) or c.get('ablauf', c['gruppe'] == 'website')
-    # Abstimmungstermine (Anna, 11.10.2026): im Projekt wöchentlich, bei laufender Betreuung seltener
+    # Abstimmungstermine: im Projekt wöchentlich, bei laufender Betreuung seltener
     termine = c.get('termine', TERMINE)
     fragen = fragen_fuer(c, termine)
     pre = '../' * (c['pfad'].strip('/').count('/') + 1)
@@ -717,9 +717,9 @@ def seite(key, c):
     # neue Seite: Kopf und Fuß von der Webdesign-Seite übernehmen (gleiche Ordnertiefe)
     vorlage = (pfad if pfad.exists() else WEBSITE / 'service' / 'webdesign' / 'index.html').read_text(encoding='utf-8')
     url = 'https://studio-aah.de/' + c['pfad']
-    vergleich_html = ''   # Vergleichstabellen raus (Anna 23.11.2026); Funktion vergleich() bleibt für später
+    vergleich_html = ''   # Vergleichstabellen raus; Funktion vergleich bleibt für später
     prozess = (ablauf_eigen(pre, c['ablauf_schritte'], c.get('ablauf_hinweis', '')) if c.get('ablauf_schritte') else ablauf(pre)) if mit_ablauf else ''
-    # Muster für alle Leistungsseiten (Anna 22.11.2026); eigene Daten im Feld „muster“ gehen vor
+    # Muster für alle Leistungsseiten; eigene Daten im Feld „muster“ gehen vor
     c = dict(c, muster=c.get('muster') or auto_muster(c, g, intro))
     if c['muster'].get('faq_muster'):
         fragen = c['muster']['faq_muster']
@@ -779,9 +779,9 @@ def seite(key, c):
     for alt, neu in REDIGAT.get(c['pfad'], []):
         assert alt in t, (c['pfad'], alt[:40])
         t = t.replace(alt, neu, 1)
-    for alt, neu in REDIGAT_ALLE:  # wie auf der Startseite, auf allen Leistungsseiten (Anna 23.11.2026)
+    for alt, neu in REDIGAT_ALLE:  # wie auf der Startseite, auf allen Leistungsseiten
         t = t.replace(alt, neu, 1)
-    # Ablauf und Preise je Seite mit Suchbegriff, Markensätze bleiben überall gleich (Anna 23.11.2026: „Mischung“)
+    # Ablauf und Preise je Seite mit Suchbegriff, Markensätze bleiben überall gleich
     t = t.replace('id="prozess">Prozess</h2>', f'id="prozess">{esc(c["titel"])} in vier Schritten</h2>', 1)
     t = t.replace('id="pakete-titel">Was es kostet</h2>', f'id="pakete-titel">Was {"der Retainer" if c["titel"] == "Retainer" else esc(c["titel"])} kostet</h2>', 1)
     pfad.parent.mkdir(parents=True, exist_ok=True)

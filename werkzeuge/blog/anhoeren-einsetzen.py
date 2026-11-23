@@ -1,4 +1,4 @@
-# Setzt den Player „Artikel anhören“ in die älteren Blogartikel, die nicht mit beitrag.py gebaut sind (Anna 18.11.2026: „Jeden Artikel jetzt bitte mit Voice“).
+# Setzt den Player „Artikel anhören“ in die älteren Blogartikel, die nicht mit beitrag.py gebaut sind.
 # Aufnahme: python3 werkzeuge/blog/vorlesen.py <slug> → website/audio/<slug>.mp3. Neue Artikel (beitrag.py) bauen den Player selbst ein.
 # Der Player steht zwischen <!-- ANHOEREN:START --> und <!-- ANHOEREN:ENDE --> direkt unter der Zeile mit Autorin und Datum; ohne Aufnahme kein Player.
 # Aufruf vom Repository-Ordner: python3 werkzeuge/blog/anhoeren-einsetzen.py

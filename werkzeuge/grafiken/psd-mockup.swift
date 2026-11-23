@@ -1,9 +1,9 @@
-// Setzt eine Website-Aufnahme in ein Photoshop-Mockup (PSD mit „Smart Object“ für den Bildschirm) – ohne Photoshop (Anna 14.10.2026).
+// Setzt eine Website-Aufnahme in ein Photoshop-Mockup (PSD mit „Smart Object“ für den Bildschirm) – ohne Photoshop.
 // Liest die Ebenen der PSD, mischt sie mit ihren Modi (Normal, Multiplizieren, Ineinanderkopieren, Linear abwedeln …) und ersetzt
 // die angegebene Platzhalter-Ebene durch das eigene Bild, perspektivisch verzerrt nach ihren vier Eckpunkten.
 // Aufruf vom Repository-Ordner aus:
-//   swift werkzeuge/grafiken/psd-mockup.swift MOCKUP.psd BILD.jpg AUS.jpg --ziel "PUT YOUR DESIGN HERE" [--breite 2400]
-//        [--weglassen "REMOVE THIS LAYER,smart object"] [--liste]
+// swift werkzeuge/grafiken/psd-mockup.swift MOCKUP.psd BILD.jpg AUS.jpg --ziel "PUT YOUR DESIGN HERE" [--breite 2400]
+// [--weglassen "REMOVE THIS LAYER,smart object"] [--liste]
 // --liste zeigt nur die Ebenen. Lizenz der Mockups beachten: das leere Mockup nie ins Repository, nur fertige Bilder.
 import Foundation
 import CoreImage

@@ -1,7 +1,7 @@
 // Schriftmuster als Bild (PNG, transparent) – für Schriften, deren Lizenz keine Weitergabe der Schriftdatei erlaubt
-// (z. B. Satoshi bei Deinetwegen, Anna 15.10.2026: Repository nur SIL OFL). Die Schriftdateien bleiben außerhalb des Repositorys.
+//. Die Schriftdateien bleiben außerhalb des Repositorys.
 // Aufruf vom Repository-Ordner aus:
-//   swift werkzeuge/grafiken/schriftmuster.swift REGULAR.otf BOLD.otf AUS.png NAME FARBE_HEX ["Unterzeile"]
+// swift werkzeuge/grafiken/schriftmuster.swift REGULAR.otf BOLD.otf AUS.png NAME FARBE_HEX ["Unterzeile"]
 // Schriftsammlungen (.ttc): Schnitt mit #INDEX wählen, z. B. /System/Library/Fonts/Helvetica.ttc#1
 import Foundation
 import CoreGraphics

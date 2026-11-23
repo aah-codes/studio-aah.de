@@ -1,8 +1,8 @@
-// Ersetzt den Bildschirminhalt eines Foto-Mockups durch eine Website-Aufnahme (Anna 16.10.2026, Jana: MacBook mit fremder Seite).
+// Ersetzt den Bildschirminhalt eines Foto-Mockups durch eine Website-Aufnahme.
 // Ersetzt wird die Fläche zwischen den vier Ecken mit geglätteten Kanten; nur dunkle Pixel des Fotos in einem Saum am Rand bleiben stehen,
 // so bleiben Rahmen, Kerbe (Notch) und Rundungen aus dem Foto erhalten. Die Seite wird perspektivisch auf die vier Ecken gelegt.
 // Aufruf vom Repository-Ordner aus:
-//   swift werkzeuge/grafiken/bildschirm-ersetzen.swift FOTO.jpg SEITE.jpg AUS.jpg SAUM SCHWELLE UNUSED  OLx OLy ORx ORy URx URy ULx ULy [HELLIGKEIT] [QUALITÄT]
+// swift werkzeuge/grafiken/bildschirm-ersetzen.swift FOTO.jpg SEITE.jpg AUS.jpg SAUM SCHWELLE UNUSED OLx OLy ORx ORy URx URy ULx ULy [HELLIGKEIT] [QUALITÄT]
 import Foundation
 import CoreImage
 import CoreGraphics
@@ -47,7 +47,7 @@ let seiteCG = ctx.createCGImage(seite.composited(over: leer), from: CGRect(x: 0,
 let s = bitmap(seiteCG)
 let q2 = roh.enumerated().map { (i, v) in i % 2 == 0 ? mx + (v - mx) * 1.0025 : my + (v - my) * 1.0025 }   // Maske einen Hauch größer: kein Saum der alten Farbe
 // 3. Weiche Maske (Kantenglättung): weiße Fläche in Seitengröße auf dieselben Ecken verzerrt; in der Kerbe/den Rundungen
-//    (dunkle Foto-Pixel im Saum am Rand) bleibt das Foto stehen
+// (dunkle Foto-Pixel im Saum am Rand) bleibt das Foto stehen
 let weiss = CIImage(color: CIColor(red: 1, green: 1, blue: 1)).cropped(to: CIImage(contentsOf: URL(fileURLWithPath: a[2]))!.extent)
   .applyingFilter("CIPerspectiveTransform", parameters: ["inputTopLeft": pkt(q2[0], q2[1]), "inputTopRight": pkt(q2[2], q2[3]),
     "inputBottomRight": pkt(q2[4], q2[5]), "inputBottomLeft": pkt(q2[6], q2[7])])

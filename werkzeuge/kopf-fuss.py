@@ -3,8 +3,8 @@
 # Kopf: von <a class="sprunglink" bis <!-- /KOPF -->, Fuß: von <!-- FUSS: bis <!-- /FUSS -->.
 # Kopf oder Fuß also nur in website/index.html ändern, dann dieses Skript (oder alle-erzeugen.sh) laufen lassen.
 # Weiterleitungsseiten (http-equiv="refresh") bleiben unberührt; Seiten mit dem Kommentar <!-- LANDINGPAGE (eigener Kopf/Fuß)
-# bekommen nur die preload-Zeilen. Derzeit gibt es keine solche Seite (website-check/ hat seit 25.10.2026 den normalen Kopf).
-# Aufruf im Repository-Ordner:  python3 werkzeuge/kopf-fuss.py
+# bekommen nur die preload-Zeilen. Derzeit gibt es keine solche Seite (website-check/ hat den normalen Kopf).
+# Aufruf im Repository-Ordner: python3 werkzeuge/kopf-fuss.py
 import pathlib, re
 
 website = pathlib.Path(__file__).resolve().parent.parent / 'website'
@@ -24,7 +24,7 @@ def umschreiben(block, vorne):
     return re.sub(r'\b(href|src)="([^"]*)"', pfad, block)
 
 
-# Hauptschriften vorab laden (Anna 25.10.2026, Website-Check: Verrutschen beim Laden am Handy, weil Überschriften
+# Hauptschriften vorab laden (Website-Check: Verrutschen beim Laden am Handy, weil Überschriften
 # mit der Ersatzschrift breiter sind und anders umbrechen). Steht direkt nach dem Link auf stil.css, Pfad passend zur Ordnertiefe.
 SCHRIFTEN = ('anton-latin.woff2', 'manrope-latin.woff2')
 STIL = re.compile(r'(\n?)([ \t]*)<link rel="stylesheet" href="([^"]*?)css/stil\.css\?v=[^"]*">')
@@ -41,7 +41,7 @@ def vorladen(text):
     return STIL.sub(ersetzen, text, count=1)
 
 
-# Favicon für das Suchergebnis (Anna 25.10.2026): randlos, quadratisch, Vielfaches von 48 px (Google) – neben dem bestehenden 32-px-Link
+# Favicon für das Suchergebnis: randlos, quadratisch, Vielfaches von 48 px (Google) – neben dem bestehenden 32-px-Link
 FAVICON = re.compile(r'([ \t]*)<link rel="icon" href="([^"]*?)bilder/favicon-32\.png" sizes="32x32" type="image/png">')
 
 
@@ -51,7 +51,7 @@ def favicon(text):
     return FAVICON.sub(lambda m: m.group(0) + f'\n{m.group(1)}<link rel="icon" href="{m.group(2)}bilder/favicon-144.png" sizes="144x144" type="image/png">', text, count=1)
 
 
-# Sicherheit (Anna 19.11.2026, Website-Check von außen: Sicherheit 45/100). Der Server lässt keine eigenen Header zu,
+# Sicherheit. Der Server lässt keine eigenen Header zu,
 # deshalb Content-Security-Policy und Referrer-Policy als Meta-Tag direkt nach charset (vor allen geladenen Dateien).
 # Erlaubt nur, was die Seite braucht: eigene Dateien, Formspark (Anfragen), Brevo (Newsletter, auch per fetch), YouTube nach Klick.
 # HSTS, nosniff, X-Frame-Options/frame-ancestors und Permissions-Policy gehen nur als Header, nicht als Meta-Tag.
@@ -71,8 +71,7 @@ def sicherheit(text):
     return re.sub(r'(<meta charset="utf-8">)', lambda m: m.group(1) + '\n  ' + SICHERHEIT, text, count=1, flags=re.I)
 
 
-# Dachzeile (Leiste über dem Kopf): seit 18.11.2026 auf keiner Seite mehr (Anna, Feinschliff „weniger ist mehr“;
-# erst die Website-Check-Leiste, dann auch die Programm-Leiste „Demokratie braucht Sichtbarkeit.“ im Blog: „Ja, auch weg“).
+# Dachzeile (Leiste über dem Kopf): auf keiner Seite mehr.
 # Reste aus älteren Seiten werden hier entfernt.
 DACHZEILE = re.compile(r'<!-- DACHZEILE:.*?<div class="ankuendigung">.*?</div>\n', re.S)
 

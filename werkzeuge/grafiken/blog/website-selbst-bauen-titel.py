@@ -1,7 +1,7 @@
-# Titel- und Vorschaubild Blog „Website selbst bauen mit KI“ (17.11.2026)
+# Titel- und Vorschaubild Blog „Website selbst bauen mit KI“
 # Browserfenster, in dem eine Website aus Bauhaus-Grundformen entsteht (zwei Formen fliegen noch hinein), daneben die Bauhaus-Figur, die darauf zeigt, und „OHO!“.
 # Figur und Rendern wie in website-2027-titel.py (Arme am Rumpf, Beine mit Eckenradius 4, weiße Fugen statt Blau an Schwarz).
-#   website/bilder/blog-website-selbst-bauen.webp (1200 × 800) und website/bilder/blog-website-selbst-bauen-og.jpg (1200 × 630)
+# website/bilder/blog-website-selbst-bauen.webp (1200 × 800) und website/bilder/blog-website-selbst-bauen-og.jpg (1200 × 630)
 # Aufruf vom Repository-Ordner: python3 werkzeuge/grafiken/blog/website-selbst-bauen-titel.py
 import pathlib, subprocess, tempfile
 

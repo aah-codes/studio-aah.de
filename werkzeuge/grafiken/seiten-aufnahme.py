@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Nimmt Websites gestochen scharf auf (Anna 14.10.2026): ganze Seite und jeden Abschnitt einzeln, in doppelter Auflösung.
+"""Nimmt Websites gestochen scharf auf: ganze Seite und jeden Abschnitt einzeln, in doppelter Auflösung.
 Steuert das installierte Google Chrome ohne Fenster über das DevTools-Protokoll – nur Python-Standardbibliothek, keine Installation.
 
 Aufruf vom Repository-Ordner aus:
@@ -15,8 +15,8 @@ CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
 PORT = int(os.environ.get('AUFNAHME_PORT', 9333))  # eigener Port, falls zwei Aufnahmen gleichzeitig laufen
 STANDARD_ABSCHNITTE = 'main .kb-row-layout-wrap, main > section, main .wp-block-cover, main .wp-block-group.alignfull'
 # Cookie-Banner und Chat-Knöpfe ausblenden (gängige WordPress-Erweiterungen)
-# Wireframe-Ansicht (Anna 14.10.2026: fehlende Wireframes nachträglich aus der fertigen Seite erzeugen)
-# Wireframe-Ansicht (Anna 14.10.2026: fehlende Wireframes nachträglich aus der fertigen Seite erzeugen, „ordentlich“):
+# Wireframe-Ansicht
+# Wireframe-Ansicht:
 # echte Überschriften und Texte in Grau, Bilder als Flächen mit Kreuz, Buttons als Rahmen, keine Farben
 WIREFRAME = '''
 * { color: #6b6f71 !important; -webkit-text-fill-color: currentColor !important; text-shadow: none !important; box-shadow: none !important;
@@ -103,9 +103,9 @@ def speichern(pfad, b64):
 
 
 def aufnehmen(ws, url, ziel, handy, selektor, wireframe=False, felder=False, hover=None, vorher_js=None):
-    breite, faktor = (int(os.environ.get('AUFNAHME_HANDY_BREITE', 390)), 3) if handy else (int(os.environ.get('AUFNAHME_BREITE', 1440)), 2)  # AUFNAHME_BREITE z. B. 1000 für Seiten, deren Kopf bei 1440 abgeschnitten wird (Wix, Simone 16.10.2026); AUFNAHME_HANDY_BREITE=320 für Seiten mit festem 320-px-Layout (Wix)
+    breite, faktor = (int(os.environ.get('AUFNAHME_HANDY_BREITE', 390)), 3) if handy else (int(os.environ.get('AUFNAHME_BREITE', 1440)), 2)  # AUFNAHME_BREITE z. B. 1000 für Seiten, deren Kopf bei 1440 abgeschnitten wird; AUFNAHME_HANDY_BREITE=320 für Seiten mit festem 320-px-Layout (Wix)
     ws.senden('Emulation.setDeviceMetricsOverride', width=breite, height=900, deviceScaleFactor=faktor, mobile=handy)
-    if handy:  # Baukasten-Seiten (z. B. Wix) liefern die Handy-Fassung nur an echte Handys aus (Jana, 15.10.2026)
+    if handy:  # Baukasten-Seiten (z. B. Wix) liefern die Handy-Fassung nur an echte Handys aus
         ws.senden('Emulation.setUserAgentOverride', userAgent='Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1')
         ws.senden('Emulation.setTouchEmulationEnabled', enabled=True, maxTouchPoints=5)
     ws.senden('Page.navigate', url=url)

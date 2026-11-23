@@ -1,7 +1,7 @@
 # Erzeugt website/llms.txt (Übersicht für KI-Dienste nach llmstxt.org; noch kein fester Standard).
-# Anna 19.11.2026, Website-Check von außen: „Keine llms.txt“. Nur vorhandene Texte: Seitentitel und
+# Website-Check von außen: „Keine llms.txt“. Nur vorhandene Texte: Seitentitel und
 # Meta-Description jeder Seite aus website/sitemap.xml, gruppiert nach dem ersten Pfadteil. Nichts von Hand.
-# Läuft als letzter Schritt in alle-erzeugen.sh. Aufruf im Repository-Ordner:  python3 werkzeuge/llms-txt.py
+# Läuft als letzter Schritt in alle-erzeugen.sh. Aufruf im Repository-Ordner: python3 werkzeuge/llms-txt.py
 import html, pathlib, re
 
 website = pathlib.Path(__file__).resolve().parent.parent / 'website'

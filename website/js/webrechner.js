@@ -1,4 +1,4 @@
-// Kostenrechner Webdesign auf der Preisseite: fünf Schritte wie an einer Kasse (Konzept Anna 16.10.2026).
+// Kostenrechner Webdesign auf der Preisseite: fünf Schritte wie an einer Kasse.
 // Marke → Neu oder Redesign (Basispreis) → Seitenstruktur (Sitemap zum Bauen) → Extras → Dein Bon. Der Kassenbon rechnet mit.
 // Rechnet nur im Browser, speichert nichts. Anfrage über den Formulardienst (js/anfrage.js), PDF über den Druckdialog.
 // Daten: js/pakete-daten.js (erzeugt aus werkzeuge/preise-daten.json).
@@ -103,7 +103,7 @@
       <span class="wr-k-t">${titel}</span>${unter ? `<span class="wr-k-u">${unter}</span>` : ''}${preis ? `<span class="wr-k-p">${preis}</span>` : ''}
       ${items && items.length ? `<details><summary>Was ist drin?</summary><ul>${items.map((i) => `<li>${esc(i)}</li>`).join('')}</ul></details>` : ''}
     </label>`;
-  // Eine Zeile je Leistung mit Auswahl Ja · Nein · Weiß ich noch nicht (Anna 16.10.2026)
+  // Eine Zeile je Leistung mit Auswahl Ja · Nein · Weiß ich noch nicht
   const zeile = (name, titel, frage, text, wahl, items) => `
     <fieldset class="wr-zeile"><legend><b>${titel}</b><span>${frage}</span></legend>
       ${text ? `<p class="wr-zeile-text">${text}</p>` : ''}
@@ -280,7 +280,7 @@
     el.innerHTML = `<p class="meta wr-dach">${s.dt}</p>` + R[s.id]();
     $('wr-zurueck').hidden = aktiv === 0;
     $('wr-kein-kauf').hidden = aktiv !== 0;
-    const daumen = wurzel.querySelector('[data-daumen]'); // Rückmeldung erst beim Kostenvoranschlag (Anna 20.11.2026)
+    const daumen = wurzel.querySelector('[data-daumen]'); // Rückmeldung erst beim Kostenvoranschlag
     if (daumen) daumen.hidden = aktiv !== SCHRITTE.length - 1;
     const w = $('wr-weiter');
     w.hidden = aktiv === SCHRITTE.length - 1;

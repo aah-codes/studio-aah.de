@@ -1,6 +1,4 @@
 # Baut website/blog/eu-ai-act-kleine-unternehmen/index.html mit dem gemeinsamen Baustein werkzeuge/blog/beitrag.py.
-# Anna 17.11.2026: „Du kannst es jetzt direkt bauen und hochladen und entsprechend verlinken auf der Website“, dazu Bildwünsche je Kapitel.
-# Entwurf mit Quellen und Prüfvermerken (Prüfer gegen Primärquellen, 17.11.2026): Betrieb › Studio AAH › Website › 2026-11-17_blogbeitrag-entwurf_eu-ai-act-kleine-unternehmen.md.
 # Bilder: Titel aus werkzeuge/grafiken/blog/eu-ai-act-titel.py; Fotos und Symbole in website/bilder/blog-ai-act/ (Nachweis im Impressum).
 # Checkliste zum Ausdrucken: werkzeuge/blog/eu-ai-act-checkliste.py → website/downloads/eu-ai-act-checkliste.pdf
 # Aufruf im Repository-Ordner: python3 werkzeuge/blog/eu-ai-act-kleine-unternehmen.py

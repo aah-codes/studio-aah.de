@@ -1,11 +1,11 @@
 // Schriftstufen als Bild (PNG, transparent) – für Schriften, deren Lizenz keine Weitergabe der Datei erlaubt (Satoshi, Helvetica):
-// Aufbau wie das Designsystem bei Bauer (Anna 16.10.2026: „auf allen Referenzseiten so die Typo abbilden“) – je Zeile Stufe und Maß klein,
+// Aufbau wie das Designsystem bei Bauer – je Zeile Stufe und Maß klein,
 // darunter die Probe in der echten Schrift, Größe und Zeilenabstand wie auf der Website. Die Schriftdateien bleiben außerhalb des Repositorys.
 // Aufruf vom Repository-Ordner aus:
-//   swift werkzeuge/grafiken/schriftstufen.swift STUFEN.json AUS.png
+// swift werkzeuge/grafiken/schriftstufen.swift STUFEN.json AUS.png
 // STUFEN.json: {"breite": 1100, "massstab": 2, "zeilen": [{"stufe": "H1", "mass": "86 / 86 · 700", "schrift": "PFAD.otf" oder "PFAD.ttc#1",
-//   "groesse": 86, "zeilenhoehe": 1.0, "sperrung": -1.12, "farbe": "#2A1E2B", "text": "…", "versal": false,
-//   "knopf": {"grund": "#FF5000", "radius": 999, "innen": [10, 22]}}]}
+// "groesse": 86, "zeilenhoehe": 1.0, "sperrung": -1.12, "farbe": "#2A1E2B", "text": "…", "versal": false,
+// "knopf": {"grund": "#FF5000", "radius": 999, "innen": [10, 22]}}]}
 // Mit "einzeln": true entsteht je Stufe nur die Probe als eigenes Bild (AUS-1.png, AUS-2.png …).
 // Mit "nur_aa": {"schrift": …, "farbe": …, "groesse": 200} entsteht stattdessen nur „Aa“ (für die Schriftkarte).
 import Foundation

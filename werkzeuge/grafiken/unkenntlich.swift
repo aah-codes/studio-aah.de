@@ -1,7 +1,7 @@
-// Personen in Website-Aufnahmen unkenntlich machen (Anna 14.10.2026: „Mitarbeiter bitte nicht zeigen“).
+// Personen in Website-Aufnahmen unkenntlich machen.
 // Zeichnet die angegebenen Rechtecke stark weichgezeichnet (Gauß) neu; der Rest des Bildes bleibt unverändert.
 // Aufruf vom Repository-Ordner aus:
-//   swift werkzeuge/grafiken/unkenntlich.swift EIN.jpg AUS.jpg X,Y,B,H [X,Y,B,H …]
+// swift werkzeuge/grafiken/unkenntlich.swift EIN.jpg AUS.jpg X,Y,B,H [X,Y,B,H …]
 // Koordinaten in Pixeln von oben links. Stärke: Radius = 4 % der kürzeren Rechteckseite, mindestens 18 px.
 import Foundation; import CoreImage; import CoreGraphics; import ImageIO; import UniformTypeIdentifiers
 

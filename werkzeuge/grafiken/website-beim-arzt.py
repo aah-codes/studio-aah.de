@@ -1,7 +1,7 @@
-# Illustration „Eine Website geht zum Arzt“ für /website-check/ (Entwurf 19.11.2026).
+# Illustration „Eine Website geht zum Arzt“ für /website-check/.
 # Eine Website (Browserfenster mit Kopfzeile, Bildfläche mit Herz und Pulslinie, Textbalken, Button) sitzt als Patientin
 # auf der Liege; eine Ärztin (weißes Kreuz auf dem Rumpf) hört sie mit dem Stethoskop ab und hält ein Klemmbrett mit Häkchen.
-# Bausteine (Figur, Browser, Button, Zeilen) aus werkzeuge/grafiken/fuer-wen-hero.py, Vorbild dort „gesundheit“.
+# Bausteine (Figur, Browser, Button, Zeilen) aus werkzeuge/grafiken/fuer-wen-hero.py, Grundlage dort „gesundheit“.
 # Blau berührt nie Schwarz (weiße Fugen); Herz nie blau.
 # Format 1200 × 730, wird mit object-fit: cover / object-position: top gezeigt: Wichtiges in der Mitte, nichts am Rand.
 # Aufruf vom Repository-Ordner: python3 werkzeuge/grafiken/website-beim-arzt.py → website/bilder/website-check/website-beim-arzt.svg

@@ -1,4 +1,4 @@
-// Fächert die gerenderten Seiten 1, 2, 3, 7, 8 des Musterberichts auf (Anna 20.11.2026: alle Blätter sichtbar).
+// Fächert die gerenderten Seiten 1, 2, 3, 7, 8 des Musterberichts auf.
 // Aufruf: swift werkzeuge/grafiken/pruefbericht/faecher.swift ZIEL.png ORDNER_MIT_seite-N.png
 // Danach mit sips verkleinern (2400, 1200, 640 px) und mit cwebp nach website/bilder/website-check/pruefbericht-mockup*.webp.
 import AppKit

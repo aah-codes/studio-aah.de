@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
-"""Icon-Set für die ganze Website (Anna 12.11.2026: „ein Icon-Set zur kompletten Website … vereinheitlichen, nicht jedes
-Mal was Neues erfinden … maximal 50 Icons … maximal 3 Farben: Schwarz, Weiß und eine Farbe … 60 % aller Icons blau,
-vor allem die, die Seriosität und Vertrauen ausstrahlen sollen“). Seit 13.11.2026: Schwarz, Weiß und Blau, Gelb nur als Akzent
-(Anna: „Ja, umstellen“); Rot, Pink und Rosa nur noch im Spiel, im Farbband und beim Konfetti.
+"""Icon-Set für die ganze Website: Schwarz, Weiß und Blau, Gelb nur als Akzent
+; Rot, Pink und Rosa nur noch im Spiel, im Farbband und beim Konfetti.
 
 Regeln für jedes Icon:
 - Fläche 320 × 320, die Form reicht bis an den Rand (kein Innenabstand) → steht in Karten genau linksbündig.
@@ -64,7 +62,7 @@ SET = {
     'kompass': (BLAU, 'Rundgang, Orientierung, Strategie', f'<circle cx="160" cy="160" r="160" fill="{BLAU}"/><path d="M160 24 L200 160 L160 296 L120 160 Z" fill="{WS}"/><circle cx="160" cy="160" r="18" fill="{SCH}"/>'),
     'ziel': (BLAU, 'Website-Check, Ziel, Treffer', f'<circle cx="160" cy="160" r="160" fill="{BLAU}"/><circle cx="160" cy="160" r="112" fill="{WS}"/><circle cx="160" cy="160" r="72" fill="{BLAU}"/><circle cx="160" cy="160" r="38" fill="{WS}"/><circle cx="160" cy="160" r="22" fill="{SCH}"/>'),
     'sprechblase': (BLAU, 'Chat, Gespräch, Stimmen', f'<rect x="0" y="0" width="320" height="232" rx="40" fill="{BLAU}"/><path d="M48 216 L48 320 L152 216 Z" fill="{BLAU}"/>' + ''.join(f'<circle cx="{88+i*72}" cy="116" r="22" fill="{WS}"/>' for i in range(3))),
-    # Website-Check (Anna, 18.11.2026: „eher so ein Scanner-Symbol … ein Rechteck mit einer horizontalen Linie, die darüber hinausgeht, links und rechts“):
+    # Website-Check:
     # Website als blaue Fläche mit schwarzer Leiste, schwarze Scanlinie mit weißer Fuge (Blau berührt kein Schwarz)
     'scanner': (BLAU, 'Website-Check, Prüfung, Scan', f'<rect x="40" y="40" width="240" height="40" fill="{SCH}"/><rect x="40" y="96" width="240" height="184" fill="{BLAU}"/><rect x="0" y="164" width="320" height="44" fill="{WS}"/><rect x="0" y="174" width="320" height="24" fill="{SCH}"/>'),
     'checkliste': (BLAU, 'Checkliste, Prüfung, Enthalten', ''.join(f'<rect x="0" y="{y}" width="64" height="64" fill="{SCH}"/><rect x="96" y="{y+16}" width="224" height="32" fill="{BLAU}"/>' for y in (0, 128, 256))),
@@ -73,7 +71,7 @@ SET = {
     'uhr': (BLAU, 'Zeit, Dauer, Termin', f'<circle cx="160" cy="160" r="160" fill="{BLAU}"/><rect x="148" y="52" width="24" height="120" fill="{WS}"/><rect x="148" y="148" width="100" height="24" fill="{WS}"/><circle cx="160" cy="160" r="20" fill="{SCH}"/>'),
     'person': (BLAU, 'Ansprechpartnerin, Kund:in, Team', f'<circle cx="160" cy="64" r="64" fill="{SCH}"/><path d="M0 320 A160 160 0 0 1 320 320 Z" fill="{BLAU}"/>'),
     'ort': (BLAU, 'Standort, Leipzig, Einzugsgebiet', f'<path d="M160 320 L44 168 A136 136 0 1 1 276 168 Z" fill="{BLAU}"/><circle cx="160" cy="116" r="52" fill="{WS}"/><circle cx="160" cy="116" r="24" fill="{SCH}"/>'),
-    # ---------- Akzent Gelb (Anna 13.11.2026: nur noch Schwarz, Weiß, Blau und Gelb als Akzent) ----------
+    # ---------- Akzent Gelb ----------
     'skills': (BLAU, 'Skills, feste Abläufe, Automatik', f'<path d="M44.1 304.1 L15.9 275.9 L137.5 154.3 L165.8 182.6 Z" fill="{SCH}"/><path d="M147.1 144.7 L175.9 115.9 L204.1 144.1 L175.4 172.9 Z" fill="{BLAU}"/>'
                + funkeln(244, 76, 76) + funkeln(116, 52, 30) + funkeln(286, 214, 26)),
     'stern': (GELB, 'Highlight, Empfehlung, Neu', f'<path d="{stern(160, 160, 160, 58)}" fill="{GELB}"/><circle cx="160" cy="160" r="26" fill="{SCH}"/>'),
@@ -87,9 +85,9 @@ SET = {
 }
 
 
-# Tatsächlicher Rand jeder Form (x, y, rechts, unten), im Browser mit getBBox() gemessen (12.11.2026).
+# Tatsächlicher Rand jeder Form (x, y, rechts, unten), im Browser mit getBBox gemessen.
 # Die Datei bekommt genau diesen Ausschnitt als viewBox und xMinYMin: Das Icon hat keinen Innenabstand und steht
-# wirklich bündig mit dem Text (Anna 12.11.2026: „dass die Icons kein Padding haben“). Neues Icon: hier eintragen.
+# wirklich bündig mit dem Text. Neues Icon: hier eintragen.
 RAND = {
     'scanner': (0, 40, 320, 240),
     'anleitung': (20, 0, 300, 320), 'bildschirm': (0, 0, 320, 304), 'geschenk': (0, 4, 320, 320), 'handy': (60, 0, 260, 320),

@@ -1,5 +1,5 @@
 #!/bin/bash
-# Rendert die drei Grafiken zum Artikel „Agentische Markensysteme“ (Anna 18.11.2026) aus markensysteme.html.
+# Rendert die drei Grafiken zum Artikel „Agentische Markensysteme“ aus markensysteme.html.
 # Aufruf vom Repository-Ordner aus: bash werkzeuge/grafiken/blog/markensysteme.sh
 # Braucht Google Chrome und cwebp (in ~/bin). Ergebnis: website/bilder/blog-markensysteme/{titel,ordner,zwei-fassungen}.webp und titel-og.jpg
 set -euo pipefail

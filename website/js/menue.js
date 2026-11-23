@@ -7,7 +7,7 @@
   // Bewegung reduzieren (Systemeinstellung): einmal abfragen, alle Teile richten sich danach
   const ruhig = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Konfetti (Anna 09.11.2026): nach jeder Anmeldung und jedem abgeschickten Formular Konfetti über den ganzen Bildschirm –
+  // Konfetti: nach jeder Anmeldung und jedem abgeschickten Formular Konfetti über den ganzen Bildschirm –
   // Schnipsel aus den Bauhaus-Grundformen (Kreis, Halbkreis, Quadrat, Dreieck, Balken) in den Markenfarben (Farbtafel „modernes Bauhaus“).
   // Auslöser: Ereignis „konfetti“ am document (Newsletter, Formular ohne Seitenwechsel) oder data-konfetti auf einer Danke-Seite.
   // Zwei Kanonen unten links und rechts plus Regen von oben; nach 4,5 s ist alles weg (Bewegung höchstens 5 s).
@@ -78,7 +78,7 @@
     if (document.querySelector('[data-konfetti]')) setTimeout(starten, 250);
   })();
 
-  // Mega-Menüs „Leistungen“ und „Branchen“ (Anna 12.11.2026): öffnen per Klick, schließen mit Esc oder Klick daneben;
+  // Mega-Menüs „Leistungen“ und „Branchen“: öffnen per Klick, schließen mit Esc oder Klick daneben;
   // immer nur eins offen. Ohne JavaScript führen die Menüpunkte auf ihre Seite (#leistungen bzw. /fuer-wen/).
   (() => {
     const schleier = document.querySelector('.mm-schleier');
@@ -156,7 +156,7 @@
   })();
 
   // Bereichsleiste (Leistungsseiten, Blog, Preisseite): markiert den Abschnitt, in dem man gerade ist (schiebt nur die Leiste, nie die Seite)
-  // Auch das Inhaltsverzeichnis „Leistung im Überblick“ (.anker-spur, Anna 12.11.2026)
+  // Auch das Inhaltsverzeichnis „Leistung im Überblick“
   document.querySelectorAll('.preis-leiste, .anker-spur').forEach((leiste) => {
     if (!('IntersectionObserver' in window)) return;
     const links = [...leiste.querySelectorAll('a[href^="#"]')];
@@ -172,7 +172,7 @@
     ziele.forEach((z) => beob.observe(z));
   });
 
-  // Videos von YouTube erst nach Klick (Zwei-Klick-Lösung, Anna 18.11.2026): vorher keine Verbindung zu YouTube,
+  // Videos von YouTube erst nach Klick: vorher keine Verbindung zu YouTube,
   // danach im erweiterten Datenschutzmodus (youtube-nocookie.com); steht in der Datenschutzerklärung (#youtube)
   document.querySelectorAll('.video-klick[data-video]').forEach((f) => {
     const knopf = f.querySelector('.video-klick-knopf');
@@ -189,7 +189,7 @@
     });
   });
 
-  // GIFs (z. B. LinkedIn-Beitrag, Anna 17.11.2026) spielen einmal ab, sobald sie ins Bild kommen, und beim nächsten Hineinscrollen wieder
+  // GIFs spielen einmal ab, sobald sie ins Bild kommen, und beim nächsten Hineinscrollen wieder
   // (Bewegung von selbst höchstens 5 s: das GIF hat keinen Schleifen-Block und läuft 2,6 s); bei „Bewegung reduzieren“ kein Neustart
   (() => {
     const gifs = document.querySelectorAll('img[data-gif]');
@@ -245,7 +245,7 @@
       });
       const knopf = film.querySelector('.ci-nochmal-knopf');
       if (knopf) knopf.addEventListener('click', start);
-      // data-dauerhaft (Anna 17.11.2026, Corporate Identity): Bild steht sofort fertig, nur die Punkte laufen, ohne Ende;
+      // data-dauerhaft: Bild steht sofort fertig, nur die Punkte laufen, ohne Ende;
       // „Anhalten“ bleibt sichtbar (WCAG 2.2.2), „Noch einmal ansehen“ entfällt
       if (film.hasAttribute('data-dauerhaft')) {
         if (knopf) knopf.hidden = true;
@@ -271,7 +271,7 @@
         return;
       }
       if (!('IntersectionObserver' in window)) { start(); return; }
-      // data-wiederholen: kurzer Film (unter 5 s) startet bei jedem Hineinscrollen neu (Bauhaus-Formen, Anna 11.10.2026)
+      // data-wiederholen: kurzer Film (unter 5 s) startet bei jedem Hineinscrollen neu
       const wieder = film.hasAttribute('data-wiederholen');
       const beob = new IntersectionObserver((e) => { if (e[0].isIntersecting) { start(); if (!wieder) beob.disconnect(); } }, { threshold: wieder ? 0.6 : 0.12 });
       beob.observe(film);
@@ -288,7 +288,7 @@
       const pk = ks.querySelector('[data-pause]');
       karten.forEach(() => punkte.appendChild(document.createElement('i')));
       let nr = 0, uhr = null, sichtbar = false, fokus = false;
-      // Lauf-Balken neu starten ohne erzwungenes Layout (PageSpeed 19.11.2026: void offsetWidth kostete 75 ms beim Laden): Klasse weg, zwei Bilder später wieder dran
+      // Lauf-Balken neu starten ohne erzwungenes Layout: Klasse weg, zwei Bilder später wieder dran
       const markiere = () => { [...punkte.children].forEach((p) => p.classList.remove('aktiv')); requestAnimationFrame(() => requestAnimationFrame(() => { const p = punkte.children[nr]; if (p) p.classList.add('aktiv'); })); };
       const zeige = (n) => { nr = (n + karten.length) % karten.length; spur.scrollTo({ left: karten[nr].offsetLeft - spur.offsetLeft }); markiere(); };
       const lauf = () => {
@@ -363,7 +363,7 @@
           const x2 = (links ? w.left : w.right) - o.left, y2 = w.top + w.height * (n > 1 ? 0.2 + nr * 0.6 / (n - 1) : 0.5) - o.top;
           const mx = (x1 + x2) / 2, d = `M${x1} ${y1}C${mx} ${y1} ${mx} ${y2} ${x2} ${y2}`;
           const pfad = document.createElementNS(NS, 'path'); pfad.setAttribute('d', d); pfad.setAttribute('class', 'oeko-linie'); svg.appendChild(pfad);
-          // Anna 22.11.2026: ohne wandernde Punkte und ohne „Anhalten / Noch einmal ansehen“; der Aufbau endet nach rund 5 s (WCAG 2.2.2)
+          // ohne wandernde Punkte und ohne „Anhalten / Noch einmal ansehen“; der Aufbau endet nach rund 5 s (WCAG 2.2.2)
           const wege = [];
           wege.forEach((weg, j) => {
             const c = document.createElementNS(NS, 'circle'); c.setAttribute('r', '4'); c.setAttribute('class', punkt++ % 2 ? 'ci-f oeko-punkt-blau' : 'ci-f'); c.setAttribute('opacity', '0');
@@ -383,7 +383,7 @@
     });
   })();
 
-  // Golden Circle im Blog (Anna 19.10.2026): Kreise erscheinen einmal von innen nach außen, sobald die Grafik zu 40 % sichtbar ist.
+  // Golden Circle im Blog: Kreise erscheinen einmal von innen nach außen, sobald die Grafik zu 40 % sichtbar ist.
   // Ohne IntersectionObserver oder JavaScript bleibt das fertige Bild stehen; „weniger Bewegung“ regelt stil.css.
   (() => {
     const gc = document.querySelector('.golden-circle');
@@ -392,7 +392,7 @@
     new IntersectionObserver((e, b) => { if (e[0].isIntersecting) { gc.classList.add('is-visible'); b.disconnect(); } }, { threshold: 0.4 }).observe(gc);
   })();
 
-  // Aktivstatus im Menü (Anna 13.10.2026): Der Kopf ist auf allen Seiten gleich, deshalb markiert dieses Skript die aktuelle Seite
+  // Aktivstatus im Menü: Der Kopf ist auf allen Seiten gleich, deshalb markiert dieses Skript die aktuelle Seite
   // (aria-current="page") und den Bereich, in dem sie liegt (aria-current="true", z. B. Blog bei einem Artikel, Leistungen auf /service/).
   (() => {
     const ohneIndex = (p) => p.replace(/index\.html$/, '');
@@ -423,7 +423,7 @@
     oeffnen(location.hash);
   })();
 
-  // Kostenrechner-Knopf unten rechts verdeckt nie einen anderen Knopf, Mail-/Telefon-Link oder Kontakt-/Anfrage-Link (Website-Check 18.10.2026):
+  // Kostenrechner-Knopf unten rechts verdeckt nie einen anderen Knopf, Mail-/Telefon-Link oder Kontakt-/Anfrage-Link:
   // liegt einer darunter, blendet er sich aus, bis wieder Platz ist. Ohne JavaScript bleibt er wie bisher sichtbar.
   (() => {
     // auf der Landingpage Website-Check der eigene Knopf zum Formular (der Kostenrechner-Knopf ist dort ausgeblendet)
@@ -480,7 +480,7 @@
     });
     if (location.hash === '#anfordern') oeffnen();
   })();
-  // Kennzahlen zählen beim Einblenden einmal hoch (Anna 13.11.2026); ohne JavaScript oder bei „Bewegung reduzieren“ steht die Zahl fest
+  // Kennzahlen zählen beim Einblenden einmal hoch; ohne JavaScript oder bei „Bewegung reduzieren“ steht die Zahl fest
   (() => {
     const zahlen = document.querySelectorAll('[data-zaehlen]');
     if (!zahlen.length || !('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -495,12 +495,12 @@
     }, { threshold: 0.5 });
     zahlen.forEach((z) => beob.observe(z));
   })();
-  // Flipcards „Wo es gerade hakt“ (Anna 12.11.2026): am Handy dreht Tippen die Karte (am Desktop dreht sie beim Drüberfahren per CSS)
+  // Flipcards „Wo es gerade hakt“: am Handy dreht Tippen die Karte (am Desktop dreht sie beim Drüberfahren per CSS)
   document.querySelectorAll('.hk-flip').forEach(function (karte) {
     karte.addEventListener('click', function (e) { if (!e.target.closest('a')) karte.classList.toggle('gedreht'); });
   });
 
-  // Punkteraster im Hero (Startseite, Website-Check): rund um die Maus deutlicher (Anna 17. und 20.11.2026)
+  // Punkteraster im Hero (Startseite, Website-Check): rund um die Maus deutlicher
   if (window.matchMedia('(hover: hover)').matches) {
     document.querySelectorAll('[data-raster]').forEach(function (buehne) {
       buehne.addEventListener('pointermove', function (ev) {
@@ -510,7 +510,7 @@
       });
     });
   }
-  // Daumen-Rückmeldung unter Selbsttest und Rechnern (Anna 20.11.2026, Vorbild Gelbe Seiten). Ohne Namen und E-Mail-Adresse über Formspark
+  // Daumen-Rückmeldung unter Selbsttest und Rechnern. Ohne Namen und E-Mail-Adresse über Formspark
   // (dieselbe Adresse wie in js/anfrage.js). Nach Daumen runter freiwillig ein Satz. Ohne JavaScript bleibt der Block verborgen, die Werkzeuge brauchen es ohnehin.
   document.querySelectorAll('[data-daumen]').forEach((box) => {
     if (!('daumenSelbst' in box.dataset)) box.hidden = false; // Kostenrechner: js/webrechner.js zeigt den Block erst im letzten Schritt
@@ -545,13 +545,13 @@
       });
     }));
   });
-  // Name aus dem Frag-Feld der Startseite im Abschluss der Branchenseiten (Anna 22.11.2026). Nur aus sessionStorage dieses Tabs, nichts wird gesendet.
+  // Name aus dem Frag-Feld der Startseite im Abschluss der Branchenseiten. Nur aus sessionStorage dieses Tabs, nichts wird gesendet.
   (function () {
     var ziel = document.querySelector('[data-name-hallo]'); if (!ziel) return;
     var name = ''; try { name = (sessionStorage.getItem('aah-name') || '').trim().slice(0, 28); } catch (e) {}
     if (name) ziel.textContent = 'Hey ' + name + ', du bist ja noch da.';
   })();
-  // Referenz-Slider: Pause-Button (Anna 22.11.2026, Barrierefreiheit: Bewegung anhalten können)
+  // Referenz-Slider: Pause-Button
   (function () {
     document.querySelectorAll('[data-ref-slider]').forEach(function (sl) {
       var b = sl.querySelector('.ref-pause'); if (!b) return;

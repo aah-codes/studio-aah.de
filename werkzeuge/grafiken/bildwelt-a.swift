@@ -1,10 +1,10 @@
 // Bildwelt A (KI-Themenbilder, voll gebrandet): macht aus einem KI-Rohbild ein Asset-Set in allen Formaten.
 // Bildkonzept: graue Szene, genau ein Gegenstand in Blau, eine große Bauhaus-Form; Herkunft maschinenlesbar (C2PA), sichtbarer Stempel nur mit KENNZEICHNUNG=1.
 // Braucht nur macOS (keine Installation). Aufruf vom Repository-Ordner aus:
-//   swift werkzeuge/grafiken/bildwelt-a.swift ROH.png ZIELORDNER NAME FORM [FORMFARBE]
-//   FORM: kreis | halbkreis | dreieck   FORMFARBE: blau (Standard) | creme | weiss
-//   FORM keine = Branchenbilder (Anna, 17./18.11.2026, Vorbild ZDF-Kategorien): keine Form, Blau soll 40–60 % der Fläche tragen.
-//   Umgebungsvariablen: ENTFAERBEN=1 (alles außer Blau grau), GRUEN_FRISCH=1 (Grün satter), KENNZEICHNUNG=1 (Stempel im Bild)
+// swift werkzeuge/grafiken/bildwelt-a.swift ROH.png ZIELORDNER NAME FORM [FORMFARBE]
+// FORM: kreis | halbkreis | dreieck FORMFARBE: blau (Standard) | creme | weiss
+// FORM keine = Branchenbilder: keine Form, Blau soll 40–60 % der Fläche tragen.
+// Umgebungsvariablen: ENTFAERBEN=1 (alles außer Blau grau), GRUEN_FRISCH=1 (Grün satter), KENNZEICHNUNG=1 (Stempel im Bild)
 // Ergebnis: ZIELORDNER/NAME-titel.png (1200×800), -vorschau.png (1200×630), -quadrat.png (1080×1080), -hoch.png (1080×1350);
 // danach mit cwebp in WebP umwandeln (siehe bildwelt-a.sh). Das Rohbild selbst bleibt unverändert (Herkunftsdaten bleiben dort erhalten).
 import Foundation
@@ -22,8 +22,8 @@ let ziel = a[2], name = a[3], form = a[4], formfarbe = a.count > 5 ? a[5] : "bla
 let sRGB = CGColorSpace(name: CGColorSpace.sRGB)!
 let sw = form == "keine" // Branchenbilder: keine Form, Motiv mittig
 let umgebung = ProcessInfo.processInfo.environment
-let entfaerben_an = umgebung["ENTFAERBEN"] == "1" // seit 18.11.2026 aus (Anna: helles Holz, frisches Grün erlaubt)
-let gruen_frisch = umgebung["GRUEN_FRISCH"] == "1" // Grün satter und frischer (Anna 18.11.2026, Libelle der Wasserwaage)
+let entfaerben_an = umgebung["ENTFAERBEN"] == "1" // aus
+let gruen_frisch = umgebung["GRUEN_FRISCH"] == "1" // Grün satter und frischer
 
 // Markenfarben
 let BLAU: (CGFloat, CGFloat, CGFloat) = (42 / 255, 95 / 255, 230 / 255)   // #2a5fe6
@@ -121,7 +121,7 @@ for (endung, bw, bh) in formate {
     c.restoreGState()
     }
 
-    // Kennzeichnung im Bild nur auf Wunsch (Umgebungsvariable KENNZEICHNUNG=1). Anna, 18.11.2026: Stempel im Bild „wirkt unprofessionell“;
+    // Kennzeichnung im Bild nur auf Wunsch (Umgebungsvariable KENNZEICHNUNG=1). Kein Stempel im Bild;
     // Hinweis steht stattdessen als Bildunterschrift/Impressum, maschinenlesbar per C2PA (bildwelt-a.sh).
     if ProcessInfo.processInfo.environment["KENNZEICHNUNG"] == "1" {
     let text = "Bild: KI-generiert"

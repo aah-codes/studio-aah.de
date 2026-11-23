@@ -1,4 +1,4 @@
-// Frag-Feld im Hero der Startseite (Anna 16.11.2026): sucht nur in den häufigen Fragen der Website (daten/fragen.json,
+// Frag-Feld im Hero der Startseite: sucht nur in den häufigen Fragen der Website (daten/fragen.json,
 // erzeugt von werkzeuge/fragen-index.py) und zeigt die passendsten Antworten mit Link. Alles läuft im Browser, nichts wird gesendet.
 (function () {
   var form = document.querySelector('[data-frag]');
@@ -7,7 +7,7 @@
   var feld = form.querySelector('input');
   var daten = null;
 
-  // Themen (daten/fragen.json aus werkzeuge/inhalte/hero-themen.json, Anna 17.11.2026): aus jeder Stichwort-Gruppe eines Themas
+  // Themen: aus jeder Stichwort-Gruppe eines Themas
   // muss ein Wort(anfang) in der Frage stehen; das Thema mit den meisten Gruppen gewinnt, bei Gleichstand das obere
   function woerter(t) {
     return t.toLowerCase().replace(/studio aah!?/g, ' ').replace(/[^a-zäöüß0-9]+/g, ' ').trim().split(' ');
@@ -35,7 +35,7 @@
     if (text) e.textContent = text;
     return e;
   }
-  // Antwort wie im Chat (Anna 17.11.2026: „ganz simpel wie Google“, „wie mit einem Chatbot“): Frage als Blase rechts,
+  // Antwort wie im Chat: Frage als Blase rechts,
   // eine kurze Antwort links (ein bis zwei Sätze) mit Link; neueste Runde oben, höchstens drei Runden sichtbar
   // Text mit [Wort](adresse) in Text- und Link-Knoten zerlegen (nie innerHTML)
   function mitLinks(ziel, text) {
@@ -43,13 +43,13 @@
     while ((m = re.exec(text))) {
       if (m.index > pos) ziel.appendChild(document.createTextNode(text.slice(pos, m.index)));
       var a = el('a', null, m[1]); a.href = m[2];
-      if (/^https?:/.test(m[2])) { a.target = '_blank'; a.rel = 'noopener'; }   // extern immer in neuem Fenster (Anna 17.11.2026)
+      if (/^https?:/.test(m[2])) { a.target = '_blank'; a.rel = 'noopener'; }   // extern immer in neuem Fenster
       ziel.appendChild(a); pos = re.lastIndex;
     }
     if (pos < text.length) ziel.appendChild(document.createTextNode(text.slice(pos)));
     return ziel;
   }
-  // Chat nach Vorbild WhatsApp (Anna 18.11.2026: „nimm whatsapp als inspo für chat“): Frage als blaue Blase rechts mit Uhrzeit
+  // Chat: Frage als blaue Blase rechts mit Uhrzeit
   // und Haken, kurz „schreibt …“, dann Annas Antwort als weiße Blase links mit Foto und Name; Links als Zeilen unten in der Blase.
   // Reihenfolge wie im Messenger: neueste Runde unten direkt über dem Feld, höchstens drei Runden
   var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -63,7 +63,7 @@
     return s;
   }
   function hinscrollen(e) { ziel.scrollTop = Math.max(0, e.offsetTop - 12); }
-  // Reaktionen wie im Messenger deuten (Anna 20.11.2026: Rakete auf den Preis heißt „passt, finde ich gut“):
+  // Reaktionen wie im Messenger deuten:
   // nur Emojis oder kurze Zustimmung → passende Antwort mit Kontaktwegen; nachdenkliche Emojis → Einladung zu weiteren Fragen
   var letzte = null;
   var JA = ['👍', '🚀', '❤', '😍', '🙌', '✨', '🔥', '✅', '🎉', '🤝', '👏', '💯', '😊', '🥳', '💪', '🙏', '☺', '😀', '😃', '😄', '👌', '😂',
@@ -105,7 +105,7 @@
     if (runden.length > 3) verlauf.removeChild(runden[0]);
     hinscrollen(runde);
     feld.value = '';
-    feld.placeholder = ''; marke();   // im Chat kein Platzhalter, nur die blinkende Schreibmarke (Anna 22.11.2026)
+    feld.placeholder = ''; marke();   // im Chat kein Platzhalter, nur die blinkende Schreibmarke
 
     var zeile = el('div', 'fh-zeile');
     var foto = el('img', 'fh-foto');
@@ -113,11 +113,11 @@
     zeile.appendChild(foto);
     var antwort = el('div', 'fh-sie');
     zeile.appendChild(antwort);
-    // Antwort wie ein Wiki oder die KI-Übersicht bei Google (Anna 20.11.2026): kurze Zusammenfassung, bis zu drei Stichpunkte,
+    // Antwort wie ein Wiki oder die KI-Übersicht bei Google: kurze Zusammenfassung, bis zu drei Stichpunkte,
     // Links direkt im Text als [Wort](adresse) aus daten/fragen.json, keine Link-Zeilen mehr unten in der Blase
     if (treffer) {
       var t = treffer.e;
-      // Mit Namen und lockerer (Anna 21.11.2026), nur wenn der Name bekannt ist und die Antwort keine eigene Begrüßung hat
+      // Mit Namen und lockerer, nur wenn der Name bekannt ist und die Antwort keine eigene Begrüßung hat
       var nm = merk('aah-name').slice(0, 28);
       if (nm && !eigen) {
         var auf = ['Gute Frage, ', 'Klar, ', 'Kurz gesagt, '][Math.floor(Math.random() * 3)];
@@ -130,7 +130,7 @@
         antwort.appendChild(ul);
       }
     } else {
-      // Unbekannte Frage (Anna 21.11.2026): drei Wege wie auf der Kontaktseite
+      // Unbekannte Frage: drei Wege wie auf der Kontaktseite
       antwort.appendChild(el('p', 'fh-kurz', 'Gute Frage! Die beantworte ich dir lieber persönlich:'));
       var wege = el('p', 'fh-wege');
       [['Termin buchen', 'https://calendar.app.google/muK5JmpfbsXsDEq47', true], ['Anrufen', 'tel:+4917683089879'], ['Schreiben', 'kontakt/']].forEach(function (w) {
@@ -152,7 +152,7 @@
     return fetch('daten/fragen.json' + (v.indexOf('?') > 0 ? v.slice(v.indexOf('?')) : '')).then(function (r) { return r.json(); }).then(function (d) { daten = d; });
   }
 
-  // Chat schließen (Anna 20.11.2026): X oben rechts, Klick auf die blaue Fläche oder Esc führt zurück zum Feld mit Unterzeile
+  // Chat schließen: X oben rechts, Klick auf die blaue Fläche oder Esc führt zurück zum Feld mit Unterzeile
   var START = feld.placeholder, panel = form.closest('.hl-panel'), zu = document.querySelector('[data-frag-zu]');
   function schliessen() {
     if (!ziel.textContent.trim()) return;
@@ -162,8 +162,8 @@
   if (panel) panel.addEventListener('click', function (ev) { if (ev.target === panel) schliessen(); });
   document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape' && panel && panel.contains(document.activeElement)) schliessen(); });
 
-  // Eingabe wie bei WhatsApp (Anna 20.11.2026): runder Button mit Papierflieger, rechts im Feld eine Emoji-Auswahl.
-  // Leise Töne beim Senden und bei der Antwort. Diktieren entfernt (Anna 21.11.2026).
+  // Eingabe: runder Button mit Papierflieger, rechts im Feld eine Emoji-Auswahl.
+  // Leise Töne beim Senden und bei der Antwort. Diktieren entfernt.
   var senden = form.querySelector('[data-senden]'), emojiAuf = form.querySelector('[data-emoji-auf]'), emojis = form.querySelector('.hl-emojis');
 
   // Töne aus dem Browser selbst (Web Audio), keine Dateien, nur nach einem Klick
@@ -183,11 +183,11 @@
 
   function beispiel() { return /\?$/.test(feld.placeholder) && feld.placeholder !== 'Noch eine Frage?' ? feld.placeholder : ''; }
   function modus() {}
-  // Blinkende Schreibmarke im leeren Chat-Feld, auch ohne Fokus (Anna 22.11.2026); der Name steht nur im Chatkopf
+  // Blinkende Schreibmarke im leeren Chat-Feld, auch ohne Fokus; der Name steht nur im Chatkopf
   function marke() { form.classList.toggle('fh-marke', !feld.placeholder && !feld.value); }
   feld.addEventListener('input', marke);
 
-  // Emoji-Auswahl: fügt an der Schreibmarke ein, bleibt offen wie bei WhatsApp, schließt mit Esc oder Klick daneben
+  // Emoji-Auswahl: fügt an der Schreibmarke ein, bleibt offen, schließt mit Esc oder Klick daneben
   function emojiPanel(auf) {
     if (!emojis) return;
     emojis.hidden = !auf; emojiAuf.setAttribute('aria-expanded', auf ? 'true' : 'false');
@@ -207,7 +207,7 @@
   });
 
   feld.addEventListener('focus', function () { laden().catch(function () {}); }, { once: true });
-  // Erst der Name (Anna 21.11.2026: „Hi, ich bin Anna. Wie heißt du?“, Platzhalter wie im 4. Entwurf). Der Name bleibt nur in diesem
+  // Erst der Name. Der Name bleibt nur in diesem
   // Browser-Tab (sessionStorage), wird nirgends hingeschickt. Danach wird das Feld wieder zum Frag-Feld.
   var FRAGE = form.getAttribute('data-frag-beispiel') || '';
   var titel = document.querySelector('[data-frag-titel]');
@@ -218,7 +218,7 @@
     feld.setAttribute('maxlength', '200'); feld.setAttribute('enterkeyhint', 'search');
     var lab = form.querySelector('label'); if (lab) lab.textContent = 'Deine Frage an STUDIO AAH!';
     if (titel) titel.textContent = 'Hi ' + name + '! Wie kann ich dir weiterhelfen?';
-    // Name aus dem Hero auch im letzten Abschnitt aufgreifen (Anna 22.11.2026: „Paul, bist du fit für 2027?“)
+    // Name aus dem Hero auch im letzten Abschnitt aufgreifen
     var nf = document.querySelector('[data-name-frage]'); if (nf) nf.textContent = name + ', bist du fit für 2027?';
     form.removeAttribute('data-frag-name');   // jetzt erscheinen die Frage-Chips
   }
@@ -229,7 +229,7 @@
     var verlauf = ziel.querySelector('.fh-chat') || ziel.appendChild(el('ol', 'fh-chat'));
     if (!verlauf.querySelector('.fh-tag')) verlauf.appendChild(el('li', 'fh-tag', 'Heute'));
     ton('senden');
-    var runde = el('li', 'fh-runde'), ich = el('p', 'fh-ich', 'Hallo, ich bin ' + name + '.');   // Anna 22.11.2026
+    var runde = el('li', 'fh-runde'), ich = el('p', 'fh-ich', 'Hallo, ich bin ' + name + '.');
     ich.appendChild(zeit(true)); runde.appendChild(ich);
     var zeile = el('div', 'fh-zeile'), foto = el('img', 'fh-foto');
     foto.src = 'bilder/anna-haertelt-studio-blau-rund-192.jpg'; foto.alt = ''; foto.width = 32; foto.height = 32;
@@ -248,7 +248,7 @@
       if (!name) { feld.focus(); return; }
       emojiPanel(false); begruessen(name); return;
     }
-    // Leeres Feld: beim ersten Mal die Beispielfrage aus dem Platzhalter beantworten (Anna 20.11.2026: „muss nichts eingeben,
+    // Leeres Feld: beim ersten Mal die Beispielfrage aus dem Platzhalter beantworten („muss nichts eingeben,
     // kann einfach nur Antwort klicken und sehe schon die Funktionalität“)
     var frage = feld.value.trim() || beispiel();
     if (!frage) { feld.focus(); return; }

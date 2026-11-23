@@ -1,5 +1,5 @@
 {
-  "_hinweis": "Landingpage /website-check/ (Anna 24.10.2026): die 8 Prüfpunkte und die häufigen Fragen. Prüfpunkte passen zum Regelwerk Website-Check (P1–P8); Änderungen nur hier, dann python3 werkzeuge/website-check.py (oder alle-erzeugen.sh) laufen lassen.",
+  "_hinweis": "Landingpage /website-check/: die 8 Prüfpunkte und die häufigen Fragen. Prüfpunkte passen zum Regelwerk Website-Check (P1–P8); Änderungen nur hier, dann python3 werkzeuge/website-check.py (oder alle-erzeugen.sh) laufen lassen.",
   "pruefpunkte": [
     {
       "titel": "Erster Eindruck",
@@ -141,7 +141,7 @@
     }
   ],
   "stichprobe": {
-    "_quelle": "Eigene Messung vom 19.11.2026; 15 Websites von Hand nachgemessen, Prozentwerte nachgerechnet. Nur Kennzahlen mit sicherer Erkennung; HSTS bewusst weggelassen. Überschrift und Einleitung stehen in website/website-check/index.html. Methodentext steht nur hier (Anna 19.11.2026: nicht auf der Seite).",
+    "_quelle": "Eigene Messung vom 19.11.2026; 15 Websites von Hand nachgemessen, Prozentwerte nachgerechnet. Nur Kennzahlen mit sicherer Erkennung; HSTS bewusst weggelassen. Überschrift und Einleitung stehen in website/website-check/index.html. Methodentext steht nur hier.",
     "anzahl": 98,
     "werte": [
       {

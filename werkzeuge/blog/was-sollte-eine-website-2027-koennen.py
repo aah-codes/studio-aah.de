@@ -1,5 +1,5 @@
 # Baut website/blog/was-sollte-eine-website-2027-koennen/index.html (Reihe „Website-Fragen“, Teil 2) mit dem gemeinsamen Baustein werkzeuge/blog/beitrag.py.
-# Fließtext = Reinzeichnung, von Anna freigegeben 19.10.2026 – nur in was-sollte-eine-website-2027-koennen-inhalt.html ändern. Schema: werkzeuge/blog/schema-blogbeitrag.md
+# Fließtext nur in was-sollte-eine-website-2027-koennen-inhalt.html ändern. Schema: werkzeuge/blog/schema-blogbeitrag.md
 # „Kurz gesagt“ und FAQ fassen nur Aussagen aus dem Artikel bzw. aus Teil 1 zusammen (keine neuen Zahlen).
 # Eingebunden: Golden Circle (werkzeuge/grafiken/golden-circle.html), CI-Grafik der Markenbildung und Ökosystem der Webdesign-Seite (dieselben Dateien wie dort).
 # Aufruf im Repository-Ordner: python3 werkzeuge/blog/was-sollte-eine-website-2027-koennen.py

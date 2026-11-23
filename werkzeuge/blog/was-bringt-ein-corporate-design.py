@@ -1,5 +1,5 @@
 # Baut website/blog/was-bringt-ein-corporate-design/index.html mit dem gemeinsamen Baustein werkzeuge/blog/beitrag.py.
-# Roter Faden: das neue Corporate Design der Stadt Leipzig (Anna, 17.11.2026). Recherche: Betrieb, Studio AAH/Website/2026-11-17_blogbeitrag-entwurf_corporate-design-nutzen.md
+# Roter Faden: das neue Corporate Design der Stadt Leipzig.
 # Texte nur in was-bringt-ein-corporate-design-inhalt.html und in der FAQ unten ändern. Schema: werkzeuge/blog/schema-blogbeitrag.md
 # Aufruf im Repository-Ordner: python3 werkzeuge/blog/was-bringt-ein-corporate-design.py
 import pathlib, sys

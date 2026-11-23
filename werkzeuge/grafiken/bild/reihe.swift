@@ -1,4 +1,4 @@
-// reihe AUS.jpg HÖHE BILD… : Bilder nebeneinander auf gleiche Höhe
+// reihe AUS.jpg HÖHE BILD…: Bilder nebeneinander auf gleiche Höhe
 import Foundation; import CoreGraphics; import ImageIO; import UniformTypeIdentifiers
 let a = CommandLine.arguments; let H = CGFloat(Double(a[2])!)
 let b = a[3...].map { CGImageSourceCreateImageAtIndex(CGImageSourceCreateWithURL(URL(fileURLWithPath: $0) as CFURL, nil)!, 0, nil)! }

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Druck-Mockup für die Startseite (Anna 13.10.2026): Visitenkarten von Dr. Simone Goldhammer auf einem Schreibtisch.
+"""Druck-Mockup für die Startseite: Visitenkarten von Dr. Simone Goldhammer auf einem Schreibtisch.
 
 Zwei Karten, leicht gedreht und gestapelt, mit weichem Schatten, Kontaktschatten, Papierkante und dem Korn des Fotos.
 Die Karte wird nur verkleinert, nie vergrößert, damit sie scharf bleibt.

@@ -1,5 +1,4 @@
 # Baut website/blog/agentische-markensysteme/index.html mit dem gemeinsamen Baustein werkzeuge/blog/beitrag.py.
-# Freigegeben von Anna am 18.11.2026 („bau den Artikel und lad hoch“). Entwurf und Quellenprüfung: Betrieb, Studio AAH/Website/2026-11-18_blogbeitrag-entwurf_agentische-markensysteme.md
 # Texte nur in agentische-markensysteme-inhalt.html und in der FAQ unten ändern. Grafiken: werkzeuge/grafiken/blog/markensysteme.sh
 # Aufruf im Repository-Ordner: python3 werkzeuge/blog/agentische-markensysteme.py
 import pathlib, sys

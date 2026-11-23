@@ -1,9 +1,9 @@
-# Erzeugt die Bilder für den Abschnitt „Für wen“ der Startseite (Entwurf 16.10.2026):
-#   werkzeuge/grafiken/fuer-wen-mittelstand.svg   – Team aus drei Bauhaus-Figuren vor einer Website mit vielen Unterseiten
-#   werkzeuge/grafiken/fuer-wen-selbststaendige.svg – eine Figur winkt neben einem Onepager
-# Vereine & Kultur: seit 09.11.2026 eigene Illustration werkzeuge/grafiken/fuer-wen-vereine.svg (vorher Foto programm-haende.webp, Anna: „wirkt wie Party“).
+# Erzeugt die Bilder für den Abschnitt „Für wen“ der Startseite:
+# werkzeuge/grafiken/fuer-wen-mittelstand.svg – Team aus drei Bauhaus-Figuren vor einer Website mit vielen Unterseiten
+# werkzeuge/grafiken/fuer-wen-selbststaendige.svg – eine Figur winkt neben einem Onepager
+# Vereine & Kultur: eigene Illustration werkzeuge/grafiken/fuer-wen-vereine.svg.
 # Bildidee: eine Figur (Selbstständige) – ein Team (Mittelstand) – viele Hände (Vereine).
-# Figur wie in werkzeuge/grafiken/blog/geld-und-zeit-titel.py (Konstruktion nach Anna, 13.10.2026). Blau berührt nie Schwarz.
+# Figur wie in werkzeuge/grafiken/blog/geld-und-zeit-titel.py. Blau berührt nie Schwarz.
 # Aufruf vom Repository-Ordner: python3 werkzeuge/grafiken/fuer-wen-bilder.py
 # Danach rendern und als website/bilder/fuer-wen-*.webp (1200 × 900) speichern.
 import math, os
@@ -26,7 +26,7 @@ def ende(sx, sy, w, laenge=ARM):
 
 
 def figur(arm_l, arm_r, bein_l=16, bein_r=-12, blick=1, mann=False):
-    # mann=True: Entwurf 16.10.2026 – statt Halbkreis-Rock ein blauer Balken als Hose (Bauhaus-Grundform), Beine gerader
+    # mann=True: Entwurf – statt Halbkreis-Rock ein blauer Balken als Hose (Bauhaus-Grundform), Beine gerader
     t = balken(-22, -150, bein_l, 150, 18, False, BEIN_RADIUS) + balken(22, -150, bein_r, 150, 18, False, BEIN_RADIUS)
     t += f'<rect x="-42" y="-302" width="84" height="96" fill="{SCH}"/>'
     t += balken(-SCHULTER_X, SCHULTER_Y, arm_l, ARM) + balken(SCHULTER_X, SCHULTER_Y, arm_r, ARM)
@@ -84,7 +84,7 @@ for i in range(3):  # Karten: Leistungen, Branchen, Karriere
               f'<path d="M{kx+18} {y0+418} L{kx+46} {y0+418} L{kx+32} {y0+390} Z" fill="{SCH}"/>'][i])
     s.append(textzeilen(kx + 18, y0 + 446, [120, 100, 80]))
 s.append(f'<line x1="680" y1="840" x2="1150" y2="840" stroke="{SCH}" stroke-width="2"/>')
-k = 0.7  # Arme nie im Schritt oder am Rock der Nachbarn (Anna 16.10.2026): hängende Arme nur nach außen, sonst nach oben
+k = 0.7  # Arme nie im Schritt oder am Rock der Nachbarn: hängende Arme nur nach außen, sonst nach oben
 team = [(765, figur(150, -165, 14, -10, blick=-1)),                            # Frau zeigt auf die Website, anderer Arm oben
         (935, figur(160, -160, 6, -6, blick=-1, mann=True)),                   # Mann hält ein blaues Modul hoch
         (1095, figur(165, -150, 12, -14, blick=-1))]                          # Frau jubelt, beide Arme oben
@@ -114,8 +114,8 @@ s.append('</svg>')
 schreiben('fuer-wen-selbststaendige.svg', '\n'.join(s))
 
 
-# --- Vereine & Kultur (Anna 09.11.2026: das Hände-Foto wirkt wie Party): vier Figuren, zwei halten eine Vereinswebsite
-#     mit Herz hoch wie ein Transparent, eine ruft mit dem Megafon, eine winkt. Herz als Grundform-Herz, schwarz (nie blau).
+# --- Vereine & Kultur: vier Figuren, zwei halten eine Vereinswebsite
+# mit Herz hoch wie ein Transparent, eine ruft mit dem Megafon, eine winkt. Herz als Grundform-Herz, schwarz (nie blau).
 def herz(cx, cy, g):
     # gedrehtes Quadrat + zwei Halbkreise (CLAUDE.md, Erweiterte Formen)
     h = g / 2

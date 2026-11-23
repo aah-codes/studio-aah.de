@@ -1,10 +1,10 @@
-# Titel- und Vorschaubild Blog „EU AI Act für kleine Unternehmen“ (17.11.2026)
-# Anna 17.11.2026: „blaues Bild mit Europakarte, den EU-Ländern, Sternen vorne drauf und in der Mitte steht AI“.
+# Titel- und Vorschaubild Blog „EU AI Act für kleine Unternehmen“
+# „blaues Bild mit Europakarte, den EU-Ländern, Sternen vorne drauf und in der Mitte steht AI“.
 # Blogbild ohne Studio-Branding (Bildregel Blog): EU-Blau, EU-Länder heller, Sternenkranz in EU-Gelb, „AI“ in Weiß.
 # Kartendaten: Natural Earth 1:50m Admin 0 Countries (gemeinfrei), liegen nicht im Repository:
-#   curl -L -o ne50.geojson https://cdn.jsdelivr.net/gh/nvkelso/natural-earth-vector@v5.1.2/geojson/ne_50m_admin_0_countries.geojson
+# curl -L -o ne50.geojson https://cdn.jsdelivr.net/gh/nvkelso/natural-earth-vector@v5.1.2/geojson/ne_50m_admin_0_countries.geojson
 # Aufruf vom Repository-Ordner: python3 werkzeuge/grafiken/blog/eu-ai-act-titel.py PFAD/ne50.geojson
-#   → website/bilder/blog-eu-ai-act.webp (1200 × 800) und website/bilder/blog-eu-ai-act-og.jpg (1200 × 630)
+# → website/bilder/blog-eu-ai-act.webp (1200 × 800) und website/bilder/blog-eu-ai-act-og.jpg (1200 × 630)
 import json, math, pathlib, subprocess, sys, tempfile
 
 HIER = pathlib.Path(__file__).resolve().parent

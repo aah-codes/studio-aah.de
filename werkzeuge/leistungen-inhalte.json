@@ -120,7 +120,7 @@
    "fachkraefte"
   ],
   "selbstbau": {
-   "_quelle": "Anna 17.11.2026 (Chat): Zielgruppe, die ihre Website selbst baut (Vibe-Coding, Baukasten). Texte als Entwurf, Freigabe Anna offen. Preise aus preise-daten.json (Retainer 50–85 €/h)",
+   "_quelle": "Zielgruppe, die ihre Website selbst baut (Vibe-Coding, Baukasten). Preise aus preise-daten.json",
    "titel": "Du baust deine Website selbst?",
    "einleitung": "Mit KI geht das heute schneller denn je. Vibe-Coding heißt das: Du beschreibst, was du willst, und die KI schreibt den Code. Was dabei oft fehlt, ist der Blick einer Fachkraft. Wir steigen dort ein, wo du uns brauchst.",
    "schritte": [
@@ -687,7 +687,7 @@
   ],
   "ohne_detail": true,
   "gegenueber": {
-   "_quelle": "Problemseiten ki-im-team und entlastung (fuer-wen-seiten.json), KI-Arbeits-Setup, FAQ KI-Beratung (Anna 16.11.2026: Problemraum und Lösungsraum gegenüberstellen)",
+   "_quelle": "Problemseiten ki-im-team und entlastung (fuer-wen-seiten.json), KI-Arbeits-Setup, FAQ KI-Beratung",
    "links": "Heute",
    "rechts": "Mit dem KI-Arbeits-Setup",
    "zeilen": [
@@ -749,7 +749,7 @@
    ]
   },
   "wege": {
-   "_quelle": "Seite KI-Arbeits-Setup, Abschnitt „Sechs Dinge, die bleiben“ (Anna 16.11.2026: Lösung nur KI-Arbeits-Setup)",
+   "_quelle": "Seite KI-Arbeits-Setup, Abschnitt „Sechs Dinge, die bleiben“",
    "meta": "Lösung",
    "titel": "Das KI-Arbeits-Setup",
    "einleitung": "Das bleibt nach dem Setup in deinem Büro:",

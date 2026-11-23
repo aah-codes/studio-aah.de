@@ -1,7 +1,7 @@
-// Anfrageformular (Beratung anfragen und Kostenrechner): schickt die Felder an den Formulardienst Formspark (Anna 16.10.2026),
+// Anfrageformular (Beratung anfragen und Kostenrechner): schickt die Felder an den Formulardienst Formspark,
 // der sie per E-Mail an info@studio-aah.de weiterleitet; danach geht es auf die Danke-Seite. Kein fremdes Skript, keine Cookies.
 // Klappt das Senden nicht, steht die Nachricht zum Kopieren bereit.
-// Die Formulare liegen auf Seiten eine Ebene tief (kontakt/, preise/), daher die Pfade mit ../
+// Die Formulare liegen auf Seiten eine Ebene tief (kontakt/, preise/), daher die Pfade mit../
 window.Anfrage = (() => {
   const ENDPUNKT = 'https://submit-form.com/PQ3YFrvCS'; // Formspark-Adresse (auch im HTML von kontakt/ und demokratie-braucht-sichtbarkeit/ als Ersatz ohne JavaScript)
   const ADRESSE = 'info@studio-aah.de';
@@ -12,7 +12,7 @@ window.Anfrage = (() => {
     const kontakt = [wert(form, 'name') ? `Name: ${wert(form, 'name')}` : '', `E-Mail: ${wert(form, 'email')}`].filter(Boolean);
     if (wert(form, 'organisation')) kontakt.push(`Organisation: ${wert(form, 'organisation')}`);
     if (wert(form, 'website')) kontakt.push(`Website: ${wert(form, 'website')}`);
-    // Auswahlfelder, z. B. „Wie haben Sie von mir gehört?“ (Anna 17.11.2026), nur wenn etwas gewählt ist
+    // Auswahlfelder, z. B. „Wie haben Sie von mir gehört?“, nur wenn etwas gewählt ist
     form.querySelectorAll('select[name]').forEach((a) => { if (a.value) kontakt.push(`${(a.dataset.kurz || a.name).trim()} ${a.value}`); });
     if (gekoppelt(form)) kontakt.push('Newsletter: ja (mit dem kostenlosen Angebot, Bestätigung per E-Mail)');
     form.querySelectorAll('input[type="checkbox"][name]').forEach((h) => kontakt.push(`${(h.dataset.kurz || h.closest('label')?.textContent || h.name).trim()} ${h.checked ? 'ja' : 'nein'}`));
@@ -68,7 +68,7 @@ window.Anfrage = (() => {
     }
   }
 
-  // Newsletter-Häkchen (Anna 11.11.2026): nicht vorausgewählt, freiwillig, Anfrage geht auch ohne.
+  // Newsletter-Häkchen: nicht vorausgewählt, freiwillig, Anfrage geht auch ohne.
   // Angehakt: Nach der Anfrage meldet das Skript die E-Mail-Adresse bei Brevo an (dasselbe Formular wie im Fuß);
   // Brevo schickt die Bestätigungs-E-Mail (Double-Opt-in). Ohne JavaScript erscheint das Häkchen nicht.
   async function newsletter(email) {
@@ -78,15 +78,15 @@ window.Anfrage = (() => {
     d.append('EMAIL', email); d.append('email_address_check', ''); d.append('locale', 'de'); d.append('html_type', 'simple');
     try { await Promise.race([fetch(fuss.action, { method: 'POST', body: d, mode: 'no-cors', keepalive: true }), new Promise((ok) => setTimeout(ok, 4000))]); } catch { /* Anfrage ist schon da; Anna sieht „Newsletter: ja“ in der E-Mail */ }
   }
-  // Kostenlose Angebote (Anna 17.11.2026, z. B. Website-Check): kein Häkchen, der Newsletter gehört dazu.
+  // Kostenlose Angebote: kein Häkchen, der Newsletter gehört dazu.
   // Das Formular trägt data-newsletter-gekoppelt, der Text über dem Button sagt es; Brevo schickt trotzdem die Bestätigungs-E-Mail (Double-Opt-in).
   const gekoppelt = (form) => 'newsletterGekoppelt' in form.dataset;
-  // Website-Check (Anna 20.11.2026): ganz ohne Newsletter und ohne Werbung – kein Häkchen, keine Anmeldung bei Brevo.
+  // Website-Check: ganz ohne Newsletter und ohne Werbung – kein Häkchen, keine Anmeldung bei Brevo.
   const ohneNewsletter = (form) => 'ohneNewsletter' in form.dataset;
   let nr = 0;
   function NEWSLETTER(du = false, an = false, id = '') {
     if (!id) { nr += 1; id = `anfrage-nl-${nr}`; }
-    // Ein Satz (Anna 18.11.2026: „Kürz mal den Text für Newsletter auf einen Satz“); Widerruf und Datenschutz bleiben drin
+    // Ein Satz; Widerruf und Datenschutz bleiben drin
     return `<div class="anfrage-nl"><label for="${id}"><input id="${id}" name="newsletter" type="checkbox" value="ja" data-kurz="Newsletter:"${an ? ' checked' : ''} aria-describedby="${id}-text"> Ja, ich möchte den Newsletter.</label>`
       + `<p class="hinweis-klein" id="${id}-text">Etwa einmal im Monat Artikel, Tipps, Angebote und Neues aus dem Studio, jederzeit abbestellbar, mehr in der <a href="../datenschutz/#newsletter">Datenschutzerklärung</a>.</p></div>`;
   }
@@ -95,7 +95,7 @@ window.Anfrage = (() => {
     if (vor && !form.elements.newsletter && !gekoppelt(form) && !ohneNewsletter(form)) vor.insertAdjacentHTML('beforebegin', NEWSLETTER('du' in form.dataset));
   });
 
-  // Kein Hinweis zum Versandweg unter den Formularen: alles steht in der Datenschutzerklärung #kontakt (Anna 20.11.2026)
+  // Kein Hinweis zum Versandweg unter den Formularen: alles steht in der Datenschutzerklärung #kontakt
 
   // Beratung anfragen: Formulare mit data-anfrage (= Betreff, data-weiter = eigene Danke-Seite) selbst verbinden; Pflichtfelder prüft der Browser vor dem Absenden
   document.querySelectorAll('form[data-anfrage]').forEach((form) => form.addEventListener('submit', (e) => {

@@ -1,6 +1,6 @@
 # Schema für Blogbeiträge (verbindlich)
 
-Stand: 19.10.2026 · Anna: „Jeder Artikel muss ab jetzt nach einem gleichen Schema aufgebaut sein“ – Vorbild ist Teil 1 der Reihe „Website-Fragen“ (`/blog/was-kostet-eine-website/`). Ziel: gut für Leser:innen **und** für KI-Suche (GEO) und KI-Agenten.
+Jeder Artikel folgt demselben Schema; Musterbeitrag ist Teil 1 der Reihe „Website-Fragen“ (`/blog/was-kostet-eine-website/`). Ziel: gut für Leser:innen **und** für KI-Suche (GEO) und KI-Agenten.
 Die Schreibregeln (Ton, Antwort zuerst, Belege, Wortwahl) stehen im Skill `texte-studio-aah`; hier steht, wie ein Beitrag auf der Website gebaut wird.
 
 ## Bauen
@@ -23,9 +23,9 @@ Die Schreibregeln (Ton, Antwort zuerst, Belege, Wortwahl) stehen im Skill `texte
 12. Reihen-Kasten (`aside.reihe`) bei Reihen, aktueller Teil mit `aria-current="page"`
 13. Über die Autorin (`section.autorin`, Pflicht)
 14. **Quellen** (`h2#quellen` + `ul.quellen`, Pflicht bei Zahlen): je Quelle Herausgeber, verlinkter Titel mit ↗, Datum. Erreichbarkeit vor dem Hochladen prüfen (Weiterleitungen auf allgemeine Seiten zählen als kaputt). Die Links werden als `citation` übernommen.
-    **Belege als Fußnoten** (Anna, 19.10.2026: Klammern wie „(Bitkom, 2025)“ stören den Lesefluss): Im Text und in „Kurz gesagt“ steht nach dem Satz `[[schlüssel]]`, in der Liste `<li data-quelle="schlüssel">`. `bauen()` nummeriert nach erstem Vorkommen, macht daraus eine nummerierte Liste mit Sprungzielen `#quelle-n` und hochgestellte, verlinkte Ziffern; es bricht ab, wenn eine Fußnote keine Quelle hat oder eine Quelle nie zitiert wird. Wo die Quelle zur Aussage gehört („Gartner beschreibt …“, „laut einem Bericht des Anbieters …“), bleibt sie im Satz. FAQ-Antworten nennen die Quelle im Satz („laut einer Bitkom-Befragung vom Dezember 2025“), weil sie einzeln zitiert werden.
+    **Belege als Fußnoten**: Im Text und in „Kurz gesagt“ steht nach dem Satz `[[schlüssel]]`, in der Liste `<li data-quelle="schlüssel">`. `bauen()` nummeriert nach erstem Vorkommen, macht daraus eine nummerierte Liste mit Sprungzielen `#quelle-n` und hochgestellte, verlinkte Ziffern; es bricht ab, wenn eine Fußnote keine Quelle hat oder eine Quelle nie zitiert wird. Wo die Quelle zur Aussage gehört („Gartner beschreibt …“, „laut einem Bericht des Anbieters …“), bleibt sie im Satz. FAQ-Antworten nennen die Quelle im Satz („laut einer Bitkom-Befragung vom Dezember 2025“), weil sie einzeln zitiert werden.
 15. Beitragsnavigation (Zurück / Weiter); beim vorigen Beitrag „Weiter“ ergänzen.
-16. **„Das könnte dich auch interessieren“** (Anna, 17.11.2026, Vorbild Digital Trends): nach `</article>` die Marker `<!-- WEITERE:START -->` / `<!-- WEITERE:ENDE -->` in die `-inhalt.html`; `inhalte-erzeugen.py` (`weitere_artikel()`) setzt drei passende Beiträge ein (gleiche Kategorie 2 Punkte, gemeinsames Schlagwort 1, bei Gleichstand der neuere). Schlagworte in `blog.json` (`tags`) deshalb sorgfältig vergeben.
+16. **„Das könnte dich auch interessieren“**: nach `</article>` die Marker `<!-- WEITERE:START -->` / `<!-- WEITERE:ENDE -->` in die `-inhalt.html`; `inhalte-erzeugen.py` (`weitere_artikel()`) setzt drei passende Beiträge ein (gleiche Kategorie 2 Punkte, gemeinsames Schlagwort 1, bei Gleichstand der neuere). Schlagworte in `blog.json` (`tags`) deshalb sorgfältig vergeben.
 
 ## Strukturierte Daten (macht `bauen()`)
 `BlogPosting` (headline, description, abstract, image, datePublished, dateModified, wordCount, keywords, about, mentions, citation, author mit Profil, publisher, isPartOf Blog und ggf. `CreativeWorkSeries` mit `position`), `FAQPage`, `BreadcrumbList`, `ProfessionalService`. Dazu `article:published_time` und `article:modified_time`. Ändert sich ein veröffentlichter Beitrag, `geaendert` und `lastmod` in der Sitemap auf das Datum setzen.

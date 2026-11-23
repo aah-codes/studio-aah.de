@@ -1,7 +1,7 @@
-# Landingpage /website-check/ (Anna 24.10.2026): setzt die 8 Prüfpunkte, die häufigen Fragen und die strukturierten Daten
+# Landingpage /website-check/: setzt die 8 Prüfpunkte, die häufigen Fragen und die strukturierten Daten
 # aus werkzeuge/inhalte/website-check.json zwischen die Marker der Seite (CHECK-PUNKTE, CHECK-FAQ, CHECK-LD).
 # Der Rest der Seite (auch Kopf und Fuß, eigene Fassung ohne Hauptnavigation) steht direkt in website/website-check/index.html.
-# Aufruf im Repository-Ordner:  python3 werkzeuge/website-check.py
+# Aufruf im Repository-Ordner: python3 werkzeuge/website-check.py
 import json, re
 
 from gemeinsam import STUDIO_ID, WEBSITE, einsetzen, esc, lade_json
@@ -12,7 +12,7 @@ D = lade_json('inhalte/website-check.json')
 
 
 def punkte():
-    """Prüfpunkte mit Icon (Anna 19.11.2026): Punkte mit "kurz" als Icon-Reihe, die übrigen als breite Karten."""
+    """Prüfpunkte mit Icon: Punkte mit "kurz" als Icon-Reihe, die übrigen als breite Karten."""
     reihe = [p for p in D['pruefpunkte'] if p.get('kurz')]
     karten = [p for p in D['pruefpunkte'] if not p.get('kurz')]
     h = ['    <ul class="wc-icons">']
@@ -26,7 +26,7 @@ def punkte():
 
 
 def zahlen():
-    """Statistik aus der eigenen Stichprobe als große, statische Zahlen (Anna 20.11.2026)."""
+    """Statistik aus der eigenen Stichprobe als große, statische Zahlen."""
     st = D['stichprobe']
     n = st['anzahl']
     h = [f'    <ul class="wc-zahlen" role="list" aria-label="Anteil der {n} untersuchten Websites, bei denen die Angabe fehlt">']

@@ -1,10 +1,7 @@
 # Checkliste „EU AI Act“ zum Ausdrucken und Abhaken, eine Seite A4. Inhalt = Kurzfassung der Checkliste im Artikel /blog/eu-ai-act-kleine-unternehmen/.
-# Anna 17.11.2026 (1): „Button Checkliste downloaden … PDF mit Checkboxen … schöne Überschrift mit einem Bild zum EU AI Act … ganz unten nicht zu dominant
-#   ein Call to Action mit einem Bild von mir … zum KI-Arbeits-Setup“.
-# Anna 17.11.2026 (2): keine Dachzeile, Titel „EU AI Act für Unternehmen“, fünf Punkte (Personal-KI raus), Logo weiß oben im Bild, QR-Code statt Link,
-#   Abschluss „KI-Setup für Profis“ / „Ich richte Ihnen ein KI-Setup mit klaren Regeln ein.“, Kontaktzeile, kein Hinweis „Keine Rechtsberatung“.
+# Aufbau: Bild mit Logo und Titel „EU AI Act für Unternehmen“, fünf Punkte zum Abhaken, QR-Code, Abschluss „KI-Setup für Profis“ mit Kontaktzeile.
 # QR-Code aus werkzeuge/grafiken/qr-code.swift (Core Image von macOS, nichts aus dem Netz).
-# Ausnahme von „keine PDFs im Repository“: öffentliche Download-Datei in website/downloads/ (.gitignore-Ausnahme, Anna 17.11.2026).
+# Ausnahme von „keine PDFs im Repository“: öffentliche Download-Datei in website/downloads/.
 # Aufruf vom Repository-Ordner: python3 werkzeuge/blog/eu-ai-act-checkliste.py
 import base64, pathlib, subprocess, tempfile
 

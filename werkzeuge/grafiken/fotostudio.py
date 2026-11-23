@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Porträts wie im Fotostudio – Entwurf 13.10.2026.
+"""Porträts wie im Fotostudio – Entwurf.
 
-Anna (13.10.2026, Vorbild: Stockfotos vor farbiger Studiowand): Die Wand ist in Markenblau gestrichen,
+Die Wand ist in Markenblau gestrichen,
 nicht einfarbig flach, sondern wie im Fotostudio ausgeleuchtet: in der Mitte heller, außen dunkler.
 Das Licht auf der Wand passt zum Licht im Gesicht (Bild 1 von links, Bild 2 von vorn), dazu ein weicher
 Schatten der Person auf der Wand. Die Kleidung bekommt einen anderen Blauton als die Wand (Website: nur Blau).

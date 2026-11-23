@@ -1,5 +1,5 @@
 {
-  "_hinweis": "Landingpage /ki-arbeits-setup/ (07.11.2026): häufige Fragen und Angebot für die strukturierten Daten. Änderungen nur hier, dann python3 werkzeuge/ki-arbeits-setup.py (oder alle-erzeugen.sh). Preis wie in werkzeuge/preise-daten.json (Paket ki-setup).",
+  "_hinweis": "Landingpage /ki-arbeits-setup/: häufige Fragen und Angebot für die strukturierten Daten. Änderungen nur hier, dann python3 werkzeuge/ki-arbeits-setup.py (oder alle-erzeugen.sh). Preis wie in werkzeuge/preise-daten.json (Paket ki-setup).",
   "name": "KI-Arbeits-Setup mit Projekt-Cockpit",
   "preis": 990,
   "faq": [

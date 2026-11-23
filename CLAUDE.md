@@ -1,10 +1,8 @@
 # studio-aah.de – Hinweise für Claude Code
 
-## Aktueller Stand = Live-Website (Anna 22.11.2026, gilt in jedem Chat)
-- Maßgeblich ist, was auf https://studio-aah.de/ läuft, also `origin/main`. Stand beim Eintrag: Commit e5053d29, Startseite mit Hero „Du bist gut genug. Lass es die anderen wissen.“, Anna-Karte, Dachzeile „Design Studio aus Leipzig.“, Laufband; Website duzt.
-- Der Checkout `/Users/anna/Code/studio-aah.de` (Zweig `main`) ist veraltet: 73 Commits hinter `origin/main`, dazu der nicht gepushte Stil-B-Versuch b254cdbc („Uff rein. Aah raus.“) und ungesicherte Änderungen. Nie darauf aufbauen, nichts davon pushen.
-- Gearbeitet wird im Worktree `.claude/worktrees/live-stand` oder auf einem neuen Zweig von `origin/main`.
-- Vor jeder Arbeit: `git fetch`, dann `git log --oneline HEAD..origin/main`. Fehlen Commits, zuerst auf `origin/main` aufsetzen (bei eigenen ungesicherten Änderungen Anna fragen). Im Zweifel die Live-Seite ansehen und mit der Vorschau vergleichen.
+## Stand
+- Maßgeblich ist, was auf https://studio-aah.de/ läuft, also `origin/main`. Vor jeder Arbeit `git fetch` und `git log --oneline HEAD..origin/main`; fehlen Commits, zuerst auf `origin/main` aufsetzen (bei eigenen ungesicherten Änderungen Anna fragen).
+- Commit-Nachrichten sachlich: was sich geändert hat, ohne interne Notizen, Zitate oder Vorbilder anderer Agenturen.
 
 ## Was dieses Repository ist
 - Statische Website von STUDIO AAH! (Anna Härtelt): reines HTML, CSS, wenig JavaScript; kein Baukasten, kein npm. Veröffentlicht wird nur `website/`; jeder Push auf `main` geht sofort live.
@@ -24,7 +22,7 @@
 ## Arbeitsweise
 - Antworten auf Deutsch, in Stichpunkten, Schritt für Schritt; Fachbegriffe mit englischem Begriff in Klammern. Nichts erfinden; Unsicheres als „Unsicher“ kennzeichnen. Neue Texte nur nach Annas Vorgabe.
 - Vor jedem Schritt mit Wirkung nach außen fragen: Push auf `main`, Installationen, Änderungen beim Hosting. In Cloud-Sitzungen auf eigenem Zweig arbeiten; Anna führt ihn über GitHub Desktop zusammen.
-- Hochladen gesammelt: Änderungen nach Anmerkungen lokal sammeln und zeigen, nicht nach jeder Runde nach dem Hochladen fragen; hochladen erst, wenn Anna „jetzt hochladen“ (oder gleichbedeutend) sagt (Anna 22.11.2026).
+- Hochladen gesammelt: Änderungen nach Anmerkungen lokal sammeln und zeigen, nicht nach jeder Runde nach dem Hochladen fragen; hochladen erst, wenn Anna „jetzt hochladen“ (oder gleichbedeutend) sagt.
 - Vor jedem Push `git fetch` und `git log origin/main..main`: Mehrere Sitzungen arbeiten auf `main`. Fremde Commits Anna vorher nennen, sonst gehen sie ungefragt live.
 - Kleine Commits mit deutscher Beschreibung.
 - Nicht öffentlich nennen, wie und wo studio-aah.de gebaut und gehostet ist.

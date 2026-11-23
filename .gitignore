@@ -25,9 +25,14 @@ doku/
 # Python-Zwischenspeicher
 __pycache__/
 
-# Ausnahme: öffentliche Download-Dateien für Besucher:innen (Anna 17.11.2026, Checkliste EU AI Act)
+# Ausnahme: öffentliche Download-Dateien für Besucher:innen (Checkliste EU AI Act)
 !website/downloads/*.pdf
 
 # Claude Code: nur die Regeln gehören ins Repository, Worktrees und lokale Einstellungen nicht
 .claude/worktrees/
 .claude/settings.local.json
+
+# Lokale Entwurfsseiten (nur Vorschau, nie veröffentlichen); vorhandene Weiterleitungen bleiben versioniert
+website/entwurf-*/
+website/service/entwurf-*/
+!website/entwurf-ueber-mich/

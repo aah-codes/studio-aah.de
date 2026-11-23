@@ -1,19 +1,16 @@
 # studio-aah.de
 
-Statische Website von Studio AAH: reines HTML und CSS, ohne WordPress, ohne Bau-Schritt.
+Website von Studio AAH.
 
 ## Aufbau
 - `website/` – alles, was online geht (nur dieser Ordner wird veröffentlicht)
 - `werkzeuge/pruefen.sh` – prüft Kopf, Fuß, interne Links und Bilder (ändert nichts)
-- `.github/workflows/github-pages.yml` – veröffentlicht `website/` bei jedem Push auf `main`
+- `werkzeuge/` – Generatoren für die Seiten (`bash werkzeuge/alle-erzeugen.sh`)
 - `CLAUDE.md` – Hinweise für Claude Code
 
-## Veröffentlichen
-- Hosting: GitHub Pages mit eigener Domain studio-aah.de (DNS bei IONOS; E-Mail bleibt bei IONOS).
-- Jeder Push auf `main` geht nach etwa einer Minute live.
-
 ## Schriften
-- Anton, Inter, Newsreader – SIL Open Font License 1.1 (Hinweise in `website/css/stil.css`).
+- Instrument Sans, Instrument Serif, Manrope, Anton, Inter, Inter Tight, JetBrains Mono, Montserrat, Raleway, Architects Daughter – SIL Open Font License 1.1.
+- Handschrift „Anna Haertelt“: eigene Schrift von Anna Härtelt, alle Rechte vorbehalten.
 
 ## Inhalte
 - Texte und Bilder: © Anna Härtelt / Studio AAH, alle Rechte vorbehalten. Der Code darf angesehen, die Inhalte dürfen nicht übernommen werden.

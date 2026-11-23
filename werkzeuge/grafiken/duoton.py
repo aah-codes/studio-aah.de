@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Färbt Fotos einfarbig in Blau ein (Duoton, duotone) – Entwurf 13.10.2026.
+"""Färbt Fotos einfarbig in Blau ein (Duoton, duotone) – Entwurf.
 
-Vorbild laut Anna: Fotos im ganzen Bild, einfarbig eingefärbt, „in Blau, leicht bewegt“.
+Fotos im ganzen Bild, einfarbig eingefärbt, „in Blau, leicht bewegt“.
 Zwei Fassungen je Bild:
-  -duoton  Schwarz -> Blau            (dunkler, ruhiger)
-  -triton  Schwarz -> Blau -> Weiß    (Gesichter bleiben hell)
+  -duoton Schwarz -> Blau (dunkler, ruhiger)
+  -triton Schwarz -> Blau -> Weiß (Gesichter bleiben hell)
 Aufruf vom Repository-Ordner aus: python3 werkzeuge/grafiken/duoton.py
 """
 from pathlib import Path

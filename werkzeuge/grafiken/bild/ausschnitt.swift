@@ -1,4 +1,4 @@
-// ausschnitt EIN AUS X Y B H ZIELBREITE QUALITÄT  (Koordinaten in Quellpixeln, oben links)
+// ausschnitt EIN AUS X Y B H ZIELBREITE QUALITÄT (Koordinaten in Quellpixeln, oben links)
 import Foundation
 import CoreGraphics
 import ImageIO

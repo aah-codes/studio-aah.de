@@ -11,7 +11,7 @@ LINKEDIN = 'https://www.linkedin.com/in/anna-h%C3%A4rtelt-8513b8213/details/reco
 NETTO = '<small class="lsx-netto">netto</small>'
 NETTO_SATZ = 'Alle Preise sind Nettopreise zzgl. 19&nbsp;% Umsatzsteuer (USt.).'
 PFEIL = ' <span aria-hidden="true">→</span>'
-# Weiche Trennstriche in Paketnamen und Prozess-Schritten, damit lange Wörter auf schmalen Handys sauber umbrechen (Anna 13.10.2026)
+# Weiche Trennstriche in Paketnamen und Prozess-Schritten, damit lange Wörter auf schmalen Handys sauber umbrechen
 TRENNEN_LEISTUNGEN = {'Unternehmenspräsentation': 'Unternehmens&shy;präsentation', 'Mitbewerberrecherche': 'Mitbewerber&shy;recherche', 'Unternehmensidentität': 'Unternehmens&shy;identität'}
 
 
@@ -39,7 +39,7 @@ def euro(betrag, leer='&nbsp;'):
 
 
 def trennen(text, woerter):
-    """Weiche Trennstriche für lange Wörter (Anna 13./14.10.2026); nach esc() anwenden. woerter: {'Wort': 'Wo&shy;rt'}"""
+    """Weiche Trennstriche für lange Wörter; nach esc anwenden. woerter: {'Wort': 'Wo&shy;rt'}"""
     for wort, getrennt in woerter.items():
         text = text.replace(wort, getrennt)
     return text
@@ -64,7 +64,7 @@ def einsetzen(text, name, inhalt):
                           lambda m: f'<!-- {name}:START -->\n{inhalt}\n<!-- {name}:ENDE -->', text, f'Marker {name}', re.S)
 
 
-# Daumen-Rückmeldung unter Selbsttest und Rechnern (Anna 20.11.2026, Vorbild Gelbe Seiten): Daumen hoch oder runter,
+# Daumen-Rückmeldung unter Selbsttest und Rechnern: Daumen hoch oder runter,
 # nach Daumen runter freiwillig ein Satz. Ablauf in js/menue.js, Versand über Formspark ohne Namen und E-Mail-Adresse.
 DAUMEN_HOCH = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 10v11H3V10h4Zm0 0 4.5-7.5c1.4 0 2.5 1.1 2.5 2.5v3.5h5.3c1.3 0 2.2 1.2 1.9 2.4l-2 7.6c-.3 1-1.1 1.5-2 1.5H7"/></svg>'
 DAUMEN_RUNTER = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17 14V3h4v11h-4Zm0 0-4.5 7.5c-1.4 0-2.5-1.1-2.5-2.5v-3.5H4.7c-1.3 0-2.2-1.2-1.9-2.4l2-7.6c.3-1 1.1-1.5 2-1.5H17"/></svg>'
@@ -77,11 +77,11 @@ def daumen(werkzeug, frage, pre='', selbst=False):
             f'<div class="daumen-knoepfe" role="group" aria-labelledby="daumen-{esc(werkzeug.lower().replace(" ", "-"))}">'
             f'<button type="button" data-wert="gut" aria-pressed="false" aria-label="Gut">{DAUMEN_HOCH}</button>'
             f'<button type="button" data-wert="schlecht" aria-pressed="false" aria-label="Nicht gut">{DAUMEN_RUNTER}</button></div>'
-            '<div class="daumen-danach" role="status" aria-live="polite"></div></div>')  # ohne Datenschutz-Hinweis, steht in der Datenschutzerklärung #rueckmeldung (Anna 20.11.2026)
+            '<div class="daumen-danach" role="status" aria-live="polite"></div></div>')  # ohne Datenschutz-Hinweis, steht in der Datenschutzerklärung #rueckmeldung
 
 
 def spiel_sektion(pre, version):
-    """Sektion „Play the game.“ mit dem Spiel (Anna 16.11.2026: über dem Fuß von Aktuelles und Webdesign)."""
+    """Sektion „Play the game.“ mit dem Spiel."""
     t = (WERKZEUGE / 'inhalte' / 'spiel.html').read_text(encoding='utf-8')
     return t.replace('{pre}', pre).replace('{version}', version)
 
@@ -90,7 +90,7 @@ KURZWORT = re.compile(r'(?<![\w&;/-])([A-ZÄÖÜ]{1,3}-[A-Za-zÄÖÜäöüß]+)'
 
 
 def kurzwoerter_schuetzen(main):
-    """Kein Zeilenumbruch nach kurzem Vorderglied (Anna 16.11.2026: „IT-Projekt ist ein zusammenhängendes Wort“):
+    """Kein Zeilenumbruch nach kurzem Vorderglied:
     IT-Projekt, KI-Check, E-Mail bleiben zusammen. Nur im sichtbaren Text, nicht in Tags, Attributen, Skripten."""
     # Fragen (summary) sind Flexboxen: Text in einen Span legen, sonst wird jedes Teilstück ein eigenes, nicht umbrechendes Element
     main = re.sub(r'<summary>([^<]+)</summary>', r'<summary><span>\1</span></summary>', main)
@@ -148,7 +148,7 @@ def mass_attr(datei, teiler=1):
 
 def bild_attr(datei, pre='', sizes=None):
     """' src="…" width="…" height="…"' und, wenn es kleinere Fassungen <bild>-<breite>.webp/.jpg gibt (werkzeuge/grafiken/bild/varianten.sh),
-    ' srcset="…" sizes="…"' – so laden Handys nicht die 1440-px-Seitenaufnahmen (Website-Check 18.10.2026)."""
+    ' srcset="…" sizes="…"' – so laden Handys nicht die 1440-px-Seitenaufnahmen."""
     a = f' src="{pre}{datei}"{mass_attr(datei)}'
     pfad = WEBSITE / datei.split('?')[0]
     breite = bildmass(datei.split('?')[0])[0]
@@ -163,7 +163,7 @@ def bild_attr(datei, pre='', sizes=None):
     return a
 
 
-# --- Preise und Paketkarten (Preisseite und Leistungsseiten zeigen dieselben Karten, Anna 16.10.2026) ---
+# --- Preise und Paketkarten ---
 def preis(e):
     """Preisangabe eines Pakets oder einer Zusatzleistung aus preise-daten.json."""
     if e.get('anfrage'): return 'auf Anfrage'
@@ -177,7 +177,7 @@ def preis(e):
 
 
 def zwei_pakete(g):
-    """Höchstens zwei Paketkarten je Leistung (Anna 17.11.2026: „überall zwei Pakete, die, die am meisten gesucht werden“).
+    """Höchstens zwei Paketkarten je Leistung.
     Feld „karten“ in preise-daten.json nennt die zwei Pakete; alle übrigen kommen als Zeile „Außerdem buchbar“ darunter.
     Baut ein gezeigtes Paket auf ein ausgeblendetes auf („Alles aus Basic, plus:“), stehen dessen Inhalte mit in der Liste."""
     ids = g.get('karten')
@@ -196,7 +196,7 @@ def zwei_pakete(g):
 
 
 def weitere_pakete(rest):
-    """Zeile unter den zwei Karten: übrige Pakete mit Preis (Anna 17.11.2026)."""
+    """Zeile unter den zwei Karten: übrige Pakete mit Preis."""
     if not rest: return ''
     return ('    <p class="lsx-weitere">Außerdem buchbar: '
             + ' · '.join(f'<strong>{esc(e["name"])}</strong> {preis(e).replace(NETTO, "netto")}' for e in rest) + '</p>\n')
@@ -221,7 +221,7 @@ def paket_karte(e, woerter, pre=''):
 
 
 def ankerleiste(ziele, titel='Leistung im Überblick'):
-    """Inhaltsverzeichnis mit Ankerlinks nach dem Vorbild IT Sonix (Anna 12.11.2026): graue Spur, eine aktive weiße Pille.
+    """Inhaltsverzeichnis mit Ankerlinks: graue Spur, eine aktive weiße Pille.
     ziele: Liste aus (anker, text_html). menue.js markiert beim Scrollen den Abschnitt, in dem man gerade ist."""
     lis = []
     for i, (anker, text) in enumerate(ziele):
@@ -231,7 +231,7 @@ def ankerleiste(ziele, titel='Leistung im Überblick'):
             f'    <ul class="anker-spur">{"".join(lis)}</ul>\n  </nav>')
 
 
-# Papierriss und Kringel (Anna 18.11.2026, Vorbild Focus Lab: gerissenes Papier und gestische Linien als Zeichen von Handarbeit).
+# Papierriss und Kringel.
 # Beide selbst gezeichnet, Farbe über currentColor aus dem CSS (keine festen Farben). Zuerst nur im Selbsttest.
 def _welle(n, seed, oktaven):
     """glatte Zufallskurve aus mehreren Frequenzen, Anfang = Ende"""

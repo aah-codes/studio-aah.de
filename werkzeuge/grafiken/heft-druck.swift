@@ -1,10 +1,10 @@
-// Unternehmenspräsentation als Heft (Anna 14.10.2026): Seiten in Heft-Reihenfolge, leere Seiten, Kapitel-Doppelseite mit Foto
+// Unternehmenspräsentation als Heft: Seiten in Heft-Reihenfolge, leere Seiten, Kapitel-Doppelseite mit Foto
 // über beide Seiten, neue Seitenzahlen. Schreibt ein PDF (Vektor, Originalseiten bleiben scharf) und auf Wunsch JPGs für die Website.
 // Aufruf vom Repository-Ordner aus:
-//   swift werkzeuge/grafiken/heft-druck.swift QUELLE.pdf FOTO.jpg SCHRIFT.woff2 AUS.pdf "2,-,-,1,3,…" [JPG-ORDNER BREITE]
+// swift werkzeuge/grafiken/heft-druck.swift QUELLE.pdf FOTO.jpg SCHRIFT.woff2 AUS.pdf "2,-,-,1,3,…" [JPG-ORDNER BREITE]
 // Reihenfolge: Seitennummern der Quelle, "-" = leere Seite, "F" = Hälfte der Foto-Doppelseite (zweimal hintereinander).
 // Die erste Seite (Umschlag) und die letzte (Rückseite) bekommen keine Seitenzahl, leere Seiten auch nicht.
-// Seitenzahlfeld der Vorlage: gelbes Schrägfeld unten rechts (gemessen an der Vorlage vom 02.10.2026, 1920 × 1080 pt); im Heft steht es immer außen.
+// Seitenzahlfeld der Vorlage: gelbes Schrägfeld unten rechts; im Heft steht es immer außen.
 import Foundation; import CoreGraphics; import ImageIO; import UniformTypeIdentifiers; import CoreText
 
 let a = CommandLine.arguments
@@ -29,7 +29,7 @@ func text(_ c: CGContext, _ s: String, _ x: CGFloat, _ yGrund: CGFloat, _ f: CTF
     c.textPosition = CGPoint(x: x, y: H - yGrund); CTLineDraw(CTLineCreateWithAttributedString(att), c)
 }
 func seitenzahl(_ c: CGContext, _ n: Int, _ seite: CGPDFPage? = nil) {
-    // Seitenzahl immer außen (Anna 14.10.2026): rechte Seiten (ungerade) unten rechts, linke Seiten (gerade) unten links.
+    // Seitenzahl immer außen: rechte Seiten (ungerade) unten rechts, linke Seiten (gerade) unten links.
     // Linke Seiten: altes Feld unten rechts verschwindet – die Seite wird dort, nur in diesem Rechteck, um 62 pt versetzt
     // noch einmal gezeichnet (der Inhalt direkt darüber füllt die Stelle, bleibt Vektor)
     let links = n % 2 == 0

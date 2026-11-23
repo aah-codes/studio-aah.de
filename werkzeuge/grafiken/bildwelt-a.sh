@@ -1,10 +1,10 @@
 #!/bin/bash
 # Bildwelt A: ein Asset-Set aus einem KI-Rohbild bauen (vier Formate als WebP, höchstens 250 KB).
 # Aufruf vom Repository-Ordner aus:
-#   bash werkzeuge/grafiken/bildwelt-a.sh ROH.png ZIELORDNER NAME FORM [FORMFARBE]
+# bash werkzeuge/grafiken/bildwelt-a.sh ROH.png ZIELORDNER NAME FORM [FORMFARBE]
 # Braucht cwebp (libwebp von Google) und c2patool (Content Authenticity Initiative), beide auf dem MacBook in ~/bin.
 # Rohbild bleibt unverändert; jedes WebP bekommt die Herkunftskette des Rohbilds (Canva-Bedingungen: Herkunftsdaten nicht entfernen).
-# Unterschrift bisher mit Testzertifikat (Anna, 17.11.2026: „Ja, herunterladen“).
+# Unterschrift bisher mit Testzertifikat.
 set -euo pipefail
 ROH="$1"; ZIEL="$2"; NAME="$3"; FORM="$4"; FARBE="${5:-blau}"
 CWEBP="$(command -v cwebp || echo "$HOME/bin/cwebp")"

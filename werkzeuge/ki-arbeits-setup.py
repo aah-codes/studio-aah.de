@@ -1,7 +1,7 @@
-# Landingpage /ki-arbeits-setup/ (07.11.2026): setzt die häufigen Fragen und die strukturierten Daten
+# Landingpage /ki-arbeits-setup/: setzt die häufigen Fragen und die strukturierten Daten
 # aus werkzeuge/inhalte/ki-arbeits-setup.json zwischen die Marker der Seite (KI-FAQ, KI-LD).
 # Der Rest der Seite steht direkt in website/ki-arbeits-setup/index.html; Kopf und Fuß kommen aus kopf-fuss.py.
-# Aufruf im Repository-Ordner:  python3 werkzeuge/ki-arbeits-setup.py
+# Aufruf im Repository-Ordner: python3 werkzeuge/ki-arbeits-setup.py
 import json, re
 
 from gemeinsam import STUDIO_ID, WEBSITE, einsetzen, esc, lade_json

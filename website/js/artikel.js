@@ -1,4 +1,4 @@
-/* Blogartikel (Anna 17.11.2026): Kapitel-Leiste mit Fortschritt und Lesebalken. */
+/* Blogartikel: Kapitel-Leiste mit Fortschritt und Lesebalken. */
 (function () {
   var text = document.querySelector('.artikel-text');
   if (!text) return;

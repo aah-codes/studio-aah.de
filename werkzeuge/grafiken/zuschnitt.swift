@@ -1,6 +1,6 @@
 // Schneidet ein Bild oben auf eine Höhe zu und verkleinert es auf eine Breite (JPEG) – für Aufnahmen aus seiten-aufnahme.py.
 // Braucht nur macOS (keine Installation). Aufruf vom Repository-Ordner aus:
-//   swift werkzeuge/grafiken/zuschnitt.swift EIN.jpg AUS.jpg BREITE [HÖHE_IM_ERGEBNIS] [QUALITÄT 0–1]
+// swift werkzeuge/grafiken/zuschnitt.swift EIN.jpg AUS.jpg BREITE [HÖHE_IM_ERGEBNIS] [QUALITÄT 0–1]
 // HÖHE_IM_ERGEBNIS: 0 oder weggelassen = ganze Höhe (nur verkleinern)
 import Foundation
 import CoreGraphics

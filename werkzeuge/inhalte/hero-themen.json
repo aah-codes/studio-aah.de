@@ -1,8 +1,8 @@
 {
-  "_hinweis": "Themen für das Frag-Feld im Hero (Anna 17.11.2026). Je Thema Stichwort-Gruppen: aus jeder Gruppe muss ein Wort(anfang) in der Frage stehen. Antwort = die genannte häufige Frage der Website (Wortlaut der Frage exakt), gekürzt auf ein bis zwei Sätze. Speziellere Themen stehen oben, bei Gleichstand gewinnt das obere. Ohne Treffer: keine Antwort, sondern Telefon und Beratung. Erzeugen: python3 werkzeuge/fragen-index.py",
+  "_hinweis": "Themen für das Frag-Feld im Hero. Je Thema Stichwort-Gruppen: aus jeder Gruppe muss ein Wort(anfang) in der Frage stehen. Antwort = die genannte häufige Frage der Website (Wortlaut der Frage exakt), gekürzt auf ein bis zwei Sätze. Speziellere Themen stehen oben, bei Gleichstand gewinnt das obere. Ohne Treffer: keine Antwort, sondern Telefon und Beratung. Erzeugen: python3 werkzeuge/fragen-index.py",
   "themen": [
     {
-      "_quelle": "Zielgruppe „baut selbst“ (Anna 17.11.2026): neue Formulierungen, Fakten aus Webdesign, Website-Check, Retainer, Preisen. Freigabe Anna offen.",
+      "_quelle": "Zielgruppe „baut selbst“: neue Formulierungen, Fakten aus Webdesign, Website-Check, Retainer, Preisen.",
       "g": [
         [
           "prüf",
@@ -127,7 +127,7 @@
       ]
     },
     {
-      "_quelle": "Zielgruppe „baut selbst“ (Anna 17.11.2026): neue Formulierungen, Fakten aus Webdesign, Website-Check, Retainer, Preisen. Freigabe Anna offen.",
+      "_quelle": "Zielgruppe „baut selbst“: neue Formulierungen, Fakten aus Webdesign, Website-Check, Retainer, Preisen.",
       "g": [
         [
           "vibe"
@@ -153,7 +153,7 @@
       ]
     },
     {
-      "_quelle": "Zielgruppe „baut selbst“ (Anna 17.11.2026): neue Formulierungen, Fakten aus Webdesign, Website-Check, Retainer, Preisen. Freigabe Anna offen.",
+      "_quelle": "Zielgruppe „baut selbst“: neue Formulierungen, Fakten aus Webdesign, Website-Check, Retainer, Preisen.",
       "g": [
         [
           "fehler",
@@ -195,7 +195,7 @@
       ]
     },
     {
-      "_quelle": "Zielgruppe „baut selbst“ (Anna 17.11.2026): neue Formulierungen, Fakten aus Webdesign, Website-Check, Retainer, Preisen. Freigabe Anna offen.",
+      "_quelle": "Zielgruppe „baut selbst“: neue Formulierungen, Fakten aus Webdesign, Website-Check, Retainer, Preisen.",
       "g": [
         [
           "lovable",
@@ -234,7 +234,7 @@
       ]
     },
     {
-      "_quelle": "Zielgruppe „baut selbst“ (Anna 17.11.2026): neue Formulierungen, Fakten aus Webdesign, Website-Check, Retainer, Preisen. Freigabe Anna offen.",
+      "_quelle": "Zielgruppe „baut selbst“: neue Formulierungen, Fakten aus Webdesign, Website-Check, Retainer, Preisen.",
       "g": [
         [
           "selbst",
@@ -266,7 +266,7 @@
       ]
     },
     {
-      "_quelle": "Zielgruppe „baut selbst“ (Anna 17.11.2026): neue Formulierungen, Fakten aus Webdesign, Website-Check, Retainer, Preisen. Freigabe Anna offen.",
+      "_quelle": "Zielgruppe „baut selbst“: neue Formulierungen, Fakten aus Webdesign, Website-Check, Retainer, Preisen.",
       "g": [
         [
           "unprofessionell",
@@ -302,7 +302,7 @@
       ]
     },
     {
-      "_quelle": "Anna 20.11.2026: Antwort beantwortet die Frage direkt, ohne „Conversion“, Links im Text; Inhalte aus den Prüfpunkten des Website-Checks.",
+      "_quelle": "Antwort beantwortet die Frage direkt, ohne „Conversion“, Links im Text; Inhalte aus den Prüfpunkten des Website-Checks.",
       "g": [
         [
           "anfrage",
@@ -712,7 +712,7 @@
           "euro"
         ]
       ],
-      "_quelle": "Anna 20.11.2026: Text für den Chat gekürzt, ohne Onepager und Redesign; Fakten aus der Frage „Was kostet eine Website in Leipzig bei STUDIO AAH!?“ (Webdesign).",
+      "_quelle": "Text für den Chat gekürzt, ohne Onepager und Redesign; Fakten aus der Frage „Was kostet eine Website in Leipzig bei STUDIO AAH!?“ (Webdesign).",
       "antwort": "Bei STUDIO AAH! in Leipzig beginnt eine [neue Website](service/webdesign/) bei 2.450 €.",
       "punkte": [
         "Darin sind immer Startseite, Impressum, Datenschutz und der Launch enthalten",

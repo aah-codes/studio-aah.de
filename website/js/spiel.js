@@ -1,4 +1,4 @@
-/* Hero-Spiel „Play the game“ durch Leipzig (Anna 10.11.2026, Fassung 3; Entwurfsordner website/entwurf-hero-spiel/ nur lokal)
+/* Hero-Spiel „Play the game“ durch Leipzig
    Eigenes Lauf-und-Spring-Spiel in Annas Bildsprache (kein Nachbau eines bestehenden Spiels, keine fremden Töne oder Figuren).
    – Freistehend, nur Bodenlinie. Die Bauhaus-Figur läuft schnell zur Bildmitte und dann durch Leipzig
      (Völkerschlachtdenkmal, Weisheitszahn, Hauptbahnhof, Baustelle, Autos, Bäume).
@@ -6,12 +6,11 @@
        Funkstille → neue Kunden · Unsichtbar (Auge zu) → Auge geht auf, Reichweite · Tool-Chaos → Zeit
        Zeitfresser → Zeit · Ebbe in der Kasse → Geld. Seitlich dagegen kostet ein Leben (drei Leben).
    – Die Fachkraft läuft weg; gefangen: ein Mitarbeiter mehr, die Figur wächst und hält einen Treffer aus.
-   – Schwarze Blöcke von unten anstoßen: Leistung fliegt heraus. Alle fünf gefunden: das nächste Geschäftsjahr beginnt (Anna 12.11.2026:
-     „anpassen an die Realität“ statt Level; Start ist immer das laufende Kalenderjahr, wechselt am 1. Januar von selbst). Das Spiel hält an, die Card zeigt das neue Jahr und eine Spielregel.
+   – Schwarze Blöcke von unten anstoßen: Leistung fliegt heraus. Alle fünf gefunden: das nächste Geschäftsjahr beginnt („anpassen an die Realität“ statt Level; Start ist immer das laufende Kalenderjahr, wechselt am 1. Januar von selbst). Das Spiel hält an, die Card zeigt das neue Jahr und eine Spielregel.
    – Im Bild nur kurze Ausrufe (WOW!, AAH!, OHO!); was man gewonnen oder verloren hat, sagt bei eingeschaltetem Ton eine Stimme
-     (Sprachausgabe des Geräts, nur lokale Stimmen, nichts wird gesendet). Anna 12.11.2026: „zu schnell, kann ich nicht lesen“.
+     (Sprachausgabe des Geräts, nur lokale Stimmen, nichts wird gesendet). „zu schnell, kann ich nicht lesen“.
    – Das Spiel läuft weiter, bis die Leben weg sind; dann „Game over“ mit Play again.
-   – Beim Ankommen steht alles still (Anna 12.11.2026, ersetzt die laufende Demo): Standbild und rechts eine Card mit Überschrift
+   – Beim Ankommen steht alles still: Standbild und rechts eine Card mit Überschrift
      und Spielen-Button. „Spielen“ startet zuerst ein Intro, das in der Card Schritt für Schritt erklärt, was man tun kann
      (auch einmal einen Block von unten anstoßen). Der Button in der Card startet dann das Spiel.
    – Oben nur die drei Leben, kein Geld; die Chips unter dem Spiel zählen die ergriffenen Lösungen. Ton aus, bis man ihn einschaltet. */
@@ -20,9 +19,9 @@
   var wurzel = document.querySelector('[data-spiel]');
   if (!wurzel) return;
   var cv = wurzel.querySelector('canvas'), c = cv.getContext('2d');
-  var W = 960, H = 290, BODEN = 266;   // Desktop 290 hoch (Anna 12.11.2026: Platz über dem Kopf, damit man die Arme beim Sprung sieht)
+  var W = 960, H = 290, BODEN = 266;   // Desktop 290 hoch
   var F = { sch: '#0e1011', ws: '#ffffff', bl: '#2a5fe6', rot: '#ff3b2f', pink: '#ff4fa3', rosa: '#ff8fc8', gelb: '#ffe600', gr: '#9a9d9e', grh: '#d6d8d9' };
-  // Die fünf Lösungen in der Reihenfolge eines Projekts (Anna 10.11.2026); jedes Level beginnt wieder vorn, wie beim iterativen Arbeiten
+  // Die fünf Lösungen in der Reihenfolge eines Projekts; jedes Level beginnt wieder vorn, wie beim iterativen Arbeiten
   var LEISTUNGEN = [
     { name: 'Markenbildung', form: 'quadrat', farbe: F.rot }, { name: 'UI/UX', form: 'halbkreis', farbe: F.pink },
     { name: 'Webdesign', form: 'kreis', farbe: F.bl }, { name: 'Marketing & Vertrieb', form: 'halbkreis', farbe: F.sch },
@@ -76,7 +75,7 @@
   var ruhig = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   var zahl = new Intl.NumberFormat('de-DE');
 
-  var START_JAHR = new Date().getFullYear();   // Geschäftsjahr = laufendes Jahr (Anna 12.11.2026: am 1.1. automatisch umschalten)
+  var START_JAHR = new Date().getFullYear();   // Geschäftsjahr = laufendes Jahr
   function groesse() {
     var r = cv.getBoundingClientRect(), alt = BODEN;
     H = r.width < 600 ? 360 : 290; BODEN = H - 24;
@@ -146,7 +145,7 @@
   function beschriftung(t, x, y) { c.fillStyle = F.gr; c.font = '600 12px Manrope, system-ui, sans-serif'; c.textAlign = 'center'; c.fillText(t, x, y); c.textAlign = 'left'; }
 
   // ---------- Leipzig ----------
-  // Skyline aus Grundformen (Anna 12.11.2026): vorn die Wahrzeichen in Hellgrau mit Häuserreihen dazwischen,
+  // Skyline aus Grundformen: vorn die Wahrzeichen in Hellgrau mit Häuserreihen dazwischen,
   // hinten eine ruhigere Dachlandschaft in Creme. Eigene Zeichnung, nur Silhouetten ohne Beschriftung.
   function zufall(z) { return function () { z = (z * 16807) % 2147483647; return z / 2147483647; }; }
   function umlauf(x, laenge, tempo, rand) { var sx = ((x - s.weg * tempo) % laenge + laenge) % laenge; return sx > W + (rand || 0) ? sx - laenge : sx; }
@@ -257,7 +256,7 @@
     c.save(); c.translate(-8, -34); c.rotate(sch * Math.PI / 180); c.fillRect(-3, 0, 6, 34); c.restore();
     c.save(); c.translate(8, -34); c.rotate(-sch * Math.PI / 180); c.fillRect(-3, 0, 6, 34); c.restore();
     c.fillRect(-15, -70, 30, 30);
-    var arm = hoch ? 155 : 25;   // springt: beide Arme hoch und nach außen (Anna 12.11.2026)
+    var arm = hoch ? 155 : 25;   // springt: beide Arme hoch und nach außen
     c.save(); c.translate(-11, -66); c.rotate(arm * Math.PI / 180); c.fillRect(-3, 0, 6, 30); c.beginPath(); c.arc(0, 32, 4, 0, 7); c.fill(); c.restore();
     c.save(); c.translate(11, -66); c.rotate(-arm * Math.PI / 180); c.fillRect(-3, 0, 6, 30); c.beginPath(); c.arc(0, 32, 4, 0, 7); c.fill(); c.restore();
     c.fillStyle = F.ws; c.beginPath(); c.arc(0, -34, 25, Math.PI, 0); c.fill();
@@ -316,7 +315,7 @@
     c.fillStyle = F.sch; c.fillRect(b.x, y, 42, 42);
     form(b.l.form, b.x + 21, y + 21, 22, b.l.farbe === F.sch ? F.ws : b.l.farbe);
   }
-  function anzeige() {   // links die drei Leben, rechts das Geschäftsjahr (Anna 12.11.2026); die Lösungen zählen die Chips unter dem Spiel
+  function anzeige() {   // links die drei Leben, rechts das Geschäftsjahr; die Lösungen zählen die Chips unter dem Spiel
     for (var n = 0; n < 3; n++) { if (n < s.leben) herz(26 + n * 26, 22, 10, F.rot); else { c.globalAlpha = .2; herz(26 + n * 26, 22, 10, F.gr); c.globalAlpha = 1; } }
     c.fillStyle = F.sch; c.font = '700 16px Manrope, system-ui, sans-serif'; c.textAlign = 'right'; c.fillText('Geschäftsjahr ' + (START_JAHR - 1 + s.level), W - 14, 27); c.textAlign = 'left';
   }
@@ -376,7 +375,7 @@
     if (s.demo) return;
     sprich(eins(['Chance ergriffen: ', 'Zugegriffen: ', 'Rein damit: ']) + b.l.name.replace('&', 'und').replace('UI/UX', 'U I und U X') + '.');
   }
-  // Eine Zeile Lob je neuem Jahr (Anna 12.11.2026), darunter hervorgehoben die Spielregel
+  // Eine Zeile Lob je neuem Jahr, darunter hervorgehoben die Spielregel
   var LOB = ['Du hast deine Chancen ergriffen.', 'Du hast alles gegeben.', 'Du bleibst dran.', 'Läuft bei dir.', 'Du wächst weiter.'];
   // Die Spielregeln, eine je Geschäftsjahr
   var REGELN = ['Regel 1: Wer nicht gesehen wird, verliert.', 'Regel 2: Wer alles allein macht, verliert Zeit.',
@@ -426,7 +425,7 @@
       }
     });
     s.gaben = s.gaben.filter(function (g) { return !g.weg && g.x > -40; });
-    // Münzen in der Luft: seit 12.11.2026 ohne Geldanzeige nicht mehr im Spiel (naechstM bleibt sehr groß)
+    // Münzen in der Luft: ohne Geldanzeige nicht mehr im Spiel (naechstM bleibt sehr groß)
     if (--s.naechstM <= 0) { var hy = BODEN - 90 - Math.random() * 60; for (var m = 0; m < 3; m++) s.muenzen.push({ x: W + 20 + m * 34, y: hy - Math.sin(m / 2 * Math.PI) * 24, wert: 50 }); s.naechstM = 240 + Math.floor(Math.random() * 160); }
     s.muenzen.forEach(function (mz) {
       mz.x -= s.tempo;
@@ -477,7 +476,7 @@
   }
 
   // ---------- Intro ----------
-  // Startet erst auf „Spielen“ (Anna 12.11.2026). Feste Abfolge: jedes Element erscheint zu seinem Schritt in der Card,
+  // Startet erst auf „Spielen“. Feste Abfolge: jedes Element erscheint zu seinem Schritt in der Card,
   // die Figur springt allein, auch einmal von unten gegen einen schwarzen Block. Danach steht alles still, bis man spielt.
   var SCHRITTE = [[0, 'Springen', 'Mit der Leertaste, dem Pfeil nach oben oder per Tippen.'],
     [220, 'Probleme platt machen', 'Spring auf die Probleme und den Wettbewerb. Dann werden sie zu Kunden, Reichweite, Zeit und Geld.'],

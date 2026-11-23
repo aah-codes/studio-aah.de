@@ -1,9 +1,9 @@
-// Setzt eine Website-Aufnahme in den geraden (frontalen) Bildschirm eines Foto-Mockups ein (Anna 15.10.2026: nur echte Mockups).
+// Setzt eine Website-Aufnahme in den geraden (frontalen) Bildschirm eines Foto-Mockups ein.
 // Schneidet das Foto zu, vergrößert es um FAKTOR (damit die Seite im Bildschirm scharf ist) und legt die Aufnahme genau in das
 // Bildschirm-Rechteck, mit einem leichten Glanz von oben links. Koordinaten in Pixeln des Originalfotos, von oben links.
 // Aufruf vom Repository-Ordner aus:
-//   swift werkzeuge/grafiken/bildschirm-einsetzen.swift FOTO.jpg SEITE.jpg AUS.jpg  ZX ZY ZB ZH  BX BY BB BH  [FAKTOR] [QUALITÄT]
-//   Z… = Zuschnitt des Fotos, B… = Bildschirm im Foto
+// swift werkzeuge/grafiken/bildschirm-einsetzen.swift FOTO.jpg SEITE.jpg AUS.jpg ZX ZY ZB ZH BX BY BB BH [FAKTOR] [QUALITÄT]
+// Z… = Zuschnitt des Fotos, B… = Bildschirm im Foto
 import Foundation
 import CoreGraphics
 import ImageIO

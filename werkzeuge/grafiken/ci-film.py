@@ -23,9 +23,9 @@ ICONS = {'culture': 'ziel', 'communication': 'sprechblase', 'behaviour': 'person
 
 
 def zeichnung(key, t0):
-    if key in ICONS:  # Anna 22.11.2026: Icons aus bilder/symbole/ statt kleiner Zeichnungen
+    if key in ICONS:  # Icons aus bilder/symbole/ statt kleiner Zeichnungen
         return f'<image href="../../bilder/symbole/{ICONS[key]}.svg" x="-26" y="-26" width="52" height="52"/>'
-    # Bauhaus-Grundformen, gefüllt (Anna 11.10.2026): Kreis, Halbkreis, Quadrat, Dreieck in Schwarz, Grau, Blau – kein Herz
+    # Bauhaus-Grundformen, gefüllt: Kreis, Halbkreis, Quadrat, Dreieck in Schwarz, Grau, Blau – kein Herz
     if key == 'culture':   # Werte wachsen von innen, oben die Fahne als Leitbild
         return (f'<g {z(t0)}><circle cy="6" r="21" class="ci-grau"/></g>'
                 f'<g {z(t0 + .25)}><circle cy="6" r="12" class="ci-f"/></g>'
@@ -111,8 +111,8 @@ def bild(art):
         d = (BILD + .6) if 'image' in (a, b) else (NETZ + i * .12)
         teile.append(f'<g {z(d)} data-kante><path d="{hin}" class="ci-p"/></g>')
         lang = 2.6 if 'image' not in (a, b) else 3.2
-        # je Linie nur ein Punkt pro Richtung, der Rückweg in Blau (Anna 11.10.2026: zu viele Punkte)
-        # Anna 22.11.2026: ohne wandernde Punkte, ohne Steuerung
+        # je Linie nur ein Punkt pro Richtung, der Rückweg in Blau
+        # ohne wandernde Punkte, ohne Steuerung
     # Knoten der vier Bereiche
     for key, (name, unter, t0) in KNOTEN.items():
         x, y = pos[key]

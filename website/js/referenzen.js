@@ -182,7 +182,7 @@
   // Heft (Unternehmenspräsentation): rechte Seite blättert in 3D um, dann liegt die nächste Doppelseite offen; nur sichtbar, Pause-Taste
   (() => {
     document.querySelectorAll('[data-heft]').forEach((h) => {
-      // Heft wie gedruckt (Anna 14.10.2026): zu (nur Umschlag, mittig) → aufklappen → Doppelseiten → Rückseite → von vorn.
+      // Heft wie gedruckt: zu (nur Umschlag, mittig) → aufklappen → Doppelseiten → Rückseite → von vorn.
       // Leere Angabe = dort ist kein Blatt (links vom Umschlag, rechts von der Rückseite)
       const bogen = JSON.parse(h.dataset.seiten), heft = h.querySelector('.hf-heft'), l = h.querySelector('.hf-l'), r = h.querySelector('.hf-r');
       const blatt = h.querySelector('.hf-blatt'), vorn = h.querySelector('.hf-vorn'), hinten = h.querySelector('.hf-hinten'), knopf = h.querySelector('.hf-knopf');
@@ -227,7 +227,7 @@
     }));
   })();
 
-  // Galerie zum Durchklicken (Referenz Jana, Anna 16.10.2026): Klick aufs Bild zeigt das nächste, ohne eigene Pfeile und Zähler
+  // Galerie zum Durchklicken: Klick aufs Bild zeigt das nächste, ohne eigene Pfeile und Zähler
   (() => {
     document.querySelectorAll('.cs-durchklick').forEach((g) => {
       const bilder = [...g.querySelectorAll('.dk-bilder img')]; let i = 0;

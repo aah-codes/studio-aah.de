@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-"""Stellt Fotos frei und färbt die Person blau ein – Entwurf 13.10.2026.
+"""Stellt Fotos frei und färbt die Person blau ein – Entwurf.
 
-Anna: „Der Hintergrund muss monochrom sein“ – die Person steht freigestellt vor einer
+– die Person steht freigestellt vor einer
 einfarbigen Fläche; die Farbe der Fläche setzt das CSS (Bild mit Transparenz).
 Freistell-Modelle aus den rembg-Releases (nicht im Repository, ONNX):
   empfohlen für Porträts (Haare): BiRefNet-portrait-epoch_150.onnx (ca. 970 MB, braucht viel Arbeitsspeicher)
   https://github.com/danielgatis/rembg/releases/download/v0.0.0/BiRefNet-portrait-epoch_150.onnx
   schneller, gröber: isnet-general-use.onnx (gleiche Adresse, anderer Dateiname)
-Vergleich am 13.10.2026: BiRefNet-portrait schneidet die Haare sauberer; Photocraft („Motiv auswählen“)
+Vergleich: BiRefNet-portrait schneidet die Haare sauberer; Photocraft („Motiv auswählen“)
 erkannte nur den Pullover, seine Kantenverfeinerung brachte danach kaum noch Gewinn.
 Benötigt: numpy, onnxruntime, Pillow.
 Aufruf vom Repository-Ordner aus: python3 werkzeuge/grafiken/freistellen.py PFAD/MODELL.onnx

@@ -3,14 +3,14 @@
 # 1. Kopf und Fuß sind auf allen Seiten gleich (wie in website/index.html).
 # 2. Alle internen Links und Bilder zeigen auf vorhandene Dateien.
 # 3. Die erzeugten Bereiche sind aktuell (alle Generatoren laufen in einer Kopie, nichts ändert sich).
-# Aufruf im Repository-Ordner:  bash werkzeuge/pruefen.sh
+# Aufruf im Repository-Ordner: bash werkzeuge/pruefen.sh
 
 cd "$(dirname "$0")/../website" || exit 1
 fehler=0
 
 # Pfade vereinheitlichen, damit Unterseiten (../) mit der Startseite vergleichbar sind
 einheitlich() { sed -E 's#="(\.\./)+#="#g; s#(href|src)="/#\1="#g; s#href="\.\./"#href="./"#g; s#href=""#href="./"#g'; }
-# Reste einer alten Dachzeile (werkzeuge/kopf-fuss.py entfernt sie, seit 18.11.2026 keine mehr) – sie zählt beim Vergleich nicht mit
+# Reste einer alten Dachzeile – sie zählt beim Vergleich nicht mit
 kopf() { awk '/<a class="sprunglink"/,/<!-- \/KOPF -->/' "$1" | awk '/<!-- DACHZEILE/{d=1} d&&/^<\/div>/{d=0; next} !d' | einheitlich; }
 fuss() { awk '/<!-- FUSS:/,/<!-- \/FUSS -->/' "$1" | einheitlich; }
 

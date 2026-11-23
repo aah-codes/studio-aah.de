@@ -1,7 +1,5 @@
 # Baut website/blog/website-selbst-bauen-mit-ki/index.html mit dem gemeinsamen Baustein werkzeuge/blog/beitrag.py.
-# Text nach Annas Freigabe vom 17.11.2026 („Okay, das passt alles so … dann können wir den Artikel hochladen“);
-# Entwurf mit Quellen und Prüfvermerken: Betrieb › Studio AAH › Website › 2026-11-17_blogbeitrag-entwurf_website-selbst-bauen-mit-ki.md.
-# Bilder: Titel/Vorschau aus werkzeuge/grafiken/blog/website-selbst-bauen-titel.py, Memes aus Annas Serie „Lacher v3“ (Fotos Pexels, Nachweis im Impressum).
+# Bilder: Titel/Vorschau aus werkzeuge/grafiken/blog/website-selbst-bauen-titel.py, Memes (Fotos Pexels, Nachweis im Impressum).
 # Aufruf im Repository-Ordner: python3 werkzeuge/blog/website-selbst-bauen-mit-ki.py
 import pathlib, sys
 

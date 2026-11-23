@@ -1,5 +1,5 @@
 {
- "_hinweis": "Problem- und Branchenseiten (Anna, 09./10.11.2026: Schmerzpunkte 1–4 des Mittelstands, Konzept Betrieb Studio AAH/Website/2026-11-09_konzept_website-als-werkzeug.md). Erzeugt von werkzeuge/fuer-wen-seiten.py. Keine erfundenen Zahlen; jede Zahl mit Quelle.",
+ "_hinweis": "Problem- und Branchenseiten. Erzeugt von werkzeuge/fuer-wen-seiten.py. Keine erfundenen Zahlen; jede Zahl mit Quelle.",
  "uebersicht": {
   "pfad": "fuer-wen/",
   "seitentitel": "Für wen: Webdesign und KI für den Mittelstand in Leipzig | STUDIO AAH!",
@@ -1077,7 +1077,7 @@
   ]
  },
  "ki_rechner": {
-  "_hinweis": "Neu gedacht am 17.11.2026: Aufgaben statt Stellen, frei gewordene Zeit in neue Arbeit. Texte sind Entwürfe bis zu Annas Freigabe.",
+  "_hinweis": "Prinzip: Aufgaben statt Stellen, frei gewordene Zeit in neue Arbeit.",
   "pfad": "ki-zeitrechner/",
   "seitentitel": "KI-Zeitrechner: Mehr Zeit für Kund:innen, Ideen und Lernen | STUDIO AAH!",
   "beschreibung": "Rechne mit deinen eigenen Zahlen aus, wie viel Fleißarbeit KI deinem Team abnehmen könnte, und plane, wofür deine Leute die Zeit stattdessen nutzen. Kostenlos, ohne Anmeldung, nichts wird gesendet.",
@@ -1120,5 +1120,5 @@
    ]
   ]
  },
- "_branchen_hinweis": "Branchen seit 12.11.2026 (Anna): sieben, Reihenfolge = Raster der Startseite; Texte von industrie, energie, gesundheit, beratung sowie einleitung/muss/einwand aller Branchen sind Entwürfe von Claude, noch nicht von Anna freigegeben. Eigene Schmerzpunkt-Karten (Feld karten) aller Branchen außer Bau: Recherche und Entwurf Claude 20.11.2026 auf Annas Wunsch, Freigabe Anna offen; Belege im Projektstatus in Betrieb."
+ "_branchen_hinweis": "Sieben Branchen, Reihenfolge = Raster der Startseite. Feld karten: eigene Schmerzpunkt-Karten je Branche (außer Bau)."
 }

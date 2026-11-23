@@ -1,7 +1,6 @@
-# Neues kleines k für Annas Handschrift-Schrift (Anna 22.11.2026: „das Problem mit dem K“ – das k sah aus wie ein R,
-# „Was es Rostet“, „Fangen wir Rlein an“). Aus ihren eigenen Formen gebaut: Punkt zu Pinselstrichen gestreckt
+# Kleines k für die Handschrift-Schrift, damit es sich klar vom R unterscheidet. Aus den eigenen Formen gebaut: Punkt zu Pinselstrichen gestreckt
 # (wie „1“ und „!“ in schrift-ableiten.py). Arbeitet direkt auf der Web-Schrift.
-# Aufruf im Repository-Ordner:  python3 werkzeuge/schrift-k.py   (braucht fontTools und brotli)
+# Aufruf im Repository-Ordner: python3 werkzeuge/schrift-k.py (braucht fontTools und brotli)
 import math, pathlib
 from fontTools.ttLib import TTFont
 from fontTools.pens.ttGlyphPen import TTGlyphPen
@@ -20,7 +19,7 @@ def strich(laenge, dicke, winkel, cx, cy):
     return ('period', (xx, xy, yx, yy, dx, dy))
 
 
-# Anna 22.11.2026 (dritte Skizze): schlicht – gerader Stamm, zwei Arme treffen sich etwa auf halber Höhe am Stamm
+# Schlicht – gerader Stamm, zwei Arme treffen sich etwa auf halber Höhe am Stamm
 teile = [strich(720, 1.35, 86, 125, 350),     # Stamm, so hoch wie das l
          strich(260, 1.2, 40, 240, 345),      # oberer Arm, vom Stamm nach rechts oben
          strich(310, 1.25, -54, 245, 130)]    # unterer Arm, vom Stamm nach rechts unten
@@ -33,7 +32,7 @@ if 'k.neu' not in f.getGlyphOrder(): f.setGlyphOrder(f.getGlyphOrder() + ['k.neu
 for tab in f['cmap'].tables:
     if tab.isUnicode() or tab.platformID == 3: tab.cmap[0x006B] = 'k.neu'
 
-# Kaufmanns-Und nach Annas Skizze (22.11.2026): oben eine kleine Schlaufe, unten eine größere, ein Strich quer nach rechts unten
+# Kaufmanns-Und: oben eine kleine Schlaufe, unten eine größere, ein Strich quer nach rechts unten
 und = [('o', (.62, 0, 0, .68, 105, 470)),        # obere Schlaufe, so hoch wie die Großbuchstaben
        ('o', (1.0, 0, 0, 1.0, 10, 0)),           # untere Schlaufe
        strich(660, 1.2, -62, 275, 330),          # Strich von oben links nach rechts unten

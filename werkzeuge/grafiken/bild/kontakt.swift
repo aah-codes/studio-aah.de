@@ -1,4 +1,4 @@
-// Kontaktbogen: kontakt.swift AUS.jpg SPALTEN BREITE BILD…  (Beschriftung = Dateiname)
+// Kontaktbogen: kontakt.swift AUS.jpg SPALTEN BREITE BILD… (Beschriftung = Dateiname)
 import Foundation; import CoreGraphics; import ImageIO; import UniformTypeIdentifiers; import CoreText
 let a = CommandLine.arguments; let sp = Int(a[2])!, bw = CGFloat(Double(a[3])!)
 let dateien = Array(a[4...]); let bilder = dateien.map { CGImageSourceCreateImageAtIndex(CGImageSourceCreateWithURL(URL(fileURLWithPath: $0) as CFURL, nil)!, 0, nil)! }

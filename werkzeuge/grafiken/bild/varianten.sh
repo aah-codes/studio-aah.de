@@ -1,9 +1,9 @@
 #!/bin/bash
 # Kleinere WebP-Fassungen der langen Seitenaufnahmen für srcset (Projektkarten) und die Hero-Leiste, damit Handys nicht die
-# 1440-px-Originale laden (Website-Check 18.10.2026, Nachtrag Anna 19.10.2026: WebP in Anzeigegröße; die großen JPGs bleiben).
+# 1440-px-Originale laden.
 # Name: <bild>-<breite>.webp neben dem Original. Erst mit sips verkleinert (PNG, verlustfrei), dann mit cwebp kodiert.
 # Braucht macOS (sips) und cwebp (libwebp von Google, liegt in ~/bin).
-# Aufruf im Repository-Ordner:  bash werkzeuge/grafiken/bild/varianten.sh   – danach bash werkzeuge/alle-erzeugen.sh und bash werkzeuge/pruefen.sh
+# Aufruf im Repository-Ordner: bash werkzeuge/grafiken/bild/varianten.sh – danach bash werkzeuge/alle-erzeugen.sh und bash werkzeuge/pruefen.sh
 set -e
 CWEBP=$(command -v cwebp || echo "$HOME/bin/cwebp")
 cd "$(dirname "$0")/../../../website/bilder/referenzen"
@@ -34,7 +34,7 @@ erzeuge_jpg bauer-website.jpg 720
 erzeuge deinetwegen-website.jpg 480
 erzeuge_jpg deinetwegen-website.jpg 720
 erzeuge jana-website.jpg 480 720 960
-# Goldhammer-Karte zeigt seit 09.11.2026 die Website statt des Flyers (Anna)
+# Goldhammer-Karte zeigt die Website statt des Flyers
 erzeuge goldhammer-website.jpg 480 720
 erzeuge goldhammer/lang-handy.jpg 240
 # Handy-Aufnahmen (780–860 px): Hero-Leiste 180 (dort höchstens 58 px breit), Karte am Handy 240, am Desktop 480

@@ -1,6 +1,6 @@
-# Sticker für den Hero der Startseite (Anna 22.11.2026): Blitz statt Vogel, Regenbogen statt „AAH!“-Blase, Pfeil nach unten.
+# Sticker für den Hero der Startseite: Blitz statt Vogel, Regenbogen statt „AAH!“-Blase, Pfeil nach unten.
 # Zeichenstil wie die übrigen Sticker in website/bilder/sticker/: rosa Versatz, Farbfläche, doppelte schwarze Kontur.
-# Aufruf im Repository-Ordner:  python3 werkzeuge/grafiken/hero-sticker.py
+# Aufruf im Repository-Ordner: python3 werkzeuge/grafiken/hero-sticker.py
 import pathlib, random
 
 ZIEL = pathlib.Path(__file__).resolve().parents[2] / 'website' / 'bilder' / 'sticker'
@@ -59,7 +59,7 @@ def regenbogen():
 
 
 def pfeil():
-    # geschwungener Pfeil wie gezeichnet, mit Strich darunter (Anna 22.11.2026)
+    # geschwungener Pfeil wie gezeichnet, mit Strich darunter
     schaft = 'M206 24 C176 70, 238 104, 204 150 C176 190, 236 222, 206 266 C196 282, 190 300, 188 318'
     kopf = 'M140 270 C160 296, 176 316, 188 330 C212 314, 238 302, 270 296'
     strich = 'M150 372 C200 368, 246 368, 286 372'
@@ -69,7 +69,7 @@ def pfeil():
 
 
 def megafon():
-    # Megafon für die Fußkarte „Demokratie braucht Sichtbarkeit“ (Anna 22.11.2026: Illustration statt 3D-Icon)
+    # Megafon für die Fußkarte „Demokratie braucht Sichtbarkeit“
     trichter = [(110, 170), (250, 92), (272, 92), (272, 300), (250, 300), (110, 222)]
     griff = [(150, 226), (182, 226), (196, 300), (164, 300)]
     hinten = [(78, 168), (112, 168), (112, 224), (78, 224)]
@@ -85,7 +85,7 @@ def megafon():
 
 
 def sprechblase():
-    # Sprechblase für den Abschluss der Branchenseiten (Anna 22.11.2026: „ein gezeichnetes Icon dazu“, „wir sollten ins Gespräch kommen“)
+    # Sprechblase für den Abschluss der Branchenseiten
     blase = 'M80 96 C80 62, 108 44, 150 44 L276 44 C322 44, 348 66, 348 104 L348 216 C348 256, 322 276, 276 276 L188 276 L118 348 L132 276 L136 276 C100 276, 80 254, 80 216 Z'
     versatz = blase.replace('M80 96', 'M89 104')
     teile = [f'<path d="{blase}" transform="translate(9 8)" fill="{ROSA}"/>', f'<path d="{blase}" fill="{GELB}"/>', kontur(blase), kontur(blase, 3).replace('<path', '<path transform="translate(3 -2)"')]

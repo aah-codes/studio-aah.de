@@ -1,8 +1,8 @@
 #!/bin/bash
-# Kleinere Bildfassungen für die Startseite (PageSpeed 19.11.2026: „Bildübermittlung verbessern“, ca. 500 KiB zu viel am Handy).
+# Kleinere Bildfassungen für die Startseite.
 # Name: <bild>-<breite>.webp (bzw. .jpg) neben dem Original; eingebunden per srcset/sizes in website/index.html.
 # Erst mit sips verkleinert (PNG, verlustfrei), dann mit cwebp kodiert. Braucht macOS (sips) und cwebp (~/bin).
-# Aufruf im Repository-Ordner:  bash werkzeuge/grafiken/bild/startseite-varianten.sh   – danach bash werkzeuge/alle-erzeugen.sh
+# Aufruf im Repository-Ordner: bash werkzeuge/grafiken/bild/startseite-varianten.sh – danach bash werkzeuge/alle-erzeugen.sh
 set -e
 CWEBP=$(command -v cwebp || echo "$HOME/bin/cwebp")
 cd "$(dirname "$0")/../../../website/bilder"

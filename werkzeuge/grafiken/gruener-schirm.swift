@@ -1,9 +1,9 @@
-// Foto-Mockup mit grünem Bildschirm (z. B. aus Canva) für die Website vorbereiten (Anna 14.10.2026).
+// Foto-Mockup mit grünem Bildschirm (z. B. aus Canva) für die Website vorbereiten.
 // - verkleinert das Foto auf BREITE, dunkelt grüne Ränder ab und speichert es als JPEG
 // - schreibt eine Maske (PNG, durchsichtig, wo der Bildschirm ist): das Foto liegt mit der Maske über der Seite,
-//   so verdecken Hand, Seitenumschlag oder Rahmen die Seite richtig
+// so verdecken Hand, Seitenumschlag oder Rahmen die Seite richtig
 // - findet die grünen Flächen (größte zuerst) und gibt je Fläche die vier Ecken und die matrix3d aus, mit der eine
-//   Seite von SW × SH CSS-Pixeln genau hineinpasst
+// Seite von SW × SH CSS-Pixeln genau hineinpasst
 // Aufruf: swift werkzeuge/grafiken/gruener-schirm.swift FOTO AUS.jpg MASKE.png BREITE SW SH
 import Foundation; import CoreGraphics; import ImageIO; import UniformTypeIdentifiers
 let a = CommandLine.arguments
@@ -22,7 +22,7 @@ var gruen = [Bool](repeating: false, count: w * h)
 for i in 0..<(w * h) {
     let o = i * 4; let r = Int(d[o]), g = Int(d[o + 1]), b = Int(d[o + 2])
     // Loch nur im kräftigen Grün; an den Rändern Grünstich entfernen (Despill: Grün auf das Mittel von Rot und Blau),
-    // damit keine dunklen oder grünen Fransen bleiben (Anna 14.10.2026: „Ecken ausgefranst“)
+    // damit keine dunklen oder grünen Fransen bleiben
     let stark = g > 110 && g > r + 50 && g > b + 50
     gruen[i] = stark
     if !stark && g > max(r, b) { d[o + 1] = UInt8(min(g, max(r, b) + 6)) }

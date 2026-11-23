@@ -22,19 +22,19 @@
   <link rel="preload" href="../schriften/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../schriften/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
   <style>
-    /* Nur Entwurf Über mich, Fassung 3 (22.11.2026): bei Freigabe nach css/stil.css übernehmen */
+    /* Nur Entwurf Über mich, Fassung 3: bei Freigabe nach css/stil.css übernehmen */
     .um-hero, .um-weiss { background: var(--farbe-weiss); color: var(--farbe-dunkel); }
     .um-hero { padding: clamp(40px, 5vw, 80px) 0 0; }
     .um-weiss { padding: clamp(48px, 7vw, 112px) var(--rand-seite); }
     .um-hero .um-innen { padding: 0 var(--rand-seite); }
-    .um-innen { max-width: none; margin: 0; }   /* bündig zum Logo wie alle Seiten (Anna 22.11.2026) */
+    .um-innen { max-width: none; margin: 0; }   /* bündig zum Logo wie alle Seiten */
     .um-licht { font-family: var(--schrift-text); font-weight: 500; letter-spacing: -.03em; text-transform: none; }
     .um-h1 { margin: 0; width: fit-content; font-size: clamp(34px, 5.4vw, 84px); line-height: 1.14; }   /* große leichte Zeile wie eine Plakatzeile */
     .um-h3 { margin: 10px 0 0; font-size: clamp(26px, 2.9vw, 44px); line-height: 1.2; }
     .um-zeile { white-space: nowrap; }
     .um-durch { position: relative; display: inline-block; }
     .um-durch::after { content: ""; position: absolute; left: -3%; right: -3%; top: 42%; height: .22em; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 26' preserveAspectRatio='none'%3E%3Cpath d='M2 14 C80 10 180 16 298 9' fill='none' stroke='%23ff3b2f' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M8 18 C110 13 200 19 296 13' fill='none' stroke='%23ff3b2f' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E") center / 100% 100% no-repeat; }
-    .um-hand { display: block; width: fit-content; margin: .3em 0 0 auto; font: 400 clamp(26px, 3vw, 46px)/1.15 var(--schrift-hand), "Architects Daughter", cursive; letter-spacing: .03em; text-transform: none; color: var(--aah-rot); rotate: -3deg; }   /* normale Groß- und Kleinschreibung (Anna 22.11.2026) */
+    .um-hand { display: block; width: fit-content; margin: .3em 0 0 auto; font: 400 clamp(26px, 3vw, 46px)/1.15 var(--schrift-hand), "Architects Daughter", cursive; letter-spacing: .03em; text-transform: none; color: var(--aah-rot); rotate: -3deg; }   /* normale Groß- und Kleinschreibung */
     .um-hand-zeile { margin: .35em 0 .35em 5.5em; font-size: clamp(18px, 1.7vw, 26px); color: var(--aah-rot-tief); }
     .um-buehne { margin-top: clamp(32px, 4vw, 64px); background: #000; }   /* reines Schwarz, damit das Foto ohne Kante im Grund aufgeht */
     .um-buehne img { display: block; width: auto; max-width: 100%; height: clamp(300px, 54vw, 760px); margin: 0 auto; object-fit: cover; border-radius: 0; -webkit-mask-image: linear-gradient(90deg, transparent, #000 22%, #000 78%, transparent); mask-image: linear-gradient(90deg, transparent, #000 22%, #000 78%, transparent); }
@@ -234,7 +234,7 @@
   </section>
 
   <section class="ref-uebersicht" aria-label="Alle Projekte">
-    <!-- Umschalter Raster | Liste ohne JavaScript (Anna 22.11.2026); Liste wie auf der Startseite mit Bildstreifen -->
+    <!-- Umschalter Raster | Liste ohne JavaScript; Liste wie auf der Startseite mit Bildstreifen -->
     <fieldset class="ref-ansicht"><legend class="unsichtbar">Ansicht</legend>
       <input type="radio" name="ref-ansicht" id="ref-raster" checked><label for="ref-raster">Raster</label>
       <input type="radio" name="ref-ansicht" id="ref-liste"><label for="ref-liste">Liste</label>

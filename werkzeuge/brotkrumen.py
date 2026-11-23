@@ -1,9 +1,9 @@
-# Brotkrumen-Navigation (Breadcrumbs) auf Unterseiten, wo sie Orientierung geben (Anna, 10.11.2026: „überall wo sinnvoll“).
+# Brotkrumen-Navigation (Breadcrumbs) auf Unterseiten, wo sie Orientierung geben.
 # Setzt am Anfang von <main> eine kleine Navigation plus strukturierte Daten (BreadcrumbList) zwischen
 # <!-- BROTKRUMEN:START --> und <!-- BROTKRUMEN:ENDE -->. Läuft als letzter Schritt von alle-erzeugen.sh.
 # Leistungs- und Projektseiten haben ihre Brotkrumen schon im Seitenkopf (leistungsseiten.py, referenzen.py) und bleiben unberührt.
 # Hauptseiten der ersten Ebene (Für wen, Blog, Referenzen, Preise, Über mich) brauchen keine.
-# Aufruf im Repository-Ordner:  python3 werkzeuge/brotkrumen.py
+# Aufruf im Repository-Ordner: python3 werkzeuge/brotkrumen.py
 import html, json, re
 
 from gemeinsam import WEBSITE, lade_json
@@ -22,10 +22,10 @@ def _anker(name):
 
 def ziele():
     """(Pfad, [(Name, Ziel) …], letzter Name) für alle Seiten mit Brotkrumen."""
-    for p in FW['probleme']:   # Gruppe „Wo es hakt“ wie im Fuß, Ziel: Einstiege im Startseiten-Hero (Anna 23.11.2026)
+    for p in FW['probleme']:   # Gruppe „Wo es hakt“ wie im Fuß, Ziel: Einstiege im Startseiten-Hero
         yield p['pfad'], [('Start', ''), WO_ES_HAKT], p['meta']
     for b in FW['branchen']:
-        yield b['pfad'], [('Branchen', 'fuer-wen/')], b['name']   # Menüpunkt heißt seit 12.11.2026 „Branchen“
+        yield b['pfad'], [('Branchen', 'fuer-wen/')], b['name']   # Menüpunkt heißt „Branchen“
     yield FW['selbsttest']['pfad'], [FUER_WEN], 'Selbsttest'
     yield FW['ki_rechner']['pfad'], [FUER_WEN], 'KI-Zeitrechner'
     yield FW['produkt']['pfad'], [LEISTUNGEN], 'Employer Branding'
@@ -38,14 +38,14 @@ def ziele():
         h1 = re.search(r'<h1[^>]*>(.*?)</h1>', text, re.S)
         if h1:
             titel = html.unescape(re.sub(r'<[^>]+>', '', h1.group(1))).replace('­', '').strip()
-            # Blog (Anna 17.11.2026): Start / Aktuelles / Kategorie / Artikel, fein und klein
+            # Blog: Start / Aktuelles / Kategorie / Artikel, fein und klein
             kat = KATEGORIE.get(seite.parent.name)
             eltern = [('Start', ''), ('Aktuelles', 'blog/')] + ([(kat, f'blog/#thema-{_anker(kat)}')] if kat else [])
             yield f'blog/{seite.parent.name}/', eltern, titel
 
 
 def im_hero(text, pfad, eltern, titel):
-    """Seiten mit Hero wie die Leistungsseiten: Brotkrumen als Dachzeile im Hero statt eigener Leiste (Anna 23.11.2026)."""
+    """Seiten mit Hero wie die Leistungsseiten: Brotkrumen als Dachzeile im Hero statt eigener Leiste."""
     m = re.search(r'<section class="seitenkopf lsx-kopf[^"]*"[^>]*>\n', text)
     if not m:
         return text, False

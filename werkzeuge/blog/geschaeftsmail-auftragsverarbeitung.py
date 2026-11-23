@@ -1,7 +1,5 @@
 # Baut website/blog/geschaeftsmail-auftragsverarbeitung/index.html mit dem gemeinsamen Baustein werkzeuge/blog/beitrag.py.
-# Anna 18.11.2026: „Ja, bauen“ (mit Claudes Empfehlungen: Anthropic-Verbraucherbedingungen nennen, Hoster-Tipp, Kategorie KI-Beratung, echtes Foto).
-# Entwurf mit Quellen und Prüfvermerken: Betrieb › Studio AAH › Website › 2026-11-17_blogbeitrag-entwurf_geschaeftsmail-avv.md,
-# Recherche: 2026-11-17_recherche_geschaeftsmail-avv.md. Titelfoto: Nataliya Vaitkevich, Pexels (Nachweis im Impressum).
+# Titelfoto: Nataliya Vaitkevich, Pexels (Nachweis im Impressum).
 # Aufruf im Repository-Ordner: python3 werkzeuge/blog/geschaeftsmail-auftragsverarbeitung.py
 import pathlib, sys
 

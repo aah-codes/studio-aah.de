@@ -1,7 +1,7 @@
 # Erzeugt website/audio/<slug>.mp3: der Artikel vorgelesen von der freien Stimme „Thorsten“ (Piper, lokal, nichts wird gesendet).
-# Anna 17.11.2026: „Die Stimme … der Mann, der hier immer antwortet … die Stimmen müssen echt klingen“, ohne Tempo-Regler.
-# Voraussetzungen: pip install piper-tts; Stimme de_DE-thorsten-medium.onnx (+ .json) im Ordner MODELL_ORDNER; ffmpeg.
-# Aufruf im Repository-Ordner: python3 werkzeuge/blog/vorlesen.py <slug> [Modellordner]   danach den Blogbeitrag neu erzeugen.
+# „Die Stimme … der Mann, der hier immer antwortet … die Stimmen müssen echt klingen“, ohne Tempo-Regler.
+# Voraussetzungen: pip install piper-tts; Stimme de_DE-thorsten-medium.onnx (+.json) im Ordner MODELL_ORDNER; ffmpeg.
+# Aufruf im Repository-Ordner: python3 werkzeuge/blog/vorlesen.py <slug> [Modellordner] danach den Blogbeitrag neu erzeugen.
 import html, pathlib, re, subprocess, sys, tempfile
 from html.parser import HTMLParser
 
@@ -48,7 +48,7 @@ for alt, neu in (('KI', 'K I'), ('STUDIO AAH!', 'Studio A A H'), ('z. B.', 'zum 
     text = text.replace(alt, neu)
 text = re.sub(r':innen', 'innen', text)
 text = re.sub(r':in\b', 'in', text)
-# weitere Aussprache-Hilfen (Anna 18.11.2026: „Jeden Artikel … mit Voice“), Abkürzungen nur als ganze Wörter
+# weitere Aussprache-Hilfen, Abkürzungen nur als ganze Wörter
 for alt, neu in ((r'\bEU AI Act\b', 'E U A I Act'), (r'\bAI Act\b', 'A I Act'), (r'\bAVV\b', 'A V V'), (r'\bDPA\b', 'D P A'), (r'\bHGB\b', 'H G B'),
                  (r'\bAO\b', 'A O'), (r'\bGmbHG\b', 'G m b H Gesetz'), (r'\bGmbH\b', 'G m b H'), (r'\bOHG\b', 'O H G'), (r'\bKG\b', 'K G'),
                  (r'\bTLS\b', 'T L S'), (r'\bAPI\b', 'A P I'), (r'\bAGB\b', 'A G B'), (r'\bKMU\b', 'K M U'), (r'\bSEO\b', 'S E O'),

@@ -5,13 +5,12 @@ paths:
   - "website/js/referenzen.js"
   - "werkzeuge/referenzen.py"
   - "werkzeuge/inhalte/projekte.json"
-  - "werkzeuge/anleitung-referenzseite.md"
   - "werkzeuge/grafiken/bild/**"
   - "werkzeuge/grafiken/schrift*.swift"
 ---
 # Projektseiten (Referenzen, Case Studies)
 
-- **Vor jeder neuen Referenzseite lesen:** `werkzeuge/anleitung-referenzseite.md`. Vollständige Fassung in Betrieb `Studio AAH/Website/2026-10-15_anleitung-referenzseite.md`.
+- **Vor jeder neuen Referenzseite lesen:** Anleitung in Betrieb `Studio AAH/Website/2026-10-15_anleitung-referenzseite.md` (dazu `anleitung-referenzseite_aus-repository.md`).
 - **Vor Arbeit an einer bestehenden Projektseite die Notiz in Betrieb lesen:**
   - Bauer: `Kunden Studio AAH/Bauer Ingenieurbau/01_Basics/referenzseite-studio-aah.md`
   - Deinetwegen: `Kunden Studio AAH/Deinetwegen/01_Basics/referenzseite-studio-aah.md`

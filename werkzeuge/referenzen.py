@@ -1,8 +1,8 @@
 # Erzeugt die Projektübersicht (website/referenzen/index.html) und je Projekt mit "case": true eine Projektseite
-# (website/referenzen/<slug>/index.html) aus werkzeuge/inhalte/projekte.json – Aufbau wie bei Behance (Anna 14.10.2026):
+# (website/referenzen/<slug>/index.html) aus werkzeuge/inhalte/projekte.json – Aufbau:
 # Kopf mit Eckdaten, großes Titelbild oder Film, kurze Texte nur aus Quellen, danach Bildblöcke in voller Breite.
 # Kopf und Fuß kommen von der Profilseite (Übersicht) bzw. der Webdesign-Seite (Projektseiten, gleiche Ordnertiefe).
-# Aufruf im Repository-Ordner:  python3 werkzeuge/referenzen.py
+# Aufruf im Repository-Ordner: python3 werkzeuge/referenzen.py
 import copy, hashlib, json, re
 
 from gemeinsam import LINKEDIN, ankerleiste, STUDIO_ID, WEBSITE, bildmass, ersetze_einmal, esc, lade_skript, mass_attr, seitenrahmen, trennen as trennen_mit
@@ -14,7 +14,7 @@ TRENNEN = {'Herausforderung': 'Heraus&shy;forderung', 'Vergabestellen': 'Vergabe
 
 
 def trennen(s):
-    # weiche Trennstriche für lange Wörter in schmalen Spalten (Anna 14.10.2026: „Zielgruppenführung“)
+    # weiche Trennstriche für lange Wörter in schmalen Spalten
     return trennen_mit(s, TRENNEN)
 
 
@@ -29,13 +29,13 @@ def fakten(p):
 
 
 def wand_bild(b, pre):
-    # Eintrag der Bildschirmwand: Pfad oder {bild, link, label}; mit Link wird das Bild zum Button (CTA in der Mitte, Anna 14.10.2026)
+    # Eintrag der Bildschirmwand: Pfad oder {bild, link, label}; mit Link wird das Bild zum Button
     if isinstance(b, str): return f'<img src="{pre}{b}" alt="" loading="lazy">'
     return f'<a class="cs-wand-cta" href="{pre}{b["link"]}" aria-label="{esc(b["label"])}"><img src="{pre}{b["bild"]}" alt="" loading="lazy"></a>'
 
 
 def wand(bilder, pre, spalten=3, reihen=None):
-    # Einstieg wie bei Behance („Hedwig“, Anna 14.10.2026): viele Key-Screens schräg gestaffelt auf hellgrauer Fläche;
+    # Einstieg: viele Key-Screens schräg gestaffelt auf hellgrauer Fläche;
     # reihen = Spalten fest vorgegeben (CTA-Wand: jede Spalte lang genug, keine leeren Flächen)
     reihen = reihen or [bilder[i::spalten] for i in range(spalten)]
     return ('<div class="cs-wand"><div class="cs-wand-innen">' + ''.join('<div>' + ''.join(wand_bild(b, pre) for b in s) + '</div>' for s in reihen)
@@ -44,29 +44,29 @@ def wand(bilder, pre, spalten=3, reihen=None):
 
 def buehne(p, pre):
     if p.get('buehne_wand'):
-        # Variante B (Anna 14.10.2026): Wand aus 25 Sections in fünf Spalten, die endlos nach oben laufen, parallel zur Bauer-Schräge;
-        # Startseite als Kachel in der mittleren Spalte (schwebender Hero auf Annas Wunsch raus). Pause-Taste, steht bei „Bewegung reduzieren“ still.
+        # Variante B: Wand aus 25 Sections in fünf Spalten, die endlos nach oben laufen, parallel zur Bauer-Schräge;
+        # Startseite als Kachel in der mittleren Spalte (schwebender Hero raus). Pause-Taste, steht bei „Bewegung reduzieren“ still.
         w = p['buehne_wand']
         def spalte(liste, i):
             bilder = ''.join(f'<img src="{pre}{b}" alt="" {mass_attr(b)[1:]} decoding="async">' for b in liste)
-            if i == w.get('fest'):  # mittlere Spalte steht still, der Hero sitzt genau in der Mitte des Rasters (Anna 14.10.2026)
-                ganz = ' hw-fest-ganz' if w.get('fest_ganz') else ''  # Jana (Anna 16.10.2026): ganze Startseite in der Mitte, von oben bis unten sichtbar
+            if i == w.get('fest'):  # mittlere Spalte steht still, der Hero sitzt genau in der Mitte des Rasters
+                ganz = ' hw-fest-ganz' if w.get('fest_ganz') else ''  # Jana: ganze Startseite in der Mitte, von oben bis unten sichtbar
                 return f'<div class="hw-spalte hw-fest{ganz}">{bilder}</div>'
             return f'<div class="hw-spalte" style="--dauer:{w["dauer"][i]}s;--start:{w["start"][i]}"><div class="hw-lauf">{bilder * 3}</div></div>'
         spalten = ''.join(spalte(s, i) for i, s in enumerate(w['spalten']))
-        grund = (f';background:#fff url({pre}{w["grund"]}) center / cover no-repeat' if w.get('grund') else '') + (f';--hw-luecke:{w["luecke"]}' if w.get('luecke') else '')  # Jana: Tusche-Striche hinter dem Raster (Anna 16.10.2026)
-        if w.get('farbe'):  # Jana (Anna 16.10.2026): einfarbiger Grund (Flieder aus dem Roboterfoto) statt Tusche
+        grund = (f';background:#fff url({pre}{w["grund"]}) center / cover no-repeat' if w.get('grund') else '') + (f';--hw-luecke:{w["luecke"]}' if w.get('luecke') else '')  # Jana: Tusche-Striche hinter dem Raster
+        if w.get('farbe'):  # Jana: einfarbiger Grund (Flieder aus dem Roboterfoto) statt Tusche
             grund += f';background:{w["farbe"]}'
         hell = ' hw-hell' if w.get('grund') or w.get('farbe') else ''
-        if w.get('muster'):  # Jana (Anna 16.10.2026): gleichmäßiges Muster ohne feste Mitte, Kacheln gleich groß, leicht schräg aufsteigend, ohne Umriss
+        if w.get('muster'):  # Jana: gleichmäßiges Muster ohne feste Mitte, Kacheln gleich groß, leicht schräg aufsteigend, ohne Umriss
             hell += ' hw-muster'
         if w.get('winkel') is not None:
             grund += f';--hw-winkel:{w["winkel"]}deg'
-        form = 'nl-voll' if w.get('gerade') else 'nl-schraege'  # gerade: ohne Schräge und ohne Streifen, das Band beginnt gerade (Anna 16.10.2026)
+        form = 'nl-voll' if w.get('gerade') else 'nl-schraege'  # gerade: ohne Schräge und ohne Streifen, das Band beginnt gerade
         return (f'  <div class="nl-band {form} nl-blau cs-hero cs-hero-wand{hell}" style="--von:var(--pc-farbe);--bis:var(--pc-farbe){grund}">'
                 f'<div class="hw-buehne"><div class="hw-wand" role="img" aria-label="{esc(w["alt"])}">{spalten}</div>'
                 f'<button type="button" class="ks-knopf hw-knopf" aria-label="Bewegung anhalten">❚❚</button></div></div>')
-    if p.get('buehne_laptop'):  # Deinetwegen (Anna 15.10.2026): Bühne auf dem Markenverlauf, Logo oben links; Gerät nur als echtes Foto-Mockup
+    if p.get('buehne_laptop'):  # Deinetwegen: Bühne auf dem Markenverlauf, Logo oben links; Gerät nur als echtes Foto-Mockup
         # ("mockup": fertiges Bild aus Canva o. Ä., Gerät nach Zielgruppe); ohne Mockup das flache Bildschirmbild, nie ein gezeichnetes Gerät
         b = p['buehne_laptop']
         logo = f'<img class="bl-logo" src="{pre}{b["logo"]}" alt="" width="160" height="79">' if b.get('logo') else ''
@@ -78,7 +78,7 @@ def buehne(p, pre):
                     f'<div class="bl-mockup"><img src="{pre}{bild}" alt="{esc(b["alt"])}" width="{w}" height="{h}" fetchpriority="high" decoding="async"></div></div>')
         return (f'  <div class="nl-band nl-dunkel cs-hero bl-hero" style="--von:{b["von"]};--bis:{b["bis"]}"><div class="bl-kopf">{logo}<p class="meta">{esc(b["meta"])}</p></div>'
                 f'<div class="{kl}"><img src="{pre}{bild}" alt="{esc(b["alt"])}" width="{w}" height="{h}" fetchpriority="high" decoding="async"></div></div>')
-    if p.get('buehne_bild'):  # Variante B (Anna 14.10.2026): EIN scharfer Screen auf Bauer-Blau, harte Kante, keine Maske, nichts darauf
+    if p.get('buehne_bild'):  # Variante B: EIN scharfer Screen auf Bauer-Blau, harte Kante, keine Maske, nichts darauf
         b = p['buehne_bild']
         return (f'  <div class="nl-band nl-schraege nl-blau cs-hero" style="--von:var(--pc-farbe);--bis:var(--pc-farbe)">'
                 f'<div class="cs-hero-rahmen"><img class="cs-hero-bild" src="{pre}{b["bild"]}" alt="{esc(b["alt"])}" width="2880" height="1800" fetchpriority="high" decoding="async"></div></div>')
@@ -94,7 +94,7 @@ def buehne(p, pre):
 
 
 def eingabe(e):
-    # nachgestellte Formulareingabe: [Text, x, y, Breite, Optionen]; Optionen (Anna 14.10.2026, ganzer Funnel):
+    # nachgestellte Formulareingabe: [Text, x, y, Breite, Optionen]; Optionen:
     # fertig = steht schon da (aus der vorigen Szene), decke = überdeckt den Platzhalter (Auswahlfeld), mehrzeilig = Textfeld, marke = Häkchen/Punkt
     x, ex, ey, ew = e[:4]; opt = e[4] if len(e) > 4 else ''
     kl = ' '.join(o for o in opt.split() if o in ('decke', 'mehrzeilig', 'marke'))
@@ -122,7 +122,7 @@ def _tabelle(b, pre):
 
 
 def _sitemap(b, pre):
-    # Sitemap (Anna 14.10.2026): Hauptseiten mit kleinem Wireframe, alle Boxen gleich hoch; Linien und Boxen bauen sich beim Einblenden auf
+    # Sitemap: Hauptseiten mit kleinem Wireframe, alle Boxen gleich hoch; Linien und Boxen bauen sich beim Einblenden auf
     def box(k, i):
         bild = f'<img src="{pre}{k[2]}" alt="" loading="lazy">' if len(k) > 2 and k[2] else ''
         unter = ('<ul>' + ''.join(f'<li style="--i:{i + j + 1}"><span>{esc(u[0])}</span></li>' for j, u in enumerate(k[1])) + '</ul>') if len(k) > 1 and k[1] else ''
@@ -187,7 +187,7 @@ def _handys(b, pre):
 
 
 def _stapel(b, pre):
-    # Seiten-Stapel wie bei Behance „CreativMinds“ („12+ Pages, One Unified Experience“): große Zahl links, Seiten gefächert rechts
+    # Seiten-Stapel: große Zahl links, Seiten gefächert rechts
     s = ''.join(f'<img src="{pre}{x}" alt="" loading="lazy">' for x in b['bilder'])
     return (f'  <figure class="cs-block cs-kachel cs-stapel">\n    <div><p class="cs-stapel-zahl">{b["zahl_html"]}</p><p class="gedaempft">{esc(b["text"])}</p></div>\n'
             f'    <div class="cs-stapel-seiten">{s}</div>\n  </figure>')
@@ -199,13 +199,13 @@ def _split(b, pre):
 
 
 def _designsystem(b, pre):
-    # Farben und Schrift wie ein Designsystem (Anna 14.10.2026): große Farbfelder, Schriftmuster H1 bis Fließtext in der echten Schrift
-    # Farbkarten wie Behance „Skin First“ (Anna 14.10.2026): Name groß, darunter Zeilen mit Linien; RGB aus dem HEX-Wert berechnet
+    # Farben und Schrift wie ein Designsystem: große Farbfelder, Schriftmuster H1 bis Fließtext in der echten Schrift
+    # Farbkarten: Name groß, darunter Zeilen mit Linien; RGB aus dem HEX-Wert berechnet
     rgb = lambda c: ' '.join(str(int(c[i:i + 2], 16)) for i in (1, 3, 5))
     def _l(c):
         f = lambda v: v / 12.92 if v <= .04045 else ((v + .055) / 1.055) ** 2.4
         r, g, b = (f(int(c[i:i + 2], 16) / 255) for i in (1, 3, 5)); return .2126 * r + .7152 * g + .0722 * b
-    hell = lambda c: 1.05 / (_l(c) + .05) < 4.5   # dunkle Schrift, sobald Weiß unter 4,5 : 1 fällt (Kontrast-Check 22.11.2026)
+    hell = lambda c: 1.05 / (_l(c) + .05) < 4.5   # dunkle Schrift, sobald Weiß unter 4,5: 1 fällt
     farben = ''.join(f'<div class="ds-farbe{" ds-hell" if hell(c) else ""}" style="--f: {c}"><b>{esc(n)}</b><dl><div><dt>Digital HEX</dt><dd>{esc(c.upper())}</dd></div>'
                      f'<div><dt>RGB</dt><dd>{rgb(c)}</dd></div><div><dt>Einsatz</dt><dd>{esc(r)}</dd></div></dl></div>' for c, n, r in b['farben'])
     farben = f'<div class="ds-farben-kopf"><span>Farbpalette</span><span>{esc(b.get("farben_text", ""))}</span></div>' + farben
@@ -225,7 +225,7 @@ def _designsystem(b, pre):
 
 
 def _film_vergleich(b, pre):
-    # Vorher/Nachher als inszenierter Film im Browserfenster (Anna 14.10.2026): durch die alte Seite klicken, Wischblende, dieselben Seiten neu.
+    # Vorher/Nachher als inszenierter Film im Browserfenster: durch die alte Seite klicken, Wischblende, dieselben Seiten neu.
     # Läuft nur, solange sichtbar; Pause-Taste (Bewegung über 5 s braucht eine Pause-Taste)
     seiten = ''.join(f'<img class="vf-seite" data-phase="{ph}" data-pfad="{esc(pfad)}" data-x="{x}" src="{pre}{bild}" alt="{esc(alt)}" loading="lazy">'
                      for ph, liste in (('alt', b['alt']), ('neu', b['neu'])) for bild, pfad, x, alt in liste)
@@ -237,7 +237,7 @@ def _film_vergleich(b, pre):
 
 
 def _karriere(b, pre):
-    # Schwerpunkt Karriere (Anna 14.10.2026: Fachkräftemangel groß, höchstens zwei Seiten, die durchlaufen)
+    # Schwerpunkt Karriere
     punkte = ''.join(f'<li>{esc(x)}</li>' for x in b['punkte'])
     seiten = ''.join(f'<div class="kr-seite"><span class="cs-etikett">{esc(n)}</span><div class="kr-fenster"><img src="{pre}{bild}" alt="{esc(alt)}" loading="lazy"></div></div>' for bild, n, alt in b['seiten'])
     return (f'  <section class="cs-block cs-karriere" aria-labelledby="karriere-titel">\n    <div class="kr-text"><p class="meta">{esc(b["meta"])}</p><h2 class="kr-titel" id="karriere-titel">{b["titel_html"]}</h2>'
@@ -245,26 +245,26 @@ def _karriere(b, pre):
 
 
 def _vollbild(b, pre):
-    # großes Foto über die ganze Breite als Kapitelanfang (Anna 14.10.2026, Vorbild Behance „H&P Bauingenieure“)
+    # großes Foto über die ganze Breite als Kapitelanfang
     return (f'  <figure class="cs-block cs-vollbild"><img src="{pre}{b["bild"]}" alt="{esc(b["alt"])}" loading="lazy">'
             f'<figcaption><p class="meta">{esc(b["meta"])}</p><p class="cs-vollbild-titel">{esc(b["titel"])}</p></figcaption></figure>')
 
 
 def _buehne(b, pre):
-    # Bühne wie Behance „CreativMinds – Core Interface“ (Anna 14.10.2026): Hintergrundbild oder Verlauf, Text oben, große Muster oder Website darüber
+    # Bühne: Hintergrundbild oder Verlauf, Text oben, große Muster oder Website darüber
     text = f'<div class="bn-text"><p class="meta">{esc(b["meta"])}</p><h2 class="bn-titel">{trennen(esc(b["titel"]))}</h2>' + (f'<p>{esc(b["text"])}</p>' if b.get('text') else '') + '</div>'
     if b.get('muster'):
         inhalt = '<div class="bn-muster">' + ''.join(f'<img src="{pre}{m}" alt="{esc(a)}" loading="lazy">' for m, a in b['muster']) + '</div>'
     else:
         inhalt = (f'<div class="bn-geraete"><div class="bn-browser"><span class="bn-leiste"></span><div class="bn-fenster"><img src="{pre}{b["browser"]}" alt="{esc(b["browser_alt"])}" loading="lazy"></div></div>'
                   + handy3d(b['handy'], pre, b['handy_alt'], 'iph') + '</div>'
-                  # Handy scrollt endlos → Pause-Taste (WCAG 2.2.2, Prüfer 15.10.2026)
+                  # Handy scrollt endlos → Pause-Taste
                   + '<p class="bn-steuerung"><button type="button" class="ks-knopf bn-knopf" aria-label="Bewegung anhalten">❚❚</button></p>')
     return f'  <section class="cs-block cs-buehne-bild" data-einblenden style="--bn-bild: url({pre}{b["hintergrund"]})">{text}{inhalt}</section>'
 
 
 def _weg(b, pre):
-    # Wireframes der wichtigsten Seiten als Weg (Anna 14.10.2026, Vorbild Behance „CreativMinds – UX Process“)
+    # Wireframes der wichtigsten Seiten als Weg
     schritte = ''
     for i, (bild, titel, unter, oder) in enumerate(b['schritte'], 1):
         kl = ' class="oder"' if oder else ''
@@ -289,19 +289,19 @@ def _handy_duo(b, pre):
 
 
 def _visual_design(b, pre):
-    # Visual Design wie Behance „CreativMinds – Visual Language“ (Anna 14.10.2026): Entscheidungen, gewähltes Favicon, Varianten (optional; Storyline 15.10.2026 ohne), zwei Features
+    # Visual Design: Entscheidungen, gewähltes Favicon, Varianten (optional), zwei Features
     punkte = ''.join(f'<li><b>{esc(a)}</b> {esc(x)}</li>' for a, x in b['entscheidungen'])
     features = ''.join(f'<figure class="vd-feature"><div class="vd-fenster"><img src="{pre}{bild}" alt="{esc(alt)}" loading="lazy"></div><figcaption class="meta">{esc(titel)}</figcaption></figure>' for bild, titel, alt in b.get('features', []))
     return (f'  <section class="cs-block cs-visual" aria-labelledby="vd-titel">\n    <div class="vd-text"><p class="meta">{esc(b["meta"])}</p><h2 class="bn-titel" id="vd-titel">{trennen(esc(b["titel"]))}</h2><ul>{punkte}</ul></div>\n'
             f'    <figure class="vd-icon-figur"><div class="vd-icon"><img src="{pre}{b["favicon"]}" alt="Favicon von Wolfgang Bauer Ingenieurbau" width="512" height="512" loading="lazy"></div>'
-            # Bildunterschrift unter der Box, rechtsbündig in der Fließtext-Schrift (Anna 22.11.2026: Handschrift passt dort nicht)
+            # Bildunterschrift unter der Box, rechtsbündig in der Fließtext-Schrift
             f'<figcaption class="vd-unterschrift">{esc(b["favicon_text"])}</figcaption></figure>\n'
             + (f'    <figure class="vd-varianten"><img src="{pre}{b["varianten"]}" alt="{esc(b["varianten_alt"])}" loading="lazy"><figcaption class="meta">{esc(b["varianten_text"])}</figcaption></figure>\n' if b.get('varianten') else '')
             + (f'    <div class="vd-features">{features}</div>\n' if features else '') + '  </section>')
 
 
 def _personas(b, pre):
-    # Zwei Zielgruppen, zwei Sprachen (Anna 14.10.2026): zwei klar getrennte Welten (Auftraggeber hell, Bewerber in Bauer-Blau),
+    # Zwei Zielgruppen, zwei Sprachen: zwei klar getrennte Welten (Auftraggeber hell, Bewerber in Bauer-Blau),
     # große Fotos, Zitate als Sprechblasen, „Sie“ / „Du“ als runder Störer am Ende; eine Schrift
     def person(x):
         return (f'<li class="pe-person"><figure class="pe-foto"><img src="{pre}{x["bild"]}" alt="" width="800" height="1000" loading="lazy"></figure>'
@@ -327,7 +327,7 @@ def _personas(b, pre):
 
 
 def _heft(b, pre):
-    # Unternehmenspräsentation als flaches Heft mit Klammerheftung (Anna 14.10.2026: flach, Ecken sauber);
+    # Unternehmenspräsentation als flaches Heft mit Klammerheftung;
     # die rechte Seite blättert in 3D um (js/menue.js), Pause-Taste
     bogen = json.dumps([[pre + l if l else '', pre + r if r else ''] for l, r in b['doppelseiten']])
     # Startbild: erste vollständige Doppelseite (ohne JavaScript sieht man so ein aufgeschlagenes Heft)
@@ -343,31 +343,31 @@ def _galerie(b, pre):
     # große, scharfe Bildschirmausschnitte mit Unterschrift (z. B. Mega-Menü und Footer)
     f = ''.join(f'<figure class="ga-bild{" ga-breit" if x.get("breit") else ""}"><div class="ga-fenster"><img src="{pre}{x["bild"]}" alt="{esc(x["alt"])}"{mass_attr(x["bild"])} loading="lazy"></div><figcaption class="meta">{esc(x["titel"])}</figcaption></figure>' for x in b['bilder'])
     kopf = (f'<p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3" id="ga-{b["id"]}">{esc(b["titel"])}</h2>' if b.get('titel') else '')
-    kl = (' ' + b['klasse']) if b.get('klasse') else ''  # z. B. ga-flach: ohne Rahmen und Schatten (Goldhammer Druck, Anna 22.11.2026)
+    kl = (' ' + b['klasse']) if b.get('klasse') else ''  # z. B. ga-flach: ohne Rahmen und Schatten
     return (f'  <section class="cs-block cs-galerie{kl}" ' + (f'aria-labelledby="ga-{b["id"]}"' if b.get('titel') else f'aria-label="{esc(b.get("meta", "Galerie"))}"') + f'>{kopf}'
             + (f'<p class="weg-einleitung">{esc(b["text"])}</p>' if b.get('text') else '') + f'<div class="ga-raster">{f}</div></section>')
 
 
 def _inhalt(b, pre):
-    # Inhaltsverzeichnis mit Sprungmarken (Recherche 15.10.2026); seit 13.11.2026 überall gleich wie auf Branchen- und Leistungsseiten (Anna):
+    # Inhaltsverzeichnis mit Sprungmarken; überall gleich wie auf Branchen- und Leistungsseiten:
     # graue Spur mit einer aktiven weißen Pille, linksbündig zum Kopf
     return '  <div class="cs-block cs-inhalt">' + ankerleiste([(a, x) for x, a in b['punkte']], b.get('titel', 'Inhalt')) + '</div>'
 
 
 def _ergebnis(b, pre):
-    # Ergebnis (Recherche 15.10.2026): jedes Ziel vom Anfang bekommt eine Antwort, dazu Credits und ein Abschluss für die Zielgruppe
+    # Ergebnis: jedes Ziel vom Anfang bekommt eine Antwort, dazu Credits und ein Abschluss für die Zielgruppe
     karten = ''.join(f'<li><h3>{trennen(esc(z))}</h3><p>{esc(a)}</p></li>' for z, a in b['ziele'])
     ab = b.get('abschluss')
     abschluss = (f'<div class="eg-abschluss"><p class="eg-frage">{esc(ab["frage"])}</p><a class="button" href="{ab["link"]}">{esc(ab["knopf"])} <span aria-hidden="true">→</span></a></div>') if ab else ''
     liste = f'<ul class="eg-karten eg-anzahl-{len(b["ziele"])}">{karten}</ul>'
-    if b.get('_stimme_html'):  # Kundenstimme neben den Antworten (Anna 15.10.2026: Zitat unten „ziemlich lost“)
+    if b.get('_stimme_html'):  # Kundenstimme neben den Antworten
         liste = f'<div class="eg-mit-stimme">{liste}<div class="eg-stimme">{b["_stimme_html"]}</div></div>'
     return (f'  <section class="cs-block cs-ergebnis" aria-label="Ergebnis">{liste}'
             + (f'<p class="eg-credits">{esc(b["credits"])}</p>' if b.get('credits') else '') + abschluss + '</section>')
 
 
 def _figma(b, pre):
-    # ein Board in nachgebauter Figma-Oberfläche (Anna 15.10.2026: „links und rechts das User Interface von Figma, damit klar ist: das liegt in Figma“);
+    # ein Board in nachgebauter Figma-Oberfläche;
     # Oberfläche nur Kulisse (aria-hidden), Beschriftungen nur aus dem Board selbst und allgemeine Programmbegriffe
     akt = ' class="fg-aktiv"'
     eb = ''.join(f'<li{akt if e == b["rahmen"] else ""}><span>#</span>{esc(e)}</li>' for e in b['ebenen'])
@@ -381,19 +381,19 @@ def _figma(b, pre):
 
 
 def _cta_wand(b, pre):
-    # alle Call-to-Actions schräg nebeneinander (Anna 14.10.2026, wie die Bildschirmwand oben)
+    # alle Call-to-Actions schräg nebeneinander
     return (f'  <figure class="cs-block cs-cta-wand"><figcaption class="cs-block-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3">{esc(b["titel"])}</h2>'
             + (f'<p class="weg-einleitung">{esc(b["text"])}</p>' if b.get('text') else '') + f'</figcaption><div class="cs-cta-flaeche" style="--spalten:{len(b["reihen"]) if b.get("reihen") else b.get("spalten", 3)}">{wand(b.get("bilder", []), pre, b.get("spalten", 3), b.get("reihen"))}</div></figure>')
 
 
 def _kapitel(b, pre):
-    # Kapitel nach den Schritten der Übersicht (Anna 14.10.2026): große schwarze Überschrift wie „Leistungen“ auf der Startseite, ohne Nummer
+    # Kapitel nach den Schritten der Übersicht: große schwarze Überschrift wie „Leistungen“ auf der Startseite, ohne Nummer
     return f'  <div class="cs-block cs-kapitel"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-xxl lang-wort kp-titel">{esc(b["titel"])}</h2></div>'
 
 
 def _ablauf(b, pre):
-    # Prozess in der gewohnten Zeitleiste, einspaltig untereinander (Anna 14.10.2026, nicht im Zickzack)
-    # jeder Schritt springt zu seinem Abschnitt weiter unten (Anna 14.10.2026: „Anker zur jeweiligen Section“)
+    # Prozess in der gewohnten Zeitleiste, einspaltig untereinander
+    # jeder Schritt springt zu seinem Abschnitt weiter unten
     def titel_link(x, a):
         return f'<a class="zl-anker" href="#{a}">{esc(x)} <span aria-hidden="true">↓</span></a>' if a else esc(x)
     li = [f'<li><span class="zl-marke"><small>Schritt</small><b>{i:02d}</b></span><div class="zl-text"><p class="meta">{esc(s[0])}</p><h3>{titel_link(s[1], s[2] if len(s) > 2 else "")}</h3></div></li>' for i, s in enumerate(b['schritte'], 1)]
@@ -404,7 +404,7 @@ def _ablauf(b, pre):
 
 
 def _klickstrecke(b, pre):
-    # Klickstrecke als Treppe: Schritte versetzt, Beschriftung neben der Karte statt darauf (Anna 14.10.2026)
+    # Klickstrecke als Treppe: Schritte versetzt, Beschriftung neben der Karte statt darauf
     punkte = ''.join(f'<li>{esc(x)}</li>' for x in b['punkte'])
     stufen = ''.join(f'<li class="kl-stufe{" kl-oder" if oder else ""}" style="--n:{i}"><span class="kl-label"><b>{i + 1:02d}</b>{esc(titel)}</span>'
                      f'<div class="kl-fenster"><img src="{pre}{bild}" alt="{esc(titel)}" loading="lazy"></div></li>' for i, (bild, titel, oder) in enumerate(b['stufen']))
@@ -413,7 +413,7 @@ def _klickstrecke(b, pre):
 
 
 def _funnel_karte(b, pre):
-    # Beide Click-Funnels auf einen Blick (Anna 14.10.2026: „die zwei Zielgruppen … die eine hat einen anderen Klickfunnel als die andere“):
+    # Beide Click-Funnels auf einen Blick:
     # je Spur Störer, Zielgruppe, nummerierte Stationen mit der echten Seite; die Seiten scrollen langsam durch (Pause-Taste)
     def spur(sp):
         st = ''.join(f'<li class="fk-station{" fk-cta" if x.get("cta") else ""}{" fk-ganz" if x.get("ganz") else ""}"><span class="fk-nr">{i:02d}</span><span class="fk-label">{trennen(esc(x["label"]))}</span>'
@@ -428,7 +428,7 @@ def _funnel_karte(b, pre):
 
 
 def _mega_film(b, pre):
-    # Mega-Menü als kleiner Film (Anna 14.10.2026: „einen Film davon, wie das Ease-In, Ease-Out“): Zeiger fährt auf den Menüpunkt,
+    # Mega-Menü als kleiner Film: Zeiger fährt auf den Menüpunkt,
     # das Menü gleitet auf, die Seite darunter dunkelt ab, schließt wieder; Pause-Taste, bei reduzierter Bewegung steht das Menü offen
     menues = ''.join(f'<img class="mf-menue mf-menue-{i}" src="{pre}{m["bild"]}" alt="{esc(m["alt"])}" style="--kopf:{m.get("kopf", 17)}%" loading="lazy">' for i, m in enumerate(b['menues']))
     kopf = (f'<p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3">{esc(b["titel"])}</h2>' if b.get('titel') else '')
@@ -440,7 +440,7 @@ def _mega_film(b, pre):
 
 
 def _ziele_text(b, pre):
-    # B (Anna 14.10.2026: „zu viele Icons … ganz schlichte Sache“): zwei Spalten, nur Text und Linien
+    # B: zwei Spalten, nur Text und Linien
     L, R = b['links'], b['rechts']
     def spalte(titel, punkte):
         li = ''.join(f'<li>{trennen(esc(x))}</li>' for x in punkte)
@@ -449,7 +449,7 @@ def _ziele_text(b, pre):
 
 
 def _ziele_grafik(b, pre):
-    # Herausforderung → Website-Relaunch → Ziele als Grafik (Anna 14.10.2026): Linien laufen von links in den Kreis und weiter zu den Zielen
+    # Herausforderung → Website-Relaunch → Ziele als Grafik: Linien laufen von links in den Kreis und weiter zu den Zielen
     def symbol(z):
         if z == '60':  # Stoppuhr
             return ('<svg viewBox="0 0 48 48" aria-hidden="true"><rect x="20" y="2" width="8" height="5" rx="1.5"/><circle cx="24" cy="27" r="18" fill="none" stroke-width="4"/>'
@@ -471,19 +471,19 @@ def _ziele_grafik(b, pre):
 
 
 def _zwei_karten(b, pre):
-    # zwei große Karten (Herausforderung, Ziele) statt kleinteiliger Chips (Anna 14.10.2026)
+    # zwei große Karten (Herausforderung, Ziele) statt kleinteiliger Chips
     k = ''.join(f'<div class="zk-karte"><img src="{pre}bilder/icons/{i}" alt="" width="400" height="400" loading="lazy"><h2>{esc(h)}</h2><ul>'
                 + ''.join(f'<li>{esc(x)}</li>' for x in liste) + '</ul></div>' for i, h, liste in b['karten'])
     return f'  <section class="cs-block cs-zwei-karten" aria-label="Herausforderung und Ziele">{k}</section>'
 
 
 def _storyfilm(b, pre):
-    # Storytelling-Film im Browserfenster (Anna 14.10.2026): durch die alte Seite klicken, Zettel zeigen, was schlecht war;
+    # Storytelling-Film im Browserfenster: durch die alte Seite klicken, Zettel zeigen, was schlecht war;
     # Blende; neue Seite mit Mega-Menü, Referenzen, CTA, Formularen. Szenen-Daten als JSON, Ablauf in js/menue.js
     szenen = ''
     for i, s in enumerate(b['szenen']):
         eingaben = ''.join(eingabe(e) for e in s.get('eingaben', []))
-        # fünfter Wert „wichtig“: Hauptbefund als hellroter Zettel, sonst hellblau (Anna 15.10.2026)
+        # fünfter Wert „wichtig“: Hauptbefund als hellroter Zettel, sonst hellblau
         notizen = ''.join(f'<span class="st-notiz st-notiz-{s["phase"]}{" st-notiz-wichtig" if "wichtig" in z[4:] else ""}" style="left:{z[1]}%;top:{z[2]}%;--r:{(-2.5 if j % 2 else 2)}deg">{esc(z[0])}</span>' for j, z in enumerate(s.get('notizen', [])))
         szenen += (f'<div class="st-szene" data-i="{i}"><div class="st-zoom"><div class="st-seite"><img src="{pre}{s["bild"]}" alt="{esc(s["alt"])}" loading="lazy">{eingaben}</div></div>{notizen}</div>')
     kapitel = ''.join(f'<button type="button" class="st-kapitel" data-ziel="{i}">{esc(s["kapitel"])}</button>' for i, s in enumerate(b['szenen']) if s.get('kapitel'))
@@ -493,7 +493,7 @@ def _storyfilm(b, pre):
             f'    <div class="st-rahmen"><span class="cs-etikett st-phase">{esc(b["alt_text"])}</span>'
             + ((f'<div class="st-monitor st-monitor-foto" style="--sx:{b["monitor"]["schirm"][0]}%;--sy:{b["monitor"]["schirm"][1]}%;--sw:{b["monitor"]["schirm"][2]}%;--sh:{b["monitor"]["schirm"][3]}%;--fv:{b["monitor"]["verhaeltnis"]}">'
                 f'<img class="st-foto" src="{pre}{b["monitor"]["foto"]}" alt="" {mass_attr(b["monitor"]["foto"])[1:]} loading="lazy"><div class="st-schirm">')
-               if isinstance(b.get('monitor'), dict) else ('<div class="st-monitor">' if b.get('monitor') else ''))  # Standrechner (Anna 15.10.2026): Foto-Mockup oder (alt) gezeichnet
+               if isinstance(b.get('monitor'), dict) else ('<div class="st-monitor">' if b.get('monitor') else ''))  # Standrechner: Foto-Mockup oder (alt) gezeichnet
             + f'<div class="st-browser"><div class="vf-leiste"><span class="vf-adresse">bauer-ingbau.de/</span></div><div class="st-fenster">{szenen}'
             f'<span class="vf-zeiger" aria-hidden="true"></span><div class="vf-blende" aria-hidden="true"><b>{esc(b["blende_text"])}</b></div></div></div>'
             + ('</div></div>' if isinstance(b.get('monitor'), dict) else ('<span class="st-hals" aria-hidden="true"></span><span class="st-fuss" aria-hidden="true"></span></div>' if b.get('monitor') else ''))
@@ -503,7 +503,7 @@ def _storyfilm(b, pre):
 
 
 def _fotofilm(b, pre):
-    # Foto-Mockup (Canva, Anna 14.10.2026: passend zur Zielgruppe): Foto mit Maske liegt über der Seite, die im Bildschirm läuft
+    # Foto-Mockup: Foto mit Maske liegt über der Seite, die im Bildschirm läuft
     fo = b['foto']
     schirme = ''
     for s in b['schirme']:
@@ -525,7 +525,7 @@ def _fotofilm(b, pre):
                  f'<script type="application/json" class="st-daten">{daten}</script></figure>')
     else:
         szene = f'<figure class="fm-buch" data-buch>{szene}<div class="st-leiste">{knopf}<span class="meta">{esc(b.get("unterschrift", ""))}</span></div></figure>'
-    if b.get('dazu'):  # zweites Gerät daneben (Anna 15.10.2026: Handy zum Fachkräftemangel, spart eine Section)
+    if b.get('dazu'):  # zweites Gerät daneben
         szene = f'<div class="fm-paar">{szene}{block(dict(b["dazu"], typ="fotofilm"), pre)}</div>'
     if not b.get('text') and not b.get('titel_html'):
         return f'  <div class="cs-block fm-block">{szene}</div>'
@@ -535,7 +535,7 @@ def _fotofilm(b, pre):
 
 
 def _ueberblick(b, pre):
-    # Überblick wie Behance „Overview + Scope“ (Deinetwegen, Anna 15.10.2026): große Aussage links, Leistungen als Spalte rechts
+    # Überblick: große Aussage links, Leistungen als Spalte rechts
     li = ''.join(f'<li>{esc(x)}</li>' for x in b['leistungen'])
     return (f'  <section class="cs-block cs-ueberblick" aria-labelledby="ub-titel"><div class="ub-text"><p class="meta">{esc(b["meta"])}</p>'
             f'<h2 class="ub-aussage" id="ub-titel">{trennen(esc(b["aussage"]))}</h2></div>'
@@ -543,7 +543,7 @@ def _ueberblick(b, pre):
 
 
 def _hl_karten(b, pre):
-    # Herausforderung und Lösung als zwei große Karten (Behance „Challenge / Solution“), darunter die Ziele (Deinetwegen, Anna 15.10.2026)
+    # Herausforderung und Lösung als zwei große Karten, darunter die Ziele
     def inhalt_karte(x):  # Aussage (Deinetwegen) oder Liste (Bauer: Herausforderung und Ziele)
         if x.get('punkte'): return '<ul class="hk-liste">' + ''.join(f'<li>{trennen(esc(t))}</li>' for t in x['punkte']) + '</ul>'
         return f'<p class="hk-text">{trennen(esc(x["text"]))}</p>'
@@ -554,28 +554,28 @@ def _hl_karten(b, pre):
 
 
 def _marke(b, pre):
-    # Corporate Design auf einen Blick (Deinetwegen, Anna 15.10.2026): Logos, Farben, Schrift als Bild (Lizenz der Schrift erlaubt keine Weitergabe)
+    # Corporate Design auf einen Blick: Logos, Farben, Schrift als Bild (Lizenz der Schrift erlaubt keine Weitergabe)
     logos = ''.join(f'<figure class="mk-logo" style="--grund:{g}"><img src="{pre}{bild}" alt="{esc(alt)}"{mass_attr(bild)} loading="lazy"></figure>' for bild, alt, g in b['logos'])
     def lum(c):
         k = [int(c[i:i + 2], 16) / 255 for i in (1, 3, 5)]; k = [x / 12.92 if x <= .03928 else ((x + .055) / 1.055) ** 2.4 for x in k]
         return .2126 * k[0] + .7152 * k[1] + .0722 * k[2]
     hell = lambda c: 1.05 / (lum(c) + .05) < 4.5  # dunkle Schrift, wenn Weiß zu wenig Kontrast hat
     farben = ''.join(f'<li class="mk-farbe{" mk-hell" if hell(c) else ""}" style="--f:{c}"><b>{esc(n)}</b><span>{esc(c.upper())}</span><small>{esc(r)}</small></li>' for c, n, r in b.get('farben', []))
-    mid = b.get('id', 'mk-titel')  # eigene ID, wenn eine Seite zwei Marken-Blöcke hat (Down to Earth, 13.11.2026)
+    mid = b.get('id', 'mk-titel')  # eigene ID, wenn eine Seite zwei Marken-Blöcke hat
     return (f'  <section class="cs-block cs-cd" aria-labelledby="{mid}"><div class="mk-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="gr-h3" id="{mid}">{esc(b["titel"])}</h2>'
             + (f'<p class="weg-einleitung">{esc(b["text"])}</p>' if b.get('text') else '') + f'</div>'
             f'<div class="mk-logos{" mk-gleich" if b.get("gleich") else ""}">{logos}</div>' + (f'<ul class="mk-farben">{farben}</ul>' if farben else '')
             + (f'<figure class="mk-schrift"><img src="{pre}{b["schrift_bild"]}" alt="{esc(b["schrift_alt"])}" width="1600" height="900" loading="lazy"><figcaption class="meta">{esc(b["schrift_text"])}</figcaption></figure>' if b.get('schrift_bild') else '')
-            + '</section>')  # Farben und Schrift optional: bei Goldhammer zeigt sie das Designsystem wie bei Bauer (Anna 16.10.2026)
+            + '</section>')  # Farben und Schrift optional: bei Goldhammer zeigt sie das Designsystem wie bei Bauer
 
 
 def _langaufnahmen(b, pre):
-    # ganze Seite am Rechner und am Handy nebeneinander, unbewegt (Anna 15.10.2026: „fullscreenshot von desktop und handy nebeneinander“);
+    # ganze Seite am Rechner und am Handy nebeneinander, unbewegt;
     # Breiten so, dass beide gleich hoch sind (Seitenverhältnisse aus den Bilddateien)
     dw, dh = bildmass(b['desktop'])
     hw, hh = bildmass(b['handy'])
     rd, rh = dw / dh, hw / hh
-    lid = 'la-' + (b.get('anker') or b.get('id') or 'titel')  # eindeutige ID je Abschnitt (Prüfer 16.10.2026)
+    lid = 'la-' + (b.get('anker') or b.get('id') or 'titel')  # eindeutige ID je Abschnitt
     return (f'  <section class="cs-block cs-lang" aria-labelledby="{lid}"><div class="la-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="la-titel" id="{lid}">{trennen(esc(b["titel"]))}</h2>'
             + (f'<p>{esc(b["text"])}</p>' if b.get('text') else '') + f'</div>'
             f'<div class="la-paar" style="--rd:{rd:.5f};--rh:{rh:.5f}"><figure class="la-karte la-desktop"><img src="{pre}{b["desktop"]}" alt="{esc(b["desktop_alt"])}" width="{dw}" height="{dh}" loading="lazy"><figcaption class="meta">Rechner</figcaption></figure>'
@@ -583,7 +583,7 @@ def _langaufnahmen(b, pre):
 
 
 def _seiten_pillen(b, pre):
-    # weitere Seiten versetzt nebeneinander, beschriftet mit Pillen und Pfeil (Behance „Other Pages“, Deinetwegen, Anna 15.10.2026)
+    # weitere Seiten versetzt nebeneinander, beschriftet mit Pillen und Pfeil
     pfeil = '<svg class="sp-pfeil" viewBox="0 0 60 34" aria-hidden="true"><path d="M2 6 C 18 2, 34 6, 44 24"/><path d="M34 22 L 45 26 L 49 14"/></svg>'
     seiten = ''.join(f'<figure class="sp-seite sp-{x.get("art", "desktop")}"><figcaption><span class="sp-pille">{esc(x["label"])}</span>{pfeil}</figcaption>'
                      f'<div class="sp-fenster"><img src="{pre}{x["bild"]}" alt="{esc(x["alt"])}" {mass_attr(x["bild"])[1:]} loading="lazy"></div></figure>' for x in b['seiten'])
@@ -592,7 +592,7 @@ def _seiten_pillen(b, pre):
 
 
 def _durchklick(b, pre):
-    # Galerie der Kund:innen-Seite zum Durchklicken (Jana: Klick aufs Bild öffnet Slider mit Titel und Beschreibung, Anna 16.10.2026)
+    # Galerie der Kund:innen-Seite zum Durchklicken
     zusatz = (' loading="lazy"', ' hidden')  # Folgebilder ohne lazy, damit sie beim Weiterklicken schon geladen sind
     bilder = ''.join(f'<img src="{pre}{x["bild"]}" alt="{esc(x["alt"])}" {mass_attr(x["bild"])[1:]}{zusatz[i > 0]}>' for i, x in enumerate(b['bilder']))
     return (f'  <section class="cs-block cs-durchklick" aria-labelledby="dk-{b["id"]}"><div class="la-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="la-titel" id="dk-{b["id"]}">{trennen(esc(b["titel"]))}</h2>'
@@ -601,7 +601,7 @@ def _durchklick(b, pre):
 
 
 def _seiten_spalten(b, pre):
-    # mehrere Unterseiten in voller Länge nebeneinander, oben je ein Etikett (Jana: drei Werkbereiche, Anna 15.10.2026)
+    # mehrere Unterseiten in voller Länge nebeneinander, oben je ein Etikett
     sp = ''.join(f'<figure class="ss-seite"><figcaption><span class="ss-pille">{esc(x["label"])}</span></figcaption>'
                  f'<div class="ss-fenster"><img src="{pre}{x["bild"]}" alt="{esc(x["alt"])}" {mass_attr(x["bild"])[1:]} loading="lazy"></div></figure>' for x in b['seiten'])
     return (f'  <section class="cs-block cs-seiten-spalten" aria-labelledby="ss-{b["id"]}"><div class="la-kopf"><p class="meta">{esc(b["meta"])}</p><h2 class="la-titel" id="ss-{b["id"]}">{trennen(esc(b["titel"]))}</h2>'
@@ -609,13 +609,13 @@ def _seiten_spalten(b, pre):
 
 
 def _foto(b, pre):
-    # großes Foto-Mockup über die ganze Breite (Jana: Atelier mit Monitor, Anna 16.10.2026)
+    # großes Foto-Mockup über die ganze Breite
     w, h = bildmass(b['bild'])
     return f'  <figure class="cs-block cs-foto"><img src="{pre}{b["bild"]}" alt="{esc(b["alt"])}" width="{w}" height="{h}" loading="lazy"></figure>'
 
 
 def _kennzahlen(b, pre):
-    # Zahlen als eigener Block an beliebiger Stelle (Bauer: nach dem Überblick, Anna 15.10.2026)
+    # Zahlen als eigener Block an beliebiger Stelle
     z = ''.join(f'<li><span class="kz-zahl">{esc(x)}</span> <span>{trennen(esc(t))}</span></li>' for x, t in b['zahlen'])
     return f'  <ul class="cs-block cs-kennzahlen" role="list" aria-label="Projekt in Kürze">{z}</ul>'
 
@@ -681,9 +681,9 @@ def block(b, pre):
 
 
 def zahlen(p):
-    # Kennzahlen des Projekts direkt unter dem Einstieg (Anna 14.10.2026: „14 Seiten, 40 Projekte“ weiter nach oben, ohne „Seiten, Seiten“)
+    # Kennzahlen des Projekts direkt unter dem Einstieg
     if not p.get('zahlen'): return ''
-    if p.get('_variante'):  # B (Anna 14.10.2026): Zahlen als Text unter dem Bild, nie darauf; Lesefolge „83 Seiten online“
+    if p.get('_variante'):  # B: Zahlen als Text unter dem Bild, nie darauf; Lesefolge „83 Seiten online“
         z = ''.join(f'<li><span class="kz-zahl">{esc(a)}</span> <span>{trennen(esc(b))}</span></li>' for a, b in p['zahlen'])
         return f'  <ul class="cs-kennzahlen" role="list" aria-label="Projekt in Kürze">{z}</ul>\n'
     z = ''.join(f'<div><dt>{esc(b)}</dt><dd>{esc(a)}</dd></div>' for a, b in p['zahlen'])
@@ -691,7 +691,7 @@ def zahlen(p):
 
 
 def handy3d(bild, pre, alt, klasse='', zusatz='', start=0):
-    # räumliches Handy mit Spiegelung (Anna 14.10.2026, Vorbild Behance „CreativMinds“): Seite scrollt im Bildschirm
+    # räumliches Handy mit Spiegelung: Seite scrollt im Bildschirm
     return (f'<div class="h3d {klasse}" style="--start: {start}%"><div class="h3d-bildschirm"><div class="h3d-seite"><img src="{pre}{bild}" alt="{esc(alt)}" loading="lazy">{zusatz}</div></div></div>')
 
 
@@ -718,7 +718,7 @@ def projektseite(p, nr):
         if b.get('typ') == 'ergebnis' and b.get('stimme') and stimme_unten:
             b['_stimme_html'] = stimme_unten.replace('<section class="cs-stimme" aria-label="Kundenstimme">', '<div class="cs-stimme-innen">').replace('</section>', '</div>'); stimme_unten = ''
     if p.get('_variante'):
-        # Seamless (Anna 14.10.2026): jeder Block liegt in einem Band über die volle Breite; der Verlauf beginnt mit der Endfarbe
+        # Seamless: jeder Block liegt in einem Band über die volle Breite; der Verlauf beginnt mit der Endfarbe
         # des vorigen Bands (--von = letztes --bis), damit nirgends eine Kante entsteht; Arten: schraege (Bauer-Schräge mit gelbem
         # Streifen oben), eng (wenig Abstand), voll (ohne Seitenrand)
         teile, letzt = [], '#ffffff'
@@ -765,14 +765,14 @@ def projektseite(p, nr):
           "creator": {"@id": STUDIO_ID}, "inLanguage": "de"}
     ziel = WEBSITE / 'referenzen' / p['slug'] / 'index.html'
     ziel.parent.mkdir(parents=True, exist_ok=True)
-    # Bilder mit Versionsnummer, damit Browser nach neuen Aufnahmen nicht das alte Bild zeigen (Anna 14.10.2026).
+    # Bilder mit Versionsnummer, damit Browser nach neuen Aufnahmen nicht das alte Bild zeigen.
     # Aus dem Dateiinhalt, nicht aus der Änderungszeit: so bleibt sie nach dem Klonen und auf beiden Macs gleich.
     def version(m):
         datei = WEBSITE / m.group(2)
         return m.group(1) + m.group(2) + (f'?v={hashlib.md5(datei.read_bytes()).hexdigest()[:8]}' if datei.exists() else '')
     main = re.sub(r'(\.\./\.\./)(bilder/[^"\'()\s?]+\.(?:jpg|jpeg|png|webp))', version, main)
     seite = rahmen('service/webdesign/index.html', main, titel, p['satz'], url, ld)
-    # Bausteine der Projektseiten stehen in einer eigenen CSS-Datei (Anna 16.10.2026), gleiche Version wie stil.css
+    # Bausteine der Projektseiten stehen in einer eigenen CSS-Datei, gleiche Version wie stil.css
     seite = ersetze_einmal(r'(<link rel="stylesheet" href="\.\./\.\./css/stil\.css\?v=(\w+)">)',
                            r'\1\n  <link rel="stylesheet" href="../../css/referenzen.css?v=\2">', seite, 'stil.css-Link')
     # ebenso die Abläufe der Bausteine (js/referenzen.js), gleiche Version wie js/menue.js; am Seitenende, außerhalb von Kopf und Fuß
@@ -797,7 +797,7 @@ def uebersicht():
   </section>
 
   <section class="ref-uebersicht" aria-label="Alle Projekte">
-    <!-- Umschalter Raster | Liste ohne JavaScript (Anna 22.11.2026); Liste wie auf der Startseite mit Bildstreifen -->
+    <!-- Umschalter Raster | Liste ohne JavaScript; Liste wie auf der Startseite mit Bildstreifen -->
     <fieldset class="ref-ansicht"><legend class="unsichtbar">Ansicht</legend>
       <input type="radio" name="ref-ansicht" id="ref-raster" checked><label for="ref-raster">Raster</label>
       <input type="radio" name="ref-ansicht" id="ref-liste"><label for="ref-liste">Liste</label>
@@ -820,10 +820,10 @@ def uebersicht():
 if __name__ == '__main__':
     uebersicht()
     for i, p in enumerate(CASES):
-        # hauptvariante (Anna 15.10.2026: Bauer Variante B wird die Projektseite): dann keine Seite aus der Grundfassung,
+        # hauptvariante: dann keine Seite aus der Grundfassung,
         # die Variante erscheint unter der normalen Adresse und ist für Suchmaschinen sichtbar
         if not p.get('hauptvariante'): projektseite(p, i)
-        # Varianten (Anna 14.10.2026: Variante B) – Blöcke aus der Hauptfassung per Nummer übernehmen, Felder weglassen oder ersetzen
+        # Varianten – Blöcke aus der Hauptfassung per Nummer übernehmen, Felder weglassen oder ersetzen
         for k, liste in p.get('varianten', {}).items():
             bl, projekt = [], {}
             for e in liste:

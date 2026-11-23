@@ -1,4 +1,4 @@
-# Erzeugt werkzeuge/grafiken/blog/geld-und-zeit-titel.svg – Titelbild Blog „Geld und Zeit“ (Fassung 3, 13.10.2026)
+# Erzeugt werkzeuge/grafiken/blog/geld-und-zeit-titel.svg – Titelbild Blog „Geld und Zeit“
 # Website als Wireframe in feinen Linien, davor die Bauhaus-Figur (Konstruktionsvorschlag), die ein blaues Modul einsetzt.
 # Farben laut CI. Blau berührt nie Schwarz: weiße Fugen bzw. Abstand.
 # Aufruf vom Repository-Ordner: python3 werkzeuge/grafiken/blog/geld-und-zeit-titel.py
@@ -6,9 +6,9 @@
 import math, os
 SCH, BL, WS, GR, MG = '#0e1011', '#2a5fe6', '#fff', '#d6d8d9', '#9a9d9e'
 FUGE = 14  # sichtbar 7 px: bleibt auch in kleinen Vorschauen als Fuge erkennbar
-# Arme sitzen immer direkt am Rumpf, ohne Abstand (Anna, 13.10.2026): Drehpunkt innen im Rumpf, Arm entsprechend länger
+# Arme sitzen immer direkt am Rumpf, ohne Abstand: Drehpunkt innen im Rumpf, Arm entsprechend länger
 SCHULTER_X, SCHULTER_Y, ARM = 30, -290, 132
-# Herabhängender Arm abgespreizt, Hand sichtbar neben dem Rock – nie dahinter versteckt; Beine mit Eckenradius 4 (Anna, 13.10.2026)
+# Herabhängender Arm abgespreizt, Hand sichtbar neben dem Rock – nie dahinter versteckt; Beine mit Eckenradius 4
 ARM_UNTEN, BEIN_RADIUS = -34, 4
 
 def balken(sx, sy, w, laenge=120, breite=16, hand=True, radius=0):

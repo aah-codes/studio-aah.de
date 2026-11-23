@@ -1,8 +1,8 @@
-# Titel- und Vorschaubild Blog „Was sollte eine Website 2027 können?“ (Reihe Website-Fragen, Teil 2; 19.10.2026)
+# Titel- und Vorschaubild Blog „Was sollte eine Website 2027 können?“
 # Golden Circle aus drei Kreisen (innen Schwarz: Warum, Creme: Wie, Weiß: Was), daneben die Bauhaus-Figur, die auf den Kern zeigt.
 # Figur wie in geld-und-zeit-titel.py (Arme am Rumpf, abgespreizter Arm, Beine mit Eckenradius 4, weiße Fugen statt Blau an Schwarz).
 # Rendert mit dem installierten Google Chrome (ohne Fenster), Schriften lokal aus website/schriften:
-#   website/bilder/blog-website-2027.webp (1200 × 800, Titelbild) und website/bilder/blog-website-2027-og.jpg (1200 × 630, Vorschau für soziale Netzwerke)
+# website/bilder/blog-website-2027.webp (1200 × 800, Titelbild) und website/bilder/blog-website-2027-og.jpg (1200 × 630, Vorschau für soziale Netzwerke)
 # Aufruf vom Repository-Ordner: python3 werkzeuge/grafiken/blog/website-2027-titel.py
 import base64, pathlib, re, subprocess, tempfile
 
@@ -75,7 +75,7 @@ def seite(inhalt):
 
 def aufnahme(html, b, h, ziel_png, skala=1):
     with tempfile.TemporaryDirectory() as tmp:
-        # Gezeichnete Linie (Anna 22.11.2026: Bauhaus-Illustrationen sollen mehr gezeichnet aussehen): leichte Verschiebung über SVG-Filter
+        # Gezeichnete Linie: leichte Verschiebung über SVG-Filter
         hand = ('<svg class="hand-def" width="0" height="0" style="position:absolute"><filter id="hand" x="-2%" y="-2%" width="104%" height="104%">'
                 '<feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7"/><feDisplacementMap in="SourceGraphic" scale="3.2"/></filter></svg>'
                 '<style>svg:not(.hand-def){filter:url(#hand)}</style>')

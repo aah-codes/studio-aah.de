@@ -1,7 +1,7 @@
-# Fragen-Index für das Frag-Feld im Hero der Startseite (Anna 16.11.2026, Konzept Stufe 1):
+# Fragen-Index für das Frag-Feld im Hero der Startseite:
 # sammelt alle häufigen Fragen mit Antwort aus den fertigen Seiten unter website/ (eine Quelle: was auf der Website steht)
 # und schreibt website/daten/fragen.json. Die Suche läuft nur im Browser (js/frag.js), nichts wird gesendet.
-# Aufruf im Repository-Ordner (läuft in alle-erzeugen.sh nach den Seiten-Generatoren):  python3 werkzeuge/fragen-index.py
+# Aufruf im Repository-Ordner (läuft in alle-erzeugen.sh nach den Seiten-Generatoren): python3 werkzeuge/fragen-index.py
 import html, json, re
 
 from gemeinsam import WEBSITE, WERKZEUGE
@@ -54,7 +54,7 @@ STICHWORT = {
 
 
 def verlinken(t):
-    """Links in den Text wie in einem Wiki (Anna 20.11.2026: „im Text verlinken, nicht extra“): Steht [Wort](adresse) schon im Text,
+    """Links in den Text wie in einem Wiki: Steht [Wort](adresse) schon im Text,
     bleibt es. Sonst wird je Link das erste Vorkommen des Linktexts oder eines Stichworts aus STICHWORT verlinkt; was sich nicht
     unterbringen lässt, steht am Ende der Kurzfassung als „Mehr dazu: [Linktext](adresse).“ Das Feld l fällt danach weg."""
     teile = [t['a']] + list(t['p'])
@@ -100,7 +100,7 @@ def main():
                 continue
             gesehen.add(frage.lower())
             eintraege.append({'f': frage, 'a': antwort, 'u': url, 's': titel})
-    # Themen (kuratiert, Anna 17.11.2026: freie Suche über alle Fragen war zu ungenau): Antwort aus der genannten Frage
+    # Themen: Antwort aus der genannten Frage
     nach_frage = {e['f']: e for e in eintraege}
     themen = []
     for t in json.loads((WERKZEUGE / 'inhalte' / 'hero-themen.json').read_text(encoding='utf-8'))['themen']:
@@ -111,14 +111,14 @@ def main():
         e = nach_frage.get(t['frage'])
         if not e:
             raise SystemExit(f'Frage nicht auf der Website gefunden: {t["frage"]}')
-        # Wie eine KI-Übersicht bei Google (Anna 17.11.2026): Kurzfassung, ein paar Stichpunkte, Link zur Quelle
+        # Wie eine KI-Übersicht bei Google: Kurzfassung, ein paar Stichpunkte, Link zur Quelle
         satz = saetze(e['a'])
         kurz = satz.pop(0)
-        if kurz == 'Ja.':   # freundlicher (Anna 17.11.2026: „ja klar, motivierender und netter“)
+        if kurz == 'Ja.':   # freundlicher
             kurz = 'Ja, klar!'
         while len(kurz) < 60 and satz:   # „Ja.“ allein ist keine Zusammenfassung
             kurz += ' ' + satz.pop(0)
-        # Kürzer (Anna 21.11.2026: „zu lang“): ein bis zwei Sätze, höchstens zwei Stichpunkte
+        # Kürzer: ein bis zwei Sätze, höchstens zwei Stichpunkte
         themen.append({'g': t['g'], 'a': kurz, 'p': [kuerzen(x, 110) for x in satz[:2]], 'l': [[e['s'].split(':')[0].split(' – ')[0], e['u']]]})   # Linktext = Kern des Seitentitels
     themen = [verlinken(t) for t in themen]
     ziel = WEBSITE / 'daten' / 'fragen.json'
