@@ -89,8 +89,8 @@ def faq(liste, titel='Ehrliche Antworten'):
 def ko(text):
     """Text mit Handschrift-Korrektur „~~alt~~[neu]“ (Anna 23.11.2026): alt rot durchgestrichen, neu in Handschrift; Vorleser hören nur neu."""
     import re as _re
-    # „~~alt~~|[neu]“: Handschrift linksbündig, für Korrekturen am Zeilenanfang (sonst rechtsbündig unter dem Wort)
-    return _re.sub(r'~~(.+?)~~(\|?)\[(.+?)\]', lambda m: (f'<span class="korrektur ko-unten{" ko-links" if m.group(2) else ""}"><span class="notiz notiz-durch" aria-hidden="true">'
+    # Handschrift über dem durchgestrichenen Wort (Anna 23.11.2026, Pfeil im Screenshot); „~~alt~~|[neu]“: linksbündig, für Korrekturen am Zeilenanfang
+    return _re.sub(r'~~(.+?)~~(\|?)\[(.+?)\]', lambda m: (f'<span class="korrektur ko-oben{" ko-links" if m.group(2) else ""}"><span class="notiz notiz-durch" aria-hidden="true">'
                    f'{m.group(1)}</span><span class="hand">{m.group(3)}</span></span>'), esc(text))
 
 
