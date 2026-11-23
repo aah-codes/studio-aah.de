@@ -5989,3 +5989,11 @@ main > .fw-flaeche-schwarz .zl-quer li:first-child .zlq-nr { background: var(--f
   background: linear-gradient(90deg, rgba(14, 16, 17, .85) 0%, rgba(14, 16, 17, .7) 55%, rgba(14, 16, 17, .35) 100%), url(../bilder/start/leipzig-zentrum-von-oben.webp) center / cover no-repeat; }
 @media (max-width: 767.98px) { .fw-flaeche-orchidee + .fw-beleg { min-height: 0; padding: 72px var(--rand-seite-mobil); background: linear-gradient(rgba(14, 16, 17, .7), rgba(14, 16, 17, .7)), url(../bilder/start/leipzig-zentrum-von-oben-960.webp) center / cover no-repeat; } }
 .fw-flaeche-orchidee + .fw-beleg .fw-beleg-box { background: none; border-radius: 0; padding: 0; max-width: 760px; }
+/* Kennst du das? (Rot): Aufzählung mit handgeschriebenem X statt Punkt, Text größer (Anna 23.11.2026, Markierung „stichpunkte X statt punkt und schrift größer“) */
+.fw-flaeche-rot .fw-liste { gap: 18px; }
+.fw-flaeche-rot .fw-liste li { font-size: var(--groesse-4); line-height: 1.4; padding-left: 1.6em; }
+.fw-flaeche-rot .fw-liste li::before { content: "X"; width: auto; height: auto; border-radius: 0; background: none; top: -.12em; font: 400 1.35em/1 var(--schrift-hand), "Architects Daughter", cursive; color: var(--farbe-dunkel); }
+/* Was du davon hast (Orchidee): weniger Luft zwischen Dachzeile und Überschrift, mehr unter den Sticky Notes (Anna 23.11.2026) */
+.fw-flaeche-orchidee .sektionskopf .gr-h2 { margin-top: 0; }
+@media (min-width: 768px) { .fw-flaeche-orchidee .sektionskopf .ko-oben { margin-top: .5em; } }
+main > .fw-flaeche-orchidee { padding-bottom: clamp(120px, 12vw, 200px); }
