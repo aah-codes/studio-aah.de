@@ -26,7 +26,7 @@ FW_FOTO = {'employer-branding': 'employer-branding-bewerben.webp'}   # Hero wie 
 def kopfbereich(meta, h1, unter, pre, knopf=('website-check/', 'Kostenloser Website-Check'), bild=None, zeichnung=False):
     if zeichnung:   # Problemseiten „Wo es hakt“: Hero wie Leistungsseiten, Bauhaus-Zeichnung rechts; Brotkrumen setzt brotkrumen.py statt der Dachzeile (Anna 23.11.2026)
         return (f'  <section class="seitenkopf lsx-kopf lsx-m-kopf fw-kopf-zeichnung">\n    <p class="meta">{esc(meta)}</p>\n'
-                f'    <h1 class="gr-xxl lsx-titel" style="--n:26">{esc(h1).replace(chr(10), "<br>")}</h1>\n    <p class="alt-klein">{esc(unter)}</p>\n'
+                f'    <h1 class="gr-xxl lsx-titel" style="--n:26">{ko(h1).replace(chr(10), "<br>")}</h1>\n    <p class="alt-klein">{esc(unter)}</p>\n'
                 f'    <p class="lsx-hero-knopf"><a class="button" href="{pre}{knopf[0]}">{esc(knopf[1])}{PFEIL}</a></p>\n'
                 f'    <img class="lsx-kopf-zeichnung" src="{pre}bilder/fuer-wen/{bild}.svg" alt="{esc(BILD_ALT[bild])}" width="800" height="640" loading="eager">\n  </section>')
     if bild in FW_FOTO:
@@ -86,12 +86,20 @@ def faq(liste, titel='Ehrliche Antworten'):
     return '\n'.join(h)
 
 
-def abschluss(pre, text=None, knopf=None):
+def ko(text):
+    """Text mit Handschrift-Korrektur „~~alt~~[neu]“ (Anna 23.11.2026): alt rot durchgestrichen, neu in Handschrift; Vorleser hören nur neu."""
+    import re as _re
+    # „~~alt~~|[neu]“: Handschrift linksbündig, für Korrekturen am Zeilenanfang (sonst rechtsbündig unter dem Wort)
+    return _re.sub(r'~~(.+?)~~(\|?)\[(.+?)\]', lambda m: (f'<span class="korrektur ko-unten{" ko-links" if m.group(2) else ""}"><span class="notiz notiz-durch" aria-hidden="true">'
+                   f'{m.group(1)}</span><span class="hand">{m.group(3)}</span></span>'), esc(text))
+
+
+def abschluss(pre, text=None, knopf=None, titel='Fangen wir klein an.'):
     """Gemeinsamer Abschluss; text und knopf (Ziel, Beschriftung) nur, wo der Website-Check nicht passt (z. B. KI-Zeitrechner)."""
     text = text or 'Mit dem kostenlosen <span class="ohne-umbruch">Website-Check</span> – oder einem Gespräch, in dem du uns erzählst, wo es hakt.'
     ziel, aufschrift = knopf or ('website-check/', 'Kostenloser <span class="ohne-umbruch">Website-Check&nbsp;<span aria-hidden="true">→</span></span>')
     return ('  <section class="preis-schluss start-schluss lsx-m-schluss" aria-labelledby="weg-ziel-titel">\n  <div class="schluss-karte schluss-blau">\n  <p class="meta">Erster Schritt</p>\n'
-            '  <h2 class="gr-h2" id="weg-ziel-titel">Fangen wir klein an.</h2>\n'
+            f'  <h2 class="gr-h2" id="weg-ziel-titel">{ko(titel)}</h2>\n'
             f'  <p class="lsx-m-schluss-text">{text}</p>\n'
             f'  <p><a class="button" href="{pre}{ziel}">{aufschrift}</a></p>\n  </div>\n</section>')  # blaue Box wie Startseite (Anna 23.11.2026)
 
@@ -139,19 +147,19 @@ def problemseite(p):
     pre = '../'
     teile = [kopfbereich(p['meta'], p['h1'], p['unter'], pre, bild=p['id'], zeichnung=True),
              '  <section class="fw-zwei fw-flaeche-rot" aria-labelledby="kennen-titel">\n    <div>\n      <p class="meta">Kennst du das?</p>\n'
-             f'      <h2 class="gr-h3" id="kennen-titel">{esc(p.get("h2_kennen", "Woran du es merkst"))}</h2>\n      <ul class="fw-liste">\n'
+             f'      <h2 class="gr-h3" id="kennen-titel">{ko(p.get("h2_kennen", "Woran du es merkst"))}</h2>\n      <ul class="fw-liste">\n'
              + '\n'.join(f'        <li>{esc(s)}</li>' for s in p['symptome']) + '\n      </ul>\n    </div>\n'
              f'    <div>\n      <p class="meta">Was es dich kostet</p>\n'
              + (f'      <h2 class="gr-h3">{esc(p["h2_kosten"])}</h2>\n' if p.get('h2_kosten') else '')
              + f'      <p class="fw-kosten">{esc(p["kosten"])}</p>\n    </div>\n  </section>',
              '  <section class="ablauf-start fw-flaeche-schwarz" aria-labelledby="loesung-titel">\n    <div class="sektionskopf"><p class="meta">So gehen wir vor</p>'
-             f'<h2 class="gr-h2" id="loesung-titel">{esc(p.get("h2_loesung", "Drei Schritte."))}</h2></div>\n' + schritte(p['schritte']) + '\n  </section>',
+             f'<h2 class="gr-h2" id="loesung-titel">{ko(p.get("h2_loesung", "Drei Schritte."))}</h2></div>\n' + schritte(p['schritte']) + '\n  </section>',
              '  <section class="haken fw-nutzen fw-flaeche-orchidee" aria-labelledby="nutzen-titel">\n    <div class="sektionskopf"><p class="meta">Was du davon hast</p>'
-             f'<h2 class="gr-h2" id="nutzen-titel">{esc(p.get("h2_nutzen", "Mit uns an deiner Seite."))}</h2></div>\n'
+             f'<h2 class="gr-h2" id="nutzen-titel">{ko(p.get("h2_nutzen", "Mit uns an deiner Seite."))}</h2></div>\n'
              + karten([{'titel': t, 'text': x} for t, x in p['nutzen']], pre, 'haken-karten fw-drei') + '\n  </section>',
              beleg(p.get('beleg'), pre),
              faq(p['faq']),   # „Passende Leistungen – Damit arbeite ich“ entfernt (Anna 12.11.2026)
-             abschluss(pre, p.get('schluss'))]
+             abschluss(pre, p.get('schluss'), titel=p.get('h2_schluss', 'Fangen wir klein an.'))]
     schreibe(p['pfad'], '\n\n'.join(teile), p['seitentitel'], p['beschreibung'], p['faq'])
 
 

@@ -5960,3 +5960,17 @@ main > .fw-flaeche-schwarz .zl-quer::before { border-color: var(--farbe-weiss); 
 main > .fw-flaeche-schwarz .zlq-nr { background: var(--farbe-dunkel); color: var(--farbe-weiss); border-color: var(--farbe-weiss); }
 main > .fw-flaeche-schwarz .zl-quer li:first-child .zlq-nr { background: var(--farbe-weiss); color: var(--farbe-dunkel); }
 .fw-flaeche-rot .fw-kosten { font-size: var(--groesse-5); line-height: 1.35; }   /* Kostentext größer (Anna 23.11.2026) */
+/* Handschrift-Korrekturen auf den Farbflächen der Problemseiten lesbar: auf Rot und Orchidee schwarz, im blauen Abschluss weiß (Kontrast) */
+:is(.fw-flaeche-rot, .fw-flaeche-orchidee) .korrektur .hand:not(#x) { color: var(--farbe-dunkel); }
+:is(.fw-flaeche-rot, .fw-flaeche-orchidee) .korrektur .notiz-durch:not(#x)::after { background: var(--farbe-dunkel); }
+.schluss-blau .korrektur .hand:not(#x) { color: var(--farbe-weiss); }
+/* Korrekturen der Problemseiten: am Laptop steht die Korrektur meist am Zeilenende, deshalb rechtsbündig unter dem durchgestrichenen Wort;
+   am Handy beginnt sie meist eine Zeile, deshalb linksbündig. Lange Handschrift bricht zwischen Wörtern um, nie mitten im Wort. */
+:is(.fw-kopf-zeichnung, .fw-flaeche-rot, .fw-flaeche-schwarz, .fw-flaeche-orchidee) .ko-unten { margin-bottom: .9em; }
+:is(.fw-kopf-zeichnung, .fw-flaeche-rot, .fw-flaeche-schwarz, .fw-flaeche-orchidee) .ko-unten .hand:not(#x) { left: auto; right: 0; text-align: right; white-space: normal; width: max-content; max-width: 11em; overflow-wrap: normal; hyphens: none; }
+@media (max-width: 767.98px) {
+  :is(.fw-kopf-zeichnung, .fw-flaeche-rot, .fw-flaeche-schwarz, .fw-flaeche-orchidee) .ko-unten { margin-bottom: 1.7em; }
+  :is(.fw-kopf-zeichnung, .fw-flaeche-rot, .fw-flaeche-schwarz, .fw-flaeche-orchidee) .ko-unten .hand:not(#x) { left: 0; right: auto; text-align: left; max-width: calc(100vw - 2 * var(--rand-seite-mobil)); }
+}
+:is(.fw-kopf-zeichnung, .fw-flaeche-rot, .fw-flaeche-schwarz, .fw-flaeche-orchidee) .ko-links .hand:not(#x) { left: 0; right: auto; text-align: left; }
+@media (max-width: 767.98px) { :is(.fw-kopf-zeichnung, .fw-flaeche-rot, .fw-flaeche-schwarz, .fw-flaeche-orchidee) .ko-unten .hand:not(#x) { max-width: max(100%, 6em); } }   /* so breit wie das durchgestrichene Wort, damit nichts über den Rand ragt */
