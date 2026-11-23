@@ -31,7 +31,7 @@ def kopfbereich(meta, h1, unter, pre, knopf=('website-check/', 'Kostenloser Webs
                 f'    <span class="lsx-repro" aria-hidden="true"><span class="lsx-repro-druck"><img src="{pre}bilder/{FW_FOTO[bild]}" alt="" loading="eager"></span></span>\n  </section>')
     figur = (f'\n    <figure class="fw-bild"><img src="{pre}bilder/fuer-wen/{bild}.svg" alt="{esc(BILD_ALT[bild])}" width="800" height="640"></figure>'
              if bild else '')
-    return (f'  <section class="fw-kopf{" fw-kopf-bild" if bild else ""}">\n    <div class="fw-kopf-text">\n    <p class="meta">{esc(meta)}</p>\n    <h1 class="gr-h2 fw-h1">{esc(h1)}</h1>\n'
+    return (f'  <section class="fw-kopf{" fw-kopf-bild" if bild else ""}">\n    <div class="fw-kopf-text">\n    <p class="meta">{esc(meta)}</p>\n    <h1 class="gr-h2 fw-h1">{esc(h1).replace(chr(10), "<br>")}</h1>\n'
             f'    <p class="haken-unter">{esc(unter)}</p>\n'
             f'    <p class="fw-knoepfe"><a class="button" href="{pre}{knopf[0]}">{esc(knopf[1])}{PFEIL}</a></p>\n    </div>{figur}\n  </section>')  # immer nur ein Button im Hero (Anna 13.11.2026)
 
@@ -146,7 +146,7 @@ def problemseite(p):
              + karten([{'titel': t, 'text': x} for t, x in p['nutzen']], pre, 'haken-karten fw-drei') + '\n  </section>',
              beleg(p.get('beleg'), pre),
              faq(p['faq']),   # „Passende Leistungen – Damit arbeite ich“ entfernt (Anna 12.11.2026)
-             abschluss(pre)]
+             abschluss(pre, p.get('schluss'))]
     schreibe(p['pfad'], '\n\n'.join(teile), p['seitentitel'], p['beschreibung'], p['faq'])
 
 
