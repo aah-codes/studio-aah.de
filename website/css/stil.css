@@ -5947,3 +5947,16 @@ h3.fokus-titel { margin: 0; }
 .fw-kopf-zeichnung .alt-klein { margin-top: 24px; }
 @media (max-width: 767.98px) { .fw-kopf-zeichnung .alt-klein { font-size: var(--groesse-4); } }   /* Unterzeile deutlich kleiner als die H1 */   /* H1 größer als die H2 darunter (gr-h3) */
 @media (min-width: 1024.02px) { .fw-kopf-zeichnung .lsx-titel { max-width: 58%; } .fw-kopf-zeichnung .alt-klein { max-width: min(32ch, 54%); } }
+/* Problemseiten „Wo es hakt“: Abschnitte in Vollfarbe (Anna 23.11.2026, Markierung im Screenshot): Kennst du das = Rot, So gehen wir vor = Schwarz, Was du davon hast = Orchidee. Schrift auf Rot und Orchidee schwarz, auf Schwarz weiß, kein Blau auf Schwarz. */
+main > .fw-flaeche-rot { background: var(--aah-rot); padding-top: 96px; }
+main > .fw-flaeche-orchidee { background: var(--aah-orchidee); padding-top: 96px; padding-bottom: 96px; }
+main > :is(.fw-flaeche-rot, .fw-flaeche-orchidee) { --farbe-gedaempft: var(--farbe-dunkel); color: var(--farbe-dunkel); }
+main > :is(.fw-flaeche-rot, .fw-flaeche-orchidee) .meta { color: var(--farbe-dunkel); }
+main > :is(.fw-flaeche-rot, .fw-flaeche-orchidee, .fw-flaeche-schwarz) .meta::before { background: currentColor !important; }
+main > .fw-flaeche-schwarz { background: var(--farbe-dunkel); color: var(--farbe-weiss); padding-top: 96px; --farbe-gedaempft: var(--farbe-gedaempft-invers); }
+main > .fw-flaeche-schwarz :is(.meta, h2, h3) { color: var(--farbe-weiss); }
+main > .fw-flaeche-schwarz p.gedaempft { color: var(--farbe-gedaempft-invers); }
+main > .fw-flaeche-schwarz .zl-quer::before { border-color: var(--farbe-weiss); }
+main > .fw-flaeche-schwarz .zlq-nr { background: var(--farbe-dunkel); color: var(--farbe-weiss); border-color: var(--farbe-weiss); }
+main > .fw-flaeche-schwarz .zl-quer li:first-child .zlq-nr { background: var(--farbe-weiss); color: var(--farbe-dunkel); }
+.fw-flaeche-rot .fw-kosten { font-size: var(--groesse-5); line-height: 1.35; }   /* Kostentext größer (Anna 23.11.2026) */

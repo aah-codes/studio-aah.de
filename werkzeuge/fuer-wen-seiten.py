@@ -138,15 +138,15 @@ def schreibe(pfad, main, titel, beschreibung, fragen, skript=None, branche=None)
 def problemseite(p):
     pre = '../'
     teile = [kopfbereich(p['meta'], p['h1'], p['unter'], pre, bild=p['id'], zeichnung=True),
-             '  <section class="fw-zwei" aria-labelledby="kennen-titel">\n    <div>\n      <p class="meta">Kennst du das?</p>\n'
+             '  <section class="fw-zwei fw-flaeche-rot" aria-labelledby="kennen-titel">\n    <div>\n      <p class="meta">Kennst du das?</p>\n'
              f'      <h2 class="gr-h3" id="kennen-titel">{esc(p.get("h2_kennen", "Woran du es merkst"))}</h2>\n      <ul class="fw-liste">\n'
              + '\n'.join(f'        <li>{esc(s)}</li>' for s in p['symptome']) + '\n      </ul>\n    </div>\n'
              f'    <div>\n      <p class="meta">Was es dich kostet</p>\n'
              + (f'      <h2 class="gr-h3">{esc(p["h2_kosten"])}</h2>\n' if p.get('h2_kosten') else '')
              + f'      <p class="fw-kosten">{esc(p["kosten"])}</p>\n    </div>\n  </section>',
-             '  <section class="ablauf-start" aria-labelledby="loesung-titel">\n    <div class="sektionskopf"><p class="meta">So gehen wir vor</p>'
+             '  <section class="ablauf-start fw-flaeche-schwarz" aria-labelledby="loesung-titel">\n    <div class="sektionskopf"><p class="meta">So gehen wir vor</p>'
              f'<h2 class="gr-h2" id="loesung-titel">{esc(p.get("h2_loesung", "Drei Schritte."))}</h2></div>\n' + schritte(p['schritte']) + '\n  </section>',
-             '  <section class="haken fw-nutzen" aria-labelledby="nutzen-titel">\n    <div class="sektionskopf"><p class="meta">Was du davon hast</p>'
+             '  <section class="haken fw-nutzen fw-flaeche-orchidee" aria-labelledby="nutzen-titel">\n    <div class="sektionskopf"><p class="meta">Was du davon hast</p>'
              f'<h2 class="gr-h2" id="nutzen-titel">{esc(p.get("h2_nutzen", "Mit uns an deiner Seite."))}</h2></div>\n'
              + karten([{'titel': t, 'text': x} for t, x in p['nutzen']], pre, 'haken-karten fw-drei') + '\n  </section>',
              beleg(p.get('beleg'), pre),
