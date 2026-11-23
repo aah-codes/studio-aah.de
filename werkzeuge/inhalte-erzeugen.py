@@ -306,7 +306,7 @@ def blog_themen():
     gross = blog(BLOG[:1], '../', '', 'h3', '      ', klasse='blog-karte blog-karte-gross', lazy=False).replace('<li>', '<li class="blog-li-gross">', 1)
     out = [f'  <nav class="anker blog-anker" aria-label="Kategorien im Blog">\n    <ul class="anker-spur">{chips}</ul>\n  </nav>',
            f'''  <section class="blog-thema blog-aktuell" id="aktuelles" aria-labelledby="aktuelles-titel">
-    <div class="blog-thema-kopf"><h2 id="aktuelles-titel">Aktuelles</h2><p class="meta">Die neuesten Beiträge</p></div>
+    <div class="blog-thema-kopf"><h2 id="aktuelles-titel">Die neuesten Beiträge</h2><p class="meta">Frisch aus dem Studio</p></div>
     <ul class="blog-liste">
 {gross}
 {blog(BLOG[1:3], '../', '', 'h3', '      ')}
@@ -315,12 +315,24 @@ def blog_themen():
     for k in themen:
         zahl = f'{len(gruppen[k])} Beitrag' if len(gruppen[k]) == 1 else f'{len(gruppen[k])} Beiträge'
         out.append(f'''  <section class="blog-thema" id="{anker(k)}" aria-labelledby="{anker(k)}-titel">
-    <div class="blog-thema-kopf"><h2 id="{anker(k)}-titel">{esc(k)}</h2><p class="meta">{zahl}</p></div>
+    <div class="blog-thema-kopf"><h2 id="{anker(k)}-titel">{esc(k)}</h2><p class="meta">{zahl}</p></div>{'<p class="blog-thema-unter">' + esc(BLOG_UNTER[k]) + '</p>' if k in BLOG_UNTER else ''}
     <ul class="blog-liste">
 {blog(gruppen[k], '../', '', 'h3', '      ', kategorie=False)}
     </ul>
   </section>''')
     return '\n'.join(out)
+
+
+# Einordnung je Kategorie und Spiel-Brücke im Blog (Anna 23.11.2026, Storytelling-Redigat)
+BLOG_UNTER = {
+    'Markenbildung': 'Warum ein Logo allein keine Marke macht – und wie euer Auftritt auch für KI-Tools nutzbar wird.',
+    'UI/UX': 'Wie gute Nutzerführung dafür sorgt, dass Besucher nicht abspringen, sondern anfragen.',
+    'Webdesign': 'Realistische Kosten, Vibe-Coding mit KI und was eine Website heute wirklich leisten muss.',
+    'KI-Beratung': 'Datenschutz, Auftragsverarbeitung und EU AI Act – verständlich erklärt für kleine und mittlere Unternehmen.',
+}
+BLOG_SPIEL_KOPF = ('<p class="meta sp-meta">Kurze Denkpause gefällig?</p>\n    <h2 class="sp-titel" id="spiel-titel">Genug gelesen. Jetzt '
+                   '<span class="korrektur ko-unten"><span class="notiz notiz-durch" aria-hidden="true">weglaufen.</span><span class="hand">durchstarten.</span></span></h2>\n'
+                   '    <p class="sp-unter">Spring auf typische Büro-Probleme, weich dem Wettbewerb aus und schnapp dir die Fachkraft – wie weit kommt dein Unternehmen?</p>')
 
 
 def kennzahlen(klasse='fakten hero-fakten', einrueck='    '):
@@ -363,7 +375,7 @@ if __name__ == '__main__':
         'profil/index.html': [('STIMMEN', lambda: stimmen(STIMMEN, '../')), ('BLOG', lambda: blog(BLOG[:4], '../', '../blog/')), ('LINKEDIN', lambda: linkedin_leiste('../')),   # Aktivitäten plus LinkedIn-Posts (Anna 22.11.2026)
                              
                               ('KENNZAHLEN', lambda: kennzahlen('fakten', '      '))],
-        'blog/index.html': [('BLOG', lambda: blog_themen()), ('SPIEL', lambda: spiel_sektion('../', re.search(r'menue\.js\?v=(\w+)', (WEBSITE / 'index.html').read_text(encoding='utf-8')).group(1)))],
+        'blog/index.html': [('BLOG', lambda: blog_themen()), ('SPIEL', lambda: spiel_sektion('../', re.search(r'menue\.js\?v=(\w+)', (WEBSITE / 'index.html').read_text(encoding='utf-8')).group(1)).replace('<h2 class="sp-titel" id="spiel-titel" lang="en">Play the game.</h2>', BLOG_SPIEL_KOPF))],
     }
     for b in BLOG:
         seiten[f'blog/{b["slug"]}/index.html'] = [('WEITERE', lambda s=b['slug']: weitere_artikel(s))]
