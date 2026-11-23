@@ -225,15 +225,23 @@
    "seitentitel": "KI im Team einführen – pragmatisch und ohne IT-Großprojekt | STUDIO AAH!",
    "beschreibung": "Welche KI-Tools lohnen sich, und wie nutzt dein Team sie wirklich? KI-Check, KI-Einführung mit Team-Schulung und KI-Arbeits-Setup für den Mittelstand in Leipzig.",
    "meta": "KI im Team",
-   "h1": "KI im Team: Werkzeuge, die passen – und die dein Team auch nutzt.",
-   "unter": "Welche Tools lohnen sich wirklich? Und wie bringst du deine Mitarbeitenden dazu, sie zu nutzen? Wir helfen pragmatisch – ohne IT-Großprojekt.",
+   "h1": "KI im Team: Schluss mit ~~teuren Lizenzen ohne Plan.~~[Tools, die niemand nutzt.]",
+   "unter": "Welche Werkzeuge lohnen sich, und wie nimmst du dein Team mit? Wir richten Claude für deine Aufgaben ein – ohne monatelanges IT-Großprojekt.",
+   "knopf": ["kontakt/", "Beratung anfragen"],
+   "textlink": ["ki-arbeits-setup/", "Zum KI-Arbeits-Setup"],
+   "h2_kennen": "Woran du merkst, dass KI bei dir ~~eingeführt~~[nur ausprobiert] wurde",
+   "h2_kosten": "Routine frisst Zeit, Wildwuchs birgt Risiken",
+   "h2_loesung": "In drei Schritten vom ~~Tool-Chaos~~[Zettelchaos] zum laufenden Büro-System",
+   "h2_nutzen": "Entlastung, die ~~versprochen wird~~[wirklich ankommt]",
+   "schluss": "Mit einem kostenlosen Erstgespräch: 30 Minuten, online.",
+   "schluss_knopf": ["kontakt/", "Beratung anfragen"],
    "symptome": [
     "Es gibt Lizenzen für neue Tools, aber kaum jemand arbeitet damit.",
     "Jede:r nutzt KI anders – oder mit privaten Konten.",
     "Du weißt nicht, wo du anfangen sollst, ohne ein großes IT-Projekt zu starten.",
     "Daten liegen verstreut in Tabellen, Ordnern und Postfächern."
    ],
-   "kosten": "Ein Werkzeug, das niemand nutzt, kostet nur Geld. Und ohne gemeinsame Regeln landen Firmendaten in Diensten, die niemand geprüft hat.",
+   "kosten": "Ein Werkzeug, das niemand nutzt, kostet nur monatliche Gebühren. Und ohne gemeinsame Regeln landen Firmendaten in privaten Konten und Diensten, die niemand geprüft hat.",
    "schritte": [
     [
      "Verstehen",

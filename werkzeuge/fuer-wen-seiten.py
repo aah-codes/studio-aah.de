@@ -23,11 +23,12 @@ def link(pre, ziel):
 FW_FOTO = {'employer-branding': 'employer-branding-bewerben.webp'}   # Hero wie Webdesign mit Riso-Foto (Anna 23.11.2026)
 
 
-def kopfbereich(meta, h1, unter, pre, knopf=('website-check/', 'Kostenloser Website-Check'), bild=None, zeichnung=False):
+def kopfbereich(meta, h1, unter, pre, knopf=('website-check/', 'Kostenloser Website-Check'), bild=None, zeichnung=False, textlink=None):
     if zeichnung:   # Problemseiten „Wo es hakt“: Hero wie Leistungsseiten, Bauhaus-Zeichnung rechts; Brotkrumen setzt brotkrumen.py statt der Dachzeile (Anna 23.11.2026)
         return (f'  <section class="seitenkopf lsx-kopf lsx-m-kopf fw-kopf-zeichnung">\n    <p class="meta">{esc(meta)}</p>\n'
                 f'    <h1 class="gr-xxl lsx-titel" style="--n:26">{ko(h1).replace(chr(10), "<br>")}</h1>\n    <p class="alt-klein">{esc(unter)}</p>\n'
-                f'    <p class="lsx-hero-knopf"><a class="button" href="{pre}{knopf[0]}">{esc(knopf[1])}{PFEIL}</a></p>\n'
+                f'    <p class="lsx-hero-knopf"><a class="button" href="{pre}{knopf[0]}">{esc(knopf[1])}{PFEIL}</a>'
+                + (f'<a class="textlink" href="{pre}{textlink[0]}">{esc(textlink[1])}{PFEIL}</a>' if textlink else '') + '</p>\n'
                 f'    <img class="lsx-kopf-zeichnung" src="{pre}bilder/fuer-wen/{bild}.svg" alt="{esc(BILD_ALT[bild])}" width="800" height="640" loading="eager">\n  </section>')
     if bild in FW_FOTO:
         return (f'  <section class="seitenkopf lsx-kopf lsx-m-kopf fw-kopf-foto">\n    <p class="meta">{esc(meta)}</p>\n'
@@ -145,7 +146,7 @@ def schreibe(pfad, main, titel, beschreibung, fragen, skript=None, branche=None)
 
 def problemseite(p):
     pre = '../'
-    teile = [kopfbereich(p['meta'], p['h1'], p['unter'], pre, bild=p['id'], zeichnung=True),
+    teile = [kopfbereich(p['meta'], p['h1'], p['unter'], pre, tuple(p.get('knopf', ('website-check/', 'Kostenloser Website-Check'))), bild=p['id'], zeichnung=True, textlink=p.get('textlink')),
              '  <section class="fw-zwei fw-flaeche-rot" aria-labelledby="kennen-titel">\n    <div>\n      <p class="meta">Kennst du das?</p>\n'
              f'      <h2 class="gr-h3" id="kennen-titel">{ko(p.get("h2_kennen", "Woran du es merkst"))}</h2>\n      <ul class="fw-liste">\n'
              + '\n'.join(f'        <li>{esc(s)}</li>' for s in p['symptome']) + '\n      </ul>\n    </div>\n'
@@ -159,7 +160,7 @@ def problemseite(p):
              + karten([{'titel': t, 'text': x} for t, x in p['nutzen']], pre, 'haken-karten fw-drei') + '\n  </section>',
              beleg(p.get('beleg'), pre),
              faq(p['faq']),   # „Passende Leistungen – Damit arbeite ich“ entfernt (Anna 12.11.2026)
-             abschluss(pre, p.get('schluss'), titel=p.get('h2_schluss', 'Fangen wir klein an.'))]
+             abschluss(pre, p.get('schluss'), (p['schluss_knopf'][0], esc(p['schluss_knopf'][1]) + '&nbsp;<span aria-hidden="true">→</span>') if p.get('schluss_knopf') else None)]
     schreibe(p['pfad'], '\n\n'.join(teile), p['seitentitel'], p['beschreibung'], p['faq'])
 
 
