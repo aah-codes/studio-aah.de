@@ -5982,10 +5982,10 @@ main > .fw-flaeche-schwarz .zl-quer li:first-child .zlq-nr { background: var(--f
 .fw-flaeche-orchidee .haken-karte::before { content: ""; position: absolute; left: 50%; top: -14px; width: 110px; height: 30px; translate: -50% 0; rotate: -3deg; background: rgba(255, 255, 255, .6); box-shadow: 0 1px 2px rgba(14, 16, 17, .08); }
 @media (prefers-reduced-motion: no-preference) { .fw-flaeche-orchidee .haken-karte { transition: rotate .2s ease; } .fw-flaeche-orchidee .haken-karte:hover { rotate: 0deg; } }
 /* Vier Sticky Notes (KI im Team & Entlastung): am Laptop vier nebeneinander, darunter zwei */
-@media (min-width: 1200.02px) { .fw-flaeche-orchidee .haken-karten:has(> :nth-child(4)) { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (min-width: 1024.02px) { .fw-flaeche-orchidee .haken-karten:has(> :nth-child(4)) { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 /* Beleg auf den Problemseiten: großes Leipzig-Foto als Hintergrund statt schwarzer Box, so hoch wie die Sticky-Notes-Fläche darüber (Anna 23.11.2026).
    Dunkle Lasur über dem Foto, damit die weiße Schrift lesbar bleibt (Kontrast). */
-.fw-flaeche-orchidee + .fw-beleg { display: flex; align-items: center; min-height: clamp(560px, 57vw, 900px); padding: 96px var(--rand-seite);
+.fw-flaeche-orchidee + .fw-beleg { display: flex; align-items: center; min-height: clamp(560px, 68vw, 1100px); padding: 96px var(--rand-seite);
   background: linear-gradient(90deg, rgba(14, 16, 17, .85) 0%, rgba(14, 16, 17, .7) 55%, rgba(14, 16, 17, .35) 100%), url(../bilder/start/leipzig-zentrum-von-oben.webp) center / cover no-repeat; }
 @media (max-width: 767.98px) { .fw-flaeche-orchidee + .fw-beleg { min-height: 0; padding: 72px var(--rand-seite-mobil); background: linear-gradient(rgba(14, 16, 17, .7), rgba(14, 16, 17, .7)), url(../bilder/start/leipzig-zentrum-von-oben-960.webp) center / cover no-repeat; } }
 .fw-flaeche-orchidee + .fw-beleg .fw-beleg-box { background: none; border-radius: 0; padding: 0; max-width: 760px; }
@@ -5997,3 +5997,11 @@ main > .fw-flaeche-schwarz .zl-quer li:first-child .zlq-nr { background: var(--f
 .fw-flaeche-orchidee .sektionskopf .gr-h2 { margin-top: 0; }
 @media (min-width: 768px) { .fw-flaeche-orchidee .sektionskopf .ko-oben { margin-top: .5em; } }
 main > .fw-flaeche-orchidee { padding-bottom: clamp(120px, 12vw, 200px); }
+/* Teamfoto auf Problemseiten ohne Beleg: volle Breite, so hoch wie die Sticky-Notes-Fläche (Anna 23.11.2026) */
+.fw-teamfoto { margin: 0; height: clamp(560px, 68vw, 1100px); overflow: hidden; }
+.fw-teamfoto img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
+@media (max-width: 767.98px) { .fw-teamfoto { height: 70vw; min-height: 260px; } }
+/* Sticky Notes: Text mittig in der Notiz und größer (Anna 23.11.2026) */
+.fw-flaeche-orchidee .haken-karte { justify-content: center; align-items: center; text-align: center; }
+.fw-flaeche-orchidee .haken-karte h3 { font-size: var(--groesse-5); line-height: 1.2; margin: 0 0 14px; }
+.fw-flaeche-orchidee .haken-karte p { font-size: var(--groesse-4); line-height: 1.4; margin: 0; }
