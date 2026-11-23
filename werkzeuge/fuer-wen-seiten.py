@@ -166,10 +166,17 @@ def weiterleitung(alt_pfad, pfad, name):
     print('Weiterleitung:', alt_pfad)
 
 
-def teamfoto(pre):
-    """Problemseiten ohne Beleg: Teamfoto über die ganze Breite, so hoch wie die Sticky-Notes-Fläche (Anna 23.11.2026; Foto Matheus Bertelli, Pexels, im Impressum)."""
-    return (f'  <figure class="fw-teamfoto"><img src="{pre}bilder/blog-ai-act/team.webp" alt="Ein Team sitzt an einem langen Tisch mit Laptops in einem hellen Raum." '
-            'width="1400" height="934" loading="lazy" decoding="async"></figure>')
+BILDFLAECHE = {   # Problemseiten ohne Beleg: Foto über die ganze Breite vor den Fragen (Anna 23.11.2026)
+    'team': ('blog-ai-act/team.webp', 'Ein Team sitzt an einem langen Tisch mit Laptops in einem hellen Raum.', 1400, 934),   # Matheus Bertelli, Pexels
+    'leipzig': ('start/leipzig-zentrum-von-oben.webp', 'Leipziger Innenstadt von oben mit dem Neuen Rathaus', 1600, 1068),
+}
+
+
+def teamfoto(pre, welches='team'):
+    """Foto über die ganze Breite, so hoch wie die Sticky-Notes-Fläche; Neukunden: Leipzig statt Team (Anna 23.11.2026)."""
+    src, alt, w, h = BILDFLAECHE[welches]
+    return (f'  <figure class="fw-teamfoto"><img src="{pre}bilder/{src}" alt="{esc(alt)}" '
+            f'width="{w}" height="{h}" loading="lazy" decoding="async"></figure>')
 
 
 def problemseite(p):
@@ -186,7 +193,7 @@ def problemseite(p):
              '  <section class="haken fw-nutzen fw-flaeche-orchidee" aria-labelledby="nutzen-titel">\n    <div class="sektionskopf"><p class="meta">Was du davon hast</p>'
              f'<h2 class="gr-h2" id="nutzen-titel">{ko(p.get("h2_nutzen", "Mit uns an deiner Seite."))}</h2></div>\n'
              + karten([{'titel': t, 'text': x} for t, x in p['nutzen']], pre, 'haken-karten fw-drei') + '\n  </section>',
-             beleg(p.get('beleg'), pre) or teamfoto(pre),
+             beleg(p.get('beleg'), pre) or teamfoto(pre, p.get('bildflaeche', 'team')),
              faq(p['faq']),   # „Passende Leistungen – Damit arbeite ich“ entfernt (Anna 12.11.2026)
              abschluss(pre, p.get('schluss'), (p['schluss_knopf'][0], esc(p['schluss_knopf'][1]) + '&nbsp;<span aria-hidden="true">→</span>') if p.get('schluss_knopf') else None)]
     schreibe(p['pfad'], '\n\n'.join(teile), p['seitentitel'], p['beschreibung'], p['faq'])

@@ -6005,3 +6005,4 @@ main > .fw-flaeche-orchidee { padding-bottom: clamp(120px, 12vw, 200px); }
 .fw-flaeche-orchidee .haken-karte { justify-content: center; align-items: center; text-align: center; }
 .fw-flaeche-orchidee .haken-karte h3 { font-size: var(--groesse-5); line-height: 1.2; margin: 0 0 14px; }
 .fw-flaeche-orchidee .haken-karte p { font-size: var(--groesse-4); line-height: 1.4; margin: 0; }
+.fw-teamfoto img[src*="leipzig"] { object-position: center 70%; }   /* Innenstadt statt Himmel */
