@@ -12,6 +12,7 @@ BASIS = 'https://studio-aah.de/'
 FW = lade_json('inhalte/fuer-wen-seiten.json')
 FUER_WEN = ('Für wen', 'fuer-wen/')
 LEISTUNGEN = ('Leistungen', '#leistungen')
+WO_ES_HAKT = ('Wo es hakt', '#kr-pills-titel')
 KATEGORIE = {b['slug']: b['kategorie'] for b in lade_json('inhalte/blog.json')}
 
 
@@ -21,8 +22,8 @@ def _anker(name):
 
 def ziele():
     """(Pfad, [(Name, Ziel) …], letzter Name) für alle Seiten mit Brotkrumen."""
-    for p in FW['probleme']:
-        yield p['pfad'], [FUER_WEN], p['meta']
+    for p in FW['probleme']:   # Gruppe „Wo es hakt“ wie im Fuß, Ziel: Einstiege im Startseiten-Hero (Anna 23.11.2026)
+        yield p['pfad'], [('Start', ''), WO_ES_HAKT], p['meta']
     for b in FW['branchen']:
         yield b['pfad'], [('Branchen', 'fuer-wen/')], b['name']   # Menüpunkt heißt seit 12.11.2026 „Branchen“
     yield FW['selbsttest']['pfad'], [FUER_WEN], 'Selbsttest'

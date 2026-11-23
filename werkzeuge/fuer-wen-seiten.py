@@ -23,7 +23,12 @@ def link(pre, ziel):
 FW_FOTO = {'employer-branding': 'employer-branding-bewerben.webp'}   # Hero wie Webdesign mit Riso-Foto (Anna 23.11.2026)
 
 
-def kopfbereich(meta, h1, unter, pre, knopf=('website-check/', 'Kostenloser Website-Check'), bild=None):
+def kopfbereich(meta, h1, unter, pre, knopf=('website-check/', 'Kostenloser Website-Check'), bild=None, zeichnung=False):
+    if zeichnung:   # Problemseiten „Wo es hakt“: Hero wie Leistungsseiten, Bauhaus-Zeichnung rechts; Brotkrumen setzt brotkrumen.py statt der Dachzeile (Anna 23.11.2026)
+        return (f'  <section class="seitenkopf lsx-kopf lsx-m-kopf fw-kopf-zeichnung">\n    <p class="meta">{esc(meta)}</p>\n'
+                f'    <h1 class="gr-xxl lsx-titel" style="--n:26">{esc(h1).replace(chr(10), "<br>")}</h1>\n    <p class="alt-klein">{esc(unter)}</p>\n'
+                f'    <p class="lsx-hero-knopf"><a class="button" href="{pre}{knopf[0]}">{esc(knopf[1])}{PFEIL}</a></p>\n'
+                f'    <img class="lsx-kopf-zeichnung" src="{pre}bilder/fuer-wen/{bild}.svg" alt="{esc(BILD_ALT[bild])}" width="800" height="640" loading="eager">\n  </section>')
     if bild in FW_FOTO:
         return (f'  <section class="seitenkopf lsx-kopf lsx-m-kopf fw-kopf-foto">\n    <p class="meta">{esc(meta)}</p>\n'
                 f'    <h1 class="gr-xxl lsx-titel" style="--n:26">{esc(h1)}</h1>\n    <p class="alt-klein">{esc(unter)}</p>\n'
@@ -132,7 +137,7 @@ def schreibe(pfad, main, titel, beschreibung, fragen, skript=None, branche=None)
 
 def problemseite(p):
     pre = '../'
-    teile = [kopfbereich(p['meta'], p['h1'], p['unter'], pre, bild=p['id']),
+    teile = [kopfbereich(p['meta'], p['h1'], p['unter'], pre, bild=p['id'], zeichnung=True),
              '  <section class="fw-zwei" aria-labelledby="kennen-titel">\n    <div>\n      <p class="meta">Kennst du das?</p>\n'
              f'      <h2 class="gr-h3" id="kennen-titel">{esc(p.get("h2_kennen", "Woran du es merkst"))}</h2>\n      <ul class="fw-liste">\n'
              + '\n'.join(f'        <li>{esc(s)}</li>' for s in p['symptome']) + '\n      </ul>\n    </div>\n'

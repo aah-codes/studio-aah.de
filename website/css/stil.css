@@ -5940,3 +5940,10 @@ h3.fokus-titel { margin: 0; }
 .sp-meta { text-align: center; } .sp-unter { max-width: 56ch; margin: 12px auto 0; text-align: center; font-size: var(--groesse-3); }
 .blog-hero .blog-meta, .blog-hero .blog-unter { padding-inline: var(--rand-seite); }   /* bündig mit der H1 (Anna 23.11.2026) */
 @media (max-width: 767.98px) { .blog-hero .blog-meta, .blog-hero .blog-unter { padding-inline: var(--rand-seite-mobil); } }
+/* Problemseiten „Wo es hakt“: Hero wie Leistungsseiten, Bauhaus-Zeichnung rechts statt Foto, nicht gedreht wegen der Bodenlinie (Anna 23.11.2026) */
+.fw-kopf-zeichnung .lsx-kopf-zeichnung { width: clamp(280px, 36vw, 520px); rotate: none; }
+@media (max-width: 1024px) { .fw-kopf-zeichnung .lsx-kopf-zeichnung { width: min(440px, 100%); margin: 40px 0 0; } }
+.fw-kopf-zeichnung .lsx-titel { font-size: clamp(42px, 5.6vw, 88px); line-height: 1.08; }
+.fw-kopf-zeichnung .alt-klein { margin-top: 24px; }
+@media (max-width: 767.98px) { .fw-kopf-zeichnung .alt-klein { font-size: var(--groesse-4); } }   /* Unterzeile deutlich kleiner als die H1 */   /* H1 größer als die H2 darunter (gr-h3) */
+@media (min-width: 1024.02px) { .fw-kopf-zeichnung .lsx-titel { max-width: 58%; } .fw-kopf-zeichnung .alt-klein { max-width: min(32ch, 54%); } }
