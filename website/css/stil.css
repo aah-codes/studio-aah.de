@@ -4474,7 +4474,7 @@ body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp)
 /* Schriftband zwischen Kopf und Inhalt, gedreht, ohne Bewegung */
 .v-band { display: none; }
 .stil-b[class*="v-"] main { overflow-x: clip; }   /* gedrehtes Schriftband ragt sonst 1 px über den Rand */
-.stil-b[class*="v-"] .v-band { display: block; overflow: hidden; margin: 56px 0 24px; padding: 14px 0; background: var(--farbe-dunkel); color: var(--bb-gelb);
+.stil-b[class*="v-"] .v-band { display: block; overflow: hidden; margin: 56px 0 24px; padding: 14px 0; background: var(--farbe-dunkel); color: var(--farbe-weiss);
   font-family: var(--schrift-ueberschrift); text-transform: uppercase; font-size: var(--groesse-6); line-height: 1.2; white-space: nowrap; transform: rotate(-2deg); border-block: var(--b-kontur); }
 
 /* Variante 4 „Räume“ („jede Sektion wie ein eigenes Interior“, handgemacht ohne Comic-Umrisse; bemalte Wände,
@@ -4608,7 +4608,7 @@ body.stil-b { background: var(--farbe-weiss) url(../bilder/papier/papier-a.webp)
 
 /* Laufband oben: worum es geht, schräg, läuft */
 .stil-b.v-raeume .v-band { display: block; height: auto; margin: 0 0 56px; padding: 14px 0; overflow: hidden; white-space: nowrap; transform: none; rotate: -2deg; border: 0;
-  background: var(--farbe-dunkel); color: var(--bb-gelb); font: 800 clamp(22px, 2.6vw, 38px)/1.2 var(--schrift-ueberschrift); letter-spacing: -.02em; text-transform: none; }
+  background: var(--farbe-dunkel); color: var(--farbe-weiss); font: 800 clamp(22px, 2.6vw, 38px)/1.2 var(--schrift-ueberschrift); letter-spacing: -.02em; text-transform: none; }
 .v-band > span { display: inline-block; animation: lauf 50s linear infinite; }
 @keyframes lauf { to { transform: translateX(-50%); } }
 
