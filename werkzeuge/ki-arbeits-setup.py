@@ -1,4 +1,4 @@
-# Landingpage /ki-arbeits-setup/: setzt die häufigen Fragen und die strukturierten Daten
+# Landingpage /ki-arbeits-setup/ (KI-Team-Setup, darunter das Solo-Paket): setzt die häufigen Fragen und die strukturierten Daten
 # aus werkzeuge/inhalte/ki-arbeits-setup.json zwischen die Marker der Seite (KI-FAQ, KI-LD).
 # Der Rest der Seite steht direkt in website/ki-arbeits-setup/index.html; Kopf und Fuß kommen aus kopf-fuss.py.
 # Aufruf im Repository-Ordner: python3 werkzeuge/ki-arbeits-setup.py
@@ -20,6 +20,11 @@ def faq():
     return '\n'.join(h)
 
 
+def angebot(preis, url=URL):
+    return {"@type": "Offer", "price": str(preis), "priceCurrency": "EUR", "url": url,
+            "priceSpecification": {"@type": "UnitPriceSpecification", "price": str(preis), "priceCurrency": "EUR", "valueAddedTaxIncluded": False}}
+
+
 def ld(seite):
     start = (WEBSITE / 'service' / 'webdesign' / 'index.html').read_text(encoding='utf-8')
     studio = re.search(r'\{\s*"@type": "ProfessionalService".*?"areaServed": \[[^\]]*\]\s*\}', start, re.S)
@@ -27,8 +32,9 @@ def ld(seite):
     graph = [json.loads(studio.group(0)) if studio else {"@id": STUDIO_ID},
              {"@type": "Service", "@id": URL + '#leistung', "name": D['name'], "description": beschreibung, "url": URL,
               "provider": {"@id": STUDIO_ID}, "areaServed": "DE",
-              "offers": {"@type": "Offer", "price": str(D['preis']), "priceCurrency": "EUR", "url": URL,
-                         "priceSpecification": {"@type": "UnitPriceSpecification", "price": str(D['preis']), "priceCurrency": "EUR", "valueAddedTaxIncluded": False}}},
+              "offers": angebot(D['preis'])},
+             {"@type": "Service", "@id": URL + '#solo', "name": D['solo']['name'], "description": D['solo']['beschreibung'], "url": URL + '#ki-solo',
+              "provider": {"@id": STUDIO_ID}, "areaServed": "DE", "offers": angebot(D['solo']['preis'], URL + '#ki-solo')},
              {"@type": "FAQPage", "@id": URL + '#faq', "url": URL, "inLanguage": "de",
               "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in D['faq']]}]
     daten = json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, indent=2)
@@ -40,7 +46,7 @@ def main():
     seite = einsetzen(seite, 'KI-FAQ', faq())
     seite = einsetzen(seite, 'KI-LD', ld(seite))
     SEITE.write_text(seite, encoding='utf-8')
-    print('KI-Arbeits-Setup: Fragen und strukturierte Daten gesetzt')
+    print('KI-Team-Setup: Fragen und strukturierte Daten gesetzt')
 
 
 if __name__ == '__main__':

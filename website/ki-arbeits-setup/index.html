@@ -5,8 +5,8 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://submit-form.com https://*.sibforms.com; frame-src https://www.youtube-nocookie.com; form-action 'self' https://submit-form.com https://*.sibforms.com; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>KI-Arbeits-Setup: Claude für dein Büro einrichten | STUDIO AAH!</title>
-  <meta name="description" content="Wir richten Claude für dein Büro ein: Arbeitsordner, deine Regeln, drei Skills, Projekt-Cockpit. Festpreis 990 € netto. STUDIO AAH! aus Leipzig.">
+  <title>KI-Team-Setup: Claude für dein Team einrichten | STUDIO AAH!</title>
+  <meta name="description" content="Gemeinsame KI-Regeln für dein Team (5 bis 20 Personen): Markenstimme, fünf Skills, Datenschutz-Regeln, Schulung. 2.490 € netto. STUDIO AAH! Leipzig.">
   <link rel="canonical" href="https://studio-aah.de/ki-arbeits-setup/">
   <link rel="icon" href="../bilder/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="icon" href="../bilder/favicon-144.png" sizes="144x144" type="image/png">
@@ -14,11 +14,11 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="STUDIO AAH!">
   <meta property="og:locale" content="de_DE">
-  <meta property="og:title" content="KI-Arbeits-Setup: Claude für dein Büro einrichten | STUDIO AAH!">
-  <meta property="og:description" content="Wir richten Claude für dein Büro ein: Arbeitsordner, deine Regeln, drei Skills, Projekt-Cockpit. Festpreis 990 € netto. STUDIO AAH! aus Leipzig.">
+  <meta property="og:title" content="KI-Team-Setup: Claude für dein Team einrichten | STUDIO AAH!">
+  <meta property="og:description" content="Gemeinsame KI-Regeln für dein Team (5 bis 20 Personen): Markenstimme, fünf Skills, Datenschutz-Regeln, Schulung. 2.490 € netto. STUDIO AAH! Leipzig.">
   <meta property="og:url" content="https://studio-aah.de/ki-arbeits-setup/">
   <meta property="og:image" content="https://studio-aah.de/bilder/vorschaubild.jpg">
-  <link rel="stylesheet" href="../css/stil.css?v=20261128z2">
+  <link rel="stylesheet" href="../css/stil.css?v=20261128z3">
   <link rel="preload" href="../schriften/anton-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../schriften/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
 <!-- KI-LD:START -->
@@ -53,9 +53,32 @@
     {
       "@type": "Service",
       "@id": "https://studio-aah.de/ki-arbeits-setup/#leistung",
-      "name": "KI-Arbeits-Setup mit Projekt-Cockpit",
-      "description": "Wir richten Claude für dein Büro ein: Arbeitsordner, deine Regeln, drei Skills, Projekt-Cockpit. Festpreis 990 € netto. STUDIO AAH! aus Leipzig.",
+      "name": "KI-Team-Setup",
+      "description": "Gemeinsame KI-Regeln für dein Team (5 bis 20 Personen): Markenstimme, fünf Skills, Datenschutz-Regeln, Schulung. 2.490 € netto. STUDIO AAH! Leipzig.",
       "url": "https://studio-aah.de/ki-arbeits-setup/",
+      "provider": {
+        "@id": "https://studio-aah.de/#studio"
+      },
+      "areaServed": "DE",
+      "offers": {
+        "@type": "Offer",
+        "price": "2490",
+        "priceCurrency": "EUR",
+        "url": "https://studio-aah.de/ki-arbeits-setup/",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "2490",
+          "priceCurrency": "EUR",
+          "valueAddedTaxIncluded": false
+        }
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://studio-aah.de/ki-arbeits-setup/#solo",
+      "name": "KI-Arbeits-Setup mit Projekt-Cockpit",
+      "description": "Claude für Selbstständige und kleine Büros bis fünf Personen eingerichtet: Arbeitsordner, Arbeitsanleitung, drei Skills und Projekt-Cockpit, in drei Online-Terminen.",
+      "url": "https://studio-aah.de/ki-arbeits-setup/#ki-solo",
       "provider": {
         "@id": "https://studio-aah.de/#studio"
       },
@@ -64,7 +87,7 @@
         "@type": "Offer",
         "price": "990",
         "priceCurrency": "EUR",
-        "url": "https://studio-aah.de/ki-arbeits-setup/",
+        "url": "https://studio-aah.de/ki-arbeits-setup/#ki-solo",
         "priceSpecification": {
           "@type": "UnitPriceSpecification",
           "price": "990",
@@ -81,90 +104,82 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Was ist das KI-Arbeits-Setup von STUDIO AAH!?",
+          "name": "Was ist das KI-Team-Setup von STUDIO AAH!?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Das KI-Arbeits-Setup ist ein Festpreis-Paket von STUDIO AAH!, in dem Anna Härtelt die KI Claude für Selbstständige und kleine Büros einrichtet. Dazu gehören ein Arbeitsordner mit einer Statusdatei je Kunde, eine Arbeitsanleitung mit deinen Regeln, drei Skills (feste Arbeitsabläufe), ein Projekt-Cockpit und ein gemeinsamer Rundgang durch Claude. Die Einrichtung läuft in drei Online-Terminen über etwa drei Wochen. STUDIO AAH! ist unabhängig und kein Partner von Anthropic, dem Anbieter von Claude."
+            "text": "Das KI-Team-Setup ist ein Festpreis-Paket von STUDIO AAH! aus Leipzig, mit dem wir die KI Claude für Teams von 5 bis 20 Personen einrichten. Dazu gehören eine gemeinsame Arbeitsanleitung, die Markenstimme als Regelwerk, fünf Skills (feste Arbeitsabläufe), ein Projekt-Cockpit, Regeln, welche Daten in die KI dürfen, und eine Schulung für das ganze Team. STUDIO AAH! ist unabhängig und kein Partner von Anthropic, dem Anbieter von Claude."
           }
         },
         {
           "@type": "Question",
-          "name": "Für wen ist das KI-Arbeits-Setup gedacht?",
+          "name": "Für wen ist das KI-Team-Setup gedacht?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Das KI-Arbeits-Setup ist für Selbstständige, Freiberufler:innen und kleine Büros mit bis zu fünf Personen gedacht, die mehrere Kund:innen und Projekte gleichzeitig betreuen. Größere Teams sind im Paket KI-Einführung besser aufgehoben. Wer mit Gesundheitsdaten oder anderen besonders geschützten Daten arbeitet, klärt im Erstgespräch, ob und wie das Setup passt."
+            "text": "Das KI-Team-Setup ist für Teams von 5 bis 20 Personen gedacht, die KI einheitlich und mit klaren Regeln nutzen wollen. Für Selbstständige und kleine Büros mit bis zu fünf Personen gibt es das KI-Arbeits-Setup. Bei größeren Teams klären wir im KI-Check, was sinnvoll ist."
           }
         },
         {
           "@type": "Question",
-          "name": "Was kostet das KI-Arbeits-Setup?",
+          "name": "Was kostet das KI-Team-Setup?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Das KI-Arbeits-Setup kostet bei STUDIO AAH! 990 € netto zum Festpreis. Für die ersten drei Kund:innen gilt ein Pilotpreis von 690 € netto. Das KI-Abo selbst ist nicht enthalten; es wird direkt beim Anbieter gebucht und bezahlt."
+            "text": "Das KI-Team-Setup kostet 2.490 € netto zum Festpreis. Für die ersten zwei Teams gilt ein Pilotpreis von 1.990 € netto. Das KI-Abo ist nicht enthalten; es wird direkt beim Anbieter gebucht und bezahlt."
           }
         },
         {
           "@type": "Question",
-          "name": "Welchen Tarif von Claude brauche ich?",
+          "name": "Welchen Tarif von Claude braucht unser Team?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Für das KI-Arbeits-Setup braucht es einen bezahlten Tarif von Claude, den du direkt beim Anbieter Anthropic buchst. Arbeitest du nur mit eigenen Texten und anonymisierten Daten, reicht der Tarif Pro – das Training mit deinen Chats schalten wir gemeinsam aus. Soll Claude dein Geschäftspostfach oder Kundendaten lesen, empfiehlt Anna Härtelt Claude Team (ab zwei Plätzen): Dort gilt ein Vertrag zur Auftragsverarbeitung, und Anthropic nutzt deine Eingaben standardmäßig nicht zum Training. Ob deine Datenverarbeitung zulässig ist, entscheidest du bzw. deine Datenschutzberatung."
+            "text": "Für Teams empfehlen wir Claude Team, den Tarif von Anthropic für Unternehmen ab zwei Personen. Dort ist ein Vertrag zur Auftragsverarbeitung Teil der Geschäftsbedingungen, und Anthropic nutzt eure Eingaben standardmäßig nicht zum Training. Die einzige Ausnahme, Feedback über die Bewertungs-Buttons, schalten wir bei der Einrichtung ab. Das Abo bucht ihr direkt bei Anthropic. Ob eure Datenverarbeitung zulässig ist, entscheidet ihr bzw. eure Datenschutzberatung."
           }
         },
         {
           "@type": "Question",
-          "name": "Wie lange dauert das KI-Arbeits-Setup?",
+          "name": "Bekommt STUDIO AAH! Zugriff auf unsere Konten und Daten?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Das KI-Arbeits-Setup dauert vom Erstgespräch bis zum Feinschliff etwa drei Wochen. Du investierst drei Online-Termine von 90, 60 und 60 Minuten und etwa 15 Minuten für einen Fragebogen."
+            "text": "Nur im Termin und nur so weit nötig: Wir richten alles gemeinsam mit euch ein. Passwörter tippt ihr selbst ein. Zugangsdaten werden nicht gespeichert, die Termine nicht aufgezeichnet. Auf Wunsch gibt es einen Vertrag zur Auftragsverarbeitung."
           }
         },
         {
           "@type": "Question",
-          "name": "Bekommt STUDIO AAH! Zugriff auf meine Konten und Daten?",
+          "name": "Verschickt Claude etwas ohne uns?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Nur im Termin und nur so weit nötig: Anna Härtelt richtet alles gemeinsam mit dir ein. Passwörter tippst du selbst ein. Zugangsdaten werden nicht gespeichert, die Termine nicht aufgezeichnet. Auf Wunsch gibt es einen Vertrag zur Auftragsverarbeitung."
+            "text": "Nein. Wir richten Claude so ein, dass es Entwürfe vorbereitet und vor jeder Aktion nachfragt. Gesendet wird nur mit eurem Klick."
           }
         },
         {
           "@type": "Question",
-          "name": "Verschickt Claude etwas ohne mich?",
+          "name": "Unterstützt das KI-Team-Setup die KI-Kompetenz im Team?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Nein. Anna Härtelt richtet Claude so ein, dass es Entwürfe vorbereitet und vor jeder Aktion nachfragt. Gesendet wird nur mit deinem Klick."
+            "text": "Ja. Die KI-Verordnung der EU verlangt von Unternehmen, die KI einsetzen, Maßnahmen, die die KI-Kompetenz ihres Personals unterstützen (Artikel 4). Die Schulung im KI-Team-Setup zeigt, wie Claude arbeitet, wo die Grenzen liegen, welche Daten hinein dürfen und wie man Ergebnisse prüft. Alle Teilnehmenden erhalten eine Teilnahmebestätigung, die ihr als eine solche Maßnahme ablegen könnt; ein Zertifikat ist das nicht."
           }
         },
         {
           "@type": "Question",
-          "name": "Geht das KI-Arbeits-Setup auch mit ChatGPT?",
+          "name": "Geht das KI-Team-Setup auch mit ChatGPT?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Das KI-Arbeits-Setup ist für Claude von Anthropic gebaut, weil Anna Härtelt selbst täglich damit arbeitet. Das Prinzip lässt sich aber auf ChatGPT übertragen: Auch dort gibt es Projekte mit eigenen Anweisungen und Dateien, wiederkehrende Aufgaben und Skills nach demselben Prinzip. Welche Funktionen dein Tarif enthält, klären wir im Erstgespräch."
+            "text": "Wir richten das KI-Team-Setup ausschließlich in Claude von Anthropic ein, weil Anna Härtelt selbst täglich damit arbeitet. Das Prinzip lässt sich auf ChatGPT übertragen: Auch dort gibt es Projekte mit eigenen Anweisungen und Dateien. Welche Funktionen euer Tarif enthält, klären wir im Erstgespräch."
           }
         },
         {
           "@type": "Question",
-          "name": "Was passiert nach Termin 1?",
+          "name": "Ist das KI-Team-Setup eine Datenschutz- oder Rechtsberatung?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Nach Termin 1 „Verstehen und Einrichten“ beantwortet Anna Härtelt 14 Tage lang deine Fragen per E-Mail oder im Online-Meeting. In Termin 2 prüfst du gemeinsam, was im Alltag schon läuft, ein bis zwei Wochen später folgt der Feinschliff. Weitere Skills, Termine oder eine Team-Schulung gibt es danach nach Aufwand."
+            "text": "Nein. Ihr bekommt Regeln, welche Daten in die KI dürfen, und wir prüfen gemeinsam die Einstellungen eures Firmenkontos. Für die Datenschutzpflichten eures Unternehmens bleibt ihr selbst verantwortlich; im Zweifel hilft eine Fachperson für Datenschutz."
           }
         },
         {
           "@type": "Question",
-          "name": "Gibt es eine Bestätigung zur KI-Kompetenz?",
+          "name": "Was kostet das KI-Arbeits-Setup für Selbstständige?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Ja. Zum KI-Arbeits-Setup gehört eine Einweisung ins sichere Arbeiten mit KI: wie Claude arbeitet, wo die Grenzen liegen, welche Daten hinein dürfen und wie du Ergebnisse prüfst. Du erhältst eine Teilnahmebestätigung, die du als Maßnahme zur KI-Kompetenz nach Artikel 4 der KI-Verordnung ablegen kannst. Ein Zertifikat ist das nicht."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Ist das KI-Arbeits-Setup eine Datenschutz- oder Rechtsberatung?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Nein. Du bekommst eine Checkliste, welche Daten in die KI dürfen, und wir prüfen gemeinsam die Einstellungen deines Kontos. Für die Datenschutzpflichten deines Unternehmens bleibst du selbst verantwortlich; im Zweifel hilft eine Fachperson für Datenschutz."
+            "text": "Das KI-Arbeits-Setup für Selbstständige und kleine Büros mit bis zu fünf Personen kostet 990 € netto zum Festpreis, für die ersten drei Kund:innen 690 € netto. Es läuft in drei Online-Terminen über etwa drei Wochen, mit drei Skills, Arbeitsordner und Projekt-Cockpit."
           }
         }
       ]
@@ -204,7 +219,7 @@
             <ul class="mm-liste">
             <li><a class="mm-mit-icon" href="../marken-regelwerk/"><img class="mm-icon" src="../bilder/symbole/anleitung.svg" alt="" width="48" height="48" loading="lazy"><span class="mm-name">Marken-Regelwerk</span></a></li>
             <li><a class="mm-mit-icon" href="../website-check/"><img class="mm-icon" src="../bilder/symbole/scanner.svg" alt="" width="48" height="48" loading="lazy"><span class="mm-name">Website-Check</span></a></li>
-            <li><a class="mm-mit-icon" href="../ki-arbeits-setup/"><img class="mm-icon" src="../bilder/symbole/skills.svg" alt="" width="48" height="48" loading="lazy"><span class="mm-name">KI-Arbeits-Setup</span></a></li>
+            <li><a class="mm-mit-icon" href="../ki-arbeits-setup/"><img class="mm-icon" src="../bilder/symbole/skills.svg" alt="" width="48" height="48" loading="lazy"><span class="mm-name">KI-Team-Setup</span></a></li>
             <li><a class="mm-mit-icon" href="../service/retainer/"><img class="mm-icon" src="../bilder/formen/retainer.svg" alt="" width="48" height="48" loading="lazy"><span class="mm-name">Retainer</span></a></li>
             </ul>
           </div>
@@ -245,8 +260,8 @@
         </div>
         <a class="mm-karte mm-karte-beige" href="../ki-arbeits-setup/">
           <span class="meta">Angebot</span>
-          <span class="mm-karte-titel">KI-Arbeits-Setup</span>
-          <span class="button button-zweit">Zum KI-Arbeits-Setup →</span>
+          <span class="mm-karte-titel">KI-Team-Setup</span>
+          <span class="button button-zweit">Zum KI-Team-Setup →</span>
         </a>
       </div>
     </div>
@@ -265,7 +280,7 @@
               <li class="meta mobil-weitere">Feste Angebote</li>
               <li><a href="../marken-regelwerk/">Marken-Regelwerk</a></li>
               <li><a href="../website-check/">Website-Check</a></li>
-              <li><a href="../ki-arbeits-setup/">KI-Arbeits-Setup</a></li>
+              <li><a href="../ki-arbeits-setup/">KI-Team-Setup</a></li>
               <li><a href="../service/retainer/">Retainer</a></li>
               <li class="meta mobil-weitere">Weitere Leistungen</li>
               <li><a href="../service/ui-ux/">UI/UX</a></li>
@@ -288,7 +303,7 @@
               <li><a href="../branchen/software-it/">Software &amp; IT</a></li>
               <li><a href="../branchen/gesundheit-praxen/">Gesundheit &amp; Praxen</a></li>
               <li><a href="../branchen/beratung-dienstleistung/">Beratung &amp; Dienstleistung</a></li>
-              <li><a href="../ki-arbeits-setup/">KI-Arbeits-Setup</a></li>
+              <li><a href="../ki-arbeits-setup/">KI-Team-Setup</a></li>
             </ul>
           </details>
         </li>
@@ -303,21 +318,21 @@
   </details>
 </header>
 <div class="mm-schleier" hidden></div>
-<script src="../js/menue.js?v=20261128z2" defer></script>
+<script src="../js/menue.js?v=20261128z3" defer></script>
 <!-- /KOPF -->
 
 <main id="inhalt" class="rv wc lp lp-breit" data-seitenfarbe style="--lf: #FFF329; --lf-zart: #FFFA9F; --lf-hauch: #FFFDD4; --lf2: #07F0A5; --lf2-zart: #8FF8D6">
 <!-- BROTKRUMEN:START -->
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://studio-aah.de/"}, {"@type": "ListItem", "position": 2, "name": "Leistungen", "item": "https://studio-aah.de/#leistungen"}, {"@type": "ListItem", "position": 3, "name": "KI-Arbeits-Setup", "item": "https://studio-aah.de/ki-arbeits-setup/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://studio-aah.de/"}, {"@type": "ListItem", "position": 2, "name": "Leistungen", "item": "https://studio-aah.de/#leistungen"}, {"@type": "ListItem", "position": 3, "name": "KI-Team-Setup", "item": "https://studio-aah.de/ki-arbeits-setup/"}]}</script>
 <!-- BROTKRUMEN:ENDE -->
 
   <!-- Hero wie Retainer -->
   <section class="seitenkopf lsx-kopf lsx-m-kopf" aria-labelledby="ki-titel">
     <img class="lsx-kopf-icon" src="../bilder/formen/ki.svg" alt="" width="400" height="400">
-    <p class="meta brotkrumen"><a href="../#leistungen">Leistungen</a> / <span aria-current="page">KI-Arbeits-Setup</span></p>
-    <h1 class="gr-xxl lsx-titel" id="ki-titel" style="--n:16">KI-Arbeits-Setup</h1>
-    <p class="alt-klein">Eine KI, die deine Arbeitsweise kennt: Wir richten Claude für dich ein, mit deinen Projekten, Abläufen und Designsystemen, dazu drei Skills und ein Projekt-Cockpit.</p>
-    <ul class="lsx-m-fakten"><li>990&nbsp;€ netto, in zwei Raten</li><li>Drei Online-Termine</li><li>Für Selbstständige und kleine Büros</li></ul>
+    <p class="meta brotkrumen"><a href="../#leistungen">Leistungen</a> / <span aria-current="page">KI-Team-Setup</span></p>
+    <h1 class="gr-xxl lsx-titel" id="ki-titel" style="--n:13">KI-Team-Setup</h1>
+    <p class="alt-klein">Gemeinsame Regeln für KI in deinem Team: Wir richten Claude so ein, dass alle mit denselben Regeln arbeiten und eure Texte nach euch klingen.</p>
+    <ul class="lsx-m-fakten"><li>2.490&nbsp;€ netto, Festpreis</li><li>Workshop online oder in Leipzig</li><li>Für Teams von 5 bis 20 Personen</li></ul>
     <p class="lsx-hero-knopf"><a class="button" href="../kontakt/">Beratung anfragen <span aria-hidden="true">→</span></a></p>
     <span class="lsx-repro" aria-hidden="true"><span class="lsx-repro-druck"><img src="../bilder/ki-arbeits-setup-cockpit-640.webp" alt="" loading="eager" fetchpriority="high"></span></span>
   </section>
@@ -329,49 +344,83 @@
   </nav>
 
   <section class="lp-abschnitt lp-hoffnung" aria-labelledby="ki-hoffnung">
-    <p class="meta">Ohne Setup</p>
+    <p class="meta">Ohne gemeinsame Regeln</p>
     <h2 class="preis-h2" id="ki-hoffnung">Hoffnung ist keine Strategie.</h2>
     <div class="lp-hoffnung-text">
-      <p>Bei der KI machen es trotzdem viele so: einen langen Text in den Chat, Daumen drücken, auf etwas Brauchbares hoffen. Und im nächsten Chat geht alles von vorn los. Wer ist die Kundin? Wie ist der Stand? Welcher Ton passt?</p>
-      <p>Ein neuer Chat ist wie eine neue Aushilfe am ersten Tag: sehr schlau, sehr motiviert und keine Ahnung, wer du bist. Mit dem Setup wird daraus die erfahrenste Mitarbeiterin in deinem Büro.</p>
+      <p>In vielen Teams nutzt jede:r KI anders, oft mit privaten Konten. Die Texte klingen jedes Mal anders, und niemand weiß genau, was in die KI darf und was nicht.</p>
+      <p>Das Wissen steckt in einzelnen Köpfen. Jede Anfrage an die KI fängt bei null an: Wer ist die Kundin, wie ist der Stand, welcher Ton passt? Und alle hoffen, dass trotzdem etwas Brauchbares herauskommt.</p>
     </div>
-    <p class="lp-kern">Doppelt so effizient. <span>Mehrere Aufgaben laufen gleichzeitig.</span></p>
+    <p class="lp-kern">Ein Standard für alle. <span>Einmal festgelegt, in jedem Chat.</span></p>
   </section>
 
   <section class="lp-abschnitt" aria-labelledby="ki-bekommen">
-    <p class="meta">Das bekommst du</p>
+    <p class="meta">Das bekommt dein Team</p>
     <h2 class="preis-h2" id="ki-bekommen">Sechs Dinge, die bleiben</h2>
     <ul class="lp-karten">
-      <li><img src="../bilder/symbole/ordner.svg" alt="" width="320" height="320" loading="lazy"><h3>Dein Arbeitsordner</h3><p>Ein Unterordner je Kunde, sortiert nach Projektphasen. Jeder Kunde bekommt eine Statusdatei: Was ist beschlossen, was ist fertig, was ist offen. Claude hält sie nach jeder Arbeit aktuell.</p></li>
-      <li><img src="../bilder/symbole/anleitung.svg" alt="" width="320" height="320" loading="lazy"><h3>Deine Arbeitsanleitung</h3><p>Eine Anleitung für Claude im Ordner und die passenden Anweisungen in deinem Claude-Projekt: deine Kund:innen, dein Ton, deine Regeln. Claude liest sie bei jeder Aufgabe mit. Du musst nichts mehr erklären.</p></li>
-      <li><img src="../bilder/symbole/skills.svg" alt="" width="320" height="320" loading="lazy"><h3>Drei Skills</h3><p>Feste Arbeitsabläufe, passend zu deiner Arbeitsweise. Zum Beispiel ein Prüfer vor der Abgabe, ein Projektmanager für Wochenplan und Fristen, ein Text-Skill in deinem Ton oder „Regeln lernen“: Aus deiner Korrektur wird eine feste Regel.</p></li>
-      <li><img src="../bilder/symbole/cockpit.svg" alt="" width="320" height="320" loading="lazy"><h3>Dein Projekt-Cockpit</h3><p>Eine Übersicht mit Terminen, offenen Punkten und wer gerade am Zug ist: du oder deine Kundin. Was darin steht und wie es aussieht, bestimmst du selbst, per Prompt. Zum Beispiel Termine aus dem Kalender, offene Tickets aus deinem Projekttool, neue Mails, anstehende Geburtstage oder der Stand deiner Buchhaltung.</p></li>
-      <li><img src="../bilder/symbole/projekte.svg" alt="" width="320" height="320" loading="lazy"><h3>Kalender, Mail und Projekttool</h3><p>Wo es passt, verbinden wir Claude mit deinem Kalender, deinem Postfach und deinem Projekttool. Claude liest mit und schreibt Entwürfe. Welche Anbieter gehen, klären wir im Erstgespräch. Für Postfächer mit Kundendaten empfehlen wir den Tarif Claude Team.</p></li>
-      <li><img src="../bilder/symbole/kompass.svg" alt="" width="320" height="320" loading="lazy"><h3>Rundgang und Handbuch</h3><p>Wir gehen gemeinsam durch Claude: der Chat für schnelle Fragen, Cowork für längere Aufgaben in deinen Ordnern und Programmen, Claude Code für Websites, Skripte und Automatisierungen. Dazu ein Handbuch und eine Einweisung ins sichere Arbeiten mit KI.</p></li>
+      <li><img src="../bilder/symbole/anleitung.svg" alt="" width="320" height="320" loading="lazy"><h3>Eine gemeinsame Arbeitsanleitung</h3><p>Regeln für alle: wie ihr mit Claude arbeitet, wer was freigibt und was vor dem Versand geprüft wird. Die Anleitung liegt in euren gemeinsamen Projekten, Claude liest sie bei jeder Aufgabe mit.</p></li>
+      <li><img src="../bilder/symbole/sprechblase.svg" alt="" width="320" height="320" loading="lazy"><h3>Eure Markenstimme als Regelwerk</h3><p>Wie euer Unternehmen klingt, als feste Regeln mit Begriffen, Ansprache und Beispielen. So lesen sich Angebote und Mails einheitlich, egal wer im Team sie schreibt.</p></li>
+      <li><img src="../bilder/symbole/skills.svg" alt="" width="320" height="320" loading="lazy"><h3>Fünf Skills</h3><p>Feste Arbeitsabläufe für Aufgaben, die immer wiederkommen, zum Beispiel Angebote, Stellenanzeigen, Mail-Entwürfe und Protokolle. Wir stellen sie dem ganzen Team zur Verfügung.</p></li>
+      <li><img src="../bilder/symbole/cockpit.svg" alt="" width="320" height="320" loading="lazy"><h3>Ein Projekt-Cockpit</h3><p>Eine Übersicht mit Terminen, offenen Punkten und wer gerade am Zug ist. Was darin steht und wie es aussieht, bestimmt ihr selbst.</p></li>
+      <li><img src="../bilder/symbole/schloss.svg" alt="" width="320" height="320" loading="lazy"><h3>Was darf in die KI?</h3><p>Klare Regeln, welche Daten in die KI dürfen und welche nicht. Dazu richten wir das Firmenkonto mit euch ein: mit einem Tarif für Unternehmen und den passenden Einstellungen zum Datenschutz.</p></li>
+      <li><img src="../bilder/symbole/kompass.svg" alt="" width="320" height="320" loading="lazy"><h3>Schulung und Handbuch</h3><p>Eine Schulung für das ganze Team und ein Handbuch zum Nachlesen. Alle wissen, wie Claude arbeitet, wo die Grenzen liegen und wie sie Ergebnisse prüfen.</p></li>
     </ul>
   </section>
 
   <section class="lp-abschnitt" aria-labelledby="ki-ablauf">
     <p class="meta">So läuft es</p>
-    <h2 class="preis-h2" id="ki-ablauf">Ein Gespräch, drei Termine</h2>
+    <h2 class="preis-h2" id="ki-ablauf"><span class="ohne-umbruch">KI-Team-Setup</span> in vier Schritten</h2>
     <ol class="zl-quer">
-      <li><span class="zlq-nr">01</span><p class="meta">Kostenlos · 20 Minuten</p><h3>Erstgespräch</h3><p class="gedaempft">Wir lernen uns kennen und schauen auf deine Werkzeuge. Danach bekommst du einen kurzen Fragebogen.</p></li>
-      <li><span class="zlq-nr">02</span><p class="meta">Termin 1 · 90 Minuten</p><h3>Verstehen und Einrichten</h3><p class="gedaempft">Aus deinem Fragebogen haben wir eine Strategie vorbereitet. Wir wählen die drei Skills, die dich zuerst entlasten, und richten so viel wie möglich direkt ein. Dabei gehen wir gemeinsam durch die Funktionen von Claude.</p></li>
-      <li><span class="zlq-nr">03</span><p class="meta">Termin 2 · 60 Minuten</p><h3>Validieren</h3><p class="gedaempft">Was läuft im Alltag schon, was hakt? Wir prüfen das Setup an deinen echten Aufgaben und passen es an.</p></li>
-      <li><span class="zlq-nr">04</span><p class="meta">Termin 3 · 60 Minuten</p><h3>Feinschliff</h3><p class="gedaempft">Ein bis zwei Wochen später schärfen wir nach und planen den nächsten Ausbauschritt.</p></li>
+      <li><span class="zlq-nr">01</span><p class="meta">Kostenlos · 30 Minuten</p><h3>Erstgespräch</h3><p class="gedaempft">Wir sprechen mit der Geschäftsführung über Ziele, Abläufe und Werkzeuge. Danach bekommst du einen Fragebogen, auch zu den Grenzen beim Datenschutz.</p></li>
+      <li><span class="zlq-nr">02</span><p class="meta">Workshop · 2 bis 3 Stunden</p><h3>Regeln und Einrichten</h3><p class="gedaempft">Aus dem Fragebogen haben wir Regeln und Skills vorbereitet. Mit deinem Kernteam legen wir Arbeitsanleitung und Markenstimme fest und richten die ersten Skills ein, online oder bei euch in Leipzig.</p></li>
+      <li><span class="zlq-nr">03</span><p class="meta">Schulung · 2 Stunden</p><h3>Das ganze Team</h3><p class="gedaempft">Wir zeigen allen, wie das Setup funktioniert. Danach kann jede:r loslegen.</p></li>
+      <li><span class="zlq-nr">04</span><p class="meta">Nach etwa 2 Wochen · 60 Minuten</p><h3>Validieren</h3><p class="gedaempft">Was läuft im Alltag schon, was hakt? Wir prüfen das Setup an euren echten Aufgaben und schärfen nach.</p></li>
     </ol>
   </section>
 
   <section class="lp-abschnitt" aria-labelledby="ki-preis">
     <p class="meta">Preis</p>
-    <h2 class="preis-h2 lp-h2-breit" id="ki-preis">Ein Festpreis, alles für den Start</h2>
+    <h2 class="preis-h2 lp-h2-breit" id="ki-preis">Was das <span class="ohne-umbruch">KI-Team-Setup</span> kostet</h2>
     <div class="lp-preis-karte lp-preis-quer">
       <div class="lp-preis-links">
-        <p class="lp-liste-titel">KI-Arbeits-Setup mit Projekt-Cockpit</p>
-        <p class="lp-preis-betrag">990&nbsp;€<small>netto · Festpreis</small></p>
+        <p class="lp-liste-titel">KI-Team-Setup</p>
+        <p class="lp-preis-betrag">2.490&nbsp;€<small>netto · Festpreis · 5 bis 20 Personen</small></p>
+        <p class="lp-pilot"><strong>Pilotpreis 1.990&nbsp;€ netto</strong> für die ersten zwei Teams</p>
+        <p><a class="button" href="../kontakt/">Beratung anfragen <span aria-hidden="true">→</span></a></p>
+        <p class="hinweis-klein">Angebot für Unternehmen; Preise netto zuzüglich Umsatzsteuer. Der Workshop in Leipzig kostet nichts extra, an anderen Orten nach Absprache. Claude ist ein Produkt von Anthropic; STUDIO AAH! ist unabhängig.</p>
+      </div>
+      <div class="lp-preis-rechts">
+          <p class="lp-liste-titel">Enthalten</p>
+          <ul class="lp-liste">
+            <li>Erstgespräch mit der Geschäftsführung (30 Minuten) und Fragebogen</li>
+            <li>Workshop mit dem Kernteam (bis fünf Personen), online oder in Leipzig</li>
+            <li>Gemeinsame Arbeitsanleitung und Markenstimme als Regelwerk</li>
+            <li>Fünf Skills für das ganze Team</li>
+            <li>Projekt-Cockpit</li>
+            <li>Regeln „Was darf in die KI?“ und Einstellungen im Firmenkonto</li>
+            <li>Schulung für das ganze Team, mit Teilnahmebestätigung</li>
+            <li>Handbuch fürs Team und Vorlagenpaket</li>
+            <li>Validieren nach etwa zwei Wochen</li>
+          </ul>
+      </div>
+    </div>
+    <div class="lp-preis-ohne">
+        <p class="lp-liste-titel">Nicht enthalten</p>
+        <ul class="lp-liste lp-ohne">
+          <li>Euer KI-Abo: Das bucht und bezahlt ihr direkt beim Anbieter.</li>
+          <li>Programmierung eigener Software und Schnittstellen zu ERP-Systemen</li>
+          <li>Rechts- oder Datenschutzberatung</li>
+          <li>Mehr als fünf Skills oder weitere Schulungen: nach Aufwand</li>
+        </ul>
+    </div>
+
+    <h3 class="lp-solo-titel" id="ki-solo">Selbstständig oder kleines Büro?</h3>
+    <div class="lp-preis-karte lp-preis-quer lp-solo">
+      <div class="lp-preis-links">
+        <p class="lp-liste-titel">KI-Arbeits-Setup</p>
+        <p class="lp-preis-betrag">990&nbsp;€<small>netto · Festpreis · 1 bis 5 Personen</small></p>
         <p class="lp-pilot"><strong>Pilotpreis 690&nbsp;€ netto</strong> für die ersten drei Kund:innen</p>
-                <p><a class="button" href="../kontakt/">Beratung anfragen <span aria-hidden="true">→</span></a></p>
-        <p class="hinweis-klein">Angebot für Selbstständige und Unternehmen; Preise netto zuzüglich Umsatzsteuer. Claude ist ein Produkt von Anthropic; STUDIO AAH! ist unabhängig. Zahlung: die Hälfte mit Auftrag, die Hälfte nach Termin 1.</p>
+        <p><a class="button button-zweit" href="../kontakt/">Beratung anfragen <span aria-hidden="true">→</span></a></p>
+        <p class="hinweis-klein">Für Selbstständige und kleine Büros. Zahlung: die Hälfte mit Auftrag, die Hälfte nach Termin 1.</p>
       </div>
       <div class="lp-preis-rechts">
           <p class="lp-liste-titel">Enthalten</p>
@@ -384,19 +433,9 @@
             <li>Anbindung an Kalender, Mail und Projekttool, wo es passt</li>
             <li>Gemeinsamer Rundgang: Chat, Cowork und Claude Code</li>
             <li>Handbuch und Checkliste „Was darf in die KI?“</li>
-            <li>Einweisung ins sichere Arbeiten mit KI, mit Teilnahmebestätigung</li>
             <li>14 Tage Fragen per E-Mail oder im Online-Meeting</li>
           </ul>
       </div>
-    </div>
-    <div class="lp-preis-ohne">
-        <p class="lp-liste-titel">Nicht enthalten</p>
-        <ul class="lp-liste lp-ohne">
-          <li>Dein KI-Abo: Das buchst und bezahlst du direkt beim Anbieter.</li>
-          <li>Programmierung eigener Software</li>
-          <li>Rechts- oder Datenschutzberatung</li>
-          <li>Mehr als drei Skills oder eine Team-Schulung: nach Aufwand oder im Paket <a href="../service/ki-digitalisierung/">KI-Einführung</a></li>
-        </ul>
     </div>
   </section>
 
@@ -410,7 +449,7 @@
         <p class="meta">Wer einrichtet</p>
         <h2 class="preis-h2" id="ki-wer">Ich arbeite selbst jeden Tag so.</h2>
         <p class="rv-text">Ich bin Anna Härtelt, UX/UI-Designerin in Leipzig und seit 2020 selbstständig mit STUDIO AAH!. Mein Studio läuft mit diesem Setup: vor allem der Projektstand meiner Kund:innen, die Wochenplanung, Website-Prüfungen, Angebote und Akquise sowie Texte in meinem eigenen Ton.</p>
-        <p class="rv-text">Als UX-Designerin richte ich es so ein, dass du es im Alltag wirklich benutzt.</p>
+        <p class="rv-text">Als UX-Designerin richte ich es so ein, dass dein Team es im Alltag wirklich benutzt.</p>
         <p class="rv-knopf" style="margin-top:24px"><a class="textlink" href="../blog/was-ki-an-meiner-arbeit-veraendert-hat/">Was KI an meiner Arbeit verändert hat <span aria-hidden="true">→</span></a></p>
       </div>
     </div>
@@ -422,48 +461,44 @@
 <!-- KI-FAQ:START -->
     <div class="faq-liste">
       <details class="faq-eintrag">
-        <summary>Was ist das KI-Arbeits-Setup von STUDIO AAH!?</summary>
-        <div class="faq-antwort"><p>Das KI-Arbeits-Setup ist ein Festpreis-Paket von STUDIO AAH!, in dem Anna Härtelt die KI Claude für Selbstständige und kleine Büros einrichtet. Dazu gehören ein Arbeitsordner mit einer Statusdatei je Kunde, eine Arbeitsanleitung mit deinen Regeln, drei Skills (feste Arbeitsabläufe), ein Projekt-Cockpit und ein gemeinsamer Rundgang durch Claude. Die Einrichtung läuft in drei Online-Terminen über etwa drei Wochen. STUDIO AAH! ist unabhängig und kein Partner von Anthropic, dem Anbieter von Claude.</p></div>
+        <summary>Was ist das KI-Team-Setup von STUDIO AAH!?</summary>
+        <div class="faq-antwort"><p>Das KI-Team-Setup ist ein Festpreis-Paket von STUDIO AAH! aus Leipzig, mit dem wir die KI Claude für Teams von 5 bis 20 Personen einrichten. Dazu gehören eine gemeinsame Arbeitsanleitung, die Markenstimme als Regelwerk, fünf Skills (feste Arbeitsabläufe), ein Projekt-Cockpit, Regeln, welche Daten in die KI dürfen, und eine Schulung für das ganze Team. STUDIO AAH! ist unabhängig und kein Partner von Anthropic, dem Anbieter von Claude.</p></div>
       </details>
       <details class="faq-eintrag">
-        <summary>Für wen ist das KI-Arbeits-Setup gedacht?</summary>
-        <div class="faq-antwort"><p>Das KI-Arbeits-Setup ist für Selbstständige, Freiberufler:innen und kleine Büros mit bis zu fünf Personen gedacht, die mehrere Kund:innen und Projekte gleichzeitig betreuen. Größere Teams sind im Paket KI-Einführung besser aufgehoben. Wer mit Gesundheitsdaten oder anderen besonders geschützten Daten arbeitet, klärt im Erstgespräch, ob und wie das Setup passt.</p></div>
+        <summary>Für wen ist das KI-Team-Setup gedacht?</summary>
+        <div class="faq-antwort"><p>Das KI-Team-Setup ist für Teams von 5 bis 20 Personen gedacht, die KI einheitlich und mit klaren Regeln nutzen wollen. Für Selbstständige und kleine Büros mit bis zu fünf Personen gibt es das KI-Arbeits-Setup. Bei größeren Teams klären wir im KI-Check, was sinnvoll ist.</p></div>
       </details>
       <details class="faq-eintrag">
-        <summary>Was kostet das KI-Arbeits-Setup?</summary>
-        <div class="faq-antwort"><p>Das KI-Arbeits-Setup kostet bei STUDIO AAH! 990 € netto zum Festpreis. Für die ersten drei Kund:innen gilt ein Pilotpreis von 690 € netto. Das KI-Abo selbst ist nicht enthalten; es wird direkt beim Anbieter gebucht und bezahlt.</p></div>
+        <summary>Was kostet das KI-Team-Setup?</summary>
+        <div class="faq-antwort"><p>Das KI-Team-Setup kostet 2.490 € netto zum Festpreis. Für die ersten zwei Teams gilt ein Pilotpreis von 1.990 € netto. Das KI-Abo ist nicht enthalten; es wird direkt beim Anbieter gebucht und bezahlt.</p></div>
       </details>
       <details class="faq-eintrag">
-        <summary>Welchen Tarif von Claude brauche ich?</summary>
-        <div class="faq-antwort"><p>Für das KI-Arbeits-Setup braucht es einen bezahlten Tarif von Claude, den du direkt beim Anbieter Anthropic buchst. Arbeitest du nur mit eigenen Texten und anonymisierten Daten, reicht der Tarif Pro – das Training mit deinen Chats schalten wir gemeinsam aus. Soll Claude dein Geschäftspostfach oder Kundendaten lesen, empfiehlt Anna Härtelt Claude Team (ab zwei Plätzen): Dort gilt ein Vertrag zur Auftragsverarbeitung, und Anthropic nutzt deine Eingaben standardmäßig nicht zum Training. Ob deine Datenverarbeitung zulässig ist, entscheidest du bzw. deine Datenschutzberatung.</p></div>
+        <summary>Welchen Tarif von Claude braucht unser Team?</summary>
+        <div class="faq-antwort"><p>Für Teams empfehlen wir Claude Team, den Tarif von Anthropic für Unternehmen ab zwei Personen. Dort ist ein Vertrag zur Auftragsverarbeitung Teil der Geschäftsbedingungen, und Anthropic nutzt eure Eingaben standardmäßig nicht zum Training. Die einzige Ausnahme, Feedback über die Bewertungs-Buttons, schalten wir bei der Einrichtung ab. Das Abo bucht ihr direkt bei Anthropic. Ob eure Datenverarbeitung zulässig ist, entscheidet ihr bzw. eure Datenschutzberatung.</p></div>
       </details>
       <details class="faq-eintrag">
-        <summary>Wie lange dauert das KI-Arbeits-Setup?</summary>
-        <div class="faq-antwort"><p>Das KI-Arbeits-Setup dauert vom Erstgespräch bis zum Feinschliff etwa drei Wochen. Du investierst drei Online-Termine von 90, 60 und 60 Minuten und etwa 15 Minuten für einen Fragebogen.</p></div>
+        <summary>Bekommt STUDIO AAH! Zugriff auf unsere Konten und Daten?</summary>
+        <div class="faq-antwort"><p>Nur im Termin und nur so weit nötig: Wir richten alles gemeinsam mit euch ein. Passwörter tippt ihr selbst ein. Zugangsdaten werden nicht gespeichert, die Termine nicht aufgezeichnet. Auf Wunsch gibt es einen Vertrag zur Auftragsverarbeitung.</p></div>
       </details>
       <details class="faq-eintrag">
-        <summary>Bekommt STUDIO AAH! Zugriff auf meine Konten und Daten?</summary>
-        <div class="faq-antwort"><p>Nur im Termin und nur so weit nötig: Anna Härtelt richtet alles gemeinsam mit dir ein. Passwörter tippst du selbst ein. Zugangsdaten werden nicht gespeichert, die Termine nicht aufgezeichnet. Auf Wunsch gibt es einen Vertrag zur Auftragsverarbeitung.</p></div>
+        <summary>Verschickt Claude etwas ohne uns?</summary>
+        <div class="faq-antwort"><p>Nein. Wir richten Claude so ein, dass es Entwürfe vorbereitet und vor jeder Aktion nachfragt. Gesendet wird nur mit eurem Klick.</p></div>
       </details>
       <details class="faq-eintrag">
-        <summary>Verschickt Claude etwas ohne mich?</summary>
-        <div class="faq-antwort"><p>Nein. Anna Härtelt richtet Claude so ein, dass es Entwürfe vorbereitet und vor jeder Aktion nachfragt. Gesendet wird nur mit deinem Klick.</p></div>
+        <summary>Unterstützt das KI-Team-Setup die KI-Kompetenz im Team?</summary>
+        <div class="faq-antwort"><p>Ja. Die KI-Verordnung der EU verlangt von Unternehmen, die KI einsetzen, Maßnahmen, die die KI-Kompetenz ihres Personals unterstützen (Artikel 4). Die Schulung im KI-Team-Setup zeigt, wie Claude arbeitet, wo die Grenzen liegen, welche Daten hinein dürfen und wie man Ergebnisse prüft. Alle Teilnehmenden erhalten eine Teilnahmebestätigung, die ihr als eine solche Maßnahme ablegen könnt; ein Zertifikat ist das nicht.</p></div>
       </details>
       <details class="faq-eintrag">
-        <summary>Geht das KI-Arbeits-Setup auch mit ChatGPT?</summary>
-        <div class="faq-antwort"><p>Das KI-Arbeits-Setup ist für Claude von Anthropic gebaut, weil Anna Härtelt selbst täglich damit arbeitet. Das Prinzip lässt sich aber auf ChatGPT übertragen: Auch dort gibt es Projekte mit eigenen Anweisungen und Dateien, wiederkehrende Aufgaben und Skills nach demselben Prinzip. Welche Funktionen dein Tarif enthält, klären wir im Erstgespräch.</p></div>
+        <summary>Geht das KI-Team-Setup auch mit ChatGPT?</summary>
+        <div class="faq-antwort"><p>Wir richten das KI-Team-Setup ausschließlich in Claude von Anthropic ein, weil Anna Härtelt selbst täglich damit arbeitet. Das Prinzip lässt sich auf ChatGPT übertragen: Auch dort gibt es Projekte mit eigenen Anweisungen und Dateien. Welche Funktionen euer Tarif enthält, klären wir im Erstgespräch.</p></div>
       </details>
       <details class="faq-eintrag">
-        <summary>Was passiert nach Termin 1?</summary>
-        <div class="faq-antwort"><p>Nach Termin 1 „Verstehen und Einrichten“ beantwortet Anna Härtelt 14 Tage lang deine Fragen per E-Mail oder im Online-Meeting. In Termin 2 prüfst du gemeinsam, was im Alltag schon läuft, ein bis zwei Wochen später folgt der Feinschliff. Weitere Skills, Termine oder eine Team-Schulung gibt es danach nach Aufwand.</p></div>
+        <summary>Ist das KI-Team-Setup eine Datenschutz- oder Rechtsberatung?</summary>
+        <div class="faq-antwort"><p>Nein. Ihr bekommt Regeln, welche Daten in die KI dürfen, und wir prüfen gemeinsam die Einstellungen eures Firmenkontos. Für die Datenschutzpflichten eures Unternehmens bleibt ihr selbst verantwortlich; im Zweifel hilft eine Fachperson für Datenschutz.</p></div>
       </details>
       <details class="faq-eintrag">
-        <summary>Gibt es eine Bestätigung zur KI-Kompetenz?</summary>
-        <div class="faq-antwort"><p>Ja. Zum KI-Arbeits-Setup gehört eine Einweisung ins sichere Arbeiten mit KI: wie Claude arbeitet, wo die Grenzen liegen, welche Daten hinein dürfen und wie du Ergebnisse prüfst. Du erhältst eine Teilnahmebestätigung, die du als Maßnahme zur KI-Kompetenz nach Artikel 4 der KI-Verordnung ablegen kannst. Ein Zertifikat ist das nicht.</p></div>
-      </details>
-      <details class="faq-eintrag">
-        <summary>Ist das KI-Arbeits-Setup eine Datenschutz- oder Rechtsberatung?</summary>
-        <div class="faq-antwort"><p>Nein. Du bekommst eine Checkliste, welche Daten in die KI dürfen, und wir prüfen gemeinsam die Einstellungen deines Kontos. Für die Datenschutzpflichten deines Unternehmens bleibst du selbst verantwortlich; im Zweifel hilft eine Fachperson für Datenschutz.</p></div>
+        <summary>Was kostet das KI-Arbeits-Setup für Selbstständige?</summary>
+        <div class="faq-antwort"><p>Das KI-Arbeits-Setup für Selbstständige und kleine Büros mit bis zu fünf Personen kostet 990 € netto zum Festpreis, für die ersten drei Kund:innen 690 € netto. Es läuft in drei Online-Terminen über etwa drei Wochen, mit drei Skills, Arbeitsordner und Projekt-Cockpit.</p></div>
       </details>
     </div>
 <!-- KI-FAQ:ENDE -->
@@ -472,9 +507,9 @@
   <!-- Kontaktbereich reduziert, immer aufs Kontaktformular verweisen -->
   <section class="preis-schluss start-schluss lsx-m-schluss" aria-labelledby="schluss-titel">
     <div class="schluss-karte schluss-blau">
-      <p class="meta">KI-Arbeits-Setup</p>
+      <p class="meta">KI-Team-Setup</p>
       <h2 class="gr-h2" id="schluss-titel">Fangen wir klein an.</h2>
-      <p class="lsx-m-schluss-text">Im kostenlosen Erstgespräch klären wir, wo du stehst<br>und was du brauchst.</p>
+      <p class="lsx-m-schluss-text">Im kostenlosen Erstgespräch klären wir, wo dein Team steht<br>und was es braucht.</p>
       <p><a class="button" href="../kontakt/">Beratung anfragen <span aria-hidden="true">→</span></a></p>
     </div>
   </section>
@@ -536,7 +571,7 @@
     <span class="fuss-karte-titel">Demokratie braucht Sichtbarkeit.</span>
     <span class="fuss-karte-text">Websites ohne Honorar für Vereine, NGOs, Kunst und Kultur.</span>
     <span class="fuss-karte-link">Mehr erfahren →</span>
-    <img class="fuss-karte-icon" src="../bilder/zeichnungen-sw/megafon.svg?v=20261128z2" alt="" width="400" height="400" loading="lazy">
+    <img class="fuss-karte-icon" src="../bilder/zeichnungen-sw/megafon.svg?v=20261128z3" alt="" width="400" height="400" loading="lazy">
   </a>
     <nav class="fuss-spalten" aria-label="Fußmenü">
 <div class="fuss-kontakt">
@@ -557,7 +592,7 @@
         <p class="meta fuss-weitere">Feste Angebote</p>
         <p><a href="../marken-regelwerk/">Marken-Regelwerk</a></p>
         <p><a href="../website-check/">Website-Check</a></p>
-        <p><a href="../ki-arbeits-setup/">KI-Arbeits-Setup</a></p>
+        <p><a href="../ki-arbeits-setup/">KI-Team-Setup</a></p>
         <p><a href="../service/retainer/">Retainer</a></p>
         <p class="meta fuss-weitere">Weitere Leistungen</p>
         <p><a href="../service/ui-ux/">UI/UX</a></p>
@@ -625,6 +660,6 @@
   </div>
   <!-- /FUSS -->
 
-<script src="../js/anfrage.js?v=20261128z2" defer></script>
+<script src="../js/anfrage.js?v=20261128z3" defer></script>
 </body>
 </html>

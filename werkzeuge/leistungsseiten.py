@@ -36,18 +36,18 @@ REDIGAT = {
         ('id="faq-titel">Ehrliche Antworten</h2>', 'id="faq-titel">' + _ko('Standard-Antworten', 'Ehrliche Antworten') + '</h2>'),
     ],
     'service/ki-digitalisierung/': [
-        ('style="--n:11"><span class="ohne-umbruch">KI-Beratung</span></h1>', 'style="--n:26"><span class="ohne-umbruch">KI-Beratung</span> in Leipzig: Schluss mit ' + _ko('ein bisschen rumprobieren.', 'Chats, die jedes Mal bei null anfangen.') + '<br>Wir richten Claude so ein, dass es dein Büro wirklich entlastet.</h1>'),
-        ('<p class="alt-klein">KI und digitale Abläufe, die im Alltag wirklich entlasten – für KMU und Solo-Selbstständige.</p>', '<p class="alt-klein">Keine abstrakten KI-Strategie-Workshops, sondern ein fertiges Arbeits-Setup für KMU und Selbstständige – mit deinen Ordnern, deinen Regeln und festen Abläufen.</p>'),
+        ('style="--n:11"><span class="ohne-umbruch">KI-Beratung</span></h1>', 'style="--n:26"><span class="ohne-umbruch">KI-Beratung</span> in Leipzig: Schluss mit ' + _ko('ein bisschen rumprobieren.', 'Chats, die jedes Mal bei null anfangen.') + '<br>Wir richten Claude so ein, dass dein Team wirklich entlastet wird.</h1>'),
+        ('<p class="alt-klein">KI mit klaren Regeln, die im Alltag wirklich entlastet – für Teams im Mittelstand und für Selbstständige.</p>', '<p class="alt-klein">Keine abstrakte KI-Strategie, sondern ein fertiges Setup für dein Team: mit gemeinsamen Regeln, eurer Markenstimme und festen Abläufen.</p>'),
         ('id="loesung-titel">KI ist kein Selbstzweck.</h2>', 'id="loesung-titel">KI ist kein ' + _ko('Selbstzweck.', 'Zauberstab ohne Anleitung.') + '</h2>'),
         ('id="anwendungen-titel">Wobei KI konkret entlastet</h2>', 'id="anwendungen-titel">Wo Claude im Büro-Alltag helfen kann</h2>'),
         ('<p class="meta">Aus meiner eigenen Praxis</p><p>Was ich dir einrichte, nutze ich selbst jeden Tag: für Projektstand, Wochenplanung, Website-Prüfungen, Angebote und Akquise.</p>', '<p class="meta">Aus meiner eigenen Praxis</p><h3 class="lsx-anw-h3">Was ich dir einrichte, läuft bei mir jeden Tag.</h3><p>Für Projektstand, Wochenplanung, Website-Prüfungen, Angebote und Akquise.</p>'),
-        ('id="wege-titel">Das <span class="ohne-umbruch">KI-Arbeits</span>-Setup</h2>', 'id="wege-titel">Kein Prompt-Sammelsurium.<br>Sondern dein fertiges <span class="ohne-umbruch">KI-Arbeits-Setup.</span></h2>'),
+        ('id="wege-titel">Das <span class="ohne-umbruch">KI-Team</span>-Setup</h2>', 'id="wege-titel">Kein Prompt-Sammelsurium.<br>Sondern ein Standard für <span class="ohne-umbruch">das ganze Team.</span></h2>'),
         ('id="recht-titel"><span class="ohne-umbruch">KI-Verordnung</span>: Was gilt für dein Unternehmen?</h2>', 'id="recht-titel"><span class="ohne-umbruch">KI-Verordnung</span> (EU AI Act): Was für dein Büro <span class="ko-zitat-hand">wirklich</span> wichtig ist</h2>'),
         ('id="prozess">Prozess</h2>', 'id="prozess">In vier Schritten vom Testen zum laufenden System</h2>'),
         ('id="stimmen-titel">Stimmen,<br>die zählen.</h2>', 'id="stimmen-titel">Stimmen,<br>die zählen.<span class="ko-block">Was passiert, wenn man es einfach anpackt</span></h2>'),
-        ('id="pakete-titel">Was es kostet</h2>', 'id="pakete-titel">Ein Setup, ein Festpreis – ohne Lotterie.</h2>'),
+        ('id="pakete-titel">Was es kostet</h2>', 'id="pakete-titel">Festpreise statt Lotterie</h2>'),
         ('id="faq-titel">Ehrliche Antworten</h2>', 'id="faq-titel">' + _ko('Standard-Antworten', 'Ehrliche Antworten') + '</h2>'),
-        ('id="schluss-titel">Fangen wir klein an.</h2>\n      <p class="lsx-m-schluss-text">Im kostenlosen Erstgespräch klären wir, wo du stehst<br>und was du brauchst.</p>', 'id="schluss-titel">Fangen wir klein an.</h2>\n      <p class="lsx-m-schluss-text">Im kostenlosen Erstgespräch (20 Min.) schauen wir auf deine aktuellen Werkzeuge – und klären ehrlich, wo KI dir sofort Zeit spart.</p>'),
+        ('id="schluss-titel">Fangen wir klein an.</h2>\n      <p class="lsx-m-schluss-text">Im kostenlosen Erstgespräch klären wir, wo du stehst<br>und was du brauchst.</p>', 'id="schluss-titel">Fangen wir klein an.</h2>\n      <p class="lsx-m-schluss-text">Im kostenlosen Erstgespräch (30 Min.) schauen wir auf eure Werkzeuge<br>und klären ehrlich, wo KI deinem Team Zeit sparen kann.</p>'),
     ],
     'service/markenbildung/': [
         ('style="--n:13">Markenbildung<br>in Leipzig</h1>', 'style="--n:26">Markenbildung in Leipzig: Keine ' + _ko('Kosmetik.', 'Dekoration für die Visitenkarte.') + '<br>Sondern Klarheit, die anzieht.</h1>'),
@@ -535,20 +535,22 @@ def auto_muster(c, g, intro):
     """Muster-Aufbau für Leistungsseiten ohne eigenes Feld „muster“.
     Nur aus Texten, die schon auf der Seite stehen – keine neuen Aussagen."""
     pk = g.get('pakete', [])
-    fakten, preiszeile = [], ''
+    fakten, preiszeile, nur_fest = [], '', False
     if pk and pk[0].get('stunde'):
         e = pk[0]
         fakten.append(f"{e['stunde']}–{e['stundeBis']} € netto pro Stunde")
     elif pk:
         ab = min((e.get('preis') for e in pk if isinstance(e.get('preis'), (int, float))), default=None)
         if ab: fakten.append(f"ab {ab:,.0f} € netto".replace(',', '.'))
-        preiszeile = ', '.join(f"{e['name']} ab {e['preis']:,.0f} €".replace(',', '.') for e in pk if isinstance(e.get('preis'), (int, float)))
+        mit_preis = [e for e in pk if isinstance(e.get('preis'), (int, float))]
+        preiszeile = ', '.join(f"{e['name']}{' ab' if e.get('ab', True) else ''} {e['preis']:,.0f} €".replace(',', '.') for e in mit_preis)
+        nur_fest = bool(mit_preis) and not any(e.get('ab', True) for e in mit_preis)
     fakten.append('Kostenloses Erstgespräch')
     kurz = []
     if c.get('zusammenfassung'):
         kurz.append([f"{c['titel']} bei STUDIO AAH!:", c['zusammenfassung'][0]])
     if preiszeile:
-        kurz.append(['Preise:', preiszeile + ' (netto, Festpreis nach Erstgespräch).'])
+        kurz.append(['Preise:', preiszeile + (' (netto, Festpreis).' if nur_fest else ' (netto, Festpreis nach Erstgespräch).')])
     kurz += [['Ergebnis:', x] for x in c.get('gewinn', [])[:2]]
     return {'h1': c['titel'], 'intro': intro, 'fakten': fakten, 'kurz_gesagt': kurz,
             'probleme_kurz': [list(geteilt(x)) for x in c.get('probleme', [])],

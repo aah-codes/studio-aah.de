@@ -26,7 +26,7 @@ faq = [
 ("Wo bekomme ich Hilfe zum EU AI Act?",
  "Bei der Bundesnetzagentur. Sie bietet einen KI-Service Desk und den „KI-Compliance Kompass“ an, mit dem Unternehmen ihre Pflichten selbst prüfen können. Kostenlose Lernangebote zur KI-Kompetenz gibt es laut Bundesnetzagentur zum Beispiel beim KI-Campus und bei den Mittelstand-Digital Zentren."),
 ("Hilft STUDIO AAH! bei der Einführung von KI im Team?",
- "Ja. Anna Härtelt von STUDIO AAH! in Leipzig richtet mit dem KI-Arbeits-Setup KI für kleine Teams ein, mit Anleitung und gemeinsamer Einführung. Das ist keine Rechtsberatung, aber ein praktischer Weg, die KI-Kompetenz im Team zu fördern."),
+ "Ja. Anna Härtelt von STUDIO AAH! in Leipzig richtet mit dem KI-Team-Setup KI für Teams von 5 bis 20 Personen ein, mit gemeinsamen Regeln und einer Schulung. Das ist keine Rechtsberatung, aber ein praktischer Weg, die KI-Kompetenz im Team zu fördern."),
 ]
 
 bauen('eu-ai-act-kleine-unternehmen',

@@ -4,7 +4,7 @@ paths:
 ---
 # Generatoren im Einzelnen
 
-Normalfall: `bash werkzeuge/alle-erzeugen.sh` (Reihenfolge steht im Skript: Kopf und Fuß → Preise → Blog → Inhalte → Leistungsseiten → Website-Check → Marken-Regelwerk → KI-Arbeits-Setup → Referenzen → Für wen → Brotkrumen → Fragen-Index). Einzeln nur, wenn man genau weiß, was man tut.
+Normalfall: `bash werkzeuge/alle-erzeugen.sh` (Reihenfolge steht im Skript: Kopf und Fuß → Preise → Blog → Inhalte → Leistungsseiten → Website-Check → Marken-Regelwerk → KI-Team-Setup (`ki-arbeits-setup.py`) → Referenzen → Für wen → Brotkrumen → Fragen-Index). Einzeln nur, wenn man genau weiß, was man tut.
 
 - `kopf-fuss.py` – Kopf und Fuß aus `website/index.html` in alle Seiten (Pfade nach Ordnertiefe, 404 ab der Wurzel). Kopf und Fuß nur in `website/index.html` ändern.
 - `preise-erzeugen.py` – Preise, Kostenrechner-Daten, Leiste (`KATEGORIEN`, `BEISPIELE`; derzeit auf keiner Seite), Glossar, Leistungen der Startseite (`start_leistungen()`).

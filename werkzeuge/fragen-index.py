@@ -38,8 +38,8 @@ LINK = re.compile(r'\[[^\]]+\]\([^)]+\)')
 STICHWORT = {
     'website-check/': ['Website-Check'],
     'service/webdesign/': ['neue Website', 'Websites', 'Website'],
-    'ki-arbeits-setup/': ['KI-Arbeits-Setup'],
-    'service/ki-digitalisierung/': ['KI-Arbeits-Setup', 'Claude'],
+    'ki-arbeits-setup/': ['KI-Team-Setup', 'KI-Arbeits-Setup'],
+    'service/ki-digitalisierung/': ['KI-Beratung', 'Claude'],
     'service/markenbildung/': ['Brand-Paket', 'Logo'],
     'service/retainer/': ['Retainer'],
     'service/druck/': ['Visitenkarte'],

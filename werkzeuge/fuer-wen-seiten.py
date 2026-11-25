@@ -473,7 +473,7 @@ def ki_rechner(q):
       </ul>
       <p class="kr-warnung" data-kr-warnung role="status" hidden>Du hast keine Zeit fürs Lernen eingeplant. Ohne Übung bleiben neue Werkzeuge oft liegen, und die Fleißarbeit bleibt.</p>
       <p class="gedaempft">Gerechnet mit 4,3 Wochen pro Monat. Wie viel KI wirklich vorbereiten kann, zeigt der KI-Check an deinen Abläufen.</p>
-      <p class="st-weiter"><a class="button" href="{pre}ki-arbeits-setup/">Zum KI-Arbeits-Setup{PFEIL}</a> <a class="button button-zweit" href="{pre}service/ki-digitalisierung/">KI-Check und Einführung{PFEIL}</a></p>
+      <p class="st-weiter"><a class="button" href="{pre}ki-arbeits-setup/">Zum KI-Team-Setup{PFEIL}</a> <a class="button button-zweit" href="{pre}service/ki-digitalisierung/">KI-Beratung{PFEIL}</a></p>
       <p class="st-artikel">Für den Start mit KI im Team: <a class="textlink" href="{pre}downloads/eu-ai-act-checkliste.pdf" download>Checkliste EU AI Act (PDF) <span aria-hidden="true">↓</span></a></p>
       {daumen("KI-Zeitrechner", "Wie hat dir der KI-Zeitrechner gefallen?", pre)}
     </div>

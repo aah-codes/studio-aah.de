@@ -23,7 +23,7 @@ faq = [
 ("Darf ich als Beschäftigte:r das Firmenpostfach mit meinem privaten KI-Konto verbinden?",
  "Nein. Nach Art. 29 DSGVO verarbeiten Beschäftigte personenbezogene Daten nur auf Weisung des Arbeitgebers, und die Datenschutzkonferenz empfiehlt, dass Arbeitgeber die KI-Konten stellen. Auch mit Erlaubnis geht es nur über einen Firmentarif, für den der Arbeitgeber einen Vertrag zur Auftragsverarbeitung hat."),
 ("Hilft STUDIO AAH! bei der Einrichtung?",
- "Ja. Anna Härtelt von STUDIO AAH! in Leipzig richtet mit dem KI-Arbeits-Setup KI für kleine Teams ein, mit passenden Tarifen, Konnektoren und klaren Regeln. Das ist keine Rechtsberatung, aber ein praktischer Weg, KI datenschutzbewusst zu starten."),
+ "Ja. Anna Härtelt von STUDIO AAH! in Leipzig richtet mit dem KI-Team-Setup KI für Teams von 5 bis 20 Personen ein, mit passendem Tarif, klaren Regeln, welche Daten in die KI dürfen, und einer Schulung. Das ist keine Rechtsberatung, aber ein praktischer Weg, KI datenschutzbewusst zu starten."),
 ]
 
 bauen('geschaeftsmail-auftragsverarbeitung',

@@ -224,7 +224,7 @@
    "karte": "Die Büroarbeit frisst deine Zeit.",
    "kurz": "Abläufe aufgeschrieben, Routine an Claude abgegeben und ein Team, das es nutzt.",
    "seitentitel": "KI im Team und Entlastung: Routine abgeben ohne IT-Großprojekt | STUDIO AAH!",
-   "beschreibung": "Wenn alles über die Geschäftsführung läuft: Abläufe aufschreiben, Routine an Claude abgeben und das Team mitnehmen. KI-Arbeits-Setup, KI-Check und Schulung für den Mittelstand in Leipzig.",
+   "beschreibung": "Wenn alles über die Geschäftsführung läuft: Abläufe aufschreiben, Routine an Claude abgeben und das Team mitnehmen. KI-Team-Setup mit gemeinsamen Regeln und Schulung für den Mittelstand in Leipzig.",
    "meta": "KI im Team & Entlastung",
    "h1": "KI im Team: Schluss mit ~~teuren Lizenzen ohne Plan.~~|[Routine, die auf deinem Tisch landet.]",
    "unter": "Jede kleine Frage landet bei der Geschäftsführung? Wir schreiben mit dir die wichtigsten Abläufe auf und geben Routine sicher an Claude ab.",
@@ -234,7 +234,7 @@
    ],
    "textlink": [
     "ki-arbeits-setup/",
-    "Zum KI-Arbeits-Setup"
+    "Zum KI-Team-Setup"
    ],
    "h2_kennen": "Woran du merkst, dass du im Alltag Zeit verlierst",
    "h2_kosten": "Ungeschriebene Abläufe und ungenutzte Tools kosten doppelt",
@@ -290,10 +290,10 @@
    ],
    "beleg": {
     "titel": "Aus meiner eigenen Praxis",
-    "text": "Mein Studio läuft mit KI-Arbeitsabläufen, einem Projekt-Cockpit und einem Handbuch. Für Geschäftsführung und kleine Büros richten wir das im KI-Arbeits-Setup ein; für größere Teams planen wir es im KI-Check.",
+    "text": "Mein Studio läuft mit KI-Arbeitsabläufen, einem Projekt-Cockpit und einem Handbuch. Für Teams von 5 bis 20 Personen richten wir das im KI-Team-Setup ein.",
     "link": [
      "ki-arbeits-setup/",
-     "Zum KI-Arbeits-Setup"
+     "Zum KI-Team-Setup"
     ]
    },
    "faq": [
@@ -307,7 +307,7 @@
     ],
     [
      "Wie lange dauert das?",
-     "Das KI-Arbeits-Setup dauert etwa drei Wochen, mit drei Online-Terminen. Für größere Teams planen wir im KI-Check, was sinnvoll ist."
+     "Das KI-Team-Setup dauert etwa vier Wochen: Erstgespräch, ein Workshop mit dem Kernteam, eine Schulung für alle und ein Termin zum Nachschärfen."
     ],
     [
      "Baust du auch Schnittstellen zu unserem ERP?",
@@ -319,13 +319,13 @@
     ],
     [
      "Was kostet das?",
-     "Das KI-Arbeits-Setup kostet 990 € netto zum Festpreis. Für größere Teams beginnt der KI-Check bei 900 € netto, die KI-Einführung mit Team-Schulung bei 2.000 € netto."
+     "Das KI-Team-Setup für 5 bis 20 Personen kostet 2.490 € netto zum Festpreis. Für Selbstständige und kleine Büros gibt es das KI-Arbeits-Setup für 990 € netto; bei mehr als 20 Personen beginnt der KI-Check bei 900 € netto."
     ]
    ],
    "leistungen": [
     [
      "ki-arbeits-setup/",
-     "KI-Arbeits-Setup"
+     "KI-Team-Setup"
     ],
     [
      "service/ki-digitalisierung/",

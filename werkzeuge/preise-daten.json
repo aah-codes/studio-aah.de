@@ -588,10 +588,41 @@
    "link": "../service/ki-digitalisierung/",
    "wahl": "eins",
    "karten": [
-    "ki-0",
+    "ki-team",
     "ki-setup"
    ],
    "pakete": [
+    {
+     "id": "ki-team",
+     "name": "KI-Team-Setup",
+     "preis": 2490,
+     "wer": "Für Teams von 5 bis 20 Personen: gemeinsame Regeln, Markenstimme und Schulung.",
+     "plus": "Festpreis, enthalten:",
+     "items": [
+      "Workshop online oder in Leipzig",
+      "Arbeitsanleitung & 5 Skills",
+      "Schulung fürs ganze Team"
+     ],
+     "badge": "Neu",
+     "gefragt": true,
+     "ab": false,
+     "link": "ki-arbeits-setup/"
+    },
+    {
+     "id": "ki-setup",
+     "name": "KI-Arbeits-Setup",
+     "preis": 990,
+     "wer": "Für Selbstständige und kleine Büros bis fünf Personen: Claude eingerichtet, mit Projekt-Cockpit.",
+     "plus": "Festpreis, enthalten:",
+     "items": [
+      "3 Online-Termine",
+      "Arbeitsanleitung & 3 Skills",
+      "Projekt-Cockpit & Handbuch"
+     ],
+     "gefragt": false,
+     "ab": false,
+     "link": "ki-arbeits-setup/#ki-solo"
+    },
     {
      "id": "ki-0",
      "name": "KI-Check",
@@ -605,39 +636,9 @@
      ],
      "gefragt": false,
      "ab": true
-    },
-    {
-     "id": "ki-setup",
-     "name": "KI-Arbeits-Setup",
-     "preis": 990,
-     "wer": "Für Selbstständige und kleine Büros: Claude eingerichtet, mit Projekt-Cockpit.",
-     "plus": "Festpreis, enthalten:",
-     "items": [
-      "3 Online-Termine",
-      "Arbeitsanleitung & 3 Skills",
-      "Projekt-Cockpit & Handbuch"
-     ],
-     "badge": "Neu",
-     "gefragt": true,
-     "ab": false,
-     "link": "ki-arbeits-setup/"
-    },
-    {
-     "id": "ki-1",
-     "name": "KI-Einführung",
-     "preis": 2000,
-     "wer": "Für Teams, die die Empfehlungen aus dem Check umsetzen wollen.",
-     "plus": "Nach dem KI-Check:",
-     "items": [
-      "Claude für dein Team einrichten",
-      "Digitale Arbeitsabläufe",
-      "Team-Schulung"
-     ],
-     "gefragt": false,
-     "ab": true
     }
    ],
-   "intro": "KI und digitale Abläufe, die im Alltag wirklich entlasten – für KMU und Solo-Selbstständige.",
+   "intro": "KI mit klaren Regeln, die im Alltag wirklich entlastet – für Teams im Mittelstand und für Selbstständige.",
    "unterseite": "ki-digitalisierung/",
    "karte": "../bilder/leistung-ki.webp"
   },

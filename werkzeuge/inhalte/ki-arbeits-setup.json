@@ -1,51 +1,52 @@
 {
-  "_hinweis": "Landingpage /ki-arbeits-setup/: häufige Fragen und Angebot für die strukturierten Daten. Änderungen nur hier, dann python3 werkzeuge/ki-arbeits-setup.py (oder alle-erzeugen.sh). Preis wie in werkzeuge/preise-daten.json (Paket ki-setup).",
-  "name": "KI-Arbeits-Setup mit Projekt-Cockpit",
-  "preis": 990,
+  "_hinweis": "Landingpage /ki-arbeits-setup/ (KI-Team-Setup, darunter das Solo-Paket KI-Arbeits-Setup): häufige Fragen und Angebote für die strukturierten Daten. Änderungen nur hier, dann python3 werkzeuge/ki-arbeits-setup.py (oder alle-erzeugen.sh). Preise wie in werkzeuge/preise-daten.json (Pakete ki-team und ki-setup).",
+  "name": "KI-Team-Setup",
+  "preis": 2490,
   "faq": [
     [
-      "Was ist das KI-Arbeits-Setup von STUDIO AAH!?",
-      "Das KI-Arbeits-Setup ist ein Festpreis-Paket von STUDIO AAH!, in dem Anna Härtelt die KI Claude für Selbstständige und kleine Büros einrichtet. Dazu gehören ein Arbeitsordner mit einer Statusdatei je Kunde, eine Arbeitsanleitung mit deinen Regeln, drei Skills (feste Arbeitsabläufe), ein Projekt-Cockpit und ein gemeinsamer Rundgang durch Claude. Die Einrichtung läuft in drei Online-Terminen über etwa drei Wochen. STUDIO AAH! ist unabhängig und kein Partner von Anthropic, dem Anbieter von Claude."
+      "Was ist das KI-Team-Setup von STUDIO AAH!?",
+      "Das KI-Team-Setup ist ein Festpreis-Paket von STUDIO AAH! aus Leipzig, mit dem wir die KI Claude für Teams von 5 bis 20 Personen einrichten. Dazu gehören eine gemeinsame Arbeitsanleitung, die Markenstimme als Regelwerk, fünf Skills (feste Arbeitsabläufe), ein Projekt-Cockpit, Regeln, welche Daten in die KI dürfen, und eine Schulung für das ganze Team. STUDIO AAH! ist unabhängig und kein Partner von Anthropic, dem Anbieter von Claude."
     ],
     [
-      "Für wen ist das KI-Arbeits-Setup gedacht?",
-      "Das KI-Arbeits-Setup ist für Selbstständige, Freiberufler:innen und kleine Büros mit bis zu fünf Personen gedacht, die mehrere Kund:innen und Projekte gleichzeitig betreuen. Größere Teams sind im Paket KI-Einführung besser aufgehoben. Wer mit Gesundheitsdaten oder anderen besonders geschützten Daten arbeitet, klärt im Erstgespräch, ob und wie das Setup passt."
+      "Für wen ist das KI-Team-Setup gedacht?",
+      "Das KI-Team-Setup ist für Teams von 5 bis 20 Personen gedacht, die KI einheitlich und mit klaren Regeln nutzen wollen. Für Selbstständige und kleine Büros mit bis zu fünf Personen gibt es das KI-Arbeits-Setup. Bei größeren Teams klären wir im KI-Check, was sinnvoll ist."
     ],
     [
-      "Was kostet das KI-Arbeits-Setup?",
-      "Das KI-Arbeits-Setup kostet bei STUDIO AAH! 990 € netto zum Festpreis. Für die ersten drei Kund:innen gilt ein Pilotpreis von 690 € netto. Das KI-Abo selbst ist nicht enthalten; es wird direkt beim Anbieter gebucht und bezahlt."
+      "Was kostet das KI-Team-Setup?",
+      "Das KI-Team-Setup kostet 2.490 € netto zum Festpreis. Für die ersten zwei Teams gilt ein Pilotpreis von 1.990 € netto. Das KI-Abo ist nicht enthalten; es wird direkt beim Anbieter gebucht und bezahlt."
     ],
     [
-      "Welchen Tarif von Claude brauche ich?",
-      "Für das KI-Arbeits-Setup braucht es einen bezahlten Tarif von Claude, den du direkt beim Anbieter Anthropic buchst. Arbeitest du nur mit eigenen Texten und anonymisierten Daten, reicht der Tarif Pro – das Training mit deinen Chats schalten wir gemeinsam aus. Soll Claude dein Geschäftspostfach oder Kundendaten lesen, empfiehlt Anna Härtelt Claude Team (ab zwei Plätzen): Dort gilt ein Vertrag zur Auftragsverarbeitung, und Anthropic nutzt deine Eingaben standardmäßig nicht zum Training. Ob deine Datenverarbeitung zulässig ist, entscheidest du bzw. deine Datenschutzberatung."
+      "Welchen Tarif von Claude braucht unser Team?",
+      "Für Teams empfehlen wir Claude Team, den Tarif von Anthropic für Unternehmen ab zwei Personen. Dort ist ein Vertrag zur Auftragsverarbeitung Teil der Geschäftsbedingungen, und Anthropic nutzt eure Eingaben standardmäßig nicht zum Training. Die einzige Ausnahme, Feedback über die Bewertungs-Buttons, schalten wir bei der Einrichtung ab. Das Abo bucht ihr direkt bei Anthropic. Ob eure Datenverarbeitung zulässig ist, entscheidet ihr bzw. eure Datenschutzberatung."
     ],
     [
-      "Wie lange dauert das KI-Arbeits-Setup?",
-      "Das KI-Arbeits-Setup dauert vom Erstgespräch bis zum Feinschliff etwa drei Wochen. Du investierst drei Online-Termine von 90, 60 und 60 Minuten und etwa 15 Minuten für einen Fragebogen."
+      "Bekommt STUDIO AAH! Zugriff auf unsere Konten und Daten?",
+      "Nur im Termin und nur so weit nötig: Wir richten alles gemeinsam mit euch ein. Passwörter tippt ihr selbst ein. Zugangsdaten werden nicht gespeichert, die Termine nicht aufgezeichnet. Auf Wunsch gibt es einen Vertrag zur Auftragsverarbeitung."
     ],
     [
-      "Bekommt STUDIO AAH! Zugriff auf meine Konten und Daten?",
-      "Nur im Termin und nur so weit nötig: Anna Härtelt richtet alles gemeinsam mit dir ein. Passwörter tippst du selbst ein. Zugangsdaten werden nicht gespeichert, die Termine nicht aufgezeichnet. Auf Wunsch gibt es einen Vertrag zur Auftragsverarbeitung."
+      "Verschickt Claude etwas ohne uns?",
+      "Nein. Wir richten Claude so ein, dass es Entwürfe vorbereitet und vor jeder Aktion nachfragt. Gesendet wird nur mit eurem Klick."
     ],
     [
-      "Verschickt Claude etwas ohne mich?",
-      "Nein. Anna Härtelt richtet Claude so ein, dass es Entwürfe vorbereitet und vor jeder Aktion nachfragt. Gesendet wird nur mit deinem Klick."
+      "Unterstützt das KI-Team-Setup die KI-Kompetenz im Team?",
+      "Ja. Die KI-Verordnung der EU verlangt von Unternehmen, die KI einsetzen, Maßnahmen, die die KI-Kompetenz ihres Personals unterstützen (Artikel 4). Die Schulung im KI-Team-Setup zeigt, wie Claude arbeitet, wo die Grenzen liegen, welche Daten hinein dürfen und wie man Ergebnisse prüft. Alle Teilnehmenden erhalten eine Teilnahmebestätigung, die ihr als eine solche Maßnahme ablegen könnt; ein Zertifikat ist das nicht."
     ],
     [
-      "Geht das KI-Arbeits-Setup auch mit ChatGPT?",
-      "Das KI-Arbeits-Setup ist für Claude von Anthropic gebaut, weil Anna Härtelt selbst täglich damit arbeitet. Das Prinzip lässt sich aber auf ChatGPT übertragen: Auch dort gibt es Projekte mit eigenen Anweisungen und Dateien, wiederkehrende Aufgaben und Skills nach demselben Prinzip. Welche Funktionen dein Tarif enthält, klären wir im Erstgespräch."
+      "Geht das KI-Team-Setup auch mit ChatGPT?",
+      "Wir richten das KI-Team-Setup ausschließlich in Claude von Anthropic ein, weil Anna Härtelt selbst täglich damit arbeitet. Das Prinzip lässt sich auf ChatGPT übertragen: Auch dort gibt es Projekte mit eigenen Anweisungen und Dateien. Welche Funktionen euer Tarif enthält, klären wir im Erstgespräch."
     ],
     [
-      "Was passiert nach Termin 1?",
-      "Nach Termin 1 „Verstehen und Einrichten“ beantwortet Anna Härtelt 14 Tage lang deine Fragen per E-Mail oder im Online-Meeting. In Termin 2 prüfst du gemeinsam, was im Alltag schon läuft, ein bis zwei Wochen später folgt der Feinschliff. Weitere Skills, Termine oder eine Team-Schulung gibt es danach nach Aufwand."
+      "Ist das KI-Team-Setup eine Datenschutz- oder Rechtsberatung?",
+      "Nein. Ihr bekommt Regeln, welche Daten in die KI dürfen, und wir prüfen gemeinsam die Einstellungen eures Firmenkontos. Für die Datenschutzpflichten eures Unternehmens bleibt ihr selbst verantwortlich; im Zweifel hilft eine Fachperson für Datenschutz."
     ],
     [
-      "Gibt es eine Bestätigung zur KI-Kompetenz?",
-      "Ja. Zum KI-Arbeits-Setup gehört eine Einweisung ins sichere Arbeiten mit KI: wie Claude arbeitet, wo die Grenzen liegen, welche Daten hinein dürfen und wie du Ergebnisse prüfst. Du erhältst eine Teilnahmebestätigung, die du als Maßnahme zur KI-Kompetenz nach Artikel 4 der KI-Verordnung ablegen kannst. Ein Zertifikat ist das nicht."
-    ],
-    [
-      "Ist das KI-Arbeits-Setup eine Datenschutz- oder Rechtsberatung?",
-      "Nein. Du bekommst eine Checkliste, welche Daten in die KI dürfen, und wir prüfen gemeinsam die Einstellungen deines Kontos. Für die Datenschutzpflichten deines Unternehmens bleibst du selbst verantwortlich; im Zweifel hilft eine Fachperson für Datenschutz."
+      "Was kostet das KI-Arbeits-Setup für Selbstständige?",
+      "Das KI-Arbeits-Setup für Selbstständige und kleine Büros mit bis zu fünf Personen kostet 990 € netto zum Festpreis, für die ersten drei Kund:innen 690 € netto. Es läuft in drei Online-Terminen über etwa drei Wochen, mit drei Skills, Arbeitsordner und Projekt-Cockpit."
     ]
-  ]
+  ],
+  "solo": {
+    "name": "KI-Arbeits-Setup mit Projekt-Cockpit",
+    "preis": 990,
+    "beschreibung": "Claude für Selbstständige und kleine Büros bis fünf Personen eingerichtet: Arbeitsordner, Arbeitsanleitung, drei Skills und Projekt-Cockpit, in drei Online-Terminen."
+  }
 }

@@ -606,35 +606,35 @@
   "gruppe": "ki",
   "tag": "ki",
   "titel": "KI-Beratung",
-  "seitentitel": "KI-Beratung in Leipzig: Claude für dein Büro einrichten | STUDIO AAH!",
-  "beschreibung": "KI-Beratung aus Leipzig: Wir richten Claude für dein Büro ein, mit Arbeitsordner, Arbeitsanleitung, drei Skills und Projekt-Cockpit. KI-Arbeits-Setup in drei Terminen, 990 € netto.",
+  "seitentitel": "KI-Beratung in Leipzig: Claude für dein Team einrichten | STUDIO AAH!",
+  "beschreibung": "KI-Beratung aus Leipzig: Wir richten Claude für dein Team ein, mit gemeinsamen Regeln, Markenstimme, fünf Skills und Schulung. KI-Team-Setup 2.490 € netto, für Selbstständige das KI-Arbeits-Setup.",
   "bild": "bilder/leistung-ki.webp",
   "bildalt": "Hände tippen auf einer Laptop-Tastatur, im Hintergrund ein Monitor",
   "icon": "bilder/symbole/skills.svg",
   "problem_titel": "KI ist kein Selbstzweck.",
   "probleme": [
-   "Im Alltag geht Zeit verloren: bei Texten, Recherche, Angeboten oder internen Abläufen",
-   "Unklar, wo KI-Werkzeuge wirklich entlasten",
-   "Wiederkehrende Aufgaben laufen noch über den Zettelstapel",
-   "Keine eigene IT-Abteilung für die Digitalisierung",
-   "Das Team weiß nicht, wie es KI sicher und sinnvoll einsetzt"
+   "Im Team nutzt jede:r KI anders, oft mit privaten Konten",
+   "Texte aus der KI klingen jedes Mal anders",
+   "Niemand weiß genau, welche Daten in die KI dürfen",
+   "Wissen steckt in einzelnen Köpfen",
+   "Jede Anfrage an die KI fängt bei null an"
   ],
   "loesungen": [
-   "KI-Check: Analyse deiner Abläufe und ein Empfehlungsbericht",
-   "Auswahl und Einrichtung passender KI-Werkzeuge, mit Blick auf den Datenschutz",
-   "Digitale Arbeitsabläufe einrichten, Schritt für Schritt, auch ohne eigene IT-Abteilung",
-   "Team-Schulung: praxisnah, verständlich und auf deine Aufgaben zugeschnitten"
+   "KI-Team-Setup: gemeinsame Regeln, Markenstimme und fünf Skills für Teams von 5 bis 20 Personen",
+   "Klare Regeln, welche Daten in die KI dürfen, und ein Firmenkonto mit passenden Einstellungen",
+   "Schulung für das ganze Team, online oder vor Ort in Leipzig",
+   "KI-Check für größere Teams: Analyse eurer Abläufe und ein Empfehlungsbericht"
   ],
   "zusammenfassung": [
-   "Wir arbeiten ausschließlich mit Claude von Anthropic. Darauf richten wir dein Büro ein: mit deinen Projekten, deinen Abläufen und deinen Regeln.",
+   "Wir arbeiten ausschließlich mit Claude von Anthropic. Darauf richten wir dein Team ein: mit gemeinsamen Regeln, eurer Markenstimme und euren Abläufen.",
    "Claude lernt dabei mit: Sagst du „merk dir“ oder korrigierst du Claude, macht ein Skill daraus eine feste Regel. Sie gilt ab dann in jedem Chat.",
-   "Dafür gibt es das KI-Arbeits-Setup, für Selbstständige und kleine Büros mit bis zu fünf Personen."
+   "Dafür gibt es das KI-Team-Setup für Teams von 5 bis 20 Personen. Für Selbstständige und kleine Büros mit bis zu fünf Personen gibt es das KI-Arbeits-Setup."
   ],
   "nicht_enthalten": [
-   "Dein KI-Abo: Das buchst und bezahlst du direkt beim Anbieter",
+   "Euer KI-Abo: Das bucht und bezahlt ihr direkt beim Anbieter",
    "Programmierung eigener Software",
    "Rechts- oder Datenschutzberatung",
-   "Mehr als drei Skills oder eine Team-Schulung: nach Aufwand"
+   "Mehr Skills oder Schulungen als im Paket: nach Aufwand"
   ],
   "faq": [
    [
@@ -650,8 +650,8 @@
     "Ein fester Arbeitsablauf, den Claude immer gleich ausführt, sobald die passende Aufgabe kommt. So wird jede Arbeit gleich gut erledigt, egal in welchem Chat."
    ],
    [
-    "Welchen Tarif von Claude brauche ich?",
-    "Einen bezahlten Tarif, den du direkt bei Anthropic buchst. Arbeitest du nur mit eigenen Texten und anonymisierten Daten, reicht der Tarif Pro; das Training mit deinen Chats schalten wir gemeinsam aus. Soll Claude dein Geschäftspostfach oder Kundendaten lesen, empfehlen wir Claude Team: Dort gilt ein Vertrag zur Auftragsverarbeitung. Ob deine Datenverarbeitung zulässig ist, entscheidest du bzw. deine Datenschutzberatung."
+    "Welchen Tarif von Claude brauchen wir?",
+    "Einen bezahlten Tarif, den ihr direkt bei Anthropic bucht; STUDIO AAH! ist unabhängig von Anthropic. Für Teams empfehlen wir Claude Team: Dort ist ein Vertrag zur Auftragsverarbeitung Teil der Geschäftsbedingungen, und Anthropic nutzt eure Eingaben standardmäßig nicht zum Training. Ob eure Datenverarbeitung zulässig ist, entscheidet ihr bzw. eure Datenschutzberatung. Arbeitest du allein nur mit eigenen Texten und anonymisierten Daten, reicht der Tarif Pro; das Training mit deinen Chats schalten wir dann gemeinsam aus."
    ],
    [
     "Verschickt Claude etwas ohne mich?",
@@ -666,15 +666,15 @@
     "Wer mit Gesundheitsdaten oder anderen besonders geschützten Daten arbeitet, klärt im Erstgespräch, ob und wie das Setup passt."
    ],
    [
-    "Wie viel Zeit kostet mich das?",
-    "Etwa 15 Minuten für den Fragebogen und die drei Termine aus dem Prozess. Danach beantworten wir 14 Tage lang deine Fragen per E-Mail oder im Online-Meeting."
+    "Wie viel Zeit kostet das mein Team?",
+    "Für die Geschäftsführung etwa eine Stunde mit Erstgespräch und Fragebogen, für das Kernteam ein Workshop und für alle eine Schulung von zwei Stunden."
    ]
   ],
-  "loesung_text": "Im KI-Check schauen wir uns an, wo in deinem Alltag Zeit verloren geht und wo KI-Werkzeuge wirklich entlasten. In der KI-Einführung setzen wir die Empfehlungen um.",
+  "loesung_text": "Im KI-Team-Setup legen wir mit deinem Team gemeinsame Regeln fest und richten Claude für alle ein. Bei mehr als 20 Personen schauen wir im KI-Check zuerst, wo KI-Werkzeuge wirklich entlasten.",
   "loesung_punkte": [
-   "KI-Check: Analyse deiner Abläufe und ein Empfehlungsbericht",
-   "Auswahl und Einrichtung passender KI-Werkzeuge, mit Blick auf den Datenschutz",
-   "Team-Schulung: praxisnah, verständlich und auf deine Aufgaben zugeschnitten"
+   "KI-Team-Setup: gemeinsame Regeln, Markenstimme und fünf Skills",
+   "Klare Regeln, welche Daten in die KI dürfen",
+   "Schulung für das ganze Team, online oder vor Ort in Leipzig"
   ],
   "gewinn": [
    "Weniger Büroarbeit, mehr Zeit für Kundschaft und Strategie.",
@@ -689,7 +689,7 @@
   "gegenueber": {
    "_quelle": "Problemseiten ki-im-team und entlastung (fuer-wen-seiten.json), KI-Arbeits-Setup, FAQ KI-Beratung",
    "links": "Heute",
-   "rechts": "Mit dem KI-Arbeits-Setup",
+   "rechts": "Mit dem KI-Team-Setup",
    "zeilen": [
     [
      "Jede:r nutzt eine andere KI, oft mit privaten Konten. Wo deine Firmendaten landen, weiß niemand.",
@@ -698,13 +698,13 @@
     ],
     [
      "Jeder neue Chat beginnt bei null: Wer ist die Kundin, wie ist der Stand, welcher Ton passt?",
-     "Claude kennt dein Büro",
-     "Du erklärst deine Arbeitsweise einmal, nicht in jedem Chat."
+     "Claude kennt euer Unternehmen",
+     "Ihr erklärt eure Arbeitsweise einmal, nicht in jedem Chat."
     ],
     [
      "Die KI-Lizenz ist bezahlt, aber kaum jemand nutzt sie.",
      "Im Alltag angekommen",
-     "Eingerichtet so, dass du es wirklich benutzt."
+     "Eingerichtet und geschult, damit das ganze Team es wirklich benutzt."
     ]
    ]
   },
@@ -718,19 +718,19 @@
     ],
     [
      "Projektstand je Kunde",
-     "Eine Statusdatei je Kunde: Was ist beschlossen, was ist fertig, was ist offen. Die KI hält sie nach jeder Arbeit aktuell."
+     "Eine Statusdatei je Projekt: Was ist beschlossen, was ist fertig, was ist offen. Die KI hält sie nach jeder Arbeit aktuell."
     ],
     [
      "Wochenplan und Fristen",
-     "Ein Projekt-Cockpit zeigt Termine, offene Punkte und wer gerade am Zug ist: du oder deine Kundin."
+     "Ein Projekt-Cockpit zeigt Termine, offene Punkte und wer im Team gerade am Zug ist."
     ],
     [
      "Prüfen vor der Abgabe",
      "Ein fester Arbeitsablauf als Prüfer sieht deine Arbeit durch, bevor sie rausgeht."
     ],
     [
-     "Texte in deinem Ton",
-     "Ein fester Arbeitsablauf für Texte schreibt Entwürfe so, wie du schreibst."
+     "Texte in eurer Markenstimme",
+     "Ein fester Arbeitsablauf für Texte schreibt Entwürfe so, wie euer Unternehmen klingt."
     ],
     [
      "Protokolle und Zusammenfassungen",
@@ -749,61 +749,61 @@
    ]
   },
   "wege": {
-   "_quelle": "Seite KI-Arbeits-Setup, Abschnitt „Sechs Dinge, die bleiben“",
+   "_quelle": "Seite KI-Team-Setup, Abschnitt „Sechs Dinge, die bleiben“",
    "meta": "Lösung",
-   "titel": "Das KI-Arbeits-Setup",
-   "einleitung": "Das bleibt nach dem Setup in deinem Büro:",
+   "titel": "Das KI-Team-Setup",
+   "einleitung": "Das bleibt nach dem Setup in deinem Team:",
    "karten": [
     [
-     "Dein Arbeitsordner",
-     "Ein Unterordner je Kunde, sortiert nach Projektphasen."
+     "Eine gemeinsame Arbeitsanleitung",
+     "Regeln für alle, in euren gemeinsamen Projekten."
     ],
     [
-     "Deine Arbeitsanleitung",
-     "Deine Kund:innen, dein Ton, deine Regeln, an einem Ort."
+     "Eure Markenstimme",
+     "Begriffe, Ansprache und Beispiele als feste Regeln."
     ],
     [
-     "Drei Skills",
-     "Die drei festen Arbeitsabläufe, die dich zuerst entlasten."
+     "Fünf Skills",
+     "Feste Arbeitsabläufe für Aufgaben, die immer wiederkommen."
     ],
     [
-     "Dein Projekt-Cockpit",
-     "Was darin steht und wie es aussieht, bestimmst du selbst."
+     "Ein Projekt-Cockpit",
+     "Was darin steht und wie es aussieht, bestimmt ihr selbst."
     ],
     [
-     "Kalender, Mail und Projekttool",
-     "Wo es passt, verbinden wir Claude damit."
+     "Was darf in die KI?",
+     "Klare Regeln und ein Firmenkonto mit passenden Einstellungen."
     ],
     [
-     "Rundgang und Handbuch",
-     "Chat, Cowork und Claude Code im Überblick, dazu eine Einweisung ins sichere Arbeiten mit KI mit Teilnahmebestätigung."
+     "Schulung und Handbuch",
+     "Für das ganze Team, mit Teilnahmebestätigung zur KI-Kompetenz."
     ]
    ],
    "link": [
     "ki-arbeits-setup/",
-    "Alles zum KI-Arbeits-Setup"
+    "Alles zum KI-Team-Setup"
    ]
   },
   "ablauf_schritte": [
    [
-    "Kostenlos · 20 Minuten",
+    "Kostenlos · 30 Minuten",
     "Erstgespräch",
-    "Wir lernen uns kennen und schauen auf deine Werkzeuge. Danach bekommst du einen kurzen Fragebogen."
+    "Wir sprechen mit der Geschäftsführung über Ziele, Abläufe und Werkzeuge. Danach bekommst du einen Fragebogen."
    ],
    [
-    "Termin 1 · 90 Minuten",
-    "Verstehen und Einrichten",
-    "Wir wählen die drei Skills, die dich zuerst entlasten, und richten so viel wie möglich direkt ein."
+    "Workshop · 2 bis 3 Stunden",
+    "Regeln und Einrichten",
+    "Mit deinem Kernteam legen wir Arbeitsanleitung und Markenstimme fest und richten die ersten Skills ein, online oder in Leipzig."
    ],
    [
-    "Termin 2 · 60 Minuten",
+    "Schulung · 2 Stunden",
+    "Das ganze Team",
+    "Wir zeigen allen, wie das Setup funktioniert und was in die KI darf."
+   ],
+   [
+    "Nach etwa 2 Wochen · 60 Minuten",
     "Validieren",
-    "Was läuft im Alltag schon, was hakt? Wir prüfen das Setup an deinen echten Aufgaben und passen es an."
-   ],
-   [
-    "Termin 3 · 60 Minuten",
-    "Feinschliff",
-    "Ein bis zwei Wochen später schärfen wir nach und planen den nächsten Ausbauschritt."
+    "Wir prüfen das Setup an euren echten Aufgaben und schärfen nach."
    ]
   ],
   "recht": {
@@ -839,11 +839,12 @@
     "blog/eu-ai-act-kleine-unternehmen/"
    ]
   },
-  "termine": "Drei Online-Termine von 90, 60 und 60 Minuten, verteilt auf etwa drei Wochen, über Google Meet oder Teams.",
+  "termine": "Ein Erstgespräch, ein Workshop von zwei bis drei Stunden, eine Schulung von zwei Stunden und ein Termin zum Nachschärfen, verteilt auf etwa vier Wochen. Online über Google Meet oder Teams, der Workshop auch vor Ort in Leipzig.",
   "ohne_gemeinsame_fragen": true,
   "ansprech_satz": "Bei STUDIO AAH! arbeitest du direkt mit mir, vom Erstgespräch bis zur Schulung.",
   "frage": "KI-Beratung: Was ist das?",
   "pakete": [
+   "ki-team",
    "ki-setup"
   ],
   "termine_zeigen": false

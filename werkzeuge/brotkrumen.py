@@ -29,7 +29,7 @@ def ziele():
     yield FW['selbsttest']['pfad'], [FUER_WEN], 'Selbsttest'
     yield FW['ki_rechner']['pfad'], [FUER_WEN], 'KI-Zeitrechner'
     yield FW['produkt']['pfad'], [LEISTUNGEN], 'Employer Branding'
-    yield 'ki-arbeits-setup/', [LEISTUNGEN], 'KI-Arbeits-Setup'
+    yield 'ki-arbeits-setup/', [LEISTUNGEN], 'KI-Team-Setup'
     yield 'marken-regelwerk/', [LEISTUNGEN], 'Marken-Regelwerk'
     for seite in sorted((WEBSITE / 'blog').glob('*/index.html')):
         text = seite.read_text(encoding='utf-8')

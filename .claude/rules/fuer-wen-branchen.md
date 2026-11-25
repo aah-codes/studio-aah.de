@@ -29,4 +29,5 @@ paths:
 - SEO/GEO: Service-Daten mit Einzugsgebiet Leipzig, FAQPage.
 - Referenzen je Branche: Beratung/Coaching Deinetwegen und Down to Earth, Gesundheit Goldhammer, Bau Bauer; sonst keine (Beleg in `fuer-wen-seiten.py` optional).
 - Selbsttest `/selbsttest/` und KI-Zeitrechner `/ki-zeitrechner/`: Auswertung nur im Browser (`js/selbsttest.js`), nichts wird gesendet.
-- Brotkrumen überall, wo sinnvoll (Problem-, Branchen-, Produkt-, Test-Seiten, KI-Arbeits-Setup, Marken-Regelwerk, Blogartikel) über `brotkrumen.py`; neue Unterseiten dort eintragen.
+- Brotkrumen überall, wo sinnvoll (Problem-, Branchen-, Produkt-, Test-Seiten, KI-Team-Setup, Marken-Regelwerk, Blogartikel) über `brotkrumen.py`; neue Unterseiten dort eintragen.
+- Seite `/ki-arbeits-setup/` (Adresse bleibt): Hauptangebot KI-Team-Setup (5–20 Personen, 2.490 €, Pilot 1.990 € für die ersten zwei Teams), darunter das Solo-Paket KI-Arbeits-Setup (`#ki-solo`). Für Teams nie „Doppelt so effizient“. Fragen und Schema aus `inhalte/ki-arbeits-setup.json`.
